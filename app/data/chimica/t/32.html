@@ -1,0 +1,220 @@
+<h1 id="lez-32">Lezione 32 — Disuguaglianza di Clausius e variazione di entropia</h1>
+<h2 id="lez-32-perche">Perché questa lezione esiste</h2>
+<p>La <a href="#/teoria/chimica/31/lez-31-boltzmann">lezione precedente</a> ha definito l&#39;entropia a livello
+microscopico (<span class="m">S=k_B\ln W</span>), utile per capire il concetto ma impraticabile per
+calcolare <span class="m">\Delta S</span> di una trasformazione reale — nessuno conta i microstati di una
+mole di gas. Questa lezione fornisce lo strumento macroscopico: una formula di
+<span class="m">\Delta S</span> costruita a partire dal calore scambiato, calcolabile con i dati che hai
+già (capacità termiche, calori latenti, equazione di stato dei gas).</p>
+<h2 id="lez-32-clausius">La disuguaglianza di Clausius</h2>
+<p>Se il sistema scambia <strong>reversibilmente</strong> una quantità infinitesima di calore
+<span class="m">\delta Q_{REV}</span> con l&#39;ambiente, alla temperatura assoluta <span class="m">T</span>, la variazione di
+entropia è:</p>
+<div class="callout formula">
+
+<p><span class="m d">dS = \frac{\delta Q_{REV}}{T} \qquad\Longrightarrow\qquad \Delta S = S_2-S_1 =
+\int_1^2 \frac{\delta Q_{REV}}{T}</span></p>
+</div>
+
+<p>Se invece la trasformazione è <strong>irreversibile</strong>, vale la disuguaglianza:</p>
+<div class="callout formula">
+
+<p><span class="m d">dS \geq \frac{\delta Q}{T} \qquad \text{(disuguaglianza di Clausius)}</span></p>
+</div>
+
+<p>Il punto cruciale, che userai in ogni esercizio da qui in avanti: <strong><span class="m">S</span> è una
+funzione di stato</strong>. La sua variazione tra due stati non dipende dal cammino
+percorso, solo da dove parti e dove arrivi. Quindi, per calcolare <span class="m">\Delta S</span> di una
+trasformazione reale (quasi sempre irreversibile), <strong>puoi sempre scegliere una
+qualunque trasformazione reversibile immaginaria che colleghi gli stessi due stati</strong>,
+anche priva di significato fisico, e applicarle l&#39;integrale con l&#39;uguaglianza. Il
+risultato numerico è lo stesso.</p>
+<div class="callout attenzione">
+
+<p>Questo è il trucco di calcolo più importante del capitolo: non serve che la
+trasformazione reversibile scelta sia &quot;quella vera&quot;. Serve solo che inizi e finisca
+negli stessi stati 1 e 2. Le trasformazioni reversibili non esistono in natura, ma
+sono lo strumento di calcolo universale per <span class="m">\Delta S</span>.</p>
+</div>
+
+<h2 id="lez-32-gas-ideale">Variazione di entropia di un gas ideale</h2>
+<p>Parti dal primo principio scritto per un tratto infinitesimo di una trasformazione
+reversibile: <span class="m">\delta Q_{REV} = dU - \delta L_{REV} = dU + P\,dV</span> (con la convenzione
+<span class="m">\delta L_{REV}=-P\,dV</span> per il lavoro fatto dal sistema). Per un gas ideale
+<span class="m">dU=nC_V\,dT</span> sempre, quindi, usando l&#39;equazione di stato <span class="m">P=nRT/V</span>:</p>
+<p><span class="m d">\delta Q_{REV} = nC_V\,dT + \frac{nRT}{V}\,dV</span></p>
+<p>Dividi per <span class="m">T</span> e integra da 1 a 2:</p>
+<div class="callout formula">
+
+<p><span class="m d">\Delta S = n\,C_V\ln\frac{T_2}{T_1} + n\,R\ln\frac{V_2}{V_1}</span></p>
+</div>
+
+<p>Con l&#39;equazione di stato dei gas ideali si può riscrivere la stessa espressione in
+funzione delle pressioni invece dei volumi (sostituendo <span class="m">V=nRT/P</span> e usando
+<span class="m">C_V+R=C_P</span>):</p>
+<div class="callout formula">
+
+<p><span class="m d">\Delta S = n\,C_P\ln\frac{T_2}{T_1} - n\,R\ln\frac{P_2}{P_1}</span></p>
+</div>
+
+<p>Le due forme sono equivalenti: usa quella con <span class="m">T,P</span> se conosci le pressioni,
+quella con <span class="m">T,V</span> se conosci i volumi. In entrambe, il <span class="m">\Delta S</span> si scompone in un
+termine &quot;di temperatura&quot; e uno &quot;di volume/pressione&quot;: se la trasformazione è
+isoterma, sopravvive solo il secondo; se è isocora (o isobara), sopravvive solo il
+primo.</p>
+<div class="callout esempio">
+
+<p><strong>4 moli di vapore d&#39;acqua da 250 °C, 1 atm a 500 °C, 3 atm</strong> (<span class="m">C_P=33.58\
+\mathrm{J\,mol^{-1}K^{-1}}</span>).</p>
+<p><strong>Passo 1 — converti le temperature in kelvin.</strong> <span class="m">T_1=523\ \mathrm K</span>,
+<span class="m">T_2=773\ \mathrm K</span> (mai gradi Celsius nella formula: il logaritmo di un rapporto
+di temperature ha senso solo in kelvin).</p>
+<p><strong>Passo 2 — applica la formula con <span class="m">T</span> e <span class="m">P</span>.</strong>
+<span class="m d">\Delta S = 4\,\mathrm{mol}\times 33.58\,\frac{\mathrm J}{\mathrm{mol\,K}}\times
+\ln\frac{773}{523} - 4\,\mathrm{mol}\times 8.31\,\frac{\mathrm J}{\mathrm{mol\,K}}
+\times\ln\frac{3}{1}</span></p>
+<p><strong>Passo 3 — somma i due contributi.</strong>
+<span class="m d">\Delta S = 52.48 - 36.52 = 15.96\ \mathrm{J/K}</span></p>
+<p>Nota che la pressione può restare in qualunque unità coerente nel rapporto (atm con
+atm), mentre la temperatura deve essere sempre in kelvin.</p>
+</div>
+
+<h2 id="lez-32-solidi-liquidi">Variazione di entropia di solidi e liquidi</h2>
+<p>Solidi e liquidi sono poco sensibili alla pressione, quindi <span class="m">\delta Q_{REV}</span> è
+essenzialmente un termine di riscaldamento <span class="m">m\,C_P\,dT</span>:</p>
+<div class="callout formula">
+
+<p><span class="m d">\Delta S = \int_1^2 \frac{m\,C_P\,dT}{T} = m\,C_P\ln\frac{T_2}{T_1}</span></p>
+</div>
+
+<p>(se hai la capacità termica molare invece che specifica, converti la massa in moli e
+usa la stessa formula con <span class="m">n</span> al posto di <span class="m">m</span>).</p>
+<div class="callout esempio">
+
+<p><strong>Riscaldare 2 kg d&#39;acqua da 20 °C a 80 °C</strong> (<span class="m">C_P=1\ \mathrm{cal\,g^{-1}\,°C^{-1}}</span>):
+<span class="m d">\Delta S = 2000\,\mathrm g \times 1\,\frac{\mathrm{cal}}{\mathrm{g\,°C}}\times
+4.1868\,\frac{\mathrm J}{\mathrm{cal}}\times\ln\frac{353\,\mathrm K}{293\,\mathrm K}
+\approx 1793.9\ \mathrm{J/K}</span>
+Positivo: riscaldare aumenta il disordine (le molecole si muovono di più).</p>
+<p><strong>Raffreddare 1 kg di alluminio da 200 °C a 25 °C</strong>
+(<span class="m">C_P=24.35\ \mathrm{J\,mol^{-1}K^{-1}}</span>, <span class="m">M=26.98\ \mathrm{g/mol}</span>):
+<span class="m d">\Delta S = \frac{1000\,\mathrm g}{26.98\,\mathrm{g/mol}}\times
+24.35\,\frac{\mathrm J}{\mathrm{mol\,K}}\times\ln\frac{298\,\mathrm K}{473\,\mathrm K}
+\approx -417.0\ \mathrm{J/K}</span>
+Negativo: raffreddare riduce il disordine (gli atomi vibrano più lentamente intorno
+al reticolo).</p>
+</div>
+
+<h2 id="lez-32-passaggi-stato">Variazione di entropia nei passaggi di stato</h2>
+<p>Durante un passaggio di stato la temperatura resta costante, quindi esce
+dall&#39;integrale:</p>
+<div class="callout formula">
+
+<p><span class="m d">\Delta S = \frac{Q_{REV}}{T} = \frac{m\lambda}{T}</span></p>
+</div>
+
+<p>dove <span class="m">\lambda</span> è il calore latente (fusione, evaporazione, sublimazione — positivo se
+assorbito, negativo se rilasciato) e <span class="m">T</span> è la temperatura (in kelvin) a cui avviene
+il passaggio.</p>
+<div class="callout esempio">
+
+<p><strong>2 kg d&#39;acqua fondono a 0 °C</strong> (<span class="m">\lambda_{fus}=6.01\ \mathrm{kJ/mol}</span>):
+<span class="m d">\Delta S = \frac{(2000/18)\,\mathrm{mol}\times 6.01\,\mathrm{kJ/mol}}{273\,
+\mathrm K} \approx 2.45\ \mathrm{kJ/K} &gt; 0</span></p>
+<p><strong>3 kg di vapore condensano a 100 °C</strong> (<span class="m">\lambda_{vap}=40.7\ \mathrm{kJ/mol}</span>):
+<span class="m d">\Delta S = -\frac{(3000/18)\,\mathrm{mol}\times 40.7\,\mathrm{kJ/mol}}{373\,
+\mathrm K} \approx -18.19\ \mathrm{kJ/K} &lt; 0</span>
+Fondere disordina (solido → liquido), condensare ordina (gas → liquido): i segni
+sono coerenti con l&#39;intuizione di Boltzmann della lezione precedente.</p>
+</div>
+
+<h2 id="lez-32-miscelazione">Entropia di miscelazione di gas ideali</h2>
+<p>Un caso che compare spesso all&#39;esame: mescolare due gas inizialmente separati, alla
+stessa <span class="m">T</span> e <span class="m">P</span>. Prima della miscelazione ciascun gas è a pressione <span class="m">P</span>; dopo, ogni
+gas si trova alla propria <strong>pressione parziale</strong> <span class="m">P\cdot Y_i</span> (con <span class="m">Y_i</span> frazione
+molare nella miscela finale), mentre la miscela nel suo complesso resta a <span class="m">P</span>. Il
+<span class="m">\Delta S</span> di miscelazione è la somma dei <span class="m">\Delta S</span> isotermi di ciascun gas (isoterma
+→ sopravvive solo il termine di pressione):</p>
+<p><span class="m d">\Delta S = \sum_i n_i R \ln\frac{P}{P\cdot Y_i} = -\sum_i n_i R\ln Y_i =
+-n_{TOT}R\sum_i Y_i\ln Y_i</span></p>
+<div class="callout formula">
+
+<p><span class="m d">\Delta S_{mescolamento} = -n_{TOT}\,R\sum_i Y_i\ln Y_i</span></p>
+</div>
+
+<p>Poiché ogni <span class="m">Y_i&lt;1</span>, ogni <span class="m">\ln Y_i&lt;0</span>: il segno meno davanti rende <strong>sempre positivo</strong>
+questo <span class="m">\Delta S</span>. Mescolare due gas diversi, alla stessa <span class="m">T</span> e <span class="m">P</span>, è sempre
+spontaneo — coerente con l&#39;intuizione: la miscela è uno stato più disordinato di due
+gas separati.</p>
+<div class="callout esempio">
+
+<p><strong>0.8 m³ di N₂ + 0.2 m³ di O₂ a 1 atm, 25 °C.</strong> Le frazioni molari nella miscela
+finale sono <span class="m">Y_{N_2}=0.8</span>, <span class="m">Y_{O_2}=0.2</span> (i volumi parziali, a <span class="m">T,P</span> uguali, sono
+proporzionali alle moli per il principio di Avogadro). Con 1 mole totale:
+<span class="m d">\Delta S = -1\,\mathrm{mol}\times 8.31\,\frac{\mathrm J}{\mathrm{mol\,K}}\times
+\big[0.8\ln 0.8 + 0.2\ln 0.2\big] \approx 4.158\ \mathrm{J/K} &gt; 0</span></p>
+<p><strong>Nota sull&#39;ambiente.</strong> La miscelazione di gas ideali alla stessa <span class="m">T</span> avviene senza
+scambio di calore (<span class="m">\Delta H=0</span>, come per l&#39;espansione libera), quindi
+<span class="m">\Delta S_{amb}=0</span> e <span class="m">\Delta S_{univ}=\Delta S_{sist}&gt;0</span>: il processo è spontaneo
+anche guardando l&#39;universo, non solo il sistema.</p>
+</div>
+
+<h2 id="lez-32-ghiaccio-acqua">Un caso misto: ghiaccio e acqua calda</h2>
+<p>Quando due sostanze a temperature diverse si mescolano in un contenitore adiabatico,
+il calcolo procede in due tempi: <strong>prima</strong> trovi la temperatura finale di equilibrio
+con un bilancio di calore (il calore per fondere il ghiaccio e riscaldarlo fino a
+<span class="m">T_F</span> è uguale al calore ceduto dall&#39;acqua calda raffreddandosi fino a <span class="m">T_F</span>), <strong>poi</strong>
+sommi i tre contributi di entropia (fusione + riscaldamento della massa totale +
+raffreddamento dell&#39;acqua calda), ciascuno con la formula appropriata vista sopra.</p>
+<div class="callout esempio">
+
+<p><strong>1 kg di ghiaccio a 0 °C in 5 kg d&#39;acqua a 40 °C, contenitore adiabatico</strong>
+(<span class="m">\lambda_{fus}=6.01\ \mathrm{kJ/mol}</span>).</p>
+<p><strong>Passo 1 — bilancio di calore per la <span class="m">T</span> finale.</strong>
+<span class="m d">m_{ghiaccio}\lambda_{fus} + m_{TOT}C_P(T-0°C) = m_{acqua}C_P(40°C-0°C)</span>
+Risolvendo, <span class="m">T\approx 20.0\ °\mathrm C = 293\ \mathrm K</span>.</p>
+<p><strong>Passo 2 — somma i tre contributi di entropia</strong>, ciascuno con la formula del tipo di
+processo (fusione a <span class="m">T</span> costante, riscaldamento/raffreddamento con <span class="m">\ln</span> del
+rapporto delle temperature):
+<span class="m d">\Delta S = \underbrace{\frac{m_{ghiaccio}\lambda_{fus}}{273\,\mathrm K}}_{
+\text{fusione}} + \underbrace{m_{TOT}C_P\ln\frac{293}{273}}_{\text{riscaldamento
+massa totale}} + \underbrace{m_{acqua}C_P\ln\frac{273}{313}}_{\text{raffreddamento
+acqua calda}}</span>
+<span class="m d">\Delta S \approx 0.658 + 0.424 - 0.684 = 0.398\ \mathrm{kcal/K} &gt; 0</span></p>
+<p>Il sistema è adiabatico quindi <span class="m">\Delta S_{amb}=0</span>: <span class="m">\Delta S_{univ}=\Delta S_{sist}&gt;0</span>,
+processo spontaneo.</p>
+</div>
+
+<div class="callout attenzione">
+
+<p>Nel bilancio di calore del passo 1, il segno di ciascun termine dipende da chi
+riceve e chi cede calore. L&#39;errore più comune è dimenticare il termine di fusione
+(che ha bisogno di calore prima ancora che il ghiaccio possa riscaldarsi) o
+sommarlo con il segno sbagliato.</p>
+</div>
+
+<div class="callout sintesi">
+
+<ul>
+<li><span class="m">\Delta S</span> è funzione di stato: per calcolarla scegli sempre la trasformazione
+reversibile più comoda che connette gli stessi due stati.</li>
+<li>Gas ideale: <span class="m">\Delta S = nC_V\ln(T_2/T_1) + nR\ln(V_2/V_1)</span>, equivalente a
+<span class="m">nC_P\ln(T_2/T_1) - nR\ln(P_2/P_1)</span>.</li>
+<li>Solidi/liquidi (riscaldamento): <span class="m">\Delta S = mC_P\ln(T_2/T_1)</span>.</li>
+<li>Passaggi di stato: <span class="m">\Delta S = m\lambda/T</span>, a <span class="m">T</span> costante.</li>
+<li>Miscelazione di gas ideali alla stessa <span class="m">T,P</span>: <span class="m">\Delta S = -n_{TOT}R\sum Y_i\ln Y_i</span>,
+sempre positivo.</li>
+</ul>
+</div>
+
+<div class="callout esame">
+
+<p><strong>Come cade all&#39;esame.</strong> Il calcolo di <span class="m">\Delta S</span> è uno dei tipi di esercizio più
+frequenti del blocco termodinamico. La sequenza corretta è sempre: (1) riconosci il
+<strong>tipo</strong> di trasformazione (gas ideale, riscaldamento di una fase condensata,
+passaggio di stato, miscelazione), (2) scegli la formula corrispondente — non
+inventarne una nuova, (3) converti sempre le temperature in kelvin prima di fare il
+logaritmo, (4) controlla il segno finale contro il buon senso fisico (riscaldare/
+fondere/espandere aumenta <span class="m">S</span>; raffreddare/condensare/comprimere la diminuisce).</p>
+<p><strong>Allenati qui:</strong> Paniere Lez. 32 domande 1–3 · Extra 67 · Extra 68 · Extra 69</p>
+</div>

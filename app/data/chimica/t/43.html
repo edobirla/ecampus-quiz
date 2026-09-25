@@ -1,0 +1,168 @@
+<h1 id="lez-43">Lezione 43 — Condizioni non standard: equazione di Nernst, pile a concentrazione, elettrolisi</h1>
+<h2 id="lez-43-perche">Perché questa lezione esiste</h2>
+<p>La Lezione 42 ha tabulato i potenziali <strong>standard</strong>: soluti a 1 M, gas a 1 bar. Ma
+un problema reale quasi mai parte da condizioni standard. Questa lezione risponde a
+due domande pratiche: come cambia la fem di una pila quando le concentrazioni non
+sono 1 M (equazione di Nernst), e cosa succede quando <strong>inverti</strong> il ruolo della
+pila, fornendo energia elettrica invece di prelevarla (elettrolisi) — il processo
+alla base della produzione industriale di alluminio, cloro e della raffinazione dei
+metalli.</p>
+<h2 id="lez-43-nernst">L&#39;equazione di Nernst</h2>
+<p>Nella lezione sull&#39;equilibrio chimico avevi ricavato <span class="m">\Delta G = \Delta G^\circ + RT\ln Q</span>
+(con <span class="m">Q</span> quoziente di reazione). Sostituendo <span class="m">\Delta G=-nFE</span> e <span class="m">\Delta G^\circ=-nFE^\circ</span>
+(Lezione 42) in questa relazione, e dividendo per <span class="m">-nF</span>:</p>
+<div class="callout formula">
+
+<p><span class="m d">E = E^\circ - \frac{RT}{nF}\ln Q \qquad\text{(equazione di Nernst)}</span></p>
+</div>
+
+<p>dove <span class="m">F=96485\ \mathrm{C\,mol^{-1}}</span> è la costante di Faraday. A <span class="m">25\,^\circ\mathrm C</span>
+(<span class="m">298\ \mathrm K</span>), il termine <span class="m">RT/F</span> vale <span class="m">0.0257\ \mathrm V</span>; passando al logaritmo in
+base 10 (<span class="m">\ln x = 2.303\log x</span>) si ottiene la forma più usata nella pratica:</p>
+<p><span class="m d">E = E^\circ - \frac{0.0592}{n}\log Q \qquad\text{(a }25\,^\circ\mathrm C\text{)}</span></p>
+<div class="callout esempio">
+
+<p><strong>Pila Daniell in condizioni non standard.</strong>
+<span class="m">\mathrm{Zn(s)/Zn^{2+}(aq,0.3M)\,//\,Cu^{2+}(aq,1.2M)/Cu(s)}</span>.</p>
+<p><strong>Passo 1 — fem standard dalla tabella.</strong> <span class="m">\Delta E^\circ=E^\circ(\mathrm{Cu^{2+}/Cu})
+-E^\circ(\mathrm{Zn^{2+}/Zn})=0.34-(-0.76)=+1.10\ \mathrm V</span> (<span class="m">n=2</span> elettroni
+scambiati, dalla semireazione <span class="m">\mathrm{Zn+Cu^{2+}\to Zn^{2+}+Cu}</span>).</p>
+<p><strong>Passo 2 — scrivi <span class="m">Q</span> per la redox complessiva</strong> (i metalli solidi non compaiono):
+<span class="m">Q=[\mathrm{Zn^{2+}}]/[\mathrm{Cu^{2+}}]=0.3/1.2=0.25</span>.</p>
+<p><strong>Passo 3 — applica Nernst.</strong>
+<span class="m d">\Delta E = 1.10 - \frac{0.0592}{2}\log(0.25) = 1.10-(-0.0178) = 1.118\ \mathrm V</span></p>
+</div>
+
+<div class="callout attenzione">
+
+<p><strong>Le fasi solide pure non compaiono in <span class="m">Q</span></strong>, esattamente come non compaiono
+nell&#39;espressione di <span class="m">K</span> per gli equilibri eterogenei (<a href="#/teoria/chimica/40/lez-40-eterogenei">Lezione
+40</a>): non scrivere <span class="m">[\mathrm{Zn(s)}]</span> o <span class="m">[\mathrm{Cu(s)}]</span> nel
+quoziente di reazione di Nernst, è un errore comune quanto inutile (l&#39;attività di un
+solido puro è convenzionalmente 1).</p>
+</div>
+
+<h2 id="lez-43-pile-concentrazione">Pile a concentrazione</h2>
+<p>Una fem non nasce solo da specie chimiche diverse: <strong>due semicelle identiche</strong> (es.
+rame-rame) con concentrazioni diverse generano anch&#39;esse una fem, perché il
+potenziale di riduzione di Nernst dipende dalla concentrazione.</p>
+<div class="callout esempio">
+
+<p>Due semicelle di rame a <span class="m">[\mathrm{Cu^{2+}}]=0.5\ \mathrm M</span> e <span class="m">[\mathrm{Cu^{2+}}]=0.05\ \mathrm M</span>
+(stessa semireazione <span class="m">\mathrm{Cu^{2+}+2e^-\to Cu}</span>, <span class="m">E^\circ=+0.34\ \mathrm V</span>).</p>
+<p><strong>Passo 1 — calcola il potenziale di ciascuna semicella con Nernst.</strong>
+<span class="m d">E_{0.5M} = 0.34 - \frac{0.0592}{2}\log\frac1{0.5} = 0.34-0.0089 = 0.3311\ \mathrm V</span>
+<span class="m d">E_{0.05M} = 0.34 - \frac{0.0592}{2}\log\frac1{0.05} = 0.34-0.0385 = 0.3015\ \mathrm V</span></p>
+<p><strong>Passo 2 — quella con potenziale più alto fa da catodo</strong> (si riduce davvero): la
+semicella a 0.5 M. L&#39;altra (0.05 M) fa da anodo (si ossida).</p>
+<p><strong>Passo 3 — la fem complessiva è la differenza.</strong>
+<span class="m d">\Delta E = 0.3311-0.3015 = 0.0296\ \mathrm V = 29.6\ \mathrm{mV}</span></p>
+<p>Una fem piccola ma reale, generata <strong>senza alcuna differenza chimica</strong> tra le due
+semicelle — solo dalla differenza di concentrazione. La redox netta è semplicemente
+il trasferimento di <span class="m">\mathrm{Cu^{2+}}</span> dalla semicella concentrata a quella diluita:
+il sistema tende spontaneamente a <strong>uniformare le concentrazioni</strong>, proprio come
+un&#39;osmosi elettrochimica.</p>
+</div>
+
+<h2 id="lez-43-elettrolisi">Elettrolisi</h2>
+<p>L&#39;elettrolisi è il processo <strong>opposto</strong> alla pila: se in una pila l&#39;energia chimica
+si converte spontaneamente in energia elettrica (<span class="m">\Delta E&gt;0</span>), in una cella
+elettrolitica bisogna <strong>fornire</strong> energia elettrica dall&#39;esterno per far avvenire
+un processo redox altrimenti non spontaneo (<span class="m">\Delta E&lt;0</span>).</p>
+<div class="callout esempio">
+
+<p><strong>Elettrolisi del cloruro di sodio fuso.</strong> Due elettrodi inerti (grafite) immersi in
+<span class="m">\mathrm{NaCl}</span> fuso, con una batteria che impone corrente:
+<span class="m d">\mathrm{RED:}\ 2\mathrm{Na^+(l)+2e^-\to2Na(l)} \qquad \mathrm{OX:}\ 2\mathrm{Cl^-(l)\to Cl_2(g)+2e^-}</span>
+<span class="m d">\mathrm{REDOX:}\ 2\mathrm{Na^+ + 2Cl^- \to 2Na(l) + Cl_2(g)}</span>
+Il processo complessivo non è spontaneo (bisogna &quot;spingerlo&quot; con la batteria): al
+catodo si forma sodio metallico liquido, all&#39;anodo cloro gassoso.</p>
+</div>
+
+<div class="callout attenzione">
+
+<p><strong>In un processo elettrolitico</strong> (a differenza della pila spontanea), è la
+semireazione con potenziale di riduzione <strong>più basso</strong> ad avvenire effettivamente
+come riduzione al catodo — perché il processo non è spontaneo, la batteria impone
+esattamente la reazione che altrimenti <em>non</em> avverrebbe da sola. È l&#39;inverso della
+regola vista per le pile galvaniche in Lezione 42: lì, la semireazione con
+potenziale <strong>più alto</strong> era quella che si riduceva davvero. Confondere le due regole
+è l&#39;errore concettuale più frequente in questo argomento.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Elettrolisi dell&#39;acqua</strong>, con <span class="m">\mathrm{Na_2SO_4}</span> come elettrolita di supporto
+(non partecipa alla redox, serve solo ad aumentare la conducibilità), a pH 7:
+<span class="m d">\mathrm{Anodo\ (ossidazione):}\ \mathrm{2H_2O\to O_2+4H^++4e^-} \qquad E^\circ=-1.23\ \mathrm V</span>
+<span class="m d">\mathrm{Catodo\ (riduzione):}\ \mathrm{4H^++4e^-\to2H_2} \qquad E^\circ=0.00\ \mathrm V</span>
+A pH 7, <span class="m">[\mathrm{H^+}]=10^{-7}\ \mathrm M</span>; applicando Nernst a ciascuna semireazione
+(<span class="m">n=4</span>): <span class="m">E_{ox}=-0.816\ \mathrm V</span>, <span class="m">E_{red}=-0.414\ \mathrm V</span>. Sommando:
+<span class="m d">\Delta E = -0.816+(-0.414) = -1.23\ \mathrm V &lt; 0</span>
+Negativo, come atteso: serve applicare almeno <span class="m">1.23\ \mathrm V</span> perché l&#39;acqua si
+decomponga. Poiché per ogni 2 moli di <span class="m">\mathrm{H_2O}</span> decomposte si producono 2 moli
+di <span class="m">\mathrm{H_2}</span> e 1 di <span class="m">\mathrm{O_2}</span>, il volume di idrogeno raccolto è sempre il
+doppio di quello di ossigeno — la stechiometria della reazione, non la cinetica.</p>
+</div>
+
+<h2 id="lez-43-faraday">Legge di Faraday: quantificare l&#39;elettrolisi</h2>
+<p>La carica elettrica trasportata da <span class="m">n_{e^-}</span> moli di elettroni è <span class="m">Q=n_{e^-}F</span>; se la
+corrente <span class="m">I</span> scorre per un tempo <span class="m">t</span>, <span class="m">Q=I\cdot t</span>. Combinando le due:</p>
+<div class="callout formula">
+
+<p><span class="m d">n_{e^-} = \frac{Q}{F} = \frac{I\cdot t}{F} \qquad\text{(legge di Faraday)}</span></p>
+</div>
+
+<p>«Il numero di moli di prodotto formato da una corrente elettrica è
+stechiometricamente equivalente al numero di moli di elettroni alimentati.» Da
+<span class="m">n_{e^-}</span> si risale alle moli di prodotto tramite i coefficienti della
+semireazione.</p>
+<div class="callout esempio">
+
+<p><strong>Elettrolisi di <span class="m">\mathrm{H_2SO_4}\ 0.5\ \mathrm M</span> per 30 minuti con una batteria
+da 2 V, raccogliendo <span class="m">3.2\ \mathrm L</span> di <span class="m">\mathrm{H_2}</span> a <span class="m">0\,^\circ\mathrm C</span> e 1 atm.</strong></p>
+<p><strong>Passo 1 — moli di <span class="m">\mathrm{H_2}</span></strong> dai gas ideali:
+<span class="m">n_{H_2}=PV/RT=(1\times3.2)/(0.08206\times273)=0.143\ \mathrm{mol}</span>.</p>
+<p><strong>Passo 2 — moli di elettroni.</strong> Dalla semireazione <span class="m">4\mathrm H^++4e^-\to2\mathrm H_2</span>,
+per ogni mole di <span class="m">\mathrm{H_2}</span> servono 2 moli di <span class="m">e^-</span>: <span class="m">n_{e^-}=2\times0.143=0.286\ \mathrm{mol}</span>.</p>
+<p><strong>Passo 3 — carica e corrente.</strong>
+<span class="m">Q=n_{e^-}F=0.286\times96485=27\,595\ \mathrm C</span>;
+<span class="m">I=Q/t=27\,595/(30\times60)=15.33\ \mathrm A</span>.</p>
+<p><strong>Passo 4 — energia elettrica consumata.</strong> <span class="m">\mathrm{Energia}=V\cdot Q=2\times27\,595
+=55\,190\ \mathrm J</span>.</p>
+</div>
+
+<div class="callout attenzione">
+
+<p><strong>Rendimento del processo.</strong> Quando l&#39;esercizio menziona un &quot;rendimento&quot; <span class="m">\eta&lt;100\%</span>,
+distingui: <span class="m">\eta=E_{teorica}/E_{effettiva}</span> (l&#39;energia teorica calcolata da <span class="m">V\cdot Q</span>
+è sempre <strong>inferiore</strong> a quella realmente consumata, perché parte dell&#39;energia si
+disperde). Quindi <span class="m">E_{eff}=E_{teor}/\eta</span> — dividere, non moltiplicare, è l&#39;errore
+di segno più comune in questi esercizi.</p>
+</div>
+
+<div class="callout sintesi">
+
+<ul>
+<li><span class="m">E=E^\circ-\frac{0.0592}{n}\log Q</span> (equazione di Nernst, <span class="m">25\,^\circ</span>C): lega la
+fem alle concentrazioni reali.</li>
+<li>Le fasi solide pure non compaiono in <span class="m">Q</span>.</li>
+<li>Una <strong>pila a concentrazione</strong> genera fem da due semicelle chimicamente identiche
+con concentrazioni diverse — la reazione netta uniforma le concentrazioni.</li>
+<li><strong>Elettrolisi</strong>: processo non spontaneo, richiede energia elettrica esterna. Al
+catodo avviene la riduzione con potenziale <strong>più basso</strong> (regola opposta alla
+pila galvanica).</li>
+<li>Legge di Faraday: <span class="m">n_{e^-}=I\cdot t/F</span>, con <span class="m">F=96485\ \mathrm{C\,mol^{-1}}</span>.</li>
+</ul>
+</div>
+
+<div class="callout esame">
+
+<p><strong>Come cade all&#39;esame.</strong> Aspettati esercizi numerici completi (Nernst + Faraday
+insieme) più che domande puramente qualitative. Sequenza sempre valida: scrivi le
+semireazioni di riduzione → confronta i potenziali (standard o già corretti con
+Nernst) → decidi catodo/anodo <strong>ricordando se è una pila o un&#39;elettrolisi</strong>
+(la regola è opposta nei due casi) → applica Faraday solo se ti chiedono
+quantità/tempo/corrente.</p>
+<p><strong>Allenati qui:</strong> Extra 93 · Extra 94 · domande reali del paniere: Lez.44 q2, Lez.45 q1,2,5,6,7,8,9,11, Lez.48 q3,4,15,16,17,28,29</p>
+</div>

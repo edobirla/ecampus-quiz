@@ -1,0 +1,132 @@
+<h1 id="lez-28">Lezione 28 — Trasformazioni termodinamiche, lavoro di volume e primo principio per i gas ideali</h1>
+<h2 id="lez-28-perche">Perché questa lezione esiste</h2>
+<p>La <a href="#/teoria/chimica/27/lez-27">Lezione 27</a> ha fissato il vocabolario (<span class="m">\Delta U=Q+L</span>, convenzione sui
+segni). Questa lezione applica quel vocabolario ai gas ideali: come si calcola il
+lavoro quando un gas si espande o si comprime, che forma prendono le
+trasformazioni più comuni sul piano <span class="m">(P,V)</span>, e perché l&#39;energia interna di un gas
+ideale dipende solo dalla temperatura — un risultato che semplifica enormemente i
+calcoli successivi.</p>
+<h2 id="lez-28-trasformazioni">Le quattro trasformazioni fondamentali</h2>
+<p>Una trasformazione termodinamica è <strong>isoterma</strong> se avviene a <span class="m">T</span> costante,
+<strong>isobara</strong> se a <span class="m">P</span> costante, <strong>isocora</strong> se a <span class="m">V</span> costante, <strong>adiabatica</strong> se
+senza scambio di calore (<span class="m">Q=0</span>).</p>
+<ul>
+<li><strong>Isoterma</strong> (<span class="m">T_i=T_f</span>): da <span class="m">P_iV_i=nRT_i</span> e <span class="m">P_fV_f=nRT_f</span> segue
+<span class="m">P_iV_i=P_fV_f</span> — la trasformazione percorre un ramo di iperbole sul piano
+<span class="m">(P,V)</span>, esattamente la legge di Boyle (<a href="#/teoria/chimica/25/lez-25-boyle">Lezione 25</a>).</li>
+<li><strong>Isobara</strong> (<span class="m">P_i=P_f</span>): segue <span class="m">T_i/V_i = T_f/V_f</span> — un tratto <strong>orizzontale</strong>
+sul piano <span class="m">(P,V)</span>; riscaldamento se il volume finale è maggiore, raffreddamento
+se minore.</li>
+<li><strong>Isocora</strong> (<span class="m">V_i=V_f</span>): segue <span class="m">T_i/P_i = T_f/P_f</span> — un tratto <strong>verticale</strong> sul
+piano <span class="m">(P,V)</span>; riscaldamento se la pressione finale è maggiore.</li>
+</ul>
+<h2 id="lez-28-lavoro-volume">Lavoro di volume</h2>
+<p>Il lavoro di una forza è <span class="m">L=\vec F\cdot\vec s = Fs\cos\theta</span>. Per un gas che
+spinge un pistone di area <span class="m">S</span> contro una pressione esterna <span class="m">P_{ext}</span>, spostandosi
+di <span class="m">\Delta z</span>:</p>
+<div class="callout formula">
+
+<p><span class="m d">L = \pm P_{ext}\,S\,\Delta z = \pm P_{ext}\,\Delta V</span></p>
+<p>Segno <strong><span class="m">-</span></strong> se il gas si espande (<span class="m">\Delta V&gt;0</span>, il sistema compie lavoro
+sull&#39;ambiente, coerente con la convenzione della <a href="#/teoria/chimica/27/lez-27-segni">Lezione 27</a>),
+segno <strong><span class="m">+</span></strong> se il gas viene compresso (<span class="m">\Delta V&lt;0</span>).</p>
+</div>
+
+<h2 id="lez-28-reversibili">Trasformazioni reversibili e lavoro di un&#39;isoterma</h2>
+<p>Se la pressione esterna viene variata <strong>infinitesimo per infinitesimo</strong>, in modo
+che il sistema attraversi una sequenza continua di stati di equilibrio, la
+trasformazione si dice <strong>reversibile</strong> (o, più precisamente, quasi-statica). Non
+esiste realmente — è infinitamente lenta — ma è un&#39;idealizzazione indispensabile
+perché permette di scrivere il lavoro elementare come <span class="m">\delta L = -P\,dV</span>, con <span class="m">P</span>
+la pressione del <strong>gas stesso</strong> (uguale, punto per punto, a quella esterna).</p>
+<div class="callout formula">
+
+<p>Per una trasformazione isoterma reversibile da <span class="m">V_A</span> a <span class="m">V_B</span>:
+<span class="m d">L = -\int_{V_A}^{V_B} P\,dV = -\int_{V_A}^{V_B}\frac{nRT}{V}\,dV = -nRT\ln\!\left(\frac{V_B}{V_A}\right)</span></p>
+<p>Sul piano <span class="m">(P,V)</span> (&quot;piano del lavoro&quot;), l&#39;area sottesa alla curva fra i due stati
+rappresenta sempre il lavoro scambiato, qualunque sia il tipo di trasformazione
+(isobara, isoterma...), purché reversibile.</p>
+</div>
+
+<p>Per un&#39;isobara reversibile, l&#39;area sottesa è semplicemente un rettangolo:
+<span class="m">L = -P(V_B-V_A)</span>.</p>
+<h2 id="lez-28-capacita-termica">Capacità termica: <span class="m">C_P</span> e <span class="m">C_V</span></h2>
+<p>La <strong>capacità termica</strong> <span class="m">C</span> di una sostanza è la quantità di calore necessaria per
+innalzarne di 1 K la temperatura: <span class="m">Q = mC\Delta T</span> (capacità specifica, per unità
+di massa) o <span class="m">Q=nC\Delta T</span> (capacità molare, per mole). Per l&#39;acqua liquida,
+<span class="m">C_P = 4.184\ \mathrm{J\,g^{-1}K^{-1}}</span> (<span class="m">=1\ \mathrm{cal\,g^{-1}K^{-1}}</span>).</p>
+<div class="callout attenzione">
+
+<p><strong>Per un gas, il calore necessario per un dato <span class="m">\Delta T</span> dipende dal percorso
+seguito</strong>: scaldare a volume costante (isocora) richiede meno calore che scaldare
+a pressione costante (isobara), perché nel secondo caso parte del calore serve
+anche a compiere lavoro di espansione. Per questo si distinguono due capacità
+termiche, <span class="m">C_V</span> (a volume costante) e <span class="m">C_P</span> (a pressione costante), legate da:
+<span class="m d">C_P = C_V + R</span>
+Poiché <span class="m">Q</span> dipende dal percorso, <strong><span class="m">Q</span> non è una funzione di stato</strong> (a differenza
+di <span class="m">U</span>).</p>
+</div>
+
+<p>Per i gas biatomici (come <span class="m">\chem{N_2}</span>, <span class="m">\chem{O_2}</span>), il principio di
+equipartizione dell&#39;energia (non dimostrato in questo corso) dà
+<span class="m">C_V = \tfrac52 R</span>, <span class="m">C_P = \tfrac72 R</span>.</p>
+<h2 id="lez-28-primo-principio-gas">Il primo principio per i gas ideali: <span class="m">U=U(T)</span></h2>
+<p>Nel celebre <strong>esperimento dell&#39;espansione libera</strong> di Joule, un gas racchiuso in
+un&#39;ampolla <span class="m">A</span> (con un&#39;ampolla <span class="m">B</span> in cui è stato fatto il vuoto, tutto isolato
+termicamente) viene lasciato espandere aprendo un rubinetto fra <span class="m">A</span> e <span class="m">B</span>. Si
+osserva che la temperatura non cambia.</p>
+<div class="callout attenzione">
+
+<p><strong>Perché questo esperimento è decisivo.</strong> Essendo il sistema adiabatico, <span class="m">Q=0</span>;
+essendo l&#39;espansione contro il vuoto (<span class="m">P_{ext}=0</span>), anche <span class="m">L=0</span>. Dal primo
+principio, <span class="m">\Delta U=0</span>. Se <span class="m">U</span> dipendesse anche dalla pressione (oltre che dalla
+temperatura), a <span class="m">P</span> diversa dovremmo osservare <span class="m">\Delta U\neq0</span>: non è così. Se ne
+conclude che <strong>per un gas ideale l&#39;energia interna dipende solo dalla
+temperatura</strong>: <span class="m">U=U(T)</span>.</p>
+</div>
+
+<p>Questo risultato, applicato a una trasformazione <strong>isocora</strong> (dove non c&#39;è lavoro
+di volume, quindi <span class="m">\Delta U=Q_{A\to B}=nC_V\Delta T</span>), dà una formula che — essendo
+<span class="m">U</span> funzione di stato — vale per <strong>qualunque</strong> trasformazione di un gas ideale con
+lo stesso <span class="m">\Delta T</span>, non solo per l&#39;isocora:</p>
+<div class="callout formula">
+
+<p><span class="m d">\Delta U = n\,C_V\,\Delta T \qquad \text{(gas ideale, qualunque trasformazione)}</span></p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong><span class="m">\Delta U</span> per un gas biatomico.</strong> Calcola <span class="m">\Delta U</span> di 2 moli di gas ideale
+biatomico (<span class="m">C_V=\tfrac52R</span>) che subisce un aumento di temperatura di <span class="m">45\ \mathrm K</span>.</p>
+<p><span class="m d">\Delta U = nC_V\Delta T = (2\ \mathrm{mol})\times\left(\frac52\times8.31\ \frac{\mathrm J}{\mathrm{mol\cdot K}}\right)\times(45\ \mathrm K) = 1869.75\ \mathrm J</span></p>
+<p>Vale qualunque sia il percorso seguito per ottenere quel <span class="m">\Delta T</span> (isocoro,
+isobaro, o altro): <span class="m">U</span> dipende solo dagli estremi.</p>
+</div>
+
+<div class="callout sintesi">
+
+<ul>
+<li>Isoterma: <span class="m">PV=\text{cost.}</span> (Boyle). Isobara: <span class="m">V/T=\text{cost.}</span>, tratto
+orizzontale. Isocora: <span class="m">P/T=\text{cost.}</span>, tratto verticale.</li>
+<li>Lavoro: <span class="m">L=-P_{ext}\Delta V</span> (in generale); per un&#39;isoterma reversibile,
+<span class="m">L=-nRT\ln(V_B/V_A)</span>. Sul piano <span class="m">(P,V)</span>, il lavoro è l&#39;area sottesa alla curva.</li>
+<li><span class="m">C_P = C_V + R</span>; per un gas biatomico <span class="m">C_V=\tfrac52R</span>, <span class="m">C_P=\tfrac72R</span>. <span class="m">Q</span> non è
+funzione di stato.</li>
+<li>Per un gas ideale, <span class="m">U=U(T)</span> (esperimento di Joule): <span class="m">\Delta U=nC_V\Delta T</span> vale
+per qualunque trasformazione, non solo l&#39;isocora.</li>
+</ul>
+</div>
+
+<div class="callout esame">
+
+<p><strong>Come cade all&#39;esame.</strong> La voce &quot;028–030&quot; copre tutta la termodinamica dei gas.
+L&#39;errore più frequente è dimenticare la conversione delle unità nel calcolo del
+lavoro: la pressione va in <span class="m">\mathrm{N/m^2}</span> (<span class="m">1\ \mathrm{atm}=101325\ \mathrm{Pa}</span>)
+e il volume in <span class="m">\mathrm{m^3}</span> per ottenere un lavoro in joule — mai lasciare il
+lavoro in <span class="m">\mathrm{atm\cdot L}</span>.</p>
+<p>Sequenza da seguire per un ciclo termodinamico: identifica il tipo di ogni tratto
+(isoterma/isobara/isocora) → calcola il lavoro di ciascun tratto con la formula
+giusta → somma per il lavoro totale del ciclo → ricorda che in un ciclo completo
+<span class="m">\Delta U_{TOT}=0</span> (si torna al punto di partenza).</p>
+<p><strong>Allenati qui:</strong> Paniere Lez. 28 domande 1–6 · Extra 59 · Extra 60</p>
+</div>

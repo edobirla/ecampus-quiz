@@ -1,0 +1,107 @@
+<h1 id="lez-69">Lezione 69 — Temperatura teorica di combustione (adiabatica di fiamma)</h1>
+<h2 id="lez-69-perche">Perché questa lezione esiste</h2>
+<p>Aver calcolato aria teorica e composizione dei fumi (<a href="#/teoria/chimica/68/lez-68">Lezione 68</a>) non dice ancora quanto
+<strong>calda</strong> diventa la fiamma. La temperatura di combustione è decisiva per giudicare se un combustibile è
+adatto a un&#39;applicazione (un forno ceramico e un motore a scoppio hanno esigenze termiche molto diverse):
+è l&#39;oggetto di questa lezione.</p>
+<h2 id="lez-69-definizione">Definizione</h2>
+<div class="callout formula">
+
+<p>La <strong>temperatura teorica di combustione</strong> (o <strong>temperatura adiabatica di fiamma</strong>) è la massima
+temperatura raggiungibile durante la combustione, nell&#39;ipotesi che <strong>tutto</strong> il calore sviluppato serva
+esclusivamente a riscaldare i prodotti della combustione (nessuna perdita verso l&#39;ambiente).</p>
+</div>
+
+<p>Nella pratica questa temperatura si avvicina solo nelle zone più interne della fiamma (a causa delle
+inevitabili perdite di calore); il rapporto tra temperatura effettiva e temperatura adiabatica dà il
+<strong>rendimento termico della combustione</strong>. Va sempre specificato con quale quantità d&#39;aria (teorica, in
+eccesso, o ossigeno puro) si ottiene un dato valore di temperatura teorica, perché il valore cambia
+molto a seconda di quanto azoto &quot;inerte&quot; va riscaldato insieme ai prodotti.</p>
+<h2 id="lez-69-derivazione">Derivazione: perché si può calcolare a partire da dati a 25 °C</h2>
+<p>Il problema è: la reazione non avviene realmente a 25 °C, ma i dati termodinamici (<span class="m">\Delta H^\circ_f</span>)
+sono tabulati a 25 °C. Si sfrutta il fatto che <span class="m">\Delta H</span> è una <strong>funzione di stato</strong> (dipende solo da
+stato iniziale e finale, non dal percorso — lo stesso principio della legge di Hess,
+<a href="#/teoria/chimica/30/lez-30-hess">Lezione 30</a>) per costruire un percorso comodo anche se non realistico:</p>
+<ul>
+<li><strong>Stato 1 → Stato 2</strong> (a 25 °C, ipotetico): far avvenire la reazione a 25 °C, usando i
+<span class="m">\Delta H^\circ_f</span> tabulati.</li>
+<li><strong>Stato 2 → Stato 3</strong>: riscaldare i <strong>prodotti</strong> da 25 °C alla temperatura incognita <span class="m">T</span>.</li>
+</ul>
+<p>Poiché <span class="m">\Delta H=H_3-H_1=(H_3-H_2)+(H_2-H_1)</span> non dipende dal percorso scelto, il risultato è corretto
+anche se il percorso reale è diverso.</p>
+<div class="callout formula">
+
+<p>Per il metano con aria teorica, <span class="m">\mathrm{CH_4}+2\,\mathrm{O_2}+7.6\,\mathrm{N_2}\rightarrow
+\mathrm{CO_2}+2\,\mathrm{H_2O}+7.6\,\mathrm{N_2}</span>:
+<span class="m d">\Delta H = \Delta H^\circ_{reaz} + \left(C_{P,CO_2}+2\,C_{P,H_2O}+\tfrac{79}{21}\cdot2\cdot
+C_{P,N_2}\right)(T_3-T_2)</span>
+Essendo il sistema <strong>adiabatico</strong>, <span class="m">\Delta H=0</span> (nessun calore scambiato con l&#39;esterno):
+<span class="m d">\Delta T = T-25\,^\circ\mathrm C = \dfrac{-\Delta H^\circ_{reaz}}
+{C_{P,CO_2}+2\,C_{P,H_2O}+\dfrac{79}{21}\cdot2\cdot C_{P,N_2}}</span></p>
+</div>
+
+<p><span class="m">\Delta T&gt;0</span> sempre, perché <span class="m">\Delta H^\circ_{reaz}&lt;0</span> (la combustione è esotermica) — il segno meno
+davanti a <span class="m">\Delta H^\circ_{reaz}</span> lo rende positivo. Da notare che <span class="m">\Delta T</span> <strong>non dipende dalla portata
+di combustibile</strong>: è una proprietà intensiva del sistema.</p>
+<div class="callout esempio">
+
+<p><strong>Temperatura adiabatica di fiamma del metano in aria teorica</strong> (acqua gassosa,
+<span class="m">\Delta H^\circ_{reaz}=-802.34\ \mathrm{kJ/mol\ CH_4}</span>, calori specifici molari costanti:
+<span class="m">C_{P,CO_2}=37.11</span>, <span class="m">C_{P,H_2O(g)}=33.58</span>, <span class="m">C_{P,N_2}=29.12\ \mathrm{J\,mol^{-1}K^{-1}}</span>):</p>
+<p><span class="m d">T = 25\,^\circ\mathrm C + \dfrac{802.34\times10^3\ \mathrm{J/mol}}
+{37.11 + 2(33.58) + \dfrac{79}{21}\times2\times29.12\ \mathrm{J\,mol^{-1}K^{-1}}}</span></p>
+<p><span class="m d">T = 298\ \mathrm K + 2481\ \mathrm K = 2779\ \mathrm K = 2506\,^\circ\mathrm C</span></p>
+</div>
+
+<div class="callout attenzione">
+
+<p><strong>Errata sul materiale del corso.</strong> Le tabelle termodinamiche fornite durante il corso riportano
+<span class="m">C_{P,N_2}=19.12\ \mathrm{J\,mol^{-1}K^{-1}}</span>: è <strong>sbagliato</strong>, il valore corretto (usato anche nel
+calcolo sopra, coerente con il risultato finale) è <span class="m">C_{P,N_2}=29.12\ \mathrm{J\,mol^{-1}K^{-1}}</span>. Nelle
+slide successive (esercizi non svolti) il docente stesso segnala esplicitamente l&#39;errore e chiede di
+usare 29.12. <strong>Usa sempre 29.12 per l&#39;azoto in questo tipo di calcolo</strong>, qualunque valore compaia nella
+tabella di riferimento.</p>
+</div>
+
+<h2 id="lez-69-tabella">Ordini di grandezza di riferimento</h2>
+<p>Alcune temperature adiabatiche di fiamma in aria (a titolo di confronto, da fonti esterne al corso):
+metano ≈1950 °C, idrogeno ≈2210 °C, propano ≈2392 °C, acetilene ≈2500 °C, antracite ≈2180 °C. In
+ossigeno puro (anziché aria) i valori salgono molto: acetilene in <span class="m">\mathrm{O_2}</span> arriva a ≈3480 °C,
+perché non c&#39;è più il grande &quot;serbatoio termico&quot; dell&#39;azoto inerte da riscaldare.</p>
+<div class="callout attenzione">
+
+<p><strong>Perché la temperatura sale così tanto bruciando in ossigeno puro invece che in aria.</strong> Nel
+denominatore della formula di <span class="m">\Delta T</span>, il termine dell&#39;azoto (<span class="m">\tfrac{79}{21}\times2\times C_{P,N_2}</span>
+per il metano) è spesso il contributo <strong>più grande</strong>: eliminarlo (bruciando in <span class="m">\mathrm{O_2}</span> puro anziché
+in aria) riduce drasticamente il denominatore, e quindi fa salire <span class="m">\Delta T</span>. Collegare sempre &quot;meno
+azoto da scaldare&quot; a &quot;temperatura di fiamma più alta&quot; è un buon controllo di plausibilità dei risultati.</p>
+</div>
+
+<div class="callout sintesi">
+
+<ul>
+<li>Temperatura adiabatica di fiamma = temperatura massima raggiungibile se tutto il calore di reazione
+scalda solo i prodotti (nessuna perdita); va sempre specificata rispetto a un dato eccesso d&#39;aria.</li>
+<li>Si calcola con un percorso a due tappe (reazione a 25 °C con i <span class="m">\Delta H^\circ_f</span> tabulati, poi
+riscaldamento dei prodotti da 25 °C a <span class="m">T</span>), sfruttando che <span class="m">\Delta H</span> è funzione di stato.</li>
+<li><span class="m">\Delta H=0</span> (adiabatico) ⇒ <span class="m">\Delta T=-\Delta H^\circ_{reaz}/\sum n_i C_{P,i}</span>, indipendente dalla
+portata di combustibile.</li>
+<li>L&#39;azoto dell&#39;aria pesa molto nel denominatore: più azoto da scaldare, temperatura di fiamma più
+bassa (e viceversa, bruciare in ossigeno puro alza molto la temperatura).</li>
+<li><strong>Errata</strong>: <span class="m">C_{P,N_2}</span> sulle tabelle del corso è scritto 19.12 J/(mol·K), il valore corretto è
+29.12 J/(mol·K).</li>
+</ul>
+</div>
+
+<div class="callout esame">
+
+<p><strong>Come cade all&#39;esame.</strong> Lo schema è fisso: scrivere la reazione bilanciata con l&#39;azoto incluso →
+recuperare <span class="m">\Delta H^\circ_{reaz}</span> dai <span class="m">\Delta H^\circ_f</span> tabulati (attenzione a scegliere acqua liquida
+o gassosa, coerente con l&#39;ipotesi del testo) → sommare i <span class="m">C_P</span> di tutti i prodotti pesati per i
+coefficienti stechiometrici → applicare la formula di <span class="m">\Delta T</span>. Se il testo specifica un eccesso
+d&#39;aria, il termine dell&#39;azoto (e dell&#39;ossigeno in eccesso, se presente) nel denominatore va aumentato di
+conseguenza — più massa da scaldare, temperatura finale più bassa a parità di combustibile.</p>
+<p><strong>Allenati qui:</strong> Extra 146 · Extra 147 ·
+Extra 242 · Extra 243 · Extra 244 ·
+Extra 245</p>
+</div>

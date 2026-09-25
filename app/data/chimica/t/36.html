@@ -1,0 +1,210 @@
+<h1 id="lez-36">Lezione 36 — Diagrammi di stato, regola delle fasi e proprietà dei liquidi</h1>
+<h2 id="lez-36-perche">Perché questa lezione esiste</h2>
+<p>La lezione precedente ha trattato un solo equilibrio fisico (liquido-vapore).
+Esistono altri due equilibri tra fasi (solido-gas, solido-liquido) e, soprattutto,
+tutti e tre possono essere rappresentati <strong>insieme</strong> su un unico grafico <span class="m">(P,T)</span>: il
+diagramma di stato. È lo strumento che userai per rispondere a domande come &quot;a quale
+pressione fonde questa sostanza a questa temperatura?&quot; — frequenti nel paniere &quot;036&quot;.</p>
+<h2 id="lez-36-tre-equilibri">I tre equilibri fisici e il diagramma di stato</h2>
+<ul>
+<li><strong>Liquido-Gas</strong>: <span class="m">\mathrm{H_2O(l)} \rightleftharpoons \mathrm{H_2O(g)}</span>
+(evaporazione/condensazione).</li>
+<li><strong>Solido-Gas</strong>: <span class="m">\mathrm{H_2O(s)} \rightleftharpoons \mathrm{H_2O(g)}</span>
+(sublimazione/brinamento).</li>
+<li><strong>Solido-Liquido</strong>: <span class="m">\mathrm{H_2O(s)} \rightleftharpoons \mathrm{H_2O(l)}</span>
+(fusione/solidificazione).</li>
+</ul>
+<p>Le curve L-G e S-G seguono entrambe l&#39;andamento esponenziale di Clausius-Clapeyron
+visto nella lezione precedente. La curva S-L, invece, ha un andamento <strong>lineare</strong>, e
+lo dimostrerai tra poco.</p>
+<p>Riportando le tre curve sullo stesso piano <span class="m">(P,T)</span> si ottiene il <strong>diagramma di
+stato</strong>: le tre curve dividono il piano in tre regioni (solido, liquido, gas). Per
+leggerlo: fissa una temperatura (es. 100 °C per l&#39;acqua) e muoviti verticalmente. Se
+<span class="m">P&lt;1\ \mathrm{atm}</span> sei in fase gas; a <span class="m">P=1\ \mathrm{atm}</span> intersechi la curva L-G
+(qui coesistono le due fasi); aumentando ulteriormente <span class="m">P</span> resti a <span class="m">P=1\ \mathrm{atm}</span>
+fino a quando <strong>tutto</strong> il gas non è condensato (il sistema &quot;si oppone&quot; all&#39;aumento
+di pressione condensando altro gas), solo dopo la pressione può salire ancora,
+comprimendo il liquido.</p>
+<h2 id="lez-36-slgas">Perché la curva S-L ha pendenza negativa (per l&#39;acqua)</h2>
+<p>In ogni punto della curva di equilibrio, l&#39;energia libera di Gibbs molare delle due
+fasi coincide (altrimenti una fase sarebbe più favorita e il sistema evolverebbe
+verso di essa):</p>
+<p><span class="m d">G_f(\mathrm{H_2O(l)},T,P) = G_f(\mathrm{H_2O(s)},T,P)</span></p>
+<p>Poiché <span class="m">G</span> di un solido o liquido dipende poco e in modo lineare dalla pressione
+(<span class="m">V</span> molare quasi costante):</p>
+<p><span class="m d">G_f(T,P) = G^\circ_f(T) + V_m\,(P-P^*)</span></p>
+<p>Sostituendo nella condizione di equilibrio e raccogliendo:</p>
+<p><span class="m d">\Delta G^\circ_{S\to L}(T) + \Delta V_{S\to L}\,(P-P^*) = 0</span></p>
+<p>Ed esprimendo <span class="m">\Delta G^\circ_{S\to L}(T)</span> come funzione lineare della temperatura
+(stessa forma vista nella <a href="#/teoria/chimica/33/lez-33-dipendenza-T">Lezione 33</a>, ma valutata a
+<span class="m">T_{fus}</span> invece che a 25 °C):</p>
+<p><span class="m d">\Delta H^\circ_{S\to L} - T\,\Delta S^\circ_{S\to L} + \Delta V_{S\to L}\,(P-P^*) = 0</span></p>
+<p>Risolvendo per <span class="m">P</span>:</p>
+<div class="callout formula">
+
+<p><span class="m d">P - P^* = -\frac{\Delta S^\circ_{S\to L}}{\Delta V_{S\to L}}\,T +
+\frac{\Delta H^\circ_{S\to L}}{\Delta V_{S\to L}} \qquad
+\left(\text{equazione di Clapeyron, forma linearizzata}\right)</span></p>
+</div>
+
+<p>Questa <strong>è</strong> una retta in <span class="m">T</span>: la curva S-L è lineare. La sua pendenza è
+<span class="m">dP/dT = \Delta S^\circ_{S\to L}/\Delta V_{S\to L}</span>.</p>
+<ul>
+<li><span class="m">\Delta S^\circ_{S\to L} &gt; 0</span> <strong>sempre</strong> (il liquido è sempre più disordinato del
+solido).</li>
+<li>Quindi il segno della pendenza dipende <strong>solo</strong> dal segno di <span class="m">\Delta V_{S\to L}</span>:
+positivo se il liquido occupa più volume del solido (caso normale), negativo se
+occupa <strong>meno</strong> volume.</li>
+</ul>
+<div class="callout attenzione">
+
+<p>L&#39;acqua è un&#39;eccezione famosa: il ghiaccio è <strong>meno denso</strong> dell&#39;acqua liquida
+(917 kg/m³ contro 1000 kg/m³), quindi <span class="m">\Delta V_{S\to L}&lt;0</span> e la curva S-L ha
+pendenza <strong>negativa</strong> — la temperatura di fusione del ghiaccio <strong>diminuisce</strong>
+all&#39;aumentare della pressione. È il motivo per cui i pattini scivolano (la pressione
+concentrata delle lame fonde localmente il ghiaccio) e per cui una bottiglia di
+vetro piena d&#39;acqua si rompe in freezer. Per la maggior parte delle altre sostanze
+(la CO₂ è un esempio citato nella lezione) la pendenza è invece <strong>positiva</strong>.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Pendenza della curva S-L dell&#39;acqua, da dati di densità.</strong></p>
+<p>Dati: <span class="m">\lambda_{fus}(0°C)=6.01\ \mathrm{kJ/mol}</span>, <span class="m">\Delta S^\circ_{S\to L}(0°C)=
+22.00\ \mathrm{J\,mol^{-1}K^{-1}}</span>; volumi molari a 0 °C:
+<span class="m">V_{H_2O(s)}=1.964\times10^{-5}\ \mathrm{m^3/mol}</span>,
+<span class="m">V_{H_2O(l)}=1.800\times10^{-5}\ \mathrm{m^3/mol}</span>.</p>
+<p><strong>Passo 1 — variazione di volume molare.</strong>
+<span class="m d">\Delta V_{S\to L} = 1.800\times10^{-5} - 1.964\times10^{-5} =
+-1.64\times10^{-6}\ \mathrm{m^3/mol}</span>
+Negativo, come atteso (il ghiaccio ha volume molare maggiore).</p>
+<p><strong>Passo 2 — pendenza.</strong>
+<span class="m d">\frac{dP}{dT} = \frac{\Delta S^\circ_{S\to L}}{\Delta V_{S\to L}} =
+\frac{22.00\ \mathrm{J\,mol^{-1}K^{-1}}}{-1.64\times10^{-6}\ \mathrm{m^3/mol}}
+\approx -1.34\times10^7\ \mathrm{J\,K^{-1}m^{-3}} \approx -132\ \mathrm{atm/°C}</span></p>
+<p><strong>Passo 3 — temperatura di fusione a una pressione data.</strong> Poiché a <span class="m">P=P^*=1\
+\mathrm{atm}</span> vale <span class="m">T=273.15\ \mathrm K</span> esattamente (equilibrio con <span class="m">\Delta G=0</span>),
+la retta si scrive <span class="m">T \approx 273.15\,\mathrm K + \frac{P-P^*}{dP/dT}</span>. A
+<span class="m">P=218\ \mathrm{atm}</span>: <span class="m">T\approx 273.15 - \frac{217}{132} \approx 271.5\ \mathrm K</span>
+(<span class="m">-1.65\ °\mathrm C</span>), in ottimo accordo con il valore sperimentale
+(<span class="m">271.30\ \mathrm K</span>).</p>
+<p>La pendenza fortissima (<span class="m">-132\ \mathrm{atm/°C}</span>) spiega perché servono centinaia di
+atmosfere per abbassare la temperatura di fusione del ghiaccio di pochi gradi: non è
+un effetto che si osserva a pressioni ordinarie, tranne che su superfici di contatto
+molto piccole (lame di pattini).</p>
+</div>
+
+<h2 id="lez-36-triplo-critico">Il punto triplo e il punto critico</h2>
+<p>Le tre curve si incontrano in un unico punto, il <strong>punto triplo</strong>, in cui coesistono
+tutte e tre le fasi contemporaneamente (per l&#39;acqua: <span class="m">T=0.0098\ °\mathrm C</span>,
+<span class="m">P=6.0\times10^{-3}\ \mathrm{atm}</span>).</p>
+<p>La curva L-G non si estende all&#39;infinito: termina in un punto detto <strong>critico</strong>
+(<span class="m">T_C</span>, <span class="m">P_C</span>; per la CO₂: <span class="m">T_C=31.1\ °\mathrm C</span>, <span class="m">P_C=73.0\ \mathrm{atm}</span>). Oltre
+questo punto (<span class="m">T&gt;T_C</span> e <span class="m">P&gt;P_C</span>) liquido e gas non sono più distinguibili: scompare
+il menisco visibile e si forma un <strong>fluido supercritico</strong>, con proprietà intermedie
+tra gas e liquido (densità simile a un liquido, viscosità e diffusività simili a un
+gas). La CO₂ supercritica è usata industrialmente, ad esempio per estrarre la
+caffeina dal caffè.</p>
+<div class="callout attenzione">
+
+<p>Se <span class="m">T&gt;T_C</span>, un gas <strong>non può essere liquefatto per compressione</strong>, qualunque
+pressione tu applichi: l&#39;isoterma corrispondente non interseca più la curva L-G.
+Allo stesso modo, se <span class="m">P&gt;P_C</span> un gas non può essere liquefatto per raffreddamento.
+Serve riportare <strong>entrambe</strong> le variabili sotto i valori critici.</p>
+</div>
+
+<h2 id="lez-36-sublimazione">Sublimazione: due esempi comuni</h2>
+<ul>
+<li><strong>Iodio</strong>: solido molecolare cristallino (<span class="m">\mathrm{I_2(s)}</span>) che sublima con
+calore modesto (basta il calore di una mano), producendo vapori violacei che
+ricondensano su superfici fredde: <span class="m">\mathrm{I_2(s)} \rightleftharpoons
+  \mathrm{I_2(g)}</span>.</li>
+<li><strong>Ghiaccio secco</strong> (<span class="m">\mathrm{CO_2(s)}</span>, <span class="m">-78.5\ °\mathrm C</span>): sublima a
+temperatura ambiente. I &quot;fumi bianchi&quot; visibili non sono CO₂ (incolore) ma piccole
+gocce d&#39;acqua condensate dall&#39;umidità dell&#39;aria a contatto con il gas freddo.</li>
+</ul>
+<h2 id="lez-36-regola-fasi">La regola delle fasi di Gibbs</h2>
+<p>Quante variabili intensive (<span class="m">P</span>, <span class="m">T</span>, composizione...) si possono fissare
+liberamente, restando all&#39;interno di uno stato definito del sistema? La risposta è
+la regola delle fasi:</p>
+<div class="callout formula">
+
+<p><span class="m d">V = C - F + 2</span></p>
+</div>
+
+<p>dove <span class="m">V</span> è la <strong>varianza</strong> (gradi di libertà), <span class="m">C</span> il numero di specie chimiche
+presenti, <span class="m">F</span> il numero di fasi presenti contemporaneamente. Un sistema con <span class="m">V=2</span> si
+dice bivariante, <span class="m">V=1</span> monovariante, <span class="m">V=0</span> zerovariante.</p>
+<div class="callout esempio">
+
+<p><strong>Diagramma di stato della CO₂</strong> (<span class="m">C=1</span>, una sola specie):</p>
+<ul>
+<li><strong>All&#39;interno di una regione</strong> (solo una fase, <span class="m">F=1</span>): <span class="m">V=1-1+2=2</span>. Puoi fissare
+liberamente sia <span class="m">P</span> che <span class="m">T</span> senza uscire dalla fase — è per questo che dentro una
+regione il sistema è descritto da due variabili indipendenti.</li>
+<li><strong>Su una curva di equilibrio</strong> (due fasi coesistono, <span class="m">F=2</span>): <span class="m">V=1-2+2=1</span>. Puoi
+fissare <strong>solo una</strong> delle due variabili: l&#39;altra è automaticamente determinata
+dalla curva stessa. Se assegni <span class="m">T</span>, <span class="m">P</span> è fissata da <span class="m">P^\circ(T)</span> — non puoi
+scegliere una pressione diversa restando sulla curva.</li>
+<li><strong>Al punto triplo</strong> (tre fasi coesistono, <span class="m">F=3</span>): <span class="m">V=1-3+2=0</span>. Zero gradi di
+libertà: il punto triplo è un <strong>punto</strong>, non una linea né una regione — <span class="m">P</span> e <span class="m">T</span>
+sono entrambe fissate univocamente dalla natura della sostanza.</li>
+</ul>
+</div>
+
+<div class="callout attenzione">
+
+<p>Non confondere &quot;varianza&quot; con &quot;numero di fasi&quot;. Più fasi coesistono, <strong>meno</strong> gradi
+di libertà restano — è l&#39;opposto dell&#39;intuizione ingenua &quot;più fasi, più libertà&quot;.</p>
+</div>
+
+<h2 id="lez-36-proprieta-liquidi">Proprietà dei liquidi: tensione superficiale e viscosità</h2>
+<p>Due proprietà dei liquidi utili per l&#39;ingegneria, introdotte qui qualitativamente:</p>
+<ul>
+<li><p><strong>Tensione superficiale.</strong> Le molecole nel bulk di un liquido sono attratte
+ugualmente in ogni direzione dalle molecole vicine (risultante nulla). Le
+molecole sull&#39;interfaccia liquido-gas (menisco), invece, sono attratte solo dal
+lato del liquido: la risultante non nulla rende la superficie simile a una
+membrana tesa. È la ragione per cui le gocce sono sferiche e un insetto può
+&quot;camminare&quot; sull&#39;acqua. Si misura in N/m (equivalente a J/m²).</p>
+</li>
+<li><p><strong>Viscosità.</strong> Quantifica la resistenza di un fluido allo scorrimento. Per un
+fluido tra due lastre, una fissa e una in moto a velocità <span class="m">U</span>, si osserva un
+profilo di velocità che varia con l&#39;altezza <span class="m">y</span>. La legge di Newton della
+viscosità lega la tensione tangenziale <span class="m">\tau</span> al gradiente di velocità:
+::: formula
+<span class="m d">\tau = \eta\,\frac{\partial u}{\partial y}</span>
+:::
+dove <span class="m">\eta</span> è la viscosità (unità: pascal-secondo, Pa·s). Acqua e aria sono
+<strong>fluidi newtoniani</strong> (proporzionalità diretta); miele e sangue no (comportamento
+reologico più complesso, oggetto dei corsi di meccanica dei fluidi).</p>
+</li>
+</ul>
+<div class="callout sintesi">
+
+<ul>
+<li>Le tre curve di equilibrio (L-G, S-G, S-L) formano il diagramma di stato; L-G e
+S-G sono esponenziali (Clausius-Clapeyron), S-L è lineare.</li>
+<li>La pendenza di S-L è <span class="m">\Delta S^\circ_{S\to L}/\Delta V_{S\to L}</span>: negativa solo se
+il solido è meno denso del liquido (eccezione: l&#39;acqua).</li>
+<li>Punto triplo: coesistono tre fasi, zero gradi di libertà. Punto critico: oltre
+<span class="m">T_C,P_C</span> liquido e gas si fondono in un fluido supercritico.</li>
+<li>Regola delle fasi <span class="m">V=C-F+2</span>: più fasi coesistono, meno variabili sono
+indipendenti.</li>
+<li>Tensione superficiale e viscosità sono proprietà dei liquidi legate rispettivamente
+alle forze coesive di superficie e alla resistenza allo scorrimento interno.</li>
+</ul>
+</div>
+
+<div class="callout esame">
+
+<p><strong>Come cade all&#39;esame.</strong> Il paniere &quot;036&quot; testa soprattutto la <strong>lettura</strong> di un
+diagramma di stato dato (leggi pressioni/temperature di transizione, riconosci quale
+fase è stabile in un punto) e la regola delle fasi applicata a un caso specifico. La
+domanda tipica &quot;i diamanti sono stabili in condizioni ordinarie?&quot; ha una risposta a
+due parti: no, termodinamicamente dovrebbero convertirsi in grafite
+(<span class="m">\Delta G&lt;0</span> per la conversione a <span class="m">T,P</span> ambiente); ma la conversione non si osserva
+per motivi <strong>cinetici</strong> (stessa distinzione spontaneità/velocità vista nella
+<a href="#/teoria/chimica/33/lez-33-esempio-ammoniaca">Lezione 33</a>).</p>
+<p><strong>Allenati qui:</strong> Extra 76 · Extra 77 · domande reali del paniere: Lez.36 q2 · q3 · q5</p>
+</div>

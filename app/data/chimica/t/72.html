@@ -1,0 +1,123 @@
+<h1 id="lez-72">Lezione 72 — Esercizi di riepilogo: potenziale termico e prova di trazione</h1>
+<h2 id="lez-72-perche">Perché questa lezione esiste</h2>
+<p>Come la Lezione 71, questa è una raccolta di esercizi svolti dal docente, qui su due temi: il
+<strong>potenziale termico</strong> dei combustibili (una grandezza non ancora incontrata esplicitamente nel corso) e
+la <strong>prova di trazione</strong> degli acciai, a chiusura del blocco sulle proprietà meccaniche dei metalli.</p>
+<h2 id="lez-72-potenziale-termico">Potenziale termico</h2>
+<div class="callout formula">
+
+<p>Il <strong>potenziale termico</strong> (<span class="m">PT</span>) è il calore sviluppato dalla combustione, <strong>con formazione di vapore
+d&#39;acqua</strong>, di <span class="m">1\ \mathrm{Nm^3}</span> di combustibile con aria in condizioni <strong>stechiometriche</strong>, riferito
+però al volume complessivo di combustibile <strong>più</strong> aria (non al solo combustibile):
+<span class="m d">PT = \dfrac{Q_i\,(+\,Q_{evap})}{V_{comb}+V_{aria}}</span>
+Il termine <span class="m">Q_{evap}</span> (calore per vaporizzare il combustibile, riferito a 1 kg) compare solo se il
+combustibile è liquido; per i gas non serve, essendo già gassosi.</p>
+</div>
+
+<div class="callout attenzione">
+
+<p>Il potenziale termico è concettualmente diverso dal potere calorifico: il potere calorifico è calore
+per unità di combustibile, il potenziale termico è calore per unità di <strong>volume totale dei reagenti</strong>
+(combustibile + aria). È la grandezza rilevante per dimensionare una camera di combustione, dove conta
+il volume complessivo da riscaldare, non solo la massa di combustibile bruciato.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Potenziale termico del metano</strong>, noto <span class="m">Q_i=8530\ \mathrm{kcal/Nm^3}</span>. Per il metano
+<span class="m">V_{comb}=1\ \mathrm{Nm^3}</span> e, dalla reazione
+<span class="m">\chem{CH_4}+2\,\chem{O_2}+7.6\,\chem{N_2}\rightarrow\chem{CO_2}+\chem{H_2O}+7.6\,\chem{N_2}</span>
+(<a href="#/teoria/chimica/68/lez-68-aria-teorica-gas">Lezione 68</a>), <span class="m">V_{aria}=9.6\ \mathrm{Nm^3}</span>:
+<span class="m d">PT = \dfrac{8530\ \mathrm{kcal/Nm^3}}{1+9.6\ \mathrm{Nm^3/Nm^3}} = 805\ \mathrm{kcal/Nm^3}</span></p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Potenziale termico dell&#39;ottano</strong> (<span class="m">\chem{C_8H_{18}}</span>, liquido), noto <span class="m">Q_s=11\,600\ \mathrm{kcal/kg}</span>,
+calore latente di evaporazione dell&#39;ottano <span class="m">=100\ \mathrm{kcal/kg}</span>.</p>
+<p><strong>Passo 1 — <span class="m">Q_i</span>.</strong> Serve la massa di acqua prodotta da 1 kg di ottano; dalla reazione
+<span class="m">\chem{C_8H_{18}}+\tfrac{25}{2}\chem{O_2}\rightarrow8\,\chem{CO_2}+9\,\chem{H_2O}</span> si trova
+<span class="m">m_{H_2O}=1.42\ \mathrm{kg}</span> per kg di ottano (calcolo stechiometrico standard, come nella
+<a href="#/teoria/chimica/67/lez-67-qs-qi">Lezione 67</a>):
+<span class="m d">Q_i = Q_s - m\lambda_{vap} = 11\,600 - (1.42)(584) = 10\,771\ \mathrm{kcal/kg}</span></p>
+<p><strong>Passo 2 — volumi.</strong> Massa molare ottano <span class="m">=114\ \mathrm{g/mol}</span>: 1 kg = 8.77 mol, quindi
+<span class="m">V_{comb}=8.77\times22.4=196\ \mathrm L=0.196\ \mathrm{Nm^3}</span> (volume dell&#39;ottano <strong>vaporizzato</strong>).
+Dalla stechiometria, <span class="m">V_{aria}=12.5\times(1+3.76)\times0.196=11.6\ \mathrm{Nm^3}</span>.</p>
+<p><strong>Passo 3.</strong>
+<span class="m d">PT = \dfrac{10\,771 + 100\ \mathrm{kcal/kg}}{0.196+11.6\ \mathrm{Nm^3/kg}} = 921.6\ \mathrm{kcal/Nm^3}</span></p>
+</div>
+
+<h2 id="lez-72-trazione">Prova di trazione: applicazioni numeriche</h2>
+<p>Richiama le grandezze di <a href="#/teoria/chimica/60/lez-60-diagramma-sd">Lezione 60</a>: <span class="m">\sigma=F/A_0</span>, <span class="m">\varepsilon=\Delta l/l_0</span>,
+<span class="m">\sigma=E\varepsilon</span> in campo elastico, e il confronto tra carico applicato, carico di snervamento
+<span class="m">\sigma_S</span> e carico di rottura <span class="m">\sigma_R</span>.</p>
+<div class="callout esempio">
+
+<p><strong>Barra AISI 304, diametro 10 mm, sotto carichi crescenti</strong> (<span class="m">\sigma_S=300\ \mathrm{MPa}</span>,
+<span class="m">\sigma_R=660\ \mathrm{MPa}</span>). <span class="m">A_0=\pi(10\ \mathrm{mm})^2/4=78.5\ \mathrm{mm^2}</span>.</p>
+<ul>
+<li>Massa 2 t: <span class="m">F=2000\times9.81=19\,620\ \mathrm N</span>, <span class="m">\sigma=19\,620/78.5=250\ \mathrm{MPa}</span>. Essendo
+<span class="m">\sigma&lt;\sigma_S</span>, la barra è in <strong>campo elastico</strong>: la deformazione è reversibile.</li>
+<li>Massa 3 t: <span class="m">\sigma=375\ \mathrm{MPa}</span>. Essendo <span class="m">\sigma_S&lt;\sigma&lt;\sigma_R</span>, la barra è in <strong>campo
+plastico</strong>: parte della deformazione resta permanente anche rimuovendo il carico.</li>
+<li>Massa 6 t: <span class="m">\sigma=750\ \mathrm{MPa}&gt;\sigma_R</span>: la barra si rompe.</li>
+</ul>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Carico per una data variazione di diametro (barra di ottone).</strong> Diametro 10 mm, variazione di
+diametro <span class="m">\Delta d=2.5\times10^{-3}\ \mathrm{mm}</span>, <span class="m">E=97\ \mathrm{GPa}</span>, <span class="m">\nu=0.34</span> (modulo di Poisson,
+<a href="#/teoria/chimica/60/lez-60-poisson">Lezione 60</a>).</p>
+<p><strong>Deformazione radiale:</strong> <span class="m">\varepsilon_r=\Delta d/d_0=-2.5\times10^{-4}</span> (negativa: il diametro
+diminuisce sotto trazione).</p>
+<p><strong>Deformazione assiale</strong>, dalla relazione di Poisson <span class="m">\nu=-\varepsilon_r/\varepsilon_z</span>:
+<span class="m d">\varepsilon_z = -\varepsilon_r/\nu = 7.35\times10^{-4}</span></p>
+<p><strong>Sforzo</strong> (legge di Hooke, campo elastico): <span class="m">\sigma_z=E\varepsilon_z=71.3\ \mathrm{MPa}</span>.</p>
+<p><strong>Forza:</strong> <span class="m">F=\sigma_z A_0 = 71.3\ \mathrm{MPa}\times78.5\ \mathrm{mm^2} \approx 5600\ \mathrm N</span>.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Carico massimo senza deformazione plastica (lega di bronzo).</strong> <span class="m">\sigma_{max}=280\ \mathrm{MPa}</span>
+(inizio plasticità), <span class="m">E=115\ \mathrm{GPa}</span>, <span class="m">A_0=325\ \mathrm{mm^2}</span>, <span class="m">l_0=120\ \mathrm{mm}</span>.</p>
+<p><span class="m d">F_{max} = \sigma_{max}A_0 = 280\times10^6\ \mathrm{Pa}\times325\times10^{-6}\ \mathrm{m^2} = 91\,000\ \mathrm N</span></p>
+<p>Supponendo comportamento lineare fino a <span class="m">\sigma_{max}</span>:
+<span class="m d">\varepsilon_{max} = \sigma_{max}/E = 2.435\times10^{-3} \qquad \Delta l = \varepsilon_{max}\,l_0 = 0.292\ \mathrm{mm}</span>
+<span class="m d">l_{max} = l_0+\Delta l = 120.292\ \mathrm{mm}</span></p>
+</div>
+
+<div class="callout attenzione">
+
+<p>Negli esercizi con un diagramma σ-ε <strong>letto graficamente</strong> (invece che con una formula esplicita), il
+metodo è: calcolare <span class="m">\sigma=F/A_0</span> dal carico applicato → tracciare una retta orizzontale a
+quell&#39;altezza sul grafico → leggere l&#39;intersezione con la curva sull&#39;asse delle deformazioni →
+convertire in allungamento con <span class="m">\Delta l=\varepsilon\, l_0</span>. Il modulo di Young si legge invece come la
+<strong>pendenza</strong> del tratto iniziale lineare, <span class="m">E=\sigma/\varepsilon</span> in quel tratto — non confondere le due
+letture, una è un valore puntuale, l&#39;altra è una pendenza.</p>
+</div>
+
+<div class="callout sintesi">
+
+<ul>
+<li>Potenziale termico <span class="m">PT=\dfrac{Q_i(+Q_{evap})}{V_{comb}+V_{aria}}</span>: calore per unità di volume
+<strong>totale</strong> (combustibile + aria), diverso dal potere calorifico (per unità di solo combustibile).</li>
+<li>La prova di trazione si risolve sempre confrontando <span class="m">\sigma=F/A_0</span> con <span class="m">\sigma_S</span> e <span class="m">\sigma_R</span> per
+classificare il regime (elastico, plastico, rottura).</li>
+<li>La relazione di Poisson (<span class="m">\nu=-\varepsilon_r/\varepsilon_z</span>) permette di passare da una misura di
+deformazione radiale (diametro) a quella assiale, e da lì allo sforzo con la legge di Hooke.</li>
+</ul>
+</div>
+
+<div class="callout esame">
+
+<p><strong>Come cade all&#39;esame.</strong> Gli esercizi su prova di trazione sono quasi sempre &quot;a cascata&quot;: da un dato
+misurabile (forza, variazione di diametro, allungamento) si ricava lo sforzo o la deformazione, poi si
+applica Hooke o Poisson per arrivare alla grandezza richiesta, infine si confronta con <span class="m">\sigma_S</span>/<span class="m">\sigma_R</span>
+se il testo chiede di classificare il regime di deformazione. Per il potenziale termico, il passo più
+delicato è calcolare correttamente <span class="m">V_{comb}</span> per un combustibile liquido (va convertito in volume di
+<strong>vapore</strong>, con le moli e 22.4 L/mol, non lasciato come volume liquido).</p>
+<p><strong>Allenati qui:</strong> Extra 153 · Extra 154 ·
+Extra 254 · Extra 255 · Extra 256 ·
+Extra 257</p>
+</div>

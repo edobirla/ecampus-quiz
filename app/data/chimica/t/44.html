@@ -1,0 +1,114 @@
+<h1 id="lez-44">Lezione 44 — Corrosione del ferro e metodi di protezione</h1>
+<h2 id="lez-44-perche">Perché questa lezione esiste</h2>
+<p>La corrosione è l&#39;applicazione più rilevante dell&#39;elettrochimica per un ingegnere
+civile: ogni struttura in ferro (armature, tubazioni, pontili) è, dal punto di
+vista chimico, una possibile pila spontanea in cui il metallo fa da anodo
+sacrificale. Capire <em>perché</em> il ferro si corrode — e non, per esempio, l&#39;oro —
+permette di progettare la protezione giusta invece di limitarsi a osservarne il
+degrado.</p>
+<h2 id="lez-44-meccanismo">Il meccanismo elettrochimico della corrosione del ferro</h2>
+<p>Considera un pezzo di ferro esposto all&#39;aria, ricoperto da un sottile film
+d&#39;acqua. Due semireazioni sono in competizione:</p>
+<p><span class="m d">\text{1)}\quad \mathrm{Fe^{2+} + 2e^- \rightarrow Fe} \qquad E^\circ = -0.44\ \mathrm V</span>
+<span class="m d">\text{2)}\quad \mathrm{O_2(g) + 2H_2O(l) + 4e^- \rightarrow 4OH^-(aq)} \qquad E^\circ = +0.40\ \mathrm V</span></p>
+<p>Poiché <span class="m">E^\circ</span> della 2) è <strong>più alto</strong> di quello della 1), è l&#39;ossigeno disciolto
+in acqua (per la legge di Henry) a ridursi davvero, mentre il ferro fa da anodo e si
+ossida: <span class="m">\mathrm{Fe\to Fe^{2+}+2e^-}</span>. Applicando Nernst alla 2) a pH 7 (invece che
+in condizioni standard, dove <span class="m">[\mathrm{OH^-}]=1\ \mathrm M</span> e pH 14):</p>
+<p><span class="m d">E = E^\circ - \frac{0.0592}{4}\log[\mathrm{OH^-}]^4 = (+0.40) - (-0.42) = +0.82\ \mathrm V</span></p>
+<p>un potenziale ancora più favorevole alla riduzione dell&#39;ossigeno — la corrosione a
+pH neutro (l&#39;acqua piovana o l&#39;umidità atmosferica) è quindi più spontanea che in
+condizioni standard basiche.</p>
+<p>Gli ioni <span class="m">\mathrm{Fe^{2+}}</span> prodotti reagiscono con gli <span class="m">\mathrm{OH^-}</span> generati
+dalla 2), formando idrossido ferroso <span class="m">\mathrm{Fe(OH)_2}</span>, insolubile, che precipita.
+In presenza di ossigeno dell&#39;aria, l&#39;idrossido ferroso si trasforma in idrossido
+ferrico <span class="m">\mathrm{Fe(OH)_3}</span> — la comune <strong>ruggine</strong>. La precipitazione
+dell&#39;idrossido sposta continuamente l&#39;equilibrio verso destra (principio di Le
+Chatelier: sottrarre un prodotto solido dalla soluzione favorisce ulteriore
+ossidazione), rendendo il processo autosostenuto.</p>
+<div class="callout attenzione">
+
+<p><strong>Errata nel materiale del corso.</strong> La slide 2 di <code>44.pdf</code> scrive il potenziale
+della reazione 1) come &quot;<span class="m">+0.44\ \mathrm V</span>&quot; per <span class="m">\mathrm{Fe^{2+}+2e^-\to Fe}</span>. È un
+errore di segno: il valore tabulato di <span class="m">E^\circ(\mathrm{Fe^{2+}/Fe})</span>, usato in
+modo consistente nelle Lezioni 42–43 e in tutti gli esercizi svolti del corso
+(es. Lezione 43/S1: &quot;<span class="m">E^0=-0.40\mathrm V</span>&quot; per il cadmio, valori analoghi per il
+ferro), è <span class="m">\mathbf{-0.44\ \mathrm V}</span>. Il segno negativo, oltretutto, è l&#39;unico
+compatibile con la narrazione della slide stessa (&quot;il potenziale della 2) è più
+alto del potenziale della 1)&quot;: <span class="m">+0.40 &gt; -0.44</span> è vero, mentre <span class="m">+0.40 &gt; +0.44</span> è
+falso). Usa sempre <span class="m">-0.44\ \mathrm V</span> per <span class="m">E^\circ(\mathrm{Fe^{2+}/Fe})</span>.</p>
+</div>
+
+<p><strong>Corrosione per aerazione differenziale.</strong> La corrosione non è uniforme: nelle
+zone a <strong>bassa</strong> concentrazione di ossigeno (screpolature, saldature, sotto
+depositi superficiali, sotto il livello dell&#39;acqua) avviene la semireazione di
+<strong>ossidazione</strong> (il ferro si consuma); nelle zone ad <strong>alta</strong> concentrazione di
+ossigeno avviene la <strong>riduzione</strong>. È il motivo per cui la corrosione è
+particolarmente insidiosa dal punto di vista ingegneristico: si concentra proprio
+nelle zone meno ispezionabili (fessure, giunti, punti a contatto con il terreno),
+non in modo uniforme sulla superficie esposta.</p>
+<p><strong>Corrosione galvanica.</strong> Se un manufatto in ferro è a contatto con un metallo a
+potenziale di riduzione <strong>più alto</strong> (es. il rame, <span class="m">E^\circ=+0.34\ \mathrm V</span>), la
+zona di contatto favorisce ulteriormente la corrosione del ferro: il rame non si
+ossida (non ci sono ioni <span class="m">\mathrm{Cu^{2+}}</span> liberi, solo il metallo), ma <strong>catalizza</strong>
+il trasferimento di elettroni fungendo da collettore per la riduzione
+dell&#39;ossigeno, che avviene sulla sua superficie mentre il ferro vicino si ossida
+come anodo.</p>
+<h2 id="lez-44-protezione">Protezione dei metalli dalla corrosione</h2>
+<p><strong>Rivestimento con metalli a potenziale di riduzione minore del ferro</strong> (zincatura,
+cromatura): lo zinco o il cromo si ossidano al posto del ferro sottostante, e lo
+strato di ossido che si forma spesso <strong>passiva</strong> la superficie, cioè la protegge
+dall&#39;ulteriore ossidazione bloccando l&#39;accesso dell&#39;ossigeno al metallo.</p>
+<p><strong>Protezione catodica</strong> (o &quot;anodo sacrificale&quot;): il manufatto da proteggere viene
+collegato elettricamente a un metallo che si ossida più facilmente del ferro (es.
+magnesio, <span class="m">E^\circ(\mathrm{Mg^{2+}/Mg})\approx-2.37\ \mathrm V</span>, molto più basso di
+<span class="m">-0.44\ \mathrm V</span>). Il blocco di magnesio diventa l&#39;<strong>anodo</strong> (si consuma,
+sacrificandosi), mentre la struttura in ferro diventa il <strong>catodo</strong> — e al catodo
+avviene solo riduzione, mai ossidazione, quindi il ferro non si corrode finché il
+blocco di magnesio non è esaurito. Va sostituito periodicamente. Per le acque
+marine si preferiscono anodi di zinco o alluminio, perché il magnesio si consuma
+troppo rapidamente in quell&#39;ambiente.</p>
+<div class="callout formula">
+
+<p><strong>Criterio di scelta dell&#39;anodo sacrificale</strong>: deve avere <span class="m">E^\circ_{rid}</span> <strong>più
+basso</strong> (più negativo) di quello del metallo da proteggere, così che nella coppia
+galvanica risultante sia sempre lui a fare da anodo (a ossidarsi) e il metallo da
+proteggere a fare da catodo.</p>
+</div>
+
+<div class="callout esempio">
+
+<p>Le eliche delle navi, spesso in bronzo (lega rame-stagno, potenziali di riduzione
+relativamente alti), non sono protette da anodi di ferro — servirebbe un metallo
+ancora più facilmente ossidabile del bronzo stesso. Si usano tipicamente anodi
+sacrificali di zinco o alluminio, coerenti con la regola sopra.</p>
+</div>
+
+<div class="callout sintesi">
+
+<ul>
+<li>La corrosione del ferro è una redox spontanea: <span class="m">\mathrm{O_2}</span> disciolto si
+riduce (<span class="m">E^\circ=+0.40\ \mathrm V</span>, più alto), il ferro si ossida
+(<span class="m">E^\circ=-0.44\ \mathrm V</span>, più basso).</li>
+<li>Gli ioni <span class="m">\mathrm{Fe^{2+}}</span> precipitano come <span class="m">\mathrm{Fe(OH)_2}</span>, poi si
+ossidano a <span class="m">\mathrm{Fe(OH)_3}</span> (ruggine): la precipitazione sposta l&#39;equilibrio
+verso ulteriore corrosione (Le Chatelier).</li>
+<li><strong>Aerazione differenziale</strong>: le zone a bassa concentrazione di <span class="m">\mathrm{O_2}</span>
+(fessure, saldature) sono l&#39;anodo e si corrodono; le zone areate sono il catodo.</li>
+<li><strong>Corrosione galvanica</strong>: il contatto con un metallo a potenziale più alto (es.
+rame) accelera la corrosione del ferro, che diventa l&#39;unico anodo del sistema.</li>
+<li><strong>Protezione</strong>: rivestimento con metalli più facilmente ossidabili, o
+protezione catodica con anodo sacrificale (potenziale di riduzione più basso di
+quello del metallo da proteggere).</li>
+</ul>
+</div>
+
+<div class="callout esame">
+
+<p><strong>Come cade all&#39;esame.</strong> Argomento applicativo, spesso testato con domande aperte
+concettuali più che con calcoli: sapere spiegare <em>perché</em> la corrosione avviene
+dove l&#39;ossigeno è scarso (non dove è abbondante — è un punto controintuitivo che
+il paniere sfrutta come trabocchetto) e <em>perché</em> l&#39;anodo sacrificale deve avere
+potenziale più basso, non più alto, del metallo da proteggere.</p>
+<p><strong>Allenati qui:</strong> Extra 95 · Extra 105 · domande reali del paniere: Lez.48 q1,7,30</p>
+</div>
