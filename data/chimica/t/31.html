@@ -1,0 +1,171 @@
+<h1 id="lez-31">Lezione 31 — Secondo principio della termodinamica e interpretazione molecolare dell&#39;entropia</h1>
+<h2 id="lez-31-perche">Perché questa lezione esiste</h2>
+<p>Il primo principio dice che l&#39;energia non si crea né si distrugge. Ma non dice
+<strong>quali</strong> trasformazioni possono avvenire spontaneamente. Un gas si espande da solo
+nel vuoto; il contrario — un gas che si comprime spontaneamente in un angolo della
+stanza — non si è mai osservato, eppure non violerebbe affatto la conservazione
+dell&#39;energia. Serve un secondo criterio, indipendente dal primo: è il secondo
+principio della termodinamica, ed è il concetto più esaminato di tutto il blocco
+termodinamico del corso.</p>
+<h2 id="lez-31-espansione">L&#39;esperimento che apre il problema</h2>
+<p>Riprendi l&#39;espansione libera di un gas ideale (vista a proposito di <span class="m">U=U(T)</span>): due
+recipienti collegati da una valvola, uno con gas, l&#39;altro vuoto. Aprendo la valvola,
+il gas occupa spontaneamente tutto il volume disponibile. In quell&#39;esperimento
+<span class="m">\Delta U = 0</span> (adiabatico, <span class="m">P_{ext}=0</span> quindi nessun lavoro), eppure la
+trasformazione avviene comunque in un verso solo. Il primo principio è indifferente a
+quale dei due sensi la trasformazione percorra — ma la natura non lo è.</p>
+<div class="callout attenzione">
+
+<p>Non confondere &quot;nessun vantaggio energetico&quot; con &quot;nessuna ragione per avvenire&quot;. Il
+gas si espande <strong>anche se</strong> <span class="m">\Delta U=0</span>: il motore della spontaneità qui non è
+l&#39;energia, è qualcos&#39;altro. Trovarlo è l&#39;oggetto di questa lezione.</p>
+</div>
+
+<h2 id="lez-31-disordine">Disordine e probabilità: l&#39;intuizione di Boltzmann</h2>
+<p>L&#39;analogia della farina sparsa sul pavimento aiuta: spargerla è spontaneo (basta
+rovesciare il sacchetto), raccoglierla in un angolo richiede lavoro con scopa e
+paletta. Mai si osserva la farina raccogliersi da sola in un angolo. La differenza
+tra le due situazioni è il <strong>disordine</strong>: la configurazione sparsa è enormemente più
+probabile di quella concentrata, semplicemente perché esistono molti più modi di
+distribuire i granelli su tutto il pavimento che di ammucchiarli in un punto.</p>
+<p>Lo stesso ragionamento vale per le molecole di gas. Prima dell&#39;apertura della
+valvola, le <span class="m">n \cdot N_A</span> molecole sono confinate in un volume <span class="m">V</span>: uno stato molto
+ordinato. Dopo l&#39;espansione occupano <span class="m">2V</span>: uno stato meno ordinato, cioè uno stato
+raggiungibile in molti più modi microscopici.</p>
+<h3 id="lez-31-conteggio">Il conteggio con 4 molecole</h3>
+<p>Per rendere l&#39;idea quantitativa, immagina 4 molecole etichettate 1, 2, 3, 4 in un
+recipiente a due scomparti. Quanti modi ci sono di distribuirle?</p>
+<ul>
+<li>Tutte e 4 a sinistra: <strong>1 solo modo</strong>.</li>
+<li>3 a sinistra, 1 a destra: <strong>4 modi</strong> (quale delle 4 sta da sola a destra).</li>
+<li>2 e 2: <strong>6 modi</strong>.</li>
+<li>1 a sinistra, 3 a destra: <strong>4 modi</strong> (per simmetria con il caso precedente).</li>
+<li>Tutte e 4 a destra: <strong>1 solo modo</strong>.</li>
+</ul>
+<p>Totale: <span class="m">1+4+6+4+1=16</span> configurazioni possibili. Il numero di modi di scegliere <span class="m">k</span>
+posizioni su <span class="m">n</span> disponibili, senza contare l&#39;ordine, è la formula delle
+combinazioni:</p>
+<div class="callout formula">
+
+<p><span class="m d">C_{n,k} = \frac{n!}{k!\,(n-k)!}</span></p>
+</div>
+
+<p>dove <span class="m">n! = n\cdot(n-1)\cdot(n-2)\cdots 2\cdot 1</span> e per convenzione <span class="m">0!=1</span>. Verifica:
+<span class="m">C_{4,0}=1</span>, <span class="m">C_{4,1}=4</span>, <span class="m">C_{4,2}=6</span> — combaciano con il conteggio a mano.</p>
+<p>Su 16 configurazioni totali, quella &quot;equidistribuita&quot; (2+2) ne rappresenta 6: è la
+<strong>più probabile</strong>. Quella &quot;tutto da un lato&quot; ne rappresenta solo 1: è la meno
+probabile. Ecco perché il gas si espande: non perché guadagni energia, ma perché
+passa spontaneamente dalla configurazione meno probabile a quella più probabile.</p>
+<h2 id="lez-31-boltzmann">La definizione di Boltzmann dell&#39;entropia</h2>
+<p>Boltzmann formalizzò questa intuizione introducendo una nuova funzione di stato,
+l&#39;<strong>entropia</strong> <span class="m">S</span>:</p>
+<div class="callout formula">
+
+<p><span class="m d">S = k_B \ln W</span></p>
+</div>
+
+<p>dove <span class="m">k_B = 1.38062\times10^{-23}\ \mathrm{J/K}</span> è la costante di Boltzmann e <span class="m">W</span> è
+la <strong>probabilità termodinamica</strong>: il numero di modi microscopici (microstati) in cui
+un dato stato macroscopico può essere realizzato. Nell&#39;esempio delle 4 molecole,
+<span class="m">W=6</span> per lo stato equidistribuito e <span class="m">W=1</span> per lo stato &quot;tutto a sinistra&quot;.</p>
+<p>La variazione di entropia tra due stati 1 e 2 è quindi:</p>
+<div class="callout formula">
+
+<p><span class="m d">\Delta S = S_2 - S_1 = k_B \ln\frac{W_2}{W_1}</span></p>
+</div>
+
+<p>Applicata all&#39;espansione delle 4 molecole (stato 1: tutte a sinistra, <span class="m">W_1=1</span>; stato
+2: equidistribuite, <span class="m">W_2=6</span>):</p>
+<p><span class="m d">\Delta S = k_B \ln\frac{6}{1} &gt; 0</span></p>
+<p>Il segno positivo è il segnale che stavamo cercando.</p>
+<h2 id="lez-31-enunciato">L&#39;enunciato del secondo principio</h2>
+<div class="callout formula">
+
+<p>Un sistema <strong>isolato</strong> evolve spontaneamente da uno stato 1 a uno stato 2 se e solo
+se <span class="m">\Delta S = S_2-S_1 &gt; 0</span>.</p>
+</div>
+
+<ul>
+<li><span class="m">\Delta S &gt; 0</span>: la trasformazione è <strong>irreversibile</strong> (spontanea).</li>
+<li><span class="m">\Delta S = 0</span>: la trasformazione è <strong>reversibile</strong> (equilibrio).</li>
+<li>In natura non esiste alcuna trasformazione realmente reversibile: ogni processo
+spontaneo è irreversibile. Le trasformazioni reversibili sono un&#39;idealizzazione
+utilissima per fare i calcoli (lo vedrai nella prossima lezione), ma non si
+osservano mai in pratica.</li>
+</ul>
+<div class="callout attenzione">
+
+<p>Il secondo principio si applica a un <strong>sistema isolato</strong> (nessuno scambio di massa
+né energia con l&#39;esterno). Se il sistema scambia calore con l&#39;ambiente, il criterio
+<span class="m">\Delta S_{sist}&gt;0</span> da solo non basta — bisogna guardare l&#39;entropia dell&#39;<strong>universo</strong>
+(sistema + ambiente). Questo è l&#39;oggetto della prossima lezione.</p>
+</div>
+
+<h2 id="lez-31-stirling">Scalare all&#39;ordine di Avogadro: perché serve la formula di Stirling</h2>
+<p>Il conteggio a mano funziona con 4 molecole, ma una mole ne contiene <span class="m">N_A =
+6.02\times10^{23}</span>. Calcolare fattoriali di numeri così grandi con la definizione è
+impossibile in pratica. Consideriamo l&#39;espansione di <strong>1 mole</strong> di gas ideale che
+raddoppia il volume (due scomparti di volume uguale):</p>
+<ul>
+<li>Stato 1 (tutte le molecole a sinistra): <span class="m">W_1 = C_{N_A,0} = 1</span>.</li>
+<li>Stato 2 (metà mole per scomparto): <span class="m">W_2 = C_{N_A/2,\,N_A/2} =
+  \dfrac{N_A!}{(N_A/2)!\,(N_A/2)!}</span>.</li>
+</ul>
+<p><span class="m d">\Delta S = k_B \ln\frac{N_A!}{\left[(N_A/2)!\right]^2} = k_B\ln N_A! -
+2k_B\ln\left(\frac{N_A}{2}\right)!</span></p>
+<p>Qui entra la <strong>formula di Stirling</strong>, un&#39;approssimazione per il logaritmo del
+fattoriale di numeri grandi:</p>
+<div class="callout formula">
+
+<p><span class="m d">\ln W! \approx W\ln W - W</span></p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Applicazione della formula di Stirling all&#39;espansione di 1 mole.</strong></p>
+<p>Sostituendo l&#39;approssimazione di Stirling nei due termini e raccogliendo (i passaggi
+algebrici sono lunghi ma meccanici: espandi <span class="m">N_A\ln N_A - N_A</span> e
+<span class="m">2\left[\frac{N_A}{2}\ln\frac{N_A}{2}-\frac{N_A}{2}\right]</span>, poi sottrai), il
+risultato collassa a una forma sorprendentemente semplice:</p>
+<p><span class="m d">\Delta S = k_B N_A \ln 2 = R\ln 2</span></p>
+<p>dove <span class="m">R=k_B N_A</span> è la costante dei gas ideali. <strong>Il raddoppio del volume di una mole
+di gas ideale in un sistema isolato comporta sempre <span class="m">\Delta S = R\ln 2 \approx
+5.76\ \mathrm{J/K}</span></strong>, indipendentemente da quale gas sia. Ritroverai questo stesso
+risultato nella prossima lezione per una via completamente diversa (l&#39;integrale di
+Clausius) — la coincidenza dei due risultati è una conferma potente che la
+definizione di Boltzmann e la termodinamica classica raccontano la stessa storia.</p>
+</div>
+
+<h2 id="lez-31-sessioni">Le tre sessioni di esercizi allegate</h2>
+<p>Le sessioni S1, S2, S3 di <code>31.pdf</code> sono un ripasso di <strong>termochimica</strong> (calore della
+reazione della termite, idrogenazione dell&#39;etilene via legge di Hess, consumo di
+metano per riscaldare l&#39;acqua): metodo e formule sono quelli già visti in
+<a href="#/teoria/chimica/30/lez-30-hess">Lezione 30</a>. Non introducono teoria nuova su entropia — le trovi
+citate qui solo per completezza di fonte.</p>
+<div class="callout sintesi">
+
+<ul>
+<li>Il primo principio non basta a prevedere la direzione di una trasformazione: serve
+un secondo criterio.</li>
+<li>L&#39;entropia <span class="m">S=k_B\ln W</span> misura il disordine attraverso il numero di microstati <span class="m">W</span>
+compatibili con uno stato macroscopico.</li>
+<li>Un sistema isolato evolve spontaneamente verso stati più probabili, cioè con <span class="m">W</span>
+(e quindi <span class="m">S</span>) maggiore: <span class="m">\Delta S&gt;0</span> ⟺ spontaneo/irreversibile,
+<span class="m">\Delta S=0</span> ⟺ equilibrio/reversibile.</li>
+<li>Per una mole di gas ideale che raddoppia volume in un sistema isolato,
+<span class="m">\Delta S=R\ln 2</span>, un risultato che ritroverai anche per via macroscopica.</li>
+</ul>
+</div>
+
+<div class="callout esame">
+
+<p><strong>Come cade all&#39;esame.</strong> Il paniere &quot;034&quot; chiede soprattutto enunciati e
+riconoscimento di segno, non calcoli con la formula di Stirling. Aspettati domande
+del tipo: &quot;che cos&#39;è l&#39;entropia secondo Boltzmann&quot;, &quot;enuncia il secondo principio per
+un sistema isolato&quot;, &quot;perché un gas si espande spontaneamente nel vuoto anche se
+<span class="m">\Delta U=0</span>&quot;. La risposta va sempre costruita in tre passi: (1) il primo principio
+non vieta né il processo né il suo inverso, (2) il criterio di spontaneità è il
+disordine/probabilità del microstato, misurato da <span class="m">S=k_B\ln W</span>, (3) il sistema isolato
+evolve verso <span class="m">\Delta S&gt;0</span>.</p>
+<p><strong>Allenati qui:</strong> Paniere Lez. 31 domanda 1 · Extra 65 · Extra 66</p>
+</div>

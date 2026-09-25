@@ -1,0 +1,509 @@
+<h1 id="lez-04">Lezione 04 — Crisi del modello planetario e nascita dei quanti</h1>
+<h2 id="lez-04-perche">Perché questa lezione esiste</h2>
+<p>Alla fine della Lezione 03 avevi un atomo fatto di un nucleo positivo piccolissimo
+con gli elettroni che gli ruotano intorno. Sembrava una conquista. In realtà è un
+modello <strong>impossibile</strong>: se fosse vero, l&#39;atomo si distruggerebbe da solo in una
+frazione di secondo.</p>
+<p>Questa lezione fa tre cose, in quest&#39;ordine:</p>
+<ol>
+<li>Ti mostra <strong>perché</strong> il modello di Rutherford non regge.</li>
+<li>Ti dà gli strumenti per capire la spiegazione, cioè le <strong>onde elettromagnetiche</strong>.</li>
+<li>Ti presenta i <strong>tre esperimenti</strong> che costringono la fisica ad ammettere che
+l&#39;energia non è continua ma va a pacchetti: corpo nero, effetto fotoelettrico,
+spettri atomici.</li>
+</ol>
+<p>All&#39;esame questa lezione è quasi tutta <strong>calcolo numerico</strong>: conversioni fra
+lunghezza d&#39;onda, frequenza ed energia, e applicazioni dell&#39;effetto fotoelettrico e
+della legge di Wien. Undici delle quindici domande chiuse sono conti. La teoria pura
+si riduce a quattro domande. Regolati di conseguenza: qui non serve memorizzare, serve
+saper maneggiare tre formule senza sbagliare gli esponenti.</p>
+<h2 id="lez-04-crisi">La crisi: perché l&#39;atomo di Rutherford non può esistere</h2>
+<p>Il ragionamento è in tre passi, ed è tutto quello che serve sapere per la domanda
+d&#39;esame.</p>
+<p><strong>Passo 1 — una carica che accelera irraggia.</strong> Era noto già a inizio Novecento: se
+prendi una carica elettrica e la fai accelerare, quella emette una radiazione
+elettromagnetica, cioè <strong>perde energia</strong> sotto forma di onda che se ne va nello spazio.</p>
+<p>È il principio dell&#39;antenna. Colleghi due conduttori metallici a un generatore di
+tensione variabile, gli elettroni liberi nel metallo si mettono a oscillare avanti e
+indietro da un&#39;estremità all&#39;altra, e proprio per questo l&#39;antenna emette un&#39;onda alla
+stessa frequenza del generatore. L&#39;energia dell&#39;onda non nasce dal nulla: la paga il
+generatore.</p>
+<p><strong>Passo 2 — un elettrone in orbita accelera sempre.</strong> Qui sta il punto che di solito
+sfugge. «Accelerare» in fisica non vuol dire soltanto andare più veloce: vuol dire
+<strong>cambiare il vettore velocità</strong>, e un vettore cambia anche solo cambiando direzione.
+Un elettrone che percorre un&#39;orbita circolare a velocità costante in modulo sta
+comunque accelerando in ogni istante, perché la direzione del moto ruota di continuo.
+È l&#39;accelerazione centripeta.</p>
+<p><strong>Passo 3 — quindi l&#39;atomo collassa.</strong> Mettendo insieme i primi due: l&#39;elettrone in
+orbita accelera → irraggia → perde energia → non riesce più a mantenere l&#39;orbita e
+spiraleggia verso il nucleo. I conti della fisica classica danno un tempo di caduta
+dell&#39;ordine di <span class="m">10^{-11}</span> secondi. Un centesimo di miliardesimo di secondo.</p>
+<div class="callout attenzione">
+
+<p>Il confronto con questa previsione è banale e devastante: <strong>gli atomi sono stabili</strong>.
+Il tavolo davanti a te esiste da anni, non è collassato. Quando una teoria prevede una
+cosa che non accade, la teoria è sbagliata: non c&#39;è appello.</p>
+<p>(L&#39;unica eccezione sono gli atomi radioattivi, che effettivamente decadono. Ma quello
+è instabilità del <strong>nucleo</strong>, non degli elettroni: è un fenomeno diverso e non salva
+il modello planetario.)</p>
+</div>
+
+<p>L&#39;analogia utile: un satellite in orbita bassa attorno alla Terra perde quota perché
+sfrega contro le tracce di atmosfera, e prima o poi rientra. L&#39;elettrone di Rutherford
+è un satellite che perde quota anche nel vuoto assoluto, perché la sua «frizione» non
+è l&#39;aria, è l&#39;irraggiamento elettromagnetico. Non c&#39;è modo di spegnerla.</p>
+<p>Da questo vicolo cieco si esce solo cambiando le regole del gioco, e le regole nuove
+sono quelle dei quanti. Ma per capirle bisogna prima sapere che cos&#39;è un&#39;onda
+elettromagnetica.</p>
+<h2 id="lez-04-onde">Le radiazioni elettromagnetiche</h2>
+<h3 id="lez-04-em">Che cos&#39;è un campo elettromagnetico</h3>
+<p>Un <strong>campo elettrico</strong> <span class="m">E</span> è quello che misuri in presenza di una o più cariche
+elettriche: in ogni punto dello spazio ti dice che forza sentirebbe una carica di
+prova messa lì. Se quelle cariche si muovono, compare anche un <strong>campo magnetico</strong> <span class="m">B</span>.</p>
+<p>I due campi non sono indipendenti: sono le due facce della stessa medaglia, il
+<strong>campo elettromagnetico</strong>. Esso può variare nello spazio (essere diverso in punti
+diversi allo stesso istante) e nel tempo (cambiare da istante a istante in uno stesso
+punto).</p>
+<p>La radiazione elettromagnetica più semplice è quella <strong>monocromatica</strong>, cioè quella in
+cui <span class="m">E</span> e <span class="m">B</span> dipendono dalla posizione <span class="m">x</span> e dal tempo <span class="m">t</span> così:</p>
+<div class="callout formula">
+
+<p><span class="m d">E = E_0 \cos(kx - \omega t) \qquad [\mathrm{V/m}]</span>
+<span class="m d">B = B_0 \cos(kx - \omega t) \qquad [\mathrm{T} = \mathrm{Wb/m^2} = \mathrm{kg\ s^{-2}A^{-1}}]</span></p>
+</div>
+
+<p>Non serve saper risolvere queste equazioni. Serve leggerle: descrivono due oscillazioni
+sincrone, perpendicolari fra loro e alla direzione di propagazione, che viaggiano
+insieme. «Monocromatica» significa che c&#39;è <strong>una sola</strong> frequenza, cioè un solo colore.</p>
+<p>All&#39;onda è associata un&#39;<strong>intensità</strong>, cioè l&#39;energia che attraversa un metro quadro
+ogni secondo:</p>
+<div class="callout formula">
+
+<p><span class="m d">I = \frac{1}{2}\,\frac{E_0 B_0}{\mu_0} \qquad [\mathrm{J\,m^{-2}s^{-1}}]</span></p>
+</div>
+
+<p>Tienila da parte: l&#39;intensità dipende dalle <strong>ampiezze</strong> <span class="m">E_0</span> e <span class="m">B_0</span>, non dalla
+frequenza. Questa distinzione fra ampiezza e frequenza sarà la chiave dell&#39;effetto
+fotoelettrico.</p>
+<h3 id="lez-04-grandezze">Le tre grandezze che devi saper convertire</h3>
+<p>Un&#39;onda si descrive con tre numeri, e all&#39;esame ti danno l&#39;uno e ti chiedono l&#39;altro.
+Vale la pena capirli, non impararli.</p>
+<p><strong>Lunghezza d&#39;onda <span class="m">\lambda</span></strong> (metri). La distanza fra due creste consecutive.
+Pensa a un&#39;onda del mare ferma in fotografia: <span class="m">\lambda</span> è quanto misuri col metro fra
+due picchi.</p>
+<p><strong>Frequenza <span class="m">\nu</span> o <span class="m">f</span></strong> (hertz, cioè <span class="m">\mathrm{s^{-1}}</span>). Quante creste ti passano
+davanti in un secondo, se resti fermo a guardare.</p>
+<p><strong>Numero d&#39;onda <span class="m">k</span></strong> (<span class="m">\mathrm{m^{-1}}</span>). Quante onde intere stanno in un metro. È
+semplicemente l&#39;inverso della lunghezza d&#39;onda.</p>
+<div class="callout formula">
+
+<p><span class="m d">\lambda \nu = c \qquad\text{ovvero}\qquad \nu = \frac{c}{\lambda}</span>
+<span class="m d">k = \frac{1}{\lambda} \qquad\text{ovvero}\qquad \lambda = \frac{1}{k}</span>
+con <span class="m">c = 2{,}998 \times 10^{8}\ \mathrm{m/s}</span>, velocità della luce nel vuoto.</p>
+</div>
+
+<p><strong>Da dove viene <span class="m">\lambda\nu = c</span>.</strong> Non è una formula da memorizzare, è una definizione
+di velocità travestita. In un secondo ti passano davanti <span class="m">\nu</span> creste, e ogni cresta è
+lunga <span class="m">\lambda</span> metri: quindi in un secondo è transitata una lunghezza d&#39;onda di
+<span class="m">\lambda \cdot \nu</span> metri. Ma «metri percorsi in un secondo» è esattamente la
+velocità. Quindi <span class="m">\lambda\nu = c</span>. Fine della derivazione.</p>
+<div class="callout attenzione">
+
+<p><span class="m">c</span> è <strong>fissa</strong>. Quindi <span class="m">\lambda</span> e <span class="m">\nu</span> sono legate da una proporzionalità inversa:
+se una raddoppia, l&#39;altra si dimezza. Non possono crescere insieme. Questo esclude da
+solo un paio di risposte sbagliate del paniere, senza bisogno di fare conti.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Convertire una lunghezza d&#39;onda in frequenza.</strong>
+Calcola la frequenza della radiazione con <span class="m">\lambda = 8{,}00 \times 10^{2}\ \mathrm{nm}</span>.</p>
+<p><strong>Passo 1 — porta tutto in unità SI.</strong> È il passo dove si perdono i punti.
+<span class="m">1\ \mathrm{nm} = 10^{-9}\ \mathrm{m}</span>, quindi
+<span class="m d">\lambda = 8{,}00 \times 10^{2} \times 10^{-9}\ \mathrm{m} = 8{,}00 \times 10^{-7}\ \mathrm{m}</span></p>
+<p><strong>Passo 2 — applica la formula.</strong>
+<span class="m d">\nu = \frac{c}{\lambda} = \frac{2{,}998 \times 10^{8}\ \mathrm{m/s}}{8{,}00 \times 10^{-7}\ \mathrm{m}}</span></p>
+<p><strong>Passo 3 — dividi mantisse ed esponenti separatamente.</strong>
+<span class="m d">\frac{2{,}998}{8{,}00} = 0{,}3747 \qquad ; \qquad \frac{10^{8}}{10^{-7}} = 10^{8-(-7)} = 10^{15}</span>
+<span class="m d">\nu = 0{,}3747 \times 10^{15} = 3{,}747 \times 10^{14}\ \mathrm{s^{-1}} = 3{,}747 \times 10^{14}\ \mathrm{Hz}</span></p>
+<p><strong>Controllo di sensatezza.</strong> <span class="m">800\ \mathrm{nm}</span> è rosso al confine dell&#39;infrarosso, e
+la luce visibile sta intorno a <span class="m">10^{14}</span>–<span class="m">10^{15}\ \mathrm{Hz}</span>. Torna.</p>
+</div>
+
+<div class="callout attenzione">
+
+<p><strong>L&#39;errore che costa più punti in questa lezione: gli esponenti.</strong> Sottrarre un
+esponente negativo lo fa diventare positivo — <span class="m">10^{8} / 10^{-7} = 10^{15}</span>, non
+<span class="m">10^{1}</span>. Se il risultato ti viene con un esponente lontanissimo da quello delle
+risposte proposte, quasi sempre hai sbagliato qui e non nella formula.</p>
+</div>
+
+<h3 id="lez-04-spettro">Lo spettro elettromagnetico</h3>
+<p>Le onde elettromagnetiche coprono un intervallo enorme di frequenze, e i nomi che
+usiamo (radio, microonde, infrarosso, visibile, ultravioletto, raggi X, raggi <span class="m">\gamma</span>)
+sono solo etichette convenzionali su un continuo. Lo spettro si disegna in <strong>scala
+logaritmica</strong> proprio perché altrimenti non ci starebbe sul foglio.</p>
+<p>Andando verso frequenze crescenti, cioè lunghezze d&#39;onda decrescenti:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Regione</th>
+<th align="left"><span class="m">\lambda</span> indicativa</th>
+<th align="left">Nota</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Onde radio</td>
+<td align="left"><span class="m">&gt; 1\ \mathrm{m}</span></td>
+<td align="left">trasmissioni, antenne</td>
+</tr>
+<tr>
+<td align="left">Microonde</td>
+<td align="left"><span class="m">\mathrm{mm}</span>–<span class="m">\mathrm{cm}</span></td>
+<td align="left">forno, radar, wi-fi</td>
+</tr>
+<tr>
+<td align="left">Infrarosso</td>
+<td align="left"><span class="m">700\ \mathrm{nm}</span>–<span class="m">1\ \mathrm{mm}</span></td>
+<td align="left">calore</td>
+</tr>
+<tr>
+<td align="left"><strong>Visibile</strong></td>
+<td align="left"><span class="m">400</span>–<span class="m">700\ \mathrm{nm}</span></td>
+<td align="left">rosso lungo, violetto corto</td>
+</tr>
+<tr>
+<td align="left">Ultravioletto</td>
+<td align="left"><span class="m">10</span>–<span class="m">400\ \mathrm{nm}</span></td>
+<td align="left">UV-A, UV-B, UV-C</td>
+</tr>
+<tr>
+<td align="left">Raggi X</td>
+<td align="left"><span class="m">0{,}01</span>–<span class="m">10\ \mathrm{nm}</span></td>
+<td align="left">radiografie</td>
+</tr>
+<tr>
+<td align="left">Raggi <span class="m">\gamma</span></td>
+<td align="left"><span class="m">&lt; 0{,}01\ \mathrm{nm}</span></td>
+<td align="left">nucleare</td>
+</tr>
+</tbody></table>
+<p>La frazione che il nostro occhio percepisce è ridicolmente piccola: nella similitudine
+delle slide, <strong>2 cm su 4000 km</strong>. Tutto il resto della realtà elettromagnetica ci è
+invisibile.</p>
+<p>Il verso da ricordare a memoria, perché ricorre in ogni domanda sull&#39;energia:</p>
+<div class="callout sintesi">
+
+<p><strong>Rosso → violetto:</strong> <span class="m">\lambda</span> <strong>diminuisce</strong>, <span class="m">\nu</span> <strong>aumenta</strong>, energia <strong>aumenta</strong>.</p>
+</div>
+
+<h3 id="lez-04-interferenza">Interferenza</h3>
+<p>Due onde che si incontrano si sommano punto per punto. Se creste e creste coincidono,
+la somma dà un&#39;onda di ampiezza maggiore: interferenza <strong>costruttiva</strong>. Se una cresta
+incontra una gola, si cancellano e l&#39;ampiezza cala: interferenza <strong>distruttiva</strong>.</p>
+<p>Il motivo per cui questa cosa compare nella lezione è storico e importante:
+l&#39;interferenza è un comportamento che <strong>solo le onde</strong> hanno. Due proiettili che si
+incontrano non si annullano. È l&#39;interferenza che, per tutto l&#39;Ottocento, ha convinto
+i fisici che la luce fosse un&#39;onda e nient&#39;altro. Il che rende ancora più drammatico
+quello che segue.</p>
+<h2 id="lez-04-tre">I tre fenomeni che la fisica classica non spiega</h2>
+<p>Secondo la fisica classica la luce ha <strong>solo</strong> natura ondulatoria, con un flusso di
+energia continuo: puoi trasportarne quanta ne vuoi, in quantità arbitrariamente
+piccole. Tre esperimenti dicono che non è così.</p>
+<table>
+<thead>
+<tr>
+<th align="left">Fenomeno</th>
+<th align="left">Che cosa dimostra</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Radiazione del corpo nero</td>
+<td align="left">l&#39;energia è <strong>quantizzata</strong></td>
+</tr>
+<tr>
+<td align="left">Effetto fotoelettrico</td>
+<td align="left">la luce ha natura <strong>corpuscolare</strong></td>
+</tr>
+<tr>
+<td align="left">Spettri atomici</td>
+<td align="left">l&#39;energia dell&#39;<strong>elettrone</strong> è quantizzata</td>
+</tr>
+</tbody></table>
+<h3 id="lez-04-corponero">1. Il corpo nero, e Planck</h3>
+<p><strong>Il fatto sperimentale.</strong> Scalda un solido e comincia a emettere luce. Alzando la
+temperatura non cambia solo l&#39;intensità, cambia anche il <strong>colore</strong>: un carbone acceso
+è rosso, la resistenza di un fornello è arancione, il filamento di una lampadina è
+bianco. Colore diverso vuol dire frequenza diversa, quindi la frequenza emessa dipende
+dalla temperatura.</p>
+<p>Il <strong>corpo nero</strong> è l&#39;oggetto ideale di riferimento: assorbe tutta l&#39;energia che gli
+arriva, si scalda, e riemette una radiazione la cui distribuzione di frequenze dipende
+soltanto dalla sua temperatura.</p>
+<p><strong>Il fallimento della fisica classica.</strong> Le equazioni classiche riproducono bene la
+curva di emissione solo per <span class="m">\lambda</span> molto grandi. Scendendo verso <span class="m">\lambda</span> piccole
+lo scostamento diventa enorme, e la previsione arriva a essere assurda: un normale
+forno da cucina dovrebbe emettere raggi <span class="m">\gamma</span>. Chiaramente non succede.</p>
+<p><strong>La soluzione di Planck (1901).</strong> Un corpo può emettere o assorbire <strong>solo certe
+quantità</strong> di energia, non una quantità qualsiasi:</p>
+<div class="callout formula">
+
+<p><span class="m d">E = n h \nu</span>
+con <span class="m">n</span> numero quantico (<strong>intero</strong>), <span class="m">h = 6{,}626 \times 10^{-34}\ \mathrm{J \cdot s}</span>
+costante di Planck, <span class="m">\nu</span> frequenza.</p>
+</div>
+
+<p>Ogni pacchetto elementare si chiama <strong>quanto</strong> e vale <span class="m">h\nu</span>. L&#39;atomo cambia stato
+energetico emettendo o assorbendo uno o più quanti interi: non esiste il mezzo quanto.</p>
+<p>L&#39;analogia: prima di Planck si pensava che l&#39;energia fosse come l&#39;acqua, versabile in
+qualsiasi quantità. Dopo Planck è come una macchinetta del caffè che accetta solo
+monete da 50 centesimi. Puoi pagare 50 centesimi, 1 euro, 1,50 — mai 70 centesimi. La
+«moneta» è <span class="m">h\nu</span>, e siccome <span class="m">h</span> è piccolissima, nella vita quotidiana la
+granularità non si vede: sembra un flusso continuo come una banconota sembra divisibile
+se non guardi le monete.</p>
+<p><strong>La legge di Wien.</strong> Dall&#39;esame dello spettro del corpo nero si ricava una legge
+semplice: il prodotto fra la temperatura assoluta <span class="m">T</span> e la lunghezza d&#39;onda a cui
+l&#39;emissione è massima è una costante.</p>
+<div class="callout formula">
+
+<p><span class="m d">T \cdot \lambda_{\max} = 2{,}898 \times 10^{-3}\ \mathrm{m \cdot K}</span>
+<span class="m">T</span> va <strong>sempre in kelvin</strong>. <span class="m">\lambda_{\max}</span> è la lunghezza d&#39;onda del picco di
+emissione, non una lunghezza d&#39;onda qualsiasi.</p>
+</div>
+
+<p>Letta a parole: <strong>più caldo è il corpo, più corta è la lunghezza d&#39;onda del suo picco</strong>,
+cioè più il colore si sposta verso il blu. È il motivo per cui una stella azzurra è più
+calda di una rossa, e per cui il ferro passa da rosso ad arancione a bianco man mano
+che lo scaldi.</p>
+<div class="callout attenzione">
+
+<p><strong>Errore nelle slide.</strong> La slide della sessione 4/S2 scrive la costante di Wien come
+<span class="m">2{,}28 \times 10^{-3}\ \mathrm{m \cdot K}</span> e con quel valore svolge l&#39;esempio del
+ferro fuso. <strong>È sbagliata.</strong> Il valore corretto, quello usato dal paniere e quello che
+devi usare all&#39;esame, è <span class="m">2{,}898 \times 10^{-3}\ \mathrm{m \cdot K}</span>.</p>
+<p>Sempre in quella slide, la temperatura di fusione del ferro (<span class="m">1540\ ^\circ\mathrm{C}</span>)
+è riportata come <span class="m">1843{,}15\ \mathrm{K}</span>: è un refuso, la conversione corretta dà
+<span class="m">1540 + 273{,}15 = 1813{,}15\ \mathrm{K}</span> (e il conto della slide, in effetti, usa
+1813,15).</p>
+<p>Con i valori giusti, il ferro appena fuso ha
+<span class="m">\lambda_{\max} = 2{,}898\times10^{-3} / 1813{,}15 = 1{,}60 \times 10^{-6}\ \mathrm{m}</span>,
+cioè infrarosso vicino — coerente col fatto che lo vedi rosso cupo e che ne senti il
+calore da lontano.</p>
+</div>
+
+<div class="callout attenzione">
+
+<p><strong>La trappola dei kelvin.</strong> Nelle domande sulla legge di Wien le risposte proposte
+mescolano di proposito gradi Celsius e kelvin, e spesso lo <strong>stesso numero</strong> compare in
+entrambe le unità. Dopo aver ricavato <span class="m">T</span> in kelvin, rileggi la domanda e guarda in
+quale unità sono scritte le opzioni. Conversione: <span class="m">T(^\circ\mathrm{C}) = T(\mathrm{K}) - 273</span>.</p>
+</div>
+
+<h3 id="lez-04-fotoelettrico">2. L&#39;effetto fotoelettrico, ed Einstein</h3>
+<p><strong>Il fatto sperimentale.</strong> Illumina la superficie di un metallo con luce
+monocromatica: se la luce ha energia sufficiente, il metallo emette elettroni, e si
+genera una corrente (detta corrente fotoelettrica).</p>
+<p>Il dettaglio che manda in crisi tutto: il potassio <strong>non</strong> emette elettroni se colpito
+da luce rossa (<span class="m">\lambda = 750\ \mathrm{nm}</span>), per quanto la si renda intensa. Ma
+emette elettroni se colpito da luce arancione (<span class="m">\lambda = 500\ \mathrm{nm}</span>), anche
+debolissima.</p>
+<p>Esiste cioè, per ogni metallo, una <strong>frequenza di soglia</strong> <span class="m">\nu_0</span>: al di sotto non
+succede niente, qualunque sia l&#39;intensità della radiazione.</p>
+<p><strong>Perché la fisica classica non ce la fa.</strong> Se la luce è un&#39;onda con energia continua,
+l&#39;elettrone dovrebbe accumulare energia poco a poco, come una barca che si riempie
+d&#39;acqua a ogni ondata. Basterebbe aspettare abbastanza, o alzare abbastanza
+l&#39;intensità, e l&#39;elettrone dovrebbe schizzare via <strong>a qualunque frequenza</strong>. Invece la
+frequenza fa da interruttore on/off, e l&#39;intensità non conta nulla.</p>
+<p><strong>La soluzione di Einstein (1905).</strong> La luce stessa è fatta di particelle, i <strong>fotoni</strong>,
+ciascuna delle quali porta un&#39;energia <span class="m">E = h\nu</span>. L&#39;interazione è <strong>uno a uno</strong>: un
+fotone colpisce un elettrone e gli consegna tutta la sua energia in un colpo solo, o
+non gliela consegna affatto.</p>
+<p>Da qui il bilancio energetico, che è puro principio di conservazione:</p>
+<div class="callout formula">
+
+<p><span class="m d">E_{\text{fotone}} = E_{\text{soglia}} + E_{\text{cinetica}}</span>
+<span class="m d">h\nu = h\nu_0 + \tfrac{1}{2}m_e v^2 \qquad\Longrightarrow\qquad E_{\text{cin}} = h(\nu - \nu_0)</span></p>
+</div>
+
+<p>La quantità <span class="m">h\nu_0</span> si chiama <strong>funzione lavoro</strong> o <strong>lavoro di estrazione</strong> del
+metallo: è il prezzo fisso da pagare per staccare un elettrone dalla superficie. Quello
+che avanza diventa energia cinetica dell&#39;elettrone espulso.</p>
+<p>L&#39;analogia che chiarisce tutto: pensa a un buttafuori che fa entrare solo chi paga
+<span class="m">4{,}10</span> euro esatti, e non accetta di mettere insieme più banconote. Ogni fotone è
+una persona con una banconota in mano, e il taglio della banconota è <span class="m">h\nu</span>.</p>
+<ul>
+<li>Aumentare l&#39;<strong>intensità</strong> = mandare <strong>più persone</strong>. Se hanno tutte banconote da 2
+euro, non entra comunque nessuno, per quanti siano. Ecco perché l&#39;intensità non ha
+effetto sotto soglia.</li>
+<li>Aumentare la <strong>frequenza</strong> = dare a ciascuno una <strong>banconota più grossa</strong>. Superata
+la soglia, entrano, e il resto glielo restituisci: quel resto è l&#39;energia cinetica.</li>
+</ul>
+<div class="callout attenzione">
+
+<p>Più alta è l&#39;intensità <span class="m">I</span>, maggiore è il <strong>numero</strong> di fotoni, e quindi il numero di
+elettroni estratti — cioè l&#39;intensità della corrente. Ma l&#39;energia del <strong>singolo</strong>
+fotone, e quindi l&#39;energia cinetica di ogni elettrone, non cambia finché non cambi la
+frequenza. Numero di elettroni e velocità degli elettroni sono comandati da due manopole
+diverse: intensità e frequenza. Non confonderle.</p>
+</div>
+
+<div class="callout attenzione">
+
+<p><strong>Una domanda del paniere è imprecisa, sappilo prima.</strong> Alla domanda «l&#39;energia cinetica
+degli elettroni raddoppia se...» la risposta data per corretta è «la frequenza della luce
+raddoppia». In senso stretto è falso: da <span class="m">E_{\text{cin}} = h\nu - h\nu_0</span>, raddoppiando
+<span class="m">\nu</span> ottieni <span class="m">2h\nu - h\nu_0</span>, che è più del doppio di <span class="m">h\nu - h\nu_0</span> (coincide solo
+se <span class="m">\nu_0 = 0</span>).</p>
+<p>È però l&#39;unica risposta <strong>accettabile</strong> delle quattro: le altre tre agiscono
+sull&#39;intensità o dimezzano la frequenza, e nessuna di quelle può far crescere
+<span class="m">E_{\text{cin}}</span>. Se la ritrovi all&#39;esame, rispondi «la frequenza raddoppia» — ma sappi
+perché, così se esce come domanda aperta non scrivi una sciocchezza.</p>
+</div>
+
+<p><strong>L&#39;elettronvolt.</strong> In questa parte del programma le energie sono quasi sempre in eV, e
+la conversione va fatta a mano:</p>
+<div class="callout formula">
+
+<p><span class="m d">1\ \mathrm{eV} = 1{,}60218 \times 10^{-19}\ \mathrm{J}</span></p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Effetto fotoelettrico completo, sullo zinco.</strong>
+Per strappare un elettrone da una superficie levigata di <span class="m">\chem{Zn}</span> serve un fotone
+con energia minima <span class="m">E_0 = 6{,}94 \times 10^{-19}\ \mathrm{J}</span>.
+(a) Basta un fotone con <span class="m">\lambda = 210\ \mathrm{nm}</span>? (b) Se sì, quale energia cinetica
+massima ha l&#39;elettrone espulso? (c) E quale velocità?</p>
+<p><strong>(a) Passo 1 — frequenza della radiazione incidente.</strong>
+<span class="m d">\nu = \frac{c}{\lambda} = \frac{3{,}00 \times 10^{8}}{210 \times 10^{-9}} = 1{,}4286 \times 10^{15}\ \mathrm{s^{-1}}</span></p>
+<p><strong>Passo 2 — frequenza di soglia del metallo.</strong> Da <span class="m">E_0 = h\nu_0</span>:
+<span class="m d">\nu_0 = \frac{E_0}{h} = \frac{6{,}94 \times 10^{-19}}{6{,}626 \times 10^{-34}} = 1{,}047 \times 10^{15}\ \mathrm{s^{-1}}</span></p>
+<p><strong>Passo 3 — confronta.</strong> <span class="m">\nu = 1{,}43 \times 10^{15} &gt; \nu_0 = 1{,}05 \times 10^{15}</span>.
+<strong>Sì</strong>, il fotone è sufficiente.</p>
+<p><strong>(b) Conservazione dell&#39;energia.</strong>
+<span class="m d">E_{\text{cin}} = h(\nu - \nu_0) = 6{,}626 \times 10^{-34} \times (1{,}4286 - 1{,}047)\times 10^{15}</span>
+<span class="m d">= 6{,}626 \times 10^{-34} \times 3{,}816 \times 10^{14} = 2{,}53 \times 10^{-19}\ \mathrm{J}</span></p>
+<p><strong>(c) Dalla cinetica alla velocità.</strong> Da <span class="m">E_{\text{cin}} = \tfrac{1}{2}m v^2</span> si ricava
+<span class="m">v = \sqrt{2E_{\text{cin}}/m}</span>, con <span class="m">m_e = 9{,}11 \times 10^{-31}\ \mathrm{kg}</span>:
+<span class="m d">v = \sqrt{\frac{2 \times 2{,}53 \times 10^{-19}}{9{,}11 \times 10^{-31}}} = \sqrt{5{,}554 \times 10^{11}} = 7{,}45 \times 10^{5}\ \mathrm{m/s}</span></p>
+<p>cioè circa <span class="m">745\ \mathrm{km/s}</span>.</p>
+<p><strong>Controllo di sensatezza.</strong> Duemilacinquecento volte meno della velocità della luce:
+veloce ma non relativistico, quindi la formula classica dell&#39;energia cinetica era
+lecita. Se ti fosse venuto <span class="m">v &gt; c</span>, avresti sbagliato un esponente.</p>
+</div>
+
+<div class="callout attenzione">
+
+<p>Sotto radice devi avere <span class="m">\mathrm{J/kg}</span>. Un joule è <span class="m">\mathrm{kg\,m^2 s^{-2}}</span>, quindi
+<span class="m">\mathrm{J/kg} = \mathrm{m^2 s^{-2}}</span> e la radice dà <span class="m">\mathrm{m/s}</span>: le unità tornano
+solo se l&#39;energia è in <strong>joule</strong>, mai in eV. Converti <strong>prima</strong> di entrare nella radice.</p>
+</div>
+
+<h3 id="lez-04-spettri">3. Gli spettri atomici</h3>
+<p><strong>Spettro continuo.</strong> La luce di una sorgente calda — il filamento incandescente di una
+lampadina — scomposta con un prisma dà una banda continua, tutti i colori senza
+interruzioni.</p>
+<p><strong>Spettro di emissione.</strong> La luce di un <strong>gas eccitato</strong> (per riscaldamento o scarica
+elettrica) fa tutt&#39;altro. Scomposta con un prisma e raccolta su lastra, dà un fondo
+nero con <strong>poche righe colorate</strong>, a lunghezze d&#39;onda ben precise e caratteristiche
+dell&#39;elemento. È un&#39;impronta digitale: dalle righe si risale a quale elemento c&#39;è.</p>
+<p><strong>Spettro di assorbimento.</strong> Fai passare luce bianca attraverso un campione dello
+stesso gas: passa tutto <strong>tranne</strong> alcune specifiche lunghezze d&#39;onda, che vengono
+assorbite. Ottieni righe nere su fondo continuo colorato. Per l&#39;idrogeno le righe
+stanno a <span class="m">\lambda = 3835,\ 3889,\ \ldots,\ 6563\ \mathrm{\mathring{A}}</span>.</p>
+<p><strong>Il punto decisivo.</strong> Le righe di assorbimento cadono <strong>esattamente</strong> alle stesse
+lunghezze d&#39;onda di quelle di emissione. Lo stesso elemento assorbe precisamente ciò
+che sa emettere, né più né meno.</p>
+<p>Il ragionamento che ne segue è la conclusione di tutta la lezione. Se l&#39;atomo emette e
+assorbe solo alcune energie <span class="m">h\nu</span> ben determinate, e non un continuo, allora
+l&#39;elettrone dentro l&#39;atomo può stare <strong>solo</strong> su certi livelli energetici discreti
+<span class="m">E_1, E_2, \ldots, E_n</span>, e la riga spettrale corrisponde al salto fra due di essi.</p>
+<div class="callout sintesi">
+
+<p><strong>L&#39;energia dell&#39;elettrone è quantizzata.</strong> L&#39;energia e le orbite degli elettroni non
+assumono un valore qualsiasi e non variano con continuità: <strong>variano in modo
+discontinuo</strong>, a salti.</p>
+</div>
+
+<p>Questa è la risposta alla crisi da cui siamo partiti. L&#39;elettrone non spiraleggia sul
+nucleo perché non può perdere energia in modo continuo: esiste un livello più basso,
+lo stato fondamentale, sotto il quale semplicemente non c&#39;è nessun gradino su cui
+cadere. È la scaletta di Bohr, e la costruirai nella Lezione 05.</p>
+<p>L&#39;analogia: una biglia su uno scivolo può fermarsi a qualsiasi altezza e scende
+gradualmente; una biglia su una scala può stare solo sui gradini, e sul gradino più
+basso si ferma perché sotto non c&#39;è più niente.</p>
+<p><strong>Perché tutto questo ci interessa in chimica.</strong> I colori emessi da un atomo eccitato
+dipendono da come sono disposti i suoi elettroni. Quindi studiando gli spettri si
+risale alla <strong>configurazione elettronica</strong>, e dalla configurazione elettronica
+discendono la tavola periodica, le proprietà chimico-fisiche degli elementi, quali
+composti si formano, che tipo di legami li tengono insieme, la geometria delle molecole
+e persino lo stato di aggregazione. Gli spettri sono la porta d&#39;ingresso a tutto il
+resto del corso.</p>
+<p>Applicazioni che vedi ogni giorno: i fuochi d&#39;artificio (atomi eccitati
+termicamente) e le insegne luminose (eccitati elettricamente). Lampada a
+<span class="m">\chem{H_2}</span> → rosso-violetta; <span class="m">\chem{Ne}</span> → arancione; vapori di <span class="m">\chem{Na}</span> →
+gialla; <span class="m">\chem{Hg}</span> → verde-blu; <span class="m">\chem{Rb}</span> → rossa.</p>
+<h2 id="lez-04-coulomb">La forza di Coulomb</h2>
+<p>Compare fra le domande di questa lezione, e serve nella prossima per ricavare il raggio
+delle orbite di Bohr. Due cariche <span class="m">Q_1</span> e <span class="m">Q_2</span> poste a distanza <span class="m">r</span> si attraggono o
+respingono con una forza di modulo:</p>
+<div class="callout formula">
+
+<p><span class="m d">f = \frac{1}{4\pi\varepsilon_0}\,\frac{Q_1 Q_2}{r^2}</span>
+con <span class="m">\varepsilon_0 = 8{,}85 \times 10^{-12}\ \mathrm{C^2 N^{-1} m^{-2}}</span>, costante
+dielettrica del vuoto.</p>
+</div>
+
+<p>Due cose sole da ricordare, e sono le due che il paniere prova a farti sbagliare:
+l&#39;esponente di <span class="m">r</span> è <strong>2</strong>, non 1 e non 3; e il fattore davanti è
+<span class="m">1/(4\pi\varepsilon_0)</span>, non <span class="m">4\pi\varepsilon_0</span>.</p>
+<p>L&#39;esponente 2 non è arbitrario: la forza si diluisce sulla superficie di una sfera di
+raggio <span class="m">r</span>, che vale <span class="m">4\pi r^2</span>. È la stessa ragione per cui la gravità va come
+<span class="m">1/r^2</span> — e infatti la struttura delle due leggi è identica.</p>
+<div class="callout sintesi">
+
+<ul>
+<li>Il modello planetario <strong>non può funzionare</strong>: un elettrone in orbita accelera, quindi
+irraggia, quindi collassa sul nucleo in <span class="m">\sim 10^{-11}\ \mathrm{s}</span>. Ma gli atomi
+sono stabili.</li>
+<li>Tre relazioni reggono tutti i conti di questa lezione: <span class="m">\lambda\nu = c</span>,
+<span class="m">k = 1/\lambda</span>, <span class="m">E = h\nu</span>. Combinandole: <span class="m">E = hc/\lambda = hck</span>.</li>
+<li><span class="m">\lambda</span> e <span class="m">\nu</span> sono inversamente proporzionali. Energia alta = frequenza alta =
+lunghezza d&#39;onda <strong>corta</strong>.</li>
+<li><strong>Corpo nero</strong> → l&#39;energia è quantizzata, <span class="m">E = nh\nu</span>. Legge di Wien:
+<span class="m">T\lambda_{\max} = 2{,}898\times10^{-3}\ \mathrm{m\cdot K}</span>, con <span class="m">T</span> in kelvin.</li>
+<li><strong>Effetto fotoelettrico</strong> → la luce è fatta di fotoni. <span class="m">E_{\text{cin}} = h(\nu-\nu_0)</span>.
+La frequenza decide <strong>se</strong> l&#39;elettrone esce, l&#39;intensità decide <strong>quanti</strong> ne escono.</li>
+<li><strong>Spettri atomici</strong> → l&#39;energia dell&#39;elettrone è quantizzata: varia in modo
+discontinuo, non con continuità.</li>
+<li>Coulomb: <span class="m">f = \dfrac{1}{4\pi\varepsilon_0}\dfrac{Q_1Q_2}{r^2}</span>, esponente 2.</li>
+</ul>
+</div>
+
+<div class="callout esame">
+
+<p><strong>Come cade all&#39;esame.</strong> Quindici domande chiuse nel paniere, e undici sono conti. Le
+tipologie, in ordine di frequenza:</p>
+<ol>
+<li><strong>Conversioni <span class="m">\lambda \leftrightarrow \nu \leftrightarrow k \leftrightarrow E</span></strong>
+(5 domande). Meccaniche, si sbagliano solo sulle unità e sugli esponenti.</li>
+<li><strong>Effetto fotoelettrico numerico</strong> (3 domande): dato il lavoro di estrazione in eV,
+trovare <span class="m">E_{\text{cin}}</span>, oppure <span class="m">\nu_0</span>, oppure la <span class="m">\lambda</span> massima utilizzabile.
+Schema identico ogni volta.</li>
+<li><strong>Legge di Wien</strong> (2 domande): <span class="m">\lambda_{\max} \leftrightarrow T</span>, con la trappola
+Celsius/kelvin.</li>
+<li><strong>Teoria pura</strong> (4 domande): crisi del modello planetario, quantizzazione secondo
+Bohr, effetto fotoelettrico qualitativo, formula di Coulomb.</li>
+</ol>
+<p><strong>Sequenza da seguire nei conti, sempre la stessa.</strong> Converti tutto in unità SI (nm →
+m, eV → J) → scegli la formula → separa mantisse ed esponenti → ricontrolla in quale
+unità sono le risposte proposte.</p>
+<p><strong>Per le due domande aperte</strong> («crisi del modello planetario, radiazioni
+elettromagnetiche, teoria dei quanti, spettri atomici» e «relazione fra lunghezza
+d&#39;onda e frequenza, legge di Wien, effetto fotoelettrico») punta a tre paragrafi. Il
+secondo punto vale solo se aggiungi elaborazione personale: il filo conduttore da
+esplicitare è che <strong>i tre esperimenti sono tre porte diverse sulla stessa scoperta</strong>,
+cioè che l&#39;energia è granulare — e che è quella granularità a salvare l&#39;atomo dal
+collasso previsto dalla fisica classica.</p>
+<p><strong>Allenati qui:</strong> Paniere Lez. 04, domande 1–15 ·
+Extra 5 · Extra 6 · Extra 7</p>
+</div>

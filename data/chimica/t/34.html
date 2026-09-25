@@ -1,0 +1,202 @@
+<h1 id="lez-34">Lezione 34 — Terzo principio della termodinamica ed entropia molare</h1>
+<h2 id="lez-34-perche">Perché questa lezione esiste</h2>
+<p>Fino ad ora hai sempre calcolato <strong>variazioni</strong> di entropia, <span class="m">\Delta S</span>, mai
+l&#39;entropia in sé. Manca uno zero della scala. Il terzo principio fornisce esattamente
+questo: un punto di riferimento assoluto da cui misurare <span class="m">S</span>, che permette di
+tabulare l&#39;entropia <strong>assoluta</strong> di ogni sostanza — un dato che userai moltissimo nel
+capitolo sull&#39;equilibrio chimico.</p>
+<h2 id="lez-34-nernst">L&#39;enunciato di Nernst</h2>
+<p>Ricorda la definizione di Boltzmann, <span class="m">S=k_B\ln W</span>. Contempla anche il caso limite
+<span class="m">W=1</span>: un solo microstato possibile, quindi ordine perfetto, quindi <span class="m">S=0</span>.</p>
+<div class="callout formula">
+
+<p><strong>Terzo principio (teorema di Nernst).</strong> Allo zero assoluto (<span class="m">T=0\ \mathrm K</span>),
+l&#39;entropia di un cristallo perfetto è nulla: <span class="m">S(0\,\mathrm K) = 0</span>.</p>
+</div>
+
+<p>Il senso fisico: immagina di raffreddare il neon (gas nobile a temperatura
+ambiente). Man mano che <span class="m">T\to 0</span>, gli atomi rallentano e si dispongono sempre più
+regolarmente in un reticolo cristallino. Al limite <span class="m">T\to 0\ \mathrm K</span>, ogni
+vibrazione intorno alle posizioni di equilibrio è preclusa: gli atomi sono impaccati
+in un unico arrangiamento possibile, <span class="m">W=1</span>, e quindi <span class="m">S=0</span>. La temperatura di
+<span class="m">0\ \mathrm K</span> non è raggiungibile in pratica, ma con tecniche opportune ci si può
+avvicinare moltissimo.</p>
+<div class="callout attenzione">
+
+<p>Il terzo principio vale per un <strong>cristallo perfetto</strong> di una sostanza pura. Un
+solido con disordine residuo a <span class="m">T=0</span> (ad esempio un vetro, o un cristallo con difetti
+o con più orientazioni molecolari possibili) ha <span class="m">S(0\,\mathrm K)&gt;0</span>: è un&#39;eccezione
+che i libri più avanzati trattano, ma che il corso non richiede di calcolare.</p>
+</div>
+
+<h2 id="lez-34-entropia-assoluta">Costruire l&#39;entropia assoluta di una sostanza</h2>
+<p>Il fatto che <span class="m">S=0</span> a <span class="m">0\ \mathrm K</span> significa che puoi costruire <span class="m">S</span> a qualunque
+temperatura sommando, un passo alla volta, i contributi di riscaldamento e di
+passaggio di stato dal cristallo perfetto fino alle condizioni desiderate — esattamente
+lo stesso tipo di calcolo che hai già fatto nella
+<a href="#/teoria/chimica/32/lez-32-passaggi-stato">Lezione 32</a>, solo che ora il punto di partenza è
+<span class="m">T=0\ \mathrm K</span> invece di uno stato arbitrario.</p>
+<p>Per l&#39;acqua, ad esempio, il percorso da solido a <span class="m">0\ \mathrm K</span> fino a vapore a
+150 °C attraversa sei tappe:</p>
+<p><span class="m d">S = \underbrace{\int_0^{T_{fus}} \frac{m\,C_{S}}{T}\,dT}_{\text{riscaldamento
+solido}} + \underbrace{\frac{m\,\lambda_{FUS}}{T_{fus}}}_{\text{fusione}} +
+\underbrace{m\,C_{L}\ln\frac{T_{vap}}{T_{fus}}}_{\text{riscaldamento liquido}} +
+\underbrace{\frac{m\,\lambda_{VAP}}{T_{vap}}}_{\text{vaporizzazione}} +
+\underbrace{m\,C_{G}\ln\frac{T_{fin}}{T_{vap}}}_{\text{riscaldamento vapore}}</span></p>
+<p>(se nel percorso ci sono anche transizioni tra diverse strutture cristalline dello
+stesso solido, si aggiunge un ulteriore termine di passaggio di stato per ciascuna).
+Il primo termine, l&#39;integrale da <span class="m">0\ \mathrm K</span>, parte da <span class="m">S=0</span> per il terzo
+principio: è questo che rende il risultato <strong>assoluto</strong> e non solo una differenza
+tra due stati arbitrari.</p>
+<p>Riferita a una mole, questa grandezza si chiama <strong>entropia molare</strong>, <span class="m">S_m</span> (o
+<span class="m">S^\circ</span> in condizioni standard), ed è tabulata per moltissime sostanze — la trovi
+nelle stesse tabelle termodinamiche di <span class="m">\Delta H_f^\circ</span> e <span class="m">\Delta G_f^\circ</span> che
+hai già usato per la legge di Hess.</p>
+<h2 id="lez-34-ds-reazione">Calcolare <span class="m">\Delta S^\circ</span> di una reazione dalle entropie molari</h2>
+<p>Poiché <span class="m">S</span> è ora una grandezza assoluta (non solo una variazione), il
+<span class="m">\Delta S^\circ</span> di una reazione si calcola esattamente come il <span class="m">\Delta H^\circ</span>
+nella legge di Hess: prodotti meno reagenti, pesati per i coefficienti
+stechiometrici.</p>
+<div class="callout formula">
+
+<p><span class="m d">\Delta S^\circ_{reaz} = \sum n_p\,S^\circ_{m,\,prodotti} - \sum n_r\,S^\circ_{m,\,reagenti}</span></p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong><span class="m">3\,\mathrm{NO_2(g)} + \mathrm{H_2O(l)} \rightarrow 2\,\mathrm{HNO_3(l)} +
+\mathrm{NO(g)}</span></strong>, con <span class="m">S^\circ_m</span> (J mol⁻¹K⁻¹): <span class="m">\mathrm{NO}=210.76</span>,
+<span class="m">\mathrm{HNO_3}=155.60</span>, <span class="m">\mathrm{NO_2}=240.06</span>, <span class="m">\mathrm{H_2O}=69.91</span>.</p>
+<p><span class="m d">\Delta S^\circ = \big[1(210.76) + 2(155.60)\big] - \big[3(240.06) + 1(69.91)\big]
+= -269.75\ \mathrm{J/K}</span></p>
+<p>Negativo: la reazione riduce il numero di moli gassose (da 3 gas a 1 gas + 2
+liquidi), quindi ordina il sistema — coerente con il segno.</p>
+</div>
+
+<h2 id="lez-34-via-G-H">E se non conosci le entropie molari?</h2>
+<p>A volte le tabelle danno solo <span class="m">\Delta H^\circ</span> e <span class="m">\Delta G^\circ</span>, non <span class="m">S^\circ_m</span>. Si
+può comunque risalire a <span class="m">\Delta S^\circ</span> invertendo la relazione già nota
+(<span class="m">\Delta G^\circ=\Delta H^\circ-T\Delta S^\circ</span>):</p>
+<div class="callout formula">
+
+<p><span class="m d">\Delta S^\circ = \frac{\Delta H^\circ - \Delta G^\circ}{T}</span></p>
+</div>
+
+<div class="callout esempio">
+
+<p>Per la stessa reazione di sopra, usando <span class="m">\Delta H^\circ</span> e <span class="m">\Delta G^\circ</span> tabulati:
+<span class="m">\Delta H^\circ \approx -71.72\ \mathrm{kJ}</span>, <span class="m">\Delta G^\circ \approx -8.33\ \mathrm{kJ}</span>
+a 298 K.
+<span class="m d">\Delta S^\circ = \frac{-71.72 - (-8.33)}{298}\ \mathrm{kJ/K} \approx -0.2686\
+\mathrm{kJ/K} = -268.6\ \mathrm{J/K}</span>
+Coincide (a meno di arrotondamenti) con il valore trovato via entropie molari sopra —
+i due metodi sono equivalenti, usa quello per cui hai i dati.</p>
+</div>
+
+<div class="callout attenzione">
+
+<p>La <span class="m">T</span> in questa formula va <strong>sempre in kelvin</strong>, come in ogni formula con un
+logaritmo o un rapporto di energia su temperatura in termodinamica.</p>
+</div>
+
+<h2 id="lez-34-molare-vs-formazione">Entropia molare <span class="m">S^\circ_m</span> contro <span class="m">\Delta S^\circ</span> di formazione</h2>
+<p>Non confondere due grandezze che si assomigliano ma non sono la stessa cosa:</p>
+<ul>
+<li><span class="m">S^\circ_m</span> di una sostanza: <strong>l&#39;entropia assoluta</strong> di una mole di quella
+sostanza pura, nel suo stato standard — il valore che trovi direttamente in
+tabella (costruito come sopra, a partire dal cristallo a <span class="m">0\ \mathrm K</span>).</li>
+<li><span class="m">\Delta S^\circ_f</span> di una sostanza: la variazione di entropia della <strong>reazione di
+formazione</strong> di quella sostanza dai suoi elementi — si calcola con la stessa
+formula prodotti-meno-reagenti vista sopra, applicata alla reazione di formazione.</li>
+</ul>
+<div class="callout esempio">
+
+<p><strong>Formazione dell&#39;ammoniaca</strong>, <span class="m">\mathrm{N_2(g)} + 3\,\mathrm{H_2(g)} \rightarrow
+2\,\mathrm{NH_3(g)}</span>: <span class="m">S^\circ_m(\mathrm{NH_3})=192.45</span>, <span class="m">S^\circ_m(\mathrm{N_2})=191.61</span>,
+<span class="m">S^\circ_m(\mathrm{H_2})=130.68\ \mathrm{J\,mol^{-1}K^{-1}}</span>.</p>
+<p><span class="m d">\Delta S^\circ_{f,\,NH_3} = \frac{1}{2}\Big[2(192.45) - 191.61 - 3(130.68)\Big]
+\approx -99.38\ \mathrm{J\,mol^{-1}K^{-1}}</span></p>
+<p>(diviso per 2 perché la reazione di formazione è per 1 mole di prodotto, non 2). Nota
+che questo valore, <span class="m">-99.38\ \mathrm{J\,mol^{-1}K^{-1}}</span>, <strong>è</strong> il <span class="m">\Delta S^\circ</span>
+della <a href="#/teoria/chimica/33/lez-33-esempio-ammoniaca">Lezione 33</a> — coerenza tra le due lezioni. È
+diversissimo, però, da <span class="m">S^\circ_m(\mathrm{NH_3})=192.45\ \mathrm{J\,mol^{-1}K^{-1}}</span>,
+l&#39;entropia assoluta della sola ammoniaca: non scambiare l&#39;uno per l&#39;altro.</p>
+</div>
+
+<h2 id="lez-34-applicazioni">Applicazioni pratiche dell&#39;entropia (sessione S1)</h2>
+<p>Le slide della sessione S1 (immagini) applicano gli strumenti di questa e della
+<a href="#/teoria/chimica/32/lez-32">Lezione 32</a> a quattro situazioni concrete.</p>
+<div class="callout esempio">
+
+<p><strong>Corpo umano in una stanza.</strong> Il corpo genera calore a <span class="m">\dot Q=100\ \mathrm W</span> a
+<span class="m">T_{corpo}=310\ \mathrm K</span>; la stanza è a <span class="m">T_{room}=293\ \mathrm K</span>. La velocità di
+variazione dell&#39;entropia dell&#39;universo è la somma dei due contributi (corpo che cede
+calore, quindi negativo per lui; stanza che lo riceve, positivo per lei):
+<span class="m d">\frac{\Delta S_{univ}}{\Delta t} = \frac{-\dot Q}{T_{body}} + \frac{\dot Q}
+{T_{room}} = \frac{-100}{310} + \frac{100}{293} \approx 1.872\times10^{-4}\
+\mathrm{J\,s^{-1}K^{-1}}</span>
+In un giorno: <span class="m">\Delta S_{univ} = 1.872\times10^{-4}\times 86400\ \mathrm s \approx
+16.17\ \mathrm{J/K}</span>. Confrontando a 20 °C e 30 °C (stessa <span class="m">\dot Q</span> scambiata), il
+contributo della stanza <span class="m">\dot Q/T_{room}</span> è leggermente più grande a 20 °C: <strong>a
+parità di calore scambiato, la variazione di entropia &quot;pesa di più&quot; a bassa
+temperatura</strong> — un&#39;osservazione che tornerà utile per capire perché il rendimento
+delle macchine termiche dipende dalla differenza di temperatura.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Blocco di alluminio (500 g, 450 °C) immerso in 1 L d&#39;acqua (25 °C), recipiente
+isolato.</strong> Applica prima il primo principio (<span class="m">\Delta H_{tot}=0</span>, sistema adiabatico
+a <span class="m">P</span> costante) per trovare la temperatura finale di equilibrio <span class="m">T_F</span>, poi somma i
+due contributi di entropia (acqua che si scalda, alluminio che si raffredda) con la
+formula <span class="m">\Delta S = m\,C_P\ln(T_F/T_0)</span> — lo stesso schema visto nell&#39;esempio
+ghiaccio+acqua della <a href="#/teoria/chimica/32/lez-32-ghiaccio-acqua">Lezione 32</a>. Risultato: <span class="m">T_F\approx
+66.25\ °\mathrm C</span>, <span class="m">\Delta S_{tot} \approx +204.25\ \mathrm{J/K} &gt; 0</span> — spontaneo, e
+l&#39;ambiente esterno non contribuisce perché il recipiente è adiabatico.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Entropia molare di CO e CO₂ a 200 °C, partendo dal valore a 25 °C.</strong> Se conosci
+<span class="m">S^\circ_m</span> a una temperatura di riferimento (298 K) e la capacità termica molare
+<span class="m">C_P</span> (assunta costante), puoi trovare <span class="m">S^\circ_m</span> a un&#39;altra temperatura con la
+stessa formula di riscaldamento della <a href="#/teoria/chimica/32/lez-32-solidi-liquidi">Lezione 32</a>, applicata
+stavolta al singolo composto invece che a una trasformazione:
+<span class="m d">S^\circ_m(T_2) \approx S^\circ_m(T_1) + C_P\ln\frac{T_2}{T_1}</span>
+Per il CO: <span class="m">S^\circ_m(200°C) = 197.67 + 29.14\ln(473.15/298.15) \approx 211.13\
+\mathrm{J\,mol^{-1}K^{-1}}</span>. Con lo stesso metodo per CO₂ e O₂, si può poi calcolare
+il <span class="m">\Delta S^\circ</span> della reazione <span class="m">\mathrm{CO}+\tfrac12\mathrm{O_2}\rightarrow
+\mathrm{CO_2}</span> a 200 °C invece che a 25 °C, sommando prodotti meno reagenti come al
+solito (<span class="m">\Delta S^\circ(200°C) \approx -89.6\ \mathrm{J/K}</span>, negativo perché la
+reazione riduce il numero di moli gassose).</p>
+</div>
+
+<div class="callout sintesi">
+
+<ul>
+<li>Il terzo principio fissa lo zero della scala di entropia: <span class="m">S(0\,\mathrm K)=0</span> per
+un cristallo perfetto.</li>
+<li>Questo permette di costruire l&#39;<strong>entropia molare assoluta</strong> <span class="m">S^\circ_m</span> di ogni
+sostanza, sommando i contributi di riscaldamento e passaggio di stato da
+<span class="m">0\ \mathrm K</span> fino alla temperatura desiderata.</li>
+<li><span class="m">\Delta S^\circ_{reaz} = \sum n_p S^\circ_{m,p} - \sum n_r S^\circ_{m,r}</span>, la
+stessa struttura della legge di Hess per <span class="m">\Delta H^\circ</span>.</li>
+<li>In alternativa, <span class="m">\Delta S^\circ = (\Delta H^\circ-\Delta G^\circ)/T</span> se hai solo
+<span class="m">\Delta H^\circ</span> e <span class="m">\Delta G^\circ</span>.</li>
+<li>Non confondere <span class="m">S^\circ_m</span> (entropia assoluta di una sostanza) con <span class="m">\Delta S^\circ_f</span>
+(variazione di entropia della sua reazione di formazione): sono numeri diversi.</li>
+</ul>
+</div>
+
+<div class="callout esame">
+
+<p><strong>Come cade all&#39;esame.</strong> Il paniere &quot;034&quot; chiede sia enunciati (terzo principio,
+significato di cristallo perfetto) sia calcoli di <span class="m">\Delta S^\circ</span> di reazione da
+tabelle di entropie molari — struttura identica alla legge di Hess che già conosci,
+solo con <span class="m">S</span> al posto di <span class="m">H</span>. Occhio alla trappola concettuale: una domanda che
+chiede &quot;l&#39;entropia molare di un elemento puro è zero?&quot; — la risposta è <strong>no</strong>: zero
+è solo allo zero assoluto. A temperatura ambiente anche un elemento puro (a
+differenza di <span class="m">\Delta H_f^\circ</span>, che per convenzione è zero per gli elementi) ha
+un&#39;entropia molare positiva e non nulla.</p>
+<p><strong>Allenati qui:</strong> Paniere Lez. 34 domande 1–25 · Extra 72 · Extra 73</p>
+</div>

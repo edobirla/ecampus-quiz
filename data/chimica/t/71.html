@@ -1,0 +1,111 @@
+<h1 id="lez-71">Lezione 71 — Esercizi di riepilogo: combustione di miscele e durezza delle acque</h1>
+<h2 id="lez-71-perche">Perché questa lezione esiste</h2>
+<p>Questa lezione non introduce teoria nuova: raccoglie esercizi di riepilogo <strong>svolti dal docente</strong> su due
+temi distanti del programma — combustione di miscele di combustibili liquidi e calcolo delle durezze
+dell&#39;acqua — utili proprio perché mostrano il metodo applicato a dati numerici concreti, con la stessa
+attenzione al dettaglio che serve in sede d&#39;esame. Le soluzioni riportate qui sono quelle del corso, non
+scritte da Claude.</p>
+<h2 id="lez-71-miscela-combustibile">Combustione di una miscela di isomeri (isoottano/n-eptano)</h2>
+<div class="callout esempio">
+
+<p><strong>Testo.</strong> Una miscela combustibile liquida è formata da isoottano (<span class="m">\chem{C_8H_{18}}</span>) e n-eptano
+(<span class="m">\chem{C_7H_{16}}</span>) al 40% in peso di n-eptano. Calcolare la composizione dei fumi di combustione
+nell&#39;ipotesi di un eccesso d&#39;aria del 20%.</p>
+<p><strong>Reazioni.</strong>
+<span class="m d">\chem{C_8H_{18}} + \tfrac{25}{2}\chem{O_2} \rightarrow 8\,\chem{CO_2} + 9\,\chem{H_2O}</span>
+<span class="m d">\chem{C_7H_{16}} + 11\,\chem{O_2} \rightarrow 7\,\chem{CO_2} + 8\,\chem{H_2O}</span></p>
+<p><strong>Passo 1 — moli per kg di miscela.</strong> 400 g di n-eptano (<span class="m">M=100.21\ \mathrm{g/mol}</span>):
+<span class="m">400/100.21=3.992\ \mathrm{mol}</span>; 600 g di isoottano (<span class="m">M=114.26\ \mathrm{g/mol}</span>):
+<span class="m">600/114.26=5.251\ \mathrm{mol}</span>.</p>
+<p><strong>Passo 2 — ossigeno richiesto.</strong> Isoottano: <span class="m">12.5\times5.251=65.64\ \mathrm{mol}\ \mathrm{O_2}</span>.
+n-Eptano: <span class="m">11\times3.992=43.91\ \mathrm{mol}\ \mathrm{O_2}</span>. Totale: <span class="m">109.55\ \mathrm{mol}</span>, cioè
+<span class="m">V_{O_2,teor}=109.55\times22.4=2454\ \mathrm L=2.454\ \mathrm{Nm^3}</span>.</p>
+<p><strong>Passo 3 — fumi.</strong> <span class="m">V_{CO_2}=0.941+0.626=1.567\ \mathrm{Nm^3}</span>;
+<span class="m">V_{H_2O}=1.059+0.715=1.774\ \mathrm{Nm^3}</span>; ossigeno in eccesso
+<span class="m">=2.454\times0.2=0.491\ \mathrm{Nm^3}</span>; azoto <span class="m">=11.08\ \mathrm{Nm^3}</span> (aria totale
+<span class="m">2.454\times1.2\times4.8</span>, di cui il 79% è <span class="m">\mathrm{N_2}</span>).</p>
+</div>
+
+<div class="callout attenzione">
+
+<p>Nota il pattern: ogni volta che si mescolano <strong>due combustibili diversi</strong>, i volumi (o le moli) di
+<span class="m">\mathrm O_2</span> richiesto, <span class="m">\mathrm{CO_2}</span> prodotta e <span class="m">\mathrm{H_2O}</span> prodotta <strong>si sommano</strong> dai due
+contributi separati — non si può trattare la miscela come un unico &quot;combustibile medio&quot; senza prima
+scomporla nei suoi componenti stechiometrici.</p>
+</div>
+
+<h2 id="lez-71-durezza-acque">Durezza dell&#39;acqua: due esercizi risolti</h2>
+<p>Richiamo delle formule di <a href="#/teoria/chimica/49/lez-49">Lezione 49</a> che legano quantità di calce e soda (in <span class="m">\mathrm{g/m^3}</span>)
+alle durezze (in gradi francesi, °f) e alla CO₂ disciolta (in ppm):</p>
+<div class="callout formula">
+
+<p><span class="m d">m_{\chem{Ca(OH)_2}} = (D_{Temp}+D_{Mg})\times7.4 + p_{CO_2}\times1.68</span>
+<span class="m d">m_{\chem{Na_2CO_3}} = (D_{Ca}^{Perm}+D_{Mg}^{Perm})\times10.6 = D_{Perm}\times10.6</span></p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Testo 1.</strong> Un&#39;acqua è completamente dolcificabile con 265 g/m³ di soda e 292.6 g/m³ di calce. La
+stessa acqua, dopo ebollizione, si dolcifica con 265 g/m³ di soda e 37 g/m³ di calce. Sapendo che
+<span class="m">D_{Mg}^{Temp}=D_{Mg}^{Perm}</span> e che la <span class="m">\mathrm{CO_2}</span> disciolta è 20 ppm, calcolare tutte le durezze.</p>
+<p><strong>Dopo ebollizione</strong> (la durezza temporanea e la CO₂ scompaiono): dalla formula della calce,
+<span class="m">D_{Mg}^{Perm}=37/7.4=5\ ^\circ\mathrm f</span>. Dalla formula della soda,
+<span class="m">D_{Ca}^{Perm}=265/10.6-5=20\ ^\circ\mathrm f</span>, quindi <span class="m">D_{Perm}=20+5=25\ ^\circ\mathrm f</span>.</p>
+<p><strong>Acqua non trattata</strong>, sapendo <span class="m">D_{Mg}^{Temp}=D_{Mg}^{Perm}=5\ ^\circ\mathrm f</span> (quindi
+<span class="m">3D_{Mg}^{Perm}</span> compare nella formula della calce, contando sia <span class="m">D_{Ca}^{Temp}</span> sia i due contributi
+magnesiaci): si ricava <span class="m">D_{Ca}^{Temp}=20\ ^\circ\mathrm f</span>.</p>
+<p><strong>Risultato:</strong> <span class="m">D_{Ca}=40\ ^\circ\mathrm f</span>, <span class="m">D_{Mg}=10\ ^\circ\mathrm f</span>, <span class="m">D_{Temp}=25\ ^\circ\mathrm f</span>,
+<span class="m">D_{Perm}=25\ ^\circ\mathrm f</span>, <span class="m">D_{TOT}=50\ ^\circ\mathrm f</span>.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Testo 2.</strong> Un&#39;acqua ha <span class="m">[\chem{Ca^{2+}}]=4\times10^{-3}\ \mathrm M</span>, <span class="m">[\chem{Mg^{2+}}]=2.5\times10^{-3}\
+\mathrm M</span>, <span class="m">[\chem{HCO_3^-}]=11\times10^{-3}\ \mathrm M</span>, <span class="m">[\chem{CO_2}]=10\ \mathrm{ppm}</span>. Calcolare
+tutte le durezze e le quantità di calce e soda per dolcificare <span class="m">1\ \mathrm{m^3}</span>.</p>
+<p><strong>Durezza calcica e magnesiaca</strong> (massa molare <span class="m">\mathrm{CaCO_3}=100.09\ \mathrm{g/mol}</span>, il riferimento
+convenzionale per esprimere le durezze):
+<span class="m d">D_{Ca} = (4\times10^{-3}\ \mathrm{mol/L})(100.09\ \mathrm{g/mol}) = 0.4\ \mathrm{g/L} = 40\ ^\circ\mathrm f</span>
+<span class="m d">D_{Mg} = (2.5\times10^{-3})(100.09) = 0.25\ \mathrm{g/L} = 25\ ^\circ\mathrm f</span>
+<span class="m d">D_{TOT} = 40+25 = 65\ ^\circ\mathrm f</span></p>
+<p><strong>Durezza temporanea</strong>, dal bicarbonato (2 mol <span class="m">\mathrm{HCO_3^-}</span> equivalgono a 1 mol
+<span class="m">\mathrm{CO_3^{2-}}</span> tramite <span class="m">2\,\mathrm{HCO_3^-}\rightleftharpoons\mathrm{CO_3^{2-}}+\mathrm{H_2O}+\mathrm{CO_2}</span>):
+<span class="m d">D_{Temp} = \tfrac12(11\times10^{-3})(100.09) = 0.55\ \mathrm{g/L} = 55\ ^\circ\mathrm f</span>
+<span class="m d">D_{Perm} = D_{TOT}-D_{Temp} = 10\ ^\circ\mathrm f</span></p>
+<p><strong>Calce e soda</strong>, applicando le formule con <span class="m">D_{Mg}=25\ ^\circ\mathrm f</span> (tutto magnesio è permanente,
+non essendoci indicazione contraria) e <span class="m">p_{CO_2}=10\ \mathrm{ppm}</span>:
+<span class="m d">m_{Ca(OH)_2} = (55+25)\times7.4 + 10\times1.68 = 608.8\ \mathrm{g/m^3}</span>
+<span class="m d">m_{Na_2CO_3} = 10\times10.6 = 106\ \mathrm{g/m^3}</span></p>
+</div>
+
+<div class="callout attenzione">
+
+<p>Nell&#39;esercizio 2 la durezza temporanea <strong>coincide</strong> con quella dovuta al bicarbonato: quando il testo
+non distingue esplicitamente durezza calcica e magnesiaca temporanea/permanente, verifica sempre se
+tutta la <span class="m">D_{Mg}</span> o tutta la <span class="m">D_{Ca}</span> va considerata permanente o temporanea in base a quali sali sono
+effettivamente presenti (bicarbonati = temporanea, altri sali = permanente).</p>
+</div>
+
+<div class="callout sintesi">
+
+<ul>
+<li>Con miscele di combustibili, i contributi di <span class="m">\mathrm{O_2}</span>/fumi dei singoli componenti si sommano
+dopo aver calcolato separatamente le moli di ciascuno per unità di massa/volume di miscela.</li>
+<li>Le formule di <a href="#/teoria/chimica/49/lez-49">Lezione 49</a> legano g/m³ di calce e soda alle durezze in °f; risolverle in
+ordine (prima l&#39;informazione più diretta, poi le altre per sottrazione) evita di impostare sistemi
+inutilmente complicati.</li>
+<li><span class="m">1\ ^\circ\mathrm f</span> corrisponde a <span class="m">10\ \mathrm{mg\ CaCO_3/L}</span>: la conversione da concentrazione
+molare a gradi francesi passa sempre per la massa molare di <span class="m">\mathrm{CaCO_3}</span> (100.09 g/mol).</li>
+</ul>
+</div>
+
+<div class="callout esame">
+
+<p><strong>Come cade all&#39;esame.</strong> Gli esercizi di riepilogo come questi combinano stechiometria di combustione o
+chimica delle acque con un&#39;attenzione particolare alla lettura del testo (percentuali in peso vs
+volume, quale durezza è temporanea vs permanente). Il metodo vincente è sempre lo stesso: isolare prima
+l&#39;informazione ricavabile senza incognite, poi procedere per sottrazione verso le grandezze richieste.</p>
+<p><strong>Allenati qui:</strong> Extra 151 · Extra 152 ·
+Extra 250 · Extra 251 · Extra 252 ·
+Extra 253</p>
+</div>

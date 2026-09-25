@@ -1,0 +1,165 @@
+<h1 id="lez-60">Lezione 60 — Acciai e ghise, parte 3: proprietà meccaniche e prova di trazione</h1>
+<h2 id="lez-60-perche">Perché questa lezione esiste</h2>
+<p>Sapere che un acciaio ha una certa microstruttura (perlite, ferrite
+proeutettoidica...) è utile solo se si sa tradurla in numeri progettabili:
+resistenza, rigidezza, duttilità. La prova di trazione è il test standard con
+cui si misurano queste grandezze, ed è il vocabolario di base — sforzo,
+deformazione, modulo di Young, snervamento — che un ingegnere civile userà per
+tutta la carriera.</p>
+<h2 id="lez-60-sforzo-deformazione">Sforzo e deformazione nominali</h2>
+<p>Una barra cilindrica di lunghezza iniziale <span class="m">l_0</span> e sezione iniziale <span class="m">A_0</span> è
+sottoposta a una forza di trazione <span class="m">F</span> lungo l&#39;asse. Si definiscono:</p>
+<div class="callout formula">
+
+<p><span class="m d">\sigma = \frac{F}{A_0} \qquad \text{sforzo nominale (Pa)}</span>
+<span class="m d">\varepsilon = \frac{l-l_0}{l_0} = \frac{\Delta l}{l_0} \qquad \text{deformazione nominale (adimensionale, o \%)}</span></p>
+</div>
+
+<p><strong>&quot;Nominale&quot;</strong> significa che entrambe le grandezze usano le dimensioni
+<strong>iniziali</strong> del provino (<span class="m">A_0</span>, <span class="m">l_0</span>), non quelle istantanee — una
+semplificazione che vale finché le deformazioni restano piccole, ma che a
+grandi deformazioni (vicino alla rottura) inizia a discostarsi sensibilmente dai
+valori &quot;veri&quot; (calcolati con la sezione istantanea).</p>
+<h2 id="lez-60-poisson">Deformazione trasversale e modulo di Poisson</h2>
+<p>Allungandosi lungo l&#39;asse (deformazione assiale <span class="m">\varepsilon_z=\Delta l/l_0&gt;0</span>),
+il provino si <strong>restringe</strong> trasversalmente (deformazione radiale
+<span class="m">\varepsilon_r&lt;0</span>). Il rapporto tra le due definisce il <strong>modulo di Poisson</strong>:</p>
+<div class="callout formula">
+
+<p><span class="m d">\nu = -\frac{\varepsilon_r}{\varepsilon_z} \qquad \varepsilon_r=\frac{A-A_0}{A_0}</span></p>
+</div>
+
+<p>Per i metalli, <span class="m">\nu</span> è tipicamente tra 0.25 e 0.4 (valore medio <span class="m">\approx0.3</span>). Un
+concetto equivalente, usato più spesso in ambito industriale, è il
+<strong>coefficiente di strizione</strong>:</p>
+<p><span class="m d">Z = 100\,\frac{A_0-A}{A_0}</span></p>
+<div class="callout attenzione">
+
+<p><strong>Legare <span class="m">\varepsilon</span> e <span class="m">Z</span>: la conservazione della massa, non un&#39;ipotesi
+aggiuntiva.</strong> Assumendo che la densità non cambi apprezzabilmente durante la
+prova (<span class="m">\rho_0\approx\rho</span>), la conservazione della massa <span class="m">A_0 l_0 = A\,l</span> dà
+direttamente:
+<span class="m d">\varepsilon = \frac{l-l_0}{l_0} = \frac{l}{l_0}-1 = \frac{A_0}{A}-1
+= \frac{Z}{100-Z}</span>
+Non è un&#39;approssimazione empirica: è una conseguenza diretta della conservazione
+della massa applicata a un volume che si allunga e si restringe in modo
+coerente — la stessa idea, applicata alla geometria di un provino, del bilancio
+di materia usato per derivare la regola della leva (<a href="#/teoria/chimica/55/lez-55-regola-leva">Lezione 55</a>).</p>
+</div>
+
+<h2 id="lez-60-taglio">Sforzo di taglio</h2>
+<p>Se invece due forze uguali e opposte agiscono parallelamente a due facce
+opposte di un cubetto di materiale (una coppia con braccio <span class="m">h</span> piccolo ma non
+nullo), il materiale è soggetto a uno <strong>sforzo di taglio</strong>:</p>
+<p><span class="m d">\tau = \frac{F}{A}</span></p>
+<p>La deformazione di taglio <span class="m">\gamma</span> è definita come lo spostamento relativo <span class="m">a</span>
+delle due facce diviso <span class="m">h</span> (equivalente a <span class="m">\tan\theta</span>, con <span class="m">\theta</span> l&#39;angolo di
+cui ruotano le facce originariamente ortogonali alla forza). In campo elastico,
+<span class="m">\tau</span> e <span class="m">\gamma</span> sono proporzionali:</p>
+<p><span class="m d">\tau = G\,\gamma</span></p>
+<p>con <span class="m">G</span> il <strong>modulo di elasticità tangenziale</strong>, l&#39;analogo del modulo di Young
+per il taglio invece che per la trazione.</p>
+<h2 id="lez-60-diagramma-sd">Il diagramma sforzo-deformazione</h2>
+<p>Riportando <span class="m">\sigma</span> in funzione di <span class="m">\varepsilon</span> durante una prova di trazione a
+carico crescente, si osservano due regimi:</p>
+<ul>
+<li><strong>Campo elastico</strong>: risposta <strong>lineare</strong>, <span class="m">\sigma=E\varepsilon</span> — la <strong>legge
+di Hooke</strong>. Il coefficiente <span class="m">E</span> è il <strong>modulo elastico</strong> (o <strong>modulo di
+Young</strong>), e si legge dalla pendenza del tratto lineare iniziale del
+diagramma.</li>
+<li><strong>Campo plastico</strong>: oltre un certo sforzo, la risposta non è più lineare: la
+deformazione cresce <strong>più che proporzionalmente</strong> allo sforzo, e parte della
+deformazione diventa <strong>permanente</strong> (non si recupera togliendo il carico).</li>
+</ul>
+<div class="callout attenzione">
+
+<p><strong>Il carico di snervamento è una convenzione, non un punto fisico netto.</strong> Poiché
+di solito non esiste una discontinuità netta tra campo elastico e plastico, si
+definisce convenzionalmente il <strong>carico di snervamento</strong> come lo sforzo che
+produce una deformazione plastica <strong>permanente residua</strong> dello 0.2%
+(<span class="m">\varepsilon=0.002</span>). Si trova graficamente tracciando una retta parallela al
+tratto elastico, che parte dal punto <span class="m">(0.002, 0)</span> sull&#39;asse delle deformazioni:
+l&#39;ordinata del punto in cui questa retta interseca la curva sforzo-deformazione
+è il carico di snervamento. Confondere questo valore con il vero limite di
+proporzionalità (dove la curva inizia davvero a incurvarsi) è un errore comune —
+il carico di snervamento &quot;allo 0.2%&quot; è <strong>sempre leggermente superiore</strong> al vero
+limite elastico.</p>
+</div>
+
+<p>Il punto di <strong>massimo</strong> della curva è il <strong>carico di rottura</strong>: da lì in poi il
+provino tende a rompersi, con una marcata <strong>strizione</strong> (restringimento
+localizzato) a metà del tratto utile.</p>
+<div class="callout esempio">
+
+<p><strong>Modulo di Young da un punto del diagramma sforzo-deformazione (lega di
+alluminio 7075).</strong> Nel tratto elastico si legge: <span class="m">\sigma=60\times10^3\ \mathrm{psi}</span>,
+<span class="m">\varepsilon=0.006</span>. Convertendo <span class="m">1\ \mathrm{psi}=6894.757\ \mathrm{Pa}</span>:
+<span class="m d">\sigma = 60\times10^3\times6894.757\ \mathrm{Pa} = 413\,685\ \mathrm{kPa}</span>
+<span class="m d">E = \frac{\sigma}{\varepsilon} = \frac{413\,685\ \mathrm{kPa}}{0.006}
+\approx 68\,947\,570\ \mathrm{kPa} \approx 69\ \mathrm{GPa}</span></p>
+<p>Oltre <span class="m">70\times10^3\ \mathrm{psi}</span> la curva perde linearità: il carico di
+snervamento (intersezione con la retta parallela traslata di 0.2%) si legge a
+<span class="m">\approx79\times10^3\ \mathrm{psi}</span> (<span class="m">\approx545\ \mathrm{MPa}</span>); il carico di
+rottura a <span class="m">\approx88\times10^3\ \mathrm{psi}</span> (<span class="m">\approx606\ \mathrm{MPa}</span>).</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Modulo di Young da una prova diretta.</strong> Barra d&#39;acciaio, <span class="m">l_0=150\ \mathrm{mm}</span>,
+sezione quadrata di lato 20 mm (<span class="m">A_0=400\ \mathrm{mm^2}</span>), carico <span class="m">F=90\ \mathrm{kN}</span>,
+allungamento elastico <span class="m">\Delta l=0.1\ \mathrm{mm}</span>.</p>
+<p><span class="m d">\sigma = \frac{F}{A_0} = \frac{90\times10^3\ \mathrm N}{400\times10^{-6}\ \mathrm{m^2}}
+= 225\times10^6\ \mathrm{Pa} = 225\ \mathrm{MPa}</span>
+<span class="m d">\varepsilon = \frac{\Delta l}{l_0} = \frac{0.1\times10^{-3}\ \mathrm m}{0.150\ \mathrm m}
+= 6.67\times10^{-4}</span>
+<span class="m d">E = \frac{\sigma}{\varepsilon} = \frac{225\ \mathrm{MPa}}{6.67\times10^{-4}}
+\approx337\,331\ \mathrm{MPa} = 337.3\ \mathrm{GPa}</span></p>
+<p>Un valore più alto del modulo di Young tipico dell&#39;acciaio (tabulato
+<span class="m">\approx200</span>–<span class="m">210\ \mathrm{GPa}</span>, vedi la tabella di proprietà dei metalli in
+<a href="#/teoria/chimica/54/lez-54-ferro">Lezione 54</a>) — segnale, se il dato fosse reale, di una misura
+poco accurata o di un errore di lettura di <span class="m">\Delta l</span>; l&#39;esercizio va comunque
+risolto applicando correttamente <span class="m">E=\sigma/\varepsilon</span> ai dati forniti.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Sforzo e deformazione nominale da una variazione di diametro.</strong> Provino di
+lega di alluminio, diametro iniziale <span class="m">13\ \mathrm{mm}</span>, carico <span class="m">11\,000\ \mathrm{kg}</span>
+(peso, quindi va moltiplicato per <span class="m">g</span>), diametro sotto carico <span class="m">12.4\ \mathrm{mm}</span>.</p>
+<p><span class="m d">\sigma_{nom} = \frac{F}{A_0} = \frac{11\,000\ \mathrm{kg}\times9.81\ \mathrm{m/s^2}}
+{\frac{\pi}{4}(0.013\ \mathrm m)^2} \approx 813.4\ \mathrm{MPa}</span></p>
+<p>Per la deformazione, si usa la relazione derivata sopra tra <span class="m">\varepsilon</span> e il
+rapporto delle aree (conservazione della massa):
+<span class="m d">\varepsilon = \frac{A_0}{A}-1 = \frac{(0.013)^2}{(0.0124)^2}-1 \approx 0.0991</span></p>
+<p>Nota che qui <strong>non serve conoscere <span class="m">l_0</span> o <span class="m">l</span></strong>: la conservazione della massa
+permette di ottenere <span class="m">\varepsilon</span> direttamente dal rapporto delle sezioni, un
+dato spesso più facile da misurare (con un calibro) della variazione di
+lunghezza su un provino già montato.</p>
+</div>
+
+<div class="callout sintesi">
+
+<ul>
+<li><span class="m">\sigma=F/A_0</span> (sforzo nominale), <span class="m">\varepsilon=\Delta l/l_0</span> (deformazione
+nominale) — entrambi riferiti alle dimensioni <strong>iniziali</strong>.</li>
+<li>Modulo di Poisson <span class="m">\nu=-\varepsilon_r/\varepsilon_z</span>; legato alla strizione <span class="m">Z</span>
+e a <span class="m">\varepsilon</span> dalla conservazione della massa.</li>
+<li>Sforzo di taglio <span class="m">\tau=F/A</span>, legge di Hooke a taglio <span class="m">\tau=G\gamma</span>.</li>
+<li>Legge di Hooke a trazione: <span class="m">\sigma=E\varepsilon</span> in campo elastico; <span class="m">E</span> =
+pendenza del tratto lineare del diagramma sforzo-deformazione.</li>
+<li>Carico di snervamento: convenzione allo 0.2% di deformazione plastica
+residua. Carico di rottura: massimo della curva.</li>
+</ul>
+</div>
+
+<div class="callout esame">
+
+<p><strong>Come cade all&#39;esame.</strong> Gli esercizi tipici chiedono di calcolare <span class="m">E</span> da una
+coppia <span class="m">(\sigma,\varepsilon)</span> o dai dati grezzi di una prova (forza,
+allungamento, sezione), oppure di ricavare <span class="m">\varepsilon</span> dalla variazione di
+sezione tramite la conservazione della massa. Presta sempre attenzione alle
+unità di misura (psi, kg-forza, MPa) — la conversione è spesso il passo che
+costa più punti, non la formula in sé.</p>
+<p><strong>Allenati qui:</strong> Extra 127 · Extra 128 ·
+Extra 209 · Extra 210 · Extra 211</p>
+</div>

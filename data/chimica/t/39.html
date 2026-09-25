@@ -1,0 +1,184 @@
+<h1 id="lez-39">Lezione 39 — Equilibrio chimico: la costante K e la relazione tra Kp e Kc</h1>
+<h2 id="lez-39-perche">Perché questa lezione esiste</h2>
+<p>Hai già usato il criterio <span class="m">\Delta G&lt;0</span> per dire <strong>se</strong> una reazione è spontanea in
+condizioni date. Ma la maggior parte delle reazioni non va a completamento: si ferma
+in un punto di equilibrio dove reagenti e prodotti coesistono in proporzioni fisse.
+Questa lezione deriva, da zero e senza saltare passaggi, <strong>da dove viene</strong> la
+costante di equilibrio K che studierai — non come formula calata dall&#39;alto, ma come
+conseguenza diretta di <span class="m">\Delta G=0</span> all&#39;equilibrio.</p>
+<h2 id="lez-39-punto-partenza">Il punto di partenza: <span class="m">\Delta G=0</span> all&#39;equilibrio</h2>
+<p>Riprendi la sintesi dell&#39;ammoniaca, <span class="m">\mathrm{N_2(g)}+3\mathrm{H_2(g)}
+\rightleftharpoons 2\mathrm{NH_3(g)}</span>. All&#39;interno di un reattore, la miscela di
+reazione ha una composizione (individuata dalle pressioni parziali <span class="m">P_{N_2}</span>,
+<span class="m">P_{H_2}</span>, <span class="m">P_{NH_3}</span>) che <strong>non cambia</strong> finché l&#39;equilibrio non è perturbato: è la
+condizione generale di equilibrio, <span class="m">\Delta G=0</span>, applicata a questa reazione
+specifica:</p>
+<p><span class="m d">\Delta G = 2\,G(\mathrm{NH_{3(g)}},T,P_{NH_3}) - G(\mathrm{N_{2(g)}},T,P_{N_2}) -
+3\,G(\mathrm{H_{2(g)}},T,P_{H_2}) = 0</span></p>
+<h2 id="lez-39-percorso">Il percorso di calcolo: dallo stato reale allo stato standard e ritorno</h2>
+<p>Per trasformare questa espressione in qualcosa di calcolabile, sfrutti ancora una
+volta il fatto che <span class="m">G</span> è funzione di stato: il <span class="m">\Delta G</span> tra reagenti e prodotti
+<strong>nelle condizioni reali</strong> del reattore può essere calcolato lungo un percorso
+comodo che passa per lo <strong>stato standard</strong> (ciascuna specie alla propria pressione
+parziale di 1 atm), dove hai già le tabelle di <span class="m">\Delta G^\circ_f</span>.</p>
+<p>Il percorso: (1) porta i reagenti dalle loro pressioni parziali reali allo stato
+standard (1 atm ciascuno); (2) fai avvenire la reazione <strong>in condizioni standard</strong>
+(qui interviene <span class="m">\Delta G^\circ</span>, quello delle tabelle); (3) porta i prodotti dallo
+stato standard alla loro pressione parziale reale. Il <span class="m">\Delta G</span> complessivo di
+questo percorso a tre tappe è identico al <span class="m">\Delta G</span> diretto, perché <span class="m">G</span> è funzione
+di stato.</p>
+<p>Per i tratti (1) e (3) serve la relazione, già nota dal capitolo sugli equilibri
+fisici, tra energia libera di un gas ideale e la sua pressione:</p>
+<div class="callout formula">
+
+<p><span class="m d">G(T,P_B) - G(T,P_A) = n\,R\,T\,\ln\!\left(\frac{P_B}{P_A}\right)</span></p>
+</div>
+
+<p>Applicandola a ciascuna specie (con <span class="m">P^*=1\ \mathrm{atm}</span>, la pressione dello stato
+standard):</p>
+<p><span class="m d">G_f(\mathrm{H_{2(g)}},T,P_{H_2}) = G^\circ_f(\mathrm{H_{2(g)}},T) + RT\ln\!
+\left(\frac{P_{H_2}}{P^*}\right)</span></p>
+<p>(e analogamente per <span class="m">\mathrm{N_2}</span> e <span class="m">\mathrm{NH_3}</span>). Sostituendo queste tre
+espressioni nella condizione di equilibrio e raggruppando i termini in <span class="m">\Delta G^\circ</span>
+da un lato e i termini logaritmici dall&#39;altro:</p>
+<p><span class="m d">\Delta G = \underbrace{\Big[2\,G^\circ_f(\mathrm{NH_3},T) -
+G^\circ_f(\mathrm{N_2},T) - 3\,G^\circ_f(\mathrm{H_2},T)\Big]}_{\Delta G^\circ} +
+R\,T\cdot\ln\frac{\left(P_{NH_3}/P^*\right)^2}{\left(P_{N_2}/P^*\right)^1\left(P_{H_2}
+/P^*\right)^3} = 0</span></p>
+<h2 id="lez-39-costante-K">La costante di equilibrio K</h2>
+<p>Isolando il termine logaritmico:</p>
+<div class="callout formula">
+
+<p><span class="m d">\frac{\left(P_{NH_3}/P^*\right)^2}{\left(P_{N_2}/P^*\right)\left(P_{H_2}/P^*
+\right)^3} = \exp\!\left(-\frac{\Delta G^\circ}{RT}\right) \equiv K(T)</span></p>
+</div>
+
+<p>Questa è la <strong>legge dell&#39;azione di massa</strong>: il rapporto tra le pressioni parziali
+dei prodotti (a numeratore) e dei reagenti (a denominatore), ciascuna elevata al
+proprio coefficiente stechiometrico e adimensionalizzata rispetto a <span class="m">P^*</span>, è uguale a
+una costante <span class="m">K(T)</span> che dipende <strong>solo dalla temperatura</strong> (perché <span class="m">\Delta G^\circ</span> è
+valutato a <span class="m">T</span> fissata). Nella pratica si omette spesso di scrivere esplicitamente
+<span class="m">P^*</span>, ma resta sempre sottinteso che le pressioni sono adimensionalizzate rispetto
+allo stato standard — è per questo che, a rigore, <span class="m">K</span> è <strong>adimensionale</strong>, anche se
+molti testi (per comodità di calcolo) le attribuiscono dimensioni basate sulla
+forma del quoziente scritto.</p>
+<div class="callout attenzione">
+
+<p>Il numeratore di questo rapporto (senza <span class="m">P^*</span> sottinteso) si chiama <strong>quoziente di
+reazione</strong>, <span class="m">Q</span>, quando le pressioni <strong>non</strong> sono necessariamente quelle di
+equilibrio. <span class="m">Q</span> e <span class="m">K</span> hanno la stessa forma algebrica, ma <span class="m">Q</span> puoi calcolarlo in
+<strong>qualunque</strong> istante della reazione, mentre <span class="m">K</span> è per definizione il valore di <span class="m">Q</span>
+<strong>all&#39;equilibrio</strong>. Confrontare <span class="m">Q</span> con <span class="m">K</span> è lo strumento per predire in quale
+direzione evolverà una reazione — vedi l&#39;esempio sotto.</p>
+</div>
+
+<h2 id="lez-39-Q-vs-K">Interpretare <span class="m">K</span>: verso i prodotti o verso i reagenti?</h2>
+<p>Poiché <span class="m">\Delta G = \Delta G^\circ + RT\ln Q</span> (la stessa relazione appena derivata,
+scritta con <span class="m">Q</span> al posto del quoziente all&#39;equilibrio) e <span class="m">\Delta G^\circ=-RT\ln K</span>:</p>
+<p><span class="m d">\Delta G = RT\,\ln\frac{Q}{K}</span></p>
+<ul>
+<li><span class="m">Q&lt;K</span>: <span class="m">\Delta G&lt;0</span>, la reazione procede spontaneamente <strong>verso i prodotti</strong>
+(da sinistra a destra).</li>
+<li><span class="m">Q&gt;K</span>: <span class="m">\Delta G&gt;0</span>, la reazione procede spontaneamente <strong>verso i reagenti</strong>
+(da destra a sinistra).</li>
+<li><span class="m">Q=K</span>: equilibrio, <span class="m">\Delta G=0</span>.</li>
+</ul>
+<div class="callout esempio">
+
+<p><strong>Sintesi del metanolo</strong>, <span class="m">\mathrm{CO(g)}+2\mathrm{H_2(g)}\rightleftharpoons
+\mathrm{CH_3OH(g)}</span>, a 500 K con <span class="m">K=6.09\times10^{-3}</span>. Pressioni parziali iniziali:
+<span class="m">P_{CO}=P_{H_2}=5.0\ \mathrm{atm}</span>, <span class="m">P_{CH_3OH}=0.10\ \mathrm{atm}</span>.</p>
+<p><span class="m d">Q = \frac{P_{CH_3OH}}{P_{CO}\cdot P_{H_2}^2} = \frac{0.10}{5.0\times5.0^2} =
+8\times10^{-4}</span></p>
+<p>Poiché <span class="m">K=6.09\times10^{-3} &gt; Q=8\times10^{-4}</span>, la reazione evolve <strong>verso i
+prodotti</strong>: parte di CO e <span class="m">\mathrm{H_2}</span> si converte in metanolo, fino a quando le
+pressioni non soddisfano <span class="m">Q=K</span>.</p>
+</div>
+
+<h2 id="lez-39-Kp-Kc"><span class="m">K_c</span>: la stessa costante scritta con le concentrazioni</h2>
+<p>Se la reazione avviene a <strong>volume costante</strong>, può essere comodo sostituire le
+pressioni parziali con le concentrazioni molari, usando <span class="m">P_j V = n_j RT \Rightarrow
+P_j = [j]\cdot RT</span> per ciascuna specie gassosa <span class="m">j</span>. Applicato alla sintesi
+dell&#39;ammoniaca:</p>
+<p><span class="m d">K(T) = \frac{\big([\mathrm{NH_3}]RT\big)^2}{\big([\mathrm{N_2}]RT\big)\cdot
+\big([\mathrm{H_2}]RT\big)^3} = (RT)^{-2}\cdot\frac{[\mathrm{NH_3}]^2}
+{[\mathrm{N_2}][\mathrm{H_2}]^3}</span></p>
+<p>Definendo <span class="m">K_c(T) \equiv \dfrac{[\mathrm{NH_3}]^2}{[\mathrm{N_2}][\mathrm{H_2}]^3}</span>,
+si ottiene <span class="m">K(T) = K_c(T)\cdot(RT)^{-2}</span>. In generale, con <span class="m">\Delta n</span> pari alla
+variazione del numero di moli gassose totali (moli totali prodotti meno moli totali
+reagenti):</p>
+<div class="callout formula">
+
+<p><span class="m d">K_c(T) = K(T)\cdot(R\,T)^{-\Delta n} \qquad\Longleftrightarrow\qquad
+K_p = K_c\cdot(RT)^{\Delta n}</span></p>
+</div>
+
+<p>(qui <span class="m">K</span> o <span class="m">K_p</span> indicano la costante scritta con le pressioni). Se <span class="m">\Delta n=0</span>
+(stesso numero di moli gassose tra prodotti e reagenti), <span class="m">K_p=K_c</span>.</p>
+<div class="callout attenzione">
+
+<p><strong><span class="m">K_p=K_c</span> solo se <span class="m">\Delta n=0</span>.</strong> È una delle domande chiuse più frequenti del
+paniere: prima di rispondere, bilancia la reazione e conta le moli gassose da
+entrambi i lati. Non fidarti dell&#39;aspetto della reazione: <span class="m">2\,\mathrm{CO(g)}+
+\mathrm{O_2(g)}\rightleftharpoons2\,\mathrm{CO_2(g)}</span> ha <span class="m">\Delta n = 2-3=-1\neq 0</span>,
+quindi <span class="m">K_p\neq K_c</span>; <span class="m">\mathrm{H_2(g)}+\mathrm{I_2(g)}\rightleftharpoons
+2\,\mathrm{HI(g)}</span> ha <span class="m">\Delta n=2-2=0</span>, quindi <span class="m">K_p=K_c</span>.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Composizione all&#39;equilibrio da <span class="m">K</span>.</strong> <span class="m">\mathrm{N_2O_4(g)}\rightleftharpoons
+2\,\mathrm{NO_2(g)}</span>, a 400 K, <span class="m">K=47.9</span>. Volume del reattore 1 L, inizialmente 1 mole
+di <span class="m">\mathrm{N_2O_4}</span> pura.</p>
+<p><strong>Passo 1 — converti <span class="m">K</span> in <span class="m">K_c</span>.</strong> <span class="m">\Delta n = 2-1=1</span>:
+<span class="m d">K_c = K\cdot(RT)^{-1} = 47.9\times\left(0.08206\times400\right)^{-1} \approx
+1.46\ \mathrm{mol/L}</span></p>
+<p><strong>Passo 2 — imposta la tabella delle variazioni.</strong> Sia <span class="m">x</span> le moli/L di
+<span class="m">\mathrm{N_2O_4}</span> consumate: <span class="m">[\mathrm{N_2O_4}]_{eq}=1-x</span>, <span class="m">[\mathrm{NO_2}]_{eq}=2x</span>
+(stechiometria 1:2, volume 1 L quindi moli = concentrazioni).</p>
+<p><strong>Passo 3 — sostituisci in <span class="m">K_c</span> e risolvi.</strong>
+<span class="m d">K_c = \frac{(2x)^2}{1-x} \quad\Longrightarrow\quad 4x^2 + K_c\,x - K_c = 0
+\quad\Longrightarrow\quad x = \frac{-K_c\pm\sqrt{K_c^2+16K_c}}{8}</span>
+Le due soluzioni sono <span class="m">x\approx+0.17</span> e <span class="m">x\approx-0.55</span>; si scarta quella negativa
+(priva di significato fisico: non si possono consumare moli negative). Composizione
+finale: <span class="m">[\mathrm{N_2O_4}]\approx0.83\ \mathrm{mol/L}</span>, <span class="m">[\mathrm{NO_2}]\approx0.34\
+\mathrm{mol/L}</span>.</p>
+</div>
+
+<div class="callout attenzione">
+
+<p>Quando risolvi un&#39;equazione di secondo grado per <span class="m">x</span> in un problema di equilibrio,
+<strong>scarta sempre</strong> la soluzione che dà una concentrazione negativa o superiore alla
+quantità di partenza: non ha significato fisico, anche se è matematicamente valida.</p>
+</div>
+
+<h2 id="lez-39-stato-standard">Nota sullo stato standard</h2>
+<p>Secondo la IUPAC: lo stato standard di una sostanza gassosa è il gas ideale a
+1 bar; quello di un solido o liquido è la sostanza pura a 1 bar; quello di una
+sostanza in soluzione è la concentrazione 1 m (molale). La temperatura <strong>non</strong>
+è parte della definizione: una sostanza può essere nel suo stato standard a
+qualunque <span class="m">T</span> — le tabelle usano 25 °C solo per convenzione, perché è la temperatura
+più comune per condurre le reazioni.</p>
+<div class="callout sintesi">
+
+<ul>
+<li>La costante di equilibrio <span class="m">K(T)=\exp(-\Delta G^\circ/RT)</span> nasce imponendo
+<span class="m">\Delta G=0</span> e passando per lo stato standard con <span class="m">G(T,P_B)-G(T,P_A)=nRT\ln(P_B/P_A)</span>.</li>
+<li><span class="m">\Delta G = RT\ln(Q/K)</span>: <span class="m">Q&lt;K</span> la reazione va verso i prodotti, <span class="m">Q&gt;K</span> verso i
+reagenti, <span class="m">Q=K</span> equilibrio.</li>
+<li><span class="m">K_p = K_c\cdot(RT)^{\Delta n}</span>, con <span class="m">\Delta n</span> = moli gassose prodotti meno
+reagenti; <span class="m">K_p=K_c</span> solo se <span class="m">\Delta n=0</span>.</li>
+<li>Nei problemi con incognita <span class="m">x</span>, scarta sempre le soluzioni prive di senso fisico.</li>
+</ul>
+</div>
+
+<div class="callout esame">
+
+<p><strong>Come cade all&#39;esame.</strong> Il paniere &quot;041&quot; (32 domande chiuse, il blocco più pesante
+di tutto il paniere) chiede soprattutto: riconoscere quando <span class="m">K_p=K_c</span> (conta <span class="m">\Delta
+n</span>), scrivere correttamente l&#39;espressione di <span class="m">K</span> da una reazione data, e usare <span class="m">Q</span>
+vs <span class="m">K</span> per predire la direzione di una reazione. La derivazione completa di <span class="m">K</span> da
+<span class="m">\Delta G=0</span> è materiale da domanda aperta: sapresti riscriverla a memoria nei suoi
+tre passaggi chiave (stato reale → stato standard → <span class="m">\Delta G^\circ=-RT\ln K</span>)?</p>
+<p><strong>Allenati qui:</strong> Extra 84 · Extra 85 · domande reali del paniere: Lez.41 q2, q3, q4, q5, q6, Lez.42 q1–q9, q13, q15–q18, q20, q22, q26–q29, Lez.48 q10,12,13,21,25,35</p>
+</div>
