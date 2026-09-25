@@ -28,3 +28,12 @@ Web app (PWA, vanilla JS, nessun framework) per esercitarsi sui panieri eCampus:
 - Domande: `src` = `paniere` | `extra` (esercizi dei riassunti dell'utente) | `gen` (generate da Claude, etichettate "Generata" nell'app). Non spacciare mai domande generate per paniere.
 - Le risposte evidenziate nel PDF possono essere sbagliate: se lo sono, correggerle con `X!` e spiegarlo ("Nel PDF è evidenziata…").
 - Statistiche in localStorage per materia (`ecq:stats:<id>`), nessun backend.
+
+## Pubblicazione (GitHub Pages)
+
+Sito: https://edobirla.github.io/ecampus-quiz/ — repo pubblico `edobirla/ecampus-quiz`, Pages servito dal branch `gh-pages` (= contenuto di `app/`). Il token di `gh` non ha lo scope `workflow`, quindi niente GitHub Actions. Per pubblicare un aggiornamento (dopo build e test, e dopo aver incrementato `VERSION` in `app/sw.js`):
+
+    git add -A && git commit -m "…" && git push origin main
+    git subtree split --prefix app -b gh-pages-tmp && git push -f origin gh-pages-tmp:gh-pages && git branch -D gh-pages-tmp
+
+`gh` è in `~/.local/bin/gh`. I PDF e le cartelle `/Chimica`, `/Fisica` sono esclusi da `.gitignore` e non vanno mai pubblicati.
