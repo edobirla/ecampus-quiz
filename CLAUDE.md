@@ -1,6 +1,6 @@
 # eCampus Quiz
 
-Web app (PWA, vanilla JS, nessun framework) per esercitarsi sui panieri eCampus: esami simulati 24 chiuse (1 pt) + 2 aperte (0–3 pt, correzione automatica offline), soglia 18/30, esercitazione per lezione, teoria, statistiche per materia, preferiti, ripasso errori. L'utente scrive in italiano: rispondi in italiano.
+Web app (PWA, vanilla JS, nessun framework) per esercitarsi sui panieri eCampus: esami simulati 24 chiuse (1 pt) + 2 aperte (0–3 pt, griglia dei 3 criteri della scheda, correzione automatica offline e modificabile a mano), soglia 18/30, esame con teoria e indizi (fuori dalle statistiche dei voti), esercitazione per lezione, teoria, indizi a 3 livelli, studio di oggi (ripetizione spaziata + piano verso la data d'esame), ricerca, backup/ripristino tra dispositivi, statistiche per materia, preferiti, ripasso errori. L'utente scrive in italiano: rispondi in italiano.
 
 ## Struttura
 
@@ -11,14 +11,15 @@ Web app (PWA, vanilla JS, nessun framework) per esercitarsi sui panieri eCampus:
   - `chem_map.py` — solo Chimica: collega il paniere ai riassunti (`90 Esercizi.md`, `95 Soluzioni.md`).
   - `build.mjs` (`cd tools && node build.mjs`) — unisce tutto in `app/data/<materia>/`.
   - `subjects.json` — elenco materie e percorsi dei file sorgente.
+  - `content/<materia>/hints_*.txt` — indizi: `@<id>` poi 3 righe `- …` (markdown/TeX), dal più vago al più vicino alla soluzione; `@id !! nota` = avviso di revisione. Per una nuova materia: generarli con subagenti a lotti di ~95 domande, verificando che coprano tutti gli id.
   - `content/<materia>/*.txt` — risposte scritte a mano (formato in testa a `build.mjs`: `L-N X spiegazione`, `X!` = incerta, `X` = nessuna opzione corretta, `APERTA` + `KW:` + righe `>`), `gen*.txt` domande generate, `teoria_src/*.md` teoria generata (`=== N` separa le lezioni).
-  - `test_grade.mjs` — controllo della correzione automatica (`node tools/test_grade.mjs`).
+  - `test_grade.mjs` — controllo della correzione automatica (`node tools/test_grade.mjs`); `test_sync.mjs` — unione dei backup (`node tools/test_sync.mjs`).
 
 ## Aggiungere una materia
 
 1. L'utente mette in `<Materia>/` il paniere PDF, la scheda corso PDF ed eventuali riassunti.
 2. `python3 tools/extract.py "<Materia>/paniere.pdf" tools/raw/<id>.json app/data/<id>/img` e `python3 tools/scheda.py "<Materia>/scheda.pdf" tools/raw/<id>_scheda.json`.
-3. Aggiungere la voce in `tools/subjects.json` (id, short, color, raw, scheda, eventuale theoryDir con file `Lez NN - Titolo.md`).
+3. Aggiungere la voce in `tools/subjects.json` (id, short, color, raw, scheda, `paniere: true` se l'esame è da paniere, eventuale theoryDir con file `Lez NN - Titolo.md`).
 4. Scrivere in `tools/content/<id>/` le risposte mancanti (le chiuse non evidenziate), le risposte modello + KW delle aperte, i titoli delle lezioni (`## LN Titolo`), la teoria se manca (segnalata in app come "riassunto generato") e domande generate dove ce ne sono meno di 5 per lezione.
 5. `cd tools && node build.mjs`, poi `node tools/test_grade.mjs`, poi prova nel browser (`.claude/launch.json` → server "app" su :8765).
 6. Incrementare `VERSION` in `app/sw.js` quando cambiano i file dell'app.
@@ -27,7 +28,7 @@ Web app (PWA, vanilla JS, nessun framework) per esercitarsi sui panieri eCampus:
 
 - Domande: `src` = `paniere` | `extra` (esercizi dei riassunti dell'utente) | `gen` (generate da Claude, etichettate "Generata" nell'app). Non spacciare mai domande generate per paniere.
 - Le risposte evidenziate nel PDF possono essere sbagliate: se lo sono, correggerle con `X!` e spiegarlo ("Nel PDF è evidenziata…").
-- Statistiche in localStorage per materia (`ecq:stats:<id>`), nessun backend.
+- Statistiche in localStorage per materia (`ecq:stats:<id>`), nessun backend. Il `log` delle risposte (chiave id+momento) è la fonte di verità: il backup si unisce senza doppioni (`app/sync.js`).
 
 ## Pubblicazione (GitHub Pages)
 

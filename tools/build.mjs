@@ -170,6 +170,23 @@ function parseGenerated(dir) {
   return out;
 }
 
+// Indizi progressivi, file tools/content/<materia>/hints*.txt:
+//   "@p12-10" (id della domanda; "!! nota" dopo l'id = avviso di revisione, ignorato qui)
+//   "- indizio" ×3 in markdown, dal più vago al più vicino alla soluzione
+function parseHints(dir) {
+  const out = {};
+  if (!fs.existsSync(dir)) return out;
+  for (const f of fs.readdirSync(dir).filter((f) => /^hints.*\.txt$/.test(f)).sort()) {
+    let cur = null;
+    for (const line of fs.readFileSync(path.join(dir, f), "utf8").split("\n")) {
+      let m;
+      if ((m = line.match(/^@(\S+)/))) cur = out[m[1]] = [];
+      else if (cur && (m = line.match(/^- (.+)$/))) cur.push(m[1].trim());
+    }
+  }
+  return out;
+}
+
 // ---------- Build di una materia
 function buildSubject(S) {
   const dir = path.join(OUT, S.id);
@@ -181,6 +198,7 @@ function buildSubject(S) {
   const answers = { ...parsed.answers, ...content("answers.json", {}) };
   const lessonMeta = { ...parsed.lessons, ...content("lessons.json", {}) };
   const generated = [...content("generated.json", []), ...parseGenerated(path.join(ROOT, "tools/content", S.id))];
+  const hints = parseHints(path.join(ROOT, "tools/content", S.id));
   const map = S.map ? readJSON(path.join(ROOT, S.map), { paniere: {}, extra: [] }) : { paniere: {}, extra: [] };
 
   // teoria: file "Lez NN - Titolo.md"
@@ -288,6 +306,7 @@ function buildSubject(S) {
       if (!q.kw) r.ka = 1; // parole chiave automatiche: nel voto pesano meno della sovrapposizione
     }
     if (q.th) r.th = linkFor(q.th);
+    if (hints[q.id]?.length) r.h = hints[q.id].map((h) => mdToHtml(h, linkFor).replace(/^<p>|<\/p>\n?$/g, ""));
     if (q.u) r.u = 1;
     return r;
   }).map((r) => (r.t.includes('<span class="m">') || r.t.includes("<div") ? r : r));
@@ -308,7 +327,7 @@ function buildSubject(S) {
   });
 
   const subject = {
-    id: S.id, name: scheda.name || S.name, short: S.short, color: S.color, docente: scheda.docente,
+    id: S.id, name: scheda.name || S.name, short: S.short, color: S.color, docente: scheda.docente, paniere: !!S.paniere,
     corso: scheda.corso, cfu: scheda.cfu, aa: scheda.aa, anno: scheda.anno,
     scheda: (scheda.sections || []).map((s) => ({ title: s.title, html: mdToHtml(s.md) })),
     lessons, questions: final,
@@ -317,6 +336,7 @@ function buildSubject(S) {
   const kb = (fs.statSync(path.join(dir, "subject.json")).size / 1024).toFixed(0);
   console.log(`${S.id}: ${lessons.length} lezioni, ${final.length} domande (` +
     ["paniere", "extra", "gen"].map((s) => `${s} ${final.filter((q) => q.src === s).length}`).join(", ") +
+    `, con indizi ${final.filter((q) => q.h).length}` +
     `), chiuse senza risposta: ${missing}, ${kb} KB`);
   return { id: S.id, name: subject.name, short: S.short, color: S.color, docente: subject.docente,
     nq: final.length, v: Date.now() };
