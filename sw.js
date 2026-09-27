@@ -1,8 +1,8 @@
 // Offline: stale-while-revalidate su tutto; l'indice delle materie va prima in rete.
 // Le chiavi di cache ignorano la query (?v=…) così ogni file ha una sola copia, sempre l'ultima scaricata.
 // Cambiare VERSION forza il ricaricamento della shell.
-const VERSION = "ecq-v2";
-const SHELL = ["./", "index.html", "styles.css", "app.js", "grade.js", "manifest.webmanifest", "icons/icon.svg",
+const VERSION = "ecq-v3";
+const SHELL = ["./", "index.html", "styles.css", "app.js", "grade.js", "sync.js", "manifest.webmanifest", "icons/icon.svg",
   "vendor/katex/katex.min.js", "vendor/katex/katex.min.css", "data/subjects.json"];
 
 self.addEventListener("install", (e) => {
