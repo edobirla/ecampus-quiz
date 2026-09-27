@@ -119,7 +119,13 @@ let sess = store.get("ecq:session", null);
 const saveSess = () => store.set("ecq:session", sess);
 // le opzioni si mescolano (così impari la risposta, non la posizione) tranne quando si citano tra loro
 const plainTxt = (h) => h.replace(/<[^>]+>/g, " ");
-const canShuffle = (q) => !q.o.some((o) => /precedent|tutte le|nessuna (delle|di queste)|entramb|sopra|\b[A-E]\s*(e|ed|,|o)\s*[A-E]\b|^\s*[A-E]\s*$/i.test(plainTxt(o)));
+// Negli indizi le opzioni si citano con [[B]] (lettera dell'ordine originale), che diventa la lettera mostrata.
+// Le spiegazioni invece citano le lettere in chiaro: se lo fanno, la domanda non si mescola.
+const LETTER_REF = /\b([Oo]pzion[ei]|[Rr]ispost[ae]|[Ss]carta\w*|[Cc]adono|[Rr]esta(no)?|[Ee]limina\w*|[Ll][ae]|tra|fra|non)\s+\(?[A-E]\)?(?![\p{L}])|\b[A-E]\s+(e|ed|o)\s+[A-E](?![\p{L}])|\([A-Ea-e]\)|(^|\s)[a-eA-E]\)|[Rr]ispost\w*\W+[a-e](?![\p{L}])/u;
+const citesLetters = (h) => LETTER_REF.test(plainTxt((h || "").replace(/\[\[[A-E]\]\]/g, "")));
+const canShuffle = (q) => !q.o.some((o) => /precedent|tutte le|nessuna (delle|di queste)|entramb|sopra|\b[A-E]\s*(e|ed|,|o)\s*[A-E]\b|^\s*[A-E]\s*$/i.test(plainTxt(o)))
+  && !citesLetters(q.e) && !(q.h || []).some(citesLetters);
+const optLetters = (html, order) => html.replace(/\[\[([A-E])\]\]/g, (_, L) => "ABCDE"[order ? order.indexOf("ABCDE".indexOf(L)) : "ABCDE".indexOf(L)] || L);
 function startSession({ mode, ids, title, sub, open = false }) {
   if (!ids.length) return toast("Nessuna domanda disponibile");
   const perm = {};
@@ -568,7 +574,7 @@ views.quiz = () => {
   // indizi e teoria: nelle esercitazioni e nell'esame con teoria, non nell'esame simulato
   const helps = !exam || sess.open;
   const nh = sess.hints?.[q.id] || 0;
-  const hintsHtml = helps && nh ? `<ol class="hints">${q.h.slice(0, nh).map((h, i) => `<li><b>Indizio ${i + 1}</b> ${h}</li>`).join("")}</ol>` : "";
+  const hintsHtml = helps && nh ? `<ol class="hints">${q.h.slice(0, nh).map((h, i) => `<li><b>Indizio ${i + 1}</b> ${optLetters(h, order)}</li>`).join("")}</ol>` : "";
   const hasTheory = S.lessons.some((l) => l.theory);
   const tools = helps && !done && (q.h?.length > nh || hasTheory) ? `<div class="q-tools">
     ${q.h?.length > nh ? `<button class="btn secondary" data-act="hint">${I.bulb}${nh ? "Altro indizio" : "Indizio"} · ${nh + 1}/${q.h.length}</button>` : ""}
@@ -671,7 +677,7 @@ function reviewItem(q, { idx, a, p, h, m, rid, i: itemI, showAnswer = true } = {
     }
     body += `<details class="more" ${p !== undefined ? "open" : ""}><summary>Risposta modello</summary><div class="explain ans">${q.a || ""}</div></details>`;
   }
-  if (q.h) body += `<details class="more"><summary>Indizi${h ? ` · ne hai usati ${h}` : ""}</summary><ol class="hints">${q.h.map((x, i) => `<li><b>Indizio ${i + 1}</b> ${x}</li>`).join("")}</ol></details>`;
+  if (q.h) body += `<details class="more"><summary>Indizi${h ? ` · ne hai usati ${h}` : ""}</summary><ol class="hints">${q.h.map((x, i) => `<li><b>Indizio ${i + 1}</b> ${optLetters(x)}</li>`).join("")}</ol></details>`;
   const hasTheory = q.th || S.lessons.find((l) => l.n === q.l)?.theory;
   body += `<div style="display:flex;align-items:center;gap:10px;margin-top:12px;flex-wrap:wrap">
     ${hasTheory ? `<a class="btn secondary" style="min-height:40px;font-size:14px" href="${q.th || `#/teoria/${S.id}/${q.l}`}">${I.book}Teoria · Lez. ${pad3(q.l)}</a>` : `<span class="muted small">Teoria non ancora disponibile</span>`}
