@@ -48,3 +48,16 @@ export function mergeStats(local, incoming) {
   rebuildQ(out);
   return { st: out, added: { answers: out.log.length - before.log, exams: out.exams.length - before.exams } };
 }
+
+// Appunti sulla teoria di una materia: { hl: {id: evidenziazione}, ink: {id: tratto di penna} }.
+// Ogni voce ha t (ultima modifica); una cancellazione è una voce con del: 1, così si propaga agli altri dispositivi.
+export function mergeNotes(local, incoming) {
+  const out = { hl: { ...(local?.hl || {}) }, ink: { ...(local?.ink || {}) } };
+  let added = 0;
+  for (const k of ["hl", "ink"])
+    for (const [id, v] of Object.entries(incoming?.[k] || {})) {
+      const cur = out[k][id];
+      if (!cur || (v.t || 0) > (cur.t || 0)) { if (!cur) added++; out[k][id] = v; }
+    }
+  return { notes: out, added };
+}

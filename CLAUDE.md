@@ -4,7 +4,8 @@ Web app (PWA, vanilla JS, nessun framework) per esercitarsi sui panieri eCampus:
 
 ## Struttura
 
-- `app/` — l'app servita così com'è (index.html, app.js, grade.js, styles.css, sw.js, vendor/katex). **Non modificare `app/data/` a mano**: è generata.
+- `app/` — l'app servita così com'è (index.html, app.js, grade.js, sync.js = statistiche e unione dei backup, notes.js = annotazioni sulla teoria, styles.css, sw.js, vendor/katex, vendor/geist = font Geist OFL).
+  Annotazioni: evidenziazioni ancorate al testo (CSS Custom Highlight API) e penna ancorata al paragrafo (canvas; Apple Pencil disegna, il dito scorre, doppio tocco del dito = gomma ↔ strumento precedente). Salvate in `ecq:notes:<id>`, incluse nel backup con unione per id + data e cancellazioni propagate. **Non modificare `app/data/` a mano**: è generata.
 - `tools/` — pipeline dati:
   - `extract.py <paniere.pdf> <out.json> <cartella_img>` — domande, opzioni, risposte evidenziate (giallo/verde o X nella casella). Gestisce il font "cifrato" dei panieri eCampus (glyph id + tabella `SPECIAL`, da estendere se compaiono nuovi simboli: genera un atlante dei glifi come fatto per Chimica).
   - `scheda.py <scheda.pdf> <out.json>` — dati del corso dalla scheda (il nome della materia viene da qui).

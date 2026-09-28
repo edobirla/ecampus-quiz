@@ -1,6 +1,7 @@
 // eCampus Quiz — app a pagina singola, senza dipendenze (KaTeX solo per le formule).
 import { gradeOpen, CRITERIA } from "./grade.js";
-import { migrate, mergeStats, rebuildQ } from "./sync.js";
+import { migrate, mergeStats, rebuildQ, mergeNotes } from "./sync.js";
+import { mountNotes, HL_COLORS, INK_COLORS, INK_WIDTHS } from "./notes.js";
 const EXAM = { closed: 24, open: 2, openMax: 3, pass: 18 };
 const KATEX = { throwOnError: false, macros: { "\\chem": "\\mathrm{#1}" } };
 
@@ -54,6 +55,11 @@ const I = {
   bulb: ico('<path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.6 10.8c.7.6 1.1 1.3 1.1 2.2h5c0-.9.4-1.6 1.1-2.2A6 6 0 0 0 12 3z"/>'),
   search: ico('<circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>'),
   cal: ico('<rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/>'),
+  pen: ico('<path d="M4 20l4-1 11-11-3-3L5 16z"/><path d="M14 6l3 3"/>'),
+  marker: ico('<path d="M9 15l-4 4h5l2-2"/><path d="M9 15l6-10 4 3-7 9z"/>'),
+  eraser: ico('<path d="M7 20h11"/><path d="M4 16l9-9 6 6-5 5H8z"/>'),
+  undo: ico('<path d="M9 14 4 9l5-5"/><path d="M4 9h11a5 5 0 0 1 0 10h-3"/>'),
+  eye: ico('<path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>'),
   save: ico('<path d="M12 3v12M7 10l5 5 5-5"/><path d="M4 17v3h16v-3"/>'),
   doc: ico('<path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4M9 12h6M9 16h6"/>'),
 };
@@ -102,6 +108,12 @@ function recordAnswer(st, id, ok) {
   r.t = t;
   return t;
 }
+// appunti sulla teoria (evidenziazioni e penna), per materia; unione nel backup con mergeNotes
+const notesKey = (id = S.id) => `ecq:notes:${id}`;
+const getNotes = (id = S.id) => Object.assign({ hl: {}, ink: {} }, store.get(notesKey(id), {}));
+const saveNotes = (n, id = S.id) => store.set(notesKey(id), n);
+let notesCtl = null;
+
 // ripetizione spaziata: dopo un errore la domanda torna il giorno dopo, poi a 3, 7, 14, 30 giorni se la azzecchi
 const DAY = 864e5, GAPS = [1, 3, 7, 14, 30];
 const endOfToday = () => new Date().setHours(23, 59, 59, 999);
@@ -208,7 +220,7 @@ const NAV = [
 ];
 function renderShell(route) {
   const top = route.split("/")[0];
-  const on = (k) => (k === top || (k === "altro" && ["preferiti", "errori", "scheda", "impostazioni", "cerca"].includes(top)) ? "on" : "");
+  const on = (k) => (k === top || (k === "altro" && ["preferiti", "errori", "scheda", "impostazioni", "cerca", "appunti"].includes(top)) ? "on" : "");
   const chip = `<button class="subject-chip" data-act="subjects"><i class="dot"></i><span>${esc(S.short || S.name)}</span>${I.down}</button>`;
   $("#tabbar").innerHTML = NAV.map(([k, t, i]) => `<a href="#/${k}" class="${on(k)}">${i}<span>${t}</span></a>`).join("");
   $("#sidebar").innerHTML = `
@@ -217,11 +229,12 @@ function renderShell(route) {
     ${NAV.slice(0, 4).map(([k, t, i]) => `<a class="side-link ${on(k)}" href="#/${k}">${i}${t}</a>`).join("")}
     <div class="side-sep"></div>
     <a class="side-link ${top === "cerca" ? "on" : ""}" href="#/cerca">${I.search}Cerca</a>
+    <a class="side-link ${top === "appunti" ? "on" : ""}" href="#/appunti">${I.pen}Appunti</a>
     <a class="side-link ${top === "preferiti" ? "on" : ""}" href="#/preferiti">${I.star}Preferiti</a>
     <a class="side-link ${top === "errori" ? "on" : ""}" href="#/errori">${I.redo}Ripasso errori</a>
     <a class="side-link ${top === "scheda" ? "on" : ""}" href="#/scheda">${I.doc}Scheda corso</a>
     <a class="side-link ${top === "impostazioni" ? "on" : ""}" href="#/impostazioni">${I.gear}Impostazioni</a>`;
-  const titles = { "": "Home", studio: "Studio", esame: "Esame", teoria: "Teoria", altro: "Altro", preferiti: "Preferiti", errori: "Ripasso errori", scheda: "Scheda corso", impostazioni: "Impostazioni", risultati: "Risultati", cerca: "Cerca" };
+  const titles = { "": "Home", studio: "Studio", esame: "Esame", teoria: "Teoria", altro: "Altro", preferiti: "Preferiti", errori: "Ripasso errori", scheda: "Scheda corso", impostazioni: "Impostazioni", risultati: "Risultati", cerca: "Cerca", appunti: "Appunti" };
   $("#topbar").innerHTML = `<h1>${titles[top] ?? ""}</h1>${chip}`;
 }
 
@@ -259,11 +272,11 @@ views[""] = () => {
 
   ${todayCard(st)}
 
-  <div class="section grid g4">
-    <div class="card stat"><div class="v">${ex.length}</div><div class="k">Esami svolti</div></div>
-    <div class="card stat ok"><div class="v">${passed}</div><div class="k">Promossi</div></div>
-    <div class="card stat ko"><div class="v">${ex.length - passed}</div><div class="k">Bocciati</div></div>
-    <div class="card stat"><div class="v">${avg}</div><div class="k">Media voto · max ${best}</div></div>
+  <div class="section card stats-strip">
+    <div class="stat"><div class="v">${ex.length}</div><div class="k">Esami svolti</div></div>
+    <div class="stat ok"><div class="v">${passed}</div><div class="k">Promossi</div></div>
+    <div class="stat ko"><div class="v">${ex.length - passed}</div><div class="k">Bocciati</div></div>
+    <div class="stat"><div class="v">${avg}</div><div class="k">Media voto · max ${best}</div></div>
   </div>
 
   <div class="section grid g2" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr))">
@@ -331,7 +344,7 @@ function todayCard(st) {
   const n = p.due.length + p.fresh.length;
   return `<div class="section card today">
     <div class="today-h"><span class="lnum">${I.cal}</span><div class="grow"><b>Studio di oggi</b>
-      <div class="muted small">${p.date ? (p.days > 0 ? `Esame tra ${p.days} giorni` : p.days === 0 ? "Esame oggi!" : "Data esame passata") : `<button class="link" data-act="plan">Imposta la data dell'esame</button> per un piano giornaliero`}</div></div></div>
+      <div class="muted small">${p.date ? (p.days > 0 ? `Esame tra ${p.days} giorni` : p.days === 0 ? "L'esame è oggi" : "Data esame passata") : `<button class="link" data-act="plan">Imposta la data dell'esame</button> per un piano giornaliero`}</div></div></div>
     <div class="today-n"><div><b>${p.due.length}</b><span>da ripassare</span></div><div><b>${p.fresh.length}</b><span>nuove${p.newToday ? ` (+${p.newToday} fatte)` : ""}</span></div>
       <div><b>${pct(p.knownN, p.qs.length)}%</b><span>${panExam() ? "paniere saputo" : "domande sapute"}</span></div></div>
     <div class="bar ok"><span style="width:${pct(p.knownN, p.qs.length)}%"></span></div>
@@ -438,18 +451,86 @@ async function theoryLesson(n, anchor) {
   const i = withT.indexOf(L), prev = withT[i - 1], next = withT[i + 1];
   const nq = (S.byLesson[n] || []).filter(validQ).length;
   setTimeout(() => {
-    if (anchor) document.getElementById(anchor)?.scrollIntoView({ block: "start" });
-  }, 30);
+    if (anchor?.startsWith("hl-")) notesCtl?.scrollTo(anchor.slice(3));
+    else if (anchor) document.getElementById(anchor)?.scrollIntoView({ block: "start" });
+  }, 60);
   return `
-  <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><a class="icon-btn" href="#/teoria" aria-label="Indietro">${I.left}</a>
-    ${L.genTheory ? `<span class="badge warn">Riassunto generato — da verificare con le dispense</span>` : ""}</div>
-  <article class="card prose">${html}</article>
+  <div class="lesson-head"><a class="icon-btn" href="#/teoria" aria-label="Indietro">${I.left}</a>
+    ${L.genTheory ? `<span class="badge warn" title="Da verificare con le dispense">Riassunto generato</span>` : ""}
+    <span style="flex:1"></span>
+    <button class="btn secondary sm" data-act="annot" aria-pressed="false">${I.pen}Annota</button></div>
+  ${annotBar()}
+  <article class="card prose annotable" id="lesson" data-n="${n}">${html}</article>
   <div class="theory-foot">
     ${prev ? `<a class="btn secondary" href="#/teoria/${S.id}/${prev.n}" aria-label="Lezione precedente">${I.left}</a>` : ""}
     ${nq ? `<button class="btn block" data-act="lesson" data-n="${n}">${I.study}Esercitati · ${nq}</button>` : `<span style="flex:1"></span>`}
     ${next ? `<a class="btn secondary" href="#/teoria/${S.id}/${next.n}" aria-label="Lezione successiva">${I.chev}</a>` : ""}
   </div>`;
 }
+
+// barra degli strumenti per annotare: evidenziatore (4 colori), penna (colori e spessori), gomma, annulla, mostra/nascondi
+let annot = { tool: "hl", color: 0, pen: 0, width: 1 };
+const annotBar = () => `<div class="annot-bar" id="annotbar" hidden role="toolbar" aria-label="Strumenti per annotare">
+  <div class="annot-group" aria-label="Evidenziatore">
+    ${HL_COLORS.map((c, i) => `<button class="swatch hl-${i}" data-act="hlc" data-c="${i}" aria-label="Evidenzia in ${c}" title="Seleziona il testo, poi tocca il colore"></button>`).join("")}
+  </div>
+  <div class="annot-group" aria-label="Penna">
+    ${INK_COLORS.map((c, i) => `<button class="swatch ink ${annot.tool === "pen" && annot.pen === i ? "on" : ""}" style="--c:${c}" data-act="penc" data-c="${i}" aria-label="Penna, colore ${i + 1}"></button>`).join("")}
+    <button class="tool" data-act="penw" aria-label="Spessore della penna">${INK_WIDTHS.map((w, i) => `<i class="${annot.width === i ? "on" : ""}" style="height:${w + 1}px"></i>`).join("")}</button>
+  </div>
+  <div class="annot-group">
+    <button class="tool ${annot.tool === "eraser" ? "on" : ""}" data-act="eraser" aria-label="Gomma">${I.eraser}</button>
+    <button class="tool" data-act="undo" aria-label="Annulla">${I.undo}</button>
+    <button class="tool" data-act="inkvis" aria-label="Mostra o nascondi la scrittura a mano">${I.eye}</button>
+  </div>
+  <p class="annot-hint">${annot.tool === "hl" ? "Seleziona il testo e tocca un colore. Tocca un'evidenziazione per aggiungere una nota o toglierla." : annot.tool === "pen" ? "Scrivi con la Apple Pencil (o il mouse); con il dito scorri la pagina. Doppio tocco con il dito: gomma." : "Passa sui tratti da cancellare. Doppio tocco con il dito: torni allo strumento di prima."}</p>
+</div>`;
+// gomma ↔ strumento di prima (pulsante gomma o doppio tocco con il dito)
+function toggleEraser() {
+  if (annot.tool === "eraser") annot.tool = annot.prev || "pen";
+  else { annot.prev = annot.tool; annot.tool = "eraser"; }
+  notesCtl?.setTool(annot.tool, { color: annot.pen, width: annot.width });
+  refreshAnnotBar();
+  toast(annot.tool === "eraser" ? "Gomma" : annot.tool === "pen" ? "Penna" : "Evidenziatore");
+}
+function refreshAnnotBar() {
+  const bar = $("#annotbar");
+  if (!bar) return;
+  const open = !bar.hidden;
+  bar.outerHTML = annotBar();
+  $("#annotbar").hidden = !open;
+}
+function editHighlight(id) {
+  const h = notesCtl.get(id);
+  openSheet(`<h3>Evidenziazione</h3>
+    <blockquote class="hl-quote hlq-${h.c}">${esc(h.q.length > 240 ? h.q.slice(0, 240) + "…" : h.q)}</blockquote>
+    <div class="annot-group" style="margin:12px 0">${HL_COLORS.map((c, i) => `<button class="swatch hl-${i} ${h.c === i ? "on" : ""}" data-act="hlrecolor" data-id="${id}" data-c="${i}" aria-label="${c}"></button>`).join("")}</div>
+    <label class="small muted" for="hlnote">Nota</label>
+    <textarea class="answer" id="hlnote" rows="3" placeholder="Scrivi una nota su questo passaggio…">${esc(h.n || "")}</textarea>
+    <div class="grid g2" style="margin-top:12px">
+      <button class="btn danger" data-act="hldel" data-id="${id}">Togli</button>
+      <button class="btn" data-act="hlsave" data-id="${id}">Salva</button>
+    </div>`);
+}
+
+// pagina con tutti gli appunti della materia
+views.appunti = () => {
+  const nt = getNotes();
+  const hls = Object.entries(nt.hl).filter(([, h]) => !h.del);
+  const inkBy = {};
+  for (const s of Object.values(nt.ink)) if (!s.del) inkBy[s.l] = (inkBy[s.l] || 0) + 1;
+  const lessons = [...new Set([...hls.map(([, h]) => h.l), ...Object.keys(inkBy).map(Number)])].sort((a, b) => a - b);
+  if (!lessons.length) return `<div class="card empty">${I.pen}<p>Nessun appunto ancora. Apri una lezione di teoria e tocca <b>Annota</b> per evidenziare o scrivere con la Apple Pencil.</p></div>`;
+  return lessons.map((n) => {
+    const L = S.lessons.find((l) => l.n === n);
+    const items = hls.filter(([, h]) => h.l === n).sort((a, b) => a[1].b0 - b[1].b0 || a[1].s - b[1].s);
+    return `<section class="section"><div class="section-h"><h2>${L ? `Lez. ${pad3(n)} · ${esc(L.title)}` : `Lezione ${n}`}</h2>
+      <a href="#/teoria/${S.id}/${n}">Apri</a></div>
+      ${inkBy[n] ? `<p class="muted small" style="margin:0 4px 8px">${I.pen} ${inkBy[n]} ${inkBy[n] === 1 ? "tratto" : "tratti"} a mano</p>` : ""}
+      <div class="list">${items.map(([id, h]) => `<a class="row hl-row" href="#/teoria/${S.id}/${n}/hl-${id}">
+        <span class="hl-dot hlq-${h.c}"></span><div class="grow"><div class="t">${esc(h.q.length > 160 ? h.q.slice(0, 160) + "…" : h.q)}</div>${h.n ? `<div class="s">${esc(h.n)}</div>` : ""}</div></a>`).join("")}</div></section>`;
+  }).join("");
+};
 
 views.scheda = () => `
   <div class="card"><h2 style="font-size:22px">${esc(S.name)}</h2>
@@ -459,6 +540,7 @@ views.scheda = () => `
 views.altro = () => `
   <div class="list">
     <a class="row" href="#/cerca"><span class="lnum">${I.search}</span><div class="grow"><div class="t">Cerca</div></div>${I.chev.replace("<svg", '<svg class="chev"')}</a>
+    <a class="row" href="#/appunti"><span class="lnum">${I.pen}</span><div class="grow"><div class="t">Appunti</div><div class="s">Evidenziazioni e note sulla teoria</div></div>${I.chev.replace("<svg", '<svg class="chev"')}</a>
     <a class="row" href="#/preferiti"><span class="lnum" style="background:var(--warn-soft);color:#f5b301">${I.star}</span><div class="grow"><div class="t">Preferiti</div></div>${I.chev.replace("<svg", '<svg class="chev"')}</a>
     <a class="row" href="#/errori"><span class="lnum" style="background:var(--ko-soft);color:var(--ko)">${I.redo}</span><div class="grow"><div class="t">Ripasso errori</div></div>${I.chev.replace("<svg", '<svg class="chev"')}</a>
     <a class="row" href="#/scheda"><span class="lnum">${I.doc}</span><div class="grow"><div class="t">Scheda corso</div></div>${I.chev.replace("<svg", '<svg class="chev"')}</a>
@@ -481,7 +563,7 @@ views.errori = () => {
   const qs = S.questions.filter((q) => validQ(q) && isToReview(st.q[q.id]));
   return `<p class="muted small" style="margin:0 4px 12px">Qui trovi le domande sbagliate almeno una volta. Escono dalla lista quando le azzecchi due volte di fila.</p>
     ${qs.length ? `<button class="btn block" data-act="review" style="margin-bottom:14px">Ripassa ${qs.length} domande</button>` : ""}
-    ${qList(qs, "Nessun errore da ripassare. Ottimo lavoro!")}`;
+    ${qList(qs, "Nessun errore da ripassare.")}`;
 };
 
 views.impostazioni = () => {
@@ -503,7 +585,7 @@ views.impostazioni = () => {
   </div>
   <div class="section-h" style="margin-top:22px"><h2>Backup</h2></div>
   <div class="list">
-    <button class="row" data-act="export"><span class="lnum">${I.save}</span><div class="grow"><div class="t">Salva backup</div><div class="s">Un file con statistiche, esami e preferiti di tutte le materie${last ? ` · ultimo: ${fmtDate(last)}` : ""}</div></div></button>
+    <button class="row" data-act="export"><span class="lnum">${I.save}</span><div class="grow"><div class="t">Salva backup</div><div class="s">Un file con statistiche, esami, preferiti e appunti di tutte le materie${last ? ` · ultimo: ${fmtDate(last)}` : ""}</div></div></button>
     <label class="row" style="cursor:pointer"><span class="lnum">${I.redo}</span><div class="grow"><div class="t">Carica backup</div><div class="s">Unisce i dati del file a quelli di questo dispositivo, senza doppioni</div></div>
       <input type="file" accept=".json,application/json" data-import hidden></label>
   </div>
@@ -703,7 +785,7 @@ views.risultati = (id) => {
   return `
   <div class="score ${exam && !r.passed ? "fail" : !exam && r.score / r.max < 0.6 ? "fail" : ""}">
     <div class="big">${r.score}<small>/${r.max}</small></div>
-    <div class="res">${exam ? (r.passed ? "Promosso 🎉" : "Non superato") + (r.open ? " · con teoria" : "") : `${pct(r.score, r.max)}% di punteggio`}</div>
+    <div class="res">${exam ? (r.passed ? "Promosso" : "Non superato") + (r.open ? " · con teoria" : "") : `${pct(r.score, r.max)}% di punteggio`}</div>
     <div class="sub">${exam ? `Soglia 18/30 · ` : ""}Crocette ${okClosed}/${nClosed}${items.length > nClosed ? ` · Aperte ${r.openPts}/${(items.length - nClosed) * 3}` : ""} · ${fmtTime(r.dur)}${nHints ? ` · ${nHints} indizi` : ""}</div>
   </div>
   ${r.open ? `<p class="muted small" style="margin:10px 4px 0">Esame con teoria e indizi: è nello storico ma non conta nella media, nel grafico e nelle promozioni.</p>` : ""}
@@ -733,8 +815,15 @@ async function route() {
   if (name !== "quiz") document.body.classList.remove("runner");
   renderShell(name in views ? name : "");
   const html = await view(...args);
+  notesCtl?.destroy(); notesCtl = null;
   $("#view").innerHTML = html;
   renderMath($("#view"));
+  const lessonEl = $("#lesson");
+  if (lessonEl) {
+    notesCtl = mountNotes(lessonEl, { lesson: +lessonEl.dataset.n, get: () => getNotes(), save: (n) => saveNotes(n), onHighlightTap: editHighlight,
+      onDoubleTap: toggleEraser });
+    annot.tool = "hl"; notesCtl.setTool("hl");
+  }
   if (name !== "teoria" || !args[2]) window.scrollTo(0, 0);
   clearInterval(timerInt);
   if (name === "quiz" && sess?.deadline) {
@@ -792,6 +881,25 @@ document.addEventListener("click", async (e) => {
     case "closesheet": closeSheet(); break;
     case "exam": newExam(); break;
     case "openexam": newExam(true); break;
+    case "annot": {
+      const bar = $("#annotbar"); bar.hidden = !bar.hidden;
+      el.setAttribute("aria-pressed", String(!bar.hidden)); el.classList.toggle("on", !bar.hidden);
+      $("#lesson")?.classList.toggle("annotating", !bar.hidden);
+      if (bar.hidden) { annot.tool = "hl"; notesCtl?.setTool("hl"); }
+      break;
+    }
+    case "hlc":
+      annot.tool = "hl"; notesCtl.setTool("hl");
+      if (!notesCtl.highlight(+el.dataset.c)) toast("Seleziona prima il testo da evidenziare");
+      refreshAnnotBar(); break;
+    case "penc": annot.tool = "pen"; annot.pen = +el.dataset.c; notesCtl.setTool("pen", { color: annot.pen, width: annot.width }); refreshAnnotBar(); break;
+    case "penw": annot.width = (annot.width + 1) % INK_WIDTHS.length; annot.tool = "pen"; notesCtl.setTool("pen", { color: annot.pen, width: annot.width }); refreshAnnotBar(); break;
+    case "eraser": toggleEraser(); break;
+    case "undo": if (!notesCtl.undo()) toast("Niente da annullare"); break;
+    case "inkvis": { const on = $("#lesson").classList.toggle("ink-hidden"); notesCtl.refresh(); toast(on ? "Scrittura a mano nascosta" : "Scrittura a mano visibile"); break; }
+    case "hlrecolor": notesCtl.updateHighlight(el.dataset.id, { c: +el.dataset.c }); editHighlight(el.dataset.id); break;
+    case "hlsave": notesCtl.updateHighlight(el.dataset.id, { n: $("#hlnote").value.trim() || undefined }); closeSheet(); toast("Nota salvata"); break;
+    case "hldel": notesCtl.removeHighlight(el.dataset.id); closeSheet(); toast("Evidenziazione tolta"); break;
     case "today": {
       const p = todayPlan(st());
       practice([...p.due, ...p.fresh], "Studio di oggi");
@@ -941,12 +1049,16 @@ async function openTheory(n) {
   // i link interni della teoria porterebbero fuori dall'esame: dentro il pannello restano testo
   sh.querySelectorAll("article a[href^='#/']").forEach((a) => a.removeAttribute("href"));
   renderMath(sh);
+  const art = sh.querySelector("article");
+  art.classList.add("annotable");
+  mountNotes(art, { lesson: L.n, get: () => getNotes(), save: () => {}, editable: false });
 }
 
 // ---------- backup: un file con tutte le materie; il caricamento unisce (sync.js), non sovrascrive
 async function exportBackup() {
   const data = { app: "ecampus-quiz", v: 2, d: Date.now(), settings: { examDate: settings.examDate, pan: settings.pan },
-    stats: Object.fromEntries(subjects.map((s) => [s.id, stats(s.id)])) };
+    stats: Object.fromEntries(subjects.map((s) => [s.id, stats(s.id)])),
+    notes: Object.fromEntries(subjects.map((s) => [s.id, getNotes(s.id)])) };
   const name = `ecampus-quiz-backup-${new Date().toISOString().slice(0, 10)}.json`;
   const file = new File([JSON.stringify(data)], name, { type: "application/json" });
   store.set("ecq:lastBackup", Date.now());
@@ -968,9 +1080,14 @@ async function importBackup(file) {
     saveStats(st, id);
     answers += added.answers; exams += added.exams;
   }
+  let notesN = 0;
+  for (const [id, inc] of Object.entries(data.notes || {})) {
+    const { notes, added } = mergeNotes(getNotes(id), inc);
+    saveNotes(notes, id); notesN += added;
+  }
   for (const k of ["examDate", "pan"]) settings[k] = { ...(data.settings?.[k] || {}), ...settings[k] };
   saveSettings();
-  toast(answers || exams ? `Unito: ${answers} risposte e ${exams} esami nuovi` : "Niente di nuovo: dati già presenti");
+  toast(answers || exams || notesN ? `Unito: ${answers} risposte, ${exams} esami, ${notesN} appunti nuovi` : "Niente di nuovo: dati già presenti");
   route();
 }
 window.addEventListener("scroll", () => $("#topbar").classList.toggle("scrolled", scrollY > 4), { passive: true });

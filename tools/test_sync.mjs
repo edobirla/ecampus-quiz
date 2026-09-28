@@ -25,3 +25,13 @@ const fixed = mergeStats({ log: [["b", 0, 200]], exams: [{ id: "e1", d: 1, score
 assert.equal(fixed.q.b.ok, 1);
 assert.equal(fixed.exams[0].score, 18);
 console.log("ok");
+
+// appunti: la cancellazione più recente vince, e riunire non duplica
+import { mergeNotes } from "../app/sync.js";
+const ipadN = { hl: { h1: { q: "entropia", c: 1, t: 10 } }, ink: { s1: { p: [1, 2], t: 10 } } };
+const telN = { hl: { h1: { del: 1, t: 20 }, h2: { q: "gas", c: 2, t: 15 } } };
+const n1 = mergeNotes(telN, ipadN).notes;
+assert.equal(n1.hl.h1.del, 1);          // cancellata sul telefono dopo: resta cancellata
+assert.ok(n1.hl.h2 && n1.ink.s1);
+assert.equal(mergeNotes(n1, ipadN).added, 0);
+console.log("ok appunti");
