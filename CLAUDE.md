@@ -11,7 +11,7 @@ Web app (PWA, vanilla JS, nessun framework) per esercitarsi sui panieri eCampus:
   - `chem_map.py` — solo Chimica: collega il paniere ai riassunti (`90 Esercizi.md`, `95 Soluzioni.md`).
   - `build.mjs` (`cd tools && node build.mjs`) — unisce tutto in `app/data/<materia>/`.
   - `subjects.json` — elenco materie e percorsi dei file sorgente.
-  - `content/<materia>/hints_*.txt` — indizi: `@<id>` poi 3 righe `- …` (markdown/TeX), dal più vago al più vicino alla soluzione; `@id !! nota` = avviso di revisione. Per una nuova materia: generarli con subagenti a lotti di ~95 domande, verificando che coprano tutti gli id.
+  - `content/<materia>/hints_*.txt` — indizi: `@<id>` poi 3 righe `- …` (markdown/TeX), dal più vago al più vicino alla soluzione; `@id !! nota` = avviso di revisione. Le opzioni si citano SEMPRE come `[[B]]` (lettera dell'ordine originale): l'app mescola le risposte e converte il segnaposto nella lettera mostrata. Mai lettere in chiaro, mai scartare tutte le opzioni sbagliate. Per una nuova materia: generarli e poi revisionarli con subagenti a lotti di ~95 domande, verificando che coprano tutti gli id.
   - `content/<materia>/*.txt` — risposte scritte a mano (formato in testa a `build.mjs`: `L-N X spiegazione`, `X!` = incerta, `X` = nessuna opzione corretta, `APERTA` + `KW:` + righe `>`), `gen*.txt` domande generate, `teoria_src/*.md` teoria generata (`=== N` separa le lezioni).
   - `test_grade.mjs` — controllo della correzione automatica (`node tools/test_grade.mjs`); `test_sync.mjs` — unione dei backup (`node tools/test_sync.mjs`).
 
@@ -28,6 +28,8 @@ Web app (PWA, vanilla JS, nessun framework) per esercitarsi sui panieri eCampus:
 
 - Domande: `src` = `paniere` | `extra` (esercizi dei riassunti dell'utente) | `gen` (generate da Claude, etichettate "Generata" nell'app). Non spacciare mai domande generate per paniere.
 - Le risposte evidenziate nel PDF possono essere sbagliate: se lo sono, correggerle con `X!` e spiegarlo ("Nel PDF è evidenziata…").
+- Ogni domanda ha UNA sola risposta giusta (come all'esame): se è ambigua si tiene quella del paniere, marcata `!`, con la nota nella spiegazione. Le opzioni duplicate nel PDF vengono tolte dalla build.
+- Correzioni a domande extra (`x…`) e testi sbagliati: stesse righe dei file risposte con l'id `x114`, più `T: testo` per sostituire il testo della domanda. Se una spiegazione cita le lettere delle opzioni, l'app non mescola quella domanda.
 - Statistiche in localStorage per materia (`ecq:stats:<id>`), nessun backend. Il `log` delle risposte (chiave id+momento) è la fonte di verità: il backup si unisce senza doppioni (`app/sync.js`).
 
 ## Pubblicazione (GitHub Pages)

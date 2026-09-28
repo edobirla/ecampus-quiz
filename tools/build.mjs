@@ -128,9 +128,12 @@ function parseExtra(x) {
 // ---------- Risposte scritte a mano (tools/content/<materia>/*.txt)
 // Formato:  "## L5 Titolo lezione"
 //           "5-12 B Spiegazione…"      (chiusa; "B!" = risposta incerta, da verificare; "X" = nessuna opzione corretta, esclusa)
+//                                        sempre UNA sola risposta giusta, come all'esame
 //           "5-34 APERTA" + "KW: parola|sinonimo, altra, =2.5" + righe "> risposta modello in markdown"
 //           "OPT: a | b | c | d" dopo una chiusa sostituisce le opzioni estratte (se il PDF le ha spezzate male)
 //           "KW: …" da solo dopo "N-M KW" aggiunge parole chiave a un'aperta che ha già la risposta modello
+//           al posto di "N-M" si può usare l'id di un esercizio extra ("x114"); "T: testo" sostituisce il testo della domanda
+const qkey = (id) => (id.startsWith("x") ? id : `p${id}`);
 function parseAnswers(dir) {
   const answers = {}, lessons = {};
   if (!fs.existsSync(dir)) return { answers, lessons };
@@ -139,10 +142,11 @@ function parseAnswers(dir) {
     for (const line of fs.readFileSync(path.join(dir, f), "utf8").split("\n")) {
       let m;
       if ((m = line.match(/^## L(\d+)\s+(.+)$/))) { lessons[+m[1]] = { title: m[2].trim() }; cur = null; }
-      else if ((m = line.match(/^(\d+)-(\d+)\s+([A-EX])(!?)\s+(.*)$/))) {
-        cur = answers[`p${m[1]}-${m[2]}`] = { c: "ABCDE".indexOf(m[3]), e: m[5], u: !!m[4] };
-      } else if ((m = line.match(/^(\d+)-(\d+)\s+APERTA\s*$/))) cur = answers[`p${m[1]}-${m[2]}`] = { a: "" };
-      else if ((m = line.match(/^(\d+)-(\d+)\s+KW:\s*(.*)$/))) answers[`p${m[1]}-${m[2]}`] = { kw: m[3].split(",").map((x) => x.trim()).filter(Boolean) };
+      else if ((m = line.match(/^(\d+-\d+|x\d+)\s+([A-EX])(!?)\s+(.*)$/))) {
+        cur = answers[qkey(m[1])] = { c: "ABCDE".indexOf(m[2]), e: m[4], u: !!m[3] };
+      } else if ((m = line.match(/^(\d+-\d+|x\d+)\s+APERTA\s*$/))) cur = answers[qkey(m[1])] = { a: "" };
+      else if ((m = line.match(/^(\d+-\d+|x\d+)\s+KW:\s*(.*)$/))) answers[qkey(m[1])] = { kw: m[2].split(",").map((x) => x.trim()).filter(Boolean) };
+      else if (cur && (m = line.match(/^T:\s*(.*)$/))) cur.t = m[1];
       else if (cur && (m = line.match(/^OPT:\s*(.*)$/))) cur.o = m[1].split(" | ").map((x) => x.trim());
       else if (cur && (m = line.match(/^KW:\s*(.*)$/))) cur.kw = m[1].split(",").map((x) => x.trim()).filter(Boolean);
       else if (cur && "a" in cur && (m = line.match(/^> ?(.*)$/))) cur.a += m[1] + "\n";
@@ -185,6 +189,19 @@ function parseHints(dir) {
     }
   }
   return out;
+}
+
+// Opzioni identiche nel PDF (es. due volte "15.0 cm/s"): si tiene solo la prima, così la risposta giusta è una sola.
+// Indice della risposta e segnaposto [[X]] degli indizi vengono rinumerati.
+const optKey = (o) => o.replace(/<img[^>]*src="([^"]+)"[^>]*>/g, " $1 ").replace(/<[^>]+>/g, "").replace(/[\s.;,:]+$/, "").replace(/\s+/g, " ").trim().toLowerCase();
+function dropDuplicates(r) {
+  const keys = r.o.map(optKey);
+  const keep = keys.map((k, i) => i).filter((i) => keys.indexOf(keys[i]) === i);
+  if (keep.length === r.o.length) return;
+  const newIdx = (i) => keep.indexOf(keys.indexOf(keys[i]));
+  if (Number.isInteger(r.c) && r.c >= 0) r.c = newIdx(r.c);
+  if (r.h) r.h = r.h.map((h) => h.replace(/\[\[([A-E])\]\]/g, (_, L) => `[[${"ABCDE"[newIdx("ABCDE".indexOf(L))]}]]`));
+  r.o = keep.map((i) => r.o[i]);
 }
 
 // ---------- Build di una materia
@@ -270,9 +287,11 @@ function buildSubject(S) {
   }
   for (const [i, x] of map.extra.entries()) {
     const p = parseExtra(x);
+    const a = answers[`x${i + 1}`] || {}; // correzioni scritte a mano agli esercizi dei riassunti
     qs.push({
       id: `x${i + 1}`, l: x.theory, src: "extra", ref: x.title.replace(/ \((a crocette)\)/, ""),
-      type: p.type, text: p.text, md: true, o: p.options, c: p.c, th: p.th, e: x.solution, a: p.type === "open" ? x.solution : undefined,
+      type: p.type, text: a.t || p.text, md: true, o: p.options, c: a.c ?? p.c, th: p.th, e: a.e || x.solution,
+      a: p.type === "open" ? a.a || x.solution : undefined, kw: a.kw, u: a.u,
     });
   }
   for (const [i, g] of generated.entries())
@@ -307,6 +326,7 @@ function buildSubject(S) {
     }
     if (q.th) r.th = linkFor(q.th);
     if (hints[q.id]?.length) r.h = hints[q.id].map((h) => mdToHtml(h, linkFor).replace(/^<p>|<\/p>\n?$/g, ""));
+    if (r.o) dropDuplicates(r);
     if (q.u) r.u = 1;
     return r;
   }).map((r) => (r.t.includes('<span class="m">') || r.t.includes("<div") ? r : r));
