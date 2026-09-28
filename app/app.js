@@ -1107,7 +1107,13 @@ window.addEventListener("hashchange", route);
       for (const s of subjects) {
         const d = loaded[s.id] || (await fetch(`data/${s.id}/subject.json?v=${s.v}`).then((r) => r.json()).catch(() => null));
         for (const L of d?.lessons || []) if (L.theory) await fetch(`data/${s.id}/t/${L.n}.html?v=${s.v}`).catch(() => {});
+        // figure delle domande
+        const imgs = new Set(JSON.stringify(d?.questions || []).match(/data\/[a-z]+\/img\/[^"\\]+/g) || []);
+        for (const u of imgs) await fetch(u).catch(() => {});
       }
+      // caratteri delle formule (KaTeX li carica solo quando servono)
+      const css = await fetch("vendor/katex/katex.min.css").then((r) => r.text()).catch(() => "");
+      for (const [, f] of css.matchAll(/url\((fonts\/[^)]+\.woff2)\)/g)) await fetch(`vendor/katex/${f}`).catch(() => {});
     }, 4000);
   }
 })();
