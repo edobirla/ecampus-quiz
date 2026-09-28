@@ -78,21 +78,53 @@ export function mountNotes(article, { lesson, get, save, editable = true, onHigh
     const s = document.getSelection();
     if (s.rangeCount && !s.isCollapsed && article.contains(s.getRangeAt(0).commonAncestorContainer)) lastSel = s.getRangeAt(0).cloneRange();
   };
-  function highlight(c) {
-    const r = lastSel;
-    if (!r || r.collapsed) return false;
+  // salva un intervallo di testo come evidenziazione (ancorata a blocco + posizione nel testo + citazione)
+  function saveRange(r, c) {
     const b0 = blockOf(r.startContainer), b1 = blockOf(r.endContainer);
-    if (!b0 || !b1) return false;
+    if (!b0 || !b1 || !r.toString().trim()) return false;
     const bs = blocks();
     put("hl", newId(), { l: lesson, b0: bs.indexOf(b0), s: offsetIn(b0, r.startContainer, r.startOffset),
       b1: bs.indexOf(b1), e: offsetIn(b1, r.endContainer, r.endOffset), q: r.toString(), c, t: Date.now() });
-    lastSel = null;
-    document.getSelection().removeAllRanges();
     paintHighlights();
     return true;
   }
+  function highlight(c) {
+    const r = lastSel;
+    if (!r || r.collapsed) return false;
+    lastSel = null;
+    document.getSelection().removeAllRanges();
+    return saveRange(r, c);
+  }
+  // punto del testo sotto le coordinate (la tela della penna non deve intercettare la ricerca)
+  function caretAt(x, y) {
+    const pe = canvas.style.pointerEvents;
+    canvas.style.pointerEvents = "none";
+    let p = document.caretRangeFromPoint?.(x, y);
+    if (!p && document.caretPositionFromPoint) {
+      const c = document.caretPositionFromPoint(x, y);
+      if (c) { p = document.createRange(); p.setStart(c.offsetNode, c.offset); }
+    }
+    canvas.style.pointerEvents = pe;
+    return p && article.contains(p.startContainer) && p.startContainer.nodeType === 3 ? p : null;
+  }
+  // l'evidenziatore si allinea alle parole intere
+  const WORD = /[\p{L}\p{N}]/u;
+  function snap(r) {
+    const s = r.startContainer, e = r.endContainer;
+    let so = r.startOffset, eo = r.endOffset;
+    if (s.nodeType === 3) while (so > 0 && WORD.test(s.data[so - 1])) so--;
+    if (e.nodeType === 3) while (eo < e.data.length && WORD.test(e.data[eo])) eo++;
+    r.setStart(s, so); r.setEnd(e, eo);
+    return r;
+  }
+  function spanBetween(a, b) {
+    const r = document.createRange();
+    if (a.compareBoundaryPoints(Range.START_TO_START, b) <= 0) { r.setStart(a.startContainer, a.startOffset); r.setEnd(b.startContainer, b.startOffset); }
+    else { r.setStart(b.startContainer, b.startOffset); r.setEnd(a.startContainer, a.startOffset); }
+    return snap(r);
+  }
   function hitHighlight(x, y) {
-    const p = document.caretRangeFromPoint?.(x, y) || (() => { const c = document.caretPositionFromPoint?.(x, y); if (!c) return null; const r = document.createRange(); r.setStart(c.offsetNode, c.offset); return r; })();
+    const p = caretAt(x, y);
     if (!p) return null;
     for (const [id, r] of ranges) if (r.isPointInRange(p.startContainer, p.startOffset)) return id;
     return null;
@@ -142,6 +174,9 @@ export function mountNotes(article, { lesson, get, save, editable = true, onHigh
       const px = toPx(s);
       for (let i = 0; i < px.length; i += 2) if (Math.hypot(px[i] - x, px[i + 1] - y) < 12) { put("ink", id, { del: 1, t: Date.now() }); break; }
     }
+    // la gomma toglie anche le evidenziazioni su cui passa
+    const a = article.getBoundingClientRect(), h = hitHighlight(a.left + x, a.top + y);
+    if (h) { put("hl", h, { del: 1, t: Date.now() }); paintHighlights(); }
     redraw();
   }
   canvas.addEventListener("pointerdown", (e) => {
@@ -179,8 +214,8 @@ export function mountNotes(article, { lesson, get, save, editable = true, onHigh
   // doppio tocco con il dito: cambia strumento (penna ↔ gomma). Il doppio tocco sul corpo della Apple Pencil
   // non è accessibile alle pagine web, questo è il gesto più vicino; il dito qui serve solo a scorrere.
   let lastTap = null;
-  canvas.addEventListener("pointerup", (e) => {
-    if (e.pointerType !== "touch") return;
+  article.addEventListener("pointerup", (e) => {
+    if (e.pointerType !== "touch" || tool === "hl") return; // in modalità selezione il doppio tocco seleziona una parola
     const now = Date.now(), p = [e.clientX, e.clientY];
     if (lastTap && now - lastTap.t < 350 && Math.hypot(p[0] - lastTap.p[0], p[1] - lastTap.p[1]) < 40) { lastTap = null; onDoubleTap?.(); }
     else lastTap = { t: now, p };
@@ -189,6 +224,37 @@ export function mountNotes(article, { lesson, get, save, editable = true, onHigh
   const stylus = (e) => { if ([...e.touches].some((t) => t.touchType === "stylus")) e.preventDefault(); };
   canvas.addEventListener("touchstart", stylus, { passive: false });
   canvas.addEventListener("touchmove", stylus, { passive: false });
+
+  // ---------- evidenziatore: si passa con la Apple Pencil (o il mouse) sul testo; l'evidenziazione si
+  // aggancia alle parole, quindi resta giusta su qualunque schermo
+  let hlColor = 0, marking = null;
+  const draft = () => { if (window.CSS?.highlights) CSS.highlights.set("hl-draft", new Highlight(...(marking?.r ? [marking.r] : []))); };
+  article.addEventListener("pointerdown", (e) => {
+    if (!editable || tool !== "marker" || !accepts(e)) return;
+    const p = caretAt(e.clientX, e.clientY);
+    if (!p) return;
+    e.preventDefault();
+    try { article.setPointerCapture(e.pointerId); } catch {}
+    marking ={ start: p, r: snap(p.cloneRange()) };
+    draft();
+  });
+  article.addEventListener("pointermove", (e) => {
+    if (!marking || !accepts(e)) return;
+    const p = caretAt(e.clientX, e.clientY);
+    if (p) { marking.r = spanBetween(marking.start, p); draft(); }
+  });
+  const endMark = () => {
+    if (!marking) return;
+    const r = marking.r;
+    marking = null;
+    draft();
+    if (r && !r.collapsed) saveRange(r, hlColor);
+  };
+  article.addEventListener("pointerup", endMark);
+  article.addEventListener("pointercancel", endMark);
+  const stylusMark = (e) => { if (tool === "marker") stylus(e); };
+  article.addEventListener("touchstart", stylusMark, { passive: false });
+  article.addEventListener("touchmove", stylusMark, { passive: false });
 
   document.addEventListener("selectionchange", onSel);
   article.addEventListener("click", onClick);
@@ -202,7 +268,9 @@ export function mountNotes(article, { lesson, get, save, editable = true, onHigh
       tool = t;
       if (opts.color !== undefined) penColor = opts.color;
       if (opts.width !== undefined) penWidth = opts.width;
+      if (opts.hlColor !== undefined) { hlColor = opts.hlColor; document.documentElement.style.setProperty("--hl-draft", `var(--hl-${hlColor})`); }
       canvas.classList.toggle("on", editable && (t === "pen" || t === "eraser"));
+      article.classList.toggle("marking", editable && t === "marker");
     },
     get tool() { return tool; },
     highlight,
