@@ -239,11 +239,12 @@ function buildSubject(S) {
   const tsrc = path.join(ROOT, "tools/content", S.id, "teoria_src");
   if (fs.existsSync(tsrc))
     for (const f of fs.readdirSync(tsrc).filter((f) => f.endsWith(".md")).sort())
-      for (const part of fs.readFileSync(path.join(tsrc, f), "utf8").split(/^=== (?=\d+\s*$)/m).slice(1)) {
+      for (const part of fs.readFileSync(path.join(tsrc, f), "utf8").split(/^=== (?=\d+(?: dispense)?\s*$)/m).slice(1)) {
         const num = parseInt(part);
+        const fromNotes = /^\d+ dispense/.test(part); // riscritta dalle dispense della prof: niente "riassunto generato"
         const md = part.slice(part.indexOf("\n") + 1);
         const title = (md.match(/^# Lezione \d+ — (.+)$/m) || [])[1] || `Lezione ${num}`;
-        theory[num] = { title, md, generated: true };
+        theory[num] = { title, md, generated: !fromNotes };
         for (const a of md.matchAll(/\{#([^}]+)\}/g)) anchorLesson[a[1]] = num;
       }
   const linkFor = (a) => (anchorLesson[a] !== undefined ? `#/teoria/${S.id}/${anchorLesson[a]}/${a}` : null);

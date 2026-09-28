@@ -1,29 +1,82 @@
 <h1>Lezione 58 — Circuiti e leggi di Kirchhoff</h1>
-<h2>Definizioni</h2>
+<h2>Il linguaggio delle reti</h2>
+<p>Un <strong>circuito</strong> è fatto di elementi (resistori, generatori) collegati da fili. I fili si considerano senza resistenza: tutti i punti di un filo hanno lo stesso potenziale.</p>
 <ul>
-<li><strong>Nodo</strong>: punto in cui convergono almeno tre conduttori.</li>
-<li><strong>Ramo</strong>: tratto tra due nodi, percorso dalla stessa corrente.</li>
-<li><strong>Maglia</strong>: percorso chiuso di rami.</li>
+<li><strong>Nodo</strong>: punto dove si uniscono almeno tre conduttori.</li>
+<li><strong>Ramo</strong>: tratto tra due nodi. Può contenere generatori (ramo attivo) o solo resistori (ramo passivo). In ogni ramo scorre una sola corrente.</li>
+<li><strong>Maglia</strong>: percorso chiuso fatto di più rami.</li>
 </ul>
-<h2>Prima legge (dei nodi)</h2>
-<p><span class="m d">\sum I_{entranti} = \sum I_{uscenti}</span>
-Conservazione della carica: in regime stazionario la carica non si accumula nei nodi.</p>
-<h2>Seconda legge (delle maglie)</h2>
-<p>Lungo una maglia la somma algebrica delle f.e.m. è uguale alla somma delle cadute di tensione:
-<span class="m d">\sum\mathcal E_k = \sum R_kI_k</span>
-Esprime il fatto che il campo elettrostatico è conservativo (conservazione dell&#39;energia).</p>
-<h2>Metodo di soluzione</h2>
+<h2>Prima legge: legge dei nodi</h2>
+<p>In regime stazionario la carica non si accumula in un nodo. Quindi quanta corrente entra, tanta ne esce. È la <strong>conservazione della carica</strong>.</p>
+<p><span class="m d">\sum_k I_k = 0</span></p>
+<p>dove <span class="m">I_k</span> = correnti del nodo (A), prese positive se entrano e negative se escono.</p>
+<div class="callout esempio">
+
+<p>In un nodo entrano 3 A e 2 A. Escono due correnti, una da 4 A. L&#39;altra vale <span class="m">3 + 2 - 4 = 1\,\mathrm{A}</span>.</p>
+</div>
+
+<h2>Seconda legge: legge delle maglie</h2>
+<p>Il campo elettrostatico è conservativo. Se fai un giro chiuso e torni al punto di partenza, torni allo stesso potenziale. Quindi lungo una maglia le f.e.m. bilanciano le cadute di tensione sui resistori.</p>
+<p><span class="m d">\sum_k \mathcal E_k = \sum_k R_k\,I_k</span></p>
+<p>dove:</p>
+<ul>
+<li><span class="m">\mathcal E_k</span> = f.e.m. dei generatori della maglia (V)</li>
+<li><span class="m">R_k</span> = resistenze dei rami della maglia (Ω)</li>
+<li><span class="m">I_k</span> = corrente che scorre in ciascun ramo (A)</li>
+</ul>
+<p>Regole di segno, dopo aver scelto un verso di percorrenza della maglia:</p>
+<ul>
+<li>una f.e.m. è <strong>positiva</strong> se la attraversi dal polo − al polo +;</li>
+<li>un termine <span class="m">R I</span> è <strong>positivo</strong> se la corrente del ramo ha il verso di percorrenza.</li>
+</ul>
+<h2>Come si risolve una rete</h2>
+<p>Una rete ha <span class="m">n</span> nodi e <span class="m">m</span> rami. Le incognite sono le <span class="m">m</span> correnti di ramo.</p>
 <ol>
-<li>Si fissano versi arbitrari per le correnti di ramo.</li>
-<li>Si scrivono <span class="m">n - 1</span> equazioni ai nodi e <span class="m">m - n + 1</span> equazioni alle maglie indipendenti.</li>
-<li>Si risolve il sistema; una corrente negativa scorre nel verso opposto a quello ipotizzato.</li>
+<li>Scegli a piacere un verso per ogni corrente.</li>
+<li>Scrivi <span class="m">n - 1</span> equazioni ai nodi (l&#39;ultima non è indipendente).</li>
+<li>Scrivi <span class="m">m - (n - 1)</span> equazioni alle maglie. Ogni nuova maglia deve contenere almeno un ramo non ancora usato.</li>
+<li>Risolvi il sistema lineare.</li>
+<li>Se una corrente esce <strong>negativa</strong>, scorre nel verso opposto a quello scelto. Non è un errore.</li>
 </ol>
-<h2>Leggi dei circuiti</h2>
-<p>Ohm (<span class="m">V = RI</span>), Kirchhoff (nodi e maglie), Joule (<span class="m">P = RI^2</span>), serie e parallelo ne sono conseguenze.</p>
+<div class="callout esempio">
+
+<p>Rete con 3 nodi e 5 rami: <span class="m">3 - 1 = 2</span> equazioni ai nodi e <span class="m">5 - 3 + 1 = 3</span> equazioni alle maglie. In totale 5 equazioni per 5 correnti.</p>
+</div>
+
+<div class="callout attenzione">
+
+<p>Non scambiare le due leggi. Nodi = conservazione della <strong>carica</strong> (correnti). Maglie = conservazione dell&#39;<strong>energia</strong>, cioè campo elettrostatico conservativo (tensioni).</p>
+</div>
+
+<h2>Teorema di Thevenin</h2>
+<p>Una rete di resistori e generatori, vista da due suoi punti A e B, si comporta come <strong>un solo generatore</strong> con una resistenza interna.</p>
+<ul>
+<li>La f.e.m. equivalente è la tensione tra A e B a vuoto, cioè senza carico.</li>
+<li>La resistenza equivalente è quella misurata tra A e B dopo aver sostituito ogni generatore con la sua resistenza interna.</li>
+</ul>
+<h2>Ponte di Wheatstone</h2>
+<p>Quattro resistori <span class="m">R_1, R_2, R_3, R_4</span> formano due rami affiancati, collegati al centro da un quinto resistore <span class="m">R_0</span>. Nel resistore centrale non passa corrente se:</p>
+<p><span class="m d">R_1 R_4 = R_2 R_3</span></p>
+<p>In questo caso il ponte si dice <strong>bilanciato</strong>. Si usa per misurare una resistenza incognita.</p>
+<h2>Strumenti di misura</h2>
+<p>Ogni strumento modifica un po&#39; il circuito che misura.</p>
+<ul>
+<li><strong>Amperometro</strong>: misura la corrente. Va <strong>in serie</strong>. Deve avere resistenza interna <strong>molto piccola</strong>, altrimenti riduce la corrente.</li>
+<li><strong>Voltmetro</strong>: misura la tensione. Va <strong>in parallelo</strong>. Deve avere resistenza interna <strong>molto grande</strong>, altrimenti &quot;ruba&quot; corrente al tratto misurato.</li>
+</ul>
+<div class="callout esame">
+
+<p>Nelle aperte chiedono di enunciare le due leggi di Kirchhoff. Per ciascuna: enunciato, formula, da quale principio deriva (carica per i nodi, campo conservativo per le maglie) e le convenzioni di segno.</p>
+</div>
+
 <div class="callout sintesi">
 
 <ul>
-<li>Nodi: <span class="m">\sum I = 0</span> (carica).</li>
-<li>Maglie: <span class="m">\sum\mathcal E = \sum RI</span> (energia).</li>
+<li>Nodo, ramo, maglia: gli elementi di una rete.</li>
+<li>Legge dei nodi: <span class="m">\sum I = 0</span>, conservazione della carica.</li>
+<li>Legge delle maglie: <span class="m">\sum \mathcal E = \sum RI</span>, dal campo elettrostatico conservativo.</li>
+<li>Con <span class="m">n</span> nodi e <span class="m">m</span> rami: <span class="m">n - 1</span> equazioni ai nodi e <span class="m">m - n + 1</span> alle maglie.</li>
+<li>Corrente negativa = verso reale opposto a quello scelto.</li>
+<li>Amperometro in serie (r piccola), voltmetro in parallelo (r grande).</li>
 </ul>
 </div>

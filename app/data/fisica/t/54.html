@@ -1,20 +1,124 @@
 <h1>Lezione 54 — Corrente elettrica</h1>
+<h2>Cos&#39;è la corrente</h2>
+<p>In un conduttore in equilibrio gli elettroni si muovono a caso: in media non vanno da nessuna parte. Se applichi una differenza di potenziale, il campo dà loro una direzione privilegiata. Il flusso ordinato di cariche è la corrente elettrica.</p>
+<p>La corrente scorre facilmente nei metalli. In modo più debole scorre anche nei liquidi, nei gas e negli isolanti. Esistono anche semiconduttori e superconduttori.</p>
 <h2>Intensità di corrente</h2>
-<p><span class="m d">I = \frac{\Delta Q}{\Delta t} \qquad (\mathrm{ampere} = \mathrm{C/s})</span>
-Il verso convenzionale è quello delle cariche positive. Esempi: 600 C in un minuto → 10 A; 16 A per 3 minuti → 2880 C; <span class="m">1{,}6 \cdot 10^{19}</span> elettroni al secondo → 2,56 A. Si misura con l&#39;<strong>amperometro</strong>, in serie.</p>
-<h2>Densità di corrente e continuità</h2>
-<p><span class="m">\vec J = nq\vec v_d</span> (A/m²), con <span class="m">v_d</span> velocità di deriva; <span class="m">I = \int\vec J \cdot d\vec S</span>. <strong>Equazione di continuità</strong> (conservazione della carica): <span class="m">\nabla \cdot \vec J = -\partial\rho/\partial t</span>; in regime stazionario <span class="m">\nabla \cdot \vec J = 0</span>.</p>
-<h2>Legge di Ohm in forma locale</h2>
-<p><span class="m">\vec J = \sigma\vec E</span>, con σ conducibilità e <span class="m">\rho = 1/\sigma</span> resistività. Per un filo: <span class="m">V = RI</span> con <span class="m">R = \rho l/S</span>.</p>
-<h2>Corrente alternata</h2>
-<p>Cambia periodicamente verso con andamento sinusoidale (rete: 50 Hz).</p>
-<h2>Effetto Joule</h2>
-<p>Il calore prodotto è <span class="m">Q = RI^2t</span>: dimezzando la corrente diventa un quarto.</p>
+<p>L&#39;intensità di corrente è la carica che attraversa una sezione del conduttore divisa per il tempo impiegato.</p>
+<p><span class="m d">i = \frac{\Delta Q}{\Delta t} \qquad i = \frac{dq}{dt}</span></p>
+<p>dove:</p>
+<ul>
+<li><span class="m">i</span> = intensità di corrente (A, ampere)</li>
+<li><span class="m">\Delta Q</span> = carica che attraversa la sezione (C)</li>
+<li><span class="m">\Delta t</span> = intervallo di tempo (s)</li>
+</ul>
+<p>L&#39;ampere è una grandezza fondamentale del SI. Il coulomb è derivato: <span class="m">1\,\mathrm C = 1\,\mathrm A \cdot 1\,\mathrm s</span>. La corrente è uno scalare. Si misura con l&#39;amperometro, inserito in serie nel circuito.</p>
+<p>Il verso convenzionale della corrente è quello in cui si muoverebbero le cariche positive. Nei metalli si muovono gli elettroni, in verso opposto. Per gli effetti macroscopici non fa differenza.</p>
+<div class="callout esempio">
+
+<ul>
+<li>600 C in un minuto: <span class="m">i = 600/60 = 10\,\mathrm A</span>.</li>
+<li>16 A per 3 minuti: <span class="m">Q = 16 \cdot 180 = 2880\,\mathrm C</span>.</li>
+<li>3 A per un&#39;ora: <span class="m">Q = 3 \cdot 3600 = 10\,800\,\mathrm C</span>.</li>
+<li><span class="m">1{,}6 \cdot 10^{19}</span> elettroni al secondo: <span class="m">i = 1{,}6 \cdot 10^{19} \cdot 1{,}6 \cdot 10^{-19} = 2{,}56\,\mathrm A</span>.</li>
+</ul>
+</div>
+
+<div class="callout attenzione">
+
+<p>La carica si misura in coulomb (C), non in joule. La corrente è un rapporto carica/tempo, non un prodotto.</p>
+</div>
+
+<h2>Vettore densità di corrente</h2>
+<p>La densità di corrente dice quanta corrente passa per unità di superficie, e in che direzione.</p>
+<p><span class="m d">\vec j = n q \vec v_d</span></p>
+<p>dove:</p>
+<ul>
+<li><span class="m">\vec j</span> = densità di corrente (A/m²)</li>
+<li><span class="m">n</span> = numero di portatori di carica per unità di volume (1/m³)</li>
+<li><span class="m">q</span> = carica di un portatore (C); per gli elettroni <span class="m">-e</span></li>
+<li><span class="m">\vec v_d</span> = velocità media di deriva dei portatori (m/s)</li>
+</ul>
+<p>Per gli elettroni <span class="m">\vec j = -ne\vec v_d</span>: <span class="m">\vec j</span> è concorde al campo anche se gli elettroni vanno al contrario.</p>
+<p>La corrente è il flusso di <span class="m">\vec j</span> attraverso una superficie:</p>
+<p><span class="m d">i = \int_S \vec j \cdot \vec u_n\,dS \qquad i = jS \ \text{(sezione perpendicolare, } j \text{ uniforme)}</span></p>
+<div class="callout esempio">
+
+<p>Filo di rame con sezione <span class="m">10\,\mathrm{mm^2}</span>, corrente 2 A, <span class="m">n = 8{,}5 \cdot 10^{28}\,\mathrm{m^{-3}}</span>. <span class="m">j = 2/10^{-5} = 2 \cdot 10^5\,\mathrm{A/m^2}</span>. <span class="m">v_d = j/(ne) \approx 1{,}5 \cdot 10^{-5}\,\mathrm{m/s}</span>. Gli elettroni derivano lentissimi: pochi centesimi di millimetro al secondo.</p>
+</div>
+
+<h2>Conservazione della carica ed equazione di continuità</h2>
+<p>La carica non si crea e non si distrugge. Se da una superficie chiusa esce più corrente di quanta ne entra, la carica dentro diminuisce.</p>
+<p><span class="m d">\oint_S \vec j \cdot \vec u_n\,dS = -\frac{dq_{int}}{dt}</span></p>
+<p>Scrivendo la carica interna come <span class="m">\int \rho\,dV</span> e applicando il teorema della divergenza si ottiene la forma locale, l&#39;equazione di continuità:</p>
+<p><span class="m d">\nabla \cdot \vec j + \frac{\partial \rho}{\partial t} = 0</span></p>
+<p>dove:</p>
+<ul>
+<li><span class="m">\rho</span> = densità di carica di volume (C/m³)</li>
+<li><span class="m">\nabla \cdot \vec j</span> = divergenza di <span class="m">\vec j</span> (quanta corrente &quot;esce&quot; da un punto)</li>
+</ul>
+<h2>Corrente stazionaria</h2>
+<p>In regime stazionario la carica interna non cambia: <span class="m">\partial\rho/\partial t = 0</span>. Allora <span class="m">\nabla \cdot \vec j = 0</span>: quanta corrente entra, tanta ne esce. In un filo a sezione variabile la corrente è la stessa in ogni sezione: <span class="m">j_1 S_1 = j_2 S_2</span>. Dove la sezione si stringe, <span class="m">j</span> cresce, come l&#39;acqua in un tubo.</p>
+<h2>Legge di Ohm</h2>
+<p>In un conduttore metallico la corrente è proporzionale alla tensione applicata:</p>
+<p><span class="m d">V = R\,i</span></p>
+<p>dove:</p>
+<ul>
+<li><span class="m">V</span> = differenza di potenziale ai capi (V)</li>
+<li><span class="m">R</span> = resistenza (Ω, ohm = V/A)</li>
+<li><span class="m">i</span> = corrente (A)</li>
+</ul>
+<p>Per un filo di lunghezza <span class="m">L</span> e sezione <span class="m">S</span>:</p>
+<p><span class="m d">R = \rho_e\frac{L}{S}</span></p>
+<p>dove:</p>
+<ul>
+<li><span class="m">\rho_e</span> = resistività del materiale (Ω·m)</li>
+</ul>
+<p>La forma locale (legge di Ohm generalizzata) lega densità di corrente e campo in ogni punto:</p>
+<p><span class="m d">\vec j = \sigma_e \vec E = \frac{\vec E}{\rho_e}</span></p>
+<p>dove:</p>
+<ul>
+<li><span class="m">\sigma_e = 1/\rho_e</span> = conducibilità (S/m)</li>
+</ul>
+<p>Integrando <span class="m">\vec j = \sigma_e\vec E</span> su un filo uniforme si ritrova <span class="m">V = Ri</span>: <span class="m">E = V/L</span> e <span class="m">i = jS = \sigma_e S V/L</span>.</p>
+<div class="callout esempio">
+
+<p>Generatore da 9 V, corrente voluta 2 A: <span class="m">R = V/i = 9/2 = 4{,}5\,\Omega</span>.</p>
+</div>
+
+<h2>Effetto Joule e potenza</h2>
+<p>Una corrente in un resistore dissipa energia in calore. La potenza è:</p>
+<p><span class="m d">P = V i = R i^2 = \frac{V^2}{R}</span></p>
+<p>dove:</p>
+<ul>
+<li><span class="m">P</span> = potenza dissipata (W)</li>
+</ul>
+<p>Il calore prodotto in un tempo <span class="m">t</span> è <span class="m">Q = R i^2 t</span>. Dipende dal quadrato della corrente.</p>
+<div class="callout esempio">
+
+<ul>
+<li>Se la corrente si dimezza, il calore diventa <span class="m">(0{,}5)^2 = 0{,}25</span> volte quello iniziale.</li>
+<li>Resistenza da <span class="m">10\,\Omega</span> con potenza massima 10 W: <span class="m">V_{max} = \sqrt{PR} = \sqrt{100} = 10\,\mathrm V</span>.</li>
+</ul>
+</div>
+
+<h2>Corrente continua e alternata</h2>
+<ul>
+<li><strong>Continua</strong>: verso e intensità costanti nel tempo (pila, batteria).</li>
+<li><strong>Alternata</strong>: la corrente inverte periodicamente il verso con andamento sinusoidale, <span class="m">i(t) = I_0\sin(\omega t)</span> (rete domestica a 50 Hz).</li>
+</ul>
+<div class="callout esame">
+
+<p>Domande aperte: definire l&#39;intensità di corrente e come si misura (<span class="m">i = dq/dt</span>, ampere, amperometro in serie); definire <span class="m">\vec j = nq\vec v_d</span> e l&#39;equazione di continuità (<span class="m">\nabla\cdot\vec j + \partial\rho/\partial t = 0</span>); legge di Ohm generalizzata (<span class="m">\vec j = \sigma_e\vec E</span>) e forma per i metalli (<span class="m">V = Ri</span>, <span class="m">R = \rho_e L/S</span>).</p>
+</div>
+
 <div class="callout sintesi">
 
 <ul>
-<li><span class="m">I = Q/t</span>; amperometro in serie.</li>
-<li><span class="m">\vec J = \sigma\vec E</span>; <span class="m">R = \rho l/S</span>.</li>
-<li>Continuità = conservazione della carica.</li>
+<li><span class="m">i = \Delta Q/\Delta t</span> (A); <span class="m">Q = i\,t</span> (C).</li>
+<li><span class="m">\vec j = nq\vec v_d</span> (A/m²); <span class="m">i = \int_S \vec j \cdot \vec u_n\,dS</span>.</li>
+<li>Continuità: <span class="m">\nabla \cdot \vec j + \partial\rho/\partial t = 0</span>; stazionario: <span class="m">\nabla \cdot \vec j = 0</span>.</li>
+<li>Ohm: <span class="m">V = Ri</span>, <span class="m">R = \rho_e L/S</span>; forma locale <span class="m">\vec j = \sigma_e \vec E</span>.</li>
+<li>Joule: <span class="m">P = Ri^2 = V^2/R</span>; il calore va con <span class="m">i^2</span>.</li>
+<li>Alternata: inverte il verso in modo sinusoidale.</li>
 </ul>
 </div>

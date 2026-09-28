@@ -1,23 +1,162 @@
-<h1>Lezione 14 — Forze di attrito</h1>
-<h2>Attrito radente statico</h2>
-<p>Agisce tra due superfici <strong>ferme</strong> l&#39;una rispetto all&#39;altra e impedisce il moto. Non ha un valore fisso: si <strong>adatta</strong> alla forza applicata fino a un valore massimo
-<span class="m d">F_{s,max} = \mu_s N</span>
-dove <span class="m">N</span> è la forza normale e <span class="m">\mu_s</span> il coefficiente di attrito statico. Se la forza applicata è minore di <span class="m">\mu_sN</span> il corpo resta fermo e l&#39;attrito è uguale alla forza applicata (es. 10 N su un blocco con attrito massimo 19,6 N → attrito 10 N).</p>
-<h2>Attrito radente dinamico</h2>
-<p>Agisce quando le superfici <strong>strisciano</strong>: <span class="m">F_d = \mu_d N</span>, opposto alla velocità relativa, circa indipendente dalla velocità e dall&#39;area di contatto. In genere <span class="m">\mu_d &lt; \mu_s</span>: serve più forza per mettere in moto un oggetto che per mantenerlo in moto. Aumentando <span class="m">N</span> (es. un mattone sopra un altro) l&#39;attrito aumenta proporzionalmente.</p>
-<p>Applicazioni: una slitta con velocità iniziale <span class="m">v_0</span> si ferma dopo <span class="m">s = v_0^2/(2\mu g)</span>; per trascinare a velocità costante serve <span class="m">F = \mu_d mg</span>; tirando con una fune inclinata di <span class="m">\theta</span> si riduce la normale: <span class="m">F\cos\theta = \mu(mg - F\sin\theta)</span>.</p>
-<h2>Attrito volvente</h2>
-<p>Si oppone al rotolamento; è molto più piccolo dell&#39;attrito radente (per questo è più facile far rotolare un tronco che trascinarlo, e si usano le ruote).</p>
-<h2>Attrito viscoso</h2>
-<p>Agisce sui corpi in moto in un <strong>fluido</strong> e <strong>dipende dalla velocità</strong>: <span class="m">\vec F = -b\vec v</span> a basse velocità (legge di Stokes per una sfera <span class="m">b = 6\pi\eta r</span>), <span class="m">\propto v^2</span> a velocità alte.</p>
-<p><strong>Velocità limite</strong>: un corpo che cade in un fluido accelera finché l&#39;attrito non bilancia il peso, poi prosegue a velocità costante <span class="m">v_L = mg/b</span> (gocce di pioggia, palloncini, paracadutisti). Ad alte velocità (auto in autostrada) l&#39;attrito predominante è quello viscoso dell&#39;aria.</p>
-<h2>Potenza contro l&#39;attrito</h2>
-<p>Per muoversi a velocità costante contro una forza resistente F serve una potenza <span class="m">P = Fv</span> (un nuotatore a 0,22 m/s contro 110 N sviluppa circa 24 W).</p>
+<h1>Lezione 14 — Forze di attrito e resistenza del mezzo</h1>
+<h2>Cos&#39;è l&#39;attrito</h2>
+<p>L&#39;esperienza mostra tre fatti:</p>
+<ul>
+<li>per mettere in moto un corpo bisogna superare una forza di soglia;</li>
+<li>un corpo lanciato su un piano rallenta fino a fermarsi;</li>
+<li>per tenerlo a velocità costante bisogna spingere sempre.</li>
+</ul>
+<p>C&#39;è quindi una forza che si oppone al moto: l&#39;<strong>attrito</strong>. Dipende dal peso del corpo e dalla rugosità delle superfici.</p>
+<p>Tipi di attrito:</p>
+<table>
+<thead>
+<tr>
+<th>Tipo</th>
+<th>Quando agisce</th>
+<th>Modulo</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Statico</td>
+<td>corpo fermo sulla superficie</td>
+<td>da <span class="m">0</span> fino a <span class="m">\mu_s N</span></td>
+</tr>
+<tr>
+<td>Dinamico (radente)</td>
+<td>corpo che striscia</td>
+<td><span class="m">\mu_d N</span>, costante</td>
+</tr>
+<tr>
+<td>Volvente</td>
+<td>corpo che rotola</td>
+<td>molto più piccolo del radente</td>
+</tr>
+<tr>
+<td>Viscoso</td>
+<td>corpo che si muove in un fluido</td>
+<td>cresce con la velocità</td>
+</tr>
+</tbody></table>
+<h2>Attrito statico</h2>
+<p>Agisce quando il corpo è fermo e una forza cerca di muoverlo. È parallelo alla superficie e opposto alla forza applicata. <strong>Si adatta</strong>: vale esattamente quanto serve a tenere fermo il corpo, fino a un massimo:
+<span class="m d">F_s \le \mu_s N</span>
+dove:</p>
+<ul>
+<li><span class="m">F_s</span> = forza di attrito statico (N);</li>
+<li><span class="m">\mu_s</span> = coefficiente di attrito statico (numero puro), dipende solo dalle due superfici;</li>
+<li><span class="m">N</span> = forza normale, cioè la risultante delle forze perpendicolari alla superficie (N).</li>
+</ul>
+<p>Il valore massimo <span class="m">\mu_s N</span> è la <strong>forza di primo distacco</strong>: la minima forza per mettere in moto il corpo.</p>
+<p>Proprietà:</p>
+<ul>
+<li><strong>non dipende dall&#39;area di contatto</strong>: un mattone appoggiato di piatto o di taglio richiede la stessa forza;</li>
+<li>è proporzionale a <span class="m">N</span>: appoggi un secondo mattone uguale e la forza di primo distacco raddoppia; <span class="m">\mu_s</span> invece non cambia.</li>
+</ul>
+<div class="callout esempio">
+
+<p>Blocco di <span class="m">4\,\mathrm{kg}</span>, <span class="m">\mu_s = 0{,}5</span>, spinto con <span class="m">10\,\mathrm N</span>. Attrito massimo: <span class="m">0{,}5 \cdot 4 \cdot 9{,}8 = 19{,}6\,\mathrm N</span>. Poiché <span class="m">10 &lt; 19{,}6</span> il blocco resta fermo e l&#39;attrito vale <strong><span class="m">10\,\mathrm N</span></strong>, non <span class="m">19{,}6</span>.
+Scatola di <span class="m">0{,}55\,\mathrm{kg}</span> che parte con <span class="m">2{,}8\,\mathrm N</span>: <span class="m">\mu_s = 2{,}8/(0{,}55 \cdot 9{,}8) \approx 0{,}51</span>.</p>
+</div>
+
+<p><strong>Angolo di attrito.</strong> L&#39;attrito si può vedere come la componente parallela della reazione del piano. La reazione totale forma con la normale un angolo <span class="m">\theta</span>. Il corpo resta fermo finché <span class="m">\tan\theta \le \mu_s</span>.</p>
+<h2>Attrito dinamico</h2>
+<p>Agisce quando il corpo <strong>striscia</strong>. È parallelo alla superficie e opposto alla velocità:
+<span class="m d">F_d = \mu_d N</span>
+dove <span class="m">F_d</span> = forza di attrito dinamico (N), <span class="m">\mu_d</span> = coefficiente di attrito dinamico (numero puro), <span class="m">N</span> = forza normale (N).</p>
+<p>Proprietà:</p>
+<ul>
+<li>in pratica non dipende dalla velocità né dall&#39;area di contatto;</li>
+<li>di solito <span class="m">\mu_d &lt; \mu_s</span>. Per questo serve più forza all&#39;inizio per smuovere un oggetto, e meno dopo per tenerlo in moto a velocità costante;</li>
+<li>chi trascina una valigia su un pavimento scabro compie lavoro contro l&#39;attrito dinamico.</li>
+</ul>
+<div class="callout esempio">
+
+<ul>
+<li>Trascinare a velocità costante <span class="m">2\,\mathrm{kg}</span> con <span class="m">\mu_d = 0{,}3</span>: <span class="m">F = 0{,}3 \cdot 2 \cdot 9{,}8 \approx 5{,}9\,\mathrm N</span>.</li>
+<li>Cassa da <span class="m">240\,\mathrm N</span> spinta con <span class="m">24\,\mathrm N</span> a velocità costante: <span class="m">\mu = 24/240 = 0{,}1</span>.</li>
+<li>Slitta a <span class="m">4\,\mathrm{m/s}</span> con <span class="m">\mu = 0{,}14</span>: decelera di <span class="m">a = \mu g \approx 1{,}37\,\mathrm{m/s^2}</span> e si ferma dopo <span class="m">s = v^2/(2a) \approx 5{,}8\,\mathrm m</span>.</li>
+<li>Due masse legate, <span class="m">m_1 = 2\,\mathrm{kg}</span> (<span class="m">\mu_1 = 0{,}3</span>) e <span class="m">m_2 = 5\,\mathrm{kg}</span> (<span class="m">\mu_2 = 0{,}2</span>), a velocità costante: <span class="m">F = (\mu_1 m_1 + \mu_2 m_2)g \approx 15{,}7\,\mathrm N</span>.</li>
+</ul>
+</div>
+
+<h2>Problemi con forza e attrito insieme</h2>
+<p>Usa sempre <span class="m">F_{applicata} - F_{attrito} = ma</span>.</p>
+<div class="callout esempio">
+
+<ul>
+<li>Blocco di <span class="m">2\,\mathrm{kg}</span> con <span class="m">F = 2\,\mathrm N</span> che accelera a <span class="m">0{,}5\,\mathrm{m/s^2}</span>: risultante <span class="m">1\,\mathrm N</span>, quindi attrito <span class="m">= 2 - 1 = 1\,\mathrm N</span>.</li>
+<li>Modellino di aereo di <span class="m">2\,\mathrm{kg}</span>, motore <span class="m">10\,\mathrm N</span>, accelera a <span class="m">3\,\mathrm{m/s^2}</span>: resistenza dell&#39;aria <span class="m">= 10 - 6 = 4\,\mathrm N</span>.</li>
+<li>Due cavalli tirano un masso con <span class="m">500\,\mathrm N</span> ciascuno, ad angolo retto; il masso resta fermo. Risultante <span class="m">500\sqrt2 \approx 707\,\mathrm N</span>: l&#39;attrito statico vale circa <span class="m">700\,\mathrm N</span>.</li>
+<li>Blocco di <span class="m">30\,\mathrm{kg}</span> (<span class="m">\mu_s = 0{,}40</span>) su un tavolo, tirato da un corpo appeso tramite una carrucola: parte se <span class="m">mg \ge \mu_s Mg</span>, cioè <span class="m">m \ge 0{,}40 \cdot 30 = 12\,\mathrm{kg}</span>.</li>
+</ul>
+</div>
+
+<p><strong>Fune inclinata.</strong> Se tiri con una fune a un angolo <span class="m">\theta</span> verso l&#39;alto, una parte della forza solleva il corpo e riduce <span class="m">N</span>:
+<span class="m d">F\cos\theta = \mu_s\,(mg - F\sin\theta)</span>
+dove <span class="m">F\cos\theta</span> = componente orizzontale della forza (N) e <span class="m">mg - F\sin\theta</span> = forza normale ridotta (N).</p>
+<div class="callout esempio">
+
+<p>Cassa di <span class="m">12\,\mathrm{kg}</span>, <span class="m">\mu_s = 0{,}3</span>, fune a <span class="m">30°</span>: <span class="m">F = \dfrac{0{,}3 \cdot 117{,}6}{0{,}866 + 0{,}15} \approx 34{,}7\,\mathrm N</span>.</p>
+</div>
+
+<h2>Attrito volvente e ruote che frenano</h2>
+<p>L&#39;<strong>attrito volvente</strong> si oppone al rotolamento. È molto più debole dell&#39;attrito radente. Per questo è più facile far rotolare un tronco che trascinarlo con una corda, e si usano le ruote.</p>
+<p>In una ruota che rotola senza strisciare, il punto a contatto con il suolo è fermo per un istante. Lì agisce l&#39;<strong>attrito statico</strong>, più grande di quello dinamico. Se le ruote si bloccano, la gomma striscia e agisce l&#39;attrito dinamico, più debole. Per questo sul ghiaccio conviene frenare senza bloccare le ruote (ABS).</p>
+<h2>Attrito viscoso e resistenza del mezzo</h2>
+<p>Un corpo che si muove in un fluido (aria, acqua) subisce una forza resistente. È opposta alla velocità e <strong>dipende dalla velocità</strong>. Se il corpo è fermo rispetto al fluido, questa forza è zero.</p>
+<p><strong>Velocità basse (moto laminare):</strong>
+<span class="m d">\vec F = -\beta\,\vec v</span>
+dove <span class="m">\beta</span> = coefficiente che dipende da forma del corpo e viscosità del fluido (kg/s) e <span class="m">\vec v</span> = velocità rispetto al fluido (m/s).</p>
+<p><strong>Velocità alte (con vortici):</strong>
+<span class="m d">F_r = \tfrac12\,C\,\rho\,A\,v^2</span>
+dove:</p>
+<ul>
+<li><span class="m">C</span> = coefficiente di resistenza aerodinamica (numero puro);</li>
+<li><span class="m">\rho</span> = densità del fluido (kg/m³);</li>
+<li><span class="m">A</span> = area della sezione del corpo perpendicolare al moto (m²);</li>
+<li><span class="m">v</span> = velocità (m/s).</li>
+</ul>
+<p>A <span class="m">130\,\mathrm{km/h}</span> in autostrada l&#39;attrito che domina è quello viscoso dell&#39;aria.</p>
+<h2>Velocità limite</h2>
+<p>Un corpo che cade in un fluido parte da fermo. All&#39;inizio conta solo il peso, e accelera. Con la velocità cresce l&#39;attrito viscoso. Quando l&#39;attrito uguaglia il peso, l&#39;accelerazione si annulla. Da lì il corpo cade a <strong>velocità costante</strong>, la velocità limite:
+<span class="m d">m\frac{dv}{dt} = mg - \beta v \quad\Rightarrow\quad v(t) = \frac{mg}{\beta}\left(1 - e^{-\beta t/m}\right) \quad\Rightarrow\quad v_{lim} = \frac{mg}{\beta}</span>
+dove <span class="m">v_{lim}</span> = velocità limite (m/s), <span class="m">t</span> = tempo (s), <span class="m">e</span> = numero di Nepero.</p>
+<p>La velocità limite cresce con il peso e diminuisce con <span class="m">\beta</span>, cioè con l&#39;area e la densità del mezzo. È il principio del paracadute: grande area, velocità limite bassa.</p>
+<p>Conseguenze:</p>
+<ul>
+<li>una goccia di pioggia caduta da migliaia di metri non ci uccide: raggiunge presto la velocità limite (pochi m/s) e non accelera più. La sua energia cinetica resta piccola;</li>
+<li>un palloncino lasciato dal soffitto raggiunge presto la velocità limite: nel tratto finale cade a velocità quasi costante;</li>
+<li>una palla lanciata in alto più veloce della velocità limite subisce la resistenza massima <strong>subito dopo il lancio</strong>, quando è più veloce. In discesa non supera la velocità limite.</li>
+</ul>
+<h2>Potenza contro la resistenza</h2>
+<p>Per muoversi a velocità costante contro una forza resistente <span class="m">F</span> serve una potenza:
+<span class="m d">P = F\,v</span>
+dove <span class="m">P</span> = potenza (W), <span class="m">F</span> = forza resistente (N), <span class="m">v</span> = velocità (m/s).</p>
+<div class="callout esempio">
+
+<p>Nuotatore a <span class="m">0{,}22\,\mathrm{m/s}</span> contro <span class="m">110\,\mathrm N</span>: <span class="m">P = 110 \cdot 0{,}22 \approx 24\,\mathrm W</span>.</p>
+</div>
+
+<p><strong>Correre e nuotare.</strong> Chi corre si muove nell&#39;aria, poco densa: la resistenza è piccola e il costo dipende soprattutto dal sollevare il corpo a ogni passo. Chi nuota si muove nell&#39;acqua, circa mille volte più densa e molto più viscosa. La resistenza del mezzo è enorme anche a bassa velocità. Il nuoto quindi costa molta più energia a parità di velocità.</p>
+<h2>Attrito ed energia</h2>
+<p>Con l&#39;attrito l&#39;energia meccanica diminuisce: una parte diventa calore. Senza attrito un corpo che scende da fermo di un&#39;altezza <span class="m">h</span> arriva con <span class="m">v = \sqrt{2gh}</span>. Non può mai arrivare più veloce.</p>
+<div class="callout esempio">
+
+<p>Bambino su uno scivolo alto <span class="m">2\,\mathrm m</span>: al massimo <span class="m">v = \sqrt{2 \cdot 9{,}8 \cdot 2} \approx 6{,}3\,\mathrm{m/s}</span>. Se il testo dice <span class="m">7{,}2\,\mathrm{m/s}</span> partendo da fermo, la situazione è impossibile.</p>
+</div>
+
+<div class="callout esame">
+
+<p>Aperte frequenti: differenza tra statico e dinamico (<span class="m">\le\mu_s N</span> che si adatta, contro <span class="m">\mu_d N</span> fisso; <span class="m">\mu_d &lt; \mu_s</span>); differenza tra dinamico e viscoso (tra solidi e indipendente da <span class="m">v</span>, contro in un fluido e dipendente da <span class="m">v</span>); proprietà di ciascun attrito; tipologie di attrito; caduta in un mezzo viscoso (velocità limite); goccia di pioggia; corsa contro nuoto.</p>
+</div>
+
 <div class="callout sintesi">
 
 <ul>
-<li>Statico: <span class="m">\le \mu_s N</span>, si adatta; dinamico: <span class="m">\mu_d N</span>, <span class="m">\mu_d &lt; \mu_s</span>.</li>
-<li>Indipendenti dall&#39;area di contatto, proporzionali alla normale.</li>
-<li>Viscoso: dipende dalla velocità → velocità limite.</li>
+<li>Statico: <span class="m">F_s \le \mu_s N</span>, si adatta alla forza applicata; il massimo è la forza di primo distacco.</li>
+<li>Dinamico: <span class="m">F_d = \mu_d N</span>, opposto al moto, <span class="m">\mu_d &lt; \mu_s</span>; entrambi non dipendono dall&#39;area.</li>
+<li>Volvente molto minore del radente; ruota che rotola = attrito statico.</li>
+<li>Viscoso: <span class="m">-\beta v</span> (basse velocità) o <span class="m">\tfrac12 C\rho A v^2</span> (alte); porta alla velocità limite <span class="m">v_{lim} = mg/\beta</span>.</li>
+<li>Potenza contro una resistenza: <span class="m">P = Fv</span>.</li>
 </ul>
 </div>

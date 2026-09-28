@@ -1032,7 +1032,7 @@ document.addEventListener("change", async (e) => {
   const d = e.target.dataset;
   if (d.set) { settings[d.set] = e.target.checked; saveSettings(); route(); }
   if (d.setsubj) { settings[d.setsubj][S.id] = e.target.checked; saveSettings(); route(); }
-  if (d.date !== undefined) { settings.examDate[S.id] = e.target.value || undefined; saveSettings(); if ($("#sheet").hidden) route(); }
+  if (d.date !== undefined) { settings.examDate[S.id] = e.target.value || undefined; saveSettings(); } // ponytail: niente route(): su iOS ridisegnare chiude il selettore appena aperto
   if (d.theorysel !== undefined) openTheory(+e.target.value);
   if (d.import !== undefined && e.target.files[0]) importBackup(e.target.files[0]);
 });

@@ -1,7 +1,7 @@
 // Offline: stale-while-revalidate su tutto; l'indice delle materie va prima in rete.
 // Le chiavi di cache ignorano la query (?v=…) così ogni file ha una sola copia, sempre l'ultima scaricata.
 // Cambiare VERSION forza il ricaricamento della shell.
-const VERSION = "ecq-v9";
+const VERSION = "ecq-v10";
 const SHELL = ["./", "index.html", "styles.css", "app.js", "grade.js", "sync.js", "notes.js", "manifest.webmanifest", "icons/icon.svg",
   "vendor/katex/katex.min.js", "vendor/katex/katex.min.css", "vendor/geist/Geist-Variable.woff2", "vendor/geist/Geist-Italic-Variable.woff2", "data/subjects.json"];
 

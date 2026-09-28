@@ -1,20 +1,134 @@
-<h1>Lezione 52 — Dielettrici</h1>
-<h2>Polarizzazione</h2>
-<p>Un <strong>dielettrico</strong> (isolante) in un campo elettrico si <strong>polarizza</strong>: le molecole diventano dipoli o si orientano. Sulle facce compaiono cariche di polarizzazione che riducono il campo interno:
-<span class="m d">E = \frac{E_0}{\varepsilon_r}</span>
-Il vettore <strong>polarizzazione</strong> <span class="m">\vec P</span> è il momento di dipolo per unità di volume; il vettore <strong>induzione elettrica</strong> <span class="m">\vec D = \varepsilon_0\vec E + \vec P = \varepsilon_0\varepsilon_r\vec E</span>, il cui flusso dipende solo dalle cariche libere.</p>
-<h2>Dielettrico in un condensatore</h2>
+<h1>Lezione 52 — Dielettrici (polarizzazione, rigidità dielettrica)</h1>
+<h2>Cosa sono i dielettrici</h2>
+<p>I dielettrici sono materiali isolanti: aria, vetro, plastica, olio. Gli elettroni sono legati agli atomi e non scorrono. In un campo elettrico però le cariche si spostano di poco e il materiale si polarizza.</p>
+<h2>Due modi di polarizzarsi</h2>
 <ul>
-<li><strong>Isolato</strong> (Q costante): V diminuisce di <span class="m">\varepsilon_r</span>, C aumenta di <span class="m">\varepsilon_r</span>, l&#39;energia diminuisce.</li>
-<li><strong>Collegato al generatore</strong> (V costante): C e Q aumentano di <span class="m">\varepsilon_r</span>.</li>
+<li><strong>Per deformazione</strong>: in un atomo il campo spinge gli elettroni da una parte e il nucleo dall&#39;altra. Nasce un piccolo dipolo indotto, diretto come il campo.</li>
+<li><strong>Per orientamento</strong>: alcune molecole (come l&#39;acqua) sono già dipoli. Senza campo sono orientate a caso e la media è zero. Il campo le fa ruotare e le allinea in parte.</li>
 </ul>
+<p>In entrambi i casi il materiale acquista un momento di dipolo medio nella direzione del campo.</p>
+<h2>Il vettore polarizzazione</h2>
+<p>La polarizzazione è il momento di dipolo per unità di volume:</p>
+<p><span class="m d">\vec P = \frac{\Delta \vec p}{\Delta V} = n\langle \vec p \rangle</span></p>
+<p>dove:</p>
+<ul>
+<li><span class="m">\vec P</span> = polarizzazione (C/m²)</li>
+<li><span class="m">n</span> = numero di molecole per unità di volume (1/m³)</li>
+<li><span class="m">\langle \vec p \rangle</span> = momento di dipolo medio di una molecola (C·m)</li>
+</ul>
+<p>Nei dielettrici lineari e isotropi <span class="m">\vec P</span> è proporzionale al campo:</p>
+<p><span class="m d">\vec P = \varepsilon_0(\varepsilon_r - 1)\vec E = \varepsilon_0 \chi \vec E</span></p>
+<p>dove:</p>
+<ul>
+<li><span class="m">\chi = \varepsilon_r - 1</span> = suscettività elettrica (numero puro)</li>
+<li><span class="m">\varepsilon_r</span> = costante dielettrica relativa</li>
+<li><span class="m">\vec E</span> = campo nel dielettrico (V/m)</li>
+</ul>
+<h2>Cariche di polarizzazione</h2>
+<p>Dentro il dielettrico uniformemente polarizzato le cariche dei dipoli vicini si compensano. Restano scoperte solo sulle facce. Sulla faccia vicina all&#39;armatura positiva compare carica negativa, e viceversa.</p>
+<p><span class="m d">\sigma_p = \vec P \cdot \vec u_n = P\cos\theta</span></p>
+<p>dove:</p>
+<ul>
+<li><span class="m">\sigma_p</span> = densità superficiale delle cariche di polarizzazione (C/m²)</li>
+<li><span class="m">\vec u_n</span> = versore normale uscente dalla superficie</li>
+</ul>
+<p>Se la polarizzazione non è uniforme compare anche una carica di volume <span class="m">\rho_p = -\nabla \cdot \vec P</span>. La carica di polarizzazione totale è sempre zero: il dielettrico resta neutro.</p>
+<h2>Effetto del dielettrico in un condensatore carico</h2>
+<p>Le cariche di polarizzazione stanno di fronte alle cariche libere delle armature, con segno opposto. Ne annullano una parte. Il campo interno quindi si riduce:</p>
+<p><span class="m d">E = \frac{E_0}{\varepsilon_r} = \frac{\sigma_0 - \sigma_p}{\varepsilon_0} \qquad \sigma_p = \frac{\varepsilon_r - 1}{\varepsilon_r}\sigma_0</span></p>
+<p>dove:</p>
+<ul>
+<li><span class="m">E_0 = \sigma_0/\varepsilon_0</span> = campo senza dielettrico (V/m)</li>
+<li><span class="m">\sigma_0</span> = densità di carica libera sulle armature (C/m²)</li>
+</ul>
+<p>Cosa succede, caso per caso:</p>
+<table>
+<thead>
+<tr>
+<th>Grandezza</th>
+<th>Condensatore isolato (<span class="m">Q</span> fisso)</th>
+<th>Collegato a una pila (<span class="m">V</span> fisso)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Capacità</td>
+<td><span class="m">\varepsilon_r C_0</span></td>
+<td><span class="m">\varepsilon_r C_0</span></td>
+</tr>
+<tr>
+<td>Carica</td>
+<td>uguale</td>
+<td><span class="m">\varepsilon_r Q_0</span></td>
+</tr>
+<tr>
+<td>Tensione</td>
+<td><span class="m">V_0/\varepsilon_r</span></td>
+<td>uguale</td>
+</tr>
+<tr>
+<td>Campo</td>
+<td><span class="m">E_0/\varepsilon_r</span></td>
+<td>uguale</td>
+</tr>
+<tr>
+<td>Energia</td>
+<td><span class="m">U_0/\varepsilon_r</span> (diminuisce)</td>
+<td><span class="m">\varepsilon_r U_0</span> (aumenta)</td>
+</tr>
+</tbody></table>
+<p>Poiché <span class="m">\varepsilon_r \ge 1</span>, il dielettrico non riduce mai la capacità.</p>
+<div class="callout esempio">
+
+<p>Condensatore isolato, inserisci un dielettrico con <span class="m">\varepsilon_r = 4</span>. La capacità quadruplica. La carica resta uguale. Quindi <span class="m">V = Q/C</span> diventa un quarto.</p>
+</div>
+
+<p>Un dielettrico viene risucchiato dentro un condensatore isolato: l&#39;energia scende entrando (<span class="m">U = Q^2/2C</span> e C cresce). Il sistema tende all&#39;energia minima.</p>
+<h2>Il vettore induzione elettrica</h2>
+<p>Il teorema di Gauss nel dielettrico deve contare anche le cariche di polarizzazione. Per evitarlo si definisce:</p>
+<p><span class="m d">\vec D = \varepsilon_0 \vec E + \vec P</span></p>
+<p>dove:</p>
+<ul>
+<li><span class="m">\vec D</span> = induzione elettrica o spostamento elettrico (C/m²)</li>
+</ul>
+<p>Il suo flusso dipende solo dalle cariche libere:</p>
+<p><span class="m d">\oint_S \vec D \cdot \vec u_n\,dS = q_{libera} \qquad \nabla \cdot \vec D = \rho_{libera}</span></p>
+<p>Nei mezzi lineari e isotropi: <span class="m">\vec D = \varepsilon_0 \vec E + \varepsilon_0(\varepsilon_r - 1)\vec E = \varepsilon \vec E</span>.</p>
+<p>Vicino a un conduttore carico: <span class="m">D = \sigma</span> (densità di carica libera), perpendicolare alla superficie. Al passaggio tra due dielettrici senza cariche libere si conservano la componente normale di <span class="m">\vec D</span> e quella tangente di <span class="m">\vec E</span>.</p>
+<h2>Equazioni dell&#39;elettrostatica nei dielettrici</h2>
+<p><span class="m d">\nabla \cdot \vec D = \rho \qquad \nabla \times \vec E = 0</span></p>
+<p>Il campo resta conservativo anche nei dielettrici: esiste il potenziale (<span class="m">\vec E = -\nabla V</span>). In un dielettrico omogeneo che riempie tutto lo spazio, a parità di cariche libere: <span class="m">D = D_0</span>, <span class="m">E = E_0/\varepsilon_r</span>, <span class="m">V = V_0/\varepsilon_r</span>.</p>
 <h2>Rigidità dielettrica</h2>
-<p>È il <strong>massimo campo</strong> che un isolante sopporta prima della scarica (perforazione). L&#39;aria ha circa 3 MV/m.</p>
+<p>Se aumenti la tensione, il campo nell&#39;isolante cresce. Oltre un valore limite le cariche vengono strappate e scocca una scarica: l&#39;isolante si &quot;perfora&quot;. Il campo massimo sopportabile si chiama rigidità dielettrica.</p>
+<p><span class="m d">E_{max} = \text{rigidità dielettrica} \qquad V_{max} = E_{max}\,d</span></p>
+<p>dove:</p>
+<ul>
+<li><span class="m">E_{max}</span> = rigidità (V/m, spesso kV/mm o MV/m)</li>
+<li><span class="m">d</span> = spessore dell&#39;isolante (m)</li>
+</ul>
+<p>L&#39;aria ha <span class="m">\varepsilon_r \approx 1</span> e rigidità circa <span class="m">3\,\mathrm{MV/m} = 3 \cdot 10^6\,\mathrm{V/m}</span>. Dipende dal materiale, dalla sua purezza e dallo stato delle superfici.</p>
+<div class="callout esempio">
+
+<p>Condensatori da <span class="m">2\,\mu\mathrm F</span> con <span class="m">d = 1\,\mathrm{mm}</span> e rigidità <span class="m">200\,\mathrm{kV/m}</span> reggono ognuno <span class="m">200\,\mathrm{kV/m} \cdot 10^{-3}\,\mathrm m = 200\,\mathrm V</span>. Per lavorare a 1000 V se ne mettono 5 in serie: ognuno regge 200 V e <span class="m">C_{eq} = 2/5 = 0{,}4\,\mu\mathrm F</span>.</p>
+</div>
+
+<div class="callout attenzione">
+
+<p>La rigidità dielettrica è un campo massimo. Non è una carica massima e non è il rapporto tra capacità (<span class="m">\varepsilon_r</span>).</p>
+</div>
+
+<div class="callout esame">
+
+<p>Domande aperte: effetto del dielettrico in un condensatore carico (capacità <span class="m">\times\varepsilon_r</span>, campo e tensione <span class="m">/\varepsilon_r</span> se isolato, cariche di polarizzazione sulle facce); definizione di <span class="m">\vec P</span> e di <span class="m">\vec D</span> (con <span class="m">\vec P = \varepsilon_0\chi\vec E</span> e <span class="m">\vec D = \varepsilon\vec E</span>).</p>
+</div>
+
 <div class="callout sintesi">
 
 <ul>
-<li>Dielettrico: <span class="m">E = E_0/\varepsilon_r</span>, <span class="m">C = \varepsilon_rC_0</span>.</li>
-<li><span class="m">\vec D = \varepsilon_0\vec E + \vec P</span>.</li>
-<li>Rigidità dielettrica = campo massimo prima della scarica.</li>
+<li>Polarizzazione: <span class="m">\vec P</span> = momento di dipolo per unità di volume (C/m²); lineare: <span class="m">\vec P = \varepsilon_0(\varepsilon_r - 1)\vec E</span>.</li>
+<li>Cariche di polarizzazione sulle facce: <span class="m">\sigma_p = \vec P \cdot \vec u_n</span>.</li>
+<li>Nel condensatore: <span class="m">C = \varepsilon_r C_0</span>; se isolato <span class="m">E = E_0/\varepsilon_r</span> e <span class="m">V = V_0/\varepsilon_r</span>.</li>
+<li><span class="m">\varepsilon_r \ge 1</span> sempre (vuoto = 1).</li>
+<li>Induzione: <span class="m">\vec D = \varepsilon_0\vec E + \vec P = \varepsilon\vec E</span>; il suo flusso conta solo le cariche libere.</li>
+<li>Rigidità dielettrica = campo massimo prima della scarica; aria circa 3 MV/m.</li>
 </ul>
 </div>

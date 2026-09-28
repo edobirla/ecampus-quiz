@@ -13,7 +13,7 @@ Web app (PWA, vanilla JS, nessun framework) per esercitarsi sui panieri eCampus:
   - `build.mjs` (`cd tools && node build.mjs`) — unisce tutto in `app/data/<materia>/`.
   - `subjects.json` — elenco materie e percorsi dei file sorgente.
   - `content/<materia>/hints_*.txt` — indizi: `@<id>` poi 3 righe `- …` (markdown/TeX), dal più vago al più vicino alla soluzione; `@id !! nota` = avviso di revisione. Le opzioni si citano SEMPRE come `[[B]]` (lettera dell'ordine originale): l'app mescola le risposte e converte il segnaposto nella lettera mostrata. Mai lettere in chiaro, mai scartare tutte le opzioni sbagliate. Per una nuova materia: generarli e poi revisionarli con subagenti a lotti di ~95 domande, verificando che coprano tutti gli id.
-  - `content/<materia>/*.txt` — risposte scritte a mano (formato in testa a `build.mjs`: `L-N X spiegazione`, `X!` = incerta, `X` = nessuna opzione corretta, `APERTA` + `KW:` + righe `>`), `gen*.txt` domande generate, `teoria_src/*.md` teoria generata (`=== N` separa le lezioni).
+  - `content/<materia>/*.txt` — risposte scritte a mano (formato in testa a `build.mjs`: `L-N X spiegazione`, `X!` = incerta, `X` = nessuna opzione corretta, `APERTA` + `KW:` + righe `>`), `gen*.txt` domande generate, `teoria_src/*.md` teoria (`=== N` separa le lezioni; `=== N dispense` = riscritta dalle dispense della prof, senza badge "riassunto generato"). Fisica: le dispense in `Fisica/Lezioni/DD.pdf` hanno numerazione diversa dal paniere (es. dispensa 50 = lezione 41).
   - `test_grade.mjs` — controllo della correzione automatica (`node tools/test_grade.mjs`); `test_sync.mjs` — unione dei backup (`node tools/test_sync.mjs`).
 
 ## Aggiungere una materia

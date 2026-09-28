@@ -1,21 +1,108 @@
-<h1>Lezione 63 — Campo magnetico generato da correnti</h1>
-<h2>Legge di Biot-Savart</h2>
-<p><span class="m d">d\vec B = \frac{\mu_0}{4\pi}\frac{I\,d\vec l \times \hat r}{r^2} \qquad \mu_0 = 4\pi \cdot 10^{-7}\ \mathrm{T\,m/A}</span></p>
-<h2>Filo rettilineo indefinito</h2>
-<p><span class="m d">B = \frac{\mu_0I}{2\pi r}</span>
-Proporzionale alla corrente, inversamente proporzionale alla distanza. Le linee di campo sono <strong>circonferenze concentriche</strong> al filo, in piani perpendicolari (verso con la regola della mano destra). Esempio: 16 µT a 2,4 cm → I ≈ 1,92 A. Una bussola vicino al filo rivela la corrente.</p>
+<h1>Lezione 63 — Campo magnetico generato da correnti (Biot-Savart)</h1>
+<h2>Le correnti generano campi magnetici</h2>
+<p>Ogni corrente crea un campo magnetico attorno a sé. Lo mostrò Oersted: un filo percorso da corrente devia l&#39;ago di una <strong>bussola</strong> vicina. Quindi una bussola basta per accorgersi che in un filo passa corrente.</p>
+<h2>Prima legge elementare di Laplace</h2>
+<p>Un tratto piccolissimo di filo crea un campo piccolissimo:
+<span class="m d">d\vec B = \frac{\mu_0}{4\pi}\,\frac{i\,d\vec l \times \hat u_r}{r^2}</span>
+dove:</p>
+<ul>
+<li><span class="m">d\vec B</span> = campo prodotto dal tratto (T);</li>
+<li><span class="m">\mu_0 = 4\pi \cdot 10^{-7}\,\mathrm{T\,m/A}</span> = permeabilità magnetica del vuoto;</li>
+<li><span class="m">i</span> = corrente (A);</li>
+<li><span class="m">d\vec l</span> = tratto di filo, nel verso della corrente (m);</li>
+<li><span class="m">\hat u_r</span> = versore dal tratto di filo al punto;</li>
+<li><span class="m">r</span> = distanza tra tratto e punto (m).</li>
+</ul>
+<p>Il campo cala con il quadrato della distanza, come il campo di una carica. Però è perpendicolare sia al filo sia a <span class="m">\hat u_r</span>.</p>
+<p>Per un circuito intero si sommano (integrano) tutti i contributi. È la <strong>legge di Ampère-Laplace</strong>:
+<span class="m d">\vec B = \oint \frac{\mu_0}{4\pi}\,\frac{i\,d\vec l \times \hat u_r}{r^2}</span></p>
+<p>Anche una sola carica in moto crea un campo:
+<span class="m d">\vec B = \frac{\mu_0}{4\pi}\,\frac{q\,\vec v \times \hat u_r}{r^2}</span>
+dove <span class="m">q</span> è la carica (C) e <span class="m">\vec v</span> la sua velocità (m/s).</p>
+<h2>Filo rettilineo indefinito: legge di Biot-Savart</h2>
+<p>Integrando la legge di Laplace lungo un filo dritto molto lungo si ottiene la <strong>legge di Biot-Savart</strong>:
+<span class="m d">B = \frac{\mu_0\,i}{2\pi r}</span>
+dove:</p>
+<ul>
+<li><span class="m">B</span> = modulo del campo (T);</li>
+<li><span class="m">i</span> = corrente nel filo (A);</li>
+<li><span class="m">r</span> = distanza dal filo (m).</li>
+</ul>
+<p>Cosa dice:</p>
+<ul>
+<li><span class="m">B</span> è <strong>proporzionale alla corrente</strong> (non al suo quadrato).</li>
+<li><span class="m">B</span> è <strong>inversamente proporzionale alla distanza</strong> (non al suo quadrato).</li>
+<li>Le linee di campo sono <strong>circonferenze concentriche</strong> al filo.</li>
+<li>Queste circonferenze stanno in <strong>piani perpendicolari al filo</strong>.</li>
+<li>Il verso segue la mano destra: pollice nel verso della corrente, le dita chiuse indicano il verso del campo.</li>
+</ul>
+<p>Per un filo finito lungo <span class="m">2L</span>, nel piano che passa per il suo centro: <span class="m">B = \dfrac{\mu_0 i}{2\pi r}\,\dfrac{L}{\sqrt{L^2 + r^2}}</span>. Se <span class="m">L</span> diventa infinito, si ritrova Biot-Savart.</p>
+<div class="callout esempio">
+
+<p>A 2,4 cm da un filo il campo vale 16 µT. La corrente è:
+<span class="m d">i = \frac{2\pi r B}{\mu_0} = \frac{2\pi \cdot 0{,}024 \cdot 16 \cdot 10^{-6}}{4\pi \cdot 10^{-7}} \approx 1{,}92\,\mathrm{A}</span></p>
+</div>
+
 <h2>Spira circolare</h2>
-<p>Al centro <span class="m">B = \dfrac{\mu_0I}{2R}</span>; sull&#39;asse il campo è massimo al centro e diminuisce allontanandosi.</p>
-<h2>Forza tra fili paralleli</h2>
-<p><span class="m d">\frac Fl = \frac{\mu_0I_1I_2}{2\pi d}</span>
-<strong>attrattiva</strong> per correnti equiverse, repulsiva per correnti opposte (definizione storica dell&#39;ampere). Una carica positiva che si muove parallela a un filo, nello stesso verso della corrente, viene attratta verso il filo.</p>
-<h2>Spira in un campo</h2>
-<p>Se il campo è perpendicolare al piano della spira (parallelo al suo momento magnetico) il momento torcente è nullo.</p>
+<p>Una spira circolare di raggio <span class="m">R</span> porta una corrente <span class="m">i</span>. Sul suo asse, a distanza <span class="m">x</span> dal centro, il campo è diretto lungo l&#39;asse e vale:
+<span class="m d">B(x) = \frac{\mu_0\,i}{2}\,\frac{R^2}{(x^2 + R^2)^{3/2}}</span>
+dove <span class="m">R</span> e <span class="m">x</span> sono in m. Il verso segue la mano destra: dita come la corrente, pollice come il campo.</p>
+<ul>
+<li>Il verso è lo stesso in tutti i punti dell&#39;asse.</li>
+<li>Il campo è <strong>massimo al centro</strong> (<span class="m">x = 0</span>): <span class="m">B = \dfrac{\mu_0 i}{2R}</span>.</li>
+<li>Allontanandosi il campo cala. Lontano cala come <span class="m">1/x^3</span>, come il campo di un dipolo.</li>
+</ul>
+<p>Per questo una spira è un <strong>dipolo magnetico</strong>. Le sue linee di campo somigliano a quelle di un dipolo elettrico. Differenza importante: le linee magnetiche sono <strong>sempre chiuse</strong>. Non partono e non finiscono in nessun punto.</p>
+<h2>Forza tra due fili paralleli</h2>
+<p>Ogni filo sta nel campo creato dall&#39;altro, quindi subisce una forza. Per due fili paralleli a distanza <span class="m">d</span>, la forza per unità di lunghezza vale:
+<span class="m d">\frac{F}{l} = \frac{\mu_0\,i_1 i_2}{2\pi d}</span>
+dove:</p>
+<ul>
+<li><span class="m">F/l</span> = forza per metro di filo (N/m);</li>
+<li><span class="m">i_1, i_2</span> = correnti nei fili (A);</li>
+<li><span class="m">d</span> = distanza tra i fili (m).</li>
+</ul>
+<p>La forza è <strong>perpendicolare ai fili</strong>:</p>
+<ul>
+<li>correnti <strong>nello stesso verso</strong>: i fili si <strong>attraggono</strong>;</li>
+<li>correnti <strong>in verso opposto</strong>: i fili si <strong>respingono</strong>.</li>
+</ul>
+<p>Per il terzo principio, i due fili subiscono forze uguali e opposte.</p>
+<p>Questa formula ha dato la definizione storica dell&#39;ampere. Due fili a 1 m, con 1 A ciascuno, si attraggono con <span class="m">2 \cdot 10^{-7}\,\mathrm{N}</span> per metro.</p>
+<div class="callout esempio">
+
+<p>Una carica positiva viaggia parallela a un filo, nello stesso verso della corrente. Si accende la corrente. La carica in moto equivale a una piccola corrente concorde con quella del filo. Correnti concordi si attraggono: la carica viene <strong>deviata verso il filo</strong>.</p>
+</div>
+
+<div class="callout esempio">
+
+<p>Un elettrone a 5 cm da un filo con 50 A, velocità <span class="m">10^7\,\mathrm{m/s}</span> perpendicolare al campo. Il campo è <span class="m">B = \dfrac{4\pi \cdot 10^{-7} \cdot 50}{2\pi \cdot 0{,}05} = 2 \cdot 10^{-4}\,\mathrm{T}</span>. La forza è <span class="m">F = evB = 1{,}6 \cdot 10^{-19} \cdot 10^7 \cdot 2 \cdot 10^{-4} = 3{,}2 \cdot 10^{-16}\,\mathrm{N}</span>. Se la velocità è parallela al campo, la forza è zero.</p>
+</div>
+
+<h2>Richiamo: forze su fili e spire</h2>
+<p>Il paniere di questa lezione chiede anche le forze subite dalle correnti:</p>
+<ul>
+<li>tratto di filo rettilineo: <span class="m">\vec F = i\vec L \times \vec B</span>, perpendicolare a filo e campo;</li>
+<li>circuito chiuso in campo uniforme: forza totale nulla;</li>
+<li>spira piana: momento magnetico <span class="m">\vec m = iS\,\hat u_n</span> (A·m²) e momento torcente <span class="m">\vec M = \vec m \times \vec B</span>, cioè <span class="m">M = iSB\sin\theta</span>.</li>
+</ul>
+<div class="callout esempio">
+
+<p>Spira quadrata di lato 20 cm, corrente 2 mA, campo 0,5 T <strong>perpendicolare alla superficie</strong>. Il campo è parallelo a <span class="m">\vec m</span>, quindi <span class="m">\sin\theta = 0</span> e il momento è <span class="m">0\,\mathrm{N\,m}</span>.</p>
+</div>
+
+<div class="callout attenzione">
+
+<p>Errore tipico: pensare che <span class="m">B</span> del filo dipenda da <span class="m">i^2</span> o da <span class="m">1/r^2</span>. Per il filo indefinito <span class="m">B \propto i</span> e <span class="m">B \propto 1/r</span>.</p>
+</div>
+
 <div class="callout sintesi">
 
 <ul>
-<li>Filo: <span class="m">B = \mu_0I/(2\pi r)</span>, linee circolari.</li>
-<li>Spira: <span class="m">B_{centro} = \mu_0I/(2R)</span>.</li>
-<li>Correnti parallele concordi si attraggono.</li>
+<li>Laplace: <span class="m">d\vec B = \dfrac{\mu_0}{4\pi}\dfrac{i\,d\vec l \times \hat u_r}{r^2}</span>, con <span class="m">\mu_0 = 4\pi \cdot 10^{-7}\,\mathrm{T\,m/A}</span>.</li>
+<li>Filo indefinito (Biot-Savart): <span class="m">B = \mu_0 i/(2\pi r)</span>; linee circolari in piani perpendicolari al filo.</li>
+<li>Spira: sull&#39;asse <span class="m">B = \dfrac{\mu_0 i R^2}{2(x^2+R^2)^{3/2}}</span>, massimo al centro <span class="m">\mu_0 i/(2R)</span>.</li>
+<li>Fili paralleli: <span class="m">F/l = \mu_0 i_1 i_2/(2\pi d)</span>; concordi si attraggono, opposti si respingono.</li>
+<li>Una bussola rivela la corrente in un filo (Oersted).</li>
 </ul>
 </div>
