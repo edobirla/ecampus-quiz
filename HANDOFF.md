@@ -1,26 +1,36 @@
 # Handoff — eCampus Quiz
 
-> Generated on 2026-09-27 17:37 — resume in a new Claude Code session.
+> Generated on 2026-09-28 18:24 — resume in a new Claude Code session.
 
 ---
 
 ## 🎯 Goal
 
-Personal PWA (vanilla JS, no framework) for studying eCampus university exams, "patente quiz" style, usable on iPhone, iPad and Mac. Features: simulated exam (24 multiple-choice at 1 pt + 2 open at 0–3 pt, auto-graded offline, pass ≥18/30, optional timer), practice by lesson with instant feedback, theory per lesson, course sheet, per-subject dashboard (exams passed/failed, correct/wrong, weak lessons, grade chart), favorites, error review, light/dark theme. New subjects are added by the user dropping PDFs in a folder and asking Claude. User writes in Italian — reply in Italian.
+Personal offline PWA (vanilla JS, no framework) for studying eCampus exams (Chimica, Fisica) on iPad, iPhone and Mac: simulated exam (24 closed + 2 open, pass ≥18/30), exam with theory + hints, practice by lesson, 3-level hints, theory with annotations (highlighter + Apple Pencil), spaced repetition / daily plan, search, stats, cross-device sync via backup file. User writes in Italian — reply in Italian. Read `CLAUDE.md` first: it has the pipeline, conventions and publish commands.
 
 ---
 
 ## 📍 Current State
 
-**Working (published and verified 2026-09-25):**
-- Live at https://edobirla.github.io/ecampus-quiz/ (public repo `edobirla/ecampus-quiz`, Pages from branch `gh-pages` = contents of `app/`). Loads with no console errors.
-- Chimica: 894 questions (437 paniere + 257 "extra" from user's own notes + 200 generated), theory = user's Markdown summaries (lessons 02–72 + formulario). All closed answers set; 0 disagreement between PDF highlights and user's written solutions on 137 checked.
-- Fisica: 931 questions (826 paniere + 105 generated). Claude solved all 657 closed (paniere has no marked answers): 17 flagged `!` "da verificare", 6 excluded `X` (no correct option). Model answers + hand keywords for all 169 open. Theory for all 69 lessons written by Claude (badge "riassunto generato").
-- Tested at 393×852, 768×1024, 1366×860, dark + light. `node tools/test_grade.mjs` passes.
+Everything below is committed on `main` and **published** at https://edobirla.github.io/ecampus-quiz/ (gh-pages, sw `VERSION = "ecq-v9"`). Tests pass: `node tools/test_grade.mjs`, `node tools/test_sync.mjs`.
 
-**Not working / in progress:**
-- Nothing known broken. The user has not yet reported testing on a real iPhone/iPad.
-- Open-answer auto-grading is lexical (keywords + vocabulary overlap + numeric results): indicative only. Extras' keywords are auto-generated and weaker than the hand-written ones for paniere opens.
+**Working (built this session and the previous one):**
+- **Exam with theory + hints** (`newExam(true)`, `res.open = 1`): same timer/questions; theory opens in a sheet (read-only annotations); kept in history but excluded from averages/chart/passed counts.
+- **Hints**: 3 per question for ALL 1819 valid questions (`tools/content/<id>/hints_NN.txt`), written then fully reviewed by 20 subagents each. Options are referenced as `[[B]]` (original letter); `optLetters()` in app.js maps to the displayed (shuffled) letter.
+- **Option shuffling** (`settings.shuffleOpts`, `sess.perm`); disabled per question when options cite each other or when the explanation cites letters in clear (`LETTER_REF`/`citesLetters`) — ~239 Chimica questions stay unshuffled because the user's own explanations say "(b)", "Risposta: c", etc.
+- **One correct answer only** (user's explicit rule). Ambiguous questions keep the paniere answer marked `!` with a note in the explanation. Duplicate options in the PDF are dropped at build (`dropDuplicates` / `optKey` in build.mjs, remaps `c` and `[[X]]`).
+- **Open-answer grading** = 3 criteria from the course sheets (content, application/numeric, scientific language), 1 pt each (`CRITERIA` in grade.js); manual override 0–3 in results (updates exam score and the answer log); ratios "1:2" accepted both ways.
+- **Stats log + backup**: `app/sync.js` — answer log keyed by id+timestamp is the source of truth, `mergeStats`/`mergeNotes` merge without duplicates, deletions propagate (tombstones), newest `mt`/`t` wins. Export via share sheet / download, import merges.
+- **Spaced repetition + daily plan** (Home "Studio di oggi"): GAPS 1/3/7/14/30 days; Fisica `paniere: true` (target = paniere only), Chimica not (target = all questions, theory-first). Exam date per subject in settings.
+- **Search** (`#/cerca`) in questions + theory.
+- **Theory annotations** (`app/notes.js`, "Annota" button on each lesson): highlights anchored to text (block index + char offsets + quote, fallback search by quote) drawn with CSS Custom Highlight API; highlighter tool (tap a color without selection, pass the Pencil/mouse over text, snaps to whole words, draft preview `hl-draft`); select-text-then-color still works; pen on a canvas anchored per block (coords as fraction of width); eraser (also removes highlights); undo; show/hide ink; finger double-tap = eraser ↔ previous tool; `#/appunti` page lists highlights/notes per lesson. Stored in `ecq:notes:<id>`, included in backup.
+- **Offline**: SW precaches shell + Geist font; after load the app prefetches all subject data, 140 theory lessons, 51 question images and 20 KaTeX fonts (verified on the live site).
+- **Design pass** (skill `~/.claude/skills/redesign-existing-projects`): Geist variable font vendored (`app/vendor/geist`, OFL), flat subject-colored hero, single stats strip, no all-caps labels, hover states, tabular numbers, skip link, no borders on light-mode cards.
+- **Content fixes** in `tools/content/chimica/02_correzioni.txt` (verified by me): p25-10→C, p30-1→D, p37-4→A, p47-22→A, rewritten model answers p9-1, p11-3…9, p17-1, p18-5, p22-4, p28-4 (figure is readable), p36-5, p38-21, p42-20/26/29/30/34, p43-31, p45-11, x56, x114, x150, x159; notes on p4-2, p16-6, p16-8, p41-6, p42-12, p43-3, p43-21, x147; texts x21, x181; p6-2 options rebuilt from the PDF. Fisica: p22-1, p22-6, p6-9 marked uncertain with notes.
+
+**Not verified / open:**
+- **Apple Pencil on a real iPad was never tested** (the browser pane and the simulator can't emulate it). Unknowns: does the Pencil scroll the page while drawing/highlighting (we `preventDefault` on `touchstart`/`touchmove` when `touch.touchType === "stylus"`), is `caretRangeFromPoint` precise enough for the highlighter, does the finger double-tap conflict with Safari gestures.
+- Highlights need Safari ≥ 17.2 (Highlight API); older Safari shows them only in `#/appunti`.
 
 ---
 
@@ -28,101 +38,107 @@ Personal PWA (vanilla JS, no framework) for studying eCampus university exams, "
 
 | File | Role / Status |
 |------|--------------|
-| `CLAUDE.md` | Full pipeline + add-subject + publish procedure. Read first. |
-| `app/index.html`, `app/app.js` | Whole SPA (hash router, views, runner, stats in localStorage `ecq:stats:<id>`, session `ecq:session`). |
-| `app/grade.js` | Open-answer grading (ES module, also imported by the test). |
-| `app/styles.css` | Tokens, light/dark, mobile tabbar ↔ desktop sidebar at 900px. |
-| `app/sw.js` | Offline cache; keys ignore `?v=`. Bump `VERSION` on every app change. |
-| `app/data/` | GENERATED by `tools/build.mjs` — never edit by hand. |
-| `tools/extract.py` | Paniere PDF → JSON (decodes eCampus glyph-id font via `SPECIAL` table; detects highlights / X marks; image options). |
-| `tools/scheda.py` | Course sheet PDF → JSON (subject name comes from here). |
-| `tools/chem_map.py` | Chimica only: links paniere to `Chimica/Riassunti/Sorgenti/90 Esercizi.md` and `95 Soluzioni.md`. |
-| `tools/build.mjs` | Merges raw + content + theory → `app/data/<id>/`. Answer-file format documented at top. |
-| `tools/subjects.json` | Subject list and source paths. |
-| `tools/content/<id>/*.txt` | Hand answers (`L-N X expl`, `X!` uncertain, `X` excluded, `APERTA`/`KW:`/`>`), `OPT:` override, `N-M KW:`. `gen*.txt` generated questions. `fisica/teoria_src/*.md` generated theory (`=== N`). |
-| `tools/test_grade.mjs` | Runnable check for grading. |
-| `.gitignore` | Excludes `*.pdf`, `/Chimica/`, `/Fisica/` (user's private material). |
+| `CLAUDE.md` | Pipeline, conventions (one correct answer, `[[X]]` hints, `x…` overrides with `T:`), publish commands. Updated this session. |
+| `app/app.js` | Whole SPA: views, runner (hints, theory sheet, shuffle), results (manual grade), backup, plan, search, annotation toolbar (`annotBar`, `toggleEraser`, `editHighlight`, `views.appunti`). |
+| `app/notes.js` | Annotation engine: `mountNotes(article, {lesson,get,save,editable,onHighlightTap,onDoubleTap})`, exports `HL_COLORS`, `INK_COLORS`, `INK_WIDTHS`. |
+| `app/sync.js` | `migrate`, `rebuildQ`, `mergeStats`, `mergeNotes` (ES module, tested by `tools/test_sync.mjs`). |
+| `app/grade.js` | Open-answer grading, `CRITERIA`. |
+| `app/sw.js` | Offline cache; **bump `VERSION` on every deploy** (now `ecq-v9`). |
+| `app/styles.css` | Tokens light/dark, `--hl-0..3`, `::highlight(...)`, annotation bar, design fixes at the bottom. |
+| `app/vendor/geist/` | Geist variable fonts + LICENSE. |
+| `tools/build.mjs` | Builds `app/data/`; parses hints (`@id` + `- `), answers (`N-M X[!]`, `xNN`, `APERTA`, `KW:`, `OPT:`, `T:`), `dropDuplicates`. |
+| `tools/content/<id>/hints_NN.txt` | Reviewed hints (20 files). `@id !! …` lines = review notes, ignored by the build. |
+| `tools/content/chimica/02_correzioni.txt` | All corrections from this session's review. |
+| `tools/subjects.json` | `fisica` has `"paniere": true`. |
+| `handoff-history/HANDOFF-2026-09-27.md` | Previous handoff. |
 
 ---
 
 ## ❌ Failed Attempts
 
-### Reading Chimica PDF text directly (span text / fixed shift)
-- **What:** Decoding `get_text()` spans with a per-font shift.
-- **Why it failed:** Font has no ToUnicode; span text is broken (parentheses → "="). Must use `page.get_texttrace()` glyph ids: regular = gid+28, bold = gid+29, special glyphs mapped by hand in `SPECIAL` (built from a rendered glyph atlas).
+### Hints citing option letters in clear
+- **What:** First-pass hints said "Scarta B e C".
+- **Why it failed:** options are shuffled at runtime → hint pointed to the wrong options (user saw "scarta B" when B was correct). Fixed with `[[X]]` placeholders + full rewrite; explanations with letters block shuffling instead.
 
-### Unanchored `.gitignore` rules
-- **What:** `Chimica/` and `Fisica/`.
-- **Why it failed:** macOS is case-insensitive → also ignored `app/data/chimica` and `tools/content/chimica`. Fixed with `/Chimica/`, `/Fisica/`.
+### Multiple correct answers (`B+C`, `q.alt`)
+- **What:** Added support for several correct options on ambiguous questions.
+- **Why it failed:** user rejected it — "solamente una è giusta". Removed; use the paniere answer + `!` + note.
 
-### GitHub Actions deploy
-- **What:** `.github/workflows/pages.yml`.
-- **Why it failed:** `refusing to allow an OAuth App to create or update workflow ... without workflow scope`. Switched to `gh-pages` branch via `git subtree split`.
+### Duplicate-option detection by plain text
+- **What:** `dropDuplicates` compared option text after stripping tags.
+- **Why it failed:** image-only options became empty strings and were merged (Chimica p5-x lost options). Fixed: `optKey` keeps `img src`, trims trailing punctuation/case.
 
-### Global TF-IDF auto keywords
-- **Why it failed:** Picked junk words ("prende", "benissimo", "apposta") and gave 0/3 to correct answers. Replaced by lesson-specific TF-IDF (term must appear ≥2 times in that lesson's theory) + vocabulary-overlap signal (`ms` stems) with lower weight for auto keywords (`ka`).
+### `OPT:` override with `$…$`
+- Paniere options go through `plain()` (escaped text, no Markdown/TeX) → use plain Unicode (λ, ·) in `OPT:` lines.
 
-### Trusting PDF highlights blindly
-- Several Chimica lesson-048 highlights are chemically wrong (48-5, 48-13, 48-21, 48-24, 48-29, 48-31, 48-36). Corrected with `X!` and explained in-app.
+### Apple Pencil double-tap (barrel) for eraser
+- Not exposed to web pages by Safari. Replaced with finger double-tap.
+
+### Browser-pane screenshots of scrolled pages
+- Show a blank band at the top with sticky elements shifted — **tool artifact**, not an app bug (DOM positions correct; verified in iOS Simulator Safari). Don't "fix" CSS for it.
+
+### Synthetic PointerEvents with arbitrary `pointerId`
+- `setPointerCapture` throws for non-active pointers; wrapped in try/catch in the highlighter. Use it in tests or pointerId 1.
+
+### Subagent review batches
+- Several agents hit the session rate limit mid-run; resuming them with `SendMessage` (their agentId) kept their work. Always validate outputs with a script (all ids, exactly 3 hints, no letters outside `[[ ]]`).
 
 ---
 
 ## ✅ Working Solutions
 
-- **Scoring 0–3 for open questions** (not the 0–2 the user first said): both course sheets say 0–3, which gives 30/30.
-- **Question sources** `paniere` | `extra` | `gen`, labeled in the UI; generated questions are never presented as paniere questions.
-- **Math:** Markdown converted at build time; TeX kept as `<span class="m">`, rendered client-side by vendored KaTeX (`\chem` macro → `\mathrm`).
-- **Letter lists** (`a. …`) are converted to bullet lists in the build.
-- **Chimica lesson titles** come from the Markdown H1 (keeps the accents).
-- **Offline:** after load, the app prefetches every subject and theory file in the background.
+- **Text-anchored highlights** (block + offsets + quote) instead of drawn marks → identical on phone/Mac regardless of reflow.
+- **Pen strokes anchored to the block where they start**, coords as fractions of article width → scale with width, stay next to their paragraph.
+- **Event-log stats** (`[id, ok, t, mt?]`) → backups merge idempotently.
+- **Build-time overrides** for everything wrong in the source material (never edit `app/data/` or the user's summaries in `/Chimica`).
+- **Review with subagents**: batches of ~95 questions, instructions file in scratchpad, then *verify flagged items yourself* before changing answers.
 
 ---
 
 ## 🔧 Dependencies & Setup
 
 ```bash
-cd tools && npm install          # marked@15, katex@0.16
-python3 -c "import fitz"          # PyMuPDF already installed; PIL used for icons
-cd tools && node build.mjs        # rebuild data
-node tools/test_grade.mjs         # grading check
-# local preview: .claude/launch.json → server "app" (python http.server :8765 --directory app)
+cd tools && npm install          # marked, katex
+cd tools && node build.mjs       # rebuild app/data (needs /Chimica/Riassunti/Sorgenti, git-ignored, only on this Mac)
+node tools/test_grade.mjs && node tools/test_sync.mjs
+# preview: .claude/launch.json → server "app" (python http.server :8765 --directory app)
 ```
 
-`gh` 2.101.0 lives in `~/.local/bin/gh`, logged in as `edobirla` (token has no `workflow` scope). Git local identity: edobirla / the user's email.
-
-**Publish an update:**
+Publish (after bumping `VERSION` in `app/sw.js`):
 ```bash
 git add -A && git commit -m "…" && git push origin main
 git subtree split --prefix app -b gh-pages-tmp && git push -f origin gh-pages-tmp:gh-pages && git branch -D gh-pages-tmp
 ```
+Check the live site: `until curl -s "https://edobirla.github.io/ecampus-quiz/sw.js?n=$RANDOM" | grep -q 'ecq-vN'; do sleep 5; done`.
 
 ---
 
 ## ➡️ Next Steps
 
-1. Ask the user how the app behaves on a real iPhone/iPad (installed via Safari → "Aggiungi alla schermata Home"), and fix any layout or keyboard issues.
-2. Help the user verify the 17 Fisica answers flagged `!` (grep `^[0-9]+-[0-9]+ [A-E]!` in `tools/content/fisica/`).
-3. Add new subjects when asked, following `CLAUDE.md` → "Aggiungere una materia".
-4. Optional ideas not built (never requested):
-   - manual override of an open-answer score;
-   - export/import of statistics between devices;
-   - hand-written keywords for the ~110 extra open exercises.
+1. **Ask the user how Apple Pencil works on the real iPad** (pen, highlighter, eraser via finger double-tap). Likely fixes if broken: page scrolls while drawing → also call `preventDefault` on `pointerdown` for `pointerType === "pen"` / add `touch-action: none` on the article only while tool is pen/marker; imprecise highlighter → snap using `caretRangeFromPoint` on the line's vertical center.
+2. Ask whether the user wants the 239 Chimica explanations that cite letters rewritten (so those questions can be shuffled too) — would need overrides in `tools/content/chimica/` (explanations come from the user's `95 Soluzioni.md`).
+3. Optional polish from the design audit not yet done: loading skeleton for theory fetch, `scroll-behavior` for anchor jumps, further spacing tweaks. Re-run `redesign-existing-projects` audit on results and study pages.
+4. Add new subjects when the user asks (follow `CLAUDE.md` → "Aggiungere una materia"; generate + review hints with `[[X]]`).
+5. Remaining ambiguous paniere items are documented with `!` + notes (Fisica p5-4, p28-6, p34-27, p31-21, p46-5, p12-22, p23-10, p24-13, p40-13; Chimica p4-8, p4-15, p13-4, p41-4/5, p45-4). No action unless the user wants them changed.
 
 ---
 
 ## ⚠️ Gotchas / Traps
 
-- The repo and site are **public**: the paniere questions and the user's Chimica summaries are visible. PDFs and `/Chimica`, `/Fisica` must never be committed.
-- Never edit `app/data/`; always rebuild with `node build.mjs`.
-- Bump `VERSION` in `app/sw.js` on every deploy, or clients keep old files longer.
-- `Chimica/Riassunti/Sorgenti` is required by the build (`theoryDir`) but is git-ignored: builds only work on this Mac.
-- Browser-pane screenshots sometimes lag one render behind: take a second screenshot before concluding the UI is broken.
-- `confirm()` dialogs block in the preview pane: override `window.confirm = () => true` when testing.
-- The user wanted the eCampus logo in the icon; the current icon is an original design inspired by it.
+- Repo and site are **public**; never commit PDFs or `/Chimica`, `/Fisica`.
+- Never edit `app/data/`; always `node build.mjs`. Never edit the user's summaries in `/Chimica`; override via `tools/content/`.
+- **Only one correct answer per question** (user's rule).
+- Hints must use `[[X]]` for options, never clear letters, never eliminate all wrong options.
+- Bump `VERSION` in `app/sw.js` on every deploy; add new app files to `SHELL`.
+- Browser pane caches JS aggressively: `fetch(url, {cache: 'reload'})` then reload when testing.
+- `confirm()` blocks the preview pane: set `window.confirm = () => true` in tests.
+- The auto-mode safety classifier sometimes fails transiently on Bash/Edit — retry later, don't loop more than a few times.
+- iOS Safari may evict PWA storage after weeks of non-use: remind the user to back up.
 
 ---
 
 ## 💬 Notes
 
-- User preferences: Italian, likes being asked before starting big work, chose PWA over native, no cross-device sync for now, GitHub for hosting.
-- Chimica exam course: "Chimica Applicata e Tecnologia dei Materiali" (Prof. Melone). Fisica: Prof. Buzzi. Both 9 CFU, Ingegneria Civile e Ambientale, A.A. 2026/2027.
+- User preferences: Italian; wants to be asked before big changes (but sometimes says "non farmi domande, procedi"); likes concise summaries; tests on iPhone/iPad/Mac.
+- Skills installed by the user in `~/.claude/skills` (design): `redesign-existing-projects` fits this app; `design-taste-frontend` is for landing pages.
+- Scratchpad tools used this session (not in repo): hint export/review scripts; recreate from `tools/` data if needed.
