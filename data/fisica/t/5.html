@@ -1,28 +1,154 @@
 <h1>Lezione 05 — Cinematica: posizione, velocità e accelerazione</h1>
-<h2>Posizione e spostamento</h2>
-<p>La <strong>cinematica</strong> descrive il moto senza occuparsi delle cause. Serve un <strong>sistema di riferimento</strong> (origine, assi, orologio). La posizione di un punto è il <strong>vettore posizione</strong> <span class="m">\vec r(t)</span>; lo <strong>spostamento</strong> è <span class="m">\Delta\vec r = \vec r_2 - \vec r_1</span> (dipende solo dalla posizione iniziale e finale, non dal percorso). La <strong>legge oraria</strong> descrive la posizione in funzione del tempo.</p>
-<h2>Velocità</h2>
+<h2>Cinematica e punto materiale</h2>
+<p>La cinematica descrive il moto. Non si chiede perché avviene (quello è la dinamica).</p>
+<p>Un corpo si tratta come <strong>punto materiale</strong> se le sue dimensioni sono trascurabili rispetto alle distanze che interessano. Un aereo su una rotta di centinaia di km è un punto. Lo stesso aereo che parcheggia al gate non lo è.</p>
+<h2>Posizione, traiettoria, spostamento</h2>
+<p>La posizione si dà rispetto a un <strong>sistema di riferimento</strong> (origine, assi, orologio).</p>
 <ul>
-<li><strong>Velocità media</strong>: <span class="m">\vec v_m = \dfrac{\Delta\vec r}{\Delta t}</span>.</li>
-<li><strong>Velocità istantanea</strong>: <span class="m">\vec v = \dfrac{d\vec r}{dt}</span>, tangente alla traiettoria.</li>
-<li>Unità: m/s (<span class="m">1\ \mathrm{m/s} = 3{,}6\ \mathrm{km/h}</span>). Dimensioni <span class="m">[L][T]^{-1}</span>.</li>
+<li><strong>Vettore posizione</strong> <span class="m">\vec r(t)</span>: va dall&#39;origine al punto.</li>
+<li><strong>Traiettoria</strong>: la linea formata da tutte le posizioni occupate nel tempo.</li>
+<li><strong>Ascissa curvilinea</strong> <span class="m">s</span>: la lunghezza del percorso misurata lungo la traiettoria.</li>
+<li><strong>Legge oraria</strong>: la funzione <span class="m">\vec r(t)</span> (o <span class="m">s(t)</span>) che dà la posizione in ogni istante.</li>
 </ul>
-<h2>Accelerazione</h2>
-<ul>
-<li><strong>Media</strong>: <span class="m">\vec a_m = \dfrac{\Delta\vec v}{\Delta t}</span>; <strong>istantanea</strong>: <span class="m">\vec a = \dfrac{d\vec v}{dt} = \dfrac{d^2\vec r}{dt^2}</span>.</li>
-<li>Unità m/s², dimensioni <span class="m">[L][T]^{-2}</span>.</li>
-<li>Descrive la variazione del <strong>vettore</strong> velocità (modulo e direzione).</li>
-</ul>
-<p>Dall&#39;accelerazione si risale alla velocità e alla posizione integrando: ad esempio con <span class="m">a = 2t</span> e partenza da ferma, <span class="m">v = t^2</span> e <span class="m">x = t^3/3</span>.</p>
+<p>Lo <strong>spostamento</strong> è il vettore tra posizione iniziale e finale:
+<span class="m d">\Delta\vec r = \vec r_2 - \vec r_1</span>
+Dipende solo dai due estremi, non dal percorso. Su una retta: <span class="m">\Delta s = s_2 - s_1</span> (da <span class="m">3{,}8\,\mathrm m</span> a <span class="m">7{,}1\,\mathrm m</span>: <span class="m">\Delta s = 3{,}3\,\mathrm m</span>).</p>
+<div class="callout esempio">
+
+<p>Una barca va 5 km a nord e poi 3 km a est. Lo spostamento ha modulo <span class="m">\sqrt{5^2 + 3^2} = \sqrt{34} \approx 5{,}8\,\mathrm{km}</span>. La strada fatta è 8 km.</p>
+</div>
+
 <h2>Coordinate polari</h2>
-<p>Nel piano si può individuare un punto con la distanza <span class="m">r</span> dall&#39;origine e l&#39;angolo <span class="m">\theta</span> con l&#39;asse x: <span class="m">x = r\cos\theta</span>, <span class="m">y = r\sin\theta</span>. Sono comode per i moti circolari.</p>
-<h2>Grandezze periodiche</h2>
-<p>Per un moto che si ripete: <strong>periodo</strong> <span class="m">T</span> (s), <strong>frequenza</strong> <span class="m">f = 1/T</span> (Hz), <strong>velocità angolare</strong> <span class="m">\omega = 2\pi/T = 2\pi f</span> (rad/s). La lancetta dei secondi: <span class="m">T = 60</span> s, <span class="m">f = 1/60</span> Hz, <span class="m">\omega \approx 0{,}105</span> rad/s.</p>
+<p>Nel piano un punto si può dare anche con:</p>
+<ul>
+<li><span class="m">r</span> = distanza dall&#39;origine (m);</li>
+<li><span class="m">\theta</span> = angolo tra <span class="m">\vec r</span> e l&#39;asse x (rad).</li>
+</ul>
+<p>Il legame con le coordinate cartesiane:
+<span class="m d">x = r\cos\theta \qquad y = r\sin\theta \qquad r = \sqrt{x^2+y^2} \qquad \tan\theta = \frac{y}{x}</span></p>
+<p>Si usano due versori: <span class="m">\hat u_r</span> lungo <span class="m">\vec r</span> e <span class="m">\hat u_\theta</span> perpendicolare. Allora <span class="m">\vec r = r\,\hat u_r</span>. La velocità ha una parte radiale (<span class="m">\dot r</span>, cambia la distanza) e una trasversa (<span class="m">r\dot\theta</span>, cambia la direzione). Le polari sono comode nei moti circolari, dove <span class="m">r</span> è costante e cambia solo <span class="m">\theta</span>.</p>
+<h2>Velocità</h2>
+<p>La velocità dice quanto rapidamente cambia la posizione.</p>
+<p><strong>Velocità media:</strong>
+<span class="m d">\vec v_m = \frac{\Delta\vec r}{\Delta t}</span>
+dove <span class="m">\Delta\vec r</span> = spostamento (m) e <span class="m">\Delta t</span> = intervallo di tempo (s). Ha la direzione della corda tra le due posizioni.</p>
+<p><strong>Velocità scalare media</strong>: strada totale percorsa diviso tempo. Se vai e torni al punto di partenza, la velocità media vettoriale è zero, quella scalare no.</p>
+<p><strong>Velocità istantanea</strong>: la velocità media su un intervallo sempre più piccolo:
+<span class="m d">\vec v = \lim_{\Delta t \to 0}\frac{\Delta\vec r}{\Delta t} = \frac{d\vec r}{dt}</span>
+È sempre <strong>tangente alla traiettoria</strong>.</p>
+<p>Unità: m/s. Dimensioni: <span class="m">[L][T]^{-1}</span>. <span class="m">1\,\mathrm{m/s} = 3{,}6\,\mathrm{km/h}</span>.</p>
+<div class="callout esempio">
+
+<p>Carl Lewis corre 100 m in 9,86 s: <span class="m">v = 100/9{,}86 = 10{,}14\,\mathrm{m/s} = 36{,}5\,\mathrm{km/h}</span>.
+Un&#39;auto fa lo stesso tratto in salita a <span class="m">v_1</span> e in discesa a <span class="m">v_2</span>. La velocità media non è <span class="m">(v_1+v_2)/2</span> ma <span class="m">2v_1v_2/(v_1+v_2)</span>, perché i tempi sono diversi.</p>
+</div>
+
+<h2>Accelerazione</h2>
+<p>L&#39;accelerazione dice quanto rapidamente cambia il <strong>vettore velocità</strong>: modulo, direzione o verso.</p>
+<p><strong>Media:</strong>
+<span class="m d">\vec a_m = \frac{\Delta\vec v}{\Delta t}</span>
+<strong>Istantanea:</strong>
+<span class="m d">\vec a = \frac{d\vec v}{dt} = \frac{d^2\vec r}{dt^2}</span>
+dove <span class="m">\Delta\vec v</span> = variazione di velocità (m/s) e <span class="m">\Delta t</span> = intervallo (s).</p>
+<p>Unità: m/s² (<span class="m">= \mathrm{(m/s)/s}</span>). Dimensioni: <span class="m">[L][T]^{-2}</span>, cioè lunghezza per tempo alla meno due.</p>
+<div class="callout esempio">
+
+<ul>
+<li>Un motociclista passa da 54 km/h (15 m/s) a 108 km/h (30 m/s) in 20 s: <span class="m">a = 15/20 = 0{,}75\,\mathrm{m/s^2}</span>.</li>
+<li>Un aereo va a nord a 200 m/s e poi a sud a 200 m/s. Il modulo non cambia, ma <span class="m">|\Delta\vec v| = 400\,\mathrm{m/s}</span>.</li>
+</ul>
+</div>
+
+<p><strong>Componenti tangenziale e normale.</strong> L&#39;accelerazione si divide in due parti rispetto alla traiettoria:</p>
+<ul>
+<li><strong>tangenziale</strong> <span class="m">a_t = dv/dt</span>: cambia il modulo della velocità;</li>
+<li><strong>normale</strong> (centripeta) <span class="m">a_n = v^2/R</span>: cambia la direzione. <span class="m">R</span> è il raggio di curvatura della traiettoria.</li>
+</ul>
+<p>Quindi c&#39;è accelerazione anche a velocità costante in modulo, se la traiettoria curva.</p>
+<div class="callout attenzione">
+
+<p>Se la velocità è costante (vettore costante), l&#39;accelerazione è zero. Non può essere &quot;variabile&quot;. Invece sono possibili: velocità nulla con accelerazione non nulla (punto più alto di un lancio verticale); velocità verso +x con accelerazione verso −x (frenata).</p>
+</div>
+
+<h2>Dall&#39;accelerazione alla posizione</h2>
+<p>Derivando si va da posizione a velocità ad accelerazione. Integrando si fa il cammino inverso:
+<span class="m d">v(t) = v_0 + \int_0^t a\,dt \qquad x(t) = x_0 + \int_0^t v\,dt</span>
+dove <span class="m">x_0, v_0</span> sono posizione e velocità all&#39;istante <span class="m">t = 0</span>.</p>
+<div class="callout esempio">
+
+<p>Un corpo parte da fermo con <span class="m">a = 2t</span>. Allora <span class="m">v = t^2</span> e <span class="m">x = t^3/3</span>. A <span class="m">t = 3\,\mathrm s</span>: <span class="m">x = 27/3 = 9\,\mathrm m</span>.</p>
+</div>
+
+<h2>Formule dei moti più comuni</h2>
+<p>Si approfondiscono nella lezione 6. Qui servono per gli esercizi.</p>
+<table>
+<thead>
+<tr>
+<th>Moto</th>
+<th>Velocità</th>
+<th>Posizione</th>
+<th>Senza il tempo</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>uniforme (<span class="m">a = 0</span>)</td>
+<td><span class="m">v</span> costante</td>
+<td><span class="m">s = s_0 + vt</span></td>
+<td>—</td>
+</tr>
+<tr>
+<td>uniformemente accelerato</td>
+<td><span class="m">v = v_0 + at</span></td>
+<td><span class="m">s = s_0 + v_0t + \tfrac12 at^2</span></td>
+<td><span class="m">v^2 = v_0^2 + 2a\,\Delta s</span></td>
+</tr>
+</tbody></table>
+<p>dove <span class="m">s_0, v_0</span> = posizione e velocità iniziali, <span class="m">a</span> = accelerazione costante, <span class="m">t</span> = tempo.</p>
+<ul>
+<li>Moto uniforme: spazi <strong>proporzionali</strong> ai tempi. Con <span class="m">s_0 = 2\,\mathrm m</span> e <span class="m">v = 20\,\mathrm{m/s}</span>: <span class="m">s = 2 + 20t</span>.</li>
+<li>Da fermo: <span class="m">s = \tfrac12 at^2</span>. A parità di tempo, raddoppiando <span class="m">a</span> raddoppia lo spazio. A parità di <span class="m">a</span>, raddoppiando il tempo lo spazio quadruplica (500 m in 10 s → 2000 m in 20 s).</li>
+<li>Caduta libera (<span class="m">a = g = 9{,}8\,\mathrm{m/s^2}</span> verso il basso): <span class="m">h = \tfrac12 gt^2</span>, <span class="m">v = \sqrt{2gh}</span>. Da 30 m: <span class="m">v = \sqrt{2\cdot 9{,}8\cdot 30} \approx 24\,\mathrm{m/s}</span>.</li>
+<li>Lancio verso l&#39;alto: <span class="m">g</span> è opposta alla velocità, il corpo rallenta. Tempo di salita <span class="m">v_0/g</span>; la discesa dura uguale. Con <span class="m">v_0 = 196\,\mathrm{m/s}</span>: 20 s in salita, 40 s in totale.</li>
+</ul>
+<div class="callout esempio">
+
+<ul>
+<li>Ciclista a 6,5 m/s per 30 s: <span class="m">s = 195\,\mathrm m</span>. Per fare 100 m: <span class="m">t = 100/6{,}5 \approx 15{,}4\,\mathrm s</span>.</li>
+<li>Da fermo con <span class="m">a = 0{,}1\,\mathrm{m/s^2}</span>: in 10 s fa <span class="m">\tfrac12\cdot 0{,}1\cdot 100 = 5\,\mathrm m</span>; arriva a 10 m/s dopo <span class="m">10/0{,}1 = 100\,\mathrm s</span>.</li>
+<li>Da 10 a 20 m/s in 75 m: <span class="m">a = (400 - 100)/(2\cdot 75) = 2\,\mathrm{m/s^2}</span>.</li>
+<li>Cavallo da 11 a 6,5 m/s con <span class="m">a = -4\,\mathrm{m/s^2}</span>: <span class="m">t = (6{,}5 - 11)/(-4) = 1{,}125\,\mathrm s</span>.</li>
+</ul>
+</div>
+
+<h2>Moti periodici: periodo, frequenza, velocità angolare</h2>
+<p>Un moto che si ripete uguale ha:</p>
+<ul>
+<li><strong>periodo</strong> <span class="m">T</span>: il tempo di un giro o di un&#39;oscillazione (s);</li>
+<li><strong>frequenza</strong> <span class="m">f = 1/T</span>: quanti giri al secondo (Hz <span class="m">= \mathrm{s^{-1}}</span>);</li>
+<li><strong>velocità angolare</strong> <span class="m">\omega = 2\pi/T = 2\pi f</span> (rad/s).</li>
+</ul>
+<div class="callout esempio">
+
+<ul>
+<li>Lancetta dei secondi: <span class="m">T = 60\,\mathrm s</span>, <span class="m">f = 1/60\,\mathrm{Hz}</span>, <span class="m">\omega = 2\pi/60 \approx 0{,}105\,\mathrm{rad/s}</span>.</li>
+<li><span class="m">f = 100\,\mathrm{Hz}</span>: <span class="m">\omega = 2\pi\cdot 100 \approx 628\,\mathrm{rad/s}</span>.</li>
+<li>Onda a <span class="m">100\,\mathrm{MHz} = 10^8\,\mathrm{Hz}</span>: <span class="m">T = 10^{-8}\,\mathrm s = 10\,\mathrm{ns}</span>.</li>
+</ul>
+</div>
+
+<div class="callout esame">
+
+<p>Aperte frequenti: definire posizione, velocità (media e istantanea) e accelerazione; descrivere la posizione in coordinate polari.</p>
+</div>
+
 <div class="callout sintesi">
 
 <ul>
-<li><span class="m">\vec v = d\vec r/dt</span>, <span class="m">\vec a = d\vec v/dt</span>.</li>
-<li>Velocità media = spostamento / tempo; distanza ≠ spostamento.</li>
-<li><span class="m">T = 1/f</span>, <span class="m">\omega = 2\pi f</span>.</li>
+<li>Spostamento <span class="m">\Delta\vec r = \vec r_2 - \vec r_1</span>; dipende solo dagli estremi.</li>
+<li><span class="m">\vec v = d\vec r/dt</span>, tangente alla traiettoria; m/s, <span class="m">[L][T]^{-1}</span>.</li>
+<li><span class="m">\vec a = d\vec v/dt</span>: variazione del vettore velocità; m/s², <span class="m">[L][T]^{-2}</span>; <span class="m">a_t = dv/dt</span>, <span class="m">a_n = v^2/R</span>.</li>
+<li>Polari: <span class="m">x = r\cos\theta</span>, <span class="m">y = r\sin\theta</span>.</li>
+<li>Uniforme <span class="m">s = s_0 + vt</span>; accelerato <span class="m">s = s_0 + v_0t + \tfrac12at^2</span>, <span class="m">v^2 = v_0^2 + 2a\Delta s</span>.</li>
+<li><span class="m">f = 1/T</span>, <span class="m">\omega = 2\pi f</span>.</li>
 </ul>
 </div>

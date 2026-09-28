@@ -1,11 +1,22 @@
 <h1>Lezione 02 — Grandezze fisiche, unità di misura ed errori</h1>
-<h2>Grandezze fisiche e misura</h2>
-<p>Una <strong>grandezza fisica</strong> è una proprietà di un corpo o di un fenomeno che si può <strong>misurare</strong>, cioè confrontare con una grandezza campione della stessa specie (l&#39;<strong>unità di misura</strong>). Il risultato di una misura è un numero accompagnato dalla sua unità e dalla sua incertezza.</p>
+<h2>Grandezza, misura, unità</h2>
+<p>Una grandezza fisica è una proprietà che si può misurare. La temperatura di una stanza è una grandezza. Il termometro è lo strumento. Il numero letto è la misura.</p>
+<p>Misurare vuol dire confrontare la grandezza con un campione, l&#39;unità di misura:
+<span class="m d">G = g \cdot u_G</span>
+dove:</p>
 <ul>
-<li><strong>Grandezze fondamentali</strong>: definite direttamente tramite un campione (lunghezza, massa, tempo…).</li>
-<li><strong>Grandezze derivate</strong>: definite a partire da quelle fondamentali tramite relazioni matematiche (velocità = lunghezza/tempo, forza = massa × accelerazione).</li>
+<li><span class="m">G</span> = la grandezza (es. una lunghezza);</li>
+<li><span class="m">g</span> = il numero che esce dalla misura;</li>
+<li><span class="m">u_G</span> = l&#39;unità di misura (es. il metro).</li>
+</ul>
+<p>Il risultato è sempre la migliore stima del <strong>valore vero</strong>. Il valore vero resta un&#39;idea astratta: servirebbe uno strumento perfetto.</p>
+<h2>Grandezze fondamentali e derivate</h2>
+<ul>
+<li><strong>Fondamentali</strong>: definite direttamente da un campione. Esempi: lunghezza, massa, tempo.</li>
+<li><strong>Derivate</strong>: definite a partire dalle fondamentali. Esempi: velocità = lunghezza/tempo, forza = massa × accelerazione.</li>
 </ul>
 <h2>Il Sistema Internazionale (SI)</h2>
+<p>Il SI fissa sette unità fondamentali. Tutte le altre si costruiscono da queste.</p>
 <table>
 <thead>
 <tr>
@@ -21,7 +32,7 @@
 </tr>
 <tr>
 <td>massa</td>
-<td>chilogrammo</td>
+<td>kilogrammo</td>
 <td>kg</td>
 </tr>
 <tr>
@@ -50,31 +61,182 @@
 <td>cd</td>
 </tr>
 </tbody></table>
-<p>Prefissi: kilo <span class="m">10^3</span>, mega <span class="m">10^6</span>, giga <span class="m">10^9</span>; milli <span class="m">10^{-3}</span>, micro <span class="m">10^{-6}</span>, nano <span class="m">10^{-9}</span>. Attenzione alla scrittura: <strong>kg</strong> (k minuscola), <strong>N</strong> per il newton, <strong>J</strong> per il joule.</p>
-<h2>Analisi dimensionale</h2>
-<p>Ogni grandezza ha delle <strong>dimensioni</strong> espresse in funzione di quelle fondamentali: <span class="m">[v] = [L][T]^{-1}</span>, <span class="m">[a] = [L][T]^{-2}</span>, <span class="m">[F] = [M][L][T]^{-2}</span>. In un&#39;equazione fisica i due membri devono avere le stesse dimensioni: è un controllo rapido degli errori.</p>
+<p>Alcune unità derivate: newton <span class="m">\mathrm N = \mathrm{kg\,m/s^2}</span> (forza), joule <span class="m">\mathrm J = \mathrm{N\,m}</span> (lavoro, energia), hertz <span class="m">\mathrm{Hz} = \mathrm{s^{-1}}</span> (frequenza).</p>
+<p>Multipli e sottomultipli <strong>non</strong> sono unità SI: il centimetro e il grammo sono solo sottomultipli.</p>
+<table>
+<thead>
+<tr>
+<th>Prefisso</th>
+<th>Simbolo</th>
+<th>Fattore</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>giga</td>
+<td>G</td>
+<td><span class="m">10^{9}</span></td>
+</tr>
+<tr>
+<td>mega</td>
+<td>M</td>
+<td><span class="m">10^{6}</span></td>
+</tr>
+<tr>
+<td>kilo</td>
+<td>k</td>
+<td><span class="m">10^{3}</span></td>
+</tr>
+<tr>
+<td>centi</td>
+<td>c</td>
+<td><span class="m">10^{-2}</span></td>
+</tr>
+<tr>
+<td>milli</td>
+<td>m</td>
+<td><span class="m">10^{-3}</span></td>
+</tr>
+<tr>
+<td>micro</td>
+<td>µ</td>
+<td><span class="m">10^{-6}</span></td>
+</tr>
+<tr>
+<td>nano</td>
+<td>n</td>
+<td><span class="m">10^{-9}</span></td>
+</tr>
+</tbody></table>
+<div class="callout esempio">
+
+<ul>
+<li><span class="m">1\,\mu\mathrm m = 10^{-6}\,\mathrm m = 10^{-3}\,\mathrm{mm}</span>.</li>
+<li><span class="m">1\,\mathrm{MHz} = 10^{6}\,\mathrm{Hz}</span>.</li>
+<li>Da m/s a km/h si moltiplica per <span class="m">3{,}6</span>: <span class="m">60\,\mathrm{m/s} = 216\,\mathrm{km/h}</span>. Da km/h a m/s si divide per <span class="m">3{,}6</span>.</li>
+</ul>
+</div>
+
+<div class="callout attenzione">
+
+<p>I simboli si scrivono esatti: <strong>kg</strong> con la k minuscola, <strong>N</strong> per il newton, <strong>K</strong> per il kelvin (senza °). Una scala &quot;°N&quot; non esiste: le temperature si danno in K, °C o °F.</p>
+</div>
+
+<h2>Dimensioni fisiche</h2>
+<p>Ogni grandezza ha delle dimensioni, scritte con le fondamentali: <span class="m">[L]</span> lunghezza, <span class="m">[M]</span> massa, <span class="m">[T]</span> tempo.</p>
+<ul>
+<li>distanza, altezza, lunghezza: <span class="m">[L]</span>;</li>
+<li>velocità: <span class="m">[L][T]^{-1}</span>;</li>
+<li>accelerazione: <span class="m">[L][T]^{-2}</span>;</li>
+<li>forza: <span class="m">[M][L][T]^{-2}</span>.</li>
+</ul>
+<p>In ogni equazione fisica i due membri devono avere le stesse dimensioni. È un controllo veloce. Esempio: in <span class="m">s = \tfrac12 a t^2</span> si ha <span class="m">[L][T]^{-2}\cdot[T]^2 = [L]</span>. Torna.</p>
+<h2>Errori di misura</h2>
+<p>Ogni misura ha un errore: dice quanto il risultato può scostarsi dal valore vero.</p>
+<ul>
+<li><strong>Errore casuale</strong>: fa oscillare le misure ripetute, a volte in su, a volte in giù. Si riduce ripetendo la misura e facendo la media.</li>
+<li><strong>Errore sistematico</strong>: sposta le misure sempre nello stesso verso. Nasce da uno strumento tarato male o usato male. Ripetere non aiuta. Si scopre cambiando strumento o metodo.</li>
+</ul>
+<p><strong>Errore massimo.</strong> Con una sola misura, o con uno strumento poco sensibile, l&#39;errore è la risoluzione dello strumento. Un libro misurato con un righello ai centimetri: <span class="m">L = 21 \pm 1\,\mathrm{cm}</span>.</p>
+<p><strong>Errore statistico.</strong> Con tante misure ripetute si usa la media e la <strong>deviazione standard</strong> <span class="m">\sigma</span>:
+<span class="m d">x = \bar x \pm \sigma</span>
+dove:</p>
+<ul>
+<li><span class="m">\bar x</span> = media delle misure (stessa unità della grandezza);</li>
+<li><span class="m">\sigma</span> = deviazione standard, cioè quanto le misure sono sparse attorno alla media.</li>
+</ul>
+<p>Con errori casuali le misure formano una curva a campana (gaussiana). Dentro <span class="m">\bar x \pm \sigma</span> cade circa il 68% delle misure. Dentro <span class="m">\pm 2\sigma</span> circa il 95%. Dentro <span class="m">\pm 3\sigma</span> più del 99%.</p>
+<p><strong>Errore relativo.</strong> È l&#39;errore diviso per il valore: <span class="m">\delta x / |x|</span>. Non ha unità e spesso si dà in percentuale. Serve a confrontare la precisione di misure diverse.</p>
+<div class="callout esempio">
+
+<p><span class="m">A = (20{,}0 \pm 0{,}5)\,\mathrm{cm}</span> ha errore relativo <span class="m">0{,}5/20 = 2{,}5\%</span>. <span class="m">B = (10 \pm 1)\,\mathrm{mm}</span> ha errore relativo <span class="m">10\%</span>. È più precisa A.</p>
+</div>
+
+<h2>Propagazione degli errori</h2>
+<p>Se una grandezza si calcola da altre, il suo errore dipende dagli errori di partenza.</p>
+<table>
+<thead>
+<tr>
+<th>Operazione</th>
+<th>Valore</th>
+<th>Errore</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><span class="m">z = x + y</span></td>
+<td><span class="m">x + y</span></td>
+<td><span class="m">\delta z = \delta x + \delta y</span></td>
+</tr>
+<tr>
+<td><span class="m">z = x - y</span></td>
+<td><span class="m">x - y</span></td>
+<td><span class="m">\delta z = \delta x + \delta y</span></td>
+</tr>
+<tr>
+<td><span class="m">z = x \cdot y</span></td>
+<td><span class="m">x \cdot y</span></td>
+<td><span class="m">\dfrac{\delta z}{\lvert z\rvert} = \dfrac{\delta x}{\lvert x\rvert} + \dfrac{\delta y}{\lvert y\rvert}</span></td>
+</tr>
+<tr>
+<td><span class="m">z = x / y</span></td>
+<td><span class="m">x / y</span></td>
+<td><span class="m">\dfrac{\delta z}{\lvert z\rvert} = \dfrac{\delta x}{\lvert x\rvert} + \dfrac{\delta y}{\lvert y\rvert}</span></td>
+</tr>
+</tbody></table>
+<p>dove <span class="m">\delta x, \delta y, \delta z</span> sono gli errori assoluti (stessa unità della grandezza).</p>
+<ul>
+<li>Somme e differenze: si <strong>sommano gli errori assoluti</strong>. Anche nella differenza gli errori si sommano, non si sottraggono.</li>
+<li>Prodotti e quozienti: si <strong>sommano gli errori relativi</strong>.</li>
+</ul>
+<p>Con errori statistici indipendenti, per la somma si usa <span class="m">\sigma_z = \sqrt{\sigma_x^2 + \sigma_y^2}</span>.</p>
+<div class="callout esempio">
+
+<p>Se <span class="m">\delta x/x = 0{,}2</span> e <span class="m">\delta y/y = 0{,}1</span>, per <span class="m">z = xy</span> l&#39;errore relativo è <span class="m">0{,}3</span>, cioè 30%.</p>
+</div>
+
+<h2>Come si scrive una misura</h2>
+<p>Forma corretta: <strong>valore ± errore, unità</strong>.</p>
+<ol>
+<li>L&#39;errore si arrotonda a una cifra significativa (al massimo due).</li>
+<li>Il valore si arrotonda alla stessa posizione decimale dell&#39;errore.</li>
+<li>Si aggiunge l&#39;unità di misura.</li>
+</ol>
+<p>Arrotondamento: se la prima cifra da togliere è minore di 5, la precedente resta. Se è 5 o più, la precedente sale di uno (<span class="m">3{,}472 \to 3{,}47</span>; <span class="m">5{,}738 \to 5{,}74</span>).</p>
+<div class="callout esempio">
+
+<p>Armadio <span class="m">h = 225 \pm 1\,\mathrm{cm}</span>, libro sopra <span class="m">x = 2{,}4 \pm 0{,}1\,\mathrm{cm}</span>. Totale <span class="m">227{,}4 \pm 1{,}1\,\mathrm{cm}</span>. L&#39;errore è sui centimetri, quindi si scrive <span class="m">H = 227 \pm 1\,\mathrm{cm}</span>.</p>
+</div>
+
+<div class="callout attenzione">
+
+<p><span class="m">m = 143 \pm 30\,\mathrm{kg}</span> è scritto male: l&#39;errore è sulle decine, quindi il valore va arrotondato alle decine. Si scrive <span class="m">140 \pm 30\,\mathrm{kg}</span>. Invece <span class="m">13{,}4 \pm 0{,}2\,\mathrm{m/s}</span> e <span class="m">1{,}34 \pm 0{,}01\,\mathrm m</span> sono corretti.</p>
+</div>
+
+<p>Una differenza si calcola sempre come <strong>finale meno iniziale</strong>. Da Riccione (<span class="m">23{,}5\,°\mathrm C</span>) a Rimini (<span class="m">22{,}3\,°\mathrm C</span>): <span class="m">\Delta T = 22{,}3 - 23{,}5 = -1{,}2\,°\mathrm C</span>.</p>
 <h2>Strumenti di misura</h2>
+<p>Uno strumento traduce la grandezza in una risposta facile da leggere. Nel termometro a mercurio la temperatura diventa la lunghezza della colonna di liquido. La <strong>taratura</strong> costruisce la scala: si misura la risposta a valori noti, presi dai campioni SI.</p>
+<p>Parametri caratteristici:</p>
 <ul>
-<li><strong>Portata</strong>: valore massimo misurabile; <strong>soglia</strong>: valore minimo.</li>
-<li><strong>Sensibilità</strong> (risoluzione): la più piccola variazione apprezzabile.</li>
-<li><strong>Prontezza</strong>: rapidità di risposta.</li>
-<li><strong>Precisione</strong> (misure ripetute vicine tra loro) e <strong>accuratezza</strong> (vicinanza al valore vero).</li>
+<li><strong>Portata</strong>: il valore massimo misurabile.</li>
+<li><strong>Soglia</strong>: il valore minimo che lo strumento rileva.</li>
+<li><strong>Risoluzione</strong>: la più piccola variazione leggibile. È la tacca più fine della scala o l&#39;ultima cifra del display.</li>
+<li><strong>Sensibilità</strong>: quanto cambia la risposta per una variazione della grandezza, <span class="m">s = |dr/dx|</span>. Nelle scale lineari è costante.</li>
+<li><strong>Prontezza</strong>: quanto velocemente lo strumento risponde.</li>
+<li><strong>Precisione</strong>: quanto le misure ripetute sono vicine tra loro. Dipende dagli errori casuali.</li>
+<li><strong>Accuratezza</strong>: quanto la misura è vicina al valore vero. Dipende dagli errori sistematici.</li>
 </ul>
-<h2>Errori ed espressione di una misura</h2>
-<p>Gli errori possono essere <strong>casuali</strong> (si riducono ripetendo la misura) o <strong>sistematici</strong> (si ripetono sempre uguali, dovuti allo strumento o al metodo). Una misura si scrive
-<span class="m d">x = (x_{best} \pm \delta x)\ \text{unità}</span>
-con l&#39;errore arrotondato a una cifra significativa (due se la prima è 1) e il valore arrotondato allo stesso ordine decimale. L&#39;<strong>errore relativo</strong> <span class="m">\delta x/|x|</span> è adimensionale.</p>
-<p><strong>Propagazione degli errori</strong>:</p>
-<ul>
-<li>somme e differenze: si sommano gli errori <strong>assoluti</strong>, <span class="m">\delta(x \pm y) = \delta x + \delta y</span>;</li>
-<li>prodotti e quozienti: si sommano gli errori <strong>relativi</strong>, <span class="m">\dfrac{\delta(xy)}{|xy|} = \dfrac{\delta x}{|x|} + \dfrac{\delta y}{|y|}</span>.</li>
-</ul>
+<div class="callout esame">
+
+<p>Aperte frequenti: presentare il SI (7 unità fondamentali, derivate, prefissi); descrivere i parametri degli strumenti; spiegare come si scrive una misura con il suo errore.</p>
+</div>
+
 <div class="callout sintesi">
 
 <ul>
-<li>7 grandezze fondamentali SI: m, kg, s, A, K, mol, cd; tutte le altre sono derivate.</li>
-<li><span class="m">1\ \mathrm{m/s} = 3{,}6\ \mathrm{km/h}</span>; <span class="m">1\ \mu\mathrm m = 10^{-6}\ \mathrm m</span>.</li>
-<li>Misura = valore ± errore, con unità; errore a 1 cifra significativa.</li>
-<li>Somme/differenze → errori assoluti; prodotti/quozienti → errori relativi.</li>
+<li>Grandezza = proprietà misurabile; <span class="m">G = g\cdot u_G</span>. Derivata = definita dalle fondamentali.</li>
+<li>SI: m, kg, s, A, K, mol, cd. cm, g, km, h non sono unità SI.</li>
+<li><span class="m">1\,\mathrm{m/s} = 3{,}6\,\mathrm{km/h}</span>; micro <span class="m">= 10^{-6}</span>, mega <span class="m">= 10^{6}</span>.</li>
+<li>Somme e differenze: <span class="m">\delta z = \delta x + \delta y</span>. Prodotti e quozienti: si sommano gli errori relativi.</li>
+<li>Misura = valore ± errore (1 cifra significativa) + unità, con il valore arrotondato come l&#39;errore.</li>
+<li>Precisione ↔ errori casuali; accuratezza ↔ errori sistematici.</li>
 </ul>
 </div>

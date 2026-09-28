@@ -1,15 +1,89 @@
 <h1>Lezione 64 — Legge di Ampère e solenoide</h1>
-<h2>Legge di Ampère</h2>
-<p><span class="m d">\oint_\gamma\vec B \cdot d\vec l = \mu_0\sum I_{conc}</span>
-La circuitazione del campo magnetico lungo una linea chiusa è <span class="m">\mu_0</span> per le correnti concatenate. Il campo magnetico non è conservativo. Come il teorema di Gauss, serve a calcolare B in situazioni simmetriche (filo: <span class="m">B \cdot 2\pi r = \mu_0I</span>).</p>
-<h2>Solenoide</h2>
-<p>Filo avvolto in molte spire fitte. All&#39;interno di un solenoide lungo il campo è <strong>uniforme</strong> e parallelo all&#39;asse:
-<span class="m d">B = \mu_0nI \qquad n = N/l</span>
-Non dipende dal raggio né dalla posizione nella sezione; all&#39;esterno è quasi nullo. Esempio: 600 spire su 10 cm con 20 A → B ≈ 151 mT. Con un nucleo di ferro <span class="m">B = \mu_0\mu_rnI</span> (elettromagnete). Il solenoide si comporta come un magnete a barra.</p>
+<h2>Correnti concatenate</h2>
+<p>Una corrente è <strong>concatenata</strong> con una linea chiusa se la linea le gira attorno. In pratica: la corrente attraversa qualsiasi superficie che ha la linea come bordo. Se restringi la linea, prima o poi tocchi il filo. Una corrente che passa fuori dalla linea non è concatenata.</p>
+<h2>Teorema di Ampère</h2>
+<p>La circuitazione del campo magnetico lungo una linea chiusa dipende solo dalle correnti concatenate:
+<span class="m d">\oint_\gamma \vec B \cdot d\vec l = \mu_0 \sum i_{conc}</span>
+dove:</p>
+<ul>
+<li><span class="m">\oint_\gamma \vec B \cdot d\vec l</span> = circuitazione di <span class="m">\vec B</span> lungo la linea chiusa <span class="m">\gamma</span> (T·m);</li>
+<li><span class="m">\mu_0 = 4\pi \cdot 10^{-7}\,\mathrm{T\,m/A}</span>;</li>
+<li><span class="m">\sum i_{conc}</span> = somma algebrica delle correnti concatenate (A).</li>
+</ul>
+<p>Regole per i segni:</p>
+<ul>
+<li>una corrente è positiva se avanza come una vite destrorsa che gira nel verso di percorrenza della linea;</li>
+<li>nel verso opposto è negativa;</li>
+<li>se una corrente attraversa la superficie più volte (per esempio una bobina), conta una volta per ogni passaggio.</li>
+</ul>
+<p>Le correnti non concatenate danno contributo nullo. Il risultato non dipende dalla forma della linea.</p>
+<p>Perché funziona, in breve:</p>
+<ol>
+<li>Attorno a un filo, <span class="m">B = \mu_0 i/(2\pi r)</span> ed è tangente alle circonferenze.</li>
+<li>Il prodotto <span class="m">\vec B \cdot d\vec l</span> vale <span class="m">\dfrac{\mu_0 i}{2\pi}\,d\varphi</span>, con <span class="m">d\varphi</span> angolo visto dal filo.</li>
+<li>Se la linea gira attorno al filo, gli angoli sommano <span class="m">2\pi</span>: circuitazione <span class="m">= \mu_0 i</span>. Se non gira attorno, gli angoli si compensano: circuitazione <span class="m">= 0</span>.</li>
+</ol>
+<p>La circuitazione di <span class="m">\vec B</span> in generale non è zero. Quindi <strong>il campo magnetico non è conservativo</strong>. Il campo elettrostatico invece ha circuitazione sempre nulla.</p>
+<div class="callout attenzione">
+
+<p>&quot;La circuitazione del campo elettrostatico è nulla&quot; è vero, ma non è la legge di Ampère. La legge di Ampère riguarda il campo <strong>magnetico</strong> e dice che la sua circuitazione vale <span class="m">\mu_0</span> per le correnti concatenate.</p>
+</div>
+
+<h2>Forma locale</h2>
+<p>Con il teorema di Stokes la circuitazione diventa un flusso del rotore. Si ottiene la legge in forma locale:
+<span class="m d">\nabla \times \vec B = \mu_0\,\vec j</span>
+dove <span class="m">\vec j</span> è la densità di corrente (A/m²). Dove c&#39;è corrente, il campo magnetico &quot;gira&quot;.</p>
+<h2>Uso pratico: filo rettilineo</h2>
+<p>Ampère è utile quando c&#39;è simmetria, come Gauss per il campo elettrico. Per un filo indefinito le linee di <span class="m">\vec B</span> sono circonferenze con modulo costante. Scegli come linea una circonferenza di raggio <span class="m">r</span>:
+<span class="m d">B \cdot 2\pi r = \mu_0 i \quad\Rightarrow\quad B = \frac{\mu_0 i}{2\pi r}</span>
+È di nuovo Biot-Savart, trovata in una riga.</p>
+<p>Dentro un filo di raggio <span class="m">R</span> con corrente uniforme, la linea concatena solo una parte della corrente, <span class="m">i\,r^2/R^2</span>. Risultato:
+<span class="m d">B = \frac{\mu_0\,i\,r}{2\pi R^2} \quad (r &lt; R)</span>
+Il campo cresce linearmente dal centro fino alla superficie. Fuori cala come <span class="m">1/r</span>.</p>
+<h2>Solenoide rettilineo</h2>
+<p>Un <strong>solenoide</strong> è un filo avvolto a elica, con spire molto fitte. Per un solenoide molto lungo (ideale):</p>
+<ul>
+<li>dentro, il campo è <strong>uniforme</strong> e <strong>parallelo all&#39;asse</strong>;</li>
+<li>fuori, il campo è <strong>praticamente nullo</strong>.</li>
+</ul>
+<p>Il campo interno vale:
+<span class="m d">B = \mu_0\,n\,i \qquad n = \frac{N}{l}</span>
+dove:</p>
+<ul>
+<li><span class="m">B</span> = campo interno (T);</li>
+<li><span class="m">n</span> = numero di spire per unità di lunghezza (spire/m);</li>
+<li><span class="m">N</span> = numero totale di spire;</li>
+<li><span class="m">l</span> = lunghezza del solenoide (m);</li>
+<li><span class="m">i</span> = corrente (A).</li>
+</ul>
+<p>Come si ricava con Ampère, a passi:</p>
+<ol>
+<li>Scegli un rettangolo con un lato lungo <span class="m">h</span> dentro il solenoide, parallelo all&#39;asse, e il lato opposto fuori.</li>
+<li>Fuori <span class="m">B = 0</span>. Sui lati corti <span class="m">\vec B</span> è perpendicolare al percorso. Resta solo il lato interno: circuitazione <span class="m">= Bh</span>.</li>
+<li>Il rettangolo concatena <span class="m">nh</span> spire, ognuna con corrente <span class="m">i</span>: totale <span class="m">nhi</span>.</li>
+<li>Ampère: <span class="m">Bh = \mu_0 n h i</span>, quindi <span class="m">B = \mu_0 n i</span>.</li>
+</ol>
+<p>Il campo <strong>non dipende dal raggio</strong> del solenoide né dalla posizione nella sezione. Dipende da <span class="m">n</span>, da <span class="m">i</span> e dal materiale nel nucleo. Con un nucleo di permeabilità relativa <span class="m">\mu_r</span>:
+<span class="m d">B = \mu_0\,\mu_r\,n\,i</span>
+Con un nucleo di ferro (<span class="m">\mu_r</span> molto grande) si ottiene un elettromagnete. Un solenoide si comporta come un magnete a barra.</p>
+<div class="callout esempio">
+
+<p>Solenoide lungo 10 cm, 600 spire, 20 A. Allora <span class="m">n = 600/0{,}1 = 6000\,\mathrm{spire/m}</span> e
+<span class="m d">B = 4\pi \cdot 10^{-7} \cdot 6000 \cdot 20 \approx 0{,}151\,\mathrm{T} = 151\,\mathrm{mT}</span>
+Raddoppiando <span class="m">n</span> a parità di corrente, <span class="m">B</span> raddoppia.</p>
+</div>
+
+<h2>Solenoide toroidale</h2>
+<p>Un toroide è un solenoide chiuso ad anello (&quot;a ciambella&quot;). Come linea si prende una circonferenza di raggio <span class="m">r</span> dentro gli avvolgimenti:
+<span class="m d">B \cdot 2\pi r = \mu_0 N i \quad\Rightarrow\quad B = \frac{\mu_0 N i}{2\pi r}</span>
+Fuori dal toroide il campo è nullo. Se il toroide è sottile, <span class="m">N/(2\pi r) = n</span> e si ritrova <span class="m">B = \mu_0 n i</span>.</p>
 <div class="callout sintesi">
 
 <ul>
-<li>Ampère: <span class="m">\oint\vec B \cdot d\vec l = \mu_0I_{conc}</span>.</li>
-<li>Solenoide: <span class="m">B = \mu_0nI</span>, uniforme dentro, nullo fuori.</li>
+<li>Ampère: <span class="m">\oint \vec B \cdot d\vec l = \mu_0 \sum i_{conc}</span>; il campo magnetico non è conservativo.</li>
+<li>Forma locale: <span class="m">\nabla \times \vec B = \mu_0 \vec j</span>.</li>
+<li>Filo: <span class="m">B = \mu_0 i/(2\pi r)</span> fuori; dentro cresce come <span class="m">r</span>.</li>
+<li>Solenoide ideale: <span class="m">B = \mu_0 n i</span> (con nucleo <span class="m">\mu_0\mu_r n i</span>), uniforme dentro, nullo fuori, indipendente dal raggio.</li>
+<li>Toroide: <span class="m">B = \mu_0 N i/(2\pi r)</span>.</li>
 </ul>
 </div>

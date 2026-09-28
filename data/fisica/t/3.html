@@ -1,32 +1,93 @@
 <h1>Lezione 03 — Grandezze scalari e vettoriali</h1>
 <h2>Scalari e vettori</h2>
-<p>Una grandezza <strong>scalare</strong> è completamente descritta da un numero con la sua unità (massa, tempo, temperatura, energia, lavoro). Una grandezza <strong>vettoriale</strong> richiede anche una <strong>direzione</strong> e un <strong>verso</strong>: è rappresentata da un <strong>vettore</strong>, cioè un segmento orientato caratterizzato da</p>
+<p>Una grandezza <strong>scalare</strong> è definita da un solo numero con la sua unità. Esempi: massa, tempo, temperatura, volume, energia, lavoro.</p>
+<p>Una grandezza <strong>vettoriale</strong> ha bisogno di tre informazioni:</p>
 <ul>
-<li><strong>modulo</strong> (intensità, sempre positivo),</li>
-<li><strong>direzione</strong> (la retta su cui giace),</li>
-<li><strong>verso</strong> (l&#39;orientamento sulla retta).</li>
+<li><strong>modulo</strong>: l&#39;intensità, un numero sempre positivo o nullo;</li>
+<li><strong>direzione</strong>: la retta su cui agisce;</li>
+<li><strong>verso</strong>: da che parte punta su quella retta.</li>
 </ul>
-<p>Sono vettori: spostamento, velocità, accelerazione, forza, campo elettrico. Il modulo di <span class="m">\vec v</span> si indica con <span class="m">|\vec v|</span> o <span class="m">v</span>.</p>
-<h2>Operazioni con i vettori</h2>
+<p>Si disegna con una freccia. Esempi: spostamento, velocità, accelerazione, forza, peso, campo elettrico.</p>
+<div class="callout attenzione">
+
+<p>Massa e peso sono diversi. La massa è scalare (kg). Il peso è una forza, quindi un vettore (N) diretto verso il basso. Lo spostamento è un esempio di vettore, non una sua caratteristica.</p>
+</div>
+
+<p>Notazione: a stampa il vettore è in grassetto <span class="m">\mathbf v</span>, a mano con la freccia <span class="m">\vec v</span>. Il modulo si scrive <span class="m">|\vec v|</span> o semplicemente <span class="m">v</span>.</p>
+<h2>Componenti di un vettore</h2>
+<p>Si mette la coda del vettore nell&#39;origine degli assi. Le coordinate della punta sono le sue <strong>componenti</strong>: <span class="m">\vec v = (v_x, v_y, v_z)</span>.</p>
+<p>Nel piano, vettore e componenti formano un triangolo rettangolo. Se <span class="m">\theta</span> è l&#39;angolo con l&#39;asse x:
+<span class="m d">v_x = v\cos\theta \qquad v_y = v\sin\theta \qquad v = \sqrt{v_x^2 + v_y^2}</span>
+dove:</p>
 <ul>
-<li><strong>Somma</strong>: regola del parallelogramma o metodo punta-coda. Il modulo della somma dipende dall&#39;angolo: due spostamenti di 4 m e 3 m danno un risultato tra 1 m e 7 m (5 m solo se perpendicolari).</li>
-<li><strong>Differenza</strong>: <span class="m">\vec a - \vec b = \vec a + (-\vec b)</span>.</li>
-<li><strong>Prodotto per uno scalare</strong>: <span class="m">k\vec a</span> è un vettore parallelo ad <span class="m">\vec a</span>, di modulo <span class="m">|k|a</span>, verso invertito se <span class="m">k &lt; 0</span>.</li>
+<li><span class="m">v</span> = modulo del vettore;</li>
+<li><span class="m">v_x, v_y</span> = componenti lungo x e y (stessa unità del vettore);</li>
+<li><span class="m">\theta</span> = angolo tra vettore e asse x.</li>
 </ul>
-<h2>Componenti cartesiane</h2>
-<p>Un vettore nel piano si scrive <span class="m">\vec V = V_x\hat i + V_y\hat j</span>, con <span class="m">V_x = V\cos\theta</span> e <span class="m">V_y = V\sin\theta</span>. Il modulo è
-<span class="m d">V = \sqrt{V_x^2 + V_y^2}</span>
-Sommare vettori equivale a sommare le componenti.</p>
-<h2>Prodotto scalare e vettoriale</h2>
+<p>Nello spazio si aggiunge la terza componente: <span class="m">v = \sqrt{v_x^2 + v_y^2 + v_z^2}</span> (Pitagora in 3D).</p>
+<div class="callout esempio">
+
 <ul>
-<li><strong>Prodotto scalare</strong>: <span class="m">\vec a \cdot \vec b = ab\cos\theta = a_xb_x + a_yb_y + a_zb_z</span> (uno scalare). È nullo se i vettori sono perpendicolari. Esempi: lavoro <span class="m">L = \vec F \cdot \vec s</span>, potenza <span class="m">P = \vec F \cdot \vec v</span>.</li>
-<li><strong>Prodotto vettoriale</strong>: <span class="m">\vec a \times \vec b</span> è un vettore di modulo <span class="m">ab\sin\theta</span>, perpendicolare al piano dei due vettori, con verso dato dalla regola della mano destra. È nullo se i vettori sono paralleli. Esempi: momento di una forza <span class="m">\vec M = \vec r \times \vec F</span>, forza di Lorentz <span class="m">\vec F = q\vec v \times \vec B</span>.</li>
+<li><span class="m">V_x = 3</span>, <span class="m">V_y = 4</span>: <span class="m">V = \sqrt{9 + 16} = 5</span>.</li>
+<li><span class="m">a = 10\,\mathrm m</span> a <span class="m">30°</span>: <span class="m">a_x = 10\cos 30° = 8{,}66\,\mathrm m</span>, <span class="m">a_y = 10\sin 30° = 5\,\mathrm m</span>.</li>
 </ul>
+</div>
+
+<h2>Somma e differenza</h2>
+<p><strong>Per componenti.</strong> Si sommano le componenti una per una:
+<span class="m d">\vec v + \vec w = (v_x + w_x,\ v_y + w_y,\ v_z + w_z)</span></p>
+<p><strong>Graficamente.</strong> Due metodi equivalenti:</p>
+<ul>
+<li><strong>punta-coda</strong>: si attacca la coda del secondo alla punta del primo. La somma va dalla coda del primo alla punta del secondo.</li>
+<li><strong>parallelogramma</strong>: si mettono i due vettori con la stessa origine. La somma è la diagonale che parte dall&#39;origine.</li>
+</ul>
+<p>La somma è commutativa (<span class="m">\vec a + \vec b = \vec b + \vec a</span>) e associativa.</p>
+<p><strong>Opposto e differenza.</strong> L&#39;opposto <span class="m">-\vec v</span> ha stesso modulo e direzione, verso contrario: <span class="m">(-v_x, -v_y, -v_z)</span>. La differenza è la somma con l&#39;opposto: <span class="m">\vec v - \vec w = \vec v + (-\vec w)</span>. Nel parallelogramma è l&#39;altra diagonale.</p>
+<p>Il <strong>vettore nullo</strong> è <span class="m">(0, 0, 0)</span> e ha modulo zero.</p>
+<div class="callout attenzione">
+
+<p>I moduli non si sommano come numeri. Uno spostamento di 4 m più uno di 3 m può valere da 1 m (versi opposti) a 7 m (stesso verso). Vale 5 m solo se sono perpendicolari. Senza le direzioni non si può rispondere.</p>
+</div>
+
+<h2>Prodotto di un vettore per un numero</h2>
+<p>Moltiplicare un vettore per un numero <span class="m">k</span> dà <strong>un vettore</strong>:</p>
+<ul>
+<li>modulo moltiplicato per <span class="m">|k|</span>;</li>
+<li>stessa direzione;</li>
+<li>stesso verso se <span class="m">k &gt; 0</span>, verso opposto se <span class="m">k &lt; 0</span>.</li>
+</ul>
+<p>In componenti: <span class="m">k\vec v = (kv_x, kv_y, kv_z)</span>. Anche una grandezza scalare fisica per una vettoriale dà un vettore: <span class="m">\vec F = m\vec a</span>.</p>
+<h2>Prodotti tra vettori: esempi in fisica</h2>
+<p>Tra due vettori ci sono due prodotti diversi (dettagli nella lezione 4):</p>
+<ul>
+<li><strong>prodotto scalare</strong> <span class="m">\vec a \cdot \vec b = ab\cos\theta</span>: dà un numero. È nullo se i vettori sono perpendicolari.</li>
+<li><strong>prodotto vettoriale</strong> <span class="m">\vec a \times \vec b</span>: dà un vettore perpendicolare a entrambi, di modulo <span class="m">ab\sin\theta</span>. È nullo se sono paralleli.</li>
+</ul>
+<p>Esempi di prodotto scalare:</p>
+<ul>
+<li>lavoro <span class="m">L = \vec F \cdot \vec s</span>;</li>
+<li>potenza <span class="m">P = \vec F \cdot \vec v</span>;</li>
+<li>flusso di un campo attraverso una superficie.</li>
+</ul>
+<p>Esempi di prodotto vettoriale:</p>
+<ul>
+<li>momento di una forza <span class="m">\vec M = \vec r \times \vec F</span>;</li>
+<li>momento angolare <span class="m">\vec L = \vec r \times m\vec v</span>;</li>
+<li>velocità nel moto circolare <span class="m">\vec v = \vec\omega \times \vec r</span>;</li>
+<li>forza di Lorentz <span class="m">\vec F = q\,\vec v \times \vec B</span>.</li>
+</ul>
+<div class="callout esame">
+
+<p>Aperte frequenti: definire una grandezza vettoriale e dire come differisce da una scalare; fare esempi di prodotto scalare e vettoriale in fisica.</p>
+</div>
+
 <div class="callout sintesi">
 
 <ul>
-<li>Scalare = numero; vettore = modulo, direzione, verso.</li>
-<li>Somma vettoriale con il parallelogramma o per componenti.</li>
-<li><span class="m">\vec a \cdot \vec b = ab\cos\theta</span> (scalare); <span class="m">|\vec a \times \vec b| = ab\sin\theta</span> (vettore ⊥).</li>
+<li>Scalare = un numero con unità; vettore = modulo, direzione, verso.</li>
+<li><span class="m">v_x = v\cos\theta</span>, <span class="m">v_y = v\sin\theta</span>, <span class="m">v = \sqrt{v_x^2 + v_y^2 (+ v_z^2)}</span>.</li>
+<li>Somma: per componenti, punta-coda o parallelogramma. Differenza = somma con l&#39;opposto.</li>
+<li>Numero × vettore = vettore (verso invertito se il numero è negativo).</li>
+<li>Scalare: lavoro, potenza. Vettoriale: momento, forza di Lorentz.</li>
 </ul>
 </div>

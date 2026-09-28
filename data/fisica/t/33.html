@@ -1,22 +1,149 @@
 <h1>Lezione 33 — Temperatura e sistemi termodinamici</h1>
+<h2>Di che cosa si occupa la termodinamica</h2>
+<p>La termodinamica studia i fenomeni termici e i loro legami con l&#39;energia meccanica. L&#39;attrito, per esempio, fa perdere energia meccanica e scalda i corpi.</p>
 <h2>Sistemi termodinamici</h2>
-<p>Un <strong>sistema</strong> è la porzione di universo studiata; il resto è l&#39;<strong>ambiente</strong>. Un sistema può essere aperto (scambia materia ed energia), chiuso (solo energia) o isolato (nulla). Lo stato di un sistema è descritto da <strong>variabili di stato</strong> (pressione, volume, temperatura, quantità di sostanza); per una data quantità di gas perfetto bastano due variabili indipendenti, la terza si ricava da <span class="m">pV = nRT</span>.</p>
+<p>Un sistema termodinamico è un corpo macroscopico descritto da poche grandezze d&#39;insieme. Tutto il resto è l&#39;<strong>ambiente</strong>. Le grandezze che descrivono il sistema sono i <strong>parametri di stato</strong>: pressione, volume, temperatura, densità, quantità di sostanza.</p>
+<table>
+<thead>
+<tr>
+<th>Sistema</th>
+<th>Scambia energia</th>
+<th>Scambia materia</th>
+<th>Esempio</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Aperto</td>
+<td>sì</td>
+<td>sì</td>
+<td>pentola senza coperchio</td>
+</tr>
+<tr>
+<td>Chiuso</td>
+<td>sì</td>
+<td>no</td>
+<td>pentola con coperchio a tenuta</td>
+</tr>
+<tr>
+<td>Isolato</td>
+<td>no</td>
+<td>no</td>
+<td>thermos ideale</td>
+</tr>
+</tbody></table>
+<p>Un sistema chiuso è in <strong>equilibrio termodinamico</strong> se è insieme:</p>
+<ul>
+<li>in equilibrio <strong>meccanico</strong>: le forze tra sistema e ambiente si bilanciano;</li>
+<li>in equilibrio <strong>termico</strong>: la temperatura è uguale ovunque e uguale a quella dell&#39;ambiente;</li>
+<li>in equilibrio <strong>chimico</strong>: non avvengono reazioni che cambiano la composizione.</li>
+</ul>
+<p>Un sistema lasciato isolato abbastanza a lungo arriva all&#39;equilibrio.</p>
+<p><strong>Parametri estensivi e intensivi.</strong></p>
+<ul>
+<li>Estensivi: dipendono dalla quantità di sistema e si sommano. Esempi: massa, volume, energia.</li>
+<li>Intensivi: non dipendono dalla quantità e non si sommano. Esempi: pressione, temperatura, densità.</li>
+</ul>
 <h2>Temperatura</h2>
-<p>Definizione operativa: la <strong>temperatura</strong> è la grandezza misurata dal <strong>termometro</strong>. Scale: Celsius (0 °C fusione del ghiaccio, 100 °C ebollizione dell&#39;acqua a 1 atm) e Kelvin (assoluta): <span class="m">T(\mathrm K) = t(^\circ\mathrm C) + 273{,}15</span>. Il ghiaccio fonde a circa 273 K. Una differenza di 1 °C equivale a 1 K.</p>
-<p><strong>Principio zero</strong>: due corpi in equilibrio termico con un terzo sono in equilibrio tra loro; corpi a contatto raggiungono la stessa temperatura.</p>
-<h2>Energia interna del gas perfetto</h2>
-<p>Microscopicamente la temperatura è legata all&#39;energia cinetica media delle molecole. Per un gas perfetto monoatomico
-<span class="m d">U = \tfrac32Nk_BT = \tfrac32nRT</span>
-proporzionale alla temperatura assoluta e al numero di molecole.</p>
-<h2>Lavoro di un gas</h2>
-<p>Il lavoro compiuto da un gas che cambia volume è <span class="m">L = \int p\,dV</span>; si riduce a <span class="m">L = p\Delta V</span> solo a pressione costante.</p>
+<p>La temperatura, per definizione, è la grandezza che si misura con il termometro. È una definizione operativa: dice come misurarla.</p>
+<p>Un termometro sfrutta una proprietà che cambia con la temperatura. Esempi: la lunghezza di una colonna di liquido, la resistenza elettrica.</p>
+<p><strong>Principio zero della termodinamica.</strong> Due corpi a temperature diverse messi a contatto arrivano a una temperatura comune: l&#39;equilibrio termico. Il principio dice:</p>
+<blockquote>
+<p>se due sistemi sono in equilibrio termico con un terzo, sono in equilibrio termico tra loro.</p>
+</blockquote>
+<p>Per questo il termometro funziona. Il &quot;terzo sistema&quot; è il termometro stesso.</p>
+<h2>Scale di temperatura</h2>
+<ul>
+<li><strong>Celsius</strong>: 0 °C è il ghiaccio che fonde, 100 °C l&#39;acqua che bolle, al livello del mare. Il grado è la centesima parte di questo intervallo.</li>
+<li><strong>Kelvin (assoluta, SI)</strong>: 0 K è lo zero assoluto, la temperatura più bassa possibile. Il punto triplo dell&#39;acqua vale 273,16 K. La temperatura assoluta è sempre positiva.</li>
+<li><strong>Fahrenheit</strong>: usata nei paesi anglosassoni.</li>
+</ul>
+<p><span class="m d">T(\mathrm K) = t(^\circ\mathrm C) + 273{,}15 \qquad t(^\circ\mathrm F) = \tfrac95\,t(^\circ\mathrm C) + 32</span>
+dove:</p>
+<ul>
+<li><span class="m">T</span> = temperatura assoluta (K)</li>
+<li><span class="m">t</span> = temperatura in gradi Celsius o Fahrenheit</li>
+</ul>
+<p>Una differenza di 1 °C è uguale a una differenza di 1 K.</p>
+<div class="callout esempio">
+
+<p>27 °C = 27 + 273,15 ≈ 300 K. L&#39;acqua bolle a 373,15 K.</p>
+</div>
+
+<h2>Dilatazione termica</h2>
+<p>Quasi tutti i corpi si allungano quando si scaldano. Per variazioni non troppo grandi l&#39;aumento è proporzionale al salto di temperatura.</p>
+<p><span class="m d">\Delta l = \alpha\,l\,\Delta T \qquad \Delta V = \beta\,V\,\Delta T,\ \ \beta = 3\alpha</span>
+dove:</p>
+<ul>
+<li><span class="m">\Delta l</span> = allungamento (m); <span class="m">l</span> = lunghezza iniziale (m)</li>
+<li><span class="m">\alpha</span> = coefficiente di dilatazione lineare (1/K)</li>
+<li><span class="m">\Delta V</span> = aumento di volume (m³); <span class="m">V</span> = volume iniziale (m³)</li>
+<li><span class="m">\beta</span> = coefficiente di dilatazione volumica (1/K)</li>
+<li><span class="m">\Delta T</span> = variazione di temperatura (K o °C)</li>
+</ul>
+<h2>Calore</h2>
+<p>Il calore è l&#39;energia che passa da un corpo all&#39;altro perché hanno temperature diverse. Va sempre dal caldo al freddo, finché le temperature si uguagliano. Si misura in joule; un&#39;unità storica è la caloria (<span class="m">1\,\mathrm{cal} \approx 4{,}186\,\mathrm J</span>). Per convenzione il calore assorbito dal sistema è positivo.</p>
+<p><span class="m d">Q = c\,m\,\Delta T = C\,\Delta T</span>
+dove:</p>
+<ul>
+<li><span class="m">Q</span> = calore scambiato (J)</li>
+<li><span class="m">c</span> = calore specifico, dipende solo dal materiale (J/(kg·K)); acqua: <span class="m">4186\,\mathrm{J/(kg\,K)}</span></li>
+<li><span class="m">m</span> = massa (kg)</li>
+<li><span class="m">\Delta T</span> = variazione di temperatura (K)</li>
+<li><span class="m">C = c\,m</span> = capacità termica del corpo (J/K)</li>
+</ul>
+<p>Due corpi a contatto, senza perdite verso l&#39;esterno, arrivano a una temperatura di equilibrio:
+<span class="m d">T_e = \frac{c_1 m_1 T_1 + c_2 m_2 T_2}{c_1 m_1 + c_2 m_2}</span>
+Il calore ceduto dal corpo caldo è uguale a quello assorbito dal freddo.</p>
 <h2>Passaggi di stato</h2>
-<p>Durante un passaggio di stato (a pressione costante) la temperatura resta costante.</p>
+<p>Durante un passaggio di stato (fusione, ebollizione…) a pressione costante la temperatura <strong>resta costante</strong>. Il calore fornito non scalda: serve a rompere i legami tra le molecole. Esempio: acqua e ghiaccio scaldati restano a 0 °C finché tutto il ghiaccio non si è sciolto.</p>
+<p><span class="m d">Q = L\,m</span>
+dove:</p>
+<ul>
+<li><span class="m">Q</span> = calore per il passaggio di stato (J)</li>
+<li><span class="m">L</span> = calore latente (J/kg); fusione del ghiaccio: <span class="m">333\,\mathrm{kJ/kg}</span></li>
+<li><span class="m">m</span> = massa che cambia stato (kg)</li>
+</ul>
+<p>Per questo le temperature dei passaggi di stato servono a tarare i termometri.</p>
+<h2>Lavoro di un gas</h2>
+<p>Un gas che si espande spinge le pareti (per esempio un pistone) e compie lavoro.</p>
+<p><span class="m d">L = p\,\Delta V</span>
+dove:</p>
+<ul>
+<li><span class="m">L</span> = lavoro compiuto dal gas (J)</li>
+<li><span class="m">p</span> = pressione del gas (Pa)</li>
+<li><span class="m">\Delta V</span> = variazione di volume (m³)</li>
+</ul>
+<p>Questa formula vale <strong>solo a pressione costante</strong> (trasformazione isobara). Se la pressione cambia, serve la somma di tanti piccoli lavori: <span class="m">L = \int p\,dV</span>. Se il volume non cambia, il lavoro è zero.</p>
+<h2>Energia interna del gas perfetto</h2>
+<p>L&#39;energia interna è l&#39;energia di tutte le molecole del gas. A livello microscopico la temperatura misura l&#39;energia cinetica media delle molecole. Per un gas perfetto monoatomico:</p>
+<p><span class="m d">U = \tfrac32\,N\,k_B\,T = \tfrac32\,n\,R\,T</span>
+dove:</p>
+<ul>
+<li><span class="m">U</span> = energia interna (J)</li>
+<li><span class="m">N</span> = numero di molecole</li>
+<li><span class="m">k_B</span> = costante di Boltzmann, <span class="m">1{,}38 \cdot 10^{-23}\,\mathrm{J/K}</span></li>
+<li><span class="m">T</span> = temperatura assoluta (K)</li>
+<li><span class="m">n</span> = numero di moli (mol)</li>
+<li><span class="m">R</span> = costante dei gas, <span class="m">8{,}314\,\mathrm{J/(mol\,K)}</span></li>
+</ul>
+<p>L&#39;energia interna è proporzionale alla temperatura assoluta e al numero di molecole. Non dipende da pressione o volume presi da soli.</p>
+<div class="callout attenzione">
+
+<ul>
+<li>Temperatura e calore non sono la stessa cosa: la temperatura è uno stato del corpo, il calore è energia in transito.</li>
+<li>Nelle formule dei gas usa sempre i kelvin, mai i gradi Celsius.</li>
+<li><span class="m">L = p\,\Delta V</span> non vale &quot;sempre&quot;: solo a pressione costante.</li>
+</ul>
+</div>
+
 <div class="callout sintesi">
 
 <ul>
-<li><span class="m">T(\mathrm K) = t(^\circ\mathrm C) + 273{,}15</span>.</li>
-<li>Principio zero: equilibrio termico transitivo.</li>
-<li>Gas perfetto monoatomico: <span class="m">U = \tfrac32nRT</span>.</li>
+<li>Sistema aperto (materia + energia), chiuso (solo energia), isolato (niente).</li>
+<li>Temperatura = ciò che misura il termometro; principio zero: equilibrio termico transitivo.</li>
+<li><span class="m">T(\mathrm K) = t(^\circ\mathrm C) + 273{,}15</span>; 27 °C ≈ 300 K.</li>
+<li>Calore <span class="m">Q = c\,m\,\Delta T</span>; nei passaggi di stato <span class="m">Q = L\,m</span> e la temperatura resta costante.</li>
+<li>Lavoro del gas <span class="m">L = p\,\Delta V</span> solo a pressione costante.</li>
+<li>Gas perfetto monoatomico: <span class="m">U = \tfrac32 N k_B T</span>, proporzionale a T assoluta e numero di molecole.</li>
 </ul>
 </div>

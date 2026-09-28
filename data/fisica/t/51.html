@@ -1,19 +1,90 @@
-<h1>Lezione 51 — Energia del condensatore e collegamenti</h1>
+<h1>Lezione 51 — Energia del condensatore e collegamenti serie/parallelo</h1>
 <h2>Energia immagazzinata</h2>
-<p>Per caricare un condensatore si compie lavoro contro il campo; l&#39;energia immagazzinata è
-<span class="m d">U = \tfrac12QV = \tfrac12CV^2 = \frac{Q^2}{2C}</span>
-(3 µF a 10 V: <span class="m">1{,}5 \cdot 10^{-4}</span> J).</p>
+<p>Per caricare un condensatore devi portare carica da un&#39;armatura all&#39;altra contro il campo. Questo lavoro resta immagazzinato come energia potenziale elettrostatica.</p>
+<p>Ragionamento in 3 passi:</p>
+<ol>
+<li>Quando sulle armature c&#39;è già carica <span class="m">q</span>, la tensione è <span class="m">V' = q/C</span>.</li>
+<li>Spostare un&#39;altra carica <span class="m">dq</span> costa <span class="m">dL = V'\,dq = \frac{q}{C}dq</span>.</li>
+<li>Sommando da 0 a <span class="m">Q</span>: <span class="m">L = \int_0^Q \frac{q}{C}dq = \frac{Q^2}{2C}</span>.</li>
+</ol>
+<p><span class="m d">U_e = \frac{Q^2}{2C} = \frac12 CV^2 = \frac12 QV</span></p>
+<p>dove:</p>
+<ul>
+<li><span class="m">U_e</span> = energia elettrostatica (J)</li>
+<li><span class="m">Q</span> = carica su un&#39;armatura (C)</li>
+<li><span class="m">V</span> = tensione tra le armature (V)</li>
+<li><span class="m">C</span> = capacità (F)</li>
+</ul>
+<p>Il fattore <span class="m">\tfrac12</span> c&#39;è perché la tensione cresce da 0 a <span class="m">V</span> durante la carica: in media vale <span class="m">V/2</span>.</p>
+<div class="callout esempio">
+
+<p><span class="m">C = 3\,\mu\mathrm F</span> a <span class="m">10\,\mathrm V</span>: <span class="m">U = \tfrac12 \cdot 3 \cdot 10^{-6} \cdot 100 = 1{,}5 \cdot 10^{-4}\,\mathrm J</span>.</p>
+</div>
+
 <h2>Densità di energia</h2>
-<p>Per un condensatore piano, con <span class="m">C = \varepsilon_0S/d</span> e <span class="m">V = Ed</span>:
-<span class="m d">U = \tfrac12\varepsilon_0E^2(Sd) \quad\Rightarrow\quad u = \tfrac12\varepsilon_0E^2</span>
-L&#39;energia è localizzata nel campo elettrico, con densità <span class="m">u</span> (J/m³) in ogni regione in cui c&#39;è un campo.</p>
-<h2>Circuiti con condensatori</h2>
-<p>Si riducono i gruppi passo a passo: <span class="m">C_2 \parallel C_3</span> si sommano, il risultato in serie con <span class="m">C_1</span> dà <span class="m">C_1C_{23}/(C_1 + C_{23})</span> (10 µF in serie con 10 + 2 µF: 5,45 µF).</p>
+<p>L&#39;energia si può pensare distribuita nel campo, dove il campo c&#39;è. Nel condensatore piano:</p>
+<p><span class="m d">U_e = \frac12 CV^2 = \frac12 \frac{\varepsilon_0 S}{d}(Ed)^2 = \frac12 \varepsilon_0 E^2 (Sd)</span></p>
+<p><span class="m">Sd</span> è il volume tra le armature. Quindi l&#39;energia per unità di volume è:</p>
+<p><span class="m d">u_e = \frac{U_e}{\text{volume}} = \frac12 \varepsilon_0 E^2</span></p>
+<p>dove:</p>
+<ul>
+<li><span class="m">u_e</span> = densità di energia (J/m³)</li>
+<li><span class="m">E</span> = campo elettrico nel punto (V/m)</li>
+</ul>
+<p>Questa formula non dipende dal condensatore. Vale in ogni punto dove c&#39;è un campo nel vuoto. L&#39;energia totale di un sistema è <span class="m">U_e = \int \tfrac12 \varepsilon_0 E^2\,dV</span> su tutto lo spazio dove il campo non è nullo. In un dielettrico si usa <span class="m">\varepsilon</span> al posto di <span class="m">\varepsilon_0</span>: <span class="m">u_e = \tfrac12 \varepsilon E^2</span>.</p>
+<div class="callout esempio">
+
+<p>Stesso condensatore della lezione 50 (<span class="m">E = 6 \cdot 10^5\,\mathrm{V/m}</span>): <span class="m">u_e = \tfrac12 \cdot 8{,}85 \cdot 10^{-12} \cdot (6 \cdot 10^5)^2 \approx 1{,}6\,\mathrm{J/m^3}</span>.</p>
+</div>
+
+<h2>Forza tra le armature</h2>
+<p>Le armature di segno opposto si attraggono. La forza vale:</p>
+<p><span class="m d">F = \frac{Q^2}{2\varepsilon_0 S} = \frac{\sigma^2 S}{2\varepsilon_0}</span></p>
+<p>La forza per unità di superficie è la pressione elettrostatica, ed è uguale alla densità di energia:</p>
+<p><span class="m d">p_e = \frac{F}{S} = \frac{\sigma^2}{2\varepsilon_0} = \frac12 \varepsilon_0 E^2</span></p>
+<h2>Collegamenti: come trovare la capacità equivalente</h2>
+<p><strong>Parallelo</strong> (stessa tensione <span class="m">V</span>):</p>
+<ol>
+<li><span class="m">Q_1 = C_1 V</span>, <span class="m">Q_2 = C_2 V</span>.</li>
+<li>Carica totale <span class="m">Q = Q_1 + Q_2 = (C_1 + C_2)V</span>.</li>
+<li>Quindi <span class="m">C_{eq} = C_1 + C_2</span>: la somma delle capacità.</li>
+</ol>
+<p><strong>Serie</strong> (stessa carica <span class="m">Q</span>):</p>
+<ol>
+<li><span class="m">V_1 = Q/C_1</span>, <span class="m">V_2 = Q/C_2</span>.</li>
+<li>Tensione totale <span class="m">V = V_1 + V_2 = Q\left(\frac{1}{C_1} + \frac{1}{C_2}\right)</span>.</li>
+<li>Quindi <span class="m">\frac{1}{C_{eq}} = \frac{1}{C_1} + \frac{1}{C_2}</span>: l&#39;inverso della somma degli inversi.</li>
+</ol>
+<p>Per un circuito misto si riduce un pezzo alla volta, partendo dal gruppo più interno.</p>
+<div class="callout esempio">
+
+<p><span class="m">C_2 = 10\,\mu\mathrm F</span> e <span class="m">C_3 = 2\,\mu\mathrm F</span> in parallelo danno <span class="m">12\,\mu\mathrm F</span>. In serie con <span class="m">C_1 = 10\,\mu\mathrm F</span>: <span class="m">C_{eq} = \frac{10 \cdot 12}{10 + 12} \approx 5{,}45\,\mu\mathrm F</span>.</p>
+</div>
+
+<div class="callout esempio">
+
+<p>Due condensatori uguali <span class="m">C</span> in serie su una pila da 10 V immagazzinano 120 J. <span class="m">C_{eq} = C/2</span>, quindi <span class="m">U = \tfrac12 \cdot \tfrac C2 \cdot 10^2 = 25C = 120\,\mathrm J</span>. Risulta <span class="m">C = 4{,}8\,\mathrm F</span>.</p>
+</div>
+
+<div class="callout attenzione">
+
+<p>Nel parallelo la capacità equivalente è la somma, non l&#39;inverso della somma degli inversi. L&#39;inverso vale per la serie.</p>
+</div>
+
+<h2>Perché si usa la serie per le alte tensioni</h2>
+<p>In serie la tensione totale si divide tra i condensatori. Con <span class="m">N</span> condensatori uguali, ognuno regge <span class="m">V/N</span>. Così nessuno supera la sua tensione massima.</p>
+<div class="callout esame">
+
+<p>Domande aperte: &quot;Cos&#39;è un condensatore?&quot;, &quot;Come si trovano le capacità equivalenti in serie e parallelo?&quot; (con i passaggi sopra), &quot;Densità di energia partendo dal condensatore piano&quot; (da <span class="m">\tfrac12 CV^2</span> a <span class="m">\tfrac12\varepsilon_0 E^2</span>).</p>
+</div>
+
 <div class="callout sintesi">
 
 <ul>
-<li><span class="m">U = \tfrac12CV^2</span>.</li>
-<li><span class="m">u = \tfrac12\varepsilon_0E^2</span>.</li>
-<li>Circuiti: riduzione serie/parallelo.</li>
+<li><span class="m">U_e = \frac{Q^2}{2C} = \tfrac12 CV^2 = \tfrac12 QV</span>.</li>
+<li>Densità di energia: <span class="m">u_e = \tfrac12 \varepsilon_0 E^2</span> (J/m³), valida ovunque ci sia campo.</li>
+<li>Parallelo: <span class="m">C_{eq} = C_1 + C_2</span> (stessa V).</li>
+<li>Serie: <span class="m">1/C_{eq} = 1/C_1 + 1/C_2</span> (stessa Q).</li>
+<li>Pressione tra le armature: <span class="m">p_e = \tfrac12 \varepsilon_0 E^2</span>.</li>
 </ul>
 </div>

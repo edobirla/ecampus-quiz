@@ -1,24 +1,149 @@
-<h1>Lezione 55 — Resistenze e leggi di Ohm</h1>
-<h2>Prima legge di Ohm</h2>
-<p><span class="m d">V = RI \quad\Leftrightarrow\quad I = V/R</span>
-R in ohm (Ω). Esempi: 9 V e 2 A → 4,5 Ω; 12 V su 15 Ω → 0,6 A.</p>
-<h2>Seconda legge di Ohm</h2>
-<p><span class="m">R = \rho\dfrac{l}{S}</span>: la resistenza cresce con la lunghezza, diminuisce con la sezione, dipende dal materiale e dalla temperatura.</p>
-<h2>Resistenze in serie</h2>
-<p>Stessa corrente in tutte, tensioni che si sommano:
-<span class="m d">R_{eq} = R_1 + R_2 + \dots</span>
-In serie la corrente è la stessa anche nella resistenza più grande; resistori uguali in serie dissipano la stessa potenza. Per limitare la corrente a 10 mA con una pila di 12 V su 400 Ω servono 800 Ω in serie.</p>
-<h2>Resistenze in parallelo</h2>
-<p>Stessa tensione, correnti che si sommano:
-<span class="m d">\frac1{R_{eq}} = \frac1{R_1} + \frac1{R_2} + \dots</span>
-La resistenza minore conduce più corrente. Due da 10 Ω → 5 Ω; 20 e 40 Ω → 13,3 Ω.</p>
-<h2>Potenza e resistenza</h2>
-<p><span class="m">P = V^2/R</span>: a parità di tensione l&#39;apparecchio più potente ha resistenza minore (una lampada da 120 W ha resistenza maggiore di uno scaldabagno da 1500 W). Un faro da 40 W a 12 V ha 3,6 Ω.</p>
+<h1>Lezione 55 — Resistenza e leggi di Ohm</h1>
+<h2>Perché la corrente ha una velocità costante</h2>
+<p>In un metallo il campo elettrico accelera gli elettroni liberi. Gli elettroni però urtano di continuo gli ioni del reticolo. Dopo ogni urto ripartono e vengono di nuovo frenati. L&#39;effetto netto è simile a un attrito: gli elettroni avanzano con una velocità media costante, detta <strong>velocità di deriva</strong>.</p>
+<p><span class="m d">v_d = \frac{e\,\tau}{m}\,E</span></p>
+<p>dove:</p>
+<ul>
+<li><span class="m">v_d</span> = velocità di deriva (m/s)</li>
+<li><span class="m">e</span> = carica dell&#39;elettrone, <span class="m">1{,}6 \cdot 10^{-19}\,\mathrm{C}</span></li>
+<li><span class="m">\tau</span> = tempo medio tra due urti (s)</li>
+<li><span class="m">m</span> = massa dell&#39;elettrone (kg)</li>
+<li><span class="m">E</span> = campo elettrico nel conduttore (V/m)</li>
+</ul>
+<h2>Legge di Ohm in forma locale</h2>
+<p>La densità di corrente è proporzionale al campo elettrico. La costante dipende solo dal materiale.</p>
+<p><span class="m d">\vec j = \sigma\,\vec E \qquad \text{oppure} \qquad \vec E = \rho\,\vec j</span></p>
+<p>dove:</p>
+<ul>
+<li><span class="m">\vec j</span> = densità di corrente, corrente per unità di superficie (A/m²)</li>
+<li><span class="m">\sigma = \dfrac{n e^2 \tau}{m}</span> = conduttività elettrica (S/m)</li>
+<li><span class="m">n</span> = numero di portatori per unità di volume (m⁻³)</li>
+<li><span class="m">\rho = 1/\sigma</span> = resistività (Ω·m)</li>
+</ul>
+<p>La conduttività contiene <span class="m">e^2</span>, quindi è sempre positiva. Per questo <span class="m">\vec j</span> ha sempre il verso di <span class="m">\vec E</span>, qualunque sia il segno dei portatori.</p>
+<h2>Resistenza e prima legge di Ohm</h2>
+<p>In un filo applichi una differenza di potenziale. Nel filo passa una corrente proporzionale a quella tensione. La costante di proporzionalità è la <strong>resistenza</strong>.</p>
+<p><span class="m d">V = R\,I \qquad \Longleftrightarrow \qquad I = \frac{V}{R}</span></p>
+<p>dove:</p>
+<ul>
+<li><span class="m">V</span> = differenza di potenziale ai capi del conduttore (V)</li>
+<li><span class="m">I</span> = intensità di corrente (A)</li>
+<li><span class="m">R</span> = resistenza (Ω, con <span class="m">1\,\Omega = 1\,\mathrm{V/A}</span>)</li>
+</ul>
+<p>L&#39;inverso della resistenza è la <strong>conduttanza</strong> <span class="m">G = 1/R</span>, in siemens (S). I conduttori che seguono questa legge si chiamano <strong>ohmici</strong> o <strong>resistori</strong>.</p>
+<p>Ricorda anche la definizione di corrente: è la carica che passa in una sezione ogni secondo.</p>
+<p><span class="m d">I = \frac{Q}{t}</span></p>
+<p>dove <span class="m">Q</span> = carica (C), <span class="m">t</span> = tempo (s), <span class="m">I</span> = corrente (A).</p>
+<div class="callout esempio">
+
+<p>Una corrente di 2,5 A scorre per 4 minuti. La carica che passa in ogni sezione è <span class="m">Q = I t = 2{,}5 \cdot 240 = 600\,\mathrm{C}</span>.</p>
+</div>
+
+<h2>Seconda legge di Ohm: da cosa dipende R</h2>
+<p>Un filo lungo resiste di più. Un filo spesso resiste di meno.</p>
+<p><span class="m d">R = \rho\,\frac{l}{S}</span></p>
+<p>dove:</p>
+<ul>
+<li><span class="m">R</span> = resistenza (Ω)</li>
+<li><span class="m">\rho</span> = resistività del materiale (Ω·m)</li>
+<li><span class="m">l</span> = lunghezza del filo (m)</li>
+<li><span class="m">S</span> = area della sezione (m²)</li>
+</ul>
+<p>La resistività dei metalli cresce con la temperatura, in modo quasi lineare:</p>
+<p><span class="m d">\rho = \rho_0\,(1 + \alpha\,\Delta T)</span></p>
+<p>dove:</p>
+<ul>
+<li><span class="m">\rho_0</span> = resistività a 20 °C (Ω·m)</li>
+<li><span class="m">\alpha</span> = coefficiente termico (K⁻¹): positivo nei metalli, negativo in silicio e germanio</li>
+<li><span class="m">\Delta T</span> = variazione di temperatura rispetto a 20 °C (K)</li>
+</ul>
+<p>Nei <strong>superconduttori</strong>, sotto una temperatura critica, la resistività diventa praticamente zero.</p>
+<h2>Resistori in serie</h2>
+<p>In serie i resistori stanno uno dopo l&#39;altro. La corrente è la stessa in tutti. Le tensioni si sommano.</p>
+<p><span class="m d">R_{eq} = R_1 + R_2 + \dots + R_n</span></p>
+<p>dove <span class="m">R_{eq}</span> = resistenza equivalente (Ω), <span class="m">R_1 \dots R_n</span> = singole resistenze (Ω).</p>
+<h2>Resistori in parallelo</h2>
+<p>In parallelo i resistori sono collegati agli stessi due punti. La tensione è la stessa per tutti. Le correnti si sommano: <span class="m">I = I_1 + I_2 + \dots</span></p>
+<p><span class="m d">\frac{1}{R_{eq}} = \frac{1}{R_1} + \frac{1}{R_2} + \dots + \frac{1}{R_n}</span></p>
+<p>Per due soli resistori: <span class="m">R_{eq} = \dfrac{R_1 R_2}{R_1 + R_2}</span>. Per <span class="m">n</span> resistori uguali <span class="m">R</span>: <span class="m">R_{eq} = R/n</span>.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Serie</th>
+<th>Parallelo</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Uguale per tutti</td>
+<td>la corrente <span class="m">I</span></td>
+<td>la tensione <span class="m">V</span></td>
+</tr>
+<tr>
+<td>Si somma</td>
+<td>la tensione</td>
+<td>la corrente</td>
+</tr>
+<tr>
+<td><span class="m">R_{eq}</span></td>
+<td><span class="m">R_1 + R_2</span></td>
+<td><span class="m">\dfrac{R_1R_2}{R_1+R_2}</span></td>
+</tr>
+<tr>
+<td><span class="m">R_{eq}</span> rispetto alle singole</td>
+<td>più grande della maggiore</td>
+<td>più piccola della minore</td>
+</tr>
+<tr>
+<td>Chi prende più corrente</td>
+<td>tutti la stessa</td>
+<td>la resistenza <strong>minore</strong> (<span class="m">I = V/R</span>)</td>
+</tr>
+</tbody></table>
+<div class="callout esempio">
+
+<ul>
+<li>20 Ω e 40 Ω in serie: <span class="m">R_{eq} = 60\,\Omega</span>.</li>
+<li>20 Ω e 40 Ω in parallelo: <span class="m">R_{eq} = \dfrac{20 \cdot 40}{60} \approx 13{,}3\,\Omega</span>.</li>
+<li>Due da 10 Ω: in serie 20 Ω, in parallelo 5 Ω.</li>
+<li>Due da 20 Ω in parallelo (= 10 Ω) in serie con 10 Ω: <span class="m">R_{eq} = 20\,\Omega</span>.</li>
+<li>Pila da 9 V con 5 Ω e 10 Ω in serie: <span class="m">I = 9/15 = 0{,}6\,\mathrm{A}</span>.</li>
+</ul>
+</div>
+
+<div class="callout esempio">
+
+<p>Vuoi 10 mA in una resistenza da 400 Ω con una pila da 12 V. Serve <span class="m">R_{tot} = V/I = 12/0{,}01 = 1200\,\Omega</span>. Aggiungi quindi <strong>800 Ω in serie</strong>: in serie le resistenze si sommano e la corrente cala.</p>
+</div>
+
+<h2>Resistenza e potenza</h2>
+<p>Un apparecchio porta scritta la potenza <span class="m">P</span> alla tensione <span class="m">V</span>. Da lì ricavi la resistenza:</p>
+<p><span class="m d">R = \frac{V^2}{P}</span></p>
+<p>dove <span class="m">R</span> = resistenza (Ω), <span class="m">V</span> = tensione (V), <span class="m">P</span> = potenza (W).</p>
+<p>A parità di tensione, <strong>meno potenza vuol dire più resistenza</strong>. Una lampada da 120 W ha resistenza maggiore di uno scaldabagno da 1500 W. Allo stesso modo, con la stessa tensione, la resistenza più piccola assorbe più corrente e quindi più potenza (<span class="m">P = V^2/R</span>).</p>
+<div class="callout esempio">
+
+<p>Faro da 40 W su batteria da 12 V: <span class="m">R = 144/40 = 3{,}6\,\Omega</span>.
+Un dispositivo da 2,5 W acceso 10 minuti produce <span class="m">Q = P t = 2{,}5 \cdot 600 = 1500\,\mathrm{J}</span>.</p>
+</div>
+
+<div class="callout attenzione">
+
+<p>Tre resistori <strong>uguali in serie</strong>: stessa corrente e stessa resistenza. Quindi dissipano la stessa potenza, anche quello in mezzo. La posizione nella serie non conta.</p>
+</div>
+
+<div class="callout esame">
+
+<p>Nelle aperte chiedono: definire la resistenza (<span class="m">V = RI</span>, <span class="m">R = \rho l/S</span>), enunciare la prima legge di Ohm e ricavare <span class="m">R_{eq}</span> in serie (stessa corrente, tensioni che si sommano) e in parallelo (stessa tensione, correnti che si sommano).</p>
+</div>
+
 <div class="callout sintesi">
 
 <ul>
-<li><span class="m">V = RI</span>; <span class="m">R = \rho l/S</span>.</li>
-<li>Serie: <span class="m">R_{eq} = \sum R</span>; parallelo: <span class="m">1/R_{eq} = \sum 1/R</span>.</li>
-<li><span class="m">P = VI = RI^2 = V^2/R</span>.</li>
+<li>Prima legge di Ohm: <span class="m">V = RI</span>, cioè <span class="m">I = V/R</span>. Forma locale: <span class="m">\vec j = \sigma \vec E</span>.</li>
+<li>Seconda legge di Ohm: <span class="m">R = \rho\,l/S</span>.</li>
+<li>Serie: stessa corrente, <span class="m">R_{eq} = R_1 + R_2</span>.</li>
+<li>Parallelo: stessa tensione, <span class="m">1/R_{eq} = 1/R_1 + 1/R_2</span>; la resistenza minore prende più corrente.</li>
+<li><span class="m">R = V^2/P</span>: a parità di tensione, meno potenza significa più resistenza.</li>
 </ul>
 </div>

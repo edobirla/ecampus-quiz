@@ -1,17 +1,92 @@
 <h1>Lezione 57 — Generatori e forza elettromotrice</h1>
+<h2>A cosa serve un generatore</h2>
+<p>Una corrente in un circuito dissipa energia, per esempio per effetto Joule. Senza qualcosa che rifornisca energia, le cariche si fermano e la tensione si annulla. Il <strong>generatore</strong> mantiene la differenza di potenziale tra i suoi due morsetti. Ha un polo positivo (anodo) e un polo negativo (catodo). Nel simbolo il tratto lungo è il polo positivo.</p>
+<h2>Campo elettromotore</h2>
+<p>Il campo elettrostatico è conservativo: su un giro chiuso il suo lavoro è zero. Da solo non può mantenere una corrente che dissipa energia. Dentro il generatore agisce quindi un altro campo, <strong>non conservativo</strong>, detto <strong>campo elettromotore</strong> <span class="m">\vec E_m</span>. Ha origine chimica (pile), luminosa (celle fotovoltaiche) o altra.</p>
+<p>Il campo elettromotore spinge le cariche positive verso il polo positivo. Lo fa contro il campo elettrostatico dei morsetti, che ha verso opposto.</p>
 <h2>Forza elettromotrice</h2>
-<p>Un <strong>generatore</strong> mantiene una d.d.p. ai suoi capi grazie a forze non elettrostatiche (chimiche, meccaniche). La <strong>forza elettromotrice</strong> è il lavoro per unità di carica compiuto dal generatore per portare le cariche dal polo − al polo + al suo interno:
-<span class="m d">\mathcal E = \frac{L}{q} \qquad (\mathrm V)</span></p>
-<h2>Generatore reale</h2>
-<p>Si schematizza con un generatore ideale di f.e.m. <span class="m">\mathcal E</span> in serie a una <strong>resistenza interna</strong> r. Collegato a un carico R:
-<span class="m d">I = \frac{\mathcal E}{R + r} \qquad V = \mathcal E - rI</span>
-La tensione ai morsetti è uguale alla f.e.m. solo a circuito aperto; in cortocircuito <span class="m">I = \mathcal E/r</span>. La potenza sul carico è massima per <span class="m">R = r</span>.</p>
-<h2>Bilancio energetico</h2>
-<p>Il generatore fornisce potenza <span class="m">\mathcal EI</span>: una parte <span class="m">rI^2</span> si dissipa all&#39;interno, il resto <span class="m">VI</span> arriva al carico. L&#39;energia dissipata per effetto Joule può scaldare dell&#39;acqua: 2 A in 10 Ω per 2 minuti producono 4800 J, più dei 4180 J necessari per scaldare 1 L di 1 °C.</p>
+<p>La <strong>forza elettromotrice</strong> (f.e.m.) è il lavoro che il generatore compie su ogni coulomb di carica positiva, portandolo dal polo negativo al polo positivo.</p>
+<p><span class="m d">\mathcal E = \int_{-}^{+} \vec E_m \cdot d\vec l = \oint \vec E \cdot d\vec l</span></p>
+<p>dove:</p>
+<ul>
+<li><span class="m">\mathcal E</span> = forza elettromotrice (V, cioè J/C)</li>
+<li><span class="m">\vec E_m</span> = campo elettromotore (V/m)</li>
+<li><span class="m">\vec E</span> = campo totale lungo il circuito (V/m); il contributo elettrostatico sul giro chiuso è nullo</li>
+</ul>
+<p>Nonostante il nome, la f.e.m. <strong>non è una forza</strong>. È un lavoro per unità di carica e si misura in volt.</p>
+<p>A <strong>circuito aperto</strong> non passa corrente. Le cariche si accumulano sui morsetti finché il campo elettrostatico bilancia quello elettromotore. In queste condizioni la f.e.m. è uguale alla tensione tra i morsetti.</p>
+<h2>Generatore reale: resistenza interna</h2>
+<p>Se colleghi un carico, la tensione ai morsetti scende. Scende tanto più quanto più corrente eroghi. Si descrive il generatore reale come un <strong>generatore ideale</strong> di f.e.m. <span class="m">\mathcal E</span> <strong>in serie</strong> con una <strong>resistenza interna</strong> <span class="m">r</span>.</p>
+<p><span class="m d">V = \mathcal E - r\,I</span></p>
+<p>dove:</p>
+<ul>
+<li><span class="m">V</span> = tensione ai morsetti (V)</li>
+<li><span class="m">\mathcal E</span> = forza elettromotrice (V)</li>
+<li><span class="m">r</span> = resistenza interna (Ω)</li>
+<li><span class="m">I</span> = corrente erogata (A)</li>
+</ul>
+<p>Con un carico esterno <span class="m">R</span> la corrente è:</p>
+<p><span class="m d">I = \frac{\mathcal E}{R + r}</span></p>
+<p>dove <span class="m">R</span> = resistenza del carico (Ω).</p>
+<ul>
+<li>Circuito aperto (<span class="m">I = 0</span>): <span class="m">V = \mathcal E</span>.</li>
+<li>Circuito chiuso: <span class="m">V &lt; \mathcal E</span>, per la caduta <span class="m">rI</span> dentro il generatore.</li>
+<li>Generatore <strong>ideale</strong>: <span class="m">r = 0</span>, quindi <span class="m">V = \mathcal E</span> sempre. Negli esercizi è sottinteso se non si dice nulla.</li>
+</ul>
+<div class="callout esempio">
+
+<p>Pila da 9 V con <span class="m">r = 1\,\Omega</span> su un carico da 8 Ω: <span class="m">I = 9/(8+1) = 1\,\mathrm{A}</span>. Tensione ai morsetti: <span class="m">V = 9 - 1 \cdot 1 = 8\,\mathrm{V}</span>.</p>
+</div>
+
+<h2>Bilancio energetico del generatore</h2>
+<p>Il generatore fornisce potenza <span class="m">\mathcal E I</span>. Una parte si dissipa dentro di lui, una parte arriva al carico.</p>
+<p><span class="m d">\mathcal E\,I = R I^2 + r I^2</span></p>
+<p>dove:</p>
+<ul>
+<li><span class="m">\mathcal E I</span> = potenza erogata dal generatore (W)</li>
+<li><span class="m">R I^2</span> = potenza dissipata nel carico (W)</li>
+<li><span class="m">r I^2</span> = potenza persa nel generatore (W)</li>
+</ul>
+<p>Dividendo per <span class="m">I</span> si ritrova <span class="m">\mathcal E = RI + rI</span>, cioè <span class="m">V = \mathcal E - rI</span>. Il modello &quot;ideale + <span class="m">r</span> in serie&quot; torna anche con l&#39;energia.</p>
+<div class="callout esempio">
+
+<p>Pila da 2 V con <span class="m">r = 1\,\Omega</span> su un filo da 5 Ω, per 2 minuti. <span class="m">I = 2/6 \approx 0{,}33\,\mathrm{A}</span>.</p>
+<ul>
+<li>Energia chimica convertita: <span class="m">\mathcal E I t = 2 \cdot 0{,}33 \cdot 120 \approx 80\,\mathrm{J}</span>.</li>
+<li>Calore nel filo: <span class="m">R I^2 t \approx 67\,\mathrm{J}</span>.</li>
+<li>Calore nella pila: <span class="m">r I^2 t \approx 13\,\mathrm{J}</span>.</li>
+</ul>
+</div>
+
+<h2>Massimo trasferimento di potenza</h2>
+<p>La potenza sul carico è <span class="m">P = R I^2 = \dfrac{\mathcal E^2 R}{(R + r)^2}</span>. Ponendo a zero la derivata rispetto a <span class="m">R</span> si trova il massimo:</p>
+<p><span class="m d">R = r \qquad \Rightarrow \qquad P_{max} = \frac{\mathcal E^2}{4r}</span></p>
+<p>dove <span class="m">P_{max}</span> = massima potenza sul carico (W).</p>
+<p>Perché: con <span class="m">R</span> piccola passa tanta corrente ma quasi tutta la potenza si perde in <span class="m">r</span>. Con <span class="m">R</span> grande passa poca corrente. Il compromesso migliore è <span class="m">R = r</span>.</p>
+<h2>Riscaldare con la corrente</h2>
+<p>Il calore prodotto in un tempo <span class="m">t</span> da una resistenza è <span class="m">Q = R I^2 t</span>.</p>
+<div class="callout esempio">
+
+<p>2 A in una resistenza da 10 Ω per 2 minuti: <span class="m">Q = 10 \cdot 4 \cdot 120 = 4800\,\mathrm{J}</span>. Per scaldare di 1 °C un litro d&#39;acqua servono 4180 J. Quindi <strong>sì</strong>, il calore basta.</p>
+</div>
+
+<h2>Esempi di generatori</h2>
+<ul>
+<li><strong>Pila di Volta</strong>: elettrodi di rame e zinco in acido solforico. La f.e.m. nasce da energia chimica. Lo zinco diventa il polo negativo, il rame il positivo.</li>
+<li><strong>Cella fotovoltaica</strong>: semiconduttore al silicio che converte la luce solare in f.e.m.</li>
+</ul>
+<div class="callout esame">
+
+<p>Aperta tipica: definire la f.e.m. (lavoro per unità di carica del campo elettromotore, in volt; a circuito aperto uguale alla tensione ai morsetti) e disegnare il circuito equivalente: generatore ideale <span class="m">\mathcal E</span> in serie con <span class="m">r</span>, collegato al carico <span class="m">R</span>, con <span class="m">V = \mathcal E - rI</span> e <span class="m">I = \mathcal E/(R + r)</span>.</p>
+</div>
+
 <div class="callout sintesi">
 
 <ul>
-<li><span class="m">\mathcal E = L/q</span>.</li>
-<li>Generatore reale: <span class="m">V = \mathcal E - rI</span>, <span class="m">I = \mathcal E/(R + r)</span>.</li>
+<li>La f.e.m. è lavoro per unità di carica, non una forza: si misura in volt.</li>
+<li>Serve un campo non conservativo (elettromotore) per mantenere la corrente.</li>
+<li>Generatore reale = ideale in serie con <span class="m">r</span>: <span class="m">V = \mathcal E - rI</span>, <span class="m">I = \mathcal E/(R + r)</span>.</li>
+<li>Bilancio: <span class="m">\mathcal E I = RI^2 + rI^2</span>.</li>
+<li>Massima potenza al carico per <span class="m">R = r</span>: <span class="m">P_{max} = \mathcal E^2/4r</span>.</li>
 </ul>
 </div>

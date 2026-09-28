@@ -1,24 +1,223 @@
 <h1>Lezione 31 — Statica dei fluidi: pressione, Stevino, Pascal, Archimede</h1>
-<h2>Pressione</h2>
-<p><span class="m d">p = \frac{F_\perp}{S} \qquad 1\ \mathrm{Pa} = 1\ \mathrm{N/m^2}</span>
-Altre unità: <span class="m">1\ \mathrm{atm} = 1{,}013 \cdot 10^5\ \mathrm{Pa} = 760\ \mathrm{mmHg} \approx 1\ \mathrm{bar}</span>. In un fluido in quiete la pressione agisce ugualmente in tutte le direzioni ed è perpendicolare alle superfici. Si misura con il <strong>barometro</strong> (pressione atmosferica, Torricelli) e con i <strong>manometri</strong>.</p>
+<h2>Pressione e densità</h2>
+<p>La pressione è la forza che agisce su ogni metro quadrato di superficie. La densità è la massa di ogni metro cubo.</p>
+<p><span class="m d">p = \frac{F}{S} \qquad \rho = \frac{m}{V}</span>
+dove:</p>
+<ul>
+<li><span class="m">p</span> = pressione (Pa = N/m²)</li>
+<li><span class="m">F</span> = forza perpendicolare alla superficie (N)</li>
+<li><span class="m">S</span> = area (m²)</li>
+<li><span class="m">\rho</span> = densità (kg/m³)</li>
+<li><span class="m">m</span> = massa (kg), <span class="m">V</span> = volume (m³)</li>
+</ul>
+<div class="callout esempio">
+
+<ul>
+<li>Forza da una pressione: <span class="m">p = 5 \cdot 10^5\,\mathrm{Pa}</span> su <span class="m">3\,\mathrm{m^2}</span> dà <span class="m">F = pS = 1{,}5 \cdot 10^6\,\mathrm N</span>.</li>
+<li>Blocco di 10,3 kg su <span class="m">10\,\mathrm{cm^2} = 10^{-3}\,\mathrm{m^2}</span>: <span class="m">p = 10{,}3 \cdot 9{,}8/10^{-3} \approx 10^5\,\mathrm{Pa}</span>, circa 1 atm.</li>
+<li>Massa da densità: ghiaccio (<span class="m">917\,\mathrm{kg/m^3}</span>), <span class="m">10{,}1\,\mathrm{cm^3} = 10{,}1 \cdot 10^{-6}\,\mathrm{m^3}</span>: <span class="m">m = \rho V \approx 9{,}26 \cdot 10^{-3}\,\mathrm{kg}</span>.</li>
+</ul>
+</div>
+
+<p>Unità di pressione:</p>
+<table>
+<thead>
+<tr>
+<th>Unità</th>
+<th>Valore in Pa</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>pascal (SI)</td>
+<td>1</td>
+</tr>
+<tr>
+<td>bar</td>
+<td><span class="m">10^5</span></td>
+</tr>
+<tr>
+<td>atmosfera</td>
+<td><span class="m">1{,}013 \cdot 10^5</span> (circa 1 bar)</td>
+</tr>
+<tr>
+<td>mmHg (torr)</td>
+<td><span class="m">1\,\mathrm{atm} = 760\,\mathrm{mmHg} = 76\,\mathrm{cmHg}</span></td>
+</tr>
+</tbody></table>
+<p>Quindi 38 cmHg = 0,5 atm.</p>
+<div class="callout attenzione">
+
+<p>Le conversioni sono la prima fonte di errore: <span class="m">1\,\mathrm{cm^2} = 10^{-4}\,\mathrm{m^2}</span>, <span class="m">1\,\mathrm{mm^2} = 10^{-6}\,\mathrm{m^2}</span>, <span class="m">1\,\mathrm{l} = 10^{-3}\,\mathrm{m^3}</span>, <span class="m">1\,\mathrm{cm^3} = 10^{-6}\,\mathrm{m^3}</span>.</p>
+</div>
+
 <h2>Legge di Stevino</h2>
-<p>In un liquido di densità ρ, alla profondità h:
-<span class="m d">p = p_0 + \rho gh</span>
-Ogni 10 m d&#39;acqua aggiungono circa 1 atm (un sub a 50 m subisce circa 6 atm assolute). La pressione sul fondo dipende solo dall&#39;altezza del liquido, non dalla forma del recipiente (paradosso idrostatico). Nei gas, comprimibili, la pressione diminuisce esponenzialmente con la quota. Stevino è Bernoulli con velocità nulla.</p>
+<p>In un fluido fermo la pressione cresce con la profondità. Il motivo: ogni strato deve reggere il peso del fluido che ha sopra.</p>
+<p><span class="m d">p = p_0 + \rho\,g\,h</span>
+dove:</p>
+<ul>
+<li><span class="m">p</span> = pressione alla profondità <span class="m">h</span> (Pa)</li>
+<li><span class="m">p_0</span> = pressione sulla superficie libera, di solito quella atmosferica (Pa)</li>
+<li><span class="m">\rho</span> = densità del fluido (kg/m³)</li>
+<li><span class="m">g</span> = accelerazione di gravità, <span class="m">9{,}81\,\mathrm{m/s^2}</span></li>
+<li><span class="m">h</span> = profondità sotto la superficie (m)</li>
+</ul>
+<p>Il termine <span class="m">\rho g h</span> è la pressione idrostatica: il peso della colonna di fluido alta <span class="m">h</span> su ogni m².</p>
+<p>Conseguenze:</p>
+<ul>
+<li>La pressione dipende <strong>solo dalla profondità</strong>, non dalla forma del recipiente. Bicchieri diversi riempiti alla stessa altezza hanno la stessa pressione sul fondo (paradosso idrostatico).</li>
+<li>Punti alla stessa quota nello stesso fluido hanno la stessa pressione. Per questo nei vasi comunicanti il liquido sale alla stessa altezza.</li>
+<li>In acqua la pressione aumenta di circa 1 atm ogni 10 m.</li>
+</ul>
+<div class="callout esempio">
+
+<ul>
+<li>Sub a 50 m: <span class="m">\rho g h \approx 5\,\mathrm{atm}</span>, più 1 atm dell&#39;aria sopra. Totale circa <strong>6 atm</strong>.</li>
+<li>Piscina con <span class="m">\Delta p = 49\,050\,\mathrm{Pa}</span> sul fondo: <span class="m">h = \Delta p/(\rho g) = 49\,050/(1000 \cdot 9{,}81) = 5\,\mathrm m</span>.</li>
+<li>Serbatoio aperto con 5 m d&#39;acqua: acqua <span class="m">\approx 49\,\mathrm{kPa}</span>, più <span class="m">101\,\mathrm{kPa}</span> di atmosfera. Sul fondo circa <span class="m">150\,\mathrm{kPa}</span>.</li>
+<li>Sangue (<span class="m">1060\,\mathrm{kg/m^3}</span>) in una persona alta 1,83 m: <span class="m">\Delta p = 1060 \cdot 9{,}8 \cdot 1{,}83 \approx 1{,}90 \cdot 10^4\,\mathrm{Pa}</span> tra piedi e testa.</li>
+</ul>
+</div>
+
+<p><strong>Liquidi e gas.</strong> Stevino in questa forma vale per i liquidi, che sono incomprimibili: <span class="m">\rho</span> è la stessa a ogni profondità. Nei gas la densità cambia con la pressione. Nell&#39;aria <span class="m">\rho</span> è piccola e diminuisce salendo, quindi la pressione cala lentamente e non in modo lineare. Su dislivelli piccoli (un edificio) si può usare Stevino con una densità media dell&#39;aria.</p>
+<div class="callout esempio">
+
+<p>Barometro: 76,0 cmHg alla base di un edificio, 75,6 cmHg in cima. La perdita di pressione dell&#39;aria è uguale a quella di 0,4 cm di mercurio:
+<span class="m">\rho_{aria}\,g\,H = \rho_{Hg}\,g\,\Delta h \Rightarrow H = 13\,600 \cdot 0{,}004/1{,}28 \approx 42{,}5\,\mathrm m</span>.</p>
+</div>
+
+<h2>Pressione atmosferica e come si misura</h2>
+<p>L&#39;aria sopra di noi ha un peso. Al livello del mare preme con circa <span class="m">1{,}013 \cdot 10^5\,\mathrm{Pa}</span>, cioè circa 1 bar.</p>
+<p><strong>Barometro di Torricelli.</strong> Un tubo pieno di mercurio viene capovolto in una vaschetta di mercurio. Il mercurio nel tubo scende fino a 760 mm e si ferma. L&#39;aria che preme sulla vaschetta regge la colonna:
+<span class="m d">p_{atm} = \rho_{Hg}\,g\,h = 13\,600 \cdot 9{,}81 \cdot 0{,}760 \approx 1{,}013 \cdot 10^5\,\mathrm{Pa}</span>
+Con l&#39;acqua servirebbe una colonna di circa 10,3 m.</p>
+<p>Strumenti:</p>
+<ul>
+<li><strong>barometro</strong>: misura la pressione atmosferica;</li>
+<li><strong>manometro</strong>: misura la pressione di un fluido in un recipiente, spesso rispetto a quella atmosferica. Un esempio semplice è il tubo a U: la differenza di livello <span class="m">h</span> del liquido dà <span class="m">\Delta p = \rho g h</span>;</li>
+<li><strong>sfigmomanometro</strong>: misura la pressione del sangue. È uno strumento analogo al barometro, perché misura una pressione.</li>
+</ul>
+<p>La pressione atmosferica non schiaccia il cranio né il corpo. I fluidi interni sono alla stessa pressione e la bilanciano.</p>
 <h2>Principio di Pascal</h2>
-<p>Una pressione applicata a un fluido chiuso si trasmette inalterata in ogni punto. <strong>Torchio idraulico</strong>: <span class="m">F_1/S_1 = F_2/S_2</span>, quindi <span class="m">F_1 = F_2\,S_1/S_2</span> (con pistoni di 100 cm² e 10 000 cm² una moto di 200 kg si solleva con 19,6 N).</p>
+<p>Se aumenti la pressione in un punto di un fluido chiuso e fermo, l&#39;aumento arriva uguale in ogni altro punto. Agisce su ogni superficie a contatto con il fluido.</p>
+<p>Perché: con Stevino <span class="m">p(h) = p_0 + \rho g h</span>. Se <span class="m">p_0</span> cresce di <span class="m">\Delta p</span>, il termine <span class="m">\rho g h</span> non cambia. Quindi ogni punto cresce di <span class="m">\Delta p</span>.</p>
+<p><strong>Torchio (martinetto) idraulico.</strong> Due pistoni di area diversa sono collegati da un liquido. La pressione è la stessa su entrambi:</p>
+<p><span class="m d">\frac{F_1}{S_1} = \frac{F_2}{S_2} \quad\Rightarrow\quad F_1 = F_2\,\frac{S_1}{S_2}</span>
+dove:</p>
+<ul>
+<li><span class="m">F_1</span> = forza sul pistone piccolo (N)</li>
+<li><span class="m">S_1</span> = area del pistone piccolo (m²)</li>
+<li><span class="m">F_2</span> = forza sul pistone grande (N)</li>
+<li><span class="m">S_2</span> = area del pistone grande (m²)</li>
+</ul>
+<p>La forza si moltiplica per il rapporto delle aree. Non si guadagna lavoro: il pistone piccolo scende molto, quello grande sale poco. Il lavoro sui due lati è uguale.</p>
+<div class="callout esempio">
+
+<p>Moto di 200 kg su un pistone da <span class="m">10\,000\,\mathrm{cm^2}</span>; pistone piccolo da <span class="m">100\,\mathrm{cm^2}</span>.
+<span class="m">F_1 = 200 \cdot 9{,}8 \cdot 100/10\,000 = 19{,}6\,\mathrm N</span>.
+Altri usi: freni idraulici dell&#39;auto, sollevatori delle officine, tubetto del dentifricio.</p>
+</div>
+
 <h2>Principio di Archimede</h2>
-<p>Un corpo immerso riceve una spinta verso l&#39;alto pari al peso del fluido spostato:
-<span class="m d">F_A = \rho_{fl}V_{imm}g</span>
-Dipende dal volume immerso, non dal materiale (sughero e ferro di uguale volume ricevono la stessa spinta) e resta costante durante l&#39;affondamento.</p>
-<p><strong>Galleggiamento</strong>: un corpo galleggia se la sua densità media è minore di quella del liquido; la frazione immersa è <span class="m">\rho_{corpo}/\rho_{liq}</span>. Una nave di ferro galleggia perché lo scafo è cavo; al mare si galleggia meglio perché l&#39;acqua salata è più densa. Sulla Luna il rapporto immerso/emerso non cambia (peso e spinta scalano entrambi con g), ma senza atmosfera una mongolfiera non può volare.</p>
-<p>Esempi: forza per tenere sott&#39;acqua un pallone di 1 kg e 5 L: <span class="m">49 - 9{,}8 \approx 40</span> N; un corpo che pesa 27 N in aria e 17 N in acqua riceve 10 N di spinta e affonda.</p>
+<p>Un corpo immerso in un fluido riceve una spinta verso l&#39;alto. La spinta è uguale al peso del fluido spostato.</p>
+<p><span class="m d">F_A = \rho_{fl}\,V_{imm}\,g</span>
+dove:</p>
+<ul>
+<li><span class="m">F_A</span> = spinta di Archimede (N)</li>
+<li><span class="m">\rho_{fl}</span> = densità del <strong>fluido</strong> (kg/m³)</li>
+<li><span class="m">V_{imm}</span> = volume della parte <strong>immersa</strong> del corpo (m³)</li>
+<li><span class="m">g</span> = accelerazione di gravità (m/s²)</li>
+</ul>
+<p>Da dove nasce: la faccia inferiore del corpo è più profonda di quella superiore. Per Stevino lì la pressione è maggiore. La somma delle forze di pressione punta quindi sempre verso l&#39;alto.</p>
+<p>Cosa conta e cosa no:</p>
+<ul>
+<li>conta il volume immerso e la densità del fluido;</li>
+<li><strong>non</strong> conta il materiale del corpo: sughero e ferro con lo stesso volume sommerso ricevono la stessa spinta;</li>
+<li><strong>non</strong> conta la profondità: un sasso che affonda riceve sempre la stessa spinta.</li>
+</ul>
+<div class="callout esempio">
+
+<ul>
+<li>Oggetto di 30 l completamente immerso in acqua: <span class="m">F_A = 1000 \cdot 0{,}030 \cdot 9{,}8 \approx 294\,\mathrm N</span>.</li>
+<li>Cubo di 10 cm (1 l), massa 10 kg, appeso a un filo in acqua. Peso 98 N, spinta 9,8 N. Tensione del filo <span class="m">T = 98 - 9{,}8 \approx 88\,\mathrm N</span>.</li>
+<li>Pallone di 1 kg e <span class="m">5 \cdot 10^{-3}\,\mathrm{m^3}</span> tenuto sott&#39;acqua. Spinta 49 N, peso 9,8 N. Devi spingere con circa 40 N.</li>
+<li>Un corpo pesa 27 N in aria e 17 N in acqua. La spinta vale <span class="m">27 - 17 = 10\,\mathrm N</span>.</li>
+</ul>
+</div>
+
+<h2>Galleggiamento</h2>
+<p>Sul corpo immerso agiscono il peso e la spinta. Chi vince decide il moto. Per un corpo tutto immerso il confronto si riduce alle densità:</p>
+<table>
+<thead>
+<tr>
+<th>Densità media del corpo</th>
+<th>Cosa succede</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><span class="m">\rho_{corpo} &lt; \rho_{fl}</span></td>
+<td>sale e galleggia, con una parte fuori</td>
+</tr>
+<tr>
+<td><span class="m">\rho_{corpo} = \rho_{fl}</span></td>
+<td>resta fermo dove lo metti</td>
+</tr>
+<tr>
+<td><span class="m">\rho_{corpo} &gt; \rho_{fl}</span></td>
+<td>affonda</td>
+</tr>
+</tbody></table>
+<p>Quando galleggia, peso e spinta si equilibrano:
+<span class="m d">\rho_{corpo}\,V = \rho_{fl}\,V_{imm} \quad\Rightarrow\quad \frac{V_{imm}}{V} = \frac{\rho_{corpo}}{\rho_{fl}}</span>
+La frazione immersa è il rapporto delle densità.</p>
+<div class="callout esempio">
+
+<ul>
+<li>Iceberg: <span class="m">917/1025 \approx 0{,}89</span>. È immerso l&#39;89%, emerge circa il 10,5%.</li>
+<li>Persona (<span class="m">980\,\mathrm{kg/m^3}</span>) con 1/3 fuori dal liquido, quindi 2/3 immersi: <span class="m">\rho_{liq} = 980/(2/3) \approx 1500\,\mathrm{kg/m^3}</span>.</li>
+<li>Oggetto di 1 kg e <span class="m">900\,\mathrm{cm^3}</span>: densità <span class="m">1{,}11\,\mathrm{g/cm^3}</span>. In acqua affonda. Se galleggia in un liquido, quel liquido non è acqua distillata.</li>
+<li>Corpo di 3 kg e 2 l: densità <span class="m">1{,}5\,\mathrm{kg/l}</span>, affonda.</li>
+</ul>
+</div>
+
+<p>Casi pratici:</p>
+<ul>
+<li><strong>Nave di ferro.</strong> Lo scafo è cavo e pieno d&#39;aria. La densità <strong>media</strong> della nave è minore di quella dell&#39;acqua. Per lo stesso motivo un oggetto d&#39;acciaio che galleggia deve avere una cavità.</li>
+<li><strong>Mare e piscina.</strong> Il sale aumenta la densità dell&#39;acqua. A parità di volume immerso la spinta è maggiore: si galleggia meglio.</li>
+<li>Se un corpo galleggia nel liquido A e affonda nel liquido B, allora B è meno denso di A.</li>
+<li><strong>Sulla Luna</strong> peso e spinta sono entrambi proporzionali a <span class="m">g</span>. Un oggetto che galleggia in acqua resta immerso della stessa frazione.</li>
+</ul>
+<h2>Archimede nei gas</h2>
+<p>La spinta vale anche nell&#39;aria, che è un fluido.</p>
+<ul>
+<li><strong>Palloncino a elio</strong>: l&#39;elio è meno denso dell&#39;aria. La spinta supera il peso, le forze non si annullano e il palloncino sale.</li>
+<li><strong>Mongolfiera</strong>: l&#39;aria calda si dilata ed è meno densa dell&#39;aria fredda intorno. Riceve una spinta verso l&#39;alto.</li>
+<li>Sulla <strong>Luna</strong> non c&#39;è atmosfera. Manca il fluido che dà la spinta: mongolfiere e dirigibili non possono volare.</li>
+</ul>
+<div class="callout esempio">
+
+<p>Pallone a elio per sollevare 3 persone da 80 kg. Ogni m³ sposta 1,21 kg d&#39;aria e contiene 0,16 kg di elio. Guadagno: 1,05 kg per m³. Servono <span class="m">240/1{,}05 \approx 230\,\mathrm{m^3}</span>, circa 220 m³.</p>
+</div>
+
+<p><strong>Palloncino sott&#39;acqua.</strong> Scendendo la pressione esterna aumenta (Stevino). Il gas dentro si comprime e il volume del palloncino diminuisce.</p>
+<h2>Anticipo: fluidi in movimento</h2>
+<p>Due risultati della dinamica dei fluidi compaiono anche in questo capitolo.</p>
+<ul>
+<li><strong>Continuità</strong>: in un tubo la portata <span class="m">S\,v</span> si conserva. Un condotto da <span class="m">10\,\mathrm{cm^2}</span> che si divide in dieci capillari da <span class="m">1\,\mathrm{cm^2}</span> ha la stessa sezione totale: la velocità non cambia.</li>
+<li><strong>Bernoulli</strong>: <span class="m">p + \tfrac12\rho v^2 + \rho g h = \text{cost}</span>. A quota fissa, dove la pressione diminuisce la velocità aumenta. Con il fluido fermo (<span class="m">v = 0</span>) resta <span class="m">p + \rho g h = \text{cost}</span>: è la legge di Stevino.</li>
+</ul>
+<div class="callout esame">
+
+<p>Nelle aperte chiedono spesso: enunciare Pascal con un esempio (torchio idraulico, freni); enunciare Archimede; le condizioni di galleggiamento (confronto di densità, frazione immersa); Stevino con un esempio (sub, piscina); differenza tra liquidi e gas in Stevino; come si misura una pressione (barometro, manometro a U).</p>
+</div>
+
 <div class="callout sintesi">
 
 <ul>
-<li><span class="m">p = F/S</span>; Stevino <span class="m">p = p_0 + \rho gh</span>.</li>
-<li>Pascal: <span class="m">F_1/S_1 = F_2/S_2</span>.</li>
-<li>Archimede: <span class="m">F_A = \rho V_{imm}g</span>; galleggia se <span class="m">\rho_{corpo} &lt; \rho_{liq}</span>.</li>
+<li><span class="m">p = F/S</span> in pascal; <span class="m">\rho = m/V</span>; <span class="m">1\,\mathrm{atm} \approx 1\,\mathrm{bar} = 760\,\mathrm{mmHg}</span>.</li>
+<li>Stevino: <span class="m">p = p_0 + \rho g h</span>; dipende solo dalla profondità; in acqua +1 atm ogni 10 m.</li>
+<li>Pascal: una variazione di pressione si trasmette uguale ovunque; torchio <span class="m">F_1/S_1 = F_2/S_2</span>.</li>
+<li>Archimede: <span class="m">F_A = \rho_{fl} V_{imm} g</span>, verso l&#39;alto; non dipende dal materiale né dalla profondità.</li>
+<li>Galleggia chi ha densità media minore del fluido; frazione immersa <span class="m">= \rho_{corpo}/\rho_{fl}</span>.</li>
+<li>Barometro per la pressione atmosferica, manometro per quella di un fluido.</li>
 </ul>
 </div>

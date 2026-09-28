@@ -1,20 +1,98 @@
 <h1>Lezione 59 — Circuito RC</h1>
+<h2>Il circuito</h2>
+<p>Un circuito RC ha un resistore <span class="m">R</span> e un condensatore <span class="m">C</span> in serie. Il condensatore non si carica di colpo: la resistenza limita la corrente. Carica e scarica seguono quindi un andamento <strong>esponenziale</strong>.</p>
 <h2>Carica del condensatore</h2>
-<p>Generatore <span class="m">\mathcal E</span>, resistenza R e condensatore C in serie, condensatore inizialmente scarico. Dalla legge delle maglie <span class="m">\mathcal E = Ri + q/C</span>:
-<span class="m d">q(t) = C\mathcal E\left(1 - e^{-t/RC}\right) \qquad i(t) = \frac{\mathcal E}{R}e^{-t/RC}</span>
-La carica cresce esponenzialmente fino a <span class="m">C\mathcal E</span>; la corrente parte da <span class="m">\mathcal E/R</span> e decresce a zero.</p>
-<h2>Scarica</h2>
-<p><span class="m d">q(t) = q_0e^{-t/RC} \qquad i(t) = \frac{q_0}{RC}e^{-t/RC}</span>
-La carica si dimezza in <span class="m">t_{1/2} = RC\ln2</span> (dimezzamento in 20 ms con 40 Ω → C = 0,72 mF).</p>
+<p>Il condensatore è scarico. Al tempo <span class="m">t = 0</span> lo colleghi, con <span class="m">R</span> in serie, a un generatore di f.e.m. <span class="m">\mathcal E</span>. La legge delle maglie dà a ogni istante:</p>
+<p><span class="m d">\mathcal E = R\,i + \frac{q}{C}</span></p>
+<p>dove:</p>
+<ul>
+<li><span class="m">\mathcal E</span> = f.e.m. del generatore (V)</li>
+<li><span class="m">R</span> = resistenza (Ω)</li>
+<li><span class="m">i = dq/dt</span> = corrente nel circuito (A)</li>
+<li><span class="m">q</span> = carica sul condensatore (C)</li>
+<li><span class="m">C</span> = capacità (F)</li>
+</ul>
+<p>La soluzione è:</p>
+<p><span class="m d">q(t) = C\mathcal E\left(1 - e^{-t/RC}\right) \qquad i(t) = \frac{\mathcal E}{R}\,e^{-t/RC}</span></p>
+<p>dove <span class="m">t</span> = tempo dalla chiusura (s) e <span class="m">C\mathcal E = q_{max}</span> è la carica finale (C).</p>
+<p>Come va:</p>
+<ul>
+<li><strong>All&#39;inizio</strong> il condensatore è scarico, non ha tensione. Si comporta come un <strong>cortocircuito</strong>: la corrente vale <span class="m">\mathcal E/R</span>, come se ci fosse solo la resistenza.</li>
+<li>La carica cresce, la tensione <span class="m">q/C</span> sul condensatore sale e &quot;frena&quot; la corrente.</li>
+<li><strong>A regime</strong> la tensione del condensatore uguaglia <span class="m">\mathcal E</span>. La corrente è zero: il condensatore si comporta come un <strong>circuito aperto</strong>.</li>
+</ul>
+<p>La tensione sul condensatore è <span class="m">V_C = \mathcal E\,(1 - e^{-t/RC})</span>. Quella sul resistore è <span class="m">V_R = \mathcal E\,e^{-t/RC}</span>.</p>
 <h2>Costante di tempo</h2>
-<p><span class="m">\tau = RC</span> è un tempo: <span class="m">[\Omega \cdot \mathrm F] = \dfrac{\mathrm V}{\mathrm A} \cdot \dfrac{\mathrm C}{\mathrm V} = \dfrac{\mathrm C}{\mathrm A} = \mathrm s</span>. Dopo τ la carica ha raggiunto il 63% del valore finale; dopo circa 5τ il processo è concluso. Esempio: 1,4 MΩ e 1,8 µF → τ = 2,52 s; per accumulare 16 µC su 21,6 µC servono circa 3,4 s.</p>
+<p><span class="m d">\tau = R\,C</span></p>
+<p>dove <span class="m">\tau</span> = costante di tempo (s), <span class="m">R</span> in Ω, <span class="m">C</span> in F.</p>
+<p>Misura quanto è veloce il processo. In teoria la carica non finisce mai, ma in pratica:</p>
+<ul>
+<li>dopo <span class="m">\tau</span>: raggiunto <span class="m">1 - e^{-1} \approx</span> <strong>63%</strong> della carica finale;</li>
+<li>dopo <span class="m">3\tau</span>: manca circa il 5%;</li>
+<li>dopo <span class="m">5\tau</span>: manca meno dell&#39;1%. La carica è praticamente completa.</li>
+</ul>
+<p><strong>Perché RC è un tempo</strong> (analisi dimensionale):</p>
+<ol>
+<li><span class="m">R = V/I</span>, quindi <span class="m">[\Omega] = \mathrm{V/A}</span>.</li>
+<li><span class="m">C = Q/V</span>, quindi <span class="m">[\mathrm F] = \mathrm{C/V}</span>.</li>
+<li><span class="m">[\Omega \cdot \mathrm F] = \dfrac{\mathrm V}{\mathrm A} \cdot \dfrac{\mathrm C}{\mathrm V} = \dfrac{\mathrm C}{\mathrm A} = \dfrac{\mathrm{A \cdot s}}{\mathrm A} = \mathrm s</span>.</li>
+</ol>
+<div class="callout esempio">
+
+<p><span class="m">R = 2\,\mathrm{k\Omega}</span>, <span class="m">C = 5\,\mu\mathrm F</span>: <span class="m">\tau = 2000 \cdot 5 \cdot 10^{-6} = 10^{-2}\,\mathrm s = 10\,\mathrm{ms}</span>.</p>
+</div>
+
+<div class="callout esempio">
+
+<p>Pila da 12 V, <span class="m">R = 1{,}4\,\mathrm{M\Omega}</span>, <span class="m">C = 1{,}8\,\mu\mathrm F</span>. Quando la carica arriva a 16 μC?</p>
+<ol>
+<li><span class="m">\tau = RC = 2{,}52\,\mathrm s</span>; <span class="m">q_{max} = C\mathcal E = 21{,}6\,\mu\mathrm C</span>.</li>
+<li><span class="m">e^{-t/\tau} = 1 - 16/21{,}6 \approx 0{,}259</span>.</li>
+<li><span class="m">t = \tau \ln(1/0{,}259) = 2{,}52 \cdot \ln 3{,}86 \approx 3{,}4\,\mathrm s</span>.</li>
+</ol>
+</div>
+
+<h2>Scarica del condensatore</h2>
+<p>Il condensatore ha carica <span class="m">q_0</span>. Al tempo <span class="m">t = 0</span> lo chiudi su una resistenza <span class="m">R</span>. Il condensatore fa da generatore e si svuota.</p>
+<p><span class="m d">q(t) = q_0\,e^{-t/RC} \qquad i(t) = \frac{q_0}{RC}\,e^{-t/RC}</span></p>
+<p>dove <span class="m">q_0</span> = carica iniziale (C), gli altri simboli come sopra. La costante di tempo è la stessa della carica.</p>
+<p>La carica si <strong>dimezza</strong> in un tempo fisso:</p>
+<p><span class="m d">t_{1/2} = RC\,\ln 2 \approx 0{,}693\,RC</span></p>
+<p>dove <span class="m">t_{1/2}</span> = tempo di dimezzamento (s).</p>
+<div class="callout esempio">
+
+<p>Un condensatore dimezza la carica in 20 ms scaricandosi su 40 Ω.
+<span class="m">C = \dfrac{t_{1/2}}{R \ln 2} = \dfrac{0{,}02}{40 \cdot 0{,}693} \approx 7{,}2 \cdot 10^{-4}\,\mathrm F = 0{,}72\,\mathrm{mF}</span>.</p>
+</div>
+
 <h2>Bilancio energetico</h2>
-<p>Nella scarica tutta l&#39;energia <span class="m">\tfrac12CV^2</span> del condensatore si dissipa nella resistenza per effetto Joule. Nella carica il generatore fornisce <span class="m">C\mathcal E^2</span>: metà resta nel condensatore, metà si dissipa.</p>
+<p><strong>Carica.</strong> Moltiplica la legge delle maglie per <span class="m">i</span>: <span class="m">\mathcal E i = R i^2 + \dfrac{q}{C}\,i</span>. La potenza del generatore va in parte nel resistore (Joule) e in parte nel condensatore. Integrando su tutta la carica:</p>
+<ul>
+<li>lavoro del generatore: <span class="m">W = q_{max}\,\mathcal E = C\mathcal E^2</span>;</li>
+<li>energia nel condensatore: <span class="m">U = \tfrac12 C\mathcal E^2</span>;</li>
+<li>calore nel resistore: <span class="m">Q_J = \tfrac12 C\mathcal E^2</span>.</li>
+</ul>
+<p>Il lavoro del generatore si divide <strong>a metà</strong>, qualunque sia <span class="m">R</span>.</p>
+<p><strong>Scarica.</strong> All&#39;inizio il condensatore contiene <span class="m">U_0 = \dfrac{q_0^2}{2C} = \tfrac12 C V_0^2</span>. Alla fine non ha più energia. Tutta questa energia diventa calore nel resistore:</p>
+<p><span class="m d">\int_0^\infty R\,i^2\,dt = \frac{q_0^2}{2C}</span></p>
+<p>dove <span class="m">V_0</span> = tensione iniziale del condensatore (V). L&#39;energia si conserva.</p>
+<div class="callout attenzione">
+
+<p>Le leggi di Kirchhoff valgono per correnti costanti. Qui la corrente varia, ma lentamente rispetto al tempo che il segnale impiega a percorrere il circuito (nanosecondi per un metro). Si possono quindi usare istante per istante: è l&#39;approssimazione <strong>quasi stazionaria</strong>.</p>
+</div>
+
+<div class="callout esame">
+
+<p>Aperte frequenti: descrivere la carica (equazione della maglia, <span class="m">q(t)</span>, <span class="m">i(t)</span>, ruolo di τ), verificare che RC è un tempo, discutere il bilancio energetico della scarica (energia <span class="m">\tfrac12 CV_0^2</span> tutta dissipata in R).</p>
+</div>
+
 <div class="callout sintesi">
 
 <ul>
-<li>Carica: <span class="m">q = C\mathcal E(1 - e^{-t/RC})</span>; scarica: <span class="m">q = q_0e^{-t/RC}</span>.</li>
-<li><span class="m">\tau = RC</span>, in secondi.</li>
-<li>Energia di scarica tutta dissipata in R.</li>
+<li>Carica: <span class="m">q = C\mathcal E(1 - e^{-t/RC})</span>, <span class="m">i = (\mathcal E/R)\,e^{-t/RC}</span>.</li>
+<li>Scarica: <span class="m">q = q_0 e^{-t/RC}</span>; dimezzamento in <span class="m">RC \ln 2</span>.</li>
+<li><span class="m">\tau = RC</span> è in secondi; dopo τ si arriva al 63%, dopo 5τ si è a regime.</li>
+<li>All&#39;inizio della carica C è un cortocircuito, a regime un circuito aperto.</li>
+<li>Carica: metà del lavoro del generatore va in C, metà in calore. Scarica: tutta l&#39;energia di C va in calore.</li>
 </ul>
 </div>

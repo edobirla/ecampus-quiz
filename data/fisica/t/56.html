@@ -1,23 +1,146 @@
 <h1>Lezione 56 — Potenza elettrica ed effetto Joule</h1>
 <h2>Potenza elettrica</h2>
-<p><span class="m d">P = VI = RI^2 = \frac{V^2}{R} \qquad (\mathrm W)</span>
-Esempi: 10 Ω a 9 V → 8,1 W (una resistenza da 5 W brucerebbe); 5 Ω con 16 A → 1280 W; 1 kΩ a 50 V → 2,5 W; una stufa da 500 W a 220 V ha circa 100 Ω. Una potenza di 3 kW a 220 V permette al massimo circa 13,6 A.</p>
-<h2>Energia</h2>
-<p><span class="m">E = Pt</span>: una lampadina da 100 W dissipa 30 kJ in 5 minuti; 500 W per 10 minuti → 300 kJ. Il kWh vale <span class="m">3{,}6 \cdot 10^6</span> J. L&#39;ampere-ora (Ah) è un&#39;unità di <strong>carica</strong> (3600 C): 50 Ah indica la carica che una batteria può fornire.</p>
-<h2>Effetto Joule</h2>
-<p>In un conduttore gli elettroni urtano il reticolo cedendo energia: l&#39;energia elettrica si trasforma in <strong>calore</strong>. Ogni conduttore ohmico percorso da corrente dissipa energia. Forma locale: potenza per unità di volume <span class="m">p = \vec J \cdot \vec E = \rho J^2</span>.</p>
-<h2>Applicazioni</h2>
+<p>Il campo elettrico sposta le cariche e quindi compie lavoro. Spostare una carica <span class="m">dq</span> tra due punti con differenza di potenziale <span class="m">V</span> costa <span class="m">dL = V\,dq</span>. Dividendo per il tempo si ottiene la potenza.</p>
+<p><span class="m d">P = V\,I</span></p>
+<p>dove:</p>
 <ul>
-<li>Scaldare acqua: <span class="m">Q = mc\Delta T = \dfrac{V^2}{R}t</span> (40 L da 15 a 45 °C in 30 minuti con 30 Ω richiedono circa 290 V).</li>
-<li>Filo riscaldante: <span class="m">R = V^2/P</span>, poi <span class="m">l = RS/\rho</span>.</li>
-<li>Lampadine in serie: con 120 V e lampadine da 6 V ne servono 20 in serie.</li>
-<li>Parallelo: 100 Ω e 200 Ω a 100 V → 1,5 A totali; in serie → 0,33 A.</li>
+<li><span class="m">P</span> = potenza (W, con <span class="m">1\,\mathrm{W} = 1\,\mathrm{J/s}</span>)</li>
+<li><span class="m">V</span> = differenza di potenziale (V)</li>
+<li><span class="m">I</span> = corrente (A)</li>
 </ul>
+<p>La potenza dice quanta energia passa ogni secondo. Un trapano da 500 W riceve dalle cariche 500 J ogni secondo. Una centrale da 5 MW può fornire 5 milioni di joule al secondo.</p>
+<p>L&#39;energia è potenza per tempo:</p>
+<p><span class="m d">E = P\,t</span></p>
+<p>dove <span class="m">E</span> = energia (J), <span class="m">P</span> = potenza (W), <span class="m">t</span> = tempo (s).</p>
+<div class="callout esempio">
+
+<ul>
+<li>Lampadina da 100 W: per dissipare 30 kJ servono <span class="m">t = 30\,000/100 = 300\,\mathrm{s}</span>, cioè 5 minuti.</li>
+<li>Sorgente da 500 W per 10 minuti: <span class="m">Q = 500 \cdot 600 = 300\,\mathrm{kJ}</span>.</li>
+<li>Impianto da 3 kW a 220 V: corrente massima <span class="m">I = P/V = 3000/220 \approx 13{,}6\,\mathrm{A}</span>.</li>
+</ul>
+</div>
+
+<h2>Effetto Joule</h2>
+<p>In un conduttore ohmico, in regime stazionario, le cariche non accelerano. Anche il potenziale resta costante. Il lavoro del campo quindi non diventa né energia cinetica né energia potenziale. Negli urti passa agli ioni del reticolo, che vibrano di più: il conduttore <strong>si scalda</strong>. Questa conversione totale di energia elettrica in calore è l&#39;<strong>effetto Joule</strong>.</p>
+<p>Succede in <strong>ogni</strong> conduttore ohmico percorso da corrente, perché ogni conduttore reale ha <span class="m">R &gt; 0</span>.</p>
+<p>Unendo <span class="m">P = VI</span> e <span class="m">V = RI</span> si ottengono tre forme equivalenti:</p>
+<p><span class="m d">P = V I = R I^2 = \frac{V^2}{R}</span></p>
+<p>dove:</p>
+<ul>
+<li><span class="m">P</span> = potenza dissipata in calore (W)</li>
+<li><span class="m">R</span> = resistenza (Ω)</li>
+<li><span class="m">I</span> = corrente (A)</li>
+<li><span class="m">V</span> = tensione ai capi del resistore (V)</li>
+</ul>
+<p>Scegli la forma in base a cosa conosci: <span class="m">RI^2</span> se hai la corrente, <span class="m">V^2/R</span> se hai la tensione.</p>
+<div class="callout esempio">
+
+<ul>
+<li>5 Ω con 16 A: <span class="m">P = 5 \cdot 16^2 = 1280\,\mathrm{W}</span>.</li>
+<li>10 Ω su una pila da 9 V: <span class="m">P = 81/10 = 8{,}1\,\mathrm{W}</span>. Se il resistore regge solo 5 W, <strong>brucia</strong>.</li>
+<li>1 kΩ a 50 V: <span class="m">P = 2500/1000 = 2{,}5\,\mathrm{W}</span>.</li>
+<li>Stufa da 500 W a 220 V: <span class="m">R = 220^2/500 \approx 97\,\Omega</span>, circa 100 Ω.</li>
+<li>Lampadina che assorbe 300 mA a 1,5 V: <span class="m">R = 1{,}5/0{,}3 = 5\,\Omega</span>.</li>
+<li>22 Ω alla rete a 220 V: <span class="m">I = 220/22 = 10\,\mathrm{A}</span>.</li>
+</ul>
+</div>
+
+<div class="callout attenzione">
+
+<p>La potenza si misura in <strong>watt</strong>, non in joule. Il joule è energia. &quot;8,1 J&quot; come risposta a &quot;quanta potenza&quot; è sbagliato.</p>
+</div>
+
+<h2>Forma locale dell&#39;effetto Joule</h2>
+<p>A volte serve la potenza in un volumetto piccolo del conduttore. Si usa la <strong>densità di potenza</strong>: potenza per unità di volume.</p>
+<p><span class="m d">w = \vec E \cdot \vec j</span></p>
+<p>dove:</p>
+<ul>
+<li><span class="m">w</span> = potenza dissipata per unità di volume (W/m³)</li>
+<li><span class="m">\vec E</span> = campo elettrico nel punto (V/m)</li>
+<li><span class="m">\vec j</span> = densità di corrente nel punto (A/m²)</li>
+</ul>
+<p>Ragionamento in tre passi:</p>
+<ol>
+<li>Nel volume <span class="m">dV</span> ci sono <span class="m">n\,dV</span> cariche <span class="m">q</span>. Il campo le sposta di <span class="m">d\vec l = \vec v_d\,dt</span>.</li>
+<li>Il lavoro è <span class="m">dL = n\,dV\,q\,\vec E \cdot \vec v_d\,dt = \vec E \cdot (n q \vec v_d)\,dV\,dt</span>.</li>
+<li>Poiché <span class="m">n q \vec v_d = \vec j</span>, dividendo per <span class="m">dV\,dt</span> resta <span class="m">w = \vec E \cdot \vec j</span>.</li>
+</ol>
+<p>In un conduttore ohmico <span class="m">\vec E</span> e <span class="m">\vec j</span> sono paralleli, quindi <span class="m">w = E\,j = \rho j^2 = \sigma E^2</span>.</p>
+<h2>Potenza in serie e in parallelo</h2>
+<p>La potenza totale di più resistori è quella della loro resistenza equivalente.</p>
+<ul>
+<li><strong>Serie</strong>: stessa corrente, <span class="m">P = R_1 I^2 + R_2 I^2 = R_{eq} I^2</span>.</li>
+<li><strong>Parallelo</strong>: stessa tensione, <span class="m">P = V^2/R_1 + V^2/R_2 = V^2/R_{eq}</span>.</li>
+</ul>
+<div class="callout esempio">
+
+<p>Batteria da 1,5 V, due resistori in parallelo, corrente totale 50 mA. Uno vale 60 Ω.
+<span class="m">R_{eq} = 1{,}5/0{,}05 = 30\,\Omega</span>. Da <span class="m">\frac{1}{30} = \frac{1}{60} + \frac{1}{R}</span> segue <span class="m">R = 60\,\Omega</span>.</p>
+</div>
+
+<div class="callout esempio">
+
+<p>Lampade da 100 Ω e 200 Ω su 100 V.</p>
+<ul>
+<li>In parallelo: <span class="m">R_{eq} = \frac{100 \cdot 200}{300} \approx 66{,}7\,\Omega</span>, <span class="m">I = 100/66{,}7 = 1{,}5\,\mathrm{A}</span>.</li>
+<li>In serie: <span class="m">R_{eq} = 300\,\Omega</span>, <span class="m">I = 100/300 \approx 0{,}33\,\mathrm{A}</span>.</li>
+</ul>
+</div>
+
+<div class="callout esempio">
+
+<p>Generatore da 120 V e lampadine da 6 V. In serie la tensione si divide tra le lampadine. Ne servono <span class="m">120/6 = 20</span> <strong>in serie</strong>, così ognuna riceve 6 V. In parallelo ognuna riceverebbe 120 V e brucerebbe.</p>
+</div>
+
+<h2>Scaldare con una resistenza</h2>
+<p>Per scaldare acqua con una serpentina: prima il calore, poi la potenza, poi la grandezza elettrica.</p>
+<p><span class="m d">Q = m\,c\,\Delta T \qquad P = \frac{Q}{t}</span></p>
+<p>dove:</p>
+<ul>
+<li><span class="m">Q</span> = calore (J)</li>
+<li><span class="m">m</span> = massa (kg; 1 litro d&#39;acqua ≈ 1 kg)</li>
+<li><span class="m">c</span> = calore specifico (J/(kg·K); acqua 4186)</li>
+<li><span class="m">\Delta T</span> = variazione di temperatura (K o °C)</li>
+<li><span class="m">t</span> = tempo (s)</li>
+</ul>
+<div class="callout esempio">
+
+<p>40 L d&#39;acqua da 15 °C a 45 °C in 30 minuti, serpentina da 30 Ω.</p>
+<ol>
+<li><span class="m">Q = 40 \cdot 4186 \cdot 30 \approx 5{,}02 \cdot 10^6\,\mathrm{J}</span>.</li>
+<li><span class="m">P = Q/1800 \approx 2790\,\mathrm{W}</span>.</li>
+<li><span class="m">V = \sqrt{P R} = \sqrt{2790 \cdot 30} \approx 290\,\mathrm{V}</span>.</li>
+</ol>
+</div>
+
+<div class="callout esempio">
+
+<p>Generatore da 24 V, si vogliono 60 W con un filo di resistività <span class="m">1{,}2 \cdot 10^{-6}\,\Omega\,\mathrm{m}</span> (0,12 mΩ·cm) e diametro 0,24 mm.</p>
+<ol>
+<li><span class="m">R = V^2/P = 576/60 = 9{,}6\,\Omega</span>.</li>
+<li><span class="m">S = \pi (0{,}12 \cdot 10^{-3})^2 \approx 4{,}52 \cdot 10^{-8}\,\mathrm{m^2}</span>.</li>
+<li><span class="m">l = R S/\rho \approx 0{,}362\,\mathrm{m} = 36{,}2\,\mathrm{cm}</span>.</li>
+</ol>
+</div>
+
+<h2>Unità pratiche: kWh e Ah</h2>
+<ul>
+<li>Il <strong>kilowattora</strong> è energia: <span class="m">1\,\mathrm{kWh} = 1000\,\mathrm{W} \cdot 3600\,\mathrm{s} = 3{,}6 \cdot 10^6\,\mathrm{J}</span>. Una lampada da 100 W accesa 12 ore consuma 1,2 kWh.</li>
+<li>L&#39;<strong>ampere-ora</strong> è carica: <span class="m">1\,\mathrm{Ah} = 1\,\mathrm{A} \cdot 3600\,\mathrm{s} = 3600\,\mathrm{C}</span>. Una batteria da 50 Ah può fornire <span class="m">50 \cdot 3600 = 180\,000\,\mathrm{C}</span>.</li>
+</ul>
+<div class="callout attenzione">
+
+<p>&quot;50 Ah&quot; non è una corrente e non è una durata. È la <strong>carica</strong> che la batteria può fornire.</p>
+</div>
+
 <div class="callout sintesi">
 
 <ul>
-<li><span class="m">P = VI = RI^2 = V^2/R</span>.</li>
-<li>Effetto Joule: energia elettrica → calore, <span class="m">Q = RI^2t</span>.</li>
-<li>Ah = carica; kWh = energia.</li>
+<li>Potenza elettrica: <span class="m">P = VI</span>, in watt (J/s).</li>
+<li>Effetto Joule: in ogni conduttore ohmico l&#39;energia elettrica diventa calore, <span class="m">P = RI^2 = V^2/R</span>.</li>
+<li>Forma locale: <span class="m">w = \vec E \cdot \vec j</span> (W/m³).</li>
+<li>Serie e parallelo: la potenza totale è quella della resistenza equivalente.</li>
+<li>Energia <span class="m">E = Pt</span>; kWh è energia, Ah è carica (3600 C).</li>
 </ul>
 </div>

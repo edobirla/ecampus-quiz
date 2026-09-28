@@ -1,55 +1,133 @@
 <h1>Lezione 37 — Trasformazioni dei gas perfetti</h1>
-<h2>Confronto tra trasformazioni</h2>
-<p>Partendo dallo stesso stato iniziale, un gas perfetto può raggiungere volumi maggiori con trasformazioni diverse:</p>
+<h2>Richiamo: stato e energia interna</h2>
+<p>Per un gas perfetto valgono sempre due relazioni.</p>
+<p><span class="m d">pV = nRT \qquad \Delta U = nC_V\Delta T</span></p>
+<p>dove:</p>
 <ul>
-<li><strong>isobara</strong>: la pressione resta costante e la temperatura <strong>aumenta</strong> in proporzione al volume (<span class="m">V/T</span> = cost.); il gas assorbe calore <span class="m">Q = nC_p\Delta T</span>, in parte trasformato in lavoro e in parte in energia interna;</li>
-<li><strong>isoterma</strong>: la temperatura resta costante, la pressione diminuisce (<span class="m">pV</span> = cost.); l&#39;energia interna non cambia e tutto il calore assorbito diventa lavoro;</li>
-<li><strong>adiabatica</strong>: nessuno scambio di calore; il gas si raffredda compiendo lavoro a spese dell&#39;energia interna (<span class="m">pV^\gamma</span> = cost., con <span class="m">\gamma = C_p/C_V</span>).</li>
+<li><span class="m">p, V, T</span> = pressione (Pa), volume (m³), temperatura (K)</li>
+<li><span class="m">n</span> = moli; <span class="m">R = 8{,}314\,\mathrm{J/(mol\,K)}</span></li>
+<li><span class="m">C_V</span> = calore molare a volume costante, in <span class="m">\mathrm{J/(mol\,K)}</span></li>
 </ul>
-<p>Quindi, dopo un&#39;espansione, il gas che ha seguito l&#39;isobara ha temperatura, e dunque energia interna, maggiore di quello che ha seguito l&#39;isoterma.</p>
-<h2>Calori specifici molari</h2>
-<p><span class="m d">C_p - C_V = R \quad\text{(relazione di Mayer)} \qquad \gamma = C_p/C_V</span>
-Monoatomico: <span class="m">C_V = \tfrac32R</span>, <span class="m">C_p = \tfrac52R</span>, <span class="m">\gamma = 5/3</span>. Biatomico: <span class="m">C_V = \tfrac52R</span>, <span class="m">C_p = \tfrac72R</span>, <span class="m">\gamma = 7/5</span>.</p>
-<h2>Lavoro e calore</h2>
+<p>L&#39;energia interna dipende solo da <span class="m">T</span>. Joule lo mostrò con l&#39;espansione libera: un gas che si espande nel vuoto non scambia calore né lavoro, e la sua temperatura non cambia.</p>
+<h2>Calori molari</h2>
+<p>Nei gas il calore necessario per scaldarsi dipende dalla trasformazione. Servono due calori molari.</p>
+<ul>
+<li><span class="m">C_V</span>: calore per scaldare 1 mol di 1 K <strong>a volume costante</strong>. Tutto il calore va in energia interna.</li>
+<li><span class="m">C_p</span>: calore per scaldare 1 mol di 1 K <strong>a pressione costante</strong>. Il gas si espande e compie anche lavoro, quindi serve più calore.</li>
+</ul>
+<p><span class="m d">C_p = C_V + R \qquad \gamma = \frac{C_p}{C_V}</span></p>
+<p>dove:</p>
+<ul>
+<li><span class="m">C_p</span> = calore molare a pressione costante, in <span class="m">\mathrm{J/(mol\,K)}</span></li>
+<li><span class="m">R</span> = costante dei gas (relazione di Mayer)</li>
+<li><span class="m">\gamma</span> = rapporto tra i calori molari, numero puro, sempre maggiore di 1</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Gas</th>
+<th><span class="m">C_V</span></th>
+<th><span class="m">C_p</span></th>
+<th><span class="m">\gamma</span></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Monoatomico (He, Ar)</td>
+<td><span class="m">\tfrac32R</span></td>
+<td><span class="m">\tfrac52R</span></td>
+<td><span class="m">5/3</span></td>
+</tr>
+<tr>
+<td>Biatomico (O₂, N₂, aria)</td>
+<td><span class="m">\tfrac52R</span></td>
+<td><span class="m">\tfrac72R</span></td>
+<td><span class="m">7/5</span></td>
+</tr>
+</tbody></table>
+<p>Il motivo sta nei gradi di libertà: ogni grado di libertà vale <span class="m">\tfrac12 k_BT</span> per molecola. Una molecola monoatomica ne ha 3, una biatomica 5.</p>
+<h2>Le quattro trasformazioni in una tabella</h2>
 <table>
 <thead>
 <tr>
 <th>Trasformazione</th>
-<th>L</th>
-<th>Q</th>
-<th>ΔU</th>
+<th>Legge</th>
+<th><span class="m">L</span></th>
+<th><span class="m">Q</span></th>
+<th><span class="m">\Delta U</span></th>
 </tr>
 </thead>
 <tbody><tr>
-<td>isocora</td>
-<td>0</td>
+<td>Isocora</td>
+<td><span class="m">p/T</span> = cost.</td>
+<td><span class="m">0</span></td>
 <td><span class="m">nC_V\Delta T</span></td>
 <td><span class="m">nC_V\Delta T</span></td>
 </tr>
 <tr>
-<td>isobara</td>
-<td><span class="m">p\Delta V</span></td>
+<td>Isobara</td>
+<td><span class="m">V/T</span> = cost.</td>
+<td><span class="m">p\,\Delta V</span></td>
 <td><span class="m">nC_p\Delta T</span></td>
 <td><span class="m">nC_V\Delta T</span></td>
 </tr>
 <tr>
-<td>isoterma</td>
-<td><span class="m">nRT\ln(V_f/V_i)</span></td>
+<td>Isoterma</td>
+<td><span class="m">pV</span> = cost.</td>
+<td><span class="m">nRT\ln\dfrac{V_f}{V_i}</span></td>
 <td><span class="m">= L</span></td>
-<td>0</td>
+<td><span class="m">0</span></td>
 </tr>
 <tr>
-<td>adiabatica</td>
+<td>Adiabatica</td>
+<td><span class="m">pV^\gamma</span> = cost.</td>
 <td><span class="m">-\Delta U</span></td>
-<td>0</td>
+<td><span class="m">0</span></td>
 <td><span class="m">nC_V\Delta T</span></td>
 </tr>
 </tbody></table>
+<h2>Isobara</h2>
+<p>La pressione resta costante. Se il volume aumenta, la temperatura aumenta <strong>in proporzione</strong> (<span class="m">V/T</span> costante). Il gas assorbe calore: una parte diventa lavoro, una parte energia interna.</p>
+<h2>Isoterma</h2>
+<p>La temperatura resta costante, quindi <span class="m">\Delta U = 0</span>. Tutto il calore assorbito diventa lavoro. La pressione scende quando il volume cresce.</p>
+<div class="callout esempio">
+
+<p>Compressione isoterma di 1 mol di gas a 0 °C da 22,4 L a 16,8 L: <span class="m">L = nRT\ln(V_f/V_i) = 1 \cdot 8{,}314 \cdot 273 \cdot \ln(0{,}75) \approx -653\,\mathrm J</span>. Il segno meno dice che il lavoro è fatto <strong>sul</strong> gas.</p>
+</div>
+
+<h2>Adiabatica</h2>
+<p>Il gas non scambia calore. Per il primo principio <span class="m">\Delta U = -L</span>.</p>
+<ul>
+<li>In <strong>espansione</strong> il gas compie lavoro a spese della sua energia interna: <strong>si raffredda</strong>.</li>
+<li>In <strong>compressione</strong> il gas riceve lavoro: <strong>si scalda</strong> (come l&#39;aria in una pompa da bicicletta).</li>
+</ul>
+<p>Per un&#39;adiabatica reversibile valgono:</p>
+<p><span class="m d">pV^\gamma = \text{cost.} \qquad TV^{\gamma - 1} = \text{cost.}</span></p>
+<p>dove <span class="m">\gamma = C_p/C_V</span>. Nel piano <span class="m">p</span>-<span class="m">V</span> l&#39;adiabatica scende più ripida dell&#39;isoterma.</p>
+<div class="callout esempio">
+
+<p>Aria (<span class="m">\gamma = 1{,}4</span>) a 1,2 bar e 310 K compressa adiabaticamente da 4,3 L a 0,76 L: <span class="m">p_f = 1{,}2 \cdot (4{,}3/0{,}76)^{1{,}4} \approx 13{,}6\,\mathrm{bar}</span> e <span class="m">T_f = 310 \cdot (4{,}3/0{,}76)^{0{,}4} \approx 619\,\mathrm K</span>.</p>
+</div>
+
+<h2>Confronto tra espansioni dallo stesso stato</h2>
+<p>Due quantità uguali dello stesso gas partono dallo stesso stato e si espandono.</p>
+<ul>
+<li>Quella a <strong>pressione costante</strong> finisce più calda: <span class="m">T</span> cresce con <span class="m">V</span>.</li>
+<li>Quella a <strong>temperatura costante</strong> resta alla temperatura iniziale.</li>
+<li>Quella <strong>adiabatica</strong> finisce più fredda.</li>
+</ul>
+<p>Siccome <span class="m">U</span> dipende solo da <span class="m">T</span>, alla fine ha energia interna maggiore il gas che ha fatto l&#39;isobara.</p>
+<div class="callout attenzione">
+
+<p><span class="m">\Delta U = nC_V\Delta T</span> vale in <strong>ogni</strong> trasformazione, anche nell&#39;isobara. Non scrivere <span class="m">nC_p\Delta T</span> per l&#39;energia interna: quello è il calore dell&#39;isobara.</p>
+</div>
+
 <div class="callout sintesi">
 
 <ul>
-<li>Isobara: T cresce con V; isoterma: T costante; adiabatica: T diminuisce in espansione.</li>
-<li><span class="m">C_p = C_V + R</span>.</li>
-<li><span class="m">\Delta U = nC_V\Delta T</span> in ogni caso.</li>
+<li><span class="m">C_p = C_V + R</span> (Mayer); <span class="m">\gamma = C_p/C_V</span>: 5/3 monoatomico, 7/5 biatomico.</li>
+<li>Isobara: <span class="m">V/T</span> costante, <span class="m">Q = nC_p\Delta T</span>, la temperatura sale con il volume.</li>
+<li>Isoterma: <span class="m">\Delta U = 0</span>, <span class="m">Q = L = nRT\ln(V_f/V_i)</span>.</li>
+<li>Adiabatica: <span class="m">Q = 0</span>, <span class="m">pV^\gamma</span> costante; in espansione il gas si raffredda.</li>
+<li><span class="m">\Delta U = nC_V\Delta T</span> sempre.</li>
 </ul>
 </div>

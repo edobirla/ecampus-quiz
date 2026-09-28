@@ -1,22 +1,84 @@
 <h1>Lezione 27 — Equilibrio del corpo rigido</h1>
 <h2>Corpo rigido</h2>
-<p>Un <strong>corpo rigido</strong> è un corpo esteso le cui distanze interne non cambiano. Può <strong>traslare</strong> e <strong>ruotare</strong>; il moto più generale è la combinazione dei due.</p>
+<p>Un corpo rigido è un insieme di punti le cui distanze reciproche non cambiano mai. Non si deforma.</p>
+<p>Il suo moto più generale è la somma di due moti:</p>
+<ul>
+<li>una <strong>traslazione</strong>, descritta dal moto del centro di massa;</li>
+<li>una <strong>rotazione</strong> attorno a un asse.</li>
+</ul>
+<p>Per descriverlo servono 6 numeri: 3 coordinate del centro di massa e 3 angoli (direzione dell&#39;asse e ampiezza della rotazione). Questi sono i <strong>gradi di libertà</strong>: 6 per un corpo rigido libero.</p>
+<h2>Equazioni cardinali per il corpo rigido</h2>
+<p>Le forze interne non cambiano la forma del corpo. Quindi il moto dipende solo dalle forze esterne, con due equazioni:</p>
+<p><span class="m d">\vec R^{(e)} = M\,\vec a_{cm} \qquad \vec M^{(e)} = \frac{d\vec L}{dt}</span></p>
+<p>dove:</p>
+<ul>
+<li><span class="m">\vec R^{(e)}</span> = risultante delle forze esterne, in <span class="m">\mathrm N</span>;</li>
+<li><span class="m">M</span> = massa del corpo, in <span class="m">\mathrm{kg}</span>; <span class="m">\vec a_{cm}</span> = accelerazione del centro di massa, in <span class="m">\mathrm{m/s^2}</span>;</li>
+<li><span class="m">\vec M^{(e)}</span> = momento totale delle forze esterne, in <span class="m">\mathrm{N\cdot m}</span>;</li>
+<li><span class="m">\vec L</span> = momento angolare, in <span class="m">\mathrm{kg\cdot m^2/s}</span>.</li>
+</ul>
+<p>La prima descrive la traslazione, la seconda la rotazione. In tutto sono 6 equazioni scalari, una per ogni grado di libertà.</p>
 <h2>Condizioni di equilibrio</h2>
-<p>Perché un corpo rigido sia in equilibrio (e resti fermo se inizialmente in quiete) devono essere nulle:</p>
-<ol>
-<li>la <strong>risultante delle forze esterne</strong>: <span class="m">\sum\vec F_{est} = 0</span> (niente traslazione);</li>
-<li>la <strong>risultante dei momenti</strong> delle forze esterne rispetto a un polo qualsiasi: <span class="m">\sum\vec M_{est} = 0</span> (niente rotazione).</li>
-</ol>
-<p>La sola prima condizione non basta: una <strong>coppia di forze</strong> (due forze uguali, opposte, non allineate) ha risultante nulla ma momento diverso da zero, e fa ruotare il corpo.</p>
-<h2>Forze parallele</h2>
-<p>La risultante di due forze parallele ha intensità pari alla <strong>somma</strong> (se concordi) o alla <strong>differenza</strong> (se discordi) delle intensità, ed è applicata in un punto che divide la distanza in parti inversamente proporzionali alle forze.</p>
-<h2>Baricentro e stabilità</h2>
-<p>Il baricentro è il punto di applicazione della forza peso. Un corpo appoggiato è in equilibrio se la verticale per il baricentro cade dentro la base d&#39;appoggio; più il baricentro è basso e la base larga, più l&#39;equilibrio è stabile.</p>
+<p>Un corpo rigido è in equilibrio quando sono nulle <strong>entrambe</strong>:</p>
+<p><span class="m d">\sum\vec F_{est} = 0 \qquad \sum\vec M_{est} = 0</span></p>
+<ul>
+<li>Risultante delle forze nulla: il centro di massa non accelera (niente traslazione).</li>
+<li>Momento risultante nullo: il corpo non inizia a ruotare (niente rotazione).</li>
+</ul>
+<p>Con queste condizioni <span class="m">\vec P</span> e <span class="m">\vec L</span> restano costanti. Se il corpo era fermo, resta fermo: è l&#39;<strong>equilibrio statico</strong>.</p>
+<div class="callout attenzione">
+
+<p>La sola risultante nulla <strong>non basta</strong>. Una <strong>coppia di forze</strong> è fatta da due forze uguali, opposte e non sulla stessa retta. Ha risultante nulla, ma momento diverso da zero: il corpo ruota. Esempio: le due mani sul volante.</p>
+</div>
+
+<h2>Scelta del polo</h2>
+<p>Se la risultante delle forze è nulla, il momento totale è <strong>lo stesso rispetto a qualsiasi polo</strong>. Quindi puoi scegliere il polo più comodo.</p>
+<p>Conviene metterlo dove agiscono forze sconosciute: quelle forze hanno braccio zero e spariscono dall&#39;equazione dei momenti.</p>
+<div class="callout esempio">
+
+<p>Scala appoggiata a un muro liscio e a un pavimento con attrito. Forze: peso nel centro della scala, reazione del muro, reazione normale e attrito del pavimento. Scegli il polo nel piede della scala. Reazione normale e attrito del pavimento hanno braccio nullo. Restano solo i momenti del peso e della reazione del muro: da lì ricavi la reazione del muro, poi l&#39;attrito con l&#39;equilibrio delle forze.</p>
+</div>
+
+<div class="callout esempio">
+
+<p>Trave leggera di <span class="m">2\,\mathrm m</span> appoggiata agli estremi, con <span class="m">100\,\mathrm N</span> al centro. Per simmetria le due reazioni sono uguali. Per l&#39;equilibrio delle forze sommano <span class="m">100\,\mathrm N</span>. Quindi ognuna vale <span class="m">50\,\mathrm N</span>.</p>
+</div>
+
+<h2>Forze parallele e baricentro</h2>
+<p>Più forze parallele equivalgono a <strong>una sola forza</strong>:</p>
+<ul>
+<li>intensità: la <strong>somma</strong> delle intensità (se sono concordi) o la <strong>differenza</strong> (se sono discordi);</li>
+<li>punto di applicazione: divide la distanza tra le forze in parti <strong>inversamente proporzionali</strong> alle forze. Sta più vicino alla forza maggiore.</li>
+</ul>
+<p>Questo punto si chiama <strong>centro delle forze parallele</strong>. I pesi dei pezzi di un corpo sono forze parallele. Il loro centro è il <strong>baricentro</strong>:</p>
+<p><span class="m d">\vec r_G = \frac{\sum_i m_i\vec r_i}{\sum_i m_i}</span></p>
+<p>dove <span class="m">\vec r_G</span> è la posizione del baricentro, in <span class="m">\mathrm m</span>.</p>
+<p>In un campo di gravità uniforme il baricentro <strong>coincide con il centro di massa</strong>. È il punto dove si può pensare applicato tutto il peso.</p>
+<h2>Densità e corpo omogeneo</h2>
+<p>In un corpo continuo la massa è distribuita nel volume. La <strong>densità</strong> dice come:</p>
+<p><span class="m d">\rho = \frac{dm}{dV} \qquad \text{corpo omogeneo: } \rho = \frac{M}{V}</span></p>
+<p>dove <span class="m">\rho</span> è in <span class="m">\mathrm{kg/m^3}</span>, <span class="m">M</span> in <span class="m">\mathrm{kg}</span>, <span class="m">V</span> in <span class="m">\mathrm{m^3}</span>.</p>
+<p>Un corpo è <strong>omogeneo</strong> se la densità è uguale ovunque. Se è anche simmetrico, baricentro e centro di massa stanno nel <strong>centro geometrico</strong>. Per una sfera omogenea è il centro. Per un corpo non omogeneo, invece, il baricentro non è per forza al centro.</p>
+<h2>Equilibrio di un corpo appoggiato</h2>
+<p>Un corpo appoggiato su un piano subisce il peso (nel baricentro) e le reazioni del piano (distribuite sulla base).</p>
+<ul>
+<li>Se la <strong>verticale del baricentro cade dentro la base d&#39;appoggio</strong>, la reazione si applica proprio su quella verticale. Peso e reazione sono sulla stessa retta: momento nullo. Il corpo resta in equilibrio.</li>
+<li>Se la verticale cade <strong>fuori</strong> dalla base, la reazione non può spostarsi fuori dalla base. Peso e reazione formano una coppia: il corpo si ribalta.</li>
+</ul>
+<p>Più il baricentro è basso e la base è larga, più l&#39;equilibrio è stabile.</p>
+<div class="callout esempio">
+
+<p>Torre di Pisa come cilindro omogeneo: alta <span class="m">55\,\mathrm m</span>, diametro <span class="m">7\,\mathrm m</span> (raggio della base <span class="m">3{,}5\,\mathrm m</span>). La cima è spostata di <span class="m">4{,}5\,\mathrm m</span>. Il baricentro è a metà altezza, quindi è spostato di metà: <span class="m">2{,}25\,\mathrm m</span>. È meno di <span class="m">3{,}5\,\mathrm m</span>: la verticale cade dentro la base e la torre non si ribalta. Il limite sarebbe una cima spostata di <span class="m">7\,\mathrm m</span>.</p>
+</div>
+
 <div class="callout sintesi">
 
 <ul>
-<li>Equilibrio del corpo rigido: <span class="m">\sum\vec F = 0</span> <strong>e</strong> <span class="m">\sum\vec M = 0</span>.</li>
-<li>Coppia: risultante nulla, momento non nullo.</li>
-<li>Stabilità: verticale del baricentro dentro la base.</li>
+<li>Corpo rigido: distanze fisse; moto = traslazione del centro di massa + rotazione; 6 gradi di libertà.</li>
+<li>Equilibrio: <span class="m">\sum\vec F_{est} = 0</span> <strong>e</strong> <span class="m">\sum\vec M_{est} = 0</span>.</li>
+<li>Coppia di forze: risultante nulla, momento non nullo, fa ruotare.</li>
+<li>Con risultante nulla il momento non dipende dal polo: scegli quello comodo.</li>
+<li>Baricentro: punto di applicazione del peso; coincide con il centro di massa; nei corpi omogenei simmetrici è al centro geometrico.</li>
+<li>Corpo appoggiato stabile se la verticale del baricentro cade dentro la base.</li>
 </ul>
 </div>

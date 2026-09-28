@@ -1,26 +1,134 @@
 <h1>Lezione 29 — Moto di rotolamento</h1>
-<h2>Rotolamento puro</h2>
-<p>Il rotolamento combina traslazione del centro di massa e rotazione attorno ad esso. Senza strisciamento vale il vincolo
-<span class="m d">v_{cm} = \omega R</span>
-Il punto di contatto con il suolo è istantaneamente <strong>fermo</strong>: il moto può essere visto come rotazione pura attorno al punto di contatto. Il rotolamento è reso possibile dall&#39;<strong>attrito statico</strong>, che non compie lavoro.</p>
-<h2>Energia</h2>
-<p><span class="m d">K = \tfrac12Mv_{cm}^2 + \tfrac12I_{cm}\omega^2 = \tfrac12\left(M + \frac{I_{cm}}{R^2}\right)v_{cm}^2</span></p>
-<h2>Rotolamento su un piano inclinato</h2>
-<p>Dalla conservazione dell&#39;energia (o dalle equazioni cardinali):
-<span class="m d">a = \frac{g\sin\theta}{1 + I_{cm}/(MR^2)}</span></p>
+<h2>Che cos&#39;è il rotolamento puro</h2>
+<p>Una ruota che rotola senza strisciare fa due cose insieme. Il centro trasla in avanti e la ruota gira attorno al centro. I due moti sono legati: in un giro il centro avanza di una circonferenza.</p>
+<p><span class="m d">v_{cm} = \omega R \qquad a_{cm} = \alpha R</span>
+dove:</p>
 <ul>
-<li>sfera piena (<span class="m">\tfrac25</span>): <span class="m">a = \tfrac57g\sin\theta</span>;</li>
-<li>cilindro/disco pieno (<span class="m">\tfrac12</span>): <span class="m">a = \tfrac23g\sin\theta</span>;</li>
-<li>anello/cilindro cavo (<span class="m">1</span>): <span class="m">a = \tfrac12g\sin\theta</span>.</li>
+<li><span class="m">v_{cm}</span> = velocità del centro della ruota (m/s)</li>
+<li><span class="m">\omega</span> = velocità angolare (rad/s)</li>
+<li><span class="m">R</span> = raggio della ruota (m)</li>
+<li><span class="m">a_{cm}</span> = accelerazione del centro (m/s²)</li>
+<li><span class="m">\alpha</span> = accelerazione angolare (rad/s²)</li>
 </ul>
-<p>Corpi con momento d&#39;inerzia relativo minore accelerano di più: una ruota piena arriva in fondo prima di una ruota cava della stessa massa, indipendentemente da massa e raggio.</p>
+<p>Perché: se la ruota gira di un angolo <span class="m">\theta</span>, il punto di contatto &quot;srotola&quot; un arco <span class="m">R\theta</span> sul terreno. Il centro avanza della stessa lunghezza.</p>
+<h2>Velocità dei punti della ruota</h2>
+<p>Ogni punto ha la velocità del centro più quella dovuta alla rotazione. Le due si sommano come vettori.</p>
+<table>
+<thead>
+<tr>
+<th>Punto</th>
+<th>Velocità</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Punto a contatto con il suolo</td>
+<td><span class="m">0</span></td>
+</tr>
+<tr>
+<td>Centro</td>
+<td><span class="m">v_{cm}</span></td>
+</tr>
+<tr>
+<td>Punto più alto</td>
+<td><span class="m">2v_{cm}</span></td>
+</tr>
+</tbody></table>
+<p>Il punto di contatto è fermo in ogni istante. Per questo si può vedere il rotolamento come una pura rotazione attorno al punto di contatto.</p>
+<h2>Energia cinetica nel rotolamento</h2>
+<p>L&#39;energia cinetica è la somma di una parte di traslazione e una di rotazione.</p>
+<p><span class="m d">K = \tfrac12 M v_{cm}^2 + \tfrac12 I_{cm}\,\omega^2 = \tfrac12\left(M + \frac{I_{cm}}{R^2}\right) v_{cm}^2</span>
+dove:</p>
+<ul>
+<li><span class="m">K</span> = energia cinetica (J)</li>
+<li><span class="m">M</span> = massa (kg)</li>
+<li><span class="m">I_{cm}</span> = momento d&#39;inerzia rispetto al centro (kg·m²)</li>
+</ul>
+<p>Lo stesso risultato si trova ruotando attorno al punto di contatto: <span class="m">K = \tfrac12 I_P\omega^2</span>, con <span class="m">I_P = I_{cm} + MR^2</span> (Steiner).</p>
+<div class="callout esempio">
+
+<p>Cilindro pieno che rotola: <span class="m">I_{cm} = \tfrac12 MR^2</span>.
+<span class="m">K = \tfrac12 Mv^2 + \tfrac12 \cdot \tfrac12 MR^2 \cdot (v/R)^2 = \tfrac12 Mv^2 + \tfrac14 Mv^2 = \tfrac34 Mv^2</span>.</p>
+</div>
+
+<h2>Perché serve l&#39;attrito</h2>
+<p>Senza attrito una ruota spinta nel centro scivolerebbe senza girare. È l&#39;attrito tra ruota e suolo che la fa ruotare. È un attrito <strong>statico</strong>, perché il punto di contatto è fermo.</p>
+<p>Con una forza <span class="m">F</span> orizzontale applicata al centro:</p>
+<ul>
+<li>traslazione: <span class="m">M a_{cm} = F - f_s</span></li>
+<li>rotazione attorno al centro: <span class="m">I_{cm}\alpha = f_s R</span>, con <span class="m">\alpha = a_{cm}/R</span></li>
+</ul>
+<p>dove <span class="m">f_s</span> è la forza di attrito statico (N).</p>
+<p>Il rotolamento resta puro finché <span class="m">f_s \le \mu_s M g</span> (<span class="m">\mu_s</span> = coefficiente di attrito statico, senza unità). Se la forza è troppo grande, la ruota slitta.</p>
+<p>L&#39;attrito statico <strong>non compie lavoro</strong>: il punto su cui agisce è fermo. Quindi nel rotolamento puro l&#39;energia meccanica si conserva.</p>
+<h2>Rotolamento su un piano inclinato</h2>
+<p>Un corpo parte da fermo e rotola giù per un piano inclinato di un angolo <span class="m">\theta</span>. Unendo le due equazioni (forze e momenti) si ottiene:</p>
+<p><span class="m d">a = \frac{g\sin\theta}{1 + \dfrac{I_{cm}}{MR^2}}</span>
+dove:</p>
+<ul>
+<li><span class="m">a</span> = accelerazione del centro lungo il piano (m/s²)</li>
+<li><span class="m">g</span> = accelerazione di gravità, <span class="m">9{,}81\,\mathrm{m/s^2}</span></li>
+<li><span class="m">\theta</span> = inclinazione del piano (rad o gradi)</li>
+</ul>
+<p>L&#39;intuizione: parte dell&#39;energia potenziale va nella rotazione. Più grande è <span class="m">I</span>, più energia finisce in rotazione e meno in traslazione. Il corpo accelera meno.</p>
+<table>
+<thead>
+<tr>
+<th>Corpo</th>
+<th><span class="m">I_{cm}/(MR^2)</span></th>
+<th>Accelerazione</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Sfera piena</td>
+<td><span class="m">2/5</span></td>
+<td><span class="m">\tfrac57 g\sin\theta</span></td>
+</tr>
+<tr>
+<td>Cilindro o disco pieno</td>
+<td><span class="m">1/2</span></td>
+<td><span class="m">\tfrac23 g\sin\theta</span></td>
+</tr>
+<tr>
+<td>Anello (ruota vuota)</td>
+<td><span class="m">1</span></td>
+<td><span class="m">\tfrac12 g\sin\theta</span></td>
+</tr>
+<tr>
+<td>Blocco che scivola senza attrito</td>
+<td>—</td>
+<td><span class="m">g\sin\theta</span></td>
+</tr>
+</tbody></table>
+<p>Il risultato non dipende né dalla massa né dal raggio: conta solo la forma.</p>
+<div class="callout esempio">
+
+<p>Una ruota piena e una ruota vuota (anello), stessa massa, partono insieme da ferme. Arriva prima la piena. Ha <span class="m">I</span> più piccolo (<span class="m">\tfrac12MR^2</span> contro <span class="m">MR^2</span>), quindi accelera di più.</p>
+</div>
+
 <h2>Attrito volvente</h2>
-<p>Nella realtà una piccola deformazione del contatto genera l&#39;attrito di rotolamento, molto minore di quello radente.</p>
+<p>Nella realtà la ruota e il suolo si deformano un poco nella zona di contatto. Nasce un momento che frena il rotolamento, detto attrito volvente.</p>
+<p><span class="m d">M_a = h\,m g</span>
+dove:</p>
+<ul>
+<li><span class="m">M_a</span> = momento di attrito volvente (N·m)</li>
+<li><span class="m">h</span> = coefficiente di attrito volvente (m): è una lunghezza</li>
+<li><span class="m">m g</span> = peso del corpo (N)</li>
+</ul>
+<p>È molto più piccolo dell&#39;attrito radente. Per questo le ruote rendono facile spostare carichi pesanti.</p>
+<h2>Cenno: il giroscopio</h2>
+<p>Una trottola che gira velocemente con la punta ferma non cade subito. Il peso crea un momento perpendicolare a <span class="m">\vec L</span>. Questo momento cambia la direzione di <span class="m">\vec L</span> ma non il suo modulo. L&#39;asse della trottola ruota lentamente attorno alla verticale: è la <strong>precessione</strong>.</p>
+<div class="callout esame">
+
+<p>Nella domanda aperta &quot;Discutere il moto di rotolamento&quot; porta: la condizione <span class="m">v_{cm} = \omega R</span>; il punto di contatto fermo; l&#39;energia <span class="m">K = \tfrac12Mv^2 + \tfrac12I\omega^2</span>; il ruolo dell&#39;attrito statico che non fa lavoro; l&#39;accelerazione sul piano inclinato con il confronto sfera/cilindro/anello.</p>
+</div>
+
 <div class="callout sintesi">
 
 <ul>
-<li>Rotolamento puro: <span class="m">v = \omega R</span>, punto di contatto fermo.</li>
-<li><span class="m">K = \tfrac12Mv^2 + \tfrac12I\omega^2</span>.</li>
-<li>Sul piano inclinato vince chi ha <span class="m">I/(MR^2)</span> minore.</li>
+<li>Rotolamento puro: <span class="m">v_{cm} = \omega R</span>; punto di contatto fermo, punto più alto a <span class="m">2v_{cm}</span>.</li>
+<li>Energia: <span class="m">K = \tfrac12 Mv_{cm}^2 + \tfrac12 I_{cm}\omega^2</span> (cilindro pieno: <span class="m">\tfrac34Mv^2</span>).</li>
+<li>Serve attrito statico, che non compie lavoro: l&#39;energia meccanica si conserva.</li>
+<li>Piano inclinato: <span class="m">a = g\sin\theta/(1 + I/MR^2)</span>; sfera <span class="m">\tfrac57g\sin\theta</span>, anello <span class="m">\tfrac12g\sin\theta</span>.</li>
+<li>Vince la gara chi ha <span class="m">I/(MR^2)</span> più piccolo: la ruota piena batte quella vuota.</li>
 </ul>
 </div>

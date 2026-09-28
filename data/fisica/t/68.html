@@ -1,16 +1,79 @@
 <h1>Lezione 68 — Circuiti in campi magnetici variabili</h1>
-<h2>Correnti indotte</h2>
-<p>Un circuito immerso in un campo magnetico variabile è attraversato da un flusso variabile: nasce una f.e.m. indotta <span class="m">\mathcal E = -d\Phi_B/dt</span> e, se il circuito è chiuso, una corrente indotta, anche in assenza di generatori.</p>
-<h2>Campo elettrico indotto</h2>
-<p>Il campo magnetico variabile genera un <strong>campo elettrico indotto</strong> con linee chiuse, quindi <strong>non conservativo</strong>:
-<span class="m d">\oint\vec E \cdot d\vec l = -\frac{d\Phi_B}{dt}</span>
-È questo campo a mettere in moto le cariche nel conduttore. A differenza del campo elettrostatico, la sua circuitazione non è nulla.</p>
+<h2>Cosa succede al circuito</h2>
+<p>Un circuito immerso in un campo magnetico che varia nel tempo vede un flusso concatenato variabile. Quindi:</p>
+<ol>
+<li>nasce una <strong>f.e.m. indotta</strong> <span class="m">\mathcal E = -d\Phi_B/dt</span>;</li>
+<li>se il circuito è chiuso, circola una <strong>corrente indotta</strong> <span class="m">i = \mathcal E/R</span>, anche senza generatori;</li>
+<li>la corrente ha verso tale da opporsi alla variazione (Lenz). Se il campo aumenta, la corrente crea un campo opposto all&#39;aumento;</li>
+<li>la corrente dissipa energia per effetto Joule, <span class="m">P = Ri^2</span>;</li>
+<li>il campo agisce sulla corrente indotta con forze che si oppongono al moto o alla variazione.</li>
+</ol>
+<h2>Il campo elettrico indotto</h2>
+<p>Il circuito è fermo, quindi la forza di Lorentz non può spingere le cariche. A spingerle è un <strong>campo elettrico indotto</strong>, creato dal campo magnetico variabile. Questo campo esiste anche senza il circuito: il filo serve solo a rivelarlo.</p>
+<p>La legge di Faraday in forma integrale diventa:
+<span class="m d">\oint_\gamma \vec E \cdot d\vec l = -\frac{d\Phi_B}{dt}</span>
+dove:</p>
+<ul>
+<li><span class="m">\oint_\gamma \vec E \cdot d\vec l</span> = circuitazione del campo elettrico lungo la linea chiusa <span class="m">\gamma</span> (V);</li>
+<li><span class="m">\Phi_B</span> = flusso di <span class="m">\vec B</span> attraverso una superficie con bordo <span class="m">\gamma</span> (Wb).</li>
+</ul>
+<p>La circuitazione di <span class="m">\vec E</span> è proprio la f.e.m. indotta.</p>
+<p>Differenze con il campo elettrostatico:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Campo elettrostatico</th>
+<th>Campo elettrico indotto</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Sorgente</td>
+<td>cariche ferme</td>
+<td>campo magnetico variabile</td>
+</tr>
+<tr>
+<td>Linee di campo</td>
+<td>aperte, da + a −</td>
+<td>chiuse</td>
+</tr>
+<tr>
+<td>Circuitazione</td>
+<td>sempre zero</td>
+<td><span class="m">-d\Phi_B/dt</span></td>
+</tr>
+<tr>
+<td>Conservativo?</td>
+<td>sì</td>
+<td><strong>no</strong></td>
+</tr>
+</tbody></table>
+<p>Il campo indotto non è conservativo: non si può definire un potenziale. Per questo fa girare le cariche in un anello chiuso.</p>
+<p>In forma locale: <span class="m">\nabla \times \vec E = -\dfrac{\partial \vec B}{\partial t}</span>.</p>
 <h2>Correnti parassite (di Foucault)</h2>
-<p>In masse metalliche estese immerse in campi variabili si formano correnti vorticose che dissipano energia per effetto Joule (per questo i nuclei dei trasformatori sono laminati) e frenano i conduttori in moto.</p>
+<p>In un pezzo di metallo esteso, immerso in un campo variabile, le correnti indotte girano in vortici dentro il metallo. Si chiamano <strong>correnti parassite</strong> o di Foucault.</p>
+<p>Effetti:</p>
+<ul>
+<li><strong>Riscaldano</strong> il metallo per effetto Joule. Lo sfruttano i forni e le piastre a induzione.</li>
+<li><strong>Frenano</strong> il moto. Una lastra metallica che oscilla tra i poli di un magnete si ferma in fretta: le correnti indotte si oppongono al moto (Lenz). È il principio dei <strong>freni elettromagnetici</strong> di treni e camion.</li>
+<li>Nei trasformatori e nei motori sono <strong>perdite</strong>. Per ridurle i nuclei si fanno di <strong>lamierini isolati</strong>: gli strati sottili interrompono i vortici di corrente.</li>
+</ul>
+<h2>Mutua induzione</h2>
+<p>Due circuiti vicini si influenzano. La corrente <span class="m">i_1</span> nel primo crea un flusso nel secondo, proporzionale a <span class="m">i_1</span>:
+<span class="m d">\Phi_2 = M\,i_1 \qquad \mathcal E_2 = -M\frac{di_1}{dt}</span>
+dove <span class="m">M</span> è il coefficiente di mutua induzione, in henry (H). Una corrente variabile nel primo circuito induce una f.e.m. nel secondo. È il principio del <strong>trasformatore</strong>.</p>
+<div class="callout esame">
+
+<p>Domanda aperta tipica: &quot;cosa succede a un circuito in un campo magnetico variabile?&quot;. Rispondi: flusso variabile, f.e.m. indotta (<span class="m">-d\Phi/dt</span>), corrente indotta (<span class="m">\mathcal E/R</span>), verso dato da Lenz, campo elettrico indotto non conservativo. Aggiungi un esempio (correnti parassite o trasformatore).</p>
+</div>
+
 <div class="callout sintesi">
 
 <ul>
-<li>Flusso variabile → f.e.m. e corrente indotta.</li>
-<li>Campo elettrico indotto non conservativo.</li>
+<li>Campo magnetico variabile → f.e.m. e corrente indotta, anche senza generatori.</li>
+<li>Campo elettrico indotto: linee chiuse, non conservativo, <span class="m">\oint \vec E \cdot d\vec l = -d\Phi_B/dt</span>.</li>
+<li>La corrente indotta si oppone all&#39;aumento o alla diminuzione del flusso.</li>
+<li>Correnti parassite: scaldano e frenano; nei nuclei si riducono con lamierini isolati.</li>
+<li>Mutua induzione: <span class="m">\mathcal E_2 = -M\,di_1/dt</span> (trasformatore).</li>
 </ul>
 </div>

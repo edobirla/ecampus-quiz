@@ -1,29 +1,109 @@
 <h1>Lezione 19 — Forze conservative</h1>
-<h2>Definizione</h2>
-<p>Una forza è <strong>conservativa</strong> se il lavoro che compie su un corpo che va da A a B <strong>dipende solo dai punti iniziale e finale</strong>, non dal percorso. In modo equivalente: il lavoro lungo qualsiasi <strong>percorso chiuso</strong> è nullo:
-<span class="m d">\oint \vec F \cdot d\vec r = 0</span></p>
+<h2>Definizione di forza conservativa</h2>
+<p>Una forza è conservativa se il suo lavoro tra due punti A e B dipende solo da A e B, non dal percorso seguito. Le due frasi seguenti dicono la stessa cosa:</p>
+<ol>
+<li>Il lavoro da A a B è lo stesso su qualunque percorso.</li>
+<li>Il lavoro su <strong>qualsiasi percorso chiuso</strong> è nullo.</li>
+</ol>
+<p><span class="m d">\oint \vec F \cdot d\vec s = 0</span></p>
+<p>dove:</p>
+<ul>
+<li><span class="m">\vec F</span> = forza (N)</li>
+<li><span class="m">d\vec s</span> = spostamento elementare lungo il percorso (m)</li>
+<li><span class="m">\oint</span> = integrale su un percorso chiuso (si torna al punto di partenza)</li>
+</ul>
+<p>Perché sono equivalenti: vai da A a B per una strada e torni per un&#39;altra. Se il lavoro dipende solo dagli estremi, andata e ritorno si annullano.</p>
 <h2>Esempi</h2>
-<ul>
-<li><strong>Conservative</strong>: forza peso (gravitazionale), forza elastica, forza elettrostatica.</li>
-<li><strong>Non conservative</strong> (dissipative): attrito radente, attrito viscoso. Il loro lavoro dipende dalla lunghezza del percorso ed è sempre negativo.</li>
-</ul>
-<p>Il lavoro della gravità su un escursionista che sale una montagna è lo stesso per un sentiero breve e ripido o lungo e poco ripido.</p>
-<h2>Energia potenziale</h2>
-<p>Solo per le forze conservative si può definire un&#39;<strong>energia potenziale</strong> <span class="m">U</span>, funzione della posizione, tale che
-<span class="m d">L_{A\to B} = U(A) - U(B) = -\Delta U</span>
-e la forza è il gradiente di <span class="m">U</span> cambiato di segno: <span class="m">\vec F = -\nabla U</span> (in una dimensione <span class="m">F = -dU/dx</span>).</p>
-<ul>
-<li>peso: <span class="m">U = mgh</span>;</li>
-<li>molla: <span class="m">U = \tfrac12kx^2</span>;</li>
-<li>gravitazione: <span class="m">U = -Gm_1m_2/r</span>.</li>
-</ul>
+<table>
+<thead>
+<tr>
+<th>Conservative</th>
+<th>Non conservative (dissipative)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>forza peso</td>
+<td>attrito radente (cinetico)</td>
+</tr>
+<tr>
+<td>forza elastica</td>
+<td>attrito viscoso</td>
+</tr>
+<tr>
+<td>forza gravitazionale</td>
+<td>resistenza dell&#39;aria</td>
+</tr>
+<tr>
+<td>forza elettrostatica</td>
+<td></td>
+</tr>
+</tbody></table>
+<p><strong>Peso.</strong> È costante e verticale. Il lavoro vale <span class="m">mg(y_A - y_B)</span>: dipende solo dal dislivello.</p>
+<p><strong>Attrito.</strong> È sempre opposto allo spostamento. Il lavoro è <span class="m">-F_a \cdot</span> (lunghezza del percorso). Un percorso più lungo dissipa di più. Su un giro chiuso il lavoro è negativo, non nullo.</p>
+<div class="callout esempio">
+
+<p>Un escursionista sale su un monte. Il lavoro del peso su di lui è lo stesso per un sentiero breve e ripido o lungo e poco ripido. Conta solo il dislivello. Il tempo non conta.</p>
+</div>
+
+<div class="callout attenzione">
+
+<p>Il lavoro non è una forza. Se tra le opzioni &quot;quale forza non è conservativa&quot; compare &quot;il lavoro&quot;, è una trappola.</p>
+</div>
+
 <h2>Campo di forze conservativo</h2>
-<p>Un campo che associa a ogni punto una forza è conservativo se la circuitazione è nulla ovunque; il campo gravitazionale e quello elettrostatico lo sono.</p>
+<p>Un campo di forze associa una forza a ogni punto dello spazio: <span class="m">\vec F(x, y, z)</span>. Consideriamo campi stazionari, cioè che non cambiano nel tempo. Il campo è conservativo se il lavoro per andare da un punto a un altro non dipende dal percorso. Equivalente: il lavoro su ogni percorso chiuso è nullo. Il campo gravitazionale e quello elettrostatico sono conservativi.</p>
+<h2>Energia potenziale</h2>
+<p>Solo per una forza conservativa si può definire l&#39;energia potenziale <span class="m">U</span>. È una funzione della sola posizione. Il lavoro è la diminuzione di <span class="m">U</span>.</p>
+<p><span class="m d">L_{A\to B} = U_A - U_B = -\Delta U</span></p>
+<p>dove:</p>
+<ul>
+<li><span class="m">L_{A\to B}</span> = lavoro della forza conservativa da A a B (J)</li>
+<li><span class="m">U_A, U_B</span> = energia potenziale in A e in B (J)</li>
+</ul>
+<p>Se la forza compie lavoro positivo, l&#39;energia potenziale diminuisce. <span class="m">U</span> è definita a meno di una costante: conta solo la differenza. Per l&#39;attrito non esiste un&#39;energia potenziale, perché il suo lavoro dipende dal percorso.</p>
+<table>
+<thead>
+<tr>
+<th>Forza</th>
+<th>Energia potenziale</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Peso</td>
+<td><span class="m">U = mgh</span></td>
+</tr>
+<tr>
+<td>Elastica</td>
+<td><span class="m">U = \tfrac12 kx^2</span></td>
+</tr>
+</tbody></table>
+<p>dove <span class="m">m</span> = massa (kg), <span class="m">g = 9{,}8\,\mathrm{m/s^2}</span>, <span class="m">h</span> = quota (m), <span class="m">k</span> = costante elastica (N/m), <span class="m">x</span> = deformazione (m).</p>
+<h2>Dall&#39;energia potenziale alla forza: il gradiente</h2>
+<p>Si può anche fare il percorso inverso: conoscendo <span class="m">U</span> si trova la forza. La forza è la derivata di <span class="m">U</span> cambiata di segno.</p>
+<p><span class="m d">F_x = -\frac{dU}{dx} \qquad \vec F = -\nabla U = -\left(\frac{\partial U}{\partial x}, \frac{\partial U}{\partial y}, \frac{\partial U}{\partial z}\right)</span></p>
+<p>dove:</p>
+<ul>
+<li><span class="m">\nabla</span> = operatore gradiente (&quot;nabla&quot;)</li>
+<li><span class="m">\partial U/\partial x</span> = derivata di <span class="m">U</span> rispetto a <span class="m">x</span>, con <span class="m">y</span> e <span class="m">z</span> fissi (J/m = N)</li>
+</ul>
+<p>Intuizione: la forza spinge verso dove l&#39;energia potenziale diminuisce, e tanto più forte quanto più <span class="m">U</span> cambia in fretta.</p>
+<div class="callout esempio">
+
+<p>Molla: <span class="m">U = \tfrac12 kx^2</span>, quindi <span class="m">F = -dU/dx = -kx</span>. È la legge di Hooke.</p>
+</div>
+
+<div class="callout esame">
+
+<p>Nelle aperte chiedono di definire la forza conservativa e il campo di forze conservativo. Scrivi entrambe le forme equivalenti (lavoro indipendente dal percorso, lavoro nullo sui percorsi chiusi) e cita esempi e controesempi.</p>
+</div>
+
 <div class="callout sintesi">
 
 <ul>
-<li>Conservativa ⇔ lavoro indipendente dal percorso ⇔ lavoro nullo sui cicli.</li>
-<li>Peso, forza elastica, forza elettrostatica sì; attrito no.</li>
-<li>Forze conservative → energia potenziale, <span class="m">L = -\Delta U</span>.</li>
+<li>Conservativa: lavoro indipendente dal percorso ⇔ lavoro nullo su ogni percorso chiuso.</li>
+<li>Conservative: peso, elastica, gravitazionale, elettrostatica. Non conservative: attrito.</li>
+<li><span class="m">L_{A\to B} = U_A - U_B = -\Delta U</span>.</li>
+<li><span class="m">U_{peso} = mgh</span>, <span class="m">U_{molla} = \tfrac12 kx^2</span>; nessuna <span class="m">U</span> per l&#39;attrito.</li>
+<li><span class="m">\vec F = -\nabla U</span>, in una dimensione <span class="m">F = -dU/dx</span>.</li>
 </ul>
 </div>

@@ -1,18 +1,135 @@
-<h1>Lezione 30 — Fluidi</h1>
+<h1>Lezione 30 — Fluidi: definizione, viscosità, fluidi reali e ideali</h1>
 <h2>Che cos&#39;è un fluido</h2>
-<p>Un <strong>fluido</strong> (liquido o gas) non ha forma propria e scorre sotto l&#39;azione di sforzi di taglio anche piccoli. I <strong>liquidi</strong> hanno volume proprio e sono praticamente incomprimibili; i <strong>gas</strong> occupano tutto il volume disponibile e sono comprimibili.</p>
-<h2>Fluido ideale e fluido reale</h2>
-<p>Il <strong>fluido ideale</strong> è un modello: incomprimibile, non viscoso (nessun attrito interno), in moto stazionario e laminare. Per esso valgono l&#39;equazione di continuità e il teorema di Bernoulli.</p>
-<p>Un <strong>fluido reale</strong> ha <strong>viscosità</strong>: gli strati che scorrono a velocità diverse si scambiano forze d&#39;attrito,
-<span class="m d">F = \eta A\frac{dv}{dy}</span>
-con <span class="m">\eta</span> coefficiente di viscosità (Pa·s). Parte dell&#39;energia viene dissipata: lungo un tubo la pressione cala anche a sezione costante (legge di Poiseuille), e il fluido scorre più veloce al centro che vicino alle pareti. Nei liquidi la viscosità diminuisce con la temperatura, nei gas aumenta.</p>
-<h2>Regime laminare e turbolento</h2>
-<p>A basse velocità il moto è <strong>laminare</strong> (strati ordinati); oltre una certa soglia diventa <strong>turbolento</strong> (vortici). Il criterio è il numero di Reynolds <span class="m">Re = \rho vd/\eta</span>: laminare sotto circa 2000, turbolento sopra circa 3000. Nel regime turbolento molte leggi semplici (Bernoulli, Poiseuille) non valgono più.</p>
+<p>Un fluido è una sostanza che non ha forma propria: prende la forma del recipiente. Liquidi e gas sono fluidi.</p>
+<table>
+<thead>
+<tr>
+<th>Stato</th>
+<th>Forma propria</th>
+<th>Volume proprio</th>
+<th>Comprimibile</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Solido</td>
+<td>sì</td>
+<td>sì</td>
+<td>quasi no</td>
+</tr>
+<tr>
+<td>Liquido</td>
+<td>no</td>
+<td>sì</td>
+<td>quasi no</td>
+</tr>
+<tr>
+<td>Gas</td>
+<td>no</td>
+<td>no (occupa tutto lo spazio)</td>
+<td>sì</td>
+</tr>
+</tbody></table>
+<p>Un fluido non oppone resistenza allo scorrimento di uno strato sull&#39;altro, se è fermo. Non esiste un &quot;attrito statico&quot; nei fluidi: basta una forza tangenziale piccola per farlo scorrere.</p>
+<h2>Densità e pressione</h2>
+<p>Un fluido si descrive con grandezze d&#39;insieme, non seguendo le singole molecole.</p>
+<p><span class="m d">\rho = \frac{m}{V}</span>
+dove:</p>
+<ul>
+<li><span class="m">\rho</span> = densità (kg/m³)</li>
+<li><span class="m">m</span> = massa (kg)</li>
+<li><span class="m">V</span> = volume (m³)</li>
+</ul>
+<p>L&#39;acqua ha <span class="m">\rho \approx 1000\,\mathrm{kg/m^3}</span>.</p>
+<p><span class="m d">p = \frac{F}{S}</span>
+dove:</p>
+<ul>
+<li><span class="m">p</span> = pressione (Pa)</li>
+<li><span class="m">F</span> = forza perpendicolare alla superficie (N)</li>
+<li><span class="m">S</span> = area della superficie (m²)</li>
+</ul>
+<p>Unità: <span class="m">1\,\mathrm{Pa} = 1\,\mathrm{N/m^2}</span>. Altre unità: <span class="m">1\,\mathrm{bar} = 10^5\,\mathrm{Pa}</span>; <span class="m">1\,\mathrm{atm} = 1{,}013 \cdot 10^5\,\mathrm{Pa} = 760\,\mathrm{mmHg}</span>.</p>
+<p>La pressione è uno scalare. In un fluido fermo ha lo stesso valore in tutte le direzioni. La forza che produce è sempre perpendicolare alla superficie.</p>
+<h2>Viscosità</h2>
+<p>La viscosità è l&#39;attrito interno di un fluido. Nasce quando strati vicini di fluido scorrono a velocità diverse. Più un fluido è viscoso, più fatica a scorrere: il miele è più viscoso dell&#39;acqua.</p>
+<p>Esempio: una lastra si muove sopra uno strato di fluido. Lo strato attaccato alla lastra si muove con lei. Lo strato sul fondo è fermo. In mezzo, la velocità cresce da zero a quella della lastra. Per tenere la lastra in moto serve una forza costante:</p>
+<p><span class="m d">F = \eta\,S\,\frac{dv}{dy}</span>
+dove:</p>
+<ul>
+<li><span class="m">F</span> = forza di attrito viscoso tra gli strati (N)</li>
+<li><span class="m">\eta</span> = coefficiente di viscosità (Pa·s)</li>
+<li><span class="m">S</span> = area di contatto tra gli strati (m²)</li>
+<li><span class="m">dv/dy</span> = quanto cambia la velocità passando da uno strato all&#39;altro (1/s)</li>
+</ul>
+<p>Se il profilo è lineare, <span class="m">dv/dy = v_0/D</span>, con <span class="m">v_0</span> velocità della lastra e <span class="m">D</span> spessore del fluido.</p>
+<div class="callout attenzione">
+
+<p>La viscosità dipende dalla temperatura in modo opposto per liquidi e gas.</p>
+<ul>
+<li>Liquidi: se la temperatura sale, la viscosità <strong>diminuisce</strong> (l&#39;olio caldo scorre meglio).</li>
+<li>Gas: se la temperatura sale, la viscosità <strong>aumenta</strong>.</li>
+</ul>
+</div>
+
+<h2>Fluidi ideali e fluidi reali</h2>
+<p>Per studiare i fluidi si parte da un modello semplice: il fluido ideale (o perfetto).</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Fluido ideale</th>
+<th>Fluido reale</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Viscosità</td>
+<td>nulla</td>
+<td>presente</td>
+</tr>
+<tr>
+<td>Comprimibilità</td>
+<td>incomprimibile (<span class="m">\rho</span> costante)</td>
+<td>può comprimersi (molto nei gas)</td>
+</tr>
+<tr>
+<td>Energia</td>
+<td>si conserva</td>
+<td>una parte si dissipa in calore</td>
+</tr>
+<tr>
+<td>Moto</td>
+<td>laminare, senza vortici</td>
+<td>laminare o turbolento</td>
+</tr>
+<tr>
+<td>Leggi</td>
+<td>continuità, Bernoulli</td>
+<td>Poiseuille, numero di Reynolds</td>
+</tr>
+</tbody></table>
+<p>In un fluido reale che scorre in un tubo orizzontale a sezione costante la pressione <strong>diminuisce</strong> lungo il tubo. L&#39;attrito viscoso consuma energia: serve una differenza di pressione per mantenere il flusso. Questa caduta si chiama perdita di carico.</p>
+<h2>Moto laminare e turbolento</h2>
+<ul>
+<li><strong>Laminare</strong>: il fluido scorre a strati ordinati che non si mescolano. Succede a bassa velocità.</li>
+<li><strong>Turbolento</strong>: il moto diventa caotico, con vortici. Succede ad alta velocità o con ostacoli.</li>
+</ul>
+<p>Il numero di Reynolds dice quale dei due regimi si ha:</p>
+<p><span class="m d">Re = \frac{\rho\,v\,R}{\eta}</span>
+dove:</p>
+<ul>
+<li><span class="m">Re</span> = numero di Reynolds (adimensionale)</li>
+<li><span class="m">\rho</span> = densità del fluido (kg/m³)</li>
+<li><span class="m">v</span> = velocità media del fluido (m/s)</li>
+<li><span class="m">R</span> = raggio del condotto (m)</li>
+<li><span class="m">\eta</span> = viscosità (Pa·s)</li>
+</ul>
+<p>Con il raggio: moto laminare per <span class="m">Re &lt; 1000</span>, turbolento per <span class="m">Re</span> oltre 2000–10 000. Molti testi usano il diametro <span class="m">d</span> al posto di <span class="m">R</span>: allora le soglie tipiche sono circa 2000 (laminare) e 3000 (turbolento). Il concetto è lo stesso: <span class="m">Re</span> grande vuol dire turbolenza.</p>
 <div class="callout sintesi">
 
 <ul>
-<li>Fluido ideale: incomprimibile, non viscoso.</li>
-<li>Viscosità = attrito interno, <span class="m">F = \eta A\,dv/dy</span>.</li>
-<li><span class="m">Re = \rho vd/\eta</span>: laminare &lt; 2000 &lt; turbolento.</li>
+<li>Fluido = niente forma propria; il liquido ha volume proprio ed è quasi incomprimibile, il gas no.</li>
+<li><span class="m">\rho = m/V</span>; <span class="m">p = F/S</span> in pascal (<span class="m">1\,\mathrm{Pa} = 1\,\mathrm{N/m^2}</span>).</li>
+<li>Viscosità = attrito tra strati di fluido, <span class="m">F = \eta S\,dv/dy</span>; nei liquidi cala se T sale.</li>
+<li>Fluido ideale: non viscoso e incomprimibile. Fluido reale: viscoso, perde pressione lungo il tubo.</li>
+<li>Numero di Reynolds: stabilisce se il moto è laminare (Re piccolo) o turbolento (Re grande).</li>
 </ul>
 </div>
