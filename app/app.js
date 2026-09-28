@@ -472,7 +472,7 @@ async function theoryLesson(n, anchor) {
 let annot = { tool: "hl", color: 0, pen: 0, width: 1 };
 const annotBar = () => `<div class="annot-bar" id="annotbar" hidden role="toolbar" aria-label="Strumenti per annotare">
   <div class="annot-group" aria-label="Evidenziatore">
-    ${HL_COLORS.map((c, i) => `<button class="swatch hl-${i}" data-act="hlc" data-c="${i}" aria-label="Evidenzia in ${c}" title="Seleziona il testo, poi tocca il colore"></button>`).join("")}
+    ${HL_COLORS.map((c, i) => `<button class="swatch hl-${i} ${annot.tool === "marker" && annot.color === i ? "on" : ""}" data-act="hlc" data-c="${i}" aria-label="Evidenziatore ${c}" aria-pressed="${annot.tool === "marker" && annot.color === i}"></button>`).join("")}
   </div>
   <div class="annot-group" aria-label="Penna">
     ${INK_COLORS.map((c, i) => `<button class="swatch ink ${annot.tool === "pen" && annot.pen === i ? "on" : ""}" style="--c:${c}" data-act="penc" data-c="${i}" aria-label="Penna, colore ${i + 1}"></button>`).join("")}
@@ -483,15 +483,20 @@ const annotBar = () => `<div class="annot-bar" id="annotbar" hidden role="toolba
     <button class="tool" data-act="undo" aria-label="Annulla">${I.undo}</button>
     <button class="tool" data-act="inkvis" aria-label="Mostra o nascondi la scrittura a mano">${I.eye}</button>
   </div>
-  <p class="annot-hint">${annot.tool === "hl" ? "Seleziona il testo e tocca un colore. Tocca un'evidenziazione per aggiungere una nota o toglierla." : annot.tool === "pen" ? "Scrivi con la Apple Pencil (o il mouse); con il dito scorri la pagina. Doppio tocco con il dito: gomma." : "Passa sui tratti da cancellare. Doppio tocco con il dito: torni allo strumento di prima."}</p>
+  <p class="annot-hint">${{
+    hl: "Tocca un colore e passa sul testo con la Apple Pencil, oppure seleziona il testo e tocca un colore. Tocca un'evidenziazione per aggiungere una nota.",
+    marker: "Passa sul testo con la Apple Pencil (o il mouse): l'evidenziazione si allinea alle parole. Tocca di nuovo il colore per smettere. Doppio tocco con il dito: gomma.",
+    pen: "Scrivi con la Apple Pencil (o il mouse); con il dito scorri la pagina. Doppio tocco con il dito: gomma.",
+    eraser: "Passa su tratti ed evidenziazioni da cancellare. Doppio tocco con il dito: torni allo strumento di prima.",
+  }[annot.tool]}</p>
 </div>`;
 // gomma ↔ strumento di prima (pulsante gomma o doppio tocco con il dito)
 function toggleEraser() {
   if (annot.tool === "eraser") annot.tool = annot.prev || "pen";
   else { annot.prev = annot.tool; annot.tool = "eraser"; }
-  notesCtl?.setTool(annot.tool, { color: annot.pen, width: annot.width });
+  notesCtl?.setTool(annot.tool, { color: annot.pen, width: annot.width, hlColor: annot.color });
   refreshAnnotBar();
-  toast(annot.tool === "eraser" ? "Gomma" : annot.tool === "pen" ? "Penna" : "Evidenziatore");
+  toast({ eraser: "Gomma", pen: "Penna", marker: "Evidenziatore", hl: "Selezione" }[annot.tool]);
 }
 function refreshAnnotBar() {
   const bar = $("#annotbar");
@@ -888,10 +893,15 @@ document.addEventListener("click", async (e) => {
       if (bar.hidden) { annot.tool = "hl"; notesCtl?.setTool("hl"); }
       break;
     }
-    case "hlc":
-      annot.tool = "hl"; notesCtl.setTool("hl");
-      if (!notesCtl.highlight(+el.dataset.c)) toast("Seleziona prima il testo da evidenziare");
+    case "hlc": {
+      // con del testo selezionato lo evidenzia; altrimenti attiva l'evidenziatore (di nuovo lo stesso colore: lo spegne)
+      const c = +el.dataset.c;
+      if (notesCtl.highlight(c)) break;
+      const off = annot.tool === "marker" && annot.color === c;
+      annot.tool = off ? "hl" : "marker"; annot.color = c;
+      notesCtl.setTool(annot.tool, { hlColor: c });
       refreshAnnotBar(); break;
+    }
     case "penc": annot.tool = "pen"; annot.pen = +el.dataset.c; notesCtl.setTool("pen", { color: annot.pen, width: annot.width }); refreshAnnotBar(); break;
     case "penw": annot.width = (annot.width + 1) % INK_WIDTHS.length; annot.tool = "pen"; notesCtl.setTool("pen", { color: annot.pen, width: annot.width }); refreshAnnotBar(); break;
     case "eraser": toggleEraser(); break;
