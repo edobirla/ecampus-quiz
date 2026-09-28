@@ -112,6 +112,7 @@ const panExam = () => settings.pan[S.id] ?? !!S.paniere;
 const targetQs = () => S.questions.filter((q) => validQ(q) && (!panExam() || q.src === "paniere"));
 // da ripassare: sbagliata almeno una volta e non ancora azzeccata 2 volte di fila
 const isToReview = (r) => r && r.ko > 0 && r.st < 2;
+const isRight = (q, a) => a === q.c;
 const validQ = (q) => (q.type === "closed" ? Number.isInteger(q.c) && q.c >= 0 : !!q.a);
 
 // ---------- sessione quiz/esame (sopravvive al ricaricamento)
@@ -122,7 +123,7 @@ const plainTxt = (h) => h.replace(/<[^>]+>/g, " ");
 // Negli indizi le opzioni si citano con [[B]] (lettera dell'ordine originale), che diventa la lettera mostrata.
 // Le spiegazioni invece citano le lettere in chiaro: se lo fanno, la domanda non si mescola.
 const LETTER_REF = /\b([Oo]pzion[ei]|[Rr]ispost[ae]|[Ss]carta\w*|[Cc]adono|[Rr]esta(no)?|[Ee]limina\w*|[Ll][ae]|tra|fra|non)\s+\(?[A-E]\)?(?![\p{L}])|\b[A-E]\s+(e|ed|o)\s+[A-E](?![\p{L}])|\([A-Ea-e]\)|(^|\s)[a-eA-E]\)|[Rr]ispost\w*\W+[a-e](?![\p{L}])/u;
-const citesLetters = (h) => LETTER_REF.test(plainTxt((h || "").replace(/\[\[[A-E]\]\]/g, "")));
+const citesLetters = (h) => LETTER_REF.test(plainTxt((h || "").replace(/\[\[[A-E]\]\]|<span class="m[^"]*">[\s\S]*?<\/span>/g, " ")));
 const canShuffle = (q) => !q.o.some((o) => /precedent|tutte le|nessuna (delle|di queste)|entramb|sopra|\b[A-E]\s*(e|ed|,|o)\s*[A-E]\b|^\s*[A-E]\s*$/i.test(plainTxt(o)))
   && !citesLetters(q.e) && !(q.h || []).some(citesLetters);
 const optLetters = (html, order) => html.replace(/\[\[([A-E])\]\]/g, (_, L) => "ABCDE"[order ? order.indexOf("ABCDE".indexOf(L)) : "ABCDE".indexOf(L)] || L);
@@ -166,7 +167,7 @@ function finishPractice() {
   const s = stats();
   const items = answered.map((id) => {
     const q = S.byId[id], a = sess_ans[id];
-    return { id, a, t: sess_t[id], h: sess_h[id], p: q.type === "closed" ? (a === q.c ? 1 : 0) : gradeOpen(q, a).pts };
+    return { id, a, t: sess_t[id], h: sess_h[id], p: q.type === "closed" ? (isRight(q, a) ? 1 : 0) : gradeOpen(q, a).pts };
   });
   s.lastPractice = { id: "pratica", d: Date.now(), mode: "practice", title, dur: Math.round((Date.now() - start) / 1000), items,
     score: items.reduce((x, it) => x + it.p, 0), max: items.reduce((x, it) => x + (S.byId[it.id].type === "closed" ? 1 : EXAM.openMax), 0),
@@ -181,7 +182,7 @@ function gradeSession() {
     const q = S.byId[id];
     const a = sess.ans[id];
     if (q.type === "closed") {
-      const ok = a === q.c;
+      const ok = isRight(q, a);
       return { id, a, h: sess.hints?.[id], t: a !== undefined ? recordAnswer(st, id, ok) : undefined, p: ok ? 1 : 0 };
     }
     const g = gradeOpen(q, a);
@@ -562,7 +563,7 @@ views.quiz = () => {
   if (q.type === "closed") {
     body = `<div class="opts">${order.map((i, pos) => {
       let cls = "";
-      if (done) cls = i === q.c ? "right" : i === a ? "wrong" : "";
+      if (done) cls = isRight(q, i) ? "right" : i === a ? "wrong" : "";
       else if (a === i) cls = "sel";
       return `<button class="opt ${cls}" data-act="pick" data-i="${i}" ${done ? "disabled" : ""}><span class="l">${"ABCDE"[pos]}</span><span class="ot">${q.o[i]}</span></button>`;
     }).join("")}</div>`;
@@ -583,7 +584,7 @@ views.quiz = () => {
   const nav = sess.ids.map((id, i) => {
     const qq = S.byId[id], d = sess.done[id], aa = sess.ans[id];
     let cls = i === sess.i ? "cur " : "";
-    if (!exam && d) cls += qq.type === "closed" ? (aa === qq.c ? "ok" : "ko") : gradeOpen(qq, aa).pts >= 2 ? "ok" : "ko";
+    if (!exam && d) cls += qq.type === "closed" ? (isRight(qq, aa) ? "ok" : "ko") : gradeOpen(qq, aa).pts >= 2 ? "ok" : "ko";
     else if (aa !== undefined && aa !== "") cls += "done";
     if (qq.type === "open") cls += " open";
     return `<button class="${cls}" data-act="go" data-i="${i}">${i + 1}</button>`;
@@ -635,7 +636,7 @@ function feedback(q, a, order) {
   const hasTheory = q.th || S.lessons.find((l) => l.n === q.l)?.theory;
   const tlink = hasTheory ? `<a href="${theory}" data-act="theorylink">Vai alla teoria →</a>` : "";
   if (q.type === "closed") {
-    const ok = a === q.c;
+    const ok = isRight(q, a);
     const L = "ABCDE"[order.indexOf(q.c)];
     return `<div class="feedback ${ok ? "ok" : "ko"}"><h3>${ok ? "✓ Corretto" : a === undefined ? "Risposta corretta: " + L : "✕ Sbagliato — corretta: " + L}</h3>
       ${q.e ? `<details class="more" ${ok ? "" : "open"}><summary>Spiegazione</summary><div class="explain">${q.e}</div></details>` : ""}
@@ -662,7 +663,7 @@ function reviewItem(q, { idx, a, p, h, m, rid, i: itemI, showAnswer = true } = {
   const snippet = q.t.replace(/<img[^>]*>/g, "[figura]").replace(/<(?!\/?span\b)[^>]+>/g, " ");
   let body = `<div class="q-text" style="font-size:16px">${q.t}</div>`;
   if (q.type === "closed") {
-    if (p !== undefined && a !== undefined && a !== q.c) body += `<div class="ans-line ko"><b>La tua risposta</b>${q.o[a]}</div>`;
+    if (p !== undefined && a !== undefined && !isRight(q, a)) body += `<div class="ans-line ko"><b>La tua risposta</b>${q.o[a]}</div>`;
     if (p !== undefined && a === undefined) body += `<div class="ans-line na"><b>Non risposta</b>0 punti</div>`;
     if (showAnswer) body += `<div class="ans-line ok"><b>Risposta corretta</b>${q.o[q.c]}</div>`;
     if (q.e) body += `<details class="more"><summary>Spiegazione</summary><div class="explain">${q.e}</div></details>`;
@@ -878,7 +879,7 @@ document.addEventListener("click", async (e) => {
       sess.ans[q.id] = +el.dataset.i;
       if (sess.mode === "practice") {
         sess.done[q.id] = true;
-        const s = st(); sess.t[q.id] = recordAnswer(s, q.id, sess.ans[q.id] === q.c); saveStats(s);
+        const s = st(); sess.t[q.id] = recordAnswer(s, q.id, isRight(q, sess.ans[q.id])); saveStats(s);
       }
       saveSess(); route(); break;
     }
