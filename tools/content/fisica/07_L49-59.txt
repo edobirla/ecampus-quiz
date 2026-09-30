@@ -1,8 +1,22 @@
 ## L49 Conduttori e capacità
-49-1 C La capacità di un conduttore isolato è il rapporto (costante) tra la carica e il suo potenziale: $C = Q/V$.
-49-2 D In condizioni elettrostatiche il campo all'interno di un conduttore è nullo.
-49-3 A Il conduttore sferico è equipotenziale e il suo potenziale è quello di una carica puntiforme posta al centro: $V = \dfrac{Q}{4\pi\varepsilon_0 R}$.
-49-4 B La carica si concentra nelle zone a curvatura maggiore, cioè a raggio di curvatura minore (effetto delle punte).
+49-1 C La **capacità** di un conduttore isolato dice quanta carica serve per portarlo a un certo potenziale: $C = Q/V$, con $Q$ la carica sul conduttore (in coulomb), $V$ il suo potenziale rispetto all'infinito (in volt) e $C$ la capacità (in farad, $1\ \mathrm F = 1\ \mathrm{C/V}$).
+  Il rapporto è costante: se si raddoppia $Q$ raddoppia anche $V$, quindi $C$ dipende solo dalla forma e dalle dimensioni del conduttore.
+  **Errore tipico:** chi sceglie il prodotto $QV$ o $QE$ non ha controllato le unità: $QV$ è un'energia (joule), non farad. Chi sceglie la "differenza di potenziale tra le armature" descrive un condensatore, cioè due conduttori, non un conduttore singolo.
+  TRAP: Per un conduttore isolato si usa il suo potenziale $V$, non una differenza di potenziale tra armature (che compare solo per i condensatori).
+49-2 D In condizioni elettrostatiche il campo elettrico dentro un conduttore è **nullo**. Se non lo fosse, le cariche libere si muoverebbero e non saremmo in equilibrio.
+  Lo si vede anche con il teorema di Gauss: per una sfera di raggio $r < R$ la carica racchiusa è zero (tutta la carica sta sulla superficie), quindi il flusso, e dunque il campo, è zero.
+  **Errore tipico:** $\dfrac{Q}{4\pi\varepsilon_0 R}$ è il **potenziale** del conduttore, che dentro è costante ma non nullo. $\dfrac{Q}{4\pi\varepsilon_0 R^2}$ è il campo che si misura appena **fuori** dalla superficie, non dentro.
+  TRAP: Campo nullo dentro non significa potenziale nullo: il potenziale è costante e uguale a quello della superficie.
+49-3 A Il potenziale di un conduttore sferico carico è quello di una carica puntiforme $Q$ posta al centro, calcolato alla distanza $R$ (con $V = 0$ all'infinito). Fuori dalla sfera il campo è $E = \dfrac{Q}{4\pi\varepsilon_0 r^2}$, dove $r$ è la distanza dal centro, $\varepsilon_0$ la costante dielettrica del vuoto.
+  Integrando dal raggio all'infinito: $V = \displaystyle\int_R^\infty \frac{Q}{4\pi\varepsilon_0 r^2}\,dr = \frac{Q}{4\pi\varepsilon_0}\left[-\frac{1}{r}\right]_R^\infty = \frac{Q}{4\pi\varepsilon_0 R}$.
+  Dentro la sfera il potenziale è costante e uguale a questo valore, perché il campo è nullo.
+  **Errore tipico:** $\dfrac{Q}{4\pi\varepsilon_0 R^2}$ è il **campo** sulla superficie (unità V/m), non il potenziale (unità V). Chi sceglie 0 ha confuso il campo interno, che è nullo, con il potenziale, che non lo è.
+  TRAP: Campo e potenziale differiscono per una sola potenza di $R$ ($R^2$ al denominatore per il campo, $R$ per il potenziale).
+49-4 B All'equilibrio la carica di un conduttore sta tutta sulla **superficie** (dentro il campo è nullo, quindi per Gauss non c'è carica nel volume).
+  Sulla superficie non è distribuita in modo uniforme: si accumula dove il **raggio di curvatura è minore**, cioè sulle punte. Lo si capisce con due sfere collegate da un filo, che hanno lo stesso potenziale: $\dfrac{Q_1}{4\pi\varepsilon_0 R_1} = \dfrac{Q_2}{4\pi\varepsilon_0 R_2}$.
+  La densità superficiale è $\sigma = \dfrac{Q}{4\pi R^2}$, quindi $\dfrac{\sigma_1}{\sigma_2} = \dfrac{R_2}{R_1}$: la sfera più piccola ha $\sigma$ più grande. Per questo il campo $E = \sigma/\varepsilon_0$ è più intenso vicino alle punte (effetto delle punte, principio del parafulmine).
+  **Errore tipico:** chi sceglie la carica "uniformemente nel volume" dimentica che in un conduttore le cariche libere si spingono in superficie. Chi sceglie la distribuzione uniforme sulla superficie ragiona solo sulla sfera, l'unico caso in cui è vera.
+  TRAP: La carica è più densa dove il raggio di curvatura è **minore** (le punte), non maggiore.
 49-5 APERTA
 KW: carica, potenziale, C = Q/V|Q/V, farad, geometria|forma, dimensioni, isolato, sfera|4πε0R
 > La **capacità** di un conduttore isolato è il rapporto tra la **carica** $Q$ che possiede e il **potenziale** $V$ a cui si porta:
@@ -58,18 +72,49 @@ KW: equipotenziale, costante, campo interno nullo|campo nullo, superficie, caric
 > Anche la **superficie** è equipotenziale: per questo il campo esterno è **perpendicolare** alla superficie. Due conduttori collegati da un filo si portano allo **stesso potenziale** (es. due sfere a contatto si ripartiscono la carica).
 
 ## L50 Condensatori e dielettrici
-50-1 C Con un dielettrico la capacità aumenta di un fattore $\varepsilon_r$: $C = \varepsilon_r C_0$.
-50-2 C $E = \Delta V/d = 2\ \mathrm{V/m}$; $a = (q/m)E = 4 \cdot 10^5\ \mathrm{m/s^2}$; deve percorrere 0,25 m: $t = \sqrt{2 \cdot 0{,}25/4 \cdot 10^5} \approx 1{,}1\ \mathrm{ms}$.
-50-3 D In parallelo le capacità si sommano: 20 µF.
-50-4 B In serie $C_{eq} = C/2$; $U = \tfrac12 C_{eq}V^2 = \tfrac12 \cdot \tfrac C2 \cdot 100 = 25C = 120\ \mathrm J \Rightarrow C = 4{,}8\ \mathrm F$.
-50-5 C La tensione su ogni condensatore resta quella della batteria, quindi le loro cariche non cambiano: cambia solo la capacità equivalente (e la carica totale erogata).
-50-6 A $C_{eq} = \dfrac{1{,}6 \cdot 2{,}4}{1{,}6 + 2{,}4} = 0{,}96\ \mu\mathrm F$.
-50-7 D $C_{eq} = 1{,}6 + 2{,}4 = 4\ \mu\mathrm F$.
-50-8 C Due uguali in serie: $C/2 = 10\ \mu\mathrm F$.
-50-9 A Due uguali in parallelo: $2C = 40\ \mu\mathrm F$.
-50-10 A È falsa: le tensioni sono uguali, ma con distanze diverse tra le armature i campi $E = V/d$ sono diversi.
-50-11 B $C = \varepsilon_0 S/d$: allontanando le armature ($d$ maggiore) la capacità diminuisce.
-50-12 A Due uguali in serie: $10/2 = 5\ \mu\mathrm F$.
+50-1 C Un dielettrico tra le armature polarizza il materiale e riduce il campo di un fattore $\varepsilon_r$ (costante dielettrica relativa, numero puro maggiore di 1). A parità di carica $Q$ la tensione $V = Ed$ scende di $\varepsilon_r$.
+  Poiché $C = Q/V$, la capacità **aumenta** dello stesso fattore: $C = \varepsilon_r C_0$, con $C_0$ la capacità nel vuoto.
+  **Errore tipico:** chi sceglie "rimane la stessa" pensa che il dielettrico non conti. Chi sceglie "diminuisce" contraddice se stesso: $\varepsilon_r > 1$ e il prodotto $\varepsilon_r C_0$ è maggiore di $C_0$. Chi sceglie $\varepsilon_r \varepsilon_0 C_0$ ha moltiplicato per $\varepsilon_0$, che è già dentro $C_0$ ed è dimensionalmente errato.
+  TRAP: Il fattore è $\varepsilon_r$ (relativa, adimensionale), non $\varepsilon_r\varepsilon_0$.
+50-2 C Il campo tra le armature è uniforme: $E = \Delta V/d = 1\ \mathrm V / 0{,}5\ \mathrm m = 2\ \mathrm{V/m}$, dove $d = 50\ \mathrm{cm} = 0{,}5\ \mathrm m$ è la distanza tra le armature.
+  La forza sulla particella è $F = qE$, quindi l'accelerazione (perpendicolare alle armature) è $a = \dfrac{q}{m}E = 2 \cdot 10^5 \cdot 2 = 4 \cdot 10^5\ \mathrm{m/s^2}$.
+  La particella parte a metà tra le armature con velocità trasversale nulla, quindi deve percorrere $\dfrac{d}{2} = 0{,}25\ \mathrm m$ verso l'armatura inferiore, con moto uniformemente accelerato: $\dfrac{d}{2} = \dfrac12 a t^2$.
+  Ricavo $t = \sqrt{\dfrac{2 \cdot 0{,}25}{4 \cdot 10^5}} = \sqrt{1{,}25 \cdot 10^{-6}}\ \mathrm s \approx 1{,}1 \cdot 10^{-3}\ \mathrm s = 1{,}1\ \mathrm{ms}$.
+  **Errore tipico:** chi sceglie 4,3 µs ha usato la velocità $v_0$ per calcolare un tempo (distanza diviso velocità): ma $v_0$ è parallela alle armature e non influisce sul moto verso di esse.
+  TRAP: La velocità $v_0$ è un dato superfluo e la distanza da percorrere è $d/2$, non $d$.
+50-3 D In **parallelo** le armature sono collegate agli stessi due nodi: tutti i condensatori hanno la stessa tensione $V$ e le cariche si sommano, $Q = Q_1 + Q_2$. Dividendo per $V$ si ottiene $C_{eq} = C_1 + C_2$.
+  Qui $C_{eq} = 10 + 10 = 20\ \mu\mathrm F$.
+  **Errore tipico:** chi sceglie 5 µF ha applicato la regola della serie. Chi sceglie 10 µF ha contato un condensatore solo. Chi sceglie 100 µF ha moltiplicato le capacità.
+50-4 B Collegati in serie, due condensatori uguali di capacità $C$ hanno $\dfrac{1}{C_{eq}} = \dfrac1C + \dfrac1C = \dfrac2C$, cioè $C_{eq} = \dfrac C2$. Ai capi dell'insieme c'è la tensione della pila, $V = 10\ \mathrm V$.
+  L'energia immagazzinata è $U = \tfrac12 C_{eq}V^2 = \tfrac12 \cdot \dfrac C2 \cdot 100 = 25\,C$.
+  Uguagliando a $120\ \mathrm J$: $C = \dfrac{120}{25} = 4{,}8\ \mathrm F$.
+  **Errore tipico:** chi sceglie 2,4 F ha trovato la capacità **equivalente** ($\tfrac12 C_{eq} \cdot 100 = 120$ dà $C_{eq} = 2{,}4\ \mathrm F$) e si è fermato lì, senza risalire alla capacità di ciascun condensatore (il doppio).
+  TRAP: La domanda chiede la capacità di **ciascun** condensatore, non quella equivalente.
+50-5 C In parallelo ogni condensatore è collegato direttamente ai poli della batteria, quindi ha sempre la stessa tensione $V$ della batteria, qualunque sia il numero di condensatori.
+  La carica su ciascuno è $Q_i = C_iV$: dipende solo dalla sua capacità e da $V$, quindi i due condensatori di partenza non cambiano carica.
+  Cambia la capacità equivalente, $C_{eq} = C_1 + C_2 + C_3$, che aumenta, e di conseguenza la carica totale erogata dalla batteria, $Q_{tot} = C_{eq}V$.
+  **Errore tipico:** chi sceglie che cambino la d.d.p. o la carica su ogni armatura pensa che il nuovo condensatore "sottragga" tensione o carica agli altri: succede in serie, non in parallelo.
+50-6 A In **serie** vale $\dfrac{1}{C_{eq}} = \dfrac{1}{C_1} + \dfrac{1}{C_2}$, cioè per due condensatori $C_{eq} = \dfrac{C_1C_2}{C_1 + C_2}$.
+  Sostituisco: $C_{eq} = \dfrac{1{,}6 \cdot 2{,}4}{1{,}6 + 2{,}4} = \dfrac{3{,}84}{4} = 0{,}96\ \mu\mathrm F$.
+  **Errore tipico:** chi sceglie 4 µF ha sommato le capacità (formula del parallelo). Chi sceglie 2 µF ha fatto la media.
+  TRAP: In serie la capacità equivalente deve essere minore della più piccola (qui 1,6 µF): se il risultato è maggiore, hai usato la formula sbagliata.
+50-7 D In **parallelo** le capacità si sommano: $C_{eq} = C_1 + C_2$.
+  Sostituisco: $C_{eq} = 1{,}6 + 2{,}4 = 4\ \mu\mathrm F$.
+  **Errore tipico:** chi sceglie 0,96 µF ha usato la formula della serie, valida per i condensatori in cascata. Chi sceglie 2 µF ha fatto la media delle due capacità.
+50-8 C In serie $\dfrac{1}{C_{eq}} = \dfrac{1}{20} + \dfrac{1}{20} = \dfrac{2}{20}$, da cui $C_{eq} = 10\ \mu\mathrm F$ (due uguali in serie: metà della capacità di uno).
+  **Errore tipico:** chi sceglie 40 µF ha sommato le capacità (regola del parallelo). Chi sceglie 20 µF ha contato un condensatore solo.
+50-9 A In parallelo le capacità si sommano: $C_{eq} = 20 + 20 = 40\ \mu\mathrm F$.
+  **Errore tipico:** chi sceglie 10 µF ha applicato la regola della serie. Chi sceglie 20 µF ha contato un condensatore solo.
+50-10 A La domanda chiede l'affermazione **falsa**. In parallelo tutti i condensatori hanno la stessa d.d.p. $V$ (quella della pila).
+  In un condensatore piano il campo è $E = V/d$, con $d$ la distanza tra le armature. A parità di $V$, se $d$ è diverso anche $E$ è diverso: dunque dire che i campi sono uguali è falso.
+  Le altre affermazioni sono vere: le d.d.p. sono uguali; le cariche $Q = CV$ e le energie $U = \tfrac12 CV^2$ sono diverse perché le capacità sono diverse.
+  **Errore tipico:** chi sceglie le energie o le cariche diverse, o le d.d.p. uguali, ha risposto indicando un'affermazione vera, dimenticando che si cerca quella falsa.
+  TRAP: Si cerca l'affermazione **falsa**: le tre vere sono le altre.
+50-11 B In un condensatore piano $C = \dfrac{\varepsilon_0 S}{d}$ (l'aria ha $\varepsilon_r \approx 1$), con $S$ l'area delle armature in $\mathrm{m^2}$ e $d$ la loro distanza in m. La capacità diminuisce se $S$ diminuisce o se $d$ **aumenta**: allontanando le armature $C$ scende.
+  **Errore tipico:** chi sceglie di inserire un dielettrico, aumentare la superficie o avvicinare le armature ha il segno al contrario: in tutti e tre i casi la capacità **aumenta**.
+  TRAP: La distanza $d$ sta al denominatore: avvicinare le armature aumenta $C$, allontanarle lo riduce.
+50-12 A In serie due condensatori uguali: $\dfrac{1}{C_{eq}} = \dfrac{1}{10} + \dfrac{1}{10} = \dfrac{2}{10}$, quindi $C_{eq} = 5\ \mu\mathrm F$ (la metà).
+  **Errore tipico:** chi sceglie 20 µF ha sommato le capacità (parallelo). Chi sceglie 100 µF le ha moltiplicate. Chi sceglie 10 µF ne ha contato uno solo.
 50-13 APERTA
 KW: due conduttori|armature, cariche uguali e opposte|+Q e -Q, C = Q/V|Q/V, farad, ε0 S/d|S/d, superficie, distanza, campo uniforme|uniforme, dielettrico
 > Un **condensatore** è un sistema di **due conduttori** (**armature**) separati da un isolante (vuoto o **dielettrico**), che portano cariche **uguali e opposte** $+Q$ e $-Q$. Serve ad accumulare carica ed energia elettrica.
@@ -81,10 +126,20 @@ KW: due conduttori|armature, cariche uguali e opposte|+Q e -Q, C = Q/V|Q/V, fara
 > La capacità cresce con la superficie, diminuisce con la distanza e, con un dielettrico, aumenta di un fattore $\varepsilon_r$. L'energia immagazzinata è $U = \tfrac12 CV^2$.
 
 ## L51 Energia del condensatore e collegamenti
-51-1 B $U = \tfrac12 QV$ (equivalente a $\tfrac12 CV^2 = Q^2/2C$).
-51-2 D In parallelo la capacità equivalente è la somma delle capacità.
-51-3 A $U = \tfrac12 CV^2 = \tfrac12 \cdot 3 \cdot 10^{-6} \cdot 100 = 1{,}5 \cdot 10^{-4}\ \mathrm J$.
-51-4 B $C_2 \parallel C_3 = 12\ \mu\mathrm F$, in serie con $C_1$: $C_{eq} = \dfrac{10 \cdot 12}{22} \approx 5{,}45\ \mu\mathrm F$.
+51-1 B Caricare un condensatore richiede lavoro. Portare una carica $dq$ tra le armature quando la tensione è $v = q/C$ costa $dL = v\,dq = \dfrac{q}{C}dq$.
+  Integrando da 0 a $Q$: $U = \displaystyle\int_0^Q \frac{q}{C}\,dq = \frac{Q^2}{2C}$. Usando $Q = CV$ si ottengono le forme equivalenti $U = \tfrac12 QV = \tfrac12 CV^2$ (in joule).
+  **Errore tipico:** $Q/C$ è la tensione $V$, non un'energia. $Q/V$ è la capacità $C$. $CV$ è la carica $Q$. Nessuna di queste ha le unità dei joule.
+  TRAP: Serve il fattore $\tfrac12$: $QV$ da solo sarebbe il doppio dell'energia, perché la tensione cresce da 0 a $V$ durante la carica.
+51-2 D In parallelo i condensatori hanno la stessa tensione $V$ e le cariche si sommano: $Q = Q_1 + Q_2 = (C_1 + C_2)V$. Quindi $C_{eq} = C_1 + C_2$.
+  **Errore tipico:** chi sceglie l'inverso della somma degli inversi descrive la capacità equivalente in **serie**. Il prodotto o il rapporto delle capacità non corrispondono a nessuna delle due configurazioni.
+51-3 A L'energia di un condensatore è $U = \tfrac12 CV^2$, con $C$ la capacità in farad e $V$ la tensione in volt.
+  Converto: $C = 3\ \mu\mathrm F = 3 \cdot 10^{-6}\ \mathrm F$.
+  Sostituisco: $U = \tfrac12 \cdot 3 \cdot 10^{-6} \cdot 10^2 = 1{,}5 \cdot 10^{-4}\ \mathrm J$.
+  **Errore tipico:** chi sceglie $3 \cdot 10^{-4}\ \mathrm J$ ha dimenticato il fattore $\tfrac12$. Chi sceglie $3 \cdot 10^{-6}\ \mathrm J$ ha semplicemente riscritto il valore di $C$ senza usare la tensione.
+  TRAP: La tensione va elevata al **quadrato** ($10^2 = 100$) e non va dimenticato il $\tfrac12$.
+51-4 B Prima si riducono i due condensatori in parallelo: $C_2 \parallel C_3 = 10 + 2 = 12\ \mu\mathrm F$ (le capacità si sommano).
+  Questo gruppo è in serie con $C_1 = 10\ \mu\mathrm F$: $C_{eq} = \dfrac{C_1 \cdot 12}{C_1 + 12} = \dfrac{10 \cdot 12}{22} = \dfrac{120}{22} \approx 5{,}45\ \mu\mathrm F$.
+  **Errore tipico:** chi sceglie 11,7 µF ha scambiato le regole: ha messo $C_1$ in parallelo al gruppo in serie, $10 + \dfrac{10 \cdot 2}{12} \approx 11{,}7\ \mu\mathrm F$. Nel circuito in serie finale la capacità equivalente deve essere minore di 10 µF.
 51-5 APERTA
 KW: due conduttori|armature, isolante|dielettrico, cariche opposte|+Q e -Q, capacità, Q = C V|Q/V, energia, farad, circuiti|filtri
 > Un **condensatore** è un dispositivo formato da **due conduttori** (armature) separati da un **isolante** (**dielettrico** o vuoto). Collegato a un generatore, le armature si caricano con **cariche uguali e opposte** $+Q$ e $-Q$, proporzionali alla differenza di potenziale:
@@ -110,7 +165,9 @@ KW: energia, 1/2 C V^2|CV^2, volume, densità di energia|densità, 1/2 ε0 E^2|�
 > Il risultato, ricavato per il condensatore piano, vale in generale: l'energia elettrostatica è localizzata nel **campo elettrico**, e ogni regione di spazio dove c'è un campo $E$ contiene energia con densità $\tfrac12\varepsilon_0E^2$ (in un dielettrico $\tfrac12\varepsilon_0\varepsilon_rE^2$).
 
 ## L52 Dielettrici
-52-1 D La rigidità dielettrica è il massimo campo elettrico che un isolante sopporta prima della scarica (perforazione).
+52-1 D La **rigidità dielettrica** è il massimo campo elettrico (in V/m) che un isolante sopporta prima che avvenga la scarica (perforazione del dielettrico), perché il campo strappa elettroni alle molecole e rende il materiale conduttore. Per l'aria vale circa $3 \cdot 10^6\ \mathrm{V/m}$.
+  **Errore tipico:** la massima carica sulle armature non è una proprietà del mezzo. Il rapporto tra le capacità con e senza il mezzo è la costante dielettrica relativa $\varepsilon_r$, non la rigidità. Una densità di carica nel dielettrico non c'entra: la rigidità è un valore di campo.
+  TRAP: La rigidità dielettrica si misura in V/m ed è un limite sul **campo**, non sulla carica o sulla capacità.
 52-2 APERTA
 KW: polarizzazione|si polarizza, cariche di polarizzazione|cariche indotte, campo diminuisce|riduce il campo, εr|costante dielettrica relativa, capacità aumenta|aumenta, tensione diminuisce|differenza di potenziale, energia, isolato|collegato
 > Inserendo un **dielettrico** tra le armature di un condensatore carico, il materiale si **polarizza**: le molecole (dipoli) si orientano nel campo e sulle facce del dielettrico compaiono **cariche di polarizzazione** di segno opposto a quelle delle armature vicine. Queste generano un campo opposto, per cui il **campo** all'interno **diminuisce** di un fattore $\varepsilon_r$ (**costante dielettrica relativa**, > 1):
@@ -131,18 +188,51 @@ KW: polarizzazione, momento di dipolo, unità di volume|per unità di volume, P,
 > Il suo vantaggio è che il suo flusso attraverso una superficie chiusa dipende solo dalle **cariche libere** racchiuse (teorema di Gauss nei dielettrici): $\oint \vec D \cdot d\vec S = Q_{libere}$.
 
 ## L53 Energia del dipolo
-53-1 C Il momento torcente massimo (a 90°) è $pE$: $p = 10^{-26}/40 = 2{,}5 \cdot 10^{-28}\ \mathrm{C \cdot m}$.
+53-1 C Su un dipolo in campo uniforme agisce il momento torcente $\vec\tau = \vec p \times \vec E$, di modulo $\tau = pE\sin\theta$, con $p$ il momento di dipolo (in $\mathrm{C \cdot m}$), $E$ il campo (in $\mathrm{N/C}$) e $\theta$ l'angolo tra i due vettori.
+  Varia tra 0 (per $\theta = 0°$, dove $\sin\theta = 0$) e il massimo $pE$ (per $\theta = 90°$, dove $\sin\theta = 1$). Il massimo vale quindi $10^{-26}\ \mathrm{N \cdot m}$.
+  Ricavo: $p = \dfrac{\tau_{max}}{E} = \dfrac{10^{-26}}{40} = 2{,}5 \cdot 10^{-28}\ \mathrm{C \cdot m}$ (le unità tornano: $\mathrm{N \cdot m}/(\mathrm{N/C}) = \mathrm{C \cdot m}$).
+  **Errore tipico:** chi sceglie $1 \cdot 10^{-26}\ \mathrm{C \cdot m}$ ha scambiato il torcente massimo con il momento di dipolo, senza dividere per $E$.
+  TRAP: Il valore $10^{-26}\ \mathrm{N \cdot m}$ è il torcente **massimo**, cioè quello con $\sin\theta = 1$: non bisogna inserire altri fattori angolari.
 
 ## L54 Corrente elettrica
-54-1 D $P = V^2/R \Rightarrow V = \sqrt{PR} = \sqrt{10 \cdot 10} = 10\ \mathrm V$.
-54-2 D Legge di Ohm: $R = V/I = 9/2 = 4{,}5\ \Omega$.
-54-3 D $I = ne/t = 1{,}6 \cdot 10^{19} \cdot 1{,}6 \cdot 10^{-19} = 2{,}56\ \mathrm A$.
-54-4 D $I = Q/t = 600/60 = 10\ \mathrm A$.
-54-5 D $Q = It = 16 \cdot 180 = 2880\ \mathrm C$.
-54-6 A $Q = It = 3 \cdot 3600 = 10\,800\ \mathrm C$.
-54-7 D La corrente alternata inverte periodicamente il verso, con andamento sinusoidale nel tempo.
-54-8 B $I = \Delta Q/\Delta t$: carica che attraversa la sezione diviso l'intervallo di tempo.
-54-9 A Effetto Joule: $Q = RI^2t$; dimezzando la corrente il calore diventa un quarto.
+54-1 D La potenza dissipata da un resistore è $P = \dfrac{V^2}{R}$, con $P$ in watt, $V$ la tensione in volt e $R$ la resistenza in ohm. Al limite di potenza $P = 10\ \mathrm W$.
+  Ricavo la tensione massima: $V = \sqrt{PR} = \sqrt{10 \cdot 10} = \sqrt{100} = 10\ \mathrm V$.
+  Verifica: la corrente è $I = V/R = 1\ \mathrm A$ e $P = VI = 10 \cdot 1 = 10\ \mathrm W$.
+  **Errore tipico:** chi sceglie 100 V ha calcolato $V = PR$ dimenticando la radice quadrata. Chi sceglie 1 V ha scambiato la corrente massima (1 A) con la tensione.
+  TRAP: $V = \sqrt{PR}$: la radice quadrata è facile da dimenticare.
+54-2 D Per la **prima legge di Ohm** $V = RI$, con $V$ la tensione in volt, $I$ la corrente in ampere e $R$ la resistenza in ohm.
+  Ricavo $R = \dfrac{V}{I} = \dfrac{9}{2} = 4{,}5\ \Omega$.
+  **Errore tipico:** chi sceglie 9 Ω ha usato solo la tensione e ignorato la corrente. Chi sceglie 2,25 Ω ha diviso due volte per la corrente ($V/I^2$). Chi sceglie 81 Ω ha elevato al quadrato la tensione.
+54-3 D La corrente è la carica che attraversa la sezione nell'unità di tempo: $I = \dfrac{Q}{t}$. La carica è $Q = n\,e$, con $n$ il numero di elettroni e $e = 1{,}6 \cdot 10^{-19}\ \mathrm C$ la carica di un elettrone.
+  Sostituisco con $t = 1\ \mathrm s$: $Q = 1{,}6 \cdot 10^{19} \cdot 1{,}6 \cdot 10^{-19} = 2{,}56\ \mathrm C$.
+  Quindi $I = \dfrac{2{,}56\ \mathrm C}{1\ \mathrm s} = 2{,}56\ \mathrm A$.
+  **Errore tipico:** chi sceglie $1{,}6 \cdot 10^{19}\ \mathrm A$ ha contato gli elettroni al secondo come se fossero ampere, senza moltiplicare per la carica $e$. Chi sceglie $1{,}6 \cdot 10^{-19}\ \mathrm A$ ha usato solo la carica di un elettrone.
+  TRAP: Gli elettroni non sono ampere: va moltiplicato il numero per la carica elementare $e$.
+54-4 D La corrente è $I = \dfrac{Q}{t}$, con $Q$ la carica in coulomb e $t$ il tempo in secondi.
+  Converto: $t = 1\ \mathrm{min} = 60\ \mathrm s$.
+  Sostituisco: $I = \dfrac{600}{60} = 10\ \mathrm A$.
+  **Errore tipico:** chi sceglie 20 A ha usato un tempo di 30 s, sbagliando la conversione del minuto. Un tempo che non sia in secondi non dà ampere.
+  TRAP: Il tempo va convertito in secondi ($1\ \mathrm{min} = 60\ \mathrm s$).
+54-5 D La carica è $Q = I\,t$, con $I$ in ampere e $t$ in secondi.
+  Converto: $t = 3\ \mathrm{min} = 3 \cdot 60 = 180\ \mathrm s$.
+  Sostituisco: $Q = 16 \cdot 180 = 2880\ \mathrm C$.
+  **Errore tipico:** chi sceglie 1440 ha dimezzato il risultato (corrisponde a 90 s). Chi sceglie 2880 J o 1440 J ha sbagliato l'unità: la carica si misura in coulomb, il joule è un'energia.
+  TRAP: L'unità della carica è il coulomb (C), non il joule, e i minuti vanno convertiti in secondi.
+54-6 A La carica è $Q = I\,t$ (ampere per secondi = coulomb).
+  Converto: $t = 1\ \mathrm h = 3600\ \mathrm s$.
+  Sostituisco: $Q = 3 \cdot 3600 = 10\,800\ \mathrm C$.
+  **Errore tipico:** chi sceglie 10800 J ha il numero giusto ma l'unità sbagliata: il joule misura l'energia, non la carica. I due valori con 5600 non derivano da nessuna conversione corretta.
+  TRAP: Stesso numero, ma l'unità giusta è C (coulomb), non J.
+54-7 D La corrente **alternata** cambia periodicamente verso ed è sinusoidale: $i(t) = I_0 \sin(\omega t)$, con $I_0$ il valore massimo e $\omega = 2\pi f$ la pulsazione ($f = 50\ \mathrm{Hz}$ nella rete europea).
+  La corrente è positiva per mezzo periodo, poi negativa per l'altro mezzo periodo, con legge regolare.
+  **Errore tipico:** chi sceglie "cambia irregolarmente" dimentica che la variazione è periodica e regolare. Chi sceglie "circola metà del tempo e per l'altra metà è zero" descrive una corrente a impulsi (per esempio raddrizzata a semionda), non alternata: in quella alternata la corrente cambia verso invece di annullarsi.
+54-8 B L'**intensità di corrente** è la carica che attraversa la sezione di un conduttore nell'unità di tempo: $I = \dfrac{\Delta Q}{\Delta t}$, con $\Delta Q$ in coulomb e $\Delta t$ in secondi; l'unità è l'ampere ($1\ \mathrm A = 1\ \mathrm{C/s}$).
+  **Errore tipico:** chi sceglie il prodotto carica per tempo (o resistenza per tempo) ha scambiato il rapporto con un prodotto, che non ha le unità di C/s. Chi sceglie il rapporto con "l'intervallo unitario di tempo" usa una formulazione che non ha senso: la definizione divide per l'intervallo di tempo in cui la carica passa.
+  TRAP: È un **rapporto** $\Delta Q/\Delta t$, non un prodotto.
+54-9 A Per effetto Joule il calore prodotto è $Q = R\,i^2\,t$, con $R$ la resistenza in ohm, $i$ la corrente in ampere e $t$ il tempo in secondi.
+  Se la corrente diventa $0{,}5\,i$ con $R$ e $t$ uguali: $Q' = R\,(0{,}5\,i)^2\,t = 0{,}25\,R\,i^2\,t = 0{,}25\,Q$.
+  **Errore tipico:** chi sceglie $0{,}5\,Q$ ha pensato che il calore sia proporzionale alla corrente; chi sceglie $2\,Q$ ha invertito il rapporto. Il calore dipende da $i^2$.
+  TRAP: La corrente compare al **quadrato**: dimezzarla divide il calore per 4, non per 2.
 54-10 APERTA
 KW: carica, tempo, sezione, I = ΔQ/Δt|dq/dt, ampere, amperometro, serie, verso convenzionale|cariche positive
 > L'**intensità di corrente** è la quantità di **carica** che attraversa una **sezione** del conduttore nell'unità di **tempo**:
@@ -177,25 +267,71 @@ KW: moto ordinato|flusso, cariche, ampere, I = Q/t|Q/t, differenza di potenziale
 > La corrente può essere **continua** (verso e intensità costanti, come quella delle pile) o **alternata** (verso che si inverte periodicamente, come quella di rete a 50 Hz).
 
 ## L55 Resistenze e leggi di Ohm
-55-1 D $R = V^2/P = 144/40 = 3{,}6\ \Omega$.
-55-2 A $R = V^2/P$: a parità di tensione, l'apparecchio di potenza minore (la lampada) ha resistenza maggiore.
-55-3 D $P = V^2/R$: a parità di tensione dissipa di più la resistenza minore, attraversata da più corrente.
-55-4 D In parallelo la tensione è la stessa: $I = V/R$, la resistenza maggiore conduce meno corrente.
-55-5 A In parallelo la resistenza minore conduce più corrente.
-55-6 A In serie la corrente è la stessa in tutti i resistori.
-55-7 A In serie la corrente è la stessa in tutti i resistori.
-55-8 B Resistori uguali in serie: stessa corrente e stessa resistenza, quindi stessa potenza.
-55-9 D In serie la corrente è la stessa ovunque.
-55-10 A $Q = Pt = 2{,}5 \cdot 600 = 1500\ \mathrm J$.
-55-11 A Serve $R_{tot} = V/I = 12/0{,}01 = 1200\ \Omega$: si aggiungono 800 Ω in serie.
-55-12 A $I = V/(R_1 + R_2) = 9/15 = 0{,}6\ \mathrm A$.
-55-13 A Prima legge di Ohm: $V = RI$, cioè $I = V/R$.
-55-14 D In serie: $20 + 40 = 60\ \Omega$.
-55-15 B In parallelo: $\dfrac{20 \cdot 40}{60} \approx 13{,}3\ \Omega$.
-55-16 B Parallelo di due da 20 Ω = 10 Ω; più 10 Ω in serie = 20 Ω.
-55-17 D In serie: $10 + 10 = 20\ \Omega$.
-55-18 B In parallelo due uguali: $10/2 = 5\ \Omega$.
-55-19 A $Q = It = 2{,}5 \cdot 240 = 600\ \mathrm C$.
+55-1 D La potenza dissipata da una lampada è $P = \dfrac{V^2}{R}$, con $P$ in watt e $V$ la tensione della batteria in volt. Ricavo $R = \dfrac{V^2}{P}$.
+  Sostituisco: $R = \dfrac{12^2}{40} = \dfrac{144}{40} = 3{,}6\ \Omega$.
+  Verifica con un altro percorso: $I = P/V = 40/12 \approx 3{,}33\ \mathrm A$ e $R = V/I = 12/3{,}33 = 3{,}6\ \Omega$.
+  **Errore tipico:** gli altri valori nascono da formule sbagliate, per esempio scambiando $P$ e $V$ o dimenticando di elevare la tensione al quadrato. Il modo sicuro è controllare le unità: $\mathrm{V^2/W} = \Omega$.
+55-2 A Con la stessa tensione $V$ vale $R = \dfrac{V^2}{P}$: la resistenza è **inversamente proporzionale** alla potenza.
+  La lampada ha potenza minore (120 W contro 1500 W), quindi ha la resistenza maggiore, in rapporto $\dfrac{1500}{120} = 12{,}5$.
+  **Errore tipico:** chi sceglie lo scaldabagno pensa che più potenza voglia dire più resistenza. È il contrario: a tensione fissa, per dissipare più potenza serve passare più corrente, cioè una resistenza minore.
+  TRAP: A tensione costante potenza e resistenza sono inversamente proporzionali.
+55-3 D Le due resistenze hanno la stessa d.d.p. $V$, quindi $P = \dfrac{V^2}{R}$: la potenza è inversamente proporzionale alla resistenza.
+  Confronto: $R_1 = 1000\ \Omega$ dissipa $\dfrac{V^2}{1000}$, $R_2 = 2000\ \Omega$ dissipa $\dfrac{V^2}{2000}$, cioè la metà. Vince $R_1$, per qualunque valore di $V$; è anche attraversata da più corrente ($I = V/R$).
+  **Errore tipico:** chi sceglie $R_2$ ha usato $P = RI^2$, che però vale confrontando resistenze percorse dalla **stessa corrente** (serie). Qui è uguale la tensione, non la corrente. Chi sceglie "dipende dalla d.d.p." non vede che il rapporto è lo stesso per ogni $V$.
+  TRAP: Stessa tensione (parallelo) significa $P = V^2/R$; stessa corrente (serie) significa $P = RI^2$: le conclusioni sono opposte.
+55-4 D In parallelo i resistori hanno la stessa d.d.p. $V$. Per la legge di Ohm $I = \dfrac{V}{R}$: più è grande $R$, più è piccola la corrente.
+  Il resistore con resistenza maggiore conduce quindi meno corrente degli altri.
+  **Errore tipico:** chi sceglie "più corrente" ha associato resistenza grande a corrente grande. Chi sceglie "la stessa corrente" ha applicato la regola della serie. Non serve conoscere i valori: basta il confronto.
+  TRAP: In parallelo è uguale la tensione, non la corrente: $I = V/R$ cambia da un ramo all'altro.
+55-5 A In parallelo i resistori hanno la stessa tensione $V$ e $I = \dfrac{V}{R}$.
+  La resistenza minore dà la corrente maggiore: il ramo con $R$ più piccola conduce più corrente degli altri.
+  **Errore tipico:** chi sceglie "la stessa corrente" ha usato la regola della serie; chi sceglie "meno" ha invertito il rapporto tra $R$ e $I$.
+55-6 A In serie i resistori sono disposti uno dopo l'altro sullo stesso filo, quindi sono attraversati dalla **stessa corrente**: la carica non si accumula da nessuna parte, quindi ciò che entra in un resistore esce e passa nel successivo.
+  Il resistore con resistenza maggiore ha una d.d.p. più grande ($V = RI$), ma la corrente è identica.
+  **Errore tipico:** chi sceglie "più corrente" pensa che il resistore più grande la "tiri" di più. Chi sceglie "meno corrente" confonde la corrente con la tensione: a variare è la tensione, non la corrente.
+  TRAP: Nel parallelo è uguale la tensione, in serie è uguale la corrente: qui la corrente è la stessa, per tutti.
+55-7 A In serie la corrente è la stessa in ogni resistore, perché non c'è accumulo di carica. Il valore delle resistenze non cambia la corrente: cambia solo la tensione ai capi di ciascuna.
+  Quindi anche il resistore con resistenza minore conduce la stessa corrente degli altri.
+  **Errore tipico:** chi sceglie "più corrente" ha confuso la serie con il parallelo, dove la corrente più alta passa nella resistenza più bassa. Non servono i valori delle resistenze.
+55-8 B Tre resistori uguali in serie: stessa corrente $I$ e stessa resistenza $R$.
+  La potenza dissipata da ciascuno è $P = R\,I^2$: sono uguali, quindi dissipano la stessa potenza. La posizione nel circuito non conta.
+  **Errore tipico:** chi sceglie "più potenza" o "meno potenza" per quello al centro ha l'idea che la posizione conti, mentre la corrente è la stessa dappertutto.
+55-9 D In serie la corrente è la stessa in ogni punto del circuito: il resistore centrale ne è attraversato come gli altri due.
+  **Errore tipico:** chi sceglie "più" o "meno corrente" pensa che la corrente si consumi o si divida lungo la serie. La corrente non si consuma: si trasferisce energia, non carica.
+55-10 A L'energia (calore) prodotta da un dispositivo di potenza $P$ in un tempo $t$ è $Q = P\,t$, con $P$ in watt e $t$ in secondi, e $Q$ in joule.
+  Converto: $t = 10\ \mathrm{min} = 600\ \mathrm s$.
+  Sostituisco: $Q = 2{,}5 \cdot 600 = 1500\ \mathrm J$.
+  **Errore tipico:** chi sceglie 25 J ha moltiplicato per 10 (i minuti) senza convertire in secondi. Chi sceglie 1500 cal ha il numero giusto ma l'unità sbagliata: $1\ \mathrm{cal} = 4{,}186\ \mathrm J$, quindi 1500 J sono circa 358 cal.
+  TRAP: I minuti vanno convertiti in secondi e il risultato è in joule, non in calorie.
+55-11 A Per avere $I = 10\ \mathrm{mA} = 0{,}01\ \mathrm A$ con $V = 12\ \mathrm V$, la resistenza totale deve essere $R_{tot} = \dfrac{V}{I} = \dfrac{12}{0{,}01} = 1200\ \Omega$.
+  Ora c'è già $R_0 = 400\ \Omega$: serve aumentare la resistenza, quindi si aggiunge un resistore **in serie** (in serie le resistenze si sommano): $R_1 = 1200 - 400 = 800\ \Omega$.
+  Un resistore in parallelo abbasserebbe la resistenza totale sotto i 400 Ω, quindi la corrente crescerebbe invece di scendere.
+  **Errore tipico:** chi sceglie 200 Ω in serie ha ottenuto $R_{tot} = 600\ \Omega$ e quindi 20 mA, il doppio di quanto voluto. Chi sceglie 800 Ω in parallelo ha ottenuto circa 267 Ω, cioè circa 45 mA. Con 200 Ω in parallelo si avrebbero 133 Ω e circa 90 mA.
+  TRAP: Servono $R_{tot} = 1200\ \Omega$ con i mA convertiti in A, e la resistenza va aggiunta **in serie** perché la corrente deve diminuire.
+55-12 A Le due resistenze sono in serie, quindi si sommano: $R_{tot} = 5 + 10 = 15\ \Omega$.
+  Per la legge di Ohm: $I = \dfrac{V}{R_{tot}} = \dfrac{9}{15} = 0{,}6\ \mathrm A$.
+  **Errore tipico:** chi non somma le resistenze usa una sola (per esempio $9/10 = 0{,}9\ \mathrm A$ o $9/5 = 1{,}8\ \mathrm A$) e trova correnti troppo grandi: la corrente deve essere inferiore a quella che passerebbe con la sola resistenza da 10 Ω.
+55-13 A La **prima legge di Ohm** lega tensione $V$ (volt), corrente $i$ (ampere) e resistenza $R$ (ohm): $V = R\,i$, cioè $\dfrac{V}{R} = i$.
+  **Errore tipico:** $V \cdot i$ è una potenza, non una resistenza. $R/i = V$ non ha le unità giuste ($\Omega/\mathrm A$ non è un volt). $V \cdot 2i$ inventa un fattore 2 che non esiste.
+55-14 D In **serie** le resistenze si sommano: $R_{eq} = R_1 + R_2 = 20 + 40 = 60\ \Omega$.
+  **Errore tipico:** chi sceglie 13,3 Ω ha usato la formula del parallelo. Chi sceglie 30 Ω ha fatto la media. Chi sceglie 10 Ω ha invertito il ruolo: per le resistenze è la serie a sommare.
+55-15 B In **parallelo** $\dfrac{1}{R_{eq}} = \dfrac{1}{R_1} + \dfrac{1}{R_2}$, cioè $R_{eq} = \dfrac{R_1R_2}{R_1 + R_2}$.
+  Sostituisco: $R_{eq} = \dfrac{20 \cdot 40}{20 + 40} = \dfrac{800}{60} \approx 13{,}3\ \Omega$.
+  **Errore tipico:** chi sceglie 60 Ω ha sommato le resistenze (serie). Chi sceglie 30 Ω ha fatto la media.
+  TRAP: In parallelo $R_{eq}$ è minore della più piccola (qui 20 Ω): un risultato maggiore è sicuramente sbagliato.
+55-16 B Prima si riducono le due da 20 Ω in parallelo: $R_p = \dfrac{20 \cdot 20}{20 + 20} = 10\ \Omega$ (due uguali in parallelo danno la metà).
+  Questa è in serie con la resistenza da 10 Ω: $R_{eq} = 10 + 10 = 20\ \Omega$.
+  **Errore tipico:** chi sceglie 10 Ω si è fermato al gruppo in parallelo dimenticando la resistenza in serie. Chi sceglie 40 Ω ha sommato le due da 20 Ω come se fossero in serie e ha trascurato la resistenza da 10 Ω.
+55-17 D Due resistenze in serie si sommano: $R_{eq} = 10 + 10 = 20\ \Omega$.
+  I dati sono sufficienti, quindi "non ho elementi sufficienti" è sbagliato: basta conoscere il collegamento e i valori.
+  **Errore tipico:** chi sceglie 5 Ω ha usato la regola del parallelo. Chi sceglie 10 Ω ha contato una sola resistenza.
+55-18 B Due resistenze uguali in parallelo: $\dfrac{1}{R_{eq}} = \dfrac{1}{10} + \dfrac{1}{10} = \dfrac{2}{10}$, quindi $R_{eq} = 5\ \Omega$ (la metà).
+  **Errore tipico:** chi sceglie 20 Ω ha sommato (formula della serie). Chi sceglie 10 Ω ha contato una resistenza sola. I dati sono sufficienti: "non ho elementi" è errata.
+55-19 A La carica è $Q = I\,t$, con $I$ in ampere e $t$ in secondi.
+  Converto: $t = 4\ \mathrm{min} = 4 \cdot 60 = 240\ \mathrm s$.
+  Sostituisco: $Q = 2{,}5 \cdot 240 = 600\ \mathrm C$.
+  **Errore tipico:** chi sceglie 10 C ha moltiplicato 2,5 A per 4 minuti senza convertirli in secondi.
+  TRAP: Il tempo va convertito in secondi ($4\ \mathrm{min} = 240\ \mathrm s$).
 55-20 APERTA
 KW: resistenza, R = V/I|V/I, ohm, ρ l/S|resistività, serie, parallelo, somma, inversi|1/R
 > La **resistenza elettrica** di un conduttore è il rapporto tra la differenza di potenziale applicata ai suoi capi e la corrente che lo attraversa:
@@ -224,28 +360,101 @@ KW: proporzionale, tensione|differenza di potenziale, corrente, V = RI|V = R I, 
 > I conduttori che seguono questa legge si dicono **ohmici**: il grafico tensione–corrente è una retta passante per l'origine, con pendenza $R$. Non tutti i dispositivi sono ohmici (es. diodi, lampade a incandescenza al variare della temperatura).
 
 ## L56 Potenza elettrica ed effetto Joule
-56-1 A 5 MW significa 5 milioni di joule di lavoro al secondo.
-56-2 A $R = V^2/P = 144/40 = 3{,}6\ \Omega$.
-56-3 D $P = V^2/R = 81/10 = 8{,}1\ \mathrm W > 5\ \mathrm W$: la resistenza si surriscalda e brucia.
-56-4 B $R_{eq} = 1{,}5/0{,}05 = 30\ \Omega$; $\dfrac1{30} = \dfrac1{60} + \dfrac1R \Rightarrow R = 60\ \Omega$.
-56-5 C Collegandole in serie la tensione si divide: $120/6 = 20$ lampadine in serie.
-56-6 C $R_{eq} = \dfrac{100 \cdot 200}{300} \approx 66{,}7\ \Omega$; $I = 100/66{,}7 = 1{,}5\ \mathrm A$.
-56-7 A $I = 100/300 \approx 0{,}33\ \mathrm A$.
-56-8 D $R = V/I = 1{,}5/0{,}3 = 5\ \Omega$.
-56-9 D Ogni conduttore ohmico ha resistenza non nulla e dissipa potenza $RI^2$ per effetto Joule.
-56-10 C $R = V^2/P = 220^2/500 \approx 97\ \Omega$, circa 100 Ω.
-56-11 A $Q = mc\Delta T = 40 \cdot 4186 \cdot 30 \approx 5{,}02\ \mathrm{MJ}$; $P = Q/1800 \approx 2790\ \mathrm W$; $V = \sqrt{PR} = \sqrt{2790 \cdot 30} \approx 290\ \mathrm V$.
-56-12 D $I = V/R = 220/22 = 10\ \mathrm A$.
-56-13 C $P = V^2/R = 81/10 = 8{,}1\ \mathrm W$.
-56-14 C $R = V^2/P = 576/60 = 9{,}6\ \Omega$; $S = \pi(0{,}12\ \mathrm{mm})^2 \approx 4{,}52 \cdot 10^{-8}\ \mathrm{m^2}$; $\rho = 1{,}2 \cdot 10^{-6}\ \Omega\,\mathrm m$; $l = RS/\rho \approx 0{,}362\ \mathrm m = 36{,}2\ \mathrm{cm}$.
-56-15 D $t = E/P = 30\,000/100 = 300\ \mathrm s = 5$ minuti.
-56-16 B L'ampere-ora è un'unità di carica ($1\ \mathrm{Ah} = 3600\ \mathrm C$): indica la carica che la batteria può fornire.
-56-17 D $P = RI^2 = 5 \cdot 256 = 1280\ \mathrm W$.
-56-18 B $I_{max} = P/V = 3000/220 \approx 13{,}6\ \mathrm A$.
-56-19 B $P = VI$.
-56-20 D $P = V^2/R = 2500/1000 = 2{,}5\ \mathrm W$.
-56-21 C $Q = Pt = 500 \cdot 600 = 300\ \mathrm{kJ}$.
-56-22 D 500 W: l'apparecchio assorbe 500 J di energia elettrica ogni secondo.
+56-1 A La **potenza** è l'energia (o lavoro) per unità di tempo: $P = \dfrac{L}{t}$, con $L$ in joule e $t$ in secondi; l'unità è il watt, $1\ \mathrm W = 1\ \mathrm{J/s}$.
+  Con il prefisso mega ($1\ \mathrm{MW} = 10^6\ \mathrm W$): $5\ \mathrm{MW} = 5 \cdot 10^6\ \mathrm{J/s}$, cioè 5 milioni di joule ogni secondo.
+  **Errore tipico:** chi sceglie 5000 J in 1000 s ha $P = 5\ \mathrm W$; chi sceglie 1000 J in 5000 s ha $P = 0{,}2\ \mathrm W$; chi sceglie 5 milioni di joule in un'ora ha $P = \dfrac{5 \cdot 10^6}{3600} \approx 1400\ \mathrm W$. Nessuno dei tre dà 5 MW.
+  TRAP: La potenza è energia **al secondo**: un tempo di un'ora o di 1000 s cambia il valore.
+56-2 A La potenza dissipata è $P = \dfrac{V^2}{R}$, quindi $R = \dfrac{V^2}{P}$.
+  Sostituisco: $R = \dfrac{12^2}{40} = \dfrac{144}{40} = 3{,}6\ \Omega$.
+  **Errore tipico:** chi sceglie 3,3 Ω ha calcolato $P/V = 40/12 \approx 3{,}33$, che è la corrente in ampere, non la resistenza. Chi sceglie 36 Ω ha sbagliato di un fattore 10 nel calcolo.
+  TRAP: $P/V$ dà la **corrente** ($\approx 3{,}3\ \mathrm A$), non la resistenza: la resistenza richiede $V^2/P$.
+56-3 D Con la pila da 9 V ai capi della resistenza la potenza dissipata è $P = \dfrac{V^2}{R} = \dfrac{9^2}{10} = 8{,}1\ \mathrm W$.
+  La potenza massima ammessa è $5\ \mathrm W$, e $8{,}1\ \mathrm W > 5\ \mathrm W$: la resistenza si surriscalda oltre il limite e **brucia**.
+  **Errore tipico:** chi sceglie "riesce a dissipare la potenza" ha letto i 5 W come quelli effettivamente dissipati. Chi sceglie "non ho elementi" non ha visto che i dati bastano: tensione e resistenza danno la potenza.
+  TRAP: La potenza massima è un **limite**; quella dissipata dipende dalla tensione applicata e va calcolata.
+56-4 B La batteria eroga $I = 50\ \mathrm{mA} = 0{,}05\ \mathrm A$ a $V = 1{,}5\ \mathrm V$. La resistenza equivalente è $R_{eq} = \dfrac{V}{I} = \dfrac{1{,}5}{0{,}05} = 30\ \Omega$.
+  In parallelo $\dfrac{1}{R_{eq}} = \dfrac{1}{60} + \dfrac{1}{R}$, quindi $\dfrac{1}{R} = \dfrac{1}{30} - \dfrac{1}{60} = \dfrac{1}{60}$ e $R = 60\ \Omega$.
+  Controllo: sulla resistenza da 60 Ω passa $1{,}5/60 = 25\ \mathrm{mA}$; l'altra deve portare i restanti 25 mA alla stessa tensione, quindi ha lo stesso valore.
+  **Errore tipico:** chi sceglie valori diversi da 60 Ω ha di solito trattato le due resistenze come in serie oppure ha sbagliato il passaggio $1/R$ senza invertire. In parallelo la tensione è la stessa e le correnti si sommano.
+  TRAP: Il dato 60 Ω è già la resistenza di un ramo: non va sottratto da $R_{eq}$ ma usato nella somma degli inversi.
+56-5 C Ogni lampadina sopporta 6 V. Per non bruciarle, ciascuna deve avere ai capi al massimo 6 V.
+  In **serie** la tensione si divide tra le lampadine (le tensioni si sommano): con lampadine uguali il numero necessario è $\dfrac{120\ \mathrm V}{6\ \mathrm V} = 20$.
+  **Errore tipico:** in parallelo ogni lampadina riceverebbe tutti i 120 V e brucerebbe. Con 10 lampadine in serie ognuna avrebbe $120/10 = 12\ \mathrm V$, il doppio del limite, e brucerebbe.
+56-6 C In parallelo ciascuna lampada ha ai capi i 100 V del generatore (forza elettromotrice). Le correnti sono $I_1 = \dfrac{100}{100} = 1\ \mathrm A$ e $I_2 = \dfrac{100}{200} = 0{,}5\ \mathrm A$.
+  La corrente nel generatore è la somma: $I = 1 + 0{,}5 = 1{,}5\ \mathrm A$.
+  Controllo con la resistenza equivalente: $R_{eq} = \dfrac{100 \cdot 200}{300} \approx 66{,}7\ \Omega$ e $I = \dfrac{100}{66{,}7} = 1{,}5\ \mathrm A$.
+  **Errore tipico:** chi sceglie 1,0 A o 0,5 A ha preso la corrente di una sola lampada. Chi sceglie 0,33 A ha usato il collegamento in serie ($100/300$).
+  TRAP: Il generatore eroga la **somma** delle correnti dei due rami.
+56-7 A In serie le resistenze si sommano: $R_{tot} = 100 + 200 = 300\ \Omega$.
+  La corrente (uguale in entrambe) è $I = \dfrac{V}{R_{tot}} = \dfrac{100}{300} \approx 0{,}33\ \mathrm A$.
+  **Errore tipico:** chi sceglie 1,5 A o valori maggiori ha usato il collegamento in parallelo. Chi sceglie 0,22 A, 0,11 A o 0,44 A ha fatto errori di calcolo: la corrente deve essere inferiore a quella di ogni lampada da sola ($1\ \mathrm A$ e $0{,}5\ \mathrm A$).
+56-8 D Per la legge di Ohm $R = \dfrac{V}{I}$, con $V$ in volt e $I$ in ampere.
+  Converto: $I = 300\ \mathrm{mA} = 0{,}3\ \mathrm A$.
+  Sostituisco: $R = \dfrac{1{,}5}{0{,}3} = 5\ \Omega$.
+  **Errore tipico:** chi sceglie 0,45 Ω ha moltiplicato $V \cdot I = 1{,}5 \cdot 0{,}3 = 0{,}45$ (che sarebbe la potenza in watt). Chi sceglie 4,5 Ω ha usato una corrente di $1/3\ \mathrm A$ invece di $0{,}3\ \mathrm A$.
+  TRAP: Il dato è in milliampere: va convertito in ampere ($300\ \mathrm{mA} = 0{,}3\ \mathrm A$).
+56-9 D Per **effetto Joule** la potenza dissipata da un conduttore ohmico è $P = R\,i^2$ con $R > 0$: è sempre maggiore di zero quando passa corrente.
+  Vale a ogni istante, anche per correnti variabili nel tempo: in ogni istante $P(t) = R\,i(t)^2 > 0$.
+  **Errore tipico:** chi sceglie "vero solo se la corrente è costante" pensa che serva una corrente continua; con quella alternata l'energia dissipata è comunque positiva, perché $i^2$ non è mai negativo.
+  TRAP: La parola chiave è "qualunque conduttore ohmico": basta $R > 0$ e $i \neq 0$ perché ci sia dissipazione.
+56-10 C La potenza dissipata è $P = \dfrac{V^2}{R}$, quindi $R = \dfrac{V^2}{P}$.
+  Sostituisco: $R = \dfrac{220^2}{500} = \dfrac{48\,400}{500} = 96{,}8\ \Omega$, cioè circa 100 Ω.
+  Con un altro percorso: $I = P/V = 500/220 \approx 2{,}27\ \mathrm A$ e $R = V/I = 220/2{,}27 \approx 97\ \Omega$.
+  **Errore tipico:** chi sceglie circa 1 Ω ha usato $R = V/P = 220/500 \approx 0{,}44$, che non è una resistenza (V/W non sono ohm). Chi sceglie circa 10 Ω o circa 1000 Ω ha sbagliato di un ordine di grandezza nei calcoli.
+  TRAP: Il risultato è "circa": basta scegliere l'ordine di grandezza giusto (96,8 Ω è vicinissimo a 100 Ω).
+56-11 A L'acqua assorbe il calore $Q = m\,c\,\Delta T$, con $m$ la massa in kg, $c = 4186\ \mathrm{J/(kg \cdot K)}$ il calore specifico e $\Delta T$ la variazione di temperatura.
+  Converto: 40 l di acqua hanno massa $m = 40\ \mathrm{kg}$ (1 l pesa circa 1 kg) e $\Delta T = 45 - 15 = 30\ \mathrm K$ (una differenza di temperatura è uguale in °C e in K).
+  Calcolo: $Q = 40 \cdot 4186 \cdot 30 = 5\,023\,200\ \mathrm J \approx 5{,}02\ \mathrm{MJ}$.
+  Il tempo è $t = 30\ \mathrm{min} = 1800\ \mathrm s$, quindi la potenza necessaria è $P = \dfrac{Q}{t} = \dfrac{5\,023\,200}{1800} \approx 2790\ \mathrm W$.
+  La serpentina dissipa $P = \dfrac{V^2}{R}$, da cui $V = \sqrt{PR} = \sqrt{2790 \cdot 30} = \sqrt{83\,700} \approx 290\ \mathrm V$.
+  **Errore tipico:** chi sceglie 420 V, 12 V o 4,5 V ha quasi sempre sbagliato una conversione (litri in kg, minuti in secondi) o ha dimenticato la radice quadrata finale. Con 12 V o 4,5 V la serpentina non riuscirebbe nemmeno a scaldare 40 kg d'acqua in mezz'ora.
+  TRAP: Servono due conversioni (40 l = 40 kg, 30 min = 1800 s) e alla fine $V = \sqrt{PR}$, non $PR$.
+56-12 D Per la legge di Ohm $I = \dfrac{V}{R}$.
+  Sostituisco: $I = \dfrac{220}{22} = 10\ \mathrm A$.
+  **Errore tipico:** chi sceglie 2200 A, 220 A o 110 A ha moltiplicato o diviso male: sono correnti enormi per una resistenza da 22 Ω, e la corrente si ottiene sempre **dividendo** la tensione per la resistenza.
+56-13 C La potenza dissipata da una resistenza è $P = \dfrac{V^2}{R}$, con $V$ in volt e $R$ in ohm; il risultato è in watt.
+  Sostituisco: $P = \dfrac{9^2}{10} = \dfrac{81}{10} = 8{,}1\ \mathrm W$.
+  **Errore tipico:** chi sceglie 81 W ha dimenticato di dividere per $R$ (ha calcolato solo $V^2$). Chi sceglie 81 J o 8,1 J ha sbagliato l'unità: il joule misura l'energia, la potenza si misura in watt.
+  TRAP: La potenza si misura in W, non in J (l'energia, in joule, dipende dal tempo).
+56-14 C Dalla potenza ricavo la resistenza che serve: $R = \dfrac{V^2}{P} = \dfrac{24^2}{60} = \dfrac{576}{60} = 9{,}6\ \Omega$.
+  Per un filo $R = \rho\,\dfrac{l}{S}$, con $\rho$ la resistività ($\Omega \cdot \mathrm m$), $l$ la lunghezza (m), $S$ la sezione ($\mathrm{m^2}$). Quindi $l = \dfrac{R\,S}{\rho}$.
+  Sezione: il diametro è $0{,}24\ \mathrm{mm}$, quindi il raggio è $r = 0{,}12\ \mathrm{mm} = 1{,}2 \cdot 10^{-4}\ \mathrm m$ e $S = \pi r^2 = \pi \cdot (1{,}2 \cdot 10^{-4})^2 \approx 4{,}52 \cdot 10^{-8}\ \mathrm{m^2}$.
+  Resistività: $0{,}12\ \mathrm{m\Omega \cdot cm} = 0{,}12 \cdot 10^{-3}\ \Omega \cdot 10^{-2}\ \mathrm m = 1{,}2 \cdot 10^{-6}\ \Omega \cdot \mathrm m$.
+  Sostituisco: $l = \dfrac{9{,}6 \cdot 4{,}52 \cdot 10^{-8}}{1{,}2 \cdot 10^{-6}} \approx 0{,}362\ \mathrm m = 36{,}2\ \mathrm{cm}$.
+  **Errore tipico:** le altre opzioni nascono tipicamente da errori di conversione (mΩ·cm in Ω·m, mm in m) o dall'uso del diametro al posto del raggio, che quadruplica la sezione e la lunghezza (circa 145 cm).
+  TRAP: Il dato è il **diametro** (0,24 mm) e non il raggio, e la resistività è in mΩ·cm: due unità da convertire con cura.
+56-15 D L'energia dissipata da una lampadina di potenza $P$ in un tempo $t$ è $E = P\,t$, quindi $t = \dfrac{E}{P}$.
+  Converto: $30\ \mathrm{kJ} = 30\,000\ \mathrm J$.
+  Sostituisco: $t = \dfrac{30\,000}{100} = 300\ \mathrm s = 5\ \mathrm{min}$.
+  **Errore tipico:** in un'ora la lampadina dissiperebbe $100 \cdot 3600 = 360\ \mathrm{kJ}$, in dieci minuti 60 kJ, in un minuto 6 kJ: nessuno di questi tempi dà 30 kJ. Chi sceglie uno di essi ha sbagliato la conversione del prefisso kilo o dei minuti.
+  TRAP: 30 kJ sono 30 000 J (prefisso kilo) e il risultato è in secondi da convertire in minuti.
+56-16 B L'**ampere-ora** è il prodotto di una corrente (A) per un tempo (h), cioè una **carica**: $1\ \mathrm{Ah} = 1\ \mathrm A \cdot 3600\ \mathrm s = 3600\ \mathrm C$.
+  Quindi $50\ \mathrm{Ah} = 50 \cdot 3600 = 180\,000\ \mathrm C$: è la carica totale che la batteria può far circolare.
+  **Errore tipico:** chi sceglie "corrente massima" legge Ah come se fosse A. Chi sceglie "durata" considera solo le ore: la durata dipende anche dalla corrente assorbita (50 Ah durano 50 ore a 1 A ma 5 ore a 10 A). La capacità termica non c'entra.
+  TRAP: Ah è un'unità di carica (corrente per tempo), non di corrente né di tempo.
+56-17 D La potenza dissipata in una resistenza è $P = R\,i^2$, con $R$ in ohm e $i$ in ampere.
+  Sostituisco: $P = 5 \cdot 16^2 = 5 \cdot 256 = 1280\ \mathrm W$.
+  **Errore tipico:** chi sceglie 80 W ha calcolato $R \cdot i = 5 \cdot 16 = 80$, che è la tensione in volt, non la potenza. Chi sceglie 160 W o 1560 W ha sbagliato il quadrato della corrente.
+  TRAP: La corrente va elevata al **quadrato** ($16^2 = 256$).
+56-18 B La potenza è $P = V\,I$, quindi la corrente massima è $I_{max} = \dfrac{P}{V}$.
+  Converto: $P = 3\ \mathrm{kW} = 3000\ \mathrm W$.
+  Sostituisco: $I_{max} = \dfrac{3000}{220} \approx 13{,}6\ \mathrm A$.
+  **Errore tipico:** chi sceglie "3000 C in un'ora" (circa 0,83 A) o "3 A in 1000 ore" ha scambiato potenza e carica. Chi sceglie "non possono funzionare 3 elettrodomestici da 1 kW" non vede che sono esattamente al limite: 3 kW in totale.
+  TRAP: La potenza massima di 3 kW significa corrente massima $P/V$: è un limite di potenza, non una quantità di carica.
+56-19 B La **potenza elettrica** è il prodotto della tensione per la corrente: $P = V\,i$, con $V$ in volt e $i$ in ampere (risultato in watt). Con la legge di Ohm si ricavano anche $P = R\,i^2 = V^2/R$.
+  **Errore tipico:** $i \cdot R$ è una tensione (legge di Ohm), non una potenza. Dividere $i$ per $R$ o per $V$ non dà i watt: $i/V$ è una conduttanza, $i/R$ non ha le unità di una potenza.
+56-20 D La potenza dissipata è $P = \dfrac{V^2}{R}$.
+  Converto: $R = 1\ \mathrm{k\Omega} = 1000\ \Omega$.
+  Sostituisco: $P = \dfrac{50^2}{1000} = \dfrac{2500}{1000} = 2{,}5\ \mathrm W$.
+  **Errore tipico:** chi sceglie 25 W avrebbe ottenuto quel valore con $R = 100\ \Omega$, cioè un errore nel prefisso kilo. Chi sceglie 2,5 J o 25 J ha sbagliato l'unità: il joule misura l'energia, la potenza si misura in watt.
+  TRAP: La potenza si misura in **watt**, non in joule, e 1 kΩ = 1000 Ω.
+56-21 C Il calore erogato da una sorgente di potenza $P$ in un tempo $t$ è $Q = P\,t$.
+  Converto: $t = 10\ \mathrm{min} = 600\ \mathrm s$.
+  Sostituisco: $Q = 500 \cdot 600 = 300\,000\ \mathrm J = 300\ \mathrm{kJ}$.
+  **Errore tipico:** chi dimentica di convertire i minuti ottiene $500 \cdot 10 = 5000\ \mathrm J$ (5 kJ) e si trova davanti cifre come "5000" nelle opzioni; chi sceglie 500 kJ o 5000 kJ ha scambiato i prefissi.
+  TRAP: Minuti in secondi e attenzione al prefisso: 300 000 J = 300 kJ.
+56-22 D Il **watt** è l'unità di potenza: $1\ \mathrm W = 1\ \mathrm{J/s}$. Un trapano da 500 W trasforma (riceve) 500 J di energia elettrica ogni secondo.
+  **Errore tipico:** chi sceglie 500 V scambia la potenza con la tensione; chi sceglie 500 A la scambia con la corrente; chi sceglie "sono necessari 500 J" la scambia con l'energia totale, senza riferimento al tempo. Il watt indica energia **al secondo**.
 56-23 APERTA
 KW: calore, resistenza, corrente, P = R I^2|RI^2, urti, reticolo|ioni, energia elettrica, dissipata|dissipazione, stufa|lampadina|fusibile
 > L'**effetto Joule** è la trasformazione di **energia elettrica** in **calore** che avviene in un conduttore dotato di **resistenza** attraversato da **corrente**.
@@ -275,7 +484,12 @@ KW: calore, R I^2|RI^2, urti, reticolo, locale|densità di potenza, J·E|J E, ρ
 > Integrando su tutto il volume del conduttore si ritrova $P = RI^2$. La forma locale mostra che il calore si produce di più dove la densità di corrente è maggiore (es. nei punti in cui il conduttore si restringe).
 
 ## L57 Generatori e forza elettromotrice
-57-1 B $Q = RI^2t = 10 \cdot 4 \cdot 120 = 4800\ \mathrm J > 4180\ \mathrm J$: sì.
+57-1 B Il calore prodotto per effetto Joule è $Q = R\,i^2\,t$, con $R$ in ohm, $i$ in ampere e $t$ in secondi.
+  Converto: $t = 2\ \mathrm{min} = 120\ \mathrm s$.
+  Sostituisco: $Q = 10 \cdot 2^2 \cdot 120 = 10 \cdot 4 \cdot 120 = 4800\ \mathrm J$.
+  Poiché $4800\ \mathrm J > 4180\ \mathrm J$, il calore basta a scaldare di 1 °C un litro d'acqua: la risposta è **Sì**.
+  **Errore tipico:** chi sceglie "No" ha usato 2 al posto di 120 secondi ($10 \cdot 4 \cdot 2 = 80\ \mathrm J$, molto meno di 4180 J). Chi sceglie "dipende dalla temperatura iniziale" non vede che il dato riguarda un **aumento** di 1 °C, che richiede la stessa energia a qualunque temperatura di partenza.
+  TRAP: I minuti vanno convertiti in secondi, altrimenti il calore sembra insufficiente.
 57-2 APERTA
 KW: forza elettromotrice|f.e.m., lavoro, unità di carica, volt, resistenza interna, generatore ideale, V = f - r I|f - rI, carico, circuito aperto
 > La **forza elettromotrice** (f.e.m.) $\mathcal E$ di un generatore è il **lavoro** che il generatore compie, con forze non elettrostatiche (chimiche nella pila, elettromagnetiche nella dinamo), per spostare l'**unità di carica** al suo interno dal polo negativo a quello positivo:
@@ -315,8 +529,18 @@ KW: ohm, V = RI|V = R I, kirchhoff, nodi, maglie, serie, parallelo, joule|potenz
 > Infine la **legge di Joule** dà la potenza dissipata, $P = RI^2 = VI$, e per un generatore reale $V = \mathcal E - rI$.
 
 ## L59 Circuito RC
-59-1 B $q_{max} = CV = 21{,}6\ \mu\mathrm C$, $\tau = RC = 2{,}52\ \mathrm s$. $q = q_{max}(1 - e^{-t/\tau})$: $e^{-t/\tau} = 1 - 16/21{,}6 \approx 0{,}259 \Rightarrow t = \tau\ln(3{,}86) \approx 3{,}4\ \mathrm s$.
-59-2 A Scarica: $q = q_0e^{-t/RC}$; dimezzamento in $t = RC\ln2 \Rightarrow C = \dfrac{0{,}02}{40 \cdot 0{,}693} \approx 0{,}72\ \mathrm{mF}$.
+59-1 B Nel circuito RC in carica la carica sul condensatore è $q(t) = q_{max}\left(1 - e^{-t/\tau}\right)$, con $q_{max} = C\,\mathcal{E}$ la carica finale e $\tau = RC$ la costante di tempo.
+  Calcolo: $q_{max} = 1{,}8 \cdot 10^{-6} \cdot 12 = 21{,}6\ \mu\mathrm C$ e $\tau = 1{,}4 \cdot 10^{6} \cdot 1{,}8 \cdot 10^{-6} = 2{,}52\ \mathrm s$.
+  Impongo $q = 16\ \mu\mathrm C$: $1 - e^{-t/\tau} = \dfrac{16}{21{,}6} \approx 0{,}741$, quindi $e^{-t/\tau} = 1 - 0{,}741 = 0{,}259$.
+  Passo al logaritmo: $t = -\tau \ln(0{,}259) = \tau \ln(3{,}86) \approx 2{,}52 \cdot 1{,}35 \approx 3{,}4\ \mathrm s$.
+  **Errore tipico:** chi usa la formula di scarica $q = q_{max}e^{-t/\tau}$ al posto di quella di carica trova un tempo molto più breve (circa 0,76 s). Chi dimentica di convertire MΩ e µF ottiene una costante di tempo sbagliata di molti ordini di grandezza (come 13 ms).
+  TRAP: In carica la carica **cresce** come $1 - e^{-t/\tau}$; $16\ \mu\mathrm C$ non è $q_{max}$ (che vale 21,6 µC) e $R = 1{,}4\ \mathrm{M\Omega} = 1{,}4 \cdot 10^6\ \Omega$.
+59-2 A In scarica di un condensatore attraverso una resistenza $q(t) = q_0\,e^{-t/RC}$.
+  La carica si dimezza quando $\dfrac{q}{q_0} = \dfrac12 = e^{-t/RC}$, cioè quando $\dfrac{t}{RC} = \ln 2$, quindi $t = RC\ln 2$.
+  Ricavo $C = \dfrac{t}{R\ln 2}$ con $t = 20\ \mathrm{ms} = 0{,}02\ \mathrm s$ e $\ln 2 \approx 0{,}693$: $C = \dfrac{0{,}02}{40 \cdot 0{,}693} \approx 7{,}2 \cdot 10^{-4}\ \mathrm F = 0{,}72\ \mathrm{mF}$.
+  Controllo: $\tau = RC = 40 \cdot 7{,}2 \cdot 10^{-4} \approx 29\ \mathrm{ms}$ e $0{,}693 \cdot 29 \approx 20\ \mathrm{ms}$.
+  **Errore tipico:** chi ignora il logaritmo e scrive "metà della carica a metà di $RC$", cioè $t = RC/2$, trova $C = \dfrac{2 \cdot 0{,}02}{40} = 1\ \mathrm{mF}$. Chi dimentica del tutto il dimezzamento e prende $t = RC$ trova $C = 0{,}5\ \mathrm{mF}$.
+  TRAP: Il dimezzamento avviene a $t = RC\ln 2 \approx 0{,}69\,RC$, non a $RC/2$ né a $RC$.
 59-3 APERTA
 KW: ohm, farad, V/A|volt/ampere, C/V|coulomb/volt, coulomb, ampere, secondi|tempo, costante di tempo
 > Le unità di misura sono:

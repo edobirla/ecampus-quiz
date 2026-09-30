@@ -317,7 +317,12 @@ function buildSubject(S) {
       t: q.md ? mdToHtml(q.text, linkFor) : q.text,
     };
     if (q.type === "closed") { r.o = q.o.map((o) => (q.md ? marked.parseInline(o) : o)); r.c = q.c; }
-    if (q.e) r.e = mdToHtml(q.e, linkFor);
+    if (q.e) {
+      // riga "TRAP: dettaglio" nella spiegazione = domanda a trabocchetto: l'app la mostra in evidenza nella soluzione
+      const trap = q.e.match(/^TRAP:\s*(.+)$/m);
+      if (trap) { r.tr = mdToHtml(trap[1], linkFor).replace(/^<p>|<\/p>\n?$/g, ""); q.e = q.e.replace(trap[0], "").trim(); }
+      r.e = mdToHtml(q.e, linkFor);
+    }
     if (q.type === "open") {
       r.a = mdToHtml(q.a || "", linkFor);
       r.kw = q.kw ?? keywords(q.a || "", q.text, lessonTfs[q.l] || {}, lessonIdf);

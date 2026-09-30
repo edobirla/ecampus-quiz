@@ -1,26 +1,95 @@
 ## L35 Trasformazioni termodinamiche e gas perfetti
-35-1 A È falsa: in un ciclo il lavoro è in generale diverso da zero (è l'area racchiusa nel piano p-V). Sono nulle invece le variazioni delle funzioni di stato (energia interna, temperatura).
-35-2 B Adiabatica: $L = -\Delta U = nC_V\Delta T = 0{,}25 \cdot \tfrac52 \cdot 8{,}314 \cdot 750 \approx 3{,}9\ \mathrm{kJ}$ (circa 3,8 kJ).
-35-3 A Isoterma: $pV$ = cost., se il volume raddoppia la pressione dimezza.
-35-4 B È un ciclo di Carnot: $\eta = 1 - \dfrac{288}{473} \approx 0{,}39$ (temperature in kelvin).
-35-5 D Per un gas perfetto l'energia interna dipende solo dalla temperatura: in un'isoterma resta costante (il lavoro fatto sul gas viene ceduto come calore).
-35-6 D Per un gas perfetto $U = nC_VT$: se aumenta l'energia interna aumenta la temperatura, qualunque sia la trasformazione.
-35-7 C Isocora: $p \propto T$; $\dfrac{400\ \mathrm K}{300\ \mathrm K} = \dfrac43$.
-35-8 A Adiabatica: nessuno scambio di calore con l'esterno (può però scambiare lavoro).
-35-9 C $pV$ resta uguale, quindi la temperatura finale è uguale a quella iniziale: $\Delta U = 0$.
-35-10 B L'irraggiamento trasporta energia tramite onde elettromagnetiche.
-35-11 D Per una data quantità di gas perfetto bastano due variabili (es. p e V): la terza si ricava da $pV = nRT$.
-35-12 A Per il secondo principio l'entropia totale non può diminuire: l'ambiente deve aumentare di almeno 8 J/K.
-35-13 D Adiabatica significa che il sistema non scambia calore ($Q = 0$).
-35-14 B Il gas compie lavoro positivo quando si espande ($L = \int p\,dV > 0$).
+35-1 A La domanda chiede l'affermazione **falsa** sui cicli termodinamici. Un ciclo riporta il sistema allo stato iniziale, quindi le **funzioni di stato** hanno variazione nulla: $\Delta U = 0$ (energia interna) e $T_{fin} = T_{in}$ (temperatura).
+  Il primo principio $\Delta U = Q - L$ (con $Q$ calore assorbito e $L$ lavoro compiuto dal sistema, in J) dà allora $Q = L$: calore e lavoro scambiati si compensano, e la loro somma, contando il lavoro come ricevuto dal sistema, è zero.
+  Il lavoro invece **non** è nullo: è l'area racchiusa dal ciclo nel piano $p$-$V$ ed è proprio ciò che una macchina termica produce. Per questo l'affermazione "il lavoro in un ciclo è sempre nullo" è falsa.
+  **Errore tipico:** chi sceglie un'altra affermazione ha preso per falsa una frase vera: in un ciclo energia interna e temperatura tornano al valore iniziale e calore e lavoro si compensano. Si confonde "variazione di una funzione di stato nulla" con "lavoro nullo".
+  TRAP: la domanda chiede quale affermazione sia falsa, non quale sia vera.
+35-2 B Si chiede il lavoro di un gas che si espande **senza scambio di calore** (adiabatica, $Q = 0$), per un gas perfetto biatomico.
+  Primo principio: $\Delta U = Q - L$. Con $Q = 0$ si ha $L = -\Delta U$, dove $L$ è il lavoro compiuto dal gas (J) e $\Delta U$ la variazione di energia interna (J).
+  Per un gas perfetto $\Delta U = nC_V\Delta T$, con $n = 0{,}25\ \mathrm{mol}$, $C_V = \tfrac52 R$ (gas biatomico), $R = 8{,}314\ \mathrm{J/(mol\,K)}$ e $\Delta T = 400 - 1150 = -750\ \mathrm K$.
+  $$\Delta U = 0{,}25 \cdot \tfrac52 \cdot 8{,}314 \cdot (-750) \approx -3897\ \mathrm J$$
+  Quindi $L = -\Delta U \approx 3897\ \mathrm J \approx 3{,}9\ \mathrm{kJ}$: il gas si raffredda perché usa la propria energia interna per compiere lavoro. Il valore più vicino tra le risposte è 3,8 kJ (la differenza è un arrotondamento).
+  **Errore tipico:** chi sceglie 2,3 kJ ha usato $C_V = \tfrac32 R$ (gas monoatomico): $0{,}25 \cdot 1{,}5 \cdot 8{,}314 \cdot 750 \approx 2{,}3\ \mathrm{kJ}$.
+  TRAP: per un gas biatomico $C_V = \tfrac52 R$, non $\tfrac32 R$.
+35-3 A Si chiede cosa accade alla pressione in una trasformazione **isoterma** ($T$ costante) di un gas perfetto.
+  Dall'equazione di stato $pV = nRT$, con $n$ e $T$ costanti, il prodotto $pV$ resta costante (legge di Boyle): $p_1V_1 = p_2V_2$.
+  Se $V_2 = 2V_1$ allora $p_2 = \dfrac{p_1V_1}{2V_1} = \dfrac{p_1}{2}$: la pressione dimezza.
+  **Errore tipico:** chi sceglie "raddoppia" ha usato una proporzionalità diretta tra $p$ e $V$; chi sceglie "rimane la stessa" ha pensato a una isobara. Il logaritmo compare nel **lavoro** isotermo ($L = nRT\ln(V_2/V_1)$), non nella pressione.
+35-4 B Il ciclo descritto (due adiabatiche e due isoterme, reversibile) è un **ciclo di Carnot**: il suo rendimento dipende solo dalle temperature delle due sorgenti.
+  Formula: $\eta = 1 - \dfrac{T_F}{T_C}$, con $T_F$ e $T_C$ temperature assolute (K) della sorgente fredda e calda.
+  Conversione in kelvin: $T_F = 15 + 273{,}15 = 288{,}15\ \mathrm K$ e $T_C = 200 + 273{,}15 = 473{,}15\ \mathrm K$.
+  $$\eta = 1 - \frac{288{,}15}{473{,}15} \approx 1 - 0{,}609 = 0{,}39$$
+  **Errore tipico:** chi sceglie 0,93 ha usato i gradi Celsius: $1 - 15/200 = 0{,}925$. Chi sceglie 0,08 ha calcolato solo il rapporto $15/200 = 0{,}075$ dimenticando il "$1 -$". Non servono dati ulteriori: bastano le due temperature.
+  TRAP: nel rendimento di Carnot le temperature vanno sempre espresse in kelvin.
+35-5 D Si comprime un gas in modo **isotermo**: la temperatura resta costante.
+  Per un gas perfetto l'energia interna dipende solo dalla temperatura ($U = nC_VT$), quindi $\Delta U = 0$.
+  Nella compressione il gas riceve lavoro (lavoro fatto **sul** gas, positivo). Dal primo principio $\Delta U = Q - L$ con $\Delta U = 0$ si ha $Q = L$: il lavoro $L$ compiuto dal gas è negativo, quindi anche $Q$ è negativo, cioè il gas **cede** calore all'ambiente.
+  **Errore tipico:** chi dice "non è fatto lavoro" dimentica che comprimere richiede lavoro. Chi dice "non scambia calore" descrive una adiabatica, non una isoterma. Chi dice "l'energia entra sotto forma di calore" inverte il processo: entra come lavoro ed esce come calore.
+  TRAP: il gas riceve lavoro ma la sua energia interna non cambia, perché quell'energia esce come calore.
+35-6 D Per un gas perfetto l'energia interna è $U = nC_VT$, con $n$ e $C_V$ positivi e costanti.
+  Quindi $\Delta U = nC_V\Delta T$: se $\Delta U > 0$ allora $\Delta T > 0$. Il legame vale per **qualsiasi** trasformazione, perché $U$ è una funzione della sola temperatura.
+  **Errore tipico:** chi sceglie "solo se viene assorbito calore" dimentica che la temperatura può salire anche senza calore, per esempio comprimendo in modo adiabatico ($Q = 0$, il lavoro fatto sul gas aumenta $U$). Le trasformazioni isocora e isobara sono solo casi particolari: l'aumento di $T$ vale sempre.
+35-7 C Il gas è in un recipiente a pareti rigide: il volume è costante (trasformazione **isocora**).
+  A volume costante $p/T$ è costante (legge di Gay-Lussac), con $T$ in kelvin: $\dfrac{p_2}{p_1} = \dfrac{T_2}{T_1}$.
+  Conversione: $T_1 = 27 + 273 = 300\ \mathrm K$ e $T_2 = 127 + 273 = 400\ \mathrm K$.
+  $$\frac{p_2}{p_1} = \frac{400}{300} = \frac43$$
+  **Errore tipico:** fare il rapporto in gradi Celsius ($127/27 \approx 4{,}7$) darebbe un valore che non compare; i fattori 5/4 e 3/2 nascono da conti con temperature sbagliate.
+  TRAP: il rapporto tra le pressioni è il rapporto tra temperature in kelvin, non in gradi Celsius.
+35-8 A Una trasformazione **adiabatica** è una trasformazione in cui il sistema non scambia calore: $Q = 0$.
+  L'energia del sistema può comunque variare attraverso lo scambio di **lavoro**: dal primo principio $\Delta U = Q - L = -L$.
+  Quindi la definizione corretta è: l'energia non può variare per scambio di calore.
+  **Errore tipico:** chi sceglie "non può variare in nessun modo" o "né calore né lavoro" descrive un sistema isolato, non una adiabatica. Chi sceglie "non può variare con scambi di lavoro" ha scambiato il ruolo di calore e lavoro.
+35-9 C Il volume raddoppia e la pressione dimezza: $p_2V_2 = \dfrac{p_1}{2} \cdot 2V_1 = p_1V_1$.
+  Dall'equazione di stato $pV = nRT$, se $pV$ non cambia, non cambia nemmeno la temperatura: $T_2 = T_1$.
+  Per un gas perfetto $\Delta U = nC_V\Delta T = 0$, qualunque sia il tipo di trasformazione (l'energia interna è funzione di stato e dipende solo da $T$).
+  **Errore tipico:** chi sceglie "dipende dal numero di moli" o "dal tipo di trasformazione" non ha notato che $\Delta T = 0$ annulla comunque $nC_V\Delta T$. Chi sceglie "è pari al lavoro compiuto" confonde $\Delta U$ con $L$: qui $L \neq 0$ ma $\Delta U = 0$ (il gas assorbe calore pari al lavoro).
+35-10 B L'**irraggiamento** avviene tramite onde elettromagnetiche e trasporta **energia** (energia radiante), anche nel vuoto, senza bisogno di materia.
+  Non trasporta massa (come la convezione, dove si muove il fluido) e la temperatura non è una quantità che si trasporta.
+  Si parla di calore solo quando l'energia viene assorbita da un corpo a temperatura diversa; ciò che viaggia nello spazio è energia.
+  **Errore tipico:** chi sceglie "calore" pensa all'irraggiamento come a uno dei modi di propagazione del calore; in senso stretto il calore è energia in transito dovuta a una differenza di temperatura, mentre la radiazione trasporta energia in generale.
+35-11 D Per una quantità fissata di gas perfetto le variabili di stato sono pressione $p$, volume $V$ e temperatura $T$, legate dall'**equazione di stato** $pV = nRT$ (con $n$ costante).
+  Questa equazione è un vincolo: fissate due variabili, la terza è determinata. Le variabili indipendenti sono quindi due (per esempio $p$ e $V$).
+  **Errore tipico:** chi sceglie "tre" conta $p$, $V$, $T$ senza considerare il vincolo; chi sceglie "una" ha in mente trasformazioni particolari (come l'isoterma), ma in generale si possono variare due grandezze a piacere.
+35-12 A Il secondo principio dice che l'entropia **totale** (sistema più ambiente) non può diminuire: $\Delta S_{sist} + \Delta S_{amb} \geq 0$. L'entropia si misura in J/K.
+  Con $\Delta S_{sist} = -8\ \mathrm{J/K}$ si ha $\Delta S_{amb} \geq +8\ \mathrm{J/K}$: l'ambiente deve compensare almeno quella diminuzione. L'uguaglianza vale solo se il processo è reversibile.
+  **Errore tipico:** chi sceglie "non è variata" pensa che l'entropia del sistema non possa calare; in realtà può calare se l'ambiente aumenta di più. La risposta "4 J" ha anche l'unità sbagliata (J invece di J/K).
+  TRAP: il vincolo vale per l'entropia totale, non per quella del solo sistema, che può diminuire.
+35-13 D **Adiabatica** significa che il sistema non scambia calore con l'esterno: $Q = 0$.
+  Lavoro e temperatura possono invece variare: dal primo principio $\Delta U = -L$, quindi il gas si riscalda se viene compresso e si raffredda se si espande.
+  **Errore tipico:** chi sceglie "il calore scambiato è pari al lavoro" descrive un'isoterma di gas perfetto ($Q = L$). Chi sceglie "il lavoro è nullo" descrive una isocora. Chi sceglie "temperatura uguale" ancora una isoterma.
+35-14 B Il lavoro termodinamico del gas è $L = \int p\,dV$: è positivo quando il **volume aumenta** (il gas spinge l'ambiente) ed è negativo quando diminuisce.
+  Se la temperatura sale, il palloncino si espande, $dV > 0$ e quindi $L > 0$.
+  **Errore tipico:** chi sceglie il palloncino che sale per la spinta idrostatica o che scende per la gravità guarda lo spostamento del palloncino nello spazio; il lavoro del gas dipende invece dalla variazione del suo volume. Se il palloncino si contrae, $dV < 0$ e il lavoro è negativo.
 
 ## L36 Primo principio della termodinamica
-36-1 C! Il calore assorbito contribuisce all'energia interna del corpo (primo principio, $\Delta U = Q - L$); non necessariamente ne aumenta la temperatura (es. passaggi di stato). A rigore, se il sistema compie lavoro, parte dell'energia esce come lavoro.
-36-2 A È sbagliata: nell'espansione isoterma $\Delta U = 0$ e il gas compie lavoro positivo, quindi deve assorbire calore ($Q = L > 0$), non cederlo.
-36-3 D $\Delta U = Q - L = 200 - (-200) = 400\ \mathrm J$ (il gas assorbe 200 J di calore e riceve 200 J di lavoro).
-36-4 C Il lavoro è l'area sotto la curva nel piano p-V: nell'isobara la pressione resta al valore iniziale, massima; nell'isocora il lavoro è nullo.
-36-5 C Per un gas perfetto l'energia interna dipende solo dalla temperatura: se aumenta, la temperatura è aumentata.
-36-6 B Il calore dipende dalla trasformazione seguita: non è una funzione di stato.
+36-1 C! La domanda chiede quale affermazione sia corretta. Il primo principio è $\Delta U = Q - L$: il calore ricevuto $Q$ entra nell'**energia interna** $U$ del corpo (energia cinetica e potenziale microscopiche delle molecole).
+  Non si può dire che aumenti la temperatura: durante un passaggio di stato (per esempio la fusione del ghiaccio) il calore assorbito cambia $U$ ma la temperatura resta costante.
+  Non aumenta necessariamente nemmeno l'energia potenziale o cinetica del corpo come insieme: sono energie meccaniche macroscopiche, diverse dall'energia interna.
+  Nota: a rigore, se il sistema compie lavoro, parte dell'energia ricevuta esce come lavoro e $U$ può anche non aumentare; la risposta del paniere va intesa come quella "meno sbagliata" tra le quattro.
+  **Errore tipico:** chi sceglie "aumenta la temperatura" pensa al caso più comune (riscaldare l'acqua) e non considera i passaggi di stato.
+36-2 A La domanda chiede quale affermazione sia **sbagliata** per un gas perfetto che si espande a temperatura costante (isoterma).
+  Temperatura costante implica, per un gas perfetto, $\Delta U = nC_V\Delta T = 0$. Il volume aumenta, quindi il lavoro compiuto dal gas $L = \int p\,dV$ è positivo.
+  Primo principio: $\Delta U = Q - L$, cioè $0 = Q - L$, da cui $Q = L > 0$: il gas **assorbe** calore dall'ambiente (lo converte in lavoro), non lo cede.
+  **Errore tipico:** chi sceglie una delle altre frasi ha scelto un'affermazione vera (temperatura e energia interna costanti, lavoro positivo). Chi crede che un gas che si espande "perda" calore confonde il segno di $Q$.
+  TRAP: si cerca l'affermazione sbagliata, e il segno di $Q$ è positivo perché il gas assorbe calore.
+36-3 D Primo principio: $\Delta U = Q - L$, con $Q$ calore assorbito dal gas e $L$ lavoro compiuto **dal** gas (entrambi in J). Qui $\Delta U = +400\ \mathrm J$.
+  Si verifica ogni coppia di valori con $Q - L$: $400 - 400 = 0$; $-200 - (-200) = 0$; $200 - 200 = 0$; $200 - (-200) = 400$. Solo l'ultima dà $+400\ \mathrm J$.
+  Quindi $Q = 200\ \mathrm J$ (il gas assorbe calore) e $L = -200\ \mathrm J$ (il gas **riceve** lavoro, cioè viene compresso).
+  **Errore tipico:** chi sceglie $Q = 200\ \mathrm J$ e $L = 200\ \mathrm J$ ha usato $\Delta U = Q + L$, ma qui $L$ è il lavoro fatto dal gas: se lo riceve è negativo.
+  TRAP: $L$ è il lavoro compiuto dal gas, quindi lavoro ricevuto significa $L < 0$.
+36-4 C Il gas parte sempre dallo stato iniziale $(p_0, V_0)$ e arriva a volume $2V_0$. Il lavoro $L = \int p\,dV$ è l'area sotto la curva nel piano $p$-$V$.
+  Isocora: il volume non cambia, $L = 0$ (e non potrebbe nemmeno arrivare a $2V_0$).
+  Isobara: $p = p_0$ per tutta l'espansione, $L = p_0(2V_0 - V_0) = p_0V_0$.
+  Isoterma: la pressione scende, $L = nRT\ln 2 = p_0V_0\ln 2 \approx 0{,}69\,p_0V_0$. Adiabatica: la pressione scende ancora più in fretta (circa $0{,}6\,p_0V_0$ per un gas biatomico).
+  L'isobara mantiene la pressione più alta e quindi ha l'area maggiore: $p_0V_0 > 0{,}69\,p_0V_0$.
+  **Errore tipico:** chi sceglie l'isoterma ricorda che "fornisce molto lavoro" ma dimentica che la pressione cala durante l'espansione, mentre nell'isobara resta al massimo.
+  TRAP: il confronto vale partendo dallo stesso stato e arrivando allo stesso volume, e ciò che conta è l'area sotto la curva.
+36-5 C Per un gas perfetto $U = nC_VT$: l'energia interna dipende solo dalla temperatura. Se $\Delta U = +1000\ \mathrm J > 0$ allora $\Delta T > 0$.
+  **Errore tipico:** chi sceglie "il volume è diminuito" o "la pressione è cambiata" pensa a trasformazioni particolari: un riscaldamento isocoro non cambia il volume e uno isobaro non cambia la pressione, pur aumentando $U$. Il gas invece ha certamente cambiato stato (la temperatura è diversa), quindi "non ha cambiato stato" è falso.
+36-6 B Una **funzione di stato** ha un valore che dipende solo dallo stato del sistema, non dalla storia che lo ha portato lì.
+  L'entropia, l'energia gravitazionale e l'energia elastica di una molla ideale sono funzioni di stato: dipendono solo da posizione, deformazione o variabili termodinamiche attuali.
+  Il **calore** $Q$ no: passando dallo stesso stato iniziale allo stesso stato finale con trasformazioni diverse (per esempio isoterma o isobara), il calore scambiato è diverso.
+  **Errore tipico:** chi sceglie l'entropia si ricorda che si definisce con il calore ($dS = dQ_{rev}/T$) e pensa che sia anch'essa dipendente dal percorso; ma $dQ/T$ è un differenziale esatto, quindi $S$ è funzione di stato, mentre $Q$ da solo non lo è.
 36-7 APERTA
 KW: energia interna, calore, lavoro, ΔU = Q - L|Q - L, conservazione dell'energia|conservazione, funzione di stato, ciclo, segno|convenzione
 > Il **primo principio della termodinamica** è la legge di **conservazione dell'energia** per i sistemi termodinamici:
@@ -34,12 +103,22 @@ KW: energia interna, calore, lavoro, ΔU = Q - L|Q - L, conservazione dell'energ
 > Il primo principio esclude il moto perpetuo di prima specie (una macchina che produca lavoro dal nulla).
 
 ## L37 Trasformazioni dei gas perfetti
-37-1 C Nell'espansione isobara la temperatura aumenta ($V \propto T$), in quella isoterma resta uguale: il primo gas finisce con temperatura, e quindi energia interna, maggiore.
+37-1 C Entrambi i gas partono dallo stesso stato e si espandono. Per un gas perfetto l'energia interna è $U = nC_VT$ e dipende solo dalla temperatura.
+  Espansione isoterma: $T$ resta costante, quindi $U$ non cambia.
+  Espansione isobara: da $V/T = $ cost. segue $T_{fin} = T_{in}\dfrac{V_{fin}}{V_{in}}$. Con $V_{fin} > V_{in}$ la temperatura **aumenta**, e con lei l'energia interna.
+  Alla fine il primo gas (isobara) ha quindi temperatura e energia interna maggiori del secondo.
+  **Errore tipico:** chi sceglie "stessa energia interna" ha pensato che il solo fatto di espandersi renda uguali i gas; chi sceglie "dati insufficienti" non ha notato che il confronto si risolve con $V/T = $ cost. e $U \propto T$, senza conoscere i valori.
 
 ## L39 Secondo principio della termodinamica
-39-1 A Per il secondo principio (Kelvin-Planck) il calore non può essere trasformato integralmente in lavoro in un ciclo: solo in parte. Il lavoro invece si trasforma interamente in calore.
-39-2 A Enunciato di Clausius: è impossibile un processo il cui unico risultato sia il passaggio di calore da un corpo più freddo a uno più caldo.
-39-3 A Isoterma: $Q = L = 500\ \mathrm J$; $\Delta S = Q/T = 500/308{,}15 \approx 1{,}62\ \mathrm{J/K}$.
+39-1 A Il secondo principio nell'enunciato di Kelvin-Planck afferma che in una trasformazione ciclica non è possibile convertire **integralmente** in lavoro il calore assorbito da una sorgente: una parte deve essere ceduta a una sorgente più fredda. Il rendimento è quindi minore di 1.
+  La conversione opposta, da lavoro a calore, può invece essere totale (per esempio con l'attrito).
+  **Errore tipico:** chi sceglie "lavoro in calore" ha invertito il verso: è il passaggio calore $\to$ lavoro a essere limitato.
+39-2 A Enunciato di **Clausius**: è impossibile un processo il cui unico risultato sia il passaggio di calore da un corpo più freddo a uno più caldo. Spontaneamente il calore va sempre dal caldo al freddo.
+  **Errore tipico:** chi sceglie la macchina con un'unica sorgente contraddice l'enunciato di Kelvin-Planck. Chi sceglie "il rendimento di Carnot è 1" dimentica che $\eta = 1 - T_F/T_C < 1$ (servirebbe $T_F = 0\ \mathrm K$). Chi sceglie "scambiano calore solo a contatto" ignora l'irraggiamento, e non è comunque una conseguenza del secondo principio.
+39-3 A Il gas si espande a temperatura costante (isoterma), quindi per un gas perfetto $\Delta U = 0$ e dal primo principio $Q = L = 500\ \mathrm J$ (calore assorbito).
+  In una trasformazione isoterma reversibile la variazione di entropia è $\Delta S = Q/T$, con $T$ in kelvin: $T = 35{,}0 + 273{,}15 = 308{,}15\ \mathrm K$.
+  $$\Delta S = \frac{500\ \mathrm J}{308{,}15\ \mathrm K} \approx 1{,}62\ \mathrm{J/K}$$
+  **Errore tipico:** chi sceglie $0\ \mathrm{J/K}$ pensa a un'adiabatica reversibile (isoentropica), ma qui il gas assorbe calore. Le risposte in N/K hanno l'unità sbagliata: l'entropia si misura in J/K.
 39-4 APERTA
 KW: kelvin|kelvin-planck, clausius, unica sorgente|una sola sorgente, integralmente|completamente, dal freddo al caldo|più freddo, spontaneamente, entropia, rendimento
 > Il **secondo principio della termodinamica** stabilisce il verso dei processi naturali. Ha due enunciati equivalenti:
@@ -50,19 +129,54 @@ KW: kelvin|kelvin-planck, clausius, unica sorgente|una sola sorgente, integralme
 > Formulazione con l'**entropia**: in un sistema isolato l'entropia non può diminuire, $\Delta S \geq 0$; resta costante solo nei processi reversibili. Il massimo rendimento tra due temperature è quello di Carnot, $\eta = 1 - T_F/T_C$.
 
 ## L40 Macchine termiche, ciclo di Carnot, entropia
-40-1 D $\eta = 1 - T_F/T_C \Rightarrow T_C = \dfrac{503{,}15\ \mathrm K}{0{,}72} \approx 699\ \mathrm K \approx 426\ ^\circ\mathrm C$.
-40-2 D Teorema di Carnot: tutte le macchine reversibili che lavorano tra le stesse due temperature hanno lo stesso rendimento, $1 - T_F/T_C$.
-40-3 B $L = Q_C - Q_F = 85 - 78 = 7\ \mathrm{kcal} = 7 \cdot 4186 \approx 29\ \mathrm{kJ}$.
-40-4 A $COP = Q_F/L = 115/18 \approx 6{,}4$.
-40-5 D $\eta = 1 - \dfrac{293}{473} \approx 0{,}38 = 38\%$.
-40-6 D Il rendimento di Carnot $1 - T_F/T_C$ aumenta alzando $T_C$ e abbassando $T_F$.
-40-7 C $\eta = 1 - 320/450 \approx 0{,}289$; $L = \eta Q_C \approx 0{,}289 \cdot 2500 \approx 720\ \mathrm J$.
-40-8 D Il coefficiente di prestazione $Q_F/L$ è sempre positivo; può essere anche maggiore di 1 (di solito lo è).
-40-9 A $\eta = 1 - \dfrac{300}{400} = 0{,}25$.
-40-10 A Calore assorbito $= 10 + 35 = 45\ \mathrm{kJ}$; $\eta = 10/45 \approx 0{,}22$.
-40-11 B $\eta_{max} = 1 - 300/450 \approx 0{,}33$.
-40-12 C $\eta = 1 - Q_F/Q_C = 1 - 150/450 = 2/3$.
-40-13 C! Interpretando 8200 J come calore assorbito: $\eta = 3200/8200 \approx 0{,}39$. (Se invece fossero ceduti, $\eta = 3200/11\,400 \approx 0{,}28$.)
+40-1 D Rendimento di Carnot: $\eta = 1 - T_F/T_C$, con $T_F$ e $T_C$ temperature assolute (K) di scarico e di ingresso.
+  $T_F = 230 + 273{,}15 = 503{,}15\ \mathrm K$ e $\eta = 0{,}28$, quindi $T_F/T_C = 1 - 0{,}28 = 0{,}72$.
+  $$T_C = \frac{T_F}{0{,}72} = \frac{503{,}15}{0{,}72} \approx 698{,}8\ \mathrm K$$
+  La domanda chiede la temperatura in gradi Celsius: $698{,}8 - 273{,}15 \approx 425{,}7\ ^\circ\mathrm C \approx 426\ ^\circ\mathrm C$.
+  **Errore tipico:** chi sceglie 699 °C ha dimenticato di riconvertire in Celsius il risultato, che è in kelvin. Chi sceglie 319 °C ha fatto il calcolo direttamente in gradi Celsius: $230/0{,}72 \approx 319$.
+  TRAP: si calcola in kelvin e poi si riconverte in gradi Celsius; il numero 699 è in kelvin.
+40-2 D Il **teorema di Carnot** afferma che tra le macchine che lavorano tra due date temperature nessuna ha rendimento maggiore di quella reversibile, e che tutte le reversibili hanno lo stesso rendimento $\eta = 1 - T_F/T_C$, che dipende solo dalle due temperature.
+  Conseguenza diretta: tutti i cicli **reversibili** tra le **stesse due temperature** hanno lo stesso rendimento.
+  **Errore tipico:** chi sceglie "reversibili o irreversibili" ha dimenticato che i cicli irreversibili hanno rendimento minore. Chi sceglie "tra due sorgenti" senza "stesse temperature" non nota che sorgenti a temperature diverse danno rendimenti diversi. Chi aggiunge "con lo stesso percorso" impone una condizione superflua: il rendimento non dipende dal ciclo.
+40-3 B Per un ciclo $\Delta U = 0$, quindi il lavoro per ciclo è $L = Q_C - Q_F$, con $Q_C$ calore assorbito e $Q_F$ calore ceduto.
+  $L = 85 - 78 = 7\ \mathrm{kcal}$.
+  Conversione: $1\ \mathrm{kcal} = 4186\ \mathrm J$, quindi $L = 7 \cdot 4186 = 29\,302\ \mathrm J \approx 29\ \mathrm{kJ}$.
+  **Errore tipico:** chi sceglie 0 J ha pensato che in un ciclo il lavoro sia nullo; è nulla la variazione di energia interna, non il lavoro, che è uguale al calore netto assorbito.
+40-4 A Un refrigeratore ha **coefficiente di prestazione** $COP = Q_F/L$: calore estratto dall'interno ($Q_F = 115\ \mathrm{kJ}$) diviso lavoro speso ($L = 18\ \mathrm{kJ}$).
+  $$COP = \frac{115}{18} \approx 6{,}39$$
+  Il valore indicato tra le risposte è 6,38 (differenza di arrotondamento).
+  **Errore tipico:** chi sceglie 0,2 ha capovolto il rapporto, calcolando $L/Q_F = 18/115 \approx 0{,}16$.
+40-5 D Macchina di Carnot: $\eta = 1 - T_F/T_C$ con temperature assolute. $T_F = 20 + 273{,}15 = 293{,}15\ \mathrm K$ e $T_C = 200 + 273{,}15 = 473{,}15\ \mathrm K$.
+  $$\eta = 1 - \frac{293{,}15}{473{,}15} \approx 1 - 0{,}620 = 0{,}38 = 38\,\%$$
+  **Errore tipico:** usando i gradi Celsius si ottiene $1 - 20/200 = 0{,}90$, un valore che nemmeno compare tra le risposte; le altre percentuali non derivano da una formula corretta.
+40-6 D Il rendimento massimo è $\eta = 1 - T_F/T_C$. Aumenta quando il rapporto $T_F/T_C$ diminuisce, cioè quando si **alza** $T_C$ e si **abbassa** $T_F$.
+  **Errore tipico:** chi sceglie di abbassare la temperatura calda o di alzare quella fredda fa il contrario: il rapporto $T_F/T_C$ crescerebbe e il rendimento calerebbe.
+40-7 C Il lavoro per ciclo è $L = \eta\,Q_C$, con $Q_C = 2500\ \mathrm J$ calore assorbito.
+  Rendimento di Carnot: $\eta = 1 - \dfrac{T_F}{T_C} = 1 - \dfrac{320}{450} = 1 - 0{,}711 = 0{,}289$ (temperature già in kelvin).
+  $$L = 0{,}289 \cdot 2500\ \mathrm J \approx 722\ \mathrm J \approx 720\ \mathrm J$$
+  **Errore tipico:** chi sceglie 0 J pensa a un ciclo con lavoro nullo; chi prende metà di 720 J (360 J) o valori maggiori sbaglia il rendimento. I 2500 J sono il calore assorbito, non il lavoro: il lavoro è solo la frazione $\eta$ di essi.
+40-8 D Il coefficiente di prestazione di un refrigeratore è $COP = Q_F/L$, dove $Q_F > 0$ è il calore estratto e $L > 0$ il lavoro speso. Il rapporto è quindi **sempre positivo**.
+  Non è garantito che sia maggiore di 1: per un refrigeratore di Carnot $COP = \dfrac{T_F}{T_C - T_F}$, che scende sotto 1 se $T_F$ è minore di metà di $T_C$.
+  **Errore tipico:** chi sceglie "maggiore uguale a 1" ricorda che di solito il COP è alto, ma la domanda dice "sicuramente". Le risposte "minore di zero" e "minore di 1" sono false in generale.
+  TRAP: la parola "sicuramente": l'unica cosa certa è che il COP è positivo, non che superi 1.
+40-9 A Rendimento di una macchina ideale (di Carnot): $\eta = 1 - T_F/T_C$, con temperature in kelvin. $T_1 = 27 + 273 = 300\ \mathrm K$ e $T_2 = 127 + 273 = 400\ \mathrm K$; la più bassa è $T_F$.
+  $$\eta = 1 - \frac{300}{400} = 1 - 0{,}75 = 0{,}25$$
+  **Errore tipico:** chi sceglie 0,75 ha calcolato solo $T_F/T_C$ dimenticando il "$1 -$". Chi sceglie $-0{,}25$ ha capovolto il rapporto, ottenendo un rendimento negativo, impossibile.
+40-10 A Il rendimento è $\eta = L/Q_C$, con $L$ lavoro prodotto e $Q_C$ calore **assorbito** dalla sorgente calda.
+  Per il primo principio in un ciclo $L = Q_C - Q_F$, quindi $Q_C = L + Q_F = 10 + 35 = 45\ \mathrm{kJ}$.
+  $$\eta = \frac{10}{45} \approx 0{,}22$$
+  **Errore tipico:** chi sceglie 0,29 ha diviso per il calore ceduto: $10/35 \approx 0{,}29$. Un rendimento maggiore di 1 (come 1,18) è impossibile.
+40-11 B Il massimo rendimento possibile è quello di Carnot: $\eta_{max} = 1 - T_F/T_C$, con $T_F = 300\ \mathrm K$ (ambiente) e $T_C = 450\ \mathrm K$ (sorgente).
+  $$\eta_{max} = 1 - \frac{300}{450} = 1 - 0{,}667 \approx 0{,}33$$
+  **Errore tipico:** chi sceglie 0,5 ha diviso la differenza di temperature per $T_F$: $(450 - 300)/300 = 0{,}5$. Il denominatore giusto è $T_C$. Un rendimento maggiore di 1 (come 1,07) è impossibile.
+40-12 C Rendimento: $\eta = L/Q_C = (Q_C - Q_F)/Q_C = 1 - Q_F/Q_C$, con $Q_C = 450\ \mathrm{kcal}$ assorbite e $Q_F = 150\ \mathrm{kcal}$ cedute (l'unità si semplifica).
+  $$\eta = 1 - \frac{150}{450} = 1 - \frac13 = \frac23$$
+  **Errore tipico:** chi sceglie 1/3 ha calcolato solo $Q_F/Q_C$ dimenticando di sottrarlo a 1.
+40-13 C! Il rendimento è $\eta = L/Q_C$, dove $L = 3200\ \mathrm J$ è il lavoro utile e $Q_C$ il calore assorbito.
+  Il testo dice che la macchina "produce 8200 J di calore" ed è ambiguo. Interpretando 8200 J come calore assorbito: $\eta = \dfrac{3200}{8200} \approx 0{,}39$.
+  Se invece 8200 J fossero il calore ceduto: $Q_C = 3200 + 8200 = 11\,400\ \mathrm J$ e $\eta = \dfrac{3200}{11\,400} \approx 0{,}28$. Il paniere indica la prima lettura.
+  **Errore tipico:** chi sceglie 0,28 ha letto gli 8200 J come calore ceduto alla sorgente fredda.
+  TRAP: "produce 8200 J di calore" non dice se si tratta di calore assorbito o ceduto, e cambia il risultato.
 40-14 APERTA
 KW: funzione di stato, dQ/T|Q/T, reversibile, disordine, J/K, sistema isolato, aumenta|non diminuisce, secondo principio, boltzmann|microstati
 > L'**entropia** $S$ è una **funzione di stato** introdotta da Clausius. La sua variazione tra due stati A e B si calcola lungo una trasformazione **reversibile**:
@@ -74,25 +188,73 @@ KW: funzione di stato, dQ/T|Q/T, reversibile, disordine, J/K, sistema isolato, a
 > Dal punto di vista microscopico (**Boltzmann**) l'entropia misura il **disordine** del sistema, cioè il numero $W$ di **microstati** compatibili con lo stato macroscopico: $S = k_B\ln W$.
 
 ## L41 Carica elettrica e legge di Coulomb
-41-1 C Le forze sono vettori: senza conoscere le direzioni la risultante può valere da 1 N a 7 N (5 N solo se perpendicolari).
-41-2 A Carica centrale: $E = kq/r^2 = 9 \cdot 10^9 \cdot 12 \cdot 10^{-6}/0{,}04 \approx 2{,}7 \cdot 10^6\ \mathrm{V/m}$. Le due laterali (a 0,54 m) aggiungono in verticale circa $2 \cdot 1{,}4 \cdot 10^5$: totale $\approx 3 \cdot 10^6\ \mathrm{V/m}$.
+41-1 C Le forze sono **vettori**: per sommarle servono anche le direzioni. Il modulo della risultante di due forze di 3 N e 4 N dipende dall'angolo $\theta$ tra loro: $R = \sqrt{3^2 + 4^2 + 2 \cdot 3 \cdot 4\cos\theta}$.
+  Vale $R = 7\ \mathrm N$ se le forze sono nello stesso verso ($\theta = 0^\circ$), $R = 1\ \mathrm N$ se opposte ($\theta = 180^\circ$) e $R = 5\ \mathrm N$ se perpendicolari ($\theta = 90^\circ$). Il testo dice solo che le cariche stanno "su un piano": la risposta non è determinata.
+  **Errore tipico:** chi sceglie 7 N ha sommato i moduli, chi sceglie 1 N li ha sottratti, chi sceglie 5 N ha applicato Pitagora: ciascuno ha ipotizzato una geometria non data.
+  TRAP: le forze si sommano come vettori, e senza l'angolo tra loro il modulo della risultante non è noto.
+41-2 A Il campo in $P$ è la somma vettoriale dei campi delle tre cariche (sovrapposizione). Dati: $q = 0{,}012\ \mathrm{mC} = 1{,}2 \cdot 10^{-5}\ \mathrm C$, $k = 9 \cdot 10^9\ \mathrm{N\,m^2/C^2}$, $P$ a $0{,}2\ \mathrm m$ dalla carica centrale, su una retta ortogonale a quella delle cariche.
+  Carica centrale: $E_c = \dfrac{kq}{r^2} = \dfrac{9 \cdot 10^9 \cdot 1{,}2 \cdot 10^{-5}}{0{,}2^2} = 2{,}7 \cdot 10^6\ \mathrm{V/m}$, diretto lungo la retta ortogonale (radialmente).
+  Cariche laterali: distanza da $P$ $d = \sqrt{0{,}5^2 + 0{,}2^2} = \sqrt{0{,}29} \approx 0{,}539\ \mathrm m$, quindi $E_\ell = \dfrac{kq}{d^2} = \dfrac{9 \cdot 10^9 \cdot 1{,}2 \cdot 10^{-5}}{0{,}29} \approx 3{,}7 \cdot 10^5\ \mathrm{V/m}$ ciascuna.
+  Per simmetria le componenti parallele alla retta delle cariche si annullano; restano quelle lungo la direzione del campo centrale, con fattore $\sin\alpha = 0{,}2/0{,}539 \approx 0{,}371$: $2 \cdot 3{,}7 \cdot 10^5 \cdot 0{,}371 \approx 2{,}8 \cdot 10^5\ \mathrm{V/m}$.
+  $$E \approx 2{,}7 \cdot 10^6 + 0{,}28 \cdot 10^6 \approx 3 \cdot 10^6\ \mathrm{V/m}$$
+  **Errore tipico:** sbagliare la conversione da millicoulomb a coulomb sposta il risultato di potenze di 10 e porta fuori scala; trascurare le cariche laterali dà $2{,}7 \cdot 10^6$, cioè poco meno.
 
 ## L42 Campo elettrico
-42-1 C $qE = mg \Rightarrow E = 0{,}005 \cdot 9{,}8/(0{,}2 \cdot 10^{-3}) = 245\ \mathrm{N/C}$.
-42-2 C Al centro le forze si bilanciano, ma spostandola verso una delle cariche positive l'attrazione di quella diventa più forte e la allontana ancora di più dal centro: equilibrio instabile.
-42-3 D $F \propto q_Aq_B/d^2$: $\tfrac12 \cdot \tfrac14 = \tfrac18$, cioè $F/8$.
-42-4 A $\vec E = \vec F/q_0$: forza sulla carica di prova diviso il valore della carica.
-42-5 C Legge di Coulomb: $F \propto 1/r^2$, proporzionalità quadratica inversa.
-42-6 C Le linee di campo escono dalle cariche positive ed entrano in quelle negative.
-42-7 A Qualunque combinazione di segni si scelga, le forze delle tre cariche su quella in esame non possono annullarsi (le due vicine danno $\sqrt2\,kq^2/a^2$, l'opposta solo $kq^2/2a^2$).
-42-8 B A attrae B (segni opposti), B respinge C (stesso segno): A ha segno opposto a C.
-42-9 B C'è un campo elettrico in P se una carica di prova posta in P risente di una forza elettrica.
-42-10 D $F \propto 1/r^2$: dimezzando la distanza la forza quadruplica.
-42-11 A Raddoppiando la distanza la forza diventa un quarto.
-42-12 A Per il terzo principio le due forze sono uguali in modulo e opposte.
-42-13 A $\dfrac{kq}{x^2} = \dfrac{k\,4q}{(d - x)^2} \Rightarrow d - x = 2x \Rightarrow x = d/3$.
-42-14 C Sulla carica negativa la forza è opposta al campo: campo verso l'alto, $E = F/|q| = 3 \cdot 10^{-6}/2 \cdot 10^{-9} = 1500\ \mathrm{N/C} = 1{,}5\ \mathrm{kV/m}$.
-42-15 B $F \propto 1/r^2$: raddoppiando la distanza la forza diminuisce di un fattore 4.
+42-1 C Per tenere la carica ferma serve che la forza elettrica equilibri il peso: $qE = mg$, con $q$ carica (C), $E$ campo (N/C), $m$ massa (kg) e $g = 9{,}8\ \mathrm{m/s^2}$. Il campo deve essere verticale e diretto verso l'alto (per una carica positiva).
+  Conversioni: $q = 0{,}2\ \mathrm{mC} = 0{,}2 \cdot 10^{-3}\ \mathrm C = 2 \cdot 10^{-4}\ \mathrm C$ e $m = 5\ \mathrm g = 5 \cdot 10^{-3}\ \mathrm{kg}$.
+  $$E = \frac{mg}{q} = \frac{5 \cdot 10^{-3} \cdot 9{,}8}{2 \cdot 10^{-4}} = \frac{0{,}049}{2 \cdot 10^{-4}} = 245\ \mathrm{N/C}$$
+  **Errore tipico:** quasi tutti gli errori su questo problema vengono dalle conversioni: usare i grammi al posto dei chilogrammi o i millicoulomb al posto dei coulomb sposta il risultato di potenze di 10. Valori come 2 N/C o 85 N/C non corrispondono ad alcun calcolo con unità coerenti.
+42-2 C La carica negativa al centro è attratta con la stessa intensità da entrambe le cariche positive uguali: la forza totale è nulla, quindi è in **equilibrio**.
+  Per valutare la stabilità la si sposta di un piccolo tratto $x$ verso una delle due cariche positive. Ora la distanza da quella carica è minore e da quella opposta è maggiore: l'attrazione $F \propto 1/r^2$ verso la carica più vicina diventa maggiore dell'altra.
+  La forza netta punta quindi nello stesso verso dello spostamento: la carica viene spinta ancora più lontano dal centro. L'equilibrio è **instabile**.
+  **Errore tipico:** chi sceglie "equilibrio stabile" pensa che il centro sia una posizione in cui la carica "sta bene" perché le forze si bilanciano; ma per essere stabile la forza dovrebbe riportare la carica al centro dopo uno spostamento. Chi sceglie "non equilibrio" non ha notato che al centro le due forze si annullano.
+  TRAP: l'equilibrio c'è, ma si giudica la stabilità spostando la carica lungo l'asta, dove cariche opposte attirano più forte da vicino.
+42-3 D Legge di Coulomb: $F = k\dfrac{|q_Aq_B|}{d^2}$, con $k = 9 \cdot 10^9\ \mathrm{N\,m^2/C^2}$, $q_A, q_B$ cariche (C) e $d$ distanza (m).
+  La forza è proporzionale al prodotto delle cariche e inversamente proporzionale al quadrato della distanza.
+  Dimezzando $q_A$ il numeratore si dimezza: fattore $\tfrac12$. Raddoppiando $d$ il denominatore quadruplica: fattore $\tfrac14$.
+  $$F' = F \cdot \frac12 \cdot \frac14 = \frac{F}{8}$$
+  **Errore tipico:** chi sceglie $F/4$ ha tenuto conto solo della distanza e ha dimenticato il dimezzamento di $q_A$; chi sceglie $2F$ o $4F$ ha invertito l'effetto della distanza.
+  TRAP: le due modifiche agiscono insieme, e la distanza entra al quadrato.
+42-4 A Il **campo elettrico** in un punto si definisce come il rapporto tra la forza $\vec F$ che agisce su una carica di prova $q_0$ posta in quel punto e la carica stessa: $\vec E = \vec F/q_0$ (unità N/C).
+  Dividere per $q_0$ rende il campo indipendente dalla carica di prova: dipende solo dalle cariche che lo generano.
+  **Errore tipico:** chi sceglie "pari alla forza" dimentica di dividere per la carica (quella è la forza, in N, non il campo, in N/C). Chi sceglie "potenziale per carica di prova" descrive l'energia potenziale $U = qV$, una grandezza diversa.
+42-5 C Legge di Coulomb: $F = k\dfrac{|q_1q_2|}{r^2}$. La forza è proporzionale a $1/r^2$: dipendenza **quadratica inversa**.
+  **Errore tipico:** chi sceglie "inversa" pensa a $F \propto 1/r$ (come il campo di un filo); chi sceglie "quadratica" o "diretta" dimentica che la forza diminuisce con la distanza.
+42-6 C Per convenzione le linee di campo indicano il verso della forza su una carica di prova **positiva**. Una carica positiva la respinge: le linee escono. Una carica negativa la attrae: le linee entrano.
+  **Errore tipico:** chi sceglie "uscenti in entrambi i casi" o "entranti in entrambi" ha dimenticato che il verso dipende dal segno. Chi sceglie "uscenti dalla negativa, entranti nella positiva" ha invertito la convenzione.
+42-7 A Sia $q$ la carica in un vertice di un quadrato di lato $a$; le altre tre hanno lo stesso modulo $|q|$ ma segno qualsiasi.
+  Le due cariche adiacenti (a distanza $a$) esercitano ciascuna una forza di modulo $F_1 = k\dfrac{q^2}{a^2}$, lungo i due lati e quindi perpendicolari tra loro: la risultante ha modulo $\sqrt2\,k\dfrac{q^2}{a^2} \approx 1{,}41\,k\dfrac{q^2}{a^2}$, qualunque siano i segni.
+  La carica opposta (a distanza $a\sqrt2$) esercita una forza lungo la diagonale di modulo $F_2 = k\dfrac{q^2}{2a^2} = 0{,}5\,k\dfrac{q^2}{a^2}$.
+  Per annullare la forza totale le due risultanti dovrebbero essere uguali in modulo e opposte: ma $1{,}41 \neq 0{,}5$. La forza non può mai essere nulla.
+  **Errore tipico:** chi sceglie "sì, se le cariche sui vertici opposti hanno lo stesso segno" (o se le altre tre hanno lo stesso segno) si affida alla simmetria, ma le tre forze hanno moduli diversi e non si bilanciano.
+  TRAP: la forza della carica opposta è più piccola (distanza $a\sqrt2$) di quella risultante delle due adiacenti, quindi non può compensarla.
+42-8 B Forza attrattiva tra due cariche significa segni **opposti**; forza repulsiva significa segni **uguali**.
+  Il corpo A attrae il corpo B: hanno segni opposti. B respinge C: hanno lo stesso segno. Quindi C ha lo stesso segno di B, opposto a quello di A.
+  La carica di A ha segno opposto a quello di C.
+  **Errore tipico:** chi sceglie "A come C" o "A come B" ha sbagliato l'interpretazione di attrazione/repulsione; chi sceglie "tutte dello stesso segno" contraddice l'attrazione osservata tra A e B.
+42-9 B Un campo elettrico esiste in $P$ se una **carica di prova** posta in $P$ risente di una forza di origine elettrica. È una definizione operativa.
+  **Errore tipico:** la sola presenza di un corpo di prova non basta (se il campo è nullo non risente di nessuna forza). Nemmeno la presenza di una carica nelle vicinanze è la definizione: il campo esiste in $P$ anche quando la carica sorgente è lontana, purché eserciti una forza.
+42-10 D Legge di Coulomb: $F \propto 1/r^2$. Con la distanza dimezzata, $r' = r/2$:
+  $$F' = k\frac{|q_1q_2|}{(r/2)^2} = 4\,k\frac{|q_1q_2|}{r^2} = 4F$$
+  La forza quadruplica.
+  **Errore tipico:** chi sceglie "raddoppia" ha usato $F \propto 1/r$ (senza il quadrato). Chi sceglie "la metà" o "un quarto" ha invertito l'effetto: avvicinando le cariche la forza cresce.
+42-11 A Legge di Coulomb: $F \propto 1/r^2$. Con la distanza raddoppiata, $r' = 2r$:
+  $$F' = k\frac{|q_1q_2|}{(2r)^2} = \frac14\,k\frac{|q_1q_2|}{r^2} = \frac{F}{4}$$
+  **Errore tipico:** chi sceglie "la metà" ha usato $F \propto 1/r$ (senza il quadrato). Chi sceglie "raddoppia" o "quadruplica" ha invertito l'effetto: allontanando le cariche la forza diminuisce.
+42-12 A La legge di Coulomb dà $F = k\dfrac{|Q_1Q_2|}{r^2}$, che è **simmetrica** in $Q_1$ e $Q_2$: la forza di $Q_1$ su $Q_2$ e quella di $Q_2$ su $Q_1$ hanno lo stesso modulo. Lo stabilisce anche il terzo principio della dinamica (azione e reazione): forze uguali in modulo, opposte in verso.
+  **Errore tipico:** chi sceglie "la forza è proporzionale alla carica quindi $Q_1$ avverte una forza maggiore" dimentica che la forza dipende dal prodotto di **entrambe** le cariche. Chi dice "$Q_1$ crea un campo maggiore" non considera che la forza su $Q_1$ è $Q_1$ per il campo (minore) creato da $Q_2$: il prodotto è lo stesso.
+42-13 A Il punto cercato è tra le due cariche, a distanza $x$ da $q$ e $d - x$ da $4q$. Ci va una carica di prova $q_0$: la forza di ciascuna carica ha modulo $k q\,q_0/r^2$ e le due forze hanno verso opposto, quindi si annullano se i moduli sono uguali.
+  $$\frac{k\,q\,q_0}{x^2} = \frac{k\,4q\,q_0}{(d - x)^2} \Rightarrow (d - x)^2 = 4x^2$$
+  Prendendo la radice positiva (il punto è tra le cariche): $d - x = 2x$, da cui $x = d/3$.
+  **Errore tipico:** chi sceglie $d/2$ ha preso il punto medio, che vale solo per cariche uguali: qui $4q$ spinge con più forza e il punto di equilibrio deve stare più vicino alla carica piccola. $2d$ cade fuori dal segmento tra le cariche.
+  TRAP: $x$ è misurato dalla carica più piccola $q$, e il punto di equilibrio è più vicino a questa.
+42-14 C La forza su una carica è $\vec F = q\vec E$. Se $q < 0$, $\vec F$ e $\vec E$ hanno verso **opposto**: la forza è verso il basso, quindi il campo è diretto verso l'**alto**.
+  Modulo: $E = \dfrac{|F|}{|q|} = \dfrac{3{,}0 \cdot 10^{-6}\ \mathrm N}{2{,}0 \cdot 10^{-9}\ \mathrm C} = 1500\ \mathrm{N/C} = 1{,}5\ \mathrm{kN/C}$.
+  Le unità V/m e N/C sono equivalenti, quindi $1{,}5\ \mathrm{kV/m}$ è lo stesso campo.
+  **Errore tipico:** chi sceglie 1500 N/C verso il basso ha il modulo giusto ma ha dimenticato che la carica è negativa. Chi sceglie 750 kN/C o 500 V/m sbaglia il calcolo numerico del rapporto.
+  TRAP: la carica è negativa, quindi il campo ha verso opposto alla forza; inoltre N/C e V/m sono la stessa unità.
+42-15 B Legge di Coulomb: $F \propto 1/r^2$. Con $r' = 2r$: $F' = F/2^2 = F/4$, quindi la forza **diminuisce di un fattore 4**.
+  **Errore tipico:** chi sceglie "aumenta di un fattore 4" o "di 2" ha invertito l'effetto della distanza; chi sceglie "non varia" pensa che la forza tra cariche dipenda solo dal loro valore.
 42-16 APERTA
 KW: cariche, proporzionale al prodotto|prodotto, inversamente proporzionale|quadrato della distanza, k|costante, 8,99|9·10^9, ε0|costante dielettrica, attrattiva|repulsiva, congiungente|direzione
 > La **legge di Coulomb** descrive la forza tra due **cariche** puntiformi $q_1$ e $q_2$ poste a distanza $r$ nel vuoto:
@@ -107,9 +269,14 @@ KW: cariche, proporzionale al prodotto|prodotto, inversamente proporzionale|quad
 > Ha la stessa forma della legge di gravitazione, ma è enormemente più intensa e può essere anche repulsiva.
 
 ## L43 Dipolo elettrico
-43-1 A $\varepsilon_0$ si ricava da $F = \dfrac{q^2}{4\pi\varepsilon_0 r^2}$: $[\varepsilon_0] = \mathrm{C^2/(N\,m^2)}$.
-43-2 C $F \propto 1/r^2$: per quadruplicare la forza la distanza deve dimezzarsi, 10 cm.
-43-3 A Il campo $\vec E = \vec F/q$ non dipende dalla carica di prova, né dal valore né dal segno: dipende solo dalle cariche sorgenti.
+43-1 A Dalla legge di Coulomb $F = \dfrac{q^2}{4\pi\varepsilon_0 r^2}$ si ricava $\varepsilon_0 = \dfrac{q^2}{4\pi F r^2}$.
+  Le unità sono quelle di $q^2/(F r^2)$: $\mathrm{C^2/(N\,m^2)}$.
+  **Errore tipico:** chi sceglie l'unità con $\mathrm N$ al numeratore ha riarrangiato male la formula, mettendo la forza nel posto sbagliato; chi sceglie "J" o "$\mathrm{C^2/m^2}$" ha perso il N a denominatore.
+43-2 C Legge di Coulomb: $F \propto 1/r^2$. Se $F' = 4F$ allora $\dfrac{1}{r'^2} = \dfrac{4}{r^2}$, cioè $r'^2 = \dfrac{r^2}{4}$ e $r' = \dfrac r2$.
+  Con $r = 20\ \mathrm{cm}$: $r' = 10\ \mathrm{cm}$.
+  **Errore tipico:** chi sceglie 5 cm ha usato $F \propto 1/r$ (la distanza andrebbe divisa per 4 invece che per 2). Chi sceglie 40 cm o 80 cm ha aumentato la distanza, ma allontanando le cariche la forza diminuisce.
+43-3 A Il campo si definisce come $\vec E = \vec F/q$. La forza è proporzionale a $q$ ($\vec F = q\vec E$): dividendo per $q$ il valore della carica di prova si elimina.
+  Anche il segno non entra: se cambia il segno di $q$ cambia il verso della forza, ma $\vec E$ resta lo stesso. Il campo dipende solo dalle cariche sorgenti.
 43-4 APERTA
 KW: momento di dipolo|p, momento torcente|momento meccanico, p × E|prodotto vettoriale, allinearsi|allinea, risultante nulla|forza nulla, energia potenziale, -p·E|p E cos, equilibrio stabile
 > Un **dipolo elettrico** (cariche $+q$ e $-q$ a distanza $d$, **momento di dipolo** $\vec p = q\vec d$ diretto da $-q$ a $+q$) posto in un campo elettrico **uniforme** $\vec E$:
@@ -135,11 +302,32 @@ KW: due cariche|cariche uguali e opposte, distanza, p = q d|qd, vettore, da - a 
 > Molte **molecole** (es. l'acqua) sono dipoli permanenti.
 
 ## L44 Moto di cariche nel campo elettrico
-44-1 C $\tfrac12 mv^2 = \dfrac{kQe}{r} \Rightarrow v = \sqrt{\dfrac{2 \cdot 8{,}99 \cdot 10^9 \cdot 1{,}6 \cdot 10^{-15} \cdot 1{,}6 \cdot 10^{-19}}{9{,}11 \cdot 10^{-31} \cdot 0{,}01}} \approx 2{,}25 \cdot 10^4\ \mathrm{m/s}$.
-44-2 A $\vec a = q\vec E/m$: è costante se il campo è uniforme.
-44-3 D $\vec F = q\vec E$: la forza è determinata dal campo elettrico.
-44-4 B Sull'asse di un disco $E = \dfrac{\sigma}{2\varepsilon_0}\left(1 - \dfrac{z}{\sqrt{z^2 + R^2}}\right)$, con $\sigma/2\varepsilon_0 \approx 2{,}26 \cdot 10^5\ \mathrm{N/C}$. Per $z = R$, $R/100$, $R/1000$: $a = eE/m \approx 1{,}16 \cdot 10^{16}$, $3{,}93 \cdot 10^{16}$, $3{,}97 \cdot 10^{16}\ \mathrm{m/s^2}$.
-44-5 C $\Delta U = -qE\Delta x = -0{,}1 \cdot 75 \cdot 2 = -15\ \mathrm J$ (la carica positiva si muove nel verso del campo e perde energia potenziale).
+44-1 C La **velocità di fuga** è quella che permette all'elettrone di arrivare all'infinito con energia cinetica nulla. La sfera ha carica totale $Q$ positiva e, dall'esterno, agisce come una carica puntiforme posta al centro: l'elettrone è attratto.
+  Conservazione dell'energia: energia cinetica iniziale uguale alla perdita di energia potenziale, $\tfrac12 mv^2 = \dfrac{kQe}{r_0}$, con $k = 8{,}99 \cdot 10^9\ \mathrm{N\,m^2/C^2}$, $Q = 1{,}6 \cdot 10^{-15}\ \mathrm C$, $e = 1{,}6 \cdot 10^{-19}\ \mathrm C$, $m = 9{,}11 \cdot 10^{-31}\ \mathrm{kg}$ e $r_0 = 0{,}01\ \mathrm m$.
+  $$v = \sqrt{\frac{2kQe}{m r_0}} = \sqrt{\frac{2 \cdot 8{,}99 \cdot 10^9 \cdot 1{,}6 \cdot 10^{-15} \cdot 1{,}6 \cdot 10^{-19}}{9{,}11 \cdot 10^{-31} \cdot 0{,}01}}$$
+  Numeratore: $4{,}60 \cdot 10^{-24}$; denominatore: $9{,}11 \cdot 10^{-33}$; rapporto: $5{,}05 \cdot 10^{8}$.
+  $$v = \sqrt{5{,}05 \cdot 10^{8}} \approx 2{,}25 \cdot 10^{4}\ \mathrm{m/s}$$
+  **Errore tipico:** dimenticare il fattore 2 sotto radice dà $1{,}6 \cdot 10^4\ \mathrm{m/s}$; dimenticare la radice o usare $r_0$ in centimetri sposta il risultato di potenze di 10. I valori 4,5 e 1,12 $\cdot 10^4$ sono il doppio e la metà del risultato giusto.
+44-2 A L'accelerazione di una particella carica è $\vec a = q\vec E/m$ (seconda legge di Newton con $\vec F = q\vec E$).
+  Se il campo è **uniforme**, $\vec E$ è costante e quindi lo è anche $\vec a$. Se il campo varia da punto a punto (per esempio quello di una carica puntiforme, $E \propto 1/r^2$) l'accelerazione varia con la posizione.
+  **Errore tipico:** chi sceglie "costante" senza condizioni generalizza il caso del campo uniforme; chi sceglie "variabile" esclude il caso uniforme; "dipende dal tipo di carica" è vera solo nel senso che entra $q/m$, ma non risponde alla domanda.
+44-3 D La forza su una particella di carica $q$ è $\vec F = q\vec E$: è determinata dal **campo elettrico** (vettore) nel punto in cui si trova.
+  **Errore tipico:** chi sceglie il potenziale confonde una grandezza scalare con quella che dà direttamente la forza (la forza è legata alla variazione del potenziale nello spazio, $\vec F = -q\nabla V$). Chi sceglie "somma di campo e potenziale" somma grandezze non omogenee (N/C e V).
+44-4 B Campo elettrico sull'asse di un disco di raggio $R$ e densità superficiale $\sigma$, a distanza $z$ dal centro:
+  $$E = \frac{\sigma}{2\varepsilon_0}\left(1 - \frac{z}{\sqrt{z^2 + R^2}}\right)$$
+  Con $\sigma = 4{,}0 \cdot 10^{-6}\ \mathrm{C/m^2}$ e $\varepsilon_0 = 8{,}85 \cdot 10^{-12}\ \mathrm{C^2/(N\,m^2)}$ si ha $\dfrac{\sigma}{2\varepsilon_0} \approx 2{,}26 \cdot 10^5\ \mathrm{N/C}$.
+  L'accelerazione vale $a = eE/m$, con $e = 1{,}6 \cdot 10^{-19}\ \mathrm C$ e $m = 9{,}11 \cdot 10^{-31}\ \mathrm{kg}$; $e/m \approx 1{,}76 \cdot 10^{11}\ \mathrm{C/kg}$.
+  $z = R$: $1 - \dfrac{1}{\sqrt2} = 0{,}293$, $E = 6{,}62 \cdot 10^4\ \mathrm{N/C}$, $a \approx 1{,}16 \cdot 10^{16}\ \mathrm{m/s^2}$.
+  $z = R/100$: $1 - \dfrac{0{,}01}{\sqrt{1{,}0001}} = 0{,}990$, $E = 2{,}24 \cdot 10^5\ \mathrm{N/C}$, $a \approx 3{,}93 \cdot 10^{16}\ \mathrm{m/s^2}$.
+  $z = R/1000$: fattore $0{,}999$, $E = 2{,}26 \cdot 10^5\ \mathrm{N/C}$, $a \approx 3{,}97 \cdot 10^{16}\ \mathrm{m/s^2}$.
+  **Errore tipico:** chi sceglie tre valori uguali (7,93 $\cdot 10^{16}$) ha usato un campo uniforme, senza la dipendenza da $z$; quel valore corrisponde a $\sigma/\varepsilon_0$, il campo vicino a un conduttore, non a un disco.
+  TRAP: il disco ha raggio finito, per cui il campo del piano infinito $\sigma/2\varepsilon_0$ si raggiunge solo per $z \ll R$.
+44-5 C La carica positiva, lasciata libera, si muove nel verso del campo (asse $x$ positivo), quindi lo spostamento è $\Delta x = +2\ \mathrm m$. La forza è $F = qE = 0{,}1 \cdot 75 = 7{,}5\ \mathrm N$, nel verso dello spostamento.
+  Il lavoro del campo è $L = F\Delta x = 7{,}5 \cdot 2 = 15\ \mathrm J$. L'energia potenziale elettrostatica varia di $\Delta U = -L$:
+  $$\Delta U = -qE\Delta x = -0{,}1 \cdot 75 \cdot 2 = -15\ \mathrm J$$
+  Il campo compie lavoro positivo e l'energia potenziale diminuisce, trasformandosi in energia cinetica.
+  **Errore tipico:** chi sceglie $+15\ \mathrm J$ ha dimenticato il segno meno; chi sceglie $\pm 1{,}5\ \mathrm J$ ha sbagliato di un fattore 10 (per esempio con $Q = 0{,}01\ \mathrm C$).
+  TRAP: il segno: $U$ diminuisce perché la carica si muove nel verso in cui il campo compie lavoro positivo.
 44-6 APERTA
 KW: forza, F = qE|qE, segno, stesso verso|verso opposto, accelerazione, qE/m, energia potenziale|potenziale, lavoro, parabolica|uniforme
 > Una carica $q$ posta in un campo elettrico $\vec E$ subisce una **forza**
@@ -168,12 +356,26 @@ KW: forza, carica di prova, E = F/q|F/q, vettore, N/C|V/m, linee di campo, sorge
 > Si rappresenta con le **linee di campo**, tangenti in ogni punto al vettore $\vec E$, uscenti dalle cariche positive ed entranti nelle negative, più fitte dove il campo è più intenso. Il campo di più cariche si ottiene per **sovrapposizione** (somma vettoriale dei singoli campi).
 
 ## L45 Flusso e teorema di Gauss
-45-1 D Il flusso di un campo uniforme attraverso una superficie piana è $\Phi = \vec E \cdot \vec S$, prodotto scalare tra campo e vettore superficie.
-45-2 A Dal teorema di Gauss, per un filo indefinito $E = \dfrac{\lambda}{2\pi\varepsilon_0 r}$: proporzionale a $1/r$.
-45-3 A La legge di Gauss vale sempre, ma serve a calcolare il campo solo con forte simmetria. Per un cubo si può usare solo in modo approssimato a grande distanza, dove la distribuzione appare come una carica puntiforme.
-45-4 B All'interno di una sfera uniformemente carica $E = \dfrac{kQr}{R^3} = \dfrac{8{,}99 \cdot 10^9 \cdot 0{,}8 \cdot 10^{-6} \cdot 0{,}25}{0{,}027} \approx 66{,}6\ \mathrm{kV/m}$.
-45-5 C Teorema di Gauss: senza cariche interne il flusso uscente attraverso la superficie chiusa è nullo (tante linee entrano quante escono).
-45-6 C Il teorema di Gauss riguarda il flusso attraverso una superficie chiusa, di forma qualsiasi.
+45-1 D Il **flusso** attraverso una superficie piana è $\Phi = \vec E \cdot \vec S = ES\cos\theta$, dove $\vec S$ è il **vettore superficie** (modulo uguale all'area $S$, direzione perpendicolare alla superficie) e $\theta$ l'angolo tra $\vec E$ e $\vec S$. Il risultato è uno scalare.
+  **Errore tipico:** chi sceglie "campo per area" ignora l'orientamento (manca $\cos\theta$). Chi sceglie "prodotto scalare per la superficie che è uno scalare" tratta la superficie come scalare, ma per definire il flusso serve il vettore. Chi sceglie il prodotto vettoriale otterrebbe un vettore, mentre il flusso è uno scalare.
+45-2 A Filo indefinito con densità lineare $\lambda$ (C/m). Per simmetria il campo è radiale, e si sceglie come superficie gaussiana un cilindro coassiale di raggio $r$ e lunghezza $h$.
+  Il flusso passa solo dalla superficie laterale ($2\pi r h$): $E\cdot 2\pi r h = \dfrac{\lambda h}{\varepsilon_0}$, da cui $E = \dfrac{\lambda}{2\pi\varepsilon_0 r}$, proporzionale a $1/r$.
+  **Errore tipico:** chi sceglie "come il quadrato della distanza" ha usato il campo di una carica puntiforme ($1/r^2$); chi sceglie "uniforme" ha in mente il piano indefinito; chi sceglie "aumenta con la distanza" descrive il campo dentro un corpo carico, non fuori da un filo.
+45-3 A La legge di Gauss $\oint \vec E \cdot d\vec S = Q_{int}/\varepsilon_0$ è **sempre vera**. Ma per ricavare $E$ dal flusso serve una simmetria (sferica, cilindrica o piana) che permetta di portare $E$ fuori dall'integrale.
+  Un cubo carico non ha questa simmetria. Lontano dal cubo però la distribuzione sembra puntiforme, e si può usare con buona approssimazione $E \approx kQ/r^2$.
+  **Errore tipico:** chi sceglie "sì, ovunque" confonde la validità della legge (sempre) con la sua utilità pratica (solo con simmetria). Chi sceglie "la legge è falsa per simmetria cubica" sbaglia: la legge vale sempre.
+  TRAP: la legge di Gauss vale sempre, ma non permette di calcolare $E$ senza una simmetria adeguata.
+45-4 B Il punto è **dentro** la sfera ($r = 25\ \mathrm{cm} < R = 30\ \mathrm{cm}$). Si applica il teorema di Gauss con una sfera concentrica di raggio $r$.
+  La densità di carica è uniforme, quindi la carica racchiusa è proporzionale al volume: $Q_{int} = Q\dfrac{r^3}{R^3}$.
+  $E \cdot 4\pi r^2 = \dfrac{Q_{int}}{\varepsilon_0} = \dfrac{Q r^3}{\varepsilon_0 R^3} \Rightarrow E = \dfrac{Qr}{4\pi\varepsilon_0 R^3} = \dfrac{kQr}{R^3}$.
+  Dati: $k = 8{,}99 \cdot 10^9$, $Q = 0{,}8\ \mu\mathrm C = 8 \cdot 10^{-7}\ \mathrm C$, $r = 0{,}25\ \mathrm m$ e $R^3 = 0{,}3^3 = 0{,}027\ \mathrm{m^3}$.
+  $$E = \frac{8{,}99 \cdot 10^9 \cdot 8 \cdot 10^{-7} \cdot 0{,}25}{0{,}027} \approx 6{,}66 \cdot 10^4\ \mathrm{V/m} = 66{,}6\ \mathrm{kV/m}$$
+  **Errore tipico:** usare $E = kQ/r^2$ (come se tutta la carica fosse al centro) vale solo fuori dalla sfera. Dentro, la carica racchiusa è solo una frazione $(r/R)^3$ di $Q$. Valori come 315 o 666 V/m derivano da errori di unità di misura (cm o $\mu$C non convertiti).
+45-5 C Teorema di Gauss: il flusso attraverso una superficie chiusa è $\Phi = Q_{int}/\varepsilon_0$. Senza cariche all'interno, $Q_{int} = 0$ e quindi $\Phi = 0$.
+  Il campo può esistere (generato da cariche esterne), ma le sue linee che entrano nella sfera sono tante quante quelle che escono: il flusso netto è zero.
+  **Errore tipico:** chi sceglie "certamente positivo" o "se c'è campo c'è flusso" considera solo le linee che escono; il flusso netto tiene conto anche di quelle che entrano, con segno negativo.
+45-6 C Il teorema di Gauss vale per una superficie **chiusa**, di qualsiasi forma: $\oint \vec E \cdot d\vec S = Q_{int}/\varepsilon_0$.
+  **Errore tipico:** chi sceglie "soltanto sferica" confonde la condizione di validità con la scelta comoda di una sfera per sfruttare la simmetria. Chi sceglie "qualsiasi superficie" include quelle aperte, per cui il flusso non è $Q/\varepsilon_0$. Il teorema vale anche con carica totale nulla (flusso zero).
 45-7 APERTA
 KW: flusso, superficie chiusa, carica interna|carica racchiusa, ε0, Q/ε0|Qint/ε0, simmetria, sfera|filo|piano, esempio
 > **Teorema di Gauss**: il **flusso** del campo elettrico attraverso una qualsiasi **superficie chiusa** è uguale alla **carica** totale **racchiusa** al suo interno divisa per $\varepsilon_0$:
@@ -196,26 +398,72 @@ KW: linee di campo, uscenti|escono, entranti|entrano, positiva, negativa, dipolo
 > - **Condensatore piano** (due lastre con cariche opposte): tra le armature le linee sono parallele ed equidistanti (campo **uniforme**), dirette dalla lastra positiva a quella negativa.
 
 ## L46 Conduttori e distribuzioni di carica
-46-1 D Appena fuori da un conduttore in equilibrio il campo è perpendicolare alla superficie e vale $E = \sigma/\varepsilon_0$ (teorema di Coulomb).
-46-2 B Il campo di un piano indefinito uniformemente carico è uniforme: $E = \sigma/(2\varepsilon_0)$, indipendente dalla distanza.
-46-3 A All'interno di un guscio sferico carico il campo è nullo (nessuna carica racchiusa).
-46-4 D All'interno di una sfera uniformemente carica $E = \dfrac{Qr}{4\pi\varepsilon_0 R^3}$: cresce linearmente con la distanza dal centro.
-46-5 A! $E = ma/q$ e $\sigma = 2\varepsilon_0E$. Con i dati come scritti (4 mC, 2 mg) si otterrebbe $3{,}54 \cdot 10^{-14}\ \mathrm{C/m^2}$; il paniere intende una carica di 4 µC (o una massa di 2 g): $E = 2\ \mathrm{N/C}$, $\sigma = 2 \cdot 8{,}85 \cdot 10^{-12} \cdot 2 \approx 3{,}54 \cdot 10^{-11}\ \mathrm{C/m^2}$.
+46-1 D Appena fuori da un conduttore in equilibrio il campo è **perpendicolare** alla superficie (se avesse una componente parallela muoverebbe le cariche superficiali) e vale $E = \sigma/\varepsilon_0$ (**teorema di Coulomb**), con $\sigma$ densità superficiale locale di carica (C/m$^2$).
+  Si ottiene con Gauss: un cilindretto a cavallo della superficie ha il campo nullo dentro il conduttore, quindi il flusso passa solo dalla base esterna ($S$): $ES = \dfrac{\sigma S}{\varepsilon_0}$.
+  **Errore tipico:** chi sceglie "parallelo" dimentica che in equilibrio $E$ è perpendicolare. Chi sceglie la carica totale del conduttore al posto della densità locale $\sigma$ trascura che la carica è distribuita in modo non uniforme. "Nullo" vale dentro il conduttore, non appena fuori.
+  TRAP: vicino a un conduttore $E = \sigma/\varepsilon_0$, non $\sigma/2\varepsilon_0$ come per un piano carico isolato.
+46-2 B Per un piano indefinito si usa come superficie gaussiana un cilindro perpendicolare al piano, con basi di area $S$ a distanza uguale dai due lati. Il flusso passa solo dalle due basi: $2ES = \dfrac{\sigma S}{\varepsilon_0}$.
+  $$E = \frac{\sigma}{2\varepsilon_0}$$
+  Nel risultato non compare la distanza: il campo è **uniforme**, perpendicolare al piano.
+  **Errore tipico:** chi sceglie "$1/d^2$" ha usato il campo di una carica puntiforme; chi sceglie "$1/d$" quello di un filo.
+46-3 A Guscio sferico con carica sulla superficie di raggio $R$. Per $r < R$ si sceglie come superficie gaussiana una sfera di raggio $r$: al suo interno non c'è carica, $Q_{int} = 0$.
+  Per simmetria $E$ è radiale e costante sulla sfera, quindi $E \cdot 4\pi r^2 = 0 \Rightarrow E = 0$.
+  **Errore tipico:** chi sceglie la diminuzione come $1/r^2$ applica il campo valido **fuori** dal guscio; chi sceglie l'aumento con $r$ descrive una sfera uniformemente carica **piena**.
+46-4 D Sfera piena con carica $Q$ uniforme e $r < R$. Gauss con sfera di raggio $r$: $Q_{int} = Q\dfrac{r^3}{R^3}$.
+  $E \cdot 4\pi r^2 = \dfrac{Q r^3}{\varepsilon_0 R^3} \Rightarrow E = \dfrac{Qr}{4\pi\varepsilon_0 R^3}$, che cresce **linearmente** con $r$.
+  **Errore tipico:** chi sceglie "nullo" confonde la sfera piena con il guscio o con un conduttore; chi sceglie "$1/r^2$" applica la formula valida fuori dalla sfera; chi sceglie "costante" non tiene conto che la carica racchiusa cresce con $r^3$.
+46-5 A! Un piano infinito uniformemente carico genera un campo $E = \dfrac{\sigma}{2\varepsilon_0}$, **indipendente dalla distanza**: i 3 m del testo sono un dato superfluo.
+  Sulla carica agisce $F = qE = ma$, da cui $E = \dfrac{ma}{q}$; poi $\sigma = 2\varepsilon_0 E$, con $\varepsilon_0 = 8{,}85 \cdot 10^{-12}\ \mathrm{C^2/(N\,m^2)}$.
+  Con i dati come scritti ($q = 4\ \mathrm{mC} = 4 \cdot 10^{-3}\ \mathrm C$, $m = 2\ \mathrm{mg} = 2 \cdot 10^{-6}\ \mathrm{kg}$): $E = \dfrac{2 \cdot 10^{-6} \cdot 4}{4 \cdot 10^{-3}} = 2 \cdot 10^{-3}\ \mathrm{N/C}$ e $\sigma = 3{,}54 \cdot 10^{-14}\ \mathrm{C/m^2}$.
+  Il paniere indica $3{,}54 \cdot 10^{-11}\ \mathrm{C/m^2}$, che si ottiene con $E = 2\ \mathrm{N/C}$, cioè se la carica fosse $4\ \mu\mathrm C$ (o la massa $2\ \mathrm g$): $\sigma = 2 \cdot 8{,}85 \cdot 10^{-12} \cdot 2 \approx 3{,}54 \cdot 10^{-11}\ \mathrm{C/m^2}$. Il testo sembra contenere un errore di unità.
+  **Errore tipico:** chi sceglie $1{,}77 \cdot 10^{-11}$ ha usato $\sigma = \varepsilon_0 E$ (formula di un conduttore) invece di $2\varepsilon_0 E$; chi sceglie $7{,}1 \cdot 10^{-11}$ ha moltiplicato per 4 invece che per 2.
+  TRAP: per un piano isolato $\sigma = 2\varepsilon_0 E$ (non $\varepsilon_0 E$), e la distanza di 3 m è inutile.
 
 ## L47 Potenziale elettrico
-47-1 C L'affermazione è falsa (0): il potenziale è uno scalare, il campo elettrico è un vettore.
-47-2 A $V = \dfrac{kQ}{r}$: il potenziale di una carica puntiforme varia come $1/r$.
+47-1 C L'affermazione dice che il potenziale, come il campo elettrico, è una grandezza vettoriale: è **falsa**, e nelle risposte "0" indica falso.
+  Il potenziale $V = U/q_0$ è uno **scalare**: un numero (in volt) in ogni punto. Il campo elettrico $\vec E = \vec F/q_0$ è un **vettore**.
+  **Errore tipico:** chi sceglie "1" (vera) considera il potenziale un vettore perché legato al campo ($\vec E = -\nabla V$); chi sceglie "sono entrambi scalari" ha dimenticato che il campo ha direzione e verso.
+47-2 A Il potenziale di una carica puntiforme $Q$ a distanza $r$ (zero all'infinito) è $V = \dfrac{kQ}{r}$: diminuisce come **l'inverso** della distanza.
+  **Errore tipico:** chi sceglie "inverso del quadrato" confonde il potenziale con il campo, $E = kQ/r^2$; chi sceglie "costante" o "aumenta con la distanza" non ricorda la forma di $V$.
 
 ## L48 Potenziale, superfici equipotenziali e condensatori
-48-1 C Dal flusso $Q/\varepsilon_0$: $V = \dfrac{Q}{4\pi\varepsilon_0 d} = \dfrac{\Phi}{4\pi d} = \dfrac{5{,}6 \cdot 10^4}{4\pi \cdot 0{,}12} \approx 3{,}71 \cdot 10^4\ \mathrm V$.
-48-2 D Le superfici equipotenziali sono sempre perpendicolari alle linee di campo.
-48-3 A $V = k\left(\dfrac{6 \cdot 10^{-9}}{0{,}2} - \dfrac{3 \cdot 10^{-9}}{0{,}6}\right) = 8{,}99 \cdot 10^9 \cdot 2{,}5 \cdot 10^{-8} \approx 224{,}8\ \mathrm V$.
-48-4 A Due sfere identiche a contatto si portano allo stesso potenziale e si dividono la carica a metà.
-48-5 C $E = -\dfrac{\Delta V}{\Delta x} = -\dfrac{450 - 150}{5 - 2} = -100\ \mathrm{V/m}$ (il campo punta verso i potenziali decrescenti, cioè verso x negativo).
-48-6 B $\tfrac12 mv^2 = eV \Rightarrow v \propto \sqrt V$: con potenziale 4 volte maggiore la velocità raddoppia.
-48-7 D La capacità dipende solo dalla geometria e dal dielettrico: non cambia con la carica ($C = Q/V$, raddoppia anche V).
-48-8 C $L = q\Delta V = 8 \cdot 10^{-6} \cdot 75 = 600\ \mu\mathrm J$.
-48-9 A $E = V/d = 50/0{,}05 = 1000\ \mathrm{V/m}$.
+48-1 C La superficie gaussiana (raggio 4 cm) racchiude tutta la sfera carica (raggio 1 cm), quindi per Gauss $\Phi = Q/\varepsilon_0$, da cui $Q = \Phi\varepsilon_0$.
+  Il punto a $d = 12\ \mathrm{cm}$ è fuori dalla sfera: il potenziale è quello di una carica puntiforme $V = \dfrac{Q}{4\pi\varepsilon_0 d}$.
+  Sostituendo $Q = \Phi\varepsilon_0$, $\varepsilon_0$ si semplifica: $V = \dfrac{\Phi}{4\pi d}$.
+  $$V = \frac{5{,}6 \cdot 10^{4}}{4\pi \cdot 0{,}12} = \frac{5{,}6 \cdot 10^{4}}{1{,}508} \approx 3{,}71 \cdot 10^{4}\ \mathrm V$$
+  **Errore tipico:** chi sceglie $7{,}42 \cdot 10^4$ ha usato $2\pi$ al posto di $4\pi$ (formula di un piano o di un filo, non di una sfera). Il raggio di 4 cm della gaussiana serve solo a sapere che racchiude tutta la carica: la distanza del potenziale è 12 cm.
+48-2 D Lungo una superficie equipotenziale $V$ è costante: per uno spostamento $d\vec l$ sulla superficie $dV = -\vec E \cdot d\vec l = 0$. Quindi $\vec E$ è perpendicolare a $d\vec l$ e le superfici equipotenziali formano sempre angoli retti con le linee di campo.
+  **Errore tipico:** chi sceglie "parallele alle linee di campo" ha invertito la relazione. Le superfici equipotenziali non sono "perpendicolari tra loro" (superfici a potenziali diversi non si intersecano) e non sono sempre chiuse (per esempio i piani paralleli di un campo uniforme).
+48-3 A Il potenziale è uno **scalare** e si sommano algebricamente, con segno, quelli delle due cariche: $V = k\left(\dfrac{Q_1}{r_1} + \dfrac{Q_2}{r_2}\right)$.
+  $P$ è sulla congiungente a $r_1 = 0{,}2\ \mathrm m$ da $Q_1$, tra le due cariche; la distanza da $Q_2$ è $r_2 = 0{,}8 - 0{,}2 = 0{,}6\ \mathrm m$.
+  $$V = 8{,}99 \cdot 10^9\left(\frac{6 \cdot 10^{-9}}{0{,}2} + \frac{-3 \cdot 10^{-9}}{0{,}6}\right) = 8{,}99 \cdot 10^9\,(3 \cdot 10^{-8} - 0{,}5 \cdot 10^{-8})$$
+  $$V = 8{,}99 \cdot 10^9 \cdot 2{,}5 \cdot 10^{-8} \approx 224{,}8\ \mathrm V$$
+  **Errore tipico:** chi dimentica il segno negativo di $Q_2$ e somma i due contributi ottiene $8{,}99 \cdot 10^9 \cdot 3{,}5 \cdot 10^{-8} \approx 315\ \mathrm V$; chi sbaglia la distanza da $Q_2$ (per esempio usa 0,8 m) ottiene altri valori.
+48-4 A Le sfere conduttrici sono identiche: hanno la stessa capacità $C$. A contatto arrivano allo stesso potenziale $V$, quindi $Q_1 = CV = Q_2$: si dividono la carica in parti uguali.
+  La carica totale si conserva, quindi ciascuna ha $Q/2$: sulla sfera rimane **la metà** della carica iniziale.
+  **Errore tipico:** chi sceglie "la stessa carica" non considera che parte della carica passa all'altra sfera; chi sceglie "un quarto" o "nessuna" non rispetta la conservazione della carica totale.
+48-5 C In un campo uniforme lungo $x$: $E_x = -\dfrac{\Delta V}{\Delta x}$, con $\Delta V = V_2 - V_1$ (V) e $\Delta x = x_2 - x_1$ (m).
+  $\Delta V = 450 - 150 = 300\ \mathrm V$ e $\Delta x = 5 - 2 = 3\ \mathrm m$.
+  $$E_x = -\frac{300}{3} = -100\ \mathrm{V/m}$$
+  Il segno meno significa che il campo punta verso i potenziali decrescenti, cioè verso $x$ negativo.
+  **Errore tipico:** chi sceglie 300 V/m ha dimenticato di dividere per la distanza di 3 m; chi sceglie $+100\ \mathrm{V/m}$ ha dimenticato il segno meno.
+  TRAP: il campo punta verso i potenziali decrescenti, quindi il segno è negativo.
+48-6 B Partendo da ferma, l'energia cinetica acquistata è uguale al lavoro del campo: $\tfrac12 mv^2 = eV$, con $e$ carica dell'elettrone, $V$ differenza di potenziale e $m$ massa.
+  $$v = \sqrt{\frac{2eV}{m}} \propto \sqrt V$$
+  Con $V' = 4V$: $v' = \sqrt4\,v = 2v$. La velocità **raddoppia**.
+  **Errore tipico:** chi sceglie "4 volte" ha usato una proporzionalità lineare tra $v$ e $V$; chi sceglie "8 volte" ha confuso la relazione; chi sceglie "1 volta" pensa che la velocità non dipenda da $V$. È l'energia cinetica a crescere come $V$, non la velocità.
+48-7 D La capacità è $C = Q/V$. Aumentare la carica fa aumentare in proporzione anche la differenza di potenziale: $C = \dfrac{2Q}{2V} = \dfrac QV$.
+  $C$ dipende solo da geometria (forma e distanza delle armature) e dielettrico, non da $Q$ né da $V$.
+  **Errore tipico:** chi sceglie "raddoppia" legge $C = Q/V$ pensando che $V$ resti fermo, ma cresce anche $V$. Chi sceglie "bisogna conoscere il valore" non considera che il rapporto resta comunque lo stesso.
+  TRAP: nella formula $C = Q/V$ la tensione non resta costante quando si raddoppia la carica.
+48-8 C Il lavoro esterno necessario per portare una carica $q$ da un punto a potenziale $V_A$ a uno a $V_B$ è $L = q(V_B - V_A)$, con $q$ in C e $V$ in volt.
+  Conversione: $q = 8\ \mu\mathrm C = 8 \cdot 10^{-6}\ \mathrm C$.
+  $$L = 8 \cdot 10^{-6} \cdot (75 - 0) = 6 \cdot 10^{-4}\ \mathrm J = 600\ \mu\mathrm J$$
+  **Errore tipico:** gli errori nascono dalle conversioni di unità (da $\mu$C a C e da J a $\mu$J): per esempio $0{,}8\ \mathrm{mJ} = 800\ \mu\mathrm J$ è maggiore del valore corretto.
+48-9 A Nel campo uniforme tra due lastre parallele $E = V/d$, con $V$ differenza di potenziale (V) e $d$ distanza (m).
+  Conversione: $d = 5{,}0\ \mathrm{cm} = 0{,}05\ \mathrm m$.
+  $$E = \frac{50\ \mathrm V}{0{,}05\ \mathrm m} = 1000\ \mathrm{V/m}$$
+  **Errore tipico:** chi sceglie 10 V/m ha diviso per 5 senza convertire i centimetri in metri; chi sceglie 250 V/m ha moltiplicato $50 \cdot 5$ invece di dividere.
 48-10 APERTA
 KW: energia potenziale, unità di carica|per unità di carica, V = U/q|U/q, volt, scalare, lavoro, kQ/r|Q/r, differenza di potenziale
 > Il **potenziale elettrico** in un punto è l'**energia potenziale** elettrostatica che avrebbe una carica di prova posta in quel punto, **per unità di carica**:

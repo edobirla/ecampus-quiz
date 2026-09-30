@@ -100,12 +100,11 @@ async function loadSubject(id) {
 const statKey = (id = S.id) => `ecq:stats:${id}`;
 const stats = (id = S.id) => migrate(store.get(statKey(id), {}));
 const saveStats = (st, id = S.id) => store.set(statKey(id), st);
-function recordAnswer(st, id, ok) {
+// assisted: risposta data dopo indizi o teoria (non fa salire la serie di risposte giuste "da sola")
+function recordAnswer(st, id, ok, assisted = false) {
   const t = Date.now();
-  st.log.push([id, ok ? 1 : 0, t]);
-  const r = (st.q[id] ||= { ok: 0, ko: 0, st: 0 });
-  if (ok) { r.ok++; r.st++; } else { r.ko++; r.st = 0; }
-  r.t = t;
+  st.log.push([id, ok ? 1 : 0, t, 0, assisted ? 1 : 0]);
+  rebuildQ(st);
   return t;
 }
 // appunti sulla teoria (evidenziazioni e penna), per materia; unione nel backup con mergeNotes
@@ -114,16 +113,28 @@ const getNotes = (id = S.id) => Object.assign({ hl: {}, ink: {} }, store.get(not
 const saveNotes = (n, id = S.id) => store.set(notesKey(id), n);
 let notesCtl = null;
 
-// ripetizione spaziata: dopo un errore la domanda torna il giorno dopo, poi a 3, 7, 14, 30 giorni se la azzecchi
-const DAY = 864e5, GAPS = [1, 3, 7, 14, 30];
+// ripetizione spaziata: la domanda torna dopo 1, 3, 7, 14, 30 giorni in base alla serie di risposte giuste senza aiuti (st);
+// dopo un errore o una risposta giusta con aiuti torna il giorno dopo. Vicino all'esame gli intervalli si accorciano
+// (almeno ~3 ripassi prima della data).
+const DAY = 864e5, GAPS = [1, 3, 7, 14, 30], KNOWN = 3;
 const endOfToday = () => new Date().setHours(23, 59, 59, 999);
-const isDue = (r) => r && r.t + GAPS[Math.min(r.st, 4)] * DAY <= endOfToday();
-const known = (r) => r && r.st >= 2; // "saputa": ultime due risposte giuste
+const startOfDay = (t = Date.now()) => new Date(t).setHours(0, 0, 0, 0);
+const dueAt = (r, ex) => {
+  let gap = r.a ? 1 : GAPS[Math.min(r.st, 4)];
+  if (ex) gap = Math.min(gap, Math.max(1, Math.floor((ex - r.t) / DAY / 3)));
+  return r.t + gap * DAY;
+};
+const isDue = (r, ex) => r && dueAt(r, ex) <= endOfToday();
+// "saputa": KNOWN risposte giuste di fila, senza indizi né teoria e in momenti diversi (vedi sync.js). Due di fila non bastavano:
+// durante lo studio si consultano teoria e indizi.
+const known = (r) => r && r.st >= KNOWN;
+// dopo almeno 2 comparse in studio, se l'ultima volta era giusta, la domanda torna "a prova": senza indizi né teoria
+const blindQ = (r) => r && r.ok + r.ko >= 2 && r.l === 1;
 // esame da paniere (Fisica): lo studio punta a sapere tutto il paniere; altrimenti conta ogni domanda della materia
 const panExam = () => settings.pan[S.id] ?? !!S.paniere;
 const targetQs = () => S.questions.filter((q) => validQ(q) && (!panExam() || q.src === "paniere"));
-// da ripassare: sbagliata almeno una volta e non ancora azzeccata 2 volte di fila
-const isToReview = (r) => r && r.ko > 0 && r.st < 2;
+// da ripassare: sbagliata almeno una volta e non ancora "saputa"
+const isToReview = (r) => r && r.ko > 0 && r.st < KNOWN;
 const isRight = (q, a) => a === q.c;
 const validQ = (q) => (q.type === "closed" ? Number.isInteger(q.c) && q.c >= 0 : !!q.a);
 
@@ -139,11 +150,12 @@ const citesLetters = (h) => LETTER_REF.test(plainTxt((h || "").replace(/\[\[[A-E
 const canShuffle = (q) => !q.o.some((o) => /precedent|tutte le|nessuna (delle|di queste)|entramb|sopra|\b[A-E]\s*(e|ed|,|o)\s*[A-E]\b|^\s*[A-E]\s*$/i.test(plainTxt(o)))
   && !citesLetters(q.e) && !(q.h || []).some(citesLetters);
 const optLetters = (html, order) => html.replace(/\[\[([A-E])\]\]/g, (_, L) => "ABCDE"[order ? order.indexOf("ABCDE".indexOf(L)) : "ABCDE".indexOf(L)] || L);
-function startSession({ mode, ids, title, sub, open = false }) {
+function startSession({ mode, ids, title, sub, open = false, blind = {}, plan = false }) {
   if (!ids.length) return toast("Nessuna domanda disponibile");
+  if (sess?.mode === "practice" && Object.keys(sess.done).length && !confirm("C'è una sessione in corso: iniziarne una nuova la sostituisce. Continuare?")) return;
   const perm = {};
   if (settings.shuffleOpts) for (const id of ids) { const q = S.byId[id]; if (q.type === "closed" && canShuffle(q)) perm[id] = shuffle(q.o.map((_, i) => i)); }
-  sess = { mode, open, subj: S.id, ids, title, sub, i: 0, ans: {}, done: {}, hints: {}, t: {}, perm, start: Date.now(),
+  sess = { mode, open, plan: plan ? S.id : undefined, blind, subj: S.id, ids, title, sub, i: 0, ans: {}, done: {}, hints: {}, thy: {}, t: {}, perm, start: Date.now(),
     deadline: mode === "exam" && settings.timer ? Date.now() + settings.timer * 60000 : null };
   saveSess();
   location.hash = "#/quiz";
@@ -151,8 +163,12 @@ function startSession({ mode, ids, title, sub, open = false }) {
 const onlyPan = () => settings.onlyPan[S.id] ?? panExam();
 function newExam(isOpen = false) {
   const pool = S.questions.filter((q) => validQ(q) && (!onlyPan() || q.src === "paniere"));
-  let closed = shuffle(pool.filter((q) => q.type === "closed")).slice(0, EXAM.closed);
-  let open = shuffle(pool.filter((q) => q.type === "open")).slice(0, EXAM.open);
+  // simulazioni diverse tra loro: prima le domande uscite meno volte negli esami precedenti
+  const seenIn = {};
+  for (const e of stats().exams) for (const it of e.items) seenIn[it.id] = (seenIn[it.id] || 0) + 1;
+  const fresh = (qs) => qs.map((q) => [(seenIn[q.id] || 0) + Math.random(), q]).sort((a, b) => a[0] - b[0]).map((x) => x[1]);
+  let closed = fresh(pool.filter((q) => q.type === "closed")).slice(0, EXAM.closed);
+  let open = fresh(pool.filter((q) => q.type === "open")).slice(0, EXAM.open);
   if (closed.length < EXAM.closed || open.length < EXAM.open) {
     // pool del paniere insufficiente: completa con le domande extra/generate
     const rest = S.questions.filter((q) => validQ(q) && !pool.includes(q));
@@ -161,10 +177,12 @@ function newExam(isOpen = false) {
   }
   startSession({ mode: "exam", open: isOpen, ids: [...closed, ...open].map((q) => q.id), title: isOpen ? "Esame con teoria" : "Esame simulato", sub: S.short || S.name });
 }
-function practice(qs, title) {
+function practice(qs, title, extra = {}) {
   qs = qs.filter(validQ);
-  startSession({ mode: "practice", ids: (settings.shuffle ? shuffle(qs) : qs).map((q) => q.id), title, sub: S.short || S.name });
+  startSession({ mode: "practice", ids: (settings.shuffle ? shuffle(qs) : qs).map((q) => q.id), title, sub: S.short || S.name, ...extra });
 }
+// indizi o teoria usati su questa domanda nella sessione
+const assisted = (q) => (sess.hints?.[q.id] || 0) > 0 || !!sess.thy?.[q.id];
 const practiceLessons = (nums) => {
   const qs = nums.flatMap((n) => S.byLesson[n] || []).filter((q) => settings.extraInPractice || q.src === "paniere");
   practice(qs, nums.length === 1 ? `Lezione ${pad3(nums[0])}` : `${nums.length} lezioni`);
@@ -195,10 +213,10 @@ function gradeSession() {
     const a = sess.ans[id];
     if (q.type === "closed") {
       const ok = isRight(q, a);
-      return { id, a, h: sess.hints?.[id], t: a !== undefined ? recordAnswer(st, id, ok) : undefined, p: ok ? 1 : 0 };
+      return { id, a, h: sess.hints?.[id], t: a !== undefined ? recordAnswer(st, id, ok, assisted(q)) : undefined, p: ok ? 1 : 0 };
     }
     const g = gradeOpen(q, a);
-    return { id, a, h: sess.hints?.[id], t: a ? recordAnswer(st, id, g.pts >= 2) : undefined, p: g.pts };
+    return { id, a, h: sess.hints?.[id], t: a ? recordAnswer(st, id, g.pts >= 2, assisted(q)) : undefined, p: g.pts };
   });
   const closedPts = items.filter((it) => S.byId[it.id].type === "closed").reduce((s, it) => s + it.p, 0);
   const openPts = items.filter((it) => S.byId[it.id].type === "open").reduce((s, it) => s + it.p, 0);
@@ -270,6 +288,7 @@ views[""] = () => {
     </div>
   </section>
 
+  ${resumeCard()}
   ${todayCard(st)}
 
   <div class="section card stats-strip">
@@ -322,41 +341,87 @@ views[""] = () => {
       <div class="grow"><div class="t">${e.score}/30 · ${e.open ? "Con teoria" : e.passed ? "Promosso" : "Bocciato"}</div><div class="s">${fmtDate(e.d)} · ${fmtTime(e.dur)}</div></div>${I.chev.replace("<svg", '<svg class="chev"')}</a>`).join("")}</div></div>` : ""}`;
 };
 
-// piano di studio: ripassi in scadenza + domande nuove, quante al giorno per finire prima dell'esame
+// Piano di studio adattivo, ricalcolato a ogni apertura (giorni saltati, errori e voti delle simulazioni lo spostano da soli):
+// - ripassi in scadenza (ripetizione spaziata, intervalli più corti vicino all'esame) + alcune domande "ostinate" (sbagliate ≥2 volte);
+// - domande nuove: le non ancora viste divise sui giorni che restano prima della finestra finale (se salti un giorno, il giorno dopo ne fai di più);
+// - prove d'esame complete senza aiuti: a intervalli (ogni 7 giorni, poi 4, poi ogni 1-2 nei giorni finali); il giorno prima solo ripasso leggero.
+const FINAL_DAYS = 5, MAX_DUE = 60, MAX_NEW = 40;
 function todayPlan(st) {
   const qs = targetQs();
-  const due = qs.filter((q) => isDue(st.q[q.id]));
-  const unseen = qs.filter((q) => !st.q[q.id]).sort((a, b) => a.l - b.l);
   const date = settings.examDate[S.id];
-  const days = date ? Math.ceil((new Date(date + "T12:00") - Date.now()) / DAY) : null;
-  // gli ultimi 3 giorni restano per le simulazioni d'esame
-  const perDay = days > 0 ? Math.ceil(unseen.length / Math.max(1, days - 3)) : 15;
+  const ex = date ? new Date(date + "T12:00").getTime() : null;
+  const days = ex ? Math.ceil((ex - Date.now()) / DAY) : null;
+  const unseen = qs.filter((q) => !st.q[q.id]).sort((a, b) => a.l - b.l);
   const first = {};
   for (const [id, , t] of st.log) first[id] ??= t;
-  const startToday = new Date().setHours(0, 0, 0, 0);
-  const newToday = Object.values(first).filter((t) => t >= startToday).length;
-  const fresh = unseen.slice(0, Math.max(0, perDay - newToday));
-  return { qs, due, unseen, fresh, days, date, perDay, newToday, knownN: qs.filter((q) => known(st.q[q.id])).length };
+  const today0 = startOfDay();
+  const newToday = Object.values(first).filter((t) => t >= today0).length;
+  // nuove al giorno: quelle che restano (più le già fatte oggi) sui giorni di studio che restano
+  const studyDays = days == null ? null : days > FINAL_DAYS ? days - FINAL_DAYS : Math.max(1, days - 1);
+  const perDay = studyDays ? Math.ceil((unseen.length + newToday) / studyDays) : 15;
+  const behind = days != null && days > 0 && perDay > 30;
+  // simulazioni
+  const mocks = st.exams.filter((e) => !e.open).sort((x, y) => x.d - y.d);
+  const lastMock = mocks.at(-1);
+  const sinceMock = lastMock ? Math.round((today0 - startOfDay(lastMock.d)) / DAY) : Infinity;
+  const mockAvg = mocks.length ? mocks.slice(-2).reduce((a, e) => a + e.score, 0) / Math.min(2, mocks.length) : null;
+  const seenPct = qs.length ? 1 - unseen.length / qs.length : 0;
+  const every = days == null ? 10 : days > 21 ? 7 : days > FINAL_DAYS ? 4 : unseen.length > qs.length / 4 ? 2 : 1;
+  const eve = days === 1, over = days != null && days <= 0;
+  const mockDue = !eve && !over && seenPct >= 0.25 && sinceMock >= every;
+  // ripassi
+  const dueAll = qs.filter((q) => isDue(st.q[q.id], ex)).sort((a, b) => dueAt(st.q[a.id], ex) - dueAt(st.q[b.id], ex));
+  const weakMock = mockAvg != null && mockAvg < 24;
+  const due = dueAll.slice(0, mockDue ? 25 : MAX_DUE);
+  const leech = qs.filter((q) => { const r = st.q[q.id]; return r && r.ko >= 2 && !known(r) && !isDue(r, ex) && r.t < today0; })
+    .sort((a, b) => st.q[b.id].ko - st.q[a.id].ko).slice(0, weakMock || eve ? 12 : 6);
+  // nei giorni di simulazione o alla vigilia niente domande nuove
+  const fresh = mockDue || eve || over ? [] : unseen.slice(0, Math.max(0, Math.min(perDay, MAX_NEW) - newToday));
+  const lastDay = st.log.length ? startOfDay(st.log.at(-1)[2]) : null;
+  const idle = lastDay != null ? Math.round((today0 - lastDay) / DAY) : 0;
+  return { qs, due, dueAll, leech, unseen, fresh, days, date, perDay, newToday, knownN: qs.filter((q) => known(st.q[q.id])).length,
+    mockDue, eve, over, sinceMock, lastMock, mockAvg, weakMock, behind, idle, every, st };
 }
 function todayCard(st) {
   const p = todayPlan(st);
   const nextL = !panExam() && p.fresh.length ? S.lessons.find((L) => L.n === p.fresh[0].l && L.theory) : null;
-  const n = p.due.length + p.fresh.length;
+  const n = p.due.length + p.leech.length + p.fresh.length;
+  const resuming = sess?.mode === "practice" && sess.plan === S.id;
+  const when = p.date ? (p.days > 0 ? `Esame tra ${p.days} giorni` : p.days === 0 ? "L'esame è oggi" : "Data esame passata") : `<button class="link" data-act="plan">Imposta la data dell'esame</button> per un piano giornaliero`;
+  const notes = [
+    p.idle >= 2 && p.date && p.days > 0 ? `Hai saltato ${p.idle} giorni: ho ridistribuito le domande nuove sui giorni che restano.` : "",
+    p.behind ? `Sei in ritardo: per finire servirebbero ${p.perDay} domande nuove al giorno. Oggi ne propongo ${Math.min(p.perDay, MAX_NEW)}: se puoi, aggiungi una sessione.` : "",
+    p.weakMock ? `Le ultime simulazioni sono sotto il 24 (media ${p.mockAvg.toFixed(1)}): oggi più ripassi delle domande che sbagli.` : "",
+    p.eve ? "Vigilia dell'esame: niente simulazioni né cose nuove, solo un ripasso leggero degli errori. Riposa." : "",
+    p.dueAll.length > p.due.length ? `Altri ${p.dueAll.length - p.due.length} ripassi sono rimandati a domani.` : "",
+  ].filter(Boolean);
   return `<div class="section card today">
-    <div class="today-h"><span class="lnum">${I.cal}</span><div class="grow"><b>Studio di oggi</b>
-      <div class="muted small">${p.date ? (p.days > 0 ? `Esame tra ${p.days} giorni` : p.days === 0 ? "L'esame è oggi" : "Data esame passata") : `<button class="link" data-act="plan">Imposta la data dell'esame</button> per un piano giornaliero`}</div></div></div>
-    <div class="today-n"><div><b>${p.due.length}</b><span>da ripassare</span></div><div><b>${p.fresh.length}</b><span>nuove${p.newToday ? ` (+${p.newToday} fatte)` : ""}</span></div>
+    <div class="today-h"><span class="lnum">${I.cal}</span><div class="grow"><b>Studio di oggi</b><div class="muted small">${when}</div></div></div>
+    ${p.mockDue ? `<div class="note trap-note" style="margin:12px 0 0"><b>Oggi: prova d'esame completa</b><br>${p.lastMock ? `Ultima simulazione ${p.sinceMock === 0 ? "oggi" : p.sinceMock + " giorni fa"}: ${p.lastMock.score}/30. ` : "Non ne hai ancora fatta una. "}Falla di seguito, senza indizi né teoria: è la prova di come andrà il giorno vero.
+      <div class="actions" style="margin-top:10px"><button class="btn" data-act="exam">${I.exam}Inizia la simulazione</button></div></div>` : ""}
+    <div class="today-n"><div><b>${p.due.length + p.leech.length}</b><span>da ripassare</span></div><div><b>${p.fresh.length}</b><span>nuove${p.newToday ? ` (+${p.newToday} fatte)` : ""}</span></div>
       <div><b>${pct(p.knownN, p.qs.length)}%</b><span>${panExam() ? "paniere saputo" : "domande sapute"}</span></div></div>
     <div class="bar ok"><span style="width:${pct(p.knownN, p.qs.length)}%"></span></div>
+    ${notes.map((t) => `<p class="small" style="margin:8px 0 0">${t}</p>`).join("")}
     <p class="muted small" style="margin:8px 0 0">${panExam()
-      ? `Esame da paniere: l'obiettivo è sapere tutte le ${p.qs.length} domande ufficiali. Una domanda è "saputa" quando la azzecchi due volte di fila; le sbagliate tornano dopo 1, 3, 7, 14 giorni.`
-      : `Esame non da paniere: conta capire gli argomenti. Leggi la teoria della lezione, poi fai le sue domande (paniere, extra e generate); le sbagliate tornano dopo 1, 3, 7, 14 giorni.`}</p>
+      ? `Esame da paniere: l'obiettivo è sapere tutte le ${p.qs.length} domande ufficiali. Una domanda è "saputa" quando la azzecchi ${KNOWN} volte di fila, in giorni diversi, senza indizi né teoria. Prima compare in studio (con aiuti); dopo un paio di volte torna "a prova", come all'esame.`
+      : `Esame non da paniere: conta capire gli argomenti. Leggi la teoria della lezione, poi fai le sue domande (paniere, extra e generate). Una domanda è "saputa" dopo ${KNOWN} risposte giuste di fila in giorni diversi senza aiuti.`}
+      Le simulazioni tornano ${p.days != null && p.days <= FINAL_DAYS + 1 ? "ogni giorno o quasi" : `ogni ${p.every} giorni`} e i ripassi si fanno più frequenti vicino all'esame.</p>
     <div class="actions" style="margin-top:12px">
       ${nextL ? `<a class="btn secondary" href="#/teoria/${S.id}/${nextL.n}">${I.book}Teoria · Lez. ${pad3(nextL.n)}</a>` : ""}
-      <button class="btn" data-act="today" ${n ? "" : "disabled"}>${n ? `Inizia · ${n} domande` : "Tutto fatto per oggi ✓"}</button>
+      ${resuming ? `<a class="btn" href="#/quiz">${I.redo}Riprendi la sessione</a>`
+        : `<button class="btn ${p.mockDue ? "secondary" : ""}" data-act="today" ${n ? "" : "disabled"}>${n ? `${p.mockDue ? "Ripasso leggero" : "Inizia"} · ${n} domande` : "Tutto fatto per oggi ✓"}</button>`}
       ${p.date ? `<button class="btn ghost" data-act="plan">${I.cal}Cambia data</button>` : ""}
     </div></div>`;
 }
+// sessione di esercitazione lasciata a metà: si riprende da dove eri, con le risposte già date
+const resumeCard = () => {
+  if (sess?.mode !== "practice") return "";
+  const done = sess.ids.filter((id) => sess.done[id]).length;
+  return `<div class="section card today"><div class="today-h"><span class="lnum">${I.redo}</span><div class="grow"><b>Sessione in corso · ${esc(sess.title)}</b>
+    <div class="muted small">${done}/${sess.ids.length} risposte · sei alla domanda ${sess.i + 1}</div></div></div>
+    <div class="actions" style="margin-top:12px"><a class="btn" href="#/quiz">Riprendi</a><button class="btn ghost" data-act="finish">Termina e vedi il riepilogo</button></div></div>`;
+};
 
 function chart(ex) {
   const W = 320, H = 150, P = 22, n = ex.length;
@@ -387,7 +452,7 @@ views.studio = () => {
       ${o + k ? `<span class="badge ${o / (o + k) >= 0.7 ? "ok" : "ko"}">${pct(o, o + k)}%</span>` : ""}</button>`;
   });
   const nSel = [...selLessons].flatMap((n) => S.byLesson[n] || []).filter((q) => validQ(q) && (settings.extraInPractice || q.src === "paniere")).length;
-  return `
+  return `${resumeCard()}
   <div class="grid g3">
     <button class="card row" style="border-top:1px solid var(--border)" data-act="quick"><span class="lnum">${I.bolt}</span><div class="grow"><div class="t">Quiz veloce</div><div class="s">20 domande casuali</div></div></button>
     <button class="card row" style="border-top:1px solid var(--border)" data-act="review"><span class="lnum" style="background:var(--ko-soft);color:var(--ko)">${I.redo}</span><div class="grow"><div class="t">Ripasso errori</div><div class="s">Le domande che sbagli</div></div></button>
@@ -515,7 +580,7 @@ function editHighlight(id) {
     <div class="grid g2" style="margin-top:12px">
       <button class="btn danger" data-act="hldel" data-id="${id}">Togli</button>
       <button class="btn" data-act="hlsave" data-id="${id}">Salva</button>
-    </div>`);
+    </div>`, sheetCtl ? "sheet2" : "sheet");
 }
 
 // pagina con tutti gli appunti della materia
@@ -660,12 +725,13 @@ views.quiz = () => {
   let fb = "";
   if (done) fb = feedback(q, a, order);
   // indizi e teoria: nelle esercitazioni e nell'esame con teoria, non nell'esame simulato
-  const helps = !exam || sess.open;
+  const blind = !!sess.blind?.[q.id];
+  const helps = (!exam || sess.open) && !blind;
   const nh = sess.hints?.[q.id] || 0;
   const hintsHtml = helps && nh ? `<ol class="hints">${q.h.slice(0, nh).map((h, i) => `<li><b>Indizio ${i + 1}</b> ${optLetters(h, order)}</li>`).join("")}</ol>` : "";
   const hasTheory = S.lessons.some((l) => l.theory);
   const tools = helps && !done && (q.h?.length > nh || hasTheory) ? `<div class="q-tools">
-    ${q.h?.length > nh ? `<button class="btn secondary" data-act="hint">${I.bulb}${nh ? "Altro indizio" : "Indizio"} · ${nh + 1}/${q.h.length}</button>` : ""}
+    ${q.h?.length > nh ? `<button class="btn secondary" data-act="hint">${I.bulb}${nh ? "Altro indizio" : "Indizio"} · ${nh}/${q.h.length}</button>` : ""}
     ${hasTheory ? `<button class="btn secondary" data-act="theory" data-n="${q.l}">${I.book}Teoria</button>` : ""}</div>` : "";
   const last = sess.i === n - 1;
   const nav = sess.ids.map((id, i) => {
@@ -694,6 +760,7 @@ views.quiz = () => {
           <span class="badge acc">Domanda ${sess.i + 1} di ${n}</span>
           ${q.type === "open" ? `<span class="badge warn">Aperta · 0–3 punti</span>` : ""}
           ${q.src !== "paniere" ? `<span class="badge">${q.src === "gen" ? "Generata" : "Extra"}</span>` : ""}
+          ${blind ? `<span class="badge acc" title="Già vista in studio: ora rispondi senza aiuti">A prova · senza aiuti</span>` : ""}
           ${q.u ? `<span class="badge ko">Risposta da verificare</span>` : ""}</div>
           <button class="icon-btn ${fav ? "on" : ""}" data-act="fav" data-id="${q.id}" aria-label="Preferito">${fav ? I.starFill : I.star}</button>
         </div>
@@ -717,6 +784,7 @@ views.quiz = () => {
   </div>`;
 };
 
+const trap = (q) => (q.tr ? `<div class="note trap-note"><b>⚠ Domanda a trabocchetto</b> ${q.tr}</div>` : "");
 const critList = (g) => `<ul class="crit">${CRITERIA.map(([t, d], i) => `<li class="${g.crit[i] ? "ok" : "ko"}" title="${esc(d)}">${g.crit[i] ? "✓" : "✕"} ${t}</li>`).join("")}</ul>`;
 function feedback(q, a, order) {
   const theory = q.th || `#/teoria/${S.id}/${q.l}`;
@@ -726,6 +794,7 @@ function feedback(q, a, order) {
     const ok = isRight(q, a);
     const L = "ABCDE"[order.indexOf(q.c)];
     return `<div class="feedback ${ok ? "ok" : "ko"}"><h3>${ok ? "✓ Corretto" : a === undefined ? "Risposta corretta: " + L : "✕ Sbagliato — corretta: " + L}</h3>
+      ${trap(q)}
       ${q.e ? `<details class="more" ${ok ? "" : "open"}><summary>Spiegazione</summary><div class="explain">${q.e}</div></details>` : ""}
       <div style="margin-top:10px;font-weight:600">${tlink}</div></div>`;
   }
@@ -753,6 +822,7 @@ function reviewItem(q, { idx, a, p, h, m, rid, i: itemI, showAnswer = true } = {
     if (p !== undefined && a !== undefined && !isRight(q, a)) body += `<div class="ans-line ko"><b>La tua risposta</b>${q.o[a]}</div>`;
     if (p !== undefined && a === undefined) body += `<div class="ans-line na"><b>Non risposta</b>0 punti</div>`;
     if (showAnswer) body += `<div class="ans-line ok"><b>Risposta corretta</b>${q.o[q.c]}</div>`;
+    if (q.tr) body += trap(q);
     if (q.e) body += `<details class="more"><summary>Spiegazione</summary><div class="explain">${q.e}</div></details>`;
   } else {
     if (p !== undefined) {
@@ -844,13 +914,19 @@ async function route() {
 }
 
 // ---------- azioni
-function openSheet(html) {
-  const sh = $("#sheet");
+// #sheet2 sta sopra #sheet: serve a modificare un'evidenziazione senza chiudere la teoria aperta da una domanda
+function openSheet(html, id = "sheet") {
+  const sh = $("#" + id);
   sh.innerHTML = `<div class="panel" role="dialog"><div class="grab"></div>${html}</div>`;
   sh.hidden = false;
 }
-const closeSheet = () => { $("#sheet").hidden = true; $("#sheet").classList.remove("wide"); };
-$("#sheet").addEventListener("click", (e) => { if (e.target.id === "sheet") closeSheet(); });
+let sheetCtl = null; // appunti montati sulla teoria nel pannello
+function closeSheet() {
+  if (!$("#sheet2").hidden) { $("#sheet2").hidden = true; return; }
+  $("#sheet").hidden = true; $("#sheet").classList.remove("wide");
+  if (sheetCtl) { sheetCtl.destroy(); if (notesCtl === sheetCtl) notesCtl = null; sheetCtl = null; }
+}
+for (const id of ["sheet", "sheet2"]) $("#" + id).addEventListener("click", (e) => { if (e.target.id === id) closeSheet(); });
 
 document.addEventListener("click", async (e) => {
   const el = e.target.closest("[data-act],[data-timer],[data-theme],[data-filter]");
@@ -911,13 +987,16 @@ document.addEventListener("click", async (e) => {
     case "hlsave": notesCtl.updateHighlight(el.dataset.id, { n: $("#hlnote").value.trim() || undefined }); closeSheet(); toast("Nota salvata"); break;
     case "hldel": notesCtl.removeHighlight(el.dataset.id); closeSheet(); toast("Evidenziazione tolta"); break;
     case "today": {
-      const p = todayPlan(st());
-      practice([...p.due, ...p.fresh], "Studio di oggi");
+      if (sess?.mode === "practice" && sess.plan === S.id) { location.hash = "#/quiz"; break; }
+      const s = st(), p = todayPlan(s);
+      const blind = {};
+      for (const q of [...p.due, ...p.leech]) if (blindQ(s.q[q.id])) blind[q.id] = 1; // già viste in studio: ora a prova, senza aiuti
+      practice([...p.due, ...p.leech, ...p.fresh], "Studio di oggi", { blind, plan: true });
       break;
     }
     case "plan":
       openSheet(`<h3>Data dell'esame di ${esc(S.short || S.name)}</h3>
-        <p class="muted small" style="margin:0 4px 12px">Il piano divide le domande che non hai ancora visto sui giorni che mancano, lasciando liberi gli ultimi 3 per le simulazioni d'esame.</p>
+        <p class="muted small" style="margin:0 4px 12px">Il piano divide le domande nuove sui giorni che mancano, fissa delle prove d'esame complete (più fitte vicino alla data) e si ricalcola da solo se salti dei giorni o se i risultati sono bassi.</p>
         <input type="date" class="date block" data-date value="${settings.examDate[S.id] || ""}">
         <button class="btn block" data-act="closesheet" style="margin-top:14px">Fatto</button>`);
       break;
@@ -927,7 +1006,11 @@ document.addEventListener("click", async (e) => {
       saveSess();
       const y = window.scrollY; await route(); window.scrollTo(0, y); break;
     }
-    case "theory": openTheory(+el.dataset.n); break;
+    case "theory": {
+      const cq = sess && S.byId[sess.ids[sess.i]];
+      if (cq && !sess.done[cq.id]) { (sess.thy ||= {})[cq.id] = 1; saveSess(); } // teoria consultata prima di rispondere: risposta "con aiuti"
+      openTheory(+el.dataset.n); break;
+    }
     case "setpts": {
       e.preventDefault();
       const s = st(), rid = el.dataset.rid, p = +el.dataset.p;
@@ -997,7 +1080,7 @@ document.addEventListener("click", async (e) => {
       sess.ans[q.id] = +el.dataset.i;
       if (sess.mode === "practice") {
         sess.done[q.id] = true;
-        const s = st(); sess.t[q.id] = recordAnswer(s, q.id, isRight(q, sess.ans[q.id])); saveStats(s);
+        const s = st(); sess.t[q.id] = recordAnswer(s, q.id, isRight(q, sess.ans[q.id]), assisted(q)); saveStats(s);
       }
       saveSess(); route(); break;
     }
@@ -1006,7 +1089,7 @@ document.addEventListener("click", async (e) => {
       sess.ans[q.id] = $("#answer")?.value || "";
       if (!sess.ans[q.id].trim()) return toast("Scrivi prima una risposta");
       sess.done[q.id] = true;
-      const s = st(); sess.t[q.id] = recordAnswer(s, q.id, gradeOpen(q, sess.ans[q.id]).pts >= 2); saveStats(s);
+      const s = st(); sess.t[q.id] = recordAnswer(s, q.id, gradeOpen(q, sess.ans[q.id]).pts >= 2, assisted(q)); saveStats(s);
       saveSess(); route(); break;
     }
     case "next": if (sess.i < sess.ids.length - 1) { sess.i++; saveSess(); route(); } break;
@@ -1022,7 +1105,7 @@ document.addEventListener("click", async (e) => {
       break;
     }
     case "quit":
-      if (sess.mode === "practice") finishPractice();
+      if (sess.mode === "practice") { toast("Sessione salvata: la riprendi da Home o Studio"); location.hash = "#/"; }
       else if (confirm("Uscire? L'esame in corso verrà annullato.")) { sess = null; store.del("ecq:session"); location.hash = "#/"; }
       break;
     case "theorylink": if (sess?.mode === "practice") saveSess(); break;
@@ -1050,9 +1133,12 @@ async function openTheory(n) {
   const withT = S.lessons.filter((l) => l.theory);
   const L = withT.find((l) => l.n === n) || withT[0];
   const html = await fetch(`data/${S.id}/t/${L.n}.html?v=${subjects.find((s) => s.id === S.id)?.v || 0}`).then((r) => r.text()).catch(() => "<p>Teoria non disponibile offline.</p>");
+  if (sheetCtl) { sheetCtl.destroy(); sheetCtl = null; }
   openSheet(`<div class="theory-bar"><select data-theorysel aria-label="Lezione">${withT.map((l) => `<option value="${l.n}" ${l.n === L.n ? "selected" : ""}>${l.n ? pad3(l.n) + " · " : ""}${esc(l.title)}</option>`).join("")}</select>
+    <button class="btn secondary sm" data-act="annot" aria-pressed="false">${I.pen}Annota</button>
     <button class="icon-btn" data-act="closesheet" aria-label="Chiudi">${I.x}</button></div>
-    ${L.genTheory ? `<span class="badge warn">Riassunto generato</span>` : ""}<article class="prose" style="margin-top:8px">${html}</article>`);
+    ${annotBar()}
+    ${L.genTheory ? `<span class="badge warn">Riassunto generato</span>` : ""}<article class="prose" id="lesson" data-n="${L.n}" style="margin-top:8px">${html}</article>`);
   const sh = $("#sheet");
   sh.classList.add("wide");
   sh.querySelector(".panel").scrollTop = 0;
@@ -1061,7 +1147,9 @@ async function openTheory(n) {
   renderMath(sh);
   const art = sh.querySelector("article");
   art.classList.add("annotable");
-  mountNotes(art, { lesson: L.n, get: () => getNotes(), save: () => {}, editable: false });
+  // stessi appunti della sezione Teoria: evidenziazioni e scrittura a mano si vedono da una parte e dall'altra
+  notesCtl = sheetCtl = mountNotes(art, { lesson: L.n, get: () => getNotes(), save: (n) => saveNotes(n), onHighlightTap: editHighlight, onDoubleTap: toggleEraser });
+  annot.tool = "hl"; sheetCtl.setTool("hl");
 }
 
 // ---------- backup: un file con tutte le materie; il caricamento unisce (sync.js), non sovrascrive
@@ -1069,7 +1157,7 @@ async function exportBackup() {
   const data = { app: "ecampus-quiz", v: 2, d: Date.now(), settings: { examDate: settings.examDate, pan: settings.pan },
     stats: Object.fromEntries(subjects.map((s) => [s.id, stats(s.id)])),
     notes: Object.fromEntries(subjects.map((s) => [s.id, getNotes(s.id)])) };
-  const name = `ecampus-quiz-backup-${new Date().toISOString().slice(0, 10)}.json`;
+  const name = "ecampus-quiz-backup.json"; // sempre lo stesso nome: sostituisce il file precedente, così non si carica un backup vecchio
   const file = new File([JSON.stringify(data)], name, { type: "application/json" });
   store.set("ecq:lastBackup", Date.now());
   // su iPhone/iPad il foglio di condivisione permette "Salva su File" (iCloud Drive)
@@ -1108,7 +1196,7 @@ window.addEventListener("hashchange", route);
   subjects = await fetch("data/subjects.json", { cache: "no-cache" }).then((r) => r.json());
   const want = store.get("ecq:subject", subjects[0].id);
   await loadSubject(subjects.some((s) => s.id === want) ? want : subjects[0].id);
-  if (sess && location.hash !== "#/quiz" && !location.hash.startsWith("#/teoria")) location.hash = "#/quiz";
+  if (sess?.mode === "exam" && location.hash !== "#/quiz" && !location.hash.startsWith("#/teoria")) location.hash = "#/quiz";
   route();
   if ("serviceWorker" in navigator && location.protocol === "https:") {
     await navigator.serviceWorker.register("sw.js");

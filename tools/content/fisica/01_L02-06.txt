@@ -1,23 +1,74 @@
 ## L2 Grandezze fisiche, unità di misura ed errori
-2-1 B La differenza va calcolata come valore finale meno iniziale: andando da Riccione (23,5 °C) a Rimini (22,3 °C), $\Delta T = 22{,}3 - 23{,}5 = -1{,}2\ ^\circ\mathrm{C}$.
-2-2 A Nel SI le unità fondamentali di lunghezza, massa e tempo sono metro (m), chilogrammo (kg) e secondo (s).
-2-3 D Per somme e differenze si sommano gli errori **assoluti**: $\delta z = \delta x + \delta y$ (anche quando $z = x - y$).
-2-4 B Per prodotti e quozienti si sommano gli errori **relativi**: $\dfrac{\delta z}{|z|} = \dfrac{\delta x}{|x|} + \dfrac{\delta y}{|y|}$.
-2-5 B Una grandezza derivata è definita a partire dalle grandezze fondamentali (es. velocità = lunghezza/tempo).
-2-6 B La grandezza fisica è la proprietà misurabile, cioè la temperatura; il termometro è lo strumento, il numero letto è la misura.
-2-7 A $1\ \mathrm{m/s} = 3{,}6\ \mathrm{km/h}$, quindi $60 \times 3{,}6 = 216\ \mathrm{km/h}$.
-2-8 A $1\ \mu\mathrm{m} = 10^{-6}\ \mathrm{m} = 10^{-3}\ \mathrm{mm}$.
-2-9 B Il prefisso mega vale $10^6$: $1\ \mathrm{MHz} = 10^6\ \mathrm{Hz}$.
-2-10 D Velocità = lunghezza/tempo, quindi $[L][T]^{-1}$.
-2-11 D L'unità SI di lunghezza è il metro; il centimetro è un sottomultiplo, non un'unità SI.
-2-12 D Distanza, altezza e lunghezza hanno dimensioni $[L]$; la velocità ha dimensioni $[L][T]^{-1}$.
-2-13 C La velocità ha modulo, direzione e verso: è vettoriale. Lavoro, temperatura e tempo sono scalari.
-2-14 B La massa è uno scalare; campo elettrico, spostamento e accelerazione sono vettori.
-2-15 B L'errore si scrive con una (al massimo due) cifre significative e la misura va arrotondata allo stesso ordine: $143 \pm 30$ va scritto $140 \pm 30\ \mathrm{kg}$.
-2-16 B Il simbolo corretto è kg (con la k minuscola), il kilogrammo.
-2-17 B L'unità SI di lunghezza (distanza) è il metro, simbolo m.
-2-18 D Il newton (N) è l'unità della forza: $1\ \mathrm N = 1\ \mathrm{kg\,m/s^2}$.
-2-19 B Non esiste una scala termometrica "°N": le temperature si misurano in K (SI), °C o °F.
+2-1 B La domanda chiede una **variazione** (differenza) di temperatura, e il suo segno dipende dal verso del percorso. Si calcola sempre **valore finale meno valore iniziale**: $\Delta T = T_{fin} - T_{in}$, in $^\circ\mathrm{C}$.
+  Si parte da Riccione, quindi $T_{in} = 23{,}5\ ^\circ\mathrm{C}$, e si arriva a Rimini, quindi $T_{fin} = 22{,}3\ ^\circ\mathrm{C}$.
+  $$\Delta T = 22{,}3 - 23{,}5 = -1{,}2\ ^\circ\mathrm{C}$$
+  Il segno meno dice che passando da Riccione a Rimini la temperatura **scende**.
+  **Errore tipico:** chi sceglie 1,2 °C ha fatto la differenza corretta in modulo ma ha perso il segno (o ha sottratto nell'ordine opposto, cioè Riccione meno Rimini, che vale +1,2). Chi sceglie 2,4 °C o -2,4 °C ha sommato le due temperature o raddoppiato la differenza.
+  TRAP: la differenza dipende dall'ordine: da Riccione a Rimini è finale meno iniziale, quindi negativa.
+2-2 A Il Sistema Internazionale (SI) ha 7 unità fondamentali; le prime tre sono il **metro** (m) per la lunghezza, il **chilogrammo** (kg) per la massa e il **secondo** (s) per il tempo.
+  Sono unità di base: i multipli e sottomultipli (chilometro, centimetro, grammo, ora) si ottengono da queste ma non sono le unità SI.
+  **Errore tipico:** chi sceglie il chilometro o il centimetro come unità di lunghezza confonde un multiplo/sottomultiplo con l'unità di base. Chi sceglie il grammo sbaglia perché l'unità SI di massa è il chilogrammo, non il grammo. Chi sceglie l'ora confonde un'unità di uso comune con il secondo SI.
+2-3 D Se $z = x - y$ e le due grandezze hanno errori assoluti $\delta x$ e $\delta y$, l'errore su $z$ si stima con la **propagazione degli errori** per somme e differenze: gli **errori assoluti** si **sommano**.
+  $$\delta z = \delta x + \delta y$$
+  Il motivo: nel caso peggiore $x$ è sbagliato in un verso e $y$ nell'altro, quindi gli sbagli si accumulano anche se le misure si sottraggono. Un errore non può mai diminuire perché si fa una differenza.
+  Esempio: $x = 10 \pm 1$ e $y = 6 \pm 1$ danno $z = 4 \pm 2$.
+  **Errore tipico:** chi sceglie la differenza tra gli errori pensa che sottrarre le misure sottragga anche gli errori: è falso, l'incertezza sulla differenza è la somma. Chi sceglie la somma degli errori **relativi** (o la loro differenza) applica la regola dei prodotti e dei quozienti alla differenza: per somme e differenze si sommano gli errori assoluti.
+2-4 B Se $z = x\,y$ (prodotto) o $z = x/y$ (quoziente), la propagazione degli errori dice che si sommano gli errori **relativi**, cioè il rapporto tra errore e valore della misura.
+  $$\frac{\delta z}{|z|} = \frac{\delta x}{|x|} + \frac{\delta y}{|y|}$$
+  Esempio: $x = 10 \pm 1$ (10%) e $y = 20 \pm 1$ (5%): $z = 200$ ha errore relativo $10\% + 5\% = 15\%$, cioè $\delta z = 0{,}15 \cdot 200 = 30$.
+  **Errore tipico:** chi sceglie la somma degli errori assoluti applica la regola delle somme e differenze a un prodotto. Chi sceglie il prodotto degli errori (assoluti o relativi) confonde l'operazione sulle grandezze con quella sugli errori: gli errori non si moltiplicano mai, si sommano.
+2-5 B In fisica le **grandezze fondamentali** (lunghezza, massa, tempo, corrente, temperatura, quantità di sostanza, intensità luminosa) sono scelte per convenzione. Le **grandezze derivate** sono quelle che si **definiscono a partire da** queste, con prodotti e rapporti: velocità = lunghezza/tempo, forza = massa × accelerazione.
+  La domanda chiede la definizione di grandezza derivata, e la definizione riguarda la **grandezza** (come si ottiene da quelle fondamentali).
+  **Errore tipico:** chi sceglie il rapporto tra le unità fondamentali descrive l'**unità** di misura della grandezza derivata, non la grandezza stessa: la frase è vera ma è una conseguenza, non la definizione richiesta. Chi sceglie la conversione da un altro sistema confonde derivata con convertita. Chi sceglie l'appartenenza al SI sbaglia perché anche una grandezza fondamentale ha unità SI.
+2-6 B Una **grandezza fisica** è una proprietà di un corpo o di un fenomeno che si può misurare. Il **termometro** è lo strumento, la **misura** è il risultato (numero più unità), la **scala** fissa l'unità.
+  Qui la proprietà misurabile della stanza è la **temperatura**.
+  **Errore tipico:** chi sceglie il termometro confonde la grandezza con lo strumento. Chi sceglie la misura della temperatura (per esempio 21 °C) confonde la grandezza con il suo valore numerico. Chi sceglie l'unità della scala termometrica confonde la grandezza con l'unità con cui la si esprime.
+2-7 A Serve una conversione di unità da m/s a km/h. Si usa $1\ \mathrm{m} = 10^{-3}\ \mathrm{km}$ e $1\ \mathrm{s} = \dfrac{1}{3600}\ \mathrm{h}$.
+  $$1\ \mathrm{m/s} = \frac{10^{-3}\ \mathrm{km}}{1/3600\ \mathrm h} = 3{,}6\ \mathrm{km/h}$$
+  Si moltiplica quindi per 3,6:
+  $$60\ \mathrm{m/s} = 60 \times 3{,}6\ \mathrm{km/h} = 216\ \mathrm{km/h}$$
+  **Errore tipico:** chi sceglie 21,6 km/h ha sbagliato di un fattore 10 (ha moltiplicato per 0,36). Chi sceglie 40 km/h o 160 km/h ha diviso o usato un fattore non corretto: dividere per 3,6 si fa nel passaggio opposto, da km/h a m/s.
+  TRAP: da m/s a km/h si **moltiplica** per 3,6, da km/h a m/s si divide.
+2-8 A Il prefisso **micro** (simbolo $\mu$) vale $10^{-6}$, quindi $1\ \mu\mathrm{m} = 10^{-6}\ \mathrm{m}$.
+  Il millimetro vale $10^{-3}\ \mathrm{m}$, cioè $1\ \mathrm{m} = 10^3\ \mathrm{mm}$. Allora:
+  $$1\ \mu\mathrm{m} = 10^{-6}\ \mathrm{m} = 10^{-6} \times 10^{3}\ \mathrm{mm} = 10^{-3}\ \mathrm{mm}$$
+  **Errore tipico:** chi sceglie $10^{-3}$ m ha confuso micro con milli. Chi sceglie $10^{-9}$ m ha confuso micro con nano. Chi sceglie $10^{3}$ m ha scambiato micro con kilo.
+2-9 B Il prefisso **mega** (M) vale $10^6$, quindi un megahertz è un milione di hertz.
+  $$1\ \mathrm{MHz} = 10^6\ \mathrm{Hz}$$
+  Scala dei prefissi: kilo = $10^3$, mega = $10^6$, giga = $10^9$, tera = $10^{12}$.
+  **Errore tipico:** chi sceglie $10^3$ Hz ha preso kilo (kHz). Chi sceglie $10^9$ Hz ha preso giga (GHz). Chi sceglie $10^{12}$ Hz ha preso tera (THz).
+2-10 D La **velocità** è lo spazio percorso diviso il tempo impiegato: $v = \dfrac{s}{t}$. Lo spazio è una lunghezza $[L]$, il tempo è $[T]$.
+  $$[v] = \frac{[L]}{[T]} = [L][T]^{-1}$$
+  **Errore tipico:** chi sceglie lunghezza per tempo alla meno due ha scritto le dimensioni dell'**accelerazione** (velocità diviso tempo). Le altre due contengono la massa $[m]$, che nella velocità non compare.
+2-11 D Il SI ha sette unità di base: metro, chilogrammo, secondo, ampere, kelvin, mole, candela. Il **centimetro** è un sottomultiplo del metro ($10^{-2}\ \mathrm m$): si può usare ma non è un'unità SI.
+  Kelvin, secondo e chilogrammo sono invece tutte e tre unità fondamentali del SI.
+  **Errore tipico:** chi sceglie il chilogrammo ricorda che ha un prefisso (kilo) e lo crede un multiplo. In realtà il chilogrammo è l'unità di base del SI per la massa (il grammo non lo è).
+2-12 D Conta solo la **dimensione** fisica. Distanza, altezza e lunghezza sono tutte una lunghezza: dimensione $[L]$.
+  La velocità è una lunghezza diviso un tempo: $[L][T]^{-1}$, diversa dalle altre tre.
+  **Errore tipico:** chi sbaglia si lascia ingannare dai nomi diversi (distanza, altezza, lunghezza) e crede che nomi diversi significhino dimensioni diverse. Se si misurano in metri hanno la stessa dimensione.
+2-13 C Una grandezza **vettoriale** richiede modulo, direzione e verso; una **scalare** è descritta da un solo numero con l'unità.
+  La **velocità** ha un verso e una direzione di moto: è vettoriale. Il lavoro è un prodotto scalare di forza e spostamento, la temperatura e l'intervallo di tempo sono solo numeri.
+  **Errore tipico:** chi sceglie il lavoro lo associa a forza e spostamento, che sono vettori, ma il lavoro è il loro prodotto scalare e dà un numero. Temperatura e tempo non hanno alcuna direzione.
+2-14 B Una grandezza **scalare** è definita da un numero e dall'unità, senza direzione né verso. La **massa** (in kg) è uno scalare.
+  Il campo elettrico, lo spostamento e l'accelerazione hanno modulo, direzione e verso: sono vettori.
+  **Errore tipico:** chi sceglie l'accelerazione o lo spostamento dimentica che la direzione e il verso contano (un'accelerazione può essere verso l'alto o verso il basso). Il campo elettrico in ogni punto ha una direzione ben precisa.
+2-15 B Regole per scrivere una misura $x \pm \delta x$: l'**errore** ha **una** cifra significativa (al massimo due) e la **misura** va arrotondata alla **stessa posizione decimale** dell'errore.
+  Controllo caso per caso: $13{,}4 \pm 0{,}2$ (errore ai decimi, misura ai decimi), $1{,}34 \pm 0{,}01$ (centesimi, centesimi) e $143 \pm 3$ (unità, unità) sono corretti.
+  In $143 \pm 30$ l'errore è alle decine ma la misura arriva alle unità: la cifra 3 non è significativa. Si deve scrivere $140 \pm 30\ \mathrm{kg}$.
+  **Errore tipico:** chi sceglie una delle altre espressioni guarda solo i numeri e non confronta la posizione dell'ultima cifra della misura con quella dell'errore.
+  TRAP: l'errore ha senso solo se l'ultima cifra della misura è allo stesso ordine dell'errore: $143 \pm 30$ no, $143 \pm 3$ sì.
+2-16 B Il SI ha come unità di massa il **chilogrammo**, simbolo **kg** (k minuscola).
+  Il grammo è un suo sottomultiplo ($1\ \mathrm g = 10^{-3}\ \mathrm{kg}$), la libbra è un'unità anglosassone fuori dal SI.
+  **Errore tipico:** chi sceglie il grammo lo vede come l'unità "base" perché il nome del prefisso "kilo" fa pensare a un multiplo. Nel SI però l'unità di base per la massa è proprio il kg.
+2-17 B L'unità SI di lunghezza è il **metro**, simbolo **m**.
+  Centimetro, chilometro e millimetro sono suoi multipli e sottomultipli ($10^{-2}$, $10^3$, $10^{-3}\ \mathrm m$), non unità SI di base.
+  **Errore tipico:** chi sceglie il centimetro o il millimetro si fida del nome "centimetro m" o dei simboli accostati. Chi sceglie il chilometro cita l'unità di uso comune per le distanze, ma non è quella del SI.
+2-18 D Il **newton** (N) è l'unità della **forza**. Dalla legge $F = m\,a$ si ricava $1\ \mathrm N = 1\ \mathrm{kg\,m/s^2}$: è la forza che imprime a 1 kg un'accelerazione di $1\ \mathrm{m/s^2}$.
+  **Errore tipico:** chi sceglie l'unità del lavoro confonde il newton con il joule ($1\ \mathrm J = 1\ \mathrm{N\,m}$). Chi sceglie la temperatura assoluta confonde con il kelvin. Chi sceglie il potenziale confonde con il volt.
+2-19 B Le scale per la temperatura sono il **kelvin** (K, SI), il grado **Celsius** (°C) e il grado **Fahrenheit** (°F). Non esiste il "°N", quindi un risultato espresso in questa unità non è corretto.
+  Le altre misure sono ben scritte: $2\ \mathrm s$ è un tempo, $0\ \mathrm{m/s}$ una velocità nulla (valore ammesso), $1\cdot10^2\ \mathrm J$ un'energia.
+  **Errore tipico:** chi sceglie la velocità nulla pensa che zero non sia una misura valida: invece è un valore perfettamente legittimo. Chi sceglie l'energia non riconosce la notazione scientifica.
+  TRAP: la domanda è negativa ("non è corretto"): va scelta l'unica misura con un'unità che non esiste.
 2-20 APERTA
 KW: sistema internazionale|SI, fondamentali, derivate, metro, chilogrammo|kilogrammo, secondo, ampere, kelvin, mole, candela
 > Il **Sistema Internazionale (SI)** è il sistema di unità di misura adottato a livello internazionale. Si basa su **7 grandezze fondamentali**, ciascuna con la propria unità campione:
@@ -64,13 +115,31 @@ KW: valore|migliore stima, errore|incertezza, cifre significative, unità di mis
 > Si può anche indicare l'**errore relativo** $\delta x / |x_{best}|$ (adimensionale, spesso in percentuale), che misura la qualità della misura.
 
 ## L3 Grandezze scalari e vettoriali
-3-1 A Un vettore è caratterizzato da modulo, direzione e verso; lo spostamento è un esempio di grandezza vettoriale, non una sua caratteristica.
-3-2 D $\vec a \cdot \vec b = ab\cos\theta$; con $\theta = 90°$ il coseno è nullo, quindi il prodotto scalare è zero.
-3-3 D $|\vec V| = \sqrt{V_x^2 + V_y^2} = \sqrt{9 + 16} = 5$.
-3-4 D La massa è scalare; peso e forza sono vettori, lo spostamento è un vettore.
-3-5 A Sì: il prodotto di uno scalare per un vettore dà un vettore (es. $\vec F = m\vec a$).
-3-6 B Moltiplicando un vettore per un numero si ottiene un vettore con la stessa direzione, modulo moltiplicato e verso invertito se il numero è negativo.
-3-7 D Non conoscendo le direzioni dei due spostamenti non si può calcolare lo spostamento risultante: può valere da 1 m a 7 m (5 m solo se perpendicolari).
+3-1 A Un vettore è caratterizzato da tre elementi: **modulo** (intensità, con unità), **direzione** (la retta su cui giace) e **verso** (l'orientamento sulla retta).
+  Lo **spostamento** non è una caratteristica del vettore: è un esempio di grandezza che si rappresenta con un vettore. La domanda chiede cosa NON caratterizza un vettore, quindi la risposta è lo spostamento.
+  **Errore tipico:** chi sceglie modulo, direzione o verso cade nell'inversione della domanda e cerca un elemento che caratterizza il vettore. La domanda chiede l'opposto: l'unico che non è una caratteristica.
+  TRAP: la domanda è negativa ("non caratterizza"): spostamento è un vettore, non una sua caratteristica.
+3-2 D Il **prodotto scalare** di due vettori è $\vec a \cdot \vec b = a\,b\cos\theta$, dove $a$ e $b$ sono i moduli e $\theta$ l'angolo tra i vettori. Il risultato è un numero, non un vettore.
+  Per vettori perpendicolari $\theta = 90^\circ$ e $\cos 90^\circ = 0$:
+  $$\vec a \cdot \vec b = a\,b \cdot 0 = 0$$
+  **Errore tipico:** chi sceglie un vettore ortogonale ai due confonde il prodotto scalare con il **vettoriale** (che per vettori perpendicolari ha modulo $ab\sin 90^\circ = ab$). Chi sceglie il prodotto dei moduli ha usato $\cos\theta = 1$, valido solo per vettori paralleli. Chi sceglie "sempre maggiore di zero" dimentica che il coseno può essere zero o negativo.
+3-3 D Il modulo di un vettore con componenti cartesiane $V_x$ e $V_y$ si ricava dal teorema di Pitagora: $|\vec V| = \sqrt{V_x^2 + V_y^2}$.
+  $$|\vec V| = \sqrt{3^2 + 4^2} = \sqrt{9 + 16} = \sqrt{25} = 5$$
+  **Errore tipico:** chi sceglie 7 ha sommato le componenti ($3 + 4$) senza radice. Chi sceglie 25 si è fermato a $V_x^2 + V_y^2$ senza fare la radice. Chi sceglie 10 ha moltiplicato per 2 la somma, senza ragione fisica.
+3-4 D Uno **scalare** è descritto da un solo numero con unità. La **massa** (in kg) è uno scalare.
+  Il peso e la forza sono vettori (direzione verticale verso il basso nel caso del peso). Lo spostamento è un vettore: conta dove si va, non solo quanto.
+  **Errore tipico:** chi sceglie il peso lo confonde con la massa. Il peso è la forza $P = mg$ con direzione e verso, la massa è uno scalare.
+3-5 A Sì: moltiplicare un vettore per uno scalare è un'operazione sempre definita, e dà un **vettore**. Nel prodotto cambia il modulo (moltiplicato per il valore assoluto dello scalare) e il verso se lo scalare è negativo.
+  Esempio: $\vec F = m\,\vec a$ (massa per accelerazione) oppure $\vec p = m\,\vec v$. La massa è $\mathrm{kg}$ e l'accelerazione $\mathrm{m/s^2}$: le dimensioni **non** devono coincidere.
+  **Errore tipico:** chi sceglie "no" confonde il prodotto per uno scalare con il prodotto scalare tra due vettori. Chi richiede le stesse dimensioni, o un vettore nullo, introduce condizioni inutili.
+3-6 B Moltiplicare un vettore per un **numero** (scalare) dà sempre un **vettore**: stessa direzione, modulo moltiplicato per $|k|$, verso invertito se $k < 0$.
+  Esempio: $2\,\vec v$ ha modulo doppio e stesso verso, $-3\,\vec v$ ha modulo triplo e verso opposto.
+  **Errore tipico:** chi sceglie un numero, o dice che dipende dal tipo di prodotto, sta pensando a prodotto scalare o vettoriale tra **due vettori**. Qui si moltiplica un vettore per un numero, che è un'operazione diversa.
+3-7 D Lo spostamento complessivo è la **somma vettoriale** dei due spostamenti, non la somma dei moduli. Il suo modulo dipende dall'angolo tra i due tratti.
+  I casi estremi: se i due spostamenti sono nella stessa direzione e verso si ha $4 + 3 = 7\ \mathrm m$; se sono opposti $4 - 3 = 1\ \mathrm m$; se sono perpendicolari $\sqrt{4^2 + 3^2} = 5\ \mathrm m$. In generale il risultato è compreso tra 1 m e 7 m.
+  Il testo non dà gli angoli, quindi non si può decidere: i dati non bastano.
+  **Errore tipico:** chi sceglie 7 m somma i moduli (valido solo in linea retta e stesso verso). Chi sceglie 5 m pensa a un triangolo rettangolo 3-4-5 senza che il testo dica che i tratti sono perpendicolari. Chi sceglie 1 m sottrae i moduli, valido solo se opposti.
+  TRAP: "sul piano" non significa "perpendicolari": senza l'angolo tra i due tratti il modulo non è determinato.
 3-8 APERTA
 KW: prodotto scalare, prodotto vettoriale, lavoro, forza, spostamento, momento|momento torcente, forza di lorentz|lorentz, potenza, coseno|cos, seno|sin
 > **Prodotto scalare** ($\vec a \cdot \vec b = ab\cos\theta$, il risultato è uno scalare):
@@ -100,45 +169,153 @@ KW: modulo, direzione, verso, scalare|scalari, numero, unità di misura, somma|r
 > Differenze principali: gli scalari si sommano algebricamente, i vettori con la **regola del parallelogramma** (o punta-coda), cioè sommando le **componenti** lungo gli assi. Per i vettori sono definiti il prodotto per uno scalare, il prodotto scalare (risultato scalare) e il prodotto vettoriale (risultato vettore).
 
 ## L4 Operazioni con i vettori
-4-1 D $|\vec v| = \sqrt{0 + 4 + 16} = \sqrt{20}$ e $|\vec w| = \sqrt{4 + 0 + 16} = \sqrt{20}$: stessa lunghezza.
-4-2 D $\vec v \cdot \vec w = 1\cdot6 + 2\cdot3 + 4\cdot(-3) = 0$: i vettori sono ortogonali.
-4-3 A $\vec v = \hat j$, $\vec w = 2\hat i$: $\vec v \times \vec w = 2(\hat j \times \hat i) = -2\hat k$, diretto lungo l'asse z.
-4-4 B $\vec v \cdot \vec w = 0\cdot2 + 2\cdot0 + 4\cdot4 = 16$.
+4-1 D Il **modulo** di un vettore in tre dimensioni è $|\vec v| = \sqrt{v_x^2 + v_y^2 + v_z^2}$. Basta confrontare le lunghezze dei due vettori.
+  $$|\vec v| = \sqrt{0^2 + 2^2 + 4^2} = \sqrt{20} \approx 4{,}47$$
+  $$|\vec w| = \sqrt{2^2 + 0^2 + 4^2} = \sqrt{20} \approx 4{,}47$$
+  I due moduli coincidono: stessa lunghezza.
+  **Errore tipico:** chi sceglie che uno sia più lungo dell'altro confronta a occhio le componenti senza calcolare: i vettori sono fatti degli stessi numeri 2 e 4 in posizione scambiata. Chi sceglie "ortogonali" sbaglia perché il prodotto scalare è $0\cdot2 + 2\cdot0 + 4\cdot4 = 16 \neq 0$.
+4-2 D Per capire l'angolo tra due vettori si usa il **prodotto scalare** $\vec v\cdot\vec w = v_x w_x + v_y w_y + v_z w_z = vw\cos\theta$. Se vale zero, $\cos\theta = 0$ e i vettori sono ortogonali.
+  $$\vec v\cdot\vec w = 1\cdot 6 + 2\cdot 3 + 4\cdot(-3) = 6 + 6 - 12 = 0$$
+  Quindi $\theta = 90^\circ$: i vettori sono **ortogonali**.
+  **Errore tipico:** chi sceglie 30° o 60° sceglie un angolo a caso senza calcolarlo: $\cos 30^\circ$ e $\cos 60^\circ$ non sono zero, quindi richiederebbero un prodotto scalare diverso da 0. Chi sceglie "paralleli" non verifica che le componenti non sono proporzionali (il rapporto $6/1$ non è uguale a $3/2$).
+4-3 A Il **prodotto vettoriale** $\vec v\times\vec w$ è un vettore perpendicolare al piano dei due vettori. Qui $\vec v = \hat\jmath$ (lungo y) e $\vec w = 2\,\hat\imath$ (lungo x), che giacciono nel piano xy: il prodotto è quindi lungo l'asse **z**.
+  Calcolo: $\vec v\times\vec w = \hat\jmath \times 2\,\hat\imath = 2\,(\hat\jmath\times\hat\imath)$. Nell'ordine ciclico $\hat\imath\to\hat\jmath\to\hat k$ si ha $\hat\imath\times\hat\jmath = \hat k$, quindi invertendo l'ordine $\hat\jmath\times\hat\imath = -\hat k$.
+  $$\vec v\times\vec w = -2\,\hat k$$
+  Il modulo è $|v||w|\sin 90^\circ = 1\cdot 2 = 2$, il verso è opposto all'asse z.
+  **Errore tipico:** chi sceglie "nullo" ha confuso il caso con quello di vettori paralleli (solo in quel caso il prodotto vettoriale è nullo). Chi sceglie "parallelo a $\vec v$" dimentica che il prodotto vettoriale è sempre perpendicolare ai due vettori. Chi sceglie la bisettrice del piano xy dimentica che il risultato esce dal piano.
+4-4 B Il **prodotto scalare** in componenti è $\vec v\cdot\vec w = v_x w_x + v_y w_y + v_z w_z$, e il risultato è un numero.
+  $$\vec v\cdot\vec w = 0\cdot 2 + 2\cdot 0 + 4\cdot 4 = 0 + 0 + 16 = 16$$
+  **Errore tipico:** chi sceglie 20 ha calcolato $|\vec v|^2 = 0 + 4 + 16$, cioè il prodotto scalare di $\vec v$ con se stesso, e non con $\vec w$. Chi sceglie 8 o 12 ha moltiplicato componenti non corrispondenti o ha sbagliato la somma.
 
 ## L5 Cinematica: posizione, velocità e accelerazione
-5-1 D Con $a = 2t$ e partenza da fermo: $v = t^2$ e $x = t^3/3$; a $t = 3\ \mathrm s$: $x = 27/3 = 9\ \mathrm m$.
-5-2 B Moto uniforme: $s = vt = 6{,}5 \times 30 = 195\ \mathrm m$.
-5-3 D Da fermo $s = \tfrac12 a t^2$: a parità di tempo lo spazio è proporzionale all'accelerazione, quindi raddoppia.
-5-4 A! Con $s = \tfrac12 a t^2 = \tfrac12 \cdot 24 \cdot 100 = 1200\ \mathrm m$. Nessuna opzione riporta 1200 m: il paniere indica 2400 m, che si ottiene dimenticando il fattore ½ ($a t^2$). All'esame scegli 2400 m, ma ricorda la formula corretta.
-5-5 D $120\ \mathrm{km/h} = 33{,}3\ \mathrm{m/s}$; $t = v/a = 33{,}3/4 = 8{,}33\ \mathrm s$.
-5-6 D $\Delta s = s_2 - s_1 = 7{,}1 - 3{,}8 = 3{,}3\ \mathrm m$.
-5-7 C Salendo il corpo è soggetto a $g$ diretta verso il basso, opposta alla velocità: moto uniformemente decelerato.
-5-8 B $15\ \mathrm{km/h} = 4{,}17\ \mathrm{m/s}$; $t = 850/4{,}17 \approx 204\ \mathrm s$.
-5-9 C Caduta libera: $h = \tfrac12 g t^2 = \tfrac12 \cdot 9{,}8 \cdot 16 = 78{,}4\ \mathrm m$ (il tempo di arrivo della luce è trascurabile).
-5-10 B Salita: $t = v_0/g = 196/9{,}8 = 20\ \mathrm s$; la discesa dura altrettanto: 40 s in totale.
-5-11 A $|\vec s| = \sqrt{5^2 + 3^2} = \sqrt{34} \approx 5{,}8\ \mathrm{km}$.
-5-12 B $s = \tfrac12 a t^2 = \tfrac12 \cdot 0{,}1 \cdot 100 = 5\ \mathrm m$.
-5-13 D $t = s/v = 100/6{,}5 \approx 15{,}4\ \mathrm s$.
-5-14 B $t = v/a = 10/0{,}1 = 100\ \mathrm s$.
-5-15 C Se la velocità è costante l'accelerazione è nulla (costante): non può essere variabile.
-5-16 A La lancetta dei secondi compie un giro in 60 s: il periodo è 60 s.
-5-17 A $54\ \mathrm{km/h} = 15\ \mathrm{m/s}$, $108\ \mathrm{km/h} = 30\ \mathrm{m/s}$: $a = 15/20 = 0{,}75\ \mathrm{m/s^2}$.
-5-18 A Legge oraria del moto uniforme: $s = s_0 + vt = 2 + 20t$.
-5-19 D Accelerazione = velocità/tempo: $\mathrm{(m/s)/s = m/s^2}$.
-5-20 D L'accelerazione è la variazione del vettore velocità nel tempo, $\vec a = d\vec v/dt$ (non solo del modulo).
-5-21 B $v = 100/9{,}86 = 10{,}14\ \mathrm{m/s} = 36{,}5\ \mathrm{km/h}$.
-5-22 A $t = \Delta v / a = (6{,}5 - 11)/(-4) = 1{,}125\ \mathrm s$.
-5-23 D $T = 1/f = 1/(10^8\ \mathrm{Hz}) = 10^{-8}\ \mathrm s = 10\ \mathrm{ns}$.
-5-24 A $f = 1/T = 1/60\ \mathrm{Hz}$.
-5-25 C $\omega = 2\pi/T = 2\pi/60 \approx 0{,}105\ \mathrm{rad/s}$.
-5-26 D $\omega = 2\pi f = 2\pi \cdot 100 \approx 628\ \mathrm{rad/s}$.
-5-27 C $[a] = [L][T]^{-2}$: lunghezza per tempo alla meno due.
-5-28 A $v^2 = v_0^2 + 2as \Rightarrow a = (400 - 100)/(2 \cdot 75) = 2\ \mathrm{m/s^2}$.
-5-29 C Moto uniforme: spazi percorsi proporzionali ai tempi (velocità costante).
-5-30 A $v = \sqrt{2gh} = \sqrt{2 \cdot 9{,}8 \cdot 30} \approx 24\ \mathrm{m/s}$.
-5-31 B Da fermo $s \propto t^2$: raddoppiando il tempo lo spazio quadruplica, $500 \times 4 = 2000\ \mathrm m$.
-5-32 D $a = \Delta v/\Delta t = 11/4 = 2{,}75\ \mathrm{m/s^2}$.
-5-33 B Velocità media $400/70\ \mathrm{m/s}$; in 10 s percorre $400 \cdot 10/70 = 400/7\ \mathrm m \approx 57\ \mathrm m$.
+5-1 D L'accelerazione è la derivata della velocità e la velocità è la derivata della posizione: per risalire dall'accelerazione si **integra** due volte, usando le condizioni iniziali (da fermo, $v(0)=0$, e $x(0)=0$).
+  Velocità: $$v(t) = \int_0^t 2t'\,dt' = \Big[t'^2\Big]_0^t = t^2$$
+  Posizione: $$x(t) = \int_0^t t'^2\,dt' = \Big[\frac{t'^3}{3}\Big]_0^t = \frac{t^3}{3}$$
+  A $t = 3\ \mathrm s$: $$x = \frac{3^3}{3} = \frac{27}{3} = 9\ \mathrm m$$
+  **Errore tipico:** chi sceglie 27 m ha dimenticato il fattore $1/3$ della primitiva (ha preso $t^3$). Chi sceglie 18 m ha usato $a(3)=6$ in formule del moto a accelerazione costante, che qui non valgono perché $a$ cresce col tempo.
+  TRAP: l'accelerazione **non è costante** ($a = 2t$): le formule $\tfrac12 at^2$ e $v = at$ non si possono usare, serve l'integrale.
+5-2 B Moto **uniforme**: velocità costante, quindi lo spazio è $s = v\,t$.
+  $$s = 6{,}5\ \mathrm{m/s} \times 30\ \mathrm s = 195\ \mathrm m$$
+  Le unità sono già coerenti (m/s e s), non serve alcuna conversione.
+  **Errore tipico:** chi sceglie 246, 63 o 341 m non ha applicato $s = v\,t$ (per esempio ha diviso 30 per 6,5, che dà 4,6 s, cioè un tempo e non uno spazio). Per uno spazio in moto uniforme si moltiplicano velocità e tempo.
+5-3 D Da fermo con accelerazione costante lo spazio è $s = \tfrac12 a\,t^2$. A parità di tempo $\Delta t$, $s$ è **proporzionale ad $a$**.
+  Con accelerazione $2a$: $$s' = \tfrac12 (2a)\,\Delta t^2 = 2\cdot\tfrac12 a\,\Delta t^2 = 2s$$
+  Lo spazio percorso raddoppia.
+  **Errore tipico:** chi sceglie il quadruplo ha applicato il quadrato all'accelerazione, invece che al tempo: il termine al quadrato è $t^2$, non $a$. Chi sceglie la metà o "uguale" ha ragionato al contrario o pensato che a parità di tempo lo spazio non cambi.
+5-4 A! Da fermo con accelerazione costante: $s = \tfrac12 a\,t^2$, con $a$ in $\mathrm{m/s^2}$ e $t$ in s.
+  $$s = \tfrac12 \cdot 24\ \mathrm{m/s^2} \cdot (10\ \mathrm s)^2 = \tfrac12 \cdot 24 \cdot 100 = 1200\ \mathrm m$$
+  Nessuna opzione vale 1200 m. Il paniere indica 2400 m, che si ottiene dimenticando il fattore $\tfrac12$, cioè calcolando $a\,t^2 = 24\cdot 100$. Nel PDF è evidenziata proprio questa risposta: all'esame scegli 2400 m, ma ricorda che la formula corretta dà 1200 m.
+  **Errore tipico:** il valore del paniere (2400 m) si ottiene proprio dimenticando il $\tfrac12$. Chi sceglie 100 m o 50 m ha usato $t^2$ o $\tfrac12 t^2$ senza l'accelerazione. Il valore 2600 m non corrisponde a nessuna formula del moto uniformemente accelerato.
+  TRAP: il fattore $\tfrac12$ c'è nella formula: nell'elenco manca il 1200 m e la risposta del paniere lo ignora.
+5-5 D Da fermo con accelerazione costante: $v = a\,t$, da cui $t = v/a$. Prima va convertita la velocità in unità SI.
+  $$120\ \mathrm{km/h} = \frac{120}{3{,}6}\ \mathrm{m/s} = 33{,}3\ \mathrm{m/s}$$
+  $$t = \frac{v}{a} = \frac{33{,}3\ \mathrm{m/s}}{4\ \mathrm{m/s^2}} = 8{,}33\ \mathrm s$$
+  **Errore tipico:** chi dimentica la conversione ottiene $120/4 = 30\ \mathrm s$ (valore non offerto, ma è la trappola). Gli altri valori (12,3 s, 2,8 s, 25,2 s) non corrispondono a nessuna formula corretta.
+  TRAP: la velocità è data in km/h e l'accelerazione in $\mathrm{m/s^2}$: converti prima, altrimenti le unità non sono coerenti.
+5-6 D La **distanza percorsa** è la lunghezza del tratto tra le due posizioni, in questo caso lungo una retta senza inversioni: $\Delta s = s_2 - s_1$.
+  $$\Delta s = 7{,}1 - 3{,}8 = 3{,}3\ \mathrm m$$
+  Il valore è positivo perché il punto si sposta nel verso positivo e la distanza è una lunghezza (mai negativa).
+  **Errore tipico:** chi sceglie 11,1 m (o -11,1 m) ha **sommato** le due posizioni invece di sottrarle. Chi sceglie -3,3 m ha usato il segno di $s_1 - s_2$ e ha dimenticato che la distanza è positiva.
+5-7 C Dopo il lancio verso l'alto agisce solo la gravità: l'accelerazione è $g \approx 9{,}8\ \mathrm{m/s^2}$ **diretta verso il basso**, costante.
+  La velocità iniziale è verso l'alto, quindi accelerazione e velocità hanno **versi opposti**: il corpo rallenta (moto decelerato). Il moto è rettilineo con accelerazione costante: uniformemente accelerato, con accelerazione opposta al moto.
+  **Errore tipico:** chi sceglie "rettilineo uniforme" dimentica la gravità. Chi sceglie "accelerazione concorde al moto" confonde la fase di salita con quella di discesa (in discesa la gravità è concorde al moto). Il moto circolare non c'entra: la traiettoria è una retta verticale.
+5-8 B Moto uniforme: $t = s/v$. Conviene convertire la velocità in m/s perché lo spazio è in metri.
+  $$15\ \mathrm{km/h} = \frac{15}{3{,}6}\ \mathrm{m/s} = 4{,}17\ \mathrm{m/s}$$
+  $$t = \frac{850\ \mathrm m}{4{,}17\ \mathrm{m/s}} \approx 204\ \mathrm s$$
+  **Errore tipico:** chi sceglie 56 s ha fatto $850/15 = 56{,}7$, cioè ha diviso metri per km/h senza convertire. Gli altri valori (150 s e 400 s) non derivano da nessuna conversione corretta.
+  TRAP: spazio in metri e velocità in km/h: serve convertire una delle due, altrimenti il risultato non ha senso.
+5-9 C Il petardo cade da fermo, in caduta libera: $h = \tfrac12 g\,t^2$, con $g = 9{,}8\ \mathrm{m/s^2}$. Il tempo indicato è quello di caduta, perché la luce dell'esplosione arriva praticamente subito.
+  $$h = \tfrac12 \cdot 9{,}8\ \mathrm{m/s^2} \cdot (4\ \mathrm s)^2 = \tfrac12 \cdot 9{,}8 \cdot 16 = 78{,}4\ \mathrm m$$
+  **Errore tipico:** chi dimentica il quadrato calcola $\tfrac12 \cdot 9{,}8 \cdot 4 = 19{,}6\ \mathrm m$, chi dimentica il $\tfrac12$ calcola $9{,}8 \cdot 16 = 156{,}8\ \mathrm m$ (nessuno dei due è tra le opzioni). I valori 38, 7,8 e 3,8 m non nascono da una formula corretta: sono ordini di grandezza sbagliati.
+5-10 B La velocità cala di 9,8 m/s al secondo, cioè $g = 9{,}8\ \mathrm{m/s^2}$. In salita si ferma quando $v = v_0 - g\,t = 0$.
+  $$t_{salita} = \frac{v_0}{g} = \frac{196\ \mathrm{m/s}}{9{,}8\ \mathrm{m/s^2}} = 20\ \mathrm s$$
+  La discesa dura altrettanto (il moto è simmetrico): $$t_{tot} = 2 \cdot 20 = 40\ \mathrm s$$
+  **Errore tipico:** chi sceglie 20 s ha calcolato solo la salita e si è fermato. Chi sceglie 19,6 s ha diviso per 10 invece di 9,8 (e ha calcolato solo la salita); chi sceglie 196 s ha riportato il numero della velocità come se fosse un tempo.
+5-11 A Gli spostamenti sono vettori perpendicolari (nord ed est): il modulo dello spostamento totale segue Pitagora.
+  $$|\vec s| = \sqrt{(5\ \mathrm{km})^2 + (3\ \mathrm{km})^2} = \sqrt{25 + 9} = \sqrt{34} \approx 5{,}8\ \mathrm{km}$$
+  **Errore tipico:** chi sceglie 7 km ha sommato i moduli (distanza percorsa), che non è il modulo dello spostamento. Chi sceglie 4,8 km o 3 km ha preso solo una parte, o ha sottratto invece di usare la radice.
+  TRAP: spostamento e cammino percorso sono diversi: il cammino è 5 + 3 = 8 km, lo spostamento (in linea retta) è 5,8 km.
+5-12 B Da fermo con accelerazione costante: $s = \tfrac12 a\,t^2$.
+  $$s = \tfrac12 \cdot 0{,}1\ \mathrm{m/s^2} \cdot (10\ \mathrm s)^2 = \tfrac12 \cdot 0{,}1 \cdot 100 = 5\ \mathrm m$$
+  **Errore tipico:** chi sceglie 10 m ha dimenticato il fattore $\tfrac12$ ($0{,}1 \cdot 100$). Chi sceglie 20 m ha raddoppiato invece di dimezzare. Il valore 15 m/s ha persino l'unità sbagliata: è una velocità, non uno spazio.
+5-13 D Moto uniforme: $t = s/v$.
+  $$t = \frac{100\ \mathrm m}{6{,}5\ \mathrm{m/s}} = 15{,}38\ \mathrm s \approx 15{,}4\ \mathrm s$$
+  Il paniere riporta 15,3 s: differenza di un decimo dovuta a un troncamento invece dell'arrotondamento. È l'unica opzione vicina al risultato.
+  **Errore tipico:** chi sceglie 2,3 s, 7,2 s o 30,4 s non ha applicato $t = s/v$. Se si inverte il rapporto si ottiene $6{,}5/100 = 0{,}065$ (senza senso come tempo): controlla sempre che lo spazio sia il numeratore.
+5-14 B Da fermo con accelerazione costante: $v = a\,t$, quindi $t = v/a$.
+  $$t = \frac{10\ \mathrm{m/s}}{0{,}1\ \mathrm{m/s^2}} = 100\ \mathrm s$$
+  **Errore tipico:** chi sceglie 10 s ha riportato la velocità come tempo, senza dividere per l'accelerazione. Gli altri valori (250 s e 75 s) non nascono da $v/a$: dividere per 0,1 equivale a moltiplicare per 10.
+5-15 C Conviene ricordare che $\vec a = d\vec v/dt$: se la velocità è **costante**, la sua derivata è zero, quindi l'accelerazione è **nulla**. Una velocità costante con accelerazione variabile è una contraddizione.
+  Le altre situazioni sono possibili: velocità nulla con accelerazione non nulla (un sasso lanciato verso l'alto nel punto più alto); velocità in un verso e accelerazione nel verso opposto (frenata); accelerazione costante non nulla, come nel moto uniformemente accelerato (l'ultima situazione elencata va letta così: l'accelerazione è costante e la direzione del moto è fissa).
+  **Errore tipico:** chi sceglie una delle altre confonde velocità nulla con accelerazione nulla. Velocità zero in un istante non implica $a = 0$ (la velocità può cambiare subito dopo).
+  TRAP: la domanda è negativa ("non è possibile"): velocità nulla non implica accelerazione nulla, mentre velocità costante sì.
+5-16 A Il **periodo** $T$ è il tempo di un giro completo. La lancetta dei secondi compie un giro in un minuto, cioè $T = 60\ \mathrm s$.
+  **Errore tipico:** chi sceglie 1/60 di hertz ha dato la **frequenza** ($f = 1/T$), non il periodo. Chi sceglie 1/60 di secondo ha confuso il rapporto. Chi sceglie 60 hertz ha scambiato periodo e frequenza e ha anche sbagliato l'unità.
+5-17 A Accelerazione media: $a = \dfrac{\Delta v}{\Delta t}$. Le velocità vanno convertite in m/s.
+  $$54\ \mathrm{km/h} = \frac{54}{3{,}6} = 15\ \mathrm{m/s}, \qquad 108\ \mathrm{km/h} = \frac{108}{3{,}6} = 30\ \mathrm{m/s}$$
+  $$a = \frac{30 - 15}{20} = \frac{15}{20} = 0{,}75\ \mathrm{m/s^2}$$
+  **Errore tipico:** chi sceglie 2,7 m/s$^2$ ha diviso la differenza in km/h per il tempo, poi convertito: $54/20 = 2{,}7$ senza dividere per 3,6. Chi sceglie 7,5 o 0,27 ha sbagliato la virgola.
+  TRAP: velocità in km/h e tempo in secondi: va convertita la velocità, altrimenti si ottiene 2,7 invece di 0,75.
+5-18 A Nel moto rettilineo uniforme la legge oraria è $s(t) = s_0 + v\,t$, dove $s_0$ è la posizione iniziale e $v$ la velocità.
+  Qui $s_0 = 2\ \mathrm m$ (a 2 m dall'origine a $t=0$) e $v = 20\ \mathrm{m/s}$:
+  $$s(t) = 2 + 20\,t$$
+  **Errore tipico:** chi sceglie $s = 20t$ dimentica la posizione iniziale di 2 m. Chi sceglie $s = 2 - 20t$ ha messo il segno sbagliato alla velocità. Chi sceglie $\tfrac12\cdot 2\cdot t^2$ usa la legge del moto uniformemente accelerato, che qui non vale perché $a = 0$.
+5-19 D L'accelerazione è una velocità divisa per un tempo: $a = \Delta v / \Delta t$.
+  $$[a] = \frac{\mathrm{m/s}}{\mathrm{s}} = \frac{\mathrm m}{\mathrm s^2} = \mathrm{m/s^2}$$
+  **Errore tipico:** chi sceglie m/s indica l'unità della velocità, non quella dell'accelerazione. Chi sceglie s/m o s/m$^2$ ha invertito il rapporto.
+5-20 D L'accelerazione è la **variazione della velocità nel tempo**: $\vec a = \dfrac{d\vec v}{dt}$. Poiché la velocità è un vettore, può cambiare in modulo, in direzione o in verso.
+  **Errore tipico:** chi sceglie la variazione del solo modulo dimentica che anche una sola variazione di direzione è un'accelerazione (come nel moto circolare uniforme, dove il modulo è costante). Chi sceglie la variazione di posizione o di spostamento descrive la velocità, non l'accelerazione.
+  TRAP: "velocità" e "modulo della velocità" non sono la stessa cosa: anche cambiare direzione è accelerare.
+5-21 B Velocità media: $v = s/t$. Per avere km/h si converte da m/s moltiplicando per 3,6.
+  $$v = \frac{100\ \mathrm m}{9{,}86\ \mathrm s} = 10{,}14\ \mathrm{m/s}$$
+  $$v = 10{,}14 \times 3{,}6 = 36{,}5\ \mathrm{km/h}$$
+  **Errore tipico:** chi sceglie 10,14 km/h si è fermato al passaggio in m/s e ha messo l'unità sbagliata. Chi sceglie 0,986 km/h ha diviso il tempo per 10 (errore di un ordine di grandezza). Chi sceglie 3,55 km/h non ha applicato né la formula della velocità né la conversione.
+5-22 A Moto con accelerazione costante: $v = v_0 + a\,t$, quindi $t = \dfrac{v - v_0}{a}$.
+  $$t = \frac{6{,}5 - 11}{-4} = \frac{-4{,}5}{-4} = 1{,}125\ \mathrm s$$
+  La velocità cala perché l'accelerazione è negativa: $v$ passa da 11 a 6,5 m/s.
+  **Errore tipico:** chi somma le velocità ($11 + 6{,}5 = 17{,}5$) o ignora il segno dell'accelerazione ottiene tempi sbagliati come 4,25 s o 11,86 s. Le altre combinazioni (per esempio 7,86 s) non derivano da $v = v_0 + a\,t$.
+5-23 D Periodo e frequenza sono uno l'inverso dell'altro: $T = 1/f$. Il prefisso mega (M) vale $10^6$.
+  $$f = 100\ \mathrm{MHz} = 100 \times 10^6\ \mathrm{Hz} = 10^8\ \mathrm{Hz}$$
+  $$T = \frac{1}{10^8\ \mathrm{Hz}} = 10^{-8}\ \mathrm s = 10 \times 10^{-9}\ \mathrm s = 10\ \mathrm{ns}$$
+  **Errore tipico:** chi sceglie 10 microsecondi o 10 millisecondi ha sbagliato l'esponente del prefisso (micro = $10^{-6}$, milli = $10^{-3}$). Chi sceglie 10 secondi ha dimenticato di convertire mega e ha messo unità sbagliata.
+  TRAP: 10 nanosecondi significa $10^{-8}\ \mathrm s$: attenzione a non confondere nano ($10^{-9}$) con micro ($10^{-6}$).
+5-24 A La **frequenza** $f$ è il numero di giri al secondo, ed è l'inverso del periodo: $f = 1/T$ (unità hertz).
+  $$f = \frac{1}{60\ \mathrm s} = \frac{1}{60}\ \mathrm{Hz}$$
+  **Errore tipico:** chi sceglie 60 secondi ha dato il **periodo**. Chi sceglie 60 hertz ha invertito il rapporto, dicendo 60 giri al secondo. Chi sceglie 1/60 di secondo ha usato l'unità di tempo invece dell'hertz.
+5-25 C La **velocità angolare** è l'angolo percorso nell'unità di tempo: $\omega = \dfrac{2\pi}{T}$, in $\mathrm{rad/s}$ (un giro completo vale $2\pi$ rad).
+  $$\omega = \frac{2\pi\ \mathrm{rad}}{60\ \mathrm s} = 0{,}105\ \mathrm{rad/s}$$
+  **Errore tipico:** chi sceglie 0,42 rad/s ha usato $T = 15$ s (un quarto di giro). Le altre opzioni con m/s hanno l'unità sbagliata: m/s indica una velocità lineare, non angolare.
+5-26 D Per un moto circolare la velocità angolare e la frequenza sono legate da $\omega = 2\pi f$.
+  $$\omega = 2\pi \cdot 100\ \mathrm{Hz} = 628\ \mathrm{rad/s}$$
+  Non serve il raggio: $\omega$ dipende solo da $f$.
+  **Errore tipico:** chi sceglie 6,28 rad/s ha usato $f = 1$ Hz, chi sceglie 62,8 rad/s $f = 10$ Hz (errore nelle potenze di dieci). Chi sceglie "non si può calcolare" pensa che serva il raggio, ma $\omega$ non lo richiede (serve solo per la velocità lineare $v = \omega r$).
+5-27 C L'accelerazione è velocità divisa per tempo. La velocità ha dimensioni $[L][T]^{-1}$, quindi:
+  $$[a] = \frac{[L][T]^{-1}}{[T]} = [L][T]^{-2}$$
+  Cioè lunghezza per tempo alla meno due.
+  **Errore tipico:** chi sceglie lunghezza per tempo alla meno uno (o lunghezza su tempo) ha scritto le dimensioni della **velocità**. Chi sceglie lunghezza per tempo al quadrato ha messo l'esponente con il segno sbagliato.
+5-28 A Il tempo non è noto: si usa la relazione tra velocità e spazio per moto con accelerazione costante, $v^2 = v_0^2 + 2a\,s$.
+  $$a = \frac{v^2 - v_0^2}{2s} = \frac{20^2 - 10^2}{2 \cdot 75} = \frac{400 - 100}{150} = \frac{300}{150} = 2\ \mathrm{m/s^2}$$
+  **Errore tipico:** chi sceglie 20 o 5 m/s$^2$ ha trascurato i quadrati o il fattore 2 al denominatore. Chi sceglie 3 m/s$^2$ ha usato un'altra combinazione senza il termine $2s$.
+5-29 C Il moto **uniforme** è il moto a velocità costante: $s = v\,t$, quindi lo spazio è **proporzionale** al tempo.
+  Questa è la definizione operativa: le distanze percorse sono proporzionali agli intervalli di tempo.
+  **Errore tipico:** chi sceglie "la traiettoria è una retta" confonde il moto uniforme con il moto rettilineo (la traiettoria retta non implica velocità costante). Chi sceglie "accelerazione diversa da zero" o "velocità che aumenta" descrive un moto accelerato, non uniforme.
+5-30 A Senza attrito il tuffatore cade da fermo in caduta libera. Dalla relazione $v^2 = 2\,g\,h$:
+  $$v = \sqrt{2\,g\,h} = \sqrt{2 \cdot 9{,}8\ \mathrm{m/s^2} \cdot 30\ \mathrm m} = \sqrt{588} \approx 24\ \mathrm{m/s}$$
+  **Errore tipico:** chi si ferma a $2gh = 588$ dimentica la radice. Gli altri valori (70 m/s, 130 m/s, 2 m/s) non derivano dalla formula: 2 m/s è poi implausibile per una caduta da 30 m.
+5-31 B Da fermo con $a$ costante: $s = \tfrac12 a\,t^2$. Lo spazio è proporzionale al **quadrato** del tempo.
+  Dai dati: $500 = \tfrac12 a \cdot 10^2$, da cui $a = 10\ \mathrm{m/s^2}$.
+  In 20 s: $$s = \tfrac12 \cdot 10 \cdot 20^2 = \tfrac12 \cdot 10 \cdot 400 = 2000\ \mathrm m$$
+  Oppure: raddoppiando il tempo lo spazio si moltiplica per $2^2 = 4$, quindi $500 \times 4 = 2000\ \mathrm m$.
+  **Errore tipico:** chi sceglie 1000 m ha ragionato in modo lineare (tempo doppio, spazio doppio), valido solo per il moto uniforme. Chi sceglie 2500 m o 5000 m ha moltiplicato per 5 o per 10 senza ragione.
+  TRAP: non è un moto uniforme: lo spazio cresce col **quadrato** del tempo, non linearmente.
+5-32 D Accelerazione media: $a = \dfrac{\Delta v}{\Delta t}$.
+  $$a = \frac{11\ \mathrm{m/s} - 0}{4\ \mathrm s} = 2{,}75\ \mathrm{m/s^2}$$
+  **Errore tipico:** chi sceglie 27,5 o 0,275 m/s$^2$ ha sbagliato la posizione della virgola. Chi sceglie 5 m/s$^2$ non ha applicato $\Delta v/\Delta t$. Il 2,75 si ottiene semplicemente dividendo 11 per 4.
+5-33 B Velocità costante, quindi lo spazio percorso è proporzionale al tempo: velocità media $v = 400\ \mathrm m / 70\ \mathrm s$.
+  In 10 s: $$s = v \cdot t = \frac{400}{70} \cdot 10 = \frac{400 \cdot 10}{70} = \frac{400}{7} \approx 57\ \mathrm m$$
+  Il valore cercato è quindi $400/7$ m. L'opzione giusta è scritta in modo impreciso ("400 m / 7 s"): il 7 è il fattore $70/10$ e non un tempo, ma è l'unica espressione che corrisponde a $400/7$.
+  **Errore tipico:** chi sceglie $400\ \mathrm m / 70\ \mathrm s$ ha scritto la **velocità**, non lo spazio in 10 s. Chi sceglie $70\ \mathrm s / 400\ \mathrm m$ ha invertito il rapporto. Chi sceglie $40\ \mathrm m / 70\ \mathrm s$ ha diviso lo spazio per 10 invece di moltiplicare la velocità per 10 s.
+  TRAP: la domanda chiede lo spazio in 10 s (il rapporto 10/70 di 400 m), non la velocità media.
 5-34 APERTA
 KW: vettore posizione|posizione, sistema di riferimento|riferimento, velocità media, velocità istantanea, derivata, accelerazione media, accelerazione istantanea, limite, m/s, m/s^2|m/s2
 > **Posizione**: in un sistema di riferimento, la posizione di un punto è individuata dal **vettore posizione** $\vec r(t)$, che va dall'origine al punto (in coordinate cartesiane $\vec r = x\hat i + y\hat j + z\hat k$). Si misura in metri.
@@ -165,29 +342,90 @@ KW: coordinate polari, distanza|raggio, angolo, origine|polo, asse x|asse polare
 > Le coordinate polari sono comode per i moti circolari: con $r$ costante il moto è descritto solo da $\theta(t)$, e la velocità angolare è $\omega = d\theta/dt$.
 
 ## L6 Moto rettilineo uniforme e uniformemente accelerato
-6-1 C $110\ \mathrm{km/h} = 30{,}6\ \mathrm{m/s}$; in 2 s: $s = 30{,}6 \cdot 2 \approx 61\ \mathrm m$.
-6-2 A $s = v_0^2/(2a) = 2500/4 = 625\ \mathrm m$.
-6-3 D $40\ \mathrm{km/h} = 11{,}1\ \mathrm{m/s}$, $90\ \mathrm{km/h} = 25\ \mathrm{m/s}$: $a = 13{,}9/8 \approx 1{,}74\ \mathrm{m/s^2}$.
-6-4 D $h = \tfrac12 g t^2 = \tfrac12 \cdot 9{,}8 \cdot 3{,}5^2 \approx 60\ \mathrm m$.
-6-5 A $a = 2s/t^2 = 1200/225 \approx 5{,}3\ \mathrm{m/s^2}$.
-6-6 A Stessi dati della domanda precedente: $a = 2s/t^2 = 1200/225 \approx 5{,}3\ \mathrm{m/s^2}$.
-6-7 B Con la stessa accelerazione $g$, arrivano in tempi diversi solo se le velocità iniziali sono diverse.
-6-8 C $v^2 = v_0^2 - 2gh = 1225 - 588 = 637 \Rightarrow v \approx 25{,}2\ \mathrm{m/s}$ (la massa non conta).
-6-9 C! Partendo da fermo con $a = 4\ \mathrm{m/s^2}$: $s = \tfrac12 a t^2 = 2t^2$ (legge oraria). Anche $v = 4t$ è vera; la legge oraria che "descrive il moto" è $s = 2t^2$.
-6-10 A $s = vt = 110 \cdot 1080 = 118\,800\ \mathrm m = 118{,}8\ \mathrm{km}$.
-6-11 A $v_0 = \sqrt{2gh} = \sqrt{2 \cdot 9{,}8 \cdot 50} \approx 31{,}3\ \mathrm{m/s}$.
-6-12 C Sul piano più inclinato l'accelerazione $g\sin\alpha$ è maggiore e il percorso più corto: arriva prima.
-6-13 A Senza attrito conta solo il dislivello: $v = \sqrt{2gh}$, uguale per i due piani.
-6-14 A $h = \tfrac12 g t^2 = \tfrac12 \cdot 9{,}8 \cdot 1 = 4{,}9\ \mathrm m$.
-6-15 A $s = 200\ \mathrm{km/h} \cdot 0{,}25\ \mathrm h = 50\ \mathrm{km}$.
-6-16 B $t = v_0/a = 33{,}3/2 \approx 16{,}6\ \mathrm s$ (lo spazio sarebbe $v_0^2/2a \approx 277\ \mathrm m$).
-6-17 A $60\ \mathrm{km/h} = 16{,}7\ \mathrm{m/s}$; $a = 16{,}7/5{,}1 \approx 3{,}27\ \mathrm{m/s^2}$.
-6-18 A $130\ \mathrm{km/h} = 36{,}1\ \mathrm{m/s}$; in 2 s: $\approx 72\ \mathrm m$.
-6-19 A Velocità costante: vale sempre 15 m/s.
-6-20 A Nel punto più alto la velocità si annulla (poi la palla ricade).
-6-21 A L'accelerazione è sempre $g$, diretta verso il basso, anche nel punto più alto.
-6-22 A Tempo di salita 1 s: $v_0 = g t = 9{,}8\ \mathrm{m/s}$.
-6-23 B $75\ \mathrm{km/h} = 20{,}8\ \mathrm{m/s}$; $v = 20{,}8 - 2{,}3 \cdot 4 \approx 11{,}6\ \mathrm{m/s}$.
+6-1 C In moto rettilineo uniforme $s = v\,t$. La velocità è in km/h e il tempo in secondi: si converte in m/s dividendo per 3,6.
+  $$110\ \mathrm{km/h} = \frac{110}{3{,}6} = 30{,}6\ \mathrm{m/s}$$
+  $$s = 30{,}6\ \mathrm{m/s} \times 2{,}0\ \mathrm s \approx 61\ \mathrm m$$
+  **Errore tipico:** chi sceglie 220 m ha moltiplicato 110 per 2 senza convertire i km/h in m/s. Chi sceglie 120 m ha sommato le due grandezze o fatto un altro calcolo non coerente. Chi sceglie 6 cm ha un ordine di grandezza assurdo: in 2 s a 110 km/h si percorrono decine di metri.
+  TRAP: velocità in km/h e tempo in s: senza conversione il risultato è sbagliato di un fattore 3,6.
+6-2 A Decelerazione costante fino a fermarsi: $v^2 = v_0^2 - 2a\,s$ con $v = 0$, da cui $s = \dfrac{v_0^2}{2a}$ (qui $a$ è il modulo della decelerazione).
+  $$s = \frac{(50\ \mathrm{m/s})^2}{2 \cdot 2\ \mathrm{m/s^2}} = \frac{2500}{4} = 625\ \mathrm m$$
+  **Errore tipico:** chi sceglie 2500 m ha calcolato $v_0^2$ e si è fermato, senza dividere per $2a$. Chi sceglie 25 m ha fatto $v_0/a$ (che è un tempo, 25 s) e lo ha scritto come spazio. Chi sceglie 1625 m non deriva da nessuna formula del moto decelerato.
+6-3 D Accelerazione media: $a = \Delta v/\Delta t$. Prima si convertono le velocità da km/h a m/s.
+  $$40\ \mathrm{km/h} = \frac{40}{3{,}6} = 11{,}1\ \mathrm{m/s}, \qquad 90\ \mathrm{km/h} = \frac{90}{3{,}6} = 25\ \mathrm{m/s}$$
+  $$a = \frac{25 - 11{,}1}{8} = \frac{13{,}9}{8} \approx 1{,}74\ \mathrm{m/s^2}$$
+  **Errore tipico:** chi sceglie 2,96 m/s$^2$ o 2,52 m/s$^2$ ha usato i dati in modo sbagliato (per esempio dividendo la differenza in km/h per un tempo non coerente). Chi sceglie 0,74 m/s$^2$ ha sbagliato di un'unità nella sottrazione. Senza conversione si ottiene $50/8 = 6{,}25$, che non ha unità corrette.
+6-4 D Caduta libera da fermo: $h = \tfrac12 g\,t^2$, con $g = 9{,}8\ \mathrm{m/s^2}$.
+  $$h = \tfrac12 \cdot 9{,}8 \cdot (3{,}5)^2 = 4{,}9 \cdot 12{,}25 \approx 60\ \mathrm m$$
+  **Errore tipico:** chi sceglie 40 m o 100 m ha sbagliato il quadrato del tempo ($3{,}5^2 = 12{,}25$) o l'ordine di grandezza. Chi sceglie 20 m ha calcolato una caduta di poco più di 2 s. Dimenticare il $\tfrac12$ darebbe $9{,}8 \cdot 12{,}25 = 120\ \mathrm m$.
+6-5 A Il velivolo parte da fermo con accelerazione costante: $s = \tfrac12 a\,t^2$, da cui $a = \dfrac{2s}{t^2}$.
+  $$a = \frac{2 \cdot 600\ \mathrm m}{(15\ \mathrm s)^2} = \frac{1200}{225} \approx 5{,}3\ \mathrm{m/s^2}$$
+  **Errore tipico:** chi dimentica il fattore 2 ottiene $600/225 = 2{,}7\ \mathrm{m/s^2}$ (non tra le opzioni). Chi divide lo spazio per il tempo trova la velocità media $40\ \mathrm{m/s}$, non l'accelerazione. Gli altri valori (4,5, 6,0, 1,5) non derivano dalla formula giusta.
+6-6 A La vettura parte da ferma con accelerazione costante: $s = \tfrac12 a\,t^2$, da cui $a = \dfrac{2s}{t^2}$.
+  $$a = \frac{2 \cdot 600\ \mathrm m}{(15\ \mathrm s)^2} = \frac{1200}{225} \approx 5{,}3\ \mathrm{m/s^2}$$
+  **Errore tipico:** chi dimentica il fattore 2 ottiene $600/225 \approx 2{,}7\ \mathrm{m/s^2}$ (non tra le opzioni). Chi divide lo spazio per il tempo trova $40\ \mathrm{m/s}$, che è una velocità. Gli altri valori (7,5, 6,0, 4,5) non derivano dalla formula giusta.
+6-7 B Entrambi i sassi hanno la stessa accelerazione $g$ (indipendente dalla massa). Con $h = v_0 t + \tfrac12 g\,t^2$ lo stesso $h$ si raggiunge in tempi diversi solo se cambia $v_0$: una velocità iniziale maggiore verso il basso fa arrivare prima.
+  **Errore tipico:** chi sceglie le masse diverse pensa che un corpo più pesante cada più in fretta: in assenza di attrito no, l'accelerazione è $g$ per tutti. Chi sceglie una forza di gravità diversa confonde la forza (proporzionale alla massa) con l'accelerazione (uguale per tutti). Chi sceglie "non può accadere" dimentica che le velocità iniziali possono essere diverse.
+6-8 C Moto con accelerazione costante $-g$ (verso l'alto è positivo): $v^2 = v_0^2 - 2g\,h$. La massa (140 g) è un dato inutile.
+  $$v^2 = 35^2 - 2 \cdot 9{,}8 \cdot 30 = 1225 - 588 = 637$$
+  $$v = \sqrt{637} \approx 25{,}2\ \mathrm{m/s}$$
+  **Errore tipico:** chi sceglie 71,8 m/s o 55,6 m/s ha usato la massa o ha sommato le velocità senza motivo. Chi **somma** $2gh$ invece di sottrarla ottiene 42,6 m/s (non tra le opzioni), ma il corpo sale e quindi rallenta. Chi sceglie 19,4 m/s ha sbagliato i numeri.
+6-9 C! Con accelerazione costante $a = 4\ \mathrm{m/s^2}$ e partenza da fermo, la velocità è $v = a\,t = 4t$ e lo spazio (la legge oraria) è $s = \tfrac12 a\,t^2 = \tfrac12 \cdot 4\,t^2 = 2t^2$.
+  Il paniere indica $s = 2t^2$: la relazione che descrive il **moto** (la posizione in funzione del tempo). Anche $v = 4t$ è vera, ma è la legge della velocità e non la relazione che descrive la posizione: il testo della domanda è ambiguo, e per questo la risposta è marcata incerta.
+  **Errore tipico:** chi sceglie $s = t^2$ ha dimenticato che $\tfrac12 a = 2$ (ha preso $\tfrac12 \cdot 2$ o ignorato il 4). Chi sceglie $v = 2/t$ ha messo il tempo al denominatore: la velocità cresce con $t$, non decresce. Chi sceglie $v = 4t$ dà una risposta vera ma non quella indicata dal paniere.
+  TRAP: due opzioni sono vere ($v = 4t$ e $s = 2t^2$): la domanda chiede la relazione che descrive il moto, cioè la legge oraria.
+6-10 A Moto uniforme: $s = v\,t$. La velocità è in m/s (attenzione: **non** km/h) e il tempo è in minuti, quindi va portato in secondi.
+  $$18\ \mathrm{min} = 18 \times 60 = 1080\ \mathrm s$$
+  $$s = 110\ \mathrm{m/s} \times 1080\ \mathrm s = 118\,800\ \mathrm m = 118{,}8\ \mathrm{km}$$
+  **Errore tipico:** chi sceglie 75 km, 35 km o 90 km ha trattato il 110 come km/h o usato i minuti al posto dei secondi. Per esempio $110\ \mathrm{km/h} \times 0{,}3\ \mathrm h = 33$ km, non 118,8 km.
+  TRAP: la velocità è 110 **m/s** (non km/h) e il tempo è in minuti: serve convertire i minuti in secondi.
+6-11 A Il corpo sale fino a fermarsi: $0 = v_0^2 - 2g\,h$, da cui $v_0 = \sqrt{2g\,h}$ (la natura del corpo, palla di ferro, è irrilevante).
+  $$v_0 = \sqrt{2 \cdot 9{,}8 \cdot 50} = \sqrt{980} \approx 31{,}3\ \mathrm{m/s}$$
+  **Errore tipico:** chi sceglie 152 m/s ha dimenticato la radice (o ha fatto $2gh$ in modo errato). Chi sceglie 44,2 m/s ha usato $\sqrt{4gh}$ o un altro fattore sbagliato. Chi sceglie 10 m/s ha preso $g \approx 10$ come velocità.
+6-12 C Senza attrito l'accelerazione lungo un piano inclinato di angolo $\alpha$ è $a = g\sin\alpha$. Con altezza $h$ il tragitto è lungo $L = h/\sin\alpha$.
+  Da fermo $L = \tfrac12 a\,t^2$, quindi $$t = \sqrt{\frac{2L}{a}} = \sqrt{\frac{2h}{g\sin^2\alpha}} = \frac{1}{\sin\alpha}\sqrt{\frac{2h}{g}}$$
+  Più grande è $\alpha$, più grande è $\sin\alpha$ e **minore** è il tempo: arriva prima il corpo sul piano più inclinato.
+  **Errore tipico:** chi sceglie "arriveranno insieme" confonde il tempo con la velocità finale (che invece è uguale, vedi la domanda gemella). Chi sceglie il piano meno inclinato pensa che un tragitto più lungo sia più veloce, ma la minore accelerazione pesa di più.
+6-13 A Senza attrito l'energia si conserva: $m\,g\,h = \tfrac12 m\,v^2$, quindi $v = \sqrt{2g\,h}$. La velocità finale dipende **solo dal dislivello** $h$, non dall'inclinazione.
+  Partendo dalla stessa altezza i due corpi arrivano a terra con la stessa velocità (in modulo); cambia invece il tempo impiegato.
+  **Errore tipico:** chi sceglie il piano più inclinato pensa che una pendenza maggiore dia più velocità; chi sceglie il meno inclinato pensa che il percorso più lungo la aumenti. In realtà l'inclinazione cambia solo l'accelerazione e la lunghezza del tragitto, non la velocità finale.
+  TRAP: velocità finale e tempo di arrivo sono due cose diverse: la velocità è uguale, il tempo è minore per il piano più inclinato.
+6-14 A Caduta libera da fermo: $h = \tfrac12 g\,t^2$.
+  $$h = \tfrac12 \cdot 9{,}8\ \mathrm{m/s^2} \cdot (1\ \mathrm s)^2 = 4{,}9\ \mathrm m$$
+  **Errore tipico:** chi sceglie 9,8 m ha dimenticato il fattore $\tfrac12$ ($g\,t^2$). Chi sceglie 1 m o 10 m ha usato valori approssimati senza applicare la formula: $g$ vale circa 10 $\mathrm{m/s^2}$, non 10 m.
+6-15 A Moto uniforme: $s = v\,t$. Velocità in km/h, quindi il tempo va espresso in ore.
+  $$15\ \mathrm{min} = \frac{15}{60}\ \mathrm h = 0{,}25\ \mathrm h$$
+  $$s = 200\ \mathrm{km/h} \times 0{,}25\ \mathrm h = 50\ \mathrm{km}$$
+  **Errore tipico:** chi sceglie 100 km ha usato mezz'ora, non un quarto d'ora. Chi sceglie 15 km ha dimenticato di moltiplicare per la velocità. Chi sceglie 12 km ha sbagliato il rapporto dei minuti.
+6-16 B Frenata con decelerazione costante: $v = v_0 - a\,t$, con $v = 0$ quando l'auto si ferma, quindi $t = v_0/a$.
+  $$t = \frac{33{,}3\ \mathrm{m/s}}{2\ \mathrm{m/s^2}} \approx 16{,}6\ \mathrm s$$
+  Lo spazio sarebbe $s = \dfrac{v_0^2}{2a} = \dfrac{33{,}3^2}{4} \approx 277\ \mathrm m$. Le opzioni riportano solo il tempo, e la risposta giusta è 16,6 s.
+  **Errore tipico:** chi sceglie 1,2 s, 5,3 s o 9,9 s non ha applicato $t = v_0/a$. Un errore frequente è moltiplicare al posto di dividere, oppure usare la formula dello spazio al posto di quella del tempo.
+  TRAP: la domanda chiede tempo **e** spazio ma le opzioni riportano solo tempi: il tempo è 16,6 s, lo spazio (277 m) non è tra le risposte.
+6-17 A Da ferma con accelerazione costante: $a = \Delta v/\Delta t$. La velocità va convertita da km/h a m/s. La massa (950 kg) non serve.
+  $$60\ \mathrm{km/h} = \frac{60}{3{,}6} = 16{,}7\ \mathrm{m/s}$$
+  $$a = \frac{16{,}7}{5{,}1} \approx 3{,}27\ \mathrm{m/s^2}$$
+  **Errore tipico:** chi sceglie 8,95 m/s$^2$ o 6,36 m/s$^2$ ha usato la massa o ha mescolato i dati. Chi sceglie 0,23 m/s$^2$ ha sbagliato di un fattore ~14. Se si dimentica la conversione si ottiene $60/5{,}1 \approx 11{,}8$ (non tra le opzioni).
+6-18 A Moto uniforme: $s = v\,t$. La velocità è in km/h e il tempo in secondi: converti la velocità in m/s.
+  $$130\ \mathrm{km/h} = \frac{130}{3{,}6} = 36{,}1\ \mathrm{m/s}$$
+  $$s = 36{,}1\ \mathrm{m/s} \times 2\ \mathrm s \approx 72\ \mathrm m$$
+  **Errore tipico:** chi sceglie 260 m ha moltiplicato 130 per 2 senza convertire i km/h in m/s. Chi sceglie 260 km ha anche sbagliato l'unità. Chi sceglie 6,5 m ha diviso per 20 invece di convertire.
+6-19 A Velocità **costante** significa che non cambia nel tempo: $v(20\ \mathrm s) = v(10\ \mathrm s) = 15\ \mathrm{m/s}$.
+  **Errore tipico:** chi sceglie 30 m/s raddoppia la velocità perché il tempo è raddoppiato (come se la velocità fosse proporzionale al tempo: vale per lo spazio, non per la velocità). Chi sceglie 20 m/s o 10 m/s usa dati a caso di un moto accelerato.
+6-20 A Nel punto più alto il corpo smette di salire e comincia a scendere: la componente verticale della velocità passa da positiva a negativa, quindi in quell'istante è **zero**.
+  Dalla formula: $v = v_0 - g\,t = 0$ per $t = v_0/g \approx 2{,}0\ \mathrm s$. La massa (0,2 kg) non conta.
+  **Errore tipico:** chi sceglie 20 m/s (o -20 m/s) confonde la velocità nel punto più alto con quella di lancio (o con quella che ha al ritorno sul punto di lancio, in verso opposto). Chi sceglie 5 m/s non ha una formula che lo giustifichi.
+  TRAP: velocità nulla e accelerazione nulla sono due cose diverse: nel punto più alto $v = 0$ ma $a = g$.
+6-21 A Durante tutto il volo, trascurando l'aria, l'unica accelerazione è quella di gravità: $g = 9{,}8\ \mathrm{m/s^2}$ **verso il basso**, costante in salita, nel punto più alto e in discesa.
+  **Errore tipico:** chi sceglie "non c'è accelerazione" pensa che se la velocità è nulla lo sia anche l'accelerazione: in quel punto la velocità sta cambiando (da positiva a negativa), quindi $a \neq 0$. Chi sceglie "verso l'alto" confonde accelerazione e velocità. Chi sceglie "i dati non bastano" dimentica che la gravità non dipende dalla massa né dalla velocità iniziale.
+6-22 A Il moto è simmetrico: il tempo di salita è metà del tempo totale, cioè $t_{salita} = 2/2 = 1\ \mathrm s$. Nel punto più alto $v = 0$, quindi da $0 = v_0 - g\,t_{salita}$:
+  $$v_0 = g\,t_{salita} = 9{,}8\ \mathrm{m/s^2} \cdot 1\ \mathrm s = 9{,}8\ \mathrm{m/s}$$
+  **Errore tipico:** chi sceglie 19,6 m/s (non tra le opzioni) usa l'intero tempo di 2 s invece della sola salita. Chi sceglie 4,9 m/s ha diviso per 2 due volte; chi sceglie 18 m/s o 29 m/s non ha applicato $v_0 = g\,t$ con il tempo giusto.
+  TRAP: 2 s è il tempo di **andata e ritorno**: per $v_0 = g\,t$ si usa solo la salita (1 s).
+6-23 B Moto con accelerazione costante: $v = v_0 + a\,t$. Prima si converte la velocità iniziale.
+  $$75\ \mathrm{km/h} = \frac{75}{3{,}6} = 20{,}8\ \mathrm{m/s}$$
+  $$v = 20{,}8 + (-2{,}3)\cdot 4 = 20{,}8 - 9{,}2 \approx 11{,}6\ \mathrm{m/s}$$
+  **Errore tipico:** chi sceglie $-11{,}6\ \mathrm{m/s}$ ha sbagliato il segno del risultato: l'auto sta ancora avanzando (rallenta ma non si ferma), quindi la velocità è positiva. Chi sceglie 34 m/s ha sommato $20{,}8 + 9{,}2$ invece di sottrarre. Chi sceglie 0 crede che l'auto si sia fermata: servirebbero circa 9 s.
+  TRAP: la decelerazione riduce la velocità ma non la rende negativa: $v = 11{,}6\ \mathrm{m/s}$ è ancora nel verso del moto.
 6-24 APERTA
 KW: accelerazione costante, velocità, v = v0 + at|v0 + at|lineare, legge oraria, parabola|t^2|quadrato, v^2|v2, caduta libera|gravità, 9,8|9.8
 > Il **moto uniformemente accelerato** è un moto con **accelerazione costante** (in modulo, direzione e verso). Nel caso rettilineo:

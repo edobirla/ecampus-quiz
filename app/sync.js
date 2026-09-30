@@ -1,14 +1,26 @@
 // Statistiche di una materia e unione dei backup tra dispositivi.
-// Forma: { q: {id: {ok, ko, st, t}}, log: [[id, ok(0/1), t, mt?]], exams: [{id, mt?…}], fav: [id], lastPractice }
+// Forma: { q: {id: {ok, ko, st, t, l, a}}, log: [[id, ok(0/1), t, mt?, aiuti?]], exams: [{id, mt?…}], fav: [id], lastPractice }
+// aiuti (5° campo, solo nelle risposte nuove): 1 = data con indizi o teoria, 0 = senza aiuti. Le risposte vecchie (senza il campo) contano come senza aiuti.
+// st = serie di risposte giuste SENZA aiuti (una sola conta per mezza giornata: rispondere 3 volte di fila oggi non vale "saputa");
+// l = l'ultima risposta era giusta, a = l'ultima era giusta ma con aiuti.
 // Il log è la fonte di verità: ogni risposta ha chiave id+t, quindi unire due backup (anche più volte) non crea doppioni.
 // q è un riassunto ricalcolato dal log. mt = momento dell'ultima correzione a mano: in caso di conflitto vince la più recente.
 
+const HALF_DAY = 432e5;
 export function rebuildQ(st) {
   st.log.sort((a, b) => a[2] - b[2]);
   st.q = {};
-  for (const [id, ok, t] of st.log) {
+  for (const [id, ok, t, , aid] of st.log) {
     const r = (st.q[id] ||= { ok: 0, ko: 0, st: 0 });
-    if (ok) { r.ok++; r.st++; } else { r.ko++; r.st = 0; }
+    if (ok) {
+      r.ok++;
+      if (aid) r.a = 1; // con aiuti: non fa salire la serie
+      else {
+        delete r.a;
+        if (aid === undefined || !r.st || t - r.tc >= HALF_DAY) { r.st++; r.tc = t; } // ponytail: le vecchie risposte contano come prima
+      }
+    } else { r.ko++; r.st = 0; delete r.a; delete r.tc; }
+    r.l = ok ? 1 : 0;
     r.t = t;
   }
   return st;
