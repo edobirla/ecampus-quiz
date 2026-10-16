@@ -1,6 +1,7 @@
 // eCampus Quiz — app a pagina singola, senza dipendenze (KaTeX solo per le formule).
 import { gradeOpen, CRITERIA } from "./grade.js";
 import { migrate, mergeStats, rebuildQ, mergeNotes } from "./sync.js";
+import * as cloud from "./cloud.js";
 import { mountNotes, HL_COLORS, INK_COLORS, INK_WIDTHS } from "./notes.js";
 const EXAM = { closed: 24, open: 2, openMax: 3, pass: 18 };
 const KATEX = { throwOnError: false, macros: { "\\chem": "\\mathrm{#1}" } };
@@ -14,7 +15,7 @@ const pct = (a, b) => (b ? Math.round((a / b) * 100) : 0);
 const pad3 = (n) => String(n).padStart(2, "0");
 const store = {
   get(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } },
-  set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} },
+  set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} if (/^ecq:(stats|notes|settings)/.test(k)) syncSoon(); },
   del(k) { try { localStorage.removeItem(k); } catch {} },
 };
 const fmtDate = (t) => new Date(t).toLocaleDateString("it-IT", { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" });
@@ -68,7 +69,7 @@ const I = {
 const settings = Object.assign({ theme: "auto", timer: 60, extraInPractice: true, shuffle: true, shuffleOpts: true },
   store.get("ecq:settings", {}));
 // impostazioni per materia: { [id]: valore }
-for (const k of ["onlyPan", "pan", "examDate"]) if (typeof settings[k] !== "object" || !settings[k]) settings[k] = {};
+for (const k of ["onlyPan", "pan", "examDate", "examBooked"]) if (typeof settings[k] !== "object" || !settings[k]) settings[k] = {};
 delete settings.onlyPaniere;
 const saveSettings = () => { store.set("ecq:settings", settings); applyTheme(); };
 function applyTheme() {
@@ -133,8 +134,8 @@ const blindQ = (r) => r && r.ok + r.ko >= 2 && r.l === 1;
 // esame da paniere (Fisica): lo studio punta a sapere tutto il paniere; altrimenti conta ogni domanda della materia
 const panExam = () => settings.pan[S.id] ?? !!S.paniere;
 const targetQs = () => S.questions.filter((q) => validQ(q) && (!panExam() || q.src === "paniere"));
-// da ripassare: sbagliata almeno una volta e non ancora "saputa"
-const isToReview = (r) => r && r.ko > 0 && r.st < KNOWN;
+// da ripassare: l'ultima risposta era sbagliata (appena la azzecchi esce dalla lista)
+const isToReview = (r) => r && r.l === 0;
 const isRight = (q, a) => a === q.c;
 const validQ = (q) => (q.type === "closed" ? Number.isInteger(q.c) && q.c >= 0 : !!q.a);
 
@@ -230,6 +231,24 @@ function gradeSession() {
   saveStats(st);
   sess = null; store.del("ecq:session");
   location.replace(`#/risultati/${res.mode === "exam" ? res.id : "pratica"}`);
+}
+
+// ---------- avviso a tutto schermo: prenota l'esame
+// Da lunedì della settimana prima di quella dell'esame, finché non lo segni come prenotato (una volta al giorno).
+function bookingAlert() {
+  const date = settings.examDate[S.id];
+  if (!date || settings.examBooked[S.id]) return;
+  const ex = new Date(date + "T12:00"), mon = new Date(ex);
+  mon.setDate(ex.getDate() - ((ex.getDay() + 6) % 7) - 7); mon.setHours(0, 0, 0, 0);
+  const today = new Date().toISOString().slice(0, 10), key = `ecq:booknag:${S.id}`;
+  if (Date.now() < mon || startOfDay() > ex || store.get(key) === today) return;
+  store.set(key, today);
+  const days = Math.ceil((ex - Date.now()) / DAY);
+  $("#fs").innerHTML = `<div class="fs-card"><div class="fs-ico">${I.cal}</div><h2>Prenota l'esame di ${esc(S.short || S.name)}</h2>
+    <p>${days > 0 ? `L'esame è tra ${days} ${days === 1 ? "giorno" : "giorni"}` : "L'esame è oggi"}. Se non l'hai ancora fatto, prenotalo ora sul portale: i posti possono finire.</p>
+    <button class="btn block" data-act="booked">Già prenotato</button>
+    <button class="btn block secondary" data-act="fsclose" style="margin-top:10px">Ricordamelo domani</button></div>`;
+  $("#fs").hidden = false;
 }
 
 // ---------- shell: sidebar, topbar, tabbar
@@ -343,9 +362,10 @@ views[""] = () => {
 
 // Piano di studio adattivo, ricalcolato a ogni apertura (giorni saltati, errori e voti delle simulazioni lo spostano da soli):
 // - ripassi in scadenza (ripetizione spaziata, intervalli più corti vicino all'esame) + alcune domande "ostinate" (sbagliate ≥2 volte);
-// - domande nuove: le non ancora viste divise sui giorni che restano prima della finestra finale (se salti un giorno, il giorno dopo ne fai di più);
-// - prove d'esame complete senza aiuti: a intervalli (ogni 7 giorni, poi 4, poi ogni 1-2 nei giorni finali); il giorno prima solo ripasso leggero.
-const FINAL_DAYS = 5, MAX_DUE = 60, MAX_NEW = 40;
+// - domande nuove: le non ancora viste divise sui giorni che restano fino a 7 giorni prima dell'esame (se salti un giorno, il giorno dopo ne fai di più);
+//   l'ultima settimana è per prove d'esame e ripassi (se restano domande mai viste, si recuperano comunque nei giorni rimasti);
+// - prove d'esame complete senza aiuti: a intervalli (ogni 7 giorni, poi 4, poi ogni 1-2 nell'ultima settimana); il giorno prima solo ripasso leggero.
+const FINAL_DAYS = 7, MAX_DUE = 60, MAX_NEW = 40;
 function todayPlan(st) {
   const qs = targetQs();
   const date = settings.examDate[S.id];
@@ -631,7 +651,7 @@ views.preferiti = () => {
 views.errori = () => {
   const st = stats();
   const qs = S.questions.filter((q) => validQ(q) && isToReview(st.q[q.id]));
-  return `<p class="muted small" style="margin:0 4px 12px">Qui trovi le domande sbagliate almeno una volta. Escono dalla lista quando le azzecchi due volte di fila.</p>
+  return `<p class="muted small" style="margin:0 4px 12px">Qui trovi le domande la cui ultima risposta era sbagliata. Escono dalla lista appena le azzecchi.</p>
     ${qs.length ? `<button class="btn block" data-act="review" style="margin-bottom:14px">Ripassa ${qs.length} domande</button>` : ""}
     ${qList(qs, "Nessun errore da ripassare.")}`;
 };
@@ -650,8 +670,14 @@ views.impostazioni = () => {
   <div class="list">
     <div class="toggle-row"><div><b>Esame da paniere</b><div class="muted small">Sì: le domande d'esame vengono dal paniere e il piano punta a saperlo tutto. No: il piano usa tutte le domande e la teoria.</div></div>
       <label class="switch"><input type="checkbox" data-setsubj="pan" ${panExam() ? "checked" : ""}><span></span></label></div>
+    <div class="toggle-row"><div><b>Esame già prenotato</b><div class="muted small">Spegne l'avviso a tutto schermo della settimana prima</div></div>
+      <label class="switch"><input type="checkbox" data-setsubj="examBooked" ${settings.examBooked[S.id] ? "checked" : ""}><span></span></label></div>
     <div class="toggle-row"><div><b>Data dell'esame</b><div class="muted small">Serve al piano di studio giornaliero</div></div>
       <input type="date" class="date" data-date value="${settings.examDate[S.id] || ""}"></div>
+  </div>
+  <div class="section-h" style="margin-top:22px"><h2>Account</h2></div>
+  <div class="list">
+    <button class="row" data-act="account"><span class="lnum">${I.gear}</span><div class="grow"><div class="t">${esc(cloud.nameOf(cloud.current()?.email))}</div><div class="s">Cambia username o password, sincronizza, esci</div></div>${I.chev.replace("<svg", '<svg class="chev"')}</button>
   </div>
   <div class="section-h" style="margin-top:22px"><h2>Backup</h2></div>
   <div class="list">
@@ -960,6 +986,8 @@ document.addEventListener("click", async (e) => {
         <button class="btn block" data-act="closesheet">Ho capito</button>`);
       break;
     case "closesheet": closeSheet(); break;
+    case "booked": settings.examBooked[S.id] = true; saveSettings(); $("#fs").hidden = true; toast("Perfetto, non te lo ricordo più"); break;
+    case "fsclose": $("#fs").hidden = true; break;
     case "exam": newExam(); break;
     case "openexam": newExam(true); break;
     case "annot": {
@@ -996,7 +1024,7 @@ document.addEventListener("click", async (e) => {
     }
     case "plan":
       openSheet(`<h3>Data dell'esame di ${esc(S.short || S.name)}</h3>
-        <p class="muted small" style="margin:0 4px 12px">Il piano divide le domande nuove sui giorni che mancano, fissa delle prove d'esame complete (più fitte vicino alla data) e si ricalcola da solo se salti dei giorni o se i risultati sono bassi.</p>
+        <p class="muted small" style="margin:0 4px 12px">Il piano divide le domande nuove sui giorni che mancano, in modo da finirle una settimana prima dell'esame (l'ultima settimana è per simulazioni e ripassi), fissa delle prove d'esame complete (più fitte vicino alla data) e si ricalcola da solo se salti dei giorni o se i risultati sono bassi.</p>
         <input type="date" class="date block" data-date value="${settings.examDate[S.id] || ""}">
         <button class="btn block" data-act="closesheet" style="margin-top:14px">Fatto</button>`);
       break;
@@ -1031,6 +1059,14 @@ document.addEventListener("click", async (e) => {
       break;
     }
     case "export": exportBackup(); break;
+    case "account": accountSheet(); break;
+    case "syncnow": await syncNow(false); closeSheet(); route(); break;
+    case "logout":
+      if (!confirm("Uscire? I tuoi dati restano nel cloud; su questo dispositivo vengono rimossi.")) break;
+      await syncNow(false);
+      if (syncMsg.startsWith("Sincronizzato")) { wipeLocal(); cloud.logout(); location.hash = "#/"; location.reload(); }
+      else toast("Prima di uscire serve la rete, per non perdere i progressi");
+      break;
     case "searchquiz": {
       const w = norm(searchQ.trim());
       practice(S.questions.filter((x) => validQ(x) && plainNorm(x.t + " " + (x.o || []).join(" ")).includes(w)), `Cerca: ${searchQ}`);
@@ -1152,13 +1188,28 @@ async function openTheory(n) {
   annot.tool = "hl"; sheetCtl.setTool("hl");
 }
 
-// ---------- backup: un file con tutte le materie; il caricamento unisce (sync.js), non sovrascrive
+// ---------- backup e sincronizzazione: un solo formato (tutte le materie); caricare unisce (sync.js), non sovrascrive
+const buildBackup = () => ({ app: "ecampus-quiz", v: 2, d: Date.now(), settings: { examDate: settings.examDate, pan: settings.pan, examBooked: settings.examBooked },
+  stats: Object.fromEntries(subjects.map((s) => [s.id, stats(s.id)])),
+  notes: Object.fromEntries(subjects.map((s) => [s.id, getNotes(s.id)])) });
+function applyBackup(data) {
+  let answers = 0, exams = 0, notesN = 0;
+  for (const [id, inc] of Object.entries(data.stats || {})) {
+    const { st, added } = mergeStats(stats(id), inc);
+    saveStats(st, id);
+    answers += added.answers; exams += added.exams;
+  }
+  for (const [id, inc] of Object.entries(data.notes || {})) {
+    const { notes, added } = mergeNotes(getNotes(id), inc);
+    saveNotes(notes, id); notesN += added;
+  }
+  for (const k of ["examDate", "pan", "examBooked"]) settings[k] = { ...(data.settings?.[k] || {}), ...settings[k] };
+  store.set("ecq:settings", settings);
+  return { answers, exams, notesN };
+}
 async function exportBackup() {
-  const data = { app: "ecampus-quiz", v: 2, d: Date.now(), settings: { examDate: settings.examDate, pan: settings.pan },
-    stats: Object.fromEntries(subjects.map((s) => [s.id, stats(s.id)])),
-    notes: Object.fromEntries(subjects.map((s) => [s.id, getNotes(s.id)])) };
   const name = "ecampus-quiz-backup.json"; // sempre lo stesso nome: sostituisce il file precedente, così non si carica un backup vecchio
-  const file = new File([JSON.stringify(data)], name, { type: "application/json" });
+  const file = new File([JSON.stringify(buildBackup())], name, { type: "application/json" });
   store.set("ecq:lastBackup", Date.now());
   // su iPhone/iPad il foglio di condivisione permette "Salva su File" (iCloud Drive)
   if (navigator.canShare?.({ files: [file] })) {
@@ -1172,32 +1223,99 @@ async function importBackup(file) {
   let data;
   try { data = JSON.parse(await file.text()); } catch { return toast("File non valido"); }
   if (data?.app !== "ecampus-quiz" || typeof data.stats !== "object") return toast("Non è un backup di eCampus Quiz");
-  let answers = 0, exams = 0;
-  for (const [id, inc] of Object.entries(data.stats)) {
-    const { st, added } = mergeStats(stats(id), inc);
-    saveStats(st, id);
-    answers += added.answers; exams += added.exams;
-  }
-  let notesN = 0;
-  for (const [id, inc] of Object.entries(data.notes || {})) {
-    const { notes, added } = mergeNotes(getNotes(id), inc);
-    saveNotes(notes, id); notesN += added;
-  }
-  for (const k of ["examDate", "pan"]) settings[k] = { ...(data.settings?.[k] || {}), ...settings[k] };
-  saveSettings();
+  const { answers, exams, notesN } = applyBackup(data);
   toast(answers || exams || notesN ? `Unito: ${answers} risposte, ${exams} esami, ${notesN} appunti nuovi` : "Niente di nuovo: dati già presenti");
   route();
 }
+
+// ---------- account (Firebase): ogni utente ha i suoi dati, uniti tra i dispositivi
+let syncing = false, syncTimer, syncMsg = "";
+function syncSoon() { if (syncing || !cloud.current()) return; clearTimeout(syncTimer); syncTimer = setTimeout(() => syncNow(), 4000); }
+async function syncNow(quiet = true) {
+  if (syncing || !cloud.current()) return;
+  syncing = true;
+  try {
+    const remote = await cloud.pull();
+    const got = remote ? applyBackup(remote) : { answers: 0, exams: 0, notesN: 0 };
+    await cloud.push(buildBackup());
+    syncMsg = `Sincronizzato ${fmtDate(Date.now())}`; store.set("ecq:lastSync", Date.now());
+    if (!quiet) toast(syncMsg);
+    // nuovi dati arrivati da un altro dispositivo: ridisegna, ma non nel mezzo di una domanda
+    if ((got.answers || got.exams || got.notesN) && !location.hash.startsWith("#/quiz") && $("#sheet").hidden) route();
+  } catch (e) { syncMsg = e.message; if (!quiet) toast(e.message); }
+  syncing = false;
+}
+document.addEventListener("visibilitychange", () => { if (!document.hidden) syncNow(); });
+window.addEventListener("online", () => syncNow());
+
+// dati locali di un altro utente non devono mai mescolarsi: cambiando account si svuotano (erano già nel cloud)
+const wipeLocal = () => { for (const k of Object.keys(localStorage)) if (k.startsWith("ecq:") && k !== "ecq:auth") localStorage.removeItem(k); };
+function showLogin(onDone) {
+  $("#fs").innerHTML = `<form class="fs-card" id="loginform"><img src="icons/icon.svg" alt="" width="64" height="64"><h2>eCampus Quiz</h2>
+    <p>Accedi con il tuo username e la tua password: le statistiche e gli esami sono tuoi e si sincronizzano tra i tuoi dispositivi.</p>
+    <input class="search" name="u" placeholder="Username" autocomplete="username" autocapitalize="none" autocorrect="off" required style="margin-bottom:10px">
+    <input class="search" name="p" type="password" placeholder="Password" autocomplete="current-password" required>
+    <p class="small" id="loginerr" style="color:var(--ko);min-height:22px;margin:10px 0"></p>
+    <button class="btn block" type="submit">Accedi</button></form>`;
+  $("#fs").hidden = false;
+  $("#loginform").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const f = e.target, btn = $("button", f), err = $("#loginerr");
+    btn.disabled = true; err.textContent = "";
+    try {
+      const prev = store.get("ecq:uid", null);
+      const a = await cloud.login(f.u.value, f.p.value);
+      const hasLocal = Object.keys(localStorage).some((k) => /^ecq:(stats|notes)/.test(k));
+      if (prev !== a.uid) {
+        // dati già su questo dispositivo senza proprietario (prima degli account): si uniscono solo se lo vuoi
+        const adopt = !prev && hasLocal && confirm("Su questo dispositivo ci sono già dei progressi. Sono tuoi? OK = li unisco al tuo account, Annulla = li cancello.");
+        if (!adopt) { wipeLocal(); Object.assign(settings, { examDate: {}, pan: {}, onlyPan: {}, examBooked: {} }); }
+        store.set("ecq:uid", a.uid);
+      }
+      await syncNow();
+      if (prev !== a.uid) return location.reload(); // le impostazioni in memoria erano di un altro utente
+      $("#fs").hidden = true;
+      onDone();
+    } catch (x) { err.textContent = x.friendly ? x.message : "Errore di accesso"; btn.disabled = false; }
+  });
+}
+function accountSheet() {
+  const a = cloud.current();
+  openSheet(`<h3>Account</h3><p class="muted small" style="margin:0 4px 14px">Accesso come <b>${esc(cloud.nameOf(a.email))}</b>. ${esc(syncMsg || (store.get("ecq:lastSync") ? `Ultima sincronizzazione ${fmtDate(store.get("ecq:lastSync"))}` : ""))}</p>
+    <form id="accform" class="acc-form"><input class="search" name="cur" type="password" placeholder="Password attuale (serve per le modifiche)" autocomplete="current-password">
+    <input class="search" name="u" placeholder="Nuovo username" autocomplete="off" autocapitalize="none">
+    <input class="search" name="p" type="password" placeholder="Nuova password (min. 6 caratteri)" autocomplete="new-password">
+    <p class="small" id="accerr" style="color:var(--ko);min-height:20px;margin:6px 0"></p>
+    <button class="btn block" type="submit">Salva modifiche</button></form>
+    <div class="grid g2" style="margin-top:12px"><button class="btn secondary" data-act="syncnow">${I.redo}Sincronizza ora</button><button class="btn danger" data-act="logout">Esci</button></div>`);
+  $("#accform").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const f = e.target, err = $("#accerr"), nu = f.u.value.trim(), np = f.p.value;
+    err.style.color = "var(--ko)"; err.textContent = "";
+    if (!f.cur.value) return (err.textContent = "Inserisci la password attuale");
+    if (!nu && !np) return (err.textContent = "Scrivi un nuovo username o una nuova password");
+    if (nu && !cloud.validUsername(nu)) return (err.textContent = "Username: 3-30 caratteri tra lettere, numeri, punto, trattino");
+    try {
+      if (nu) await cloud.changeUsername(f.cur.value, nu);
+      if (np) await cloud.changePassword(f.cur.value, np);
+      toast("Account aggiornato"); closeSheet(); route();
+    } catch (x) { err.textContent = x.friendly ? x.message : "Errore: riprova"; }
+  });
+}
+
 window.addEventListener("scroll", () => $("#topbar").classList.toggle("scrolled", scrollY > 4), { passive: true });
 window.addEventListener("hashchange", route);
 
 // ---------- avvio
-(async function init() {
+async function start() {
   subjects = await fetch("data/subjects.json", { cache: "no-cache" }).then((r) => r.json());
   const want = store.get("ecq:subject", subjects[0].id);
   await loadSubject(subjects.some((s) => s.id === want) ? want : subjects[0].id);
   if (sess?.mode === "exam" && location.hash !== "#/quiz" && !location.hash.startsWith("#/teoria")) location.hash = "#/quiz";
   route();
+  bookingAlert();
+  syncNow();
+  syncNow();
   if ("serviceWorker" in navigator && location.protocol === "https:") {
     await navigator.serviceWorker.register("sw.js");
     // uso offline: scarica in background tutte le materie e la teoria (il service worker le mette in cache)
@@ -1214,4 +1332,5 @@ window.addEventListener("hashchange", route);
       for (const [, f] of css.matchAll(/url\((fonts\/[^)]+\.woff2)\)/g)) await fetch(`vendor/katex/${f}`).catch(() => {});
     }, 4000);
   }
-})();
+}
+if (cloud.current()) start(); else showLogin(start);
