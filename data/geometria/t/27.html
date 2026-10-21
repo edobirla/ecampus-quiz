@@ -1,0 +1,54 @@
+<h1>Lezione 27 — Metodo di eliminazione di Gauss-Jordan</h1>
+<h2>L&#39;idea</h2>
+<p>Le operazioni elementari sulle righe della matrice completa <span class="m">(A\,|\,B)</span> corrispondono a operazioni sulle equazioni che producono un <strong>sistema equivalente</strong> (con le stesse soluzioni). Il metodo è più veloce dell&#39;Algoritmo 26.7, ma non dà una formula esplicita per le soluzioni.</p>
+<h2>Algoritmo 27.3</h2>
+<p>Sia <span class="m">A\cdot X=B</span> un sistema compatibile, con <span class="m">m</span> equazioni e <span class="m">n</span> incognite.</p>
+<ol>
+<li>Si applica il <strong>metodo di eliminazione di Gauss-Jordan</strong> alla matrice completa, ottenendo <span class="m">(A'\,|\,B')</span>: a scala, con ogni pivot uguale a <span class="m">1</span> e tutti gli altri elementi della colonna del pivot nulli. Il sistema <span class="m">A'X=B'</span> è equivalente ad <span class="m">AX=B</span>.</li>
+<li>Si cancellano le righe nulle: si ottiene <span class="m">(\tilde A\,|\,\tilde B)</span> di dimensione <span class="m">r\times(n+1)</span> e il sistema equivalente <span class="m">\tilde A\cdot X=\tilde B</span>.</li>
+<li>Siano <span class="m">x_{j_1},\dots,x_{j_r}</span> le incognite corrispondenti ai pivot (<strong>dipendenti</strong>) e le altre <span class="m">n-r</span> le <strong>incognite libere</strong>. Si portano al secondo membro (cambiando segno) i monomi delle incognite libere; poiché le colonne dei pivot hanno 1 nel pivot e 0 altrove, il sistema diventa
+<span class="m d">I_r\cdot\begin{pmatrix}x_{j_1}\\\vdots\\x_{j_r}\end{pmatrix}=\tilde B-\sum_{h}x_h\tilde A^h.</span></li>
+<li>Le soluzioni sono le <span class="m">n</span>-uple con <span class="m">x_h=\alpha_h</span> per le incognite libere e <span class="m">x_{j_k}=\tilde B_k-\sum_h\alpha_h\tilde A^h_k</span>, con <span class="m">\alpha_h\in\mathbb{K}</span>.</li>
+</ol>
+<div class="callout esempio">
+
+<p><span class="m">\begin{cases}x_1+x_2=2\\4x_1+3x_2=-1\end{cases}</span>: <span class="m">\left(\begin{array}{cc|c}1&amp;1&amp;2\\4&amp;3&amp;-1\end{array}\right)\to\left(\begin{array}{cc|c}1&amp;0&amp;-7\\0&amp;1&amp;9\end{array}\right)</span>. Non ci sono righe nulle né incognite libere: <span class="m">(x_1,x_2)=(-7,9)</span>.</p>
+</div>
+
+<h2>Gauss con normalizzazione</h2>
+<p><strong>Osservazione 27.4.</strong> Al posto di Gauss-Jordan si può usare il <strong>metodo di Gauss con normalizzazione</strong> (matrice a scala con pivot uguali a 1, ma non necessariamente zeri <strong>sopra</strong> i pivot). Le incognite dipendenti si trovano allora <strong>a ritroso</strong>, partendo da quella dell&#39;ultimo pivot e risalendo.</p>
+<div class="callout esempio">
+
+<p>Per lo stesso sistema: <span class="m">\left(\begin{array}{cc|c}1&amp;1&amp;2\\4&amp;3&amp;-1\end{array}\right)\xrightarrow{R_2-4R_1}\left(\begin{array}{cc|c}1&amp;1&amp;2\\0&amp;-1&amp;-9\end{array}\right)\xrightarrow{-R_2}\left(\begin{array}{cc|c}1&amp;1&amp;2\\0&amp;1&amp;9\end{array}\right)</span>, cioè <span class="m">\begin{cases}x_1+x_2=2\\x_2=9\end{cases}</span>; si trova <span class="m">x_2=9</span> e poi <span class="m">x_1=2-9=-7</span>.</p>
+</div>
+
+<div class="callout attenzione">
+
+<p>Nel metodo con normalizzazione la prima equazione, se ha già pivot 1, resta <strong>invariata</strong>: le opzioni che la riscrivono con i segni cambiati descrivono un sistema diverso. Gauss-Jordan invece annulla anche gli elementi sopra i pivot.</p>
+</div>
+
+<h2>Compatibilità con Gauss-Jordan</h2>
+<p><strong>Osservazione 27.6.</strong> L&#39;algoritmo si può applicare anche senza sapere se il sistema è compatibile: il sistema è compatibile <strong>se e solo se non c&#39;è un pivot nell&#39;ultima colonna</strong> <span class="m">B'</span>.</p>
+<ul>
+<li>Se c&#39;è un pivot nell&#39;ultima colonna, l&#39;equazione della sua riga è <span class="m">0=1</span>: il sistema non è compatibile.</li>
+<li>Se non c&#39;è, i pivot di <span class="m">A'</span> e di <span class="m">(A'\,|\,B')</span> sono gli stessi, quindi <span class="m">\mathrm{rank}(A')=\mathrm{rank}(A'\,|\,B')</span> e il sistema è compatibile per Rouché-Capelli.</li>
+</ul>
+<div class="callout esempio">
+
+<p><span class="m">\begin{cases}x_1+x_2=2\\3x_1+3x_2=-1\end{cases}</span>: Gauss-Jordan dà <span class="m">\left(\begin{array}{cc|c}1&amp;1&amp;0\\0&amp;0&amp;1\end{array}\right)</span>, cioè <span class="m">x_1+x_2=0</span>, <span class="m">0=1</span>: pivot nell&#39;ultima colonna, sistema incompatibile.</p>
+</div>
+
+<div class="callout esempio">
+
+<p>Esercizio 27.1: <span class="m">\begin{cases}x_1-2x_2-6x_3=-3\\2x_1-4x_2-12x_3=-6\\x_1-2x_2-3x_3=-6\\-x_1+2x_2+7x_3=2\\3x_1-6x_2-18x_3=-9\end{cases}</span>. Gauss-Jordan lascia le righe <span class="m">(1,-2,0\,|\,-9)</span>, <span class="m">(0,0,1\,|\,-1)</span> e tre righe nulle; pivot in colonna 1 e 3, quindi <span class="m">x_2</span> è libera: <span class="m">x_1=-9+2x_2</span>, <span class="m">x_3=-1</span>. Soluzioni <span class="m">(2\alpha-9,\ \alpha,\ -1)</span>, <span class="m">\alpha\in\mathbb{R}</span>.</p>
+</div>
+
+<div class="callout sintesi">
+
+<p>Pivot nelle colonne delle incognite → incognite dipendenti; colonne senza pivot → incognite libere (<span class="m">n-r</span> parametri); pivot nella colonna dei termini noti → nessuna soluzione.</p>
+</div>
+
+<div class="callout esame">
+
+<p>Le chiuse chiedono il sistema ottenuto con Gauss con normalizzazione da un sistema <span class="m">2\times2</span> (la prima equazione resta, la seconda diventa <span class="m">x_2=\dots</span>), la matrice finale di Gauss-Jordan, le soluzioni di un sistema, quali incognite possono essere libere dati i pivot e il numero di soluzioni se c&#39;è un pivot nell&#39;ultima colonna. Aperta: descrivere uno dei metodi di Gauss, Gauss con normalizzazione o Gauss-Jordan.</p>
+</div>

@@ -1,0 +1,146 @@
+<h1>Lezione 43 — Classificazione delle coniche</h1>
+<p>Si lavora nel piano euclideo <span class="m">V^2_E</span> con riferimento <span class="m">(O;x,y)</span>, estendendo le coniche a <span class="m">\mathbb{P}^2(\mathbb{R})</span> con coordinate omogenee <span class="m">[X\ Y\ T]</span>.</p>
+<h2>Matrice associata a una conica</h2>
+<p><strong>Osservazione 43.1 – Definizione 43.2.</strong> Il polinomio di una conica con equazione omogenea
+<span class="m d">aX^2+bXY+cY^2+dXT+eYT+fT^2=0</span>
+è una forma quadratica in <span class="m">(X,Y,T)</span>; la sua matrice
+<span class="m d">A=\begin{pmatrix}a&amp;\frac b2&amp;\frac d2\\\frac b2&amp;c&amp;\frac e2\\\frac d2&amp;\frac e2&amp;f\end{pmatrix}</span>
+è la <strong>matrice associata</strong> alla conica, e <span class="m">aX^2+\dots+fT^2={}^t(X\ Y\ T)\cdot A\cdot{}^t(X\ Y\ T)</span>.</p>
+<div class="callout esempio">
+
+<p><span class="m">6X^2-6XY-2Y^2-18XT+2YT+9T^2=0</span> ha matrice <span class="m">\begin{pmatrix}6&amp;-3&amp;-9\\-3&amp;-2&amp;1\\-9&amp;1&amp;9\end{pmatrix}</span>.</p>
+</div>
+
+<p><strong>Proposizione 43.4.</strong> Una conica con matrice associata <span class="m">A</span> è <strong>degenere se e solo se <span class="m">\det(A)=0</span></strong>.</p>
+<div class="callout esempio">
+
+<p><span class="m">X^2+2XY-XT-4YT-2T^2=0</span> è degenere: <span class="m">\det\begin{pmatrix}1&amp;1&amp;-\frac12\\1&amp;0&amp;-2\\-\frac12&amp;-2&amp;-2\end{pmatrix}=0</span>.</p>
+</div>
+
+<p><strong>Notazione 43.6.</strong> <span class="m">A_{(3,3)}=\begin{pmatrix}a&amp;\frac b2\\\frac b2&amp;c\end{pmatrix}</span> è la sottomatrice ottenuta togliendo terza riga e terza colonna. È reale e simmetrica, quindi (Teorema spettrale) diagonalizzabile con matrice ortogonale, con due autovettori ortogonali (Osservazione 43.7).</p>
+<h2>Classificazione euclidea</h2>
+<p><strong>Teorema 43.8.</strong> Una conica non degenere, con una scelta opportuna del riferimento cartesiano, si scrive in una (e una sola) delle <strong>forme canoniche euclidee</strong> (<span class="m">a,b&gt;0</span>):</p>
+<ul>
+<li><span class="m">ax^2+by^2-1=0</span> (<strong>ellisse reale</strong>);</li>
+<li><span class="m">ax^2+by^2+1=0</span> (<strong>ellisse immaginaria</strong>);</li>
+<li><span class="m">ax^2-by^2-1=0</span> (<strong>iperbole</strong>);</li>
+<li><span class="m">ax^2-y=0</span> (<strong>parabola</strong>).</li>
+</ul>
+<p>Le direzioni degli assi sono date da due autovettori ortogonali di <span class="m">A_{(3,3)}</span>.</p>
+<div class="callout esempio">
+
+<p><span class="m">5x^2-2xy+5y^2-8x-8y-4=0</span>: <span class="m">A=\begin{pmatrix}5&amp;-1&amp;-4\\-1&amp;5&amp;-4\\-4&amp;-4&amp;-4\end{pmatrix}</span>, <span class="m">\det A=-288\neq0</span> (non degenere), <span class="m">A_{(3,3)}=\begin{pmatrix}5&amp;-1\\-1&amp;5\end{pmatrix}</span> con autovettori ortogonali <span class="m">{}^t(1\ -1)</span> e <span class="m">{}^t(1\ 1)</span>. Nel riferimento con questi assi è <span class="m">a(x')^2+b(y')^2-1=0</span>: ellisse reale.</p>
+</div>
+
+<h2>Classificazione affine</h2>
+<p><strong>Teorema 43.10.</strong> Una conica non degenere ha, a meno di un&#39;affinità, una sola forma canonica affine, secondo la tabella:</p>
+<table>
+<thead>
+<tr>
+<th><span class="m">\det A_{(3,3)}</span></th>
+<th><span class="m">a_{11}\det A</span> (o <span class="m">a_{22}\det A</span>)</th>
+<th>Forma canonica affine</th>
+<th>Conica</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><span class="m">&gt;0</span></td>
+<td><span class="m">&lt;0</span></td>
+<td><span class="m">x^2+y^2-1=0</span></td>
+<td>ellisse reale</td>
+</tr>
+<tr>
+<td><span class="m">&gt;0</span></td>
+<td><span class="m">&gt;0</span></td>
+<td><span class="m">x^2+y^2+1=0</span></td>
+<td>ellisse immaginaria</td>
+</tr>
+<tr>
+<td><span class="m">&lt;0</span></td>
+<td>qualsiasi</td>
+<td><span class="m">x^2-y^2-1=0</span></td>
+<td>iperbole</td>
+</tr>
+<tr>
+<td><span class="m">=0</span></td>
+<td>qualsiasi</td>
+<td><span class="m">x^2-y=0</span></td>
+<td>parabola</td>
+</tr>
+</tbody></table>
+<div class="callout esempio">
+
+<p>Per la conica precedente <span class="m">\det A_{(3,3)}=24&gt;0</span> e <span class="m">a_{11}\det A=5\cdot(-288)&lt;0</span>: ellisse reale.</p>
+</div>
+
+<p><strong>Corollario 43.12.</strong> Una conica non degenere è un&#39;<strong>ellisse</strong> se non ha punti all&#39;infinito, una <strong>parabola</strong> se ne ha uno, un&#39;<strong>iperbole</strong> se ne ha due (senza contare punti complessi né molteplicità).</p>
+<h2>Classificazione proiettiva</h2>
+<p><strong>Teorema 43.13.</strong> Ogni conica ha, a meno di una trasformazione proiettiva, una sola forma canonica proiettiva, secondo il rango di <span class="m">A</span> e la definitezza della forma quadratica <span class="m">p(X,Y,T)</span>:</p>
+<table>
+<thead>
+<tr>
+<th><span class="m">\operatorname{rank}(A)</span></th>
+<th>Definitezza di <span class="m">p</span></th>
+<th>Forma canonica proiettiva</th>
+<th>Conica</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>3</td>
+<td>indefinita</td>
+<td><span class="m">X^2+Y^2-T^2=0</span></td>
+<td>non degenere, reale</td>
+</tr>
+<tr>
+<td>3</td>
+<td>definita positiva o negativa</td>
+<td><span class="m">X^2+Y^2+T^2=0</span></td>
+<td>non degenere, immaginaria</td>
+</tr>
+<tr>
+<td>2</td>
+<td>indefinita</td>
+<td><span class="m">X^2-Y^2=0</span></td>
+<td>degenere, due rette reali</td>
+</tr>
+<tr>
+<td>2</td>
+<td>semidefinita positiva o negativa</td>
+<td><span class="m">X^2+Y^2=0</span></td>
+<td>degenere, due rette immaginarie</td>
+</tr>
+<tr>
+<td>1</td>
+<td>qualsiasi</td>
+<td><span class="m">X^2=0</span></td>
+<td>degenere, una retta reale doppia</td>
+</tr>
+</tbody></table>
+<div class="callout esempio">
+
+<p>Per la conica dell&#39;esempio 43.9 la forma <span class="m">5X^2-2XY+5Y^2-8XT-8YT-4T^2</span> ha autovalori <span class="m">6</span> e <span class="m">\pm4\sqrt3</span>: indefinita, e <span class="m">\operatorname{rank}A=3</span>: non degenere reale.</p>
+</div>
+
+<div class="callout esempio">
+
+<p>Esercizio 43.2: <span class="m">2x^2-xy-3y^2-x+4y-1=0</span> ha <span class="m">A=\begin{pmatrix}2&amp;-\frac12&amp;-\frac12\\-\frac12&amp;-3&amp;2\\-\frac12&amp;2&amp;-1\end{pmatrix}</span> con <span class="m">\det A=0</span> (degenere), <span class="m">\operatorname{rank}A=2</span> e forma indefinita: coppia di rette reali.</p>
+</div>
+
+<div class="callout esempio">
+
+<p>Esercizio 43.1 (fasci): le coniche degeneri del fascio <span class="m">\lambda(x^2+y^2-1)+\mu(2x^2-y-2)=0</span> si trovano annullando il determinante della matrice del fascio, <span class="m">-(\lambda+2\mu)\left(\lambda^2+2\lambda\mu+\frac14\mu^2\right)=0</span>: <span class="m">\lambda=-2\mu</span> e <span class="m">\lambda=\frac{-2\pm\sqrt3}{2}\mu</span>.</p>
+</div>
+
+<div class="callout sintesi">
+
+<ol>
+<li>Scrivi <span class="m">A</span> (dimezzando i coefficienti misti e lineari).</li>
+<li><span class="m">\det A=0</span>? Allora è degenere: rango 2 → due rette (reali se indefinita, immaginarie se semidefinita), rango 1 → retta doppia.</li>
+<li>Se <span class="m">\det A\neq0</span>: <span class="m">\det A_{(3,3)}&gt;0</span> ellisse (reale se <span class="m">a_{11}\det A&lt;0</span>, immaginaria se <span class="m">&gt;0</span>), <span class="m">&lt;0</span> iperbole, <span class="m">=0</span> parabola.</li>
+</ol>
+</div>
+
+<div class="callout esame">
+
+<p>Paniere: scrivere la matrice associata a una conica (riconoscerla tra matrici non dimezzate o non simmetriche), dire se una conica è degenere (<span class="m">\det A</span>) e di che tipo è (<span class="m">\det A_{(3,3)}</span>, <span class="m">a_{11}\det A</span>). Quiz: ellisse reale o immaginaria, retta doppia (rango 1). Domanda aperta: matrici associate e loro uso per la classificazione euclidea, affine e proiettiva.</p>
+</div>

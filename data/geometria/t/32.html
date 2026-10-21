@@ -1,0 +1,51 @@
+<h1>Lezione 32 — Applicazioni affini</h1>
+<p>Le applicazioni affini e le affinità generalizzano le applicazioni lineari e gli isomorfismi. Si fissano i riferimenti cartesiani <span class="m">(O;x,y)</span> del piano <span class="m">V^2_G</span> e <span class="m">(O;x,y,z)</span> dello spazio <span class="m">V^3_G</span>, identificando i vettori geometrici con le colonne delle loro coordinate.</p>
+<h2>Applicazioni affini</h2>
+<p><strong>Definizione 32.1.</strong> La <em>traslazione</em> di vettore <span class="m">v</span> in uno spazio vettoriale <span class="m">V</span> è <span class="m">T_v\colon V\ni P\mapsto P+v\in V</span> (<span class="m">v</span> = vettore di traslazione).</p>
+<p><strong>Definizione 32.2.</strong> Una funzione <span class="m">\varphi\colon V_1\to V_2</span> tra spazi sullo stesso campo della forma <span class="m">\varphi=T\circ f</span>, con <span class="m">f</span> lineare e <span class="m">T</span> traslazione di <span class="m">V_2</span>, è un&#39;<strong>applicazione affine</strong>.</p>
+<p><strong>Osservazione 32.4.</strong></p>
+<ul>
+<li>Il vettore di traslazione è <span class="m">v=\varphi(O)</span>: <span class="m">\varphi(O)=T_v(f(O))=T_v(O)=v</span>.</li>
+<li>Ogni applicazione lineare è affine, non viceversa: un&#39;applicazione affine è lineare se e solo se <span class="m">T=T_0</span>, cioè <span class="m">\varphi(O)=O</span>.</li>
+</ul>
+<p><strong>Osservazione 32.5–32.7.</strong> Da <span class="m">\mathbb{K}^m</span> a <span class="m">\mathbb{K}^n</span>: <span class="m">\varphi(P)=A\cdot P+v</span> con <span class="m">A\in\mathbb{K}^{n,m}</span>, <span class="m">v\in\mathbb{K}^n</span>. Equivalentemente, le applicazioni affini sono tutte e sole quelle le cui componenti sono <strong>polinomi di grado al più 1</strong> nelle coordinate: i termini noti formano <span class="m">v</span>, le parti di grado 1 formano la parte lineare.</p>
+<div class="callout esempio">
+
+<p><span class="m">\varphi\,{}^t(x_1\ x_2)=\begin{pmatrix}3&amp;2\\-1&amp;0\\1&amp;4\end{pmatrix}{}^t(x_1\ x_2)+{}^t(0\ 1\ -2)={}^t(3x_1+2x_2,\ -x_1+1,\ x_1+4x_2-2)</span> è affine <span class="m">\mathbb{R}^2\to\mathbb{R}^3</span>. Anche le rotazioni del piano attorno a un punto qualsiasi sono affini. Invece <span class="m">q\colon\mathbb{R}\ni x\mapsto x^2+x+2</span> non è affine (grado 2).</p>
+</div>
+
+<p><strong>Lemma 32.9.</strong> Se <span class="m">\varphi=T\circ f</span> è affine, <span class="m">\varphi(P')-\varphi(P)=f(P'-P)</span> per ogni <span class="m">P,P'</span> (le traslazioni si cancellano nella differenza).</p>
+<p><strong>Proposizione 32.10.</strong> L&#39;immagine di un sottospazio affine <span class="m">S</span> di <span class="m">V_1</span> è un sottospazio affine di <span class="m">V_2</span>, e <strong>la giacitura di <span class="m">\varphi(S)</span> è l&#39;immagine tramite <span class="m">f</span> della giacitura di <span class="m">S</span></strong>.</p>
+<p><strong>Proposizione 32.11.</strong> Se <span class="m">S</span> e <span class="m">S'</span> sono paralleli, anche <span class="m">\varphi(S)</span> e <span class="m">\varphi(S')</span> lo sono (da <span class="m">W\subseteq W'</span> segue <span class="m">f(W)\subseteq f(W')</span>).</p>
+<p><strong>Osservazione 32.12.</strong> Le traslazioni sono bigettive, quindi <span class="m">\varphi=T\circ f</span> è bigettiva se e solo se lo è <span class="m">f</span>; in tal caso <span class="m">\dim V_1=\dim V_2</span>.</p>
+<p><strong>Proposizione 32.13.</strong> La composizione di applicazioni affini è affine; l&#39;inversa di un&#39;applicazione affine invertibile è affine.</p>
+<p><strong>Definizione 32.14.</strong> Un&#39;applicazione affine <span class="m">\varphi\colon V\to V</span> invertibile è un&#39;<strong>affinità</strong>. Composizione e inverse di affinità sono affinità (Cor. 32.15).</p>
+<p><strong>Teorema 32.16.</strong> Se <span class="m">\varphi</span> è un&#39;affinità, due sottospazi affini <span class="m">S,S'</span> sono incidenti / paralleli / sghembi se e solo se lo sono <span class="m">\varphi(S)</span> e <span class="m">\varphi(S')</span>. Per questo le classificazioni della Lezione 31 sono dette <em>affini</em>.</p>
+<h2>Forma matriciale delle applicazioni affini</h2>
+<p>A ogni punto <span class="m">P={}^t(P_1\ \cdots\ P_n)</span> di <span class="m">\mathbb{K}^n</span> si appende una <strong>coordinata fittizia</strong> uguale a <span class="m">1</span>: <span class="m">P_a={}^t(P_1\ \cdots\ P_n\ 1)</span>. La mappa <span class="m">P\mapsto P_a</span> è affine ma non lineare.</p>
+<p>Scrivendo <span class="m">A\cdot P+v=\sum_i P_i\,(\text{colonna }i\text{ di }A)+1\cdot v</span>, il vettore <span class="m">v</span> diventa una colonna in più; aggiungendo la riga <span class="m">(0\ \cdots\ 0\ 1)</span>:
+<span class="m d">(\varphi(P))_a=\begin{pmatrix}A&amp;v\\0&amp;1\end{pmatrix}\cdot P_a.</span></p>
+<p><strong>Definizione 32.19.</strong> <span class="m">[\varphi]:=\begin{pmatrix}A&amp;v\\0&amp;1\end{pmatrix}</span> (con <span class="m">f=f_A</span>, <span class="m">T=T_v</span>) è la <strong>matrice associata</strong> all&#39;applicazione affine <span class="m">\varphi\colon\mathbb{K}^m\to\mathbb{K}^n</span>; è <span class="m">(n+1)\times(m+1)</span>.</p>
+<div class="callout esempio">
+
+<p>Per l&#39;applicazione dell&#39;esempio precedente <span class="m">[\varphi]=\begin{pmatrix}3&amp;2&amp;0\\-1&amp;0&amp;1\\1&amp;4&amp;-2\\0&amp;0&amp;1\end{pmatrix}</span>. Per la rotazione di angolo <span class="m">\alpha</span> (antiorario) attorno a <span class="m">C={}^t(c_x\ c_y)</span>: <span class="m">[\varphi]=\begin{pmatrix}\cos\alpha&amp;-\sin\alpha&amp;(1-\cos\alpha)c_x+\sin\alpha\,c_y\\\sin\alpha&amp;\cos\alpha&amp;-\sin\alpha\,c_x+(1-\cos\alpha)c_y\\0&amp;0&amp;1\end{pmatrix}</span>, ricavata da <span class="m">\mathrm{rot}_{C,\alpha}=T_C\circ\mathrm{rot}_{O,\alpha}\circ T_{-C}</span>.</p>
+</div>
+
+<p><strong>Proposizione 32.22.</strong> <span class="m">\varphi\colon\mathbb{K}^n\to\mathbb{K}^n</span> è un&#39;affinità se e solo se <span class="m">[\varphi]</span> (quadrata) è invertibile.</p>
+<div class="callout esempio">
+
+<p><strong>Trovare un&#39;affinità da 4 punti.</strong> Se <span class="m">\varphi\,{}^t(1\ 1\ 0)={}^t(2\ 0\ 4)</span>, <span class="m">\varphi\,{}^t(1\ 2\ -1)={}^t(3\ -3\ 3)</span>, <span class="m">\varphi\,{}^t(0\ 0\ 1)={}^t(0\ 1\ 5)</span>, <span class="m">\varphi\,{}^t(1\ 1\ 1)={}^t(1\ 2\ 7)</span>: per il Lemma 32.9 le differenze danno <span class="m">f</span> su una base (es. <span class="m">f\,{}^t(0\ 0\ 1)={}^t(-1\ 2\ 3)</span>), da cui <span class="m">A=\begin{pmatrix}1&amp;0&amp;-1\\2&amp;-1&amp;2\\0&amp;2&amp;3\end{pmatrix}</span>; poi <span class="m">v=\varphi(P)-A P={}^t(1\ -1\ 2)</span>.</p>
+</div>
+
+<h2>Allineamento e complanarità</h2>
+<p><strong>Proposizione 32.23.</strong> I punti <span class="m">P^{(1)},\dots,P^{(m)}</span> di <span class="m">\mathbb{K}^n</span> sono <strong>allineati</strong> se e solo se la matrice <span class="m">(n+1)\times m</span> con colonne <span class="m">P^{(1)}_a,\dots,P^{(m)}_a</span> ha rango al più <span class="m">2</span>.</p>
+<p><strong>Proposizione 32.25.</strong> Sono <strong>complanari</strong> se e solo se tale matrice ha rango al più <span class="m">3</span>. In generale (Oss. 32.26) stanno in un sottospazio affine di dimensione <span class="m">k</span> se e solo se il rango è al più <span class="m">k+1</span>.</p>
+<div class="callout esempio">
+
+<p><span class="m">{}^t(1\ 0\ 2),{}^t(3\ -1\ 1),{}^t(-3\ 2\ 4)</span> sono allineati: <span class="m">\mathrm{rank}\begin{pmatrix}1&amp;3&amp;-3\\0&amp;-1&amp;2\\2&amp;1&amp;4\\1&amp;1&amp;1\end{pmatrix}=2</span>. I punti <span class="m">{}^t(1\ 1),{}^t(2\ -1),{}^t(1\ 3),{}^t(-1\ 2)</span> non lo sono: il rango è <span class="m">3&gt;2</span>.</p>
+</div>
+
+<div class="callout esame">
+
+<p>Il paniere chiede la <strong>matrice associata</strong> <span class="m">\begin{pmatrix}A&amp;v\\0&amp;1\end{pmatrix}</span> di un&#39;applicazione affine: attenzione ai segni dei coefficienti, ai termini noti e alla riga <span class="m">(0\ \cdots\ 0\ 1)</span> (le opzioni senza quella riga sono sbagliate). Nei quiz: riconoscere le applicazioni non affini (componenti non polinomiali di grado <span class="m">\leqslant1</span>), la Prop. 32.10 sulla giacitura, i punti allineati. Domande aperte: applicazioni affini e loro forma matriciale.</p>
+</div>

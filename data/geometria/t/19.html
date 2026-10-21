@@ -1,0 +1,67 @@
+<h1>Lezione 19 — Applicazioni lineari</h1>
+<p>Le applicazioni lineari sono le mappe tra spazi vettoriali che preservano la struttura di spazio vettoriale.</p>
+<h2>Definizione ed esempi</h2>
+<p><strong>Definizione 19.1.</strong> Dati due spazi vettoriali <span class="m">V</span> e <span class="m">W</span> sullo <strong>stesso campo</strong> <span class="m">\mathbb{K}</span>, un&#39;applicazione <span class="m">f: V \to W</span> è <strong>lineare</strong> (o <span class="m">\mathbb{K}</span>-lineare) se:</p>
+<ul>
+<li><strong>(AL1)</strong> per ogni <span class="m">v_1, v_2 \in V</span>: <span class="m">f(v_1 + v_2) = f(v_1) + f(v_2)</span>;</li>
+<li><strong>(AL2)</strong> per ogni <span class="m">v \in V</span> e <span class="m">\lambda \in \mathbb{K}</span>: <span class="m">f(\lambda v) = \lambda f(v)</span>.</li>
+</ul>
+<p>L&#39;insieme delle applicazioni lineari da <span class="m">V</span> a <span class="m">W</span> si indica con <span class="m">\mathrm{Lin}(V, W)</span>. Altri nomi: mappe, trasformazioni, funzioni lineari. Una formulazione equivalente è <strong>(AL1&#39;)</strong>: <span class="m">f(\lambda_1 v_1 + \lambda_2 v_2) = \lambda_1 f(v_1) + \lambda_2 f(v_2)</span>; più in generale <span class="m">f</span> è lineare se e solo se conserva tutte le combinazioni lineari, <span class="m">f(\lambda_1 v_1 + \dots + \lambda_m v_m) = \lambda_1 f(v_1) + \dots + \lambda_m f(v_m)</span>.</p>
+<div class="callout esempio">
+
+<p><strong>Sono lineari:</strong> la funzione costante nulla <span class="m">V \ni v \mapsto 0 \in W</span>; l&#39;identità <span class="m">\mathrm{id}_V</span>; la proiezione sulla <span class="m">i</span>-esima coordinata <span class="m">\mathrm{proj}_i: \mathbb{K}^n \to \mathbb{K}</span>; l&#39;inclusione <span class="m">\mathrm{incl}: W \to V</span> di un sottospazio; la moltiplicazione per <span class="m">x</span> sui polinomi, <span class="m">p(x) \mapsto x\,p(x)</span> (anche da <span class="m">\mathbb{K}_{\leq d}[x]</span> a <span class="m">\mathbb{K}_{\leq d+1}[x]</span>).</p>
+<p><strong>Non sono lineari:</strong> una funzione costante non nulla (<span class="m">f(0+0) = w \neq 2w</span>); <span class="m">q(x) = x^2</span> su <span class="m">\mathbb{R}</span> (<span class="m">q(1+1) = 4 \neq q(1)+q(1) = 2</span>); il quadrato sui polinomi.</p>
+</div>
+
+<p><strong>Osservazione 19.10.</strong> Ogni applicazione lineare manda il vettore nullo nel vettore nullo: <span class="m">f(0_V) = f(0\cdot 0_V) = 0\cdot f(0_V) = 0_W</span>. Il viceversa è falso: <span class="m">q(x) = x^2</span> ha <span class="m">q(0) = 0</span> ma non è lineare.</p>
+<p><strong>Proposizione 19.11.</strong> La composizione di applicazioni lineari è lineare.</p>
+<h2>Applicazioni lineari e basi</h2>
+<p><strong>Proposizione 19.12.</strong> Sia <span class="m">V</span> finitamente generato, <span class="m">\mathcal{B} = \{v_1, \dots, v_m\}</span> una base di <span class="m">V</span> e <span class="m">w_1, \dots, w_m \in W</span> vettori <strong>qualsiasi</strong>. Esiste <strong>una e una sola</strong> applicazione lineare <span class="m">f: V \to W</span> tale che <span class="m">f(v_i) = w_i</span> per <span class="m">i = 1, \dots, m</span>.</p>
+<p><em>Dimostrazione (idea).</em> Ogni <span class="m">v</span> si scrive in modo unico come <span class="m">v = \lambda_1 v_1 + \dots + \lambda_m v_m</span>; la linearità obbliga a porre
+<span class="m d">f(v) = \lambda_1 w_1 + \dots + \lambda_m w_m,</span>
+quindi <span class="m">f</span> è unica. Si verifica poi, usando le proprietà di spazio vettoriale di <span class="m">V</span> e <span class="m">W</span>, che questa <span class="m">f</span> soddisfa (AL1) e (AL2).</p>
+<div class="callout esempio">
+
+<p><span class="m">\mathcal{B} = \left\{\begin{pmatrix} 2 \\ 3 \end{pmatrix}, \begin{pmatrix} 1 \\ 1 \end{pmatrix}\right\}</span> è una base di <span class="m">\mathbb{R}^2</span>. Esiste un&#39;unica <span class="m">f: \mathbb{R}^2 \to \mathbb{R}^3</span> con <span class="m">f\begin{pmatrix} 2 \\ 3 \end{pmatrix} = \begin{pmatrix} 1 \\ 2 \\ 0 \end{pmatrix}</span> e <span class="m">f\begin{pmatrix} 1 \\ 1 \end{pmatrix} = \begin{pmatrix} -1 \\ 1 \\ 3 \end{pmatrix}</span>. Poiché <span class="m">\begin{pmatrix} x_1 \\ x_2 \end{pmatrix} = (x_2 - x_1)\begin{pmatrix} 2 \\ 3 \end{pmatrix} + (3x_1 - 2x_2)\begin{pmatrix} 1 \\ 1 \end{pmatrix}</span>,
+<span class="m d">f\begin{pmatrix} x_1 \\ x_2 \end{pmatrix} = (x_2 - x_1)\begin{pmatrix} 1 \\ 2 \\ 0 \end{pmatrix} + (3x_1 - 2x_2)\begin{pmatrix} -1 \\ 1 \\ 3 \end{pmatrix} = \begin{pmatrix} -4x_1 + 3x_2 \\ x_1 \\ 9x_1 - 6x_2 \end{pmatrix}.</span></p>
+</div>
+
+<p><strong>Osservazione 19.14.</strong> Fissata una base <span class="m">\mathcal{B}</span> di <span class="m">V</span>, l&#39;applicazione delle coordinate <span class="m">[\cdot]_{\mathcal{B}}: V \ni v \mapsto [v]_{\mathcal{B}} \in \mathbb{K}^m</span> è lineare: è l&#39;unica applicazione lineare che manda <span class="m">v_i</span> in <span class="m">e_i</span>. Per esempio, fissato un sistema di riferimento cartesiano, <span class="m">[\cdot]_{\{i,j\}}: V^2_G \to \mathbb{R}^2</span> e <span class="m">[\cdot]_{\{i,j,k\}}: V^3_G \to \mathbb{R}^3</span> sono lineari.</p>
+<h2>Operazioni sulle applicazioni lineari</h2>
+<p><strong>Definizione 19.16.</strong> Per <span class="m">f, g \in \mathrm{Lin}(V, W)</span> e <span class="m">\lambda \in \mathbb{K}</span>: <span class="m">(f + g)(v) := f(v) + g(v)</span> e <span class="m">(\lambda f)(v) := \lambda f(v)</span>.</p>
+<p><strong>Proposizione 19.18.</strong> <span class="m">\mathrm{Lin}(V, W)</span> con queste operazioni è uno spazio vettoriale su <span class="m">\mathbb{K}</span>.</p>
+<h2>Matrici e applicazioni lineari associate</h2>
+<p><strong>Definizione 19.19.</strong> Data <span class="m">A \in \mathbb{K}^{n,m}</span>, l&#39;applicazione <span class="m">f_A: \mathbb{K}^m \to \mathbb{K}^n</span>, <span class="m">f_A(X) := A\cdot X</span>, è l&#39;<strong>applicazione lineare associata alla matrice</strong> <span class="m">A</span>.</p>
+<p>È lineare per la distributività del prodotto righe per colonne: <span class="m">A(X + Y) = AX + AY</span>, <span class="m">A(\lambda X) = \lambda(AX)</span>.</p>
+<div class="callout attenzione">
+
+<p>Una matrice <span class="m">n \times m</span> (<span class="m">n</span> righe, <span class="m">m</span> colonne) dà un&#39;applicazione <strong>da <span class="m">\mathbb{K}^m</span> a <span class="m">\mathbb{K}^n</span></strong>: le colonne corrispondono al dominio, le righe al codominio. Per esempio <span class="m">f_A: \mathbb{R}^3 \to \mathbb{R}^4</span> ha <span class="m">A</span> di dimensione <span class="m">4 \times 3</span>.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><span class="m">A = \begin{pmatrix} 2 &amp; 1 \\ 0 &amp; 0 \\ -1 &amp; 3 \end{pmatrix}</span> (<span class="m">3 \times 2</span>) dà <span class="m">f_A: \mathbb{R}^2 \ni \begin{pmatrix} x_1 \\ x_2 \end{pmatrix} \mapsto \begin{pmatrix} 2x_1 + x_2 \\ 0 \\ -x_1 + 3x_2 \end{pmatrix} \in \mathbb{R}^3</span>.</p>
+</div>
+
+<p><strong>Osservazioni 19.21 e 19.23.</strong> <span class="m">f_{I_m} = \mathrm{id}_{\mathbb{K}^m}</span>; <span class="m">f_{0_{n,m}}</span> è l&#39;applicazione nulla; se <span class="m">A \in \mathbb{K}^{n,k}</span> e <span class="m">B \in \mathbb{K}^{k,m}</span>, allora <span class="m">f_{A\cdot B} = f_A \circ f_B</span>.</p>
+<p><strong>Proposizione 19.24.</strong> La funzione <span class="m">\mathbb{K}^{n,m} \ni A \mapsto f_A \in \mathrm{Lin}(\mathbb{K}^m, \mathbb{K}^n)</span> è <strong>bigettiva</strong>.</p>
+<p><em>Dimostrazione.</em> Surgettività: data <span class="m">f</span> lineare, sia <span class="m">A</span> la matrice che ha per colonne <span class="m">f(e_1), \dots, f(e_m)</span>; per ogni <span class="m">X = \sum x_i e_i</span> si ha <span class="m">f(X) = \sum x_i f(e_i) = AX</span>, quindi <span class="m">f = f_A</span>. Iniettività: se <span class="m">A \neq A'</span> differiscono nell&#39;entrata di riga <span class="m">i</span> e colonna <span class="m">j</span>, allora <span class="m">f_A(e_j)</span> e <span class="m">f_{A'}(e_j)</span> differiscono nella <span class="m">i</span>-esima coordinata.</p>
+<p>In altre parole (Osservazioni 19.25 e 19.26): ogni applicazione lineare da <span class="m">\mathbb{K}^m</span> a <span class="m">\mathbb{K}^n</span> è associata a <strong>una e una sola</strong> matrice di <span class="m">\mathbb{K}^{n,m}</span>; e le applicazioni lineari da <span class="m">\mathbb{K}^m</span> a <span class="m">\mathbb{K}^n</span> sono tutte e sole quelle con componenti <span class="m">p_i(x_1, \dots, x_m)</span> polinomi di grado <span class="m">-\infty</span> (nulli) o di <strong>grado 1 con termine noto nullo</strong>. Inoltre <span class="m">A \mapsto f_A</span> è lineare.</p>
+<div class="callout esempio">
+
+<p>Le rotazioni <span class="m">\mathrm{rot}_\alpha</span> del piano attorno all&#39;origine sono lineari; le colonne della matrice sono le immagini di <span class="m">i</span> e <span class="m">j</span>, quindi <span class="m">\mathrm{rot}_\alpha = f_{A_\alpha}</span> con <span class="m">A_\alpha = \begin{pmatrix} \cos\alpha &amp; -\sin\alpha \\ \sin\alpha &amp; \cos\alpha \end{pmatrix}</span>. Le omotetie <span class="m">v \mapsto \lambda v</span> sono <span class="m">f_{\lambda I_n}</span>.</p>
+</div>
+
+<div class="callout sintesi">
+
+<ul>
+<li>Lineare = conserva somme e multipli; <span class="m">f(0) = 0</span> è necessario ma non sufficiente.</li>
+<li>Su una base si possono assegnare immagini qualsiasi: l&#39;applicazione lineare esiste ed è unica.</li>
+<li><span class="m">A \in \mathbb{K}^{n,m}</span> dà <span class="m">f_A: \mathbb{K}^m \to \mathbb{K}^n</span>; le colonne di <span class="m">A</span> sono <span class="m">f_A(e_1), \dots, f_A(e_m)</span>; matrici e applicazioni lineari tra <span class="m">\mathbb{K}^m</span> e <span class="m">\mathbb{K}^n</span> si corrispondono in modo biunivoco.</li>
+</ul>
+</div>
+
+<div class="callout esame">
+
+<p>Aperte: definizione di applicazione lineare con un risultato (per esempio la Proposizione 19.12); applicazioni lineari associate alle matrici. Quiz: calcolare <span class="m">f</span> su una combinazione lineare, riconoscere una legge lineare, contare le applicazioni con immagini assegnate su una base, dimensione della matrice di <span class="m">f_A</span>.</p>
+</div>

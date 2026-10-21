@@ -1,0 +1,178 @@
+<h1>Lezione 31 — Mutua posizione di sottospazi affini</h1>
+<p>Si studia la mutua posizione dei sottospazi affini di uno spazio vettoriale <span class="m">V</span>: la situazione è simile a quella dei sottospazi vettoriali, ma i sottospazi affini <strong>possono non intersecarsi</strong>. I risultati vengono poi specializzati al piano e allo spazio.</p>
+<h2>Parallelismo, incidenza, sghembi</h2>
+<p>Due sottospazi affini <span class="m">S_1</span>, <span class="m">S_2</span> sono <strong>coincidenti</strong> se <span class="m">S_1 = S_2</span>.</p>
+<p><strong>Definizione 31.3.</strong> <span class="m">S_1 = P_1 + W_1</span> e <span class="m">S_2 = P_2 + W_2</span> sono <strong>paralleli</strong> se
+<span class="m d">W_1 \subseteq W_2 \quad\text{oppure}\quad W_2 \subseteq W_1.</span></p>
+<div class="callout attenzione">
+
+<p>Diversamente dalla geometria euclidea (dove due rette parallele sono complanari e <strong>non</strong> si intersecano), qui un sottospazio affine è <strong>parallelo a sé stesso</strong>. Per questo nelle domande si dice &quot;paralleli non coincidenti&quot;. La giacitura <span class="m">W</span> di <span class="m">S = P + W</span> è parallela a <span class="m">S</span>.</p>
+</div>
+
+<p>Per verificare il parallelismo di <span class="m">S_1 = P_1 + \operatorname{Span}(\mathbf w_1^1, \dots, \mathbf w_1^n)</span> e <span class="m">S_2 = P_2 + \operatorname{Span}(\mathbf w_2^1, \dots, \mathbf w_2^m)</span> basta controllare se tutti i <span class="m">\mathbf w_1^i</span> stanno nello Span dei <span class="m">\mathbf w_2^j</span>, o viceversa.</p>
+<div class="callout esempio">
+
+<p>Le rette di <span class="m">\boldsymbol V^2_G</span> <span class="m">\begin{cases} x=-1+3\lambda \\ y=1+\lambda \end{cases}</span> e <span class="m">\begin{cases} x=-1-\lambda \\ y=1+2\lambda \end{cases}</span> non sono parallele: i direttori <span class="m">{}^t(3\ 1)</span> e <span class="m">{}^t(-1\ 2)</span> non sono multipli l&#39;uno dell&#39;altro.</p>
+</div>
+
+<p><strong>Osservazione 31.8.</strong> Se due sottospazi affini <strong>paralleli</strong> si intersecano, uno è contenuto nell&#39;altro (scelto <span class="m">P</span> comune, <span class="m">S_1 = P + W_1</span>, <span class="m">S_2 = P + W_2</span> e <span class="m">W_1 \subseteq W_2</span> dà <span class="m">S_1 \subseteq S_2</span>).</p>
+<p><strong>Definizione 31.9.</strong> Due sottospazi affini <strong>non paralleli</strong> sono <strong>incidenti</strong> se <span class="m">S_1 \cap S_2 \ne \emptyset</span>.</p>
+<p><strong>Definizione 31.11.</strong> <span class="m">S_1</span> e <span class="m">S_2</span> sono <strong>sghembi</strong> se
+<span class="m d">S_1 \cap S_2 = \emptyset \qquad\text{e}\qquad W_1 \cap W_2 = \{0\}.</span></p>
+<p>Due sottospazi coincidenti non sono sghembi. Due sghembi di dimensione positiva non sono né incidenti né paralleli; il viceversa è falso se <span class="m">\dim V \geqslant 4</span>, è vero se <span class="m">\dim V = 3</span>, e se <span class="m">\dim V \leqslant 2</span> non esistono sottospazi sghembi.</p>
+<div class="callout esempio">
+
+<p>Le rette <span class="m">\begin{cases} x=1-2\lambda \\ y=\lambda \\ z=3-\lambda \end{cases}</span> e <span class="m">\begin{cases} x=3+\lambda \\ y=2-\lambda \\ z=-1+2\lambda \end{cases}</span> sono <strong>sghembe</strong>: i direttori <span class="m">{}^t(-2\ 1\ -1)</span> e <span class="m">{}^t(1\ -1\ 2)</span> non sono multipli (le giaciture si intersecano solo in <span class="m">0</span>) e il sistema delle sei equazioni non ha soluzione.</p>
+</div>
+
+<h2>Mutua posizione di rette e piani: il metodo dei ranghi</h2>
+<p>Scritte le forme implicite, si mettono <strong>tutte le equazioni in un unico sistema</strong> e, per il teorema di <strong>Rouché-Capelli</strong>, si confrontano il rango della matrice incompleta <span class="m">A</span> e quello della completa <span class="m">(A|B)</span>.</p>
+<h3>Due rette nel piano</h3>
+<p>Due rette distinte sono <strong>parallele</strong> (non si intersecano, direttori multipli) o <strong>incidenti</strong> (un punto comune, direttori non multipli). Con <span class="m">ax+by+c=0</span> e <span class="m">a'x+b'y+c'=0</span>:</p>
+<table>
+<thead>
+<tr>
+<th><span class="m">\operatorname{rank}A</span></th>
+<th><span class="m">\operatorname{rank}(A\vert B)</span></th>
+<th>mutua posizione</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>1</td>
+<td>coincidenti</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2</td>
+<td>parallele non coincidenti</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2</td>
+<td>incidenti</td>
+</tr>
+</tbody></table>
+<h3>Due piani nello spazio</h3>
+<p>Due piani distinti sono <strong>paralleli</strong> (non si intersecano) o <strong>incidenti</strong> (si intersecano in una retta). Con <span class="m">ax+by+cz+d=0</span> e <span class="m">a'x+b'y+c'z+d'=0</span>, <span class="m">A = \begin{pmatrix} a &amp; b &amp; c \\ a' &amp; b' &amp; c' \end{pmatrix}</span>:</p>
+<table>
+<thead>
+<tr>
+<th><span class="m">\operatorname{rank}A</span></th>
+<th><span class="m">\operatorname{rank}(A\vert B)</span></th>
+<th>mutua posizione</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>1</td>
+<td>coincidenti</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2</td>
+<td>paralleli non coincidenti</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2</td>
+<td>incidenti</td>
+</tr>
+</tbody></table>
+<div class="callout esempio">
+
+<p><span class="m">x-3y+z-1=0</span> e <span class="m">2x-6y+2z=0</span>: <span class="m">\operatorname{rank}\begin{pmatrix} 1 &amp; -3 &amp; 1 \\ 2 &amp; -6 &amp; 2 \end{pmatrix} = 1</span> e <span class="m">\operatorname{rank}\begin{pmatrix} 1 &amp; -3 &amp; 1 &amp; 1 \\ 2 &amp; -6 &amp; 2 &amp; 0 \end{pmatrix} = 2</span>: piani paralleli non coincidenti.</p>
+</div>
+
+<h3>Due rette nello spazio</h3>
+<p>Due rette distinte sono <strong>parallele</strong> (direttori multipli), <strong>incidenti</strong> (un punto comune) o <strong>sghembe</strong> (nessun punto comune e direttori non multipli). Con le due coppie di equazioni si ottiene un sistema di 4 equazioni in 3 incognite:</p>
+<table>
+<thead>
+<tr>
+<th><span class="m">\operatorname{rank}A</span></th>
+<th><span class="m">\operatorname{rank}(A\vert B)</span></th>
+<th>mutua posizione</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2</td>
+<td>2</td>
+<td>coincidenti</td>
+</tr>
+<tr>
+<td>2</td>
+<td>3</td>
+<td>parallele non coincidenti</td>
+</tr>
+<tr>
+<td>3</td>
+<td>3</td>
+<td>incidenti</td>
+</tr>
+<tr>
+<td>3</td>
+<td>4</td>
+<td>sghembe</td>
+</tr>
+</tbody></table>
+<div class="callout esempio">
+
+<p>Le rette sghembe dell&#39;esempio precedente hanno forme implicite <span class="m">\begin{cases} x+2y-1=0 \\ y+z-3=0 \end{cases}</span> e <span class="m">\begin{cases} x+y-5=0 \\ 2y+z-3=0 \end{cases}</span>: <span class="m">\operatorname{rank}\begin{pmatrix} 1 &amp; 2 &amp; 0 \\ 0 &amp; 1 &amp; 1 \\ 1 &amp; 1 &amp; 0 \\ 0 &amp; 2 &amp; 1 \end{pmatrix} = 3</span> e la completa ha rango 4.</p>
+</div>
+
+<h3>Retta e piano nello spazio</h3>
+<p>La retta può essere <strong>contenuta</strong> nel piano, <strong>parallela ma non contenuta</strong> (nessun punto comune) o <strong>incidente</strong> (un punto comune). Sistema di 3 equazioni (due della retta, una del piano):</p>
+<table>
+<thead>
+<tr>
+<th><span class="m">\operatorname{rank}A</span></th>
+<th><span class="m">\operatorname{rank}(A\vert B)</span></th>
+<th>posizione</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2</td>
+<td>2</td>
+<td>contenuta</td>
+</tr>
+<tr>
+<td>2</td>
+<td>3</td>
+<td>parallela non contenuta</td>
+</tr>
+<tr>
+<td>3</td>
+<td>3</td>
+<td>incidente</td>
+</tr>
+</tbody></table>
+<div class="callout esempio">
+
+<p>Retta <span class="m">\begin{cases} x+z-3=0 \\ 2x-y+3z=0 \end{cases}</span> e piano <span class="m">2y-z+1=0</span>: il sistema ha una soluzione, <span class="m">\operatorname{rank}A = \operatorname{rank}(A|B) = 3</span>, la retta è incidente al piano.</p>
+</div>
+
+<div class="callout sintesi">
+
+<p>Metodi pratici quando una retta è in forma parametrica <span class="m">P_0 + \lambda\mathbf v</span>:</p>
+<ul>
+<li><strong>retta–piano</strong>: sostituisci <span class="m">x, y, z</span> nell&#39;equazione del piano. Identità → contenuta; uguaglianza impossibile (il coefficiente di <span class="m">\lambda</span> si annulla ma resta un numero <span class="m">\ne 0</span>) → parallela non contenuta; un solo valore di <span class="m">\lambda</span> → incidente.</li>
+<li><strong>retta–retta</strong>: confronta i direttori (quello di una retta implicita si ottiene, per esempio, risolvendo il sistema o con il prodotto vettoriale dei coefficienti); poi sostituisci la parametrica nelle due equazioni dell&#39;altra: entrambe identità → coincidenti; direttori proporzionali e nessuna soluzione → parallele; un <span class="m">\lambda</span> comune → incidenti; direttori non proporzionali e nessun <span class="m">\lambda</span> comune → sghembe.</li>
+<li><strong>piano parallelo</strong> a <span class="m">ax+by+cz+d=0</span> per <span class="m">P</span>: <span class="m">ax+by+cz+d'=0</span> con <span class="m">d'</span> ricavato sostituendo <span class="m">P</span>; i piani paralleli hanno coefficienti di <span class="m">x, y, z</span> <strong>proporzionali</strong>.</li>
+<li><strong>retta parallela</strong> a <span class="m">r</span> per <span class="m">P</span>: stesso direttore, punto base <span class="m">P</span>.</li>
+</ul>
+</div>
+
+<h2>Esercizi svolti della dispensa</h2>
+<div class="callout esempio">
+
+<p><strong>Retta parallela per un punto (piano).</strong> Parallela a <span class="m">5x-3y+2=0</span> per <span class="m">{}^t(-3\ -4)</span>: si prende <span class="m">5x-3y+d=0</span>; sostituendo, <span class="m">-15+12+d=0</span>, <span class="m">d=3</span>: <span class="m">5x-3y+3=0</span>.</p>
+<p><strong>Piano parallelo per un punto.</strong> Parallelo a <span class="m">x-4y+2z-5=0</span> per <span class="m">{}^t(3\ 1\ -2)</span>: <span class="m">x-4y+2z+d=0</span>, <span class="m">3-4-4+d=0</span>, <span class="m">d=5</span>: <span class="m">x-4y+2z+5=0</span>.</p>
+<p><strong>Mutua posizione retta implicita–retta parametrica.</strong> <span class="m">\begin{cases} 3x-y-z+3=0 \\ 2x+y-3=0 \end{cases}</span> e <span class="m">\begin{cases} x=1-t \\ y=1+2t \\ z=1-5t \end{cases}</span>: il sistema non ha soluzione, quindi sono parallele o sghembe; la prima ha forma parametrica <span class="m">x=t</span>, <span class="m">y=3-2t</span>, <span class="m">z=5t</span>, i direttori <span class="m">{}^t(1\ -2\ 5)</span> e <span class="m">{}^t(-1\ 2\ -5)</span> sono multipli: rette parallele.</p>
+<p><strong>Retta incidente a due rette per un punto.</strong> Si intersecano il piano <span class="m">\pi_r</span> che contiene <span class="m">r</span> e <span class="m">P</span> e il piano <span class="m">\pi_s</span> che contiene <span class="m">s</span> e <span class="m">P</span>.</p>
+<p><strong>Piano parallelo a due rette per un punto.</strong> La giacitura deve contenere un direttore di ciascuna retta: si prende <span class="m">P</span> come punto base e i due direttori come base della giacitura.</p>
+</div>
+
+<div class="callout esame">
+
+<p>Il paniere chiede: mutua posizione di una retta parametrica e una implicita (parallele, coincidenti, incidenti, sghembe); posizione retta–piano per sostituzione; mutua posizione di due piani confrontando coefficienti e termini noti; piano parallelo per un punto e retta parallela per un punto; abbinare i ranghi <span class="m">r_i</span>, <span class="m">r_c</span> alla posizione. Aperte: mutua posizione di due rette, di retta e piano, di due piani; esercizi &quot;verificare che il piano non è parallelo alla retta (o che la retta è parallela al piano) e trovare il piano che contiene la retta e passa per un punto&quot; (si usa il <strong>fascio di piani</strong> <span class="m">a(\text{eq}_1) + b(\text{eq}_2) = 0</span> e si impone il passaggio per il punto).</p>
+</div>

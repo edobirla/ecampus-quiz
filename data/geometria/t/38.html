@@ -1,0 +1,107 @@
+<h1>Lezione 38 — Forme quadratiche</h1>
+<p>Le forme quadratiche sono una generalizzazione delle norme.</p>
+<h2>Forme quadratiche e matrice associata</h2>
+<p><strong>Definizione 38.1.</strong> Una <strong>forma quadratica</strong> su <span class="m">\mathbb{R}^n</span> è una funzione
+<span class="m d">Q:\mathbb{R}^n\ni{}^t(x_1\ x_2\ \dots\ x_n)\longmapsto\sum_{\substack{i,j=1,\dots,n\\ i\leqslant j}}a_{ij}x_ix_j\in\mathbb{R},</span>
+cioè <span class="m">Q(X)</span> è un polinomio con <strong>solo monomi di grado 2</strong>, oppure il polinomio nullo. Se <span class="m">Q</span> è applicata a un vettore scritto esplicitamente si omettono le parentesi: <span class="m">Q\,{}^t(x_1\ \dots\ x_n)</span>.</p>
+<p><strong>Osservazione 38.3.</strong> Per ogni forma quadratica <span class="m">Q(0_n)=0</span>.</p>
+<p><strong>Osservazione 38.4 – Definizione 38.5.</strong> Ogni forma quadratica si rappresenta con una matrice <strong>simmetrica</strong>:
+<span class="m d">Q(X)={}^tX\cdot\begin{pmatrix}a_{11}&amp;\frac{a_{12}}{2}&amp;\cdots&amp;\frac{a_{1n}}{2}\\\frac{a_{12}}{2}&amp;a_{22}&amp;\cdots&amp;\frac{a_{2n}}{2}\\\vdots&amp;\vdots&amp;\ddots&amp;\vdots\\\frac{a_{1n}}{2}&amp;\frac{a_{2n}}{2}&amp;\cdots&amp;a_{nn}\end{pmatrix}\cdot X.</span>
+Questa matrice è detta <strong>matrice associata</strong> alla forma quadratica: sulla diagonale i coefficienti dei quadrati, fuori diagonale la <strong>metà</strong> dei coefficienti dei termini misti, in modo simmetrico.</p>
+<div class="callout esempio">
+
+<p><span class="m">Q(X)=x_1^2+3x_2^2-x_1x_2</span> con <span class="m">X\in\mathbb{R}^2</span> è una forma quadratica con matrice associata <span class="m">\begin{pmatrix}1&amp;-\frac12\\-\frac12&amp;3\end{pmatrix}</span>.</p>
+</div>
+
+<h2>Definitezza</h2>
+<p><strong>Definizione 38.7.</strong> Una forma quadratica <span class="m">Q</span> su <span class="m">\mathbb{R}^n</span> è detta</p>
+<ul>
+<li><strong>definita positiva</strong> se <span class="m">Q(X)&gt;0</span> per ogni <span class="m">X\in\mathbb{R}^n\setminus\{0_n\}</span>;</li>
+<li><strong>definita negativa</strong> se <span class="m">Q(X)&lt;0</span> per ogni <span class="m">X\in\mathbb{R}^n\setminus\{0_n\}</span>;</li>
+<li><strong>semidefinita positiva</strong> se <span class="m">Q(X)\geqslant0</span> per ogni <span class="m">X\in\mathbb{R}^n\setminus\{0_n\}</span>;</li>
+<li><strong>semidefinita negativa</strong> se <span class="m">Q(X)\leqslant0</span> per ogni <span class="m">X\in\mathbb{R}^n\setminus\{0_n\}</span>;</li>
+<li><strong>indefinita</strong> se esistono <span class="m">X,Y\in\mathbb{R}^n\setminus\{0_n\}</span> con <span class="m">Q(X)&gt;0</span> e <span class="m">Q(Y)&lt;0</span>.</li>
+</ul>
+<div class="callout esempio">
+
+<ol>
+<li><span class="m">Q(X)=x_1^2</span> su <span class="m">\mathbb{R}^2</span> è semidefinita positiva (<span class="m">x_1^2\geqslant0</span>), ma non definita positiva: <span class="m">Q\,{}^t(0\ 1)=0</span> con <span class="m">{}^t(0\ 1)\neq0_2</span>.</li>
+<li><span class="m">Q(X)=-x_1^2-x_2^2</span> su <span class="m">\mathbb{R}^2</span> è definita negativa.</li>
+</ol>
+</div>
+
+<p><strong>Proposizione 38.9.</strong> La matrice associata a una forma quadratica è sempre <strong>diagonalizzabile</strong>. Detti <span class="m">\lambda_1,\dots,\lambda_n</span> i suoi autovalori, la forma quadratica è</p>
+<ul>
+<li>definita positiva <span class="m">\iff</span> <span class="m">\lambda_i&gt;0</span> per ogni <span class="m">i</span>;</li>
+<li>definita negativa <span class="m">\iff</span> <span class="m">\lambda_i&lt;0</span> per ogni <span class="m">i</span>;</li>
+<li>semidefinita positiva <span class="m">\iff</span> <span class="m">\lambda_i\geqslant0</span> per ogni <span class="m">i</span>;</li>
+<li>semidefinita negativa <span class="m">\iff</span> <span class="m">\lambda_i\leqslant0</span> per ogni <span class="m">i</span>;</li>
+<li>indefinita <span class="m">\iff</span> esistono <span class="m">i,j</span> con <span class="m">\lambda_i&gt;0</span> e <span class="m">\lambda_j&lt;0</span>.</li>
+</ul>
+<p>È un corollario del Teorema spettrale.</p>
+<div class="callout esempio">
+
+<p>La matrice di <span class="m">Q(X)=x_1^2</span> è <span class="m">\begin{pmatrix}1&amp;0\\0&amp;0\end{pmatrix}</span>, con autovalori <span class="m">0</span> e <span class="m">1</span>: non negativi (semidefinita positiva), ma uno è nullo (non definita). La matrice di <span class="m">-x_1^2-x_2^2</span> è <span class="m">\begin{pmatrix}-1&amp;0\\0&amp;-1\end{pmatrix}</span>, con l&#39;autovalore <span class="m">-1</span> doppio: definita negativa.</p>
+</div>
+
+<h2>Il caso di <span class="m">\mathbb{R}^2</span></h2>
+<p><strong>Osservazione 38.11.</strong> Se <span class="m">Q</span> è su <span class="m">\mathbb{R}^2</span> con matrice <span class="m">A</span> (<span class="m">2\times2</span>):</p>
+<ul>
+<li><span class="m">\det(A)</span> è il prodotto dei due autovalori;</li>
+<li><span class="m">a_{11}=Q\,{}^t(1\ 0)</span> e <span class="m">a_{22}=Q\,{}^t(0\ 1)</span>.</li>
+</ul>
+<p>Quindi la definitezza si legge dalla tabella:</p>
+<table>
+<thead>
+<tr>
+<th><span class="m">\det(A)</span></th>
+<th><span class="m">a_{11}</span> e <span class="m">a_{22}</span></th>
+<th>Definitezza</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><span class="m">&gt;0</span></td>
+<td><span class="m">&gt;0</span></td>
+<td>definita positiva</td>
+</tr>
+<tr>
+<td><span class="m">&gt;0</span></td>
+<td><span class="m">&lt;0</span></td>
+<td>definita negativa</td>
+</tr>
+<tr>
+<td><span class="m">&lt;0</span></td>
+<td>qualsiasi</td>
+<td>indefinita</td>
+</tr>
+<tr>
+<td><span class="m">=0</span></td>
+<td><span class="m">\geqslant0</span></td>
+<td>semidefinita positiva, non definita positiva</td>
+</tr>
+<tr>
+<td><span class="m">=0</span></td>
+<td><span class="m">\leqslant0</span></td>
+<td>semidefinita negativa, non definita negativa</td>
+</tr>
+</tbody></table>
+<p>Gli altri casi non possono verificarsi. Infatti: se <span class="m">\det A&gt;0</span> gli autovalori sono non nulli e dello stesso segno; se <span class="m">\det A&lt;0</span> sono non nulli e di segno diverso; se <span class="m">\det A=0</span> almeno uno è nullo.</p>
+<div class="callout esempio">
+
+<p>Esercizio 38.1: <span class="m">Q(X)=x_1^2+2x_1x_2+kx_2^2</span> ha matrice <span class="m">\begin{pmatrix}1&amp;1\\1&amp;k\end{pmatrix}</span>, con <span class="m">\det=k-1</span>. Per <span class="m">k&lt;1</span> è indefinita; per <span class="m">k=1</span> semidefinita positiva ma non definita (<span class="m">a_{11}=1&gt;0</span>); per <span class="m">k&gt;1</span> definita positiva.</p>
+</div>
+
+<div class="callout esempio">
+
+<p>Esercizio 38.2: <span class="m">3x_1^2+2x_2^2</span> in <span class="m">\mathbb{R}^3</span> ha matrice <span class="m">\mathrm{diag}(3,2,0)</span>: semidefinita positiva non definita. <span class="m">2x_1^2-2x_1x_2+3x_2^2-x_3^2</span> ha matrice <span class="m">\begin{pmatrix}2&amp;-1&amp;0\\-1&amp;3&amp;0\\0&amp;0&amp;-1\end{pmatrix}</span>: indefinita. <span class="m">-3x_1^2+4x_1x_2-4x_2^2</span> ha matrice <span class="m">\begin{pmatrix}-3&amp;2\\2&amp;-4\end{pmatrix}</span>: definita negativa.</p>
+</div>
+
+<div class="callout attenzione">
+
+<p>Le entrate diagonali positive <strong>non</strong> bastano: con <span class="m">\begin{pmatrix}2&amp;2\\2&amp;1\end{pmatrix}</span> il determinante è <span class="m">-2&lt;0</span> e la forma è indefinita. E un determinante positivo da solo non dice il segno: lo dice <span class="m">a_{11}</span>.</p>
+</div>
+
+<div class="callout esame">
+
+<p>Il paniere chiede di classificare una forma su <span class="m">\mathbb{R}^2</span> data la matrice (determinante + segno della diagonale), di scrivere la matrice associata a un polinomio (dimezzando i termini misti), di riconoscere una forma quadratica (tutti i monomi di grado 2) e di usare i segni degli autovalori. Domande aperte: definizione e matrice associata; definizioni di definitezza con la Proposizione 38.9.</p>
+</div>

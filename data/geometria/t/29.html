@@ -1,0 +1,94 @@
+<h1>Lezione 29 — Diagonalizzazione</h1>
+<p>Un endomorfismo è diagonalizzabile quando ha abbastanza autovettori da formare una base. Per studiarlo serve anche la molteplicità algebrica.</p>
+<h2>Molteplicità algebrica</h2>
+<p><strong>Definizione 29.1.</strong> Sia <span class="m">V</span> finitamente generato e <span class="m">\lambda</span> un autovalore di <span class="m">f\in\operatorname{Lin}(V,V)</span>. La molteplicità di <span class="m">\lambda</span> come zero del polinomio caratteristico <span class="m">p_f</span> è la <strong>molteplicità algebrica</strong> di <span class="m">\lambda</span>, indicata <span class="m">\text{m.a.}(f,\lambda)</span> (o <span class="m">\text{m.a.}(\lambda)</span>). Per una matrice si scrive <span class="m">\text{m.a.}(A,\lambda)</span>.</p>
+<div class="callout esempio">
+
+<ul>
+<li><span class="m">p_{f_A}(\lambda)=\lambda^2-3\lambda+2=(\lambda-1)(\lambda-2)</span>: <span class="m">\text{m.a.}(1)=\text{m.a.}(2)=1</span>.</li>
+<li><span class="m">p_f(\lambda)=-\lambda^3-6\lambda^2-9\lambda=-\lambda(\lambda+3)^2</span>: <span class="m">\text{m.a.}(0)=1</span>, <span class="m">\text{m.a.}(-3)=2</span>.</li>
+</ul>
+</div>
+
+<p><strong>Osservazione 29.3.</strong> Poiché <span class="m">\deg p_f=\dim V</span>, si ha <span class="m">\text{m.a.}(f,\lambda)\leqslant\dim V</span>; più precisamente, se gli autovalori sono <span class="m">\lambda_1,\dots,\lambda_k</span>,
+<span class="m d">\sum_{i=1}^k\text{m.a.}(f,\lambda_i)\leqslant\dim V.</span></p>
+<p><strong>Teorema 29.4.</strong> Se <span class="m">\dim V=n</span> e <span class="m">\sum_{i=1}^k\text{m.a.}(f,\lambda_i)=n</span> (cioè <span class="m">p_f</span> ha <span class="m">n</span> zeri contati con molteplicità), il <strong>determinante</strong> di <span class="m">f</span> è il prodotto degli autovalori, ciascuno ripetuto tante volte quanto la sua molteplicità algebrica. Esempi: <span class="m">\det f_A=2=1\cdot2</span>; <span class="m">\det f=0=0\cdot(-3)\cdot(-3)</span>.</p>
+<h2>Disuguaglianze tra le molteplicità</h2>
+<p><strong>Proposizione 29.7.</strong> Per ogni autovalore <span class="m">\lambda</span> di <span class="m">f</span> (<span class="m">V</span> finitamente generato):
+<span class="m d">\text{m.g.}(f,\lambda)\leqslant\text{m.a.}(f,\lambda).</span></p>
+<p><strong>Osservazione 29.8.</strong> Insieme a <span class="m">\text{m.g.}\geqslant1</span> e a <span class="m">\text{m.a.}\leqslant\dim V</span>:
+<span class="m d">1\leqslant\text{m.g.}(f,\lambda)\leqslant\text{m.a.}(f,\lambda)\leqslant\dim V.</span>
+In particolare, <strong>se <span class="m">\text{m.a.}(\lambda)=1</span> allora <span class="m">\text{m.g.}(\lambda)=1</span></strong> senza fare calcoli.</p>
+<p><strong>Osservazione 29.10.</strong> <span class="m">\displaystyle\sum_{i=1}^k\text{m.g.}(f,\lambda_i)\leqslant\dim V</span>.</p>
+<div class="callout esempio">
+
+<p>Per l&#39;endomorfismo di <span class="m">\mathbb R_{\leqslant2}[x]</span>: <span class="m">1\leqslant\text{m.g.}(0)\leqslant\text{m.a.}(0)=1</span> dà <span class="m">\text{m.g.}(0)=1</span>; per <span class="m">-3</span> avevamo trovato <span class="m">\text{m.g.}(-3)=2=\text{m.a.}(-3)</span>.</p>
+</div>
+
+<h2>Endomorfismi e matrici diagonalizzabili</h2>
+<p><strong>Definizione 29.11.</strong> Un endomorfismo <span class="m">f</span> di uno spazio finitamente generato <span class="m">V</span> è <strong>diagonalizzabile</strong> se <span class="m">V</span> ha una <strong>base formata da autovettori</strong> di <span class="m">f</span>.</p>
+<div class="callout esempio">
+
+<p><span class="m">{}^t(1\ 3)</span> e <span class="m">{}^t(-1\ -2)</span> formano una base di <span class="m">\mathbb R^2</span> di autovettori di <span class="m">f_A</span>: <span class="m">f_A</span> è diagonalizzabile. Anche <span class="m">2x^2+1</span>, <span class="m">-x^2+x</span>, <span class="m">x+1</span> sono una base di <span class="m">\mathbb R_{\leqslant2}[x]</span> di autovettori di <span class="m">f</span>.</p>
+</div>
+
+<p><strong>Proposizione 29.13.</strong> <span class="m">A\in K^{n,n}</span> è diagonalizzabile se e solo se lo è l&#39;endomorfismo <span class="m">f_A\in\operatorname{Lin}(K^n,K^n)</span>.</p>
+<p><strong>Proposizione 29.14.</strong> Se <span class="m">\dim V=n</span> e <span class="m">f</span> ha <strong><span class="m">n</span> autovalori distinti</strong>, <span class="m">f</span> è diagonalizzabile.</p>
+<p><strong>Proposizione 29.15.</strong> <span class="m">f</span>, con autovalori <span class="m">\lambda_1,\dots,\lambda_k</span>, è diagonalizzabile se e solo se
+<span class="m d">\sum_{i=1}^k\text{m.g.}(f,\lambda_i)=\dim V.</span></p>
+<p><strong>Teorema 29.16 (Criterio di diagonalizzabilità).</strong> Un endomorfismo <span class="m">f</span> di uno spazio di dimensione <span class="m">n</span>, con autovalori <span class="m">\lambda_1,\dots,\lambda_k</span>, è diagonalizzabile se e solo se</p>
+<ul>
+<li><strong>(CD1)</strong> il polinomio caratteristico <span class="m">p_f</span> ha <span class="m">n</span> zeri, ciascuno contato con la propria molteplicità, cioè <span class="m">\sum_{i=1}^k\text{m.a.}(f,\lambda_i)=n</span>;</li>
+<li><strong>(CD2)</strong> per ogni <span class="m">i=1,\dots,k</span>: <span class="m">\text{m.g.}(f,\lambda_i)=\text{m.a.}(f,\lambda_i)</span>.</li>
+</ul>
+<div class="callout attenzione">
+
+<p>(CD1) da sola <strong>non</strong> basta: <span class="m">\begin{pmatrix}1&amp;1\\-1&amp;3\end{pmatrix}</span> ha <span class="m">p=(\lambda-2)^2</span>, quindi <span class="m">\text{m.a.}(2)=2=n</span>, ma <span class="m">\text{m.g.}(2)=2-\operatorname{rank}\begin{pmatrix}-1&amp;1\\-1&amp;1\end{pmatrix}=1</span>: non è diagonalizzabile. Ciò che caratterizza la diagonalizzabilità è la somma delle <strong>geometriche</strong>, non delle algebriche.</p>
+</div>
+
+<h2>Forma diagonale e matrice diagonalizzante</h2>
+<p><strong>Osservazione 29.17.</strong> Se <span class="m">f</span> è diagonalizzabile e <span class="m">\mathcal B=\{v_1,\dots,v_n\}</span> è una base di autovettori con <span class="m">v_i</span> relativo a <span class="m">\lambda_i</span> (ogni autovalore ripetuto quanto la sua m.a.), allora
+<span class="m d">[f]^{\mathcal B}_{\mathcal B}=\operatorname{Diag}(\lambda_1,\dots,\lambda_n),</span>
+perché <span class="m">f(v_i)=\lambda_iv_i</span>. Per una matrice <span class="m">A</span> con base di autovettori <span class="m">X^{(1)},\dots,X^{(n)}</span>, posto <span class="m">C=[\mathrm{id}]^{\mathcal B}_{\mathcal E_n}=\big(X^{(1)}\ \cdots\ X^{(n)}\big)</span> (le colonne sono gli autovettori):
+<span class="m d">C^{-1}AC=\operatorname{Diag}(\lambda_1,\dots,\lambda_n).</span>
+<span class="m">C</span> è una <strong>matrice diagonalizzante</strong>; non è unica (gli autovettori si possono cambiare) e l&#39;ordine degli autovalori nella diagonale segue l&#39;ordine delle colonne.</p>
+<div class="callout esempio">
+
+<p>Per <span class="m">A=\begin{pmatrix}-1&amp;1\\-6&amp;4\end{pmatrix}</span>, con <span class="m">C=\begin{pmatrix}1&amp;-1\\3&amp;-2\end{pmatrix}</span> si ha <span class="m">C^{-1}AC=\operatorname{Diag}(2,1)</span>; scambiando le colonne, <span class="m">C'=\begin{pmatrix}-1&amp;1\\-2&amp;3\end{pmatrix}</span> dà <span class="m">\operatorname{Diag}(1,2)</span>.</p>
+</div>
+
+<p><strong>Teorema 29.19.</strong> Ogni matrice <strong>simmetrica</strong> <span class="m">M\in\mathbb R^{n,n}</span> è diagonalizzabile.</p>
+<h2>Procedura e esercizi svolti</h2>
+<ol>
+<li>Calcola <span class="m">p_A(\lambda)</span> e i suoi zeri con le molteplicità algebriche; verifica (CD1) (su <span class="m">\mathbb R</span> contano solo gli zeri reali).</li>
+<li>Per ogni autovalore con <span class="m">\text{m.a.}\geqslant2</span> calcola <span class="m">\text{m.g.}=n-\operatorname{rank}(A-\lambda I)</span> e verifica (CD2); per quelli con <span class="m">\text{m.a.}=1</span> (CD2) è automatica.</li>
+<li>Se diagonalizzabile, una base di ciascun autospazio dà le colonne della matrice diagonalizzante.</li>
+</ol>
+<div class="callout esempio">
+
+<p>(Esercizio 29.1) <span class="m">A=\begin{pmatrix}-5&amp;3&amp;3\\-3&amp;1&amp;3\\-3&amp;3&amp;1\end{pmatrix}</span>: <span class="m">p_A(\lambda)=-\lambda^3-3\lambda^2+4</span>, autovalori <span class="m">1</span> (<span class="m">\text{m.a.}=1</span>) e <span class="m">-2</span> (<span class="m">\text{m.a.}=2</span>).
+(CD1) <span class="m">1+2=3</span>. (CD2) <span class="m">\text{m.g.}(1)=1</span>; <span class="m">\text{m.g.}(-2)=3-\operatorname{rank}\begin{pmatrix}-3&amp;3&amp;3\\-3&amp;3&amp;3\\-3&amp;3&amp;3\end{pmatrix}=3-1=2</span>. Quindi <span class="m">A</span> è diagonalizzabile.
+Autovettori: <span class="m">{}^t(1\ 1\ 1)</span> per <span class="m">1</span>; <span class="m">{}^t(1\ 0\ 1)</span>, <span class="m">{}^t(1\ 1\ 0)</span> per <span class="m">-2</span>. Con <span class="m">C=\begin{pmatrix}1&amp;1&amp;1\\1&amp;0&amp;1\\1&amp;1&amp;0\end{pmatrix}</span> e <span class="m">D=\operatorname{Diag}(1,-2,-2)</span> si ha <span class="m">A=CDC^{-1}</span>, e quindi <span class="m">A^6=CD^6C^{-1}=\begin{pmatrix}127&amp;-63&amp;-63\\63&amp;1&amp;-63\\63&amp;-63&amp;1\end{pmatrix}</span>.</p>
+</div>
+
+<div class="callout esempio">
+
+<p>(Esercizio 29.2) <span class="m">B=\begin{pmatrix}1&amp;1\\-1&amp;3\end{pmatrix}</span>: <span class="m">p_B(\lambda)=\lambda^2-4\lambda+4=(\lambda-2)^2</span>, <span class="m">\text{m.a.}(2)=2</span>, (CD1) vale; <span class="m">\text{m.g.}(2)=2-\operatorname{rank}(B-2I)=2-1=1\neq2</span>: (CD2) non vale, <span class="m">B</span> <strong>non</strong> è diagonalizzabile.</p>
+</div>
+
+<div class="callout sintesi">
+
+<ul>
+<li><span class="m">\text{m.a.}(\lambda)</span> = esponente di <span class="m">(\lambda-\bar\lambda)</span> in <span class="m">p_f</span>; <span class="m">\sum\text{m.a.}\leqslant n</span>.</li>
+<li><span class="m">1\leqslant\text{m.g.}\leqslant\text{m.a.}\leqslant n</span>; se <span class="m">\text{m.a.}=1</span> allora <span class="m">\text{m.g.}=1</span>.</li>
+<li>Diagonalizzabile <span class="m">\iff</span> esiste una base di autovettori <span class="m">\iff</span> <span class="m">\sum\text{m.g.}=n</span> <span class="m">\iff</span> (CD1) e (CD2).</li>
+<li><span class="m">n</span> autovalori distinti in dimensione <span class="m">n</span> <span class="m">\Rightarrow</span> diagonalizzabile, sempre.</li>
+<li>Un solo autovalore con <span class="m">\text{m.a.}=n</span>: diagonalizzabile solo se <span class="m">\text{m.g.}=n</span>, cioè <span class="m">A=\lambda I_n</span>.</li>
+<li><span class="m">C^{-1}AC=\operatorname{Diag}(\lambda_1,\dots,\lambda_n)</span> con <span class="m">C</span> = autovettori in colonna; le matrici simmetriche reali sono diagonalizzabili.</li>
+</ul>
+</div>
+
+<div class="callout esame">
+
+<p>Nel paniere: dati autovalori e molteplicità algebriche, scegliere in quale caso la matrice è diagonalizzabile (le opzioni impossibili hanno <span class="m">\text{m.g.}&gt;\text{m.a.}</span>; con <span class="m">n</span> autovalori distinti la risposta è &quot;sempre&quot;); leggere la molteplicità algebrica da un polinomio caratteristico fattorizzandolo. Aperte: dire se una matrice <span class="m">3\times3</span> è diagonalizzabile (polinomio caratteristico, (CD1), rango di <span class="m">A-\lambda I</span> per l&#39;autovalore doppio); definizione di diagonalizzabilità con un risultato; disuguaglianze tra le molteplicità e criterio; definizione di autovalore con la molteplicità algebrica.</p>
+</div>

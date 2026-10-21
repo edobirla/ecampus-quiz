@@ -1,0 +1,92 @@
+<h1>Lezione 7 — Sottospazi vettoriali e sottospazi generati</h1>
+<p>I sottospazi sono i sottoinsiemi che ereditano la struttura di spazio vettoriale; il sottospazio generato li costruisce a partire da pochi vettori, tramite combinazioni lineari.</p>
+<h2>Sottospazi vettoriali</h2>
+<p><strong>Definizione 7.1.</strong> Sia <span class="m">V</span> uno spazio vettoriale su <span class="m">K</span>. Un sottoinsieme <span class="m">W\subseteq V</span> è un <strong>sottospazio vettoriale</strong> di <span class="m">V</span> se <span class="m">W</span> è uno spazio vettoriale su <span class="m">K</span> con l&#39;addizione e la moltiplicazione per scalare di <span class="m">V</span>.</p>
+<p>Esempio 7.2: <span class="m">\{\mathbf 0\}</span> e <span class="m">V</span> sono sempre sottospazi di <span class="m">V</span>.</p>
+<p><strong>Proposizione 7.3.</strong> <span class="m">W\subseteq V</span> è un sottospazio vettoriale se e solo se:</p>
+<ul>
+<li>(SSV1) <span class="m">\mathbf 0\in W</span>;</li>
+<li>(SSV2) per ogni <span class="m">\mathbf v,\mathbf w\in W</span>: <span class="m">\mathbf v+\mathbf w\in W</span>;</li>
+<li>(SSV3) per ogni <span class="m">\mathbf v\in W</span> e <span class="m">\lambda\in K</span>: <span class="m">\lambda\mathbf v\in W</span>.</li>
+</ul>
+<p><em>Dimostrazione.</em> Se <span class="m">W</span> è un sottospazio, (SSV1) segue da (SV1b) e (SSV2), (SSV3) dal fatto che le operazioni sono operazioni su <span class="m">W</span>. Viceversa, (SSV2) e (SSV3) rendono somma e prodotto per scalare operazioni su <span class="m">W</span>; (SV1a), (SV1d), (SV2)–(SV5) valgono in <span class="m">W</span> perché valgono in <span class="m">V</span>; (SSV1) dà il neutro; per l&#39;opposto, se <span class="m">\mathbf w\in W</span> allora <span class="m">-\mathbf w\overset{(SV7)}=(-1)\mathbf w\in W</span> per (SSV3).</p>
+<p>Osservazione 7.4: alcuni testi usano le condizioni equivalenti (SSV1&#39;) <span class="m">W\ne\emptyset</span> e (SSV2&#39;) <span class="m">\lambda\mathbf v+\mu\mathbf w\in W</span> per ogni <span class="m">\mathbf v,\mathbf w\in W</span>, <span class="m">\lambda,\mu\in K</span>.</p>
+<div class="callout esempio">
+
+<p><strong>Sono sottospazi:</strong></p>
+<ol>
+<li><span class="m">W=\{X\in\mathbb R^2\mid 3x_1-2x_2=0\}</span>: <span class="m">\mathbf 0</span> soddisfa l&#39;equazione; sommando membro a membro <span class="m">3(x_1+y_1)-2(x_2+y_2)=0</span>; moltiplicando per <span class="m">\lambda</span>, <span class="m">3(\lambda x_1)-2(\lambda x_2)=0</span>.</li>
+<li>Più in generale <span class="m">W=\{X\in K^n\mid a_1x_1+\dots+a_nx_n=0\}</span> (polinomio di grado <span class="m">1</span> con <strong>termine noto nullo</strong>).</li>
+<li><span class="m">W=\{k\,{}^t(2\ 3)\mid k\in\mathbb R\}</span> e in generale <span class="m">\{k\mathbf v\mid k\in K\}</span> (usando (SV3) e (SV2)).</li>
+<li>Nel piano, le rette per l&#39;origine (<span class="m">ax+by=0</span>); nello spazio, i piani e le rette per l&#39;origine.</li>
+</ol>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Non sono sottospazi:</strong></p>
+<ol>
+<li><span class="m">\{X\in K^n\mid p(x_1,\dots,x_n)=0\}</span> con <span class="m">p</span> di termine noto non nullo: <span class="m">\mathbf 0_n\notin W</span>.</li>
+<li>Rette (e piani) che non passano per l&#39;origine.</li>
+<li><span class="m">W=\{X\in\mathbb R^2\mid 9x_2-x_1^2=0\}</span>: <span class="m">{}^t(3\ 1)\in W</span> (<span class="m">9-9=0</span>) ma <span class="m">2\,{}^t(3\ 1)={}^t(6\ 2)\notin W</span> (<span class="m">18-36\ne0</span>): non vale (SSV3).</li>
+</ol>
+</div>
+
+<div class="callout attenzione">
+
+<p><span class="m">\mathbf 0\in W</span> è necessario ma non sufficiente: un insieme con una condizione non lineare (quadrati, prodotti di coordinate) può contenere <span class="m">\mathbf 0</span> e non essere chiuso rispetto alle operazioni.</p>
+</div>
+
+<p><strong>Proposizione 7.8.</strong> Se <span class="m">W_1</span> e <span class="m">W_2</span> sono sottospazi di <span class="m">V</span>, anche <span class="m">W_1\cap W_2</span> lo è (le tre condizioni valgono in entrambi, quindi nell&#39;intersezione). Lo stesso vale per un numero qualsiasi, anche infinito, di sottospazi (Oss. 7.9): ad esempio l&#39;insieme delle soluzioni di più equazioni lineari omogenee <span class="m">p_1=\dots=p_m=0</span> in <span class="m">K^n</span> è un sottospazio.</p>
+<h2>Sottospazi generati</h2>
+<p><strong>Definizione 7.11.</strong> Per un sottoinsieme <span class="m">I</span> di <span class="m">V</span>:
+<span class="m d">\mathrm{Span}(I):=\{\lambda_1\mathbf v_1+\dots+\lambda_n\mathbf v_n\in V\mid n\ge0,\ \mathbf v_1,\dots,\mathbf v_n\in I,\ \lambda_1,\dots,\lambda_n\in K\}.</span></p>
+<p><strong>Osservazione 7.12.</strong></p>
+<ol>
+<li><span class="m">\mathrm{Span}(\emptyset)=\{\mathbf 0\}</span> (c&#39;è solo la combinazione di zero vettori).</li>
+<li><span class="m">I\subseteq\mathrm{Span}(I)</span> (perché <span class="m">\mathbf v=1\cdot\mathbf v</span>).</li>
+<li>Se <span class="m">I=\{\mathbf v_1,\dots,\mathbf v_n\}</span> è finito, <span class="m">\mathrm{Span}(\mathbf v_1,\dots,\mathbf v_n)=\{\lambda_1\mathbf v_1+\dots+\lambda_n\mathbf v_n\mid\lambda_i\in K\}</span>. Se <span class="m">I</span> è infinito, in ogni combinazione si usa solo un numero finito di vettori di <span class="m">I</span>.</li>
+</ol>
+<div class="callout esempio">
+
+<ul>
+<li>Una retta per l&#39;origine è <span class="m">\mathrm{Span}(\mathbf v)</span> per un qualsiasi suo vettore non nullo <span class="m">\mathbf v</span>; un piano per l&#39;origine è <span class="m">\mathrm{Span}(\mathbf v_1,\mathbf v_2)</span> per opportuni <span class="m">\mathbf v_1,\mathbf v_2</span>.</li>
+<li><span class="m">K_{\le m}[x]=\mathrm{Span}(1,x,\dots,x^m)</span>; <span class="m">K[x]=\mathrm{Span}(\{x^h\mid h\in\mathbb N\})</span>; i polinomi con soli termini di grado pari sono <span class="m">\mathrm{Span}(\{x^{2h}\mid h\in\mathbb N\})</span>.</li>
+</ul>
+</div>
+
+<p><strong>Proposizione 7.16.</strong> <span class="m">\mathrm{Span}(I)</span> è un sottospazio vettoriale di <span class="m">V</span>: se <span class="m">I\ne\emptyset</span>, <span class="m">\mathbf 0=0\mathbf v</span>; la somma di due combinazioni lineari è una combinazione lineare; <span class="m">\lambda(\lambda_1\mathbf v_1+\dots)=(\lambda\lambda_1)\mathbf v_1+\dots</span>.</p>
+<p><strong>Definizione 7.17.</strong> <span class="m">\mathrm{Span}(I)</span> è il <strong>sottospazio generato</strong> da <span class="m">I</span>; <span class="m">I</span> e i suoi vettori <strong>generano</strong> <span class="m">\mathrm{Span}(I)</span>.</p>
+<p>Non tutti i vettori di <span class="m">I</span> sono sempre necessari, e insiemi diversi possono generare lo stesso sottospazio.</p>
+<div class="callout esempio">
+
+<ul>
+<li><span class="m">\mathrm{Span}(\mathbf 0,\mathbf v,2\mathbf v)=\mathrm{Span}(\mathbf v,2\mathbf v)=\mathrm{Span}(\mathbf v)=\mathrm{Span}(2\mathbf v)</span>: ad esempio <span class="m">b\mathbf v+c(2\mathbf v)=(b+2c)\mathbf v</span>.</li>
+<li><span class="m">\mathrm{Span}\big({}^t(2\ 3),{}^t(-1\ 0),{}^t(1\ 1)\big)=\mathrm{Span}\big({}^t(2\ 3),{}^t(-1\ 0)\big)</span>, perché <span class="m">a\,{}^t(2\ 3)+b\,{}^t(-1\ 0)+c\,{}^t(1\ 1)=\left(a+\frac c3\right){}^t(2\ 3)+\left(b-\frac c3\right){}^t(-1\ 0)</span>.</li>
+</ul>
+</div>
+
+<p><strong>Proposizione 7.19.</strong> Se <span class="m">W</span> è un sottospazio di <span class="m">V</span> e <span class="m">I\subseteq W</span>, allora <span class="m">\mathrm{Span}(I)</span> è un sottospazio di <span class="m">W</span>; in particolare <span class="m">\mathrm{Span}(I)\subseteq W</span>.</p>
+<p><strong>Corollario 7.20.</strong> <span class="m">\mathbf v\in\mathrm{Span}(\mathbf v_1,\dots,\mathbf v_n)</span> se e solo se <span class="m">\mathrm{Span}(\mathbf v_1,\dots,\mathbf v_n,\mathbf v)=\mathrm{Span}(\mathbf v_1,\dots,\mathbf v_n)</span>.</p>
+<p>Osservazione 7.21: <span class="m">\mathrm{Span}(\mathrm{Span}(I))=\mathrm{Span}(I)</span>.</p>
+<h2>Sottospazi finitamente generati</h2>
+<p><strong>Definizione 7.22.</strong> Un sottospazio <span class="m">W</span> è <strong>finitamente generato</strong> se esiste un sottoinsieme finito <span class="m">\{\mathbf w_1,\dots,\mathbf w_n\}</span> di <span class="m">W</span> con <span class="m">\mathrm{Span}(\mathbf w_1,\dots,\mathbf w_n)=W</span>. Lo spazio <span class="m">V</span> è finitamente generato se lo è come sottospazio di sé stesso.</p>
+<div class="callout esempio">
+
+<ul>
+<li><span class="m">\{\mathbf 0\}=\mathrm{Span}(\emptyset)</span> è finitamente generato (l&#39;insieme vuoto è finito).</li>
+<li><span class="m">\mathbb R^2=\mathrm{Span}\big({}^t(1\ 0),{}^t(0\ 1)\big)</span>, perché <span class="m">{}^t(x_1\ x_2)=x_1{}^t(1\ 0)+x_2{}^t(0\ 1)</span>; più in generale <span class="m">K^n</span> è generato da <span class="m">n</span> vettori.</li>
+<li><span class="m">K[x_1,\dots,x_n]</span> <strong>non</strong> è finitamente generato: se fosse <span class="m">\mathrm{Span}(p_1,\dots,p_m)</span> e <span class="m">d</span> fosse il grado massimo dei <span class="m">p_i</span>, ogni combinazione avrebbe grado <span class="m">\le d</span>, e <span class="m">x_1^{d+1}</span> non ci starebbe.</li>
+<li><span class="m">K_{\le m}[x]=\mathrm{Span}(1,x,\dots,x^m)</span> è finitamente generato (anche <span class="m">K_{\le m}[x_1,\dots,x_n]</span>).</li>
+</ul>
+</div>
+
+<div class="callout sintesi">
+
+<p>Per decidere se <span class="m">\mathbf v\in\mathrm{Span}(\mathbf v_1,\dots,\mathbf v_n)</span> in <span class="m">K^m</span>: scrivere <span class="m">\lambda_1\mathbf v_1+\dots+\lambda_n\mathbf v_n=\mathbf v</span> e risolvere il sistema; con due generatori in <span class="m">\mathbb R^3</span>, due coordinate fissano i coefficienti e la terza va controllata.</p>
+</div>
+
+<div class="callout esame">
+
+<p>Chiuse del paniere: <strong>quale vettore appartiene a <span class="m">\mathrm{Span}(\mathbf u,\mathbf w)</span></strong> in <span class="m">\mathbb R^3</span> (quattro varianti che differiscono per un segno). Aperte: sottospazi con un risultato (Prop. 7.3, 7.8 o 7.16) e insiemi di generatori/sottospazi finitamente generati. Nei quiz: riconoscere un non-sottospazio, polinomi in uno Span, Span uguali dopo aver tolto un generatore superfluo.</p>
+</div>

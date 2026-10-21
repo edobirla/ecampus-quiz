@@ -1,0 +1,41 @@
+<h1>Lezione 40 — Trasformazioni proiettive</h1>
+<p>Le trasformazioni proiettive generalizzano le affinità agli spazi proiettivi.</p>
+<h2>Definizione</h2>
+<p><strong>Definizione 40.1.</strong> Sia <span class="m">A\in\mathbb{R}^{n+1,n+1}</span> una matrice <strong>invertibile</strong> (<span class="m">n\geqslant1</span>). L&#39;applicazione
+<span class="m d">\varphi:\mathbb{P}^n(\mathbb{R})\ni[v]\longmapsto[A\cdot v]\in\mathbb{P}^n(\mathbb{R})</span>
+è detta <strong>trasformazione proiettiva</strong>; la matrice <span class="m">A</span> si indica con <span class="m">[\varphi]_p</span>.</p>
+<p><strong>Osservazione 40.2.</strong> <span class="m">[\varphi]_p</span> non è univocamente determinata: <strong>ogni multiplo non nullo</strong> rappresenta la stessa <span class="m">\varphi</span>, perché <span class="m">[k[\varphi]_p v]=[k([\varphi]_p v)]=[[\varphi]_p v]</span>.</p>
+<p><strong>Proposizione 40.3.</strong> Con <span class="m">A</span> invertibile la trasformazione è <strong>ben definita</strong> (non dipende dal rappresentante di <span class="m">[v]</span>, e <span class="m">Av\neq0</span>).</p>
+<div class="callout esempio">
+
+<p><span class="m">\varphi\begin{bmatrix}X\\Y\\T\end{bmatrix}=\begin{bmatrix}X+T\\X-Y+2T\\3X+3Y-T\end{bmatrix}</span> è una trasformazione proiettiva di <span class="m">\mathbb{P}^2(\mathbb{R})</span> perché <span class="m">[\varphi]_p=\begin{pmatrix}1&amp;0&amp;1\\1&amp;-1&amp;2\\3&amp;3&amp;-1\end{pmatrix}</span> è invertibile; la rappresenta anche <span class="m">\begin{pmatrix}-1&amp;0&amp;-1\\-1&amp;1&amp;-2\\-3&amp;-3&amp;1\end{pmatrix}</span>.</p>
+</div>
+
+<h2>Inversa</h2>
+<p><strong>Proposizione 40.5.</strong> Ogni trasformazione proiettiva è invertibile e <span class="m">[\varphi^{-1}]_p=[\varphi]_p^{-1}</span> (sempre a meno di multipli).</p>
+<div class="callout esempio">
+
+<p>L&#39;inversa della trasformazione dell&#39;esempio precedente ha matrice <span class="m">\begin{pmatrix}-5&amp;3&amp;1\\7&amp;-4&amp;-1\\6&amp;-3&amp;-1\end{pmatrix}</span>, cioè <span class="m">\varphi^{-1}[X\ Y\ T]=[-5X+3Y+T\ \ 7X-4Y-T\ \ 6X-3Y-T]</span>.</p>
+</div>
+
+<h2>Affinità e trasformazioni proiettive</h2>
+<p><strong>Osservazione 40.7.</strong> Ogni affinità <span class="m">\varphi</span> di <span class="m">\mathbb{R}^n</span> si <strong>estende</strong> a una trasformazione proiettiva di <span class="m">\mathbb{P}^n(\mathbb{R})</span>, e come <span class="m">[\varphi]_p</span> si può prendere la matrice <span class="m">(n+1)\times(n+1)</span> che rappresenta <span class="m">\varphi</span> come applicazione affine (parte lineare, colonna della traslazione, ultima riga <span class="m">(0\ \dots\ 0\ 1)</span>). L&#39;estensione manda i punti all&#39;infinito nei punti all&#39;infinito (bigettivamente). Viceversa, una trasformazione proiettiva è l&#39;estensione di un&#39;affinità <strong>se e solo se</strong> manda l&#39;insieme dei punti all&#39;infinito in sé.</p>
+<div class="callout esempio">
+
+<p>Esercizio 40.2: l&#39;affinità <span class="m">\varphi(x,y,z)=(x+y+z-1,\ y-2,\ x-3z)</span> di <span class="m">\mathbb{R}^3</span> si estende alla trasformazione con matrice <span class="m">\begin{pmatrix}1&amp;1&amp;1&amp;-1\\0&amp;1&amp;0&amp;-2\\1&amp;0&amp;-3&amp;0\\0&amp;0&amp;0&amp;1\end{pmatrix}</span>.</p>
+</div>
+
+<div class="callout esempio">
+
+<p>Esercizio 40.1: <span class="m">\begin{bmatrix}X\\T\end{bmatrix}\mapsto\begin{bmatrix}X-2T\\kX+4T\end{bmatrix}</span> ha matrice <span class="m">\begin{pmatrix}1&amp;-2\\k&amp;4\end{pmatrix}</span> con determinante <span class="m">4+2k</span>: è una trasformazione proiettiva per <span class="m">k\neq-2</span>. Esercizio 40.3: l&#39;inversa di <span class="m">\begin{bmatrix}X+T\\X+2T\end{bmatrix}</span> ha <span class="m">[\varphi^{-1}]_p=\begin{pmatrix}2&amp;-1\\-1&amp;1\end{pmatrix}</span>.</p>
+</div>
+
+<div class="callout attenzione">
+
+<p>Per leggere l&#39;affinità da una matrice proiettiva bisogna prima rendere l&#39;ultima riga uguale a <span class="m">(0\ \dots\ 0\ 1)</span>, dividendo tutta la matrice: per esempio <span class="m">\begin{pmatrix}3&amp;-1&amp;2\\2&amp;-4&amp;3\\0&amp;0&amp;2\end{pmatrix}</span> va divisa per 2 e dà <span class="m">(x,y)\mapsto\left(\frac32x-\frac12y+1,\ x-2y+\frac32\right)</span>.</p>
+</div>
+
+<div class="callout esame">
+
+<p>Paniere: data un&#39;affinità di <span class="m">\mathbb{R}^2</span>, riconoscere <span class="m">[\theta]_p</span> tra matrici che sono multipli (per esempio per 2) della matrice <span class="m">3\times3</span> dell&#39;affinità, scartando quelle non quadrate o con segni sbagliati. Quiz: riconoscere una trasformazione proiettiva (lineare omogenea e invertibile), matrici che la rappresentano (multipli), inversa, affinità che si estende a una data matrice.</p>
+</div>

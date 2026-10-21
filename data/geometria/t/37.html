@@ -1,0 +1,44 @@
+<h1>Lezione 37 — Matrici ortogonali e isometrie</h1>
+<p>Si considerano spazi vettoriali reali con prodotto scalare: si definisce una distanza e si studiano le isometrie, le trasformazioni che la preservano.</p>
+<h2>Matrici ortogonali</h2>
+<p><strong>Definizione 37.1.</strong> <span class="m">N\in\mathbb{R}^{n,n}</span> è <strong>ortogonale</strong> se è invertibile e <span class="m">N^{-1}={}^tN</span>, cioè <span class="m">N\cdot{}^tN={}^tN\cdot N=I_n</span>. L&#39;insieme delle matrici ortogonali <span class="m">n\times n</span> si indica <span class="m">\mathrm{Orto}(n)</span>.</p>
+<div class="callout esempio">
+
+<p><span class="m">I_n</span> è ortogonale. La matrice di rotazione <span class="m">\begin{pmatrix}\cos\alpha&amp;-\sin\alpha\\\sin\alpha&amp;\cos\alpha\end{pmatrix}</span> è ortogonale: moltiplicata per la trasposta <span class="m">\begin{pmatrix}\cos\alpha&amp;\sin\alpha\\-\sin\alpha&amp;\cos\alpha\end{pmatrix}</span> dà <span class="m">I_2</span>. Anche <span class="m">\begin{pmatrix}\frac{\sqrt2}2&amp;0&amp;\frac{\sqrt2}2\\\frac{\sqrt2}2&amp;0&amp;-\frac{\sqrt2}2\\0&amp;1&amp;0\end{pmatrix}</span> è ortogonale.</p>
+</div>
+
+<p><strong>Proposizione 37.3.</strong> Il determinante di una matrice ortogonale è <span class="m">1</span> o <span class="m">-1</span>.
+<em>Dimostrazione:</em> <span class="m">1=\det I_n=\det(N\cdot{}^tN)=\det N\cdot\det{}^tN=(\det N)^2</span>, per il Teorema di Binet e <span class="m">\det{}^tN=\det N</span>.</p>
+<p><strong>Osservazione 37.4.</strong> Il viceversa è falso: determinante <span class="m">\pm1</span> non implica ortogonale.</p>
+<p><strong>Proposizione 37.5.</strong> <span class="m">N</span> è ortogonale se e solo se <span class="m">f_N</span> preserva il prodotto scalare standard: <span class="m">\langle f_N(X),f_N(Y)\rangle=\langle X,Y\rangle</span> per ogni <span class="m">X,Y\in\mathbb{R}^n</span> (es. identità, rotazioni).</p>
+<p><strong>Corollario 37.7.</strong> <span class="m">N</span> è ortogonale se e solo se le sue <strong>colonne formano una base ortonormale</strong> di <span class="m">\mathbb{R}^n</span>.</p>
+<h2>Matrici simmetriche</h2>
+<p><strong>Lemma 37.8.</strong> Ogni matrice reale simmetrica di ordine <span class="m">n</span> ha <span class="m">n</span> autovalori reali, contati con la loro molteplicità.</p>
+<p><strong>Teorema 37.9 (spettrale).</strong> Una matrice reale quadrata è simmetrica <strong>se e solo se</strong> è diagonalizzabile con una matrice diagonalizzante <strong>ortogonale</strong>.</p>
+<p><strong>Corollario 37.10.</strong> Una matrice reale <span class="m">n\times n</span> è simmetrica se e solo se esiste una base ortonormale di <span class="m">\mathbb{R}^n</span> formata da suoi autovettori.</p>
+<div class="callout attenzione">
+
+<p>Ogni matrice reale simmetrica è diagonalizzabile, ma non vale il viceversa: una matrice diagonalizzabile non è necessariamente simmetrica. L&#39;equivalenza vale solo con la diagonalizzante <strong>ortogonale</strong>.</p>
+</div>
+
+<h2>Isometrie</h2>
+<p>Per semplicità si considera <span class="m">\mathbb{R}^n</span> con il prodotto scalare standard (il caso generale si ottiene scegliendo una base ortonormale).</p>
+<p><strong>Definizione 37.11.</strong> Un&#39;affinità <span class="m">\varphi=T_v\circ f_N\colon\mathbb{R}^n\to\mathbb{R}^n</span> è un&#39;<strong>isometria</strong> se <span class="m">N</span> è ortogonale, cioè se <span class="m">[\varphi]=\begin{pmatrix}N&amp;v\\0&amp;1\end{pmatrix}</span> ha il blocco <span class="m">N</span> ortogonale.</p>
+<div class="callout esempio">
+
+<p>Ogni traslazione <span class="m">T_v</span> (in particolare l&#39;identità <span class="m">T_0</span>): <span class="m">[T_v]=\begin{pmatrix}I_n&amp;v\\0&amp;1\end{pmatrix}</span>. Ogni rotazione del piano attorno a un punto <span class="m">C</span>: la parte lineare è una matrice di rotazione. Ogni affinità di <span class="m">\mathbb{R}^3</span> con parte lineare <span class="m">\begin{pmatrix}\frac{\sqrt2}2&amp;0&amp;\frac{\sqrt2}2\\\frac{\sqrt2}2&amp;0&amp;-\frac{\sqrt2}2\\0&amp;1&amp;0\end{pmatrix}</span>.</p>
+</div>
+
+<p><strong>Definizione 37.13.</strong> La <strong>distanza</strong> tra <span class="m">X,Y\in\mathbb{R}^n</span> è <span class="m">\mathrm{dist}(X,Y):=\lVert Y-X\rVert</span>. In <span class="m">V^2_E</span> e <span class="m">V^3_E</span> è la distanza usuale (Oss. 37.14).</p>
+<div class="callout esempio">
+
+<p>In <span class="m">\mathbb{R}^4</span>: <span class="m">\mathrm{dist}({}^t(2\ 3\ -1\ 2),{}^t(1\ 3\ 0\ -1))=\lVert{}^t(-1\ 0\ 1\ -3)\rVert=\sqrt{1+0+1+9}=\sqrt{11}</span>.</p>
+</div>
+
+<p><strong>Teorema 37.16.</strong> Le isometrie sono le applicazioni che preservano la distanza: <span class="m">\varphi\colon\mathbb{R}^n\to\mathbb{R}^n</span> è un&#39;isometria se e solo se <span class="m">\lVert\varphi(P)-\varphi(Q)\rVert=\lVert P-Q\rVert</span> per ogni <span class="m">P,Q</span>.</p>
+<p><strong>Osservazione 37.17 (un verso).</strong> <span class="m">\lVert\varphi(P)-\varphi(Q)\rVert=\lVert N(P-Q)\rVert=\sqrt{\langle N(P-Q),N(P-Q)\rangle}=\sqrt{\langle P-Q,P-Q\rangle}=\lVert P-Q\rVert</span>, usando il Lemma 32.9, la definizione di norma e la Prop. 37.5.</p>
+<p><strong>Osservazione 37.19.</strong> In <span class="m">V^2_E</span> e <span class="m">V^3_E</span> un cambio di riferimento cartesiano con la stessa unità di misura è un&#39;isometria: <span class="m">{}^t(x'\ y'\ z')=\varphi\,{}^t(x\ y\ z)</span>.</p>
+<div class="callout esame">
+
+<p>Il paniere chiede la <strong>distanza tra due punti</strong> dello spazio (<span class="m">\lVert Y-X\rVert</span>: attenzione ai segni nelle differenze). Nei quiz: riconoscere una matrice ortogonale (colonne ortonormali), inversa = trasposta, la proposizione falsa sul teorema spettrale, distanza in <span class="m">\mathbb{R}^5</span>. Domande aperte: matrici simmetriche e teorema spettrale, matrici ortogonali, isometrie (definizione + un risultato).</p>
+</div>

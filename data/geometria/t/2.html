@@ -1,0 +1,315 @@
+<h1>Lezione 2 — Prerequisiti</h1>
+<p>Sintesi dei prerequisiti del corso (insiemi, logica, algebra, numeri complessi, polinomi, funzioni, relazioni di equivalenza, rette e piani), soprattutto per fissare le notazioni.</p>
+<h2>Insiemi</h2>
+<p>Un <strong>insieme</strong> <span class="m">I</span> è una collezione di oggetti, detti <strong>elementi</strong>. Se <span class="m">x</span> è un elemento di <span class="m">I</span> si scrive <span class="m">x \in I</span> (o <span class="m">I \ni x</span>), altrimenti <span class="m">x \notin I</span>. L&#39;<strong>insieme vuoto</strong> <span class="m">\emptyset</span> non ha elementi. Due insiemi con gli stessi elementi coincidono.</p>
+<p>Un insieme si può definire:</p>
+<ul>
+<li><strong>per elencazione</strong>, elencando gli elementi (l&#39;elenco può essere incompleto con i puntini, se gli elementi omessi sono deducibili in modo ovvio);</li>
+<li><strong>per caratteristica</strong>, dando una proprietà che caratterizza gli elementi: <span class="m">\{x \in I \mid \dots\}</span> (può anche risultare vuoto).</li>
+</ul>
+<p>Il numero di elementi si indica con <span class="m">\#I</span>; <span class="m">\#I = 0</span> se e solo se <span class="m">I = \emptyset</span>. <span class="m">I</span> è <strong>finito</strong> se <span class="m">\#I = n</span> intero, <strong>infinito</strong> se ha infiniti elementi (<span class="m">\#I = \infty</span>).</p>
+<ul>
+<li><strong>Sottoinsieme:</strong> <span class="m">J \subseteq I</span> se ogni elemento di <span class="m">J</span> sta in <span class="m">I</span>. Si ha sempre <span class="m">\emptyset \subseteq I</span>; <span class="m">I_1 = I_2</span> se e solo se ciascuno è sottoinsieme dell&#39;altro.</li>
+<li><strong>Intersezione:</strong> <span class="m">I_1 \cap I_2 := \{x \mid x \in I_1 \text{ e } x \in I_2\}</span>; insiemi <strong>disgiunti</strong> se l&#39;intersezione è vuota.</li>
+<li><strong>Unione:</strong> <span class="m">I_1 \cup I_2 := \{x \mid x \in I_1 \text{ o } x \in I_2\}</span>.</li>
+<li><strong>Complemento relativo:</strong> <span class="m">I \setminus J = \{x \in I \mid x \notin J\}</span>.</li>
+<li>Per insiemi finiti: <span class="m">\#I_1 + \#I_2 = \#(I_1 \cup I_2) + \#(I_1 \cap I_2)</span> (gli elementi comuni si contano due volte).</li>
+</ul>
+<h3>Insiemi numerici</h3>
+<p><span class="m">\mathbb{N} = \{0, 1, 2, \dots\}</span>, <span class="m">\mathbb{Z} = \{\dots, -1, 0, 1, \dots\}</span>, <span class="m">\mathbb{Q} = \{\frac{n}{m} \mid n \in \mathbb{Z},\ m \in \mathbb{N}\setminus\{0\}\}</span>, <span class="m">\mathbb{R}</span> (reali, inclusi gli irrazionali come <span class="m">\pi</span>, <span class="m">e</span>, <span class="m">\sqrt2</span>), <span class="m">\mathbb{C} = \{a + bi \mid a, b \in \mathbb{R}\}</span> con <span class="m">i^2 = -1</span>.</p>
+<p><span class="m d">\mathbb{N} \subseteq \mathbb{Z} \subseteq \mathbb{Q} \subseteq \mathbb{R} \subseteq \mathbb{C}</span></p>
+<p>e sono tutti diversi: <span class="m">-1 \in \mathbb{Z}\setminus\mathbb{N}</span>, <span class="m">\frac12 \in \mathbb{Q}\setminus\mathbb{Z}</span>, <span class="m">\sqrt2 \in \mathbb{R}\setminus\mathbb{Q}</span>, <span class="m">i \in \mathbb{C}\setminus\mathbb{R}</span>. I numeri reali sono i complessi della forma <span class="m">a + 0i</span>.</p>
+<h3>Radice quadrata principale e modulo</h3>
+<p>Dato <span class="m">a \ge 0</span>, la <strong>radice quadrata principale</strong> <span class="m">\sqrt a</span> è l&#39;unico numero reale <strong>non negativo</strong> <span class="m">x</span> con <span class="m">x^2 = a</span>. Se <span class="m">a &gt; 0</span> l&#39;altro numero con quadrato <span class="m">a</span> è <span class="m">-\sqrt a</span>.</p>
+<ul>
+<li><span class="m">\sqrt{ab} = \sqrt a\sqrt b</span> e <span class="m">\sqrt{a/b} = \sqrt a / \sqrt b</span> (per <span class="m">a, b \ge 0</span>, <span class="m">b \ne 0</span>).</li>
+<li><strong>Razionalizzazione:</strong> <span class="m">\frac{a}{\sqrt b} = \frac{a\sqrt b}{b}</span>.</li>
+<li><span class="m">(\sqrt a)^2 = a</span> per <span class="m">a \ge 0</span>, mentre <span class="m">\sqrt{a^2} = |a|</span> per ogni <span class="m">a \in \mathbb{R}</span>, dove il <strong>modulo</strong> è <span class="m">|a| = a</span> se <span class="m">a \ge 0</span>, <span class="m">|a| = -a</span> se <span class="m">a &lt; 0</span>.</li>
+</ul>
+<div class="callout attenzione">
+
+<p><span class="m">\sqrt9 = 3</span>, non <span class="m">\pm3</span>: le due soluzioni di <span class="m">x^2 = 9</span> sono <span class="m">\pm\sqrt9</span>.</p>
+</div>
+
+<h3>Prodotto cartesiano</h3>
+<p><span class="m">I_1 \times I_2 := \{(x_1, x_2) \mid x_1 \in I_1,\ x_2 \in I_2\}</span> (coppie <strong>ordinate</strong>); <span class="m">I^2 := I \times I</span>. In generale gli elementi di <span class="m">I_1 \times \dots \times I_n</span> sono le <strong><span class="m">n</span>-uple</strong> <span class="m">(x_1, \dots, x_n)</span>, e <span class="m">I^n := I \times \dots \times I</span> (<span class="m">n</span> volte).</p>
+<p><strong>Somma di un elemento e di un insieme:</strong> <span class="m">x + J := \{y \in I \mid y = x + z,\ z \in J\}</span>.</p>
+<div class="callout esempio">
+
+<p><span class="m">\{0,1\}^3</span> contiene <span class="m">2^3 = 8</span> terne: <span class="m">(0,0,0), (0,0,1), (0,1,0), (0,1,1), (1,0,0), (1,0,1), (1,1,0), (1,1,1)</span>.</p>
+</div>
+
+<h2>Logica</h2>
+<p>Una <strong>proposizione</strong> è un enunciato che può essere solo vero o falso (anche se non sappiamo quale). I <strong>quantificatori</strong> sono <span class="m">\forall</span> (per ogni) ed <span class="m">\exists</span> (esiste); <span class="m">\nexists</span> = non esiste.</p>
+<h3>Implicazione</h3>
+<p><span class="m">P \Rightarrow Q</span> (&quot;se <span class="m">P</span> allora <span class="m">Q</span>&quot;): <span class="m">P</span> è <strong>sufficiente</strong> per <span class="m">Q</span>, <span class="m">Q</span> è <strong>necessaria</strong> per <span class="m">P</span>. Se <span class="m">P_1 \Rightarrow P_2</span> e <span class="m">P_2 \Rightarrow P_3</span> allora <span class="m">P_1 \Rightarrow P_3</span>.</p>
+<ul>
+<li><strong>Implicazione inversa</strong> di <span class="m">P \Rightarrow Q</span>: <span class="m">Q \Rightarrow P</span>. Non è equivalente alla prima. Se valgono entrambe si scrive <span class="m">P \Leftrightarrow Q</span> (&quot;se e solo se&quot;).</li>
+<li><strong>Negazione</strong> <span class="m">\text{non}P</span>: vera se <span class="m">P</span> è falsa e viceversa; <span class="m">\text{non}(\text{non}P) = P</span>.</li>
+<li><strong>Contronominale</strong> di <span class="m">P \Rightarrow Q</span>: <span class="m">\text{non}P \Leftarrow \text{non}Q</span>, cioè <span class="m">\text{non}Q \Rightarrow \text{non}P</span>. È <strong>equivalente</strong> a <span class="m">P \Rightarrow Q</span> (Osservazione 2.2).</li>
+</ul>
+<div class="callout attenzione">
+
+<p>Non confondere la contronominale (scambio <strong>e</strong> negazione) con l&#39;inversa (solo scambio). Esempio con &quot;se <span class="m">x</span> è pari allora <span class="m">2x</span> è pari&quot;: inversa = &quot;se <span class="m">2x</span> è pari allora <span class="m">x</span> è pari&quot;; contronominale = &quot;se <span class="m">2x</span> è dispari allora <span class="m">x</span> è dispari&quot;.</p>
+</div>
+
+<h3>Negare con i quantificatori</h3>
+<ul>
+<li>ogni <span class="m">\forall</span> diventa <span class="m">\exists</span> e viceversa;</li>
+<li>si nega la condizione: si scambiano <span class="m">\in</span> e <span class="m">\notin</span>, <span class="m">=</span> e <span class="m">\ne</span>, <span class="m">&lt;</span> e <span class="m">\ge</span>, <span class="m">&gt;</span> e <span class="m">\le</span>, o si introduce/rimuove una negazione.</li>
+</ul>
+<p>Un elemento che rende vera la negazione di una proposizione con <span class="m">\forall</span> è un <strong>controesempio</strong>.</p>
+<div class="callout esempio">
+
+<p>La negazione di &quot;esiste <span class="m">x \in \mathbb{N}</span> pari tale che <span class="m">2x</span> è pari&quot; è &quot;per ogni <span class="m">x \in \mathbb{N}</span> pari si ha che <span class="m">2x</span> è dispari&quot;.</p>
+</div>
+
+<h3>Teoremi e dimostrazioni</h3>
+<p>Un <strong>teorema</strong> è una proposizione vera della forma <span class="m">P \Rightarrow Q</span>: <strong>ipotesi</strong> <span class="m">P</span>, <strong>tesi</strong> <span class="m">Q</span>, <strong>dimostrazione</strong>. Proposizioni meno importanti: <strong>proposizione</strong>; usate per dimostrare un teorema: <strong>lemma</strong>; conseguenze semplici: <strong>corollario</strong>.</p>
+<p>Tre tipi di dimostrazione:</p>
+<ul>
+<li><strong>deduttiva:</strong> catena di implicazioni <span class="m">P \Rightarrow \dots \Rightarrow Q</span> (es.: <span class="m">n</span> pari <span class="m">\Rightarrow n = 2k \Rightarrow 4n = 8k</span> divisibile per 8);</li>
+<li><strong>per assurdo:</strong> si dimostra <span class="m">\text{non}Q \Rightarrow \text{non}P</span>, equivalente all&#39;enunciato; oppure si arriva a negare una verità &quot;nascosta&quot; nota (es.: <span class="m">\sqrt2 \notin \mathbb{Q}</span>: se <span class="m">\sqrt2 = n/m</span> con <span class="m">n, m</span> primi tra loro, da <span class="m">n^2 = 2m^2</span> segue che <span class="m">n</span> e <span class="m">m</span> sono entrambi pari, assurdo);</li>
+<li><strong>per induzione</strong> (enunciati <span class="m">P(n) \Rightarrow Q(n)</span> con <span class="m">n \ge n_0</span>): <strong>caso base</strong> <span class="m">P(n_0) \Rightarrow Q(n_0)</span> e <strong>passo induttivo</strong> <span class="m">\big(P(n) \Rightarrow Q(n)\big) \Rightarrow \big(P(n+1) \Rightarrow Q(n+1)\big)</span>; la proprietà supposta vera è l&#39;<strong>ipotesi induttiva</strong>.</li>
+</ul>
+<div class="callout esempio">
+
+<p>Per induzione: la somma dei primi <span class="m">n</span> naturali non nulli è <span class="m">\frac{n(n+1)}{2}</span>. Caso base: <span class="m">1 = \frac{1\cdot2}{2}</span>. Passo: <span class="m">\frac{n(n+1)}{2} + (n+1) = \frac{(n+1)(n+2)}{2}</span>.</p>
+</div>
+
+<h2>Algebra</h2>
+<h3>Lettere</h3>
+<p>Le lettere rappresentano elementi non specificati di un insieme. A seconda dell&#39;uso una lettera è:</p>
+<ul>
+<li><strong>variabile:</strong> libera di assumere qualsiasi valore;</li>
+<li><strong>incognita:</strong> soggetta ad alcune condizioni;</li>
+<li><strong>costante o parametro:</strong> libera di assumere qualsiasi valore, ma considerata fissata.</li>
+</ul>
+<p>Convenzioni (non obbligatorie): <span class="m">x, y, z</span> variabili/incognite; <span class="m">a, b, c</span> costanti; <span class="m">m, n</span> interi; <span class="m">i, j, h, k</span> indici; lettere greche minuscole per angoli e piani; maiuscole latine per i punti; minuscole latine (<span class="m">r, s, t</span>) per le rette. Si usano anche pedici e apici (<span class="m">a_0, a', a^{(1)}</span>).</p>
+<h3>Sommatoria e produttoria</h3>
+<p><span class="m d">\sum_{i=m}^{n} a_i := a_m + a_{m+1} + \dots + a_n, \qquad \prod_{i=m}^{n} a_i := a_m \cdot a_{m+1} \cdots a_n</span></p>
+<p>Varianti: indice in un insieme, indice escluso (<span class="m">i \ne h</span>), doppio indice. Casi estremi: con <span class="m">m = n</span> c&#39;è un solo termine; con <span class="m">m &gt; n</span> la somma vale <span class="m">0</span> e il prodotto vale <span class="m">1</span>.</p>
+<div class="callout esempio">
+
+<p><span class="m">\sum_{i=0}^{5} 2i = 0 + 2 + 4 + 6 + 8 + 10 = 30</span>.</p>
+</div>
+
+<h3>Equazioni</h3>
+<p>Un&#39;<strong>equazione</strong> è un&#39;uguaglianza con una o più incognite (se non indicato, in <span class="m">\mathbb{R}</span>). Una <strong>soluzione</strong> è una <span class="m">n</span>-upla di valori che la soddisfa; <strong>risolvere</strong> significa trovarle tutte. I <strong>parametri</strong> si pensano fissi: si ha un&#39;equazione diversa per ogni valore dei parametri.</p>
+<div class="callout esempio">
+
+<p><span class="m">ax = b</span> (incognita <span class="m">x</span>, parametri <span class="m">a, b</span>):</p>
+<ul>
+<li>se <span class="m">a \ne 0</span>: unica soluzione <span class="m">x = \frac{b}{a}</span>;</li>
+<li>se <span class="m">a = 0</span> e <span class="m">b = 0</span>: <span class="m">0 = 0</span>, ogni <span class="m">x</span> è soluzione;</li>
+<li>se <span class="m">a = 0</span> e <span class="m">b \ne 0</span>: <span class="m">0 = b</span>, nessuna soluzione.</li>
+</ul>
+</div>
+
+<p>Due equazioni sono <strong>equivalenti</strong> se hanno le stesse soluzioni. Si ottiene un&#39;equazione equivalente scambiando i membri, sommando/sottraendo la stessa quantità, moltiplicando/dividendo per la stessa quantità <strong>non nulla</strong>.</p>
+<h3>Sistemi di equazioni</h3>
+<p>Un <strong>sistema</strong> è una collezione di equazioni; una soluzione è una soluzione comune a tutte. Tecnica base: <strong>sostituzione</strong> (si risolve un&#39;equazione rispetto a una variabile, si sostituisce nelle altre, si ripete; alla fine si controllano le equazioni non usate; alcune variabili possono restare libere).</p>
+<p>Operazioni che danno un sistema <strong>equivalente</strong> (operazioni di tipo I, II, III):</p>
+<ul>
+<li>I) scambio di due equazioni;</li>
+<li>II) moltiplicazione di un&#39;equazione per un numero <strong>non nullo</strong> (moltiplicando per zero potrebbero comparire nuove soluzioni);</li>
+<li>III) aggiungere a un&#39;equazione un multiplo di un&#39;altra.</li>
+</ul>
+<p>Un&#39;equazione ottenuta dalle altre con operazioni di tipo II e III è <strong>dipendente</strong>: eliminandola si ottiene un sistema equivalente.</p>
+<h3>Disequazioni</h3>
+<p><span class="m">\mathbb{R}</span> è ordinato. Una <strong>disequazione</strong> è una disuguaglianza con incognite. Si ottiene una disequazione equivalente scambiando i membri <strong>cambiando il verso</strong>, sommando/sottraendo la stessa quantità, moltiplicando/dividendo per una quantità non nulla, <strong>cambiando il verso se è negativa</strong>. I sistemi possono contenere equazioni e disequazioni.</p>
+<h2>Numeri complessi</h2>
+<p><span class="m">z = a + bi</span> con <span class="m">a, b \in \mathbb{R}</span>: <span class="m">a</span> è la <strong>parte reale</strong>, <span class="m">b</span> la <strong>parte immaginaria</strong>; un reale è <span class="m">a + 0i</span>.</p>
+<ul>
+<li>Somma: <span class="m">(a_1 + b_1 i) + (a_2 + b_2 i) = (a_1 + a_2) + (b_1 + b_2)i</span>.</li>
+<li>Prodotto: <span class="m">(a_1 + b_1 i)(a_2 + b_2 i) = (a_1 a_2 - b_1 b_2) + (a_1 b_2 + b_1 a_2)i</span> (usando <span class="m">i^2 = -1</span>; anche <span class="m">(-i)^2 = -1</span>).</li>
+<li>Opposto: <span class="m">-z = -a - bi</span>. Inverso di <span class="m">z \ne 0</span>: <span class="m">\frac1z = \frac{a}{a^2 + b^2} - i\frac{b}{a^2 + b^2}</span>; divisione <span class="m">\frac{z_1}{z_2} = z_1 \cdot \frac{1}{z_2}</span>.</li>
+<li><strong>Coniugato</strong> di <span class="m">z = a + bi</span>: <span class="m">\bar z = a - bi</span>. I reali sono gli unici complessi uguali al proprio coniugato.</li>
+<li>Dato <span class="m">a &lt; 0</span> reale, <span class="m">z^2 = a</span> ha due soluzioni complesse <span class="m">z = \pm i\sqrt{-a}</span> (ma non c&#39;è radice principale).</li>
+</ul>
+<div class="callout esempio">
+
+<p><span class="m">\frac{1}{2+i} = \frac25 - \frac15 i</span>, quindi <span class="m">\frac{3 - 4i}{2 + i} = (3 - 4i)\left(\frac25 - \frac15 i\right) = \frac25 - \frac{11}{5}i</span>. L&#39;equazione <span class="m">az = b</span> in <span class="m">\mathbb{C}</span> si discute come nel caso reale.</p>
+</div>
+
+<h2>Polinomi</h2>
+<h3>Monomi</h3>
+<p>Un <strong>monomio</strong> è il prodotto di un numero (<strong>coefficiente</strong>) e di variabili con esponenti interi positivi (<strong>parte letterale</strong>). Monomi senza variabili: <strong>costanti</strong>; con coefficiente <span class="m">0</span>: <strong>monomio nullo</strong> <span class="m">0</span>. Il <strong>grado</strong> è la somma degli esponenti (<span class="m">-\infty</span> per il monomio nullo).</p>
+<ul>
+<li>Prodotto: si moltiplicano i coefficienti e si sommano gli esponenti delle variabili comuni; <span class="m">\deg(m_1 \cdots m_k) = \sum \deg(m_i)</span>.</li>
+<li>Divisione <span class="m">m_1 : m_2</span>: possibile se ogni variabile di <span class="m">m_2</span> compare in <span class="m">m_1</span> con esponente non minore.</li>
+<li>Monomi <strong>simili</strong> (stessa parte letterale) si sommano sommando i coefficienti.</li>
+</ul>
+<h3>Polinomi</h3>
+<p>Un <strong>polinomio</strong> è una somma di monomi non simili (<strong>termini</strong>); il termine di grado 0 è il <strong>termine noto</strong>; il <strong>grado</strong> è il massimo grado dei termini. Notazioni: <span class="m">I[x]</span>, <span class="m">I[x_1, \dots, x_n]</span>, <span class="m">I_{\le m}[x]</span> (grado <span class="m">\le m</span>). Un termine mancante si considera con coefficiente <span class="m">0</span>.</p>
+<ul>
+<li><span class="m">\deg(p_1 + p_2) \le \max(\deg p_1, \deg p_2)</span>;</li>
+<li><span class="m">\deg(p_1 \cdots p_k) = \sum \deg(p_i)</span>.</li>
+</ul>
+<h3>Polinomi in una variabile e divisione</h3>
+<p><span class="m">p(x) = a_n x^n + \dots + a_1 x + a_0</span> con <span class="m">a_n \ne 0</span>. Dati <span class="m">p(x)</span> e <span class="m">d(x) \ne 0</span> con <span class="m">\deg d \le \deg p</span>, la <strong>divisione</strong> trova <strong>quoziente</strong> <span class="m">q(x)</span> e <strong>resto</strong> <span class="m">r(x)</span>, con <span class="m">\deg r &lt; \deg d</span>, tali che</p>
+<p><span class="m d">p(x) = q(x)\, d(x) + r(x),</span></p>
+<p>univocamente determinati (Proposizione 2.45). <span class="m">p</span> è <strong>divisibile</strong> per <span class="m">d</span> se <span class="m">r = 0</span>.</p>
+<p><strong>Algoritmo (Algoritmo 2.44):</strong> si scrivono <span class="m">p</span> (con tutti i termini, anche nulli) e <span class="m">d</span>; si divide il termine di grado massimo di <span class="m">p</span> per quello di <span class="m">d</span> e si scrive il risultato nel quoziente; lo si moltiplica per <span class="m">d</span>, si incolonna sotto <span class="m">p</span> e si sottrae; si ripete finché il grado del polinomio ottenuto è minore di <span class="m">\deg d</span>: quello è il resto.</p>
+<div class="callout esempio">
+
+<p><span class="m">(3x^3 - x^2 + 2x + 2) : (x - 2)</span>: <span class="m">3x^2 \to</span> si sottrae <span class="m">3x^3 - 6x^2</span>, resta <span class="m">5x^2 + 2x + 2</span>; <span class="m">5x \to</span> si sottrae <span class="m">5x^2 - 10x</span>, resta <span class="m">12x + 2</span>; <span class="m">12 \to</span> si sottrae <span class="m">12x - 24</span>, resta <span class="m">26</span>. Quoziente <span class="m">3x^2 + 5x + 12</span>, resto <span class="m">26</span>.</p>
+</div>
+
+<ul>
+<li><strong>Teorema del resto:</strong> il resto della divisione di <span class="m">p(x)</span> per <span class="m">x - \alpha</span> è <span class="m">p(\alpha)</span>.</li>
+<li><strong>Zero</strong> di <span class="m">p</span>: un numero <span class="m">\alpha</span> con <span class="m">p(\alpha) = 0</span> (es. <span class="m">x^2 + 1</span> ha zeri <span class="m">\pm i</span>, nessuno reale).</li>
+<li><strong>Teorema di Ruffini:</strong> <span class="m">\alpha</span> è uno zero di <span class="m">p(x)</span> se e solo se <span class="m">p(x)</span> è divisibile per <span class="m">x - \alpha</span>.</li>
+<li><strong>Molteplicità</strong> di uno zero <span class="m">\alpha</span>: il massimo <span class="m">m</span> tale che <span class="m">p(x)</span> è divisibile per <span class="m">(x - \alpha)^m</span>.</li>
+<li><strong>Corollario 2.51:</strong> un polinomio di grado <span class="m">n</span> ha al più <span class="m">n</span> zeri contati con molteplicità: <span class="m">\sum m_i \le \deg p</span>.</li>
+<li><strong>Teorema fondamentale dell&#39;algebra:</strong> ogni polinomio in <span class="m">\mathbb{C}[x]</span> di grado <span class="m">n \ge 1</span> ha almeno uno zero.</li>
+<li><strong>Corollario 2.53:</strong> ogni polinomio in <span class="m">\mathbb{C}[x]</span> di grado <span class="m">n \ge 0</span> ha <strong>esattamente</strong> <span class="m">n</span> zeri contati con molteplicità: <span class="m">\sum m_i = \deg p</span> (dimostrazione per induzione con Ruffini).</li>
+<li><strong>Proposizione 2.54:</strong> se un polinomio a coefficienti reali ha uno zero complesso <span class="m">\alpha</span>, ha anche il coniugato <span class="m">\bar\alpha</span>.</li>
+</ul>
+<h3>Equazioni polinomiali</h3>
+<p><span class="m">p(x) = 0</span> ha come soluzioni gli zeri di <span class="m">p</span>; una soluzione di molteplicità 1, 2, 3 è <strong>semplice</strong>, <strong>doppia</strong>, <strong>tripla</strong>.</p>
+<ul>
+<li>Grado 1: <span class="m">ax + b = 0 \Rightarrow x_1 = -\frac{b}{a}</span>.</li>
+<li>Grado 2: <span class="m">ax^2 + bx + c = 0 \Rightarrow x_{1/2} = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}</span>; soluzioni reali distinte se <span class="m">b^2 - 4ac &gt; 0</span>, reali coincidenti se <span class="m">= 0</span>, complesse non reali distinte se <span class="m">&lt; 0</span> (con l&#39;abuso di notazione <span class="m">\sqrt{b^2 - 4ac}</span> per <span class="m">i\sqrt{-b^2 + 4ac}</span>).</li>
+<li>Grado 0 (<span class="m">p = a \ne 0</span>): nessuna soluzione; grado <span class="m">-\infty</span> (<span class="m">p = 0</span>): tutti i numeri sono soluzioni.</li>
+<li>Grado <span class="m">&gt; 2</span>: <strong>Proposizione 2.55</strong>: se <span class="m">p</span> ha coefficienti interi e uno zero razionale <span class="m">\frac{b}{c}</span>, allora <span class="m">b</span> divide <span class="m">a_0</span> e <span class="m">c</span> divide <span class="m">a_n</span>. Si trova uno zero razionale, si divide per <span class="m">x - \frac bc</span> (Ruffini) e si abbassa il grado fino a 1 o 2. Funziona se tutti gli zeri tranne al più due sono razionali. Alla fine <span class="m">p(x) = a_n(x - \alpha_1)\cdots(x - \alpha_n)</span>.</li>
+</ul>
+<div class="callout esempio">
+
+<p><span class="m">x^3 - 5x^2 + 7x - 3</span>: candidati <span class="m">\pm1, \pm3</span>; <span class="m">p(1) = 0</span>, e dividendo <span class="m">p(x) = (x - 1)(x^2 - 4x + 3) = (x - 1)^2(x - 3)</span>: zero <span class="m">1</span> doppio, zero <span class="m">3</span> semplice.</p>
+</div>
+
+<h3>Disequazioni polinomiali</h3>
+<p>Hanno senso solo in <span class="m">\mathbb{R}</span>. Grado <span class="m">-\infty</span> o <span class="m">0</span>: soluzioni <span class="m">\mathbb{R}</span> oppure <span class="m">\emptyset</span>. Grado 1 (con <span class="m">a &gt; 0</span>): <span class="m">ax + b &gt; 0 \iff x &gt; -\frac ba</span>, ecc. Grado 2 (con <span class="m">a &gt; 0</span>), con <span class="m">x_1 &lt; x_2</span> radici dell&#39;equazione associata e <span class="m">\bar x</span> radice doppia:</p>
+<ul>
+<li><span class="m">\Delta &gt; 0</span>: <span class="m">&gt; 0</span> per <span class="m">x &lt; x_1</span> o <span class="m">x &gt; x_2</span>; <span class="m">&lt; 0</span> per <span class="m">x_1 &lt; x &lt; x_2</span> (con gli estremi inclusi per <span class="m">\ge</span>, <span class="m">\le</span>);</li>
+<li><span class="m">\Delta = 0</span>: <span class="m">&gt; 0</span> per <span class="m">x \ne \bar x</span>; <span class="m">&lt; 0</span> mai; <span class="m">\ge 0</span> sempre; <span class="m">\le 0</span> solo per <span class="m">x = \bar x</span>;</li>
+<li><span class="m">\Delta &lt; 0</span>: <span class="m">&gt; 0</span> e <span class="m">\ge 0</span> sempre; <span class="m">&lt; 0</span> e <span class="m">\le 0</span> mai.</li>
+</ul>
+<h2>Funzioni</h2>
+<p>Una <strong>funzione</strong> (mappa, applicazione) <span class="m">f\colon I \to J</span> associa a ogni elemento del <strong>dominio</strong> <span class="m">I</span> uno e un solo elemento <span class="m">f(x)</span> del <strong>codominio</strong> <span class="m">J</span>, detto <strong>immagine</strong> di <span class="m">x</span>. Notazione: <span class="m">f\colon I \ni x \mapsto f(x) \in J</span>.</p>
+<h3>Funzioni trigonometriche</h3>
+<p>Su una circonferenza di raggio 1, per un angolo <span class="m">\alpha</span> si definiscono <span class="m">\operatorname{sen}\alpha</span>, <span class="m">\cos\alpha</span>, <span class="m">\tan\alpha = \frac{\operatorname{sen}\alpha}{\cos\alpha}</span> (<span class="m">\tan</span> non definita in <span class="m">\frac\pi2 + k\pi</span>). Formule: <span class="m">\operatorname{sen}(-\alpha) = -\operatorname{sen}\alpha</span>, <span class="m">\cos(-\alpha) = \cos\alpha</span>, <span class="m">\operatorname{sen}(\alpha + \frac\pi2) = \cos\alpha</span>, <span class="m">\cos(\alpha + \frac\pi2) = -\operatorname{sen}\alpha</span>, periodicità <span class="m">2k\pi</span>, e</p>
+<p><span class="m d">\cos^2\alpha + \operatorname{sen}^2\alpha = 1.</span></p>
+<p>Valori principali: <span class="m">\operatorname{sen}</span> di <span class="m">0, \frac\pi6, \frac\pi4, \frac\pi3, \frac\pi2</span> vale <span class="m">0, \frac12, \frac{\sqrt2}{2}, \frac{\sqrt3}{2}, 1</span>; il coseno gli stessi valori in ordine inverso; <span class="m">\tan</span> vale <span class="m">0, \frac{\sqrt3}{3}, 1, \sqrt3</span>, non definita. Gli altri angoli (fino a <span class="m">\frac{11\pi}{6}</span>) si ottengono con le formule sopra.</p>
+<h3>Immagine, surgettività, iniettività</h3>
+<ul>
+<li><strong>Identità</strong> <span class="m">\mathrm{id}_I</span>: <span class="m">x \mapsto x</span>. <strong>Punto fisso</strong> di <span class="m">f\colon I \to I</span>: <span class="m">f(x) = x</span>.</li>
+<li><strong>Immagine</strong> di <span class="m">K \subseteq I</span>: <span class="m">f(K) = \{f(x) \mid x \in K\}</span>; <strong>immagine di <span class="m">f</span></strong>: <span class="m">\mathrm{Im}(f) = \{y \in J \mid \exists x \in I,\ f(x) = y\}</span>.</li>
+<li><strong>Surgettiva:</strong> <span class="m">\mathrm{Im}(f) = J</span>, cioè <span class="m">\forall y \in J\ \exists x \in I</span> con <span class="m">f(x) = y</span>.</li>
+<li><strong>Iniettiva:</strong> <span class="m">x_1 \ne x_2 \Rightarrow f(x_1) \ne f(x_2)</span>; per contronominale: <span class="m">f(x_1) = f(x_2) \Rightarrow x_1 = x_2</span>.</li>
+<li><strong>Controimmagine</strong> di <span class="m">y</span>: <span class="m">\mathrm{Preim}_f(y) = \{x \in I \mid f(x) = y\}</span>; di <span class="m">K \subseteq J</span>: <span class="m">\{x \in I \mid f(x) \in K\}</span>. <span class="m">y \in \mathrm{Im}(f) \iff \mathrm{Preim}_f(y) \ne \emptyset</span>.</li>
+<li><span class="m">f</span> surgettiva <span class="m">\iff</span> ogni controimmagine ha <strong>almeno</strong> un elemento; iniettiva <span class="m">\iff</span> <strong>al più</strong> uno; <strong>bigettiva</strong> (o invertibile: iniettiva e surgettiva) <span class="m">\iff</span> <strong>esattamente</strong> uno.</li>
+<li><strong>Inversa</strong> di <span class="m">f</span> bigettiva: <span class="m">f^{-1}\colon J \to I</span> che associa a <span class="m">y</span> l&#39;unico elemento di <span class="m">\mathrm{Preim}_f(y)</span>.</li>
+</ul>
+<div class="callout esempio">
+
+<p><span class="m">\cos\colon \mathbb{R} \to \mathbb{R}</span> non è iniettiva (<span class="m">\cos\frac\pi2 = \cos\frac{3\pi}{2}</span>) né surgettiva (<span class="m">\mathrm{Im} = [-1, 1]</span>). Ristretta a <span class="m">[0, \pi] \to [-1, 1]</span> è bigettiva, con inversa <span class="m">\arccos</span>. Analogamente <span class="m">\operatorname{arcsen}\colon [-1,1] \to [-\frac\pi2, \frac\pi2]</span> e <span class="m">\arctan\colon \mathbb{R} \to (-\frac\pi2, \frac\pi2)</span>.</p>
+</div>
+
+<h3>Composizione</h3>
+<p>Date <span class="m">f\colon I \to J</span> e <span class="m">g\colon J \to K</span>, la <strong>composizione</strong> è <span class="m">g \circ f\colon I \ni x \mapsto g(f(x)) \in K</span> (si applica <strong>prima</strong> <span class="m">f</span>).</p>
+<ul>
+<li><strong>Proposizione 2.75:</strong> <span class="m">f</span> è bigettiva se e solo se esiste <span class="m">g\colon J \to I</span> con <span class="m">g \circ f = \mathrm{id}_I</span> e <span class="m">f \circ g = \mathrm{id}_J</span>; tale <span class="m">g</span> è unica ed è <span class="m">f^{-1}</span>.</li>
+<li>L&#39;inversa di una bigettiva è bigettiva e <span class="m">(f^{-1})^{-1} = f</span>.</li>
+</ul>
+<div class="callout esempio">
+
+<p><span class="m">h(x, y) = (x, y^2)</span>, <span class="m">g(a, b) = (b + 1, a - 1)</span>: <span class="m">g \circ h(x, y) = g(x, y^2) = (y^2 + 1, x - 1)</span>.</p>
+</div>
+
+<h2>Relazioni di equivalenza</h2>
+<p>Una <strong>relazione</strong> su <span class="m">I</span> è un sottoinsieme <span class="m">\mathcal R \subseteq I \times I</span>; si scrive <span class="m">x \sim_{\mathcal R} y</span> se <span class="m">(x, y) \in \mathcal R</span>. È una <strong>relazione di equivalenza</strong> se è:</p>
+<ul>
+<li><strong>riflessiva:</strong> <span class="m">x \sim_{\mathcal R} x</span> per ogni <span class="m">x</span>;</li>
+<li><strong>simmetrica:</strong> <span class="m">x \sim_{\mathcal R} y \Rightarrow y \sim_{\mathcal R} x</span>;</li>
+<li><strong>transitiva:</strong> <span class="m">x \sim_{\mathcal R} y</span> e <span class="m">y \sim_{\mathcal R} z \Rightarrow x \sim_{\mathcal R} z</span>.</li>
+</ul>
+<p>Di solito la si definisce con una proprietà: <span class="m">x \sim_{\mathcal R} y</span> se e solo se <span class="m">P(x, y)</span> è vera.</p>
+<ul>
+<li><strong>Classe di equivalenza</strong> di <span class="m">x</span>: <span class="m">[x]_{\sim_{\mathcal R}}</span>, l&#39;insieme degli elementi equivalenti a <span class="m">x</span>; <span class="m">x</span> ne è un <strong>rappresentante</strong>.</li>
+<li><strong>Proposizione 2.80:</strong> se <span class="m">x \sim y</span> le classi di <span class="m">x</span> e <span class="m">y</span> coincidono, altrimenti sono disgiunte. La scelta del rappresentante è arbitraria (ma ciò che si fa non deve dipendere da essa).</li>
+<li>Le classi formano una <strong>partizione</strong> di <span class="m">I</span>; l&#39;insieme delle classi è l&#39;<strong>insieme quoziente</strong>.</li>
+</ul>
+<div class="callout esempio">
+
+<p>Sulle persone, &quot;avere lo stesso nome&quot; è una relazione di equivalenza; la classe di una persona è l&#39;insieme di <strong>tutte le persone</strong> con quel nome (non il nome stesso).</p>
+</div>
+
+<h2>Rette e piani</h2>
+<h3>Concetti primitivi e mutua posizione</h3>
+<p><strong>Punto</strong>, <strong>retta</strong>, <strong>piano</strong> sono concetti primitivi (non definiti), pensati nello <strong>spazio</strong> (tre dimensioni, illimitato). Nelle figure: un&#39;intersezione tra rette è disegnata con un <strong>pallino</strong>; se due rette non si intersecano, quella che passa &quot;sotto&quot; è <strong>interrotta</strong>; per i piani si disegna la retta di intersezione e le parti nascoste sono tratteggiate. Punti su una retta: <strong>allineati</strong>; in un piano: <strong>complanari</strong>.</p>
+<p>Postulato: per due punti distinti passa un&#39;unica retta. Per tre punti non allineati passa un unico piano.</p>
+<ul>
+<li>Due rette nel piano: <strong>coincidenti</strong>, <strong>incidenti</strong> (un punto), <strong>parallele</strong> (nessun punto).</li>
+<li>Due piani nello spazio: <strong>coincidenti</strong>, <strong>incidenti</strong> (in una retta), <strong>paralleli</strong>. Ogni retta è intersezione di due piani.</li>
+<li>Due rette nello spazio: se complanari sono coincidenti, incidenti o parallele; se non complanari sono <strong>sghembe</strong> (né incidenti né parallele).</li>
+<li>Retta e piano: retta <strong>contenuta</strong>, <strong>incidente</strong> (un punto), <strong>parallela</strong>.</li>
+</ul>
+<h3>Fasci e stelle</h3>
+<ul>
+<li><strong>Fascio di rette proprio:</strong> rette del piano per un punto fissato; <strong>improprio:</strong> rette parallele a una data (classe di equivalenza del parallelismo, stessa direzione).</li>
+<li><strong>Fascio di piani proprio:</strong> piani per una retta fissata; <strong>improprio:</strong> piani paralleli a un dato piano.</li>
+<li><strong>Stella di rette propria:</strong> rette dello spazio per un punto; <strong>impropria:</strong> rette dello spazio parallele a una data.</li>
+<li>Dato un fascio e un punto (fuori dal centro/asse se proprio), esiste un solo elemento del fascio che lo contiene.</li>
+</ul>
+<h3>Concetti non primitivi</h3>
+<p><strong>Semiretta</strong>, <strong>segmento</strong> <span class="m">AB</span>, <strong>angolo</strong> (parte di piano tra due semirette con lo stesso estremo; misurato in gradi o radianti). L&#39;<strong>angolo tra due rette</strong> è il più piccolo dei quattro angoli che formano; se sono tutti uguali (<span class="m">90^\circ = \frac\pi2</span>) le rette sono <strong>perpendicolari</strong> o <strong>ortogonali</strong>.</p>
+<ul>
+<li>Angolo tra retta e piano incidenti: il minimo angolo tra la retta e le rette del piano per il punto di intersezione (<span class="m">0</span> se contenuta, non definito se parallela). Retta <strong>perpendicolare</strong> al piano se l&#39;angolo è retto.</li>
+<li>Due rette perpendicolari allo stesso piano sono parallele; due piani perpendicolari alla stessa retta sono paralleli.</li>
+<li><strong>Angolo diedro:</strong> una delle quattro parti di spazio delimitate da due piani incidenti; l&#39;angolo diedro tra due piani è il più piccolo; piani <strong>perpendicolari</strong> se i quattro diedri sono retti.</li>
+<li><strong>Poligoni</strong> (triangoli isosceli/equilateri, quadrilateri: parallelogrammi, rettangoli, quadrati) e <strong>poliedri</strong> (parallelepipedi, cubi).</li>
+</ul>
+<h3>Sistemi di riferimento cartesiano</h3>
+<p>Sulla retta <span class="m">(O; x)</span>, nel piano <span class="m">(O; x, y)</span> (due assi perpendicolari con la stessa unità), nello spazio <span class="m">(O; x, y, z)</span>: i punti si identificano con <span class="m">\mathbb{R}</span>, <span class="m">\mathbb{R}^2</span>, <span class="m">\mathbb{R}^3</span>. Nello spazio ci sono i piani coordinati <span class="m">xy</span>, <span class="m">xz</span>, <span class="m">yz</span>.</p>
+<h3>Rette nel piano</h3>
+<p><strong>Forma implicita:</strong> <span class="m">ax + by + c = 0</span> con <span class="m">(a, b) \ne (0, 0)</span>. Se <span class="m">b \ne 0</span>, <strong>forma esplicita</strong> <span class="m">y = mx + q</span> con <span class="m">m = -\frac ab</span> (<strong>coefficiente angolare</strong>, tangente dell&#39;angolo con l&#39;asse <span class="m">x</span>) e <span class="m">q = -\frac cb</span> (<strong>intercetta</strong>: la retta passa per <span class="m">(0, q)</span>); se <span class="m">b = 0</span>, <span class="m">x = k</span> con <span class="m">k = -\frac ca</span>.</p>
+<ul>
+<li>Due equazioni implicite rappresentano la stessa retta se e solo se i coefficienti <span class="m">a, b, c</span> sono proporzionali; due forme esplicite diverse danno sempre rette diverse.</li>
+<li>Due rette distinte sono <strong>parallele</strong> se e solo se <span class="m">(a, b)</span> e <span class="m">(a', b')</span> sono proporzionali.</li>
+<li><strong>Fascio</strong> generato da <span class="m">r\colon ax + by + c = 0</span> e <span class="m">r'\colon a'x + b'y + c' = 0</span>: <span class="m">\lambda(ax + by + c) + \lambda'(a'x + b'y + c') = 0</span>, con <span class="m">(\lambda, \lambda') \ne (0, 0)</span> (sottinteso); coppie proporzionali danno la stessa retta.</li>
+</ul>
+<div class="callout esempio">
+
+<p>Fascio <span class="m">\lambda(x + y - 3) + \lambda'(x - 2y + 3) = 0</span> (proprio, centro <span class="m">(1, 2)</span>). Retta per <span class="m">(3, 1)</span>: <span class="m">\lambda(1) + \lambda'(4) = 0</span>; con <span class="m">\lambda' = 1</span>, <span class="m">\lambda = -4</span>: <span class="m">-4(x + y - 3) + (x - 2y + 3) = 0</span>.</p>
+</div>
+
+<h3>Piani nello spazio</h3>
+<p><strong>Forma implicita:</strong> <span class="m">ax + by + cz + d = 0</span> con <span class="m">(a, b, c) \ne (0, 0, 0)</span>. Stesso piano se e solo se i coefficienti <span class="m">a, b, c, d</span> sono proporzionali; due piani distinti sono <strong>paralleli</strong> se e solo se <span class="m">(a, b, c)</span> e <span class="m">(a', b', c')</span> sono proporzionali.</p>
+<p><strong>Fascio di piani:</strong> <span class="m">\lambda(ax + by + cz + d) + \lambda'(a'x + b'y + c'z + d') = 0</span>. Per trovare il piano del fascio per un punto si sostituiscono le coordinate e si ottiene una relazione lineare tra <span class="m">\lambda</span> e <span class="m">\lambda'</span>.</p>
+<div class="callout esempio">
+
+<p>Fascio <span class="m">\lambda(x + y - z - 3) + \lambda'(x + y - z + 4) = 0</span> (improprio: piani paralleli). Per <span class="m">(-2, 0, 1)</span>: <span class="m">-6\lambda + \lambda' = 0</span>; con <span class="m">\lambda = 1</span>, <span class="m">\lambda' = 6</span>.</p>
+</div>
+
+<h3>Rette nello spazio</h3>
+<p><strong>Forma implicita:</strong> intersezione di due piani,
+<span class="m d">\begin{cases} a_1 x + b_1 y + c_1 z + d_1 = 0 \\ a_2 x + b_2 y + c_2 z + d_2 = 0 \end{cases}</span>
+con <span class="m">(a_1, b_1, c_1)</span> e <span class="m">(a_2, b_2, c_2)</span> <strong>non proporzionali</strong>.</p>
+<div class="callout esempio">
+
+<p><span class="m">\begin{cases} 2x + y - z + 3 = 0 \\ 4x - y + 2z - 1 = 0 \end{cases}</span> è una retta; <span class="m">\begin{cases} 2x + y - z + 3 = 0 \\ 4x + 2y - 2z - 1 = 0 \end{cases}</span> no (coefficienti proporzionali). Asse <span class="m">x</span>: <span class="m">y = 0,\ z = 0</span>; asse <span class="m">y</span>: <span class="m">x = 0,\ z = 0</span>; asse <span class="m">z</span>: <span class="m">x = 0,\ y = 0</span>.</p>
+</div>
+
+<h3>Distanza, aree, volumi</h3>
+<p><span class="m d">AB = \sqrt{(x_B - x_A)^2 + (y_B - y_A)^2 + (z_B - z_A)^2}</span>
+(senza il termine in <span class="m">z</span> nel piano); <span class="m">AB = 0</span> se e solo se <span class="m">A = B</span>.</p>
+<p>Aree: triangolo <span class="m">\frac{bh}{2}</span>, parallelogramma e rettangolo <span class="m">bh</span>, quadrato <span class="m">l^2</span>. Volume del cubo <span class="m">l^3</span>.</p>
+<div class="callout sintesi">
+
+<ul>
+<li><span class="m">\sqrt a \ge 0</span> sempre; <span class="m">\sqrt{a^2} = |a|</span>.</li>
+<li>Inversa: <span class="m">Q \Rightarrow P</span>; contronominale: <span class="m">\text{non}Q \Rightarrow \text{non}P</span> (equivalente all&#39;originale).</li>
+<li>Negazione: <span class="m">\forall \leftrightarrow \exists</span> e si nega la condizione.</li>
+<li>Per assurdo = dimostrare <span class="m">\text{non}Q \Rightarrow \text{non}P</span>.</li>
+<li>In <span class="m">\mathbb{C}</span> un polinomio di grado <span class="m">n</span> ha esattamente <span class="m">n</span> zeri contati con molteplicità; Ruffini: <span class="m">p(\alpha) = 0 \iff (x - \alpha) \mid p(x)</span>.</li>
+<li>Surgettiva: controimmagini con almeno un elemento; iniettiva: al più uno; bigettiva: esattamente uno.</li>
+<li>Retta nello spazio = due equazioni di piani con coefficienti di <span class="m">x, y, z</span> non proporzionali.</li>
+</ul>
+</div>
+
+<div class="callout esame">
+
+<p>Le domande delle sessioni di studio su questa lezione chiedono: insiemi per elencazione/caratteristica e prodotti cartesiani, insiemi finiti/infiniti, radice principale, proposizioni, inversa/contronominale/negazione, tipi di dimostrazione, sommatorie, equazioni con parametro (discutere i casi), sistemi per sostituzione, equazioni in <span class="m">\mathbb{C}</span>, divisione tra polinomi e zeri con molteplicità, iniettività/surgettività/composizione, classi di equivalenza, posizione reciproca di rette e piani nelle figure, fasci di piani e forma implicita della retta nello spazio.</p>
+</div>

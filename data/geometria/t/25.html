@@ -1,0 +1,56 @@
+<h1>Lezione 25 — Esistenza e unicità delle soluzioni</h1>
+<h2>Teorema di Rouché-Capelli</h2>
+<p><strong>Teorema 25.1 (Rouché-Capelli).</strong> Un sistema di equazioni lineari <span class="m">A\cdot X=B</span> è compatibile <strong>se e solo se</strong> la matrice incompleta e la matrice completa hanno lo stesso rango:
+<span class="m d">\mathrm{rank}(A)=\mathrm{rank}(A\,|\,B).</span></p>
+<p><em>Dimostrazione.</em> Siano <span class="m">A^1,\dots,A^n</span> le colonne di <span class="m">A</span>. Si ha <span class="m">\mathrm{rank}(A)=\dim\mathrm{Span}(A^1,\dots,A^n)</span> e <span class="m">\mathrm{rank}(A\,|\,B)=\dim\mathrm{Span}(A^1,\dots,A^n,B)</span>, con <span class="m">\mathrm{Span}(A^1,\dots,A^n)\subseteq\mathrm{Span}(A^1,\dots,A^n,B)</span>.</p>
+<ul>
+<li>Se il sistema è compatibile e <span class="m">X</span> è una soluzione, <span class="m">x_1A^1+\dots+x_nA^n=B</span>, quindi <span class="m">B\in\mathrm{Span}(A^1,\dots,A^n)</span>: i due span coincidono e hanno la stessa dimensione.</li>
+<li>Viceversa, se i ranghi sono uguali, i due span (uno contenuto nell&#39;altro) hanno la stessa dimensione e quindi coincidono; dunque <span class="m">B</span> è combinazione lineare delle colonne, <span class="m">B=x_1A^1+\dots+x_nA^n</span>, e i coefficienti <span class="m">x_i</span> sono una soluzione.</li>
+</ul>
+<div class="callout sintesi">
+
+<p>Sono equivalenti: il sistema è compatibile; <span class="m">B\in\mathrm{Span}(A^1,\dots,A^n)</span>; <span class="m">B</span> è combinazione lineare delle colonne di <span class="m">A</span>; <span class="m">\mathrm{rank}(A)=\mathrm{rank}(A\,|\,B)</span>.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><span class="m">\begin{cases}x_1+x_2=2\\4x_1+3x_2=-1\end{cases}</span>: i ranghi di <span class="m">\begin{pmatrix}1&amp;1\\4&amp;3\end{pmatrix}</span> e <span class="m">\left(\begin{array}{cc|c}1&amp;1&amp;2\\4&amp;3&amp;-1\end{array}\right)</span> sono entrambi 2: è compatibile.
+<span class="m">\begin{cases}x_1+x_2=2\\3x_1+3x_2=-1\end{cases}</span>: <span class="m">\mathrm{rank}\begin{pmatrix}1&amp;1\\3&amp;3\end{pmatrix}=1</span>, ma <span class="m">\mathrm{rank}\left(\begin{array}{cc|c}1&amp;1&amp;2\\3&amp;3&amp;-1\end{array}\right)=2</span>: non è compatibile.</p>
+</div>
+
+<h2>Numero dei parametri</h2>
+<p><strong>Osservazione 25.4.</strong> Se il sistema (con <span class="m">m</span> equazioni e <span class="m">n</span> incognite) è compatibile e <span class="m">r</span> è il rango comune di incompleta e completa, le soluzioni si parametrizzano con <span class="m">n-r</span> parametri: il sistema ha <span class="m">\infty^{n-r}</span> soluzioni.</p>
+<div class="callout attenzione">
+
+<p>L&#39;esponente è <strong>numero di incognite meno rango</strong>, non il rango e non il numero di equazioni. Il rango della completa vale <span class="m">\mathrm{rank}(A)</span> oppure <span class="m">\mathrm{rank}(A)+1</span>: nel secondo caso il sistema è impossibile.</p>
+</div>
+
+<h2>Sistemi quadrati</h2>
+<p><strong>Teorema 25.6.</strong> Un sistema di <span class="m">n</span> equazioni lineari in <span class="m">n</span> incognite ha <strong>una e una sola soluzione</strong> se e solo se <span class="m">\det(A)\neq0</span>.</p>
+<p><em>Dimostrazione.</em> Se <span class="m">\det A\neq0</span>, <span class="m">A</span> è invertibile, quindi <span class="m">f_A</span> è invertibile e la controimmagine di <span class="m">B</span> è formata da un solo vettore. Viceversa, se <span class="m">\det A=0</span> allora (Kronecker) <span class="m">\mathrm{rank}(A)&lt;n</span>; se il sistema fosse compatibile avrebbe <span class="m">\infty^{n-\mathrm{rank}(A)}</span> soluzioni con <span class="m">n-\mathrm{rank}(A)&gt;0</span>, cioè più di una: assurdo.</p>
+<div class="callout esempio">
+
+<p><span class="m">\begin{cases}x_1+x_2=2\\4x_1+3x_2=-1\end{cases}</span> ha <span class="m">\det A=-1\neq0</span>: una sola soluzione. <span class="m">\begin{cases}x_1+x_2=2\\3x_1+3x_2=-1\end{cases}</span> ha <span class="m">\det A=0</span>: non ha esattamente una soluzione (qui non ne ha nessuna).</p>
+</div>
+
+<div class="callout sintesi">
+
+<p>Con <span class="m">A</span> quadrata e <span class="m">\det A=0</span> le soluzioni possono non esistere oppure essere infinite: decide il confronto tra <span class="m">\mathrm{rank}(A)</span> e <span class="m">\mathrm{rank}(A\,|\,B)</span>.</p>
+</div>
+
+<h2>Sistemi con un parametro</h2>
+<p>Per studiare la compatibilità al variare di un parametro <span class="m">k</span>:</p>
+<ol>
+<li>si calcola <span class="m">\det A</span> (se <span class="m">A</span> è quadrata) e si trovano i valori di <span class="m">k</span> che lo annullano;</li>
+<li>per gli altri valori <span class="m">\mathrm{rank}(A)=\mathrm{rank}(A\,|\,B)=n</span>: una sola soluzione;</li>
+<li>per ciascun valore critico si calcola <span class="m">\mathrm{rank}(A)</span> con un minore non nullo e si controllano i suoi <strong>orlati</strong> nella completa (Kronecker), in particolare quelli che usano la colonna <span class="m">B</span>.</li>
+</ol>
+<div class="callout esempio">
+
+<p>Esercizio 25.1: <span class="m">\begin{cases}x-z+kt=1\\2x+ky+z=0\\2y+(k+1)z-4t=-k\end{cases}</span>. Si trova <span class="m">\mathrm{rank}(A)=2</span> per <span class="m">k=2</span> o <span class="m">k=-3</span>, <span class="m">3</span> altrimenti; <span class="m">\mathrm{rank}(A\,|\,B)=2</span> per <span class="m">k=2</span>, <span class="m">3</span> altrimenti. Il sistema è compatibile per <span class="m">k\neq-3</span>: <span class="m">\infty^{4-2}=\infty^2</span> soluzioni per <span class="m">k=2</span>, nessuna per <span class="m">k=-3</span>, <span class="m">\infty^{4-3}=\infty^1</span> altrimenti.</p>
+</div>
+
+<div class="callout esame">
+
+<p>Le chiuse chiedono <span class="m">r_i</span>, <span class="m">r_c</span> e se il sistema ha soluzione (sistemi che differiscono per un solo segno o termine noto!), oppure il numero di soluzioni <span class="m">\infty^{n-r}</span> noti <span class="m">n</span> e il rango. Le aperte chiedono l&#39;enunciato di Rouché-Capelli con le conseguenze e lo studio di sistemi <span class="m">3\times3</span> con un parametro <span class="m">k</span>: determinante, valori critici, ranghi per quei valori.</p>
+</div>

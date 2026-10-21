@@ -1,0 +1,62 @@
+<h1>Lezione 22 — Applicazioni lineari e matrici</h1>
+<p>Si associa una matrice a un&#39;applicazione lineare tra spazi finitamente generati, una volta fissate una base nel dominio e una nel codominio.</p>
+<h2>Matrice associata</h2>
+<p><strong>Definizione 22.1.</strong> Sia <span class="m">f: V \to W</span> lineare, con <span class="m">\dim V = m</span>, <span class="m">\dim W = n</span>, e siano <span class="m">\mathcal{B}_V</span> e <span class="m">\mathcal{B}_W</span> basi di <span class="m">V</span> e <span class="m">W</span>. L&#39;applicazione lineare
+<span class="m d">[\cdot]_{\mathcal{B}_W} \circ f \circ [\cdot]_{\mathcal{B}_V}^{-1}: \mathbb{K}^m \to V \to W \to \mathbb{K}^n</span>
+è <span class="m">f_A</span> per una e una sola <span class="m">A \in \mathbb{K}^{n,m}</span>. La matrice <span class="m">A</span> è la <strong>matrice associata a <span class="m">f</span> rispetto alle basi <span class="m">\mathcal{B}_V</span> (nel dominio) e <span class="m">\mathcal{B}_W</span> (nel codominio)</strong>, indicata con <span class="m">[f]^{\mathcal{B}_V}_{\mathcal{B}_W}</span>.</p>
+<p>La matrice dipende solo da <span class="m">f</span> e dalle due basi, e (Osservazione 22.3)
+<span class="m d">[f(v)]_{\mathcal{B}_W} = [f]^{\mathcal{B}_V}_{\mathcal{B}_W}\cdot[v]_{\mathcal{B}_V} \qquad \forall v \in V.</span></p>
+<p><strong>Osservazione 22.4.</strong> Se <span class="m">f = f_A: \mathbb{K}^m \to \mathbb{K}^n</span> e si usano le basi canoniche, <span class="m">[f_A]^{\mathcal{E}_m}_{\mathcal{E}_n} = A</span> (perché <span class="m">[\cdot]_{\mathcal{E}}</span> è l&#39;identità).</p>
+<p><strong>Notazione 22.5.</strong> Per un endomorfismo <span class="m">f: V \to V</span> si usa di solito una sola base <span class="m">\mathcal{B}</span>, sia nel dominio sia nel codominio: <span class="m">[f]^{\mathcal{B}}_{\mathcal{B}}</span> è la matrice associata all&#39;endomorfismo rispetto alla base <span class="m">\mathcal{B}</span>.</p>
+<h2>Come si calcola</h2>
+<p><strong>Algoritmo 22.6.</strong> Siano <span class="m">\mathcal{B}_V = \{v_1, \dots, v_m\}</span> e <span class="m">\mathcal{B}_W = \{w_1, \dots, w_n\}</span>. Per ogni <span class="m">i = 1, \dots, m</span>:</p>
+<ol>
+<li>si calcola l&#39;immagine <span class="m">f(v_i)</span>;</li>
+<li>si calcolano le coordinate <span class="m">[f(v_i)]_{\mathcal{B}_W} = {}^t(a_{1i}\ a_{2i}\ \dots\ a_{ni})</span>;</li>
+<li>questo vettore colonna è la <strong><span class="m">i</span>-esima colonna</strong> di <span class="m">[f]^{\mathcal{B}_V}_{\mathcal{B}_W}</span>.</li>
+</ol>
+<p>(La Proposizione 22.9 assicura che l&#39;algoritmo produce proprio la matrice della definizione.)</p>
+<div class="callout esempio">
+
+<p><span class="m">f: \mathbb{R}^2 \ni {}^t(a_1\ a_2) \mapsto a_1 x^3 - (a_1 + a_2)x + a_2 \in \mathbb{R}_{\leq 3}[x]</span>, con <span class="m">\mathcal{B}_2 = \{{}^t(2\ 1), {}^t(1\ 1)\}</span> e <span class="m">\mathcal{B}_{pol} = \{x^3, x^2 - x, x^2, 1\}</span>.</p>
+<ul>
+<li>Passo 1: <span class="m">f({}^t(2\ 1)) = 2x^3 - 3x + 1 = 2x^3 + 3(x^2 - x) - 3x^2 + 1</span>, coordinate <span class="m">{}^t(2\ 3\ -3\ 1)</span>.</li>
+<li>Passo 2: <span class="m">f({}^t(1\ 1)) = x^3 - 2x + 1</span>, coordinate <span class="m">{}^t(1\ 2\ -2\ 1)</span>.</li>
+</ul>
+<p><span class="m d">[f]^{\mathcal{B}_2}_{\mathcal{B}_{pol}} = \begin{pmatrix} 2 &amp; 1 \\ 3 &amp; 2 \\ -3 &amp; -2 \\ 1 &amp; 1 \end{pmatrix}.</span></p>
+</div>
+
+<div class="callout attenzione">
+
+<p>Le coordinate vanno messe <strong>in colonna</strong>: mettendole in riga si ottiene la trasposta. Con le basi canoniche le righe della matrice sono i coefficienti delle componenti, ordinati secondo <span class="m">x_1, x_2, \dots</span> (anche se nella legge sono scritti in un altro ordine).</p>
+</div>
+
+<p><strong>Osservazione 22.8.</strong> Per ogni base <span class="m">\mathcal{B}</span> di <span class="m">V</span> (<span class="m">\dim V = n</span>): <span class="m">[\mathrm{id}_V]^{\mathcal{B}}_{\mathcal{B}} = I_n</span>.</p>
+<h2>Proprietà</h2>
+<p><strong>Teorema 22.10.</strong> <span class="m">[\cdot]^{\mathcal{B}_V}_{\mathcal{B}_W}: \mathrm{Lin}(V, W) \ni f \mapsto [f]^{\mathcal{B}_V}_{\mathcal{B}_W} \in \mathbb{K}^{n,m}</span> è un isomorfismo.</p>
+<p><strong>Corollario 22.11.</strong> <span class="m">\dim\mathrm{Lin}(V, W) = m\cdot n</span>.</p>
+<p><strong>Proposizione 22.12 (composizione).</strong> Per <span class="m">f: V \to W</span> e <span class="m">g: W \to U</span>:
+<span class="m d">[g \circ f]^{\mathcal{B}_V}_{\mathcal{B}_U} = [g]^{\mathcal{B}_W}_{\mathcal{B}_U}\cdot[f]^{\mathcal{B}_V}_{\mathcal{B}_W}.</span></p>
+<p><strong>Proposizione 22.13 (inversa).</strong> Se <span class="m">f: V \to W</span> è un isomorfismo:
+<span class="m d">[f^{-1}]^{\mathcal{B}_W}_{\mathcal{B}_V} = \big([f]^{\mathcal{B}_V}_{\mathcal{B}_W}\big)^{-1}.</span></p>
+<h2>Rango di applicazioni e di matrici</h2>
+<p><strong>Lemma 22.14.</strong> Per <span class="m">A \in \mathbb{K}^{n,m}</span>: <span class="m">\mathrm{rank}(f_A) = \mathrm{rank}(A)</span> (entrambi sono la dimensione dello Span delle colonne di <span class="m">A</span>).</p>
+<p><strong>Proposizione 22.15.</strong> <span class="m">\mathrm{rank}(f) = \mathrm{rank}\big([f]^{\mathcal{B}_V}_{\mathcal{B}_W}\big)</span>, qualunque siano le basi.</p>
+<div class="callout esempio">
+
+<p><span class="m">V = \{X \in \mathbb{R}^3 \mid x_2 - x_3 = 0\}</span> ha base <span class="m">\mathcal{B} = \{{}^t(1\ 0\ 0), {}^t(0\ 1\ 1)\}</span>. Per <span class="m">f: V \ni X \mapsto {}^t(x_1 + 3x_2 - x_3,\ x_2 - 2x_1) \in \mathbb{R}^2</span>: <span class="m">f({}^t(1\ 0\ 0)) = {}^t(1\ -2)</span>, <span class="m">f({}^t(0\ 1\ 1)) = {}^t(2\ 1)</span>, quindi <span class="m">[f]^{\mathcal{B}}_{\mathcal{E}_2} = \begin{pmatrix} 1 &amp; 2 \\ -2 &amp; 1 \end{pmatrix}</span>, di rango 2: <span class="m">f</span> è surgettiva e, avendo dominio e codominio della stessa dimensione, è un isomorfismo.</p>
+</div>
+
+<div class="callout sintesi">
+
+<ul>
+<li><span class="m">[f]^{\mathcal{B}_V}_{\mathcal{B}_W}</span>: la colonna <span class="m">i</span> è <span class="m">[f(v_i)]_{\mathcal{B}_W}</span>; vale <span class="m">[f(v)]_{\mathcal{B}_W} = [f]\,[v]_{\mathcal{B}_V}</span>.</li>
+<li>Basi canoniche: <span class="m">[f_A] = A</span>. Composizione = prodotto; inversa = matrice inversa.</li>
+<li><span class="m">\dim\mathrm{Lin}(V, W) = mn</span>; <span class="m">\mathrm{rank} f = \mathrm{rank}</span> di una qualsiasi matrice associata.</li>
+</ul>
+</div>
+
+<div class="callout esame">
+
+<p>L&#39;aperta chiede di parlare delle matrici associate alle applicazioni lineari (definizione, algoritmo, proprietà). Nei quiz: matrice rispetto alle basi canoniche o a una base data, matrice dell&#39;inversa, rango da una matrice associata.</p>
+</div>

@@ -1,0 +1,75 @@
+<h1>Lezione 36 — Basi ortonormali e prodotto vettoriale</h1>
+<p>Le basi ortonormali rendono semplice il calcolo delle coordinate; nello spazio euclideo si introduce poi il prodotto vettoriale. Riferimenti cartesiani fissati per <span class="m">V^2_E</span> e <span class="m">V^3_E</span>.</p>
+<h2>Vettori ortonormali</h2>
+<p><strong>Definizione 36.1.</strong> In uno spazio vettoriale reale <span class="m">V</span> con prodotto scalare, <span class="m">v_1,\dots,v_m</span> sono <strong>ortonormali</strong> se</p>
+<ul>
+<li>(ON1) <span class="m">\langle v_i,v_i\rangle=1</span> per ogni <span class="m">i=1,\dots,m</span>;</li>
+<li>(ON2) <span class="m">\langle v_i,v_j\rangle=0</span> per ogni <span class="m">i,j</span> con <span class="m">i\neq j</span>.</li>
+</ul>
+<div class="callout esempio">
+
+<p>La base canonica di <span class="m">\mathbb{R}^n</span> (prodotto standard). Per ogni <span class="m">\alpha</span>, <span class="m">{}^t(\cos\alpha\ \sin\alpha)</span> e <span class="m">{}^t(-\sin\alpha\ \cos\alpha)</span>: norme <span class="m">\cos^2\alpha+\sin^2\alpha=1</span>, prodotto <span class="m">-\sin\alpha\cos\alpha+\cos\alpha\sin\alpha=0</span>.</p>
+</div>
+
+<p><strong>Osservazione 36.3.</strong> Essere ortonormali dipende dal prodotto scalare.</p>
+<p><strong>Proposizione 36.4.</strong> Vettori ortonormali sono linearmente indipendenti. <strong>Corollario 36.5:</strong> quindi <span class="m">\dim V\geqslant m</span>.</p>
+<p><strong>Osservazione 36.6.</strong> Se <span class="m">v,w</span> sono indipendenti, <span class="m">u=v-\frac{\langle v,w\rangle}{\langle w,w\rangle}w</span> è ortogonale a <span class="m">w</span>, perché <span class="m">\langle u,w\rangle=\langle v,w\rangle-\frac{\langle v,w\rangle}{\langle w,w\rangle}\langle w,w\rangle=0</span>. Dividendo <span class="m">u</span> e <span class="m">w</span> per le loro norme si ottengono due vettori ortonormali.</p>
+<p><strong>Definizione 36.7.</strong> <span class="m">\frac{\langle v,w\rangle}{\langle w,w\rangle}w</span> (con <span class="m">w\neq0</span>) è la <strong>proiezione vettoriale</strong> di <span class="m">v</span> lungo <span class="m">w</span>.</p>
+<p><strong>Definizione 36.8.</strong> <span class="m">\frac1{\lVert v\rVert}v</span> (con <span class="m">v\neq0</span>) è il <strong>versore</strong> (vettore normalizzato) di <span class="m">v</span>. Il vettore nullo non ha versore (Oss. 36.9).</p>
+<h2>Processo di ortonormalizzazione di Gram-Schmidt</h2>
+<p><strong>Algoritmo 36.10.</strong> Dati <span class="m">v_1,\dots,v_m</span> linearmente indipendenti, si eseguono <span class="m">m</span> passi:</p>
+<ul>
+<li>Passo 1: <span class="m">w_1:=v_1</span>, <span class="m">e_1:=\frac1{\lVert w_1\rVert}w_1</span>.</li>
+<li>Passo 2: <span class="m">w_2:=v_2-\frac{\langle v_2,w_1\rangle}{\langle w_1,w_1\rangle}w_1</span>, <span class="m">e_2:=\frac1{\lVert w_2\rVert}w_2</span>.</li>
+<li>Passo <span class="m">i</span>: <span class="m">w_i:=v_i-\sum_{j=1}^{i-1}\frac{\langle v_i,w_j\rangle}{\langle w_j,w_j\rangle}w_j</span>, <span class="m">e_i:=\frac1{\lVert w_i\rVert}w_i</span>.</li>
+</ul>
+<p>A ogni passo si sottraggono a <span class="m">v_i</span> le sue proiezioni lungo i <span class="m">w_j</span> già trovati (così <span class="m">w_i</span> è ortogonale ai precedenti) e si normalizza. Se <span class="m">v_i</span> è già ortogonale ai precedenti, <span class="m">w_i=v_i</span>; se ha anche norma 1, <span class="m">e_i=v_i</span> (Oss. 36.11).</p>
+<div class="callout esempio">
+
+<p><span class="m">v_1={}^t(1\ 1\ 0)</span>, <span class="m">v_2={}^t(2\ 2\ 1)</span>, <span class="m">v_3={}^t(0\ -2\ 3)</span> in <span class="m">V^3_E</span>.
+Passo 1: <span class="m">w_1={}^t(1\ 1\ 0)</span>, <span class="m">e_1=\frac1{\sqrt2}{}^t(1\ 1\ 0)={}^t(\frac{\sqrt2}2\ \frac{\sqrt2}2\ 0)</span>.
+Passo 2: <span class="m">w_2={}^t(2\ 2\ 1)-\frac42{}^t(1\ 1\ 0)={}^t(0\ 0\ 1)</span>, <span class="m">e_2={}^t(0\ 0\ 1)</span>.
+Passo 3: <span class="m">w_3={}^t(0\ -2\ 3)-\frac{-2}{2}{}^t(1\ 1\ 0)-\frac31{}^t(0\ 0\ 1)={}^t(1\ -1\ 0)</span>, <span class="m">e_3={}^t(\frac{\sqrt2}2\ -\frac{\sqrt2}2\ 0)</span>.</p>
+</div>
+
+<p><strong>Teorema 36.13.</strong> Il risultato <span class="m">e_1,\dots,e_m</span> è formato da vettori ortonormali e <span class="m">\mathrm{Span}(v_1,\dots,v_m)=\mathrm{Span}(e_1,\dots,e_m)</span>.</p>
+<h2>Basi ortonormali</h2>
+<p><strong>Definizione 36.14.</strong> Una base di uno spazio finitamente generato con prodotto scalare è <strong>ortonormale</strong> se è formata da vettori ortonormali.</p>
+<div class="callout esempio">
+
+<p><span class="m">\mathcal{E}_n</span> in <span class="m">\mathbb{R}^n</span>; <span class="m">\{{}^t(\cos\alpha\ \sin\alpha),{}^t(-\sin\alpha\ \cos\alpha)\}</span> in <span class="m">\mathbb{R}^2</span> (due vettori ortonormali, quindi indipendenti, in dimensione 2); la base ottenuta con Gram-Schmidt sopra; <span class="m">\{i,j\}</span> in <span class="m">V^2_E</span> e <span class="m">\{i,j,k\}</span> in <span class="m">V^3_E</span>.</p>
+</div>
+
+<p><strong>Osservazione 36.16–36.17.</strong> Gram-Schmidt applicato a una base dà una base ortonormale. Un insieme ortonormale <span class="m">\{e_1,\dots,e_m\}</span> si completa a una base ortonormale: completamento a una base e poi Gram-Schmidt (si può partire anche da <span class="m">\emptyset</span>).</p>
+<p><strong>Corollario 36.18.</strong> Ogni spazio vettoriale reale finitamente generato con un prodotto scalare ha una base ortonormale.</p>
+<p><strong>Osservazione 36.19.</strong> Se <span class="m">\mathcal{O}=\{e_1,\dots,e_n\}</span> è ortonormale, la <span class="m">i</span>-esima coordinata di <span class="m">v</span> è <span class="m">\langle v,e_i\rangle</span>: da <span class="m">v=\sum_j\lambda_je_j</span> segue <span class="m">\langle v,e_i\rangle=\sum_j\lambda_j\langle e_j,e_i\rangle=\lambda_i</span>. Quindi
+<span class="m d">[v]_{\mathcal{O}}={}^t(\langle v,e_1\rangle\ \ \langle v,e_2\rangle\ \cdots\ \langle v,e_n\rangle).</span></p>
+<p><strong>Definizione 36.21.</strong> In <span class="m">v=\sum\lambda_ie_i</span> i vettori <span class="m">\lambda_ie_i</span> sono le <strong>componenti vettoriali</strong> di <span class="m">v</span> e i numeri <span class="m">\lambda_i</span> le <strong>componenti scalari</strong>. In <span class="m">V^3_E</span>: <span class="m">v=v_xi+v_yj+v_zk</span> con <span class="m">v_x=\langle v,i\rangle</span>, <span class="m">v_y=\langle v,j\rangle</span>, <span class="m">v_z=\langle v,k\rangle</span>.</p>
+<div class="callout esempio">
+
+<p><span class="m">{}^t(1\ 0\ -1)</span> ha componenti vettoriali <span class="m">i</span>, <span class="m">0</span>, <span class="m">-k</span> e componenti scalari <span class="m">1,0,-1</span>.</p>
+</div>
+
+<h2>Prodotto vettoriale</h2>
+<p><strong>Definizione 36.23.</strong> Per <span class="m">v,w\in V^3_E</span>, il <strong>prodotto vettoriale</strong> <span class="m">v\times w</span> (o <span class="m">v\wedge w</span>) è:</p>
+<ul>
+<li><span class="m">0</span> se <span class="m">v,w</span> sono linearmente dipendenti;</li>
+<li>altrimenti il vettore di lunghezza <span class="m">\lVert v\rVert\cdot\lVert w\rVert\cdot\sin\widehat{vw}</span>, direzione ortogonale sia a <span class="m">v</span> sia a <span class="m">w</span>, e verso dato dalla mano destra (indice su <span class="m">v</span>, medio su <span class="m">w</span>, pollice su <span class="m">v\times w</span>).</li>
+</ul>
+<p><strong>Osservazione 36.24.</strong> <span class="m">v\times w=-w\times v</span>: il prodotto vettoriale non è commutativo, non ha elemento neutro e non è associativo.</p>
+<p><strong>Esempio 36.25.</strong> <span class="m">i\times j=k</span>, <span class="m">j\times k=i</span>, <span class="m">k\times i=j</span>, <span class="m">j\times i=-k</span>, <span class="m">k\times j=-i</span>, <span class="m">i\times k=-j</span>.</p>
+<p><strong>Proposizione 36.26.</strong> <span class="m d">{}^t(x\ y\ z)\times{}^t(x'\ y'\ z')=\det\begin{pmatrix}i&amp;j&amp;k\\x&amp;y&amp;z\\x'&amp;y'&amp;z'\end{pmatrix}=(yz'-zy')\,i-(xz'-zx')\,j+(xy'-yx')\,k.</span></p>
+<div class="callout esempio">
+
+<p><span class="m">{}^t(2\ 1\ 0)\times{}^t(-3\ -1\ 2)=(1\cdot2-0\cdot(-1))i-(2\cdot2-0\cdot(-3))j+(2\cdot(-1)-1\cdot(-3))k=2i-4j+k={}^t(2\ -4\ 1)</span>.</p>
+</div>
+
+<div class="callout attenzione">
+
+<p>Il segno <strong>meno</strong> davanti alla componente <span class="m">j</span> è l&#39;errore più comune. Il risultato è un <strong>vettore</strong>, ortogonale a entrambi i fattori: verificare che il prodotto scalare con ciascuno sia <span class="m">0</span> è un controllo rapido.</p>
+</div>
+
+<div class="callout esame">
+
+<p>Il paniere chiede il <strong>prodotto vettoriale</strong> di due vettori (tra le opzioni ci sono il risultato senza il segno meno della componente <span class="m">j</span> e numeri come il prodotto scalare). Nei quiz: definizione di vettori ortonormali, riconoscere una base non ortonormale (norme diverse da 1), coordinate rispetto a una base ortonormale con i prodotti scalari. Domande aperte: basi ortonormali, processo di Gram-Schmidt.</p>
+</div>
