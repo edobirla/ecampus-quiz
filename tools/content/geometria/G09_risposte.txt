@@ -1,0 +1,304 @@
+## L32 Applicazioni affini
+32-1 D Un'applicazione affine $\theta(P)=A\cdot P+v$ ha matrice associata $[\theta]=\begin{pmatrix}A & v\\ 0 & 1\end{pmatrix}$: a sinistra la parte lineare $A$ (coefficienti di $x$ e $y$), nell'ultima colonna il vettore di traslazione $v$ (i termini noti), e in fondo la riga $(0\ 0\ 1)$.
+  Qui $\theta\,{}^t(x\ y)={}^t(2x-3y+2,\ 3x+y-1)$, quindi $A=\begin{pmatrix}2&-3\\3&1\end{pmatrix}$ e $v={}^t(2\ \ -1)$.
+  Prima riga: coefficienti $2,\,-3$ e termine noto $2$. Seconda riga: coefficienti $3,\,1$ e termine noto $-1$. Terza riga: $0\ 0\ 1$.
+  $$[\theta]=\begin{pmatrix}2&-3&2\\3&1&-1\\0&0&1\end{pmatrix}.$$
+  Verifica: $[\theta]\cdot{}^t(x\ y\ 1)={}^t(2x-3y+2,\ 3x+y-1,\ 1)$, cioè $\theta(P)$ con la coordinata fittizia $1$ appesa.
+  **Errore tipico:** dimenticare la riga $(0\ 0\ 1)$ (la matrice $2\times 3$ non è la matrice associata secondo la definizione), oppure copiare i termini noti con il segno sbagliato o perdere il segno meno di $-3y$.
+T: Quale delle seguenti è la matrice associata all'applicazione affine $\theta\colon\mathbb{R}^2\ni{}^t(x\ y)\mapsto{}^t(2x-3y+2,\ 3x+y-1)\in\mathbb{R}^2$?
+OPT: $\begin{pmatrix}2&3&2\\3&1&1\\0&0&1\end{pmatrix}$ | $\begin{pmatrix}2&-3&2\\3&1&1\\0&0&1\end{pmatrix}$ | $\begin{pmatrix}2&-3&2\\3&1&-1\end{pmatrix}$ | $\begin{pmatrix}2&-3&2\\3&1&-1\\0&0&1\end{pmatrix}$
+32-2 D La matrice associata a $\theta(P)=A\cdot P+v$ è $[\theta]=\begin{pmatrix}A & v\\ 0 & 1\end{pmatrix}$.
+  Da $\theta\,{}^t(x\ y)={}^t(2x-3y+2,\ 3x+y+1)$ leggiamo $A=\begin{pmatrix}2&-3\\3&1\end{pmatrix}$ (coefficienti delle variabili) e $v={}^t(2\ \ 1)$ (termini noti).
+  $$[\theta]=\begin{pmatrix}2&-3&2\\3&1&1\\0&0&1\end{pmatrix}.$$
+  Verifica: $[\theta]\cdot{}^t(x\ y\ 1)={}^t(2x-3y+2,\ 3x+y+1,\ 1)$.
+  **Errore tipico:** scegliere la matrice $2\times 3$ senza l'ultima riga $(0\ 0\ 1)$, o quella con $+3$ al posto di $-3$ (segno del coefficiente di $y$ perso), o quella con il termine noto $-1$.
+T: Quale delle seguenti è la matrice associata all'applicazione affine $\theta\colon\mathbb{R}^2\ni{}^t(x\ y)\mapsto{}^t(2x-3y+2,\ 3x+y+1)\in\mathbb{R}^2$?
+OPT: $\begin{pmatrix}2&-3&2\\3&1&1\end{pmatrix}$ | $\begin{pmatrix}2&3&2\\3&1&1\\0&0&1\end{pmatrix}$ | $\begin{pmatrix}2&-3&2\\3&1&-1\\0&0&1\end{pmatrix}$ | $\begin{pmatrix}2&-3&2\\3&1&1\\0&0&1\end{pmatrix}$
+32-3 D La matrice associata a $\theta(P)=A\cdot P+v$ è $[\theta]=\begin{pmatrix}A & v\\ 0 & 1\end{pmatrix}$.
+  Da $\theta\,{}^t(x\ y)={}^t(2x-3y+2,\ 3x-y+1)$: prima riga coefficienti $2,\,-3$ e termine noto $2$; seconda riga coefficienti $3,\,-1$ e termine noto $1$. Quindi $A=\begin{pmatrix}2&-3\\3&-1\end{pmatrix}$, $v={}^t(2\ \ 1)$ e
+  $$[\theta]=\begin{pmatrix}2&-3&2\\3&-1&1\\0&0&1\end{pmatrix}.$$
+  Verifica: $[\theta]\cdot{}^t(x\ y\ 1)={}^t(2x-3y+2,\ 3x-y+1,\ 1)$.
+  **Errore tipico:** omettere la riga $(0\ 0\ 1)$, oppure cambiare il segno del termine noto della seconda componente (è $+1$), oppure perdere i segni meno dei coefficienti di $y$.
+T: Quale delle seguenti è la matrice associata all'applicazione affine $\theta\colon\mathbb{R}^2\ni{}^t(x\ y)\mapsto{}^t(2x-3y+2,\ 3x-y+1)\in\mathbb{R}^2$?
+OPT: $\begin{pmatrix}2&3&2\\3&1&1\\0&0&1\end{pmatrix}$ | $\begin{pmatrix}2&-3&2\\3&-1&-1\\0&0&1\end{pmatrix}$ | $\begin{pmatrix}2&-3&2\\3&-1&1\end{pmatrix}$ | $\begin{pmatrix}2&-3&2\\3&-1&1\\0&0&1\end{pmatrix}$
+32-4 D La matrice associata a $\theta(P)=A\cdot P+v$ è $[\theta]=\begin{pmatrix}A & v\\ 0 & 1\end{pmatrix}$.
+  Da $\theta\,{}^t(x\ y)={}^t(2x-3y+2,\ 3x-y-1)$: $A=\begin{pmatrix}2&-3\\3&-1\end{pmatrix}$ e $v={}^t(2\ \ -1)$, quindi
+  $$[\theta]=\begin{pmatrix}2&-3&2\\3&-1&-1\\0&0&1\end{pmatrix}.$$
+  Verifica: $[\theta]\cdot{}^t(x\ y\ 1)={}^t(2x-3y+2,\ 3x-y-1,\ 1)$.
+  **Errore tipico:** prendere la versione $2\times 3$ (manca la riga $(0\ 0\ 1)$ e la matrice non è quadrata), oppure quella con termine noto $+1$ nella seconda riga.
+T: Quale delle seguenti è la matrice associata all'applicazione affine $\theta\colon\mathbb{R}^2\ni{}^t(x\ y)\mapsto{}^t(2x-3y+2,\ 3x-y-1)\in\mathbb{R}^2$?
+OPT: $\begin{pmatrix}2&-3&2\\3&-1&1\\0&0&1\end{pmatrix}$ | $\begin{pmatrix}2&3&2\\3&1&1\\0&0&1\end{pmatrix}$ | $\begin{pmatrix}2&-3&2\\3&-1&-1\end{pmatrix}$ | $\begin{pmatrix}2&-3&2\\3&-1&-1\\0&0&1\end{pmatrix}$
+32-5 APERTA
+KW: applicazione affine|traslazione, coordinata fittizia|appendere 1, P_a, matrice associata, A v 0 1|blocchi, prodotto righe per colonne, parte lineare, vettore di traslazione|termini noti, affinità, invertibile, allineati|complanari, rango
+> **Applicazione affine.** È una funzione $\varphi=T\circ f\colon V_1\to V_2$ con $f$ lineare e $T$ traslazione. Se $V_1=\mathbb{K}^m$, $V_2=\mathbb{K}^n$, si scrive $\varphi(P)=A\cdot P+v$ con $A\in\mathbb{K}^{n,m}$ (parte lineare, $f=f_A$) e $v\in\mathbb{K}^n$ (vettore di traslazione, $T=T_v$, e $v=\varphi(O)$).
+> **Coordinata fittizia.** A ogni punto $P={}^t(P_1\ \cdots\ P_n)$ si appende una coordinata uguale a $1$: $P_a={}^t(P_1\ \cdots\ P_n\ 1)\in\mathbb{K}^{n+1}$ (la mappa $P\mapsto P_a$ è affine ma non lineare).
+> **Forma matriciale.** Scrivendo $A\cdot P+v=\sum_i P_i\,(\text{colonna } i \text{ di } A)+1\cdot v$, il vettore $v$ diventa un'ulteriore colonna; appendendo la riga $(0\ \cdots\ 0\ 1)$ si ottiene $(\varphi(P))_a=\begin{pmatrix}A&v\\0&1\end{pmatrix}\cdot P_a$. La matrice $[\varphi]:=\begin{pmatrix}A&v\\0&1\end{pmatrix}\in\mathbb{K}^{n+1,m+1}$ è la **matrice associata** a $\varphi$: così un'applicazione affine diventa un prodotto righe per colonne.
+> **Esempio.** $\varphi\,{}^t(x_1\ x_2)={}^t(3x_1+2x_2,\ -x_1+1,\ x_1+4x_2-2)$ ha $[\varphi]=\begin{pmatrix}3&2&0\\-1&0&1\\1&4&-2\\0&0&1\end{pmatrix}$.
+> **Proprietà.** Se $\varphi\colon\mathbb{K}^n\to\mathbb{K}^n$, $[\varphi]$ è quadrata e $\varphi$ è un'affinità se e solo se $[\varphi]$ è invertibile (Prop. 32.22).
+> **Allineamento e complanarità.** Con le coordinate $P_a$: i punti $P^{(1)},\dots,P^{(m)}$ di $\mathbb{K}^n$ sono allineati se e solo se la matrice $(n+1)\times m$ con colonne $P^{(i)}_a$ ha rango al più $2$, complanari se e solo se ha rango al più $3$ (in generale: contenuti in un sottospazio affine di dimensione $k$ se e solo se il rango è al più $k+1$).
+32-6 APERTA
+KW: traslazione, applicazione lineare, T∘f|composizione, applicazione affine, φ(O)|vettore di traslazione, polinomi di grado al più 1, giacitura, sottospazio affine, paralleli, affinità|invertibile, incidenti|sghembi, matrice associata
+> **Definizioni.** Una *traslazione* di vettore $v$ è $T_v\colon V\ni P\mapsto P+v\in V$. Un'*applicazione affine* è una funzione $\varphi=T\circ f\colon V_1\to V_2$ (spazi sullo stesso campo) con $f$ lineare e $T$ traslazione. Il vettore di traslazione è $v=\varphi(O)$; ogni applicazione lineare è affine, e un'applicazione affine è lineare se e solo se $T=T_0$, cioè $\varphi(O)=O$.
+> **In coordinate.** Da $\mathbb{K}^m$ a $\mathbb{K}^n$: $\varphi(P)=A\cdot P+v$; le applicazioni affini sono tutte e sole quelle le cui componenti sono polinomi di grado al più $1$ nelle coordinate (i termini noti danno $v$, la parte di grado 1 dà $A$). Esempio: $x\mapsto x^2+x+2$ non è affine (grado 2).
+> **Risultati.** Lemma 32.9: $\varphi(P')-\varphi(P)=f(P'-P)$. Prop. 32.10: l'immagine di un sottospazio affine $S$ è un sottospazio affine, e la giacitura di $\varphi(S)$ è l'immagine tramite $f$ della giacitura di $S$. Prop. 32.11: sottospazi affini paralleli hanno immagini parallele. $\varphi$ è bigettiva se e solo se lo è $f$. Composizione e inversa di applicazioni affini sono affini (Prop. 32.13).
+> **Affinità.** Un'applicazione affine $\varphi\colon V\to V$ invertibile è un'*affinità*; composizione e inverse di affinità sono affinità. Teorema 32.16: un'affinità conserva le relazioni di incidenza, parallelismo e sghembezza tra sottospazi affini (per questo le classificazioni della mutua posizione sono "affini").
+> **Matrice associata.** $[\varphi]=\begin{pmatrix}A&v\\0&1\end{pmatrix}$, con $(\varphi(P))_a=[\varphi]\cdot P_a$; un'applicazione affine $\mathbb{K}^n\to\mathbb{K}^n$ è un'affinità se e solo se $[\varphi]$ è invertibile. Esempio: le rotazioni del piano attorno a un punto $C$ sono affinità ($A$ matrice di rotazione, $v=-A\,C+C$).
+x147 B Per l'Osservazione 32.7 le applicazioni affini $\mathbb{K}^m\to\mathbb{K}^n$ sono esattamente quelle le cui componenti sono **polinomi di grado al più 1** nelle variabili (equivalentemente, della forma $A\cdot X+v$).
+  L'applicazione $\mathbb{R}^2\to\mathbb{R}^3$ con terza componente $\cos x_1+x_2$ non è di questo tipo: $\cos x_1$ non è un polinomio di grado al più 1, quindi non è affine (per esempio $\varphi(O)={}^t(5\ 1\ 1)$ e $\varphi\,{}^t(\pi\ 0)-\varphi(O)={}^t(\pi\ \pi\ -2)$, che non dipende linearmente da ${}^t(\pi\ 0)$: raddoppiando l'incremento a ${}^t(2\pi\ 0)$ la terza componente torna a $0$).
+  Le altre tre sono affini: due sono già scritte come $A\cdot X+v$ (con $A$ quadrata $2\times2$ oppure $2\times3$), e quella $\mathbb{R}^3\to\mathbb{R}^3$ ha componenti $-x_1-2x_2+4x_3+3$, $x_1+x_2$, $x_1+x_2-x_3-3$, tutti polinomi di grado 1 (il termine noto può mancare).
+  **Errore tipico:** pensare che una componente senza termine noto, o un'applicazione tra spazi di dimensioni diverse ($\mathbb{R}^3\to\mathbb{R}^2$), non possa essere affine: conta solo il grado dei polinomi.
+T: Quale delle seguenti applicazioni **non** è affine?
+OPT: $\varphi\colon\mathbb{R}^2\ni\begin{pmatrix}x_1\\x_2\end{pmatrix}\mapsto\begin{pmatrix}-1&-3\\3&4\end{pmatrix}\cdot\begin{pmatrix}x_1\\x_2\end{pmatrix}+\begin{pmatrix}0\\2\end{pmatrix}\in\mathbb{R}^2$ | $\varphi\colon\mathbb{R}^2\ni\begin{pmatrix}x_1\\x_2\end{pmatrix}\mapsto\begin{pmatrix}x_1-x_2+5\\x_1-x_2+1\\\cos x_1+x_2\end{pmatrix}\in\mathbb{R}^3$ | $\varphi\colon\mathbb{R}^3\ni\begin{pmatrix}x_1\\x_2\\x_3\end{pmatrix}\mapsto\begin{pmatrix}-x_1-2x_2+4x_3+3\\x_1+x_2\\x_1+x_2-x_3-3\end{pmatrix}\in\mathbb{R}^3$ | $\varphi\colon\mathbb{R}^3\ni\begin{pmatrix}x_1\\x_2\\x_3\end{pmatrix}\mapsto\begin{pmatrix}1&-4&0\\0&2&-2\end{pmatrix}\cdot\begin{pmatrix}x_1\\x_2\\x_3\end{pmatrix}+\begin{pmatrix}0\\2\end{pmatrix}\in\mathbb{R}^2$
+x148 C La Proposizione 32.10 dice: l'immagine $\varphi(S)$ di un sottospazio affine $S$ è un sottospazio affine di $V_2$, e **la giacitura di $\varphi(S)$ è l'immagine tramite $f$ della giacitura di $S$** (non di $S$).
+  Quindi sono vere: l'affermazione che $\varphi(S)$ è un sottospazio affine; quella sulla giacitura come $f(\text{giacitura di }S)$; e anche quella che l'immagine tramite $\varphi$ della giacitura di $S$ è un sottospazio affine (la giacitura $W$ è essa stessa un sottospazio affine, passante per $O$, e si applica la stessa proposizione).
+  È falsa quella che identifica la giacitura di $\varphi(S)$ con $f(S)$: se $S=P+W$ allora $f(S)=f(P)+f(W)$ è un sottospazio affine che in generale **non passa per l'origine**, quindi non è un sottospazio vettoriale e non può essere una giacitura. Esempio: $f=\mathrm{id}$, $T=T_0$, $S$ la retta $y=1$ nel piano: $f(S)=S$ non contiene $O$, mentre la giacitura di $\varphi(S)$ è l'asse $x$.
+  **Errore tipico:** confondere $S$ con la sua giacitura; le due coincidono solo se $S$ passa per l'origine.
+T: Data un'applicazione affine $\varphi=\mathrm{T}\circ f\colon \boldsymbol{V}_1\to\boldsymbol{V}_2$ e dato un sottospazio affine $\mathcal{S}$ di $\boldsymbol{V}_1$, quale delle seguenti proposizioni è **falsa**?
+OPT: L'immagine di $\mathcal{S}$ rispetto a $\varphi$ è un sottospazio affine di $\boldsymbol{V}_2$. | L'immagine della giacitura di $\mathcal{S}$ rispetto a $\varphi$ è un sottospazio affine di $\boldsymbol{V}_2$. | La giacitura dell'immagine rispetto a $\varphi$ di $\mathcal{S}$ è l'immagine di $\mathcal{S}$ rispetto a $f$. | La giacitura dell'immagine rispetto a $\varphi$ di $\mathcal{S}$ è l'immagine della giacitura di $\mathcal{S}$ rispetto a $f$.
+x149 B Per $\varphi\colon\mathbb{R}^3\to\mathbb{R}^2$, $\varphi(X)=A\cdot X+v$, la matrice associata è $\begin{pmatrix}A&v\\0&1\end{pmatrix}\in\mathbb{R}^{3,4}$.
+  Componenti: $2x_1-2x_2-x_3$ (coefficienti $2,-2,-1$, termine noto $0$) e $3x_1-x_3+1$ (coefficienti $3,0,-1$: $x_2$ non compare quindi il suo coefficiente è $0$; termine noto $1$).
+  $$A=\begin{pmatrix}2&-2&-1\\3&0&-1\end{pmatrix},\quad v=\begin{pmatrix}0\\1\end{pmatrix},\quad [\varphi]=\begin{pmatrix}2&-2&-1&0\\3&0&-1&1\\0&0&0&1\end{pmatrix}.$$
+  **Errore tipico:** saltare il coefficiente nullo di $x_2$ (si ottiene una matrice $3\times3$ sbagliata), dimenticare la riga $(0\ 0\ 0\ 1)$, o mettere $0$ come termine noto della seconda componente.
+T: Quale è la matrice associata all'applicazione affine $\varphi\colon\mathbb{R}^3\ni\begin{pmatrix}x_1\\x_2\\x_3\end{pmatrix}\mapsto\begin{pmatrix}2x_1-2x_2-x_3\\3x_1-x_3+1\end{pmatrix}\in\mathbb{R}^2$?
+OPT: $\begin{pmatrix}2&-2&-1\\3&-1&1\\0&0&1\end{pmatrix}$ | $\begin{pmatrix}2&-2&-1&0\\3&0&-1&1\\0&0&0&1\end{pmatrix}$ | $\begin{pmatrix}2&-2&-1&0\\3&0&-1&1\end{pmatrix}$ | $\begin{pmatrix}2&-2&-1&0\\3&0&-1&0\\0&0&0&1\end{pmatrix}$
+x150 C Per la Proposizione 32.23 tre punti di $\mathbb{R}^2$ sono allineati se e solo se la matrice $3\times3$ con colonne $P_a={}^t(x\ y\ 1)$ ha rango al più $2$, cioè determinante nullo. Equivalentemente, i vettori differenza $P_2-P_1$ e $P_3-P_1$ devono essere proporzionali.
+  Terna ${}^t(2\ -1),{}^t(3\ 2),{}^t(5\ 8)$: differenze ${}^t(1\ 3)$ e ${}^t(3\ 9)=3\cdot{}^t(1\ 3)$, proporzionali, quindi allineati. Con il determinante: $\det\begin{pmatrix}2&3&5\\-1&2&8\\1&1&1\end{pmatrix}=2(2-8)-3(-1-8)+5(-1-2)=-12+27-15=0$.
+  Le altre: ${}^t(2\ -1),{}^t(3\ 2),{}^t(4\ 1)$ danno differenze ${}^t(1\ 3)$, ${}^t(2\ 2)$, non proporzionali; ${}^t(2\ -1),{}^t(4\ 2),{}^t(5\ 8)$ danno ${}^t(2\ 3)$, ${}^t(3\ 9)$, non proporzionali ($2\cdot9-3\cdot3=9\neq0$); ${}^t(2\ 1),{}^t(3\ 2),{}^t(5\ 8)$ danno ${}^t(1\ 1)$, ${}^t(3\ 7)$, non proporzionali. In tutti e tre i casi il rango è $3$.
+  **Errore tipico:** controllare la proporzionalità dei punti stessi invece che delle loro differenze, o fermarsi ai primi due punti (due punti sono sempre allineati).
+T: Quale delle seguenti terne di punti di $\mathbb{R}^2$ è formata da punti allineati?
+OPT: $\begin{pmatrix}2\\-1\end{pmatrix},\begin{pmatrix}3\\2\end{pmatrix},\begin{pmatrix}4\\1\end{pmatrix}$ | $\begin{pmatrix}2\\-1\end{pmatrix},\begin{pmatrix}4\\2\end{pmatrix},\begin{pmatrix}5\\8\end{pmatrix}$ | $\begin{pmatrix}2\\-1\end{pmatrix},\begin{pmatrix}3\\2\end{pmatrix},\begin{pmatrix}5\\8\end{pmatrix}$ | $\begin{pmatrix}2\\1\end{pmatrix},\begin{pmatrix}3\\2\end{pmatrix},\begin{pmatrix}5\\8\end{pmatrix}$
+
+## L33 Prodotti scalari
+33-1 C La norma standard di $X\in\mathbb{R}^n$ è $\lVert X\rVert=\sqrt{{}^tX\cdot X}=\sqrt{x_1^2+\cdots+x_n^2}$.
+  Calcoli: $\lVert{}^t(0\ -2\ 0\ 0)\rVert=\sqrt{4}=2$; $\lVert{}^t(2\ 0\ 2\ -1)\rVert=\sqrt{4+0+4+1}=\sqrt9=3$; $\lVert{}^t(3\ 0\ -4\ 0)\rVert=\sqrt{9+16}=\sqrt{25}=5$; $\lVert{}^t(2\ -2\ 2\ -2)\rVert=\sqrt{4\cdot4}=\sqrt{16}=4$.
+  Norma $5$: ${}^t(3\ 0\ -4\ 0)$.
+  **Errore tipico:** sommare le coordinate (o i loro valori assoluti) invece dei quadrati, oppure dimenticare la radice quadrata.
+T: Quale dei seguenti vettori colonna di $\mathbb{R}^4$ ha norma standard $5$?
+OPT: ${}^t(0\ -2\ 0\ 0)$ | ${}^t(2\ 0\ 2\ -1)$ | ${}^t(3\ 0\ -4\ 0)$ | ${}^t(2\ -2\ 2\ -2)$
+33-2 B La norma standard è $\lVert X\rVert=\sqrt{x_1^2+\cdots+x_n^2}$.
+  Calcoli: $\lVert{}^t(3\ 0\ -4\ 0)\rVert=\sqrt{9+16}=5$; $\lVert{}^t(2\ -2\ 2\ -2)\rVert=\sqrt{4+4+4+4}=\sqrt{16}=4$; $\lVert{}^t(0\ -2\ 0\ 0)\rVert=2$; $\lVert{}^t(2\ 0\ 2\ -1)\rVert=\sqrt{9}=3$.
+  Norma $4$: ${}^t(2\ -2\ 2\ -2)$.
+  **Errore tipico:** sommare le coordinate con segno ($2-2+2-2=0$) o i valori assoluti senza elevare al quadrato ($8$).
+T: Quale dei seguenti vettori colonna di $\mathbb{R}^4$ ha norma standard $4$?
+OPT: ${}^t(3\ 0\ -4\ 0)$ | ${}^t(2\ -2\ 2\ -2)$ | ${}^t(0\ -2\ 0\ 0)$ | ${}^t(2\ 0\ 2\ -1)$
+33-3 C La norma standard è $\lVert X\rVert=\sqrt{x_1^2+\cdots+x_n^2}$.
+  Calcoli: $\lVert{}^t(2\ -2\ 2\ -2)\rVert=\sqrt{16}=4$; $\lVert{}^t(3\ 0\ -4\ 0)\rVert=\sqrt{25}=5$; $\lVert{}^t(0\ -2\ 0\ 0)\rVert=\sqrt{(-2)^2}=2$; $\lVert{}^t(2\ 0\ 2\ -1)\rVert=\sqrt9=3$.
+  Norma $2$: ${}^t(0\ -2\ 0\ 0)$ (la norma è sempre $\geqslant0$, anche se la coordinata è negativa).
+  **Errore tipico:** pensare che una coordinata $-2$ dia norma $-2$, o scambiare il vettore ${}^t(2\ 0\ 2\ -1)$ per quello di norma $2$ guardando solo i "2".
+T: Quale dei seguenti vettori colonna di $\mathbb{R}^4$ ha norma standard $2$?
+OPT: ${}^t(2\ -2\ 2\ -2)$ | ${}^t(3\ 0\ -4\ 0)$ | ${}^t(0\ -2\ 0\ 0)$ | ${}^t(2\ 0\ 2\ -1)$
+33-4 C La norma standard è $\lVert X\rVert=\sqrt{x_1^2+\cdots+x_n^2}$.
+  Calcoli: $\lVert{}^t(2\ -2\ 2\ -2)\rVert=4$; $\lVert{}^t(3\ 0\ -4\ 0)\rVert=5$; $\lVert{}^t(2\ 0\ 2\ -1)\rVert=\sqrt{2^2+0^2+2^2+(-1)^2}=\sqrt{9}=3$; $\lVert{}^t(0\ -2\ 0\ 0)\rVert=2$.
+  Norma $3$: ${}^t(2\ 0\ 2\ -1)$.
+  **Errore tipico:** sommare le coordinate ($2+0+2-1=3$ dà per caso lo stesso numero, ma il metodo è sbagliato: per ${}^t(3\ 0\ -4\ 0)$ darebbe $-1$); oppure scegliere ${}^t(3\ 0\ -4\ 0)$ per la presenza del $3$.
+T: Quale dei seguenti vettori colonna di $\mathbb{R}^4$ ha norma standard $3$?
+OPT: ${}^t(2\ -2\ 2\ -2)$ | ${}^t(3\ 0\ -4\ 0)$ | ${}^t(2\ 0\ 2\ -1)$ | ${}^t(0\ -2\ 0\ 0)$
+33-5 APERTA
+KW: forma bilineare, simmetrica, definita positiva, prodotto scalare, prodotto scalare standard|tX·Y, norma, radice di ⟨v,v⟩|\sqrt, norma standard, Cauchy-Schwarz, disuguaglianza triangolare, ∥λv∥=|λ|∥v∥
+> **Forma bilineare.** Su uno spazio vettoriale reale $V$, $\langle\cdot,\cdot\rangle\colon V\times V\to\mathbb{R}$ è una forma bilineare se è lineare in ciascun argomento fissato l'altro (Bil-Sx, Bil-Dx). È *simmetrica* se $\langle v,w\rangle=\langle w,v\rangle$ (Sim), *definita positiva* se $\langle v,v\rangle\geqslant0$ con uguaglianza solo per $v=0$ (Pos).
+> **Prodotto scalare.** È una forma bilineare simmetrica e definita positiva. Per verificarlo bastano (Bil-Sx), (Sim) e (Pos). Esempio: $\langle X,Y\rangle=x_1y_1-x_1y_2-x_2y_1+5x_2y_2$ su $\mathbb{R}^2$, perché $\langle X,X\rangle=(x_1-x_2)^2+4x_2^2\geqslant0$.
+> **Prodotto scalare standard** su $\mathbb{R}^n$: $\langle X,Y\rangle={}^tX\cdot Y=x_1y_1+\cdots+x_ny_n$; per la base canonica $\langle e_i,e_j\rangle=1$ se $i=j$, $0$ altrimenti. Con (Bil) e (Sim) si sviluppa $\langle\sum\lambda_iv_i,\sum\mu_jw_j\rangle=\sum\lambda_i\mu_j\langle v_i,w_j\rangle$.
+> **Norma associata.** $\lVert v\rVert:=\sqrt{\langle v,v\rangle}$, sempre definita perché $\langle v,v\rangle\geqslant0$. La norma standard è $\lVert X\rVert=\sqrt{x_1^2+\cdots+x_n^2}$ (es. $\lVert{}^t(2\ -1\ 0)\rVert=\sqrt5$).
+> **Risultati.** $\langle v,w\rangle=\tfrac12(\lVert v\rVert^2+\lVert w\rVert^2-\lVert v-w\rVert^2)$; $\lVert v\rVert\geqslant0$ con $=0$ solo per $v=0$; $\lVert\lambda v\rVert=\lvert\lambda\rvert\,\lVert v\rVert$. **Cauchy-Schwarz:** $\lvert\langle v,w\rangle\rvert\leqslant\lVert v\rVert\,\lVert w\rVert$, con uguaglianza se e solo se $v,w$ sono linearmente dipendenti. **Disuguaglianza triangolare:** $\lVert v+w\rVert\leqslant\lVert v\rVert+\lVert w\rVert$, con uguaglianza se e solo se uno è multiplo dell'altro con fattore $\geqslant0$.
+33-6 APERTA
+KW: norma, prodotto scalare, radice di ⟨v,v⟩|\sqrt, norma standard, sempre definita|⟨v,v⟩⩾0, ∥v∥=0 solo se v=0, ∥λv∥=|λ|∥v∥|omogeneità, Cauchy-Schwarz, linearmente dipendenti, disuguaglianza triangolare, identità di polarizzazione|⟨v,w⟩=1/2
+> **Definizione.** Dato un prodotto scalare $\langle\cdot,\cdot\rangle$ (forma bilineare simmetrica definita positiva) su uno spazio vettoriale reale $V$, la **norma associata** di $v\in V$ è $\lVert v\rVert:=\sqrt{\langle v,v\rangle}$. È definita per ogni $v$ perché $\langle v,v\rangle\geqslant0$ (Pos).
+> **Norma standard** su $\mathbb{R}^n$ (associata al prodotto scalare standard): $\lVert X\rVert=\sqrt{{}^tX\cdot X}=\sqrt{x_1^2+\cdots+x_n^2}$; per esempio $\lVert{}^t(2\ -1\ 0)\rVert=\sqrt5$ e $\lVert e_i\rVert=1$. Con un altro prodotto scalare la norma cambia: con $\langle X,Y\rangle=x_1y_1-x_1y_2-x_2y_1+5x_2y_2$ si ha $\lVert{}^t(1\ -1)\rVert=\sqrt8=2\sqrt2$.
+> **Proposizione 33.22.** Per ogni $v\in V$, $\lVert v\rVert\geqslant0$ con $\lVert v\rVert=0$ se e solo se $v=0$; per ogni $\lambda\in\mathbb{R}$, $\lVert\lambda v\rVert=\lvert\lambda\rvert\cdot\lVert v\rVert$.
+> **Teorema 33.23 (Cauchy-Schwarz).** Per ogni $v,w\in V$: $\lvert\langle v,w\rangle\rvert\leqslant\lVert v\rVert\cdot\lVert w\rVert$, con uguaglianza se e solo se $v$ e $w$ sono linearmente dipendenti.
+> **Proposizione 33.24 (disuguaglianza triangolare).** $\lVert v+w\rVert\leqslant\lVert v\rVert+\lVert w\rVert$, con uguaglianza se e solo se $v$ è multiplo di $w$ con fattore positivo o nullo, o viceversa.
+> Inoltre (Prop. 33.21) il prodotto scalare si ricava dalla norma: $\langle v,w\rangle=\tfrac12\left(\lVert v\rVert^2+\lVert w\rVert^2-\lVert v-w\rVert^2\right)$.
+x151 D Definizione 33.8: un prodotto scalare su $V$ è una **forma bilineare** $\langle\cdot,\cdot\rangle\colon V\times V\to\mathbb{R}$ **simmetrica** e **definita positiva**. Servono tutte e tre le proprietà.
+  "Lineare" non basta e non è la parola giusta: l'applicazione deve essere lineare in **ciascuno** dei due argomenti separatamente (bilineare), non lineare su $V\times V$ (anzi $\langle 2v,2w\rangle=4\langle v,w\rangle$, quindi non è lineare come funzione della coppia). Togliere la simmetria o la positività dà oggetti diversi (forme bilineari qualsiasi o non definite positive), con cui non si definisce una norma.
+  **Errore tipico:** scegliere la risposta con "lineare, simmetrica e definita positiva", che sembra completa ma confonde lineare con bilineare; oppure quella con "forma bilineare e definita positiva", a cui manca la simmetria.
+T: Dato uno spazio vettoriale reale $\boldsymbol{V}$, quali sono le proprietà richieste per un'applicazione $\langle\cdot,\cdot\rangle\colon\boldsymbol{V}\times\boldsymbol{V}\to\mathbb{R}$ nella definizione di prodotto scalare?
+OPT: Che l'applicazione sia lineare, simmetrica e definita positiva. | Che l'applicazione sia lineare e simmetrica. | Che l'applicazione sia una forma bilineare e definita positiva. | Che l'applicazione sia una forma bilineare, simmetrica e definita positiva.
+x152 B Prodotto scalare standard: $\langle X,Y\rangle={}^tX\cdot Y=x_1y_1+x_2y_2+x_3y_3$.
+  $$\left\langle\begin{pmatrix}5\\2\\-1\end{pmatrix},\begin{pmatrix}-1\\3\\0\end{pmatrix}\right\rangle=5\cdot(-1)+2\cdot3+(-1)\cdot0=-5+6+0=1.$$
+  **Errore tipico:** sbagliare il segno del primo prodotto ($+5$ invece di $-5$, si ottiene $11$) o sommare anche $-1$ dall'ultima coordinata dimenticando che è moltiplicata per $0$ (si ottiene $0$ o $-1$).
+T: Quanto vale il prodotto scalare standard della coppia di vettori $\begin{pmatrix}5\\2\\-1\end{pmatrix}$ e $\begin{pmatrix}-1\\3\\0\end{pmatrix}$?
+OPT: $-1$ | $1$ | $3$ | $5$
+x153 C Norma standard: $\lVert X\rVert=\sqrt{x_1^2+\cdots+x_n^2}$.
+  $$\left\lVert\begin{pmatrix}2\\0\\-2\\1\end{pmatrix}\right\rVert=\sqrt{2^2+0^2+(-2)^2+1^2}=\sqrt{4+0+4+1}=\sqrt9=3.$$
+  **Errore tipico:** dimenticare la radice (si ottiene $9$, cioè $\langle X,X\rangle=\lVert X\rVert^2$), oppure sommare le coordinate con segno ($2+0-2+1=1$).
+T: Quanto vale la norma standard del vettore $\begin{pmatrix}2\\0\\-2\\1\end{pmatrix}$?
+OPT: $0$ | $1$ | $3$ | $9$
+x154 B Proposizione 33.24 (disuguaglianza triangolare): per ogni $v,w\in V$ vale $\lVert v+w\rVert\leqslant\lVert v\rVert+\lVert w\rVert$ ("un lato di un triangolo non supera la somma degli altri due"), con uguaglianza se e solo se uno dei due vettori è multiplo dell'altro con fattore $\geqslant0$.
+  Le versioni con la disuguaglianza stretta sono false "per ogni $v,w$": per $w=0$, o per $w=v$, vale l'uguaglianza ($\lVert 2v\rVert=2\lVert v\rVert$). Il verso $\geqslant$ è falso: per $w=-v\neq0$ si ha $\lVert v+w\rVert=0<2\lVert v\rVert$.
+  **Errore tipico:** scegliere il minore stretto, dimenticando i casi di uguaglianza (vettori concordi).
+T: Data la norma $\lVert\cdot\rVert$ associata al prodotto scalare $\langle\cdot,\cdot\rangle$ su uno spazio vettoriale reale $\boldsymbol{V}$, quale delle seguenti è la disuguaglianza triangolare?
+OPT: $\lVert v+w\rVert\geqslant\lVert v\rVert+\lVert w\rVert$ per ogni $v,w\in\boldsymbol{V}$. | $\lVert v+w\rVert\leqslant\lVert v\rVert+\lVert w\rVert$ per ogni $v,w\in\boldsymbol{V}$. | $\lVert v+w\rVert>\lVert v\rVert+\lVert w\rVert$ per ogni $v,w\in\boldsymbol{V}$. | $\lVert v+w\rVert<\lVert v\rVert+\lVert w\rVert$ per ogni $v,w\in\boldsymbol{V}$.
+
+## L34 Angoli nel piano e nello spazio
+34-1 APERTA
+KW: angolo tra vettori|semirette, prodotto scalare euclideo, ∥v∥∥w∥cos|coseno, norma euclidea|lunghezza, prodotto scalare standard, coincidono, piano euclideo|spazio euclideo, arccos, ortogonali|prodotto scalare nullo, vettore normale, angolo tra rette|π−α, Cauchy-Schwarz
+> **Angolo tra vettori geometrici.** Per $v,w\neq0$ applicati in $O$, $\widehat{vw}$ è l'angolo tra le semirette $\{kv\mid k\geqslant0\}$ e $\{kw\mid k\geqslant0\}$ (è $0$ se coincidono, $\pi$ se opposte); per vettori generici si usano i rappresentanti in $O$.
+> **Prodotto scalare euclideo** in $V^2_G$ o $V^3_G$: $\langle v,w\rangle:=\lVert v\rVert\cdot\lVert w\rVert\cdot\cos\widehat{vw}$ se $v,w\neq0$, e $0$ altrimenti, dove $\lVert u\rVert$ è la lunghezza (norma euclidea). Es.: lunghezze $2$ e $3$, angolo $\pi/6$: $\langle v,w\rangle=6\cos\frac\pi6=3\sqrt3$.
+> **Prodotto scalare standard** su $\mathbb{R}^n$: $\langle X,Y\rangle={}^tX\cdot Y=\sum x_iy_i$. **Prop. 34.4:** in $V^2_G$ e $V^3_G$ il prodotto scalare euclideo coincide con quello standard di $\mathbb{R}^2$, $\mathbb{R}^3$, e la norma euclidea con quella standard. Quindi il prodotto euclideo è davvero un prodotto scalare; il piano e lo spazio con esso si indicano $V^2_E$, $V^3_E$ (piano/spazio euclideo).
+> **Calcolo degli angoli.** $\cos\widehat{vw}=\dfrac{\langle v,w\rangle}{\lVert v\rVert\,\lVert w\rVert}$, cioè $\widehat{vw}=\arccos\dfrac{\langle v,w\rangle}{\lVert v\rVert\lVert w\rVert}$ (es. ${}^t(1\ 0)$ e ${}^t(1\ 1)$: $\arccos\frac{1}{\sqrt2}=\frac\pi4$). Due vettori non nulli sono **ortogonali** se e solo se $\langle v,w\rangle=0$. Tra due rette $\mathrm{Span}(w)$, $\mathrm{Span}(w')$ l'angolo è $\alpha$ se $\alpha\leqslant\pi/2$, altrimenti $\pi-\alpha$. Il vettore ${}^t(a\ b\ c)$ è normale al piano $ax+by+cz=0$; l'angolo diedro tra due piani è l'angolo tra le rette normali, e una retta e un piano formano l'angolo $\frac\pi2-\widehat{WU'}$.
+> **Spazi euclidei qualsiasi.** In uno spazio vettoriale reale con prodotto scalare: $\widehat{vw}:=\arccos\dfrac{\langle v,w\rangle}{\lVert v\rVert\lVert w\rVert}$, ben definito perché per Cauchy-Schwarz l'argomento sta in $[-1,1]$; $v,w$ ortogonali se $\langle v,w\rangle=0$. L'angolo dipende dal prodotto scalare scelto.
+x155 B Prodotto scalare euclideo: $\langle v,w\rangle=\lVert v\rVert\cdot\lVert w\rVert\cdot\cos\widehat{vw}$.
+  $$\langle v,w\rangle=4\cdot3\cdot\cos\frac\pi3=12\cdot\frac12=6.$$
+  **Errore tipico:** usare il seno al posto del coseno ($12\cdot\frac{\sqrt3}{2}=6\sqrt3$, che è invece la lunghezza del prodotto vettoriale) oppure moltiplicare per l'angolo invece che per il suo coseno.
+T: Quanto vale il prodotto scalare euclideo di due vettori geometrici $v$ e $w$ tali che la lunghezza di $v$ è $4$, la lunghezza di $w$ è $3$ e l'angolo tra essi è $\frac{\pi}{3}$?
+OPT: $6\sqrt3$ | $6$ | $4\pi$ | Nessuna delle altre risposte.
+x156 A Per l'Osservazione 34.16 e la Definizione 34.17, i coefficienti della forma implicita $ax+by+cz=0$ di un piano per l'origine formano un **vettore normale** ${}^t(a\ b\ c)$: per ogni ${}^t(x\ y\ z)$ del piano $\langle{}^t(a\ b\ c),{}^t(x\ y\ z)\rangle=ax+by+cz=0$.
+  Qui ${}^t(3\ -2\ 4)$ è ortogonale al piano $3x-2y+4z=0$. Non appartiene al piano: $3\cdot3-2\cdot(-2)+4\cdot4=9+4+16=29\neq0$; e quindi non è nemmeno parallelo (un vettore parallelo al piano starebbe nella sua giacitura, che qui è il piano stesso).
+  **Errore tipico:** pensare che i coefficienti dell'equazione siano un vettore "del" piano (direzione), mentre ne sono la normale.
+T: Dato il piano con forma implicita $3x-2y+4z=0$ nello spazio euclideo, quale delle seguenti proposizioni relative al vettore $\begin{pmatrix}3\\-2\\4\end{pmatrix}$ è vera?
+OPT: È ortogonale al piano. | È parallelo al piano. | Appartiene al piano. | Nessuna delle altre risposte.
+x157 B Due vettori sono ortogonali se e solo se il loro prodotto scalare standard è $0$. Con $u={}^t(2\ -1\ 0)$:
+  ${}^t(4\ -2\ 0)$: $8+2+0=10$ (è anzi $2u$, parallelo); ${}^t(-2\ -4\ 3)$: $-4+4+0=0$; ${}^t(-2\ -2\ 3)$: $-4+2+0=-2$; ${}^t(-1\ 0\ 2)$: $-2+0+0=-2$.
+  L'unico ortogonale è ${}^t(-2\ -4\ 3)$.
+  **Errore tipico:** scegliere il multiplo ${}^t(4\ -2\ 0)$ (parallelo, non ortogonale) o sbagliare il segno di $(-1)\cdot(-4)=+4$.
+T: Quale dei seguenti vettori colonna è ortogonale al vettore colonna $\begin{pmatrix}2\\-1\\0\end{pmatrix}$ rispetto al prodotto scalare standard in $\mathbb{R}^3$?
+OPT: $\begin{pmatrix}4\\-2\\0\end{pmatrix}$ | $\begin{pmatrix}-2\\-4\\3\end{pmatrix}$ | $\begin{pmatrix}-2\\-2\\3\end{pmatrix}$ | $\begin{pmatrix}-1\\0\\2\end{pmatrix}$
+x158 C Due rette per l'origine $\mathrm{Span}(w)$ e $\mathrm{Span}(w')$ sono ortogonali se e solo se $\langle w,w'\rangle=0$ (Oss. 34.15). Con $w={}^t(2\ 1\ -5)$:
+  ${}^t(1\ 3\ 1)$: $2+3-5=0$; ${}^t(0\ 5\ 1)$: $0+5-5=0$; ${}^t(2\ -1\ 1)$: $4-1-5=-2\neq0$; ${}^t(3\ -1\ 1)$: $6-1-5=0$.
+  La sola retta non ortogonale è $\mathrm{Span}({}^t(2\ -1\ 1))$.
+  **Errore tipico:** la domanda chiede quella che **non** è ortogonale: chi cerca il prodotto nullo trova tre candidate e sceglie a caso.
+  TRAP: La domanda chiede la retta che non è ortogonale: tre su quattro hanno prodotto scalare nullo.
+T: Quale delle seguenti rette **non** è ortogonale alla retta $\mathrm{Span}\left(\begin{pmatrix}2\\1\\-5\end{pmatrix}\right)$ in $\boldsymbol{V}^3_E$?
+OPT: $\mathrm{Span}\left(\begin{pmatrix}1\\3\\1\end{pmatrix}\right)$ | $\mathrm{Span}\left(\begin{pmatrix}0\\5\\1\end{pmatrix}\right)$ | $\mathrm{Span}\left(\begin{pmatrix}2\\-1\\1\end{pmatrix}\right)$ | $\mathrm{Span}\left(\begin{pmatrix}3\\-1\\1\end{pmatrix}\right)$
+
+## L36 Basi ortonormali e prodotto vettoriale
+36-1 D Il prodotto vettoriale si calcola come "determinante" $\det\begin{pmatrix}i&j&k\\x&y&z\\x'&y'&z'\end{pmatrix}=(yz'-zy')\,i-(xz'-zx')\,j+(xy'-yx')\,k$ (Prop. 36.26).
+  Con ${}^t(2\ -3\ 1)\times{}^t(1\ 0\ 3)$:
+  componente $i$: $(-3)\cdot3-1\cdot0=-9$; componente $j$: $-(2\cdot3-1\cdot1)=-(6-1)=-5$; componente $k$: $2\cdot0-(-3)\cdot1=3$.
+  Risultato ${}^t(-9\ -5\ 3)$. Verifica di ortogonalità: $\langle{}^t(-9\ -5\ 3),{}^t(2\ -3\ 1)\rangle=-18+15+3=0$ e $\langle{}^t(-9\ -5\ 3),{}^t(1\ 0\ 3)\rangle=-9+0+9=0$.
+  **Errore tipico:** dimenticare il segno meno davanti alla componente $j$ (si ottiene ${}^t(-9\ 5\ 3)$), oppure dare un numero: il prodotto vettoriale è un vettore, non uno scalare; il vettore ${}^t(2\ 0\ 3)$ è il prodotto componente per componente, che non c'entra.
+  TRAP: Il segno meno della seconda componente nello sviluppo del determinante: senza di esso si ottiene il vettore con $+5$, tra le opzioni.
+T: Quanto vale il prodotto vettoriale ${}^t(2\ -3\ 1)\times{}^t(1\ 0\ 3)$ nello spazio?
+OPT: ${}^t(2\ 0\ 3)$ | ${}^t(-9\ 5\ 3)$ | $5$ | ${}^t(-9\ -5\ 3)$
+36-2 B Sviluppo del determinante $\det\begin{pmatrix}i&j&k\\1&0&3\\2&-3&1\end{pmatrix}$:
+  componente $i$: $0\cdot1-3\cdot(-3)=9$; componente $j$: $-(1\cdot1-3\cdot2)=-(1-6)=5$; componente $k$: $1\cdot(-3)-0\cdot2=-3$.
+  Risultato ${}^t(9\ 5\ -3)$. Coerente con l'anticommutatività $v\times w=-w\times v$: ${}^t(2\ -3\ 1)\times{}^t(1\ 0\ 3)={}^t(-9\ -5\ 3)$, e cambiando segno si ottiene proprio ${}^t(9\ 5\ -3)$.
+  **Errore tipico:** perdere il segno meno davanti alla componente $j$ (si ottiene ${}^t(9\ -5\ -3)$) oppure credere che il prodotto vettoriale sia commutativo.
+  TRAP: Il segno meno della componente $j$: dimenticarlo dà ${}^t(9\ -5\ -3)$, presente tra le opzioni.
+T: Quanto vale il prodotto vettoriale ${}^t(1\ 0\ 3)\times{}^t(2\ -3\ 1)$ nello spazio?
+OPT: ${}^t(2\ 0\ 3)$ | ${}^t(9\ 5\ -3)$ | ${}^t(9\ -5\ -3)$ | $5$
+36-3 C Sviluppo di $\det\begin{pmatrix}i&j&k\\2&1&-3\\1&3&0\end{pmatrix}$:
+  componente $i$: $1\cdot0-(-3)\cdot3=9$; componente $j$: $-(2\cdot0-(-3)\cdot1)=-(0+3)=-3$; componente $k$: $2\cdot3-1\cdot1=5$.
+  Risultato ${}^t(9\ -3\ 5)$. Verifica: $\langle{}^t(9\ -3\ 5),{}^t(2\ 1\ -3)\rangle=18-3-15=0$, $\langle{}^t(9\ -3\ 5),{}^t(1\ 3\ 0)\rangle=9-9+0=0$.
+  **Errore tipico:** omettere il segno meno della componente $j$ (si ottiene ${}^t(9\ 3\ 5)$), o confondere il prodotto vettoriale con il prodotto scalare (che vale $2+3+0=5$, uno scalare).
+  TRAP: Il prodotto scalare dei due vettori vale proprio $5$, che compare tra le opzioni; e senza il segno meno della componente $j$ si ottiene un'altra opzione.
+T: Quanto vale il prodotto vettoriale ${}^t(2\ 1\ -3)\times{}^t(1\ 3\ 0)$ nello spazio?
+OPT: ${}^t(2\ 3\ 0)$ | $5$ | ${}^t(9\ -3\ 5)$ | ${}^t(9\ 3\ 5)$
+36-4 D Sviluppo di $\det\begin{pmatrix}i&j&k\\1&3&0\\2&1&-3\end{pmatrix}$:
+  componente $i$: $3\cdot(-3)-0\cdot1=-9$; componente $j$: $-(1\cdot(-3)-0\cdot2)=-(-3)=3$; componente $k$: $1\cdot1-3\cdot2=-5$.
+  Risultato ${}^t(-9\ 3\ -5)$, opposto di ${}^t(2\ 1\ -3)\times{}^t(1\ 3\ 0)={}^t(9\ -3\ 5)$ (anticommutatività).
+  **Errore tipico:** dimenticare il segno meno della componente $j$ (si ottiene ${}^t(-9\ -3\ -5)$), oppure scegliere $5$, che è il prodotto scalare $2+3+0$.
+  TRAP: Il segno meno della componente $j$ e il prodotto scalare $5$ sono entrambi tra le opzioni.
+T: Quanto vale il prodotto vettoriale ${}^t(1\ 3\ 0)\times{}^t(2\ 1\ -3)$ nello spazio?
+OPT: ${}^t(-9\ -3\ -5)$ | ${}^t(2\ 3\ 0)$ | $5$ | ${}^t(-9\ 3\ -5)$
+36-5 APERTA
+KW: ortonormali, ⟨vi,vi⟩=1, ⟨vi,vj⟩=0, linearmente indipendenti, base ortonormale, base canonica, Gram-Schmidt, completamento, esiste sempre|ogni spazio, coordinate ⟨v,ei⟩|prodotto scalare, componenti vettoriali|componenti scalari, i j k
+> **Vettori ortonormali.** In uno spazio vettoriale reale $V$ con prodotto scalare, $v_1,\dots,v_m$ sono ortonormali se (ON1) $\langle v_i,v_i\rangle=1$ per ogni $i$ e (ON2) $\langle v_i,v_j\rangle=0$ per $i\neq j$. La proprietà dipende dal prodotto scalare. Esempi (prodotto standard): la base canonica di $\mathbb{R}^n$; ${}^t(\cos\alpha\ \sin\alpha)$ e ${}^t(-\sin\alpha\ \cos\alpha)$.
+> **Prop. 36.4.** Vettori ortonormali sono linearmente indipendenti; quindi (Cor. 36.5) $\dim V\geqslant m$.
+> **Base ortonormale** (Def. 36.14): una base formata da vettori ortonormali. Esempi: $\mathcal{E}_n$ in $\mathbb{R}^n$, $\{i,j\}$ in $V^2_E$, $\{i,j,k\}$ in $V^3_E$. Con il **processo di Gram-Schmidt** applicato a una base si ottiene una base ortonormale (Oss. 36.16); un insieme ortonormale si completa a base ortonormale (completamento a una base + Gram-Schmidt), e partendo dall'insieme vuoto si ottiene il **Corollario 36.18**: ogni spazio vettoriale reale finitamente generato con un prodotto scalare ha una base ortonormale.
+> **Coordinate.** Se $\mathcal{O}=\{e_1,\dots,e_n\}$ è ortonormale, la $i$-esima coordinata di $v$ è $\langle v,e_i\rangle$: infatti $\langle\sum_j\lambda_je_j,e_i\rangle=\sum_j\lambda_j\langle e_j,e_i\rangle=\lambda_i$. Quindi $[v]_{\mathcal{O}}={}^t(\langle v,e_1\rangle\ \cdots\ \langle v,e_n\rangle)$ e $v=\sum\langle v,e_i\rangle e_i$: i vettori $\lambda_ie_i$ sono le componenti vettoriali, i $\lambda_i$ le componenti scalari (in $V^3_E$: $v=v_xi+v_yj+v_zk$ con $v_x=\langle v,i\rangle$ ecc.).
+36-6 APERTA
+KW: linearmente indipendenti, prodotto scalare, proiezione vettoriale|⟨v,w⟩/⟨w,w⟩, w1=v1, wi=vi−somma, versore|normalizzare|1/∥w∥, ortogonale, ortonormali, Span uguale|stesso Span, base ortonormale, m passi
+> **Strumenti.** Proiezione vettoriale di $v$ lungo $w\neq0$: $\dfrac{\langle v,w\rangle}{\langle w,w\rangle}w$; il vettore $u=v-\dfrac{\langle v,w\rangle}{\langle w,w\rangle}w$ è ortogonale a $w$ perché $\langle u,w\rangle=\langle v,w\rangle-\frac{\langle v,w\rangle}{\langle w,w\rangle}\langle w,w\rangle=0$. Versore di $v\neq0$: $\frac{1}{\lVert v\rVert}v$, di norma 1.
+> **Algoritmo (Gram-Schmidt).** Dati $v_1,\dots,v_m$ linearmente indipendenti in $V$ con prodotto scalare, si fanno $m$ passi:
+> Passo 1: $w_1:=v_1$, $e_1:=\frac{1}{\lVert w_1\rVert}w_1$.
+> Passo 2: $w_2:=v_2-\frac{\langle v_2,w_1\rangle}{\langle w_1,w_1\rangle}w_1$, $e_2:=\frac{1}{\lVert w_2\rVert}w_2$.
+> Passo $i$: $w_i:=v_i-\sum_{j=1}^{i-1}\frac{\langle v_i,w_j\rangle}{\langle w_j,w_j\rangle}w_j$, $e_i:=\frac{1}{\lVert w_i\rVert}w_i$.
+> A ogni passo si sottraggono da $v_i$ le sue proiezioni lungo i $w_j$ già trovati, ottenendo $w_i$ ortogonale a essi, e poi lo si normalizza (se $v_i$ è già ortogonale ai precedenti, $w_i=v_i$).
+> **Teorema 36.13.** $e_1,\dots,e_m$ sono ortonormali e $\mathrm{Span}(v_1,\dots,v_m)=\mathrm{Span}(e_1,\dots,e_m)$; applicato a una base dà una base ortonormale.
+> **Esempio.** $v_1={}^t(1\ 1\ 0)$, $v_2={}^t(2\ 2\ 1)$, $v_3={}^t(0\ -2\ 3)$: $e_1=\frac{\sqrt2}{2}{}^t(1\ 1\ 0)$; $w_2=v_2-\frac42 w_1={}^t(0\ 0\ 1)=e_2$; $w_3=v_3-\frac{-2}{2}w_1-\frac31 w_2={}^t(1\ -1\ 0)$, $e_3=\frac{\sqrt2}{2}{}^t(1\ -1\ 0)$.
+x163 D Definizione 36.1: $v_1,\dots,v_m$ sono ortonormali se (ON1) $\langle v_i,v_i\rangle=1$ per ogni $i$ **e** (ON2) $\langle v_i,v_j\rangle=0$ per ogni $i\neq j$.
+  Servono entrambe le condizioni: solo la prima dà vettori di norma 1 non necessariamente ortogonali, solo la seconda vettori ortogonali non necessariamente di norma 1. La versione con "$\langle v_i,v_j\rangle=0$ per ogni $i,j$" senza la restrizione $i\neq j$ è contraddittoria: per $i=j$ richiederebbe $\langle v_i,v_i\rangle=0$, in conflitto con (ON1) (e possibile solo per il vettore nullo).
+  **Errore tipico:** non accorgersi che manca "$i\neq j$" nella seconda condizione.
+  TRAP: Due opzioni sono identiche tranne la condizione $i\neq j$: senza di essa la seconda richiesta contraddice la prima.
+T: Dato un prodotto scalare $\langle\cdot,\cdot\rangle$ su uno spazio vettoriale reale $\boldsymbol{V}$, quali sono le proprietà richieste nella definizione per i vettori $v_1,v_2,\dots,v_m\in\boldsymbol{V}$ affinché siano ortonormali?
+OPT: Che si abbia $\langle v_i,v_i\rangle=1$ per ogni $i=1,2,\dots,m$. | Che si abbia $\langle v_i,v_j\rangle=0$ per ogni $i,j=1,2,\dots,m$ con $i\neq j$. | Che si abbia $\langle v_i,v_i\rangle=1$ per ogni $i=1,\dots,m$ e $\langle v_i,v_j\rangle=0$ per ogni $i,j=1,\dots,m$. | Che si abbia $\langle v_i,v_i\rangle=1$ per ogni $i=1,\dots,m$ e $\langle v_i,v_j\rangle=0$ per ogni $i,j=1,\dots,m$ con $i\neq j$.
+x164 A Una base è ortonormale se i suoi vettori hanno norma 1 e sono a due a due ortogonali.
+  Nella terna con ${}^t(1\ 1\ -2)$: i tre vettori sono a due a due ortogonali ($\frac{\sqrt3}{3}(1+1-2)=0$, $-\frac{\sqrt2}{2}+\frac{\sqrt2}{2}+0=0$, e i primi due già tra loro), ma $\lVert{}^t(1\ 1\ -2)\rVert=\sqrt{1+1+4}=\sqrt6\neq1$: è una base **ortogonale** ma non ortonormale.
+  La terna analoga con $\frac{\sqrt6}{6}{}^t(1\ 1\ -2)={}^t(\frac{\sqrt6}{6}\ \frac{\sqrt6}{6}\ -\frac{\sqrt6}{3})$ ha tutti i vettori di norma 1 ($\frac{6}{36}+\frac{6}{36}+\frac{6}{9}=1$; per il primo $3\cdot\frac{3}{9}=1$; per il secondo $\frac24+\frac24=1$) ed è ortonormale. La base canonica e $\{i,j,k\}$ sono ortonormali (Esempio 36.15).
+  **Errore tipico:** controllare solo l'ortogonalità e non le norme.
+T: Quale delle seguenti **non** è una base ortonormale di $\boldsymbol{V}^3_E$?
+OPT: $\left\{\begin{pmatrix}\frac{\sqrt3}{3}\\\frac{\sqrt3}{3}\\\frac{\sqrt3}{3}\end{pmatrix},\begin{pmatrix}-\frac{\sqrt2}{2}\\\frac{\sqrt2}{2}\\0\end{pmatrix},\begin{pmatrix}1\\1\\-2\end{pmatrix}\right\}$ | $\left\{\begin{pmatrix}\frac{\sqrt3}{3}\\\frac{\sqrt3}{3}\\\frac{\sqrt3}{3}\end{pmatrix},\begin{pmatrix}-\frac{\sqrt2}{2}\\\frac{\sqrt2}{2}\\0\end{pmatrix},\begin{pmatrix}\frac{\sqrt6}{6}\\\frac{\sqrt6}{6}\\-\frac{\sqrt6}{3}\end{pmatrix}\right\}$ | $\left\{\begin{pmatrix}1\\0\\0\end{pmatrix},\begin{pmatrix}0\\1\\0\end{pmatrix},\begin{pmatrix}0\\0\\1\end{pmatrix}\right\}$ | $\{i,j,k\}$
+x165 C Rispetto a una base ortonormale $\{e_1,e_2\}$ la $i$-esima coordinata di $v$ è $\langle v,e_i\rangle$ (Oss. 36.19), **nell'ordine della base**.
+  Con $e_1={}^t(-\frac{\sqrt3}{2}\ \frac12)$, $e_2={}^t(\frac12\ \frac{\sqrt3}{2})$ e $v={}^t(2\ 0)$: prima coordinata $\langle{}^t(2\ 0),{}^t(-\frac{\sqrt3}{2}\ \frac12)\rangle=-\sqrt3$, seconda $\langle{}^t(2\ 0),{}^t(\frac12\ \frac{\sqrt3}{2})\rangle=1$. Infatti $-\sqrt3\,e_1+1\cdot e_2={}^t(\frac32+\frac12\ \ -\frac{\sqrt3}{2}+\frac{\sqrt3}{2})={}^t(2\ 0)$.
+  La risposta giusta scrive le coordinate proprio come questi due prodotti scalari, nell'ordine $e_1$, $e_2$. "$2$ e $0$" sono le coordinate rispetto alla base canonica, e la scrittura con i prodotti scalari in ordine scambiato dà $1$ e $-\sqrt3$, cioè le coordinate rispetto alla base con i vettori invertiti.
+  **Errore tipico:** scambiare l'ordine dei vettori della base, oppure riportare le coordinate canoniche.
+T: Quali sono le coordinate del vettore $\begin{pmatrix}2\\0\end{pmatrix}$ rispetto alla base ortonormale $\left\{\begin{pmatrix}-\frac{\sqrt3}{2}\\\frac12\end{pmatrix},\begin{pmatrix}\frac12\\\frac{\sqrt3}{2}\end{pmatrix}\right\}$ di $\mathbb{R}^2$ con il prodotto scalare standard?
+OPT: $2$ e $0$. | $\left\langle{}^t(2\ \ 0),{}^t\left(\frac12\ \ \frac{\sqrt3}{2}\right)\right\rangle$, $\left\langle{}^t(2\ \ 0),{}^t\left(-\frac{\sqrt3}{2}\ \ \frac12\right)\right\rangle$. | $\left\langle{}^t(2\ \ 0),{}^t\left(-\frac{\sqrt3}{2}\ \ \frac12\right)\right\rangle$, $\left\langle{}^t(2\ \ 0),{}^t\left(\frac12\ \ \frac{\sqrt3}{2}\right)\right\rangle$. | Nessuna delle altre risposte.
+x166 D Sviluppo di $\det\begin{pmatrix}i&j&k\\2&0&-1\\-1&3&1\end{pmatrix}$:
+  componente $i$: $0\cdot1-(-1)\cdot3=3$; componente $j$: $-(2\cdot1-(-1)\cdot(-1))=-(2-1)=-1$; componente $k$: $2\cdot3-0\cdot(-1)=6$.
+  Risultato ${}^t(3\ -1\ 6)$. Verifica: $\langle{}^t(3\ -1\ 6),{}^t(2\ 0\ -1)\rangle=6-6=0$, $\langle{}^t(3\ -1\ 6),{}^t(-1\ 3\ 1)\rangle=-3-3+6=0$.
+  **Errore tipico:** dimenticare il segno meno della componente $j$ (si ottiene ${}^t(3\ 1\ 6)$), oppure calcolare il prodotto scalare ($-2+0-1=-3$), che è uno scalare.
+  TRAP: Sia il prodotto scalare $-3$ sia il risultato senza il segno meno della componente $j$ sono tra le opzioni.
+T: Quanto vale il prodotto vettoriale $\begin{pmatrix}2\\0\\-1\end{pmatrix}\times\begin{pmatrix}-1\\3\\1\end{pmatrix}$?
+OPT: $-3$ | $\begin{pmatrix}-2\\0\\-1\end{pmatrix}$ | $\begin{pmatrix}3\\1\\6\end{pmatrix}$ | $\begin{pmatrix}3\\-1\\6\end{pmatrix}$
+
+## L37 Matrici ortogonali e isometrie
+37-1 C La distanza tra $X$ e $Y$ è $\mathrm{dist}(X,Y)=\lVert Y-X\rVert$ (Def. 37.13), che nello spazio euclideo è la distanza usuale.
+  $Y-X={}^t(2\ 1\ -1)-{}^t(5\ -3\ 1)={}^t(-3\ 4\ -2)$, quindi $\mathrm{dist}=\sqrt{9+16+4}=\sqrt{29}$.
+  **Errore tipico:** sottrarre male una coordinata negativa ($1-(-3)=4$, non $-2$) o sommare le coordinate invece di sottrarle.
+T: Quanto vale la distanza tra i due punti ${}^t(5\ -3\ 1)$ e ${}^t(2\ 1\ -1)$ dello spazio?
+OPT: $\sqrt{14}$ | $\sqrt{22}$ | $\sqrt{29}$ | $\sqrt{17}$
+37-2 D $\mathrm{dist}(X,Y)=\lVert Y-X\rVert$.
+  $Y-X={}^t(3\ -1\ -2)-{}^t(5\ -3\ 1)={}^t(-2\ 2\ -3)$, quindi $\mathrm{dist}=\sqrt{4+4+9}=\sqrt{17}$.
+  **Errore tipico:** calcolare $-1-(-3)$ come $-4$ invece di $2$, o dimenticare di elevare al quadrato i termini negativi.
+T: Quanto vale la distanza tra i due punti ${}^t(5\ -3\ 1)$ e ${}^t(3\ -1\ -2)$ dello spazio?
+OPT: $\sqrt{14}$ | $\sqrt{29}$ | $\sqrt{22}$ | $\sqrt{17}$
+37-3 B $\mathrm{dist}(X,Y)=\lVert Y-X\rVert$.
+  $Y-X={}^t(-3\ 2\ -2)-{}^t(-5\ 3\ 1)={}^t(2\ -1\ -3)$, quindi $\mathrm{dist}=\sqrt{4+1+9}=\sqrt{14}$.
+  **Errore tipico:** sbagliare $-3-(-5)=2$ (scrivendo $-8$) o confondere i punti con quelli delle domande simili (con ${}^t(5\ -3\ 1)$).
+T: Quanto vale la distanza tra i due punti ${}^t(-5\ 3\ 1)$ e ${}^t(-3\ 2\ -2)$ dello spazio?
+OPT: $\sqrt{29}$ | $\sqrt{14}$ | $\sqrt{17}$ | $\sqrt{22}$
+37-4 D $\mathrm{dist}(X,Y)=\lVert Y-X\rVert$.
+  $Y-X={}^t(2\ -1\ -2)-{}^t(5\ -3\ 1)={}^t(-3\ 2\ -3)$, quindi $\mathrm{dist}=\sqrt{9+4+9}=\sqrt{22}$.
+  **Errore tipico:** calcolare $-1-(-3)$ come $-4$ (si ottiene $\sqrt{34}$) o scambiare un $-3$ con $-2$.
+T: Quanto vale la distanza tra i due punti ${}^t(5\ -3\ 1)$ e ${}^t(2\ -1\ -2)$ dello spazio?
+OPT: $\sqrt{14}$ | $\sqrt{29}$ | $\sqrt{17}$ | $\sqrt{22}$
+37-5 APERTA
+KW: simmetrica|tA=A, autovalori reali, n autovalori|molteplicità, teorema spettrale, diagonalizzabile, matrice diagonalizzante ortogonale, matrice ortogonale|N^{-1}=tN, base ortonormale, autovettori, se e solo se
+> **Definizione.** Una matrice quadrata reale $A\in\mathbb{R}^{n,n}$ è **simmetrica** se ${}^tA=A$, cioè $a_{ij}=a_{ji}$ per ogni $i,j$.
+> **Autovalori (Lemma 37.8).** Ogni matrice reale simmetrica di ordine $n$ ha $n$ autovalori **reali**, contati ciascuno con la sua molteplicità (il polinomio caratteristico si scompone completamente su $\mathbb{R}$).
+> **Teorema 37.9 (spettrale).** Una matrice reale quadrata è simmetrica **se e solo se** è diagonalizzabile con una matrice diagonalizzante **ortogonale**, cioè esiste $N$ con $N^{-1}={}^tN$ tale che ${}^tN\cdot A\cdot N$ è diagonale.
+> **Corollario 37.10.** Una matrice reale $n\times n$ è simmetrica se e solo se esiste una base ortonormale di $\mathbb{R}^n$ (prodotto scalare standard) formata da suoi autovettori (le colonne di $N$, per il Cor. 37.7).
+> **Osservazioni.** In particolare ogni matrice reale simmetrica è diagonalizzabile; il viceversa non vale: una matrice diagonalizzabile non è necessariamente simmetrica (es. $\begin{pmatrix}1&1\\0&2\end{pmatrix}$ ha autovalori distinti $1,2$ ma non è simmetrica). La caratterizzazione esatta richiede la matrice diagonalizzante ortogonale.
+37-6 APERTA
+KW: matrice ortogonale, invertibile, N^{-1}=tN|inversa uguale alla trasposta, N·tN=I, Orto(n), determinante ±1|1 o −1, Binet, preserva il prodotto scalare, colonne base ortonormale, rotazione, isometria
+> **Definizione 37.1.** $N\in\mathbb{R}^{n,n}$ è **ortogonale** se è invertibile e $N^{-1}={}^tN$, cioè $N\cdot{}^tN={}^tN\cdot N=I_n$. L'insieme delle matrici ortogonali $n\times n$ è $\mathrm{Orto}(n)$.
+> **Esempi.** $I_n$; la matrice di rotazione $\begin{pmatrix}\cos\alpha&-\sin\alpha\\\sin\alpha&\cos\alpha\end{pmatrix}$, infatti il prodotto per la sua trasposta dà $I_2$ usando $\cos^2\alpha+\sin^2\alpha=1$.
+> **Proposizione 37.3.** Il determinante di una matrice ortogonale è $1$ o $-1$. *Dimostrazione:* $1=\det I_n=\det(N\cdot{}^tN)=\det N\cdot\det{}^tN=(\det N)^2$ (Binet e $\det{}^tN=\det N$). Il viceversa è falso (Oss. 37.4): per esempio $\begin{pmatrix}1&1\\0&1\end{pmatrix}$ ha determinante $1$ ma non è ortogonale.
+> **Proposizione 37.5.** $N$ è ortogonale se e solo se $f_N$ preserva il prodotto scalare standard: $\langle NX,NY\rangle=\langle X,Y\rangle$ per ogni $X,Y$.
+> **Corollario 37.7.** $N$ è ortogonale se e solo se le sue colonne formano una base ortonormale di $\mathbb{R}^n$.
+> Le matrici ortogonali compaiono nel teorema spettrale (diagonalizzante ortogonale delle matrici simmetriche) e definiscono le isometrie $T_v\circ f_N$.
+37-7 APERTA
+KW: affinità, isometria, matrice ortogonale, T_v∘f_N|N v 0 1, distanza, ∥Y−X∥, preservano la distanza, traslazione, rotazione, cambio di riferimento cartesiano, prodotto scalare
+> **Distanza (Def. 37.13).** Per $X,Y\in\mathbb{R}^n$: $\mathrm{dist}(X,Y):=\lVert Y-X\rVert$ (norma standard); in $V^2_E$, $V^3_E$ è la distanza usuale. Es.: in $\mathbb{R}^4$ la distanza tra ${}^t(2\ 3\ -1\ 2)$ e ${}^t(1\ 3\ 0\ -1)$ è $\lVert{}^t(-1\ 0\ 1\ -3)\rVert=\sqrt{11}$.
+> **Definizione 37.11.** Un'affinità $\varphi=T_v\circ f_N\colon\mathbb{R}^n\to\mathbb{R}^n$ è un'**isometria** se $N$ è ortogonale, cioè se la matrice associata $[\varphi]=\begin{pmatrix}N&v\\0&1\end{pmatrix}$ ha il blocco $N$ ortogonale.
+> **Esempi.** Ogni traslazione $T_v$ (in particolare l'identità), perché $N=I_n$; ogni rotazione del piano attorno a un punto $C$, perché la parte lineare è la matrice di rotazione, ortogonale.
+> **Teorema 37.16.** Le isometrie sono esattamente le applicazioni che preservano la distanza: $\varphi\colon\mathbb{R}^n\to\mathbb{R}^n$ è un'isometria se e solo se $\lVert\varphi(P)-\varphi(Q)\rVert=\lVert P-Q\rVert$ per ogni $P,Q$.
+> *Dimostrazione di un verso:* $\lVert\varphi(P)-\varphi(Q)\rVert=\lVert f_N(P-Q)\rVert=\sqrt{\langle N(P-Q),N(P-Q)\rangle}=\sqrt{\langle P-Q,P-Q\rangle}=\lVert P-Q\rVert$, usando il Lemma 32.9, la definizione di norma e il fatto che $N$ ortogonale preserva il prodotto scalare (Prop. 37.5).
+> **Osservazione 37.19.** In $V^2_E$ e $V^3_E$ un cambio di sistema di riferimento cartesiano con la stessa unità di misura è rappresentato da un'isometria.
+x167 D Corollario 37.7: una matrice è ortogonale se e solo se le sue colonne formano una base ortonormale (norma 1 e prodotti scalari nulli), cioè ${}^tN\cdot N=I$.
+  Matrice con colonne ${}^t(\frac12\ -\frac{\sqrt3}{2})$ e ${}^t(-\frac{\sqrt3}{2}\ -\frac12)$: norme $\frac14+\frac34=1$ e $\frac34+\frac14=1$; prodotto scalare $-\frac{\sqrt3}{4}+\frac{\sqrt3}{4}=0$. È ortogonale (è una simmetria, determinante $-\frac14-\frac34=-1$).
+  Le altre: la matrice con tutti gli elementi $\frac{\sqrt2}{2}$ ha colonne uguali (prodotto scalare $1\neq0$, determinante $0$); quella con colonne ${}^t(\frac12\ -\frac{\sqrt3}{2})$ e ${}^t(\frac{\sqrt3}{2}\ -\frac12)$ ha prodotto scalare $\frac{\sqrt3}{4}+\frac{\sqrt3}{4}=\frac{\sqrt3}{2}\neq0$; quella con entrate $1,\sqrt3,-\sqrt3,-1$ ha colonne di norma $2$.
+  **Errore tipico:** controllare solo che le colonne abbiano norma 1, o confondere segni simili tra due matrici quasi identiche.
+T: Quale delle seguenti è una matrice ortogonale?
+OPT: $\begin{pmatrix}\frac{\sqrt2}{2}&\frac{\sqrt2}{2}\\\frac{\sqrt2}{2}&\frac{\sqrt2}{2}\end{pmatrix}$ | $\begin{pmatrix}\frac12&\frac{\sqrt3}{2}\\-\frac{\sqrt3}{2}&-\frac12\end{pmatrix}$ | $\begin{pmatrix}1&\sqrt3\\-\sqrt3&-1\end{pmatrix}$ | $\begin{pmatrix}\frac12&-\frac{\sqrt3}{2}\\-\frac{\sqrt3}{2}&-\frac12\end{pmatrix}$
+x168 B Per definizione, l'inversa di una matrice ortogonale è la sua **trasposta**: $N^{-1}={}^tN$ (Def. 37.1). Non serve conoscere $a,b,c,d$.
+  La trasposta si ottiene scambiando righe e colonne: le righe di $N$ sono $(-\frac{\sqrt2}{2},a,\frac{\sqrt6}{6})$, $(b,a,c)$, $(0,\frac{\sqrt3}{3},d)$ e diventano le colonne. Quindi
+  $${}^tN=\begin{pmatrix}-\frac{\sqrt2}{2}&b&0\\a&a&\frac{\sqrt3}{3}\\\frac{\sqrt6}{6}&c&d\end{pmatrix}.$$
+  La matrice $N$ stessa non è la sua inversa (salvo casi particolari), e la trasposta della trasposta è di nuovo $N$.
+  **Errore tipico:** scegliere la matrice scritta come ${}^t(\dots)$ della trasposta: trasporre due volte riporta a $N$.
+  TRAP: L'opzione con il simbolo di trasposta davanti alla matrice già trasposta è $N$ stessa.
+T: Data la matrice ortogonale $N=\begin{pmatrix}-\frac{\sqrt2}{2}&a&\frac{\sqrt6}{6}\\b&a&c\\0&\frac{\sqrt3}{3}&d\end{pmatrix}$ con $a,b,c,d\in\mathbb{R}$ opportuni, quale delle seguenti è l'inversa di $N$?
+OPT: $\begin{pmatrix}-\frac{\sqrt2}{2}&a&\frac{\sqrt6}{6}\\b&a&c\\0&\frac{\sqrt3}{3}&d\end{pmatrix}$ | $\begin{pmatrix}-\frac{\sqrt2}{2}&b&0\\a&a&\frac{\sqrt3}{3}\\\frac{\sqrt6}{6}&c&d\end{pmatrix}$ | ${}^t\begin{pmatrix}-\frac{\sqrt2}{2}&b&0\\a&a&\frac{\sqrt3}{3}\\\frac{\sqrt6}{6}&c&d\end{pmatrix}$ | Nessuna delle altre risposte.
+x169 D Teorema spettrale: una matrice reale è simmetrica **se e solo se** è diagonalizzabile con una matrice diagonalizzante **ortogonale**. Ne segue che ogni matrice reale simmetrica è diagonalizzabile (vero).
+  Il viceversa senza "ortogonale" è falso: una matrice diagonalizzabile non è necessariamente simmetrica, per esempio $\begin{pmatrix}1&1\\0&2\end{pmatrix}$ ha autovalori distinti $1$ e $2$ (quindi è diagonalizzabile) ma non è simmetrica. Perciò l'affermazione "simmetrica se e solo se diagonalizzabile" è falsa, mentre quella che dice che una diagonalizzabile non è necessariamente simmetrica è vera.
+  **Errore tipico:** dimenticare la condizione sulla matrice diagonalizzante ortogonale, che è ciò che rende vera l'equivalenza.
+  TRAP: Si chiede la proposizione falsa; l'equivalenza diventa falsa appena si toglie la parola "ortogonale".
+T: Quale delle seguenti proposizioni è **falsa**?
+OPT: Una matrice reale è simmetrica se e solo se è diagonalizzabile con una matrice diagonalizzante ortogonale. | Ogni matrice reale simmetrica è diagonalizzabile. | Una matrice reale diagonalizzabile non è necessariamente simmetrica. | Una matrice reale è simmetrica se e solo se è diagonalizzabile.
+x170 D $\mathrm{dist}(X,Y)=\lVert Y-X\rVert$.
+  $Y-X={}^t(2\ 2\ 1\ -1\ -4)-{}^t(1\ 0\ -1\ 3\ -5)={}^t(1\ 2\ 2\ -4\ 1)$, quindi $\lVert Y-X\rVert=\sqrt{1+4+4+16+1}=\sqrt{26}$.
+  **Errore tipico:** dimenticare la radice (si ottiene $26$, cioè il quadrato della distanza) o sbagliare $1-(-1)=2$ e $-4-(-5)=1$.
+T: Quanto vale la distanza tra i due vettori colonna $\begin{pmatrix}1\\0\\-1\\3\\-5\end{pmatrix}$ e $\begin{pmatrix}2\\2\\1\\-1\\-4\end{pmatrix}$ di $\mathbb{R}^5$?
+OPT: $17$ | $26$ | $\sqrt{17}$ | $\sqrt{26}$

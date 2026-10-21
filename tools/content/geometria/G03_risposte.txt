@@ -1,0 +1,420 @@
+## L9 Basi e coordinate
+9-1 C Una base di $\mathbb{R}^3$ è un insieme ordinato di vettori **linearmente indipendenti** che **generano** $\mathbb{R}^3$. Poiché $\dim\mathbb{R}^3=3$, tre vettori formano una base se e solo se sono linearmente indipendenti (Corollario 10.20): basta quindi cercare l'unica terna senza relazioni di dipendenza.
+  Terna ${}^t(1\ 1\ 0),\ {}^t(2\ 1\ 1),\ {}^t(1\ 0\ 1)$: si ha ${}^t(1\ 1\ 0)+{}^t(1\ 0\ 1)={}^t(2\ 1\ 1)$, quindi è dipendente.
+  Terna ${}^t(0\ 1\ 1),\ {}^t(2\ 1\ 1),\ {}^t(1\ 1\ 1)$: si ha ${}^t(0\ 1\ 1)+{}^t(2\ 1\ 1)={}^t(2\ 2\ 2)=2\cdot{}^t(1\ 1\ 1)$, quindi è dipendente.
+  Terna ${}^t(0\ 1\ 1),\ {}^t(-1\ 0\ 2),\ {}^t(-1\ -1\ 1)$: si ha ${}^t(-1\ 0\ 2)-{}^t(0\ 1\ 1)={}^t(-1\ -1\ 1)$, quindi è dipendente.
+  Terna ${}^t(1\ 1\ 0),\ {}^t(-1\ 0\ 2),\ {}^t(1\ 1\ 1)$: imponiamo $\lambda_1{}^t(1\ 1\ 0)+\lambda_2{}^t(-1\ 0\ 2)+\lambda_3{}^t(1\ 1\ 1)=0$, cioè $\begin{cases}\lambda_1-\lambda_2+\lambda_3=0\\ \lambda_1+\lambda_3=0\\ 2\lambda_2+\lambda_3=0\end{cases}$. Dalla seconda $\lambda_1=-\lambda_3$; sostituendo nella prima $-\lambda_2=0$, quindi $\lambda_2=0$; dalla terza $\lambda_3=0$ e infine $\lambda_1=0$. I vettori sono indipendenti, quindi formano una base.
+  Controllo rapido (determinanti, lezione successiva): la matrice con questi vettori come colonne ha determinante $1\neq0$, le altre tre hanno determinante $0$.
+  **Errore tipico:** guardare solo che i vettori siano "diversi" o non multipli a due a due. In tutte le terne sbagliate nessun vettore è multiplo di un altro, ma uno è combinazione lineare degli altri due.
+T: Quale dei seguenti insiemi ordinati è una base di $\mathbb{R}^3$?
+OPT: $\{{}^t(1\ 1\ 0),\ {}^t(2\ 1\ 1),\ {}^t(1\ 0\ 1)\}$ | $\{{}^t(0\ 1\ 1),\ {}^t(2\ 1\ 1),\ {}^t(1\ 1\ 1)\}$ | $\{{}^t(1\ 1\ 0),\ {}^t(-1\ 0\ 2),\ {}^t(1\ 1\ 1)\}$ | $\{{}^t(0\ 1\ 1),\ {}^t(-1\ 0\ 2),\ {}^t(-1\ -1\ 1)\}$
+9-2 B Tre vettori di $\mathbb{R}^3$ ($\dim=3$) formano una base se e solo se sono linearmente indipendenti (Corollario 10.20). Cerchiamo le relazioni di dipendenza.
+  Terna ${}^t(1\ 1\ 0),\ {}^t(2\ 1\ 1),\ {}^t(1\ 0\ 1)$: ${}^t(1\ 1\ 0)+{}^t(1\ 0\ 1)={}^t(2\ 1\ 1)$, dipendente.
+  Terna ${}^t(1\ 1\ 0),\ {}^t(0\ 0\ 2),\ {}^t(1\ 1\ 1)$: ${}^t(1\ 1\ 0)+\tfrac12\,{}^t(0\ 0\ 2)={}^t(1\ 1\ 1)$, dipendente.
+  Terna ${}^t(0\ 1\ 1),\ {}^t(-1\ 0\ 2),\ {}^t(-1\ -1\ 1)$: ${}^t(-1\ 0\ 2)-{}^t(0\ 1\ 1)={}^t(-1\ -1\ 1)$, dipendente.
+  Terna ${}^t(0\ 1\ 1),\ {}^t(2\ 1\ 1),\ {}^t(1\ 0\ 1)$: da $\lambda_1{}^t(0\ 1\ 1)+\lambda_2{}^t(2\ 1\ 1)+\lambda_3{}^t(1\ 0\ 1)=0$ si ha $\begin{cases}2\lambda_2+\lambda_3=0\\ \lambda_1+\lambda_2=0\\ \lambda_1+\lambda_2+\lambda_3=0\end{cases}$. Sottraendo la seconda dalla terza: $\lambda_3=0$; dalla prima $\lambda_2=0$; dalla seconda $\lambda_1=0$. Indipendenti: è una base (determinante $-2\neq0$).
+  **Errore tipico:** confondere la terna giusta con quella che contiene ${}^t(1\ 1\ 1)$ al posto di ${}^t(1\ 0\ 1)$: basta cambiare un'entrata per passare da indipendente a dipendente, quindi va fatto il conto.
+T: Quale dei seguenti insiemi ordinati è una base di $\mathbb{R}^3$?
+OPT: $\{{}^t(1\ 1\ 0),\ {}^t(2\ 1\ 1),\ {}^t(1\ 0\ 1)\}$ | $\{{}^t(0\ 1\ 1),\ {}^t(2\ 1\ 1),\ {}^t(1\ 0\ 1)\}$ | $\{{}^t(1\ 1\ 0),\ {}^t(0\ 0\ 2),\ {}^t(1\ 1\ 1)\}$ | $\{{}^t(0\ 1\ 1),\ {}^t(-1\ 0\ 2),\ {}^t(-1\ -1\ 1)\}$
+9-3 C In $\mathbb{R}^3$ tre vettori sono una base se e solo se sono linearmente indipendenti (Corollario 10.20).
+  Terna ${}^t(0\ 1\ 1),\ {}^t(2\ 1\ 1),\ {}^t(1\ 1\ 1)$: ${}^t(0\ 1\ 1)+{}^t(2\ 1\ 1)=2\cdot{}^t(1\ 1\ 1)$, dipendente.
+  Terna ${}^t(0\ 1\ 1),\ {}^t(-1\ 0\ 2),\ {}^t(-1\ -1\ 1)$: ${}^t(-1\ 0\ 2)-{}^t(0\ 1\ 1)={}^t(-1\ -1\ 1)$, dipendente.
+  Terna ${}^t(1\ 1\ 0),\ {}^t(0\ 0\ 2),\ {}^t(1\ 1\ 1)$: ${}^t(1\ 1\ 0)+\tfrac12\,{}^t(0\ 0\ 2)={}^t(1\ 1\ 1)$, dipendente.
+  Terna ${}^t(1\ 1\ 0),\ {}^t(2\ 1\ 1),\ {}^t(1\ 1\ 1)$: $\begin{cases}\lambda_1+2\lambda_2+\lambda_3=0\\ \lambda_1+\lambda_2+\lambda_3=0\\ \lambda_2+\lambda_3=0\end{cases}$. Sottraendo la seconda dalla prima: $\lambda_2=0$; dalla terza $\lambda_3=0$; dalla seconda $\lambda_1=0$. Indipendenti: è una base (determinante $-1\neq0$).
+  **Errore tipico:** scegliere la terna con ${}^t(0\ 0\ 2)$ perché "sembra" semplice: ${}^t(1\ 1\ 1)$ si ottiene sommando ${}^t(1\ 1\ 0)$ e metà di ${}^t(0\ 0\ 2)$.
+T: Quale dei seguenti insiemi ordinati è una base di $\mathbb{R}^3$?
+OPT: $\{{}^t(0\ 1\ 1),\ {}^t(2\ 1\ 1),\ {}^t(1\ 1\ 1)\}$ | $\{{}^t(0\ 1\ 1),\ {}^t(-1\ 0\ 2),\ {}^t(-1\ -1\ 1)\}$ | $\{{}^t(1\ 1\ 0),\ {}^t(2\ 1\ 1),\ {}^t(1\ 1\ 1)\}$ | $\{{}^t(1\ 1\ 0),\ {}^t(0\ 0\ 2),\ {}^t(1\ 1\ 1)\}$
+9-4 C In $\mathbb{R}^3$ tre vettori sono una base se e solo se sono linearmente indipendenti (Corollario 10.20).
+  Terna ${}^t(1\ 1\ 0),\ {}^t(2\ 1\ 1),\ {}^t(1\ 0\ 1)$: ${}^t(1\ 1\ 0)+{}^t(1\ 0\ 1)={}^t(2\ 1\ 1)$, dipendente.
+  Terna ${}^t(0\ 1\ 1),\ {}^t(2\ 1\ 1),\ {}^t(1\ 1\ 1)$: ${}^t(0\ 1\ 1)+{}^t(2\ 1\ 1)=2\cdot{}^t(1\ 1\ 1)$, dipendente.
+  Terna ${}^t(1\ 1\ 0),\ {}^t(0\ 0\ 2),\ {}^t(1\ 1\ 1)$: ${}^t(1\ 1\ 0)+\tfrac12\,{}^t(0\ 0\ 2)={}^t(1\ 1\ 1)$, dipendente.
+  Terna ${}^t(0\ 1\ 1),\ {}^t(0\ 0\ 2),\ {}^t(-1\ -1\ 1)$: $\begin{cases}-\lambda_3=0\\ \lambda_1-\lambda_3=0\\ \lambda_1+2\lambda_2+\lambda_3=0\end{cases}$. Dalla prima $\lambda_3=0$, dalla seconda $\lambda_1=0$, dalla terza $2\lambda_2=0$, cioè $\lambda_2=0$. Indipendenti: è una base (determinante $-2\neq0$).
+  **Errore tipico:** fermarsi al controllo "nessun vettore è multiplo di un altro", che vale per tutte e quattro le terne: con tre vettori bisogna verificare che nessuno sia combinazione lineare degli altri due.
+T: Quale dei seguenti insiemi ordinati è una base di $\mathbb{R}^3$?
+OPT: $\{{}^t(1\ 1\ 0),\ {}^t(2\ 1\ 1),\ {}^t(1\ 0\ 1)\}$ | $\{{}^t(0\ 1\ 1),\ {}^t(2\ 1\ 1),\ {}^t(1\ 1\ 1)\}$ | $\{{}^t(0\ 1\ 1),\ {}^t(0\ 0\ 2),\ {}^t(-1\ -1\ 1)\}$ | $\{{}^t(1\ 1\ 0),\ {}^t(0\ 0\ 2),\ {}^t(1\ 1\ 1)\}$
+9-5 C Le coordinate di $v$ rispetto alla base $\mathcal{B}=\{v_1,v_2,v_3\}$ sono gli (unici) coefficienti $\lambda_1,\lambda_2,\lambda_3$ tali che $v=\lambda_1v_1+\lambda_2v_2+\lambda_3v_3$ (Definizione 9.21), **nell'ordine della base**.
+  Risolviamo ${}^t(1\ 2\ 0)=\lambda_1{}^t(1\ 0\ -2)+\lambda_2{}^t(1\ -3\ 1)+\lambda_3{}^t(3\ -1\ -1)$, cioè $\begin{cases}\lambda_1+\lambda_2+3\lambda_3=1\\ -3\lambda_2-\lambda_3=2\\ -2\lambda_1+\lambda_2-\lambda_3=0\end{cases}$.
+  Dalla seconda $\lambda_3=-2-3\lambda_2$. Sostituendo nella prima: $\lambda_1+\lambda_2-6-9\lambda_2=1$, cioè $\lambda_1=7+8\lambda_2$. Sostituendo nella terza: $-14-16\lambda_2+\lambda_2+2+3\lambda_2=0$, cioè $-12-12\lambda_2=0$, quindi $\lambda_2=-1$. Allora $\lambda_3=-2+3=1$ e $\lambda_1=7-8=-1$.
+  Verifica: $-{}^t(1\ 0\ -2)-{}^t(1\ -3\ 1)+{}^t(3\ -1\ -1)={}^t(-1-1+3\ \ 0+3-1\ \ 2-1-1)={}^t(1\ 2\ 0)$. Le coordinate sono $-1,-1,1$.
+  **Errore tipico:** le quattro risposte contengono gli stessi numeri $\pm1$ in ordini diversi: se si sbaglia un segno o si scambia l'ordine dei vettori di base si cade su un'altra opzione. Fai sempre la verifica finale.
+T: Quali sono le coordinate del vettore ${}^t(1\ 2\ 0)$ di $\mathbb{R}^3$ nella base $\{{}^t(1\ 0\ -2),\ {}^t(1\ -3\ 1),\ {}^t(3\ -1\ -1)\}$?
+OPT: $1,\ 1,\ 1$ | $1,\ -1,\ -1$ | $-1,\ -1,\ 1$ | $-1,\ 1,\ -1$
+9-6 D Le coordinate sono i coefficienti $\lambda_1,\lambda_2,\lambda_3$ (nell'ordine della base) tali che ${}^t(3\ -1\ -1)=\lambda_1{}^t(1\ 2\ 0)+\lambda_2{}^t(1\ 0\ -2)+\lambda_3{}^t(1\ -3\ 1)$.
+  Il sistema è $\begin{cases}\lambda_1+\lambda_2+\lambda_3=3\\ 2\lambda_1-3\lambda_3=-1\\ -2\lambda_2+\lambda_3=-1\end{cases}$. Dalla terza $\lambda_3=2\lambda_2-1$; dalla seconda $\lambda_1=\frac{3\lambda_3-1}{2}=3\lambda_2-2$; nella prima $3\lambda_2-2+\lambda_2+2\lambda_2-1=3$, cioè $6\lambda_2=6$, $\lambda_2=1$. Quindi $\lambda_3=1$, $\lambda_1=1$.
+  Verifica: ${}^t(1\ 2\ 0)+{}^t(1\ 0\ -2)+{}^t(1\ -3\ 1)={}^t(3\ -1\ -1)$. Le coordinate sono $1,1,1$.
+  **Errore tipico:** è lo stesso gruppo di quattro vettori delle domande simili, ma qui il vettore da rappresentare è la **somma** dei tre vettori di base: non serve risolvere a memoria i casi visti, basta il conto o la verifica.
+T: Quali sono le coordinate del vettore ${}^t(3\ -1\ -1)$ di $\mathbb{R}^3$ nella base $\{{}^t(1\ 2\ 0),\ {}^t(1\ 0\ -2),\ {}^t(1\ -3\ 1)\}$?
+OPT: $-1,\ 1,\ -1$ | $-1,\ -1,\ 1$ | $1,\ -1,\ -1$ | $1,\ 1,\ 1$
+9-7 B Una terna di $\mathbb{R}^3$ **non** è una base se e solo se i tre vettori sono linearmente dipendenti (Corollario 10.20). Cerchiamo l'unica terna dipendente.
+  Terna ${}^t(0\ 1\ 1),\ {}^t(2\ 1\ 1),\ {}^t(1\ 1\ 1)$: ${}^t(0\ 1\ 1)+{}^t(2\ 1\ 1)={}^t(2\ 2\ 2)=2\cdot{}^t(1\ 1\ 1)$, cioè $v_1+v_2-2v_3=0$: dipendente, quindi **non** è una base.
+  Le altre sono basi: per ${}^t(0\ 1\ 1),{}^t(0\ 0\ 2),{}^t(-1\ 0\ 1)$ il sistema $\begin{cases}-\lambda_3=0\\ \lambda_1=0\\ \lambda_1+2\lambda_2+\lambda_3=0\end{cases}$ dà solo la soluzione nulla; per ${}^t(1\ 1\ 0),{}^t(-1\ 0\ 2),{}^t(1\ 1\ 1)$ e ${}^t(1\ 1\ 0),{}^t(2\ 1\ 2),{}^t(-1\ 0\ 1)$ i determinanti delle matrici con i vettori come colonne valgono $1$ e $-3$, non nulli.
+  **Errore tipico:** leggere di fretta "è una base" invece di "**non** è una base" e scegliere una terna indipendente.
+T: Quale dei seguenti insiemi ordinati **non** è una base di $\mathbb{R}^3$?
+OPT: $\{{}^t(0\ 1\ 1),\ {}^t(0\ 0\ 2),\ {}^t(-1\ 0\ 1)\}$ | $\{{}^t(0\ 1\ 1),\ {}^t(2\ 1\ 1),\ {}^t(1\ 1\ 1)\}$ | $\{{}^t(1\ 1\ 0),\ {}^t(-1\ 0\ 2),\ {}^t(1\ 1\ 1)\}$ | $\{{}^t(1\ 1\ 0),\ {}^t(2\ 1\ 2),\ {}^t(-1\ 0\ 1)\}$
+9-8 B Una terna di $\mathbb{R}^3$ non è una base se e solo se è linearmente dipendente (Corollario 10.20).
+  Terna ${}^t(0\ 1\ 1),\ {}^t(-1\ 0\ 2),\ {}^t(-1\ -1\ 1)$: ${}^t(-1\ 0\ 2)-{}^t(0\ 1\ 1)={}^t(-1\ -1\ 1)$, cioè $v_2-v_1-v_3=0$: dipendente, quindi **non** è una base.
+  Le altre sono indipendenti: per ${}^t(1\ 1\ 0),{}^t(-1\ 0\ 2),{}^t(1\ 1\ 1)$ il sistema $\lambda_1-\lambda_2+\lambda_3=0,\ \lambda_1+\lambda_3=0,\ 2\lambda_2+\lambda_3=0$ ha solo la soluzione nulla; le terne ${}^t(0\ 1\ 1),{}^t(2\ 1\ 2),{}^t(1\ 1\ 1)$ e ${}^t(1\ 1\ 0),{}^t(2\ 1\ 2),{}^t(-1\ 0\ 1)$ hanno determinante $1$ e $-3$.
+  **Errore tipico:** la terna ${}^t(0\ 1\ 1),{}^t(2\ 1\ 2),{}^t(1\ 1\ 1)$ assomiglia a quella dipendente ${}^t(0\ 1\ 1),{}^t(2\ 1\ 1),{}^t(1\ 1\ 1)$ vista in altre domande, ma con ${}^t(2\ 1\ 2)$ la relazione non vale più.
+T: Quale dei seguenti insiemi ordinati **non** è una base di $\mathbb{R}^3$?
+OPT: $\{{}^t(1\ 1\ 0),\ {}^t(-1\ 0\ 2),\ {}^t(1\ 1\ 1)\}$ | $\{{}^t(0\ 1\ 1),\ {}^t(-1\ 0\ 2),\ {}^t(-1\ -1\ 1)\}$ | $\{{}^t(0\ 1\ 1),\ {}^t(2\ 1\ 2),\ {}^t(1\ 1\ 1)\}$ | $\{{}^t(1\ 1\ 0),\ {}^t(2\ 1\ 2),\ {}^t(-1\ 0\ 1)\}$
+  TRAP: Una terna è quasi identica a una terna dipendente vista in altre domande (cambia una sola entrata): qui è indipendente.
+9-9 C Una terna di $\mathbb{R}^3$ non è una base se e solo se è linearmente dipendente (Corollario 10.20).
+  Terna ${}^t(1\ 1\ 0),\ {}^t(2\ 1\ 1),\ {}^t(1\ 0\ 1)$: ${}^t(1\ 1\ 0)+{}^t(1\ 0\ 1)={}^t(2\ 1\ 1)$, cioè $v_1-v_2+v_3=0$: dipendente, quindi **non** è una base.
+  Le altre sono indipendenti: per ${}^t(0\ 1\ 1),{}^t(0\ 0\ 2),{}^t(1\ 0\ 1)$ il sistema $\lambda_3=0,\ \lambda_1=0,\ \lambda_1+2\lambda_2+\lambda_3=0$ dà solo la soluzione nulla; le terne ${}^t(0\ 1\ 1),{}^t(2\ 1\ 1),{}^t(-1\ 1\ -1)$ e ${}^t(1\ 1\ 0),{}^t(0\ 0\ 2),{}^t(-1\ 1\ -1)$ hanno determinante $4$ e $-4$, non nulli.
+  **Errore tipico:** scambiare la richiesta "non è una base" con "è una base", oppure cercare solo coppie di vettori proporzionali (qui non ce ne sono).
+T: Quale dei seguenti insiemi ordinati **non** è una base di $\mathbb{R}^3$?
+OPT: $\{{}^t(0\ 1\ 1),\ {}^t(2\ 1\ 1),\ {}^t(-1\ 1\ -1)\}$ | $\{{}^t(1\ 1\ 0),\ {}^t(0\ 0\ 2),\ {}^t(-1\ 1\ -1)\}$ | $\{{}^t(1\ 1\ 0),\ {}^t(2\ 1\ 1),\ {}^t(1\ 0\ 1)\}$ | $\{{}^t(0\ 1\ 1),\ {}^t(0\ 0\ 2),\ {}^t(1\ 0\ 1)\}$
+9-10 D Le coordinate sono i coefficienti $\lambda_1,\lambda_2,\lambda_3$ (nell'ordine della base) tali che ${}^t(1\ 0\ -2)=\lambda_1{}^t(1\ -3\ 1)+\lambda_2{}^t(3\ -1\ -1)+\lambda_3{}^t(1\ 2\ 0)$.
+  Il sistema è $\begin{cases}\lambda_1+3\lambda_2+\lambda_3=1\\ -3\lambda_1-\lambda_2+2\lambda_3=0\\ \lambda_1-\lambda_2=-2\end{cases}$. Dalla terza $\lambda_1=\lambda_2-2$. Nella seconda: $-3\lambda_2+6-\lambda_2+2\lambda_3=0$, cioè $\lambda_3=2\lambda_2-3$. Nella prima: $\lambda_2-2+3\lambda_2+2\lambda_2-3=1$, cioè $6\lambda_2=6$, $\lambda_2=1$. Quindi $\lambda_1=-1$, $\lambda_3=-1$.
+  Verifica: $-{}^t(1\ -3\ 1)+{}^t(3\ -1\ -1)-{}^t(1\ 2\ 0)={}^t(-1+3-1\ \ 3-1-2\ \ -1-1-0)={}^t(1\ 0\ -2)$. Le coordinate sono $-1,1,-1$.
+  **Errore tipico:** ricordare che i quattro vettori soddisfano ${}^t(3\ -1\ -1)={}^t(1\ 2\ 0)+{}^t(1\ 0\ -2)+{}^t(1\ -3\ 1)$ ma non ricavare correttamente i segni quando il vettore da rappresentare è un altro dei quattro: qui ${}^t(1\ 0\ -2)={}^t(3\ -1\ -1)-{}^t(1\ -3\ 1)-{}^t(1\ 2\ 0)$, e l'ordine della base decide la posizione di ciascun segno.
+T: Quali sono le coordinate del vettore ${}^t(1\ 0\ -2)$ di $\mathbb{R}^3$ nella base $\{{}^t(1\ -3\ 1),\ {}^t(3\ -1\ -1),\ {}^t(1\ 2\ 0)\}$?
+OPT: $1,\ 1,\ 1$ | $-1,\ -1,\ 1$ | $1,\ -1,\ -1$ | $-1,\ 1,\ -1$
+9-11 A Una terna di $\mathbb{R}^3$ non è una base se e solo se è linearmente dipendente (Corollario 10.20).
+  Terna ${}^t(1\ 1\ 0),\ {}^t(0\ 0\ 2),\ {}^t(1\ 1\ 1)$: ${}^t(1\ 1\ 0)+\tfrac12\,{}^t(0\ 0\ 2)={}^t(1\ 1\ 1)$, cioè $2v_1+v_2-2v_3=0$: dipendente, quindi **non** è una base.
+  Le altre sono indipendenti: per ${}^t(0\ 1\ 1),{}^t(0\ 0\ 2),{}^t(-1\ 0\ 1)$ il sistema $-\lambda_3=0,\ \lambda_1=0,\ \lambda_1+2\lambda_2+\lambda_3=0$ ha solo la soluzione nulla; ${}^t(1\ 1\ 0),{}^t(2\ 1\ 2),{}^t(-1\ 0\ 1)$ e ${}^t(0\ 1\ 1),{}^t(2\ 1\ 2),{}^t(1\ 1\ 1)$ hanno determinante $-3$ e $1$.
+  **Errore tipico:** pensare che ${}^t(0\ 0\ 2)$ renda automaticamente indipendente la terna perché "aggiunge la terza componente": la terza componente di ${}^t(1\ 1\ 1)$ si ottiene proprio da metà di ${}^t(0\ 0\ 2)$.
+T: Quale dei seguenti insiemi ordinati **non** è una base di $\mathbb{R}^3$?
+OPT: $\{{}^t(1\ 1\ 0),\ {}^t(0\ 0\ 2),\ {}^t(1\ 1\ 1)\}$ | $\{{}^t(1\ 1\ 0),\ {}^t(2\ 1\ 2),\ {}^t(-1\ 0\ 1)\}$ | $\{{}^t(0\ 1\ 1),\ {}^t(0\ 0\ 2),\ {}^t(-1\ 0\ 1)\}$ | $\{{}^t(0\ 1\ 1),\ {}^t(2\ 1\ 2),\ {}^t(1\ 1\ 1)\}$
+9-12 D Le coordinate sono i coefficienti $\lambda_1,\lambda_2,\lambda_3$ (nell'ordine della base) tali che ${}^t(1\ -3\ 1)=\lambda_1{}^t(3\ -1\ -1)+\lambda_2{}^t(1\ 2\ 0)+\lambda_3{}^t(1\ 0\ -2)$.
+  Il sistema è $\begin{cases}3\lambda_1+\lambda_2+\lambda_3=1\\ -\lambda_1+2\lambda_2=-3\\ -\lambda_1-2\lambda_3=1\end{cases}$. Dalla seconda $\lambda_1=2\lambda_2+3$; dalla terza $\lambda_3=\frac{-1-\lambda_1}{2}=-\lambda_2-2$. Nella prima: $6\lambda_2+9+\lambda_2-\lambda_2-2=1$, cioè $6\lambda_2=-6$, $\lambda_2=-1$. Quindi $\lambda_1=1$, $\lambda_3=-1$.
+  Verifica: ${}^t(3\ -1\ -1)-{}^t(1\ 2\ 0)-{}^t(1\ 0\ -2)={}^t(1\ -3\ 1)$. Le coordinate sono $1,-1,-1$.
+  **Errore tipico:** scrivere le coordinate in un ordine diverso da quello della base: cambiando l'ordine dei vettori di base le coordinate si permutano allo stesso modo (Osservazione 9.25).
+T: Quali sono le coordinate del vettore ${}^t(1\ -3\ 1)$ di $\mathbb{R}^3$ nella base $\{{}^t(3\ -1\ -1),\ {}^t(1\ 2\ 0),\ {}^t(1\ 0\ -2)\}$?
+OPT: $1,\ 1,\ 1$ | $-1,\ 1,\ -1$ | $-1,\ -1,\ 1$ | $1,\ -1,\ -1$
+9-13 APERTA
+KW: base, insieme ordinato|ordinato, generano|generatori, linearmente indipendenti|indipendenza lineare, finitamente generato, base canonica, estrazione di una base|estrarre, ogni spazio vettoriale finitamente generato ha una base, stesso numero di elementi, una e una sola combinazione lineare|unica combinazione lineare, insieme vuoto
+> **Definizione (9.1).** Una *base* di uno spazio vettoriale finitamente generato $V$ è un insieme finito **ordinato** $\mathcal{B}=\{v_1,\dots,v_n\}$ i cui vettori **generano** $V$ e sono **linearmente indipendenti**. L'ordine fa parte della base: cambiando l'ordine si ottiene una base diversa. L'unica base di $\{0\}$ è l'insieme vuoto.
+> Esempio: la *base canonica* $\mathcal{E}_n=\{e_1,\dots,e_n\}$ di $\mathbb{K}^n$, dove $e_i$ ha $1$ al posto $i$ e $0$ altrove, è una base (Proposizione 9.9). Invece $\{{}^t(2\ 3),{}^t(-1\ 0),{}^t(1\ 1)\}$ genera $\mathbb{R}^2$ ma non è una base perché i vettori sono dipendenti, e $\{{}^t(1\ 1)\}$ è indipendente ma non genera $\mathbb{R}^2$.
+> **Teorema 9.14.** Se $v_1,\dots,v_n$ generano $V$, esistono indici $1\le i_1<\dots<i_m\le n$ tali che $\{v_{i_1},\dots,v_{i_m}\}$ è una base di $V$ (si ottiene con l'algoritmo di estrazione di una base). Di conseguenza (**Teorema 9.15**) ogni spazio vettoriale finitamente generato ha una base.
+> **Proposizione 9.18.** $\mathcal{B}$ è una base di $V$ se e solo se ogni vettore di $V$ è il risultato di **una e una sola** combinazione lineare degli elementi di $\mathcal{B}$.
+> **Teorema 9.20.** Tutte le basi di $V$ hanno lo stesso numero di elementi: se $\mathcal{B}$ ha $n$ elementi e $\mathcal{B}'$ ne ha $n'$, i vettori di $\mathcal{B}'$ sono indipendenti e stanno nello Span di quelli di $\mathcal{B}$, quindi $n'\le n$; scambiando i ruoli $n\le n'$. Questo numero sarà la dimensione di $V$.
+9-14 APERTA
+KW: algoritmo di estrazione|estrazione di una base, generatori, insieme ordinato, tenuto|tenere, scartato|scartare, linearmente indipendenti, vettore nullo|diverso da 0, Span|sottospazio generato, base di V, sottoinsieme|indici
+> **Algoritmo 9.10 (estrazione di una base).** Sia $I=\{v_1,\dots,v_n\}$ un insieme finito **ordinato di generatori** di uno spazio vettoriale $V$. L'algoritmo ha $n$ passi; al passo $i$-esimo si decide se tenere o scartare $v_i$:
+> - $v_i$ viene **tenuto** se, insieme ai vettori tenuti fino a quel momento, forma un insieme di vettori linearmente indipendenti;
+> - $v_i$ viene **scartato** altrimenti, cioè se insieme ai vettori già tenuti forma un insieme linearmente dipendente (equivalentemente, se $v_i$ appartiene allo Span dei vettori già tenuti).
+> I vettori tenuti, ordinati come in $I$, sono il risultato.
+> In pratica (Osservazione 9.11): il primo vettore tenuto è il primo non nullo; il secondo è il primo successivo che non è multiplo del primo; poi si tiene ogni vettore che non appartiene allo Span di quelli già tenuti.
+> **Proposizione 9.13.** Il risultato è una base di $V$. Da qui il **Teorema 9.14**: da ogni insieme finito di generatori si può estrarre una base, e quindi (Teorema 9.15) ogni spazio finitamente generato ha una base.
+> Esempio 9.12: da $\{{}^t(2\ 3),{}^t(4\ 6),{}^t(1\ 1)\}$ si tiene ${}^t(2\ 3)$ (non nullo), si scarta ${}^t(4\ 6)=2\cdot{}^t(2\ 3)$, si tiene ${}^t(1\ 1)$ (non multiplo di ${}^t(2\ 3)$): il risultato è la base $\{{}^t(2\ 3),{}^t(1\ 1)\}$ di $\mathbb{R}^2$.
+9-15 APERTA
+KW: base, generano|generatori, linearmente indipendenti, insieme ordinato, coordinate, una e una sola combinazione lineare|unica combinazione lineare, coefficienti, vettore delle coordinate|rappresentazione, [v]_B|[v], ordine, base canonica, bigettiva|biunivoca
+> **Base (Definizione 9.1).** Una base di uno spazio vettoriale finitamente generato $V$ è un insieme finito **ordinato** $\mathcal{B}=\{v_1,\dots,v_n\}$ di vettori che **generano** $V$ e sono **linearmente indipendenti** (es. la base canonica $\mathcal{E}_n$ di $\mathbb{K}^n$). Ogni spazio finitamente generato ha una base (Teorema 9.15) e tutte le basi hanno lo stesso numero di elementi (Teorema 9.20).
+> **Proposizione 9.18.** $\mathcal{B}$ è una base se e solo se ogni $v\in V$ è il risultato di **una e una sola** combinazione lineare $v=\lambda_1v_1+\dots+\lambda_nv_n$.
+> **Coordinate (Definizione 9.21).** I coefficienti $\lambda_1,\dots,\lambda_n$ di questa unica combinazione sono le *coordinate* di $v$ rispetto a $\mathcal{B}$. Il vettore colonna $[v]_{\mathcal{B}}={}^t(\lambda_1\ \cdots\ \lambda_n)\in\mathbb{K}^n$ è il *vettore delle coordinate* (o rappresentazione) di $v$ (Definizione 9.23).
+> Esempio 9.22: rispetto a $\mathcal{B}=\{{}^t(2\ 3),{}^t(1\ 1)\}$ si ha ${}^t(5\ 9)=4\,{}^t(2\ 3)-3\,{}^t(1\ 1)$, quindi $[{}^t(5\ 9)]_{\mathcal{B}}={}^t(4\ -3)$; rispetto alla base canonica $[{}^t(5\ 9)]_{\mathcal{E}_2}={}^t(5\ 9)$.
+> Proprietà (Osservazione 9.25): $[v_i]_{\mathcal{B}}=e_i$; cambiando l'ordine della base le coordinate si permutano allo stesso modo; in $\mathbb{K}^n$ rispetto a $\mathcal{E}_n$ il vettore delle coordinate è il vettore stesso.
+> **Osservazione 9.26.** La funzione $[\cdot]_{\mathcal{B}}:V\to\mathbb{K}^n$, $v\mapsto[v]_{\mathcal{B}}$ è ben definita e **bigettiva**: con una base si parametrizzano i vettori di $V$ con $n$-uple di scalari (ad esempio i vettori geometrici con le loro coordinate cartesiane rispetto a $\{i,j\}$ o $\{i,j,k\}$).
+x55 D Il sottospazio $W=\{X\in\mathbb{R}^3\mid x_1+x_2+2x_3=0,\ x_1+3x_2=0\}$ va prima scritto in forma esplicita.
+  Dalla seconda equazione $x_1=-3x_2$. Sostituendo nella prima: $-3x_2+x_2+2x_3=0$, cioè $x_3=x_2$. Ponendo $x_2=t$: $X={}^t(-3t\ \ t\ \ t)=t\cdot{}^t(-3\ 1\ 1)$, quindi $W=\mathrm{Span}({}^t(-3\ 1\ 1))$.
+  Il vettore ${}^t(-3\ 1\ 1)$ è non nullo, quindi linearmente indipendente, e genera $W$: $\{{}^t(-3\ 1\ 1)\}$ è una base di $W$ (e $\dim W=1$).
+  La base canonica genera tutto $\mathbb{R}^3$, non $W$ (i suoi vettori non soddisfano nemmeno le equazioni). Il vettore ${}^t(2\ 1\ -2)$ non sta in $W$: $2+1-4=-1\neq0$. La coppia ${}^t(-3\ 1\ 1),{}^t(3\ -1\ -1)$ genera $W$ ma è dipendente (un vettore è l'opposto dell'altro).
+  **Errore tipico:** scegliere la coppia di vettori opposti perché "entrambi stanno in $W$": stare in $W$ e generarlo non basta, una base deve essere anche linearmente indipendente.
+T: Quale dei seguenti è una base di $\{X\in\mathbb{R}^3 \mid x_1+x_2+2x_3=0,\ x_1+3x_2=0\}$?
+OPT: $\left\{\begin{pmatrix}1\\0\\0\end{pmatrix},\begin{pmatrix}0\\1\\0\end{pmatrix},\begin{pmatrix}0\\0\\1\end{pmatrix}\right\}$ | $\left\{\begin{pmatrix}2\\1\\-2\end{pmatrix}\right\}$ | $\left\{\begin{pmatrix}-3\\1\\1\end{pmatrix},\begin{pmatrix}3\\-1\\-1\end{pmatrix}\right\}$ | $\left\{\begin{pmatrix}-3\\1\\1\end{pmatrix}\right\}$
+x56 C Applichiamo l'algoritmo di estrazione di una base (Algoritmo 9.10) all'insieme ordinato $\{{}^t(1\ 1\ 0),{}^t(2\ 2\ 0),{}^t(1\ 1\ 1)\}$.
+  Passo 1: ${}^t(1\ 1\ 0)\neq0$, quindi da solo è linearmente indipendente: **tenuto**.
+  Passo 2: ${}^t(2\ 2\ 0)=2\cdot{}^t(1\ 1\ 0)$, quindi insieme al vettore tenuto forma un insieme dipendente: **scartato**.
+  Passo 3: ${}^t(1\ 1\ 1)$ non è multiplo di ${}^t(1\ 1\ 0)$ (la terza entrata è $1$ invece di $0$), quindi la coppia è indipendente: **tenuto**.
+  Risultato: la base $\{{}^t(1\ 1\ 0),{}^t(1\ 1\ 1)\}$ dello Span.
+  **Errore tipico:** scartare il primo vettore e tenere il suo multiplo: l'algoritmo procede nell'ordine dato e tiene il primo vettore non nullo; il confronto si fa sempre con i vettori **già tenuti**, non con i successivi.
+T: Quale dei seguenti è l'elenco dei passi dell'algoritmo di estrazione di una base dello spazio vettoriale $\mathrm{Span}\left(\begin{pmatrix}1\\1\\0\end{pmatrix},\begin{pmatrix}2\\2\\0\end{pmatrix},\begin{pmatrix}1\\1\\1\end{pmatrix}\right)$ partendo dall'insieme ordinato $\left\{\begin{pmatrix}1\\1\\0\end{pmatrix},\begin{pmatrix}2\\2\\0\end{pmatrix},\begin{pmatrix}1\\1\\1\end{pmatrix}\right\}$?
+OPT: ${}^t(1\ 1\ 0)$ scartato, ${}^t(2\ 2\ 0)$ tenuto, ${}^t(1\ 1\ 1)$ tenuto. | ${}^t(1\ 1\ 0)$ tenuto, ${}^t(2\ 2\ 0)$ scartato, ${}^t(1\ 1\ 1)$ scartato. | ${}^t(1\ 1\ 0)$ tenuto, ${}^t(2\ 2\ 0)$ scartato, ${}^t(1\ 1\ 1)$ tenuto. | ${}^t(1\ 1\ 0)$ tenuto, ${}^t(2\ 2\ 0)$ tenuto, ${}^t(1\ 1\ 1)$ tenuto.
+x57 D Per trovare una base dello Span basta estrarla dai tre generatori $v_1={}^t(2\ 1\ 0\ -3)$, $v_2={}^t(3\ -1\ 1\ 1)$, $v_3={}^t(1\ 3\ -1\ -3)$: se sono indipendenti, la base è formata da tutti e tre.
+  $v_1$ è non nullo: tenuto. $v_2$ non è multiplo di $v_1$ (la terza entrata di $v_1$ è $0$, quella di $v_2$ no): tenuto.
+  $v_3\in\mathrm{Span}(v_1,v_2)$? Se $v_3=a v_1+b v_2$, dalla terza entrata $b=-1$; dalla prima $2a-3=1$, quindi $a=2$; ma allora la seconda entrata vale $2\cdot1+(-1)(-1)=3$ (ok) e la quarta $2\cdot(-3)+(-1)\cdot1=-7\neq-3$. Quindi $v_3\notin\mathrm{Span}(v_1,v_2)$: tenuto.
+  I tre vettori sono linearmente indipendenti, quindi formano una base dello Span, che ha dimensione $3$.
+  **Errore tipico:** credere che lo Span di tre vettori in $\mathbb{R}^4$ abbia sempre una base più piccola dei generatori, oppure fermarsi alle prime entrate (che sono compatibili con $v_3=2v_1-v_2$) senza controllare la quarta.
+T: Quale dei seguenti è una base dello spazio vettoriale $\mathrm{Span}\left(\begin{pmatrix}2\\1\\0\\-3\end{pmatrix},\begin{pmatrix}3\\-1\\1\\1\end{pmatrix},\begin{pmatrix}1\\3\\-1\\-3\end{pmatrix}\right)$?
+OPT: $\left\{\begin{pmatrix}2\\1\\0\\-3\end{pmatrix},\begin{pmatrix}3\\-1\\1\\1\end{pmatrix}\right\}$ | $\left\{\begin{pmatrix}2\\1\\0\\-3\end{pmatrix},\begin{pmatrix}1\\3\\-1\\-3\end{pmatrix}\right\}$ | $\left\{\begin{pmatrix}3\\-1\\1\\1\end{pmatrix},\begin{pmatrix}1\\3\\-1\\-3\end{pmatrix}\right\}$ | $\left\{\begin{pmatrix}2\\1\\0\\-3\end{pmatrix},\begin{pmatrix}3\\-1\\1\\1\end{pmatrix},\begin{pmatrix}1\\3\\-1\\-3\end{pmatrix}\right\}$
+  TRAP: Le prime tre entrate di ${}^t(1\ 3\ -1\ -3)$ coincidono con quelle di $2v_1-v_2$: solo la quarta entrata mostra che i tre vettori sono indipendenti.
+x58 C Il vettore delle coordinate $[X]_{\mathcal{B}}={}^t(\lambda_1\ \lambda_2)$ è dato dai coefficienti dell'unica combinazione ${}^t(3\ 2)=\lambda_1{}^t(0\ 1)+\lambda_2{}^t(1\ 1)$.
+  Componente per componente: prima entrata $0\cdot\lambda_1+\lambda_2=3$, quindi $\lambda_2=3$; seconda entrata $\lambda_1+\lambda_2=2$, quindi $\lambda_1=2-3=-1$.
+  Verifica: $-1\cdot{}^t(0\ 1)+3\cdot{}^t(1\ 1)={}^t(3\ \ -1+3)={}^t(3\ 2)$. Quindi $[X]_{\mathcal{B}}={}^t(-1\ 3)$.
+  **Errore tipico:** rispondere con il vettore stesso: le sue entrate sono le coordinate rispetto alla base **canonica**, non rispetto a $\mathcal{B}$. Anche l'ordine conta: il primo coefficiente si riferisce al primo vettore di $\mathcal{B}$.
+T: Quale è il vettore delle coordinate del vettore colonna $\begin{pmatrix}3\\2\end{pmatrix}$ rispetto alla base $\mathcal{B}=\left\{\begin{pmatrix}0\\1\end{pmatrix},\begin{pmatrix}1\\1\end{pmatrix}\right\}$ di $\mathbb{R}^2$?
+OPT: $\begin{pmatrix}3\\2\end{pmatrix}$ | $\begin{pmatrix}2\\3\end{pmatrix}$ | $\begin{pmatrix}-1\\3\end{pmatrix}$ | $\begin{pmatrix}1\\-3\end{pmatrix}$
+
+## L10 Dimensione
+10-1 C La dimensione dello Span è il numero di elementi di una sua base, che si ottiene estraendola dai generatori (Algoritmo 9.10).
+  Generatori: $v_1={}^t(1\ -1\ 2)$, $v_2={}^t(-2\ 2\ -4)$, $v_3={}^t(-1\ 1\ -2)$. Si ha $v_2=-2v_1$ e $v_3=-v_1$.
+  Estrazione: $v_1\neq0$ tenuto; $v_2$ multiplo di $v_1$, scartato; $v_3$ multiplo di $v_1$, scartato. La base è $\{v_1\}$, quindi $\dim\mathrm{Span}(v_1,v_2,v_3)=1$ (è una retta).
+  **Errore tipico:** contare i generatori (3) invece degli elementi di una base: il numero di generatori è solo un limite superiore della dimensione (Corollario 10.7). La dimensione $0$ spetterebbe solo a $\{0\}$.
+T: Quale è la dimensione del sottospazio vettoriale $\mathrm{Span}({}^t(1\ -1\ 2),\ {}^t(-2\ 2\ -4),\ {}^t(-1\ 1\ -2))$ di $\mathbb{R}^3$?
+10-2 B Estraiamo una base dai generatori $v_1={}^t(1\ -1\ 2)$, $v_2={}^t(-2\ 2\ -4)$, $v_3={}^t(-1\ 1\ 2)$.
+  $v_1\neq0$: tenuto. $v_2=-2v_1$: scartato. $v_3$ è multiplo di $v_1$? Dovrebbe essere $v_3=-v_1={}^t(-1\ 1\ -2)$, ma la terza entrata è $2$, non $-2$: non è multiplo, quindi tenuto.
+  La base è $\{v_1,v_3\}$, quindi la dimensione è $2$ (un piano).
+  **Errore tipico:** notare che le prime due entrate di $v_3$ sono quelle di $-v_1$ e concludere che sia multiplo: bisogna controllare **tutte** le entrate.
+T: Quale è la dimensione del sottospazio vettoriale $\mathrm{Span}({}^t(1\ -1\ 2),\ {}^t(-2\ 2\ -4),\ {}^t(-1\ 1\ 2))$ di $\mathbb{R}^3$?
+  TRAP: ${}^t(-1\ 1\ 2)$ sembra l'opposto di ${}^t(1\ -1\ 2)$, ma la terza entrata ha lo stesso segno: non è un multiplo.
+10-3 A Estraiamo una base dai generatori $v_1={}^t(1\ -1\ 2)$, $v_2={}^t(2\ 2\ -4)$, $v_3={}^t(-1\ 1\ 2)$.
+  $v_1\neq0$: tenuto. $v_2$ non è multiplo di $v_1$ (dalla prima entrata servirebbe il fattore $2$, ma $2v_1={}^t(2\ -2\ 4)\neq v_2$): tenuto.
+  $v_3=a v_1+b v_2$? Prima entrata: $a+2b=-1$; seconda: $-a+2b=1$. Sommando: $4b=0$, $b=0$, $a=-1$; terza entrata: $2a-4b=-2\neq2$. Nessuna soluzione: $v_3\notin\mathrm{Span}(v_1,v_2)$, tenuto.
+  I tre vettori sono indipendenti, quindi la dimensione è $3$: lo Span è tutto $\mathbb{R}^3$ (Corollario 10.21). Controllo: $\det\begin{pmatrix}1&2&-1\\-1&2&1\\2&-4&2\end{pmatrix}=16\neq0$.
+  **Errore tipico:** confondere questa domanda con quelle quasi identiche in cui il secondo vettore è ${}^t(-2\ 2\ -4)=-2v_1$: qui la prima entrata è $2$ e non $-2$, e la dimensione sale.
+T: Quale è la dimensione del sottospazio vettoriale $\mathrm{Span}({}^t(1\ -1\ 2),\ {}^t(2\ 2\ -4),\ {}^t(-1\ 1\ 2))$ di $\mathbb{R}^3$?
+  TRAP: Il secondo vettore è ${}^t(2\ 2\ -4)$, non ${}^t(-2\ 2\ -4)$: non è multiplo del primo.
+10-4 APERTA
+KW: dimensione, dim(V)|dim, numero degli elementi di una base|elementi di una base, finitamente generato|dimensione finita, tutte le basi hanno lo stesso numero di elementi, linearmente indipendenti, generatori, k ≤ n|al più n, massimo numero di vettori linearmente indipendenti, minimo numero di generatori, completamento a una base, sottospazio, dim(W) ≤ dim(V)
+> **Definizione 10.1.** La *dimensione* di uno spazio vettoriale finitamente generato $V$ è il numero di elementi di una qualsiasi delle sue basi, e si indica con $\dim(V)$. La definizione ha senso perché $V$ ha almeno una base (Teorema 9.15) e tutte le basi hanno lo stesso numero di elementi (Teorema 9.20). Uno spazio finitamente generato si dice anche *di dimensione finita*.
+> Esempi: $\dim V^2_G=2$, $\dim V^3_G=3$, $\dim\mathbb{K}^n=n$ (la base canonica ha $n$ elementi), $\dim V=0$ se e solo se $V=\{0\}$; $\mathbb{C}$ ha dimensione $2$ su $\mathbb{R}$ (base $\{1,i\}$) e $1$ su $\mathbb{C}$.
+> **Corollario 10.7.** Se $\dim V=n$ e $v_1,\dots,v_k\in V$: se sono linearmente indipendenti allora $k\le n$; se generano $V$ allora $n\le k$.
+> **Corollario 10.8.** $\dim V$ = massimo numero di vettori linearmente indipendenti di $V$ = minimo numero di generatori di $V$.
+> **Corollario 10.20.** Se $\dim V=n$, per $n$ vettori di $V$ essere linearmente indipendenti equivale a generare $V$ (quindi basta verificare una delle due condizioni per avere una base).
+> **Teorema 10.17.** Ogni sottospazio $W$ di $V$ finitamente generato è finitamente generato e $\dim W\le\dim V$; se $\dim W=\dim V$ allora $W=V$ (Corollario 10.21). Ad esempio i sottospazi di $V^3_G$ sono $\{0\}$, le rette (dim 1), i piani (dim 2) e $V^3_G$.
+10-5 APERTA
+KW: algoritmo di completamento|completamento a una base, linearmente indipendenti, Span, si sceglie un vettore|scegliere, non appartiene allo Span|non appartiene, termina, base di V, non univocamente determinato|scelta arbitraria, insieme vuoto, dim(V) − m + 1|numero di passi, Teorema 10.19
+> **Algoritmo 10.10 (completamento a una base).** Sia $I=\{v_1,\dots,v_m\}$ un insieme ordinato di vettori **linearmente indipendenti** di uno spazio vettoriale finitamente generato $V$. Al passo $i$-esimo:
+> - se $\mathrm{Span}(v_1,\dots,v_{m+i-1})\neq V$, si **sceglie** un vettore $v_{m+i}$ che **non appartiene** a $\mathrm{Span}(v_1,\dots,v_{m+i-1})$;
+> - se $\mathrm{Span}(v_1,\dots,v_{m+i-1})=V$, l'algoritmo **termina** e il risultato è $\{v_1,\dots,v_{m+i-1}\}$.
+> Ad ogni passo i vettori restano indipendenti (si aggiunge un vettore fuori dallo Span dei precedenti). **Proposizione 10.15:** l'algoritmo termina dopo un numero finito di passi (esattamente $\dim V-m+1$) e il risultato è una base di $V$. Il risultato **non è unico**: la scelta dei vettori è arbitraria, purché fuori dallo Span. Si può partire anche da $I=\emptyset$ (al primo passo si sceglie un qualsiasi vettore non nullo).
+> Esempio 10.14: da $\{{}^t(2\ -1\ 3)\}$ in $\mathbb{R}^3$ si sceglie ${}^t(1\ 1\ 0)\notin\mathrm{Span}({}^t(2\ -1\ 3))$, poi ${}^t(0\ 0\ 1)$ fuori dallo Span dei due; ora lo Span è $\mathbb{R}^3$ e il risultato è $\{{}^t(2\ -1\ 3),{}^t(1\ 1\ 0),{}^t(0\ 0\ 1)\}$.
+> Conseguenza (**Teorema 10.19**): vettori linearmente indipendenti di $V$ si possono sempre completare a una base di $V$; da qui seguono anche $\dim W\le\dim V$ per i sottospazi e il Corollario 10.20.
+x59 B La dimensione dello Span è il numero di vettori di una base estratta dai generatori $v_1={}^t(0\ 2\ -3\ 1)$, $v_2={}^t(2\ -1\ 1\ 3)$, $v_3={}^t(4\ -4\ 5\ 5)$.
+  $v_1\neq0$: tenuto. $v_2$ non è multiplo di $v_1$ (prima entrata $2$ contro $0$): tenuto.
+  $v_3=a v_1+b v_2$? Prima entrata: $2b=4$, $b=2$. Seconda: $2a-2=-4$, $a=-1$. Terza: $-3a+b=3+2=5$ ✓. Quarta: $a+3b=-1+6=5$ ✓. Quindi $v_3=-v_1+2v_2$: scartato.
+  La base è $\{v_1,v_2\}$ e la dimensione è $2$.
+  **Errore tipico:** rispondere $3$ contando i generatori, o $4$ confondendo la dimensione dello Span con quella di $\mathbb{R}^4$.
+T: Quale è la dimensione del sottospazio vettoriale $\mathrm{Span}\left(\begin{pmatrix}0\\2\\-3\\1\end{pmatrix},\begin{pmatrix}2\\-1\\1\\3\end{pmatrix},\begin{pmatrix}4\\-4\\5\\5\end{pmatrix}\right)$ di $\mathbb{R}^4$?
+OPT: $1$. | $2$. | $3$. | $4$.
+x60 B Per il Corollario 10.8 il massimo numero di vettori linearmente indipendenti di uno spazio finitamente generato è uguale alla sua dimensione. Poiché $\dim\mathbb{R}^4=4$ (la base canonica $\mathcal{E}_4$ ha 4 elementi), il massimo è $4$.
+  Infatti per il Corollario 10.7 $k$ vettori indipendenti in uno spazio di dimensione $n$ soddisfano $k\le n$, e $e_1,e_2,e_3,e_4$ sono 4 vettori indipendenti: il massimo è raggiunto.
+  **Errore tipico:** pensare che, essendo $\mathbb{R}^4$ un insieme infinito, si possano trovare quanti vettori indipendenti si vuole: i vettori sono infiniti, ma ogni insieme di 5 o più è dipendente.
+T: Quale è il numero massimo di vettori linearmente indipendenti che possono essere trovati nello spazio vettoriale reale $\mathbb{R}^4$?
+OPT: $3$. | $4$. | $5$. | Non c'è un numero massimo di vettori.
+x61 B Per il Corollario 10.8, in uno spazio finitamente generato $V$ coincidono tre numeri: la dimensione di $V$, il massimo numero di vettori linearmente indipendenti di $V$ e il minimo numero di generatori di $V$.
+  Il numero di elementi di un insieme **qualsiasi** di generatori, invece, può essere più grande della dimensione: ad esempio $\{{}^t(1\ 0),{}^t(0\ 1),{}^t(1\ 1)\}$ genera $\mathbb{R}^2$ con 3 vettori, mentre $\dim\mathbb{R}^2=2$. Vale solo $\dim V\le$ numero di generatori (Corollario 10.7).
+  **Errore tipico:** confondere "il minimo numero di generatori" (che è la dimensione) con "il numero di elementi di un insieme di generatori" (che può essere qualsiasi numero $\ge\dim V$).
+T: Dato uno spazio vettoriale $V$ finitamente generato, quale dei seguenti numeri può essere diverso dagli altri?
+OPT: La dimensione di $V$. | Il numero di elementi di un insieme di generatori di $V$. | Il massimo numero di vettori linearmente indipendenti di $V$. | Il minimo numero di generatori di $V$.
+x62 C Nell'algoritmo di completamento a una base (Algoritmo 10.10) a ogni passo si sceglie un vettore che **non appartiene** allo Span dei vettori già presenti.
+  Dopo il primo passo i vettori sono ${}^t(1\ 1\ 0\ 0)$ e ${}^t(1\ 0\ 0\ 0)$, e $\mathrm{Span}({}^t(1\ 1\ 0\ 0),{}^t(1\ 0\ 0\ 0))=\{{}^t(a\ b\ 0\ 0)\mid a,b\in\mathbb{R}\}$ (tutti i vettori con le ultime due entrate nulle): infatti $a\,{}^t(1\ 0\ 0\ 0)+b\,[{}^t(1\ 1\ 0\ 0)-{}^t(1\ 0\ 0\ 0)]={}^t(a\ b\ 0\ 0)$.
+  ${}^t(0\ 1\ 0\ 0)$, ${}^t(2\ 1\ 0\ 0)$ e il vettore nullo hanno le ultime due entrate nulle, quindi stanno nello Span e non possono essere scelti. ${}^t(0\ 0\ 0\ 1)$ ha la quarta entrata non nulla, quindi non sta nello Span: è l'unica scelta possibile tra quelle proposte.
+  **Errore tipico:** scegliere ${}^t(0\ 1\ 0\ 0)$ perché è un vettore della base canonica "nuovo": è combinazione lineare dei due vettori già presenti (${}^t(1\ 1\ 0\ 0)-{}^t(1\ 0\ 0\ 0)$).
+T: Applicando l'algoritmo di completamento a una base all'insieme (ordinato) $\mathcal{I}=\left\{\begin{pmatrix}1\\1\\0\\0\end{pmatrix}\right\}$ in $\mathbb{R}^4$, quale dei seguenti vettori colonna può essere scelto al secondo passo se al primo passo è stato scelto il vettore colonna $\begin{pmatrix}1\\0\\0\\0\end{pmatrix}$?
+OPT: $\begin{pmatrix}0\\1\\0\\0\end{pmatrix}$ | $\begin{pmatrix}2\\1\\0\\0\end{pmatrix}$ | $\begin{pmatrix}0\\0\\0\\1\end{pmatrix}$ | $\begin{pmatrix}0\\0\\0\\0\end{pmatrix}$
+
+## L11 Matrici
+11-1 B Una sottomatrice si ottiene fissando alcune righe e alcune colonne e **rimuovendo** le altre (Definizione 11.24): gli elementi restano nelle loro posizioni relative, senza riordinarli.
+  La matrice è $\begin{pmatrix}2&1&3&1\\-2&0&1&5\\4&-6&3&1\end{pmatrix}$. Scegliendo le righe 1 e 3 e le colonne 2 e 4 si ottiene $\begin{pmatrix}1&1\\-6&1\end{pmatrix}$.
+  Le altre non sono sottomatrici: per avere $\begin{pmatrix}1&1\\4&\ast\end{pmatrix}$ servirebbe un $4$ sotto a due $1$ della stessa riga, ma l'unico $4$ è al posto $(3,1)$ e sopra di esso, in riga 1, c'è $2$ (o $-2$ in riga 2); per $\begin{pmatrix}2&-3\\4&5\end{pmatrix}$ servirebbe un $-3$, che non compare nella matrice.
+  **Errore tipico:** prendere elementi da posti sparsi senza rispettare la struttura: i due elementi di ogni riga della sottomatrice devono stare nelle **stesse colonne** per entrambe le righe scelte.
+T: Quale delle seguenti è una sottomatrice $2\times2$ della matrice $3\times4$ $\begin{pmatrix}2&1&3&1\\-2&0&1&5\\4&-6&3&1\end{pmatrix}$?
+OPT: $\begin{pmatrix}1&1\\4&-1\end{pmatrix}$ | $\begin{pmatrix}1&1\\-6&1\end{pmatrix}$ | $\begin{pmatrix}2&-3\\4&5\end{pmatrix}$ | $\begin{pmatrix}1&1\\4&2\end{pmatrix}$
+11-2 B Una sottomatrice si ottiene scegliendo righe e colonne e rimuovendo le altre, mantenendo l'ordine (Definizione 11.24).
+  La matrice è $\begin{pmatrix}1&-1&-3&1\\-5&3&-1&0\\4&6&-3&2\end{pmatrix}$. Con le righe 1 e 3 e le colonne 1 e 4 si ottiene $\begin{pmatrix}1&1\\4&2\end{pmatrix}$.
+  Le altre: $\begin{pmatrix}1&1\\4&-1\end{pmatrix}$ richiederebbe $-1$ in riga 3 sotto un $1$, ma in riga 3 non c'è $-1$; $\begin{pmatrix}1&1\\-6&1\end{pmatrix}$ richiede $-6$, assente; $\begin{pmatrix}2&-3\\4&5\end{pmatrix}$ richiede $2$ e $-3$ nella stessa riga con $4$ e $5$ sotto, ma $5$ non compare (c'è $-5$).
+  **Errore tipico:** confondere $5$ con $-5$ o leggere l'elemento della colonna sbagliata: ogni entrata va controllata con il suo segno e la sua colonna.
+T: Quale delle seguenti è una sottomatrice $2\times2$ della matrice $3\times4$ $\begin{pmatrix}1&-1&-3&1\\-5&3&-1&0\\4&6&-3&2\end{pmatrix}$?
+OPT: $\begin{pmatrix}2&-3\\4&5\end{pmatrix}$ | $\begin{pmatrix}1&1\\4&2\end{pmatrix}$ | $\begin{pmatrix}1&1\\-6&1\end{pmatrix}$ | $\begin{pmatrix}1&1\\4&-1\end{pmatrix}$
+11-3 C Una sottomatrice si ottiene scegliendo righe e colonne e rimuovendo le altre, mantenendo l'ordine (Definizione 11.24).
+  La matrice è $\begin{pmatrix}2&-1&-3&1\\-2&1&0&-5\\4&6&5&-2\end{pmatrix}$. Con le righe 1 e 3 e le colonne 1 e 3 si ottiene $\begin{pmatrix}2&-3\\4&5\end{pmatrix}$.
+  Le altre richiedono una riga con due $1$ (o un $1$ e un elemento uguale): l'unica riga con due $1$ sarebbe necessaria per $\begin{pmatrix}1&1\\\ast&\ast\end{pmatrix}$, ma nessuna riga della matrice contiene due volte $1$ (riga 1: $2,-1,-3,1$; riga 2: $-2,1,0,-5$; riga 3: $4,6,5,-2$).
+  **Errore tipico:** fermarsi al fatto che gli elementi compaiono "da qualche parte" nella matrice: devono stare all'incrocio delle righe e colonne scelte.
+T: Quale delle seguenti è una sottomatrice $2\times2$ della matrice $3\times4$ $\begin{pmatrix}2&-1&-3&1\\-2&1&0&-5\\4&6&5&-2\end{pmatrix}$?
+OPT: $\begin{pmatrix}1&1\\4&-1\end{pmatrix}$ | $\begin{pmatrix}1&1\\4&2\end{pmatrix}$ | $\begin{pmatrix}2&-3\\4&5\end{pmatrix}$ | $\begin{pmatrix}1&1\\-6&1\end{pmatrix}$
+11-4 D Una sottomatrice si ottiene scegliendo righe e colonne e rimuovendo le altre, mantenendo l'ordine (Definizione 11.24).
+  La matrice è $\begin{pmatrix}1&1&3&1\\-6&4&2&3\\4&-6&2&-1\end{pmatrix}$. Con le righe 1 e 3 e le colonne 1 e 4: la riga 1 dà $(1\ \ 1)$, la riga 3 dà $(4\ \ -1)$. La sottomatrice è $\begin{pmatrix}1&1\\4&-1\end{pmatrix}$.
+  Le altre: $\begin{pmatrix}1&1\\4&2\end{pmatrix}$ richiederebbe $2$ in riga 3 nella stessa colonna di un $1$ della riga 1, ma il $2$ di riga 3 è in colonna 3, dove la riga 1 ha $3$; $\begin{pmatrix}1&1\\-6&1\end{pmatrix}$ richiede un $1$ nella riga del $-6$, ma le righe 2 e 3 non contengono $1$; $\begin{pmatrix}2&-3\\4&5\end{pmatrix}$ richiede $-3$ e $5$, assenti.
+  **Errore tipico:** accoppiare il $4$ di riga 3 con il $2$ della stessa riga senza controllare che sopra di essi, nella riga scelta, ci siano proprio gli elementi richiesti.
+T: Quale delle seguenti è una sottomatrice $2\times2$ della matrice $3\times4$ $\begin{pmatrix}1&1&3&1\\-6&4&2&3\\4&-6&2&-1\end{pmatrix}$?
+OPT: $\begin{pmatrix}1&1\\4&2\end{pmatrix}$ | $\begin{pmatrix}2&-3\\4&5\end{pmatrix}$ | $\begin{pmatrix}1&1\\-6&1\end{pmatrix}$ | $\begin{pmatrix}1&1\\4&-1\end{pmatrix}$
+x63 C Una matrice $n\times n$ si dice quadrata e $n$ è il suo **ordine** (Definizione 11.10).
+  La matrice $\begin{pmatrix}1&3&-1\\1&0&0\\-2&1&-5\end{pmatrix}$ ha 3 righe e 3 colonne, quindi è quadrata di ordine $3$.
+  **Errore tipico:** rispondere $9$, cioè il numero di entrate $3\cdot3$: l'ordine è il numero di righe (uguale a quello delle colonne), non il numero di elementi.
+T: Quale è l'ordine della matrice $\begin{pmatrix}1&3&-1\\1&0&0\\-2&1&-5\end{pmatrix}$?
+OPT: $1$. | $2$. | $3$. | $9$.
+x64 C Una matrice è **a scalini** se in ogni riga il primo elemento non nullo (pivot) è a destra del primo elemento non nullo della riga precedente, e tutte le righe nulle sono in fondo (Definizione 11.13).
+  $\begin{pmatrix}1&0&2\\0&-1&2\\0&0&0\end{pmatrix}$: pivot $1$ in colonna 1, pivot $-1$ in colonna 2 (più a destra), poi una riga nulla in fondo. È a scalini.
+  $\begin{pmatrix}2&-3&1\\0&0&0\\0&0&1\end{pmatrix}$: la riga nulla non è in fondo (sotto c'è una riga non nulla). $\begin{pmatrix}0&-3&1\\1&0&0\end{pmatrix}$: il pivot della seconda riga (colonna 1) è a sinistra di quello della prima (colonna 2). $\begin{pmatrix}1&-3&1\\0&0&-3\\0&2&1\\0&0&0\end{pmatrix}$: il pivot della terza riga (colonna 2) è a sinistra di quello della seconda (colonna 3).
+  **Errore tipico:** controllare solo che sotto il primo pivot ci siano zeri, dimenticando le condizioni sulle righe successive (posizione dei pivot e righe nulle in fondo).
+T: Quale delle seguenti matrici è a scalini?
+OPT: $\begin{pmatrix}2&-3&1\\0&0&0\\0&0&1\end{pmatrix}$ | $\begin{pmatrix}0&-3&1\\1&0&0\end{pmatrix}$ | $\begin{pmatrix}1&0&2\\0&-1&2\\0&0&0\end{pmatrix}$ | $\begin{pmatrix}1&-3&1\\0&0&-3\\0&2&1\\0&0&0\end{pmatrix}$
+x65 B La trasposta ${}^tA$ di una matrice $n\times m$ è la matrice $m\times n$ ottenuta scambiando le righe con le colonne (Definizione 11.16): la $i$-esima riga di ${}^tA$ è la $i$-esima colonna di $A$.
+  $A=\begin{pmatrix}1&-3\\0&1\\-2&3\end{pmatrix}$ è $3\times2$, quindi ${}^tA$ è $2\times3$. Prima colonna di $A$: $1,0,-2$ → prima riga di ${}^tA$; seconda colonna: $-3,1,3$ → seconda riga. Quindi ${}^tA=\begin{pmatrix}1&0&-2\\-3&1&3\end{pmatrix}$.
+  **Errore tipico:** scrivere le righe di $A$ una dopo l'altra (si ottiene $\begin{pmatrix}1&-3&-2\\0&1&3\end{pmatrix}$, che mescola righe e colonne), oppure lasciare la dimensione $3\times2$ e cambiare solo qualche entrata.
+T: Quale delle seguenti matrici è la trasposta della matrice $\begin{pmatrix}1&-3\\0&1\\-2&3\end{pmatrix}$?
+OPT: $\begin{pmatrix}1&0\\-3&1\\-2&3\end{pmatrix}$ | $\begin{pmatrix}1&0&-2\\-3&1&3\end{pmatrix}$ | $\begin{pmatrix}1&-3&-2\\0&1&3\end{pmatrix}$ | $\begin{pmatrix}1&0\\-3&1\end{pmatrix}$
+x66 D Una sottomatrice **quadrata** si ottiene scegliendo lo stesso numero di righe e di colonne e rimuovendo le altre (Definizione 11.24).
+  La matrice è $\begin{pmatrix}-3&1&0&2\\7&1&-6&1\\7&-1&3&2\end{pmatrix}$. Scegliendo le righe 2 e 3 e le colonne 1 e 3: riga 2 dà $(7\ \ -6)$, riga 3 dà $(7\ \ 3)$. Si ottiene $\begin{pmatrix}7&-6\\7&3\end{pmatrix}$, quadrata.
+  Le altre: $\begin{pmatrix}-3&1&0\\7&1&-6\end{pmatrix}$ è una sottomatrice (righe 1, 2 e colonne 1, 2, 3) ma è $2\times3$, non quadrata; $\begin{pmatrix}-3&1&0\\7&1&6\\7&-1&3\end{pmatrix}$ ha $6$ dove la matrice ha $-6$; $\begin{pmatrix}7&1\\7&3\end{pmatrix}$ richiede $1$ e $3$ nella stessa colonna, ma il $3$ di riga 3 è in colonna 3 dove la riga 2 ha $-6$.
+  **Errore tipico:** scegliere la sottomatrice $2\times3$, che è davvero una sottomatrice ma non è quadrata.
+T: Quale delle seguenti matrici è una sottomatrice quadrata della matrice $\begin{pmatrix}-3&1&0&2\\7&1&-6&1\\7&-1&3&2\end{pmatrix}$?
+OPT: $\begin{pmatrix}-3&1&0\\7&1&-6\end{pmatrix}$ | $\begin{pmatrix}-3&1&0\\7&1&6\\7&-1&3\end{pmatrix}$ | $\begin{pmatrix}7&1\\7&3\end{pmatrix}$ | $\begin{pmatrix}7&-6\\7&3\end{pmatrix}$
+  TRAP: Una delle opzioni è davvero una sottomatrice, ma $2\times3$: la domanda chiede una sottomatrice quadrata.
+
+## L12 Operazioni elementari e metodo di eliminazione di Gauss
+12-1 A Applichiamo il metodo di eliminazione di Gauss (Algoritmo 12.9) ad $A=\begin{pmatrix}0&-1&-2\\1&2&0\\1&0&-2\end{pmatrix}$: in ogni passo si cerca la prima colonna non nulla, se l'entrata in alto è $0$ si scambia la prima riga con la prima riga che ha entrata non nulla, poi si annullano le entrate sotto il pivot con operazioni di tipo III. **Non** si normalizza.
+  Passo 1: la prima colonna non nulla è la 1; l'entrata $(1,1)$ è $0$ e la prima riga con entrata non nulla è la 2: $\xrightarrow{R_I\ 1\leftrightarrow2}\begin{pmatrix}1&2&0\\0&-1&-2\\1&0&-2\end{pmatrix}$. Poi $\xrightarrow{R_{III}\ 3+(-1)\cdot1}\begin{pmatrix}1&2&0\\0&-1&-2\\0&-2&-2\end{pmatrix}$.
+  Passo 2 (sottomatrice delle righe 2 e 3): prima colonna non nulla la 2, pivot $-1$; $\xrightarrow{R_{III}\ 3+(-2)\cdot2}$: $(0\ -2\ -2)-2(0\ -1\ -2)=(0\ 0\ 2)$.
+  Risultato: $\begin{pmatrix}1&2&0\\0&-1&-2\\0&0&2\end{pmatrix}$.
+  **Errore tipico:** sbagliare il segno dell'ultimo pivot ($-2-2\cdot(-2)=+2$), oppure scambiare con la terza riga o cambiare segno alla prima riga: l'algoritmo prende la **prima** riga con entrata non nulla e non moltiplica le righe.
+T: Quale è il risultato del metodo di eliminazione di Gauss applicato alla matrice $3\times3$ $\begin{pmatrix}0&-1&-2\\1&2&0\\1&0&-2\end{pmatrix}$?
+OPT: $\begin{pmatrix}1&2&0\\0&-1&-2\\0&0&2\end{pmatrix}$ | $\begin{pmatrix}1&2&0\\0&-1&-2\\0&0&-2\end{pmatrix}$ | $\begin{pmatrix}-1&-2&0\\0&1&2\\0&0&2\end{pmatrix}$ | $\begin{pmatrix}-1&-2&0\\0&1&2\\0&0&-2\end{pmatrix}$
+12-2 C Metodo di eliminazione di Gauss (Algoritmo 12.9) su $A=\begin{pmatrix}0&1&2\\-1&-2&0\\-1&-4&-2\end{pmatrix}$.
+  Passo 1: prima colonna non nulla la 1; $(1,1)=0$, la prima riga con entrata non nulla è la 2: $\xrightarrow{R_I\ 1\leftrightarrow2}\begin{pmatrix}-1&-2&0\\0&1&2\\-1&-4&-2\end{pmatrix}$. Per annullare $(3,1)$ si somma alla riga 3 la riga 1 per $-\frac{-1}{-1}=-1$: $\xrightarrow{R_{III}\ 3+(-1)\cdot1}\begin{pmatrix}-1&-2&0\\0&1&2\\0&-2&-2\end{pmatrix}$.
+  Passo 2: pivot $1$ al posto $(2,2)$; $\xrightarrow{R_{III}\ 3+2\cdot2}$: $(0\ -2\ -2)+2(0\ 1\ 2)=(0\ 0\ 2)$.
+  Risultato: $\begin{pmatrix}-1&-2&0\\0&1&2\\0&0&2\end{pmatrix}$.
+  **Errore tipico:** "rendere positivo" il primo pivot moltiplicando per $-1$: nel metodo di Gauss (senza normalizzazione) non si fanno operazioni di tipo II, quindi il pivot resta $-1$.
+T: Quale è il risultato del metodo di eliminazione di Gauss applicato alla matrice $3\times3$ $\begin{pmatrix}0&1&2\\-1&-2&0\\-1&-4&-2\end{pmatrix}$?
+OPT: $\begin{pmatrix}-1&-2&0\\0&1&2\\0&0&-2\end{pmatrix}$ | $\begin{pmatrix}1&2&0\\0&-1&-2\\0&0&2\end{pmatrix}$ | $\begin{pmatrix}-1&-2&0\\0&1&2\\0&0&2\end{pmatrix}$ | $\begin{pmatrix}1&2&0\\0&-1&-2\\0&0&-2\end{pmatrix}$
+12-3 D Metodo di Gauss-Jordan (Algoritmo 12.16) = Gauss, poi normalizzazione dei pivot a $1$, poi eliminazione delle entrate sopra i pivot. Matrice $\begin{pmatrix}2&4&4&-8\\-3&-6&-5&9\end{pmatrix}$.
+  Gauss: pivot $2$ al posto $(1,1)$; alla riga 2 si somma la riga 1 per $-\frac{-3}{2}=\frac32$: $(-3+3\ \ -6+6\ \ -5+6\ \ 9-12)=(0\ 0\ 1\ -3)$. Si ottiene $\begin{pmatrix}2&4&4&-8\\0&0&1&-3\end{pmatrix}$.
+  Normalizzazione: $\xrightarrow{R_{II}\ \frac12\cdot1}\begin{pmatrix}1&2&2&-4\\0&0&1&-3\end{pmatrix}$ (il secondo pivot è già $1$).
+  Gauss-Jordan: il pivot della riga 2 è in colonna 3, sopra c'è $2$: $\xrightarrow{R_{III}\ 1+(-2)\cdot2}$: $(1\ 2\ 2\ -4)-2(0\ 0\ 1\ -3)=(1\ 2\ 0\ 2)$.
+  Risultato: $\begin{pmatrix}1&2&0&2\\0&0&1&-3\end{pmatrix}$.
+  **Errore tipico:** sbagliare un segno nell'ultima colonna (ad esempio $-4+6=2$ ma $9-12=-3$): le opzioni differiscono proprio per i segni di $\pm2$ e $\pm3$.
+T: Quale è il risultato del metodo di eliminazione di Gauss-Jordan applicato alla matrice $\begin{pmatrix}2&4&4&-8\\-3&-6&-5&9\end{pmatrix}$?
+OPT: $\begin{pmatrix}1&-2&0&1\\0&0&1&-3\end{pmatrix}$ | $\begin{pmatrix}1&2&0&2\\0&0&1&3\end{pmatrix}$ | $\begin{pmatrix}1&-2&0&1\\0&0&1&3\end{pmatrix}$ | $\begin{pmatrix}1&2&0&2\\0&0&1&-3\end{pmatrix}$
+12-4 B Metodo di Gauss-Jordan (Algoritmo 12.16) su $\begin{pmatrix}1&-2&2&-5\\-3&6&-4&9\end{pmatrix}$.
+  Gauss: pivot $1$; $\xrightarrow{R_{III}\ 2+3\cdot1}$: $(-3+3\ \ 6-6\ \ -4+6\ \ 9-15)=(0\ 0\ 2\ -6)$. Si ottiene $\begin{pmatrix}1&-2&2&-5\\0&0&2&-6\end{pmatrix}$.
+  Normalizzazione: $\xrightarrow{R_{II}\ \frac12\cdot2}\begin{pmatrix}1&-2&2&-5\\0&0&1&-3\end{pmatrix}$.
+  Gauss-Jordan: sopra il pivot di riga 2 (colonna 3) c'è $2$: $\xrightarrow{R_{III}\ 1+(-2)\cdot2}$: $(1\ -2\ 2\ -5)-2(0\ 0\ 1\ -3)=(1\ -2\ 0\ 1)$.
+  Risultato: $\begin{pmatrix}1&-2&0&1\\0&0&1&-3\end{pmatrix}$.
+  **Errore tipico:** cambiare il segno dell'entrata $-2$ della prima riga: le operazioni coinvolgono solo multipli di righe con zeri nelle prime due colonne, quindi le prime due entrate della prima riga restano $1$ e $-2$.
+T: Quale è il risultato del metodo di eliminazione di Gauss-Jordan applicato alla matrice $\begin{pmatrix}1&-2&2&-5\\-3&6&-4&9\end{pmatrix}$?
+OPT: $\begin{pmatrix}1&2&0&2\\0&0&1&-3\end{pmatrix}$ | $\begin{pmatrix}1&-2&0&1\\0&0&1&-3\end{pmatrix}$ | $\begin{pmatrix}1&2&0&2\\0&0&1&3\end{pmatrix}$ | $\begin{pmatrix}1&-2&0&1\\0&0&1&3\end{pmatrix}$
+12-5 D Metodo di Gauss-Jordan (Algoritmo 12.16) su $\begin{pmatrix}1&-2&-2&-5\\3&-6&-4&-9\end{pmatrix}$.
+  Gauss: pivot $1$; $\xrightarrow{R_{III}\ 2+(-3)\cdot1}$: $(3-3\ \ -6+6\ \ -4+6\ \ -9+15)=(0\ 0\ 2\ 6)$. Si ottiene $\begin{pmatrix}1&-2&-2&-5\\0&0&2&6\end{pmatrix}$.
+  Normalizzazione: $\xrightarrow{R_{II}\ \frac12\cdot2}\begin{pmatrix}1&-2&-2&-5\\0&0&1&3\end{pmatrix}$.
+  Gauss-Jordan: sopra il pivot di riga 2 c'è $-2$: $\xrightarrow{R_{III}\ 1+2\cdot2}$: $(1\ -2\ -2\ -5)+2(0\ 0\ 1\ 3)=(1\ -2\ 0\ 1)$.
+  Risultato: $\begin{pmatrix}1&-2&0&1\\0&0&1&3\end{pmatrix}$.
+  **Errore tipico:** confondere questa matrice con quelle simili delle altre domande e ricordare a memoria il risultato: qui la seconda riga diventa $(0\ 0\ 1\ 3)$ con il $3$ positivo.
+T: Quale è il risultato del metodo di eliminazione di Gauss-Jordan applicato alla matrice $\begin{pmatrix}1&-2&-2&-5\\3&-6&-4&-9\end{pmatrix}$?
+OPT: $\begin{pmatrix}1&2&0&2\\0&0&1&3\end{pmatrix}$ | $\begin{pmatrix}1&2&0&2\\0&0&1&-3\end{pmatrix}$ | $\begin{pmatrix}1&-2&0&1\\0&0&1&-3\end{pmatrix}$ | $\begin{pmatrix}1&-2&0&1\\0&0&1&3\end{pmatrix}$
+12-6 C Metodo di eliminazione di Gauss (Algoritmo 12.9) su $A=\begin{pmatrix}-1&-2&0\\1&2&-2\\-2&-3&2\end{pmatrix}$.
+  Passo 1: pivot $-1$ al posto $(1,1)$ (non serve scambiare). $\xrightarrow{R_{III}\ 2+1\cdot1}$: $(1-1\ \ 2-2\ \ -2+0)=(0\ 0\ -2)$; $\xrightarrow{R_{III}\ 3+(-2)\cdot1}$: $(-2+2\ \ -3+4\ \ 2-0)=(0\ 1\ 2)$. Si ottiene $\begin{pmatrix}-1&-2&0\\0&0&-2\\0&1&2\end{pmatrix}$.
+  Passo 2 (righe 2 e 3): la prima colonna non nulla è la 2; l'entrata in alto è $0$, la prima riga con entrata non nulla è la terza: $\xrightarrow{R_I\ 2\leftrightarrow3}\begin{pmatrix}-1&-2&0\\0&1&2\\0&0&-2\end{pmatrix}$. Sotto il pivot c'è già $0$: fine.
+  Risultato: $\begin{pmatrix}-1&-2&0\\0&1&2\\0&0&-2\end{pmatrix}$.
+  **Errore tipico:** dopo il primo passo non accorgersi che serve uno scambio di righe (tipo I), oppure cambiare segno al primo pivot $-1$: senza normalizzazione non si moltiplicano le righe.
+T: Quale è il risultato del metodo di eliminazione di Gauss applicato alla matrice $3\times3$ $\begin{pmatrix}-1&-2&0\\1&2&-2\\-2&-3&2\end{pmatrix}$?
+OPT: $\begin{pmatrix}-1&-2&0\\0&1&2\\0&0&2\end{pmatrix}$ | $\begin{pmatrix}1&2&0\\0&-1&-2\\0&0&-2\end{pmatrix}$ | $\begin{pmatrix}-1&-2&0\\0&1&2\\0&0&-2\end{pmatrix}$ | $\begin{pmatrix}1&2&0\\0&-1&-2\\0&0&2\end{pmatrix}$
+  TRAP: Dopo il primo passo il posto (2,2) è nullo: serve lo scambio delle righe 2 e 3, e l'ultimo pivot resta $-2$.
+12-7 B Metodo di eliminazione di Gauss (Algoritmo 12.9) su $A=\begin{pmatrix}1&2&0\\-1&-2&-2\\2&3&-2\end{pmatrix}$.
+  Passo 1: pivot $1$ al posto $(1,1)$. $\xrightarrow{R_{III}\ 2+1\cdot1}$: $(0\ 0\ -2)$; $\xrightarrow{R_{III}\ 3+(-2)\cdot1}$: $(2-2\ \ 3-4\ \ -2-0)=(0\ -1\ -2)$. Si ottiene $\begin{pmatrix}1&2&0\\0&0&-2\\0&-1&-2\end{pmatrix}$.
+  Passo 2: prima colonna non nulla della sottomatrice è la 2, l'entrata in alto è $0$: $\xrightarrow{R_I\ 2\leftrightarrow3}\begin{pmatrix}1&2&0\\0&-1&-2\\0&0&-2\end{pmatrix}$. Sotto il pivot c'è già $0$: fine.
+  Risultato: $\begin{pmatrix}1&2&0\\0&-1&-2\\0&0&-2\end{pmatrix}$.
+  **Errore tipico:** pensare che l'ultimo pivot debba essere positivo, o che dopo lo scambio si debba ancora combinare la terza riga: dopo lo scambio la terza riga è $(0\ 0\ -2)$ e l'algoritmo termina.
+T: Quale è il risultato del metodo di eliminazione di Gauss applicato alla matrice $3\times3$ $\begin{pmatrix}1&2&0\\-1&-2&-2\\2&3&-2\end{pmatrix}$?
+OPT: $\begin{pmatrix}1&2&0\\0&-1&-2\\0&0&2\end{pmatrix}$ | $\begin{pmatrix}1&2&0\\0&-1&-2\\0&0&-2\end{pmatrix}$ | $\begin{pmatrix}-1&-2&0\\0&1&2\\0&0&2\end{pmatrix}$ | $\begin{pmatrix}-1&-2&0\\0&1&2\\0&0&-2\end{pmatrix}$
+  TRAP: Dopo il primo passo il posto (2,2) è nullo: serve lo scambio delle righe 2 e 3, e l'ultimo pivot resta $-2$.
+12-8 A Metodo di Gauss-Jordan (Algoritmo 12.16) su $\begin{pmatrix}2&4&-4&-8\\3&6&-5&-9\end{pmatrix}$.
+  Gauss: pivot $2$; alla riga 2 si somma la riga 1 per $-\frac32$: $(3-3\ \ 6-6\ \ -5+6\ \ -9+12)=(0\ 0\ 1\ 3)$. Si ottiene $\begin{pmatrix}2&4&-4&-8\\0&0&1&3\end{pmatrix}$.
+  Normalizzazione: $\xrightarrow{R_{II}\ \frac12\cdot1}\begin{pmatrix}1&2&-2&-4\\0&0&1&3\end{pmatrix}$.
+  Gauss-Jordan: sopra il pivot di riga 2 (colonna 3) c'è $-2$: $\xrightarrow{R_{III}\ 1+2\cdot2}$: $(1\ 2\ -2\ -4)+2(0\ 0\ 1\ 3)=(1\ 2\ 0\ 2)$.
+  Risultato: $\begin{pmatrix}1&2&0&2\\0&0&1&3\end{pmatrix}$.
+  **Errore tipico:** sbagliare il segno del coefficiente $-\frac{3}{2}$ dell'operazione di tipo III: il coefficiente è $-\frac{a_{21}}{a_{11}}$, e con un segno sbagliato la seconda riga non avrebbe zeri nelle prime colonne.
+T: Quale è il risultato del metodo di eliminazione di Gauss-Jordan applicato alla matrice $\begin{pmatrix}2&4&-4&-8\\3&6&-5&-9\end{pmatrix}$?
+OPT: $\begin{pmatrix}1&2&0&2\\0&0&1&3\end{pmatrix}$ | $\begin{pmatrix}1&2&0&2\\0&0&1&-3\end{pmatrix}$ | $\begin{pmatrix}1&-2&0&1\\0&0&1&3\end{pmatrix}$ | $\begin{pmatrix}1&-2&0&1\\0&0&1&-3\end{pmatrix}$
+12-9 APERTA
+KW: operazioni elementari, scambio di due righe|tipo I, moltiplicazione di una riga|tipo II, λ ≠ 0|diverso da zero, somma di un multiplo di un'altra riga|tipo III, inversa, matrice a scalini|a scalini, pivot, metodo di eliminazione di Gauss|Gauss, prima colonna non nulla, normalizzazione|pivot uguali a 1, Gauss-Jordan|sopra i pivot
+> **Operazioni elementari sulle righe (Definizione 12.1)** su $A\in\mathbb{K}^{n,m}$: (I) scambio di due righe, $A\xrightarrow{R_I\ i\leftrightarrow j}B$; (II) moltiplicazione di una riga per $\lambda\in\mathbb{K}\setminus\{0\}$, $A\xrightarrow{R_{II}\ \lambda\cdot i}B$; (III) sostituzione di una riga con la somma della riga stessa e di un multiplo di un'altra riga, $A\xrightarrow{R_{III}\ i+\lambda\cdot j}B$ con $\lambda\in\mathbb{K}$. Analogamente si definiscono le operazioni sulle colonne ($C_I$, $C_{II}$, $C_{III}$).
+> L'inversa di un'operazione elementare è ancora elementare (si riscambia, si moltiplica per $\lambda^{-1}$, si somma $-\lambda$ volte la riga). Le operazioni sulle righe non cambiano lo Span delle righe (e quindi la sua dimensione).
+> **Metodo di eliminazione di Gauss (Algoritmo 12.9).** Si ripete al più $n-1$ volte, lavorando ogni volta sulla sottomatrice $B(i)$ ottenuta togliendo le righe già fissate: (1) se $B(i)$ è nulla si termina, altrimenti si cerca la prima colonna $k$ non nulla; (2) se l'entrata $(1,k)$ è $0$ si scambia la prima riga con la prima riga che ha entrata non nulla in colonna $k$ (tipo I); (3) per ogni riga $j>1$ con entrata non nulla in colonna $k$ si somma la prima riga moltiplicata per $-B(i)^k_j/B(i)^k_1$ (tipo III); (4) si fissa la prima riga e si passa alla sottomatrice successiva. Il risultato è una **matrice a scalini** (Proposizione 12.11); i pivot sono gli elementi trovati al punto 2.
+> Esempio 12.10: $\begin{pmatrix}0&3&-3&1\\1&1&1&2\\-1&5&-7&2\end{pmatrix}\xrightarrow{R_I\ 1\leftrightarrow2}\begin{pmatrix}1&1&1&2\\0&3&-3&1\\-1&5&-7&2\end{pmatrix}\xrightarrow{R_{III}\ 3+1\cdot1}\begin{pmatrix}1&1&1&2\\0&3&-3&1\\0&6&-6&4\end{pmatrix}\xrightarrow{R_{III}\ 3+(-2)\cdot2}\begin{pmatrix}1&1&1&2\\0&3&-3&1\\0&0&0&2\end{pmatrix}$.
+> **Gauss con normalizzazione (12.13):** dopo Gauss si moltiplica ogni riga non nulla per $1/p$ ($p$ = pivot), così tutti i pivot diventano $1$. **Gauss-Jordan (12.16):** dopo la normalizzazione, per ogni riga $i$ con pivot in colonna $k$ si annullano le entrate $x$ sopra il pivot sommando alla riga $j<i$ la riga $i$ moltiplicata per $-x$. Per una matrice quadrata si ottengono $n$ pivot se e solo se il risultato è $I_n$.
+x67 C Un'operazione elementare di tipo III sostituisce una riga con la somma della riga stessa e di $\lambda$ volte un'altra riga, con $\lambda\in\mathbb{K}$ qualsiasi (anche $0$) (Definizione 12.1). Righe della matrice: $R_1=(1\ 3\ -2\ 4)$, $R_2=(2\ -3\ 0\ 2)$, $R_3=(-2\ -3\ 0\ 2)$.
+  Matrice con seconda riga $(3\ 0\ -2\ 6)$: è $R_2+1\cdot R_1$, quindi tipo III. Matrice invariata: è $R_i+0\cdot R_j$, tipo III con $\lambda=0$. Matrice con terza riga $(2\ -9\ 0\ 6)$: è $R_3+2R_2=(-2+4\ \ -3-6\ \ 0\ \ 2+4)$, tipo III.
+  Matrice con terza riga $(2\ -9\ 0\ 4)$: la differenza con $R_3$ è $(4\ -6\ 0\ 2)$, che non è multiplo di $R_1$ (servirebbe $0$ al terzo posto ma $R_1$ ha $-2$) né di $R_2$ (da $4=2\cdot2$ servirebbe $\lambda=2$, ma $2R_2=(4\ -6\ 0\ 4)$, con ultima entrata $4\neq2$). Le altre righe sono invariate, quindi non è il risultato di un'operazione di tipo III.
+  **Errore tipico:** escludere la matrice invariata pensando che un'operazione debba cambiare qualcosa: nel tipo III il coefficiente $\lambda$ può essere $0$ (è nel tipo II che si richiede $\lambda\neq0$).
+T: Quale delle seguenti **non** è il risultato di un'operazione elementare di tipo III sulla matrice $\begin{pmatrix}1&3&-2&4\\2&-3&0&2\\-2&-3&0&2\end{pmatrix}$?
+OPT: $\begin{pmatrix}1&3&-2&4\\3&0&-2&6\\-2&-3&0&2\end{pmatrix}$ | $\begin{pmatrix}1&3&-2&4\\2&-3&0&2\\-2&-3&0&2\end{pmatrix}$ | $\begin{pmatrix}1&3&-2&4\\2&-3&0&2\\2&-9&0&4\end{pmatrix}$ | $\begin{pmatrix}1&3&-2&4\\2&-3&0&2\\2&-9&0&6\end{pmatrix}$
+  TRAP: La matrice invariata è il risultato dell'operazione di tipo III con coefficiente $0$.
+x68 B Dopo il primo passo si fissa la prima riga e si lavora sulla sottomatrice $\begin{pmatrix}0&0&0&4\\0&-1&1&-3\end{pmatrix}$ (Algoritmo 12.9).
+  Prima colonna non nulla della sottomatrice: la colonna 2 (la colonna 1 è nulla, la 2 contiene $-1$). L'entrata in alto in colonna 2 è $0$, e la prima riga con entrata non nulla è la seconda della sottomatrice, cioè la riga 3 della matrice: si applica lo scambio $R_I\ 2\leftrightarrow3$, ottenendo $\begin{pmatrix}2&0&-1&3\\0&-1&1&-3\\0&0&0&4\end{pmatrix}$.
+  Il metodo di Gauss usa solo operazioni sulle **righe** (niente scambi di colonne), non normalizza (niente tipo II) e non usa la colonna 4 come colonna del pivot, perché si sceglie la **prima** colonna non nulla.
+  **Errore tipico:** prendere come pivot il $4$ già presente nella riga 2: la colonna del pivot è la prima colonna non nulla della sottomatrice, e qui è la seconda.
+T: Supponendo che dopo il primo passo del metodo di eliminazione di Gauss applicato ad una matrice si ottenga la matrice $\begin{pmatrix}2&0&-1&3\\0&0&0&4\\0&-1&1&-3\end{pmatrix}$, quale è l'operazione elementare successiva?
+OPT: $\xrightarrow{C_I\ 2\leftrightarrow4}\begin{pmatrix}2&3&-1&0\\0&4&0&0\\0&-3&1&-1\end{pmatrix}$ | $\xrightarrow{R_I\ 2\leftrightarrow3}\begin{pmatrix}2&0&-1&3\\0&-1&1&-3\\0&0&0&4\end{pmatrix}$ | $\xrightarrow{R_{II}\ \frac14\cdot2}\begin{pmatrix}2&0&-1&3\\0&0&0&1\\0&-1&1&-3\end{pmatrix}$ | $\xrightarrow{R_{III}\ 2+1\cdot3}\begin{pmatrix}2&0&-1&3\\0&-1&1&1\\0&-1&1&-3\end{pmatrix}$
+x69 B Nel metodo di Gauss con normalizzazione (Algoritmo 12.13), dopo il metodo di Gauss si moltiplica ogni riga non nulla per $\frac1p$, dove $p$ è il suo pivot, con un'operazione di tipo II **sulle righe**.
+  In $\begin{pmatrix}1&2&0&3\\0&4&-8&2\end{pmatrix}$ il primo pivot è già $1$; il secondo è $4$ (posto $(2,2)$). Quindi si applica $R_{II}\ \frac14\cdot2$: $(0\ 4\ -8\ 2)\cdot\frac14=(0\ 1\ -2\ \frac12)$.
+  Si ottiene $\begin{pmatrix}1&2&0&3\\0&1&-2&\frac12\end{pmatrix}$.
+  **Errore tipico:** dividere per $4$ la **colonna** 2 invece della riga 2 (la normalizzazione agisce sulle righe), oppure annullare l'entrata sopra il pivot, che è un passo del metodo di Gauss-Jordan e non della sola normalizzazione.
+T: Supponendo che dopo aver applicato il metodo di eliminazione di Gauss ad una matrice si ottenga la matrice $\begin{pmatrix}1&2&0&3\\0&4&-8&2\end{pmatrix}$, quale è l'operazione elementare successiva nel metodo di eliminazione di Gauss con normalizzazione?
+OPT: $\xrightarrow{C_{II}\ \frac14\cdot2}\begin{pmatrix}1&\frac12&0&3\\0&1&-8&2\end{pmatrix}$ | $\xrightarrow{R_{II}\ \frac14\cdot2}\begin{pmatrix}1&2&0&3\\0&1&-2&\frac12\end{pmatrix}$ | $\xrightarrow{R_I\ 1\leftrightarrow2}\begin{pmatrix}0&4&-8&2\\1&2&0&3\end{pmatrix}$ | $\xrightarrow{R_{III}\ 1+(-\frac12)\cdot2}\begin{pmatrix}1&0&4&2\\0&4&-8&2\end{pmatrix}$
+x70 D Nel metodo di Gauss-Jordan (Algoritmo 12.16), con tutti i pivot uguali a $1$, per ogni riga $i$ con pivot in colonna $k$ si annullano le entrate $x\neq0$ sopra il pivot sommando alla riga $j<i$ la riga $i$ moltiplicata per $-x$.
+  In $\begin{pmatrix}1&0&4\\0&1&-2\\0&0&1\end{pmatrix}$ i pivot sono già $1$ e sopra il pivot della riga 2 c'è già $0$. Restano da annullare le entrate sopra il pivot della riga 3 (colonna 3): $4$ e $-2$. Per la seconda si somma alla riga 2 la riga 3 moltiplicata per $-(-2)=2$: $R_{III}\ 2+2\cdot3$, che dà $(0\ 1\ 0)$ e la matrice $\begin{pmatrix}1&0&4\\0&1&0\\0&0&1\end{pmatrix}$ (resterà poi $R_{III}\ 1+(-4)\cdot3$, non proposta tra le opzioni).
+  Le altre: un'operazione sulle colonne non fa parte del metodo; moltiplicare la riga 2 per $-\frac12$ renderebbe il pivot $-\frac12$ invece di $1$; $R_{III}\ 1+2\cdot2$ creerebbe un $2$ sopra il pivot della riga 2, che era già nullo.
+  **Errore tipico:** usare un'operazione sulle colonne perché "produce lo stesso risultato": il metodo di Gauss-Jordan usa solo operazioni sulle righe.
+T: Supponendo che dopo aver applicato alcune operazioni elementari del metodo di eliminazione di Gauss-Jordan ad una matrice si ottenga la matrice $\begin{pmatrix}1&0&4\\0&1&-2\\0&0&1\end{pmatrix}$, quale è l'operazione elementare successiva?
+OPT: $\xrightarrow{C_{III}\ 3+2\cdot2}\begin{pmatrix}1&0&4\\0&1&0\\0&0&1\end{pmatrix}$ | $\xrightarrow{R_{II}\ (-\frac12)\cdot2}\begin{pmatrix}1&0&4\\0&-\frac12&1\\0&0&1\end{pmatrix}$ | $\xrightarrow{R_{III}\ 1+2\cdot2}\begin{pmatrix}1&2&0\\0&1&-2\\0&0&1\end{pmatrix}$ | $\xrightarrow{R_{III}\ 2+2\cdot3}\begin{pmatrix}1&0&4\\0&1&0\\0&0&1\end{pmatrix}$
+  TRAP: L'operazione sulle colonne produce la stessa matrice, ma il metodo di Gauss-Jordan usa solo operazioni sulle righe.
+
+## L13 Operazioni sulle matrici
+13-1 D Il prodotto righe per colonne di $A\in\mathbb{K}^{3,2}$ e $B\in\mathbb{K}^{2,2}$ è la matrice $3\times2$ con entrata $(i,j)$ uguale a $\sum_p a_{ip}b_{pj}$ (riga $i$ di $A$ per colonna $j$ di $B$, Definizione 13.12).
+  $A=\begin{pmatrix}1&2\\-1&0\\3&-1\end{pmatrix}$, $B=\begin{pmatrix}1&-1\\0&2\end{pmatrix}$; colonne di $B$: ${}^t(1\ 0)$ e ${}^t(-1\ 2)$.
+  Riga 1 $(1\ 2)$: $1\cdot1+2\cdot0=1$; $1\cdot(-1)+2\cdot2=3$. Riga 2 $(-1\ 0)$: $-1$; $(-1)(-1)+0\cdot2=1$. Riga 3 $(3\ -1)$: $3$; $3\cdot(-1)+(-1)\cdot2=-5$.
+  $AB=\begin{pmatrix}1&3\\-1&1\\3&-5\end{pmatrix}$.
+  **Errore tipico:** la prima colonna di $AB$ è uguale in tutte le opzioni; le differenze sono nell'entrata $(1,2)$ e $(3,2)$, dove contano i segni di $b_{22}=2$ e di $a_{32}=-1$.
+T: Quanto vale il prodotto righe per colonne $AB$ della matrice $3\times2$ $A=\begin{pmatrix}1&2\\-1&0\\3&-1\end{pmatrix}$ e della matrice $2\times2$ $B=\begin{pmatrix}1&-1\\0&2\end{pmatrix}$?
+OPT: $\begin{pmatrix}1&3\\-1&1\\3&-1\end{pmatrix}$ | $\begin{pmatrix}1&-5\\-1&1\\3&-5\end{pmatrix}$ | $\begin{pmatrix}1&-5\\-1&1\\3&-1\end{pmatrix}$ | $\begin{pmatrix}1&3\\-1&1\\3&-5\end{pmatrix}$
+13-2 C Prodotto righe per colonne (Definizione 13.12): entrata $(i,j)$ = riga $i$ di $A$ per colonna $j$ di $B$.
+  $A=\begin{pmatrix}1&2\\-1&0\\3&-1\end{pmatrix}$, $B=\begin{pmatrix}1&-1\\0&-2\end{pmatrix}$; colonne di $B$: ${}^t(1\ 0)$ e ${}^t(-1\ -2)$.
+  Riga 1: $1$; $1\cdot(-1)+2\cdot(-2)=-5$. Riga 2: $-1$; $(-1)(-1)+0=1$. Riga 3: $3$; $3\cdot(-1)+(-1)(-2)=-3+2=-1$.
+  $AB=\begin{pmatrix}1&-5\\-1&1\\3&-1\end{pmatrix}$.
+  **Errore tipico:** nell'entrata $(3,2)$ dimenticare che $(-1)\cdot(-2)=+2$: si otterrebbe $-5$ invece di $-1$.
+T: Quanto vale il prodotto righe per colonne $AB$ della matrice $3\times2$ $A=\begin{pmatrix}1&2\\-1&0\\3&-1\end{pmatrix}$ e della matrice $2\times2$ $B=\begin{pmatrix}1&-1\\0&-2\end{pmatrix}$?
+OPT: $\begin{pmatrix}1&-5\\-1&1\\3&-5\end{pmatrix}$ | $\begin{pmatrix}1&3\\-1&1\\3&-1\end{pmatrix}$ | $\begin{pmatrix}1&-5\\-1&1\\3&-1\end{pmatrix}$ | $\begin{pmatrix}1&3\\-1&1\\3&-5\end{pmatrix}$
+13-3 D Prodotto righe per colonne (Definizione 13.12): entrata $(i,j)$ = riga $i$ di $A$ per colonna $j$ di $B$.
+  $A=\begin{pmatrix}1&2\\-1&0\\3&1\end{pmatrix}$, $B=\begin{pmatrix}1&-1\\0&-2\end{pmatrix}$; colonne di $B$: ${}^t(1\ 0)$ e ${}^t(-1\ -2)$.
+  Riga 1: $1$; $-1-4=-5$. Riga 2: $-1$; $1+0=1$. Riga 3: $3$; $3\cdot(-1)+1\cdot(-2)=-5$.
+  $AB=\begin{pmatrix}1&-5\\-1&1\\3&-5\end{pmatrix}$.
+  **Errore tipico:** confondere con la domanda simile in cui $a_{32}=-1$: qui $a_{32}=+1$, quindi $(3,2)$ vale $-3-2=-5$.
+T: Quanto vale il prodotto righe per colonne $AB$ della matrice $3\times2$ $A=\begin{pmatrix}1&2\\-1&0\\3&1\end{pmatrix}$ e della matrice $2\times2$ $B=\begin{pmatrix}1&-1\\0&-2\end{pmatrix}$?
+OPT: $\begin{pmatrix}1&3\\-1&1\\3&-1\end{pmatrix}$ | $\begin{pmatrix}1&-5\\-1&1\\3&-1\end{pmatrix}$ | $\begin{pmatrix}1&3\\-1&1\\3&-5\end{pmatrix}$ | $\begin{pmatrix}1&-5\\-1&1\\3&-5\end{pmatrix}$
+13-4 C Prodotto righe per colonne (Definizione 13.12): entrata $(i,j)$ = riga $i$ di $A$ per colonna $j$ di $B$.
+  $A=\begin{pmatrix}1&2\\-1&0\\3&1\end{pmatrix}$, $B=\begin{pmatrix}1&-1\\0&2\end{pmatrix}$; colonne di $B$: ${}^t(1\ 0)$ e ${}^t(-1\ 2)$.
+  Riga 1: $1$; $-1+4=3$. Riga 2: $-1$; $1+0=1$. Riga 3: $3$; $3\cdot(-1)+1\cdot2=-1$.
+  $AB=\begin{pmatrix}1&3\\-1&1\\3&-1\end{pmatrix}$.
+  **Errore tipico:** moltiplicare entrata per entrata (prodotto "posto per posto") o usare le righe di $B$ invece delle colonne: il prodotto righe per colonne usa la riga di $A$ e la **colonna** di $B$.
+T: Quanto vale il prodotto righe per colonne $AB$ della matrice $3\times2$ $A=\begin{pmatrix}1&2\\-1&0\\3&1\end{pmatrix}$ e della matrice $2\times2$ $B=\begin{pmatrix}1&-1\\0&2\end{pmatrix}$?
+OPT: $\begin{pmatrix}1&-5\\-1&1\\3&-1\end{pmatrix}$ | $\begin{pmatrix}1&-5\\-1&1\\3&-5\end{pmatrix}$ | $\begin{pmatrix}1&3\\-1&1\\3&-1\end{pmatrix}$ | $\begin{pmatrix}1&3\\-1&1\\3&-5\end{pmatrix}$
+13-5 B Il prodotto righe per colonne di $A\in\mathbb{K}^{n,k}$ e $B\in\mathbb{K}^{k,m}$ si può fare solo se le colonne di $A$ sono quante le righe di $B$, e il risultato è $n\times m$: righe di $A$ × colonne di $B$ (Definizione 13.12).
+  $A$ è $3\times3$ e $B$ è $3\times2$: $3=3$, quindi il prodotto esiste ed è $3\times2$.
+  **Errore tipico:** sommare o combinare le dimensioni in modo sbagliato (ad esempio $3+1$ righe): il numero "interno" comune ($3$) sparisce, restano righe di $A$ e colonne di $B$.
+13-6 D Per $A\in\mathbb{K}^{n,k}$ e $B\in\mathbb{K}^{k,m}$ il prodotto $AB$ è $n\times m$ (Definizione 13.12).
+  $A$ è $4\times3$, $B$ è $3\times3$: la dimensione interna comune è $3$, quindi $AB$ è $4\times3$.
+  **Errore tipico:** prendere la dimensione di $B$ ($3\times3$) o scambiare righe e colonne: il risultato ha tante righe quante $A$ e tante colonne quante $B$.
+13-7 C Per $A\in\mathbb{K}^{n,k}$ e $B\in\mathbb{K}^{k,m}$ il prodotto $AB$ è $n\times m$ (Definizione 13.12).
+  $A$ è $4\times2$, $B$ è $2\times2$: la dimensione interna comune è $2$, quindi $AB$ è $4\times2$.
+  **Errore tipico:** credere che il prodotto per una matrice quadrata cambi il numero di righe: moltiplicando a destra per una $2\times2$ la dimensione di $A$ resta $4\times2$.
+13-8 A Per $A\in\mathbb{K}^{n,k}$ e $B\in\mathbb{K}^{k,m}$ il prodotto $AB$ è $n\times m$ (Definizione 13.12).
+  $A$ è $3\times2$, $B$ è $2\times3$: la dimensione interna comune è $2$, quindi $AB$ è $3\times3$ (mentre $BA$ sarebbe $2\times2$).
+  **Errore tipico:** rispondere $3\times2$ copiando la dimensione di $A$: il numero di colonne del prodotto è quello di $B$.
+13-9 APERTA
+KW: matrici n × m|K^{n,m}, addizione, moltiplicazione per scalare, entrata per entrata|elemento per elemento, matrice nulla|elemento neutro, opposto|−A, spazio vettoriale, combinazione lineare, base canonica, E_ij|matrici E_ij, dimensione n · m|n·m, prodotto righe per colonne
+> Su $\mathbb{K}^{n,m}$ (matrici $n\times m$ sul campo $\mathbb{K}$) si definiscono (Definizione 13.1):
+> - l'**addizione** entrata per entrata: $(a_{ij})+(b_{ij}):=(a_{ij}+b_{ij})$;
+> - la **moltiplicazione per scalare**: $\lambda\cdot(a_{ij}):=(\lambda a_{ij})$, $\lambda\in\mathbb{K}$.
+> Esempio 13.2: $\begin{pmatrix}3&2&-1\\0&-3&5\end{pmatrix}+\begin{pmatrix}0&0&-2\\-4&6&3\end{pmatrix}=\begin{pmatrix}3&2&-3\\-4&3&8\end{pmatrix}$, $3\begin{pmatrix}2&0&-1\\-3&1&3\end{pmatrix}=\begin{pmatrix}6&0&-3\\-9&3&9\end{pmatrix}$.
+> L'elemento neutro è la **matrice nulla** $0_{n,m}$, l'opposto di $A$ è $-A=(-a_{ij})$. **Proposizione 13.5:** con queste operazioni $\mathbb{K}^{n,m}$ è uno **spazio vettoriale** su $\mathbb{K}$ (le proprietà si verificano come per $\mathbb{K}^n$, entrata per entrata). Quindi si possono fare **combinazioni lineari** di matrici: $\lambda_1A_1+\dots+\lambda_kA_k$ ha al posto $(i,j)$ l'elemento $\lambda_1(A_1)^j_i+\dots+\lambda_k(A_k)^j_i$.
+> **Base canonica (13.8):** $\mathcal{E}_{n,m}=\{E_{11},E_{12},\dots,E_{1m},E_{21},\dots,E_{nm}\}$, dove $E_{ij}$ ha $1$ al posto $(i,j)$ e $0$ altrove. È una base (13.10): $\sum\lambda_{ij}E_{ij}=(\lambda_{ij})$ è nulla solo se tutti i $\lambda_{ij}=0$, e ogni matrice è $(a_{ij})=\sum a_{ij}E_{ij}$. Quindi (**Proposizione 13.11**) $\dim\mathbb{K}^{n,m}=n\cdot m$.
+> Osservazioni: $\mathbb{K}^{n,1}=\mathbb{K}^n$ (vettori colonna); oltre alla struttura di spazio vettoriale le matrici hanno il prodotto righe per colonne $\mathbb{K}^{n,k}\times\mathbb{K}^{k,m}\to\mathbb{K}^{n,m}$, che non è un'operazione dello spazio vettoriale e non è commutativo.
+x71 B La combinazione lineare $2A_1+0A_2-3A_3$ si calcola entrata per entrata (Osservazione 13.6), con $A_1=\begin{pmatrix}1&2\\-2&0\\0&3\end{pmatrix}$, $A_2=\begin{pmatrix}2&-9\\0&7\\4&5\end{pmatrix}$, $A_3=\begin{pmatrix}3&-1\\-4&0\\1&2\end{pmatrix}$.
+  $2A_1=\begin{pmatrix}2&4\\-4&0\\0&6\end{pmatrix}$, $0A_2=0_{3,2}$, $-3A_3=\begin{pmatrix}-9&3\\12&0\\-3&-6\end{pmatrix}$.
+  Somma: $\begin{pmatrix}2-9&4+3\\-4+12&0+0\\0-3&6-6\end{pmatrix}=\begin{pmatrix}-7&7\\8&0\\-3&0\end{pmatrix}$.
+  **Errore tipico:** usare il coefficiente $+3$ invece di $-3$ sulla terza matrice (si ottiene $\begin{pmatrix}11&1\\-16&0\\3&12\end{pmatrix}$), oppure assegnare i coefficienti alle matrici in un ordine diverso.
+T: Quale è il risultato della combinazione lineare delle matrici $\begin{pmatrix}1&2\\-2&0\\0&3\end{pmatrix}$, $\begin{pmatrix}2&-9\\0&7\\4&5\end{pmatrix}$, $\begin{pmatrix}3&-1\\-4&0\\1&2\end{pmatrix}$ con coefficienti $2,\ 0,\ -3$?
+OPT: $\begin{pmatrix}11&1\\-16&0\\3&12\end{pmatrix}$ | $\begin{pmatrix}-7&7\\8&0\\-3&0\end{pmatrix}$ | $\begin{pmatrix}-5&-2\\8&7\\1&5\end{pmatrix}$ | $\begin{pmatrix}4&1\\-6&0\\1&5\end{pmatrix}$
+x72 B Il prodotto righe per colonne $AB$ si può fare solo se il numero di colonne di $A$ è uguale al numero di righe di $B$ (Osservazione 13.13).
+  $2\times3$ per $3\times4$: $3=3$, si può (risultato $2\times4$). $2\times3$ per $3\times2$: $3=3$, si può ($2\times2$). $3\times2$ per $2\times4$: $2=2$, si può ($3\times4$).
+  $2\times3$ per $4\times2$: $A$ ha 3 colonne, $B$ ha 4 righe, $3\neq4$: **non** si può.
+  **Errore tipico:** confrontare le righe di $A$ con le colonne di $B$ (nel caso $2\times3$ per $4\times2$ coincidono, $2=2$): quella è la condizione per il prodotto $BA$, non per $AB$.
+T: Date due matrici $A$ e $B$ su $\mathbb{K}$, in quali dei seguenti casi **non** è possibile fare il prodotto righe per colonne tra $A$ e $B$?
+OPT: $A$ di dimensione $2\times3$ e $B$ di dimensione $3\times4$. | $A$ di dimensione $2\times3$ e $B$ di dimensione $4\times2$. | $A$ di dimensione $2\times3$ e $B$ di dimensione $3\times2$. | $A$ di dimensione $3\times2$ e $B$ di dimensione $2\times4$.
+x73 D Il prodotto di una $2\times3$ per una $3\times3$ è una $2\times3$; l'entrata $(i,j)$ è la riga $i$ della prima per la colonna $j$ della seconda.
+  Righe: $(0\ -2\ 1)$ e $(1\ -1\ 3)$. Colonne della seconda: ${}^t(3\ 5\ 1)$, ${}^t(4\ 2\ -2)$, ${}^t(1\ 0\ -1)$.
+  Riga 1: $0\cdot3-2\cdot5+1\cdot1=-9$; $0\cdot4-2\cdot2+1\cdot(-2)=-6$; $0\cdot1-2\cdot0+1\cdot(-1)=-1$.
+  Riga 2: $3-5+3=1$; $4-2-6=-4$; $1-0-3=-2$.
+  Risultato: $\begin{pmatrix}-9&-6&-1\\1&-4&-2\end{pmatrix}$.
+  **Errore tipico:** sbagliare il segno nella terza colonna (dove compare $-1$) o moltiplicare entrata per entrata le prime tre colonne; la matrice $3\times2$ tra le opzioni ha la dimensione sbagliata.
+T: Quanto vale il prodotto righe per colonne $\begin{pmatrix}0&-2&1\\1&-1&3\end{pmatrix}\cdot\begin{pmatrix}3&4&1\\5&2&0\\1&-2&-1\end{pmatrix}$?
+OPT: $\begin{pmatrix}0&-8&-1\\5&-2&0\end{pmatrix}$ | $\begin{pmatrix}0&4\\-10&-2\\1&-6\end{pmatrix}$ | $\begin{pmatrix}-9&-6&1\\1&-4&2\end{pmatrix}$ | $\begin{pmatrix}-9&-6&-1\\1&-4&-2\end{pmatrix}$
+x74 B Due matrici quadrate commutano se $AB=BA$ (Definizione 13.22). Sia $M=\begin{pmatrix}2&0\\2&-1\end{pmatrix}$.
+  L'identità commuta con tutte le matrici ($I_2M=MI_2=M$) e $M$ commuta con sé stessa.
+  $X=\begin{pmatrix}4&0\\2&1\end{pmatrix}$: $MX=\begin{pmatrix}8&0\\8-2&-1\end{pmatrix}=\begin{pmatrix}8&0\\6&-1\end{pmatrix}$ e $XM=\begin{pmatrix}8&0\\4+2&-1\end{pmatrix}=\begin{pmatrix}8&0\\6&-1\end{pmatrix}$: commutano (infatti $X=M^2$).
+  $X=\begin{pmatrix}4&0\\1&1\end{pmatrix}$: $MX=\begin{pmatrix}8&0\\8-1&-1\end{pmatrix}=\begin{pmatrix}8&0\\7&-1\end{pmatrix}$, $XM=\begin{pmatrix}8&0\\2+2&-1\end{pmatrix}=\begin{pmatrix}8&0\\4&-1\end{pmatrix}$: diversi, **non** commutano.
+  **Errore tipico:** pensare che due matrici triangolari inferiori commutino sempre: le entrate diagonali dei prodotti coincidono, ma l'entrata $(2,1)$ in generale no.
+T: Quale delle seguenti matrici **non** commuta con la matrice $\begin{pmatrix}2&0\\2&-1\end{pmatrix}$?
+OPT: $\begin{pmatrix}1&0\\0&1\end{pmatrix}$ | $\begin{pmatrix}4&0\\1&1\end{pmatrix}$ | $\begin{pmatrix}4&0\\2&1\end{pmatrix}$ | $\begin{pmatrix}2&0\\2&-1\end{pmatrix}$

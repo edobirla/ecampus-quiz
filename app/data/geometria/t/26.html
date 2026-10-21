@@ -1,0 +1,46 @@
+<h1>Lezione 26 — Regola di Cramer</h1>
+<h2>La regola</h2>
+<p><strong>Algoritmo 26.1 (Regola di Cramer).</strong> Sia <span class="m">A\cdot X=B</span> un sistema di <span class="m">n</span> equazioni lineari in <span class="m">n</span> incognite con <span class="m">\det(A)\neq0</span>, e siano <span class="m">A^1,\dots,A^n</span> le colonne di <span class="m">A</span>. La <span class="m">i</span>-esima coordinata dell&#39;unica soluzione è
+<span class="m d">x_i=\frac{\det\begin{pmatrix}A^1&amp;\cdots&amp;A^{i-1}&amp;B&amp;A^{i+1}&amp;\cdots&amp;A^n\end{pmatrix}}{\det(A)},</span>
+cioè il rapporto tra il determinante della matrice ottenuta da <span class="m">A</span> <strong>sostituendo la <span class="m">i</span>-esima colonna con la colonna dei termini noti</strong> e il determinante di <span class="m">A</span>.</p>
+<p><strong>Proposizione 26.2.</strong> La soluzione trovata con la regola di Cramer è l&#39;unica soluzione del sistema.
+<em>Dimostrazione.</em> Sia <span class="m">X</span> l&#39;unica soluzione: <span class="m">B=x_1A^1+\dots+x_nA^n</span>. Sostituendo nella colonna <span class="m">i</span> e usando la linearità del determinante,
+<span class="m d">\det(\dots,A^{i-1},B,A^{i+1},\dots)=\sum_{j}x_j\det(\dots,A^{i-1},A^j,A^{i+1},\dots).</span>
+Per <span class="m">j\neq i</span> la matrice ha due colonne uguali e il determinante è nullo; resta <span class="m">x_i\det A</span>.</p>
+<div class="callout esempio">
+
+<p><span class="m">\begin{cases}x_1+x_2=2\\4x_1+3x_2=-1\end{cases}</span>, <span class="m">\det A=\det\begin{pmatrix}1&amp;1\\4&amp;3\end{pmatrix}=-1</span>:
+<span class="m">x_1=\dfrac{\det\begin{pmatrix}2&amp;1\\-1&amp;3\end{pmatrix}}{-1}=\dfrac{7}{-1}=-7</span>, <span class="m">\quad x_2=\dfrac{\det\begin{pmatrix}1&amp;2\\4&amp;-1\end{pmatrix}}{-1}=\dfrac{-9}{-1}=9</span>.</p>
+</div>
+
+<div class="callout attenzione">
+
+<p>La colonna <span class="m">B</span> va inserita <strong>al posto della colonna dell&#39;incognita cercata</strong>, con le componenti nell&#39;ordine delle equazioni e con il loro segno; le altre colonne restano invariate. Il denominatore è sempre <span class="m">\det A</span>. La regola si applica solo se <span class="m">A</span> è quadrata e <span class="m">\det A\neq0</span>, qualunque sia <span class="m">B</span>.</p>
+</div>
+
+<h2>Sistemi compatibili qualsiasi</h2>
+<p>Sia <span class="m">A\cdot X=B</span> compatibile, con <span class="m">m</span> equazioni, <span class="m">n</span> incognite e <span class="m">r=\mathrm{rank}(A)=\mathrm{rank}(A\,|\,B)</span>. Per il Teorema di Kronecker esiste un minore di <span class="m">A</span> di ordine <span class="m">r</span> non nullo; è anche un minore della completa, quindi le righe corrispondenti di <span class="m">(A\,|\,B)</span> sono indipendenti e le <strong>altre righe ne sono combinazione lineare</strong>: le altre equazioni si possono eliminare ottenendo un sistema equivalente.</p>
+<p><strong>Algoritmo 26.7.</strong></p>
+<ol>
+<li>Si trova un minore di <span class="m">A</span> di ordine <span class="m">r=\mathrm{rank}(A)</span> diverso da <span class="m">0</span>.</li>
+<li>Si eliminano le equazioni che non corrispondono alle righe del minore.</li>
+<li>Si portano al secondo membro (cambiando segno) i monomi con le <span class="m">n-r</span> incognite che non corrispondono alle colonne del minore: sono le <strong>incognite libere</strong> (parametri); le altre sono le <strong>incognite dipendenti</strong>.</li>
+<li>Si applica la Regola di Cramer (o un altro metodo) al sistema <span class="m">r\times r</span> ottenuto, che ha determinante non nullo: si trovano le incognite dipendenti in funzione dei parametri.</li>
+<li>Le soluzioni sono le <span class="m">n</span>-uple con <span class="m">x_h=\alpha_h</span> (<span class="m">h</span> libere) e le dipendenti espresse in funzione delle <span class="m">\alpha_h\in\mathbb{K}</span>.</li>
+</ol>
+<div class="callout esempio">
+
+<p><span class="m">\begin{cases}x_1-x_2+2x_3+3x_4=0\\x_1-x_2+3x_3+4x_4=-3\\x_1-x_2+x_3+2x_4=3\end{cases}</span>: i ranghi sono entrambi 2, e un minore non nullo è <span class="m">\det\begin{pmatrix}1&amp;2\\1&amp;3\end{pmatrix}=1</span> (righe 1 e 2, colonne 1 e 3). Si elimina la terza equazione e si portano a destra <span class="m">x_2,x_4</span>:
+<span class="m">\begin{cases}x_1+2x_3=x_2-3x_4\\x_1+3x_3=-3+x_2-4x_4\end{cases}</span>. Con Cramer: <span class="m">x_1=6+x_2-x_4</span>, <span class="m">x_3=-3-x_4</span>. Soluzioni: <span class="m">(6+\alpha_1-\alpha_2,\ \alpha_1,\ -3-\alpha_2,\ \alpha_2)</span>, <span class="m">\alpha_1,\alpha_2\in\mathbb{R}</span>.</p>
+</div>
+
+<p><strong>Osservazione 26.6.</strong> Le incognite libere non sono univocamente determinate: <span class="m">n-r</span> incognite possono essere scelte come libere se e solo se la sottomatrice di <span class="m">A</span> formata dalle <span class="m">r</span> colonne <strong>delle altre</strong> incognite ha rango <span class="m">r</span>.</p>
+<div class="callout esempio">
+
+<p>Esercizio 26.1: <span class="m">\begin{cases}2x-3y=2-\alpha\\(\alpha+1)x-2\alpha y=1-\alpha\end{cases}</span>, <span class="m">\det A=3-\alpha</span>. Per <span class="m">\alpha\neq3</span> Cramer dà <span class="m">x=\dfrac{2\alpha^2-7\alpha+3}{3-\alpha}=1-2\alpha</span>, <span class="m">y=\dfrac{\alpha^2-3\alpha}{3-\alpha}=-\alpha</span>. Per <span class="m">\alpha=3</span> il sistema è <span class="m">2x-3y=-1</span>, <span class="m">4x-6y=-2</span>: rango 1, si tiene la prima equazione e si pone <span class="m">y=k</span> libera, <span class="m">x=-\tfrac12+\tfrac32k</span>.</p>
+</div>
+
+<div class="callout esame">
+
+<p>Le chiuse chiedono quale rapporto di determinanti dà <span class="m">x_1</span> o <span class="m">x_2</span> con Cramer (attenzione a ordine e segno dei termini noti nella colonna sostituita e a non capovolgere la frazione), a quale sistema si può applicare la regola, quale equazione si può eliminare dato un minore non nullo. Aperta: descrivere la regola di Cramer.</p>
+</div>

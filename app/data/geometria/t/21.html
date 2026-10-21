@@ -1,0 +1,53 @@
+<h1>Lezione 21 — Isomorfismi</h1>
+<p>Si studiano le applicazioni lineari invertibili e si dimostra che gli spazi finitamente generati sullo stesso campo con la stessa dimensione sono equivalenti a meno di isomorfismi.</p>
+<h2>Definizioni</h2>
+<p><strong>Proposizione 21.1.</strong> Se <span class="m">f: V \to W</span> lineare è invertibile, l&#39;inversa <span class="m">f^{-1}: W \to V</span> è lineare.</p>
+<p><strong>Definizione 21.2.</strong> Un&#39;applicazione lineare invertibile è un <strong>isomorfismo</strong>. Un&#39;applicazione lineare invertibile da uno spazio in sé stesso è un <strong>automorfismo</strong>.</p>
+<div class="callout esempio">
+
+<ul>
+<li><span class="m">\mathbb{R}^n \ni {}^t(a_1 \dots a_n) \mapsto a_n x^{n-1} + a_{n-1}x^{n-2} + \dots + a_2 x + a_1 \in \mathbb{K}_{\leq n-1}[x]</span> è un isomorfismo.</li>
+<li><span class="m">\mathrm{id}_V</span> è un automorfismo.</li>
+<li>Fissata una base <span class="m">\mathcal{B}</span> di <span class="m">V</span> (di dimensione <span class="m">m</span>), <span class="m">[\cdot]_{\mathcal{B}}: V \to \mathbb{K}^m</span> è un isomorfismo; in particolare <span class="m">[\cdot]_{\{i,j\}}: V^2_G \to \mathbb{R}^2</span> e <span class="m">[\cdot]_{\{i,j,k\}}: V^3_G \to \mathbb{R}^3</span>.</li>
+</ul>
+</div>
+
+<p><strong>Definizione 21.6.</strong> <span class="m">V</span> e <span class="m">W</span> sono <strong>isomorfi</strong>, <span class="m">V \cong W</span>, se esiste un isomorfismo <span class="m">f: V \to W</span>.</p>
+<p>Quindi <span class="m">V \cong V</span>, <span class="m">\mathbb{R}^n \cong \mathbb{K}_{\leq n-1}[x]</span>, <span class="m">V^2_G \cong \mathbb{R}^2</span>, <span class="m">V^3_G \cong \mathbb{R}^3</span>. Questi ultimi isomorfismi formalizzano l&#39;identificazione dei vettori geometrici con le loro coordinate, ma non sono unici: dipendono dal sistema di riferimento scelto.</p>
+<p><strong>Osservazione 21.9.</strong> Se <span class="m">V</span> è finitamente generato e <span class="m">V \cong W</span>, anche <span class="m">W</span> è finitamente generato e <span class="m">\dim V = \dim W</span>.</p>
+<h2>Isomorfismi e matrici</h2>
+<p><strong>Proposizione 21.10.</strong> <span class="m">A \in \mathbb{K}^{n,n}</span> è invertibile se e solo se <span class="m">f_A: \mathbb{K}^n \to \mathbb{K}^n</span> è invertibile, e in tal caso <span class="m">(f_A)^{-1} = f_{A^{-1}}</span>.</p>
+<p><strong>Corollario 21.11.</strong> <span class="m">f_A: \mathbb{K}^n \to \mathbb{K}^n</span> è invertibile (un isomorfismo) <strong>se e solo se <span class="m">\det(A) \neq 0</span></strong>.</p>
+<div class="callout esempio">
+
+<p><span class="m">A = \begin{pmatrix} 1 &amp; 2 \\ -1 &amp; -2 \end{pmatrix}</span> ha <span class="m">\det A = -2 + 2 = 0</span>: <span class="m">f_A</span> non è invertibile, anche se dominio e codominio (<span class="m">\mathbb{R}^2</span>) sono ovviamente isomorfi.</p>
+</div>
+
+<h2>Teorema di isomorfismo</h2>
+<p><strong>Teorema 21.12 (Teorema di isomorfismo).</strong> Siano <span class="m">V</span> e <span class="m">W</span> finitamente generati sullo stesso campo <span class="m">\mathbb{K}</span>. Allora
+<span class="m d">V \cong W \iff \dim(V) = \dim(W).</span></p>
+<p><em>Dimostrazione.</em> Se <span class="m">f: V \to W</span> è un isomorfismo, è bigettiva e quindi <span class="m">\dim V = \dim W</span> (Corollario 20.21). Viceversa sia <span class="m">n = \dim V = \dim W</span>, con basi <span class="m">\{v_1, \dots, v_n\}</span> e <span class="m">\{w_1, \dots, w_n\}</span>. Esistono <span class="m">f: V \to W</span> lineare con <span class="m">f(v_i) = w_i</span> e <span class="m">g: W \to V</span> lineare con <span class="m">g(w_i) = v_i</span>. Allora <span class="m">g \circ f(v_i) = v_i = \mathrm{id}_V(v_i)</span> per ogni <span class="m">i</span>, e poiché c&#39;è una sola applicazione lineare che fissa i vettori della base, <span class="m">g \circ f = \mathrm{id}_V</span>; analogamente <span class="m">f \circ g = \mathrm{id}_W</span>. Quindi <span class="m">f</span> è un isomorfismo.</p>
+<p><strong>Corollario 21.14.</strong> Uno spazio vettoriale su <span class="m">\mathbb{K}</span> ha dimensione <span class="m">n</span> se e solo se è isomorfo a <span class="m">\mathbb{K}^n</span> (un isomorfismo è <span class="m">[\cdot]_{\mathcal{B}}</span>).</p>
+<div class="callout esempio">
+
+<p><span class="m">W = \{X \in \mathbb{R}^4 \mid x_1 + x_2 - x_3 = 0,\ x_2 + 2x_3 + x_4 = 0\}</span> ha dimensione 2, quindi <span class="m">W \cong \mathbb{R}^2</span>. Con la base <span class="m">\{{}^t(3\ -2\ 1\ 0), {}^t(1\ -1\ 0\ 1)\}</span> di <span class="m">W</span>, un isomorfismo è l&#39;applicazione lineare che manda il primo vettore in <span class="m">e_1</span> e il secondo in <span class="m">e_2</span>.</p>
+</div>
+
+<div class="callout attenzione">
+
+<p><span class="m">\mathbb{K}_{\leq n}[x]</span> ha dimensione <span class="m">n+1</span> (base <span class="m">1, x, \dots, x^n</span>): è isomorfo a <span class="m">\mathbb{K}^{n+1}</span>, non a <span class="m">\mathbb{K}^n</span>. E &quot;isomorfo&quot; non significa &quot;uguale&quot;.</p>
+</div>
+
+<div class="callout sintesi">
+
+<ul>
+<li>Isomorfismo = applicazione lineare invertibile; l&#39;inversa è lineare.</li>
+<li><span class="m">f_A</span> è un isomorfismo <span class="m">\iff \det A \neq 0</span>.</li>
+<li><span class="m">V \cong W \iff \dim V = \dim W</span> (finitamente generati, stesso campo); <span class="m">\dim V = n \iff V \cong \mathbb{K}^n</span>.</li>
+</ul>
+</div>
+
+<div class="callout esame">
+
+<p>Le chiuse chiedono quale matrice <span class="m">2\times 2</span> dà (o non dà) un isomorfismo: si calcola <span class="m">ad - bc</span> e si controlla se è nullo. L&#39;aperta chiede gli isomorfismi e l&#39;enunciato del Teorema di isomorfismo.</p>
+</div>

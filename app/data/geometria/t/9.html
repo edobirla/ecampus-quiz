@@ -1,0 +1,65 @@
+<h1>Lezione 9 — Basi e coordinate</h1>
+<p>Con le basi si parametrizzano i vettori di uno spazio vettoriale finitamente generato con <span class="m">n</span>-uple di scalari, cioè si identificano i vettori con i vettori colonna di <span class="m">\mathbb{K}^n</span>.</p>
+<h2>Basi</h2>
+<p><strong>Definizione 9.1.</strong> Una <em>base</em> di uno spazio vettoriale finitamente generato <span class="m">V</span> è un insieme finito <strong>ordinato</strong> <span class="m">\mathcal{B}=\{v_1,v_2,\dots,v_n\}</span> i cui vettori <strong>generano</strong> <span class="m">V</span> e sono <strong>linearmente indipendenti</strong>.</p>
+<div class="callout esempio">
+
+<ul>
+<li><span class="m">\{{}^t(2\ 3),{}^t(1\ 1)\}</span> è una base di <span class="m">\mathbb{R}^2</span>: i due vettori sono indipendenti e generano <span class="m">\mathbb{R}^2</span>.</li>
+<li><span class="m">\{{}^t(2\ 3),{}^t(-1\ 0),{}^t(1\ 1)\}</span> <strong>non</strong> è una base: i vettori generano <span class="m">\mathbb{R}^2</span> ma sono dipendenti.</li>
+<li><span class="m">\{{}^t(1\ 1)\}</span> <strong>non</strong> è una base: il vettore è indipendente ma non genera <span class="m">\mathbb{R}^2</span>.</li>
+</ul>
+</div>
+
+<ul>
+<li><strong>Osservazione 9.3.</strong> L&#39;unica base di <span class="m">\{0\}</span> è l&#39;insieme vuoto <span class="m">\emptyset</span> (infatti <span class="m">\mathrm{Span}(\emptyset)=\{0\}</span>).</li>
+<li><strong>Osservazione 9.4.</strong> L&#39;ordine fa parte della base: cambiando l&#39;ordine dei vettori si ottiene una base <strong>diversa</strong>. La notazione <span class="m">\{v_1,\dots,v_n\}</span>, per le basi, indica anche l&#39;ordine.</li>
+</ul>
+<p><strong>Definizione 9.6.</strong> La <em>base canonica</em> di <span class="m">\mathbb{K}^n</span> è <span class="m">\mathcal{E}_n:=\{e_1,\dots,e_n\}</span>, dove <span class="m">e_i</span> ha <span class="m">1</span> al posto <span class="m">i</span> e <span class="m">0</span> altrove (si scrive anche <span class="m">\mathcal{E}</span>).</p>
+<p><strong>Proposizione 9.9.</strong> <span class="m">\mathcal{E}_n</span> è una base di <span class="m">\mathbb{K}^n</span>: da <span class="m">\lambda_1e_1+\dots+\lambda_ne_n={}^t(\lambda_1\ \cdots\ \lambda_n)=0</span> segue <span class="m">\lambda_i=0</span>, e ogni vettore si scrive <span class="m">{}^t(x_1\ \cdots\ x_n)=x_1e_1+\dots+x_ne_n</span>.</p>
+<h2>Algoritmo di estrazione di una base</h2>
+<p><strong>Algoritmo 9.10.</strong> Sia <span class="m">I=\{v_1,\dots,v_n\}</span> un insieme finito ordinato di <strong>generatori</strong> di <span class="m">V</span>. Si fanno <span class="m">n</span> passi; al passo <span class="m">i</span>-esimo:</p>
+<ul>
+<li><span class="m">v_i</span> viene <strong>tenuto</strong> se, insieme ai vettori tenuti fino a quel momento, forma un insieme linearmente indipendente;</li>
+<li><span class="m">v_i</span> viene <strong>scartato</strong> altrimenti.</li>
+</ul>
+<p>I vettori tenuti, nell&#39;ordine di <span class="m">I</span>, sono il risultato.</p>
+<p><strong>Osservazione 9.11 (in pratica).</strong> Il primo vettore tenuto è il primo vettore non nullo. Il secondo è il primo vettore successivo che non è multiplo del primo tenuto. In generale si tiene un vettore se <strong>non appartiene allo Span</strong> dei vettori già tenuti.</p>
+<div class="callout esempio">
+
+<p>Da <span class="m">\{{}^t(2\ 3),{}^t(4\ 6),{}^t(1\ 1)\}</span>: <span class="m">{}^t(2\ 3)</span> tenuto (non nullo); <span class="m">{}^t(4\ 6)=2\cdot{}^t(2\ 3)</span> scartato; <span class="m">{}^t(1\ 1)</span> tenuto (non multiplo di <span class="m">{}^t(2\ 3)</span>). Risultato: <span class="m">\{{}^t(2\ 3),{}^t(1\ 1)\}</span>.</p>
+</div>
+
+<ul>
+<li><strong>Proposizione 9.13.</strong> Il risultato dell&#39;algoritmo è una base di <span class="m">V</span>.</li>
+<li><strong>Teorema 9.14.</strong> Se <span class="m">v_1,\dots,v_n</span> generano <span class="m">V</span>, esistono indici <span class="m">1\le i_1&lt;\dots&lt;i_m\le n</span> tali che <span class="m">\{v_{i_1},\dots,v_{i_m}\}</span> è una base di <span class="m">V</span>.</li>
+<li><strong>Teorema 9.15.</strong> Ogni spazio vettoriale finitamente generato ha una base.</li>
+</ul>
+<p>Esempi: <span class="m">\{i,j\}</span> è una base di <span class="m">V^2_G</span> e <span class="m">\{i,j,k\}</span> di <span class="m">V^3_G</span> (fissato un sistema di riferimento cartesiano); <span class="m">\mathcal{E}_n</span> è una base di <span class="m">\mathbb{K}^n</span>.</p>
+<p><strong>Proposizione 9.18.</strong> <span class="m">\mathcal{B}</span> è una base di <span class="m">V</span> se e solo se ogni vettore di <span class="m">V</span> è il risultato di <strong>una e una sola</strong> combinazione lineare degli elementi di <span class="m">\mathcal{B}</span>.</p>
+<p><strong>Teorema 9.20.</strong> Tutte le basi di <span class="m">V</span> hanno lo stesso numero di elementi. (Se <span class="m">\mathcal{B}</span> ha <span class="m">n</span> elementi e <span class="m">\mathcal{B}'</span> ne ha <span class="m">n'</span>: i vettori di <span class="m">\mathcal{B}'</span> sono indipendenti e stanno nello Span dei vettori di <span class="m">\mathcal{B}</span>, quindi <span class="m">n'\le n</span>; scambiando i ruoli, <span class="m">n\le n'</span>.)</p>
+<h2>Coordinate rispetto a una base</h2>
+<p><strong>Definizione 9.21.</strong> Sia <span class="m">\mathcal{B}=\{v_1,\dots,v_n\}</span> una base di <span class="m">V</span> e <span class="m">v\in V</span>. Le <em>coordinate</em> di <span class="m">v</span> rispetto a <span class="m">\mathcal{B}</span> sono i coefficienti <span class="m">\lambda_1,\dots,\lambda_n</span> dell&#39;unica combinazione lineare <span class="m">v=\lambda_1v_1+\dots+\lambda_nv_n</span>.</p>
+<p><strong>Definizione 9.23.</strong> Il vettore colonna <span class="m">[v]_{\mathcal{B}}:={}^t(\lambda_1\ \cdots\ \lambda_n)\in\mathbb{K}^n</span> è il <em>vettore delle coordinate</em> (o <em>rappresentazione</em>) di <span class="m">v</span> rispetto a <span class="m">\mathcal{B}</span>.</p>
+<div class="callout esempio">
+
+<p>Con <span class="m">\mathcal{B}=\{{}^t(2\ 3),{}^t(1\ 1)\}</span> si ha <span class="m">{}^t(5\ 9)=4\cdot{}^t(2\ 3)-3\cdot{}^t(1\ 1)</span>, quindi <span class="m">[{}^t(5\ 9)]_{\mathcal{B}}={}^t(4\ -3)</span>. Rispetto alla base canonica invece <span class="m">[{}^t(5\ 9)]_{\mathcal{E}_2}={}^t(5\ 9)</span>.</p>
+<p>In generale <span class="m">{}^t(x_1\ x_2)=(x_2-x_1)\,{}^t(2\ 3)+(3x_1-2x_2)\,{}^t(1\ 1)</span>: i coefficienti si trovano risolvendo un sistema lineare.</p>
+</div>
+
+<p><strong>Osservazione 9.25.</strong></p>
+<ol>
+<li><span class="m">[v_i]_{\mathcal{B}}=e_i</span>.</li>
+<li>Cambiando l&#39;ordine dei vettori della base, le coordinate si permutano allo stesso modo.</li>
+<li>In <span class="m">\mathbb{K}^n</span>, rispetto a <span class="m">\mathcal{E}_n</span>, il vettore delle coordinate coincide con il vettore stesso: <span class="m">[X]_{\mathcal{E}_n}=X</span>.</li>
+</ol>
+<p><strong>Osservazione 9.26.</strong> La funzione <span class="m">[\cdot]_{\mathcal{B}}:V\ni v\mapsto[v]_{\mathcal{B}}\in\mathbb{K}^n</span> è ben definita (Proposizione 9.18) e <strong>bigettiva</strong>. Ad esempio <span class="m">[\cdot]_{\{i,j\}}</span> associa a un vettore geometrico del piano la coppia <span class="m">{}^t(x\ y)</span> delle sue coordinate cartesiane. D&#39;ora in poi i vettori geometrici si identificano con i vettori colonna delle loro coordinate rispetto a <span class="m">\{i,j\}</span> o <span class="m">\{i,j,k\}</span>.</p>
+<div class="callout attenzione">
+
+<p>Le coordinate dipendono dalla base <strong>e dal suo ordine</strong>. Rispetto a una base diversa dalla canonica, il vettore delle coordinate di <span class="m">X\in\mathbb{K}^n</span> non è <span class="m">X</span>.</p>
+</div>
+
+<div class="callout esame">
+
+<p>Il paniere chiede di riconoscere quale terna di <span class="m">\mathbb{R}^3</span> è (o non è) una base: tre vettori di <span class="m">\mathbb{R}^3</span> sono una base se e solo se sono linearmente indipendenti (cerca relazioni come <span class="m">v_1+v_3=v_2</span>). Chiede poi le coordinate di un vettore rispetto a una base: imposta il sistema <span class="m">v=\lambda_1v_1+\lambda_2v_2+\lambda_3v_3</span> e verifica sempre il risultato. Domande aperte: definizione di base con un teorema, algoritmo di estrazione, coordinate.</p>
+</div>

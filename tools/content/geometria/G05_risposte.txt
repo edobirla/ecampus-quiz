@@ -1,0 +1,352 @@
+## L18 Inversione di matrici
+18-1 APERTA
+KW: Gauss-Jordan, matrice affiancata|accostata|matrice (A I_n), identità|I_n, n×2n|n x 2n|2n colonne, matrice a scalini ridotta|scalini, B = I_n|sinistra è l'identità, inversa|A^{-1} = C, non invertibile, riga nulla, pivot, operazioni elementari
+> **Algoritmo (inversione con Gauss-Jordan).** Sia $A$ una matrice quadrata di ordine $n$. Si costruisce la matrice $(A \mid I_n) \in \mathbb{K}^{n,2n}$, che ha $A$ come sottomatrice delle prime $n$ colonne e la **matrice identità** $I_n$ come sottomatrice delle ultime $n$ colonne.
+>
+> Si applica a tutta la matrice il **metodo di eliminazione di Gauss-Jordan** (operazioni elementari sulle righe fino alla forma a scalini ridotta). Il risultato è una matrice a scalini $(B \mid C)$:
+>
+> - se $B = I_n$, allora $A$ è **invertibile** e $A^{-1} = C$;
+> - altrimenti $A$ **non è invertibile**.
+>
+> **Osservazione (arresto anticipato).** Se durante l'algoritmo nelle prime $n$ colonne compare una **riga nulla**, oppure il primo pivot non è nell'entrata $(1,1)$, oppure un pivot è a destra del precedente di più di una entrata, allora $A$ non è invertibile ed è inutile continuare: ripetendo le stesse operazioni sulla sola $A$ si otterrebbe una matrice a scalini con meno di $n$ pivot, quindi di rango minore di $n$.
+>
+> **Esempio.** Per $A = \begin{pmatrix} 0 & 3 & 1 \\ 1 & 5 & -1 \\ -1 & -2 & 0 \end{pmatrix}$ si parte da $(A \mid I_3)$ e con Gauss-Jordan si arriva a $(I_3 \mid C)$ con $C = \frac16\begin{pmatrix} -2 & -2 & -8 \\ 1 & 1 & 1 \\ 3 & -3 & -3 \end{pmatrix}$, quindi $A^{-1} = C$ (lo stesso risultato della formula con i cofattori, $\det A = 6$).
+18-2 APERTA
+KW: complemento algebrico|cofattore|cofattori, matrice dei cofattori|Cof(A)|complementi algebrici, trasposta, 1/det|diviso il determinante|determinante, det diverso da 0|det(A) ≠ 0|invertibile se e solo se, (-1)^{i+j}, minore|sottomatrice, det(A^{-1}) = 1/det(A), cof_A(j,i)
+> **Matrice dei cofattori.** Se $A = (a_{ij})$ è quadrata $n\times n$ con $n \geq 2$, la matrice $\mathrm{Cof}(A) := (\mathrm{cof}_A(i,j))$ è la **matrice dei complementi algebrici** (o dei cofattori) di $A$, dove $\mathrm{cof}_A(i,j) = (-1)^{i+j}\det(A_{ij})$ e $A_{ij}$ è la sottomatrice ottenuta togliendo la riga $i$ e la colonna $j$.
+>
+> **Teorema.** $A \in \mathbb{K}^{n,n}$ è invertibile **se e solo se** $\det_n(A) \neq 0$, e in tal caso $\det_n(A^{-1}) = \dfrac{1}{\det_n(A)}$.
+>
+> - Se $n = 1$, $A = (a_{11})$ ha inversa $A^{-1} = (1/a_{11})$.
+> - Se $n \geq 2$, l'inversa è la **trasposta della matrice dei cofattori** moltiplicata per $1/\det_n(A)$:
+> $$A^{-1} = \frac{1}{\det_n(A)}\,{}^t\big(\mathrm{Cof}(A)\big), \qquad \text{ossia}\quad (A^{-1})_i^j = \frac{\mathrm{cof}_A(j,i)}{\det_n(A)}.$$
+>
+> Attenzione agli indici scambiati: l'entrata di riga $i$ e colonna $j$ dell'inversa usa il cofattore $(j,i)$.
+>
+> **Esempio.** Per $A = \begin{pmatrix} 0 & 3 & 1 \\ 1 & 5 & -1 \\ -1 & -2 & 0 \end{pmatrix}$ si ha $\mathrm{Cof}(A) = \begin{pmatrix} -2 & 1 & 3 \\ -2 & 1 & -3 \\ -8 & 1 & -3 \end{pmatrix}$ e $\det A = 6$, quindi $A^{-1} = \frac16\begin{pmatrix} -2 & -2 & -8 \\ 1 & 1 & 1 \\ 3 & -3 & -3 \end{pmatrix}$.
+>
+> **Conseguenza.** Matrici coniugate hanno lo stesso determinante: se $B = C^{-1}AC$, per Binet $\det B = \frac{1}{\det C}\det A \det C = \det A$.
+x91 B Il complemento algebrico è $\mathrm{cof}_A(1,2) = (-1)^{1+2}\det(A_{12})$, dove $A_{12}$ si ottiene togliendo da $A$ la **riga 1** e la **colonna 2**.
+  Togliendo la riga $(1\ -1\ 3\ 2)$ e la seconda colonna restano le righe $(0, 0, -2)$, $(1, 1, 0)$, $(-1, 0, 0)$:
+  $$A_{12} = \begin{pmatrix} 0 & 0 & -2 \\ 1 & 1 & 0 \\ -1 & 0 & 0 \end{pmatrix}.$$
+  Sviluppiamo il determinante lungo la terza riga, che ha un solo elemento non nullo ($-1$ in posizione $(3,1)$): $\det(A_{12}) = (-1)\cdot(-1)^{3+1}\det\begin{pmatrix} 0 & -2 \\ 1 & 0 \end{pmatrix} = (-1)\cdot\big(0\cdot 0 - (-2)\cdot 1\big) = (-1)\cdot 2 = -2$.
+  Quindi $\mathrm{cof}_A(1,2) = (-1)^{3}\cdot(-2) = 2$.
+  **Errore tipico:** fermarsi al minore $\det(A_{12}) = -2$ dimenticando il segno $(-1)^{i+j}$, che per $i+j = 3$ dispari cambia il segno. Altri valori nascono togliendo la riga o la colonna sbagliata.
+T: Data la matrice $A = \begin{pmatrix} 1 & -1 & 3 & 2 \\ 0 & 2 & 0 & -2 \\ 1 & 3 & 1 & 0 \\ -1 & 0 & 0 & 0 \end{pmatrix}$, quanto vale $\mathrm{cof}_A(1,2)$?
+OPT: $-2$ | $2$ | $-1$ | $1$
+x92 B Nella notazione del corso $(A^{-1})^4_2$ è l'entrata di **riga 2** (indice in basso) e **colonna 4** (indice in alto). Per il Teorema 18.4, $(A^{-1})_i^j = \dfrac{\mathrm{cof}_A(j,i)}{\det A}$, quindi serve $\dfrac{\mathrm{cof}_A(4,2)}{\det A}$.
+  **Determinante.** $A$ è triangolare superiore, quindi $\det A$ è il prodotto della diagonale: $1\cdot 2\cdot 1\cdot 3 = 6$ (diverso da 0, $A$ è invertibile).
+  **Cofattore $(4,2)$.** Togliamo la riga 4 e la colonna 2: restano le righe $(1, 3, 2)$, $(0, 0, -2)$, $(0, 1, 0)$, cioè $A_{42} = \begin{pmatrix} 1 & 3 & 2 \\ 0 & 0 & -2 \\ 0 & 1 & 0 \end{pmatrix}$. Sviluppando lungo la prima colonna: $\det A_{42} = 1\cdot\det\begin{pmatrix} 0 & -2 \\ 1 & 0 \end{pmatrix} = 0 - (-2) = 2$. Il segno è $(-1)^{4+2} = +1$, quindi $\mathrm{cof}_A(4,2) = 2$.
+  Risultato: $(A^{-1})^4_2 = \dfrac{2}{6} = \dfrac13$.
+  Verifica: calcolando tutta l'inversa si trova come seconda riga $(0,\ \tfrac12,\ 0,\ \tfrac13)$, il cui quarto elemento è $\tfrac13$.
+  **Errore tipico:** leggere l'indice in alto come riga e prendere l'entrata di riga 4 e colonna 2, che vale 0 (l'inversa di una triangolare superiore è triangolare superiore); oppure non dividere il cofattore per il determinante (si ottiene 2), o dare il determinante stesso (6).
+  TRAP: in $(A^{-1})^4_2$ l'indice in alto è la colonna e quello in basso la riga: l'entrata di riga 4 e colonna 2 vale 0, ma non è quella richiesta.
+T: Quanto vale $(A^{-1})^4_2$ dove $A = \begin{pmatrix} 1 & -1 & 3 & 2 \\ 0 & 2 & 0 & -2 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 3 \end{pmatrix}$?
+OPT: $0$ | $\frac13$ | $2$ | $6$
+x93 B Per il **Teorema di Binet** il determinante di un prodotto è il prodotto dei determinanti: $\det(C^{-1}AC) = \det(C^{-1})\det(A)\det(C)$.
+  Per il Teorema 18.4, $\det(C^{-1}) = \dfrac{1}{\det(C)}$ (e $\det C \neq 0$ perché $C$ è invertibile). Sostituendo: $\det(C^{-1}AC) = \dfrac{1}{\det C}\cdot\det A\cdot\det C = \det(A)$.
+  È il Corollario 18.6: matrici coniugate hanno lo stesso determinante.
+  **Errore tipico:** trattare $C^{-1}$ come se avesse determinante $\det C$ o $-\det C$: il determinante dell'inversa è il **reciproco**, e si semplifica con $\det C$.
+T: Quanto vale $\det(C^{-1}AC)$?
+OPT: $\det(C)\det(A)$ | $\det(A)$ | $-\det(C)\det(A)\det(C)$ | Nessuna delle altre risposte
+x94 D Si parte da $(A \mid I_3) = \left(\begin{array}{ccc|ccc} 1 & 2 & 2 & 1 & 0 & 0 \\ 2 & 5 & 3 & 0 & 1 & 0 \\ 3 & 7 & 5 & 0 & 0 & 1 \end{array}\right)$.
+  **Passo 1:** $R_2 \to R_2 - 2R_1$ dà $(0\ 1\ -1 \mid -2\ 1\ 0)$; $R_3 \to R_3 - 3R_1$ dà $(0\ 1\ -1 \mid -3\ 0\ 1)$.
+  **Passo 2:** $R_3 \to R_3 - R_2$: $(0\ 1\ -1) - (0\ 1\ -1) = (0\ 0\ 0)$ a sinistra e $(-3\ 0\ 1) - (-2\ 1\ 0) = (-1\ -1\ 1)$ a destra.
+  Si ottiene $\left(\begin{array}{ccc|ccc} 1 & 2 & 2 & 1 & 0 & 0 \\ 0 & 1 & -1 & -2 & 1 & 0 \\ 0 & 0 & 0 & -1 & -1 & 1 \end{array}\right)$: nelle prime 3 colonne c'è una **riga nulla**, quindi (Osservazione 18.9) $A$ non è invertibile e l'algoritmo si può fermare. Infatti $\det A = 1(25-21) - 2(10-9) + 2(14-15) = 4 - 2 - 2 = 0$.
+  Le altre matrici non permettono di concludere: in quella con la terza riga ancora $(3\ 7\ 5)$ e in quella con terza riga $(0\ 1\ -1)$ non c'è ancora nessuna riga nulla a sinistra; quella con riga nulla ma parte destra $(-3\ 0\ 1)$ è sbagliata, perché l'operazione $R_3 - R_2$ va applicata anche alla parte destra.
+  **Errore tipico:** applicare l'operazione elementare solo alla parte sinistra (la matrice $A$) dimenticando le ultime 3 colonne: ogni operazione va fatta sull'intera riga di $(A\mid I_3)$.
+  TRAP: due matrici hanno la terza riga nulla a sinistra, ma in una la parte destra non è stata aggiornata con l'ultima operazione.
+T: Applicando il metodo di Gauss-Jordan per invertire la matrice $A = \begin{pmatrix} 1 & 2 & 2 \\ 2 & 5 & 3 \\ 3 & 7 & 5 \end{pmatrix}$, con quale matrice l'algoritmo si può fermare deducendo che $A$ non è invertibile?
+OPT: $\left(\begin{array}{ccc|ccc} 1 & 2 & 2 & 1 & 0 & 0 \\ 0 & 1 & -1 & -2 & 1 & 0 \\ 3 & 7 & 5 & 0 & 0 & 1 \end{array}\right)$ | $\left(\begin{array}{ccc|ccc} 1 & 2 & 2 & 1 & 0 & 0 \\ 0 & 1 & -1 & -2 & 1 & 0 \\ 0 & 1 & -1 & -3 & 0 & 1 \end{array}\right)$ | $\left(\begin{array}{ccc|ccc} 1 & 2 & 2 & 1 & 0 & 0 \\ 0 & 1 & -1 & -2 & 1 & 0 \\ 0 & 0 & 0 & -3 & 0 & 1 \end{array}\right)$ | $\left(\begin{array}{ccc|ccc} 1 & 2 & 2 & 1 & 0 & 0 \\ 0 & 1 & -1 & -2 & 1 & 0 \\ 0 & 0 & 0 & -1 & -1 & 1 \end{array}\right)$
+
+## L19 Applicazioni lineari
+19-1 APERTA
+KW: stesso campo, f(v1 + v2) = f(v1) + f(v2)|additività|somma, f(λv) = λf(v)|omogeneità|prodotto per scalare, Lin(V,W)|Lin, f(0) = 0|vettore nullo, base, una e una sola|unica|esiste un'unica, combinazione lineare, composizione, spazio vettoriale
+> **Definizione.** Dati due spazi vettoriali $V$ e $W$ sullo **stesso campo** $\mathbb{K}$, un'applicazione $f: V \to W$ è **lineare** ($\mathbb{K}$-lineare) se:
+>
+> - (AL1) $f(v_1 + v_2) = f(v_1) + f(v_2)$ per ogni $v_1, v_2 \in V$;
+> - (AL2) $f(\lambda v) = \lambda f(v)$ per ogni $v \in V$, $\lambda \in \mathbb{K}$.
+>
+> Equivalentemente $f(\lambda_1 v_1 + \lambda_2 v_2) = \lambda_1 f(v_1) + \lambda_2 f(v_2)$. L'insieme delle applicazioni lineari da $V$ a $W$ si indica con $\mathrm{Lin}(V, W)$. Esempi: l'applicazione nulla, l'identità $\mathrm{id}_V$, le proiezioni sulle coordinate, l'inclusione di un sottospazio; non è lineare $q(x) = x^2$ né una costante non nulla. Ogni applicazione lineare manda il vettore nullo nel vettore nullo: $f(0_V) = f(0\cdot 0_V) = 0\cdot f(0_V) = 0_W$ (il viceversa è falso).
+>
+> **Proposizione 19.12.** Se $V$ è finitamente generato, $\mathcal{B} = \{v_1, \dots, v_m\}$ è una base di $V$ e $w_1, \dots, w_m \in W$ sono vettori qualsiasi, **esiste una e una sola** applicazione lineare $f: V \to W$ con $f(v_i) = w_i$ per $i = 1, \dots, m$.
+>
+> *Idea della dimostrazione:* ogni $v$ si scrive in modo unico come $v = \lambda_1 v_1 + \dots + \lambda_m v_m$, e la linearità impone $f(v) = \lambda_1 w_1 + \dots + \lambda_m w_m$; si verifica poi che così definita $f$ soddisfa (AL1) e (AL2).
+>
+> Altri risultati: la composizione di applicazioni lineari è lineare; $\mathrm{Lin}(V, W)$ con somma e prodotto per scalare puntuali è uno spazio vettoriale su $\mathbb{K}$; l'applicazione delle coordinate $[\cdot]_{\mathcal{B}}: V \to \mathbb{K}^m$ è lineare.
+19-2 APERTA
+KW: f_A(X) = A·X|f_A, A ∈ K^{n,m}|n×m, K^m → K^n|da K^m a K^n, prodotto righe per colonne, distributiva, colonne, f(e_i)|base canonica, bigettiva|una e una sola matrice, f_{AB} = f_A ∘ f_B|composizione, identità|I_m, polinomi di grado 1|termine noto nullo
+> **Definizione.** Data $A \in \mathbb{K}^{n,m}$, l'**applicazione lineare associata** ad $A$ è $f_A: \mathbb{K}^m \to \mathbb{K}^n$, $f_A(X) := A\cdot X$. Una matrice $n \times m$ va da $\mathbb{K}^m$ (numero di colonne) a $\mathbb{K}^n$ (numero di righe).
+>
+> È lineare per la proprietà distributiva del prodotto righe per colonne: $A(X+Y) = AX + AY$ e $A(\lambda X) = \lambda(AX)$. Si ha $f_{I_m} = \mathrm{id}_{\mathbb{K}^m}$, $f_{0_{n,m}}$ è l'applicazione nulla e $f_{A\cdot B} = f_A \circ f_B$.
+>
+> **Esempio.** $A = \begin{pmatrix} 2 & 1 \\ 0 & 0 \\ -1 & 3 \end{pmatrix}$ dà $f_A\begin{pmatrix} x_1 \\ x_2 \end{pmatrix} = \begin{pmatrix} 2x_1 + x_2 \\ 0 \\ -x_1 + 3x_2 \end{pmatrix}$.
+>
+> **Proposizione 19.24.** La funzione $\mathbb{K}^{n,m} \ni A \mapsto f_A \in \mathrm{Lin}(\mathbb{K}^m, \mathbb{K}^n)$ è **bigettiva**: ogni applicazione lineare da $\mathbb{K}^m$ a $\mathbb{K}^n$ è associata a **una e una sola** matrice.
+>
+> - *Surgettività:* data $f$ lineare, la matrice $A$ che ha per colonne $f(e_1), \dots, f(e_m)$ (immagini della base canonica) soddisfa $f = f_A$, perché $f(X) = \sum x_i f(e_i) = A X$.
+> - *Iniettività:* se $A \neq A'$ differiscono nell'entrata $(i,j)$, allora $f_A(e_j) \neq f_{A'}(e_j)$.
+>
+> Equivalentemente, le applicazioni lineari da $\mathbb{K}^m$ a $\mathbb{K}^n$ sono tutte e sole quelle le cui componenti sono polinomi nulli o di grado 1 con **termine noto nullo** in $x_1, \dots, x_m$. Inoltre $A \mapsto f_A$ è essa stessa lineare.
+x95 C Per la linearità (AL1 e AL2), $f(v_1 - 3v_2) = f(v_1) - 3f(v_2)$.
+  Sostituendo: $f(v_1) - 3f(v_2) = (w_1 - w_2) - 3(w_1 - w_2 + 2w_3) = w_1 - w_2 - 3w_1 + 3w_2 - 6w_3 = -2w_1 + 2w_2 - 6w_3$.
+  Il valore è determinato: non serve sapere altro su $f$, perché $v_1 - 3v_2$ è combinazione lineare di vettori di cui conosciamo l'immagine.
+  **Errore tipico:** moltiplicare per $-3$ solo il primo termine di $f(v_2)$ o sbagliare i segni nella distribuzione; oppure pensare che senza la legge esplicita di $f$ non si possa concludere.
+T: Data un'applicazione lineare $f: V \to W$ tale che $f(v_1) = w_1 - w_2$ e $f(v_2) = w_1 - w_2 + 2w_3$, dove $v_1, v_2 \in V$ e $w_1, w_2, w_3 \in W$, quanto vale $f(v_1 - 3v_2)$?
+OPT: $w_1 - 3w_2$ | $2w_1 - 2w_2 + 2w_3$ | $-2w_1 + 2w_2 - 6w_3$ | Non si può dire
+x96 D Per l'Osservazione 19.26, un'applicazione da $\mathbb{R}^2$ a $\mathbb{R}^3$ è lineare se e solo se ogni componente è un polinomio nullo o di **grado 1 con termine noto nullo** in $x_1, x_2$.
+  - $\cos x_1$ non è un polinomio: per esempio la componente vale $\cos 0 = 1 \neq 0$ in $X = 0$, quindi $f(0) \neq 0$.
+  - $(x_1)^2$ ha grado 2: raddoppiando $X$ la componente quadruplica invece di raddoppiare.
+  - $x_1 x_2$ ha grado 2: $f(2X)$ ha terza componente $4x_1x_2 \neq 2x_1x_2$.
+  - $\begin{pmatrix} x_1 + x_2 \\ x_1 - 3x_2 \\ x_2 \end{pmatrix}$ ha tutte le componenti di grado 1 senza termine noto: è $f_A$ con $A = \begin{pmatrix} 1 & 1 \\ 1 & -3 \\ 0 & 1 \end{pmatrix}$, quindi è lineare.
+  **Errore tipico:** controllare solo che $f(0) = 0$ (vero anche per le componenti $(x_1)^2$ e $x_1x_2$): è una condizione necessaria ma non sufficiente.
+T: Quale delle seguenti è la legge di un'applicazione lineare da $\mathbb{R}^2$ a $\mathbb{R}^3$?
+OPT: $f\begin{pmatrix} x_1 \\ x_2 \end{pmatrix} = \begin{pmatrix} x_1 + x_2 \\ \cos x_1 \\ 0 \end{pmatrix}$ | $f\begin{pmatrix} x_1 \\ x_2 \end{pmatrix} = \begin{pmatrix} x_1 + x_2 \\ (x_1)^2 \\ 0 \end{pmatrix}$ | $f\begin{pmatrix} x_1 \\ x_2 \end{pmatrix} = \begin{pmatrix} x_1 + x_2 \\ x_1 - 3x_2 \\ x_1 x_2 \end{pmatrix}$ | $f\begin{pmatrix} x_1 \\ x_2 \end{pmatrix} = \begin{pmatrix} x_1 + x_2 \\ x_1 - 3x_2 \\ x_2 \end{pmatrix}$
+x97 B Per la Proposizione 19.12, se $\mathcal{B}$ è una **base** di $V$, per qualsiasi scelta delle immagini dei vettori di $\mathcal{B}$ esiste **una e una sola** applicazione lineare con quelle immagini.
+  Verifichiamo che $\mathcal{B}$ è davvero una base di $\mathbb{R}^2$: $\det\begin{pmatrix} 2 & -3 \\ 3 & 4 \end{pmatrix} = 2\cdot 4 - (-3)\cdot 3 = 8 + 9 = 17 \neq 0$, quindi i due vettori sono linearmente indipendenti e, essendo 2 in $\mathbb{R}^2$, formano una base.
+  Il fatto che le due immagini $\begin{pmatrix} 1 \\ 2 \\ 0 \end{pmatrix}$ e $\begin{pmatrix} 2 \\ 4 \\ 0 \end{pmatrix}$ siano proporzionali non conta: le immagini possono essere vettori qualsiasi (anche uguali o nulli). L'applicazione esiste ed è unica (la sua immagine avrà dimensione 1).
+  **Errore tipico:** pensare che immagini linearmente dipendenti impediscano l'esistenza (risposta 0) o rendano $f$ non determinata (infinite): l'unica condizione è che i vettori del dominio formino una base.
+  TRAP: le immagini assegnate sono proporzionali, ma per la Proposizione 19.12 conta solo che i vettori di partenza formino una base.
+T: Dati la base $\mathcal{B} = \left\{\begin{pmatrix} 2 \\ 3 \end{pmatrix}, \begin{pmatrix} -3 \\ 4 \end{pmatrix}\right\}$ di $\mathbb{R}^2$ e i vettori $\begin{pmatrix} 1 \\ 2 \\ 0 \end{pmatrix}$ e $\begin{pmatrix} 2 \\ 4 \\ 0 \end{pmatrix}$ di $\mathbb{R}^3$, quante applicazioni lineari $f: \mathbb{R}^2 \to \mathbb{R}^3$ tali che $f\begin{pmatrix} 2 \\ 3 \end{pmatrix} = \begin{pmatrix} 1 \\ 2 \\ 0 \end{pmatrix}$ e $f\begin{pmatrix} -3 \\ 4 \end{pmatrix} = \begin{pmatrix} 2 \\ 4 \\ 0 \end{pmatrix}$ esistono?
+OPT: $0$ | $1$ | $2$ | Infinite
+x98 C Per la Definizione 19.19, una matrice $A \in \mathbb{K}^{n,m}$ ($n$ righe, $m$ colonne) dà $f_A: \mathbb{K}^m \to \mathbb{K}^n$, $X \mapsto AX$.
+  Il prodotto $AX$ è definito se il numero di **colonne** di $A$ è uguale al numero di componenti di $X \in \mathbb{R}^3$, quindi $m = 3$; il risultato ha tante componenti quante le **righe** di $A$, e deve stare in $\mathbb{R}^4$, quindi $n = 4$.
+  La matrice è $4 \times 3$ (righe × colonne).
+  **Errore tipico:** scrivere le dimensioni nell'ordine "dominio × codominio" ($3 \times 4$): il numero di righe corrisponde al codominio, quello di colonne al dominio.
+T: Data un'applicazione lineare $f_A: \mathbb{R}^3 \to \mathbb{R}^4$ associata a una matrice $A$, quale è la dimensione di $A$?
+OPT: $3 \times 3$ | $3 \times 4$ | $4 \times 3$ | $4 \times 4$
+
+## L20 Nucleo e immagine
+20-1 D Per il **Teorema fondamentale dell'algebra lineare**, se $V$ è finitamente generato: $\dim(\mathrm{Ker} f) + \dim(\mathrm{Im} f) = \dim V$.
+  Quindi $\dim(\mathrm{Ker} f) = \dim V - \dim(\mathrm{Im} f) = 5 - 3 = 2$.
+  **Errore tipico:** sommare le dimensioni invece di sottrarle, o confondere nucleo e immagine; la dimensione di $W$ non serve.
+20-2 C Per il **Teorema fondamentale dell'algebra lineare**: $\dim(\mathrm{Ker} f) + \dim(\mathrm{Im} f) = \dim V$.
+  Quindi $\dim(\mathrm{Ker} f) = 5 - 2 = 3$.
+  **Errore tipico:** rispondere con la dimensione dell'immagine (2) invece di quella del nucleo, o sbagliare la sottrazione.
+20-3 C Per il **Teorema fondamentale dell'algebra lineare**: $\dim(\mathrm{Ker} f) + \dim(\mathrm{Im} f) = \dim V$.
+  Quindi $\dim(\mathrm{Ker} f) = 5 - 4 = 1$.
+  **Errore tipico:** rispondere con la dimensione dell'immagine (4) invece di quella del nucleo.
+20-4 B Per il **Teorema fondamentale dell'algebra lineare**: $\dim(\mathrm{Ker} f) + \dim(\mathrm{Im} f) = \dim V$.
+  Quindi $\dim(\mathrm{Ker} f) = 5 - 1 = 4$.
+  **Errore tipico:** rispondere con la dimensione dell'immagine (1) invece di quella del nucleo.
+20-5 APERTA
+KW: dim(Ker(f)) + dim(Im(f)) = dim(V)|nucleo più immagine, finitamente generato, rango|rank(f), iniettiva, surgettiva, bigettiva, dim(V) ≤ dim(W)|minore o uguale, dim(V) ≥ dim(W)|maggiore o uguale, stessa dimensione|dim(V) = dim(W), equivalenti, base
+> **Teorema fondamentale dell'algebra lineare.** Sia $f: V \to W$ un'applicazione lineare con $V$ **finitamente generato**. Allora
+> $$\dim(\mathrm{Ker}(f)) + \dim(\mathrm{Im}(f)) = \dim(V),$$
+> cioè $\dim(\mathrm{Ker} f) + \mathrm{rank}(f) = \dim V$.
+>
+> *Idea della dimostrazione:* si prende una base $\{v_1, \dots, v_p\}$ di $\mathrm{Ker} f$ e una base $\{w_1, \dots, w_q\}$ di $\mathrm{Im} f$, si scelgono $u_i$ con $f(u_i) = w_i$ e si dimostra che $\{v_1, \dots, v_p, u_1, \dots, u_q\}$ è una base di $V$ (generano e sono linearmente indipendenti), quindi $\dim V = p + q$.
+>
+> **Conseguenze** (Corollario 20.21), con $V$ e $W$ finitamente generati:
+>
+> 1. se $f$ è **iniettiva** ($\mathrm{Ker} f = \{0\}$), allora $\dim V = \dim(\mathrm{Im} f) \leq \dim W$;
+> 2. se $f$ è **surgettiva** ($\mathrm{Im} f = W$), allora $\dim V = \dim(\mathrm{Ker} f) + \dim W \geq \dim W$;
+> 3. se $f$ è **bigettiva**, allora $\dim V = \dim W$.
+>
+> **Corollario 20.22.** Se $\dim V = \dim W$, sono **equivalenti**: $f$ iniettiva, $f$ surgettiva, $f$ bigettiva (basta controllarne una).
+>
+> **Esempio.** Per $f_A$ con $A = \begin{pmatrix} 1 & 1 & -3 \\ 1 & -1 & 1 \end{pmatrix}$: $\mathrm{Ker} f_A = \mathrm{Span}({}^t(1\ 2\ 1))$ ha dimensione 1, $\mathrm{Im} f_A = \mathbb{R}^2$ ha dimensione 2, e $1 + 2 = 3 = \dim \mathbb{R}^3$.
+20-6 APERTA
+KW: nucleo|controimmagine del vettore nullo, sottospazio, iniettiva se e solo se|Ker(f) = {0}, Im(f)|immagine, sottospazio del codominio|sottospazio di W, rango|rank(f) = dim(Im(f)), generata dalle immagini|immagini dei vettori della base, colonne, surgettiva se e solo se rank(f) = dim(W)|rank(f) = dim(W), Preim = v + Ker(f)|traslato
+> **Nucleo.** Sia $f: V \to W$ lineare. Il **nucleo** di $f$ è la controimmagine del vettore nullo:
+> $$\mathrm{Ker}(f) := \{v \in V \mid f(v) = 0_W\}.$$
+> Contiene sempre $0_V$ (quindi non è vuoto) ed è un **sottospazio vettoriale del dominio** $V$ (se $f(v_1) = f(v_2) = 0$ allora $f(v_1 + v_2) = 0$ e $f(\lambda v_1) = 0$).
+>
+> **Proposizione 20.5.** $f$ è **iniettiva se e solo se $\mathrm{Ker}(f) = \{0\}$** (da $f(v_1) = f(v_2)$ segue $f(v_1 - v_2) = 0$, cioè $v_1 - v_2 \in \mathrm{Ker} f$). Se $w \in \mathrm{Im} f$ e $\bar v$ è una sua controimmagine, $\mathrm{Preim}_f(w) = \bar v + \mathrm{Ker}(f)$: è un traslato del nucleo (non un sottospazio se $w \neq 0$).
+>
+> **Immagine.** $\mathrm{Im}(f) = \{w \in W \mid \exists v \in V,\ f(v) = w\}$ è un **sottospazio vettoriale del codominio** $W$. Se $\{v_1, \dots, v_m\}$ è una base di $V$, $\mathrm{Im}(f) = \mathrm{Span}(f(v_1), \dots, f(v_m))$; per $f_A$ l'immagine è generata dalle **colonne** di $A$.
+>
+> **Rango.** Se $V$ è finitamente generato, il **rango** di $f$ è $\mathrm{rank}(f) := \dim(\mathrm{Im}(f))$. $f$ è surgettiva se e solo se $W$ è finitamente generato e $\mathrm{rank}(f) = \dim(W)$.
+>
+> **Esempio.** $A = \begin{pmatrix} 1 & 1 & -3 \\ 1 & -1 & 1 \end{pmatrix}$: risolvendo $x_1 + x_2 - 3x_3 = 0$, $x_1 - x_2 + x_3 = 0$ si trova $\mathrm{Ker} f_A = \mathrm{Span}({}^t(1\ 2\ 1))$ (non iniettiva); le colonne generano $\mathbb{R}^2$, quindi $\mathrm{rank}(f_A) = 2$ e $f_A$ è surgettiva.
+x99 B Il nucleo è $\mathrm{Ker}(f) = \{X \in \mathbb{R}^3 \mid f(X) = 0\}$, cioè le soluzioni del sistema $2x_1 - 2x_2 + x_3 = 0$, $x_2 - 4x_3 = 0$, $2x_1 - 7x_3 = 0$.
+  La terza equazione è combinazione delle prime due: $(2x_1 - 2x_2 + x_3) + 2(x_2 - 4x_3) = 2x_1 - 7x_3$. Quindi si può eliminare e il sistema è equivalente a quello formato dalle prime due equazioni.
+  Verifica con Gauss: $\begin{pmatrix} 2 & -2 & 1 \\ 0 & 1 & -4 \\ 2 & 0 & -7 \end{pmatrix}$, con $R_3 \to R_3 - R_1$ diventa $(0\ 2\ -8)$ e con $R_3 \to R_3 - 2R_2$ diventa nulla: rango 2, quindi il nucleo ha dimensione $3 - 2 = 1$ (è la retta $\mathrm{Span}({}^t(7\ 8\ 2))$).
+  Il sistema $x_1 = x_2 = x_3 = 0$ descriverebbe il nucleo solo se $f$ fosse iniettiva (non lo è: $\det = 0$). La sola equazione $2x_1 - 2x_2 + x_3 = 0$ descrive un piano, che contiene il nucleo ma è più grande.
+  **Errore tipico:** togliere troppe equazioni: si può eliminare solo un'equazione che è combinazione lineare delle altre; tenendone una sola si ottiene un insieme più grande del nucleo.
+T: Quale dei seguenti sistemi di equazioni descrive il nucleo dell'applicazione lineare $f: \mathbb{R}^3 \ni \begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix} \mapsto \begin{pmatrix} 2x_1 - 2x_2 + x_3 \\ x_2 - 4x_3 \\ 2x_1 - 7x_3 \end{pmatrix} \in \mathbb{R}^3$?
+OPT: $\begin{cases} x_1 = 0 \\ x_2 = 0 \\ x_3 = 0 \end{cases}$ | $\begin{cases} 2x_1 - 2x_2 + x_3 = 0 \\ x_2 - 4x_3 = 0 \end{cases}$ | $\begin{cases} 2x_1 - 2x_2 + x_3 = 0 \end{cases}$ | Nessuna delle altre risposte
+x100 A Il nucleo $\mathrm{Ker}(f) = \{v \in V \mid f(v) = 0_W\}$ è un sottoinsieme del **dominio** $V$: contiene vettori di $V$, non di $W$. Quindi in generale scrivere $0_W \in \mathrm{Ker}(f)$ è falso ($0_W$ è il vettore nullo del codominio, l'immagine del nucleo).
+  Le altre sono vere: $0_V \in \mathrm{Ker}(f)$ perché $f(0_V) = 0_W$ (Osservazione 20.3); di conseguenza $\mathrm{Ker}(f) \neq \emptyset$; e per la Proposizione 20.4 il nucleo è un sottospazio vettoriale di $V$.
+  **Errore tipico:** confondere i due vettori nulli: nel nucleo c'è $0_V$, mentre $0_W$ è il valore che $f$ assume sui vettori del nucleo.
+  TRAP: si cerca l'affermazione falsa: $0_W$ è il valore di $f$ sul nucleo, ma non sta nel nucleo, che è dentro $V$.
+T: Data un'applicazione lineare $f: V \to W$, quale delle seguenti proposizioni è **falsa**?
+OPT: $0_W \in \mathrm{Ker}(f)$ | $0_V \in \mathrm{Ker}(f)$ | $\mathrm{Ker}(f) \neq \emptyset$ | $\mathrm{Ker}(f)$ è un sottospazio vettoriale di $V$
+x101 B Il rango è $\mathrm{rank}(f) = \dim(\mathrm{Im} f)$. La matrice associata è $A = \begin{pmatrix} 1 & 1 \\ 0 & 0 \\ 3 & 3 \end{pmatrix}$ e l'immagine è generata dalle sue colonne.
+  Le due colonne sono uguali, ${}^t(1\ 0\ 3)$, quindi $\mathrm{Im}(f) = \mathrm{Span}({}^t(1\ 0\ 3))$, che ha dimensione 1. Infatti $f(X) = (x_1 + x_2)\,{}^t(1\ 0\ 3)$.
+  Controllo con il Teorema fondamentale: il nucleo è $\{x_1 + x_2 = 0\}$, di dimensione 1, e $1 + 1 = 2 = \dim \mathbb{R}^2$.
+  **Errore tipico:** contare le componenti non nulle (2) o il numero di colonne (2), oppure la dimensione del codominio (3): bisogna contare le colonne **linearmente indipendenti**.
+T: Quale è il rango dell'applicazione lineare $f: \mathbb{R}^2 \ni \begin{pmatrix} x_1 \\ x_2 \end{pmatrix} \mapsto \begin{pmatrix} x_1 + x_2 \\ 0 \\ 3x_1 + 3x_2 \end{pmatrix} \in \mathbb{R}^3$?
+OPT: $0$ | $1$ | $2$ | $3$
+x102 C Per il **Teorema fondamentale dell'algebra lineare**: $\dim(\mathrm{Ker} f) + \dim(\mathrm{Im} f) = \dim V$.
+  Quindi $\dim(\mathrm{Im} f) = 7 - 3 = 4$.
+  **Errore tipico:** rispondere con la dimensione del nucleo (3) o del dominio (7).
+T: Data un'applicazione lineare $f: V \to W$ tale che $\dim(V) = 7$ e $\dim(\mathrm{Ker}(f)) = 3$, quale è la dimensione dell'immagine di $f$?
+OPT: $0$ | $3$ | $4$ | $7$
+
+## L21 Isomorfismi
+21-1 B Per il Corollario 21.11, $f_A: \mathbb{K}^n \to \mathbb{K}^n$ è invertibile (cioè un isomorfismo) **se e solo se $\det(A) \neq 0$**. Cerchiamo la matrice con determinante nullo. Per $\begin{pmatrix} a & b \\ c & d \end{pmatrix}$ si ha $\det = ad - bc$:
+  - $\begin{pmatrix} 2 & -4 \\ 1 & 2 \end{pmatrix}$: $4 - (-4) = 8$;
+  - $\begin{pmatrix} 2 & 4 \\ 1 & 2 \end{pmatrix}$: $4 - 4 = 0$;
+  - $\begin{pmatrix} 2 & 4 \\ 1 & -2 \end{pmatrix}$: $-4 - 4 = -8$;
+  - $\begin{pmatrix} 2 & 4 \\ -1 & 2 \end{pmatrix}$: $4 - (-4) = 8$.
+  L'unica con determinante 0 è $\begin{pmatrix} 2 & 4 \\ 1 & 2 \end{pmatrix}$ (la prima riga è il doppio della seconda), quindi $f_A$ non è un isomorfismo.
+  **Errore tipico:** sbagliare il segno nel prodotto $bc$ quando uno dei due è negativo: $ad - bc$ con $b = -4$, $c = 1$ dà $ad + 4$.
+OPT: $\begin{pmatrix} 2 & -4 \\ 1 & 2 \end{pmatrix}$ | $\begin{pmatrix} 2 & 4 \\ 1 & 2 \end{pmatrix}$ | $\begin{pmatrix} 2 & 4 \\ 1 & -2 \end{pmatrix}$ | $\begin{pmatrix} 2 & 4 \\ -1 & 2 \end{pmatrix}$
+21-2 B Per il Corollario 21.11, $f_A$ è un isomorfismo **se e solo se $\det(A) \neq 0$**. Con $\det = ad - bc$:
+  - $\begin{pmatrix} 2 & 4 \\ -1 & -2 \end{pmatrix}$: $-4 - (-4) = 0$;
+  - $\begin{pmatrix} 2 & 4 \\ 1 & -2 \end{pmatrix}$: $-4 - 4 = -8$;
+  - $\begin{pmatrix} 2 & -4 \\ 1 & -2 \end{pmatrix}$: $-4 - (-4) = 0$;
+  - $\begin{pmatrix} 2 & 4 \\ 1 & 2 \end{pmatrix}$: $4 - 4 = 0$.
+  L'unica con determinante diverso da 0 è $\begin{pmatrix} 2 & 4 \\ 1 & -2 \end{pmatrix}$ ($\det = -8$): $f_A$ è un isomorfismo. Le altre hanno righe proporzionali.
+  **Errore tipico:** pensare che un determinante negativo impedisca l'invertibilità: conta solo che sia diverso da 0.
+OPT: $\begin{pmatrix} 2 & 4 \\ -1 & -2 \end{pmatrix}$ | $\begin{pmatrix} 2 & 4 \\ 1 & -2 \end{pmatrix}$ | $\begin{pmatrix} 2 & -4 \\ 1 & -2 \end{pmatrix}$ | $\begin{pmatrix} 2 & 4 \\ 1 & 2 \end{pmatrix}$
+21-3 D Per il Corollario 21.11, $f_A$ è un isomorfismo **se e solo se $\det(A) \neq 0$**. Con $\det = ad - bc$:
+  - $\begin{pmatrix} 2 & 4 \\ 1 & 2 \end{pmatrix}$: $4 - 4 = 0$;
+  - $\begin{pmatrix} 2 & -4 \\ 1 & -2 \end{pmatrix}$: $-4 - (-4) = 0$;
+  - $\begin{pmatrix} 2 & 4 \\ -1 & -2 \end{pmatrix}$: $-4 - (-4) = 0$;
+  - $\begin{pmatrix} 2 & -4 \\ 1 & 2 \end{pmatrix}$: $4 - (-4) = 8$.
+  L'unica con determinante diverso da 0 è $\begin{pmatrix} 2 & -4 \\ 1 & 2 \end{pmatrix}$ ($\det = 8$).
+  **Errore tipico:** sbagliare il segno di $-bc$ quando $b$ o $c$ sono negativi: per esempio con $b = -4$, $c = 1$ si ha $-bc = +4$.
+OPT: $\begin{pmatrix} 2 & 4 \\ 1 & 2 \end{pmatrix}$ | $\begin{pmatrix} 2 & -4 \\ 1 & -2 \end{pmatrix}$ | $\begin{pmatrix} 2 & 4 \\ -1 & -2 \end{pmatrix}$ | $\begin{pmatrix} 2 & -4 \\ 1 & 2 \end{pmatrix}$
+21-4 D Per il Corollario 21.11, $f_A$ **non** è un isomorfismo se e solo se $\det(A) = 0$. Con $\det = ad - bc$:
+  - $\begin{pmatrix} 2 & -4 \\ 1 & 2 \end{pmatrix}$: $4 - (-4) = 8$;
+  - $\begin{pmatrix} 2 & 4 \\ 1 & -2 \end{pmatrix}$: $-4 - 4 = -8$;
+  - $\begin{pmatrix} 2 & -4 \\ -1 & -2 \end{pmatrix}$: $-4 - 4 = -8$;
+  - $\begin{pmatrix} 2 & -4 \\ 1 & -2 \end{pmatrix}$: $-4 - (-4) = 0$.
+  L'unica con determinante nullo è $\begin{pmatrix} 2 & -4 \\ 1 & -2 \end{pmatrix}$ (prima riga = doppio della seconda).
+  **Errore tipico:** nella terza matrice $b$ e $c$ sono entrambi negativi, quindi $bc = 4$ è positivo e $\det = -4 - 4 = -8$, non 0.
+OPT: $\begin{pmatrix} 2 & -4 \\ 1 & 2 \end{pmatrix}$ | $\begin{pmatrix} 2 & 4 \\ 1 & -2 \end{pmatrix}$ | $\begin{pmatrix} 2 & -4 \\ -1 & -2 \end{pmatrix}$ | $\begin{pmatrix} 2 & -4 \\ 1 & -2 \end{pmatrix}$
+21-5 APERTA
+KW: applicazione lineare invertibile|invertibile|bigettiva, isomorfismo, automorfismo, inversa lineare|f^{-1} lineare, isomorfi|V ≅ W, stessa dimensione|dim(V) = dim(W), finitamente generati, stesso campo, K^n|coordinate, det(A) ≠ 0|determinante, base
+> **Definizione.** Un'applicazione lineare **invertibile** (cioè bigettiva) è detta **isomorfismo**; un isomorfismo di uno spazio in sé stesso è un **automorfismo**. Se $f$ è lineare e invertibile, anche l'inversa $f^{-1}: W \to V$ è lineare. Due spazi $V$ e $W$ sono **isomorfi**, $V \cong W$, se esiste un isomorfismo $f: V \to W$.
+>
+> **Esempi.** $\mathrm{id}_V$ è un automorfismo; $\mathbb{R}^n \ni {}^t(a_1 \dots a_n) \mapsto a_n x^{n-1} + \dots + a_2 x + a_1$ è un isomorfismo, quindi $\mathbb{R}^n \cong \mathbb{R}_{\leq n-1}[x]$; l'applicazione delle coordinate $[\cdot]_{\mathcal{B}}: V \to \mathbb{K}^m$ è un isomorfismo, e quindi $V^2_G \cong \mathbb{R}^2$, $V^3_G \cong \mathbb{R}^3$.
+>
+> **Matrici.** $A \in \mathbb{K}^{n,n}$ è invertibile se e solo se $f_A$ lo è, e $(f_A)^{-1} = f_{A^{-1}}$; quindi $f_A$ è un isomorfismo **se e solo se $\det(A) \neq 0$**.
+>
+> **Teorema di isomorfismo.** Siano $V$ e $W$ spazi vettoriali **finitamente generati sullo stesso campo** $\mathbb{K}$. Allora
+> $$V \cong W \iff \dim(V) = \dim(W).$$
+>
+> *Dimostrazione (idea):* se esiste un isomorfismo, essendo bigettivo il Corollario 20.21 dà $\dim V = \dim W$. Viceversa, se $\dim V = \dim W = n$, si fissano basi $\{v_i\}$ e $\{w_i\}$ e si definiscono le applicazioni lineari $f(v_i) = w_i$ e $g(w_i) = v_i$; per l'unicità dell'applicazione lineare fissati i valori su una base, $g \circ f = \mathrm{id}_V$ e $f \circ g = \mathrm{id}_W$, quindi $f$ è un isomorfismo.
+>
+> **Corollario.** Uno spazio vettoriale su $\mathbb{K}$ ha dimensione $n$ se e solo se è isomorfo a $\mathbb{K}^n$.
+x103 B Per il Corollario 21.11, $f_A$ è un isomorfismo se e solo se $\det(A) \neq 0$.
+  $\det\begin{pmatrix} 1 & -3 \\ -3 & 9 \end{pmatrix} = 1\cdot 9 - (-3)(-3) = 9 - 9 = 0$.
+  Il determinante è nullo (la seconda riga è $-3$ volte la prima), quindi $f_A$ non è invertibile: non è un isomorfismo. La risposta non dipende da nulla, quindi "non sempre" non ha senso.
+  **Errore tipico:** calcolare $(-3)(-3)$ come $-9$ e trovare $\det = 18$.
+T: L'applicazione lineare $f_A: \mathbb{R}^2 \to \mathbb{R}^2$ associata alla matrice $A = \begin{pmatrix} 1 & -3 \\ -3 & 9 \end{pmatrix}$ è un isomorfismo?
+OPT: Sì | No | Non sempre | Nessuna delle altre risposte
+x104 A Per il Corollario 21.11, $f_A$ è un isomorfismo se e solo se $\det(A) \neq 0$.
+  Sviluppiamo $\det\begin{pmatrix} 1 & 0 & -1 \\ 2 & 2 & 3 \\ 0 & 1 & -2 \end{pmatrix}$ lungo la prima riga:
+  $$1\cdot\det\begin{pmatrix} 2 & 3 \\ 1 & -2 \end{pmatrix} - 0 + (-1)\cdot\det\begin{pmatrix} 2 & 2 \\ 0 & 1 \end{pmatrix} = 1\cdot(-4 - 3) - 1\cdot(2 - 0) = -7 - 2 = -9.$$
+  Poiché $\det(A) = -9 \neq 0$, $f_A$ è invertibile, cioè un isomorfismo (un automorfismo di $\mathbb{R}^3$).
+  **Errore tipico:** dimenticare il segno $(-1)^{1+3} = +1$ davanti al terzo termine moltiplicandolo per $-1$ due volte, o pensare che un determinante negativo escluda l'invertibilità.
+T: L'applicazione lineare $f_A: \mathbb{R}^3 \to \mathbb{R}^3$ associata alla matrice $A = \begin{pmatrix} 1 & 0 & -1 \\ 2 & 2 & 3 \\ 0 & 1 & -2 \end{pmatrix}$ è un isomorfismo?
+OPT: Sì | No | Non sempre | Nessuna delle altre risposte
+x105 B Un isomorfismo è un'applicazione lineare bigettiva. Per il Corollario 20.21 (conseguenza del Teorema fondamentale): se $f$ è iniettiva, $\dim V \leq \dim W$; se è surgettiva, $\dim V \geq \dim W$; quindi se è bigettiva $\dim V = \dim W$.
+  È anche una direzione del **Teorema di isomorfismo**: $V \cong W \iff \dim V = \dim W$.
+  **Errore tipico:** ricordare solo una delle due disuguaglianze (quella dell'iniettività o della surgettività): per un isomorfismo valgono entrambe.
+T: Dato un isomorfismo $f: V \to W$ con $V$ e $W$ finitamente generati, quale delle seguenti proposizioni è vera?
+OPT: $\dim(V) < \dim(W)$ | $\dim(V) = \dim(W)$ | $\dim(V) > \dim(W)$ | $\dim(V) \neq \dim(W)$
+x106 A Per il Corollario 21.14 (dal Teorema di isomorfismo), uno spazio vettoriale su $\mathbb{K}$ ha dimensione $n$ se e solo se è **isomorfo** a $\mathbb{K}^n$: $V \cong \mathbb{K}^n$, e un isomorfismo è l'applicazione delle coordinate $[\cdot]_{\mathcal{B}}$ rispetto a una base.
+  $V = \mathbb{K}^n$ (uguaglianza) è falso in generale: per esempio $\mathbb{R}_{\leq 2}[x]$ ha dimensione 3 ma i suoi elementi sono polinomi, non vettori colonna.
+  $\mathbb{K}_{\leq n}[x]$ ha base $\{1, x, \dots, x^n\}$, quindi dimensione $n + 1 \neq n$; $\mathbb{K}_{\leq n+1}[x]$ ha dimensione $n + 2$. Nessuno dei due è isomorfo a $V$. Lo sarebbe $\mathbb{K}_{\leq n-1}[x]$.
+  **Errore tipico:** confondere "isomorfo" con "uguale", oppure contare $n$ elementi nella base di $\mathbb{K}_{\leq n}[x]$ dimenticando il polinomio costante 1.
+  TRAP: $\mathbb{K}_{\leq n}[x]$ ha dimensione $n+1$, non $n$: i polinomi di grado al più $n$ hanno $n+1$ coefficienti.
+T: Dato uno spazio vettoriale $V$ su un campo $\mathbb{K}$ di dimensione $n$, quale delle seguenti proposizioni è vera?
+OPT: $V \cong \mathbb{K}^n$ | $V = \mathbb{K}^n$ | $V \cong \mathbb{K}_{\leqslant n}[x]$ | $V \cong \mathbb{K}_{\leqslant n+1}[x]$
+
+## L22 Applicazioni lineari e matrici
+22-1 APERTA
+KW: base|basi, [f]^{B_V}_{B_W}|matrice associata, [·]_{B_W} ∘ f ∘ [·]_{B_V}^{-1}|coordinate, K^{n,m}|n×m, colonna|colonne, [f(v_i)]_{B_W}|coordinate delle immagini, [f(v)]_{B_W} = [f] · [v]_{B_V}, basi canoniche|[f_A] = A, composizione|prodotto, inversa|isomorfismo, rango|rank(f) = rank([f]), dim Lin(V,W) = m·n
+> **Definizione.** Sia $f: V \to W$ lineare, con $\dim V = m$, $\dim W = n$, e siano $\mathcal{B}_V$, $\mathcal{B}_W$ basi di $V$ e $W$. L'applicazione $[\cdot]_{\mathcal{B}_W} \circ f \circ [\cdot]_{\mathcal{B}_V}^{-1}: \mathbb{K}^m \to \mathbb{K}^n$ è lineare, quindi è $f_A$ per una e una sola $A \in \mathbb{K}^{n,m}$: $A$ è la **matrice associata** a $f$ rispetto alle basi $\mathcal{B}_V$ (dominio) e $\mathcal{B}_W$ (codominio), indicata con $[f]^{\mathcal{B}_V}_{\mathcal{B}_W}$. Dipende da $f$ e dalle basi scelte, e vale
+> $$[f(v)]_{\mathcal{B}_W} = [f]^{\mathcal{B}_V}_{\mathcal{B}_W}\cdot[v]_{\mathcal{B}_V} \quad \forall v \in V.$$
+>
+> **Calcolo (Algoritmo 22.6).** Per $i = 1, \dots, m$: si calcola $f(v_i)$, se ne calcolano le **coordinate rispetto a $\mathcal{B}_W$** e il vettore colonna $[f(v_i)]_{\mathcal{B}_W}$ è la **$i$-esima colonna** della matrice.
+>
+> **Esempio.** $f: \mathbb{R}^2 \to \mathbb{R}_{\leq 3}[x]$, $f(a_1, a_2) = a_1 x^3 - (a_1 + a_2)x + a_2$, con $\mathcal{B}_2 = \{{}^t(2\ 1), {}^t(1\ 1)\}$ e $\mathcal{B}_{pol} = \{x^3, x^2 - x, x^2, 1\}$: $f(2,1) = 2x^3 - 3x + 1$ ha coordinate ${}^t(2\ 3\ -3\ 1)$, $f(1,1) = x^3 - 2x + 1$ ha coordinate ${}^t(1\ 2\ -2\ 1)$, che sono le due colonne della matrice $4 \times 2$.
+>
+> **Proprietà.**
+>
+> - Con le basi canoniche, $[f_A]^{\mathcal{E}_m}_{\mathcal{E}_n} = A$; per ogni base $[\mathrm{id}_V]^{\mathcal{B}}_{\mathcal{B}} = I_n$.
+> - $[\cdot]^{\mathcal{B}_V}_{\mathcal{B}_W}: \mathrm{Lin}(V, W) \to \mathbb{K}^{n,m}$ è un isomorfismo, quindi $\dim \mathrm{Lin}(V, W) = m\cdot n$.
+> - **Composizione:** $[g \circ f]^{\mathcal{B}_V}_{\mathcal{B}_U} = [g]^{\mathcal{B}_W}_{\mathcal{B}_U}\cdot[f]^{\mathcal{B}_V}_{\mathcal{B}_W}$.
+> - **Inversa:** se $f$ è un isomorfismo, $[f^{-1}]^{\mathcal{B}_W}_{\mathcal{B}_V} = \big([f]^{\mathcal{B}_V}_{\mathcal{B}_W}\big)^{-1}$.
+> - **Rango:** $\mathrm{rank}(f_A) = \mathrm{rank}(A)$ e $\mathrm{rank}(f) = \mathrm{rank}\big([f]^{\mathcal{B}_V}_{\mathcal{B}_W}\big)$ qualunque siano le basi.
+x107 B Con le basi canoniche la matrice associata a $f$ è quella che ha per righe i coefficienti delle componenti (Osservazione 22.4: $[f_A]^{\mathcal{E}_3}_{\mathcal{E}_2} = A$). Equivalentemente, le colonne sono $f(e_1), f(e_2), f(e_3)$.
+  Prima componente: $3x_1 - 4x_2 - 3x_3$, coefficienti $(3, -4, -3)$.
+  Seconda componente: $2x_3 - x_2 = 0\cdot x_1 - 1\cdot x_2 + 2\cdot x_3$, coefficienti $(0, -1, 2)$.
+  Matrice: $\begin{pmatrix} 3 & -4 & -3 \\ 0 & -1 & 2 \end{pmatrix}$. Controllo: $f(e_1) = {}^t(3\ 0)$, $f(e_2) = {}^t(-4\ -1)$, $f(e_3) = {}^t(-3\ 2)$.
+  **Errore tipico:** copiare i coefficienti della seconda componente nell'ordine in cui sono scritti ($2x_3$ prima di $-x_2$) invece di ordinarli secondo $x_1, x_2, x_3$, dimenticando lo 0 di $x_1$.
+  TRAP: la seconda componente è scritta $2x_3 - x_2$, con le variabili in ordine inverso e senza $x_1$.
+T: Quale è la matrice associata all'applicazione lineare $f: \mathbb{R}^3 \ni \begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix} \mapsto \begin{pmatrix} 3x_1 - 4x_2 - 3x_3 \\ 2x_3 - x_2 \end{pmatrix} \in \mathbb{R}^2$ rispetto alle basi $\mathcal{E}_3$ in $\mathbb{R}^3$ e $\mathcal{E}_2$ in $\mathbb{R}^2$?
+OPT: $\begin{pmatrix} 3 & -4 & -3 \\ 2 & -1 & 0 \end{pmatrix}$ | $\begin{pmatrix} 3 & -4 & -3 \\ 0 & -1 & 2 \end{pmatrix}$ | $\begin{pmatrix} 3 & -4 & -3 \\ -1 & 2 & 0 \end{pmatrix}$ | $\begin{pmatrix} 3 & -4 & -3 \\ 0 & 2 & -1 \end{pmatrix}$
+x108 B Si usa l'Algoritmo 22.6 con $\mathcal{B} = \{v_1, v_2\}$, $v_1 = {}^t(0\ 2)$, $v_2 = {}^t(1\ 1)$, sia nel dominio sia nel codominio.
+  **Colonna 1.** $f(v_1) = {}^t(0 - 6,\ 0 + 2) = {}^t(-6\ 2)$. Coordinate rispetto a $\mathcal{B}$: $a\,{}^t(0\ 2) + b\,{}^t(1\ 1) = {}^t(-6\ 2)$ dà $b = -6$ e $2a + b = 2$, quindi $a = 4$: colonna ${}^t(4\ -6)$.
+  **Colonna 2.** $f(v_2) = {}^t(1 - 3,\ 1 + 1) = {}^t(-2\ 2)$. Coordinate: $b = -2$, $2a + b = 2$, quindi $a = 2$: colonna ${}^t(2\ -2)$.
+  Matrice: $[f]^{\mathcal{B}}_{\mathcal{B}} = \begin{pmatrix} 4 & 2 \\ -6 & -2 \end{pmatrix}$. Verifica: $[f]^{\mathcal{B}}_{\mathcal{B}} = P^{-1}AP$ con $P = \begin{pmatrix} 0 & 1 \\ 2 & 1 \end{pmatrix}$ e $A = \begin{pmatrix} 1 & -3 \\ 1 & 1 \end{pmatrix}$ dà lo stesso risultato.
+  **Errore tipico:** mettere le coordinate in riga invece che in colonna (si ottiene la trasposta), oppure dare la matrice rispetto alla base canonica (o la sua trasposta), ignorando la base indicata.
+T: Quale è la matrice associata all'applicazione lineare $f: \mathbb{R}^2 \ni \begin{pmatrix} x_1 \\ x_2 \end{pmatrix} \mapsto \begin{pmatrix} x_1 - 3x_2 \\ x_1 + x_2 \end{pmatrix} \in \mathbb{R}^2$ rispetto alla base $\left\{\begin{pmatrix} 0 \\ 2 \end{pmatrix}, \begin{pmatrix} 1 \\ 1 \end{pmatrix}\right\}$ in $\mathbb{R}^2$?
+OPT: $\begin{pmatrix} 1 & -3 \\ 1 & 1 \end{pmatrix}$ | $\begin{pmatrix} 4 & 2 \\ -6 & -2 \end{pmatrix}$ | $\begin{pmatrix} 1 & 1 \\ -3 & 1 \end{pmatrix}$ | $\begin{pmatrix} 4 & -6 \\ 2 & -2 \end{pmatrix}$
+x109 C Per la Proposizione 22.13, $[f^{-1}]^{\mathcal{B}_W}_{\mathcal{B}_V} = \big([f]^{\mathcal{B}_V}_{\mathcal{B}_W}\big)^{-1}$: basta invertire la matrice.
+  Per $M = \begin{pmatrix} a & b \\ c & d \end{pmatrix}$ si ha $M^{-1} = \dfrac{1}{ad - bc}\begin{pmatrix} d & -b \\ -c & a \end{pmatrix}$ (trasposta dei cofattori diviso il determinante).
+  $\det M = (-2)\cdot 4 - (-1)\cdot 7 = -8 + 7 = -1$.
+  $M^{-1} = \dfrac{1}{-1}\begin{pmatrix} 4 & 1 \\ -7 & -2 \end{pmatrix} = \begin{pmatrix} -4 & -1 \\ 7 & 2 \end{pmatrix}$.
+  Verifica: $\begin{pmatrix} -2 & -1 \\ 7 & 4 \end{pmatrix}\begin{pmatrix} -4 & -1 \\ 7 & 2 \end{pmatrix} = \begin{pmatrix} 8 - 7 & 2 - 2 \\ -28 + 28 & -7 + 8 \end{pmatrix} = I_2$.
+  **Errore tipico:** dimenticare di dividere per il determinante $-1$ (si ottiene la matrice con tutti i segni opposti), oppure cambiare solo il segno della matrice di partenza.
+T: Dati $\mathcal{B}_V$ una base di uno spazio vettoriale finitamente generato $V$, $\mathcal{B}_W$ una base di uno spazio vettoriale finitamente generato $W$, e l'isomorfismo $f: V \to W$ tale che $[f]^{\mathcal{B}_V}_{\mathcal{B}_W} = \begin{pmatrix} -2 & -1 \\ 7 & 4 \end{pmatrix}$, quale è la matrice $[f^{-1}]^{\mathcal{B}_W}_{\mathcal{B}_V}$?
+OPT: $\begin{pmatrix} -2 & -1 \\ 7 & 4 \end{pmatrix}$ | $\begin{pmatrix} 2 & 1 \\ -7 & -4 \end{pmatrix}$ | $\begin{pmatrix} -4 & -1 \\ 7 & 2 \end{pmatrix}$ | $\begin{pmatrix} 4 & 1 \\ -7 & -2 \end{pmatrix}$
+x110 B Per la Proposizione 22.15, $\mathrm{rank}(f) = \mathrm{rank}\big([f]^{\mathcal{B}_V}_{\mathcal{B}_W}\big)$, qualunque siano le basi.
+  Nella matrice $\begin{pmatrix} 1 & 2 & -1 \\ 0 & 0 & 0 \\ -1 & -2 & 1 \end{pmatrix}$ la seconda riga è nulla e la terza è $-1$ volte la prima: con $R_3 \to R_3 + R_1$ si ottiene una sola riga non nulla. Il rango è 1.
+  (Anche per colonne: la seconda colonna è il doppio della prima e la terza è l'opposto della prima.)
+  **Errore tipico:** contare le righe non nulle senza ridurre (2), oppure la dimensione della matrice (3).
+T: Quanto vale il rango dell'applicazione lineare $f: V \to W$ tale che la matrice associata ad $f$ rispetto a una base $\mathcal{B}_V$ di $V$ e una base $\mathcal{B}_W$ di $W$ è $\begin{pmatrix} 1 & 2 & -1 \\ 0 & 0 & 0 \\ -1 & -2 & 1 \end{pmatrix}$?
+OPT: $0$ | $1$ | $2$ | $3$
+
+## L23 Cambiamenti di base
+23-1 APERTA
+KW: matrice di cambiamento di base|cambiamento di base, [id]^B_{B'}|identità, coordinate, [v]_{B'} = [id]^B_{B'} · [v]_B, colonne, base canonica|E_n, inversa|([id]^B_{B'})^{-1}, det ≠ 0|invertibile, [f]^{B'_V}_{B'_W} = [id] · [f] · [id], simili|similitudine, determinante dell'endomorfismo|det(f)
+> **Coordinate e cambio di base.** Siano $\mathcal{B} = \{v_1, \dots, v_n\}$ e $\mathcal{B}' = \{v'_1, \dots, v'_n\}$ basi di $V$. Scrivendo ogni $v_i = a^i_1 v'_1 + \dots + a^i_n v'_n$ e sostituendo in $v = \sum \lambda_i v_i$, le nuove coordinate sono $\lambda'_j = \sum_i \lambda_i a^i_j$. La matrice che ha per **colonne** le coordinate dei vettori di $\mathcal{B}$ rispetto a $\mathcal{B}'$ è la matrice associata a $\mathrm{id}_V$ rispetto a $\mathcal{B}$ (dominio) e $\mathcal{B}'$ (codominio): si chiama **matrice di cambiamento di base da $\mathcal{B}$ a $\mathcal{B}'$**, $[\mathrm{id}]^{\mathcal{B}}_{\mathcal{B}'}$, e
+> $$[v]_{\mathcal{B}'} = [\mathrm{id}]^{\mathcal{B}}_{\mathcal{B}'}\cdot[v]_{\mathcal{B}}.$$
+>
+> **Casi utili.**
+>
+> - In $\mathbb{K}^n$, $[\mathrm{id}]^{\mathcal{B}}_{\mathcal{E}_n}$ ha per colonne i vettori di $\mathcal{B}$.
+> - $[\mathrm{id}]^{\mathcal{B}'}_{\mathcal{B}} = \big([\mathrm{id}]^{\mathcal{B}}_{\mathcal{B}'}\big)^{-1}$; in particolare $[\mathrm{id}]^{\mathcal{E}_n}_{\mathcal{B}} = \big([\mathrm{id}]^{\mathcal{B}}_{\mathcal{E}_n}\big)^{-1}$.
+> - Ogni matrice con $\det \neq 0$ è una matrice di cambiamento di base (le sue colonne formano una base).
+>
+> **Esempio.** $\mathcal{B} = \{{}^t(1\ 2), {}^t(-1\ -4)\}$, $\mathcal{B}' = \{{}^t(1\ 1), {}^t(2\ 3)\}$: ${}^t(1\ 2)$ ha coordinate ${}^t(-1\ 1)$ e ${}^t(-1\ -4)$ ha coordinate ${}^t(5\ -3)$ rispetto a $\mathcal{B}'$, quindi $[\mathrm{id}]^{\mathcal{B}}_{\mathcal{B}'} = \begin{pmatrix} -1 & 5 \\ 1 & -3 \end{pmatrix}$.
+>
+> **Matrici associate e basi.** Per $f: V \to W$ con basi $\mathcal{B}_V, \mathcal{B}'_V$ e $\mathcal{B}_W, \mathcal{B}'_W$:
+> $$[f]^{\mathcal{B}'_V}_{\mathcal{B}'_W} = [\mathrm{id}]^{\mathcal{B}_W}_{\mathcal{B}'_W}\cdot[f]^{\mathcal{B}_V}_{\mathcal{B}_W}\cdot[\mathrm{id}]^{\mathcal{B}'_V}_{\mathcal{B}_V}.$$
+> Per un endomorfismo: $[f]^{\mathcal{B}'}_{\mathcal{B}'} = \big([\mathrm{id}]^{\mathcal{B}'}_{\mathcal{B}}\big)^{-1}[f]^{\mathcal{B}}_{\mathcal{B}}[\mathrm{id}]^{\mathcal{B}'}_{\mathcal{B}}$, quindi tutte le matrici associate a un endomorfismo sono **simili** e hanno lo stesso determinante.
+>
+> **Determinante di un endomorfismo.** $\det(f) := \det\big([f]^{\mathcal{B}}_{\mathcal{B}}\big)$, indipendente dalla base; $f$ è invertibile se e solo se $\det(f) \neq 0$.
+x111 A Per l'Osservazione 23.5, la matrice di cambiamento di base $[\mathrm{id}]^{\mathcal{B}}_{\mathcal{E}_3}$ da una base $\mathcal{B}$ di $\mathbb{K}^n$ alla base canonica ha come **colonne** i vettori di $\mathcal{B}$: infatti le coordinate di un vettore colonna rispetto a $\mathcal{E}_3$ sono le sue componenti.
+  Colonne ${}^t(1\ 0\ 2)$, ${}^t(3\ 0\ 5)$, ${}^t(2\ 1\ 2)$: $[\mathrm{id}]^{\mathcal{B}}_{\mathcal{E}_3} = \begin{pmatrix} 1 & 3 & 2 \\ 0 & 0 & 1 \\ 2 & 5 & 2 \end{pmatrix}$.
+  La matrice $\begin{pmatrix} -5 & 4 & 3 \\ 2 & -2 & -1 \\ 0 & 1 & 0 \end{pmatrix}$ è la sua inversa, cioè il cambiamento **da $\mathcal{E}_3$ a $\mathcal{B}$** (Osservazione 23.7); le altre due sono le trasposte.
+  **Errore tipico:** scrivere i vettori della base come righe (si ottiene la trasposta) o invertire la direzione del cambiamento.
+T: Data la base $\mathcal{B} = \left\{\begin{pmatrix} 1 \\ 0 \\ 2 \end{pmatrix}, \begin{pmatrix} 3 \\ 0 \\ 5 \end{pmatrix}, \begin{pmatrix} 2 \\ 1 \\ 2 \end{pmatrix}\right\}$ di $\mathbb{R}^3$, quale è la matrice di cambiamento di base da $\mathcal{B}$ a $\mathcal{E}_3$?
+OPT: $\begin{pmatrix} 1 & 3 & 2 \\ 0 & 0 & 1 \\ 2 & 5 & 2 \end{pmatrix}$ | $\begin{pmatrix} 1 & 0 & 2 \\ 3 & 0 & 5 \\ 2 & 1 & 2 \end{pmatrix}$ | $\begin{pmatrix} -5 & 4 & 3 \\ 2 & -2 & -1 \\ 0 & 1 & 0 \end{pmatrix}$ | $\begin{pmatrix} -5 & 2 & 0 \\ 4 & -2 & 1 \\ 3 & -1 & 0 \end{pmatrix}$
+x112 C La matrice $[\mathrm{id}]^{\mathcal{B}}_{\mathcal{B}'}$ ha come colonne le **coordinate dei vettori di $\mathcal{B}$ rispetto a $\mathcal{B}'$**.
+  **Primo vettore.** ${}^t(2\ 3) = a\,{}^t(2\ -1) + b\,{}^t(0\ 1)$: dalla prima componente $2a = 2$, $a = 1$; dalla seconda $-a + b = 3$, $b = 4$. Colonna ${}^t(1\ 4)$.
+  **Secondo vettore.** ${}^t(4\ -2) = a\,{}^t(2\ -1) + b\,{}^t(0\ 1)$: $2a = 4$, $a = 2$; $-2 + b = -2$, $b = 0$. Colonna ${}^t(2\ 0)$.
+  Matrice: $\begin{pmatrix} 1 & 2 \\ 4 & 0 \end{pmatrix}$. Equivalentemente $[\mathrm{id}]^{\mathcal{B}}_{\mathcal{B}'} = \big([\mathrm{id}]^{\mathcal{B}'}_{\mathcal{E}_2}\big)^{-1}[\mathrm{id}]^{\mathcal{B}}_{\mathcal{E}_2}$.
+  **Errore tipico:** scrivere le coordinate in riga (si ottiene la trasposta), oppure dare la matrice che ha per colonne i vettori di $\mathcal{B}$ o di $\mathcal{B}'$, che è il cambiamento verso la base canonica.
+T: Date le basi $\mathcal{B} = \left\{\begin{pmatrix} 2 \\ 3 \end{pmatrix}, \begin{pmatrix} 4 \\ -2 \end{pmatrix}\right\}$ e $\mathcal{B}' = \left\{\begin{pmatrix} 2 \\ -1 \end{pmatrix}, \begin{pmatrix} 0 \\ 1 \end{pmatrix}\right\}$ di $\mathbb{R}^2$, quale è la matrice di cambiamento di base da $\mathcal{B}$ a $\mathcal{B}'$?
+OPT: $\begin{pmatrix} 2 & 4 \\ 3 & -2 \end{pmatrix}$ | $\begin{pmatrix} 2 & 0 \\ -1 & 1 \end{pmatrix}$ | $\begin{pmatrix} 1 & 2 \\ 4 & 0 \end{pmatrix}$ | $\begin{pmatrix} 1 & 4 \\ 2 & 0 \end{pmatrix}$
+x113 C Per la Proposizione 23.9: $[f]^{\mathcal{B}'_V}_{\mathcal{B}'_W} = [\mathrm{id}]^{\mathcal{B}_W}_{\mathcal{B}'_W}\cdot[f]^{\mathcal{B}_V}_{\mathcal{B}_W}\cdot[\mathrm{id}]^{\mathcal{B}'_V}_{\mathcal{B}_V}$.
+  Ci è data $[\mathrm{id}]^{\mathcal{B}_V}_{\mathcal{B}'_V}$, ma a destra serve il cambiamento **opposto**: $[\mathrm{id}]^{\mathcal{B}'_V}_{\mathcal{B}_V} = \big([\mathrm{id}]^{\mathcal{B}_V}_{\mathcal{B}'_V}\big)^{-1}$. Con $\det\begin{pmatrix} 1 & 1 \\ 1 & 0 \end{pmatrix} = -1$: $\begin{pmatrix} 1 & 1 \\ 1 & 0 \end{pmatrix}^{-1} = \dfrac{1}{-1}\begin{pmatrix} 0 & -1 \\ -1 & 1 \end{pmatrix} = \begin{pmatrix} 0 & 1 \\ 1 & -1 \end{pmatrix}$.
+  **Primo prodotto:** $\begin{pmatrix} 0 & 1 \\ 2 & 1 \\ -2 & 3 \end{pmatrix}\begin{pmatrix} 0 & 1 \\ 1 & -1 \end{pmatrix} = \begin{pmatrix} 1 & -1 \\ 1 & 1 \\ 3 & -5 \end{pmatrix}$ (es. riga 3: $(-2)\cdot 0 + 3\cdot 1 = 3$ e $(-2)\cdot 1 + 3\cdot(-1) = -5$).
+  **Secondo prodotto:** $\begin{pmatrix} 2 & 1 & 0 \\ 0 & 1 & 1 \\ -1 & 1 & 1 \end{pmatrix}\begin{pmatrix} 1 & -1 \\ 1 & 1 \\ 3 & -5 \end{pmatrix}$: riga 1 $= (2 + 1,\ -2 + 1) = (3, -1)$; riga 2 $= (1 + 3,\ 1 - 5) = (4, -4)$; riga 3 $= (-1 + 1 + 3,\ 1 + 1 - 5) = (3, -3)$.
+  Risultato: $\begin{pmatrix} 3 & -1 \\ 4 & -4 \\ 3 & -3 \end{pmatrix}$.
+  **Errore tipico:** usare a destra la matrice data $[\mathrm{id}]^{\mathcal{B}_V}_{\mathcal{B}'_V}$ senza invertirla: si ottiene $\begin{pmatrix} 5 & 2 \\ 4 & 0 \\ 3 & 0 \end{pmatrix}$, che è sbagliata.
+  TRAP: a destra serve il cambiamento da $\mathcal{B}'_V$ a $\mathcal{B}_V$, cioè l'inversa della matrice data; usandola così com'è si ottiene un'altra opzione.
+T: Date due basi $\mathcal{B}_V$ e $\mathcal{B}'_V$ di uno spazio vettoriale $V$ tali che $[id]^{\mathcal{B}_V}_{\mathcal{B}'_V} = \begin{pmatrix} 1 & 1 \\ 1 & 0 \end{pmatrix}$, due basi $\mathcal{B}_W$ e $\mathcal{B}'_W$ di uno spazio vettoriale $W$ tali che $[id]^{\mathcal{B}_W}_{\mathcal{B}'_W} = \begin{pmatrix} 2 & 1 & 0 \\ 0 & 1 & 1 \\ -1 & 1 & 1 \end{pmatrix}$, e l'applicazione lineare $f: V \to W$ tale che $[f]^{\mathcal{B}_V}_{\mathcal{B}_W} = \begin{pmatrix} 0 & 1 \\ 2 & 1 \\ -2 & 3 \end{pmatrix}$, quale è la matrice $[f]^{\mathcal{B}'_V}_{\mathcal{B}'_W}$?
+OPT: $\begin{pmatrix} 5 & 2 \\ 4 & 0 \\ 3 & 0 \end{pmatrix}$ | $\begin{pmatrix} 0 & 1 \\ 2 & 1 \\ -2 & 3 \end{pmatrix}$ | $\begin{pmatrix} 3 & -1 \\ 4 & -4 \\ 3 & -3 \end{pmatrix}$ | $\begin{pmatrix} 2 & 4 \\ -3 & -8 \\ 6 & 10 \end{pmatrix}$
+x114 C Per la Proposizione 23.16, un endomorfismo di uno spazio vettoriale finitamente generato è invertibile **se e solo se** $\det(f) \neq 0$, dove $\det(f) = \det\big([f]^{\mathcal{B}}_{\mathcal{B}}\big)$ per una qualsiasi base $\mathcal{B}$ (non dipende dalla base, perché le matrici associate sono simili).
+  Quindi: se $\det(f) \neq 0$, $f$ è invertibile (vera); se $\det(f) = 0$, $f$ **non** è invertibile (quindi la prima affermazione è falsa); e l'affermazione "se $\det(f) \neq 0$, $f$ non è invertibile" è il contrario del teorema.
+  **Errore tipico:** invertire la condizione, come se determinante nullo significasse invertibile: vale come per le matrici, $\det \neq 0 \iff$ invertibile.
+T: Dato un endomorfismo $f$ di uno spazio vettoriale $V$ finitamente generato, quale delle seguenti proposizioni è vera?
+OPT: Se $\det(f) = 0$, $f$ è invertibile | Se $\det(f) \neq 0$, $f$ non è invertibile | Se $\det(f) \neq 0$, $f$ è invertibile | Nessuna delle altre risposte

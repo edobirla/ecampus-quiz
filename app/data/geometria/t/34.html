@@ -1,0 +1,57 @@
+<h1>Lezione 34 — Angoli nel piano e nello spazio</h1>
+<p>Si introduce il prodotto scalare euclideo nel piano e nello spazio e lo si usa, insieme al prodotto scalare standard, per calcolare gli angoli. Riferimenti cartesiani fissati, vettori identificati con le colonne delle coordinate.</p>
+<h2>Prodotto scalare euclideo</h2>
+<p><strong>Definizione 34.1.</strong> Dati due vettori geometrici non nulli <span class="m">v,w</span> applicati in <span class="m">O</span>, l&#39;<strong>angolo</strong> <span class="m">\widehat{vw}</span> è l&#39;angolo tra le semirette <span class="m">\{kv\mid k\geqslant0\}</span> e <span class="m">\{kw\mid k\geqslant0\}</span>: se i vettori sono linearmente indipendenti è la porzione del piano <span class="m">\mathrm{Span}(v,w)</span> delimitata dalle semirette; altrimenti è <span class="m">0</span> se le semirette coincidono, <span class="m">\pi</span> se no. Per vettori generici si usano i rappresentanti applicati in <span class="m">O</span>.</p>
+<p><strong>Definizione 34.2.</strong> Il <strong>prodotto scalare euclideo</strong> in <span class="m">V^2_G</span> o <span class="m">V^3_G</span> è
+<span class="m d">\langle v,w\rangle:=\begin{cases}\lVert v\rVert\cdot\lVert w\rVert\cdot\cos\widehat{vw} &amp; \text{se } v\neq0,\ w\neq0\\ 0 &amp; \text{altrimenti}\end{cases}</span>
+dove <span class="m">\lVert u\rVert</span> è la lunghezza di <span class="m">u</span> (<strong>norma euclidea</strong>).</p>
+<div class="callout esempio">
+
+<p>Lunghezze <span class="m">2</span> e <span class="m">3</span>, angolo <span class="m">\frac\pi6</span>: <span class="m">\langle v,w\rangle=2\cdot3\cdot\cos\frac\pi6=3\sqrt3</span>.</p>
+</div>
+
+<p><strong>Proposizione 34.4.</strong> Il prodotto scalare euclideo in <span class="m">V^2_G</span> (risp. <span class="m">V^3_G</span>) <strong>coincide con il prodotto scalare standard</strong> di <span class="m">\mathbb{R}^2</span> (risp. <span class="m">\mathbb{R}^3</span>); la norma euclidea coincide con la norma standard.</p>
+<div class="callout esempio">
+
+<p>Per <span class="m">{}^t(1\ 0)</span> e <span class="m">{}^t(1\ 1)</span>: euclideo <span class="m">1\cdot\sqrt2\cdot\cos\frac\pi4=1</span>, standard <span class="m">1\cdot1+0\cdot1=1</span>.</p>
+</div>
+
+<p><strong>Corollario 34.6.</strong> Il prodotto scalare euclideo è un prodotto scalare, con norma associata la norma euclidea.</p>
+<p><strong>Definizione 34.7.</strong> <span class="m">V^2_G</span> con il prodotto euclideo è il <strong>piano euclideo</strong> <span class="m">V^2_E</span>; <span class="m">V^3_G</span> è lo <strong>spazio euclideo</strong> <span class="m">V^3_E</span>. Le identificazioni con <span class="m">\mathbb{R}^2</span>, <span class="m">\mathbb{R}^3</span> preservano i prodotti scalari, quindi d&#39;ora in poi non si distinguono prodotto euclideo e standard (Not. 34.9).</p>
+<h2>Calcolo degli angoli</h2>
+<p><strong>Osservazione 34.10.</strong> Per <span class="m">v,w\neq0</span>:
+<span class="m d">\cos\widehat{vw}=\frac{\langle v,w\rangle}{\lVert v\rVert\cdot\lVert w\rVert},\qquad \widehat{vw}=\arccos\frac{\langle v,w\rangle}{\lVert v\rVert\cdot\lVert w\rVert}.</span>
+Es.: <span class="m">\widehat{{}^t(1\ 0)\,{}^t(1\ 1)}=\arccos\frac{1}{\sqrt2}=\frac\pi4</span>.</p>
+<p><strong>Osservazione 34.12.</strong> Due vettori non nulli sono <strong>ortogonali</strong> se e solo se <span class="m">\langle v,w\rangle=0</span>.</p>
+<p><strong>Osservazione 34.13.</strong> Angolo tra due rette per l&#39;origine <span class="m">W=\mathrm{Span}(w)</span>, <span class="m">W'=\mathrm{Span}(w')</span>: si calcola <span class="m">\alpha=\arccos\frac{\langle w,w'\rangle}{\lVert w\rVert\lVert w'\rVert}</span> e l&#39;angolo è <span class="m">\alpha</span> se <span class="m">\alpha\leqslant\frac\pi2</span>, <span class="m">\pi-\alpha</span> altrimenti (il più piccolo tra i due). In forma parametrica, nello spazio, <span class="m">\alpha=\arccos\frac{ll'+mm'+nn'}{\sqrt{l^2+m^2+n^2}\sqrt{l'^2+m'^2+n'^2}}</span>. L&#39;angolo è <span class="m">0</span> se e solo se <span class="m">w,w'</span> sono dipendenti (Cauchy-Schwarz).</p>
+<div class="callout esempio">
+
+<p><span class="m">W=\mathrm{Span}({}^t(1\ 0))=\mathrm{Span}({}^t(-2\ 0))</span>, <span class="m">W'=\mathrm{Span}({}^t(1\ 1))</span>: con <span class="m">{}^t(-2\ 0)</span> si trova <span class="m">\alpha'=\frac{3\pi}4&gt;\frac\pi2</span>, quindi l&#39;angolo è <span class="m">\pi-\frac{3\pi}{4}=\frac\pi4</span>, lo stesso che con <span class="m">{}^t(1\ 0)</span>.</p>
+</div>
+
+<p><strong>Osservazione 34.15.</strong> Le rette sono ortogonali se e solo se <span class="m">\langle w,w'\rangle=0</span>, cioè <span class="m">ll'+mm'=0</span> nel piano e <span class="m">ll'+mm'+nn'=0</span> nello spazio.</p>
+<h2>Vettori normali</h2>
+<p><strong>Osservazione 34.16 / Definizione 34.17.</strong> Data la forma implicita <span class="m">ax+by=0</span> di una retta per l&#39;origine del piano, <span class="m">{}^t(a\ b)</span> è ortogonale a tutti i vettori della retta: è il <strong>vettore normale</strong> alla retta. Analogamente <span class="m">{}^t(a\ b\ c)</span> è il vettore normale al piano <span class="m">ax+by+cz=0</span> dello spazio, perché <span class="m">\langle{}^t(a\ b\ c),{}^t(x\ y\ z)\rangle=ax+by+cz=0</span> per ogni punto del piano. Cambiando la forma implicita (es. <span class="m">2x-2y+8z=0</span> invece di <span class="m">x-y+4z=0</span>) si ottiene un multiplo.</p>
+<p><strong>Osservazione 34.19.</strong> L&#39;angolo tra due rette del piano (o l&#39;angolo diedro tra due piani dello spazio) è uguale all&#39;angolo tra le rette normali <span class="m">U=\mathrm{Span}({}^t(a\ b\ c))</span> e <span class="m">U'</span>; sono ortogonali se e solo se il prodotto scalare dei vettori normali è <span class="m">0</span>.</p>
+<div class="callout esempio">
+
+<p>Piani <span class="m">x+3y-z=0</span> e <span class="m">2x+y+5z=0</span>: <span class="m">\langle{}^t(1\ 3\ -1),{}^t(2\ 1\ 5)\rangle=2+3-5=0</span>, quindi l&#39;angolo diedro è <span class="m">\frac\pi2</span>: i piani sono ortogonali.</p>
+</div>
+
+<p><strong>Osservazione 34.21.</strong> Angolo tra la retta <span class="m">W</span> (direttore <span class="m">{}^t(l\ m\ n)</span>) e il piano <span class="m">W'</span> (normale <span class="m">{}^t(a\ b\ c)</span>): <span class="m">\widehat{WW'}=\frac\pi2-\widehat{WU'}</span> con <span class="m">U'</span> la retta normale. La retta è ortogonale al piano se e solo se <span class="m">{}^t(l\ m\ n)</span> e <span class="m">{}^t(a\ b\ c)</span> sono multipli; è contenuta nel piano se e solo se <span class="m">al+bm+cn=0</span>.</p>
+<div class="callout esempio">
+
+<p>Retta <span class="m">x=t,\ y=-2t,\ z=3t</span> e piano <span class="m">2x+y-z=0</span>: <span class="m">\arccos\frac{-3}{\sqrt{14}\sqrt6}=\arccos\left(-\frac{\sqrt{21}}{14}\right)&gt;\frac\pi2</span>, quindi <span class="m">\widehat{WU'}=\pi-\arccos\left(-\frac{\sqrt{21}}{14}\right)</span> e l&#39;angolo retta-piano è <span class="m">\arccos\left(-\frac{\sqrt{21}}{14}\right)-\frac\pi2</span>.</p>
+</div>
+
+<h2>Angoli in spazi vettoriali reali qualsiasi</h2>
+<p><strong>Definizione 34.23.</strong> Con un prodotto scalare su <span class="m">V</span>, l&#39;angolo tra <span class="m">v,w\neq0</span> è <span class="m">\widehat{vw}:=\arccos\frac{\langle v,w\rangle}{\lVert v\rVert\lVert w\rVert}</span>; i vettori sono <strong>ortogonali</strong> se <span class="m">\langle v,w\rangle=0</span>. La definizione ha senso perché per Cauchy-Schwarz l&#39;argomento sta tra <span class="m">-1</span> e <span class="m">1</span> (Oss. 34.24). Cambiando prodotto scalare l&#39;angolo può cambiare.</p>
+<div class="callout esempio">
+
+<p>In <span class="m">\mathbb{R}^4</span> standard, <span class="m">{}^t(1\ 1\ -1\ 0)</span> e <span class="m">{}^t(1\ 0\ -2\ 1)</span>: <span class="m">\arccos\frac{3}{\sqrt3\sqrt6}=\arccos\frac{\sqrt2}2=\frac\pi4</span>. In <span class="m">\mathbb{R}^2</span> con <span class="m">\langle X,Y\rangle=x_1y_1-x_1y_2-x_2y_1+5x_2y_2</span>, <span class="m">{}^t(1\ 0)</span> e <span class="m">{}^t(1\ 1)</span> hanno prodotto <span class="m">1-1=0</span>: sono ortogonali per questo prodotto scalare, anche se come vettori geometrici formano un angolo di <span class="m">\frac\pi4</span>.</p>
+</div>
+
+<div class="callout esame">
+
+<p>Domanda aperta: prodotto scalare euclideo, prodotto scalare standard (e il fatto che coincidono) e angoli negli spazi euclidei. Nei quiz: prodotto euclideo con lunghezze e coseno, vettore normale a un piano dai coefficienti dell&#39;equazione, ortogonalità con il prodotto scalare nullo (anche tra rette).</p>
+</div>

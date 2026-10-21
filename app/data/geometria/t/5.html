@@ -1,0 +1,76 @@
+<h1>Lezione 5 — Spazi vettoriali</h1>
+<p>Gli spazi vettoriali sono l&#39;essenza del corso: generalizzano i vettori geometrici e danno un linguaggio unificato per molti problemi.</p>
+<h2>Dai vettori geometrici alla definizione</h2>
+<p>Su <span class="m">V^3_G</span> (e <span class="m">V^2_G</span>) l&#39;addizione rende l&#39;insieme un gruppo abeliano, e il prodotto per scalare è una funzione <span class="m">\cdot:\mathbb R\times V^3_G\to V^3_G</span>. Usando le coordinate si verifica (Oss. 5.1, 5.2):</p>
+<ul>
+<li><span class="m">\lambda(\mu\mathbf v)=(\lambda\mu)\mathbf v</span>;</li>
+<li><span class="m">(\lambda+\mu)\mathbf v=\lambda\mathbf v+\mu\mathbf v</span>;</li>
+<li><span class="m">\lambda(\mathbf v+\mathbf w)=\lambda\mathbf v+\lambda\mathbf w</span>;</li>
+<li><span class="m">1\cdot\mathbf v=\mathbf v</span>.</li>
+</ul>
+<h2>Definizione di spazio vettoriale</h2>
+<p><strong>Definizione 5.3.</strong> Uno <strong>spazio vettoriale su un campo <span class="m">K</span></strong> è un insieme <span class="m">V</span> con un&#39;<strong>addizione</strong> <span class="m">+:V\times V\to V</span> e una <strong>moltiplicazione per scalare</strong> <span class="m">\cdot:K\times V\to V</span> tali che:</p>
+<ul>
+<li>(SV1) <span class="m">(V,+)</span> è un gruppo abeliano: (SV1a) associativa, (SV1b) esiste <span class="m">\mathbf 0</span> con <span class="m">\mathbf 0+\mathbf v=\mathbf v+\mathbf 0=\mathbf v</span>, (SV1c) ogni <span class="m">\mathbf v</span> ha opposto <span class="m">-\mathbf v</span>, (SV1d) commutativa;</li>
+<li>(SV2) <span class="m">\lambda\cdot(\mu\cdot\mathbf v)=(\lambda\cdot\mu)\cdot\mathbf v</span> (compatibilità con la moltiplicazione di <span class="m">K</span>);</li>
+<li>(SV3) <span class="m">(\lambda+\mu)\cdot\mathbf v=\lambda\cdot\mathbf v+\mu\cdot\mathbf v</span> (distributiva rispetto all&#39;addizione di <span class="m">K</span>);</li>
+<li>(SV4) <span class="m">\lambda\cdot(\mathbf v+\mathbf w)=\lambda\cdot\mathbf v+\lambda\cdot\mathbf w</span> (distributiva rispetto all&#39;addizione di <span class="m">V</span>);</li>
+<li>(SV5) <span class="m">1\cdot\mathbf v=\mathbf v</span> (neutralità di <span class="m">1</span>).</li>
+</ul>
+<p>Gli elementi di <span class="m">V</span> sono i <strong>vettori</strong>, quelli di <span class="m">K</span> gli <strong>scalari</strong>.</p>
+<div class="callout attenzione">
+
+<p>In (SV3) si sommano <strong>due scalari</strong> (l&#39;addizione a sinistra è quella di <span class="m">K</span>); in (SV4) si sommano <strong>due vettori</strong> (entrambe le addizioni sono in <span class="m">V</span>). La moltiplicazione per scalare non è un&#39;operazione su <span class="m">V</span> (prende uno scalare e un vettore) e lo scalare sta sempre a sinistra: non ha senso parlare di commutatività, per questo ci sono due distributive distinte.</p>
+</div>
+
+<div class="callout esempio">
+
+<ol>
+<li><span class="m">V^3_G</span> e <span class="m">V^2_G</span> sono spazi vettoriali su <span class="m">\mathbb R</span>.</li>
+<li><span class="m">\{\mathbf 0\}</span> con <span class="m">\lambda\cdot\mathbf 0:=\mathbf 0</span> è uno spazio vettoriale su qualsiasi <span class="m">K</span>.</li>
+<li><span class="m">K</span> stesso è uno spazio vettoriale su <span class="m">K</span>: (SV1) da (K1), (SV2) da (K2a), (SV3) e (SV4) da (K3), (SV5) da (K2b).</li>
+<li>I polinomi <span class="m">K[x_1,\dots,x_n]</span>, con <span class="m">\lambda\cdot p</span> = ogni monomio di <span class="m">p</span> moltiplicato per <span class="m">\lambda</span>.</li>
+<li><span class="m">\mathbb C</span> è uno spazio vettoriale su <span class="m">\mathbb R</span>.</li>
+<li><span class="m">\mathrm{Funz}(I,V)=\{f:I\to V\}</span> con <span class="m">(f+g)(x)=f(x)+g(x)</span> e <span class="m">(\lambda f)(x)=\lambda f(x)</span>.</li>
+</ol>
+</div>
+
+<h2>Proprietà che seguono dalla definizione</h2>
+<p><strong>Proposizione 5.7.</strong> In ogni spazio vettoriale:</p>
+<ul>
+<li>(SV6) <span class="m">0\cdot\mathbf v=\mathbf 0</span>;</li>
+<li>(SV7) <span class="m">(-1)\cdot\mathbf v=-\mathbf v</span>;</li>
+<li>(SV8) <span class="m">\lambda\cdot\mathbf 0=\mathbf 0</span>;</li>
+<li>(SV9) se <span class="m">\lambda\ne0</span> e <span class="m">\lambda\mathbf v=\mathbf 0</span>, allora <span class="m">\mathbf v=\mathbf 0</span>.</li>
+</ul>
+<p><em>Dimostrazione.</em></p>
+<ul>
+<li>(SV6): <span class="m">0\cdot\mathbf v\overset{(K1b)}=(0+0)\cdot\mathbf v\overset{(SV3)}=0\cdot\mathbf v+0\cdot\mathbf v</span>, e per cancellazione <span class="m">\mathbf 0=0\cdot\mathbf v</span>.</li>
+<li>(SV7): <span class="m">\mathbf v+(-1)\mathbf v\overset{(SV5)}=1\mathbf v+(-1)\mathbf v\overset{(SV3)}=(1+(-1))\mathbf v\overset{(K1c)}=0\mathbf v\overset{(SV6)}=\mathbf 0</span>; con (SV1d) anche <span class="m">(-1)\mathbf v+\mathbf v=\mathbf 0</span>.</li>
+<li>(SV8): <span class="m">\lambda\mathbf 0\overset{(SV1b)}=\lambda(\mathbf 0+\mathbf 0)\overset{(SV4)}=\lambda\mathbf 0+\lambda\mathbf 0</span>, e si cancella.</li>
+<li>(SV9): <span class="m">\mathbf v\overset{(SV5)}=1\mathbf v\overset{(K2c)}=(\lambda^{-1}\lambda)\mathbf v\overset{(SV2)}=\lambda^{-1}(\lambda\mathbf v)=\lambda^{-1}\mathbf 0\overset{(SV8)}=\mathbf 0</span>.</li>
+</ul>
+<p>Queste proprietà permettono di togliere molte parentesi: <span class="m">\mathbf v+\mathbf w+\mathbf u</span>, <span class="m">\lambda\mu\mathbf v</span>, <span class="m">\mathbf w-\mathbf v</span>. Il prodotto per scalare si esegue prima della somma (<span class="m">\lambda\mathbf v+\mu\mathbf w</span> = <span class="m">(\lambda\mathbf v)+(\mu\mathbf w)</span>); <span class="m">\lambda\mathbf v</span> è un <strong>multiplo</strong> di <span class="m">\mathbf v</span>. Uno spazio su <span class="m">\mathbb R</span> è <strong>reale</strong>, su <span class="m">\mathbb C</span> <strong>complesso</strong>; se il campo non è indicato è <span class="m">\mathbb R</span> (o <span class="m">\mathbb C</span> se compare almeno un numero non reale).</p>
+<h2>Vettori colonna</h2>
+<p><strong>Definizione 5.14.</strong> Un <strong>vettore colonna</strong> su <span class="m">K</span> è una tabella <span class="m">\begin{pmatrix}x_1\\\vdots\\x_n\end{pmatrix}</span> con <span class="m">x_i\in K</span>; <span class="m">x_i</span> è la <span class="m">i</span>-esima <strong>coordinata</strong>. L&#39;insieme dei vettori colonna con <span class="m">n</span> coordinate si indica con <span class="m">K^n</span>.</p>
+<ul>
+<li>Per comodità si scrive su una riga con una piccola <span class="m">t</span>: <span class="m">\begin{pmatrix}x_1\\\vdots\\x_n\end{pmatrix}={}^t(x_1\ x_2\ \cdots\ x_n)</span>.</li>
+<li>Il <strong>vettore colonna nullo</strong> <span class="m">\mathbf 0_n</span> ha tutte le coordinate nulle.</li>
+<li>I vettori colonna si indicano con lettere maiuscole <span class="m">A,B,\dots,X</span>; la coordinata <span class="m">i</span>-esima di <span class="m">X</span> è <span class="m">X_i</span> o <span class="m">x_i</span>.</li>
+</ul>
+<p><strong>Definizione 5.20.</strong> Addizione e moltiplicazione per scalare si fanno <strong>coordinata per coordinata</strong>:
+<span class="m d">\begin{pmatrix}x_1\\\vdots\\x_n\end{pmatrix}+\begin{pmatrix}y_1\\\vdots\\y_n\end{pmatrix}=\begin{pmatrix}x_1+y_1\\\vdots\\x_n+y_n\end{pmatrix},\qquad \lambda\begin{pmatrix}x_1\\\vdots\\x_n\end{pmatrix}=\begin{pmatrix}\lambda x_1\\\vdots\\\lambda x_n\end{pmatrix}.</span></p>
+<p><strong>Proposizione 5.21.</strong> <span class="m">K^n</span> con queste operazioni è uno spazio vettoriale su <span class="m">K</span> (ogni proprietà (SV) si riduce, coordinata per coordinata, alla corrispondente proprietà (K) del campo; il neutro è <span class="m">\mathbf 0_n</span>, l&#39;opposto di <span class="m">{}^t(x_1\ \cdots\ x_n)</span> è <span class="m">{}^t(-x_1\ \cdots\ -x_n)</span>). Quindi <span class="m">\mathbb Q^n</span>, <span class="m">\mathbb R^n</span>, <span class="m">\mathbb C^n</span> sono spazi vettoriali su <span class="m">\mathbb Q</span>, <span class="m">\mathbb R</span>, <span class="m">\mathbb C</span>.</p>
+<h2>Equazioni vettoriali</h2>
+<p><strong>Definizione 5.23.</strong> Un&#39;<strong>equazione vettoriale</strong> ha come incognite dei vettori; un&#39;<strong>equazione in forma vettoriale</strong> ha come membri dei vettori.</p>
+<p>Con vettori colonna, un&#39;equazione in forma vettoriale equivale a un <strong>sistema</strong> con tante equazioni quante sono le coordinate (i due membri devono avere lo stesso numero di coordinate).</p>
+<div class="callout esempio">
+
+<p><span class="m">2\,{}^t(3\ -1\ -4)-3X={}^t(3\ -8\ -5)</span> con <span class="m">X={}^t(x_1\ x_2\ x_3)</span> diventa <span class="m">{}^t(6-3x_1\ \ -2-3x_2\ \ -8-3x_3)={}^t(3\ -8\ -5)</span>, cioè il sistema <span class="m">6-3x_1=3</span>, <span class="m">-2-3x_2=-8</span>, <span class="m">-8-3x_3=-5</span>.</p>
+<p><span class="m">\alpha\,{}^t(1\ 0\ 4)+\beta\,{}^t(-1\ 2\ 1)={}^t(-3\ 4\ -2)</span> equivale al sistema <span class="m">\alpha-\beta=-3</span>, <span class="m">2\beta=4</span>, <span class="m">4\alpha+\beta=-2</span>.</p>
+</div>
+
+<div class="callout esame">
+
+<p>Domanda aperta: <strong>definizione di spazio vettoriale</strong> e un risultato (ad esempio la Proposizione 5.7 con dimostrazione, o la Proposizione 5.21 su <span class="m">K^n</span>). Nei quiz: somme di vettori colonna, riconoscere quale (SV) è usata, risolvere equazioni vettoriali e in forma vettoriale.</p>
+</div>

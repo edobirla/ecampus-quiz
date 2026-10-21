@@ -1,0 +1,56 @@
+<h1>Lezione 48 — Curve differenziabili</h1>
+<p>Le curve differenziabili rappresentano, in fisica, le traiettorie delle particelle che si muovono nello spazio. Si lavora nel piano euclideo <span class="m">V^2_E</span> con riferimento <span class="m">(O;x,y)</span> e nello spazio <span class="m">V^3_E</span> con riferimento <span class="m">(O;x,y,z)</span>.</p>
+<h2>Curve differenziabili</h2>
+<p>Non si dà la definizione generale di funzione derivabile: basta sapere che un polinomio <span class="m">f(t)</span> è derivabile e la sua derivata <span class="m">f'(t)</span> è <span class="m">\frac{\partial f}{\partial t}</span>. Le funzioni <span class="m">f:\mathbb{R}\to\mathbb{R}</span> derivabili in ogni <span class="m">t</span> si dicono <em>differenziabili</em> (i polinomi lo sono). Tutto si potrebbe estendere a intervalli <span class="m">\{a&lt;t&lt;b\}</span>, ma per semplicità non lo si fa.</p>
+<p><strong>Definizione 48.1.</strong> Una <em>curva differenziabile</em> nello spazio euclideo è una funzione
+<span class="m d">\gamma:\mathbb{R}\ni t\longmapsto\gamma(t)={}^t(x(t)\ y(t)\ z(t))\in\mathbb{R}^3</span>
+con <span class="m">x(t),y(t),z(t)</span> differenziabili. <span class="m">t</span> è il <em>parametro</em>; i punti dell&#39;immagine sono i <em>punti della curva</em>.</p>
+<p><strong>Osservazione 48.2.</strong> Le curve differenziabili nel piano <span class="m">\gamma(t)={}^t(x(t)\ y(t))\in\mathbb{R}^2</span> sono il caso particolare con <span class="m">z(t)=0</span>.</p>
+<div class="callout esempio">
+
+<ol>
+<li><span class="m">\gamma(t)={}^t(1+2t\ \ 3-2t\ \ 4-3t)</span>: l&#39;immagine è una retta, e <span class="m">\gamma</span> è una sua forma parametrica.</li>
+<li><span class="m">\gamma(s)={}^t(s^2\ s^3\ s^4)</span> è una curva differenziabile con parametro <span class="m">s</span>.</li>
+</ol>
+</div>
+
+<h2>Vettore e versore tangente</h2>
+<p><strong>Definizione 48.4.</strong> Il <em>vettore tangente</em> alla curva <span class="m">\gamma</span> nel punto <span class="m">\gamma(\bar t)</span> è
+<span class="m d">\gamma'(\bar t)={}^t(x'(\bar t)\ \ y'(\bar t)\ \ z'(\bar t)).</span>
+Se <span class="m">\gamma'(\bar t)\neq0</span>, il suo versore
+<span class="m d">\frac{1}{\lVert\gamma'(\bar t)\rVert}\,\gamma'(\bar t)</span>
+è il <em>vettore tangente unitario</em> o <em>versore tangente</em> nel punto <span class="m">\gamma(\bar t)</span>.</p>
+<div class="callout esempio">
+
+<ol>
+<li>Per la retta: <span class="m">\gamma'(t)={}^t(2\ -2\ -3)</span>, che coincide con il vettore direttore; versore <span class="m">\frac{1}{\sqrt{17}}{}^t(2\ -2\ -3)</span>.</li>
+<li>Per <span class="m">\gamma(s)={}^t(s^2\ s^3\ s^4)</span>: <span class="m">\gamma'(s)={}^t(2s\ 3s^2\ 4s^3)</span>. Nel punto <span class="m">\gamma(-1)={}^t(1\ -1\ 1)</span> il vettore tangente è <span class="m">{}^t(-2\ 3\ -4)</span> e il versore <span class="m">\frac{1}{\sqrt{29}}{}^t(-2\ 3\ -4)</span>.</li>
+</ol>
+</div>
+
+<div class="callout attenzione">
+
+<p>Se il punto è dato con le coordinate (es. <span class="m">{}^t(4\ 5\ 0)</span>), prima si trova il valore del parametro risolvendo <span class="m">\gamma(t)=P</span> componente per componente, e solo dopo si calcola <span class="m">\gamma'</span> in quel valore. Il vettore tangente in un punto è un vettore numerico, non un&#39;espressione in <span class="m">t</span>.</p>
+</div>
+
+<h2>Curve regolari</h2>
+<p><strong>Definizione 48.6.</strong> Una curva differenziabile è <em>regolare</em> se il vettore tangente è sempre non nullo:
+<span class="m d">\gamma'(t)\neq0_3\quad\text{per ogni }t\in\mathbb{R}.</span></p>
+<div class="callout esempio">
+
+<ul>
+<li>La retta <span class="m">\gamma(t)={}^t(1+2t\ \ 3-2t\ \ 4-3t)</span> è regolare: <span class="m">\gamma'(t)={}^t(2\ -2\ -3)\neq0</span> sempre.</li>
+<li><span class="m">\gamma(s)={}^t(s^2\ s^3\ s^4)</span> non è regolare: <span class="m">\gamma'(0)={}^t(0\ 0\ 0)</span>.</li>
+<li><span class="m">\gamma(s)={}^t(s^3-2s^2+s\ \ s^4-4s\ \ s^2-2s+3)</span>: <span class="m">\gamma'(s)={}^t(3s^2-4s+1\ \ 4s^3-4\ \ 2s-2)</span>. Il sistema <span class="m">3s^2-4s+1=0,\ 4s^3-4=0,\ 2s-2=0</span> ha la soluzione <span class="m">s=1</span>, quindi <span class="m">\gamma</span> non è regolare.</li>
+</ul>
+</div>
+
+<div class="callout sintesi">
+
+<p>Per decidere se una curva è regolare: si derivano le componenti, si cercano gli zeri della componente più semplice e si controlla se le altre si annullano negli stessi valori. Se una componente di <span class="m">\gamma'</span> non si annulla mai (es. è una costante non nulla, o <span class="m">6s^2+3</span>), la curva è regolare.</p>
+</div>
+
+<div class="callout esame">
+
+<p>Il paniere chiede il versore tangente in <span class="m">\gamma(\bar s)</span> (derivare, sostituire, normalizzare: occhio alle opzioni non normalizzate) e quale tra quattro curve piane è regolare (cercare zeri comuni di <span class="m">x'</span> e <span class="m">y'</span>). Gli extra chiedono il parametro di un punto, il vettore tangente in un punto, i valori in cui <span class="m">\gamma'</span> si annulla. Domanda aperta: &quot;Parlare delle curve differenziabili nello spazio&quot;.</p>
+</div>

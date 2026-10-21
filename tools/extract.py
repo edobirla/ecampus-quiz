@@ -87,21 +87,43 @@ def is_mark(color):
     return g > 0.6 and g - b > 0.3
 
 
-def save_image(doc, xref, imgdir, cache):
-    if xref not in cache:
-        pix = fitz.Pixmap(doc, xref)
-        if pix.n - pix.alpha >= 4:
-            pix = fitz.Pixmap(fitz.csRGB, pix)
-        name = f"i{xref}.png"
-        pix.save(os.path.join(imgdir, name))
-        cache[xref] = name
-    return f"![](img/{cache[xref]})"
+def save_clip(page, bb, imgdir, name):
+    """Ritaglio renderizzato della pagina: alcuni panieri riusano lo stesso xref per immagini diverse."""
+    from PIL import Image, ImageChops
+    path = os.path.join(imgdir, name)
+    page.get_pixmap(clip=fitz.Rect(bb), dpi=200).save(path)
+    im = Image.open(path).convert("RGB")
+    ink = ImageChops.invert(im)
+    # ponytail: il puntino separatore a destra e il bordo della casella in alto falsano il bbox: si ignorano i margini
+    ink.paste(0, (int(im.width * 0.96), int(im.height * 0.8), im.width, im.height))
+    ink.paste(0, (0, 0, im.width, 4))
+    box = ink.getbbox()  # toglie il bianco attorno
+    if box:
+        im.crop((max(0, box[0] - 6), max(0, box[1] - 6), min(im.width, box[2] + 6), min(im.height, box[3] + 6))).save(path)
+    figure_only(path)
+    return f"![](img/{name})"
+
+
+def figure_only(path):
+    """Testo + figura centrata nella stessa immagine (es. coniche di Geometria): salva anche <nome>_fig.png con la sola
+    figura, per i testi riscritti con T:. ponytail: il testo è allineato a sinistra, la figura no."""
+    from PIL import Image, ImageChops
+    im = Image.open(path).convert("L")
+    w, h = im.size
+    left = ImageChops.invert(im.crop((0, 0, max(1, w // 30), h))).point(lambda v: 255 if v > 80 else 0)
+    rows = [y for y in range(h) if left.crop((0, y, left.width, y + 1)).getbbox()]
+    if not rows or h - rows[-1] < h * 0.3:
+        return
+    fig = im.crop((0, rows[-1] + 4, w, h))
+    box = ImageChops.invert(fig).getbbox()
+    if box:
+        fig.crop((max(0, box[0] - 6), max(0, box[1] - 6), min(fig.width, box[2] + 6), min(fig.height, box[3] + 6))) \
+            .save(path.replace(".png", "_fig.png"))
 
 
 def extract(path, imgdir):
     doc = fitz.open(path)
     os.makedirs(imgdir, exist_ok=True)
-    cache = {}
     head = doc[0].get_text()
     lessons, cur, q = [], None, None
     for pno, page in enumerate(doc):
@@ -112,21 +134,29 @@ def extract(path, imgdir):
         # X a mano dentro la checkbox: tratti curvi il cui centro cade nel quadratino
         xs = [d["rect"] for d in draws if any(it[0] == "c" for it in d["items"])]
         lines = page_lines(page)
+        infos = page.get_image_info(xrefs=True)  # lento (secondi) su pagine con molte risorse: una volta per pagina
         for bx in boxes:  # opzioni-immagine: checkbox senza testo accanto
             cy = (bx.y0 + bx.y1) / 2
             if any(abs((l["y0"] + l["y1"]) / 2 - cy) < 6 for l in lines):
                 continue
-            imgs = [i for i in page.get_image_info(xrefs=True)
+            imgs = [i for i in infos
                     if i["xref"] and i["bbox"][1] > 70 and i["bbox"][0] > 40 and i["bbox"][1] - 12 < cy < i["bbox"][3] + 4]
             if imgs:
                 bb = imgs[0]["bbox"]
-                lines.append(dict(text=save_image(doc, imgs[0]["xref"], imgdir, cache), x0=bb[0], y0=cy - 4, y1=cy + 4,
+                lines.append(dict(text=save_clip(page, bb, imgdir, f"p{pno + 1}_{int(bb[1])}.png"), x0=bb[0], y0=cy - 4, y1=cy + 4,
                                   box=True, bot=bb[3]))
-        for i in page.get_image_info(xrefs=True):  # immagini nel testo della domanda (non opzioni)
+                continue
+            # immagine appena sotto la casella (es. Geometria: sistemi/matrici), 
+            below = [i for i in infos if i["xref"] and i["bbox"][0] > 30 and cy < i["bbox"][1] < cy + 20]
+            if below:
+                bb = below[0]["bbox"]
+                lines.append(dict(text=save_clip(page, bb, imgdir, f"p{pno + 1}_{int(bb[1])}.png"), x0=bb[0], y0=cy - 4,
+                                  y1=cy + 4, box=True, bot=bb[3]))
+        for i in infos:  # immagini nel testo della domanda (non opzioni)
             bb = i["bbox"]
             if i["xref"] and bb[1] > 70 and bb[0] > 30 and not any(l.get("bot") == bb[3] for l in lines) \
                     and not any(bb[1] - 12 < (b.y0 + b.y1) / 2 < bb[3] + 4 for b in boxes):
-                lines.append(dict(text=save_image(doc, i["xref"], imgdir, cache), x0=bb[0], y0=bb[1], y1=bb[3], img=True))
+                lines.append(dict(text=save_clip(page, bb, imgdir, f"p{pno + 1}_{int(bb[1])}.png"), x0=bb[0], y0=bb[1], y1=bb[3], img=True))
         lines.sort(key=lambda l: (l["y0"] + l["y1"]) / 2)
         for ln in lines:
             t = ln["text"]
@@ -138,9 +168,9 @@ def extract(path, imgdir):
                 continue
             if cur is None:
                 continue
-            m = re.match(r"^(\d{2,3})\.\s+(.*)", t)
+            m = re.match(r"^(\d{2,3})\.(?:\s+(.*))?$", t)  # "18." da solo: il testo della domanda è un'immagine
             if m and ln["x0"] < 42:
-                q = dict(n=int(m.group(1)), text=m.group(2), options=[], correct=[], xmark=[], page=pno + 1)
+                q = dict(n=int(m.group(1)), text=m.group(2) or "", options=[], correct=[], xmark=[], page=pno + 1)
                 cur["questions"].append(q)
                 continue
             if q is None:
@@ -159,7 +189,7 @@ def extract(path, imgdir):
             elif q["options"] and not ln.get("img"):
                 q["options"][-1] += " " + t
             else:
-                q["text"] += ("\n\n" if ln.get("img") else " ") + t
+                q["text"] = (q["text"] + ("\n\n" if ln.get("img") else " ") + t).strip()
     for L in lessons:
         for q in L["questions"]:
             q["type"] = "closed" if q["options"] else "open"

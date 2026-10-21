@@ -1,0 +1,352 @@
+## L28 Autovalori e autovettori
+28-1 C Gli autovalori di $A$ sono **gli zeri del polinomio caratteristico** $p_A(\lambda)=\det(A-\lambda I_2)$ (Teorema 28.28). Basta quindi risolvere $\lambda^2-\lambda-2=0$.
+  Con la formula risolutiva: $$\lambda=\frac{1\pm\sqrt{1+8}}{2}=\frac{1\pm 3}{2},$$ cioè $\lambda=2$ e $\lambda=-1$. Infatti $\lambda^2-\lambda-2=(\lambda-2)(\lambda+1)$.
+  Controllo con traccia e determinante: per una $2\times 2$ si ha $p_A(\lambda)=\lambda^2-\operatorname{tr}(A)\,\lambda+\det A$; qui $\operatorname{tr}A=5-4=1$ e $\det A=5\cdot(-4)-(-3)\cdot 6=-20+18=-2$. La somma degli autovalori è $2+(-1)=1=\operatorname{tr}A$ e il prodotto è $2\cdot(-1)=-2=\det A$.
+  Gli autovalori sono quindi $-1$ e $2$.
+  **Errore tipico:** sbagliare i segni delle radici: gli zeri di $(\lambda-2)(\lambda+1)$ hanno segno *opposto* ai numeri che compaiono nei fattori. La coppia giusta ha somma $1$ (il coefficiente di $\lambda$ cambiato di segno) e prodotto $-2$: le coppie $1,2$ e $-1,-2$ hanno prodotto positivo, la coppia $1,-2$ ha somma $-1$.
+T: Sapendo che il polinomio caratteristico della matrice $2\times 2$ $A=\begin{pmatrix}5 & -3\\ 6 & -4\end{pmatrix}$ è $p_A(\lambda)=\lambda^2-\lambda-2$, quali sono gli autovalori di $A$?
+28-2 C Gli autovalori di $A$ sono gli zeri del polinomio caratteristico (Teorema 28.28): risolviamo $\lambda^2-3\lambda+2=0$.
+  $$\lambda=\frac{3\pm\sqrt{9-8}}{2}=\frac{3\pm1}{2},$$ quindi $\lambda=1$ e $\lambda=2$; infatti $\lambda^2-3\lambda+2=(\lambda-1)(\lambda-2)$.
+  Controllo: $\operatorname{tr}A=3+0=3=1+2$ e $\det A=3\cdot 0-1\cdot(-2)=2=1\cdot 2$.
+  (È proprio il polinomio dell'Esempio 28.27 della dispensa, che ha autovalori $1$ e $2$.)
+  **Errore tipico:** cambiare segno alle radici. La somma degli autovalori deve essere $+3$ (opposto del coefficiente di $\lambda$) e il prodotto $+2$: due numeri negativi hanno somma negativa, e una coppia di segno discorde ha prodotto negativo.
+T: Sapendo che il polinomio caratteristico della matrice $2\times 2$ $A=\begin{pmatrix}3 & 1\\ -2 & 0\end{pmatrix}$ è $p_A(\lambda)=\lambda^2-3\lambda+2$, quali sono gli autovalori di $A$?
+28-3 C Il polinomio caratteristico è $p_A(\lambda)=\det(A-\lambda I_2)$:
+  $$p_A(\lambda)=\det\begin{pmatrix}1-\lambda & 2\\ -1 & 3-\lambda\end{pmatrix}=(1-\lambda)(3-\lambda)-2\cdot(-1).$$
+  Sviluppando: $(1-\lambda)(3-\lambda)=3-4\lambda+\lambda^2$, e $-2\cdot(-1)=+2$. Quindi $$p_A(\lambda)=\lambda^2-4\lambda+5.$$
+  Controllo con la regola $p_A(\lambda)=\lambda^2-\operatorname{tr}(A)\lambda+\det A$: $\operatorname{tr}A=1+3=4$, $\det A=1\cdot3-2\cdot(-1)=5$.
+  (Il discriminante è $16-20<0$: su $\mathbb{R}$ questa matrice non ha autovalori.)
+  **Errore tipico:** sbagliare il segno del prodotto fuori diagonale: $\det A=ad-bc=3-(2)(-1)=3+2$, non $3-2$; chi sbaglia trova termine noto $1$. Il polinomio con $+2\lambda$ ha invece la traccia col segno sbagliato.
+T: Quale dei seguenti è il polinomio caratteristico della matrice $2\times 2$ $\begin{pmatrix}1 & 2\\ -1 & 3\end{pmatrix}$?
+OPT: $\lambda^2+2\lambda-1$. | $\lambda^2-4\lambda+1$. | $\lambda^2-4\lambda+5$. | $\lambda^2+2\lambda-5$.
+28-4 B Gli autovalori sono gli zeri di $p_A(\lambda)=\lambda^2+3\lambda+2$ (Teorema 28.28).
+  $$\lambda=\frac{-3\pm\sqrt{9-8}}{2}=\frac{-3\pm1}{2},$$ quindi $\lambda=-1$ e $\lambda=-2$; infatti $\lambda^2+3\lambda+2=(\lambda+1)(\lambda+2)$.
+  Controllo: $\operatorname{tr}A=-3+0=-3=(-1)+(-2)$ e $\det A=(-3)\cdot0-1\cdot(-2)=2=(-1)(-2)$.
+  **Errore tipico:** leggere le radici direttamente dai fattori $(\lambda+1)(\lambda+2)$ senza cambiare segno, trovando $1$ e $2$. La somma deve essere $-3$, il prodotto $+2$: quindi entrambe negative.
+T: Sapendo che il polinomio caratteristico della matrice $2\times 2$ $A=\begin{pmatrix}-3 & 1\\ -2 & 0\end{pmatrix}$ è $p_A(\lambda)=\lambda^2+3\lambda+2$, quali sono gli autovalori di $A$?
+28-5 C Gli autovalori sono gli zeri di $p_A(\lambda)=\lambda^2+\lambda-2$ (Teorema 28.28).
+  $$\lambda=\frac{-1\pm\sqrt{1+8}}{2}=\frac{-1\pm3}{2},$$ quindi $\lambda=1$ e $\lambda=-2$; infatti $\lambda^2+\lambda-2=(\lambda-1)(\lambda+2)$.
+  Controllo: $\operatorname{tr}A=-5+4=-1=1+(-2)$ e $\det A=(-5)\cdot4-(-3)\cdot6=-20+18=-2=1\cdot(-2)$.
+  **Errore tipico:** scambiare i segni e rispondere $-1$ e $2$ (che sono le radici di $\lambda^2-\lambda-2$, il polinomio della matrice "gemella" con i segni opposti). La somma giusta è $-1$, il prodotto $-2$.
+T: Sapendo che il polinomio caratteristico della matrice $2\times 2$ $A=\begin{pmatrix}-5 & -3\\ 6 & 4\end{pmatrix}$ è $p_A(\lambda)=\lambda^2+\lambda-2$, quali sono gli autovalori di $A$?
+28-6 D Calcoliamo $p_A(\lambda)=\det(A-\lambda I_3)$ sviluppando lungo la prima riga:
+  $$p_A(\lambda)=\det\begin{pmatrix}2-\lambda & -1 & 0\\ 1 & 1-\lambda & 1\\ 0 & -1 & -2-\lambda\end{pmatrix}=(2-\lambda)\det\begin{pmatrix}1-\lambda & 1\\ -1 & -2-\lambda\end{pmatrix}-(-1)\det\begin{pmatrix}1 & 1\\ 0 & -2-\lambda\end{pmatrix}+0.$$
+  Primo minore: $(1-\lambda)(-2-\lambda)-1\cdot(-1)=(\lambda^2+\lambda-2)+1=\lambda^2+\lambda-1$.
+  Secondo minore: $1\cdot(-2-\lambda)-1\cdot0=-2-\lambda$, con il segno $+$ perché il cofattore $(1,2)$ ha segno $-$ e l'elemento è $-1$.
+  Quindi $$p_A(\lambda)=(2-\lambda)(\lambda^2+\lambda-1)+(-2-\lambda)=(2\lambda^2+2\lambda-2-\lambda^3-\lambda^2+\lambda)-2-\lambda=-\lambda^3+\lambda^2+2\lambda-4.$$
+  Controllo: il coefficiente di $\lambda^2$ è $\operatorname{tr}A=2+1-2=1$ e il termine noto è $\det A=p_A(0)=2\cdot(-2+1)+(-2)=-4$.
+  **Errore tipico:** le quattro opzioni sono i polinomi delle matrici che differiscono solo per l'ultimo elemento ($-2,-1,1,2$). Il controllo più rapido è il coefficiente di $\lambda^2$, che deve essere la traccia ($1$), e il termine noto, che deve essere $\det A$ ($-4$). Altro errore: dimenticare il segno alterno del cofattore $(1,2)$.
+  TRAP: le opzioni appartengono a quattro matrici quasi uguali: controlla traccia (coefficiente di $\lambda^2$) e determinante (termine noto).
+T: Quale dei seguenti è il polinomio caratteristico della matrice $3\times 3$ $\begin{pmatrix}2 & -1 & 0\\ 1 & 1 & 1\\ 0 & -1 & -2\end{pmatrix}$?
+OPT: $-\lambda^3+2\lambda^2-\lambda-1$. | $-\lambda^3+5\lambda^2-10\lambda+8$. | $-\lambda^3+4\lambda^2-7\lambda+5$. | $-\lambda^3+\lambda^2+2\lambda-4$.
+28-7 A Sviluppiamo $\det(A-\lambda I_3)$ lungo la prima riga:
+  $$p_A(\lambda)=\det\begin{pmatrix}2-\lambda & -1 & 0\\ 1 & 1-\lambda & 1\\ 0 & -1 & -1-\lambda\end{pmatrix}=(2-\lambda)\big[(1-\lambda)(-1-\lambda)+1\big]+\big[1\cdot(-1-\lambda)-0\big].$$
+  Il primo minore vale $(1-\lambda)(-1-\lambda)+1=(\lambda^2-1)+1=\lambda^2$; il secondo termine (cofattore $(1,2)$ con segno $-$, moltiplicato per l'elemento $-1$) vale $+(-1-\lambda)$.
+  Quindi $$p_A(\lambda)=(2-\lambda)\lambda^2-1-\lambda=-\lambda^3+2\lambda^2-\lambda-1.$$
+  Controllo: coefficiente di $\lambda^2$ = $\operatorname{tr}A=2+1-1=2$; termine noto = $\det A=-1$.
+  **Errore tipico:** le opzioni sono i polinomi di matrici che cambiano solo nell'elemento in basso a destra; chi confonde i casi sceglie un polinomio con traccia $1$, $4$ o $5$. Verifica sempre che il coefficiente di $\lambda^2$ sia la traccia.
+  TRAP: le opzioni appartengono a quattro matrici quasi uguali: controlla traccia (coefficiente di $\lambda^2$) e determinante (termine noto).
+T: Quale dei seguenti è il polinomio caratteristico della matrice $3\times 3$ $\begin{pmatrix}2 & -1 & 0\\ 1 & 1 & 1\\ 0 & -1 & -1\end{pmatrix}$?
+OPT: $-\lambda^3+2\lambda^2-\lambda-1$. | $-\lambda^3+4\lambda^2-7\lambda+5$. | $-\lambda^3+\lambda^2+2\lambda-4$. | $-\lambda^3+5\lambda^2-10\lambda+8$.
+28-8 B Sviluppiamo $\det(A-\lambda I_3)$ lungo la prima riga:
+  $$p_A(\lambda)=\det\begin{pmatrix}2-\lambda & -1 & 0\\ 1 & 1-\lambda & 1\\ 0 & -1 & 1-\lambda\end{pmatrix}=(2-\lambda)\big[(1-\lambda)^2+1\big]+(1-\lambda).$$
+  Il primo minore è $(1-\lambda)(1-\lambda)-1\cdot(-1)=\lambda^2-2\lambda+2$; il termine del cofattore $(1,2)$ è $-(-1)\cdot\big[1\cdot(1-\lambda)-0\big]=1-\lambda$.
+  $$(2-\lambda)(\lambda^2-2\lambda+2)=2\lambda^2-4\lambda+4-\lambda^3+2\lambda^2-2\lambda=-\lambda^3+4\lambda^2-6\lambda+4,$$ e aggiungendo $1-\lambda$: $$p_A(\lambda)=-\lambda^3+4\lambda^2-7\lambda+5.$$
+  Controllo: $\operatorname{tr}A=2+1+1=4$ (coefficiente di $\lambda^2$), $\det A=p_A(0)=2\cdot2+1=5$.
+  **Errore tipico:** confondere questa matrice con le "gemelle" che cambiano solo l'ultimo elemento. Il coefficiente di $\lambda^2$ deve essere la traccia $4$ e il termine noto il determinante $5$.
+  TRAP: le opzioni appartengono a quattro matrici quasi uguali: controlla traccia (coefficiente di $\lambda^2$) e determinante (termine noto).
+T: Quale dei seguenti è il polinomio caratteristico della matrice $3\times 3$ $\begin{pmatrix}2 & -1 & 0\\ 1 & 1 & 1\\ 0 & -1 & 1\end{pmatrix}$?
+OPT: $-\lambda^3+2\lambda^2-\lambda-1$. | $-\lambda^3+4\lambda^2-7\lambda+5$. | $-\lambda^3+5\lambda^2-10\lambda+8$. | $-\lambda^3+\lambda^2+2\lambda-4$.
+28-9 B $$p_A(\lambda)=\det\begin{pmatrix}1-\lambda & 2\\ 1 & 3-\lambda\end{pmatrix}=(1-\lambda)(3-\lambda)-2\cdot1=\lambda^2-4\lambda+3-2=\lambda^2-4\lambda+1.$$
+  Controllo con $p_A(\lambda)=\lambda^2-\operatorname{tr}(A)\lambda+\det A$: $\operatorname{tr}A=1+3=4$, $\det A=1\cdot3-2\cdot1=1$.
+  **Errore tipico:** confondere con la matrice che ha $-1$ al posto di $1$ in basso a sinistra: lì il determinante è $3+2=5$. Qui il prodotto fuori diagonale è $2\cdot1=2$ e si **sottrae**.
+T: Quale dei seguenti è il polinomio caratteristico della matrice $2\times 2$ $\begin{pmatrix}1 & 2\\ 1 & 3\end{pmatrix}$?
+OPT: $\lambda^2+2\lambda-1$. | $\lambda^2-4\lambda+1$. | $\lambda^2-4\lambda+5$. | $\lambda^2+2\lambda-5$.
+28-10 C $$p_A(\lambda)=\det\begin{pmatrix}1-\lambda & 2\\ 1 & -3-\lambda\end{pmatrix}=(1-\lambda)(-3-\lambda)-2\cdot1.$$
+  $(1-\lambda)(-3-\lambda)=-3-\lambda+3\lambda+\lambda^2=\lambda^2+2\lambda-3$, quindi $p_A(\lambda)=\lambda^2+2\lambda-5$.
+  Controllo: $\operatorname{tr}A=1-3=-2$, quindi il coefficiente di $\lambda$ è $-\operatorname{tr}A=+2$; $\det A=1\cdot(-3)-2\cdot1=-5$.
+  **Errore tipico:** usare $+\operatorname{tr}A$ invece di $-\operatorname{tr}A$ come coefficiente di $\lambda$ (si ottiene $-4\lambda$ o simili) oppure sommare invece di sottrarre il prodotto $2\cdot 1$ (si ottiene $-1$ come termine noto).
+T: Quale dei seguenti è il polinomio caratteristico della matrice $2\times 2$ $\begin{pmatrix}1 & 2\\ 1 & -3\end{pmatrix}$?
+OPT: $\lambda^2-4\lambda+5$. | $\lambda^2-4\lambda+1$. | $\lambda^2+2\lambda-5$. | $\lambda^2+2\lambda-1$.
+28-11 A Sviluppiamo lungo la prima riga:
+  $$p_A(\lambda)=\det\begin{pmatrix}2-\lambda & -1 & 0\\ 1 & 1-\lambda & 1\\ 0 & -1 & 2-\lambda\end{pmatrix}=(2-\lambda)\big[(1-\lambda)(2-\lambda)+1\big]+(2-\lambda).$$
+  Primo minore: $(1-\lambda)(2-\lambda)+1=\lambda^2-3\lambda+3$. Termine del cofattore $(1,2)$: $-(-1)\cdot[1\cdot(2-\lambda)-0]=2-\lambda$.
+  $$(2-\lambda)(\lambda^2-3\lambda+3)=-\lambda^3+5\lambda^2-9\lambda+6,$$ più $2-\lambda$: $$p_A(\lambda)=-\lambda^3+5\lambda^2-10\lambda+8=-(\lambda-2)(\lambda^2-3\lambda+4).$$
+  Controllo: $\operatorname{tr}A=2+1+2=5$, $\det A=p_A(0)=8$.
+  **Errore tipico:** scegliere il polinomio di una delle matrici "gemelle" (stesso schema, ultimo elemento diverso). Il coefficiente di $\lambda^2$ deve essere $5$, la traccia.
+  TRAP: le opzioni appartengono a quattro matrici quasi uguali: controlla traccia (coefficiente di $\lambda^2$) e determinante (termine noto).
+T: Quale dei seguenti è il polinomio caratteristico della matrice $3\times 3$ $\begin{pmatrix}2 & -1 & 0\\ 1 & 1 & 1\\ 0 & -1 & 2\end{pmatrix}$?
+OPT: $-\lambda^3+5\lambda^2-10\lambda+8$. | $-\lambda^3+2\lambda^2-\lambda-1$. | $-\lambda^3+4\lambda^2-7\lambda+5$. | $-\lambda^3+\lambda^2+2\lambda-4$.
+28-12 D $$p_A(\lambda)=\det\begin{pmatrix}1-\lambda & 2\\ -1 & -3-\lambda\end{pmatrix}=(1-\lambda)(-3-\lambda)-2\cdot(-1)=(\lambda^2+2\lambda-3)+2=\lambda^2+2\lambda-1.$$
+  Controllo: $\operatorname{tr}A=1-3=-2$ (coefficiente di $\lambda$: $+2$), $\det A=1\cdot(-3)-2\cdot(-1)=-3+2=-1$.
+  **Errore tipico:** dimenticare che $-bc=-(2)(-1)=+2$: chi sottrae $2$ ottiene $-5$ come termine noto. Chi usa una traccia sbagliata ottiene $-4\lambda$: qui la traccia è $-2$, quindi il coefficiente di $\lambda$ è $+2$.
+T: Quale dei seguenti è il polinomio caratteristico della matrice $2\times 2$ $\begin{pmatrix}1 & 2\\ -1 & -3\end{pmatrix}$?
+OPT: $\lambda^2+2\lambda-5$. | $\lambda^2-4\lambda+5$. | $\lambda^2-4\lambda+1$. | $\lambda^2+2\lambda-1$.
+28-13 A Un vettore $X\neq 0$ è autovettore relativo a $\lambda=3$ se $AX=3X$ (Osservazione 28.19). Calcoliamo $AX$ per ciascun candidato, con $A=\begin{pmatrix}3&-1&-1\\-1&2&0\\1&0&2\end{pmatrix}$.
+  - ${}^t(1\ -1\ 1)$: $AX={}^t(3+1-1,\ -1-2+0,\ 1+0+2)={}^t(3\ -3\ 3)=3\,{}^t(1\ -1\ 1)$. **È autovettore relativo a 3.**
+  - ${}^t(1\ 1\ 1)$: $AX={}^t(1\ 1\ 3)$, non è multiplo del vettore.
+  - ${}^t(0\ -1\ 1)$: $AX={}^t(0\ -2\ 2)=2\,{}^t(0\ -1\ 1)$: è autovettore, ma relativo a $2$, non a $3$.
+  - ${}^t(0\ 1\ 1)$: $AX={}^t(-2\ 2\ 2)$, non è multiplo.
+  Il vettore cercato è ${}^t(1\ -1\ 1)$. (Il polinomio caratteristico è $-(\lambda-3)(\lambda-2)^2$.)
+  **Errore tipico:** fermarsi al primo vettore che risulta autovettore senza controllare l'autovalore: ${}^t(0\ -1\ 1)$ va in un suo multiplo, ma con fattore $2$. Un autovettore è relativo a **un solo** autovalore (Osservazione 28.5).
+  TRAP: tra le opzioni c'è un autovettore della stessa matrice, ma relativo all'altro autovalore.
+T: Quale dei seguenti è un autovettore della matrice $3\times 3$ $\begin{pmatrix}3 & -1 & -1\\ -1 & 2 & 0\\ 1 & 0 & 2\end{pmatrix}$ relativo all'autovalore $\lambda=3$?
+OPT: ${}^t(1\ -1\ 1)$. | ${}^t(1\ 1\ 1)$. | ${}^t(0\ -1\ 1)$. | ${}^t(0\ 1\ 1)$.
+28-14 A Per l'Osservazione 28.16-3, $$\text{m.g.}(\lambda)=n-\operatorname{rank}(A-\lambda I_n).$$
+  Con $\lambda=2$: $$A-2I_3=\begin{pmatrix}2 & 2 & 0\\ -1 & -1 & 0\\ 1 & 1 & 0\end{pmatrix}.$$ Le tre righe sono tutte multiple di $(1\ 1\ 0)$ (la prima è il doppio, la seconda l'opposto, la terza uguale): il rango è $1$.
+  Quindi $\text{m.g.}(2)=3-1=2$. L'autospazio è $\{x_1+x_2=0\}$, generato per esempio da ${}^t(1\ -1\ 0)$ e ${}^t(0\ 0\ 1)$.
+  (Il polinomio caratteristico è $-(\lambda-3)(\lambda-2)^2$, quindi anche $\text{m.a.}(2)=2$.)
+  **Errore tipico:** rispondere con il rango ($1$) invece che con $n-\operatorname{rank}$. La molteplicità geometrica non può essere $0$ (un autovalore ha almeno un autovettore) e non può superare la molteplicità algebrica, che qui è $2$.
+T: Quanto vale la molteplicità geometrica dell'autovalore $\lambda=2$ della matrice $3\times 3$ $\begin{pmatrix}4 & 2 & 0\\ -1 & 1 & 0\\ 1 & 1 & 2\end{pmatrix}$?
+28-15 C Cerchiamo $X$ con $AX=3X$, dove $A=\begin{pmatrix}3&1&-1\\1&2&0\\1&0&2\end{pmatrix}$.
+  - ${}^t(1\ -1\ 1)$: $AX={}^t(3-1-1,\ 1-2,\ 1+2)={}^t(1\ -1\ 3)$, non è multiplo.
+  - ${}^t(0\ -1\ 1)$: $AX={}^t(-1-1,\ -2,\ 2)={}^t(-2\ -2\ 2)$, non è multiplo.
+  - ${}^t(1\ 1\ 1)$: $AX={}^t(3+1-1,\ 1+2,\ 1+2)={}^t(3\ 3\ 3)=3\,{}^t(1\ 1\ 1)$. **È autovettore relativo a 3.**
+  - ${}^t(0\ 1\ 1)$: $AX={}^t(0\ 2\ 2)=2\,{}^t(0\ 1\ 1)$: autovettore, ma relativo a $2$.
+  Il vettore cercato è ${}^t(1\ 1\ 1)$.
+  **Errore tipico:** confondere questa matrice con quella simile che ha $-1$ al posto di $1$ in posizione $(1,2)$ e $(2,1)$, dove l'autovettore relativo a $3$ è ${}^t(1\ -1\ 1)$. Oppure accettare ${}^t(0\ 1\ 1)$, che però ha autovalore $2$.
+  TRAP: tra le opzioni c'è un autovettore della stessa matrice, ma relativo all'altro autovalore.
+T: Quale dei seguenti è un autovettore della matrice $3\times 3$ $\begin{pmatrix}3 & 1 & -1\\ 1 & 2 & 0\\ 1 & 0 & 2\end{pmatrix}$ relativo all'autovalore $\lambda=3$?
+OPT: ${}^t(1\ -1\ 1)$. | ${}^t(0\ -1\ 1)$. | ${}^t(1\ 1\ 1)$. | ${}^t(0\ 1\ 1)$.
+28-16 C Cerchiamo $X$ con $AX=2X$, dove $A=\begin{pmatrix}3&-1&-1\\-1&2&0\\1&0&2\end{pmatrix}$.
+  - ${}^t(1\ 1\ 1)$: $AX={}^t(1\ 1\ 3)$, non è multiplo.
+  - ${}^t(0\ 1\ 1)$: $AX={}^t(-2\ 2\ 2)$, non è multiplo.
+  - ${}^t(0\ -1\ 1)$: $AX={}^t(0+1-1,\ -2,\ 2)={}^t(0\ -2\ 2)=2\,{}^t(0\ -1\ 1)$. **È autovettore relativo a 2.**
+  - ${}^t(1\ -1\ 1)$: $AX={}^t(3\ -3\ 3)=3\,{}^t(1\ -1\ 1)$: autovettore, ma relativo a $3$.
+  In alternativa: $A-2I=\begin{pmatrix}1&-1&-1\\-1&0&0\\1&0&0\end{pmatrix}$ dà $x_1=0$ e $x_2+x_3=0$, cioè l'autospazio è $\operatorname{Span}\{{}^t(0\ -1\ 1)\}$.
+  **Errore tipico:** scegliere ${}^t(1\ -1\ 1)$ perché "funziona" ($AX$ è un suo multiplo), senza notare che il fattore è $3$ e non $2$.
+  TRAP: tra le opzioni c'è un autovettore della stessa matrice, ma relativo all'altro autovalore.
+T: Quale dei seguenti è un autovettore della matrice $3\times 3$ $\begin{pmatrix}3 & -1 & -1\\ -1 & 2 & 0\\ 1 & 0 & 2\end{pmatrix}$ relativo all'autovalore $\lambda=2$?
+OPT: ${}^t(1\ 1\ 1)$. | ${}^t(0\ 1\ 1)$. | ${}^t(0\ -1\ 1)$. | ${}^t(1\ -1\ 1)$.
+28-17 A Cerchiamo $X$ con $AX=2X$, dove $A=\begin{pmatrix}3&1&-1\\1&2&0\\1&0&2\end{pmatrix}$.
+  - ${}^t(0\ 1\ 1)$: $AX={}^t(0+1-1,\ 0+2,\ 0+2)={}^t(0\ 2\ 2)=2\,{}^t(0\ 1\ 1)$. **È autovettore relativo a 2.**
+  - ${}^t(1\ -1\ 1)$: $AX={}^t(1\ -1\ 3)$, non è multiplo.
+  - ${}^t(0\ -1\ 1)$: $AX={}^t(-2\ -2\ 2)$, non è multiplo.
+  - ${}^t(1\ 1\ 1)$: $AX={}^t(3\ 3\ 3)$: autovettore, ma relativo a $3$.
+  In alternativa: $A-2I=\begin{pmatrix}1&1&-1\\1&0&0\\1&0&0\end{pmatrix}$ dà $x_1=0$ e $x_2=x_3$: autospazio $\operatorname{Span}\{{}^t(0\ 1\ 1)\}$.
+  **Errore tipico:** confondere con la matrice gemella (segni opposti in posizione $(1,2)$ e $(2,1)$), per cui l'autovettore relativo a $2$ è ${}^t(0\ -1\ 1)$; o scegliere ${}^t(1\ 1\ 1)$, che però ha autovalore $3$.
+  TRAP: tra le opzioni c'è un autovettore della stessa matrice, ma relativo all'altro autovalore.
+T: Quale dei seguenti è un autovettore della matrice $3\times 3$ $\begin{pmatrix}3 & 1 & -1\\ 1 & 2 & 0\\ 1 & 0 & 2\end{pmatrix}$ relativo all'autovalore $\lambda=2$?
+OPT: ${}^t(0\ 1\ 1)$. | ${}^t(1\ -1\ 1)$. | ${}^t(0\ -1\ 1)$. | ${}^t(1\ 1\ 1)$.
+28-18 B $\text{m.g.}(3)=3-\operatorname{rank}(A-3I_3)$ (Osservazione 28.16-3).
+  $$A-3I_3=\begin{pmatrix}-2 & -1 & 1\\ 1 & 0 & -1\\ -1 & 0 & 1\end{pmatrix}.$$
+  La terza riga è l'opposto della seconda, quindi il rango è al più $2$; la prima e la seconda riga non sono proporzionali (la seconda ha $0$ nella colonna centrale, la prima no), quindi il rango è esattamente $2$. Riducendo: $R_1\leftrightarrow R_2$, $R_2\to R_2+2R_1$, $R_3\to R_3+R_1$ dà $\begin{pmatrix}1&0&-1\\0&-1&-1\\0&0&0\end{pmatrix}$.
+  Quindi $\text{m.g.}(3)=3-2=1$ (autospazio generato da ${}^t(1\ -1\ 1)$).
+  Nota: il polinomio caratteristico è $-(\lambda-3)^2(\lambda-2)$, quindi $\text{m.a.}(3)=2$ ma $\text{m.g.}(3)=1$: le due molteplicità possono essere diverse.
+  **Errore tipico:** rispondere con la molteplicità algebrica ($2$) invece di calcolare il rango, o con il rango stesso. Il valore $0$ è impossibile: $\text{m.g.}\geqslant 1$ per ogni autovalore.
+T: Quanto vale la molteplicità geometrica dell'autovalore $\lambda=3$ della matrice $3\times 3$ $\begin{pmatrix}1 & -1 & 1\\ 1 & 3 & -1\\ -1 & 0 & 4\end{pmatrix}$?
+28-19 D $\text{m.g.}(3)=3-\operatorname{rank}(A-3I_3)$ (Osservazione 28.16-3).
+  $$A-3I_3=\begin{pmatrix}-2 & -2 & 0\\ 1 & 1 & 0\\ -1 & -1 & 0\end{pmatrix}.$$
+  Tutte le righe sono multiple di $(1\ 1\ 0)$: rango $1$. Quindi $\text{m.g.}(3)=3-1=2$ (autospazio $\{x_1+x_2=0\}$, generato da ${}^t(1\ -1\ 0)$ e ${}^t(0\ 0\ 1)$).
+  Coerente con il polinomio caratteristico $-(\lambda-3)^2(\lambda-2)$: $1\leqslant\text{m.g.}(3)\leqslant\text{m.a.}(3)=2$.
+  **Errore tipico:** confondere il rango ($1$) con la molteplicità geometrica, che è la dimensione del nucleo $n-\operatorname{rank}$. Il valore $3$ è impossibile perché supererebbe $\text{m.a.}(3)=2$.
+T: Quanto vale la molteplicità geometrica dell'autovalore $\lambda=3$ della matrice $3\times 3$ $\begin{pmatrix}1 & -2 & 0\\ 1 & 4 & 0\\ -1 & -1 & 3\end{pmatrix}$?
+28-20 C $\text{m.g.}(2)=3-\operatorname{rank}(A-2I_3)$ (Osservazione 28.16-3).
+  $$A-2I_3=\begin{pmatrix}2 & 3 & 1\\ -1 & -2 & -1\\ 1 & 2 & 1\end{pmatrix}.$$
+  La terza riga è l'opposto della seconda, quindi il rango è al più $2$; la prima riga non è multipla di $(1\ 2\ 1)$, quindi il rango è $2$. Riducendo: $R_1\leftrightarrow R_3$, $R_2\to R_2+R_1$, $R_3\to R_3-2R_1$ dà $\begin{pmatrix}1&2&1\\0&0&0\\0&-1&-1\end{pmatrix}$.
+  Quindi $\text{m.g.}(2)=3-2=1$ (autospazio generato da ${}^t(1\ -1\ 1)$).
+  Il polinomio caratteristico è $-(\lambda-3)(\lambda-2)^2$: $\text{m.a.}(2)=2$, ma $\text{m.g.}(2)=1$.
+  **Errore tipico:** dedurre $\text{m.g.}(2)=2$ dalla molteplicità algebrica senza calcolare il rango: la disuguaglianza $\text{m.g.}\leqslant\text{m.a.}$ può essere stretta. $0$ è sempre escluso.
+T: Quanto vale la molteplicità geometrica dell'autovalore $\lambda=2$ della matrice $3\times 3$ $\begin{pmatrix}4 & 3 & 1\\ -1 & 0 & -1\\ 1 & 2 & 3\end{pmatrix}$?
+28-21 APERTA
+KW: polinomio caratteristico, determinante|det, f - λ id|A - λI, base|matrice associata, grado n|dimensione, autovalori, zeri|radici, (-1)^n|coefficiente direttore, non dipende dalla base
+> **Definizione.** Sia $V$ uno spazio vettoriale finitamente generato di dimensione $n$ e sia $f\in\operatorname{Lin}(V,V)$ un endomorfismo. Il **polinomio caratteristico** di $f$ è il polinomio in $\lambda$ $$p_f(\lambda):=\det(f-\lambda\,\mathrm{id}_V).$$
+> Se $\mathcal B$ è una base di $V$, si calcola con la matrice associata: $p_f(\lambda)=\det\big([f]^{\mathcal B}_{\mathcal B}-\lambda I_n\big)$ (il risultato non dipende dalla base scelta, perché è il determinante dell'endomorfismo $f-\lambda\,\mathrm{id}_V$).
+> Per una matrice $A=(a_{ij})\in K^{n,n}$ il polinomio caratteristico è $p_A(\lambda)=\det(A-\lambda I_n)$, cioè il determinante della matrice ottenuta sottraendo $\lambda$ agli elementi della diagonale principale.
+> **Grado.** $p_f$ ha grado $n=\dim V$: $\lambda$ compare $n$ volte solo nel prodotto degli elementi diagonali, quindi il monomio di grado massimo è $(-1)^n\lambda^n$.
+> **Teorema 28.28.** Gli autovalori di un endomorfismo $f$ di uno spazio vettoriale finitamente generato coincidono con gli zeri del polinomio caratteristico $p_f$.
+> *Dimostrazione.* $\bar\lambda$ è autovalore $\iff$ esiste $v\neq0$ con $(f-\bar\lambda\,\mathrm{id}_V)(v)=0$ $\iff$ $\operatorname{Ker}(f-\bar\lambda\,\mathrm{id}_V)\neq\{0\}$ $\iff$ $f-\bar\lambda\,\mathrm{id}_V$ non è iniettivo $\iff$ non è bigettivo (è un endomorfismo in dimensione finita) $\iff$ $\det(f-\bar\lambda\,\mathrm{id}_V)=0$, cioè $p_f(\bar\lambda)=0$.
+> **Esempio.** $A=\begin{pmatrix}-1&1\\-6&4\end{pmatrix}$: $p_A(\lambda)=\det\begin{pmatrix}-1-\lambda&1\\-6&4-\lambda\end{pmatrix}=\lambda^2-3\lambda+2=(\lambda-1)(\lambda-2)$, di grado $2=\dim\mathbb R^2$; gli autovalori di $A$ sono $1$ e $2$.
+28-22 APERTA
+KW: autovettore, autovalore, f(v)=λv|AX=λX, vettore non nullo|v≠0, autospazio, Ker(f-λid)|nucleo, sottospazio, molteplicità geometrica, dimensione dell'autospazio, n - rank|dim V - rank, m.g. ≥ 1|almeno 1, linearmente indipendenti
+> **Definizione.** Sia $f\in\operatorname{Lin}(V,V)$ un endomorfismo di uno spazio vettoriale $V$ sul campo $K$. Se $v\in V\setminus\{0\}$ e $\lambda\in K$ sono tali che $f(v)=\lambda v$, il vettore $v$ è detto **autovettore** di $f$ (relativo a $\lambda$) e lo scalare $\lambda$ è detto **autovalore** di $f$. Per una matrice $A\in K^{n,n}$ la condizione diventa $AX=\lambda X$, cioè $(A-\lambda I_n)X=0$.
+> Ogni autovettore è relativo a un solo autovalore; se $v$ è autovettore relativo a $\lambda$, lo è anche $kv$ per ogni $k\neq0$.
+> **Autospazio.** $(V)_{f,\lambda}:=\{v\in V\mid f(v)=\lambda v\}=\operatorname{Ker}(f-\lambda\,\mathrm{id}_V)$: è formato dagli autovettori relativi a $\lambda$ e dal vettore nullo, ed è un **sottospazio vettoriale** di $V$ (Proposizione 28.12, perché è un nucleo).
+> **Molteplicità geometrica.** Se $V$ è finitamente generato, la dimensione dell'autospazio relativo a $\lambda$ si chiama molteplicità geometrica: $\text{m.g.}(f,\lambda):=\dim (V)_{f,\lambda}$.
+> Proprietà (Osservazione 28.16): $\text{m.g.}(f,\lambda)\geqslant1$ (l'autospazio non è mai $\{0\}$); è il massimo numero di autovettori linearmente indipendenti relativi a $\lambda$; per il teorema fondamentale dell'algebra lineare $$\text{m.g.}(f,\lambda)=\dim V-\operatorname{rank}(f-\lambda\,\mathrm{id}_V).$$
+> **Teorema 28.17.** Autovettori $v_1,\dots,v_p$ relativi ad autovalori distinti $\lambda_1,\dots,\lambda_p$ sono linearmente indipendenti. (Inoltre, per autovalori distinti $(V)_{\lambda_1}\cap(V)_{\lambda_2}=\{0\}$.)
+> **Esempio.** Per $A=\begin{pmatrix}-1&1\\-6&4\end{pmatrix}$, ${}^t(1\ 3)$ è autovettore relativo a $2$ ($A\,{}^t(1\ 3)={}^t(2\ 6)$); l'autospazio è $\operatorname{Span}\{{}^t(1\ 3)\}$, quindi $\text{m.g.}(2)=2-\operatorname{rank}(A-2I)=2-1=1$.
+x131 B Un vettore $v\neq0$ è autovettore di $f$ se $f(v)$ è un multiplo di $v$. Applichiamo $f(x_1,x_2)={}^t(3x_1+2x_2,\ x_1+4x_2)$ ai candidati:
+  - ${}^t(2\ 1)\mapsto{}^t(6+2,\ 2+4)={}^t(8\ 6)$: $8/2=4$ ma $6/1=6$, non è multiplo.
+  - ${}^t(2\ -1)\mapsto{}^t(6-2,\ 2-4)={}^t(4\ -2)=2\,{}^t(2\ -1)$: **è autovettore relativo all'autovalore 2.**
+  - ${}^t(3\ 2)\mapsto{}^t(9+4,\ 3+8)={}^t(13\ 11)$: non è multiplo.
+  - ${}^t(1\ 4)\mapsto{}^t(3+8,\ 1+16)={}^t(11\ 17)$: non è multiplo.
+  Controllo: la matrice associata è $\begin{pmatrix}3&2\\1&4\end{pmatrix}$, con $p(\lambda)=\lambda^2-7\lambda+10=(\lambda-2)(\lambda-5)$; l'autospazio di $2$ è $\{x_1+2x_2=0\}=\operatorname{Span}\{{}^t(2\ -1)\}$.
+  **Errore tipico:** scegliere il vettore formato dai coefficienti di una riga della matrice (come ${}^t(1\ 4)$ o ${}^t(3\ 2)$): non c'entra nulla con gli autovettori. Bisogna sempre verificare $f(v)=\lambda v$.
+T: Quale dei seguenti è un autovettore dell'endomorfismo $f\colon\mathbb{R}^2\ni\begin{pmatrix}x_1\\x_2\end{pmatrix}\longmapsto\begin{pmatrix}3x_1+2x_2\\x_1+4x_2\end{pmatrix}\in\mathbb{R}^2$?
+OPT: $\begin{pmatrix}2\\1\end{pmatrix}$. | $\begin{pmatrix}2\\-1\end{pmatrix}$. | $\begin{pmatrix}3\\2\end{pmatrix}$. | $\begin{pmatrix}1\\4\end{pmatrix}$.
+x132 C Basta calcolare $AX$ e vedere per quale scalare è multiplo di $X={}^t(1\ 3\ -2)$:
+  $$AX=\begin{pmatrix}-1&1&2\\-1&-1&1\\2&-2&-4\end{pmatrix}\begin{pmatrix}1\\3\\-2\end{pmatrix}=\begin{pmatrix}-1+3-4\\-1-3-2\\2-6+8\end{pmatrix}=\begin{pmatrix}-2\\-6\\4\end{pmatrix}=-2\begin{pmatrix}1\\3\\-2\end{pmatrix}.$$
+  Quindi l'autovalore è $\lambda=-2$.
+  **Errore tipico:** sbagliare un segno nel prodotto riga per colonna (per esempio nella terza riga, $2\cdot1+(-2)\cdot3+(-4)\cdot(-2)=2-6+8=4$) e concludere $2$, oppure pensare che $X$ non sia un autovettore e scegliere "nessuna delle altre".
+T: Quale è l'autovalore dell'endomorfismo di $\mathbb{R}^3$ associato alla matrice $\begin{pmatrix}-1&1&2\\-1&-1&1\\2&-2&-4\end{pmatrix}$ a cui è relativo l'autovettore $\begin{pmatrix}1\\3\\-2\end{pmatrix}$?
+OPT: $0$. | $2$. | $-2$. | Nessuna delle altre risposte.
+x133 A La molteplicità geometrica è la dimensione dell'autospazio, che è $\operatorname{Ker}(f-\lambda\,\mathrm{id}_{K^n})$. Per il teorema fondamentale dell'algebra lineare (dimensione del nucleo + rango = dimensione del dominio): $$\text{m.g.}(f,\lambda)=\dim\operatorname{Ker}(f-\lambda\,\mathrm{id}_{K^n})=n-\operatorname{rank}(f-\lambda\,\mathrm{id}_{K^n}).$$
+  **Errore tipico:** dimenticare il "$n-$" (il rango misura l'immagine, non il nucleo) oppure dimenticare di sottrarre $\lambda\,\mathrm{id}$: $n-\operatorname{rank}(f)$ è la dimensione di $\operatorname{Ker}f$, cioè la molteplicità geometrica del solo autovalore $0$.
+T: Quale dei seguenti è uguale alla molteplicità geometrica $\text{m.g.}(f,\lambda)$, dove $f\in\operatorname{Lin}(K^n,K^n)$?
+OPT: $n-\operatorname{rank}(f-\lambda\,\mathrm{id}_{K^n})$. | $\operatorname{rank}(f-\lambda\,\mathrm{id}_{K^n})$. | $n-\operatorname{rank}(f)$. | $\operatorname{rank}(f)$.
+x134 B Gli autovalori sono gli zeri **reali** del polinomio caratteristico (lo spazio è reale). Raccogliamo per parti:
+  $$-\lambda^3+\lambda^2+2\lambda-2=-\lambda^2(\lambda-1)+2(\lambda-1)=(\lambda-1)(2-\lambda^2)=-(\lambda-1)(\lambda^2-2).$$
+  Gli zeri sono $\lambda=1$ e $\lambda^2=2$, cioè $\lambda=\pm\sqrt2$, tutti reali.
+  **Errore tipico:** perdere la radice negativa $-\sqrt2$ (da $\lambda^2=2$ seguono due valori), dimenticare $\lambda=1$, oppure sbagliare il segno e risolvere $\lambda^2=-2$, ottenendo $\pm i\sqrt2$ (che comunque non sarebbero autovalori su $\mathbb R$).
+T: Quali sono gli autovalori di un endomorfismo di uno spazio vettoriale reale il cui polinomio caratteristico è $-\lambda^3+\lambda^2+2\lambda-2$?
+OPT: $\lambda=1$, $\lambda=\sqrt2$. | $\lambda=1$, $\lambda=\pm\sqrt2$. | $\lambda=\pm\sqrt2$. | $\lambda=1$, $\lambda=\pm i\sqrt2$.
+
+## L29 Diagonalizzazione
+29-1 A Per il **criterio di diagonalizzabilità** (Teorema 29.16), $A$ è diagonalizzabile se e solo se (CD1) $\sum\text{m.a.}(\lambda_i)=n$ e (CD2) $\text{m.g.}(\lambda_i)=\text{m.a.}(\lambda_i)$ per ogni autovalore.
+  Qui (CD1) vale: $\text{m.a.}(-2)+\text{m.a.}(4)=2+1=3=n$. Per (CD2) servono $\text{m.g.}(-2)=2$ e $\text{m.g.}(4)=1$; la seconda è automatica, perché $1\leqslant\text{m.g.}(4)\leqslant\text{m.a.}(4)=1$.
+  Quindi $A$ è diagonalizzabile esattamente quando $\text{m.g.}(-2)=2$ e $\text{m.g.}(4)=1$.
+  **Errore tipico:** "Sempre" è falso perché $\text{m.g.}(-2)$ potrebbe valere $1$; "Mai" è falso perché il caso $\text{m.g.}=\text{m.a.}$ è possibile; e $\text{m.g.}(4)=2$ è impossibile, perché supererebbe $\text{m.a.}(4)=1$.
+29-2 A $A$ è $4\times4$ e ha **quattro autovalori distinti**: per la Proposizione 29.14 (un endomorfismo di uno spazio di dimensione $n$ con $n$ autovalori distinti è diagonalizzabile) $A$ è **sempre** diagonalizzabile.
+  Infatti ogni autovalore ha $\text{m.a.}\geqslant1$ e la somma delle m.a. non supera $4$, quindi $\text{m.a.}=1$ per tutti; allora $1\leqslant\text{m.g.}\leqslant\text{m.a.}=1$ dà $\text{m.g.}=1$ per tutti e (CD1), (CD2) valgono.
+  **Errore tipico:** le altre opzioni chiedono che qualche autovalore abbia $\text{m.g.}=2$: è impossibile, perché $\text{m.g.}\leqslant\text{m.a.}=1$ (e la somma delle m.g. supererebbe $4$).
+  TRAP: con $n$ autovalori distinti in dimensione $n$ non servono condizioni: la matrice è sempre diagonalizzabile, e le condizioni proposte sono impossibili.
+29-3 A Per il criterio di diagonalizzabilità: (CD1) $\text{m.a.}(-3)+\text{m.a.}(1)=1+3=4=n$ vale. (CD2) richiede $\text{m.g.}(-3)=\text{m.a.}(-3)=1$ e $\text{m.g.}(1)=\text{m.a.}(1)=3$.
+  $\text{m.g.}(-3)=1$ è automatica ($1\leqslant\text{m.g.}\leqslant1$); $\text{m.g.}(1)$ invece può valere $1$, $2$ o $3$. Quindi $A$ è diagonalizzabile se e solo se $\text{m.g.}(-3)=1$ e $\text{m.g.}(1)=3$.
+  **Errore tipico:** scegliere coppie con $\text{m.g.}(-3)=2$ o $3$, impossibili perché $\text{m.g.}(-3)\leqslant\text{m.a.}(-3)=1$; oppure "Sempre", che dimentica che $\text{m.g.}(1)$ potrebbe essere minore di $3$.
+29-4 C Criterio di diagonalizzabilità: (CD1) $2+2=4=n$ vale; (CD2) richiede $\text{m.g.}(-3)=2$ e $\text{m.g.}(1)=2$.
+  Ciascuna m.g. può valere $1$ o $2$ ($1\leqslant\text{m.g.}\leqslant\text{m.a.}=2$), quindi non è automatico: $A$ è diagonalizzabile se e solo se $\text{m.g.}(-3)=2$ e $\text{m.g.}(1)=2$.
+  **Errore tipico:** accettare una m.g. pari a $3$, che supera la m.a. ($2$) e quindi è impossibile; o rispondere "Sempre".
+29-5 C Criterio di diagonalizzabilità: (CD1) $\text{m.a.}(-3)+\text{m.a.}(1)=3+1=4$ vale; (CD2) richiede $\text{m.g.}(-3)=3$ e $\text{m.g.}(1)=1$ (quest'ultima automatica).
+  Quindi $A$ è diagonalizzabile se e solo se $\text{m.g.}(-3)=3$ e $\text{m.g.}(1)=1$.
+  **Errore tipico:** scambiare i ruoli dei due autovalori (la m.g. "grande" deve essere quella dell'autovalore con m.a. $3$, cioè $-3$), oppure proporre $\text{m.g.}(1)=2$ o $3$, impossibili perché $\text{m.a.}(1)=1$.
+29-6 C $A\in\mathbb R^{3,3}$ ha **tre autovalori distinti**: per la Proposizione 29.14 è sempre diagonalizzabile. Ognuno ha $\text{m.a.}=1$ (la somma non supera $3$) e quindi $\text{m.g.}=1$.
+  **Errore tipico:** le altre opzioni richiedono che un autovalore abbia $\text{m.g.}=2$: impossibile, perché $\text{m.g.}\leqslant\text{m.a.}=1$.
+  TRAP: con $n$ autovalori distinti in dimensione $n$ non servono condizioni: la matrice è sempre diagonalizzabile, e le condizioni proposte sono impossibili.
+29-7 B Criterio di diagonalizzabilità: (CD1) $\text{m.a.}(-2)+\text{m.a.}(2)=1+2=3=n$ vale; (CD2) richiede $\text{m.g.}(-2)=1$ (automatica) e $\text{m.g.}(2)=2$.
+  Quindi $A$ è diagonalizzabile se e solo se $\text{m.g.}(-2)=1$ e $\text{m.g.}(2)=2$.
+  **Errore tipico:** scambiare i due autovalori: $\text{m.g.}(-2)=2$ è impossibile perché supera $\text{m.a.}(-2)=1$. "Sempre" e "Mai" sono falsi perché $\text{m.g.}(2)$ può valere sia $1$ sia $2$.
+29-8 D $A\in\mathbb R^{2,2}$ ha **due autovalori distinti**, $3$ e $4$: per la Proposizione 29.14 è sempre diagonalizzabile (ciascuno ha $\text{m.a.}=\text{m.g.}=1$).
+  **Errore tipico:** una molteplicità geometrica $2$ per uno dei due autovalori è impossibile: la somma delle m.g. non può superare $\dim\mathbb R^2=2$ e ciascuna è $\geqslant1$.
+  TRAP: con $n$ autovalori distinti in dimensione $n$ non servono condizioni: la matrice è sempre diagonalizzabile, e le condizioni proposte sono impossibili.
+29-9 D L'autovalore $2$ ha $\text{m.a.}(2)=3=n$, quindi è l'unico autovalore e (CD1) vale. Per (CD2) serve $\text{m.g.}(2)=3$, cioè $\operatorname{rank}(A-2I)=0$: $A=2I_3$.
+  Quindi $A$ è diagonalizzabile se e solo se $\text{m.g.}(2)=3$.
+  **Errore tipico:** pensare che basti $\text{m.g.}(2)=2$: servono tre autovettori linearmente indipendenti, e l'unico autovalore ne fornisce al massimo $\text{m.g.}(2)$. "Sempre" è falso (per esempio una matrice triangolare con $2$ in diagonale e un $1$ sopra non lo è).
+29-10 B Fattorizziamo il polinomio caratteristico: $$p_A(\lambda)=-\lambda^3+4\lambda^2-4\lambda=-\lambda(\lambda^2-4\lambda+4)=-\lambda(\lambda-2)^2.$$
+  La molteplicità algebrica di un autovalore è la sua molteplicità come zero di $p_A$ (Definizione 29.1): $\lambda=0$ compare con esponente $1$, quindi $\text{m.a.}(0)=1$ (mentre $\text{m.a.}(2)=2$).
+  Controllo: $1+2=3=\deg p_A$.
+  **Errore tipico:** confondere con l'altro autovalore ($\text{m.a.}(2)=2$), oppure pensare che $0$ "non conti" e rispondere $0$: lo zero è un autovalore a tutti gli effetti (gli autovettori relativi a $0$ sono i vettori non nulli del nucleo).
+T: Sapendo che il polinomio caratteristico della matrice $3\times 3$ $A=\begin{pmatrix}2 & 0 & 0\\ 0 & -2 & 2\\ 0 & -4 & 4\end{pmatrix}$ è $p_A(\lambda)=-\lambda^3+4\lambda^2-4\lambda$, quanto vale la molteplicità algebrica dell'autovalore $\lambda=0$?
+29-11 B I due autovalori sono distinti e la matrice è $2\times2$: per la Proposizione 29.14 $A$ è sempre diagonalizzabile. Con il criterio: $\text{m.a.}(3)+\text{m.a.}(4)=2=n$ e $1\leqslant\text{m.g.}\leqslant\text{m.a.}=1$ per entrambi.
+  **Errore tipico:** proporre $\text{m.g.}=2$ per uno dei due autovalori: impossibile, supera la molteplicità algebrica $1$.
+  TRAP: con $n$ autovalori distinti in dimensione $n$ non servono condizioni: la matrice è sempre diagonalizzabile, e le condizioni proposte sono impossibili.
+29-12 C $\lambda=4$ ha $\text{m.a.}(4)=2=n$: è l'unico autovalore e (CD1) vale. (CD2) richiede $\text{m.g.}(4)=2$, cioè $A-4I=0$, ossia $A=4I_2$.
+  Quindi $A$ è diagonalizzabile se e solo se $\text{m.g.}(4)=2$.
+  **Errore tipico:** "Sempre" è falso: per esempio $\begin{pmatrix}4&1\\0&4\end{pmatrix}$ ha $\text{m.g.}(4)=1$ e non è diagonalizzabile. "Mai" è falso perché $4I_2$ è (già) diagonale. Con $\text{m.g.}(4)=1$ (CD2) non vale.
+29-13 B $\lambda=3$ ha $\text{m.a.}(3)=2=n$: unico autovalore, (CD1) vale; (CD2) richiede $\text{m.g.}(3)=2$ (cioè $A=3I_2$).
+  Quindi $A$ è diagonalizzabile se e solo se $\text{m.g.}(3)=2$.
+  **Errore tipico:** $\text{m.g.}(3)=1$ dà un solo autovettore indipendente, non abbastanza per una base di $\mathbb R^2$ (come nell'Esercizio 29.2 della dispensa). "Sempre"/"Mai" sono smentiti da $\begin{pmatrix}3&1\\0&3\end{pmatrix}$ e da $3I_2$.
+29-14 C Fattorizziamo: $$p_A(\lambda)=-\lambda^3+2\lambda^2=-\lambda^2(\lambda-2).$$ Lo zero $\lambda=0$ ha esponente $2$, quindi $\text{m.a.}(0)=2$ (e $\text{m.a.}(2)=1$; somma $3=\deg p_A$).
+  (Coerente con la matrice: tutte le righe sono uguali, $\operatorname{rank}A=1$, quindi $\text{m.g.}(0)=3-1=2$.)
+  **Errore tipico:** confondere le due molteplicità ($\text{m.a.}(2)=1$) o leggere l'esponente di $\lambda^3$ invece di fattorizzare.
+T: Sapendo che il polinomio caratteristico della matrice $3\times 3$ $A=\begin{pmatrix}2 & 2 & -2\\ 2 & 2 & -2\\ 2 & 2 & -2\end{pmatrix}$ è $p_A(\lambda)=-\lambda^3+2\lambda^2$, quanto vale la molteplicità algebrica dell'autovalore $\lambda=0$?
+29-15 A $$p_A(\lambda)=-\lambda^3+2\lambda^2=-\lambda^2(\lambda-2).$$ Il fattore $(\lambda-2)$ compare con esponente $1$, quindi $\text{m.a.}(2)=1$ (mentre $\text{m.a.}(0)=2$).
+  Controllo: $A\,{}^t(1\ 1\ 1)={}^t(2\ 2\ 2)$, quindi $2$ è effettivamente autovalore; inoltre $\operatorname{tr}A=2+2-2=2$ è la somma degli autovalori con molteplicità: $0+0+2$.
+  **Errore tipico:** scambiare con $\text{m.a.}(0)=2$.
+T: Sapendo che il polinomio caratteristico della matrice $3\times 3$ $A=\begin{pmatrix}2 & 2 & -2\\ 2 & 2 & -2\\ 2 & 2 & -2\end{pmatrix}$ è $p_A(\lambda)=-\lambda^3+2\lambda^2$, quanto vale la molteplicità algebrica dell'autovalore $\lambda=2$?
+29-16 C $\text{m.a.}(4)=3=n$: $4$ è l'unico autovalore e (CD1) vale; (CD2) richiede $\text{m.g.}(4)=3$, cioè $A=4I_3$.
+  Quindi $A$ è diagonalizzabile se e solo se $\text{m.g.}(4)=3$.
+  **Errore tipico:** accontentarsi di $\text{m.g.}(4)=2$: si avrebbero solo due autovettori indipendenti, non una base di $\mathbb R^3$. "Sempre" e "Mai" sono falsi (basta confrontare $4I_3$ con una matrice triangolare con un $1$ sopra la diagonale).
+29-17 C $$p_A(\lambda)=-\lambda^3+4\lambda^2-4\lambda=-\lambda(\lambda-2)^2.$$ Il fattore $(\lambda-2)$ ha esponente $2$, quindi $\text{m.a.}(2)=2$ (e $\text{m.a.}(0)=1$).
+  Controllo: $\operatorname{tr}A=2-2+4=4=0+2+2$.
+  **Errore tipico:** confondere con $\text{m.a.}(0)=1$, oppure non riconoscere il quadrato $\lambda^2-4\lambda+4=(\lambda-2)^2$.
+T: Sapendo che il polinomio caratteristico della matrice $3\times 3$ $A=\begin{pmatrix}2 & 0 & 0\\ 0 & -2 & 2\\ 0 & -4 & 4\end{pmatrix}$ è $p_A(\lambda)=-\lambda^3+4\lambda^2-4\lambda$, quanto vale la molteplicità algebrica dell'autovalore $\lambda=2$?
+29-18 APERTA
+T: Dire se la matrice $$A=\begin{pmatrix}-4 & 0 & 2\\ -6 & -1 & 3\\ -4 & 0 & 2\end{pmatrix}$$ è diagonalizzabile.
+KW: polinomio caratteristico, autovalori, distinti, criterio di diagonalizzabilità, molteplicità algebrica, molteplicità geometrica, diagonalizzabile, -2, -1, 0, base di autovettori
+> Calcoliamo il polinomio caratteristico sviluppando lungo la seconda colonna (che ha un solo elemento non nullo, $-1-\lambda$):
+> $$p_A(\lambda)=\det\begin{pmatrix}-4-\lambda & 0 & 2\\ -6 & -1-\lambda & 3\\ -4 & 0 & 2-\lambda\end{pmatrix}=(-1-\lambda)\big[(-4-\lambda)(2-\lambda)+8\big]=(-1-\lambda)(\lambda^2+2\lambda)=-\lambda(\lambda+1)(\lambda+2).$$
+> Gli autovalori sono $0$, $-1$, $-2$: **tre autovalori distinti** in $\mathbb R^{3,3}$. Per la Proposizione 29.14 la matrice è **diagonalizzabile**.
+> Con il criterio: (CD1) $\text{m.a.}(0)+\text{m.a.}(-1)+\text{m.a.}(-2)=1+1+1=3$; (CD2) $1\leqslant\text{m.g.}\leqslant\text{m.a.}=1$ per ciascuno.
+> Una base di autovettori: ${}^t(1\ 0\ 2)$ per $0$, ${}^t(0\ 1\ 0)$ per $-1$, ${}^t(1\ 3\ 1)$ per $-2$; con $C=\begin{pmatrix}1&0&1\\0&1&3\\2&0&1\end{pmatrix}$ si ha $C^{-1}AC=\operatorname{Diag}(0,-1,-2)$.
+29-19 APERTA
+T: Dire se la matrice $$A=\begin{pmatrix}4 & 0 & -2\\ 6 & 1 & -3\\ 4 & 0 & -2\end{pmatrix}$$ è diagonalizzabile.
+KW: polinomio caratteristico, autovalori, distinti, criterio di diagonalizzabilità, molteplicità algebrica, molteplicità geometrica, diagonalizzabile, 0, 1, 2, base di autovettori
+> Sviluppiamo $\det(A-\lambda I)$ lungo la seconda colonna (unico elemento non nullo: $1-\lambda$):
+> $$p_A(\lambda)=(1-\lambda)\det\begin{pmatrix}4-\lambda & -2\\ 4 & -2-\lambda\end{pmatrix}=(1-\lambda)\big[(4-\lambda)(-2-\lambda)+8\big]=(1-\lambda)(\lambda^2-2\lambda)=-\lambda(\lambda-1)(\lambda-2).$$
+> Gli autovalori $0$, $1$, $2$ sono **tre e distinti** in dimensione $3$: per la Proposizione 29.14 la matrice è **diagonalizzabile**.
+> (Criterio: (CD1) $1+1+1=3$; (CD2) ogni m.g. è compresa tra $1$ e la m.a. $=1$.)
+> Autovettori: ${}^t(1\ 0\ 2)$ per $0$, ${}^t(0\ 1\ 0)$ per $1$, ${}^t(1\ 3\ 1)$ per $2$; con $C=\begin{pmatrix}1&0&1\\0&1&3\\2&0&1\end{pmatrix}$ si ha $C^{-1}AC=\operatorname{Diag}(0,1,2)$.
+29-20 APERTA
+T: Dire se la matrice $$A=\begin{pmatrix}-3 & 1 & -1\\ -2 & 0 & -2\\ 0 & 0 & -2\end{pmatrix}$$ è diagonalizzabile.
+KW: polinomio caratteristico, autovalori, molteplicità algebrica, molteplicità geometrica, rango|rank, criterio di diagonalizzabilità, CD1, CD2, diagonalizzabile, -2, -1
+> Sviluppiamo lungo la terza riga (unico elemento non nullo: $-2-\lambda$):
+> $$p_A(\lambda)=(-2-\lambda)\det\begin{pmatrix}-3-\lambda & 1\\ -2 & -\lambda\end{pmatrix}=(-2-\lambda)(\lambda^2+3\lambda+2)=-(\lambda+2)^2(\lambda+1).$$
+> Autovalori: $-2$ con $\text{m.a.}(-2)=2$ e $-1$ con $\text{m.a.}(-1)=1$.
+> (CD1) $2+1=3=\dim\mathbb R^3$: vale.
+> (CD2) $\text{m.g.}(-1)=1$ perché $1\leqslant\text{m.g.}(-1)\leqslant\text{m.a.}(-1)=1$. Per $-2$: $A+2I=\begin{pmatrix}-1&1&-1\\-2&2&-2\\0&0&0\end{pmatrix}$ ha rango $1$ (la seconda riga è il doppio della prima), quindi $\text{m.g.}(-2)=3-1=2=\text{m.a.}(-2)$.
+> Per il criterio di diagonalizzabilità la matrice è **diagonalizzabile**. Base di autovettori: ${}^t(1\ 1\ 0)$, ${}^t(-1\ 0\ 1)$ per $-2$ e ${}^t(1\ 2\ 0)$ per $-1$; $C^{-1}AC=\operatorname{Diag}(-2,-2,-1)$ con $C$ avente questi vettori come colonne.
+29-21 APERTA
+T: Dire se la matrice $$A=\begin{pmatrix}3 & -1 & 1\\ 2 & 0 & 2\\ 0 & 0 & 2\end{pmatrix}$$ è diagonalizzabile.
+KW: polinomio caratteristico, autovalori, molteplicità algebrica, molteplicità geometrica, rango|rank, criterio di diagonalizzabilità, CD1, CD2, diagonalizzabile, 1, 2
+> Sviluppiamo lungo la terza riga:
+> $$p_A(\lambda)=(2-\lambda)\det\begin{pmatrix}3-\lambda & -1\\ 2 & -\lambda\end{pmatrix}=(2-\lambda)(\lambda^2-3\lambda+2)=-(\lambda-2)^2(\lambda-1).$$
+> Autovalori: $2$ con $\text{m.a.}(2)=2$, $1$ con $\text{m.a.}(1)=1$. (CD1) $2+1=3$: vale.
+> (CD2) $\text{m.g.}(1)=1$ automaticamente. $A-2I=\begin{pmatrix}1&-1&1\\2&-2&2\\0&0&0\end{pmatrix}$ ha rango $1$, quindi $\text{m.g.}(2)=3-1=2=\text{m.a.}(2)$.
+> La matrice è **diagonalizzabile**. Autovettori: ${}^t(1\ 1\ 0)$, ${}^t(-1\ 0\ 1)$ per $2$ e ${}^t(1\ 2\ 0)$ per $1$; $C^{-1}AC=\operatorname{Diag}(2,2,1)$.
+29-22 APERTA
+KW: diagonalizzabile, base di autovettori, matrice diagonale, simile|coniugata, matrice diagonalizzante, C^{-1}AC, n autovalori distinti, somma delle molteplicità geometriche, criterio di diagonalizzabilità, simmetrica
+> **Definizione.** Un endomorfismo $f\in\operatorname{Lin}(V,V)$ di uno spazio vettoriale finitamente generato $V$ è **diagonalizzabile** se $V$ ha una **base formata da autovettori** di $f$. Una matrice $A\in K^{n,n}$ è diagonalizzabile se e solo se lo è l'endomorfismo $f_A\in\operatorname{Lin}(K^n,K^n)$ (Proposizione 29.13).
+> Se $\mathcal B=\{v_1,\dots,v_n\}$ è una base di autovettori con $v_i$ relativo a $\lambda_i$, allora $[f]^{\mathcal B}_{\mathcal B}=\operatorname{Diag}(\lambda_1,\dots,\lambda_n)$, perché $f(v_i)=\lambda_i v_i$. Per una matrice: se $C=(X^{(1)}\ \cdots\ X^{(n)})$ ha per colonne una base di autovettori, $C^{-1}AC=\operatorname{Diag}(\lambda_1,\dots,\lambda_n)$; $C$ è una **matrice diagonalizzante** (non unica, e l'ordine degli autovalori segue quello delle colonne).
+> **Risultati.**
+> - *Proposizione 29.14:* se $\dim V=n$ e $f$ ha $n$ autovalori distinti, $f$ è diagonalizzabile.
+> - *Proposizione 29.15:* $f$ con autovalori $\lambda_1,\dots,\lambda_k$ è diagonalizzabile se e solo se $\sum_{i=1}^k\text{m.g.}(f,\lambda_i)=\dim V$.
+> - *Teorema 29.16 (criterio di diagonalizzabilità):* $f$ è diagonalizzabile se e solo se (CD1) $p_f$ ha $n$ zeri contati con molteplicità ($\sum\text{m.a.}(f,\lambda_i)=n$) e (CD2) $\text{m.g.}(f,\lambda_i)=\text{m.a.}(f,\lambda_i)$ per ogni $i$.
+> - *Teorema 29.19:* ogni matrice simmetrica reale è diagonalizzabile.
+> **Esempio.** $A=\begin{pmatrix}-1&1\\-6&4\end{pmatrix}$ ha autovalori distinti $1$ e $2$, autovettori ${}^t(-1\ -2)$ e ${}^t(1\ 3)$: con $C=\begin{pmatrix}1&-1\\3&-2\end{pmatrix}$ si ha $C^{-1}AC=\operatorname{Diag}(2,1)$. Invece $B=\begin{pmatrix}1&1\\-1&3\end{pmatrix}$ ha $p_B=(\lambda-2)^2$ e $\text{m.g.}(2)=2-\operatorname{rank}(B-2I)=1\neq2$: non è diagonalizzabile.
+29-23 APERTA
+KW: molteplicità geometrica, molteplicità algebrica, 1 ≤ m.g.|m.g. ≥ 1, m.g. ≤ m.a., m.a. ≤ dim V, somma delle molteplicità algebriche, somma delle molteplicità geometriche, criterio di diagonalizzabilità, CD1, CD2, autovalori distinti
+> Sia $f\in\operatorname{Lin}(V,V)$ con $V$ finitamente generato di dimensione $n$ e autovalori distinti $\lambda_1,\dots,\lambda_k$.
+> - $\text{m.g.}(f,\lambda)=\dim\operatorname{Ker}(f-\lambda\,\mathrm{id}_V)$ (dimensione dell'autospazio) e $\text{m.a.}(f,\lambda)$ = molteplicità di $\lambda$ come zero di $p_f$.
+> - **Disuguaglianze** (Osservazione 29.8): per ogni autovalore $$1\leqslant\text{m.g.}(f,\lambda)\leqslant\text{m.a.}(f,\lambda)\leqslant\dim V.$$ La prima perché l'autospazio contiene un vettore non nullo; la seconda è la Proposizione 29.7; la terza perché $\deg p_f=n$.
+> - Sommando: $\sum_{i}\text{m.g.}(f,\lambda_i)\leqslant\sum_{i}\text{m.a.}(f,\lambda_i)\leqslant n$ (Osservazioni 29.3 e 29.10).
+> **Criterio di diagonalizzabilità (Teorema 29.16).** $f$ è diagonalizzabile se e solo se (CD1) $\sum_{i=1}^k\text{m.a.}(f,\lambda_i)=n$ (il polinomio caratteristico ha $n$ zeri contati con molteplicità) e (CD2) $\text{m.g.}(f,\lambda_i)=\text{m.a.}(f,\lambda_i)$ per ogni $i$. Infatti $f$ è diagonalizzabile se e solo se $\sum\text{m.g.}=n$ (Proposizione 29.15), e per le disuguaglianze questo accade esattamente quando tutte diventano uguaglianze.
+> **Conseguenze pratiche.** Per un autovalore con $\text{m.a.}=1$ (CD2) è automatica; va controllata solo per gli autovalori multipli, con $\text{m.g.}=n-\operatorname{rank}(A-\lambda I)$. Se ci sono $n$ autovalori distinti la matrice è diagonalizzabile.
+> **Esempio.** $A=\begin{pmatrix}-5&3&3\\-3&1&3\\-3&3&1\end{pmatrix}$: $p_A=-\lambda^3-3\lambda^2+4=-(\lambda-1)(\lambda+2)^2$. (CD1) $1+2=3$. (CD2) $\text{m.g.}(1)=1$; $\text{m.g.}(-2)=3-\operatorname{rank}(A+2I)=3-1=2$. Quindi $A$ è diagonalizzabile, con $D=\operatorname{Diag}(1,-2,-2)$.
+29-24 APERTA
+KW: autovalore, autovettore, f(v)=λv|AX=λX, vettore non nullo|v≠0, polinomio caratteristico, zeri|radici, molteplicità algebrica, m.a. ≤ dim V, m.g. ≤ m.a., determinante|prodotto degli autovalori
+> **Definizione.** Sia $f\in\operatorname{Lin}(V,V)$ un endomorfismo dello spazio vettoriale $V$ sul campo $K$. Se $v\in V\setminus\{0\}$ e $\lambda\in K$ soddisfano $f(v)=\lambda v$, $v$ è un **autovettore** di $f$ relativo a $\lambda$ e $\lambda$ è un **autovalore** di $f$. Per una matrice: $AX=\lambda X$ con $X\neq0$.
+> Se $V$ è finitamente generato, gli autovalori sono gli zeri del polinomio caratteristico $p_f(\lambda)=\det(f-\lambda\,\mathrm{id}_V)$ (Teorema 28.28).
+> **Molteplicità algebrica (Definizione 29.1).** La molteplicità di $\lambda$ come zero di $p_f$ si chiama molteplicità algebrica, $\text{m.a.}(f,\lambda)$: se $p_f(\lambda)=(\lambda-\bar\lambda)^m q(\lambda)$ con $q(\bar\lambda)\neq0$, allora $\text{m.a.}(\bar\lambda)=m$.
+> **Risultati.**
+> - Poiché $\deg p_f=\dim V$: $\text{m.a.}(f,\lambda)\leqslant\dim V$ e anzi $\sum_i\text{m.a.}(f,\lambda_i)\leqslant\dim V$ (Osservazione 29.3).
+> - *Proposizione 29.7:* $\text{m.g.}(f,\lambda)\leqslant\text{m.a.}(f,\lambda)$; quindi $1\leqslant\text{m.g.}\leqslant\text{m.a.}\leqslant\dim V$.
+> - *Teorema 29.4:* se $\sum_i\text{m.a.}(f,\lambda_i)=n$, il determinante di $f$ è il prodotto degli autovalori, ciascuno ripetuto tante volte quanto la sua molteplicità algebrica.
+> **Esempio.** Per $f$ con $p_f(\lambda)=-\lambda^3-6\lambda^2-9\lambda=-\lambda(\lambda+3)^2$: $\text{m.a.}(0)=1$, $\text{m.a.}(-3)=2$, e $\det f=0\cdot(-3)\cdot(-3)=0$.
+29-25 APERTA
+T: Dire se la matrice $$A=\begin{pmatrix}4 & -3 & -1\\ 6 & -5 & -2\\ 0 & 0 & -2\end{pmatrix}$$ è diagonalizzabile.
+KW: polinomio caratteristico, autovalori, molteplicità algebrica, molteplicità geometrica, rango|rank, criterio di diagonalizzabilità, CD2, non è diagonalizzabile, -2, 1
+> Sviluppiamo lungo la terza riga:
+> $$p_A(\lambda)=(-2-\lambda)\det\begin{pmatrix}4-\lambda & -3\\ 6 & -5-\lambda\end{pmatrix}=(-2-\lambda)\big[(4-\lambda)(-5-\lambda)+18\big]=(-2-\lambda)(\lambda^2+\lambda-2)=-(\lambda+2)^2(\lambda-1).$$
+> Autovalori: $-2$ con $\text{m.a.}(-2)=2$, $1$ con $\text{m.a.}(1)=1$. (CD1) $2+1=3$: vale.
+> (CD2) per $-2$: $A+2I=\begin{pmatrix}6&-3&-1\\6&-3&0\\0&0&0\end{pmatrix}$; le prime due righe non sono proporzionali (differiscono solo nella terza colonna), quindi il rango è $2$ e $\text{m.g.}(-2)=3-2=1\neq2=\text{m.a.}(-2)$.
+> (CD2) non vale: per il criterio di diagonalizzabilità la matrice **non è diagonalizzabile** (gli autovettori indipendenti sono solo due: ${}^t(1\ 2\ 0)$ per $-2$ e ${}^t(1\ 1\ 0)$ per $1$).
+29-26 APERTA
+T: Dire se la matrice $$A=\begin{pmatrix}-4 & 3 & 1\\ -6 & 5 & 2\\ 0 & 0 & 2\end{pmatrix}$$ è diagonalizzabile.
+KW: polinomio caratteristico, autovalori, molteplicità algebrica, molteplicità geometrica, rango|rank, criterio di diagonalizzabilità, CD2, non è diagonalizzabile, 2, -1
+> Sviluppiamo lungo la terza riga:
+> $$p_A(\lambda)=(2-\lambda)\det\begin{pmatrix}-4-\lambda & 3\\ -6 & 5-\lambda\end{pmatrix}=(2-\lambda)\big[(-4-\lambda)(5-\lambda)+18\big]=(2-\lambda)(\lambda^2-\lambda-2)=-(\lambda-2)^2(\lambda+1).$$
+> Autovalori: $2$ con $\text{m.a.}(2)=2$, $-1$ con $\text{m.a.}(-1)=1$. (CD1) $2+1=3$: vale.
+> (CD2) per $2$: $A-2I=\begin{pmatrix}-6&3&1\\-6&3&0\\0&0&0\end{pmatrix}$ ha rango $2$ (prime due righe non proporzionali), quindi $\text{m.g.}(2)=3-2=1\neq2=\text{m.a.}(2)$.
+> (CD2) non vale: la matrice **non è diagonalizzabile** (autovettori: ${}^t(1\ 2\ 0)$ per $2$ e ${}^t(1\ 1\ 0)$ per $-1$, solo due indipendenti).
+x135 D La molteplicità algebrica di $-2$ è l'esponente del fattore $(\lambda-(-2))=(\lambda+2)$ nel polinomio caratteristico $-\lambda^3(\lambda-2)^2(\lambda+2)^4$: vale $4$.
+  (Gli altri autovalori sono $0$ con $\text{m.a.}=3$ e $2$ con $\text{m.a.}=2$; lo spazio ha dimensione $3+2+4=9$.)
+  **Errore tipico:** leggere l'esponente del fattore sbagliato: $(\lambda-2)^2$ corrisponde all'autovalore $+2$, non $-2$; $\lambda^3$ all'autovalore $0$.
+T: Quale è la molteplicità algebrica dell'autovalore $-2$ di un endomorfismo di uno spazio vettoriale reale il cui polinomio caratteristico è $-\lambda^3(\lambda-2)^2(\lambda+2)^4$?
+OPT: $1$. | $2$. | $3$. | $4$.
+x136 A Per le disuguaglianze $1\leqslant\text{m.g.}(f,\lambda)\leqslant\text{m.a.}(f,\lambda)$ (Osservazione 29.8), con $\text{m.a.}=4$ la molteplicità geometrica può essere $1$, $2$, $3$ o $4$. È la dimensione di un sottospazio, quindi è un numero naturale, e non può essere $0$ perché l'autospazio contiene almeno un autovettore (non nullo).
+  **Errore tipico:** includere lo $0$ (ma un autovalore ha per definizione un autovettore $v\neq0$), ammettere valori non interi (una dimensione è un intero) o valori oltre la m.a.
+x137 B La domanda chiede la condizione che **non** garantisce la diagonalizzabilità.
+  - $k=n$ ($n$ autovalori distinti): garantisce la diagonalizzabilità (Proposizione 29.14).
+  - (CD1)+(CD2): è il criterio di diagonalizzabilità, condizione necessaria e sufficiente (Teorema 29.16).
+  - $\sum\text{m.g.}(f,\lambda_i)=n$: è la Proposizione 29.15, anch'essa necessaria e sufficiente.
+  - $\sum\text{m.a.}(f,\lambda_i)=n$: è solo (CD1), cioè il polinomio caratteristico si scompone completamente, ma non dice nulla su (CD2). Esempio: $\begin{pmatrix}1&1\\-1&3\end{pmatrix}$ ha $\text{m.a.}(2)=2=n$ ma $\text{m.g.}(2)=1$, e non è diagonalizzabile.
+  Quindi la condizione che non assicura la diagonalizzabilità è $\sum\text{m.a.}(f,\lambda_i)=n$.
+  **Errore tipico:** non accorgersi del "non" nella domanda, oppure confondere la somma delle molteplicità algebriche con quella delle geometriche: solo la seconda caratterizza la diagonalizzabilità.
+  TRAP: la domanda chiede la condizione che NON basta; le somme delle m.a. e delle m.g. sembrano equivalenti ma non lo sono.
+T: Quale delle seguenti condizioni **non** assicura la diagonalizzabilità di un endomorfismo $f$ di uno spazio vettoriale di dimensione $n$, con autovalori $\bar\lambda_1,\bar\lambda_2,\dots,\bar\lambda_k$ (distinti)?
+OPT: $k=n$. | $\sum_{i=1}^k\text{m.a.}(f,\bar\lambda_i)=n$. | (CD1) Il polinomio caratteristico $p_f$ ha $n$ zeri, ciascuno contato con la propria molteplicità, e (CD2) per ogni $i=1,2,\dots,k$, si ha l'uguaglianza $\text{m.g.}(f,\bar\lambda_i)=\text{m.a.}(f,\bar\lambda_i)$. | $\sum_{i=1}^k\text{m.g.}(f,\bar\lambda_i)=n$.
+x138 A $f$ agisce su uno spazio di dimensione $3$ e ha **tre autovalori distinti** ($-3$, $2$, $5$): per la Proposizione 29.14 è diagonalizzabile. Ogni autovalore ha $\text{m.a.}=\text{m.g.}=1$, la somma è $3$, (CD1) e (CD2) valgono.
+  **Errore tipico:** pensare che servano altre informazioni (le molteplicità geometriche): con $n$ autovalori distinti in dimensione $n$ sono tutte forzate a $1$.
+T: Dato un endomorfismo $f$ di uno spazio vettoriale reale di dimensione $3$ che ha autovalori $-3$, $2$ e $5$, quale delle seguenti proposizioni è vera?
+OPT: $f$ è diagonalizzabile. | $f$ non è diagonalizzabile. | Non si può dire nulla sulla diagonalizzabilità di $f$, ossia $f$ può essere sia diagonalizzabile che non diagonalizzabile. | Nessuna delle altre risposte.

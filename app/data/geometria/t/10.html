@@ -1,0 +1,70 @@
+<h1>Lezione 10 — Dimensione</h1>
+<p>La dimensione misura quanto è &quot;grande&quot; uno spazio vettoriale: è il numero di parametri necessari per descriverlo.</p>
+<h2>Dimensione</h2>
+<p><strong>Definizione 10.1.</strong> La <em>dimensione</em> di uno spazio vettoriale finitamente generato <span class="m">V</span> è il numero di elementi di una qualsiasi sua base, e si indica con <span class="m">\dim(V)</span>.</p>
+<p>La definizione ha senso perché <span class="m">V</span> ha almeno una base (Teorema 9.15) e tutte le basi hanno lo stesso numero di elementi (Teorema 9.20).</p>
+<div class="callout esempio">
+
+<ul>
+<li><span class="m">\dim V^2_G=2</span> (base <span class="m">\{i,j\}</span>), <span class="m">\dim V^3_G=3</span> (base <span class="m">\{i,j,k\}</span>).</li>
+<li><span class="m">\dim\mathbb{K}^n=n</span>: la base canonica <span class="m">\mathcal{E}_n</span> ha <span class="m">n</span> elementi.</li>
+<li><span class="m">\dim V=0</span> se e solo se <span class="m">V=\{0\}</span>.</li>
+<li><span class="m">\mathbb{C}</span> come spazio su <span class="m">\mathbb{R}</span> ha dimensione <span class="m">2</span> (base <span class="m">\{1,i\}</span>), come spazio su <span class="m">\mathbb{C}</span> ha dimensione <span class="m">1</span>. Gli spazi <span class="m">\mathbb{C}^n</span> si considerano sempre su <span class="m">\mathbb{C}</span>.</li>
+</ul>
+</div>
+
+<p><strong>Definizione 10.5.</strong> Uno spazio finitamente generato si dice anche <em>di dimensione finita</em>.</p>
+<p><strong>Corollario 10.7.</strong> Sia <span class="m">n=\dim V</span> e siano <span class="m">v_1,\dots,v_k\in V</span>.</p>
+<ul>
+<li>Se <span class="m">v_1,\dots,v_k</span> sono linearmente indipendenti, allora <span class="m">k\le n</span>.</li>
+<li>Se <span class="m">v_1,\dots,v_k</span> generano <span class="m">V</span>, allora <span class="m">n\le k</span>.</li>
+</ul>
+<p><strong>Corollario 10.8.</strong> Detti <span class="m">M</span> il massimo numero di vettori linearmente indipendenti di <span class="m">V</span> e <span class="m">m</span> il minimo numero di generatori di <span class="m">V</span>, si ha <span class="m">\dim(V)=M=m</span>.</p>
+<div class="callout attenzione">
+
+<p>Un insieme qualsiasi di generatori può avere più elementi della dimensione: solo il <strong>minimo</strong> numero di generatori è uguale a <span class="m">\dim V</span>. Ad esempio in <span class="m">\mathbb{R}^4</span> si trovano al massimo <span class="m">4</span> vettori indipendenti, e ogni insieme di generatori ha almeno <span class="m">4</span> elementi.</p>
+</div>
+
+<h2>Algoritmo di completamento a una base</h2>
+<p><strong>Algoritmo 10.10.</strong> Sia <span class="m">I=\{v_1,\dots,v_m\}</span> un insieme ordinato di vettori <strong>linearmente indipendenti</strong> di <span class="m">V</span> finitamente generato. Al passo <span class="m">i</span>-esimo:</p>
+<ul>
+<li><p>se <span class="m">\mathrm{Span}(v_1,\dots,v_{m+i-1})\neq V</span>, si sceglie un vettore <span class="m">v_{m+i}</span> che <strong>non appartiene</strong> a <span class="m">\mathrm{Span}(v_1,\dots,v_{m+i-1})</span>;</p>
+</li>
+<li><p>se <span class="m">\mathrm{Span}(v_1,\dots,v_{m+i-1})=V</span>, l&#39;algoritmo termina con risultato <span class="m">\{v_1,\dots,v_{m+i-1}\}</span>.</p>
+</li>
+<li><p><strong>Osservazione 10.11.</strong> Se <span class="m">I</span> genera già <span class="m">V</span>, l&#39;algoritmo termina subito. Altrimenti il risultato <strong>non è univocamente determinato</strong>: la scelta dei vettori è arbitraria, purché fuori dallo Span.</p>
+</li>
+<li><p><strong>Osservazione 10.12.</strong> Si può partire anche da <span class="m">I=\emptyset</span>: al primo passo si sceglie un vettore fuori da <span class="m">\mathrm{Span}(\emptyset)=\{0\}</span>, cioè non nullo.</p>
+</li>
+<li><p><strong>Osservazione 10.13.</strong> A ogni passo si ottiene un insieme indipendente (si aggiunge un vettore che non sta nello Span dei precedenti).</p>
+</li>
+</ul>
+<div class="callout esempio">
+
+<p>Completiamo <span class="m">\{{}^t(2\ -1\ 3)\}</span> in <span class="m">\mathbb{R}^3</span>: lo Span non è <span class="m">\mathbb{R}^3</span>, scegliamo <span class="m">{}^t(1\ 1\ 0)\notin\mathrm{Span}({}^t(2\ -1\ 3))</span>; lo Span dei due non è <span class="m">\mathbb{R}^3</span>, scegliamo <span class="m">{}^t(0\ 0\ 1)</span> fuori da esso; ora lo Span è <span class="m">\mathbb{R}^3</span> e l&#39;algoritmo termina con <span class="m">\{{}^t(2\ -1\ 3),{}^t(1\ 1\ 0),{}^t(0\ 0\ 1)\}</span>.</p>
+<p>Se al primo passo avessimo scelto <span class="m">{}^t(0\ 0\ -1)</span>, al secondo non avremmo potuto scegliere <span class="m">{}^t(0\ 0\ 1)</span> (che sta nello Span), ma ad esempio <span class="m">{}^t(1\ 0\ 0)</span>.</p>
+</div>
+
+<ul>
+<li><strong>Proposizione 10.15.</strong> L&#39;algoritmo termina dopo un numero finito di passi e il risultato è una base di <span class="m">V</span>.</li>
+<li><strong>Osservazione 10.16.</strong> I passi sono esattamente <span class="m">\dim(V)-m+1</span>: nei primi <span class="m">\dim(V)-m</span> si scelgono vettori, nell&#39;ultimo si controlla che lo Span sia <span class="m">V</span>.</li>
+</ul>
+<h2>Conseguenze</h2>
+<p><strong>Teorema 10.17.</strong> Ogni sottospazio <span class="m">W</span> di uno spazio finitamente generato <span class="m">V</span> è finitamente generato e <span class="m">\dim(W)\le\dim(V)</span>. (Si completa <span class="m">\emptyset</span> a una base di <span class="m">W</span>: se l&#39;algoritmo non terminasse, dopo <span class="m">\dim(V)+1</span> passi avremmo <span class="m">\dim(V)+1</span> vettori indipendenti in <span class="m">V</span>, assurdo.)</p>
+<p>Ogni sottospazio di <span class="m">\mathbb{K}^n</span> ha dimensione al più <span class="m">n</span>; ogni sottospazio di <span class="m">V^2_G</span> (risp. <span class="m">V^3_G</span>) ha dimensione al più <span class="m">2</span> (risp. <span class="m">3</span>).</p>
+<p><strong>Teorema 10.19.</strong> Se <span class="m">v_1,\dots,v_m</span> sono linearmente indipendenti in <span class="m">V</span>, esistono <span class="m">v_{m+1},\dots,v_n</span> tali che <span class="m">\{v_1,\dots,v_n\}</span> è una base di <span class="m">V</span>.</p>
+<p><strong>Corollario 10.20.</strong> Se <span class="m">\dim V=n</span> e <span class="m">v_1,\dots,v_n\in V</span> (esattamente <span class="m">n</span> vettori), sono equivalenti:</p>
+<ul>
+<li><span class="m">v_1,\dots,v_n</span> sono linearmente indipendenti;</li>
+<li><span class="m">v_1,\dots,v_n</span> generano <span class="m">V</span>.</li>
+</ul>
+<p><strong>Corollario 10.21.</strong> Se <span class="m">W</span> è un sottospazio di <span class="m">V</span> con <span class="m">\dim(W)=\dim(V)</span>, allora <span class="m">W=V</span>.</p>
+<div class="callout sintesi">
+
+<p>Sottospazi di <span class="m">V^3_G</span>: <span class="m">\{0\}</span> (dim 0), le rette <span class="m">\mathrm{Span}(v)</span> con <span class="m">v\neq0</span> (dim 1), i piani generati da due vettori indipendenti (dim 2), e <span class="m">V^3_G</span> stesso (dim 3). In <span class="m">V^2_G</span>: <span class="m">\{0\}</span>, le rette e <span class="m">V^2_G</span>.</p>
+</div>
+
+<div class="callout esame">
+
+<p>Il paniere chiede la dimensione di uno Span di tre vettori di <span class="m">\mathbb{R}^3</span>: estrai una base dai generatori (attenzione ai vettori che sembrano multipli ma differiscono per un segno). Le aperte chiedono la definizione di dimensione con un risultato (Corollari 10.7, 10.8, 10.20, Teorema 10.17) e l&#39;algoritmo di completamento a una base.</p>
+</div>

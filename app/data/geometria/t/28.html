@@ -1,0 +1,93 @@
+<h1>Lezione 28 — Autovalori e autovettori</h1>
+<p>Autovettori e autovalori di un endomorfismo si possono pensare come le <strong>direzioni</strong> che l&#39;endomorfismo conserva e i <strong>fattori di allungamento</strong> (o accorciamento) lungo di esse. Per trovarli si usa il polinomio caratteristico.</p>
+<h2>Autovalori e autovettori</h2>
+<p><strong>Definizione 28.1.</strong> Sia <span class="m">f\in\operatorname{Lin}(V,V)</span> un endomorfismo di uno spazio vettoriale <span class="m">V</span> sul campo <span class="m">K</span>. Se <span class="m">v\in V\setminus\{0\}</span> e <span class="m">\lambda\in K</span> sono tali che
+<span class="m d">f(v)=\lambda v,</span>
+il vettore <span class="m">v</span> è detto <strong>autovettore</strong> di <span class="m">f</span> e lo scalare <span class="m">\lambda</span> è detto <strong>autovalore</strong> di <span class="m">f</span>; l&#39;autovettore <span class="m">v</span> è detto <strong>relativo</strong> all&#39;autovalore <span class="m">\lambda</span>.</p>
+<div class="callout esempio">
+
+<p>Sia <span class="m">f_A\in\operatorname{Lin}(\mathbb R^2,\mathbb R^2)</span> associato a <span class="m">A=\begin{pmatrix}-1&amp;1\\-6&amp;4\end{pmatrix}</span>.</p>
+<ul>
+<li><span class="m">{}^t(1\ 3)</span> è autovettore relativo a <span class="m">2</span>: <span class="m">A\,{}^t(1\ 3)={}^t(2\ 6)=2\,{}^t(1\ 3)</span>.</li>
+<li><span class="m">{}^t(1\ -1)</span> non è autovettore: <span class="m">A\,{}^t(1\ -1)={}^t(-2\ -10)</span>, che non è <span class="m">\lambda\,{}^t(1\ -1)</span> per nessun <span class="m">\lambda</span>.</li>
+<li><span class="m">{}^t(-1\ -2)</span> è autovettore relativo a <span class="m">1</span>: è un punto fisso di <span class="m">f_A</span>.</li>
+</ul>
+<p>Sia <span class="m">f\in\operatorname{Lin}(\mathbb R_{\leqslant2}[x],\mathbb R_{\leqslant2}[x])</span>, <span class="m">f(a_2x^2+a_1x+a_0)=-3a_2x^2+(-3a_2-6a_1+6a_0)x-3(a_2+a_1-a_0)</span>. Allora <span class="m">f(2x^2+1)=-6x^2-3=-3(2x^2+1)</span>: <span class="m">2x^2+1</span> è autovettore relativo a <span class="m">-3</span>; <span class="m">f(x+1)=0</span>: <span class="m">x+1</span> è autovettore relativo a <span class="m">0</span>.</p>
+</div>
+
+<p><strong>Osservazione 28.3.</strong> Gli autovettori relativi a <span class="m">0</span> sono gli elementi non nulli di <span class="m">\operatorname{Ker}(f)</span>: <span class="m">0</span> è autovalore se e solo se <span class="m">\operatorname{Ker}(f)\neq\{0\}</span>. Gli autovettori relativi a <span class="m">1</span> sono i punti fissi non nulli: <span class="m">1</span> è autovalore se e solo se <span class="m">f</span> ha punti fissi diversi da <span class="m">0</span>.</p>
+<p><strong>Osservazione 28.5.</strong> Ogni autovettore è relativo a <strong>uno e un solo</strong> autovalore: se <span class="m">f(v)=\lambda_1v=\lambda_2v</span> con <span class="m">\lambda_1\neq\lambda_2</span>, allora <span class="m">(\lambda_1-\lambda_2)v=0</span> e <span class="m">v=0</span>, assurdo. Il contrario non vale: se <span class="m">v</span> è autovettore relativo a <span class="m">\lambda</span>, lo è anche <span class="m">kv</span> per ogni <span class="m">k\in K\setminus\{0\}</span>, perché <span class="m">f(kv)=kf(v)=\lambda(kv)</span>.</p>
+<p><strong>Osservazione 28.6.</strong> L&#39;equazione <span class="m">f(v)=\lambda v</span> si riscrive <span class="m">(f-\lambda\,\mathrm{id}_V)(v)=0</span>.</p>
+<h2>Autospazi</h2>
+<p><strong>Definizione 28.7.</strong> Se <span class="m">\lambda</span> è un autovalore di <span class="m">f</span>, l&#39;insieme
+<span class="m d">(V)_{f,\lambda}:=\{v\in V\mid f(v)=\lambda v\}</span>
+è l&#39;<strong>autospazio</strong> di <span class="m">f</span> relativo a <span class="m">\lambda</span> (indicato anche <span class="m">(V)_\lambda</span> se <span class="m">f</span> è chiaro).</p>
+<ul>
+<li>L&#39;autospazio è formato da tutti gli autovettori relativi a <span class="m">\lambda</span> <strong>e dal vettore <span class="m">0</span></strong> (che soddisfa <span class="m">f(0)=\lambda 0</span> ma non è un autovettore).</li>
+<li><span class="m">(V)_{f,\lambda}=\operatorname{Ker}(f-\lambda\,\mathrm{id}_V)</span>; in particolare <span class="m">\operatorname{Ker}(f)=(V)_{f,0}</span>.</li>
+<li><strong>Proposizione 28.12.</strong> <span class="m">(V)_{f,\lambda}</span> è un sottospazio vettoriale di <span class="m">V</span> (è un nucleo).</li>
+<li><strong>Proposizione 28.13.</strong> Se <span class="m">\lambda_1\neq\lambda_2</span> sono autovalori, <span class="m">(V)_{f,\lambda_1}\cap(V)_{f,\lambda_2}=\{0\}</span>.</li>
+</ul>
+<div class="callout esempio">
+
+<p>Per <span class="m">A=\begin{pmatrix}-1&amp;1\\-6&amp;4\end{pmatrix}</span>: da <span class="m">A\,{}^t(x_1\ x_2)=2\,{}^t(x_1\ x_2)</span> si ottiene <span class="m">x_2=3x_1</span>, quindi <span class="m">(\mathbb R^2)_{f_A,2}=\operatorname{Span}\{{}^t(1\ 3)\}</span>.
+Per l&#39;endomorfismo di <span class="m">\mathbb R_{\leqslant2}[x]</span>: <span class="m">(\mathbb R_{\leqslant2}[x])_{f,-3}=\operatorname{Span}\{2x^2+1,\ -x^2+x\}</span>.</p>
+</div>
+
+<h2>Molteplicità geometrica</h2>
+<p><strong>Definizione 28.14.</strong> Se <span class="m">V</span> è finitamente generato, la dimensione dell&#39;autospazio relativo a <span class="m">\lambda</span> è la <strong>molteplicità geometrica</strong> di <span class="m">\lambda</span>:
+<span class="m d">\text{m.g.}(f,\lambda):=\dim (V)_{f,\lambda}.</span></p>
+<p><strong>Osservazione 28.16.</strong></p>
+<ol>
+<li>L&#39;autospazio non si riduce a <span class="m">\{0\}</span>, quindi <span class="m">\text{m.g.}(f,\lambda)\geqslant1</span>.</li>
+<li><span class="m">\text{m.g.}(f,\lambda)</span> è il massimo numero di autovettori linearmente indipendenti relativi a <span class="m">\lambda</span>.</li>
+<li>Per il teorema fondamentale dell&#39;algebra lineare:
+<span class="m d">\text{m.g.}(f,\lambda)=\dim V-\operatorname{rank}(f-\lambda\,\mathrm{id}_V).</span></li>
+</ol>
+<p><strong>Teorema 28.17.</strong> Se <span class="m">\lambda_1,\dots,\lambda_p</span> sono autovalori <strong>distinti</strong> di <span class="m">f</span> e <span class="m">v_1,\dots,v_p</span> autovettori con <span class="m">v_i</span> relativo a <span class="m">\lambda_i</span>, allora <span class="m">v_1,\dots,v_p</span> sono <strong>linearmente indipendenti</strong>.</p>
+<h2>Il caso delle matrici</h2>
+<p>Per <span class="m">f_A\in\operatorname{Lin}(K^n,K^n)</span> con <span class="m">A\in K^{n,n}</span> si parla direttamente di autovettori e autovalori <strong>della matrice</strong> <span class="m">A</span>:
+<span class="m d">AX=\lambda X\quad\Longleftrightarrow\quad (A-\lambda I_n)X=0_n,\qquad X\neq0.</span>
+L&#39;autospazio è <span class="m">(K^n)_{A,\lambda}=\{X\in K^n\mid (A-\lambda I_n)X=0_n\}</span> e <span class="m">\text{m.g.}(A,\lambda)=n-\operatorname{rank}(A-\lambda I_n)</span>.</p>
+<div class="callout attenzione">
+
+<p>Per verificare che <span class="m">X</span> sia autovettore relativo a un certo <span class="m">\lambda</span> basta calcolare <span class="m">AX</span> e controllare che sia <strong>esattamente</strong> <span class="m">\lambda X</span>. Un vettore per cui <span class="m">AX</span> è un multiplo di <span class="m">X</span> con un altro fattore è sì un autovettore, ma relativo a un altro autovalore.</p>
+</div>
+
+<h2>Polinomio caratteristico</h2>
+<p><strong>Definizione 28.24.</strong> Sia <span class="m">V</span> finitamente generato e <span class="m">f\in\operatorname{Lin}(V,V)</span>. Il polinomio in <span class="m">\lambda</span>
+<span class="m d">p_f(\lambda):=\det(f-\lambda\,\mathrm{id}_V)</span>
+è il <strong>polinomio caratteristico</strong> di <span class="m">f</span>.</p>
+<p><strong>Osservazione 28.25.</strong> Se <span class="m">\mathcal B</span> è una base di <span class="m">V</span>, <span class="m">p_f(\lambda)=\det\big([f]^{\mathcal B}_{\mathcal B}-\lambda I_n\big)</span>: si sottrae <span class="m">\lambda</span> agli elementi della diagonale principale della matrice associata e si calcola il determinante.</p>
+<p><strong>Osservazione 28.26.</strong> <span class="m">p_f</span> ha grado <span class="m">n=\dim V</span>: <span class="m">\lambda</span> compare <span class="m">n</span> volte solo nel prodotto degli elementi diagonali, quindi il termine di grado massimo è <span class="m">(-1)^n\lambda^n</span>.</p>
+<p><strong>Teorema 28.28.</strong> Gli autovalori di un endomorfismo <span class="m">f</span> di uno spazio finitamente generato coincidono con gli <strong>zeri del polinomio caratteristico</strong> <span class="m">p_f</span>.</p>
+<p><em>Dimostrazione.</em> <span class="m">\bar\lambda</span> è autovalore <span class="m">\iff</span> esiste <span class="m">v\neq0</span> con <span class="m">(f-\bar\lambda\,\mathrm{id}_V)(v)=0</span> <span class="m">\iff</span> <span class="m">\operatorname{Ker}(f-\bar\lambda\,\mathrm{id}_V)\neq\{0\}</span> <span class="m">\iff</span> <span class="m">f-\bar\lambda\,\mathrm{id}_V</span> non è iniettivo <span class="m">\iff</span> non è bigettivo <span class="m">\iff</span> <span class="m">\det(f-\bar\lambda\,\mathrm{id}_V)=0</span>, cioè <span class="m">p_f(\bar\lambda)=0</span>.</p>
+<p><strong>Definizione 28.30.</strong> Il polinomio caratteristico di <span class="m">A\in K^{n,n}</span> è <span class="m">p_A(\lambda)=\det(A-\lambda I_n)</span>; ha grado <span class="m">n</span> e i suoi zeri sono gli autovalori di <span class="m">A</span>.</p>
+<div class="callout esempio">
+
+<p><span class="m">p_A(\lambda)=\det\begin{pmatrix}-1-\lambda&amp;1\\-6&amp;4-\lambda\end{pmatrix}=\lambda^2-3\lambda+2</span>: gli autovalori sono <span class="m">1</span> e <span class="m">2</span> (e non ce ne sono altri).
+Per l&#39;endomorfismo di <span class="m">\mathbb R_{\leqslant2}[x]</span>, rispetto alla base <span class="m">\{x^2,x,1\}</span>: <span class="m">p_f(\lambda)=\det\begin{pmatrix}-3-\lambda&amp;0&amp;0\\-3&amp;-6-\lambda&amp;6\\-3&amp;-3&amp;3-\lambda\end{pmatrix}=-\lambda^3-6\lambda^2-9\lambda</span>, con zeri <span class="m">0</span> e <span class="m">-3</span>.</p>
+</div>
+
+<div class="callout esempio">
+
+<p>(Sessione di studio 28.1) <span class="m">A=\begin{pmatrix}1&amp;-1&amp;2\\0&amp;1&amp;-2\\0&amp;1&amp;-1\end{pmatrix}</span> ha <span class="m">p_A(\lambda)=(1-\lambda)(\lambda^2+1)</span>.
+Su <span class="m">\mathbb R</span> l&#39;unico autovalore è <span class="m">1</span>, con <span class="m">\text{m.g.}(1)=3-\operatorname{rank}(A-I)=3-2=1</span>.
+Su <span class="m">\mathbb C</span> gli autovalori sono <span class="m">1</span>, <span class="m">i</span>, <span class="m">-i</span>, ciascuno con molteplicità geometrica <span class="m">1</span>. Il campo conta: su <span class="m">\mathbb R</span> si prendono solo gli zeri reali.</p>
+</div>
+
+<div class="callout sintesi">
+
+<ul>
+<li>Autovettore: <span class="m">v\neq0</span> con <span class="m">f(v)=\lambda v</span>; autovalore: il <span class="m">\lambda</span> corrispondente.</li>
+<li>Autospazio <span class="m">(V)_\lambda=\operatorname{Ker}(f-\lambda\,\mathrm{id})</span>, sottospazio; <span class="m">\text{m.g.}(\lambda)=\dim(V)_\lambda=n-\operatorname{rank}(A-\lambda I)\geqslant1</span>.</li>
+<li>Autovettori relativi ad autovalori distinti sono linearmente indipendenti.</li>
+<li><span class="m">p_A(\lambda)=\det(A-\lambda I_n)</span>, grado <span class="m">n</span>, coefficiente direttore <span class="m">(-1)^n</span>; gli autovalori sono i suoi zeri (nel campo <span class="m">K</span>).</li>
+<li>Per una <span class="m">2\times2</span>: <span class="m">p_A(\lambda)=\lambda^2-\operatorname{tr}(A)\lambda+\det A</span>. In generale il termine noto è <span class="m">p_A(0)=\det A</span> e, per una <span class="m">3\times3</span>, <span class="m">p_A(\lambda)=-\lambda^3+\operatorname{tr}(A)\lambda^2+\dots</span></li>
+</ul>
+</div>
+
+<div class="callout esame">
+
+<p>Nel paniere: calcolare il polinomio caratteristico di matrici <span class="m">2\times2</span> e <span class="m">3\times3</span> (le opzioni sono i polinomi di matrici quasi uguali: controlla traccia e determinante), trovare gli autovalori da un polinomio dato, riconoscere un autovettore relativo a un autovalore assegnato (calcola <span class="m">AX</span>), calcolare la molteplicità geometrica come <span class="m">n-\operatorname{rank}(A-\lambda I)</span>. Aperte: definizione di polinomio caratteristico con il Teorema 28.28; definizione di autovalore/autovettore con la molteplicità geometrica.</p>
+</div>

@@ -1,0 +1,373 @@
+## L3 Vettori geometrici
+3-1 APERTA
+KW: freccia|segmento orientato, direzione, verso, modulo|lunghezza, classe di equivalenza|equipollenti|equivalenti, vettore nullo, applicato|libero|punto di applicazione, parallelogramma, somma, prodotto per scalare|multiplo, differenza, coordinate|sistema di riferimento
+> Un **vettore fisico** è caratterizzato da **direzione** (una classe di rette parallele), **verso** (uno dei due modi di percorrere la direzione) e **modulo** (un numero reale positivo); il **vettore nullo** $\mathbf 0$ ha modulo $0$ e non ha né direzione né verso. Se si aggiunge il **punto di applicazione** il vettore è detto **applicato**, altrimenti **libero**.
+>
+> I vettori applicati si rappresentano con **frecce** (segmenti orientati): direzione e verso della freccia, modulo = lunghezza, punto di applicazione = coda; la freccia degenere (coda = punta) rappresenta $\mathbf 0$. Un **vettore geometrico applicato** è una freccia; un **vettore geometrico** (libero) è una **classe di equivalenza** di frecce, dove due frecce sono equivalenti se hanno uguali direzione, verso e modulo. Gli insiemi dei vettori geometrici del piano e dello spazio si indicano con $V^2_G$ e $V^3_G$.
+>
+> **Somma** (regola del parallelogramma): si scelgono rappresentanti di $\mathbf v$ e $\mathbf w$ con la stessa coda $O$; $\mathbf v+\mathbf w$ ha coda in $O$ e punta nel vertice opposto del parallelogramma. Vale $\mathbf v+\mathbf w=\mathbf w+\mathbf v$, $\mathbf v+\mathbf 0=\mathbf v$, $\mathbf v+(\mathbf w+\mathbf u)=(\mathbf v+\mathbf w)+\mathbf u$. La **differenza** $\mathbf v-\mathbf w$ è l'unico $\mathbf u$ con $\mathbf v=\mathbf w+\mathbf u$: è il vettore con coda nella punta di $\mathbf w$ e punta nella punta di $\mathbf v$.
+>
+> **Prodotto per scalare** $\lambda\mathbf v$ ($\lambda\in\mathbb R$, $\mathbf v\neq\mathbf 0$): se $\lambda>0$ stessa direzione e verso, modulo moltiplicato per $\lambda$; se $\lambda=0$ è $\mathbf 0$; se $\lambda<0$ stessa direzione, verso opposto, modulo moltiplicato per $\lvert\lambda\rvert$; inoltre $\lambda\mathbf 0=\mathbf 0$. $(-1)\mathbf v=-\mathbf v$.
+>
+> **Coordinate**: fissato un sistema di riferimento cartesiano con origine $O$, ogni vettore ha un unico rappresentante applicato in $O$; le coordinate della sua punta sono le coordinate del vettore (coppie nel piano, terne nello spazio). Somma, differenza e prodotto per scalare si fanno coordinata per coordinata: se $\mathbf v=(v_1,v_2)$ e $\mathbf w=(w_1,w_2)$ allora $\mathbf v+\mathbf w=(v_1+w_1,v_2+w_2)$, $\lambda\mathbf v=(\lambda v_1,\lambda v_2)$. Con le coordinate si dimostrano facilmente l'associatività e l'esistenza e unicità della differenza (si risolvono $w_1+u_1=v_1$, $w_2+u_2=v_2$, cioè $u_i=v_i-w_i$).
+x31 D La differenza $\mathbf v_1-\mathbf v_2$ è il vettore $\mathbf u$ tale che $\mathbf v_2+\mathbf u=\mathbf v_1$: nel parallelogramma costruito su $\mathbf v_1$ e $\mathbf v_2$ (con la stessa coda) è la **diagonale che va dalla punta di $\mathbf v_2$ alla punta di $\mathbf v_1$**.
+  In figura $\mathbf v_1$ punta in alto a destra e $\mathbf v_2$ verso destra (leggermente in basso): la diagonale dalla punta di $\mathbf v_2$ alla punta di $\mathbf v_1$ va quindi **verso l'alto e un po' verso sinistra**, con la stessa lunghezza del lato tratteggiato del parallelogramma.
+  Tra i vettori proposti, l'unico con questa direzione, questo verso e questa lunghezza è $\mathbf w_4$ (ricorda che un vettore geometrico libero si può traslare: conta solo direzione, verso e modulo, non la posizione).
+  **Errore tipico:** scegliere il vettore con verso opposto (dall'alto verso il basso a destra), che rappresenta $\mathbf v_2-\mathbf v_1=-(\mathbf v_1-\mathbf v_2)$, oppure confondere la differenza con la somma (la diagonale che parte dalla coda comune).
+T: Dati i vettori geometrici indicati in figura, quale tra i vettori $\mathbf w_*$ è uguale alla differenza $\mathbf v_1-\mathbf v_2$? ![](data/geometria/img/ss3_1.png)
+OPT: $\mathbf w_1$. | $\mathbf w_2$. | $\mathbf w_3$. | $\mathbf w_4$.
+x32 C Per definizione, se $\lambda>0$ il vettore $\lambda\mathbf v$ ha **la stessa direzione e lo stesso verso** di $\mathbf v$ e modulo uguale a $\lambda$ volte il modulo di $\mathbf v$.
+  Con $\lambda=3$ cerchiamo quindi un vettore parallelo a $\mathbf v$ (leggermente inclinato verso l'alto a destra), con la punta dalla stessa parte (verso destra) e **lungo il triplo** di $\mathbf v$.
+  In figura $\mathbf w_3$ è l'unico che ha la stessa inclinazione e lo stesso verso ed è lungo circa tre volte $\mathbf v$.
+  **Errore tipico:** scegliere il vettore lungo ma con la punta a sinistra (quello è $-3\mathbf v$: verso opposto perché lo scalare sarebbe negativo), oppure un vettore con lo stesso verso ma lungo quanto $\mathbf v$ o poco più (multipli con scalare $1$ o $2$ circa). La posizione nel disegno non conta: conta solo direzione, verso e modulo.
+T: Dati i vettori geometrici indicati in figura, quale tra i vettori $\mathbf w_*$ è uguale al prodotto per scalare $3\mathbf v$? ![](data/geometria/img/ss3_2.png)
+OPT: $\mathbf w_1$. | $\mathbf w_2$. | $\mathbf w_3$. | $\mathbf w_4$.
+x33 A Le coordinate di un vettore geometrico sono le coordinate della **punta** del suo rappresentante applicato nell'origine $O$. In figura $\mathbf v$ parte da $O$ e il parallelepipedo tratteggiato serve a leggere le tre proiezioni della punta sugli assi.
+  - Asse $x$ (quello che esce verso chi guarda): la proiezione cade sulla tacca $1$, quindi $x=1$.
+  - Asse $y$ (orizzontale): la punta è a sinistra di $O$, sulla tacca $-3$, quindi $y=-3$.
+  - Asse $z$ (verticale): la punta è sopra il piano $xy$, all'altezza della tacca $1$, quindi $z=1$.
+  Le coordinate sono $(1,-3,1)$.
+  **Errore tipico:** sbagliare un segno: la $z$ è positiva perché la punta sta sopra il piano $xy$; la $y$ è negativa perché è dalla parte opposta alla tacca $1$ dell'asse $y$; la $x$ è positiva perché il lato tratteggiato arriva alla tacca $1$ sull'asse $x$ che esce dal foglio.
+T: Quali sono le coordinate del vettore geometrico $\mathbf v$ rispetto al sistema di riferimento cartesiano $(O;x,y,z)$ nello spazio indicati in figura? ![](data/geometria/img/ss3_3.png)
+OPT: $(1,-3,1)$. | $(1,-3,-1)$. | $(-1,-3,1)$. | $(1,3,1)$.
+x34 C Le coordinate della somma di due vettori geometrici sono la **somma delle rispettive coordinate**: se $\mathbf v=(v_1,v_2)$ e $\mathbf w=(w_1,w_2)$ allora $\mathbf v+\mathbf w=(v_1+w_1,\,v_2+w_2)$.
+  Qui $\mathbf v=(-2,3)$ e $\mathbf w=(4,-2)$, quindi
+  $$\mathbf v+\mathbf w=(-2+4,\;3+(-2))=(2,1).$$
+  **Errore tipico:** sbagliare i segni: $3+(-2)=1$, non $-1$ (che verrebbe da $-3+2$); $-2+4=2$, non $-2$. Oppure calcolare per sbaglio la differenza.
+T: Dato un sistema di riferimento cartesiano $(O;x,y)$ nel piano e i vettori geometrici $\mathbf v$ e $\mathbf w$ con coordinate rispettivamente $(-2,3)$ e $(4,-2)$, quali sono le coordinate della somma $\mathbf v+\mathbf w$?
+OPT: $(2,-1)$. | $(-2,-1)$. | $(2,1)$. | $(-2,1)$.
+
+## L4 Operazioni, gruppi e campi
+4-1 APERTA
+KW: funzione X × X → X|X×X|funzione, associativa, elemento neutro, opposto|inverso, commutativa, distributiva, gruppo abeliano|gruppo commutativo, campo, (G1)|G1, (K1)|K1, unicità|unico, annullamento del prodotto, Q, R, C|numeri reali|numeri complessi
+> Un'**operazione** su un insieme $X$ è una funzione $\bullet: X\times X\to X$; il risultato sulla coppia $(x,y)$ si indica $x\bullet y$. Esempi: addizione e moltiplicazione su $\mathbb N,\mathbb Z,\mathbb Q,\mathbb R,\mathbb C$, l'addizione di vettori geometrici, addizione e moltiplicazione di polinomi (sui polinomi di grado $\le m$ solo l'addizione è un'operazione, perché il prodotto può alzare il grado).
+>
+> **Proprietà**: *associativa* $x\bullet(y\bullet z)=(x\bullet y)\bullet z$; *elemento neutro* $e$ con $x\bullet e=e\bullet x=x$ per ogni $x$; *opposto/inverso* di $x$: $\bar x$ con $x\bullet\bar x=\bar x\bullet x=e$; *commutativa* $x\bullet y=y\bullet x$; *distributiva* di $\odot$ rispetto a $\oplus$: $(x\oplus y)\odot z=(x\odot z)\oplus(y\odot z)$ e $z\odot(x\oplus y)=(z\odot x)\oplus(z\odot y)$.
+>
+> **Proposizione 4.12**: l'elemento neutro, se esiste, è **unico** (se $e,e'$ sono neutri, $e=e'\bullet e=e'$). **Proposizione 4.17**: se l'operazione è associativa con neutro, l'opposto/inverso di un elemento, se esiste, è unico (si usa la proprietà di cancellazione).
+>
+> Un **gruppo abeliano** è un insieme $G$ con un'operazione che soddisfa (G1) associativa, (G2) esistenza del neutro, (G3) esistenza dell'opposto/inverso di ogni elemento, (G4) commutativa. Esempi: $\mathbb Z,\mathbb Q,\mathbb R,\mathbb C$ con l'addizione, $\mathbb Q\setminus\{0\}$, $\mathbb R\setminus\{0\}$, $\mathbb C\setminus\{0\}$ con la moltiplicazione, $V^2_G$, $V^3_G$, i polinomi con l'addizione; $\mathbb N$ **non** lo è (1 non ha opposto).
+>
+> Un **campo** è un insieme $K$ con addizione e moltiplicazione tali che (K1) $K$ con l'addizione è un gruppo abeliano, (K2) $K\setminus\{0\}$ con la moltiplicazione è un gruppo abeliano, (K3) vale la distributiva della moltiplicazione rispetto all'addizione. $\mathbb Q,\mathbb R,\mathbb C$ sono campi; $\mathbb N$ no (manca l'opposto, K1c), $\mathbb Z$ no (manca l'inverso, K2c: $2n=1$ non ha soluzione intera), i polinomi no.
+>
+> **Proposizione 4.33**: in un campo $0\cdot\lambda=\lambda\cdot0=0$ (da $0\cdot\lambda=(0+0)\cdot\lambda=0\cdot\lambda+0\cdot\lambda$ e cancellazione). **Legge di annullamento del prodotto (Prop. 4.37)**: se $\lambda\mu=0$ allora $\lambda=0$ oppure $\mu=0$: se $\lambda\ne0$ si moltiplica per $\lambda^{-1}$ e si ottiene $\mu=\lambda^{-1}\cdot0=0$.
+x35 A Nell'uguaglianza $3\cdot(-2\cdot4)=(3\cdot(-2))\cdot4$ gli **stessi tre numeri** compaiono **nello stesso ordine** ($3$, $-2$, $4$) in entrambi i membri; cambia solo la **posizione delle parentesi**, cioè quale moltiplicazione si esegue per prima.
+  Questa è esattamente la proprietà associativa: $x\cdot(y\cdot z)=(x\cdot y)\cdot z$ con $x=3$, $y=-2$, $z=4$. Verifica: $3\cdot(-8)=-24$ e $(-6)\cdot4=-24$.
+  **Errore tipico:** confonderla con la commutativa, che invece scambia l'ordine dei fattori ($x\cdot y=y\cdot x$); l'elemento neutro coinvolgerebbe il numero $1$, la distributiva coinvolgerebbe anche un'addizione.
+T: Nell'uguaglianza $3\cdot(-2\cdot4)=(3\cdot(-2))\cdot4$, quale proprietà della moltiplicazione su $\mathbb Z$ è stata utilizzata?
+OPT: Associativa. | L'elemento neutro. | Commutativa. | Distributiva.
+x36 A Un gruppo abeliano rispetto all'addizione deve soddisfare (G1) associativa, (G2) esistenza del neutro, (G3) esistenza dell'opposto di **ogni** elemento, (G4) commutativa.
+  In $\mathbb N$ le proprietà (G1), (G2) (il neutro è $0$) e (G4) valgono, ma **(G3) fallisce**: ad esempio $1$ non ha opposto, perché l'equazione $1+n=0$ non ha soluzione in $\mathbb N$ (servirebbe $n=-1\notin\mathbb N$).
+  Invece $\mathbb Z$, $\mathbb Q$ e $\mathbb R$ sono gruppi abeliani rispetto all'addizione: l'opposto di $x$ è $-x$, che sta ancora nell'insieme.
+  **Errore tipico:** pensare che basti che l'addizione sia un'operazione su $\mathbb N$ (lo è: la somma di naturali è naturale); il problema è l'assenza degli opposti, non la chiusura.
+T: Quale dei seguenti non è un gruppo abeliano rispetto all'addizione?
+OPT: $\mathbb N$. | $\mathbb Z$. | $\mathbb Q$. | $\mathbb R$.
+x37 D Un campo richiede (K1) gruppo abeliano rispetto all'addizione, (K2) $K\setminus\{0\}$ gruppo abeliano rispetto alla moltiplicazione, (K3) distributiva.
+  $\mathbb Q$, $\mathbb R$ e $\mathbb C$ sono campi: ogni elemento non nullo $x$ ha inverso $\frac1x$ nello stesso insieme.
+  In $\mathbb Z$ invece **(K2c) fallisce**: ad esempio $2$ non ha inverso, perché $2\cdot n=1$ non ha soluzione intera ($\frac12\notin\mathbb Z$). Quindi $\mathbb Z$ non è un campo (pur essendo un gruppo abeliano rispetto all'addizione).
+  **Errore tipico:** pensare a $\mathbb C$ come "strano" perché contiene $i$: anche i complessi non nulli hanno inverso, $\frac{1}{a+bi}=\frac{a-bi}{a^2+b^2}$.
+T: Quale dei seguenti non è un campo rispetto all'addizione e alla moltiplicazione?
+OPT: $\mathbb C$. | $\mathbb R$. | $\mathbb Q$. | $\mathbb Z$.
+x38 A La legge di annullamento del prodotto dice: se $\lambda\mu=0$ allora $\lambda=0$ **oppure** $\mu=0$ (o entrambi).
+  Con $\lambda=x+1$ e $\mu=x-2$: $(x+1)(x-2)=0\Rightarrow x+1=0$ oppure $x-2=0$, cioè $x=-1$ **oppure** $x=2$.
+  **Errore tipico:** scrivere "e" al posto di "oppure": $x$ non può valere contemporaneamente $-1$ e $2$; il prodotto si annulla quando si annulla almeno uno dei fattori. Tenere una sola delle due soluzioni è invece incompleto: entrambe annullano il prodotto, quindi l'implicazione verso una sola di esse è falsa.
+T: In quale delle seguenti proposizioni è stata usata la legge di annullamento del prodotto?
+OPT: $(x+1)(x-2)=0\Longrightarrow x=-1$ oppure $x=2$. | $(x+1)(x-2)=0\Longrightarrow x=-1$ e $x=2$. | $(x+1)(x-2)=0\Longrightarrow x=-1$. | $(x+1)(x-2)=0\Longrightarrow x=2$.
+
+## L5 Spazi vettoriali
+5-1 APERTA
+KW: campo, addizione, moltiplicazione per scalare|prodotto per scalare, gruppo abeliano|(SV1)|SV1, compatibilità|(SV2), distributiva|(SV3)|(SV4), 1 · v = v|neutralità di 1|(SV5), vettori|scalari, 0 · v = 0|(SV6), (−1) · v|opposto|(SV7), K^n|vettori colonna, polinomi|vettori geometrici
+> **Definizione.** Uno **spazio vettoriale su un campo $K$** è un insieme $V$ con un'**addizione** $+:V\times V\to V$ e una **moltiplicazione per scalare** $\cdot:K\times V\to V$ tali che:
+> - (SV1) $(V,+)$ è un **gruppo abeliano** (associativa, esiste $\mathbf 0$, esiste l'opposto $-\mathbf v$, commutativa);
+> - (SV2) $\lambda\cdot(\mu\cdot\mathbf v)=(\lambda\mu)\cdot\mathbf v$ (compatibilità con la moltiplicazione di $K$);
+> - (SV3) $(\lambda+\mu)\cdot\mathbf v=\lambda\mathbf v+\mu\mathbf v$ (distributiva rispetto all'addizione di $K$);
+> - (SV4) $\lambda\cdot(\mathbf v+\mathbf w)=\lambda\mathbf v+\lambda\mathbf w$ (distributiva rispetto all'addizione di $V$);
+> - (SV5) $1\cdot\mathbf v=\mathbf v$.
+>
+> Gli elementi di $V$ sono i **vettori**, quelli di $K$ gli **scalari**. Se $K=\mathbb R$ lo spazio è reale, se $K=\mathbb C$ complesso. Esempi: $V^2_G$ e $V^3_G$ su $\mathbb R$, $\{\mathbf 0\}$, $K$ stesso, i polinomi $K[x_1,\dots,x_n]$, $\mathbb C$ su $\mathbb R$, le funzioni $\mathrm{Funz}(I,V)$, e soprattutto $K^n$ (vettori colonna con operazioni coordinata per coordinata, Prop. 5.21).
+>
+> **Proposizione 5.7.** In ogni spazio vettoriale valgono: (SV6) $0\cdot\mathbf v=\mathbf 0$; (SV7) $(-1)\cdot\mathbf v=-\mathbf v$; (SV8) $\lambda\cdot\mathbf 0=\mathbf 0$; (SV9) se $\lambda\ne0$ e $\lambda\mathbf v=\mathbf 0$ allora $\mathbf v=\mathbf 0$.
+>
+> *Dimostrazione di (SV6):* $0\cdot\mathbf v=(0+0)\cdot\mathbf v\overset{(SV3)}{=}0\cdot\mathbf v+0\cdot\mathbf v$, e cancellando $0\cdot\mathbf v$ si ottiene $\mathbf 0=0\cdot\mathbf v$. *(SV7):* $\mathbf v+(-1)\mathbf v=1\mathbf v+(-1)\mathbf v=(1-1)\mathbf v=0\mathbf v=\mathbf 0$, quindi $(-1)\mathbf v$ è l'opposto di $\mathbf v$.
+x39 C La somma di vettori colonna si fa **coordinata per coordinata**. Calcoliamo la somma di ciascuna coppia e confrontiamola con ${}^t(3\ 5\ 2)$:
+  - ${}^t(1\ 2\ 4)+{}^t(1\ 1\ -1)={}^t(2\ 3\ 3)$: non va bene.
+  - ${}^t(3\ 1\ -2)+{}^t(2\ 3\ 4)={}^t(5\ 4\ 2)$: non va bene (solo la terza coordinata coincide).
+  - ${}^t(1\ 0\ -2)+{}^t(2\ 5\ 4)={}^t(1+2\ \ 0+5\ \ -2+4)={}^t(3\ 5\ 2)$: è proprio il vettore cercato.
+  Esiste quindi una coppia che funziona, e l'opzione "nessuna delle altre" va scartata.
+  **Errore tipico:** controllare solo una o due coordinate (ad esempio solo l'ultima) invece di tutte e tre, o sbagliare i segni con i numeri negativi ($-2+4=2$).
+T: Di quale delle seguenti coppie di vettori il vettore colonna $\begin{pmatrix}3\\5\\2\end{pmatrix}$ è la somma?
+OPT: $\begin{pmatrix}1\\2\\4\end{pmatrix}$ e $\begin{pmatrix}1\\1\\-1\end{pmatrix}$. | $\begin{pmatrix}3\\1\\-2\end{pmatrix}$ e $\begin{pmatrix}2\\3\\4\end{pmatrix}$. | $\begin{pmatrix}1\\0\\-2\end{pmatrix}$ e $\begin{pmatrix}2\\5\\4\end{pmatrix}$. | Nessuna delle altre risposte.
+x40 D Osserviamo che $\begin{pmatrix}0\\-3\end{pmatrix}+\begin{pmatrix}1\\3\end{pmatrix}=\begin{pmatrix}1\\0\end{pmatrix}$. L'uguaglianza è quindi della forma
+  $$\lambda\cdot(\mathbf v+\mathbf w)=\lambda\cdot\mathbf v+\lambda\cdot\mathbf w\quad\text{con }\lambda=2,\ \mathbf v=\begin{pmatrix}0\\-3\end{pmatrix},\ \mathbf w=\begin{pmatrix}1\\3\end{pmatrix}:$$
+  **uno stesso scalare** moltiplica una **somma di due vettori**. È la proprietà distributiva della moltiplicazione per scalare rispetto all'addizione di $V$, cioè (SV4).
+  Verifica: a sinistra ${}^t(2\ 0)$, a destra ${}^t(0\ -6)+{}^t(2\ 6)={}^t(2\ 0)$.
+  Ricordiamo le altre: (SV1) dice che $(V,+)$ è un gruppo abeliano; (SV2) è $\lambda(\mu\mathbf v)=(\lambda\mu)\mathbf v$; (SV3) è $(\lambda+\mu)\mathbf v=\lambda\mathbf v+\mu\mathbf v$, dove a essere sommati sono **due scalari** e il vettore è uno solo.
+  **Errore tipico:** confondere (SV3) e (SV4): entrambe sono "distributive", ma in (SV3) la somma è tra scalari (nel campo $K$), in (SV4) tra vettori (nello spazio $V$). Qui lo scalare $2$ è lo stesso e cambiano i vettori.
+T: Nell'uguaglianza $2\begin{pmatrix}1\\0\end{pmatrix}=2\begin{pmatrix}0\\-3\end{pmatrix}+2\begin{pmatrix}1\\3\end{pmatrix}$, quale proprietà della definizione di spazio vettoriale è stata utilizzata?
+OPT: (SV1). | (SV2). | (SV3). | (SV4).
+x41 C Risolviamo l'equazione vettoriale come un'equazione ordinaria, usando le proprietà dello spazio vettoriale. Portiamo $-2X$ a destra:
+  $$3\begin{pmatrix}1\\-2\\5\end{pmatrix}=X+2X=3X.$$
+  Moltiplicando entrambi i membri per $\frac13$ (che esiste perché $3\ne0$):
+  $$X=\begin{pmatrix}1\\-2\\5\end{pmatrix}.$$
+  Verifica: $3\,{}^t(1\ -2\ 5)-2\,{}^t(1\ -2\ 5)={}^t(1\ -2\ 5)=X$. Equivalentemente, coordinata per coordinata: $3-2x_1=x_1\Rightarrow x_1=1$, $-6-2x_2=x_2\Rightarrow x_2=-2$, $15-2x_3=x_3\Rightarrow x_3=5$.
+  **Errore tipico:** dimenticare il termine $-2X$ e rispondere $3\,{}^t(1\ -2\ 5)={}^t(3\ -6\ 15)$, oppure spostare $-2X$ a destra senza cambiare segno (si otterrebbe $3\mathbf v=-X$, cioè $X={}^t(-3\ 6\ -15)$) o sbagliare il coefficiente e ottenere l'opposto ${}^t(-1\ 2\ -5)$. Sostituire sempre la soluzione nell'equazione per controllarla.
+T: Quale è la soluzione dell'equazione vettoriale $3\cdot\begin{pmatrix}1\\-2\\5\end{pmatrix}-2\cdot X=X$?
+OPT: $\begin{pmatrix}3\\-6\\15\end{pmatrix}$. | $\begin{pmatrix}-1\\2\\-5\end{pmatrix}$. | $\begin{pmatrix}1\\-2\\5\end{pmatrix}$. | Nessuna delle altre risposte.
+x42 D Un'equazione in forma vettoriale tra vettori colonna equivale a un **sistema**, una equazione per coordinata:
+  $$x\begin{pmatrix}2\\1\end{pmatrix}+y\begin{pmatrix}-3\\1\end{pmatrix}=\begin{pmatrix}2x-3y\\x+y\end{pmatrix}=\begin{pmatrix}1\\3\end{pmatrix}\iff\begin{cases}2x-3y=1\\x+y=3\end{cases}$$
+  Dalla seconda $x=3-y$; sostituendo nella prima: $2(3-y)-3y=1\Rightarrow 6-5y=1\Rightarrow y=1$, quindi $x=2$.
+  Verifica: $2\,{}^t(2\ 1)+1\,{}^t(-3\ 1)={}^t(4-3\ \ 2+1)={}^t(1\ 3)$. La soluzione è $(x,y)=(2,1)$.
+  **Errore tipico:** scambiare $x$ e $y$: la coppia $(1,2)$ dà ${}^t(2-6\ \ 1+2)={}^t(-4\ 3)$, sbagliata nella prima coordinata. Controllare sempre entrambe le equazioni.
+T: Quale è la soluzione dell'equazione in forma vettoriale $x\cdot\begin{pmatrix}2\\1\end{pmatrix}+y\cdot\begin{pmatrix}-3\\1\end{pmatrix}=\begin{pmatrix}1\\3\end{pmatrix}$ nelle incognite $x$ e $y$?
+OPT: $(x,y)=(1,2)$. | $(x,y)=(-2,-1)$. | $(x,y)=(-1,-2)$. | $(x,y)=(2,1)$.
+
+## L6 Combinazioni lineari
+6-1 APERTA
+KW: λ1v1 + … + λnvn|somma di prodotti per scalare|λ1v1, coefficienti, scalari, risultato|valore, spazio vettoriale, vettori, zero vettori|vettore nullo, combinazioni diverse|stesso risultato, multipli, coefficienti nulli
+> **Definizione 6.1.** Sia $V$ uno spazio vettoriale su un campo $K$, siano $\mathbf v_1,\dots,\mathbf v_n\in V$ e $\lambda_1,\dots,\lambda_n\in K$. La scrittura
+> $$\lambda_1\mathbf v_1+\lambda_2\mathbf v_2+\dots+\lambda_n\mathbf v_n$$
+> è una **combinazione lineare** dei vettori $\mathbf v_i$; gli scalari $\lambda_i$ sono i **coefficienti**, il vettore $\mathbf v=\lambda_1\mathbf v_1+\dots+\lambda_n\mathbf v_n$ è il **risultato** (o valore). Zero vettori danno una sola combinazione lineare, con risultato il vettore nullo.
+>
+> Le combinazioni lineari sono le espressioni più semplici in uno spazio vettoriale (somme di prodotti per scalare) ma anche le più generali: ogni espressione si riduce a una combinazione lineare con le proprietà (SV1)–(SV5).
+>
+> **Combinazione e risultato non sono la stessa cosa** (Oss. 6.3): combinazioni diverse possono avere lo stesso risultato. Esempio: $2\binom23+0\binom{-1}0-3\binom11=\binom13$ e $2\binom23-3\binom11=\binom13$ sono combinazioni diverse con lo stesso risultato. Anche $0\binom23+0\binom{-1}0+0\binom11=\mathbf 0_2$ e $1\binom23-1\binom{-1}0-3\binom11=\mathbf 0_2$ (Es. 6.4) hanno lo stesso risultato nullo.
+>
+> Le combinazioni lineari di un solo vettore $\mathbf v$ sono $\lambda\mathbf v$: i loro risultati sono i **multipli** di $\mathbf v$ (Oss. 6.5). Per i vettori geometrici, ad esempio, $3\mathbf v+2\mathbf w$ si costruisce con la regola del parallelogramma su $3\mathbf v$ e $2\mathbf w$.
+x43 A La combinazione lineare richiesta è
+  $$-3\begin{pmatrix}2\\3\\-1\end{pmatrix}+1\begin{pmatrix}4\\-2\\0\end{pmatrix}+0\begin{pmatrix}1\\0\\-3\end{pmatrix}.$$
+  Calcoliamo i singoli prodotti per scalare: $-3\,{}^t(2\ 3\ -1)={}^t(-6\ -9\ 3)$, $1\,{}^t(4\ -2\ 0)={}^t(4\ -2\ 0)$, $0\,{}^t(1\ 0\ -3)={}^t(0\ 0\ 0)$.
+  Sommiamo coordinata per coordinata: ${}^t(-6+4+0\ \ -9-2+0\ \ 3+0+0)={}^t(-2\ -11\ 3)$.
+  **Errore tipico:** fermarsi al solo primo addendo con un errore di segno, oppure scrivere come risultato il vettore dei coefficienti ${}^t(-3\ 1\ 0)$, che non è il risultato della combinazione. Attenzione anche a $-3\cdot(-1)=+3$.
+T: Quale è il risultato della combinazione lineare dei vettori colonna $\begin{pmatrix}2\\3\\-1\end{pmatrix}$, $\begin{pmatrix}4\\-2\\0\end{pmatrix}$, $\begin{pmatrix}1\\0\\-3\end{pmatrix}$ con coefficienti rispettivamente $-3$, $1$, $0$?
+OPT: $\begin{pmatrix}-2\\-11\\3\end{pmatrix}$. | $\begin{pmatrix}-6\\3\\0\end{pmatrix}$. | $\begin{pmatrix}10\\11\\3\end{pmatrix}$. | $\begin{pmatrix}-3\\1\\0\end{pmatrix}$.
+x44 C Osserviamo che ${}^t(4\ 6)=2\cdot{}^t(2\ 3)$: il secondo vettore è il doppio del primo. Per ottenere il vettore nullo bisogna quindi prendere il primo due volte e togliere il secondo una volta:
+  $$2\begin{pmatrix}2\\3\end{pmatrix}-\begin{pmatrix}4\\6\end{pmatrix}=\begin{pmatrix}4-4\\6-6\end{pmatrix}=\begin{pmatrix}0\\0\end{pmatrix}.$$
+  Le altre combinazioni: $2{}^t(2\ 3)+{}^t(4\ 6)={}^t(8\ 12)$; ${}^t(2\ 3)-2{}^t(4\ 6)={}^t(-6\ -9)$; $2{}^t(2\ 3)+2{}^t(4\ 6)={}^t(12\ 18)$. Nessuna è nulla.
+  **Errore tipico:** mettere il coefficiente $2$ sul vettore sbagliato: per annullare serve $2\cdot$(il vettore più piccolo) $-$ (quello più grande), non il contrario.
+T: Quale delle seguenti combinazioni lineari dei vettori colonna $\begin{pmatrix}2\\3\end{pmatrix}$ e $\begin{pmatrix}4\\6\end{pmatrix}$ ha come risultato il vettore colonna nullo?
+OPT: $2\begin{pmatrix}2\\3\end{pmatrix}+\begin{pmatrix}4\\6\end{pmatrix}$. | $\begin{pmatrix}2\\3\end{pmatrix}-2\begin{pmatrix}4\\6\end{pmatrix}$. | $2\begin{pmatrix}2\\3\end{pmatrix}-\begin{pmatrix}4\\6\end{pmatrix}$. | $2\begin{pmatrix}2\\3\end{pmatrix}+2\begin{pmatrix}4\\6\end{pmatrix}$.
+x45 C Cerchiamo per ogni coppia $a,b$ con $a\mathbf v+b\mathbf w={}^t(4\ 5\ 1)$.
+  - ${}^t(0\ 3\ -1)$ e ${}^t(0\ 2\ -3)$: la prima coordinata di qualsiasi combinazione è $0a+0b=0\ne4$. Impossibile.
+  - ${}^t(1\ 1\ -1)$ e ${}^t(2\ 2\ -2)$: ogni combinazione è $(a+2b)\,{}^t(1\ 1\ -1)$, con prima e seconda coordinata uguali; ma $4\ne5$. Impossibile.
+  - ${}^t(4\ 5\ -1)$ e ${}^t(0\ 0\ 0)$: ogni combinazione è $a\,{}^t(4\ 5\ -1)$; servirebbe $a=1$ dalle prime due coordinate, ma la terza vale $-1\ne1$. Impossibile.
+  - ${}^t(2\ 3\ -1)$ e ${}^t(1\ 1\ 1)$: il sistema è $2a+b=4$, $3a+b=5$, $-a+b=1$. Sottraendo le prime due: $a=1$, quindi $b=2$; la terza: $-1+2=1$ ✓. Infatti $1\,{}^t(2\ 3\ -1)+2\,{}^t(1\ 1\ 1)={}^t(4\ 5\ 1)$.
+  **Errore tipico:** scegliere la coppia che contiene un vettore "quasi uguale" a quello cercato (cambia solo il segno dell'ultima coordinata): il vettore nullo non aiuta, perché aggiunge sempre $\mathbf 0$.
+T: Quale delle seguenti coppie di vettori colonna può formare una combinazione lineare il cui risultato è $\begin{pmatrix}4\\5\\1\end{pmatrix}$?
+OPT: $\begin{pmatrix}0\\3\\-1\end{pmatrix}$ e $\begin{pmatrix}0\\2\\-3\end{pmatrix}$. | $\begin{pmatrix}1\\1\\-1\end{pmatrix}$ e $\begin{pmatrix}2\\2\\-2\end{pmatrix}$. | $\begin{pmatrix}2\\3\\-1\end{pmatrix}$ e $\begin{pmatrix}1\\1\\1\end{pmatrix}$. | $\begin{pmatrix}4\\5\\-1\end{pmatrix}$ e $\begin{pmatrix}0\\0\\0\end{pmatrix}$.
+x46 A Osserviamo che ${}^t(-2\ 6)=2\cdot{}^t(-1\ 3)$. Quindi
+  $$2\begin{pmatrix}-1\\3\end{pmatrix}-1\begin{pmatrix}-2\\6\end{pmatrix}=\begin{pmatrix}-2+2\\6-6\end{pmatrix}=\begin{pmatrix}0\\0\end{pmatrix}$$
+  è una combinazione lineare con coefficienti $2$ e $-1$, **non tutti nulli**, il cui risultato è il vettore nullo. Quindi sì, esiste (e ce ne sono infinite: tutte quelle con coefficienti $2t$ e $-t$, $t\ne0$).
+  La risposta non dipende da altro: i vettori sono assegnati e lo spazio è $\mathbb R^2$.
+  **Errore tipico:** pensare che l'unica combinazione con risultato nullo sia quella con coefficienti tutti nulli: questo succede solo se i vettori non sono uno multiplo dell'altro (è l'idea di indipendenza lineare della Lezione 8).
+T: Esiste una combinazione lineare dei vettori colonna $\begin{pmatrix}-1\\3\end{pmatrix}$ e $\begin{pmatrix}-2\\6\end{pmatrix}$ con i coefficienti non tutti nulli con risultato il vettore nullo $\begin{pmatrix}0\\0\end{pmatrix}$?
+OPT: Sì. | No. | Dipende dallo spazio vettoriale. | Nessuna delle altre risposte.
+
+## L7 Sottospazi vettoriali e sottospazi generati
+7-1 A Un vettore appartiene a $\mathrm{Span}(\mathbf u,\mathbf w)$ se e solo se è il risultato di una combinazione lineare $a\mathbf u+b\mathbf w$. Con $\mathbf u={}^t(2\ 1\ 3)$ e $\mathbf w={}^t(1\ -1\ -2)$:
+  $$a\begin{pmatrix}2\\1\\3\end{pmatrix}+b\begin{pmatrix}1\\-1\\-2\end{pmatrix}=\begin{pmatrix}2a+b\\a-b\\3a-2b\end{pmatrix}.$$
+  Tutte le opzioni hanno prima coordinata $4$; imponiamo $2a+b=4$ e $a-b=y$ (seconda coordinata). Sommando: $3a=4+y$.
+  - Se $y=-1$: $a=1$, $b=2$; la terza coordinata **deve** valere $3\cdot1-2\cdot2=-1$. Quindi ${}^t(4\ -1\ -1)\in\mathrm{Span}$ (con $a=1,b=2$), mentre ${}^t(4\ -1\ 7)$ no.
+  - Se $y=-3$: $a=\frac13$, $b=\frac{10}3$; la terza coordinata deve valere $1-\frac{20}3=-\frac{17}3$, né $-1$ né $7$: nessuno dei due vettori con seconda coordinata $-3$ appartiene allo Span.
+  Verifica: $1\cdot{}^t(2\ 1\ 3)+2\cdot{}^t(1\ -1\ -2)={}^t(4\ -1\ -1)$.
+  **Errore tipico:** risolvere solo con le prime due coordinate (che hanno sempre soluzione) e dimenticare di controllare la terza: è la terza equazione a decidere l'appartenenza.
+T: Quale dei seguenti vettori colonna appartiene al sottospazio vettoriale $\mathrm{Span}\big({}^t(2\ 1\ 3),\ {}^t(1\ -1\ -2)\big)$ di $\mathbb R^3$?
+OPT: ${}^t(4\ -1\ -1)$. | ${}^t(4\ -1\ 7)$. | ${}^t(4\ -3\ -1)$. | ${}^t(4\ -3\ 7)$.
+7-2 C Con $\mathbf u={}^t(2\ 1\ 3)$ e $\mathbf w={}^t(1\ -1\ 2)$ la generica combinazione lineare è
+  $$a\begin{pmatrix}2\\1\\3\end{pmatrix}+b\begin{pmatrix}1\\-1\\2\end{pmatrix}=\begin{pmatrix}2a+b\\a-b\\3a+2b\end{pmatrix}.$$
+  Imponiamo $2a+b=4$ e $a-b=y$: sommando $3a=4+y$.
+  - Se $y=-1$: $a=1$, $b=2$, e la terza coordinata deve essere $3+4=7$. Quindi ${}^t(4\ -1\ 7)$ appartiene allo Span, ${}^t(4\ -1\ -1)$ no.
+  - Se $y=-3$: $a=\frac13$, $b=\frac{10}3$, terza coordinata $1+\frac{20}3=\frac{23}3$: né $7$ né $-1$, quindi i vettori con seconda coordinata $-3$ non appartengono.
+  Verifica: $1\cdot{}^t(2\ 1\ 3)+2\cdot{}^t(1\ -1\ 2)={}^t(4\ -1\ 7)$.
+  **Errore tipico:** confondere questa domanda con quella quasi identica in cui il secondo generatore è ${}^t(1\ -1\ -2)$: cambiare il segno di una coordinata di un generatore cambia la terza coordinata ammessa.
+  TRAP: Il secondo generatore ha terza coordinata $+2$ (non $-2$ come in una domanda gemella): la risposta cambia.
+T: Quale dei seguenti vettori colonna appartiene al sottospazio vettoriale $\mathrm{Span}\big({}^t(2\ 1\ 3),\ {}^t(1\ -1\ 2)\big)$ di $\mathbb R^3$?
+OPT: ${}^t(4\ -1\ -1)$. | ${}^t(4\ -3\ 7)$. | ${}^t(4\ -1\ 7)$. | ${}^t(4\ -3\ -1)$.
+7-3 B Con $\mathbf u={}^t(2\ -1\ 3)$ e $\mathbf w={}^t(1\ -1\ -2)$ la generica combinazione lineare è
+  $$a\begin{pmatrix}2\\-1\\3\end{pmatrix}+b\begin{pmatrix}1\\-1\\-2\end{pmatrix}=\begin{pmatrix}2a+b\\-a-b\\3a-2b\end{pmatrix}.$$
+  Imponiamo $2a+b=4$ e $-a-b=y$: sommando $a=4+y$, poi $b=4-2a$.
+  - Se $y=-3$: $a=1$, $b=2$, terza coordinata $3-4=-1$. Quindi ${}^t(4\ -3\ -1)$ appartiene allo Span, ${}^t(4\ -3\ 7)$ no.
+  - Se $y=-1$: $a=3$, $b=-2$, terza coordinata $9+4=13$: né $7$ né $-1$, quindi i vettori con seconda coordinata $-1$ non appartengono.
+  Verifica: $1\cdot{}^t(2\ -1\ 3)+2\cdot{}^t(1\ -1\ -2)={}^t(4\ -3\ -1)$.
+  **Errore tipico:** ricordare a memoria la risposta della domanda gemella con primo generatore ${}^t(2\ 1\ 3)$: qui la seconda coordinata del primo generatore è $-1$, quindi cambia anche la seconda coordinata del vettore ottenibile.
+  TRAP: Il primo generatore ha seconda coordinata $-1$: con gli stessi coefficienti $a=1,b=2$ la seconda coordinata del risultato diventa $-3$.
+T: Quale dei seguenti vettori colonna appartiene al sottospazio vettoriale $\mathrm{Span}\big({}^t(2\ -1\ 3),\ {}^t(1\ -1\ -2)\big)$ di $\mathbb R^3$?
+OPT: ${}^t(4\ -1\ 7)$. | ${}^t(4\ -3\ -1)$. | ${}^t(4\ -3\ 7)$. | ${}^t(4\ -1\ -1)$.
+7-4 C Con $\mathbf u={}^t(2\ -1\ 3)$ e $\mathbf w={}^t(1\ -1\ 2)$ la generica combinazione lineare è
+  $$a\begin{pmatrix}2\\-1\\3\end{pmatrix}+b\begin{pmatrix}1\\-1\\2\end{pmatrix}=\begin{pmatrix}2a+b\\-a-b\\3a+2b\end{pmatrix}.$$
+  Imponiamo $2a+b=4$ e $-a-b=y$: sommando $a=4+y$, poi $b=4-2a$.
+  - Se $y=-3$: $a=1$, $b=2$, terza coordinata $3+4=7$. Quindi ${}^t(4\ -3\ 7)$ appartiene allo Span, ${}^t(4\ -3\ -1)$ no.
+  - Se $y=-1$: $a=3$, $b=-2$, terza coordinata $9-4=5$: né $7$ né $-1$, quindi i vettori con seconda coordinata $-1$ non appartengono.
+  Verifica: $1\cdot{}^t(2\ -1\ 3)+2\cdot{}^t(1\ -1\ 2)={}^t(4\ -3\ 7)$.
+  **Errore tipico:** risolvere solo le prime due equazioni (sempre risolubili) senza controllare la terza, oppure ricordare la risposta di una delle tre domande gemelle che differiscono per un solo segno nei generatori.
+  TRAP: Quattro domande quasi identiche con segni diversi nei generatori: va rifatto il conto ogni volta.
+T: Quale dei seguenti vettori colonna appartiene al sottospazio vettoriale $\mathrm{Span}\big({}^t(2\ -1\ 3),\ {}^t(1\ -1\ 2)\big)$ di $\mathbb R^3$?
+OPT: ${}^t(4\ -1\ -1)$. | ${}^t(4\ -1\ 7)$. | ${}^t(4\ -3\ 7)$. | ${}^t(4\ -3\ -1)$.
+7-5 APERTA
+KW: sottoinsieme, spazio vettoriale con le stesse operazioni|stessa addizione|ereditano, 0 ∈ W|vettore nullo|(SSV1), chiuso rispetto alla somma|v + w ∈ W|(SSV2), chiuso rispetto al prodotto per scalare|λv ∈ W|(SSV3), se e solo se, intersezione, {0}, polinomio di grado 1|termine noto nullo|retta per l'origine, Span|sottospazio generato
+> **Definizione 7.1.** Sia $V$ uno spazio vettoriale su $K$. Un sottoinsieme $W\subseteq V$ è un **sottospazio vettoriale** di $V$ se $W$ è uno spazio vettoriale su $K$ con la **stessa** addizione e moltiplicazione per scalare di $V$. Esempi banali: $\{\mathbf 0\}$ e $V$.
+>
+> **Proposizione 7.3.** $W\subseteq V$ è un sottospazio vettoriale se e solo se:
+> - (SSV1) $\mathbf 0\in W$;
+> - (SSV2) per ogni $\mathbf v,\mathbf w\in W$ si ha $\mathbf v+\mathbf w\in W$;
+> - (SSV3) per ogni $\mathbf v\in W$ e $\lambda\in K$ si ha $\lambda\mathbf v\in W$.
+>
+> *Idea della dimostrazione:* se $W$ è sottospazio le tre proprietà valgono perché $+$ e $\cdot$ sono operazioni su $W$ e $W$ ha il neutro. Viceversa (SSV2) e (SSV3) rendono le operazioni interne a $W$; associativa, commutativa, (SV2)–(SV5) valgono perché valgono in $V$; il neutro è dato da (SSV1); l'opposto di $\mathbf w\in W$ è $(-1)\mathbf w$ per (SV7), che sta in $W$ per (SSV3).
+>
+> **Esempi.** $W=\{X\in K^n\mid a_1x_1+\dots+a_nx_n=0\}$ (polinomio di grado 1 con termine noto nullo) è un sottospazio; le rette e i piani per l'origine lo sono; $\{k\mathbf v\mid k\in K\}$ lo è. **Non** sono sottospazi: $\{X\mid p(X)=0\}$ con termine noto non nullo (manca $\mathbf 0$), le rette che non passano per l'origine, $\{X\in\mathbb R^2\mid 9x_2-x_1^2=0\}$ (${}^t(3\ 1)$ vi appartiene ma $2\,{}^t(3\ 1)$ no).
+>
+> **Proposizione 7.8.** L'**intersezione** $W_1\cap W_2$ di due sottospazi è un sottospazio (si verificano (SSV1)–(SSV3)); lo stesso vale per un numero qualsiasi, anche infinito, di sottospazi. Inoltre (Prop. 7.16) per ogni $I\subseteq V$ l'insieme $\mathrm{Span}(I)$ dei risultati delle combinazioni lineari di vettori di $I$ è un sottospazio, il **sottospazio generato** da $I$.
+7-6 APERTA
+KW: Span(I)|Span, combinazioni lineari, sottospazio generato, generano|insieme di generatori, Span(∅) = {0}|Span vuoto, I ⊆ Span(I), sottospazio vettoriale, Span(I) ⊆ W|contenuto in W, finitamente generato, sottoinsieme finito, R^2|K^n|K≤m[x], polinomi non finitamente generato|K[x]
+> **Definizione 7.11.** Dato un sottoinsieme $I$ di uno spazio vettoriale $V$ su $K$,
+> $$\mathrm{Span}(I)=\{\lambda_1\mathbf v_1+\dots+\lambda_n\mathbf v_n\mid n\ge0,\ \mathbf v_i\in I,\ \lambda_i\in K\},$$
+> cioè l'insieme dei risultati delle combinazioni lineari di vettori di $I$. Si ha $\mathrm{Span}(\emptyset)=\{\mathbf 0\}$, $I\subseteq\mathrm{Span}(I)$, e se $I=\{\mathbf v_1,\dots,\mathbf v_n\}$ è finito $\mathrm{Span}(\mathbf v_1,\dots,\mathbf v_n)=\{\lambda_1\mathbf v_1+\dots+\lambda_n\mathbf v_n\}$.
+>
+> **Proposizione 7.16.** $\mathrm{Span}(I)$ è un sottospazio vettoriale di $V$ (somma e multipli di combinazioni lineari sono ancora combinazioni lineari). È detto **sottospazio generato** da $I$, e $I$ (o i suoi vettori) è detto **insieme di generatori**: $I$ genera $\mathrm{Span}(I)$.
+>
+> Non tutti i generatori sono sempre necessari, e insiemi diversi possono generare lo stesso sottospazio: ad esempio $\mathrm{Span}(\mathbf 0,\mathbf v,2\mathbf v)=\mathrm{Span}(\mathbf v)=\mathrm{Span}(2\mathbf v)$. **Prop. 7.19:** se $I\subseteq W$ con $W$ sottospazio, allora $\mathrm{Span}(I)\subseteq W$ (è il più piccolo sottospazio che contiene $I$). **Corollario 7.20:** $\mathbf v\in\mathrm{Span}(\mathbf v_1,\dots,\mathbf v_n)$ se e solo se $\mathrm{Span}(\mathbf v_1,\dots,\mathbf v_n,\mathbf v)=\mathrm{Span}(\mathbf v_1,\dots,\mathbf v_n)$.
+>
+> **Definizione 7.22.** Un sottospazio $W$ è **finitamente generato** se esiste un sottoinsieme finito $\{\mathbf w_1,\dots,\mathbf w_n\}$ con $\mathrm{Span}(\mathbf w_1,\dots,\mathbf w_n)=W$; lo spazio $V$ è finitamente generato se lo è come sottospazio di sé stesso.
+>
+> **Esempi.** $\{\mathbf 0\}=\mathrm{Span}(\emptyset)$ è finitamente generato; $\mathbb R^2=\mathrm{Span}\big({}^t(1\ 0),{}^t(0\ 1)\big)$ perché ${}^t(x_1\ x_2)=x_1{}^t(1\ 0)+x_2{}^t(0\ 1)$; $K^n$ è generato da $n$ vettori; $K_{\le m}[x]=\mathrm{Span}(1,x,\dots,x^m)$. Invece $K[x_1,\dots,x_n]$ **non** è finitamente generato: se fosse $\mathrm{Span}(p_1,\dots,p_m)$, detto $d$ il grado massimo dei $p_i$, il polinomio $x_1^{d+1}$ non sarebbe combinazione lineare dei $p_i$.
+x47 D Usiamo la Proposizione 7.3: un sottoinsieme è un sottospazio se e solo se contiene $\mathbf 0$ ed è chiuso rispetto a somma e prodotto per scalare.
+  - $\{k\,{}^t(2\ 0\ 3)\mid k\in\mathbb R\}=\mathrm{Span}\big({}^t(2\ 0\ 3)\big)$: è un sottospazio (multipli di un vettore fissato).
+  - $\{\mathbf 0_3\}$: è sempre un sottospazio.
+  - $\{X\in\mathbb R^3\mid x_1-2x_3=0\}$: è definito da un'equazione di grado $1$ con termine noto nullo, quindi è un sottospazio.
+  - $\{{}^t(k^2\ k\ 0)\mid k\in\mathbb R\}$: contiene $\mathbf 0$ (con $k=0$) ma **non** è chiuso rispetto al prodotto per scalare (SSV3). Con $k=1$ abbiamo ${}^t(1\ 1\ 0)$, ma $(-1)\cdot{}^t(1\ 1\ 0)={}^t(-1\ -1\ 0)$ richiederebbe $k=-1$ e $k^2=-1$, impossibile in $\mathbb R$. Non è neanche chiuso per la somma: ${}^t(1\ 1\ 0)+{}^t(1\ 1\ 0)={}^t(2\ 2\ 0)$ richiederebbe $k=2$, $k^2=2$.
+  **Errore tipico:** fermarsi al controllo $\mathbf 0\in W$, che è necessario ma non sufficiente: qui il vettore nullo c'è, ma la condizione quadratica $x_1=x_2^2$ rompe la chiusura.
+T: Quale dei seguenti sottoinsiemi di $\mathbb R^3$ **non** ne è un sottospazio vettoriale?
+OPT: $\left\{k\cdot\begin{pmatrix}2\\0\\3\end{pmatrix}\in\mathbb R^3\ \middle\vert\ k\in\mathbb R\right\}$. | $\{\mathbf 0_3\}$. | $\{X\in\mathbb R^3\mid x_1-2x_3=0\}$. | $\left\{\begin{pmatrix}k^2\\k\\0\end{pmatrix}\in\mathbb R^3\ \middle\vert\ k\in\mathbb R\right\}$.
+x48 C La generica combinazione dei generatori è
+  $$a\begin{pmatrix}3\\0\\1\end{pmatrix}+b\begin{pmatrix}2\\1\\-1\end{pmatrix}=\begin{pmatrix}3a+2b\\b\\a-b\end{pmatrix}.$$
+  La seconda coordinata dà subito $b$; poi la prima dà $a$; infine si controlla la terza.
+  - ${}^t(5\ 3\ -2)$: $b=3$, $3a+6=5\Rightarrow a=-\frac13$; terza: $-\frac13-3=-\frac{10}3\ne-2$. No.
+  - ${}^t(-3\ 1\ -3)$: $b=1$, $3a+2=-3\Rightarrow a=-\frac53$; terza: $-\frac53-1=-\frac83\ne-3$. No.
+  - ${}^t(-1\ -2\ 3)$: $b=-2$, $3a-4=-1\Rightarrow a=1$; terza: $1-(-2)=3$ ✓. Sì: $1\,{}^t(3\ 0\ 1)-2\,{}^t(2\ 1\ -1)={}^t(-1\ -2\ 3)$.
+  - ${}^t(5\ -1\ 0)$: $b=-1$, $3a-2=5\Rightarrow a=\frac73$; terza: $\frac73+1=\frac{10}3\ne0$. No.
+  **Errore tipico:** cercare solo coefficienti interi "a occhio" (ad esempio notare che ${}^t(5\ -1\ 0)$ somiglia a una somma dei generatori: ${}^t(3\ 0\ 1)+{}^t(2\ 1\ -1)={}^t(5\ 1\ 0)$, ma la seconda coordinata ha il segno sbagliato).
+T: Quale dei seguenti vettori colonna appartiene a $\mathrm{Span}\left(\begin{pmatrix}3\\0\\1\end{pmatrix},\begin{pmatrix}2\\1\\-1\end{pmatrix}\right)$?
+OPT: $\begin{pmatrix}5\\3\\-2\end{pmatrix}$. | $\begin{pmatrix}-3\\1\\-3\end{pmatrix}$. | $\begin{pmatrix}-1\\-2\\3\end{pmatrix}$. | $\begin{pmatrix}5\\-1\\0\end{pmatrix}$.
+x49 D $\mathrm{Span}(1,x^2,x^4)=\{a+bx^2+cx^4\mid a,b,c\in\mathbb R\}$: sono esattamente i polinomi che contengono **solo** i monomi $1$, $x^2$, $x^4$ (cioè di grado al più $4$ con soli termini di grado pari).
+  - $3x^2-5x^4$: è $0\cdot1+3x^2+(-5)x^4$, quindi appartiene.
+  - $x$ e $x^5$ non sono combinazioni lineari di $1,x^2,x^4$ (i monomi $1,x,x^2,\dots$ sono linearmente indipendenti, quindi un polinomio si scrive in modo unico come combinazione di monomi).
+  - $1+x^2+x^4+x^5$ contiene il termine $x^5$, che non si può ottenere: non appartiene.
+  **Errore tipico:** scegliere il polinomio che contiene tutti e tre i generatori $1+x^2+x^4$ senza accorgersi del termine aggiuntivo $x^5$.
+T: Quale dei seguenti polinomi appartiene a $\mathrm{Span}(1,x^2,x^4)$?
+OPT: $x$. | $1+x^2+x^4+x^5$. | $x^5$. | $3x^2-5x^4$.
+x50 A Per il Corollario 7.20, se un generatore è combinazione lineare degli altri si può togliere senza cambiare lo Span. Verifichiamo se ${}^t(-3\ -2\ -5)$ è combinazione di ${}^t(1\ 1\ 3)$ e ${}^t(0\ 1\ 4)$:
+  $$a\begin{pmatrix}1\\1\\3\end{pmatrix}+b\begin{pmatrix}0\\1\\4\end{pmatrix}=\begin{pmatrix}a\\a+b\\3a+4b\end{pmatrix}=\begin{pmatrix}-3\\-2\\-5\end{pmatrix}\Rightarrow a=-3,\ b=1,\ 3(-3)+4(1)=-5\ ✓.$$
+  Quindi $\mathrm{Span}$ dei tre vettori $=\mathrm{Span}\big({}^t(1\ 1\ 3),{}^t(0\ 1\ 4)\big)$.
+  Le altre: ${}^t(0\ 1\ 4)$ non è multiplo di ${}^t(1\ 1\ 3)$ (prima coordinata $0$), quindi lo Span del solo ${}^t(1\ 1\ 3)$ è più piccolo; $\mathrm{Span}(\emptyset)=\{\mathbf 0\}$ è ancora più piccolo; aggiungendo ${}^t(0\ 0\ 1)$ invece si ottiene tutto $\mathbb R^3$ (i tre vettori sono "a scala" e generano ogni ${}^t(x\ y\ z)=x\,{}^t(1\ 1\ 3)+(y-x)\,{}^t(0\ 1\ 4)+(z-4y+x)\,{}^t(0\ 0\ 1)$), mentre ${}^t(0\ 0\ 1)$ non sta nello Span di partenza ($a=0$, $b=0$ dalle prime due coordinate, ma la terza sarebbe $0\ne1$).
+  **Errore tipico:** pensare che tre vettori di $\mathbb R^3$ generino sempre $\mathbb R^3$: qui il terzo è combinazione degli altri due, quindi lo Span è solo un piano.
+T: Quale dei seguenti spazi vettoriali coincide con $\mathrm{Span}\left(\begin{pmatrix}1\\1\\3\end{pmatrix},\begin{pmatrix}0\\1\\4\end{pmatrix},\begin{pmatrix}-3\\-2\\-5\end{pmatrix}\right)$?
+OPT: $\mathrm{Span}\left(\begin{pmatrix}1\\1\\3\end{pmatrix},\begin{pmatrix}0\\1\\4\end{pmatrix}\right)$. | $\mathrm{Span}\left(\begin{pmatrix}1\\1\\3\end{pmatrix}\right)$. | $\mathrm{Span}\left(\begin{pmatrix}1\\1\\3\end{pmatrix},\begin{pmatrix}0\\1\\4\end{pmatrix},\begin{pmatrix}0\\0\\1\end{pmatrix}\right)$. | $\mathrm{Span}(\emptyset)$.
+
+## L8 Dipendenza e indipendenza lineare
+8-1 A Per l'Osservazione 8.8, **due vettori sono linearmente dipendenti se e solo se uno è multiplo dell'altro**. Controlliamo i rapporti coordinata per coordinata.
+  - ${}^t(2\ 3\ -1)$, ${}^t(4\ 5\ -2)$: rapporti $\frac42=2$, $\frac53$, $\frac{-2}{-1}=2$. Non sono tutti uguali: nessuno è multiplo dell'altro (nessuno dei due è nullo), quindi sono **indipendenti**.
+  - ${}^t(2\ -1\ 3)$, ${}^t(4\ -2\ 6)$: il secondo è $2\cdot$ il primo, dipendenti.
+  - ${}^t(2\ 3\ -1)$, ${}^t(4\ 6\ -2)$: il secondo è $2\cdot$ il primo, dipendenti.
+  - ${}^t(2\ -1\ 3)$ preso due volte: $1\cdot\mathbf v-1\cdot\mathbf v=\mathbf 0$ con coefficienti non nulli, dipendenti.
+  Verifica diretta per la coppia indipendente: $a\,{}^t(2\ 3\ -1)+b\,{}^t(4\ 5\ -2)=\mathbf 0$ dà $2a+4b=0$ e $3a+5b=0$, cioè $a=-2b$ e $-6b+5b=0$, quindi $b=0$, $a=0$.
+  **Errore tipico:** pensare che due vettori uguali siano indipendenti perché "sono lo stesso vettore": un vettore ripetuto rende sempre i vettori dipendenti.
+T: Quale delle seguenti coppie di vettori in $\mathbb R^3$ è formata da vettori linearmente indipendenti?
+OPT: ${}^t(2\ 3\ -1)$, ${}^t(4\ 5\ -2)$. | ${}^t(2\ -1\ 3)$, ${}^t(4\ -2\ 6)$. | ${}^t(2\ 3\ -1)$, ${}^t(4\ 6\ -2)$. | ${}^t(2\ -1\ 3)$, ${}^t(2\ -1\ 3)$.
+8-2 B Due vettori (non nulli) sono linearmente dipendenti se e solo se uno è multiplo dell'altro (Oss. 8.8): tutti i rapporti tra coordinate corrispondenti devono essere uguali, **segni compresi**.
+  - ${}^t(-2\ -3\ -1)$, ${}^t(4\ -6\ -2)$: rapporti $-2$, $2$, $2$. Non multipli, indipendenti.
+  - ${}^t(2\ -3\ -1)$, ${}^t(4\ -6\ -2)$: rapporti $2$, $2$, $2$. Il secondo è $2\cdot$ il primo: **dipendenti** ($2\mathbf v-\mathbf w=\mathbf 0$).
+  - ${}^t(2\ -1\ -3)$, ${}^t(4\ -2\ 6)$: rapporti $2$, $2$, $-2$. Indipendenti.
+  - ${}^t(-2\ -1\ -3)$, ${}^t(4\ -2\ -6)$: rapporti $-2$, $2$, $2$. Indipendenti.
+  **Errore tipico:** guardare solo i valori assoluti delle coordinate (in tutte le coppie il secondo vettore sembra "il doppio" del primo): un solo segno discordante basta a rendere i vettori indipendenti.
+  TRAP: In tutte le coppie il secondo vettore è il doppio del primo in valore assoluto: decide solo il segno di ciascuna coordinata.
+T: Quale delle seguenti coppie di vettori in $\mathbb R^3$ è formata da vettori linearmente dipendenti?
+OPT: ${}^t(-2\ -3\ -1)$, ${}^t(4\ -6\ -2)$. | ${}^t(2\ -3\ -1)$, ${}^t(4\ -6\ -2)$. | ${}^t(2\ -1\ -3)$, ${}^t(4\ -2\ 6)$. | ${}^t(-2\ -1\ -3)$, ${}^t(4\ -2\ -6)$.
+8-3 B Due vettori non nulli sono indipendenti se e solo se **nessuno è multiplo dell'altro** (Oss. 8.8).
+  - ${}^t(2\ -1\ 3)$, ${}^t(4\ -2\ 6)$: il secondo è $2\cdot$ il primo, dipendenti.
+  - ${}^t(2\ -1\ 3)$, ${}^t(4\ -2\ 5)$: rapporti $2$, $2$, $\frac53$. Non multipli: **indipendenti**. Verifica: $2a+4b=0$, $-a-2b=0$, $3a+5b=0$; dalla prima $a=-2b$, nella terza $-6b+5b=-b=0$, quindi $a=b=0$.
+  - ${}^t(2\ 3\ -1)$, ${}^t(4\ 6\ -2)$: il secondo è $2\cdot$ il primo, dipendenti.
+  - ${}^t(2\ 3\ -1)$ ripetuto: dipendenti ($\mathbf v-\mathbf v=\mathbf 0$).
+  **Errore tipico:** fermarsi alle prime due coordinate (che sono proporzionali in tutte le coppie): la differenza è solo nella terza coordinata, $5$ invece di $6$.
+T: Quale delle seguenti coppie di vettori in $\mathbb R^3$ è formata da vettori linearmente indipendenti?
+OPT: ${}^t(2\ -1\ 3)$, ${}^t(4\ -2\ 6)$. | ${}^t(2\ -1\ 3)$, ${}^t(4\ -2\ 5)$. | ${}^t(2\ 3\ -1)$, ${}^t(4\ 6\ -2)$. | ${}^t(2\ 3\ -1)$, ${}^t(2\ 3\ -1)$.
+8-4 D Due vettori non nulli sono dipendenti se e solo se uno è multiplo dell'altro (Oss. 8.8): tutti i rapporti tra coordinate corrispondenti devono coincidere, segni compresi.
+  - ${}^t(2\ -3\ -1)$, ${}^t(4\ -6\ 2)$: rapporti $2$, $2$, $-2$. Indipendenti.
+  - ${}^t(-2\ -3\ -1)$, ${}^t(4\ -6\ -2)$: rapporti $-2$, $2$, $2$. Indipendenti.
+  - ${}^t(-2\ -1\ -3)$, ${}^t(4\ -2\ -6)$: rapporti $-2$, $2$, $2$. Indipendenti.
+  - ${}^t(2\ -1\ -3)$, ${}^t(4\ -2\ -6)$: rapporti $2$, $2$, $2$. Il secondo è $2\cdot$ il primo: **dipendenti** ($2\mathbf v-\mathbf w=\mathbf 0$).
+  **Errore tipico:** considerare proporzionali vettori che lo sono solo in valore assoluto: ${}^t(-2\ -1\ -3)$ e ${}^t(4\ -2\ -6)$ differiscono per il segno della prima coordinata.
+  TRAP: Tutte le coppie sono "doppie" in valore assoluto: conta il segno di ogni coordinata.
+T: Quale delle seguenti coppie di vettori in $\mathbb R^3$ è formata da vettori linearmente dipendenti?
+OPT: ${}^t(2\ -3\ -1)$, ${}^t(4\ -6\ 2)$. | ${}^t(-2\ -3\ -1)$, ${}^t(4\ -6\ -2)$. | ${}^t(-2\ -1\ -3)$, ${}^t(4\ -2\ -6)$. | ${}^t(2\ -1\ -3)$, ${}^t(4\ -2\ -6)$.
+8-5 D In $\mathbb C^2$ gli scalari sono numeri **complessi**: due vettori non nulli sono dipendenti se e solo se uno è multiplo complesso dell'altro (Oss. 8.8). Se il primo vettore ha seconda coordinata $1$, l'unico possibile fattore è $\lambda=$ seconda coordinata del secondo vettore; poi si controlla la prima coordinata. (Equivalentemente: ${}^t(x_1\ x_2)$ e ${}^t(y_1\ y_2)$ sono dipendenti se e solo se $x_1y_2-x_2y_1=0$.)
+  - ${}^t(1-2i\ \ 1)$, ${}^t(-5\ \ 1+2i)$: $\lambda=1+2i$, $\lambda(1-2i)=(1+2i)(1-2i)=1+4=5\ne-5$. Indipendenti.
+  - ${}^t(2\ 1)$, ${}^t(-4\ 2)$: $\lambda=2$, $2\cdot2=4\ne-4$. Indipendenti.
+  - ${}^t(1-2i\ \ 1)$, ${}^t(5\ \ 1-2i)$: $\lambda=1-2i$, $(1-2i)^2=1-4i-4=-3-4i\ne5$. Indipendenti.
+  - ${}^t(1-2i\ \ 1)$, ${}^t(5\ \ 1+2i)$: $\lambda=1+2i$, $(1+2i)(1-2i)=5$ ✓. Il secondo vettore è $(1+2i)\cdot$ il primo: **dipendenti**.
+  **Errore tipico:** pensare che un vettore con coordinate reali e uno con coordinate complesse non possano essere proporzionali: il fattore può essere complesso, e $(a+bi)(a-bi)=a^2+b^2$ è reale.
+  TRAP: Il prodotto di un numero complesso per il suo coniugato è reale: $(1-2i)(1+2i)=5$, e questo rende proporzionali vettori che "a vista" non lo sembrano.
+T: Quale delle seguenti coppie di vettori in $\mathbb C^2$ è formata da vettori linearmente dipendenti?
+OPT: ${}^t(1-2i\ \ 1)$, ${}^t(-5\ \ 1+2i)$. | ${}^t(2\ \ 1)$, ${}^t(-4\ \ 2)$. | ${}^t(1-2i\ \ 1)$, ${}^t(5\ \ 1-2i)$. | ${}^t(1-2i\ \ 1)$, ${}^t(5\ \ 1+2i)$.
+8-6 D Due vettori non nulli di $\mathbb C^2$ sono dipendenti se e solo se uno è multiplo (con scalare complesso) dell'altro; equivalentemente $x_1y_2-x_2y_1=0$. Con la seconda coordinata del primo vettore uguale a $1$, il fattore deve essere $\lambda=y_2$.
+  - ${}^t(2\ 1)$, ${}^t(4\ -2)$: $\lambda=-2$, $-2\cdot2=-4\ne4$. Indipendenti.
+  - ${}^t(1+2i\ \ 1)$, ${}^t(-5\ \ 1-2i)$: $\lambda=1-2i$, $(1-2i)(1+2i)=5\ne-5$. Indipendenti.
+  - ${}^t(1+2i\ \ 1)$, ${}^t(5\ \ 1+2i)$: $\lambda=1+2i$, $(1+2i)^2=1+4i-4=-3+4i\ne5$. Indipendenti.
+  - ${}^t(1+2i\ \ 1)$, ${}^t(5\ \ 1-2i)$: $\lambda=1-2i$, $(1-2i)(1+2i)=5$ ✓. Il secondo è $(1-2i)\cdot$ il primo: **dipendenti**.
+  **Errore tipico:** confondere $(1+2i)^2$ con $(1+2i)(1-2i)$: solo il prodotto per il coniugato dà il numero reale $1^2+2^2=5$.
+  TRAP: Il fattore di proporzionalità è il coniugato $1-2i$: il prodotto per il coniugato è reale.
+T: Quale delle seguenti coppie di vettori in $\mathbb C^2$ è formata da vettori linearmente dipendenti?
+OPT: ${}^t(2\ \ 1)$, ${}^t(4\ \ -2)$. | ${}^t(1+2i\ \ 1)$, ${}^t(-5\ \ 1-2i)$. | ${}^t(1+2i\ \ 1)$, ${}^t(5\ \ 1+2i)$. | ${}^t(1+2i\ \ 1)$, ${}^t(5\ \ 1-2i)$.
+8-7 D Due vettori non nulli di $\mathbb C^2$ sono dipendenti se e solo se uno è multiplo complesso dell'altro (equivalentemente $x_1y_2-x_2y_1=0$). Cerchiamo la coppia in cui questo **non** succede.
+  - ${}^t(2+i\ \ 1)$, ${}^t(-5\ \ -2+i)$: $\lambda=-2+i$, $(-2+i)(2+i)=-4-2i+2i+i^2=-5$ ✓. Dipendenti.
+  - ${}^t(2\ 1)$, ${}^t(4\ 2)$: il secondo è $2\cdot$ il primo. Dipendenti.
+  - ${}^t(2-i\ \ 1)$, ${}^t(-5\ \ -2-i)$: $\lambda=-2-i$, $(-2-i)(2-i)=-4+2i-2i+i^2=-5$ ✓. Dipendenti.
+  - ${}^t(2-i\ \ 1)$, ${}^t(5\ \ 2-i)$: $\lambda=2-i$, $(2-i)^2=4-4i-1=3-4i\ne5$. Oppure $x_1y_2-x_2y_1=(2-i)^2-5=-2-4i\ne0$. **Indipendenti**.
+  **Errore tipico:** credere che le coppie con il $-5$ "strano" siano indipendenti: $(-2+i)(2+i)=-(2-i)(2+i)=-5$, quindi sono proporzionali; mentre il quadrato $(2-i)^2$ non è reale.
+  TRAP: Le coppie che sembrano "irregolari" (con $-5$ e coordinate negative) sono proprio quelle dipendenti: il fattore è l'opposto del coniugato.
+T: Quale delle seguenti coppie di vettori in $\mathbb C^2$ è formata da vettori linearmente indipendenti?
+OPT: ${}^t(2+i\ \ 1)$, ${}^t(-5\ \ -2+i)$. | ${}^t(2\ \ 1)$, ${}^t(4\ \ 2)$. | ${}^t(2-i\ \ 1)$, ${}^t(-5\ \ -2-i)$. | ${}^t(2-i\ \ 1)$, ${}^t(5\ \ 2-i)$.
+8-8 A Due vettori non nulli di $\mathbb C^2$ sono dipendenti se e solo se uno è multiplo complesso dell'altro (equivalentemente $x_1y_2-x_2y_1=0$). Cerchiamo la coppia in cui non lo sono.
+  - ${}^t(2+i\ \ 1)$, ${}^t(5\ \ 2+i)$: $\lambda=2+i$, $(2+i)^2=4+4i-1=3+4i\ne5$; infatti $x_1y_2-x_2y_1=3+4i-5=-2+4i\ne0$. **Indipendenti**.
+  - ${}^t(2+i\ \ 1)$, ${}^t(5\ \ 2-i)$: $\lambda=2-i$, $(2-i)(2+i)=4+1=5$ ✓. Dipendenti.
+  - ${}^t(2-i\ \ 1)$, ${}^t(5\ \ 2+i)$: $\lambda=2+i$, $(2+i)(2-i)=5$ ✓. Dipendenti.
+  - ${}^t(2\ 1)$, ${}^t(4\ 2)$: il secondo è $2\cdot$ il primo. Dipendenti.
+  **Errore tipico:** pensare che la coppia con lo stesso numero $2+i$ in entrambi i vettori sia quella "proporzionale": serve il coniugato, perché $(2+i)(2-i)=5$ mentre $(2+i)^2=3+4i$.
+  TRAP: La coppia "con lo stesso numero complesso ripetuto" sembra proporzionale ma è l'unica indipendente.
+T: Quale delle seguenti coppie di vettori in $\mathbb C^2$ è formata da vettori linearmente indipendenti?
+OPT: ${}^t(2+i\ \ 1)$, ${}^t(5\ \ 2+i)$. | ${}^t(2+i\ \ 1)$, ${}^t(5\ \ 2-i)$. | ${}^t(2-i\ \ 1)$, ${}^t(5\ \ 2+i)$. | ${}^t(2\ \ 1)$, ${}^t(4\ \ 2)$.
+8-9 APERTA
+KW: vettore nullo, combinazione lineare, coefficienti tutti nulli|coefficienti nulli, non tutti nulli, linearmente indipendenti, linearmente dipendenti, combinazione lineare degli altri|uno di essi, multiplo|due vettori, una sola combinazione|unicità|unica, Span, m ≤ n|m > n|più vettori dei generatori, vettore nullo rende dipendenti|contiene 0
+> **Definizione 8.2.** Siano $\mathbf v_1,\dots,\mathbf v_n$ vettori di uno spazio vettoriale $V$ su $K$.
+> - Sono **linearmente indipendenti** se il vettore nullo è il risultato di **una sola** combinazione lineare di essi, quella con tutti i coefficienti nulli: se $\lambda_1\mathbf v_1+\dots+\lambda_n\mathbf v_n=\mathbf 0$ allora $\lambda_1=\dots=\lambda_n=0$.
+> - Sono **linearmente dipendenti** se esistono $\lambda_1,\dots,\lambda_n$ **non tutti nulli** con $\lambda_1\mathbf v_1+\dots+\lambda_n\mathbf v_n=\mathbf 0$.
+>
+> Le due nozioni sono complementari e non dipendono dall'ordine; zero vettori sono indipendenti; un solo vettore è indipendente se e solo se è non nullo; se uno dei vettori è $\mathbf 0$ sono dipendenti; aggiungendo vettori a vettori dipendenti si resta dipendenti (e togliendo vettori a vettori indipendenti si resta indipendenti). Esempio: ${}^t(2\ 3)$ e ${}^t(1\ 1)$ sono indipendenti ($a\,{}^t(2\ 3)+b\,{}^t(1\ 1)=\mathbf 0$ solo per $a=b=0$); ${}^t(2\ 3),{}^t(-1\ 0),{}^t(1\ 1)$ sono dipendenti ($1\cdot{}^t(2\ 3)-1\cdot{}^t(-1\ 0)-3\cdot{}^t(1\ 1)=\mathbf 0$); i polinomi $1,x,\dots,x^m$ sono indipendenti.
+>
+> **Proposizione 8.7.** I vettori sono linearmente dipendenti se e solo se **uno di essi è combinazione lineare degli altri**. *Dimostrazione:* se $\sum\lambda_j\mathbf v_j=\mathbf 0$ con $\lambda_i\ne0$, allora $\mathbf v_i=\sum_{j\ne i}\left(-\frac{\lambda_j}{\lambda_i}\right)\mathbf v_j$; viceversa se $\mathbf v_i=\sum_{j\ne i}\lambda_j\mathbf v_j$ allora $\sum_{j\ne i}\lambda_j\mathbf v_j-1\cdot\mathbf v_i=\mathbf 0$ con un coefficiente $-1\ne0$. Per $n=2$: **due vettori sono dipendenti se e solo se uno è multiplo dell'altro**.
+>
+> **Proposizione 8.12.** I vettori sono indipendenti se e solo se **ogni vettore di $\mathrm{Span}(\mathbf v_1,\dots,\mathbf v_n)$ è il risultato di una sola combinazione lineare** di essi (se due combinazioni avessero lo stesso risultato, la loro differenza darebbe $\mathbf 0$ con coefficienti $\lambda_i-\mu_i$ non tutti nulli).
+>
+> Altri risultati: **Prop. 8.15** se $\mathbf w_1,\dots,\mathbf w_m\in\mathrm{Span}(\mathbf v_1,\dots,\mathbf v_n)$ sono indipendenti allora $m\le n$ (equivalentemente, Prop. 8.16, più di $n$ vettori in uno Span di $n$ vettori sono dipendenti); **Prop. 8.19** se $\mathbf v_1,\dots,\mathbf v_n$ sono indipendenti, allora $\mathbf v_1,\dots,\mathbf v_n,\mathbf v$ sono indipendenti se e solo se $\mathbf v\notin\mathrm{Span}(\mathbf v_1,\dots,\mathbf v_n)$.
+x51 B Applichiamo la definizione: cerchiamo $a,b,c$ con $a\,{}^t(1\ 3\ 2)+b\,{}^t(0\ 2\ 2)+c\,{}^t(1\ 2\ 1)=\mathbf 0$, cioè
+  $$\begin{cases}a+c=0\\3a+2b+2c=0\\2a+2b+c=0\end{cases}$$
+  Dalla prima $c=-a$. Sostituendo: $3a+2b-2a=a+2b=0$ e $2a+2b-a=a+2b=0$: le due equazioni coincidono, quindi c'è una soluzione non nulla, ad esempio $b=1$, $a=-2$, $c=2$.
+  Verifica: $-2\,{}^t(1\ 3\ 2)+1\,{}^t(0\ 2\ 2)+2\,{}^t(1\ 2\ 1)={}^t(-2+0+2\ \ -6+2+4\ \ -4+2+2)={}^t(0\ 0\ 0)$. Equivalentemente ${}^t(1\ 3\ 2)=\frac12{}^t(0\ 2\ 2)+{}^t(1\ 2\ 1)$: il primo è combinazione degli altri (Prop. 8.7).
+  I vettori sono quindi **linearmente dipendenti**; la risposta non dipende da nient'altro (lo spazio è $\mathbb R^3$).
+  **Errore tipico:** concludere che sono indipendenti perché nessuno dei tre è multiplo di un altro: con tre o più vettori questo non basta, bisogna verificare se uno è combinazione lineare **degli altri due**.
+T: I tre vettori colonna $\begin{pmatrix}1\\3\\2\end{pmatrix}$, $\begin{pmatrix}0\\2\\2\end{pmatrix}$, $\begin{pmatrix}1\\2\\1\end{pmatrix}$ sono linearmente indipendenti?
+OPT: Sì. | No. | Dipende dallo spazio vettoriale. | Nessuna delle altre risposte.
+x52 A Se $\mathbf v,\mathbf w$ sono dipendenti esistono $\lambda,\mu$ non entrambi nulli con $\lambda\mathbf v+\mu\mathbf w=\mathbf 0$. Allora
+  $$\lambda\mathbf v+\mu\mathbf w+0\cdot\mathbf u=\mathbf 0$$
+  è una combinazione lineare di $\mathbf v,\mathbf w,\mathbf u$ con coefficienti non tutti nulli e risultato nullo: $\mathbf v,\mathbf w,\mathbf u$ sono **sempre** dipendenti, qualunque sia $\mathbf u$ (Osservazione 8.9: aggiungendo vettori a vettori dipendenti si resta dipendenti).
+  **Errore tipico:** pensare che la risposta dipenda da $\mathbf u$: è il contrario che può dipendere dai vettori aggiunti (aggiungendo vettori a vettori **indipendenti** si può ottenere dipendenza o no).
+T: Sapendo che i vettori $\mathbf v$ e $\mathbf w$ sono linearmente dipendenti, i vettori $\mathbf v$, $\mathbf w$, $\mathbf u$ sono linearmente dipendenti?
+OPT: Sì. | No. | Dipende da $\mathbf v$ e $\mathbf w$. | Dipende da $\mathbf u$.
+x53 D Per la Proposizione 8.12, se $\mathbf v,\mathbf w$ sono linearmente indipendenti **ogni vettore di $\mathrm{Span}(\mathbf v,\mathbf w)$ è il risultato di una sola combinazione lineare** di $\mathbf v$ e $\mathbf w$.
+  Infatti, se fosse anche $\mathbf u=a\mathbf v+b\mathbf w$ con $(a,b)\ne(2,1)$, sottraendo da $\mathbf u=2\mathbf v+\mathbf w$ otterremmo $(2-a)\mathbf v+(1-b)\mathbf w=\mathbf 0$ con coefficienti non tutti nulli, contro l'indipendenza. Quindi non esiste un'altra combinazione.
+  **Errore tipico:** pensare alle combinazioni "diverse con lo stesso risultato" della Lezione 6: succede solo quando i vettori sono dipendenti.
+T: Dati due vettori linearmente indipendenti $\mathbf v$ e $\mathbf w$, e dato il vettore $\mathbf u=2\mathbf v+\mathbf w$, esiste un'altra combinazione lineare dei vettori $\mathbf v$ e $\mathbf w$ il cui risultato è $\mathbf u$?
+OPT: Dipende da $\mathbf v$ e $\mathbf w$. | Dipende da $\mathbf u$. | Sì. | No.
+x54 C Per la Proposizione 8.15, se $\mathbf w_1,\dots,\mathbf w_m\in\mathrm{Span}(\mathbf v_1,\dots,\mathbf v_n)$ sono indipendenti, allora $m\le n$. Qui lo Span è generato da $n=2$ vettori, quindi **al massimo 2** vettori indipendenti.
+  Il massimo $2$ è effettivamente raggiunto: i due generatori ${}^t(2\ 0\ 1)$ e ${}^t(1\ -4\ 3)$ stanno nello Span e sono indipendenti, perché nessuno è multiplo dell'altro (la seconda coordinata del primo è $0$, quella del secondo $-4\ne0$, e il primo non è nullo).
+  **Errore tipico:** rispondere $3$ pensando che in $\mathbb R^3$ ci stiano tre vettori indipendenti: è vero in $\mathbb R^3$, ma non dentro uno Span di due soli vettori (che è un piano).
+T: Quale è il massimo numero di vettori colonna linearmente indipendenti che appartengono a $\mathrm{Span}\left(\begin{pmatrix}2\\0\\1\end{pmatrix},\begin{pmatrix}1\\-4\\3\end{pmatrix}\right)$?
+OPT: 0. | 1. | 2. | 3.

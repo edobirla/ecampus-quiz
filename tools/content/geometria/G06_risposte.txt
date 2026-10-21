@@ -1,0 +1,542 @@
+## L24 Sistemi di equazioni lineari
+24-1 C La **matrice dei coefficienti** (incompleta) $A$ ha una riga per ogni equazione e una colonna per ogni incognita, nell'ordine $x_1,x_2,x_3,x_4$; la **matrice completa** $(A\,|\,B)$ si ottiene aggiungendo ad $A$ la colonna dei termini noti.
+  Prima equazione: $0\cdot x_1+3x_2-x_3+4x_4=6$, quindi la prima riga di $A$ è $(0\ \ 3\ \ -1\ \ 4)$ (manca $x_1$, perciò il suo coefficiente è $0$).
+  Seconda equazione: $x_1-x_2-3x_3+0\cdot x_4=-1$, quindi la seconda riga è $(1\ \ -1\ \ -3\ \ 0)$ (manca $x_4$).
+  $$A=\begin{pmatrix}0&3&-1&4\\1&-1&-3&0\end{pmatrix},\qquad (A\,|\,B)=\left(\begin{array}{cccc|c}0&3&-1&4&6\\1&-1&-3&0&-1\end{array}\right).$$
+  La coppia corretta è quindi quella con queste due matrici: $A$ è $2\times 4$ e la completa è $2\times 5$.
+  **Errore tipico:** dimenticare gli zeri delle incognite mancanti (si ottiene una matrice con solo 3 colonne, che non dice più a quale incognita corrisponde ogni coefficiente), perdere i segni meno (righe con $1,3$ al posto di $-1,-3$), oppure proporre come "matrice completa" il solo vettore dei termini noti $B$, che invece è soltanto la sua ultima colonna.
+T: Dato il sistema di equazioni lineari $\begin{cases}3x_2-x_3+4x_4=6\\x_1-x_2-3x_3=-1\end{cases}$, quale delle seguenti coppie ne sono rispettivamente la matrice dei coefficienti e la matrice completa associate?
+OPT: $\begin{pmatrix}3&-1&4\\1&-1&-3\end{pmatrix}$ e $\left(\begin{array}{ccc|c}3&-1&4&6\\1&-1&-3&-1\end{array}\right)$ | $\begin{pmatrix}0&3&1&4\\1&1&3&0\end{pmatrix}$ e $\left(\begin{array}{cccc|c}0&3&1&4&6\\1&1&3&0&-1\end{array}\right)$ | $\begin{pmatrix}0&3&-1&4\\1&-1&-3&0\end{pmatrix}$ e $\left(\begin{array}{cccc|c}0&3&-1&4&6\\1&-1&-3&0&-1\end{array}\right)$ | $\begin{pmatrix}0&3&-1&4\\1&-1&-3&0\end{pmatrix}$ e $\begin{pmatrix}6\\-1\end{pmatrix}$
+24-2 C Ci sono 3 equazioni e 3 incognite $x_1,x_2,x_3$: $A$ è $3\times3$ e la completa $(A\,|\,B)$ è $3\times4$. Scriviamo ogni equazione con tutte le incognite, mettendo $0$ dove un'incognita manca:
+  - $0\cdot x_1+2x_2-3x_3=-1$ → riga $(0\ \ 2\ \ -3)$, termine noto $-1$;
+  - $4x_1+2x_2+0\cdot x_3=-3$ → riga $(4\ \ 2\ \ 0)$, termine noto $-3$;
+  - $3x_1+0\cdot x_2-2x_3=3$ → riga $(3\ \ 0\ \ -2)$, termine noto $3$.
+  $$A=\begin{pmatrix}0&2&-3\\4&2&0\\3&0&-2\end{pmatrix},\qquad (A\,|\,B)=\left(\begin{array}{ccc|c}0&2&-3&-1\\4&2&0&-3\\3&0&-2&3\end{array}\right).$$
+  **Errore tipico:** "compattare" le righe scrivendo solo i coefficienti presenti (si ottiene una matrice $3\times2$ senza senso, perché i coefficienti finiscono sotto l'incognita sbagliata), cambiare i segni dei coefficienti negativi, o dare come matrice completa il solo vettore dei termini noti.
+T: Dato il sistema di equazioni lineari $\begin{cases}2x_2-3x_3=-1\\4x_1+2x_2=-3\\3x_1-2x_3=3\end{cases}$, quale delle seguenti coppie ne sono rispettivamente la matrice dei coefficienti e la matrice completa associate?
+OPT: $\begin{pmatrix}0&2&-3\\4&2&0\\3&0&-2\end{pmatrix}$ e $\begin{pmatrix}-1\\-3\\3\end{pmatrix}$ | $\begin{pmatrix}2&-3\\4&2\\3&-2\end{pmatrix}$ e $\left(\begin{array}{cc|c}2&-3&-1\\4&2&-3\\3&-2&3\end{array}\right)$ | $\begin{pmatrix}0&2&-3\\4&2&0\\3&0&-2\end{pmatrix}$ e $\left(\begin{array}{ccc|c}0&2&-3&-1\\4&2&0&-3\\3&0&-2&3\end{array}\right)$ | $\begin{pmatrix}0&2&3\\4&2&0\\3&0&2\end{pmatrix}$ e $\left(\begin{array}{ccc|c}0&2&3&-1\\4&2&0&-3\\3&0&2&3\end{array}\right)$
+24-3 C Le incognite sono $x_1,x_2,x_3$ (anche se nessuna equazione le contiene tutte), quindi $A$ è $2\times3$.
+  - $4x_1-x_2+0\cdot x_3=3$ → riga $(4\ \ -1\ \ 0)$, termine noto $3$;
+  - $0\cdot x_1+2x_2-3x_3=-2$ → riga $(0\ \ 2\ \ -3)$, termine noto $-2$.
+  $$A=\begin{pmatrix}4&-1&0\\0&2&-3\end{pmatrix},\qquad (A\,|\,B)=\left(\begin{array}{ccc|c}4&-1&0&3\\0&2&-3&-2\end{array}\right).$$
+  **Errore tipico:** scrivere una matrice $2\times2$ con i soli coefficienti "visibili" (così il $2$ di $x_2$ finisce nella colonna di $x_1$), perdere i segni meno, oppure prendere il vettore dei termini noti al posto della matrice completa.
+T: Dato il sistema di equazioni lineari $\begin{cases}4x_1-x_2=3\\2x_2-3x_3=-2\end{cases}$, quale delle seguenti coppie ne sono rispettivamente la matrice dei coefficienti e la matrice completa associate?
+OPT: $\begin{pmatrix}4&-1&0\\0&2&-3\end{pmatrix}$ e $\begin{pmatrix}3\\-2\end{pmatrix}$ | $\begin{pmatrix}4&1&0\\0&2&3\end{pmatrix}$ e $\left(\begin{array}{ccc|c}4&1&0&3\\0&2&3&-2\end{array}\right)$ | $\begin{pmatrix}4&-1&0\\0&2&-3\end{pmatrix}$ e $\left(\begin{array}{ccc|c}4&-1&0&3\\0&2&-3&-2\end{array}\right)$ | $\begin{pmatrix}4&-1\\2&-3\end{pmatrix}$ e $\left(\begin{array}{cc|c}4&-1&3\\2&-3&-2\end{array}\right)$
+24-4 B Tre equazioni nelle incognite $x_1,x_2,x_3$: $A$ è $3\times3$.
+  - $x_1-3x_2+0\cdot x_3=-2$ → riga $(1\ \ -3\ \ 0)$, termine noto $-2$;
+  - $0\cdot x_1+3x_2-x_3=0$ → riga $(0\ \ 3\ \ -1)$, termine noto $0$;
+  - $2x_1+0\cdot x_2+x_3=3$ → riga $(2\ \ 0\ \ 1)$, termine noto $3$.
+  $$A=\begin{pmatrix}1&-3&0\\0&3&-1\\2&0&1\end{pmatrix},\qquad (A\,|\,B)=\left(\begin{array}{ccc|c}1&-3&0&-2\\0&3&-1&0\\2&0&1&3\end{array}\right).$$
+  **Errore tipico:** una matrice $3\times2$ con i soli coefficienti presenti (nella terza riga il coefficiente $1$ di $x_3$ finirebbe sotto $x_2$), coefficienti con il segno cambiato ($3$ e $1$ al posto di $-3$ e $-1$), o il vettore dei termini noti al posto della completa.
+T: Dato il sistema di equazioni lineari $\begin{cases}x_1-3x_2=-2\\3x_2-x_3=0\\2x_1+x_3=3\end{cases}$, quale delle seguenti coppie ne sono rispettivamente la matrice dei coefficienti e la matrice completa associate?
+OPT: $\begin{pmatrix}1&-3\\3&-1\\2&1\end{pmatrix}$ e $\left(\begin{array}{cc|c}1&-3&-2\\3&-1&0\\2&1&3\end{array}\right)$ | $\begin{pmatrix}1&-3&0\\0&3&-1\\2&0&1\end{pmatrix}$ e $\left(\begin{array}{ccc|c}1&-3&0&-2\\0&3&-1&0\\2&0&1&3\end{array}\right)$ | $\begin{pmatrix}1&3&0\\0&3&1\\2&0&1\end{pmatrix}$ e $\left(\begin{array}{ccc|c}1&3&0&-2\\0&3&1&0\\2&0&1&3\end{array}\right)$ | $\begin{pmatrix}1&-3&0\\0&3&-1\\2&0&1\end{pmatrix}$ e $\begin{pmatrix}-2\\0\\3\end{pmatrix}$
+24-5 C Incognite $x_1,x_2,x_3$, due equazioni: $A$ è $2\times3$.
+  - $0\cdot x_1+x_2-2x_3=-5$ → riga $(0\ \ 1\ \ -2)$, termine noto $-5$;
+  - $3x_1+0\cdot x_2-x_3=1$ → riga $(3\ \ 0\ \ -1)$, termine noto $1$.
+  $$A=\begin{pmatrix}0&1&-2\\3&0&-1\end{pmatrix},\qquad (A\,|\,B)=\left(\begin{array}{ccc|c}0&1&-2&-5\\3&0&-1&1\end{array}\right).$$
+  **Errore tipico:** perdere i segni dei coefficienti di $x_3$ (scrivendo $2$ e $1$), togliere gli zeri ottenendo una matrice $2\times2$ (così il $3$ di $x_1$ finisce nella colonna del coefficiente $1$ di $x_2$), oppure confondere la matrice completa con il solo vettore dei termini noti.
+T: Dato il sistema di equazioni lineari $\begin{cases}x_2-2x_3=-5\\3x_1-x_3=1\end{cases}$, quale delle seguenti coppie ne sono rispettivamente la matrice dei coefficienti e la matrice completa associate?
+OPT: $\begin{pmatrix}0&1&2\\3&0&1\end{pmatrix}$ e $\left(\begin{array}{ccc|c}0&1&2&-5\\3&0&1&1\end{array}\right)$ | $\begin{pmatrix}0&1&-2\\3&0&-1\end{pmatrix}$ e $\begin{pmatrix}-5\\1\end{pmatrix}$ | $\begin{pmatrix}0&1&-2\\3&0&-1\end{pmatrix}$ e $\left(\begin{array}{ccc|c}0&1&-2&-5\\3&0&-1&1\end{array}\right)$ | $\begin{pmatrix}1&-2\\3&-1\end{pmatrix}$ e $\left(\begin{array}{cc|c}1&-2&-5\\3&-1&1\end{array}\right)$
+24-6 A Le incognite sono quattro, $x_1,x_2,x_3,x_4$: $A$ è $2\times4$ e la completa è $2\times5$.
+  - $x_1-3x_2+0\cdot x_3+x_4=0$ → riga $(1\ \ -3\ \ 0\ \ 1)$, termine noto $0$;
+  - $0\cdot x_1+x_2-4x_3+2x_4=-2$ → riga $(0\ \ 1\ \ -4\ \ 2)$, termine noto $-2$.
+  $$A=\begin{pmatrix}1&-3&0&1\\0&1&-4&2\end{pmatrix},\qquad (A\,|\,B)=\left(\begin{array}{cccc|c}1&-3&0&1&0\\0&1&-4&2&-2\end{array}\right).$$
+  Il termine noto $0$ della prima equazione va comunque scritto nell'ultima colonna della completa.
+  **Errore tipico:** omettere gli zeri (si ottiene una matrice $2\times3$ in cui le colonne non corrispondono più alle incognite), cambiare i segni di $-3$ e $-4$, o fermarsi al vettore dei termini noti invece di scrivere la matrice completa.
+T: Dato il sistema di equazioni lineari $\begin{cases}x_1-3x_2+x_4=0\\x_2-4x_3+2x_4=-2\end{cases}$, quale delle seguenti coppie ne sono rispettivamente la matrice dei coefficienti e la matrice completa associate?
+OPT: $\begin{pmatrix}1&-3&0&1\\0&1&-4&2\end{pmatrix}$ e $\left(\begin{array}{cccc|c}1&-3&0&1&0\\0&1&-4&2&-2\end{array}\right)$ | $\begin{pmatrix}1&-3&0&1\\0&1&-4&2\end{pmatrix}$ e $\begin{pmatrix}0\\-2\end{pmatrix}$ | $\begin{pmatrix}1&-3&1\\1&-4&2\end{pmatrix}$ e $\left(\begin{array}{ccc|c}1&-3&1&0\\1&-4&2&-2\end{array}\right)$ | $\begin{pmatrix}1&3&0&1\\0&1&4&2\end{pmatrix}$ e $\left(\begin{array}{cccc|c}1&3&0&1&0\\0&1&4&2&-2\end{array}\right)$
+24-7 APERTA
+KW: sistema omogeneo associato|omogeneo associato, A X = 0|AX=0, soluzione particolare, S = X + S0|S=X+S0, nucleo|Ker, controimmagine|preimmagine, compatibile, sottospazio vettoriale, parametri, n - rank(A)|n-rank, soluzione nulla
+> Dato un sistema di equazioni lineari $A\cdot X=B$ ($m$ equazioni, $n$ incognite in un campo $\mathbb{K}$), il **sistema omogeneo associato** è $A\cdot X=0$: stessa matrice dei coefficienti, termini noti tutti nulli.
+>
+> **Fatti sul sistema omogeneo.** Un sistema omogeneo è sempre compatibile, perché $X=0_n$ è soluzione ($A\cdot 0_n=0_m$). L'insieme $\mathcal{S}_0$ delle sue soluzioni è il **nucleo** $\mathrm{Ker}(f_A)$ dell'applicazione lineare $f_A:\mathbb{K}^n\to\mathbb{K}^m$, $f_A(X)=A\cdot X$, quindi è un **sottospazio vettoriale** di $\mathbb{K}^n$.
+>
+> **Proposizione.** Se $\mathcal{S}$ è l'insieme delle soluzioni di un sistema **compatibile** $A\cdot X=B$ e $\mathcal{S}_0$ quello dell'omogeneo associato, allora
+> $$\mathcal{S}=\overline{X}+\mathcal{S}_0,$$
+> dove $\overline{X}$ è una qualsiasi soluzione di $A\cdot X=B$.
+>
+> *Dimostrazione.* $\mathcal{S}$ è la controimmagine $\mathrm{Preim}_{f_A}(B)$. Essendo il sistema compatibile, la controimmagine non è vuota, e per un'applicazione lineare vale $\mathrm{Preim}_{f_A}(B)=\overline{X}+\mathrm{Ker}(f_A)$ con $\overline{X}$ un suo elemento qualsiasi. Poiché $\mathrm{Ker}(f_A)=\mathcal{S}_0$, si ha la tesi. (Verifica diretta: se $A\overline{X}=B$ e $AX_0=0$ allora $A(\overline{X}+X_0)=B$; viceversa, se $AX=B$, allora $A(X-\overline{X})=0$.)
+>
+> In parole: **la soluzione generica del sistema è una soluzione particolare più la soluzione generica dell'omogeneo associato.**
+>
+> **Conseguenze.** Se $B\neq0$, $\mathcal{S}$ non è un sottospazio (non contiene $0$), ma è un "traslato" di $\mathcal{S}_0$. Se $\dim\mathrm{Ker}(f_A)=k$, le soluzioni (dell'omogeneo e, se compatibile, del sistema) si parametrizzano con $k$ parametri, con
+> $$k=\dim\mathrm{Ker}(f_A)=n-\dim\mathrm{Im}(f_A)=n-\mathrm{rank}(A);$$
+> si scrive che il sistema ha $\infty^{n-\mathrm{rank}(A)}$ soluzioni ($\infty^0$ = una sola soluzione, quando $\mathrm{Ker}(f_A)=\{0\}$). Un sistema lineare quindi ha 0, una oppure infinite soluzioni.
+>
+> **Esempio.** $\begin{cases}x_1-x_2+2x_3+3x_4=0\\x_1-x_2+3x_3+4x_4=-3\\x_1-x_2+x_3+2x_4=3\end{cases}$ ha soluzioni $(6+\alpha-\beta,\ \alpha,\ -3-\beta,\ \beta)$: sono la soluzione particolare $(6,0,-3,0)$ più le soluzioni $(\alpha-\beta,\alpha,-\beta,\beta)$ dell'omogeneo associato.
+x115 B Un sistema è **lineare** se i membri di ogni equazione sono polinomi di grado al più 1 nelle incognite: ogni incognita compare solo alla prima potenza, moltiplicata per una costante, senza prodotti tra incognite e senza funzioni (seno, coseno, …) delle incognite.
+  Controlliamo i sistemi uno per uno:
+  - quello con $3x+2z^2=1$ non è lineare: $z^2$ ha grado 2;
+  - quello con $3x+2\cos z=1$ non è lineare: $\cos z$ non è un polinomio in $z$;
+  - quello con $5xz+2t=2$ non è lineare: il monomio $xz$ è un prodotto di due incognite, quindi di grado 2;
+  - quello con $x+2y=1,\ 3x+2z=1,\ 5z+2t=2$ è lineare: tutte le incognite compaiono al primo grado con coefficienti costanti.
+  **Errore tipico:** pensare che $5xz$ sia lineare perché "ogni lettera ha esponente 1": conta il grado del monomio, che per $xz$ è $1+1=2$.
+T: Quale dei seguenti sistemi di equazioni reali è lineare?
+OPT: $\begin{cases}x+2y=1\\3x+2z^2=1\\5z+2t=2\end{cases}$ | $\begin{cases}x+2y=1\\3x+2z=1\\5z+2t=2\end{cases}$ | $\begin{cases}x+2y=1\\3x+2\cos z=1\\5z+2t=2\end{cases}$ | $\begin{cases}x+2y=1\\3x+2z=1\\5xz+2t=2\end{cases}$
+x116 D La matrice incompleta $\begin{pmatrix}3&-1\\4&6\end{pmatrix}$ ha 2 righe (2 equazioni) e 2 colonne (2 incognite, $x_1$ e $x_2$). La riga $i$ dà i coefficienti della $i$-esima equazione, il termine noto $i$-esimo va a secondo membro:
+  $$\begin{pmatrix}3&-1\\4&6\end{pmatrix}\begin{pmatrix}x_1\\x_2\end{pmatrix}=\begin{pmatrix}-1\\-3\end{pmatrix}\iff\begin{cases}3x_1-x_2=-1\\4x_1+6x_2=-3\end{cases}$$
+  **Errore tipico:** introdurre una terza incognita $x_3$ (la matrice ha solo due colonne), oppure trattare i termini noti come una terza colonna di coefficienti, che porta a un sistema omogeneo con tre incognite: in questo modo si scrive un sistema diverso.
+T: Quale dei seguenti è il sistema di equazioni lineari associato alla matrice incompleta $\begin{pmatrix}3&-1\\4&6\end{pmatrix}$ e al vettore dei termini noti $\begin{pmatrix}-1\\-3\end{pmatrix}$?
+OPT: $\begin{cases}3x_1-x_3=-1\\4x_1+6x_2=-3\end{cases}$ | $\begin{cases}3x_1-x_2=-1\\4x_1+6x_3=-3\end{cases}$ | $\begin{cases}3x_1-x_2-x_3=0\\4x_1+6x_2-3x_3=0\end{cases}$ | $\begin{cases}3x_1-x_2=-1\\4x_1+6x_2=-3\end{cases}$
+x117 A È la Proposizione 24.24: per un sistema compatibile, l'insieme delle soluzioni è **una soluzione particolare del sistema più tutte le soluzioni dell'omogeneo associato**: $\mathcal{S}=\overline{X}+\mathcal{S}_0$.
+  Motivo: se $A\overline{X}=B$ e $AX_0=0$, allora $A(\overline{X}+X_0)=B+0=B$; viceversa, se $AX=B$, allora $A(X-\overline{X})=B-B=0$, cioè $X-\overline{X}\in\mathcal{S}_0$.
+  Le altre uguaglianze sono false:
+  - $\overline{X}_0+\mathcal{S}_0$ è ancora $\mathcal{S}_0$ (sommando una soluzione dell'omogeneo a tutte le soluzioni dell'omogeneo si resta nell'omogeneo), che contiene $0$, mentre $\mathcal{S}$ non lo contiene se $B\neq0$;
+  - $\overline{X}+\mathcal{S}$ e $\overline{X}_0+\mathcal{S}$ non danno $\mathcal{S}_0$: per esempio $A(\overline{X}+X)=2B$, che non è $0$ se $B\neq0$.
+  **Errore tipico:** scambiare i ruoli e traslare con una soluzione dell'omogeneo: per passare dalle soluzioni dell'omogeneo a quelle del sistema serve una soluzione **del sistema completo** $A X=B$.
+T: Dato un sistema di equazioni lineari $A\cdot X=B$ tale che $\mathcal{S}$ è l'insieme delle soluzioni, $\mathcal{S}_0$ è l'insieme delle soluzioni del sistema omogeneo associato $A\cdot X=0$, $\overline{X}$ è una soluzione del sistema $A\cdot X=B$ e $\overline{X}_0$ è una soluzione del sistema omogeneo associato $A\cdot X=0$, quale delle seguenti uguaglianze è vera?
+OPT: $\mathcal{S}=\overline{X}+\mathcal{S}_0$. | $\mathcal{S}=\overline{X}_0+\mathcal{S}_0$. | $\mathcal{S}_0=\overline{X}+\mathcal{S}$. | $\mathcal{S}_0=\overline{X}_0+\mathcal{S}$.
+x118 C Per un sistema compatibile il numero di parametri delle soluzioni è $k=\dim\mathrm{Ker}(f_A)$, perché $\mathcal{S}=\overline{X}+\mathrm{Ker}(f_A)$.
+  Per il teorema della dimensione (nullità + rango) applicato a $f_A:\mathbb{R}^n\to\mathbb{R}^m$:
+  $$\dim\mathrm{Ker}(f_A)=n-\dim\mathrm{Im}(f_A)=n-\mathrm{rank}(f_A)=n-\mathrm{rank}(A).$$
+  Quindi le scritture $\infty^{n-\mathrm{rank}(A)}$, $\infty^{\dim\mathrm{Ker}(f_A)}$ e $\infty^{n-\dim\mathrm{Im}(f_A)}$ indicano tutte lo stesso numero di soluzioni e sono vere.
+  È **falsa** quella con esponente $\mathrm{rank}(A)$: il rango conta le equazioni "indipendenti", cioè i vincoli, non i parametri liberi. Controesempio: $x_1=1,\ x_2=2$ ($n=2$, $\mathrm{rank}(A)=2$) ha una sola soluzione, cioè $\infty^0$, non $\infty^2$.
+  **Errore tipico:** confondere il rango con la dimensione del nucleo: più alto è il rango, **meno** parametri ci sono.
+T: Dati un sistema di equazioni lineari reale compatibile $A\cdot X=B$ e l'applicazione lineare $f_A\colon\mathbb{R}^n\to\mathbb{R}^m$ associata alla matrice $A$, quale delle seguenti proposizioni è **falsa**?
+OPT: Il sistema ha $\infty^{n-\mathrm{rank}(A)}$ soluzioni. | Il sistema ha $\infty^{\dim(\mathrm{Ker}(f_A))}$ soluzioni. | Il sistema ha $\infty^{\mathrm{rank}(A)}$ soluzioni. | Il sistema ha $\infty^{n-\dim(\mathrm{Im}(f_A))}$ soluzioni.
+## L25 Esistenza e unicità delle soluzioni
+25-1 B Matrice incompleta e completa: $A=\begin{pmatrix}3&2\\6&4\end{pmatrix}$, $(A\,|\,B)=\left(\begin{array}{cc|c}3&2&-1\\6&4&2\end{array}\right)$.
+  - $\det A=3\cdot4-2\cdot6=12-12=0$, e $A$ non è nulla, quindi $r_i=\mathrm{rank}(A)=1$ (la seconda riga di $A$ è il doppio della prima).
+  - Nella completa il minore formato dalla prima e dalla terza colonna vale $\det\begin{pmatrix}3&-1\\6&2\end{pmatrix}=6+6=12\neq0$, quindi $r_c=2$.
+  Poiché $r_i\neq r_c$, per il **Teorema di Rouché-Capelli** il sistema **non ha soluzione**. Si vede anche a occhio: il doppio della prima equazione dà $6x_1+4x_2=-2$, in contraddizione con $6x_1+4x_2=2$.
+  **Errore tipico:** concludere che il sistema ha soluzione perché "il rango della completa è massimo": la compatibilità richiede che i due ranghi siano **uguali**, non grandi. Altro errore: fermarsi a $\det A=0$ e dire $r_c=1$ senza controllare i minori che contengono la colonna dei termini noti.
+  TRAP: È quasi identico al sistema con termine noto $-2$ nella seconda equazione: lì $(6,4,-2)$ è il doppio di $(3,2,-1)$ e il sistema è compatibile; qui il segno del termine noto cambia tutto.
+T: Dato il sistema di equazioni lineari $\begin{cases}3x_1+2x_2=-1\\6x_1+4x_2=2\end{cases}$, quale delle seguenti affermazioni è vera? ($r_i$ ed $r_c$ indicano rispettivamente il rango della matrice incompleta e il rango della matrice completa associati al sistema.)
+OPT: $r_i=1$, $r_c=1$, il sistema non ha soluzione. | $r_i=1$, $r_c=2$, il sistema non ha soluzione. | $r_i=1$, $r_c=2$, il sistema ha soluzione. | $r_i=1$, $r_c=1$, il sistema ha soluzione.
+25-2 B $A=\begin{pmatrix}3&2\\6&-4\end{pmatrix}$, $(A\,|\,B)=\left(\begin{array}{cc|c}3&2&-1\\6&-4&-2\end{array}\right)$.
+  - $\det A=3\cdot(-4)-2\cdot6=-12-12=-24\neq0$, quindi $r_i=2$.
+  - La completa è $2\times3$, quindi il suo rango è al massimo 2, e contiene il minore non nullo di $A$: $r_c=2$.
+  Ranghi uguali → per **Rouché-Capelli** il sistema ha soluzione; anzi, essendo $A$ quadrata con $\det A\neq0$, la soluzione è unica ($\infty^{2-2}=\infty^0$). Infatti, sommando le due equazioni moltiplicando la prima per 2: $12x_1=-4$, quindi $x_1=-\tfrac13$, $x_2=0$.
+  **Errore tipico:** confondere questo sistema con quello simile $6x_1+4x_2=\dots$ (righe proporzionali, rango 1): qui il coefficiente è $-4$, la seconda riga **non** è multipla della prima e $r_i=2$.
+T: Dato il sistema di equazioni lineari $\begin{cases}3x_1+2x_2=-1\\6x_1-4x_2=-2\end{cases}$, quale delle seguenti affermazioni è vera? ($r_i$ ed $r_c$ indicano rispettivamente il rango della matrice incompleta e il rango della matrice completa associati al sistema.)
+OPT: $r_i=1$, $r_c=2$, il sistema ha soluzione. | $r_i=2$, $r_c=2$, il sistema ha soluzione. | $r_i=2$, $r_c=2$, il sistema non ha soluzione. | $r_i=1$, $r_c=2$, il sistema non ha soluzione.
+25-3 D Tre equazioni in due incognite: $A=\begin{pmatrix}1&-1\\1&-3\\1&3\end{pmatrix}$ ($3\times2$), $(A\,|\,B)=\left(\begin{array}{cc|c}1&-1&1\\1&-3&-2\\1&3&7\end{array}\right)$ ($3\times3$).
+  - Il minore di $A$ con le prime due righe vale $\det\begin{pmatrix}1&-1\\1&-3\end{pmatrix}=-3+1=-2\neq0$, quindi $r_i=2$ (il massimo possibile per una matrice con 2 colonne).
+  - La completa è quadrata: sviluppando lungo la prima riga
+  $$\det(A\,|\,B)=1\cdot(-21+6)-(-1)\cdot(7+2)+1\cdot(3+3)=-15+9+6=0,$$
+  quindi $r_c=2$.
+  $r_i=r_c=2$ → il sistema **ha soluzione** (unica, $\infty^{2-2}$). Verifica: dalle prime due equazioni, sottraendo, $2x_2=3$, cioè $x_2=\tfrac32$ e $x_1=\tfrac52$; nella terza $\tfrac52+\tfrac92=7$ ✓.
+  **Errore tipico:** pensare che un sistema con più equazioni che incognite sia sempre impossibile, oppure sbagliare un segno nel determinante $3\times3$ della completa e trovare $r_c=3$.
+  TRAP: Esiste una versione identica con $-7$ come ultimo termine noto, che è incompatibile: bisogna calcolare davvero il determinante della completa.
+T: Dato il sistema di equazioni lineari $\begin{cases}x_1-x_2=1\\x_1-3x_2=-2\\x_1+3x_2=7\end{cases}$, quale delle seguenti affermazioni è vera? ($r_i$ ed $r_c$ indicano rispettivamente il rango della matrice incompleta e il rango della matrice completa associati al sistema.)
+OPT: $r_i=2$, $r_c=2$, il sistema non ha soluzione. | $r_i=2$, $r_c=3$, il sistema non ha soluzione. | $r_i=2$, $r_c=3$, il sistema ha soluzione. | $r_i=2$, $r_c=2$, il sistema ha soluzione.
+25-4 B $A=\begin{pmatrix}1&-1\\1&-3\\1&3\end{pmatrix}$, $(A\,|\,B)=\left(\begin{array}{cc|c}1&-1&1\\1&-3&-2\\1&3&-7\end{array}\right)$.
+  - $\det\begin{pmatrix}1&-1\\1&-3\end{pmatrix}=-2\neq0$, quindi $r_i=2$.
+  - Sviluppando il determinante della completa lungo la prima riga:
+  $$\det(A\,|\,B)=1\cdot(21+6)-(-1)\cdot(-7+2)+1\cdot(3+3)=27-5+6=28\neq0,$$
+  quindi $r_c=3$.
+  $r_i=2\neq r_c=3$ → per **Rouché-Capelli** il sistema **non ha soluzione**. Verifica: le prime due equazioni danno $x_2=\tfrac32$, $x_1=\tfrac52$, ma nella terza $\tfrac52+\tfrac92=7\neq-7$.
+  **Errore tipico:** dire "$r_c=3$, quindi il sistema ha soluzione": un rango della completa maggiore di quello dell'incompleta significa proprio **incompatibilità**. Inoltre $r_c$ non può mai essere minore di $r_i$.
+  TRAP: Differisce dalla versione compatibile solo per il segno dell'ultimo termine noto ($-7$ invece di $7$).
+T: Dato il sistema di equazioni lineari $\begin{cases}x_1-x_2=1\\x_1-3x_2=-2\\x_1+3x_2=-7\end{cases}$, quale delle seguenti affermazioni è vera? ($r_i$ ed $r_c$ indicano rispettivamente il rango della matrice incompleta e il rango della matrice completa associati al sistema.)
+OPT: $r_i=2$, $r_c=2$, il sistema non ha soluzione. | $r_i=2$, $r_c=3$, il sistema non ha soluzione. | $r_i=2$, $r_c=2$, il sistema ha soluzione. | $r_i=2$, $r_c=3$, il sistema ha soluzione.
+25-5 A $A=\begin{pmatrix}1&-1\\3&-3\\-3&3\end{pmatrix}$, $(A\,|\,B)=\left(\begin{array}{cc|c}1&-1&1\\3&-3&-2\\-3&3&7\end{array}\right)$.
+  - Le righe di $A$ sono $(1,-1)$, $3(1,-1)$, $-3(1,-1)$: tutte multiple della prima, quindi $r_i=1$.
+  - Nella completa il minore con le prime due righe e le colonne 1 e 3 vale $\det\begin{pmatrix}1&1\\3&-2\end{pmatrix}=-2-3=-5\neq0$, quindi $r_c\ge2$; il determinante $3\times3$ è nullo perché le prime due colonne sono proporzionali, quindi $r_c=2$.
+  $r_i=1\neq r_c=2$ → il sistema **non ha soluzione** (infatti $x_1-x_2$ dovrebbe valere contemporaneamente $1$, $-\tfrac23$ e $-\tfrac73$).
+  **Errore tipico:** contare due righe "diverse" in $A$ e dire $r_i=2$: $(3,-3)$ e $(-3,3)$ sono entrambe multiple di $(1,-1)$. Oppure dire che, essendo $r_c=2$ uguale al numero di incognite, il sistema è risolubile: si confrontano $r_i$ e $r_c$, non $r_c$ e $n$.
+T: Dato il sistema di equazioni lineari $\begin{cases}x_1-x_2=1\\3x_1-3x_2=-2\\-3x_1+3x_2=7\end{cases}$, quale delle seguenti affermazioni è vera? ($r_i$ ed $r_c$ indicano rispettivamente il rango della matrice incompleta e il rango della matrice completa associati al sistema.)
+OPT: $r_i=1$, $r_c=2$, il sistema non ha soluzione. | $r_i=2$, $r_c=2$, il sistema non ha soluzione. | $r_i=2$, $r_c=2$, il sistema ha soluzione. | $r_i=1$, $r_c=2$, il sistema ha soluzione.
+25-6 B $(A\,|\,B)=\left(\begin{array}{ccc|c}2&-6&4&2\\1&-3&2&1\end{array}\right)$.
+  La prima riga della completa, **termine noto compreso**, è il doppio della seconda: $(2,-6,4,2)=2\cdot(1,-3,2,1)$. Quindi tutti i minori di ordine 2, sia di $A$ sia della completa, sono nulli, e le matrici non sono nulle: $r_i=r_c=1$.
+  Ranghi uguali → il sistema **ha soluzione**, con $\infty^{3-1}=\infty^2$ soluzioni (le due equazioni sono la stessa: $x_1=1+3x_2-2x_3$).
+  **Errore tipico:** controllare solo la proporzionalità dei coefficienti e dimenticare il termine noto (che qui è proporzionale anch'esso), oppure pensare che $r_i=1$ con due equazioni significhi automaticamente incompatibilità.
+T: Dato il sistema di equazioni lineari $\begin{cases}2x_1-6x_2+4x_3=2\\x_1-3x_2+2x_3=1\end{cases}$, quale delle seguenti affermazioni è vera? ($r_i$ ed $r_c$ indicano rispettivamente il rango della matrice incompleta e il rango della matrice completa associati al sistema.)
+OPT: $r_i=1$, $r_c=2$, il sistema non ha soluzione. | $r_i=1$, $r_c=1$, il sistema ha soluzione. | $r_i=1$, $r_c=1$, il sistema non ha soluzione. | $r_i=1$, $r_c=2$, il sistema ha soluzione.
+25-7 C $(A\,|\,B)=\left(\begin{array}{cc|c}3&2&-1\\6&4&-2\end{array}\right)$.
+  - $\det A=3\cdot4-2\cdot6=0$ e $A\neq0$: $r_i=1$.
+  - La seconda riga della completa è il doppio della prima anche nel termine noto: $(6,4,-2)=2\cdot(3,2,-1)$. Quindi anche i minori $\det\begin{pmatrix}3&-1\\6&-2\end{pmatrix}=-6+6=0$ e $\det\begin{pmatrix}2&-1\\4&-2\end{pmatrix}=-4+4=0$ sono nulli: $r_c=1$.
+  $r_i=r_c=1$ → il sistema **ha soluzione**, $\infty^{2-1}=\infty^1$ (la seconda equazione è superflua: $x_2=\tfrac{-1-3x_1}{2}$).
+  **Errore tipico:** fermarsi a $\det A=0$ e concludere che il sistema è impossibile: con $A$ quadrata e $\det A=0$ le soluzioni possono non esistere **oppure** essere infinite; decide il confronto dei ranghi.
+  TRAP: Con termine noto $+2$ nella seconda equazione lo stesso sistema diventa incompatibile.
+T: Dato il sistema di equazioni lineari $\begin{cases}3x_1+2x_2=-1\\6x_1+4x_2=-2\end{cases}$, quale delle seguenti affermazioni è vera? ($r_i$ ed $r_c$ indicano rispettivamente il rango della matrice incompleta e il rango della matrice completa associati al sistema.)
+OPT: $r_i=1$, $r_c=1$, il sistema non ha soluzione. | $r_i=1$, $r_c=2$, il sistema ha soluzione. | $r_i=1$, $r_c=1$, il sistema ha soluzione. | $r_i=1$, $r_c=2$, il sistema non ha soluzione.
+25-8 C $A=\begin{pmatrix}2&-6&4\\1&3&2\end{pmatrix}$, $(A\,|\,B)=\left(\begin{array}{ccc|c}2&-6&4&2\\1&3&2&1\end{array}\right)$.
+  - Il minore delle prime due colonne vale $\det\begin{pmatrix}2&-6\\1&3\end{pmatrix}=6+6=12\neq0$, quindi $r_i=2$ (il massimo con 2 righe).
+  - La completa ha 2 righe e contiene questo minore: $r_c=2$.
+  $r_i=r_c=2$ → il sistema **ha soluzione**, $\infty^{3-2}=\infty^1$.
+  **Errore tipico:** leggerlo come il sistema simile con $-3x_2$ nella seconda equazione (righe proporzionali, rango 1): qui c'è $+3x_2$, e $(2,-6)$ non è multiplo di $(1,3)$. Inoltre, con due sole righe, un rango 2 della completa non può mai superare quello dell'incompleta se questo è già 2.
+T: Dato il sistema di equazioni lineari $\begin{cases}2x_1-6x_2+4x_3=2\\x_1+3x_2+2x_3=1\end{cases}$, quale delle seguenti affermazioni è vera? ($r_i$ ed $r_c$ indicano rispettivamente il rango della matrice incompleta e il rango della matrice completa associati al sistema.)
+OPT: $r_i=1$, $r_c=2$, il sistema non ha soluzione. | $r_i=1$, $r_c=2$, il sistema ha soluzione. | $r_i=2$, $r_c=2$, il sistema ha soluzione. | $r_i=2$, $r_c=2$, il sistema non ha soluzione.
+25-9 A Per un sistema **compatibile** in $n$ incognite, con $r=\mathrm{rank}(A)$, le soluzioni sono parametrizzate da $n-r$ parametri: si scrive $\infty^{n-r}$ (Osservazione 25.4).
+  Qui $n=3$ e $r=3$ (infatti $\det\begin{pmatrix}2&-3&1\\4&-2&-1\\2&7&4\end{pmatrix}=2(-8+7)+3(16+2)+1(28+4)=-2+54+32=84\neq0$), quindi
+  $$\infty^{3-3}=\infty^0,$$
+  cioè **una e una sola soluzione** (è il caso del Teorema 25.6: $A$ quadrata con $\det A\neq0$). La soluzione è $(x_1,x_2,x_3)=(\tfrac12,0,-1)$.
+  **Errore tipico:** usare come esponente il rango ($\infty^3$) o il numero di equazioni: l'esponente è il numero di incognite **meno** il rango.
+T: Sapendo che il sistema di equazioni lineari $\begin{cases}2x_1-3x_2+x_3=0\\4x_1-2x_2-x_3=3\\2x_1+7x_2+4x_3=-3\end{cases}$ nelle incognite $x_1,x_2,x_3$ è compatibile e che il rango della matrice dei coefficienti è 3, quante soluzioni ha il sistema?
+OPT: $\infty^0$. | $\infty^1$. | $\infty^3$. | $\infty^2$.
+25-10 C $A=\begin{pmatrix}2&-3&4\\1&-1&2\\1&0&2\end{pmatrix}$, $(A\,|\,B)=\left(\begin{array}{ccc|c}2&-3&4&1\\1&-1&2&-2\\1&0&2&-7\end{array}\right)$.
+  - $\det A=2\cdot(-2-0)-(-3)\cdot(2-2)+4\cdot(0+1)=-4+0+4=0$; il minore $\det\begin{pmatrix}2&-3\\1&-1\end{pmatrix}=-2+3=1\neq0$, quindi $r_i=2$.
+  - Per il Teorema di Kronecker basta controllare gli orlati di questo minore nella completa: uno è $\det A=0$, l'altro (colonne 1, 2 e termini noti) è
+  $$\det\begin{pmatrix}2&-3&1\\1&-1&-2\\1&0&-7\end{pmatrix}=2(7-0)+3(-7+2)+1(0+1)=14-15+1=0,$$
+  quindi $r_c=2$.
+  $r_i=r_c=2$ → il sistema **ha soluzione** ($\infty^1$). Si vede anche che la terza riga della completa è $3\cdot(\text{seconda})-(\text{prima})$: $3(1,-1,2,-2)-(2,-3,4,1)=(1,0,2,-7)$.
+  **Errore tipico:** dedurre da $\det A=0$ che il sistema è impossibile, oppure sbagliare il segno nel cofattore e trovare un orlato non nullo ($r_c=3$).
+  TRAP: Il sistema con $+7$ come ultimo termine noto ha la stessa matrice $A$ ma è incompatibile: conta l'orlato con la colonna dei termini noti.
+T: Dato il sistema di equazioni lineari $\begin{cases}2x_1-3x_2+4x_3=1\\x_1-x_2+2x_3=-2\\x_1+2x_3=-7\end{cases}$, quale delle seguenti affermazioni è vera? ($r_i$ ed $r_c$ indicano rispettivamente il rango della matrice incompleta e il rango della matrice completa associati al sistema.)
+OPT: $r_i=2$, $r_c=2$, il sistema non ha soluzione. | $r_i=2$, $r_c=3$, il sistema non ha soluzione. | $r_i=2$, $r_c=2$, il sistema ha soluzione. | $r_i=2$, $r_c=3$, il sistema ha soluzione.
+25-11 B Il sistema è compatibile e $\mathrm{rank}(A)=1$ (la seconda equazione è il doppio della prima). Le incognite sono $n=4$, quindi le soluzioni sono parametrizzate da $n-r=4-1=3$ parametri:
+  $$\infty^{4-1}=\infty^3.$$
+  Infatti resta una sola equazione, $x_1=2+4x_2-3x_3-2x_4$, con $x_2,x_3,x_4$ liberi.
+  **Errore tipico:** contare le equazioni ($2$) invece del rango, ottenendo $\infty^{4-2}=\infty^2$, oppure usare il rango come esponente ($\infty^1$).
+T: Sapendo che il sistema di equazioni lineari $\begin{cases}x_1-4x_2+3x_3+2x_4=2\\2x_1-8x_2+6x_3+4x_4=4\end{cases}$ nelle incognite $x_1,x_2,x_3,x_4$ è compatibile e che il rango della matrice dei coefficienti è 1, quante soluzioni ha il sistema?
+OPT: $\infty^2$. | $\infty^3$. | $\infty^0$. | $\infty^1$.
+25-12 D $(A\,|\,B)=\left(\begin{array}{ccc|c}2&-6&4&-2\\1&-3&2&1\end{array}\right)$.
+  - In $A$ la prima riga è il doppio della seconda, $(2,-6,4)=2(1,-3,2)$: $r_i=1$.
+  - Il termine noto invece non rispetta la proporzione ($-2\neq2\cdot1$): il minore con le colonne 1 e 4 vale $\det\begin{pmatrix}2&-2\\1&1\end{pmatrix}=2+2=4\neq0$, quindi $r_c=2$.
+  $r_i=1\neq r_c=2$ → il sistema **non ha soluzione** (dividendo la prima equazione per 2 si ottiene $x_1-3x_2+2x_3=-1$, in contraddizione con la seconda).
+  **Errore tipico:** controllare la proporzionalità solo nei coefficienti e concludere $r_c=1$: per la completa conta anche l'ultima colonna.
+  TRAP: Con termine noto $2$ nella prima equazione (invece di $-2$) il sistema sarebbe compatibile con $\infty^2$ soluzioni.
+T: Dato il sistema di equazioni lineari $\begin{cases}2x_1-6x_2+4x_3=-2\\x_1-3x_2+2x_3=1\end{cases}$, quale delle seguenti affermazioni è vera? ($r_i$ ed $r_c$ indicano rispettivamente il rango della matrice incompleta e il rango della matrice completa associati al sistema.)
+OPT: $r_i=1$, $r_c=2$, il sistema ha soluzione. | $r_i=1$, $r_c=1$, il sistema non ha soluzione. | $r_i=1$, $r_c=1$, il sistema ha soluzione. | $r_i=1$, $r_c=2$, il sistema non ha soluzione.
+25-13 D Sistema compatibile, $n=3$ incognite, $\mathrm{rank}(A)=2$: le soluzioni dipendono da $n-r=3-2=1$ parametro,
+  $$\infty^{3-2}=\infty^1.$$
+  (Infatti $\det A=2(-8-7)+3(16+2)+1(-28+4)=-30+54-24=0$, e la terza riga della completa è $3\cdot(\text{prima})-(\text{seconda})$: $3(2,-3,1,0)-(4,-2,-1,3)=(2,-7,4,-3)$.)
+  **Errore tipico:** usare il rango come esponente ($\infty^2$), oppure pensare che 3 equazioni in 3 incognite diano sempre una sola soluzione: ciò accade solo se $\det A\neq0$.
+T: Sapendo che il sistema di equazioni lineari $\begin{cases}2x_1-3x_2+x_3=0\\4x_1-2x_2-x_3=3\\2x_1-7x_2+4x_3=-3\end{cases}$ nelle incognite $x_1,x_2,x_3$ è compatibile e che il rango della matrice dei coefficienti è 2, quante soluzioni ha il sistema?
+OPT: $\infty^0$. | $\infty^3$. | $\infty^2$. | $\infty^1$.
+25-14 D Sistema compatibile, $n=4$ incognite, $\mathrm{rank}(A)=2$: le soluzioni sono parametrizzate da $n-r=4-2=2$ parametri,
+  $$\infty^{4-2}=\infty^2.$$
+  (Il rango è 2 perché $\det\begin{pmatrix}1&-4\\1&2\end{pmatrix}=2+4=6\neq0$.)
+  **Errore tipico:** confondere esponente e rango, o contare come parametri le incognite che "mancano" nelle equazioni: qui tutte le incognite compaiono, ma solo 2 sono dipendenti.
+T: Sapendo che il sistema di equazioni lineari $\begin{cases}x_1-4x_2+3x_3+2x_4=2\\x_1+2x_2+3x_3+2x_4=0\end{cases}$ nelle incognite $x_1,x_2,x_3,x_4$ è compatibile e che il rango della matrice dei coefficienti è 2, quante soluzioni ha il sistema?
+OPT: $\infty^1$. | $\infty^3$. | $\infty^0$. | $\infty^2$.
+25-15 D $A=\begin{pmatrix}2&-3&4\\1&-1&-2\\1&0&2\end{pmatrix}$, $(A\,|\,B)=\left(\begin{array}{ccc|c}2&-3&4&1\\1&-1&-2&-2\\1&0&2&-7\end{array}\right)$.
+  - Sviluppando lungo la prima riga: $\det A=2\cdot(-2-0)-(-3)\cdot(2+2)+4\cdot(0+1)=-4+12+4=12\neq0$, quindi $r_i=3$.
+  - La completa è $3\times4$: il suo rango è al più 3 e contiene il minore $\det A\neq0$, quindi $r_c=3$.
+  $r_i=r_c=3$ → il sistema **ha soluzione**, unica perché $\det A\neq0$: $(x_1,x_2,x_3)=(-7,-5,0)$ (verifica: $-14+15+0=1$, $-7+5-0=-2$, $-7+0=-7$).
+  **Errore tipico:** pensare che un rango 3 della completa indichi incompatibilità: è incompatibile solo se supera il rango dell'incompleta. Oppure confonderlo con il sistema simile con $+2x_3$ nella seconda equazione, dove $\det A=0$.
+T: Dato il sistema di equazioni lineari $\begin{cases}2x_1-3x_2+4x_3=1\\x_1-x_2-2x_3=-2\\x_1+2x_3=-7\end{cases}$, quale delle seguenti affermazioni è vera? ($r_i$ ed $r_c$ indicano rispettivamente il rango della matrice incompleta e il rango della matrice completa associati al sistema.)
+OPT: $r_i=2$, $r_c=3$, il sistema ha soluzione. | $r_i=3$, $r_c=3$, il sistema non ha soluzione. | $r_i=2$, $r_c=3$, il sistema non ha soluzione. | $r_i=3$, $r_c=3$, il sistema ha soluzione.
+25-16 A $A=\begin{pmatrix}2&-3&4\\1&-1&2\\1&0&2\end{pmatrix}$, $(A\,|\,B)=\left(\begin{array}{ccc|c}2&-3&4&1\\1&-1&2&-2\\1&0&2&7\end{array}\right)$.
+  - $\det A=2(-2-0)+3(2-2)+4(0+1)=0$ e $\det\begin{pmatrix}2&-3\\1&-1\end{pmatrix}=1\neq0$: $r_i=2$.
+  - Orlato con la colonna dei termini noti:
+  $$\det\begin{pmatrix}2&-3&1\\1&-1&-2\\1&0&7\end{pmatrix}=2(-7-0)+3(7+2)+1(0+1)=-14+27+1=14\neq0,$$
+  quindi $r_c=3$.
+  $r_i=2\neq r_c=3$ → il sistema **non ha soluzione**. (Nell'incompleta la terza riga è $3\cdot(\text{seconda})-(\text{prima})$; per il termine noto la stessa combinazione darebbe $3\cdot(-2)-1=-7$, ma c'è $7$.)
+  **Errore tipico:** considerare solo $\det A=0$ e concludere che le soluzioni sono infinite: serve il confronto con il rango della completa.
+  TRAP: Identico al sistema compatibile con $-7$ come ultimo termine noto: cambia solo un segno.
+T: Dato il sistema di equazioni lineari $\begin{cases}2x_1-3x_2+4x_3=1\\x_1-x_2+2x_3=-2\\x_1+2x_3=7\end{cases}$, quale delle seguenti affermazioni è vera? ($r_i$ ed $r_c$ indicano rispettivamente il rango della matrice incompleta e il rango della matrice completa associati al sistema.)
+OPT: $r_i=2$, $r_c=3$, il sistema non ha soluzione. | $r_i=2$, $r_c=2$, il sistema non ha soluzione. | $r_i=2$, $r_c=2$, il sistema ha soluzione. | $r_i=2$, $r_c=3$, il sistema ha soluzione.
+25-17 APERTA
+KW: Rouché-Capelli|Rouche-Capelli, compatibile, rango, matrice incompleta|matrice dei coefficienti, matrice completa, se e solo se, Span|combinazione lineare, colonne, n - r|n-r, parametri, det(A) ≠ 0|determinante non nullo, una e una sola soluzione|unica soluzione
+> **Teorema di Rouché-Capelli.** Un sistema di equazioni lineari $A\cdot X=B$ è **compatibile se e solo se** la matrice incompleta e la matrice completa hanno lo stesso rango:
+> $$\mathrm{rank}(A)=\mathrm{rank}(A\,|\,B).$$
+>
+> *Idea della dimostrazione.* Dette $A^1,\dots,A^n$ le colonne di $A$, si ha $\mathrm{rank}(A)=\dim\mathrm{Span}(A^1,\dots,A^n)$ e $\mathrm{rank}(A\,|\,B)=\dim\mathrm{Span}(A^1,\dots,A^n,B)$, con il primo span contenuto nel secondo. Il sistema si scrive $x_1A^1+\dots+x_nA^n=B$, quindi è compatibile se e solo se $B$ è combinazione lineare delle colonne di $A$, cioè $B\in\mathrm{Span}(A^1,\dots,A^n)$, cioè i due span coincidono, cioè (essendo uno contenuto nell'altro) hanno la stessa dimensione.
+>
+> **Conseguenze.**
+> - **Numero di soluzioni.** Se il sistema (con $n$ incognite) è compatibile e $r=\mathrm{rank}(A)=\mathrm{rank}(A\,|\,B)$, le soluzioni sono parametrizzate da $n-r$ parametri: $\infty^{n-r}$ soluzioni ($\infty^0$ = una sola). Se invece $\mathrm{rank}(A)<\mathrm{rank}(A\,|\,B)$ (l'unica altra possibilità, perché $\mathrm{rank}(A\,|\,B)\in\{r,r+1\}$) non ci sono soluzioni.
+> - **Sistemi quadrati (Teorema 25.6).** Un sistema di $n$ equazioni in $n$ incognite ha una e una sola soluzione se e solo se $\det(A)\neq0$. Se $\det A=0$ le soluzioni o non esistono o sono infinite.
+> - **Sistemi omogenei.** $\mathrm{rank}(A\,|\,0)=\mathrm{rank}(A)$: sono sempre compatibili.
+> - **Uso pratico.** Si calcola il rango di $A$ (per esempio con un minore non nullo di ordine massimo e il Teorema di Kronecker) e poi si controllano solo gli orlati di quel minore che usano la colonna $B$; con parametri si studiano i valori che annullano $\det A$.
+>
+> **Esempio.** $\begin{cases}x_1+x_2=2\\3x_1+3x_2=-1\end{cases}$: $\mathrm{rank}\begin{pmatrix}1&1\\3&3\end{pmatrix}=1$, mentre $\mathrm{rank}\left(\begin{array}{cc|c}1&1&2\\3&3&-1\end{array}\right)=2$: il sistema non è compatibile. Invece $\begin{cases}x_1+x_2=2\\4x_1+3x_2=-1\end{cases}$ ha ranghi entrambi 2 e $\infty^{2-2}=\infty^0$ soluzioni, l'unica è $(-7,9)$.
+25-18 APERTA
+T: Stabilire, applicando il Teorema di Rouché-Capelli, per quali valori del parametro $k$ il sistema lineare $\begin{cases}x+y+kz=1\\x+2z=1\\x+(1-k)y=1\end{cases}$ ha soluzioni.
+KW: Rouché-Capelli|Rouche-Capelli, rango, matrice incompleta, matrice completa, determinante, k = 0|k=0, k = 3|k=3, orlati|minore, compatibile, per ogni k|ogni valore, ∞^1|infinite, una sola soluzione|unica
+> $A=\begin{pmatrix}1&1&k\\1&0&2\\1&1-k&0\end{pmatrix}$, $(A\,|\,B)=\left(\begin{array}{ccc|c}1&1&k&1\\1&0&2&1\\1&1-k&0&1\end{array}\right)$.
+>
+> **Determinante** (sviluppo lungo la prima riga): $\det A=1\cdot(0-2(1-k))-1\cdot(0-2)+k\cdot(1-k)=-2+2k+2+k-k^2=3k-k^2=-k(k-3)$.
+>
+> - **$k\neq0,3$**: $\det A\neq0$, quindi $\mathrm{rank}(A)=3=\mathrm{rank}(A\,|\,B)$ (la completa è $3\times4$): compatibile, una sola soluzione ($\infty^0$).
+> - **$k=0$ o $k=3$**: il minore $\det\begin{pmatrix}1&1\\1&0\end{pmatrix}=-1\neq0$ dà $\mathrm{rank}(A)=2$. I suoi orlati nella completa sono $\det A=0$ e quello con la colonna dei termini noti, che ha la **colonna $B$ uguale alla prima colonna** di $A$, quindi è nullo. Allora $\mathrm{rank}(A\,|\,B)=2$: compatibile, $\infty^{3-2}=\infty^1$ soluzioni.
+>
+> **Conclusione:** il sistema ha soluzioni **per ogni valore di $k$** (infatti $(x,y,z)=(1,0,0)$ lo risolve sempre); la soluzione è unica per $k\neq0,3$, ci sono $\infty^1$ soluzioni per $k=0$ e $k=3$.
+25-19 APERTA
+T: Stabilire, applicando il Teorema di Rouché-Capelli, per quali valori del parametro $k$ il sistema lineare $\begin{cases}x+ky+z=4\\x+y=k+1\\x-y-kz=1\end{cases}$ ha soluzioni.
+KW: Rouché-Capelli|Rouche-Capelli, rango, matrice incompleta, matrice completa, determinante, k = -1|k=-1, k = 2|k=2, orlati|minore, incompatibile|non ha soluzioni, k ≠ -1|k diverso da -1, ∞^1|infinite
+> $A=\begin{pmatrix}1&k&1\\1&1&0\\1&-1&-k\end{pmatrix}$, $(A\,|\,B)=\left(\begin{array}{ccc|c}1&k&1&4\\1&1&0&k+1\\1&-1&-k&1\end{array}\right)$.
+>
+> $\det A=1\cdot(-k-0)-k\cdot(-k-0)+1\cdot(-1-1)=k^2-k-2=(k-2)(k+1)$.
+>
+> - **$k\neq2,-1$**: $\mathrm{rank}(A)=\mathrm{rank}(A\,|\,B)=3$, una sola soluzione.
+> - **$k=-1$**: $A=\begin{pmatrix}1&-1&1\\1&1&0\\1&-1&1\end{pmatrix}$, minore $\det\begin{pmatrix}1&-1\\1&1\end{pmatrix}=2\neq0$, $\mathrm{rank}(A)=2$. Orlato con i termini noti $(4,0,1)$: $\det\begin{pmatrix}1&-1&4\\1&1&0\\1&-1&1\end{pmatrix}=1\cdot1+1\cdot1+4\cdot(-2)=-6\neq0$, quindi $\mathrm{rank}(A\,|\,B)=3$: **incompatibile** (prima e terza equazione hanno lo stesso primo membro e termini noti $4\neq1$).
+> - **$k=2$**: $A=\begin{pmatrix}1&2&1\\1&1&0\\1&-1&-2\end{pmatrix}$, minore $\det\begin{pmatrix}1&2\\1&1\end{pmatrix}=-1\neq0$, $\mathrm{rank}(A)=2$; orlati: $\det A=0$ e $\det\begin{pmatrix}1&2&4\\1&1&3\\1&-1&1\end{pmatrix}=4+4-8=0$. Quindi $\mathrm{rank}(A\,|\,B)=2$: compatibile, $\infty^1$ soluzioni.
+>
+> **Conclusione:** il sistema ha soluzioni se e solo se **$k\neq-1$** (unica per $k\neq2,-1$, $\infty^1$ per $k=2$).
+25-20 APERTA
+T: Stabilire, applicando il Teorema di Rouché-Capelli, per quali valori del parametro $k$ il sistema lineare $\begin{cases}x-ky+z=4\\x+y=1-k\\x-y+kz=1\end{cases}$ ha soluzioni.
+KW: Rouché-Capelli|Rouche-Capelli, rango, matrice incompleta, matrice completa, determinante, k = 1|k=1, k = -2|k=-2, orlati|minore, incompatibile|non ha soluzioni, k ≠ 1|k diverso da 1, ∞^1|infinite
+> $A=\begin{pmatrix}1&-k&1\\1&1&0\\1&-1&k\end{pmatrix}$, $(A\,|\,B)=\left(\begin{array}{ccc|c}1&-k&1&4\\1&1&0&1-k\\1&-1&k&1\end{array}\right)$.
+>
+> $\det A=1\cdot(k-0)+k\cdot(k-0)+1\cdot(-1-1)=k^2+k-2=(k-1)(k+2)$.
+>
+> - **$k\neq1,-2$**: ranghi entrambi 3, una sola soluzione.
+> - **$k=1$**: $A=\begin{pmatrix}1&-1&1\\1&1&0\\1&-1&1\end{pmatrix}$, $\mathrm{rank}(A)=2$ (minore $\det\begin{pmatrix}1&-1\\1&1\end{pmatrix}=2$); orlato con $B=(4,0,1)$: $\det\begin{pmatrix}1&-1&4\\1&1&0\\1&-1&1\end{pmatrix}=-6\neq0$, $\mathrm{rank}(A\,|\,B)=3$: **incompatibile**.
+> - **$k=-2$**: $A=\begin{pmatrix}1&2&1\\1&1&0\\1&-1&-2\end{pmatrix}$, $B=(4,3,1)$: $\mathrm{rank}(A)=2$ (minore $-1$), orlati $\det A=0$ e $\det\begin{pmatrix}1&2&4\\1&1&3\\1&-1&1\end{pmatrix}=0$: $\mathrm{rank}(A\,|\,B)=2$, $\infty^1$ soluzioni.
+>
+> **Conclusione:** il sistema ha soluzioni se e solo se **$k\neq1$**.
+25-21 APERTA
+T: Stabilire, applicando il Teorema di Rouché-Capelli, per quali valori del parametro $k$ il sistema lineare $\begin{cases}x+ky-z=1\\2kx-y-z=2\\kx-5y+z=0\end{cases}$ ha soluzioni.
+KW: Rouché-Capelli|Rouche-Capelli, rango, matrice incompleta, matrice completa, determinante, k = 1|k=1, k = 2|k=2, orlati|minore, incompatibile|non ha soluzioni, k ≠ 1|k diverso da 1, ∞^1|infinite
+> $A=\begin{pmatrix}1&k&-1\\2k&-1&-1\\k&-5&1\end{pmatrix}$, $(A\,|\,B)=\left(\begin{array}{ccc|c}1&k&-1&1\\2k&-1&-1&2\\k&-5&1&0\end{array}\right)$.
+>
+> $\det A=1\cdot(-1-5)-k\cdot(2k+k)+(-1)\cdot(-10k+k)=-6-3k^2+9k=-3(k-1)(k-2)$.
+>
+> - **$k\neq1,2$**: ranghi entrambi 3, una sola soluzione.
+> - **$k=1$**: $A=\begin{pmatrix}1&1&-1\\2&-1&-1\\1&-5&1\end{pmatrix}$, minore $\det\begin{pmatrix}1&1\\2&-1\end{pmatrix}=-3\neq0$, $\mathrm{rank}(A)=2$; orlato con $B=(1,2,0)$: $\det\begin{pmatrix}1&1&1\\2&-1&2\\1&-5&0\end{pmatrix}=1\cdot10-1\cdot(-2)+1\cdot(-9)=3\neq0$, $\mathrm{rank}(A\,|\,B)=3$: **incompatibile**.
+> - **$k=2$**: $A=\begin{pmatrix}1&2&-1\\4&-1&-1\\2&-5&1\end{pmatrix}$, minore $\det\begin{pmatrix}1&2\\4&-1\end{pmatrix}=-9\neq0$; orlati $\det A=0$ e $\det\begin{pmatrix}1&2&1\\4&-1&2\\2&-5&0\end{pmatrix}=10-2(-4)+(-18)=0$: $\mathrm{rank}(A\,|\,B)=2$, $\infty^1$ soluzioni.
+>
+> **Conclusione:** il sistema ha soluzioni se e solo se **$k\neq1$**.
+25-22 APERTA
+T: Stabilire, applicando il Teorema di Rouché-Capelli, per quali valori del parametro $k$ il sistema lineare $\begin{cases}x+2ky+z=-2\\kx-y+z=-1\\5x+ky-z=0\end{cases}$ ha soluzioni.
+KW: Rouché-Capelli|Rouche-Capelli, rango, matrice incompleta, matrice completa, determinante, k = -1|k=-1, k = -2|k=-2, orlati|minore, incompatibile|non ha soluzioni, k ≠ -1|k diverso da -1, ∞^1|infinite
+> $A=\begin{pmatrix}1&2k&1\\k&-1&1\\5&k&-1\end{pmatrix}$, $(A\,|\,B)=\left(\begin{array}{ccc|c}1&2k&1&-2\\k&-1&1&-1\\5&k&-1&0\end{array}\right)$.
+>
+> $\det A=1\cdot(1-k)-2k\cdot(-k-5)+1\cdot(k^2+5)=1-k+2k^2+10k+k^2+5=3k^2+9k+6=3(k+1)(k+2)$.
+>
+> - **$k\neq-1,-2$**: ranghi entrambi 3, una sola soluzione.
+> - **$k=-1$**: $A=\begin{pmatrix}1&-2&1\\-1&-1&1\\5&-1&-1\end{pmatrix}$, minore $\det\begin{pmatrix}1&-2\\-1&-1\end{pmatrix}=-3\neq0$; orlato con $B=(-2,-1,0)$: $\det\begin{pmatrix}1&-2&-2\\-1&-1&-1\\5&-1&0\end{pmatrix}=1\cdot(-1)+2\cdot5-2\cdot6=-3\neq0$: $\mathrm{rank}(A\,|\,B)=3>2$, **incompatibile**.
+> - **$k=-2$**: $A=\begin{pmatrix}1&-4&1\\-2&-1&1\\5&-2&-1\end{pmatrix}$, minore $\det\begin{pmatrix}1&-4\\-2&-1\end{pmatrix}=-9\neq0$; orlati $\det A=0$ e $\det\begin{pmatrix}1&-4&-2\\-2&-1&-1\\5&-2&0\end{pmatrix}=-2+4\cdot5-2\cdot9=0$: ranghi entrambi 2, $\infty^1$ soluzioni.
+>
+> **Conclusione:** il sistema ha soluzioni se e solo se **$k\neq-1$**.
+25-23 APERTA
+T: Stabilire, applicando il Teorema di Rouché-Capelli, per quali valori del parametro $k$ il sistema lineare $\begin{cases}2x+y+z=1\\x+kz=1\\3x+ky=1\end{cases}$ ha soluzioni.
+KW: Rouché-Capelli|Rouche-Capelli, rango, matrice incompleta, matrice completa, determinante, k = 0|k=0, k = 2|k=2, orlati|minore, incompatibile|non ha soluzioni, k ≠ 0|k diverso da 0, ∞^1|infinite
+> $A=\begin{pmatrix}2&1&1\\1&0&k\\3&k&0\end{pmatrix}$, $(A\,|\,B)=\left(\begin{array}{ccc|c}2&1&1&1\\1&0&k&1\\3&k&0&1\end{array}\right)$.
+>
+> $\det A=2\cdot(0-k^2)-1\cdot(0-3k)+1\cdot(k-0)=-2k^2+4k=-2k(k-2)$.
+>
+> - **$k\neq0,2$**: ranghi entrambi 3, una sola soluzione.
+> - **$k=0$**: $A=\begin{pmatrix}2&1&1\\1&0&0\\3&0&0\end{pmatrix}$, minore $\det\begin{pmatrix}2&1\\1&0\end{pmatrix}=-1\neq0$, $\mathrm{rank}(A)=2$; orlato con $B$: $\det\begin{pmatrix}2&1&1\\1&0&1\\3&0&1\end{pmatrix}=-1\cdot(1-3)=2\neq0$, $\mathrm{rank}(A\,|\,B)=3$: **incompatibile** (le equazioni $x=1$ e $3x=1$ si contraddicono).
+> - **$k=2$**: $A=\begin{pmatrix}2&1&1\\1&0&2\\3&2&0\end{pmatrix}$, minore $-1\neq0$; orlati $\det A=0$ e $\det\begin{pmatrix}2&1&1\\1&0&1\\3&2&1\end{pmatrix}=2(0-2)-1(1-3)+1(2-0)=0$: ranghi entrambi 2, $\infty^1$ soluzioni.
+>
+> **Conclusione:** il sistema ha soluzioni se e solo se **$k\neq0$**.
+25-24 APERTA
+T: Stabilire, applicando il Teorema di Rouché-Capelli, per quali valori del parametro $k$ il sistema lineare $\begin{cases}2x+y+z=1\\x-kz=1\\3x-ky=1\end{cases}$ ha soluzioni.
+KW: Rouché-Capelli|Rouche-Capelli, rango, matrice incompleta, matrice completa, determinante, k = 0|k=0, k = -2|k=-2, orlati|minore, incompatibile|non ha soluzioni, k ≠ 0|k diverso da 0, ∞^1|infinite
+> $A=\begin{pmatrix}2&1&1\\1&0&-k\\3&-k&0\end{pmatrix}$, $(A\,|\,B)=\left(\begin{array}{ccc|c}2&1&1&1\\1&0&-k&1\\3&-k&0&1\end{array}\right)$.
+>
+> $\det A=2\cdot(0-k^2)-1\cdot(0+3k)+1\cdot(-k-0)=-2k^2-4k=-2k(k+2)$.
+>
+> - **$k\neq0,-2$**: ranghi entrambi 3, una sola soluzione.
+> - **$k=0$**: stesso sistema del caso $k=0$ di $2x+y+z=1,\ x=1,\ 3x=1$: $\mathrm{rank}(A)=2$ (minore $\det\begin{pmatrix}2&1\\1&0\end{pmatrix}=-1$), orlato con $B$ uguale a $2\neq0$, $\mathrm{rank}(A\,|\,B)=3$: **incompatibile**.
+> - **$k=-2$**: $A=\begin{pmatrix}2&1&1\\1&0&2\\3&2&0\end{pmatrix}$, minore $-1\neq0$; orlati $\det A=0$ e $\det\begin{pmatrix}2&1&1\\1&0&1\\3&2&1\end{pmatrix}=0$: ranghi entrambi 2, $\infty^1$ soluzioni.
+>
+> **Conclusione:** il sistema ha soluzioni se e solo se **$k\neq0$**.
+25-25 APERTA
+T: Stabilire, applicando il Teorema di Rouché-Capelli, per quali valori del parametro $k$ il sistema lineare $\begin{cases}kx-4y+7z=-1\\2x+ky-z=1\\x-y+2z=0\end{cases}$ ha soluzioni.
+KW: Rouché-Capelli|Rouche-Capelli, rango, matrice incompleta, matrice completa, determinante, k = 1|k=1, k = 3|k=3, orlati|minore, incompatibile|non ha soluzioni, k ≠ 3|k diverso da 3, ∞^1|infinite
+> $A=\begin{pmatrix}k&-4&7\\2&k&-1\\1&-1&2\end{pmatrix}$, $(A\,|\,B)=\left(\begin{array}{ccc|c}k&-4&7&-1\\2&k&-1&1\\1&-1&2&0\end{array}\right)$.
+>
+> $\det A=k\cdot(2k-1)+4\cdot(4+1)+7\cdot(-2-k)=2k^2-k+20-14-7k=2k^2-8k+6=2(k-1)(k-3)$.
+>
+> - **$k\neq1,3$**: ranghi entrambi 3, una sola soluzione.
+> - **$k=1$**: $A=\begin{pmatrix}1&-4&7\\2&1&-1\\1&-1&2\end{pmatrix}$, minore $\det\begin{pmatrix}1&-4\\2&1\end{pmatrix}=9\neq0$; orlati $\det A=0$ e $\det\begin{pmatrix}1&-4&-1\\2&1&1\\1&-1&0\end{pmatrix}=1\cdot1+4\cdot(-1)-1\cdot(-3)=0$: ranghi entrambi 2, $\infty^1$ soluzioni.
+> - **$k=3$**: $A=\begin{pmatrix}3&-4&7\\2&3&-1\\1&-1&2\end{pmatrix}$, minore $\det\begin{pmatrix}3&-4\\2&3\end{pmatrix}=17\neq0$; orlato con $B$: $\det\begin{pmatrix}3&-4&-1\\2&3&1\\1&-1&0\end{pmatrix}=3\cdot1+4\cdot(-1)-1\cdot(-5)=4\neq0$: $\mathrm{rank}(A\,|\,B)=3>2$, **incompatibile**.
+>
+> **Conclusione:** il sistema ha soluzioni se e solo se **$k\neq3$**.
+25-26 APERTA
+T: Stabilire, applicando il Teorema di Rouché-Capelli, per quali valori del parametro $k$ il sistema lineare $\begin{cases}2x+ky-z=1\\x-y+2z=0\\kx-4y+7z=-1\end{cases}$ ha soluzioni.
+KW: Rouché-Capelli|Rouche-Capelli, rango, matrice incompleta, matrice completa, determinante, k = 1|k=1, k = 3|k=3, orlati|minore, incompatibile|non ha soluzioni, k ≠ 3|k diverso da 3, ∞^1|infinite
+> È lo stesso sistema della traccia precedente con le equazioni in un altro ordine (scambiare righe cambia al più il segno dei determinanti, non i ranghi).
+>
+> $A=\begin{pmatrix}2&k&-1\\1&-1&2\\k&-4&7\end{pmatrix}$, $\det A=2\cdot(-7+8)-k\cdot(7-2k)-1\cdot(-4+k)=2-7k+2k^2+4-k=2k^2-8k+6=2(k-1)(k-3)$.
+>
+> - **$k\neq1,3$**: ranghi entrambi 3, una sola soluzione.
+> - **$k=1$**: minore $\det\begin{pmatrix}2&1\\1&-1\end{pmatrix}=-3\neq0$, $\mathrm{rank}(A)=2$; l'orlato con i termini noti $\det\begin{pmatrix}2&1&1\\1&-1&0\\1&-4&-1\end{pmatrix}=2\cdot1-1\cdot(-1)+1\cdot(-3)=0$: ranghi entrambi 2, $\infty^1$ soluzioni.
+> - **$k=3$**: minore $\det\begin{pmatrix}2&3\\1&-1\end{pmatrix}=-5\neq0$; orlato $\det\begin{pmatrix}2&3&1\\1&-1&0\\3&-4&-1\end{pmatrix}=2\cdot1-3\cdot(-1)+1\cdot(-1)=4\neq0$: $\mathrm{rank}(A\,|\,B)=3$, **incompatibile**.
+>
+> **Conclusione:** il sistema ha soluzioni se e solo se **$k\neq3$**.
+25-27 APERTA
+T: Stabilire, applicando il Teorema di Rouché-Capelli, per quali valori del parametro $k$ il sistema lineare $\begin{cases}x+y+kz=1\\y+2z=1\\(1-k)x+y=1\end{cases}$ ha soluzioni.
+KW: Rouché-Capelli|Rouche-Capelli, rango, matrice incompleta, matrice completa, determinante, k = 0|k=0, k = 3|k=3, orlati|minore, compatibile, per ogni k|ogni valore, ∞^1|infinite
+> $A=\begin{pmatrix}1&1&k\\0&1&2\\1-k&1&0\end{pmatrix}$, $(A\,|\,B)=\left(\begin{array}{ccc|c}1&1&k&1\\0&1&2&1\\1-k&1&0&1\end{array}\right)$.
+>
+> $\det A=1\cdot(0-2)-1\cdot(0-2(1-k))+k\cdot(0-(1-k))=-2+2-2k-k+k^2=k^2-3k=k(k-3)$.
+>
+> - **$k\neq0,3$**: ranghi entrambi 3, una sola soluzione.
+> - **$k=0$ o $k=3$**: il minore $\det\begin{pmatrix}1&1\\0&1\end{pmatrix}=1\neq0$ dà $\mathrm{rank}(A)=2$. La colonna dei termini noti $(1,1,1)$ **coincide con la seconda colonna** di $A$, quindi aggiungerla non aumenta il rango: $\mathrm{rank}(A\,|\,B)=2$, $\infty^1$ soluzioni.
+>
+> **Conclusione:** il sistema ha soluzioni **per ogni valore di $k$** (infatti $(x,y,z)=(0,1,0)$ è sempre soluzione); unica per $k\neq0,3$, $\infty^1$ per $k=0$ e $k=3$.
+x119 C Il Teorema di Rouché-Capelli è una **doppia implicazione**: un sistema $A\cdot X=B$ è compatibile **se e solo se** $\mathrm{rank}(A)=\mathrm{rank}(A\,|\,B)$.
+  Le altre formulazioni sono vere, ma sono solo metà del teorema:
+  - "è compatibile, **se** i ranghi coincidono" esprime solo l'implicazione ranghi uguali ⇒ compatibile;
+  - "**se** è compatibile, **allora** i ranghi coincidono" e "è compatibile **solo se** i ranghi coincidono" esprimono entrambe l'implicazione inversa, compatibile ⇒ ranghi uguali.
+  L'enunciato del teorema è quello che le contiene tutte e due.
+  **Errore tipico:** scegliere una formulazione vera ma incompleta. Attenzione anche al "solo se": "$P$ solo se $Q$" significa $P\Rightarrow Q$, non $Q\Rightarrow P$.
+T: Quale dei seguenti è l'enunciato del Teorema di Rouché-Capelli?
+OPT: Un sistema di equazioni lineari $A\cdot X=B$ è compatibile, se $\mathrm{rank}(A)=\mathrm{rank}(A\,|\,B)$. | Se un sistema di equazioni lineari $A\cdot X=B$ è compatibile, allora $\mathrm{rank}(A)=\mathrm{rank}(A\,|\,B)$. | Un sistema di equazioni lineari $A\cdot X=B$ è compatibile, se e solo se $\mathrm{rank}(A)=\mathrm{rank}(A\,|\,B)$. | Un sistema di equazioni lineari $A\cdot X=B$ è compatibile, solo se $\mathrm{rank}(A)=\mathrm{rank}(A\,|\,B)$.
+x120 D Il sistema si scrive $x_1A^1+x_2A^2+\dots+x_nA^n=B$: avere una soluzione significa trovare coefficienti che diano $B$ come combinazione lineare delle colonne. Quindi:
+  - "$B\in\mathrm{Span}(A^1,\dots,A^n)$" è equivalente alla compatibilità (è la definizione di span);
+  - "$B$ è il risultato di una combinazione lineare delle colonne" è la stessa cosa detta a parole;
+  - "$\mathrm{rank}(A)=\mathrm{rank}(A\,|\,B)$" è equivalente per il Teorema di Rouché-Capelli.
+  Tutte e tre sono equivalenti al fatto che il sistema è compatibile, quindi nessuna è "non equivalente": la risposta giusta è "Nessuna delle altre risposte".
+  **Errore tipico:** pensare che la condizione sullo span sia solo sufficiente, o leggere "combinazione lineare delle colonne" come "delle righe": con le righe l'affermazione sarebbe diversa, ma qui si parla delle colonne.
+T: Dato un sistema di equazioni lineari $A\cdot X=B$ con $A^1,A^2,\dots,A^n$ che indicano le colonne di $A$, quali delle seguenti proposizioni **non** è equivalente al fatto che il sistema è compatibile?
+OPT: $B\in\mathrm{Span}(A^1,A^2,\dots,A^n)$. | $B$ è il risultato di una combinazione lineare delle colonne $A^*$. | $\mathrm{rank}(A)=\mathrm{rank}(A\,|\,B)$. | Nessuna delle altre risposte.
+x121 A $A=\begin{pmatrix}1&2&-1\\2&0&4\\0&2&-3\end{pmatrix}$, $(A\,|\,B)=\left(\begin{array}{ccc|c}1&2&-1&1\\2&0&4&0\\0&2&-3&1\end{array}\right)$.
+  - $\det A=1\cdot(0-8)-2\cdot(-6-0)+(-1)\cdot(4-0)=-8+12-4=0$, e $\det\begin{pmatrix}1&2\\2&0\end{pmatrix}=-4\neq0$: $\mathrm{rank}(A)=2$.
+  - Orlati del minore nella completa: $\det A=0$ e quello con la colonna dei termini noti, $\det\begin{pmatrix}1&2&1\\2&0&0\\0&2&1\end{pmatrix}=1\cdot(0-0)-2\cdot(2-0)+1\cdot(4-0)=0$. Per Kronecker $\mathrm{rank}(A\,|\,B)=2$.
+  Ranghi uguali → per Rouché-Capelli il sistema **è compatibile** ($\infty^1$ soluzioni). Infatti la terza riga della completa è $(\text{prima})-\tfrac12(\text{seconda})$: $(1,2,-1,1)-(1,0,2,0)=(0,2,-3,1)$.
+  **Errore tipico:** sbagliare un segno nell'orlato e trovare rango 3; oppure associare ranghi uguali a "non compatibile": ranghi uguali significa sempre compatibile.
+T: Dato il sistema di equazioni lineari reale $\begin{cases}x_1+2x_2-x_3=1\\2x_1+4x_3=0\\2x_2-3x_3=1\end{cases}$, quale delle seguenti affermazioni è vera?
+OPT: $\mathrm{rank}\begin{pmatrix}1&2&-1\\2&0&4\\0&2&-3\end{pmatrix}=2$, $\mathrm{rank}\left(\begin{array}{ccc|c}1&2&-1&1\\2&0&4&0\\0&2&-3&1\end{array}\right)=2$, il sistema è compatibile. | $\mathrm{rank}\begin{pmatrix}1&2&-1\\2&0&4\\0&2&-3\end{pmatrix}=2$, $\mathrm{rank}\left(\begin{array}{ccc|c}1&2&-1&1\\2&0&4&0\\0&2&-3&1\end{array}\right)=2$, il sistema non è compatibile. | $\mathrm{rank}\begin{pmatrix}1&2&-1\\2&0&4\\0&2&-3\end{pmatrix}=2$, $\mathrm{rank}\left(\begin{array}{ccc|c}1&2&-1&1\\2&0&4&0\\0&2&-3&1\end{array}\right)=3$, il sistema è compatibile. | $\mathrm{rank}\begin{pmatrix}1&2&-1\\2&0&4\\0&2&-3\end{pmatrix}=2$, $\mathrm{rank}\left(\begin{array}{ccc|c}1&2&-1&1\\2&0&4&0\\0&2&-3&1\end{array}\right)=3$, il sistema non è compatibile.
+x122 D Per il Teorema 25.6 un sistema quadrato ha una e una sola soluzione **se e solo se** $\det A\neq0$; quindi con $\det A=0$ la soluzione unica è esclusa. Restano due possibilità, a seconda di $B$:
+  - se $\mathrm{rank}(A)<\mathrm{rank}(A\,|\,B)$ non ci sono soluzioni (es. $x_1+x_2=2,\ 3x_1+3x_2=-1$);
+  - se $\mathrm{rank}(A)=\mathrm{rank}(A\,|\,B)=r<n$ ci sono $\infty^{n-r}$ soluzioni, infinite perché $n-r\ge1$ (es. $x_1+x_2=2,\ 3x_1+3x_2=6$).
+  Quindi le soluzioni possono esistere o no, e se esistono sono infinite.
+  **Errore tipico:** credere che $\det A=0$ significhi sempre "nessuna soluzione" oppure sempre "infinite soluzioni": il determinante da solo non distingue i due casi, serve il confronto dei ranghi.
+T: Dato un sistema di equazioni lineari $A\cdot X=B$ con $A$ quadrata tale che $\det(A)=0$, quale delle seguenti proposizioni è vera?
+OPT: Non esistono soluzioni. | Esiste una e una sola soluzione. | Esistono infinite soluzioni. | Possono esistere o no soluzioni, a seconda del sistema; se ci sono soluzioni, queste sono infinite.
+## L26 Regola di Cramer
+26-1 D **Regola di Cramer**: se $A$ è quadrata con $\det A\neq0$, la $i$-esima incognita è $x_i=\dfrac{\det A_i}{\det A}$, dove $A_i$ è la matrice ottenuta da $A$ **sostituendo la $i$-esima colonna con la colonna dei termini noti**.
+  Qui $A=\begin{pmatrix}2&3\\1&-4\end{pmatrix}$, $\det A=2\cdot(-4)-3\cdot1=-11\neq0$, $B=\begin{pmatrix}3\\0\end{pmatrix}$.
+  Per $x_1$ si sostituisce la **prima** colonna $\begin{pmatrix}2\\1\end{pmatrix}$ con $B$, lasciando com'è la seconda $\begin{pmatrix}3\\-4\end{pmatrix}$:
+  $$x_1=\frac{\det\begin{pmatrix}3&3\\0&-4\end{pmatrix}}{\det\begin{pmatrix}2&3\\1&-4\end{pmatrix}}=\frac{-12}{-11}=\frac{12}{11}.$$
+  Verifica: $x_2=\frac{\det\begin{pmatrix}2&3\\1&0\end{pmatrix}}{-11}=\frac{3}{11}$, e $2\cdot\frac{12}{11}+3\cdot\frac{3}{11}=3$, $\frac{12}{11}-\frac{12}{11}=0$ ✓.
+  **Errore tipico:** scrivere $B$ nella colonna sbagliata (quella di $x_2$), invertire l'ordine dei termini noti mettendo lo $0$ in alto, o cambiarne il segno come se fossero portati al primo membro.
+T: Quanto vale la coordinata $x_1$ della soluzione del sistema di equazioni lineari $\begin{cases}2x_1+3x_2=3\\x_1-4x_2=0\end{cases}$ ottenuta applicando la Regola di Cramer?
+OPT: $\dfrac{\det\begin{pmatrix}0&3\\-3&-4\end{pmatrix}}{\det\begin{pmatrix}2&3\\1&-4\end{pmatrix}}$ | $\dfrac{\det\begin{pmatrix}0&3\\3&-4\end{pmatrix}}{\det\begin{pmatrix}2&3\\1&-4\end{pmatrix}}$ | $\dfrac{\det\begin{pmatrix}-3&3\\0&-4\end{pmatrix}}{\det\begin{pmatrix}2&3\\1&-4\end{pmatrix}}$ | $\dfrac{\det\begin{pmatrix}3&3\\0&-4\end{pmatrix}}{\det\begin{pmatrix}2&3\\1&-4\end{pmatrix}}$
+26-2 C Regola di Cramer: $x_2=\dfrac{\det A_2}{\det A}$, con $A_2$ ottenuta da $A$ sostituendo la **seconda** colonna con i termini noti.
+  $A=\begin{pmatrix}2&3\\1&-4\end{pmatrix}$, $\det A=-8-3=-11\neq0$, $B=\begin{pmatrix}0\\-3\end{pmatrix}$. La prima colonna $\begin{pmatrix}2\\1\end{pmatrix}$ resta, la seconda diventa $B$:
+  $$x_2=\frac{\det\begin{pmatrix}2&0\\1&-3\end{pmatrix}}{\det\begin{pmatrix}2&3\\1&-4\end{pmatrix}}=\frac{-6}{-11}=\frac{6}{11}.$$
+  Verifica: dalla prima equazione $x_1=-\tfrac32x_2=-\tfrac{9}{11}$, e $-\tfrac{9}{11}-4\cdot\tfrac{6}{11}=-\tfrac{33}{11}=-3$ ✓.
+  **Errore tipico:** sbagliare il segno o l'ordine dei termini noti nella colonna sostituita ($3$ invece di $-3$, oppure $-3$ in alto), o lasciare al numeratore la colonna originale di $x_2$.
+T: Quanto vale la coordinata $x_2$ della soluzione del sistema di equazioni lineari $\begin{cases}2x_1+3x_2=0\\x_1-4x_2=-3\end{cases}$ ottenuta applicando la Regola di Cramer?
+OPT: $\dfrac{\det\begin{pmatrix}2&3\\1&0\end{pmatrix}}{\det\begin{pmatrix}2&3\\1&-4\end{pmatrix}}$ | $\dfrac{\det\begin{pmatrix}2&0\\1&3\end{pmatrix}}{\det\begin{pmatrix}2&3\\1&-4\end{pmatrix}}$ | $\dfrac{\det\begin{pmatrix}2&0\\1&-3\end{pmatrix}}{\det\begin{pmatrix}2&3\\1&-4\end{pmatrix}}$ | $\dfrac{\det\begin{pmatrix}2&-3\\1&0\end{pmatrix}}{\det\begin{pmatrix}2&3\\1&-4\end{pmatrix}}$
+26-3 B Regola di Cramer per $x_1$: si sostituisce la **prima** colonna di $A=\begin{pmatrix}2&3\\1&-4\end{pmatrix}$ con $B=\begin{pmatrix}0\\-3\end{pmatrix}$, nell'ordine (prima componente in alto):
+  $$x_1=\frac{\det\begin{pmatrix}0&3\\-3&-4\end{pmatrix}}{\det\begin{pmatrix}2&3\\1&-4\end{pmatrix}}=\frac{0\cdot(-4)-3\cdot(-3)}{-11}=\frac{9}{-11}=-\frac{9}{11}.$$
+  Verifica: $x_2=\frac{6}{11}$ (sostituendo la seconda colonna), $2\cdot(-\tfrac{9}{11})+3\cdot\tfrac{6}{11}=0$ ✓.
+  **Errore tipico:** scambiare le componenti di $B$ (mettendo $-3$ in alto), cambiarne il segno, o sostituire la colonna di $x_2$ invece di quella di $x_1$.
+T: Quanto vale la coordinata $x_1$ della soluzione del sistema di equazioni lineari $\begin{cases}2x_1+3x_2=0\\x_1-4x_2=-3\end{cases}$ ottenuta applicando la Regola di Cramer?
+OPT: $\dfrac{\det\begin{pmatrix}-3&3\\0&-4\end{pmatrix}}{\det\begin{pmatrix}2&3\\1&-4\end{pmatrix}}$ | $\dfrac{\det\begin{pmatrix}0&3\\-3&-4\end{pmatrix}}{\det\begin{pmatrix}2&3\\1&-4\end{pmatrix}}$ | $\dfrac{\det\begin{pmatrix}0&3\\3&-4\end{pmatrix}}{\det\begin{pmatrix}2&3\\1&-4\end{pmatrix}}$ | $\dfrac{\det\begin{pmatrix}3&3\\0&-4\end{pmatrix}}{\det\begin{pmatrix}2&3\\1&-4\end{pmatrix}}$
+26-4 B Regola di Cramer per $x_1$: in $A=\begin{pmatrix}2&3\\1&-4\end{pmatrix}$ si sostituisce la prima colonna con $B=\begin{pmatrix}-3\\0\end{pmatrix}$:
+  $$x_1=\frac{\det\begin{pmatrix}-3&3\\0&-4\end{pmatrix}}{\det\begin{pmatrix}2&3\\1&-4\end{pmatrix}}=\frac{12}{-11}=-\frac{12}{11}.$$
+  Verifica: dalla seconda equazione $x_1=4x_2$, quindi $x_2=-\tfrac{3}{11}$, e $2\cdot(-\tfrac{12}{11})+3\cdot(-\tfrac{3}{11})=-\tfrac{33}{11}=-3$ ✓.
+  **Errore tipico:** mettere i termini noti nell'ordine sbagliato ($0$ sopra, $-3$ sotto) o con il segno sbagliato: la colonna sostituita deve essere esattamente $B$.
+T: Quanto vale la coordinata $x_1$ della soluzione del sistema di equazioni lineari $\begin{cases}2x_1+3x_2=-3\\x_1-4x_2=0\end{cases}$ ottenuta applicando la Regola di Cramer?
+OPT: $\dfrac{\det\begin{pmatrix}0&3\\-3&-4\end{pmatrix}}{\det\begin{pmatrix}2&3\\1&-4\end{pmatrix}}$ | $\dfrac{\det\begin{pmatrix}-3&3\\0&-4\end{pmatrix}}{\det\begin{pmatrix}2&3\\1&-4\end{pmatrix}}$ | $\dfrac{\det\begin{pmatrix}0&3\\3&-4\end{pmatrix}}{\det\begin{pmatrix}2&3\\1&-4\end{pmatrix}}$ | $\dfrac{\det\begin{pmatrix}3&3\\0&-4\end{pmatrix}}{\det\begin{pmatrix}2&3\\1&-4\end{pmatrix}}$
+26-5 A Regola di Cramer per $x_1$: in $A=\begin{pmatrix}2&3\\1&-4\end{pmatrix}$ ($\det A=-11$) si sostituisce la prima colonna con $B=\begin{pmatrix}0\\3\end{pmatrix}$:
+  $$x_1=\frac{\det\begin{pmatrix}0&3\\3&-4\end{pmatrix}}{\det\begin{pmatrix}2&3\\1&-4\end{pmatrix}}=\frac{0-9}{-11}=\frac{9}{11}.$$
+  Verifica: $x_2=\frac{\det\begin{pmatrix}2&0\\1&3\end{pmatrix}}{-11}=-\frac{6}{11}$; $2\cdot\frac{9}{11}+3\cdot(-\frac{6}{11})=0$ e $\frac{9}{11}+\frac{24}{11}=3$ ✓.
+  **Errore tipico:** cambiare il segno del termine noto $3$ o scambiarne la posizione con lo $0$.
+T: Quanto vale la coordinata $x_1$ della soluzione del sistema di equazioni lineari $\begin{cases}2x_1+3x_2=0\\x_1-4x_2=3\end{cases}$ ottenuta applicando la Regola di Cramer?
+OPT: $\dfrac{\det\begin{pmatrix}0&3\\3&-4\end{pmatrix}}{\det\begin{pmatrix}2&3\\1&-4\end{pmatrix}}$ | $\dfrac{\det\begin{pmatrix}-3&3\\0&-4\end{pmatrix}}{\det\begin{pmatrix}2&3\\1&-4\end{pmatrix}}$ | $\dfrac{\det\begin{pmatrix}0&3\\-3&-4\end{pmatrix}}{\det\begin{pmatrix}2&3\\1&-4\end{pmatrix}}$ | $\dfrac{\det\begin{pmatrix}3&3\\0&-4\end{pmatrix}}{\det\begin{pmatrix}2&3\\1&-4\end{pmatrix}}$
+26-6 D Regola di Cramer per $x_2$: in $A=\begin{pmatrix}2&3\\1&-4\end{pmatrix}$ si sostituisce la **seconda** colonna con $B=\begin{pmatrix}3\\0\end{pmatrix}$:
+  $$x_2=\frac{\det\begin{pmatrix}2&3\\1&0\end{pmatrix}}{\det\begin{pmatrix}2&3\\1&-4\end{pmatrix}}=\frac{0-3}{-11}=\frac{3}{11}.$$
+  Verifica: $x_1=4x_2=\frac{12}{11}$, e $2\cdot\frac{12}{11}+3\cdot\frac{3}{11}=\frac{33}{11}=3$ ✓.
+  **Errore tipico:** notare che la matrice al numeratore "assomiglia" ad $A$ e sceglierne una con i termini noti messi in ordine o segno sbagliati; la colonna $\begin{pmatrix}3\\0\end{pmatrix}$ va in seconda posizione, la prima colonna $\begin{pmatrix}2\\1\end{pmatrix}$ resta.
+T: Quanto vale la coordinata $x_2$ della soluzione del sistema di equazioni lineari $\begin{cases}2x_1+3x_2=3\\x_1-4x_2=0\end{cases}$ ottenuta applicando la Regola di Cramer?
+OPT: $\dfrac{\det\begin{pmatrix}2&0\\1&-3\end{pmatrix}}{\det\begin{pmatrix}2&3\\1&-4\end{pmatrix}}$ | $\dfrac{\det\begin{pmatrix}2&0\\1&3\end{pmatrix}}{\det\begin{pmatrix}2&3\\1&-4\end{pmatrix}}$ | $\dfrac{\det\begin{pmatrix}2&-3\\1&0\end{pmatrix}}{\det\begin{pmatrix}2&3\\1&-4\end{pmatrix}}$ | $\dfrac{\det\begin{pmatrix}2&3\\1&0\end{pmatrix}}{\det\begin{pmatrix}2&3\\1&-4\end{pmatrix}}$
+26-7 D Regola di Cramer per $x_2$: in $A=\begin{pmatrix}2&3\\1&-4\end{pmatrix}$ si sostituisce la seconda colonna con $B=\begin{pmatrix}0\\3\end{pmatrix}$:
+  $$x_2=\frac{\det\begin{pmatrix}2&0\\1&3\end{pmatrix}}{\det\begin{pmatrix}2&3\\1&-4\end{pmatrix}}=\frac{6}{-11}=-\frac{6}{11}.$$
+  Verifica: $x_1=-\tfrac32x_2=\tfrac{9}{11}$, e $\tfrac{9}{11}-4\cdot(-\tfrac{6}{11})=\tfrac{33}{11}=3$ ✓.
+  **Errore tipico:** invertire l'ordine dei termini noti ($3$ in alto) o cambiarne il segno ($-3$).
+T: Quanto vale la coordinata $x_2$ della soluzione del sistema di equazioni lineari $\begin{cases}2x_1+3x_2=0\\x_1-4x_2=3\end{cases}$ ottenuta applicando la Regola di Cramer?
+OPT: $\dfrac{\det\begin{pmatrix}2&-3\\1&0\end{pmatrix}}{\det\begin{pmatrix}2&3\\1&-4\end{pmatrix}}$ | $\dfrac{\det\begin{pmatrix}2&3\\1&0\end{pmatrix}}{\det\begin{pmatrix}2&3\\1&-4\end{pmatrix}}$ | $\dfrac{\det\begin{pmatrix}2&0\\1&-3\end{pmatrix}}{\det\begin{pmatrix}2&3\\1&-4\end{pmatrix}}$ | $\dfrac{\det\begin{pmatrix}2&0\\1&3\end{pmatrix}}{\det\begin{pmatrix}2&3\\1&-4\end{pmatrix}}$
+26-8 D Regola di Cramer per $x_2$: in $A=\begin{pmatrix}2&3\\1&-4\end{pmatrix}$ si sostituisce la seconda colonna con $B=\begin{pmatrix}-3\\0\end{pmatrix}$:
+  $$x_2=\frac{\det\begin{pmatrix}2&-3\\1&0\end{pmatrix}}{\det\begin{pmatrix}2&3\\1&-4\end{pmatrix}}=\frac{0+3}{-11}=-\frac{3}{11}.$$
+  Verifica: $x_1=4x_2=-\tfrac{12}{11}$, e $2\cdot(-\tfrac{12}{11})+3\cdot(-\tfrac{3}{11})=-3$ ✓.
+  **Errore tipico:** perdere il segno meno del termine noto (si otterrebbe la colonna $\begin{pmatrix}3\\0\end{pmatrix}$) o scambiare l'ordine delle componenti.
+T: Quanto vale la coordinata $x_2$ della soluzione del sistema di equazioni lineari $\begin{cases}2x_1+3x_2=-3\\x_1-4x_2=0\end{cases}$ ottenuta applicando la Regola di Cramer?
+OPT: $\dfrac{\det\begin{pmatrix}2&0\\1&-3\end{pmatrix}}{\det\begin{pmatrix}2&3\\1&-4\end{pmatrix}}$ | $\dfrac{\det\begin{pmatrix}2&0\\1&3\end{pmatrix}}{\det\begin{pmatrix}2&3\\1&-4\end{pmatrix}}$ | $\dfrac{\det\begin{pmatrix}2&3\\1&0\end{pmatrix}}{\det\begin{pmatrix}2&3\\1&-4\end{pmatrix}}$ | $\dfrac{\det\begin{pmatrix}2&-3\\1&0\end{pmatrix}}{\det\begin{pmatrix}2&3\\1&-4\end{pmatrix}}$
+26-9 APERTA
+KW: Regola di Cramer|Cramer, det(A) ≠ 0|determinante non nullo, n equazioni e n incognite|quadrata, unica soluzione|una e una sola, sostituire la colonna|colonna dei termini noti, x_i = det|rapporto tra determinanti, minore non nullo, incognite libere|parametri, Rouché-Capelli, eliminare le equazioni
+> **Regola di Cramer.** Sia $A\cdot X=B$ un sistema di $n$ equazioni lineari in $n$ incognite con $\det(A)\neq0$, e siano $A^1,\dots,A^n$ le colonne di $A$. La $i$-esima coordinata dell'unica soluzione è
+> $$x_i=\frac{\det\begin{pmatrix}A^1&\cdots&A^{i-1}&B&A^{i+1}&\cdots&A^n\end{pmatrix}}{\det(A)},$$
+> cioè il rapporto tra il determinante della matrice ottenuta da $A$ **sostituendo la $i$-esima colonna con la colonna dei termini noti** e il determinante di $A$.
+>
+> **Perché funziona.** Con $\det A\neq0$ il sistema ha una e una sola soluzione, e $B=x_1A^1+\dots+x_nA^n$. Sostituendo questa espressione nella colonna $i$ e usando la linearità del determinante nelle colonne, si ottiene $\sum_j x_j\det(\dots,A^j,\dots)$; per $j\neq i$ la matrice ha due colonne uguali e il determinante è nullo, quindi resta $x_i\det A$.
+>
+> **Esempio.** $\begin{cases}x_1+x_2=2\\4x_1+3x_2=-1\end{cases}$, $\det A=-1$: $x_1=\dfrac{\det\begin{pmatrix}2&1\\-1&3\end{pmatrix}}{-1}=\dfrac{7}{-1}=-7$, $x_2=\dfrac{\det\begin{pmatrix}1&2\\4&-1\end{pmatrix}}{-1}=\dfrac{-9}{-1}=9$.
+>
+> **Uso per un sistema compatibile qualsiasi (Algoritmo 26.7).** Se $A\cdot X=B$ è compatibile con $r=\mathrm{rank}(A)$:
+> 1. si trova un minore di $A$ di ordine $r$ non nullo;
+> 2. si eliminano le equazioni che non corrispondono alle righe del minore (sono combinazione lineare delle altre);
+> 3. si portano a secondo membro i termini con le $n-r$ incognite che non corrispondono alle colonne del minore (**incognite libere**, diventano parametri);
+> 4. si ottiene un sistema $r\times r$ con determinante non nullo, che si risolve con Cramer nelle incognite dipendenti, in funzione dei parametri;
+> 5. le soluzioni sono $\infty^{n-r}$, ottenute dando valori arbitrari ai parametri.
+x123 B La Regola di Cramer si applica solo a sistemi **quadrati** ($n$ equazioni, $n$ incognite) con **$\det A\neq0$**. Calcoliamo i determinanti:
+  - $\begin{pmatrix}2&-1\\4&-2\end{pmatrix}$: $\det=-4+4=0$ → non si può applicare;
+  - $\begin{pmatrix}2&-1\\1&-2\end{pmatrix}$: $\det=-4+1=-3\neq0$ → si può applicare;
+  - i due sistemi $3\times3$ hanno la stessa matrice $\begin{pmatrix}2&-1&1\\1&-2&-1\\4&-5&-1\end{pmatrix}$, con $\det=2(2-5)+1(-1+4)+1(-5+8)=-6+3+3=0$ (la terza riga è $2\cdot(\text{prima})+(\text{seconda})$) → non si può applicare, qualunque sia il termine noto.
+  **Errore tipico:** pensare che la Regola di Cramer dipenda dal vettore dei termini noti: conta solo $\det A$. I due sistemi $3\times3$ differiscono solo nell'ultimo termine noto (uno è compatibile, l'altro no), ma in nessuno dei due si può usare Cramer.
+T: A quale dei seguenti sistemi di equazioni lineari reali si può applicare la Regola di Cramer?
+OPT: $\begin{cases}2x_1-x_2=3\\4x_1-2x_2=-1\end{cases}$ | $\begin{cases}2x_1-x_2=3\\x_1-2x_2=-1\end{cases}$ | $\begin{cases}2x_1-x_2+x_3=3\\x_1-2x_2-x_3=-1\\4x_1-5x_2-x_3=1\end{cases}$ | $\begin{cases}2x_1-x_2+x_3=3\\x_1-2x_2-x_3=-1\\4x_1-5x_2-x_3=0\end{cases}$
+x124 B Regola di Cramer: $x_1=\dfrac{\det A_1}{\det A}$, con $A_1$ = $A$ con la prima colonna sostituita dai termini noti. **Il determinante di $A$ sta al denominatore.**
+  $A=\begin{pmatrix}2&-2\\1&-3\end{pmatrix}$, $\det A=-6+2=-4\neq0$; $B=\begin{pmatrix}1\\-2\end{pmatrix}$, quindi $A_1=\begin{pmatrix}1&-2\\-2&-3\end{pmatrix}$ e
+  $$x_1=\frac{\det\begin{pmatrix}1&-2\\-2&-3\end{pmatrix}}{\det\begin{pmatrix}2&-2\\1&-3\end{pmatrix}}=\frac{-3-4}{-4}=\frac74.$$
+  Verifica: $x_2=\frac{\det\begin{pmatrix}2&1\\1&-2\end{pmatrix}}{-4}=\frac{-5}{-4}=\frac54$; $2\cdot\frac74-2\cdot\frac54=1$ ✓.
+  **Errore tipico:** scrivere la frazione capovolta ($\det A$ al numeratore), oppure usare la matrice di $x_2$ (seconda colonna sostituita) al posto di quella di $x_1$.
+T: Quanto vale la coordinata $x_1$ della soluzione del sistema di equazioni lineari reale $\begin{cases}2x_1-2x_2=1\\x_1-3x_2=-2\end{cases}$ ottenuta applicando la Regola di Cramer?
+OPT: $\dfrac{\det\begin{pmatrix}2&-2\\1&-3\end{pmatrix}}{\det\begin{pmatrix}1&-2\\-2&-3\end{pmatrix}}$ | $\dfrac{\det\begin{pmatrix}1&-2\\-2&-3\end{pmatrix}}{\det\begin{pmatrix}2&-2\\1&-3\end{pmatrix}}$ | $\dfrac{\det\begin{pmatrix}2&-2\\1&-3\end{pmatrix}}{\det\begin{pmatrix}2&1\\1&-2\end{pmatrix}}$ | $\dfrac{\det\begin{pmatrix}2&1\\1&-2\end{pmatrix}}{\det\begin{pmatrix}2&-2\\1&-3\end{pmatrix}}$
+x125 C $A=\begin{pmatrix}1&-1\\3&-2\end{pmatrix}$, $\det A=-2+3=1\neq0$, $B=\begin{pmatrix}3\\0\end{pmatrix}$. Con Cramer, il denominatore è sempre $\det A$ e al numeratore si sostituisce la colonna dell'incognita cercata:
+  $$x_1=\frac{\det\begin{pmatrix}3&-1\\0&-2\end{pmatrix}}{\det\begin{pmatrix}1&-1\\3&-2\end{pmatrix}}=\frac{-6}{1}=-6,\qquad x_2=\frac{\det\begin{pmatrix}1&3\\3&0\end{pmatrix}}{\det\begin{pmatrix}1&-1\\3&-2\end{pmatrix}}=\frac{-9}{1}=-9.$$
+  Verifica: $-6-(-9)=3$ e $3\cdot(-6)-2\cdot(-9)=0$ ✓.
+  **Errore tipico:** capovolgere una delle due frazioni, oppure scambiare i numeratori (per $x_1$ si sostituisce la **prima** colonna, per $x_2$ la **seconda**).
+T: Quanto vale la soluzione del sistema di equazioni lineari reale $\begin{cases}x_1-x_2=3\\3x_1-2x_2=0\end{cases}$ ottenuta applicando la Regola di Cramer?
+OPT: $x_1=\dfrac{\det\begin{pmatrix}3&-1\\0&-2\end{pmatrix}}{\det\begin{pmatrix}1&-1\\3&-2\end{pmatrix}}$, $x_2=\dfrac{\det\begin{pmatrix}1&-1\\3&-2\end{pmatrix}}{\det\begin{pmatrix}1&3\\3&0\end{pmatrix}}$ | $x_1=\dfrac{\det\begin{pmatrix}1&-1\\3&-2\end{pmatrix}}{\det\begin{pmatrix}3&-1\\0&-2\end{pmatrix}}$, $x_2=\dfrac{\det\begin{pmatrix}1&3\\3&0\end{pmatrix}}{\det\begin{pmatrix}1&-1\\3&-2\end{pmatrix}}$ | $x_1=\dfrac{\det\begin{pmatrix}3&-1\\0&-2\end{pmatrix}}{\det\begin{pmatrix}1&-1\\3&-2\end{pmatrix}}$, $x_2=\dfrac{\det\begin{pmatrix}1&3\\3&0\end{pmatrix}}{\det\begin{pmatrix}1&-1\\3&-2\end{pmatrix}}$ | $x_1=\dfrac{\det\begin{pmatrix}1&3\\3&0\end{pmatrix}}{\det\begin{pmatrix}1&-1\\3&-2\end{pmatrix}}$, $x_2=\dfrac{\det\begin{pmatrix}3&-1\\0&-2\end{pmatrix}}{\det\begin{pmatrix}1&-1\\3&-2\end{pmatrix}}$
+x126 C Per l'Algoritmo 26.7 si tengono le equazioni corrispondenti alle **righe del minore non nullo** di ordine $r=\mathrm{rank}(A)$ e si eliminano le altre.
+  Il minore $\det\begin{pmatrix}1&-2\\2&-1\end{pmatrix}=-1+4=3\neq0$ usa le righe 1 e 2 (e le colonne 1 e 3). Il sistema è compatibile (la completa ha rango 2: la terza riga $(3,9,-6,0)$ è il triplo della prima $(1,3,-2,0)$), quindi la terza equazione si può eliminare ottenendo un sistema equivalente.
+  La seconda invece **non** si può eliminare: resterebbero la prima e la terza, che sono proporzionali, cioè una sola equazione effettiva; il nuovo sistema avrebbe $\infty^2$ soluzioni invece di $\infty^1$ (per esempio $(0,0,0)$ risolverebbe prima e terza, ma non la seconda, che ha termine noto $2$).
+  **Errore tipico:** pensare che, essendo il rango 2, si possa togliere una qualsiasi delle tre equazioni: si può togliere solo un'equazione che dipende dalle altre rimaste.
+T: Dato il sistema di equazioni lineari reale $\begin{cases}x_1+3x_2-2x_3=0\\2x_1+6x_2-x_3=2\\3x_1+9x_2-6x_3=0\end{cases}$, sapendo che il rango della matrice dei coefficienti è 2 e che il suo minore $\det\begin{pmatrix}1&-2\\2&-1\end{pmatrix}$ è non nullo, quale delle seguenti equazioni può essere eliminata ottenendo un sistema equivalente?
+OPT: Nessuna. | La seconda. | La terza. | Una a scelta tra la seconda e la terza.
+## L27 Metodo di eliminazione di Gauss-Jordan
+27-1 D Il **metodo di Gauss con normalizzazione** riduce a scala la matrice completa con operazioni elementari sulle righe e rende uguali a $1$ i pivot (senza annullare gli elementi sopra i pivot, come invece fa Gauss-Jordan).
+  $$\left(\begin{array}{cc|c}1&3&-3\\3&5&1\end{array}\right)\xrightarrow{R_2-3R_1}\left(\begin{array}{cc|c}1&3&-3\\0&-4&10\end{array}\right)\xrightarrow{-\frac14R_2}\left(\begin{array}{cc|c}1&3&-3\\0&1&-\frac52\end{array}\right)$$
+  (calcolo: $5-3\cdot3=-4$, $1-3\cdot(-3)=10$, $10/(-4)=-\tfrac52$). Il sistema ottenuto è $\begin{cases}x_1+3x_2=-3\\x_2=-\tfrac52\end{cases}$; la prima riga, già con pivot 1, resta invariata.
+  **Errore tipico:** cambiare la prima equazione (cambiando i segni, si ottiene $x_1-3x_2=3$, che non è equivalente), oppure sbagliare il termine noto della seconda riga ($1+9=10$, non $1-9$).
+T: Quale sistema di equazioni lineari si ottiene applicando il metodo di Gauss con normalizzazione al sistema di equazioni lineari $\begin{cases}x_1+3x_2=-3\\3x_1+5x_2=1\end{cases}$?
+OPT: $\begin{cases}x_1-3x_2=3\\x_2=-\frac32\end{cases}$ | $\begin{cases}x_1-3x_2=3\\x_2=-\frac52\end{cases}$ | $\begin{cases}x_1+3x_2=-3\\x_2=-\frac72\end{cases}$ | $\begin{cases}x_1+3x_2=-3\\x_2=-\frac52\end{cases}$
+27-2 A Gauss con normalizzazione sulla matrice completa:
+  $$\left(\begin{array}{cc|c}1&3&-3\\2&4&1\end{array}\right)\xrightarrow{R_2-2R_1}\left(\begin{array}{cc|c}1&3&-3\\0&-2&7\end{array}\right)\xrightarrow{-\frac12R_2}\left(\begin{array}{cc|c}1&3&-3\\0&1&-\frac72\end{array}\right)$$
+  (calcolo: $4-2\cdot3=-2$, $1-2\cdot(-3)=7$, $7/(-2)=-\tfrac72$). Il sistema è $\begin{cases}x_1+3x_2=-3\\x_2=-\tfrac72\end{cases}$.
+  **Errore tipico:** confondere questo esercizio con quello simile con $3x_1+5x_2=1$ (che dà $-\tfrac52$), o modificare inutilmente la prima equazione.
+T: Quale sistema di equazioni lineari si ottiene applicando il metodo di Gauss con normalizzazione al sistema di equazioni lineari $\begin{cases}x_1+3x_2=-3\\2x_1+4x_2=1\end{cases}$?
+OPT: $\begin{cases}x_1+3x_2=-3\\x_2=-\frac72\end{cases}$ | $\begin{cases}x_1+3x_2=-3\\x_2=-\frac52\end{cases}$ | $\begin{cases}x_1-3x_2=3\\x_2=-\frac32\end{cases}$ | $\begin{cases}x_1-3x_2=3\\x_2=-\frac52\end{cases}$
+27-3 A Gauss con normalizzazione sulla matrice completa:
+  $$\left(\begin{array}{cc|c}1&-3&3\\3&-5&3\end{array}\right)\xrightarrow{R_2-3R_1}\left(\begin{array}{cc|c}1&-3&3\\0&4&-6\end{array}\right)\xrightarrow{\frac14R_2}\left(\begin{array}{cc|c}1&-3&3\\0&1&-\frac32\end{array}\right)$$
+  (calcolo: $-5-3\cdot(-3)=4$, $3-3\cdot3=-6$, $-6/4=-\tfrac32$). Il sistema è $\begin{cases}x_1-3x_2=3\\x_2=-\tfrac32\end{cases}$.
+  **Errore tipico:** sbagliare il segno di $-5+9=4$ (ottenendo $-14$) o dividere il termine noto per il numero sbagliato.
+T: Quale sistema di equazioni lineari si ottiene applicando il metodo di Gauss con normalizzazione al sistema di equazioni lineari $\begin{cases}x_1-3x_2=3\\3x_1-5x_2=3\end{cases}$?
+OPT: $\begin{cases}x_1-3x_2=3\\x_2=-\frac32\end{cases}$ | $\begin{cases}x_1+3x_2=-3\\x_2=-\frac72\end{cases}$ | $\begin{cases}x_1-3x_2=3\\x_2=-\frac52\end{cases}$ | $\begin{cases}x_1+3x_2=-3\\x_2=-\frac52\end{cases}$
+27-4 D Gauss con normalizzazione sulla matrice completa:
+  $$\left(\begin{array}{cc|c}1&-3&3\\2&-4&1\end{array}\right)\xrightarrow{R_2-2R_1}\left(\begin{array}{cc|c}1&-3&3\\0&2&-5\end{array}\right)\xrightarrow{\frac12R_2}\left(\begin{array}{cc|c}1&-3&3\\0&1&-\frac52\end{array}\right)$$
+  (calcolo: $-4-2\cdot(-3)=2$, $1-2\cdot3=-5$). Il sistema è $\begin{cases}x_1-3x_2=3\\x_2=-\tfrac52\end{cases}$.
+  **Errore tipico:** riscrivere la prima equazione con i segni cambiati ($x_1+3x_2=-3$ non è equivalente a $x_1-3x_2=3$), o confondere il risultato con quello del sistema simile con $3x_1-5x_2=3$.
+T: Quale sistema di equazioni lineari si ottiene applicando il metodo di Gauss con normalizzazione al sistema di equazioni lineari $\begin{cases}x_1-3x_2=3\\2x_1-4x_2=1\end{cases}$?
+OPT: $\begin{cases}x_1+3x_2=-3\\x_2=-\frac72\end{cases}$ | $\begin{cases}x_1+3x_2=-3\\x_2=-\frac52\end{cases}$ | $\begin{cases}x_1-3x_2=3\\x_2=-\frac32\end{cases}$ | $\begin{cases}x_1-3x_2=3\\x_2=-\frac52\end{cases}$
+27-5 APERTA
+KW: Gauss-Jordan|Gauss, matrice completa, operazioni elementari|operazioni sulle righe, sistema equivalente, pivot, righe nulle, incognite libere|parametri, incognite dipendenti, ultima colonna, compatibile, normalizzazione|pivot uguali a 1, a ritroso|sostituzione all'indietro
+> **Idea.** Le operazioni elementari sulle righe della matrice completa $(A\,|\,B)$ (scambiare due righe, moltiplicare una riga per uno scalare non nullo, sommare a una riga un multiplo di un'altra) corrispondono a operazioni sulle equazioni che danno un **sistema equivalente** (stesse soluzioni).
+>
+> **Algoritmo 27.3 (Gauss-Jordan).** Sia $A\cdot X=B$ con $m$ equazioni e $n$ incognite.
+> 1. Si applica l'eliminazione di Gauss-Jordan a $(A\,|\,B)$: si ottiene $(A'\,|\,B')$ a scala ridotta, con pivot uguali a $1$ e zeri sopra e sotto ogni pivot.
+> 2. **Compatibilità:** il sistema è compatibile se e solo se **non c'è un pivot nell'ultima colonna** $B'$ (un pivot lì corrisponde all'equazione $0=1$); in caso contrario $\mathrm{rank}(A')=\mathrm{rank}(A'\,|\,B')$ e vale Rouché-Capelli.
+> 3. Si cancellano le righe nulle: resta $(\tilde A\,|\,\tilde B)$ di dimensione $r\times(n+1)$, con $r=\mathrm{rank}(A)$.
+> 4. Le incognite corrispondenti ai pivot sono **dipendenti**; le altre $n-r$ sono **libere** (parametri) e si portano a secondo membro: il sistema diventa $I_r\cdot(x_{j_1},\dots,x_{j_r})^t=\tilde B-\sum_h x_h\tilde A^h$.
+> 5. Le soluzioni sono $\infty^{n-r}$: $x_h=\alpha_h$ per le incognite libere, e le dipendenti si leggono direttamente.
+>
+> **Variante: Gauss con normalizzazione.** Si porta la matrice a scala con pivot uguali a 1, senza annullare gli elementi sopra i pivot; poi si ricavano le incognite dipendenti **a ritroso**, partendo dall'ultimo pivot e sostituendo nelle equazioni precedenti. (Il metodo di Gauss semplice non normalizza nemmeno i pivot.)
+>
+> **Esempio.** $\begin{cases}x_1+x_2=2\\4x_1+3x_2=-1\end{cases}$: $\left(\begin{array}{cc|c}1&1&2\\4&3&-1\end{array}\right)\xrightarrow{R_2-4R_1}\left(\begin{array}{cc|c}1&1&2\\0&-1&-9\end{array}\right)\xrightarrow{-R_2}\left(\begin{array}{cc|c}1&1&2\\0&1&9\end{array}\right)$ (Gauss con normalizzazione: $x_2=9$, $x_1=2-9=-7$) $\xrightarrow{R_1-R_2}\left(\begin{array}{cc|c}1&0&-7\\0&1&9\end{array}\right)$ (Gauss-Jordan: si legge $(x_1,x_2)=(-7,9)$).
+>
+> Esempio incompatibile: $x_1+x_2=2,\ 3x_1+3x_2=-1$ porta a $\left(\begin{array}{cc|c}1&1&0\\0&0&1\end{array}\right)$, con un pivot nell'ultima colonna: nessuna soluzione.
+x127 D Gauss-Jordan sulla matrice completa (pivot uguali a 1 e zeri sopra e sotto ogni pivot):
+  $$\left(\begin{array}{ccc|c}1&2&4&-3\\1&2&6&-5\\2&4&9&-7\end{array}\right)\xrightarrow[R_3-2R_1]{R_2-R_1}\left(\begin{array}{ccc|c}1&2&4&-3\\0&0&2&-2\\0&0&1&-1\end{array}\right)\xrightarrow{\frac12R_2}\left(\begin{array}{ccc|c}1&2&4&-3\\0&0&1&-1\\0&0&1&-1\end{array}\right)$$
+  $$\xrightarrow{R_3-R_2}\left(\begin{array}{ccc|c}1&2&4&-3\\0&0&1&-1\\0&0&0&0\end{array}\right)\xrightarrow{R_1-4R_2}\left(\begin{array}{ccc|c}1&2&0&1\\0&0&1&-1\\0&0&0&0\end{array}\right).$$
+  (Ultimo passo: $4-4\cdot1=0$ e $-3-4\cdot(-1)=1$.) I pivot sono in colonna 1 e 3, entrambi uguali a 1, con zeri sopra e sotto.
+  **Errore tipico:** fermarsi prima della fine: lasciare il $4$ sopra il secondo pivot è Gauss con normalizzazione, non Gauss-Jordan; lasciare il pivot uguale a $2$ vuol dire non aver normalizzato.
+T: Quale delle seguenti è la matrice che si ottiene dopo aver applicato il metodo di eliminazione di Gauss-Jordan alla matrice completa associata al sistema di equazioni lineari reale $\begin{cases}x_1+2x_2+4x_3=-3\\x_1+2x_2+6x_3=-5\\2x_1+4x_2+9x_3=-7\end{cases}$?
+OPT: $\begin{pmatrix}1&2&4&-3\\0&0&2&-2\\0&0&0&0\end{pmatrix}$ | $\begin{pmatrix}1&2&4&-3\\0&0&1&-1\\0&0&0&0\end{pmatrix}$ | $\begin{pmatrix}1&2&0&1\\0&0&2&-2\\0&0&0&0\end{pmatrix}$ | $\begin{pmatrix}1&2&0&1\\0&0&1&-1\\0&0&0&0\end{pmatrix}$
+x128 C Gauss-Jordan sulla matrice completa (conviene portare in alto la riga con pivot 1):
+  $$\left(\begin{array}{cc|c}2&-1&8\\2&2&2\\1&1&1\end{array}\right)\xrightarrow{R_1\leftrightarrow R_3}\left(\begin{array}{cc|c}1&1&1\\2&2&2\\2&-1&8\end{array}\right)\xrightarrow[R_3-2R_1]{R_2-2R_1}\left(\begin{array}{cc|c}1&1&1\\0&0&0\\0&-3&6\end{array}\right)$$
+  $$\xrightarrow{R_2\leftrightarrow R_3}\left(\begin{array}{cc|c}1&1&1\\0&-3&6\\0&0&0\end{array}\right)\xrightarrow{-\frac13R_2}\left(\begin{array}{cc|c}1&1&1\\0&1&-2\\0&0&0\end{array}\right)\xrightarrow{R_1-R_2}\left(\begin{array}{cc|c}1&0&3\\0&1&-2\\0&0&0\end{array}\right).$$
+  Nessun pivot nell'ultima colonna → compatibile; si legge $(x_1,x_2)=(3,-2)$. Verifica: $6+2=8$, $6-4=2$, $3-2=1$ ✓.
+  **Errore tipico:** risolvere solo le ultime due equazioni (che sono proporzionali, quindi non bastano), o sbagliare il segno di $x_2$: nella prima equazione $2\cdot3-(-2)=8$, mentre con $x_2=2$ si avrebbe $4$.
+T: Quali sono le soluzioni del sistema di equazioni lineari reale $\begin{cases}2x_1-x_2=8\\2x_1+2x_2=2\\x_1+x_2=1\end{cases}$ ottenute applicando il metodo di eliminazione di Gauss-Jordan?
+OPT: $(x_1,x_2)=(3,2)$. | $(x_1,x_2)=(-3,2)$. | $(x_1,x_2)=(3,-2)$. | $(x_1,x_2)=(-3,-2)$.
+x129 D Dopo Gauss-Jordan, le incognite che corrispondono alle colonne dei **pivot** sono le **dipendenti**; le altre sono le **libere** (parametri). Pivot nelle colonne 1 e 4 → $x_1$ e $x_4$ dipendenti, $x_2$ e $x_3$ libere.
+  Infatti il sistema ridotto ha la forma $x_1=\tilde b_1-a\,x_2-b\,x_3$, $x_4=\tilde b_2-c\,x_2-d\,x_3$: dando valori arbitrari a $x_2,x_3$ si ricavano $x_1,x_4$. (Per l'Osservazione 26.6, $n-r$ incognite sono libere se e solo se le colonne **delle altre** formano una sottomatrice di rango $r$: le colonne 1 e 4, che contengono i pivot, hanno rango 2.)
+  La coppia delle incognite senza pivot è l'unica che va **sempre** bene, qualunque sia il sistema. Togliendo $x_1$ e $x_4$ restano le colonne 2 e 3, che nella seconda riga ridotta $(0\ 0\ 0\ 1\,|\,\cdot)$ hanno zeri: rango $\le1$, quindi quella coppia non è mai libera. Le coppie che contengono $x_1$ e una tra $x_2,x_3$ funzionerebbero solo per sistemi particolari (se nella prima riga ridotta il coefficiente dell'altra incognita è non nullo), quindi non sono la scelta garantita dai pivot.
+  **Errore tipico:** scegliere come parametri proprio le incognite dei pivot, scambiando i ruoli di dipendenti e libere.
+T: Dato un sistema di equazioni lineari $A\cdot X=B$ con $X\in\mathbb{C}^4$ tale che, applicando il metodo di eliminazione di Gauss-Jordan alla matrice completa $(A\,|\,B)$, si ottengono 2 pivot, uno nella prima colonna e uno nella quarta colonna, quale delle seguenti coppie di incognite può essere scelta come coppia di incognite libere (parametri)?
+OPT: $(x_1,x_2)$. | $(x_1,x_3)$. | $(x_1,x_4)$. | $(x_2,x_3)$.
+x130 A La matrice completa $(A\,|\,B)$ ha 4 colonne ($X\in\mathbb{R}^3$ più la colonna dei termini noti). Un pivot **nell'ultima colonna** corrisponde a una riga $(0\ 0\ 0\,|\,1)$, cioè all'equazione $0=1$: il sistema **non è compatibile** e non ha soluzioni (Osservazione 27.6).
+  In termini di ranghi: i pivot di $A'$ sono 2, quelli della completa 3, quindi $\mathrm{rank}(A)=2<\mathrm{rank}(A\,|\,B)=3$, e per Rouché-Capelli non ci sono soluzioni.
+  **Errore tipico:** contare i 3 pivot come se fossero tutti di $A$ e concludere che c'è una sola soluzione ($\infty^{3-3}$), oppure calcolare $\infty^{3-2}=\infty^1$ dimenticando che, prima di contare i parametri, il sistema deve essere compatibile.
+T: Quante soluzioni ha un sistema di equazioni lineari $A\cdot X=B$ con $X\in\mathbb{R}^3$ tale che, applicando il metodo di eliminazione di Gauss-Jordan alla matrice completa $(A\,|\,B)$, si ottengono 3 pivot, uno dei quali nell'ultima colonna?
+OPT: Nessuna. | 1. | $\infty^1$. | $\infty^2$.

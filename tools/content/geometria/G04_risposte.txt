@@ -1,0 +1,352 @@
+## L14 Matrici invertibili
+14-1 D L'inversa è la matrice $X$ con $A\cdot X=X\cdot A=I_2$. Per una $2\times 2$ $\begin{pmatrix}a&b\\c&d\end{pmatrix}$ con $ad-bc\neq 0$ si ha $\begin{pmatrix}a&b\\c&d\end{pmatrix}^{-1}=\dfrac{1}{ad-bc}\begin{pmatrix}d&-b\\-c&a\end{pmatrix}$ (è la soluzione del sistema $A\cdot X=I_2$, $X\cdot A=I_2$ della dispensa).
+  Qui $a=1,\ b=-1,\ c=1,\ d=0$: $\det A=1\cdot 0-(-1)\cdot 1=1$.
+  Scambio gli elementi della diagonale principale e cambio segno agli altri due: $\begin{pmatrix}0&1\\-1&1\end{pmatrix}$, poi divido per $1$: $A^{-1}=\begin{pmatrix}0&1\\-1&1\end{pmatrix}$.
+  Verifica: $\begin{pmatrix}1&-1\\1&0\end{pmatrix}\begin{pmatrix}0&1\\-1&1\end{pmatrix}=\begin{pmatrix}1\cdot0+(-1)(-1)&1\cdot1+(-1)\cdot1\\1\cdot0+0\cdot(-1)&1\cdot1+0\cdot1\end{pmatrix}=\begin{pmatrix}1&0\\0&1\end{pmatrix}$.
+  **Errore tipico:** scrivere la trasposta dell'inversa $\begin{pmatrix}0&-1\\1&1\end{pmatrix}$ (scambiando di posto $-b$ e $-c$), oppure dimenticare di cambiare segno agli elementi fuori diagonale. Conviene sempre verificare con il prodotto righe per colonne.
+T: Data la matrice $2\times 2$ $A=\begin{pmatrix}1&-1\\1&0\end{pmatrix}$, quale delle seguenti è la matrice $A^{-1}$?
+OPT: $\begin{pmatrix}0&1\\1&-1\end{pmatrix}$ | $\begin{pmatrix}0&-1\\1&1\end{pmatrix}$ | $\begin{pmatrix}0&-1\\-1&-1\end{pmatrix}$ | $\begin{pmatrix}0&1\\-1&1\end{pmatrix}$
+14-2 B Per $\begin{pmatrix}a&b\\c&d\end{pmatrix}$ invertibile vale $A^{-1}=\dfrac{1}{ad-bc}\begin{pmatrix}d&-b\\-c&a\end{pmatrix}$.
+  Qui $a=1,\ b=-1,\ c=-1,\ d=0$: $\det A=1\cdot0-(-1)(-1)=-1\neq0$, quindi $A$ è invertibile.
+  $\begin{pmatrix}d&-b\\-c&a\end{pmatrix}=\begin{pmatrix}0&1\\1&1\end{pmatrix}$; dividendo per $-1$: $A^{-1}=\begin{pmatrix}0&-1\\-1&-1\end{pmatrix}$.
+  Verifica: $\begin{pmatrix}1&-1\\-1&0\end{pmatrix}\begin{pmatrix}0&-1\\-1&-1\end{pmatrix}=\begin{pmatrix}0+1&-1+1\\0+0&1+0\end{pmatrix}=\begin{pmatrix}1&0\\0&1\end{pmatrix}$.
+  **Errore tipico:** dimenticare di dividere per il determinante quando vale $-1$ (si ottiene $\begin{pmatrix}0&1\\1&1\end{pmatrix}$ cambiato di segno solo in parte), o confondere l'inversa con quella di una matrice simile con i segni diversi.
+T: Data la matrice $2\times 2$ $A=\begin{pmatrix}1&-1\\-1&0\end{pmatrix}$, quale delle seguenti è la matrice $A^{-1}$?
+OPT: $\begin{pmatrix}0&1\\-1&1\end{pmatrix}$ | $\begin{pmatrix}0&-1\\-1&-1\end{pmatrix}$ | $\begin{pmatrix}0&-1\\1&1\end{pmatrix}$ | $\begin{pmatrix}0&1\\1&-1\end{pmatrix}$
+14-3 D Per $\begin{pmatrix}a&b\\c&d\end{pmatrix}$ invertibile vale $A^{-1}=\dfrac{1}{ad-bc}\begin{pmatrix}d&-b\\-c&a\end{pmatrix}$.
+  Qui $a=1,\ b=1,\ c=-1,\ d=0$: $\det A=1\cdot0-1\cdot(-1)=1$.
+  $A^{-1}=\begin{pmatrix}0&-1\\1&1\end{pmatrix}$.
+  Verifica: $\begin{pmatrix}1&1\\-1&0\end{pmatrix}\begin{pmatrix}0&-1\\1&1\end{pmatrix}=\begin{pmatrix}0+1&-1+1\\0+0&1+0\end{pmatrix}=\begin{pmatrix}1&0\\0&1\end{pmatrix}$.
+  **Errore tipico:** scegliere la trasposta $\begin{pmatrix}0&1\\-1&1\end{pmatrix}$, che è l'inversa della trasposta di $A$ e non di $A$; oppure sbagliare il segno del determinante.
+T: Data la matrice $2\times 2$ $A=\begin{pmatrix}1&1\\-1&0\end{pmatrix}$, quale delle seguenti è la matrice $A^{-1}$?
+OPT: $\begin{pmatrix}0&1\\1&-1\end{pmatrix}$ | $\begin{pmatrix}0&-1\\-1&-1\end{pmatrix}$ | $\begin{pmatrix}0&1\\-1&1\end{pmatrix}$ | $\begin{pmatrix}0&-1\\1&1\end{pmatrix}$
+14-4 D Per $\begin{pmatrix}a&b\\c&d\end{pmatrix}$ invertibile vale $A^{-1}=\dfrac{1}{ad-bc}\begin{pmatrix}d&-b\\-c&a\end{pmatrix}$.
+  Qui $a=1,\ b=1,\ c=1,\ d=0$: $\det A=1\cdot0-1\cdot1=-1$.
+  $\begin{pmatrix}d&-b\\-c&a\end{pmatrix}=\begin{pmatrix}0&-1\\-1&1\end{pmatrix}$; dividendo per $-1$: $A^{-1}=\begin{pmatrix}0&1\\1&-1\end{pmatrix}$.
+  Verifica: $\begin{pmatrix}1&1\\1&0\end{pmatrix}\begin{pmatrix}0&1\\1&-1\end{pmatrix}=\begin{pmatrix}0+1&1-1\\0+0&1+0\end{pmatrix}=\begin{pmatrix}1&0\\0&1\end{pmatrix}$.
+  **Errore tipico:** fermarsi alla matrice $\begin{pmatrix}0&-1\\-1&1\end{pmatrix}$ senza dividere per $\det A=-1$, oppure sbagliare il segno di un solo elemento.
+T: Data la matrice $2\times 2$ $A=\begin{pmatrix}1&1\\1&0\end{pmatrix}$, quale delle seguenti è la matrice $A^{-1}$?
+OPT: $\begin{pmatrix}0&-1\\1&1\end{pmatrix}$ | $\begin{pmatrix}0&-1\\-1&-1\end{pmatrix}$ | $\begin{pmatrix}0&1\\-1&1\end{pmatrix}$ | $\begin{pmatrix}0&1\\1&-1\end{pmatrix}$
+14-5 APERTA
+KW: prodotto righe per colonne|prodotto righe colonne, n×m per m×p|numero di colonne uguale al numero di righe, entrata (i,j)|somma dei prodotti, non commutativo, associativo|proprietà associativa, distributivo|distributiva, matrice identità|elemento neutro, invertibile, inversa unica|unicità, A·A^{-1}=A^{-1}·A=I, (AB)^{-1}=B^{-1}A^{-1}, matrice nulla non invertibile|determinante diverso da zero
+> **Prodotto righe per colonne.** Date $A=(a_{ij})\in\mathbb{K}^{n,m}$ e $B=(b_{jk})\in\mathbb{K}^{m,p}$ (il numero di colonne di $A$ deve essere uguale al numero di righe di $B$), il prodotto $A\cdot B\in\mathbb{K}^{n,p}$ ha entrata $(i,k)$ uguale a $\sum_{j=1}^{m}a_{ij}b_{jk}$: si moltiplica la $i$-esima riga di $A$ per la $k$-esima colonna di $B$ termine a termine e si somma.
+> Esempio: $\begin{pmatrix}1&1\\0&1\end{pmatrix}\cdot\begin{pmatrix}1&3\\1&2\end{pmatrix}=\begin{pmatrix}2&5\\1&2\end{pmatrix}$.
+> Proprietà: è associativo, $(AB)C=A(BC)$; è distributivo rispetto alla somma; $I_n$ è elemento neutro ($I_nA=AI_m=A$); **non è commutativo** in generale (anche quando $AB$ e $BA$ esistono entrambi possono essere diversi). Per le matrici quadrate si definiscono le potenze $A^k$.
+> **Inversa.** Una matrice quadrata $A\in\mathbb{K}^{n,n}$ è invertibile se esiste $A^{-1}$ con $A\cdot A^{-1}=A^{-1}\cdot A=I_n$; l'inversa, se esiste, è unica. Esempi: $I_n$ è invertibile con inversa $I_n$; $0_{n,n}$ non è invertibile, perché $0_{n,n}\cdot X=0_{n,n}\neq I_n$. Vale $(AB)^{-1}=B^{-1}A^{-1}$.
+> Per calcolarla si risolve il sistema $A\cdot X=I_n$, $X\cdot A=I_n$ nell'incognita matriciale $X$ ($2n^2$ equazioni in $n^2$ incognite): se ha soluzione è $A^{-1}$, altrimenti $A$ non è invertibile. Per $n=2$ si trova $\begin{pmatrix}a&b\\c&d\end{pmatrix}^{-1}=\frac{1}{ad-bc}\begin{pmatrix}d&-b\\-c&a\end{pmatrix}$ se $ad-bc\neq0$; in generale $A$ è invertibile se e solo se $\det A\neq0$. Esempio: $\begin{pmatrix}2&1\\3&2\end{pmatrix}^{-1}=\begin{pmatrix}2&-1\\-3&2\end{pmatrix}$.
+> Con l'inversa si definisce il coniugio: $B$ è simile ad $A$ se $B=C^{-1}AC$ con $C$ invertibile.
+x75 D Con la formula per le $2\times2$: $\det\begin{pmatrix}1&2\\-1&3\end{pmatrix}=1\cdot3-2\cdot(-1)=5$.
+  $A^{-1}=\frac15\begin{pmatrix}3&-2\\1&1\end{pmatrix}=\begin{pmatrix}\frac35&-\frac25\\\frac15&\frac15\end{pmatrix}$.
+  Verifica: $\begin{pmatrix}1&2\\-1&3\end{pmatrix}\begin{pmatrix}\frac35&-\frac25\\\frac15&\frac15\end{pmatrix}=\begin{pmatrix}\frac35+\frac25&-\frac25+\frac25\\-\frac35+\frac35&\frac25+\frac35\end{pmatrix}=I_2$.
+  L'identità e la matrice nulla non possono essere: $A\cdot I_2=A\neq I_2$ e la matrice nulla non è mai l'inversa di nulla.
+  **Errore tipico:** sbagliare i segni fuori diagonale: la matrice con $\frac25$ in alto e $-\frac15$ in basso è la trasposta dell'inversa.
+T: Quale è la matrice inversa della matrice $\begin{pmatrix}1&2\\-1&3\end{pmatrix}$?
+OPT: $\begin{pmatrix}1&0\\0&1\end{pmatrix}$. | $\begin{pmatrix}\frac35&\frac25\\-\frac15&\frac15\end{pmatrix}$. | $\begin{pmatrix}0&0\\0&0\end{pmatrix}$. | $\begin{pmatrix}\frac35&-\frac25\\\frac15&\frac15\end{pmatrix}$.
+x76 B La matrice $A=\begin{pmatrix}1&2&0\\0&1&-1\\0&0&-1\end{pmatrix}$ è triangolare superiore con diagonale $1,1,-1$, quindi $\det A=-1\neq0$ ed è invertibile.
+  Verifico il candidato $X=\begin{pmatrix}1&-2&2\\0&1&-1\\0&0&-1\end{pmatrix}$ con il prodotto righe per colonne:
+  prima riga di $AX$: $(1\cdot1,\ 1\cdot(-2)+2\cdot1,\ 1\cdot2+2\cdot(-1)+0)=(1,0,0)$;
+  seconda riga: $(0,\ 1\cdot1,\ 1\cdot(-1)+(-1)(-1))=(0,1,0)$; terza riga: $(0,0,(-1)(-1))=(0,0,1)$. Quindi $AX=I_3$ (e analogamente $XA=I_3$).
+  Con $-2$ nell'entrata $(1,3)$ invece l'entrata $(1,3)$ del prodotto sarebbe $1\cdot(-2)+2\cdot(-1)+0=-4\neq0$, quindi quella matrice non è l'inversa.
+  **Errore tipico:** sbagliare il segno di una sola entrata (quella in alto a destra), che si vede solo facendo la verifica completa.
+T: Quale è la matrice inversa della matrice $\begin{pmatrix}1&2&0\\0&1&-1\\0&0&-1\end{pmatrix}$?
+OPT: $\begin{pmatrix}1&0&0\\0&1&0\\0&0&1\end{pmatrix}$. | $\begin{pmatrix}1&-2&2\\0&1&-1\\0&0&-1\end{pmatrix}$. | $\begin{pmatrix}0&0&0\\0&0&0\\0&0&0\end{pmatrix}$. | $\begin{pmatrix}1&-2&-2\\0&1&-1\\0&0&-1\end{pmatrix}$.
+x77 A $\det\begin{pmatrix}2&1\\4&2\end{pmatrix}=2\cdot2-1\cdot4=0$: la seconda riga è il doppio della prima. Il sistema $A\cdot X=I_2$ non ha soluzione (per una $2\times2$ serve $ad-bc\neq0$), quindi la matrice non è invertibile, né come matrice reale né come matrice complessa: il determinante è $0$ in qualunque campo.
+  **Errore tipico:** pensare che passando ai complessi "ci siano più soluzioni": il campo non cambia il fatto che il determinante sia nullo.
+T: La matrice, reale o complessa, $\begin{pmatrix}2&1\\4&2\end{pmatrix}$ è invertibile?
+OPT: No. | Sì. | Solo se è reale. | Nessuna delle altre risposte.
+x78 C Nella dispensa $B$ è simile ad $A$ tramite $C$ se $B=C^{-1}\cdot A\cdot C$. Qui $A=\begin{pmatrix}1&1\\0&1\end{pmatrix}$, $C=\begin{pmatrix}0&-2\\1&0\end{pmatrix}$.
+  $\det C=0\cdot0-(-2)\cdot1=2$, quindi $C^{-1}=\frac12\begin{pmatrix}0&2\\-1&0\end{pmatrix}=\begin{pmatrix}0&1\\-\frac12&0\end{pmatrix}$.
+  $A\cdot C=\begin{pmatrix}1\cdot0+1\cdot1&1\cdot(-2)+1\cdot0\\0+1&0+0\end{pmatrix}=\begin{pmatrix}1&-2\\1&0\end{pmatrix}$.
+  $C^{-1}\cdot(AC)=\begin{pmatrix}0&1\\-\frac12&0\end{pmatrix}\begin{pmatrix}1&-2\\1&0\end{pmatrix}=\begin{pmatrix}1&0\\-\frac12&1\end{pmatrix}$.
+  Controllo di coerenza: matrici simili hanno lo stesso determinante ($1$) e la stessa traccia ($2$), come il risultato.
+  **Errore tipico:** fermarsi ad $A$ stessa (è simile a sé tramite l'identità, non tramite $C$) o sbagliare l'inversa di $C$; la matrice con $-\frac12,-\frac12$ in basso ha traccia $-\frac12$ e quindi non può essere simile ad $A$.
+T: Quale è la matrice simile alla matrice $\begin{pmatrix}1&1\\0&1\end{pmatrix}$ tramite la matrice $\begin{pmatrix}0&-2\\1&0\end{pmatrix}$?
+OPT: $\begin{pmatrix}1&1\\0&1\end{pmatrix}$. | $\begin{pmatrix}0&1\\-\frac12&-\frac12\end{pmatrix}$. | $\begin{pmatrix}1&0\\-\frac12&1\end{pmatrix}$. | $\begin{pmatrix}1&0\\1&1\end{pmatrix}$.
+
+## L15 Determinante
+15-1 D L'area del parallelogramma costruito su due vettori del piano è il **modulo** del determinante della matrice che li ha come colonne.
+  $\det\begin{pmatrix}3&3\\-1&-2\end{pmatrix}=3\cdot(-2)-3\cdot(-1)=-6+3=-3$.
+  Area $=\lvert-3\rvert=3$.
+  **Errore tipico:** dare il determinante col suo segno ($-3$): un'area non è mai negativa. Il segno dice solo l'orientamento dei due vettori.
+  TRAP: Tra le opzioni c'è il determinante con il segno: l'area è il suo valore assoluto.
+T: Quanto vale l'area del parallelogramma che ha i due vettori ${}^t(3\ -1)$ e ${}^t(3\ -2)$ come una coppia di lati adiacenti nel piano?
+15-2 C Per una $2\times2$: $\det\begin{pmatrix}a&b\\c&d\end{pmatrix}=ad-bc$, anche con entrate complesse.
+  $\det\begin{pmatrix}3i&-2\\2&1-i\end{pmatrix}=3i(1-i)-(-2)\cdot2$.
+  $3i(1-i)=3i-3i^2=3i+3$ (perché $i^2=-1$); $-(-2)\cdot 2=+4$.
+  Totale: $3+3i+4=7+3i$.
+  **Errore tipico:** scrivere $-3i^2=-3$ invece di $+3$, oppure sbagliare il segno di $-bc$ con $b=-2$ (si otterrebbe $-1+3i$).
+T: Quanto vale il determinante della matrice complessa $2\times 2$ $\begin{pmatrix}3i&-2\\2&1-i\end{pmatrix}$?
+15-3 C L'area del parallelogramma è il modulo del determinante della matrice con i due vettori come colonne.
+  $\det\begin{pmatrix}3&-3\\-1&2\end{pmatrix}=3\cdot2-(-3)(-1)=6-3=3$.
+  Area $=\lvert3\rvert=3$.
+  **Errore tipico:** sbagliare il segno di $(-3)(-1)=+3$ e ottenere $6+3=9$, o scegliere il valore con il segno meno pensando all'orientamento.
+  TRAP: Le opzioni negative non possono mai essere un'area.
+T: Quanto vale l'area del parallelogramma che ha i due vettori ${}^t(3\ -1)$ e ${}^t(-3\ 2)$ come una coppia di lati adiacenti nel piano?
+15-4 D L'area è il modulo del determinante della matrice che ha i due vettori come colonne.
+  $\det\begin{pmatrix}3&2\\-1&-3\end{pmatrix}=3\cdot(-3)-2\cdot(-1)=-9+2=-7$.
+  Area $=\lvert-7\rvert=7$.
+  **Errore tipico:** riportare $-7$, il determinante con il segno: il segno negativo indica solo che il secondo vettore si raggiunge dal primo ruotando in senso orario.
+  TRAP: Il determinante viene negativo: l'area è il suo modulo.
+T: Quanto vale l'area del parallelogramma che ha i due vettori ${}^t(3\ -1)$ e ${}^t(2\ -3)$ come una coppia di lati adiacenti nel piano?
+15-5 D L'area è il modulo del determinante della matrice che ha i due vettori come colonne.
+  $\det\begin{pmatrix}3&-2\\-1&3\end{pmatrix}=3\cdot3-(-2)(-1)=9-2=7$.
+  Area $=\lvert7\rvert=7$.
+  **Errore tipico:** calcolare $ad+bc$ invece di $ad-bc$ o confondere i segni di $(-2)(-1)$; i valori $\pm3$ vengono da questi errori.
+T: Quanto vale l'area del parallelogramma che ha i due vettori ${}^t(3\ -1)$ e ${}^t(-2\ 3)$ come una coppia di lati adiacenti nel piano?
+15-6 C $\det\begin{pmatrix}3i&2\\2&1-i\end{pmatrix}=3i(1-i)-2\cdot2$.
+  $3i(1-i)=3i-3i^2=3i+3$; poi $-4$.
+  Totale: $3+3i-4=-1+3i$.
+  **Errore tipico:** dimenticare che $i^2=-1$ (si otterrebbe $-7+3i$) o sommare $bc$ invece di sottrarlo ($7+3i$).
+T: Quanto vale il determinante della matrice complessa $2\times 2$ $\begin{pmatrix}3i&2\\2&1-i\end{pmatrix}$?
+15-7 B $\det\begin{pmatrix}3i&2\\2&1+i\end{pmatrix}=3i(1+i)-2\cdot2$.
+  $3i(1+i)=3i+3i^2=3i-3$; poi $-4$.
+  Totale: $-3+3i-4=-7+3i$.
+  **Errore tipico:** trattare $3i^2$ come $+3$ (si otterrebbe $-1+3i$): con $1+i$ il prodotto dà $-3$, non $+3$.
+T: Quanto vale il determinante della matrice complessa $2\times 2$ $\begin{pmatrix}3i&2\\2&1+i\end{pmatrix}$?
+15-8 C $\det\begin{pmatrix}3i&-2\\2&1+i\end{pmatrix}=3i(1+i)-(-2)\cdot2$.
+  $3i(1+i)=3i+3i^2=-3+3i$; $-(-2)\cdot2=+4$.
+  Totale: $-3+3i+4=1+3i$.
+  **Errore tipico:** sbagliare il segno di $i^2$ (si otterrebbe $7+3i$) o di $-bc$ con $b=-2$ (si otterrebbe $-7+3i$).
+T: Quanto vale il determinante della matrice complessa $2\times 2$ $\begin{pmatrix}3i&-2\\2&1+i\end{pmatrix}$?
+15-9 A Regola di Sarrus: $\det=a_{11}a_{22}a_{33}+a_{12}a_{23}a_{31}+a_{13}a_{21}a_{32}-a_{13}a_{22}a_{31}-a_{11}a_{23}a_{32}-a_{12}a_{21}a_{33}$.
+  Con $\begin{pmatrix}3&0&1\\2&1&0\\1&1&1\end{pmatrix}$: diagonali che scendono $3\cdot1\cdot1=3$, $0\cdot0\cdot1=0$, $1\cdot2\cdot1=2$; diagonali che salgono $1\cdot1\cdot1=1$, $3\cdot0\cdot1=0$, $0\cdot2\cdot1=0$.
+  $\det=3+0+2-1-0-0=4$.
+  **Errore tipico:** sommare invece di sottrarre i prodotti delle diagonali che salgono, o sbagliare il segno finale.
+T: Quanto vale il determinante della matrice $3\times 3$ $\begin{pmatrix}3&0&1\\2&1&0\\1&1&1\end{pmatrix}$?
+15-10 C Regola di Sarrus su $\begin{pmatrix}3&0&-1\\2&-1&0\\-1&1&1\end{pmatrix}$.
+  Diagonali che scendono: $3\cdot(-1)\cdot1=-3$, $0\cdot0\cdot(-1)=0$, $(-1)\cdot2\cdot1=-2$.
+  Diagonali che salgono (da sottrarre): $(-1)(-1)(-1)=-1$, $3\cdot0\cdot1=0$, $0\cdot2\cdot1=0$.
+  $\det=-3+0-2-(-1)-0-0=-4$.
+  **Errore tipico:** sbagliare il prodotto di tre segni meno ($(-1)^3=-1$) e ottenere $-3-2-1=-6$, oppure perdere un segno e ottenere $4$.
+T: Quanto vale il determinante della matrice $3\times 3$ $\begin{pmatrix}3&0&-1\\2&-1&0\\-1&1&1\end{pmatrix}$?
+15-11 D Regola di Sarrus su $\begin{pmatrix}3&0&2\\2&2&0\\2&1&1\end{pmatrix}$.
+  Diagonali che scendono: $3\cdot2\cdot1=6$, $0\cdot0\cdot2=0$, $2\cdot2\cdot1=4$.
+  Diagonali che salgono: $2\cdot2\cdot2=8$, $3\cdot0\cdot1=0$, $0\cdot2\cdot1=0$.
+  $\det=6+0+4-8-0-0=2$.
+  **Errore tipico:** dimenticare la diagonale $a_{13}a_{21}a_{32}$ (si otterrebbe $-2$) o confondere quali prodotti vanno sottratti.
+T: Quanto vale il determinante della matrice $3\times 3$ $\begin{pmatrix}3&0&2\\2&2&0\\2&1&1\end{pmatrix}$?
+15-12 A Regola di Sarrus su $\begin{pmatrix}3&0&-2\\2&-2&0\\-2&1&1\end{pmatrix}$.
+  Diagonali che scendono: $3\cdot(-2)\cdot1=-6$, $0\cdot0\cdot(-2)=0$, $(-2)\cdot2\cdot1=-4$.
+  Diagonali che salgono: $(-2)(-2)(-2)=-8$, $3\cdot0\cdot1=0$, $0\cdot2\cdot1=0$.
+  $\det=-6+0-4-(-8)-0-0=-2$.
+  **Errore tipico:** sottrarre $+8$ invece di $-8$ (il prodotto di tre numeri negativi è negativo), ottenendo un valore sbagliato.
+T: Quanto vale il determinante della matrice $3\times 3$ $\begin{pmatrix}3&0&-2\\2&-2&0\\-2&1&1\end{pmatrix}$?
+15-13 D $\det\begin{pmatrix}3&-2\\2&1\end{pmatrix}=3\cdot1-(-2)\cdot2=3+4=7$.
+  **Errore tipico:** fare $3\cdot1-2\cdot2$ ignorando il segno di $-2$ (si otterrebbe $-1$) o invertire l'ordine della sottrazione ($-7$).
+T: Quanto vale il determinante della matrice $2\times 2$ $\begin{pmatrix}3&-2\\2&1\end{pmatrix}$?
+15-14 D $\det\begin{pmatrix}3&2\\2&-1\end{pmatrix}=3\cdot(-1)-2\cdot2=-3-4=-7$.
+  **Errore tipico:** calcolare $a_{12}a_{21}-a_{11}a_{22}$ (ordine invertito) e ottenere $7$.
+T: Quanto vale il determinante della matrice $2\times 2$ $\begin{pmatrix}3&2\\2&-1\end{pmatrix}$?
+15-15 D $\det\begin{pmatrix}3&-2\\2&-1\end{pmatrix}=3\cdot(-1)-(-2)\cdot2=-3+4=1$.
+  **Errore tipico:** perdere un segno meno: $-3-4=-7$ oppure $3-4=-1$.
+T: Quanto vale il determinante della matrice $2\times 2$ $\begin{pmatrix}3&-2\\2&-1\end{pmatrix}$?
+15-16 A $\det\begin{pmatrix}3&2\\2&1\end{pmatrix}=3\cdot1-2\cdot2=3-4=-1$.
+  **Errore tipico:** sommare i due prodotti ($3+4=7$) invece di sottrarli, o invertire l'ordine della sottrazione ($1$).
+T: Quanto vale il determinante della matrice $2\times 2$ $\begin{pmatrix}3&2\\2&1\end{pmatrix}$?
+15-17 APERTA
+KW: matrice quadrata|solo matrici quadrate, permutazione|funzione bigettiva, segnatura|segno, somma sulle permutazioni|definizione, un elemento per ogni riga e colonna, ad-bc|caso 2×2, Sarrus|caso 3×3, riga nulla|colonna nulla, triangolare|prodotto della diagonale, invertibile|det diverso da zero, area|volume
+> Il determinante è definito **solo per le matrici quadrate**. Serve la nozione di **permutazione** di $n$ elementi: una funzione bigettiva $\sigma\colon\{1,\dots,n\}\to\{1,\dots,n\}$; l'insieme delle permutazioni è $P_n$. La **segnatura** è $\operatorname{sgn}(\sigma)=\prod_{1\le i<j\le n}\frac{\sigma(j)-\sigma(i)}{j-i}$, e vale $1$ o $-1$ a seconda che il numero di coppie $i<j$ con $\sigma(i)>\sigma(j)$ sia pari o dispari; $\operatorname{sgn}(\mathrm{id})=1$.
+> **Definizione.** Per $A=(a_{ij})\in\mathbb{K}^{n,n}$: $$\det(A)=\sum_{\sigma\in P_n}\operatorname{sgn}(\sigma)\,a_{1\sigma(1)}a_{2\sigma(2)}\cdots a_{n\sigma(n)}.$$ In ogni addendo compare esattamente un elemento per ogni riga e per ogni colonna.
+> Casi particolari: $\det_1(a_{11})=a_{11}$; $\det_2\begin{pmatrix}a_{11}&a_{12}\\a_{21}&a_{22}\end{pmatrix}=a_{11}a_{22}-a_{12}a_{21}$; per le $3\times3$ si usa la **regola di Sarrus** (si ricopiano le prime due colonne a destra, si sommano i prodotti delle tre diagonali che scendono e si sottraggono quelli delle tre che salgono), che non vale per $n>3$. Esempio: $\det\begin{pmatrix}3&-1\\4&5\end{pmatrix}=15+4=19$.
+> Proprietà immediate: se una riga o una colonna è nulla il determinante è $0$; per una matrice triangolare (o diagonale) è il prodotto degli elementi della diagonale principale, quindi $\det I_n=1$ e $\det 0_{n,n}=0$.
+> Motivazione e interpretazione: la definizione nasce dallo studio dell'invertibilità ($A$ $2\times2$ è invertibile se e solo se $a_{11}a_{22}-a_{12}a_{21}\neq0$; in generale $A$ è invertibile se e solo se $\det A\neq0$); geometricamente $\lvert\det\rvert$ è l'area del parallelogramma (o il volume del parallelepipedo) costruito sulle colonne.
+15-18 APERTA
+KW: area del parallelogramma, modulo|valore assoluto, vettori colonna|colonne della matrice, lati adiacenti, a1b2-a2b1, segno|orientamento, senso antiorario, volume del parallelepipedo, regola della mano destra, iper-parallelepipedo|R^n, triangolo metà
+> Fissato un riferimento cartesiano $(O;\mathbf a,\mathbf b)$ nel piano e identificati i vettori con le colonne delle loro coordinate, siano $X_1={}^t(a_1\ b_1)$ e $X_2={}^t(a_2\ b_2)$. L'**area del parallelogramma** che ha $X_1$ e $X_2$ come lati adiacenti è $$\mathcal A=\left\lvert\det\begin{pmatrix}a_1&a_2\\b_1&b_2\end{pmatrix}\right\rvert=\lvert a_1b_2-a_2b_1\rvert.$$
+> Idea della dimostrazione: con coordinate positive si sottraggono dall'area del rettangolo $(a_1+a_2)(b_1+b_2)$ quattro triangoli e due rettangolini, ottenendo $a_1b_2-a_2b_1$. Se invece, percorrendo il più piccolo dei due angoli in senso antiorario, si va dal secondo vettore al primo, il calcolo dà l'opposto $a_2b_1-a_1b_2$: quindi il **segno** del determinante indica l'orientamento della coppia, e l'area è il modulo.
+> Nello spazio, con $X_1,X_2,X_3$ colonne di coordinate, il **volume del parallelepipedo** con questi tre lati adiacenti è $V=\lvert\det(X_1\ X_2\ X_3)\rvert$; il segno del determinante è $+$ se i vettori si possono disporre come indice, medio e pollice della mano destra (regola della mano destra), $-$ altrimenti. In $\mathbb{R}^n$ si definisce allo stesso modo il volume dell'iper-parallelepipedo; il segno è positivo se i vettori sono disposti "come la base canonica".
+> Esempio: l'area del triangolo costruito su ${}^t(4\ 1)$ e ${}^t(-3\ 2)$ è metà di quella del parallelogramma: $\frac12\lvert 4\cdot2-(-3)\cdot1\rvert=\frac{11}{2}$.
+x79 C Una permutazione di $n$ elementi è una funzione **bigettiva** da $\{1,\dots,n\}$ in sé.
+  La tabella $1\mapsto1,\ 2\mapsto4,\ 3\mapsto2,\ 4\mapsto3$ usa ogni elemento di $\{1,2,3,4\}$ esattamente una volta come immagine: è bigettiva.
+  Quella con $1\mapsto1,\ 2\mapsto3,\ 3\mapsto3$ non è iniettiva ($3$ è immagine due volte). Quella con il solo $1\mapsto3$ non va da $\{1\}$ in sé. Quella con $2\mapsto5$ esce dall'insieme $\{1,2,3,4\}$.
+  **Errore tipico:** controllare solo che ci siano $n$ righe senza verificare che le immagini siano tutte distinte e dentro $\{1,\dots,n\}$.
+T: Quale delle seguenti è una permutazione?
+OPT: $\begin{bmatrix}1\mapsto1\\2\mapsto3\\3\mapsto3\end{bmatrix}$. | $\begin{bmatrix}1\mapsto3\end{bmatrix}$. | $\begin{bmatrix}1\mapsto1\\2\mapsto4\\3\mapsto2\\4\mapsto3\end{bmatrix}$. | $\begin{bmatrix}1\mapsto1\\2\mapsto5\\3\mapsto2\\4\mapsto3\end{bmatrix}$.
+x80 D Il determinante è definito **solo per le matrici quadrate**. Le tre matrici proposte sono $2\times3$, $2\times4$ e $3\times2$: nessuna è quadrata, quindi di nessuna si può calcolare il determinante.
+  **Errore tipico:** pensare di poter "completare" la matrice o calcolare il determinante di un suo blocco quadrato: quello sarebbe un minore, non il determinante della matrice.
+T: Di quale delle seguenti matrici si può calcolare il determinante?
+OPT: $\begin{pmatrix}1&0&-1\\4&-1&1\end{pmatrix}$. | $\begin{pmatrix}2&1&2&0\\-3&0&3&-1\end{pmatrix}$. | $\begin{pmatrix}0&1\\3&-1\\2&5\end{pmatrix}$. | Nessuna delle altre risposte.
+x81 B Regola di Sarrus su $\begin{pmatrix}1&0&1\\2&3&1\\-1&1&-3\end{pmatrix}$.
+  Diagonali che scendono: $1\cdot3\cdot(-3)=-9$, $0\cdot1\cdot(-1)=0$, $1\cdot2\cdot1=2$.
+  Diagonali che salgono (da sottrarre): $1\cdot3\cdot(-1)=-3$, $1\cdot1\cdot1=1$, $0\cdot2\cdot(-3)=0$.
+  $\det=-9+0+2-(-3)-1-0=-5$.
+  **Errore tipico:** sottrarre $-3$ come se fosse $+3$ ($-9+2-3-1=-11$) o perdere il segno finale e scegliere $5$.
+T: Quanto vale il determinante della matrice $\begin{pmatrix}1&0&1\\2&3&1\\-1&1&-3\end{pmatrix}$?
+OPT: $5$. | $-5$. | $7$. | $-7$.
+x82 D L'area è il modulo del determinante della matrice con i due vettori come colonne: $\det\begin{pmatrix}1&4\\1&2\end{pmatrix}=1\cdot2-4\cdot1=-2$, quindi l'area è $\lvert-2\rvert=2$.
+  **Errore tipico:** dare il valore con il segno, $-2$: l'area è sempre non negativa.
+  TRAP: Il determinante è negativo; l'area è il suo modulo.
+T: Quanto vale l'area del parallelogramma che ha i vettori $\begin{pmatrix}1\\1\end{pmatrix}$ e $\begin{pmatrix}4\\2\end{pmatrix}$ come una coppia di lati adiacenti?
+OPT: $-2$. | $-1$. | $1$. | $2$.
+
+## L16 Proprietà e calcolo del determinante
+16-1 D Sviluppo di Laplace lungo la seconda riga $(1,0,2,0)$, che ha due zeri: $\det A=a_{21}\operatorname{cof}_A(2,1)+a_{23}\operatorname{cof}_A(2,3)=1\cdot(-1)^{3}\det A_{(2,1)}+2\cdot(-1)^{5}\det A_{(2,3)}$.
+  $A_{(2,1)}$ (tolgo riga 2 e colonna 1) $=\begin{pmatrix}1&0&-1\\-3&-1&1\\-1&2&3\end{pmatrix}$; Sarrus: $1(-1)3+0+(-1)(-3)2-[(-1)(-1)(-1)+1\cdot1\cdot2+0]=-3+6-(-1+2)=2$.
+  $A_{(2,3)}$ (tolgo riga 2 e colonna 3) $=\begin{pmatrix}2&1&-1\\0&-3&1\\-1&-1&3\end{pmatrix}$; Sarrus: $2(-3)3+1\cdot1\cdot(-1)+(-1)\cdot0\cdot(-1)-[(-1)(-3)(-1)+2\cdot1\cdot(-1)+1\cdot0\cdot3]=-18-1-(-3-2)=-14$.
+  $\det A=-2-2(-14)=-2+28=26$.
+  **Errore tipico:** dimenticare i segni $(-1)^{i+j}$ dei complementi algebrici (con segni tutti positivi si otterrebbe $2-28=-26$, assente, o altri valori come $38$ e $42$ che sono i determinanti delle matrici gemelle con segni diversi).
+T: Quanto vale il determinante della matrice $4\times 4$ $\begin{pmatrix}2&1&0&-1\\1&0&2&0\\0&-3&-1&1\\-1&-1&2&3\end{pmatrix}$?
+16-2 D Sviluppo di Laplace lungo la seconda riga $(1,0,2,0)$: $\det A=1\cdot(-1)^{3}\det A_{(2,1)}+2\cdot(-1)^{5}\det A_{(2,3)}=-\det A_{(2,1)}-2\det A_{(2,3)}$.
+  $A_{(2,1)}=\begin{pmatrix}-1&0&1\\-3&-1&1\\-1&2&3\end{pmatrix}$; Sarrus: $(-1)(-1)3+0+1(-3)2-[1(-1)(-1)+(-1)\cdot1\cdot2+0]=3-6-(1-2)=-2$.
+  $A_{(2,3)}=\begin{pmatrix}2&-1&1\\0&-3&1\\-1&-1&3\end{pmatrix}$; Sarrus: $-18+(-1)\cdot1\cdot(-1)+0-[1(-3)(-1)+2\cdot1\cdot(-1)+0]=-18+1-(3-2)=-18$.
+  $\det A=-(-2)-2(-18)=2+36=38$.
+  **Errore tipico:** sbagliare il segno di un complemento algebrico o di un minore $3\times3$; le altre opzioni sono i determinanti delle matrici simili a questa nelle altre domande.
+T: Quanto vale il determinante della matrice $4\times 4$ $\begin{pmatrix}2&-1&0&1\\1&0&2&0\\0&-3&-1&1\\-1&-1&2&3\end{pmatrix}$?
+16-3 C L'area del triangolo $PQR$ è metà dell'area del parallelogramma con lati $PQ$ e $PR$: $\frac12\left\lvert\det\begin{pmatrix}q_1-p_1&r_1-p_1\\q_2-p_2&r_2-p_2\end{pmatrix}\right\rvert$ (equivalente a $\frac12\lvert\det\begin{pmatrix}p_1&q_1&r_1\\p_2&q_2&r_2\\1&1&1\end{pmatrix}\rvert$).
+  $P={}^t(-1\ 3)$, $Q={}^t(2\ 1)$, $R={}^t(2\ 0)$: $Q-P={}^t(3\ -2)$, $R-P={}^t(3\ -3)$.
+  $\det\begin{pmatrix}3&3\\-2&-3\end{pmatrix}=-9+6=-3$; area $=\frac12\lvert-3\rvert=\frac32$.
+  **Errore tipico:** dimenticare il fattore $\frac12$ (si ottiene l'area del parallelogramma, $3$) o lasciare il segno meno.
+  TRAP: Serve sia il modulo sia la metà: due delle opzioni sbagliate sono negative e una è l'area del parallelogramma.
+T: Quanto vale l'area del triangolo con vertici ${}^t(-1\ 3)$, ${}^t(2\ 1)$ e ${}^t(2\ 0)$ nel piano?
+16-4 A Sviluppo di Laplace lungo la seconda riga $(-1,0,2,0)$: $\det A=(-1)(-1)^{3}\det A_{(2,1)}+2(-1)^{5}\det A_{(2,3)}=\det A_{(2,1)}-2\det A_{(2,3)}$.
+  $A_{(2,1)}=\begin{pmatrix}-1&0&1\\-3&1&1\\-1&2&3\end{pmatrix}$; Sarrus: $(-1)\cdot1\cdot3+0+1(-3)2-[1\cdot1\cdot(-1)+(-1)\cdot1\cdot2+0]=-3-6-(-1-2)=-6$.
+  $A_{(2,3)}=\begin{pmatrix}2&-1&1\\0&-3&1\\1&-1&3\end{pmatrix}$; Sarrus: $-18+(-1)\cdot1\cdot1+0-[1(-3)\cdot1+2\cdot1\cdot(-1)+0]=-19-(-5)=-14$.
+  $\det A=-6-2(-14)=-6+28=22$.
+  **Errore tipico:** trascurare il segno di $a_{21}=-1$ insieme a quello di $(-1)^{2+1}$: i due meno si annullano, se ne conti uno solo ottieni $6+28=34$ o altri valori.
+T: Quanto vale il determinante della matrice $4\times 4$ $\begin{pmatrix}2&-1&0&1\\-1&0&2&0\\0&-3&1&1\\1&-1&2&3\end{pmatrix}$?
+16-5 B Sviluppo di Laplace lungo la seconda riga $(-1,0,2,0)$: $\det A=(-1)(-1)^{3}\det A_{(2,1)}+2(-1)^{5}\det A_{(2,3)}=\det A_{(2,1)}-2\det A_{(2,3)}$.
+  $A_{(2,1)}=\begin{pmatrix}1&0&-1\\-3&1&1\\-1&2&3\end{pmatrix}$; Sarrus: $1\cdot1\cdot3+0+(-1)(-3)2-[(-1)\cdot1\cdot(-1)+1\cdot1\cdot2+0]=3+6-(1+2)=6$.
+  $A_{(2,3)}=\begin{pmatrix}2&1&-1\\0&-3&1\\1&-1&3\end{pmatrix}$; Sarrus: $-18+1\cdot1\cdot1+0-[(-1)(-3)\cdot1+2\cdot1\cdot(-1)+0]=-17-(3-2)=-18$.
+  $\det A=6-2(-18)=6+36=42$.
+  **Errore tipico:** sbagliare il segno del cofattore $(2,3)$, che è $(-1)^{5}=-1$; con il segno sbagliato si ottiene $6-36=-30$.
+T: Quanto vale il determinante della matrice $4\times 4$ $\begin{pmatrix}2&1&0&-1\\-1&0&2&0\\0&-3&1&1\\1&-1&2&3\end{pmatrix}$?
+16-6 C Sono gli stessi tre vertici di un'altra domanda, in ordine diverso: l'area del triangolo non dipende dall'ordine dei vertici.
+  $P={}^t(2\ 1)$, $Q={}^t(-1\ 3)$, $R={}^t(2\ 0)$: $Q-P={}^t(-3\ 2)$, $R-P={}^t(0\ -1)$.
+  $\det\begin{pmatrix}-3&0\\2&-1\end{pmatrix}=3-0=3$; area $=\frac12\lvert3\rvert=\frac32$.
+  **Errore tipico:** dimenticare il fattore $\frac12$ (si ottiene $3$) o pensare che cambiando l'ordine dei vertici l'area cambi segno: cambia solo il segno del determinante.
+  TRAP: Il valore $3$ è l'area del parallelogramma, non del triangolo.
+T: Quanto vale l'area del triangolo con vertici ${}^t(2\ 1)$, ${}^t(-1\ 3)$ e ${}^t(2\ 0)$ nel piano?
+16-7 D $P={}^t(2\ 1)$, $Q={}^t(-1\ 3)$, $R={}^t(1\ 0)$: $Q-P={}^t(-3\ 2)$, $R-P={}^t(-1\ -1)$.
+  $\det\begin{pmatrix}-3&-1\\2&-1\end{pmatrix}=(-3)(-1)-(-1)\cdot2=3+2=5$.
+  Area del triangolo $=\frac12\lvert5\rvert=\frac52$.
+  **Errore tipico:** fermarsi a $5$, che è l'area del parallelogramma con lati $PQ$ e $PR$.
+  TRAP: Il triangolo è metà del parallelogramma: serve il fattore $\frac12$.
+T: Quanto vale l'area del triangolo con vertici ${}^t(2\ 1)$, ${}^t(-1\ 3)$ e ${}^t(1\ 0)$ nel piano?
+16-8 D $P={}^t(-1\ 3)$, $Q={}^t(2\ 1)$, $R={}^t(1\ 0)$: $Q-P={}^t(3\ -2)$, $R-P={}^t(2\ -3)$.
+  $\det\begin{pmatrix}3&2\\-2&-3\end{pmatrix}=-9+4=-5$.
+  Area $=\frac12\lvert-5\rvert=\frac52$.
+  **Errore tipico:** riportare il determinante con il segno, $-5$ o $-\frac52$: l'area è il modulo, diviso per due.
+  TRAP: Il determinante è negativo e va dimezzato: l'unica opzione giusta è positiva e con il fattore $\frac12$.
+T: Quanto vale l'area del triangolo con vertici ${}^t(-1\ 3)$, ${}^t(2\ 1)$ e ${}^t(1\ 0)$ nel piano?
+16-9 APERTA
+KW: sottomatrice A(i,j)|rimuovendo la riga i e la colonna j, complemento algebrico|cofattore, (-1)^{i+j}, lungo una riga, lungo una colonna, somma dei prodotti delle entrate per i complementi algebrici, ordine n-1|riduce l'ordine, applicazione ripetuta|ricorsivo, scegliere la riga con più zeri, n≥2
+> **Complemento algebrico.** Sia $A=(a_{ij})\in\mathbb{K}^{n,n}$ con $n\ge2$ e siano $i,j$ fissati. Sia $A_{(i,j)}$ la sottomatrice quadrata di ordine $n-1$ ottenuta rimuovendo l'$i$-esima riga e la $j$-esima colonna. Il **cofattore** (o complemento algebrico di $a_{ij}$) è $\operatorname{cof}_A(i,j)=(-1)^{i+j}\det_{n-1}(A_{(i,j)})$.
+> **Teorema di Laplace.** Il determinante è la somma dei prodotti delle entrate di una riga qualsiasi (o di una colonna qualsiasi) per i rispettivi complementi algebrici: $$\det A=\sum_{j=1}^{n}a_{kj}\operatorname{cof}_A(k,j)\qquad\text{(sviluppo lungo la riga }k),$$ $$\det A=\sum_{i=1}^{n}a_{ih}\operatorname{cof}_A(i,h)\qquad\text{(sviluppo lungo la colonna }h).$$
+> Il teorema riduce il calcolo di un determinante di ordine $n$ a quello di determinanti di ordine $n-1$; applicandolo ripetutamente si calcola il determinante di una matrice di qualsiasi ordine. Conviene sviluppare lungo la riga o la colonna con più zeri, perché i relativi addendi si annullano. I segni $(-1)^{i+j}$ si dispongono a scacchiera, partendo da $+$ nell'entrata $(1,1)$.
+> Esempio: per $A=\begin{pmatrix}0&-2&1\\2&1&0\\1&3&1\end{pmatrix}$, $\operatorname{cof}_A(2,3)=(-1)^{5}\det\begin{pmatrix}0&-2\\1&3\end{pmatrix}=-2$. Sviluppando $\begin{pmatrix}1&-3&-1\\1&0&4\\2&0&1\end{pmatrix}$ lungo la seconda riga: $-1\cdot\det\begin{pmatrix}-3&-1\\0&1\end{pmatrix}+0-4\det\begin{pmatrix}1&-3\\2&0\end{pmatrix}=3-24=-21$.
+16-10 APERTA
+KW: matrice a scalini, operazioni elementari di tipo I|scambio di righe, cambia segno, tipo III|somma di un multiplo di un'altra riga, non cambia il determinante, tipo II|moltiplica per λ, (-1)^k, triangolare|prodotto della diagonale, pivot, meno di n pivot|riga nulla determinante zero, operazioni sulle colonne
+> Si usano gli effetti delle operazioni elementari sul determinante: lo **scambio di due righe** (tipo I) cambia il segno; **moltiplicare una riga per $\lambda\neq0$** (tipo II) moltiplica il determinante per $\lambda$; **sostituire una riga con la somma di sé stessa e di un multiplo di un'altra** (tipo III) non lo cambia. Lo stesso vale per le colonne.
+> **Metodo.** Con il metodo di eliminazione di Gauss si trasforma $A$ in una matrice a scalini $B$ usando solo operazioni di tipo I e III. Se si sono fatti $k$ scambi, $$\det A=(-1)^k\det B.$$ Poiché $B$ a scalini quadrata è triangolare, $\det B$ è il prodotto degli elementi sulla diagonale principale.
+> Se $B$ ha meno di $n$ pivot (c'è una riga nulla, o un pivot è spostato di più di un posto) sulla diagonale compare uno $0$ e $\det A=0$; viceversa, $\det A\neq0$ se e solo se ci sono $n$ pivot, e in tal caso $\det A$ è, a meno del segno, il prodotto dei pivot. Si possono usare anche operazioni sulle colonne (sempre di tipo I e III), contando alla fine solo gli scambi.
+> Esempio: $\begin{pmatrix}0&1&2\\2&-1&3\\-2&5&2\end{pmatrix}\xrightarrow{1\leftrightarrow2}\begin{pmatrix}2&-1&3\\0&1&2\\-2&5&2\end{pmatrix}\xrightarrow{3+1\cdot1}\begin{pmatrix}2&-1&3\\0&1&2\\0&4&5\end{pmatrix}\xrightarrow{3+(-4)\cdot2}\begin{pmatrix}2&-1&3\\0&1&2\\0&0&-3\end{pmatrix}$: un solo scambio, quindi $\det=(-1)^1\cdot(2\cdot1\cdot(-3))=6$.
+16-11 APERTA
+KW: det(tA)=det(A)|trasposta, linearità|multilineare, scambio di righe cambia segno, tipo II moltiplica per λ, tipo III non cambia, due righe uguali|due colonne uguali determinante zero, riga nulla, Binet|det(AB)=det(A)det(B), det(AB)=det(BA), triangolare prodotto della diagonale
+> Sia $A\in\mathbb{K}^{n,n}$.
+> - $\det({}^tA)=\det(A)$: ogni proprietà sulle righe vale anche sulle colonne.
+> - **Linearità in ogni riga (e colonna):** se la riga $i$ è $B+C$ il determinante è la somma dei determinanti con riga $i$ uguale a $B$ e a $C$; se la riga $i$ è $\lambda B$ il determinante è $\lambda$ volte quello con riga $B$.
+> - **Operazioni elementari:** scambiare due righe (o colonne) cambia il segno; moltiplicare una riga per $\lambda\neq0$ moltiplica il determinante per $\lambda$; sommare a una riga un multiplo di un'altra non cambia il determinante.
+> - **Corollario:** se due righe o due colonne sono uguali il determinante è $0$; lo stesso se una riga o colonna è nulla.
+> - **Teorema di Binet:** $\det(A\cdot B)=\det(A)\cdot\det(B)$; quindi, anche se il prodotto non è commutativo, $\det(AB)=\det(BA)$.
+> - Il determinante di una matrice triangolare è il prodotto degli elementi diagonali; $\det I_n=1$.
+> Esempio: se una $4\times4$ ha determinante $3$, sostituire la terza riga con sé stessa più $-5$ volte la prima lascia il determinante $3$; scambiare due righe lo porta a $-3$. Applicazione: l'area del parallelogramma di lati $PQ$, $PR$ è $\lvert\det\begin{pmatrix}p_1&q_1&r_1\\p_2&q_2&r_2\\1&1&1\end{pmatrix}\rvert$, ottenuta con due operazioni di tipo III sulle colonne e lo sviluppo di Laplace.
+x83 B L'operazione elementare di tipo III (sostituire una riga con la somma di sé stessa e di un multiplo di un'altra riga) **non cambia** il determinante, qualunque sia il multiplo: resta $3$.
+  Per la linearità nella terza riga: $\det(\ldots,R_3-5R_1,\ldots)=\det(\ldots,R_3,\ldots)-5\det(\ldots,R_1,\ldots)$ e l'ultimo determinante ha due righe uguali, quindi è $0$.
+  **Errore tipico:** confondere il tipo III con il tipo II (moltiplicare una riga per $-5$, che darebbe $-15$) o con lo scambio di righe (che darebbe $-3$).
+  TRAP: Il fattore $-5$ suggerisce di moltiplicare, ma nel tipo III non conta.
+T: Se una matrice $4\times4$ ha determinante $3$, quanto vale il determinante dopo aver applicato l'operazione elementare sulle righe di tipo III che consiste nel sostituire la terza riga con la somma della riga stessa e della prima riga moltiplicata per $-5$?
+OPT: $-3$. | $3$. | $-15$. | $15$.
+x84 C $\operatorname{cof}_A(2,3)=(-1)^{2+3}\det A_{(2,3)}$, dove $A_{(2,3)}$ si ottiene togliendo la seconda riga e la terza colonna di $A=\begin{pmatrix}0&-2&1\\2&1&0\\1&3&1\end{pmatrix}$: $A_{(2,3)}=\begin{pmatrix}0&-2\\1&3\end{pmatrix}$.
+  $\det A_{(2,3)}=0\cdot3-(-2)\cdot1=2$, quindi $\operatorname{cof}_A(2,3)=(-1)\cdot2=-2$.
+  **Errore tipico:** dimenticare il segno $(-1)^{i+j}$ (si otterrebbe $2$, cioè il minore e non il cofattore) o moltiplicare anche per l'entrata $a_{23}=0$ (si otterrebbe $0$).
+T: Data la matrice $A=\begin{pmatrix}0&-2&1\\2&1&0\\1&3&1\end{pmatrix}$, quanto vale $\operatorname{cof}_A(2,3)$?
+OPT: $2$. | $0$. | $-2$. | $-4$.
+x85 D Lungo la seconda riga $(1,0,4)$: $\det A=\sum_j a_{2j}(-1)^{2+j}\det A_{(2,j)}$. I segni per la seconda riga sono $-,+,-$.
+  $A_{(2,1)}=\begin{pmatrix}-3&-1\\0&1\end{pmatrix}$, $A_{(2,2)}=\begin{pmatrix}1&-1\\2&1\end{pmatrix}$, $A_{(2,3)}=\begin{pmatrix}1&-3\\2&0\end{pmatrix}$.
+  Quindi $\det A=-1\cdot\det A_{(2,1)}+0\cdot\det A_{(2,2)}-4\cdot\det A_{(2,3)}$ (che vale $-1\cdot(-3)-4\cdot6=-21$).
+  **Errore tipico:** usare solo i segni senza le entrate $a_{2j}$, oppure le entrate senza i segni della scacchiera (che per la seconda riga iniziano con $-$).
+T: Quale è lo sviluppo di Laplace lungo la seconda riga della matrice $\begin{pmatrix}1&-3&-1\\1&0&4\\2&0&1\end{pmatrix}$?
+OPT: $-\det\begin{pmatrix}-3&-1\\0&1\end{pmatrix}+\det\begin{pmatrix}1&-1\\2&1\end{pmatrix}-\det\begin{pmatrix}1&-3\\2&0\end{pmatrix}$. | $1\cdot\det\begin{pmatrix}-3&-1\\0&1\end{pmatrix}+0\cdot\det\begin{pmatrix}1&-1\\2&1\end{pmatrix}+4\cdot\det\begin{pmatrix}1&-3\\2&0\end{pmatrix}$. | $1\cdot\det\begin{pmatrix}-3&-1\\0&1\end{pmatrix}-0\cdot\det\begin{pmatrix}1&-1\\2&1\end{pmatrix}+4\cdot\det\begin{pmatrix}1&-3\\2&0\end{pmatrix}$. | $-1\cdot\det\begin{pmatrix}-3&-1\\0&1\end{pmatrix}+0\cdot\det\begin{pmatrix}1&-1\\2&1\end{pmatrix}-4\cdot\det\begin{pmatrix}1&-3\\2&0\end{pmatrix}$.
+x86 B In ogni addendo della definizione $\sum_\sigma\operatorname{sgn}(\sigma)a_{1\sigma(1)}\cdots a_{n\sigma(n)}$ compare un elemento di ogni riga, quindi anche uno della riga nulla: ogni addendo è $0$ e il determinante è **sempre** $0$ (lo stesso si vede con lo sviluppo di Laplace lungo quella riga).
+  **Errore tipico:** pensare che dipenda dalle altre righe: basta una riga nulla perché il determinante sia nullo.
+T: Quanto vale il determinante di una matrice con una riga nulla?
+OPT: Mai 0. | Sempre 0. | Spesso 0. | Dipende dalla matrice.
+
+## L17 Rango di una matrice
+17-1 B La seconda riga $(2,4,-2)$ è il doppio della prima $(1,2,-1)$: con l'operazione $R_2\to R_2-2R_1$ si ottiene $\begin{pmatrix}1&2&-1\\0&0&0\end{pmatrix}$, con un solo pivot. Quindi il rango è $1$ (non è $0$ perché la matrice non è nulla).
+  Con i minori: tutti i minori di ordine $2$ sono nulli, ad esempio $\det\begin{pmatrix}1&2\\2&4\end{pmatrix}=0$, $\det\begin{pmatrix}1&-1\\2&-2\end{pmatrix}=0$, $\det\begin{pmatrix}2&-1\\4&-2\end{pmatrix}=0$.
+  **Errore tipico:** contare le righe (2) o le colonne (3) invece delle righe linearmente indipendenti; il rango di una $2\times3$ non può comunque superare $2$.
+T: Quanto vale il rango della matrice $2\times 3$ $\begin{pmatrix}1&2&-1\\2&4&-2\end{pmatrix}$?
+17-2 D Il rango è al più $3$ (3 righe). Cerco un minore non nullo di ordine $3$: quello delle prime tre colonne è $\det\begin{pmatrix}2&-1&0\\-1&1&1\\0&-3&-2\end{pmatrix}$.
+  Sarrus: $2\cdot1\cdot(-2)+(-1)\cdot1\cdot0+0-[0+2\cdot1\cdot(-3)+(-1)(-1)(-2)]=-4-(-6-2)=-4+8=4\neq0$.
+  Per il Lemma 17.11 il rango è almeno $3$, quindi è $3$.
+  **Errore tipico:** fermarsi dopo aver trovato un minore di ordine $2$ non nullo, o pensare che una $3\times4$ abbia sempre una riga dipendente.
+T: Quanto vale il rango della matrice $3\times 4$ $\begin{pmatrix}2&-1&0&2\\-1&1&1&3\\0&-3&-2&-4\end{pmatrix}$?
+17-3 D Cerco se la terza riga è combinazione delle prime due: $R_3=aR_1+bR_2$. Prima colonna: $-2a-b=0\Rightarrow b=-2a$; seconda colonna: $-a+b=-3\Rightarrow -3a=-3\Rightarrow a=1,\ b=-2$.
+  Controllo: terza colonna $0\cdot1+1\cdot(-2)=-2$ ✓; quarta colonna $2\cdot1+3\cdot(-2)=-4$ ✓. Quindi $R_3=R_1-2R_2$.
+  Le prime due righe non sono proporzionali (il minore $\det\begin{pmatrix}-2&-1\\-1&1\end{pmatrix}=-2-1=-3\neq0$), quindi il massimo numero di righe indipendenti è $2$: rango $2$.
+  Con Gauss: $R_2\to R_2-\frac12R_1$ dà $(0,\frac32,1,2)$, poi $R_3\to R_3+2R_2$ dà la riga nulla: due pivot.
+  **Errore tipico:** credere che il rango sia $3$ perché nessuna riga è multipla di un'altra: una riga può essere combinazione di due righe senza essere multipla di una sola.
+T: Quanto vale il rango della matrice $3\times 4$ $\begin{pmatrix}-2&-1&0&2\\-1&1&1&3\\0&-3&-2&-4\end{pmatrix}$?
+17-4 A Il rango è al più $3$. Il minore delle prime tre colonne è $\det\begin{pmatrix}2&-1&0\\1&1&1\\0&-3&2\end{pmatrix}$.
+  Sviluppo lungo la prima riga: $2\det\begin{pmatrix}1&1\\-3&2\end{pmatrix}-(-1)\det\begin{pmatrix}1&1\\0&2\end{pmatrix}+0=2(2+3)+1\cdot2=12\neq0$.
+  Quindi il rango è $3$.
+  **Errore tipico:** confondere questa matrice con la gemella in cui la terza riga ha $-2$ al posto di $2$ e la terza riga è combinazione delle altre (rango $2$): basta un segno per cambiare il rango.
+T: Quanto vale il rango della matrice $3\times 4$ $\begin{pmatrix}2&-1&0&2\\1&1&1&3\\0&-3&2&-4\end{pmatrix}$?
+17-5 C Cerco $R_3=aR_1+bR_2$: prima colonna $2a+b=0\Rightarrow b=-2a$; seconda colonna $-a+b=-3\Rightarrow-3a=-3\Rightarrow a=1,\ b=-2$.
+  Controllo: terza colonna $0+1\cdot(-2)=-2$ ✓; quarta colonna $2+3\cdot(-2)=-4$ ✓. Quindi $R_3=R_1-2R_2$.
+  Il minore $\det\begin{pmatrix}2&-1\\1&1\end{pmatrix}=2+1=3\neq0$, quindi il rango è almeno $2$; tutte e tre le righe sono dipendenti, quindi il rango è $2$.
+  Con Gauss: $R_2\to R_2-\frac12R_1$ dà $(0,\frac32,1,2)$, $R_3\to R_3+2R_2$ dà la riga nulla: due pivot.
+  **Errore tipico:** fermarsi a un minore di ordine $3$ (quello delle prime tre colonne vale $0$) senza controllare tutti gli orlati, oppure concludere $3$ "perché ci sono tre righe".
+T: Quanto vale il rango della matrice $3\times 4$ $\begin{pmatrix}2&-1&0&2\\1&1&1&3\\0&-3&-2&-4\end{pmatrix}$?
+17-6 D La seconda riga $(2,6,-4)$ è il doppio della prima $(1,3,-2)$: $R_2\to R_2-2R_1$ dà la riga nulla e resta un solo pivot. Rango $1$.
+  Tutti i minori di ordine $2$ sono nulli: $\det\begin{pmatrix}1&3\\2&6\end{pmatrix}=0$, $\det\begin{pmatrix}1&-2\\2&-4\end{pmatrix}=0$, $\det\begin{pmatrix}3&-2\\6&-4\end{pmatrix}=0$.
+  **Errore tipico:** rispondere con il numero di righe ($2$) o di colonne ($3$).
+T: Quanto vale il rango della matrice $2\times 3$ $\begin{pmatrix}1&3&-2\\2&6&-4\end{pmatrix}$?
+17-7 A Le prime due colonne sono proporzionali, ma il minore della prima e terza colonna è $\det\begin{pmatrix}1&-3\\2&-4\end{pmatrix}=1\cdot(-4)-(-3)\cdot2=-4+6=2\neq0$.
+  Quindi il rango è almeno $2$; ed è al più $2$ perché le righe sono due. Rango $2$.
+  **Errore tipico:** guardare solo le prime due colonne $(1,3)$ e $(2,6)$, proporzionali, e concludere che il rango è $1$: la terza colonna rompe la proporzionalità ($-3\cdot2=-6\neq-4$).
+  TRAP: Le righe sembrano una il doppio dell'altra, ma l'ultima entrata non lo è.
+T: Quanto vale il rango della matrice $2\times 3$ $\begin{pmatrix}1&3&-3\\2&6&-4\end{pmatrix}$?
+17-8 D Il minore della prima e terza colonna è $\det\begin{pmatrix}1&-1\\2&-4\end{pmatrix}=1\cdot(-4)-(-1)\cdot2=-4+2=-2\neq0$, quindi il rango è almeno $2$, ed è al più $2$ (due righe). Rango $2$.
+  Infatti la seconda riga $(2,4,-4)$ non è il doppio della prima $(1,2,-1)$: l'ultima entrata dovrebbe essere $-2$.
+  **Errore tipico:** fermarsi alle prime due colonne, proporzionali, e concludere rango $1$; o pensare che una $2\times3$ possa avere rango $3$.
+  TRAP: Le prime due entrate delle righe sono proporzionali, l'ultima no.
+T: Quanto vale il rango della matrice $2\times 3$ $\begin{pmatrix}1&2&-1\\2&4&-4\end{pmatrix}$?
+17-9 APERTA
+KW: matrice quadrata, colonne linearmente indipendenti, righe linearmente indipendenti, det(A)≠0|determinante diverso da zero, equivalenti|se e solo se, metodo di Gauss|matrice a scalini, n pivot|nessuna riga nulla, Gauss-Jordan|matrice identità, sottospazio generato dalle righe, trasposta|det(tA)=det(A), det=0 dipendenti
+> **Teorema 17.1.** Sia $A$ una matrice quadrata di ordine $n$. Sono equivalenti: (1) le colonne di $A$ sono linearmente indipendenti; (2) le righe di $A$ sono linearmente indipendenti; (3) $\det(A)\neq0$. Equivalentemente, $\det(A)=0$ se e solo se le righe (e le colonne) sono linearmente dipendenti.
+> **Idea della dimostrazione (righe).** Se $A$ è nulla tutto è ovvio. Altrimenti, con il metodo di Gauss si ottiene una matrice a scalini $B$: $\det A\neq0$ se e solo se $B$ ha $n$ pivot (nessuna riga nulla), perché $\det A=\pm\det B$ e $\det B$ è il prodotto della diagonale. Proseguendo con Gauss-Jordan si ottiene $C$, che è l'identità se e solo se $B$ ha $n$ pivot. Il sottospazio $W$ generato dalle righe di $C$ ha dimensione $n$ se e solo se $C=I_n$. Le operazioni elementari sulle righe non cambiano il sottospazio generato dalle righe, quindi $W$ è anche il sottospazio generato dalle righe di $A$, e $\dim W=n$ se e solo se le $n$ righe di $A$ sono indipendenti.
+> **Colonne.** Le colonne di $A$ sono le righe di ${}^tA$ e $\det({}^tA)=\det(A)$; quindi le colonne sono indipendenti se e solo se $\det A\neq0$. Ne segue anche che righe indipendenti $\Leftrightarrow$ colonne indipendenti.
+> Esempio: $\det\begin{pmatrix}2&1\\4&2\end{pmatrix}=0$ e infatti la seconda riga è il doppio della prima. Attenzione: righe indipendenti implicano $\det A\neq0$, non $\det A=1$.
+17-10 APERTA
+KW: massimo numero di colonne linearmente indipendenti, dimensione del sottospazio generato dalle colonne, rank(A)≤min(n,m), minore|determinante di una sottomatrice quadrata, orlato, Kronecker, massimo ordine di un minore non nullo, rango della trasposta|righe, Gauss|numero dei pivot, operazioni elementari non cambiano il rango
+> **Definizione.** Il rango di $A\in\mathbb{K}^{n,m}$, $\operatorname{rank}(A)$, è il massimo numero di colonne linearmente indipendenti di $A$; coincide con la dimensione del sottospazio di $\mathbb{K}^n$ generato dalle colonne (Prop. 17.7). Si ha $\operatorname{rank}(A)\le n$ e $\le m$; $\operatorname{rank}(A)=0$ se e solo se $A$ è nulla; $\operatorname{rank}(I_n)=n$.
+> Un **minore** di ordine $k$ è il determinante di una sottomatrice quadrata $k\times k$; un **orlato** di $\det_k(B)$ è il minore di ordine $k+1$ ottenuto aggiungendo a $B$ un'altra riga e un'altra colonna. Se esiste un minore non nullo di ordine $r$ allora $\operatorname{rank}(A)\ge r$ (Lemma 17.11).
+> **Teorema di Kronecker.** Se $A$ non è nulla, il rango di $A$ è l'ordine $r$ di un minore $\det_r(B)\neq0$ tale che **tutti** i suoi orlati sono nulli. Algoritmo: si parte da un'entrata non nulla e si orla; appena si trova un orlato non nullo si sale di ordine; se tutti gli orlati sono nulli ci si ferma.
+> Corollari: il rango è il massimo ordine di un minore non nullo; $\operatorname{rank}({}^tA)=\operatorname{rank}(A)$, quindi il rango è anche il massimo numero di **righe** indipendenti.
+> **Con Gauss:** le operazioni elementari non cambiano il rango, e il rango di una matrice a scalini è il numero dei pivot.
+> Esempio: $\begin{pmatrix}1&0&0\\1&k&1\\2&2&2k\end{pmatrix}$ ha determinante $2(k^2-1)$: per $k\neq\pm1$ ha rango $3$; per $k=\pm1$ il minore $\det\begin{pmatrix}1&0\\1&1\end{pmatrix}=1\neq0$ dà rango $2$.
+x87 C Per il Teorema 17.1, per una matrice quadrata: colonne indipendenti $\Leftrightarrow$ righe indipendenti $\Leftrightarrow\det A\neq0$.
+  Le implicazioni "colonne indipendenti $\Rightarrow\det A\neq0$", "$\det A\neq0\Rightarrow$ colonne indipendenti" e "$\det A=0\Rightarrow$ righe dipendenti" sono tutte vere.
+  È falsa "righe indipendenti $\Rightarrow\det A=1$": si ha solo $\det A\neq0$. Controesempio: $2I_2$ ha righe indipendenti e determinante $4$.
+  **Errore tipico:** leggere di fretta e scambiare "$\neq0$" con "$=1$".
+T: Data una matrice quadrata $A$, quale delle seguenti implicazioni è falsa?
+OPT: Se le colonne di $A$ sono linearmente indipendenti, allora si ha $\det(A)\neq0$. | Se si ha $\det(A)\neq0$, allora le colonne di $A$ sono linearmente indipendenti. | Se le righe di $A$ sono linearmente indipendenti, allora si ha $\det(A)=1$. | Se si ha $\det(A)=0$, allora le righe di $A$ sono linearmente dipendenti.
+x88 D Un minore è il determinante di una sottomatrice quadrata ottenuta scegliendo alcune righe e altrettante colonne di $A=\begin{pmatrix}1&0&2&1\\0&1&-3&5\\4&-2&-2&2\end{pmatrix}$.
+  $(-3)$ è l'entrata $(2,3)$: è un minore di ordine 1. $\begin{pmatrix}1&2\\4&-2\end{pmatrix}$ = righe 1, 3 e colonne 1, 3, con determinante $-2-8=-10$. $\begin{pmatrix}1&0&1\\0&1&5\\4&-2&2\end{pmatrix}$ = colonne 1, 2, 4, con determinante $1\cdot(2+10)-0+1\cdot(0-4)=8$.
+  La matrice $\begin{pmatrix}0&2&1\\1&-3&5\\-2&2&2\end{pmatrix}$ non è una sottomatrice di $A$: le colonne 2, 3, 4 danno come terza riga $(-2,-2,2)$, non $(-2,2,2)$. Quindi quel determinante (che pure vale $-28$) non è un minore di $A$.
+  **Errore tipico:** controllare solo che il determinante sia calcolato bene, senza verificare che la sottomatrice provenga davvero da $A$.
+T: Quale dei seguenti **non** è un minore della matrice $\begin{pmatrix}1&0&2&1\\0&1&-3&5\\4&-2&-2&2\end{pmatrix}$?
+OPT: $\det_1\begin{pmatrix}-3\end{pmatrix}=-3$. | $\det_2\begin{pmatrix}1&2\\4&-2\end{pmatrix}=-10$. | $\det_3\begin{pmatrix}1&0&1\\0&1&5\\4&-2&2\end{pmatrix}=8$. | $\det_3\begin{pmatrix}0&2&1\\1&-3&5\\-2&2&2\end{pmatrix}=-28$.
+x89 A Un minore non nullo di ordine $3$ dà $\operatorname{rank}(A)\ge3$ (Lemma 17.11). Per concludere $\operatorname{rank}(A)=3$ con il Teorema di Kronecker servirebbe che **tutti** gli orlati di $B$ fossero nulli; qui se ne conosce uno solo nullo, e un altro orlato potrebbe essere non nullo (rango $4$). Quindi si può dedurre solo $\operatorname{rank}(A)\ge3$.
+  **Errore tipico:** applicare Kronecker con un solo orlato nullo e concludere che il rango è esattamente $3$.
+  TRAP: Kronecker richiede che siano nulli tutti gli orlati, non uno.
+T: Data una matrice $A$ di dimensione $5\times4$, un minore $B$ di ordine $3$ non nullo, e un minore $C$ orlato di $B$ nullo, cosa si può dedurre del rango di $A$?
+OPT: $\operatorname{rank}(A)\geqslant3$. | $\operatorname{rank}(A)=3$. | $\operatorname{rank}(A)\leqslant3$. | $\operatorname{rank}(A)=4$.
+x90 D Il minore $\det\begin{pmatrix}1&0\\1&1\end{pmatrix}$ (righe 1, 2 e colonne 1, 3) vale $1\neq0$, quindi il rango è sempre almeno $2$.
+  L'unico orlato di ordine 3 è il determinante della matrice: sviluppando lungo la prima riga $(1,0,0)$, $\det=1\cdot\det\begin{pmatrix}k&1\\2&2k\end{pmatrix}=2k^2-2=2(k-1)(k+1)$.
+  È nullo per $k=1$ e per $k=-1$: in questi casi il rango è $2$; per gli altri $k$ è $3$.
+  **Errore tipico:** risolvere $2k^2-2=0$ trovando una sola radice, dimenticando la soluzione negativa.
+T: Per quali valori di $k\in\mathbb{R}$ la matrice $\begin{pmatrix}1&0&0\\1&k&1\\2&2&2k\end{pmatrix}$ ha rango $2$?
+OPT: Per nessun valore di $k$. | Per $k=-1$. | Per $k=1$. | Per $k=\pm1$.

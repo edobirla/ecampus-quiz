@@ -1,0 +1,370 @@
+## L38 Forme quadratiche
+38-1 A La matrice associata è $A=\begin{pmatrix}2&2\\2&1\end{pmatrix}$. Per le forme quadratiche su $\mathbb{R}^2$ basta la tabella dell'Osservazione 38.11: si guarda il segno di $\det(A)$ e, se serve, di $a_{11}$ e $a_{22}$.
+  $$\det(A)=2\cdot 1-2\cdot 2=2-4=-2<0$$
+  Il determinante è il prodotto dei due autovalori: se è negativo, i due autovalori sono non nulli e di **segno opposto**, quindi $Q$ è **indefinita** (qualunque sia il segno di $a_{11}$ e $a_{22}$).
+  Verifica diretta: $Q(x_1,x_2)=2x_1^2+4x_1x_2+x_2^2$; $Q(1,0)=2>0$ mentre $Q(1,-1)=2-4+1=-1<0$.
+  **Errore tipico:** vedere tutte le entrate positive e concludere che la forma è definita positiva: le entrate diagonali positive non bastano, conta il segno del determinante, che qui è negativo.
+  TRAP: tutte le entrate sono positive ma il determinante è negativo: la forma è indefinita.
+T: Data la forma quadratica $Q$ la cui matrice associata è $\begin{pmatrix}2&2\\2&1\end{pmatrix}$, quale delle seguenti affermazioni è vera?
+38-2 A La matrice associata è $A=\begin{pmatrix}3&2\\2&2\end{pmatrix}$. Si usa la tabella dell'Osservazione 38.11.
+  $$\det(A)=3\cdot 2-2\cdot 2=6-4=2>0$$
+  Con $\det(A)>0$ i due autovalori sono non nulli e dello **stesso segno**; il segno comune è quello di $a_{11}=3>0$ (e di $a_{22}=2>0$). Quindi entrambi gli autovalori sono positivi e $Q$ è **definita positiva**.
+  Controllo con gli autovalori: $\det(A-\lambda I)=\lambda^2-5\lambda+2=0$, $\lambda=\frac{5\pm\sqrt{17}}{2}$, entrambi positivi ($\sqrt{17}\approx 4{,}12<5$).
+  **Errore tipico:** fermarsi al determinante positivo senza guardare $a_{11}$: un determinante positivo da solo dice solo che gli autovalori hanno lo stesso segno, che potrebbe anche essere negativo.
+T: Data la forma quadratica $Q$ la cui matrice associata è $\begin{pmatrix}3&2\\2&2\end{pmatrix}$, quale delle seguenti affermazioni è vera?
+38-3 C La matrice associata è $A=\begin{pmatrix}4&2\\2&1\end{pmatrix}$.
+  $$\det(A)=4\cdot 1-2\cdot 2=4-4=0$$
+  Con $\det(A)=0$ almeno un autovalore è nullo, quindi $Q$ non può essere né definita positiva né definita negativa. Poiché $a_{11}=4\geqslant 0$ e $a_{22}=1\geqslant 0$, la tabella dell'Osservazione 38.11 dà: **semidefinita positiva, ma non definita positiva**.
+  Infatti $Q(x_1,x_2)=4x_1^2+4x_1x_2+x_2^2=(2x_1+x_2)^2\geqslant 0$, e si annulla per esempio in ${}^t(1\ -2)\neq 0_2$. Gli autovalori sono $0$ e $5$ (traccia $5$, determinante $0$).
+  **Errore tipico:** vedere entrate positive e scegliere "definita positiva": col determinante nullo esiste un vettore non nullo su cui $Q$ vale $0$, quindi la disuguaglianza stretta fallisce.
+  TRAP: determinante nullo: la forma è solo semidefinita, non definita.
+T: Data la forma quadratica $Q$ la cui matrice associata è $\begin{pmatrix}4&2\\2&1\end{pmatrix}$, quale delle seguenti affermazioni è vera?
+38-4 A La matrice associata è $A=\begin{pmatrix}-3&2\\2&-2\end{pmatrix}$.
+  $$\det(A)=(-3)(-2)-2\cdot 2=6-4=2>0$$
+  Con $\det(A)>0$ gli autovalori sono non nulli e dello stesso segno, che è quello di $a_{11}=-3<0$ (e $a_{22}=-2<0$). Entrambi gli autovalori sono negativi, quindi $Q$ è **definita negativa**.
+  Controllo: $\lambda^2+5\lambda+2=0$, $\lambda=\frac{-5\pm\sqrt{17}}{2}$, entrambi negativi.
+  **Errore tipico:** leggere il determinante positivo come "definita positiva": il segno del determinante dice solo se gli autovalori sono concordi, il loro segno lo dà $a_{11}$.
+  TRAP: determinante positivo ma diagonale negativa: è definita negativa, non positiva.
+T: Data la forma quadratica $Q$ la cui matrice associata è $\begin{pmatrix}-3&2\\2&-2\end{pmatrix}$, quale delle seguenti affermazioni è vera?
+38-5 C La matrice associata è $A=\begin{pmatrix}-4&2\\2&-1\end{pmatrix}$.
+  $$\det(A)=(-4)(-1)-2\cdot 2=4-4=0$$
+  Un autovalore è nullo; inoltre $a_{11}=-4\leqslant 0$ e $a_{22}=-1\leqslant 0$, quindi per la tabella dell'Osservazione 38.11 $Q$ è **semidefinita negativa, ma non definita negativa**.
+  Infatti $Q(x_1,x_2)=-4x_1^2+4x_1x_2-x_2^2=-(2x_1-x_2)^2\leqslant 0$, nulla per esempio in ${}^t(1\ 2)$. Gli autovalori sono $0$ e $-5$.
+  **Errore tipico:** concludere "definita negativa" guardando solo la diagonale negativa, senza accorgersi che il determinante è zero.
+T: Data la forma quadratica $Q$ la cui matrice associata è $\begin{pmatrix}-4&2\\2&-1\end{pmatrix}$, quale delle seguenti affermazioni è vera?
+38-6 APERTA
+KW: forma quadratica, polinomio omogeneo di grado 2|monomi di grado 2, Q(0)=0|vettore nullo, matrice simmetrica, matrice associata, a_ij/2|metà dei coefficienti misti, tX A X|prodotto righe per colonne, diagonale|quadrati, esempio
+> **Definizione (38.1).** Una **forma quadratica** su $\mathbb{R}^n$ è una funzione
+> $$Q:\mathbb{R}^n\ni{}^t(x_1\ \dots\ x_n)\longmapsto\sum_{i\leqslant j}a_{ij}x_ix_j\in\mathbb{R},$$
+> cioè $Q(X)$ è un **polinomio con soli monomi di grado 2** (oppure il polinomio nullo). In particolare $Q(0_n)=0$.
+>
+> **Matrice associata (38.4–38.5).** Ogni forma quadratica si rappresenta con una **matrice simmetrica**: si mettono sulla diagonale i coefficienti dei quadrati $a_{ii}$ e fuori diagonale, in posizione $(i,j)$ e $(j,i)$, **metà** del coefficiente del termine misto $x_ix_j$:
+> $$Q(X)={}^tX\cdot\begin{pmatrix}a_{11}&\frac{a_{12}}{2}&\cdots&\frac{a_{1n}}{2}\\ \frac{a_{12}}{2}&a_{22}&\cdots&\frac{a_{2n}}{2}\\ \vdots&&\ddots&\vdots\\ \frac{a_{1n}}{2}&\frac{a_{2n}}{2}&\cdots&a_{nn}\end{pmatrix}\cdot X.$$
+> Questa matrice simmetrica è detta **matrice associata** a $Q$.
+>
+> **Esempio (38.6).** $Q(X)=x_1^2+3x_2^2-x_1x_2$ su $\mathbb{R}^2$ ha matrice associata $\begin{pmatrix}1&-\frac12\\-\frac12&3\end{pmatrix}$.
+>
+> La matrice associata, essendo reale e simmetrica, è sempre **diagonalizzabile** (Teorema spettrale) e i segni dei suoi autovalori determinano la definitezza di $Q$ (Proposizione 38.9).
+38-7 APERTA
+KW: definita positiva, definita negativa, semidefinita positiva, semidefinita negativa, indefinita, Q(X)>0|disuguaglianza, X diverso da 0|vettore non nullo, autovalori, diagonalizzabile|teorema spettrale, determinante, a11|entrata diagonale, esempio
+> **Definizione (38.7).** Una forma quadratica $Q$ su $\mathbb{R}^n$ è
+> - **definita positiva** se $Q(X)>0$ per ogni $X\in\mathbb{R}^n\setminus\{0_n\}$;
+> - **definita negativa** se $Q(X)<0$ per ogni $X\neq 0_n$;
+> - **semidefinita positiva** se $Q(X)\geqslant 0$ per ogni $X\neq 0_n$;
+> - **semidefinita negativa** se $Q(X)\leqslant 0$ per ogni $X\neq 0_n$;
+> - **indefinita** se esistono $X,Y\neq 0_n$ con $Q(X)>0$ e $Q(Y)<0$.
+>
+> **Proposizione (38.9).** La matrice associata a $Q$ è sempre diagonalizzabile; detti $\lambda_1,\dots,\lambda_n$ i suoi autovalori, $Q$ è definita positiva $\iff$ tutti i $\lambda_i>0$; definita negativa $\iff$ tutti i $\lambda_i<0$; semidefinita positiva $\iff$ tutti i $\lambda_i\geqslant 0$; semidefinita negativa $\iff$ tutti i $\lambda_i\leqslant 0$; indefinita $\iff$ esistono $\lambda_i>0$ e $\lambda_j<0$. È un corollario del Teorema spettrale.
+>
+> **Caso $\mathbb{R}^2$ (Osservazione 38.11).** Poiché $\det(A)=\lambda_1\lambda_2$, $a_{11}=Q(1,0)$, $a_{22}=Q(0,1)$: se $\det A>0$ e $a_{11},a_{22}>0$ è definita positiva; se $\det A>0$ e $a_{11},a_{22}<0$ definita negativa; se $\det A<0$ indefinita; se $\det A=0$ e $a_{11},a_{22}\geqslant0$ semidefinita positiva non definita; se $\det A=0$ e $a_{11},a_{22}\leqslant 0$ semidefinita negativa non definita.
+>
+> **Esempio (38.8, 38.10).** $Q(X)=x_1^2$ su $\mathbb{R}^2$ è semidefinita positiva ma non definita: $Q(0,1)=0$; la matrice $\begin{pmatrix}1&0\\0&0\end{pmatrix}$ ha autovalori $0$ e $1$. $Q(X)=-x_1^2-x_2^2$ è definita negativa: autovalore $-1$ doppio.
+x171 B Una forma quadratica su $\mathbb{R}^2$ è un polinomio in $x_1,x_2$ i cui monomi hanno **tutti grado 2** (Definizione 38.1). Controlliamo i monomi di ciascuna funzione:
+  - $x_1^2-x_1x_2$: $x_1^2$ ha grado 2 e $x_1x_2$ ha grado $1+1=2$: è una forma quadratica.
+  - $x_1^2-x_1^2x_2$: il monomio $x_1^2x_2$ ha grado 3: non lo è.
+  - $x_1^2-\operatorname{sen}x_2$: il seno non è nemmeno un polinomio: non lo è.
+  - $x_1-x_1x_2$: il monomio $x_1$ ha grado 1: non lo è (e infatti $Q(t\,X)\neq t^2Q(X)$).
+  **Errore tipico:** contare solo l'esponente della prima variabile: il grado di un monomio è la **somma** degli esponenti, quindi $x_1x_2$ ha grado 2 mentre $x_1^2x_2$ ha grado 3.
+T: Quale delle seguenti è una forma quadratica?
+OPT: $Q:\mathbb{R}^2\ni{}^t(x_1\ x_2)\mapsto x_1^2-x_1^2x_2\in\mathbb{R}$ | $Q:\mathbb{R}^2\ni{}^t(x_1\ x_2)\mapsto x_1^2-x_1x_2\in\mathbb{R}$ | $Q:\mathbb{R}^2\ni{}^t(x_1\ x_2)\mapsto x_1^2-\operatorname{sen}x_2\in\mathbb{R}$ | $Q:\mathbb{R}^2\ni{}^t(x_1\ x_2)\mapsto x_1-x_1x_2\in\mathbb{R}$
+x172 D Si scrive la matrice simmetrica con i coefficienti dei quadrati sulla diagonale e **metà** dei coefficienti dei termini misti fuori diagonale.
+  $Q(X)=x_1^2-2x_3^2+4x_1x_2-2x_1x_3$: coefficienti $a_{11}=1$, $a_{22}=0$ (manca $x_2^2$), $a_{33}=-2$, $a_{12}=4$, $a_{13}=-2$, $a_{23}=0$.
+  Entrate fuori diagonale: $\frac{a_{12}}{2}=2$, $\frac{a_{13}}{2}=-1$, $\frac{a_{23}}{2}=0$. Quindi
+  $$A=\begin{pmatrix}1&2&-1\\2&0&0\\-1&0&-2\end{pmatrix}.$$
+  Verifica: ${}^tXAX=x_1^2+0\cdot x_2^2-2x_3^2+2\cdot 2x_1x_2+2\cdot(-1)x_1x_3=Q(X)$.
+  **Errore tipico:** mettere $-2$ (coefficiente di $x_3^2$) in posizione $(2,2)$ invece che $(3,3)$, oppure copiare i coefficienti misti interi in una matrice triangolare invece di dimezzarli e simmetrizzarli.
+T: Quale è la matrice associata alla forma quadratica $Q(X)=x_1^2-2x_3^2+4x_1x_2-2x_1x_3$ con $X\in\mathbb{R}^3$?
+OPT: $\begin{pmatrix}1&2&-1\\2&-2&0\\-1&0&0\end{pmatrix}$ | $\begin{pmatrix}1&2&1\\2&0&0\\1&0&2\end{pmatrix}$ | $\begin{pmatrix}1&4&-2\\0&0&0\\0&0&-2\end{pmatrix}$ | $\begin{pmatrix}1&2&-1\\2&0&0\\-1&0&-2\end{pmatrix}$
+x173 A Per la Proposizione 38.9 la definitezza dipende dai segni degli autovalori della matrice associata. Gli autovalori $2$, $3$ e $7$ sono **tutti strettamente positivi**, quindi $Q$ è **definita positiva**.
+  Le altre classi richiederebbero autovalori negativi (definita negativa), almeno un autovalore nullo (semidefinita non definita) o autovalori di segno discorde (indefinita).
+  **Errore tipico:** confondere "semidefinita positiva" con "definita positiva": la semidefinita non definita richiede almeno un autovalore uguale a $0$, che qui non c'è.
+T: Data una forma quadratica $Q$ la cui matrice associata ha tre autovalori ($2$, $3$ e $7$), quale delle seguenti proposizioni è vera?
+OPT: $Q$ è definita positiva. | $Q$ è definita negativa. | $Q$ è semidefinita positiva, ma non definita positiva. | $Q$ è indefinita.
+x174 C La matrice è $A=\begin{pmatrix}-4&2\\2&-1\end{pmatrix}$, quindi $\det(A)=(-4)(-1)-2\cdot2=4-4=0$: un autovalore è nullo e $Q$ non è né definita positiva né definita negativa.
+  Con $a_{11}=-4\leqslant 0$ e $a_{22}=-1\leqslant 0$ l'Osservazione 38.11 dà **semidefinita negativa, ma non definita negativa**. Infatti $Q(X)=-4x_1^2+4x_1x_2-x_2^2=-(2x_1-x_2)^2\leqslant 0$, nulla su ${}^t(1\ 2)$; gli autovalori sono $0$ e $-5$.
+  **Errore tipico:** fermarsi alla diagonale negativa e scegliere "definita negativa" senza calcolare il determinante.
+T: Data la forma quadratica $Q$ la cui matrice associata è $\begin{pmatrix}-4&2\\2&-1\end{pmatrix}$, quale delle seguenti proposizioni è vera?
+OPT: $Q$ è definita positiva. | $Q$ è definita negativa. | $Q$ è semidefinita negativa, ma non definita negativa. | $Q$ è indefinita.
+
+## L39 Spazi proiettivi
+39-1 APERTA
+KW: insieme quoziente, relazione di equivalenza|w = λv, vettore nullo escluso|R^(n+1)\{0}, coordinate omogenee, punto all'infinito|punto improprio, retta proiettiva|P1(R), piano proiettivo|P2(R), spazio proiettivo|P3(R)|Pn(R), omogeneizzazione|forma implicita omogenea, retta all'infinito|piano all'infinito|T=0, rette parallele stesso punto all'infinito|direzione, si intersecano sempre, sghembe
+> **Definizione (39.54).** Lo **spazio proiettivo** $n$-dimensionale $\mathbb{P}^n(\mathbb{R})$ è l'**insieme quoziente** di $\mathbb{R}^{n+1}\setminus\{0_{n+1}\}$ per la relazione di equivalenza $v\sim w\iff w=\lambda v$ con $\lambda\in\mathbb{R}\setminus\{0\}$. Un punto si indica con $[v]$: vettori proporzionali danno lo stesso punto e il vettore nullo non rappresenta nessun punto. Casi particolari: la **retta proiettiva** $\mathbb{P}^1(\mathbb{R})$, il **piano proiettivo** $\mathbb{P}^2(\mathbb{R})$, lo **spazio proiettivo** $\mathbb{P}^3(\mathbb{R})$.
+>
+> **Coordinate omogenee.** La funzione $\mathbb{R}^n\ni{}^t(x_1\ \dots\ x_n)\mapsto[x_1\ \dots\ x_n\ 1]\in\mathbb{P}^n(\mathbb{R})$ è iniettiva ma non surgettiva: permette di vedere $\mathbb{R}^n$ dentro $\mathbb{P}^n(\mathbb{R})$. Un punto con ultima coordinata $x_{n+1}\neq 0$ corrisponde al punto $\left(\frac{x_1}{x_{n+1}},\dots,\frac{x_n}{x_{n+1}}\right)$ di $\mathbb{R}^n$; i punti con ultima coordinata nulla sono i **punti all'infinito** (impropri). $\mathbb{P}^1$ ha un solo punto all'infinito $[1\ 0]$; $\mathbb{P}^2$ ne ha infiniti, che formano la **retta all'infinito** $T=0$; $\mathbb{P}^3$ ha il **piano all'infinito** $T=0$.
+>
+> **Omogeneizzazione.** Una retta $ax+by+c=0$ di $\mathbb{R}^2$ ha **forma implicita omogenea** $aX+bY+cT=0$; il suo punto all'infinito è $[b\ \ -a\ \ 0]$, cioè la sua **direzione**. Analogamente un piano $ax+by+cz+d=0$ diventa $aX+bY+cZ+dT=0$.
+>
+> **Risultati.** Due rette proiettive di $\mathbb{P}^2(\mathbb{R})$ **si intersecano sempre** (Prop. 39.25: il sistema omogeneo ha rango al più 2); quindi due rette di $\mathbb{R}^2$ sono **parallele se e solo se hanno lo stesso punto all'infinito** (Cor. 39.26). In $\mathbb{P}^3(\mathbb{R})$ due piani si intersecano sempre, una retta e un piano si intersecano sempre; due rette di $\mathbb{R}^3$ sono parallele se e solo se hanno lo stesso punto all'infinito e **sghembe se e solo se non si intersecano in $\mathbb{P}^3(\mathbb{R})$** (Prop. 39.49).
+>
+> **Esempio.** Le rette $2X-Y+T=0$ e $4X-2Y-3T=0$ si incontrano solo in $[1\ 2\ 0]$, un punto all'infinito: sono parallele.
+x175 B Un punto di $\mathbb{P}^n(\mathbb{R})$ è rappresentato da un vettore non nullo di $\mathbb{R}^{n+1}$, cioè ha **$n+1$ coordinate omogenee**.
+  Il punto $[3\ \ 1\ \ -2]$ ha 3 coordinate, quindi $n+1=3$, $n=2$: appartiene al **piano proiettivo** $\mathbb{P}^2(\mathbb{R})$. Corrisponde, poiché l'ultima coordinata è $-2\neq0$, al punto $\left(-\frac32,-\frac12\right)$ di $\mathbb{R}^2$.
+  **Errore tipico:** contare le coordinate e scegliere $\mathbb{P}^3(\mathbb{R})$: in coordinate omogenee c'è sempre una coordinata in più della dimensione.
+T: A quale dei seguenti spazi proiettivi appartiene il punto $\begin{bmatrix}3\\1\\-2\end{bmatrix}$?
+OPT: $\mathbb{P}^1(\mathbb{R})$. | $\mathbb{P}^2(\mathbb{R})$. | $\mathbb{P}^3(\mathbb{R})$. | $\mathbb{P}^4(\mathbb{R})$.
+x176 C L'**omogeneizzazione** di un piano $ax+by+cz+d=0$ si ottiene sostituendo $x=\frac XT$, $y=\frac YT$, $z=\frac ZT$ e moltiplicando per $T$: si ottiene $aX+bY+cZ+dT=0$ (Definizione 39.38).
+  Con $2x-7y+5z-3=0$: $2\frac XT-7\frac YT+5\frac ZT-3=0$, e moltiplicando per $T$
+  $$2X-7Y+5Z-3T=0.$$
+  Il termine noto non sparisce: diventa il coefficiente di $T$.
+  **Errore tipico:** limitarsi a scrivere le variabili in maiuscolo lasciando il termine noto, oppure cancellare il termine noto: nel primo caso l'equazione non è omogenea, nel secondo si ottiene la giacitura (il piano per l'origine), non il piano dato.
+T: Quale delle seguenti è una forma implicita omogenea del piano con forma implicita $2x-7y+5z-3=0$ nello spazio?
+OPT: $2x-7y+5z-3=0$. | $2x-7y+5z=0$. | $2X-7Y+5Z-3T=0$. | $2X-7Y+5Z=0$.
+x177 C Per la Proposizione 39.49 due rette di $\mathbb{R}^3$ sono **parallele se e solo se hanno lo stesso punto all'infinito** (che rappresenta la direzione) e sono sghembe se e solo se non si intersecano in $\mathbb{P}^3(\mathbb{R})$.
+  Se l'intersezione è **un** punto all'infinito, le rette hanno la stessa direzione (sono parallele) ma non hanno punti comuni in $\mathbb{R}^3$ (altrimenti l'intersezione conterrebbe anche quel punto, e due rette distinte si incontrano al più in un punto). Quindi sono **parallele non coincidenti**.
+  Se fossero coincidenti l'intersezione sarebbe tutta la retta; se incidenti sarebbe un punto proprio; se sghembe sarebbe vuota.
+  **Errore tipico:** pensare che rette che "si incontrano all'infinito" siano sghembe: le sghembe in $\mathbb{P}^3(\mathbb{R})$ non si incontrano affatto, nemmeno all'infinito.
+T: Quale è la mutua posizione di due rette dello spazio $\mathbb{R}^3$ la cui intersezione è un punto all'infinito?
+OPT: Le rette sono coincidenti. | Le rette sono incidenti. | Le rette sono parallele non coincidenti. | Le rette sono sghembe.
+x178 B Bisogna risolvere il sistema omogeneo formato dalle due equazioni della retta e da quella del piano:
+  $$\begin{cases}X-3Y-2Z+T=0\\2X-Z=0\\2Y+Z-T=0\end{cases}$$
+  Dalla seconda $Z=2X$. Dalla terza $T=2Y+Z=2Y+2X$. Sostituendo nella prima: $X-3Y-4X+2Y+2X=0$, cioè $-X-Y=0$, $Y=-X$. Allora $Z=2X$ e $T=-2X+2X=0$.
+  Le soluzioni sono $(X,Y,Z,T)=(\alpha,-\alpha,2\alpha,0)$: il punto di intersezione è $[1\ \ -1\ \ 2\ \ 0]$, un **punto all'infinito** (la retta è parallela al piano).
+  Verifica: $1+3-4+0=0$, $2-2=0$, $-2+2-0=0$.
+  **Errore tipico:** controllare solo due delle tre equazioni: il punto con ultima coordinata $-1$ soddisfa la seconda e la terza ma nella prima dà $1+3-4-1=-1\neq0$.
+T: Quale è l'intersezione della retta proiettiva e del piano proiettivo con forma implicita omogenea rispettivamente $\begin{cases}X-3Y-2Z+T=0\\2X-Z=0\end{cases}$ e $2Y+Z-T=0$ in $\mathbb{P}^3(\mathbb{R})$?
+OPT: $\begin{bmatrix}1\\-1\\2\\-1\end{bmatrix}$ | $\begin{bmatrix}1\\-1\\2\\0\end{bmatrix}$ | $\begin{bmatrix}1\\1\\2\\-1\end{bmatrix}$ | $\begin{bmatrix}1\\1\\2\\0\end{bmatrix}$
+
+## L40 Trasformazioni proiettive
+40-1 A Per l'Osservazione 40.7 la trasformazione proiettiva che estende un'affinità si rappresenta con la matrice $3\times3$ dell'applicazione affine, o con un suo **multiplo non nullo** (Osservazione 40.2).
+  $\theta(x,y)=(x-2y+2,\ 2x-y-1)$: parte lineare $\begin{pmatrix}1&-2\\2&-1\end{pmatrix}$, traslazione ${}^t(2\ -1)$, quindi
+  $$[\theta]_p=\begin{pmatrix}1&-2&2\\2&-1&-1\\0&0&1\end{pmatrix}\sim 2\begin{pmatrix}1&-2&2\\2&-1&-1\\0&0&1\end{pmatrix}=\begin{pmatrix}2&-4&4\\4&-2&-2\\0&0&2\end{pmatrix}.$$
+  Le matrici $2\times3$ non possono rappresentare una trasformazione proiettiva di $\mathbb{P}^2(\mathbb{R})$, che richiede una matrice $3\times3$ invertibile. Tra le $3\times3$, quella con $+2$ in posizione $(2,3)$ cambia il segno del termine noto $-1$.
+  **Errore tipico:** dimenticare l'ultima riga $(0\ 0\ 1)$ (moltiplicata per 2 diventa $(0\ 0\ 2)$): senza di essa la matrice non è quadrata.
+T: Data l'applicazione affine $\theta:\mathbb{R}^2\ni{}^t(x\ y)\mapsto{}^t(x-2y+2,\ 2x-y-1)\in\mathbb{R}^2$ e indicata sempre con $\theta$ la sua estensione proiettiva, quale delle seguenti è $[\theta]_p$?
+OPT: $\begin{pmatrix}2&-4&4\\4&-2&-2\\0&0&2\end{pmatrix}$ | $\begin{pmatrix}2&-4&4\\4&-2&2\\0&0&2\end{pmatrix}$ | $\begin{pmatrix}1&-2&2\\2&-1&-1\end{pmatrix}$ | $\begin{pmatrix}2&-4&4\\4&-2&-2\end{pmatrix}$
+40-2 B La matrice dell'affinità $\theta(x,y)=(x-2y+2,\ 2x+y-1)$ ha come colonne i coefficienti di $x$, di $y$ e i termini noti, più la riga $(0\ 0\ 1)$:
+  $$\begin{pmatrix}1&-2&2\\2&1&-1\\0&0&1\end{pmatrix},\qquad 2\cdot\begin{pmatrix}1&-2&2\\2&1&-1\\0&0&1\end{pmatrix}=\begin{pmatrix}2&-4&4\\4&2&-2\\0&0&2\end{pmatrix}.$$
+  Ogni multiplo non nullo rappresenta la stessa trasformazione proiettiva (Osservazione 40.2), quindi la matrice raddoppiata è $[\theta]_p$.
+  Le matrici $2\times 3$ vanno scartate (non sono quadrate); la $3\times3$ con $+2$ in posizione $(2,3)$ ha il termine noto della seconda componente con il segno sbagliato.
+  **Errore tipico:** riconoscere i numeri giusti in una matrice $2\times3$: senza la riga $(0\ 0\ 2)$ non è una matrice di una trasformazione di $\mathbb{P}^2(\mathbb{R})$.
+T: Data l'applicazione affine $\theta:\mathbb{R}^2\ni{}^t(x\ y)\mapsto{}^t(x-2y+2,\ 2x+y-1)\in\mathbb{R}^2$ e indicata sempre con $\theta$ la sua estensione proiettiva, quale delle seguenti è $[\theta]_p$?
+OPT: $\begin{pmatrix}1&-2&2\\2&1&-1\end{pmatrix}$ | $\begin{pmatrix}2&-4&4\\4&2&-2\\0&0&2\end{pmatrix}$ | $\begin{pmatrix}2&-4&4\\4&2&-2\end{pmatrix}$ | $\begin{pmatrix}2&-4&4\\4&2&2\\0&0&2\end{pmatrix}$
+40-3 D Per $\theta(x,y)=(x-2y+2,\ 2x+y+1)$ la matrice dell'applicazione affine è
+  $$\begin{pmatrix}1&-2&2\\2&1&1\\0&0&1\end{pmatrix},\qquad\text{e moltiplicando per }2:\quad\begin{pmatrix}2&-4&4\\4&2&2\\0&0&2\end{pmatrix}.$$
+  Per le Osservazioni 40.2 e 40.7 questa (come ogni multiplo non nullo) rappresenta l'estensione proiettiva di $\theta$; deve essere $3\times3$ e invertibile (sviluppando lungo la riga $(0\ 0\ 2)$: $\det=2\cdot(2\cdot2-(-4)\cdot4)=2\cdot20=40\neq0$).
+  La $3\times3$ con $-2$ in posizione $(2,3)$ corrisponde al termine noto $-1$, non $+1$.
+  **Errore tipico:** scegliere la matrice $2\times3$ con i numeri giusti: manca l'ultima riga e non è quadrata.
+T: Data l'applicazione affine $\theta:\mathbb{R}^2\ni{}^t(x\ y)\mapsto{}^t(x-2y+2,\ 2x+y+1)\in\mathbb{R}^2$ e indicata sempre con $\theta$ la sua estensione proiettiva, quale delle seguenti è $[\theta]_p$?
+OPT: $\begin{pmatrix}2&-4&4\\4&2&2\end{pmatrix}$ | $\begin{pmatrix}1&-2&2\\2&1&1\end{pmatrix}$ | $\begin{pmatrix}2&-4&4\\4&2&-2\\0&0&2\end{pmatrix}$ | $\begin{pmatrix}2&-4&4\\4&2&2\\0&0&2\end{pmatrix}$
+40-4 C Per $\theta(x,y)=(x-2y+2,\ 2x-y+1)$: parte lineare $\begin{pmatrix}1&-2\\2&-1\end{pmatrix}$, traslazione ${}^t(2\ 1)$, quindi
+  $$\begin{pmatrix}1&-2&2\\2&-1&1\\0&0&1\end{pmatrix}\sim\begin{pmatrix}2&-4&4\\4&-2&2\\0&0&2\end{pmatrix}.$$
+  Un multiplo non nullo della matrice rappresenta la stessa trasformazione proiettiva (Osservazione 40.2). Le matrici $2\times3$ non vanno bene (non sono quadrate), e la $3\times3$ con $-2$ in posizione $(2,3)$ ha il termine noto con il segno sbagliato.
+  **Errore tipico:** confondere il termine noto $+1$ con $-1$ (le quattro domande della serie differiscono solo per questi segni) oppure scegliere una matrice senza la riga $(0\ 0\ 2)$.
+T: Data l'applicazione affine $\theta:\mathbb{R}^2\ni{}^t(x\ y)\mapsto{}^t(x-2y+2,\ 2x-y+1)\in\mathbb{R}^2$ e indicata sempre con $\theta$ la sua estensione proiettiva, quale delle seguenti è $[\theta]_p$?
+OPT: $\begin{pmatrix}2&-4&4\\4&-2&-2\\0&0&2\end{pmatrix}$ | $\begin{pmatrix}2&-4&4\\4&-2&2\end{pmatrix}$ | $\begin{pmatrix}2&-4&4\\4&-2&2\\0&0&2\end{pmatrix}$ | $\begin{pmatrix}1&-2&2\\2&-1&1\end{pmatrix}$
+x179 C Una trasformazione proiettiva di $\mathbb{P}^1(\mathbb{R})$ è $[v]\mapsto[A\,v]$ con $A\in\mathbb{R}^{2,2}$ **invertibile** (Definizione 40.1): le componenti devono essere **lineari omogenee** in $X,T$ e la matrice deve avere determinante non nullo.
+  - $(X-2T^2,\ -X+2T)$: contiene $T^2$, non è lineare.
+  - $(X-T,\ T-X)$: matrice $\begin{pmatrix}1&-1\\-1&1\end{pmatrix}$, determinante $1-1=0$: non invertibile (manda $[1\ 1]$ nel vettore nullo, che non è un punto).
+  - $(3X-2T,\ X+2T)$: matrice $\begin{pmatrix}3&-2\\1&2\end{pmatrix}$, determinante $6+2=8\neq0$: è una trasformazione proiettiva.
+  - $(3X-2T+1,\ X+2T)$: il termine costante $+1$ la rende non omogenea, non è nemmeno ben definita sulle classi.
+  **Errore tipico:** controllare solo la linearità e dimenticare l'invertibilità: una matrice con determinante nullo non dà una trasformazione proiettiva.
+T: Quale delle seguenti funzioni è una trasformazione proiettiva?
+OPT: $\varphi:\mathbb{P}^1(\mathbb{R})\ni\begin{bmatrix}X\\T\end{bmatrix}\mapsto\begin{bmatrix}X-2T^2\\-X+2T\end{bmatrix}\in\mathbb{P}^1(\mathbb{R})$ | $\varphi:\mathbb{P}^1(\mathbb{R})\ni\begin{bmatrix}X\\T\end{bmatrix}\mapsto\begin{bmatrix}X-T\\T-X\end{bmatrix}\in\mathbb{P}^1(\mathbb{R})$ | $\varphi:\mathbb{P}^1(\mathbb{R})\ni\begin{bmatrix}X\\T\end{bmatrix}\mapsto\begin{bmatrix}3X-2T\\X+2T\end{bmatrix}\in\mathbb{P}^1(\mathbb{R})$ | $\varphi:\mathbb{P}^1(\mathbb{R})\ni\begin{bmatrix}X\\T\end{bmatrix}\mapsto\begin{bmatrix}3X-2T+1\\X+2T\end{bmatrix}\in\mathbb{P}^1(\mathbb{R})$
+x180 B La matrice "naturale" di $\varphi(X,Y,T)=(X-T,\ X+Y,\ X-Y+2T)$ si legge dai coefficienti:
+  $$[\varphi]_p=\begin{pmatrix}1&0&-1\\1&1&0\\1&-1&2\end{pmatrix}.$$
+  Per l'Osservazione 40.2 la rappresentano anche tutti i suoi **multipli non nulli**: per $k=-1$ si ottiene $\begin{pmatrix}-1&0&1\\-1&-1&0\\-1&1&-2\end{pmatrix}$, per $k=2$ si ottiene $\begin{pmatrix}2&0&-2\\2&2&0\\2&-2&4\end{pmatrix}$.
+  La matrice $\begin{pmatrix}1&0&1\\1&1&0\\1&1&2\end{pmatrix}$ ha cambiato segno solo ad alcune entrate ($-1\to1$ in posizione $(1,3)$ e in posizione $(3,2)$): non è un multiplo della matrice di $\varphi$ (la prima colonna imporrebbe $k=1$, ma allora l'entrata $(1,3)$ dovrebbe essere $-1$). È quindi quella che **non** rappresenta $\varphi$.
+  **Errore tipico:** scartare la matrice con tutti i segni opposti pensando che rappresenti un'altra trasformazione: moltiplicare per $-1$ non cambia la trasformazione proiettiva.
+T: Quale delle seguenti matrici **non** rappresenta la trasformazione proiettiva $\varphi:\mathbb{P}^2(\mathbb{R})\ni\begin{bmatrix}X\\Y\\T\end{bmatrix}\mapsto\begin{bmatrix}X-T\\X+Y\\X-Y+2T\end{bmatrix}\in\mathbb{P}^2(\mathbb{R})$?
+OPT: $\begin{pmatrix}1&0&-1\\1&1&0\\1&-1&2\end{pmatrix}$ | $\begin{pmatrix}1&0&1\\1&1&0\\1&1&2\end{pmatrix}$ | $\begin{pmatrix}-1&0&1\\-1&-1&0\\-1&1&-2\end{pmatrix}$ | $\begin{pmatrix}2&0&-2\\2&2&0\\2&-2&4\end{pmatrix}$
+x181 A Per la Proposizione 40.5 $[\varphi^{-1}]_p=[\varphi]_p^{-1}$, e basta un multiplo non nullo dell'inversa.
+  Con $A=\begin{pmatrix}2&5\\1&2\end{pmatrix}$: $\det A=2\cdot2-5\cdot1=-1$, e l'inversa di una $2\times2$ è $\frac{1}{\det A}\begin{pmatrix}d&-b\\-c&a\end{pmatrix}$:
+  $$A^{-1}=\frac{1}{-1}\begin{pmatrix}2&-5\\-1&2\end{pmatrix}=\begin{pmatrix}-2&5\\1&-2\end{pmatrix}\sim\begin{pmatrix}2&-5\\-1&2\end{pmatrix}.$$
+  Verifica: $\begin{pmatrix}2&5\\1&2\end{pmatrix}\begin{pmatrix}2&-5\\-1&2\end{pmatrix}=\begin{pmatrix}-1&0\\0&-1\end{pmatrix}=-I$, che rappresenta l'identità di $\mathbb{P}^1(\mathbb{R})$.
+  La matrice $\begin{pmatrix}-2&5\\-1&2\end{pmatrix}$ ha cambiato segno a una sola coppia di entrate: il prodotto con $A$ non è multiplo di $I$. (Nel quiz le opzioni sono scritte come "$[\varphi]_p=\dots$", ma si intende $[\varphi^{-1}]_p$.)
+  **Errore tipico:** pensare che l'inversa trovata, $\begin{pmatrix}-2&5\\1&-2\end{pmatrix}$, non compaia tra le opzioni: compare il suo multiplo per $-1$, che rappresenta la stessa trasformazione.
+T: Data la trasformazione proiettiva $\varphi$ con $[\varphi]_p=\begin{pmatrix}2&5\\1&2\end{pmatrix}$, quale delle seguenti è $[\varphi^{-1}]_p$?
+OPT: $\begin{pmatrix}2&-5\\-1&2\end{pmatrix}$ | $\begin{pmatrix}2&5\\1&2\end{pmatrix}$ | $\begin{pmatrix}-2&5\\-1&2\end{pmatrix}$ | $\begin{pmatrix}-2&-5\\-1&-2\end{pmatrix}$
+x182 D La matrice è $3\times3$, quindi la trasformazione agisce su $\mathbb{P}^2(\mathbb{R})$ e un'eventuale affinità è di $\mathbb{R}^2$ (non di $\mathbb{R}^3$). Per l'Osservazione 40.7 è l'estensione di un'affinità perché l'ultima riga $(0\ 0\ 2)$ ha i primi due elementi nulli (manda i punti all'infinito in punti all'infinito).
+  Per leggere l'affinità bisogna portare l'ultima riga nella forma $(0\ 0\ 1)$, dividendo per $2$ (lecito per l'Osservazione 40.2):
+  $$\frac12\begin{pmatrix}3&-1&2\\2&-4&3\\0&0&2\end{pmatrix}=\begin{pmatrix}\frac32&-\frac12&1\\1&-2&\frac32\\0&0&1\end{pmatrix},$$
+  quindi $\varphi(x,y)=\left(\frac32x-\frac12y+1,\ x-2y+\frac32\right)$.
+  **Errore tipico:** leggere direttamente le prime due righe senza dividere per $2$: si otterrebbe $(3x-y+2,\ 2x-4y+3)$, che corrisponde a una matrice con ultima riga $(0\ 0\ 1)$, cioè a una trasformazione diversa.
+  TRAP: l'ultima riga è $(0\ 0\ 2)$, non $(0\ 0\ 1)$: prima di leggere l'affinità bisogna dividere tutta la matrice per 2.
+T: Quale delle seguenti affinità si estende alla trasformazione proiettiva $\varphi$ con $[\varphi]_p=\begin{pmatrix}3&-1&2\\2&-4&3\\0&0&2\end{pmatrix}$?
+OPT: $\varphi:\mathbb{R}^3\ni{}^t(x\ y\ z)\mapsto{}^t(3x-y+2z,\ 2x-4y+3z,\ 2z)\in\mathbb{R}^3$ | $\varphi:\mathbb{R}^3\ni{}^t(x\ y\ z)\mapsto{}^t(\frac32x-\frac12y+z,\ x-2y+\frac32z,\ z)\in\mathbb{R}^3$ | $\varphi:\mathbb{R}^2\ni{}^t(x\ y)\mapsto{}^t(3x-y+2,\ 2x-4y+3)\in\mathbb{R}^2$ | $\varphi:\mathbb{R}^2\ni{}^t(x\ y)\mapsto{}^t(\frac32x-\frac12y+1,\ x-2y+\frac32)\in\mathbb{R}^2$
+
+## L41 Curve algebriche
+41-1 A Per la Proposizione 41.40, in un punto non singolare $P=[X_P\ Y_P\ T_P]$ la tangente ha forma $\frac{\partial p}{\partial X}(P)X+\frac{\partial p}{\partial Y}(P)Y+\frac{\partial p}{\partial T}(P)T=0$.
+  Con $p=X^4-3Y^2T^2+2T^4$:
+  $$\frac{\partial p}{\partial X}=4X^3,\qquad\frac{\partial p}{\partial Y}=-6YT^2,\qquad\frac{\partial p}{\partial T}=-6Y^2T+8T^3.$$
+  In $P=[1\ 1\ 1]$ (che sta sulla curva: $1-3+2=0$): $\frac{\partial p}{\partial X}=4$, $\frac{\partial p}{\partial Y}=-6$, $\frac{\partial p}{\partial T}=-6+8=2$. Le derivate non sono tutte nulle, quindi $P$ non è singolare e la tangente è
+  $$4X-6Y+2T=0\iff 2X-3Y+T=0.$$
+  **Errore tipico:** sbagliare la derivata rispetto a $T$ dimenticando il termine $-3Y^2T^2$ (che dà $-6Y^2T$) e ottenere il segno sbagliato del coefficiente di $T$.
+T: Quale delle seguenti è una forma implicita omogenea della retta tangente alla curva algebrica con equazione omogenea $X^4-3Y^2T^2+2T^4=0$ nel punto $[1\ \ 1\ \ 1]$ nel piano? (Il punto appartiene alla curva ed è scritto usando coordinate omogenee in orizzontale invece che in verticale, per limitazioni tipografiche).
+41-2 B Gradiente di $p=X^4-3Y^2T^2+2T^4$: $\left(4X^3,\ -6YT^2,\ -6Y^2T+8T^3\right)$ (Proposizione 41.40).
+  In $P=[1\ 1\ -1]$ (sulla curva: $1-3\cdot1\cdot1+2=0$):
+  $$\frac{\partial p}{\partial X}=4,\quad\frac{\partial p}{\partial Y}=-6\cdot1\cdot(-1)^2=-6,\quad\frac{\partial p}{\partial T}=-6\cdot1\cdot(-1)+8\cdot(-1)^3=6-8=-2.$$
+  Tangente: $4X-6Y-2T=0\iff 2X-3Y-T=0$.
+  **Errore tipico:** sbagliare i segni con $T=-1$: $T^2=1$ ma $T^3=-1$, quindi cambia segno solo la derivata rispetto a $T$.
+  TRAP: con $T_P=-1$ le potenze pari di $T$ restano positive e quelle dispari cambiano segno: cambia solo il coefficiente di $T$.
+T: Quale delle seguenti è una forma implicita omogenea della retta tangente alla curva algebrica con equazione omogenea $X^4-3Y^2T^2+2T^4=0$ nel punto $[1\ \ 1\ \ -1]$ nel piano? (Il punto appartiene alla curva ed è scritto usando coordinate omogenee in orizzontale invece che in verticale, per limitazioni tipografiche).
+41-3 D Gradiente di $p=X^4-3Y^2T^2+2T^4$: $\left(4X^3,\ -6YT^2,\ -6Y^2T+8T^3\right)$.
+  In $P=[1\ -1\ 1]$ (sulla curva: $1-3+2=0$):
+  $$\frac{\partial p}{\partial X}=4,\quad\frac{\partial p}{\partial Y}=-6\cdot(-1)\cdot1=6,\quad\frac{\partial p}{\partial T}=-6\cdot(-1)^2\cdot1+8=2.$$
+  Il punto non è singolare; per la Proposizione 41.40 la tangente è $4X+6Y+2T=0\iff 2X+3Y+T=0$.
+  **Errore tipico:** pensare che, con $Y=-1$, cambi segno anche il coefficiente di $T$: nella derivata rispetto a $T$ compare $Y^2$, che resta $1$.
+T: Quale delle seguenti è una forma implicita omogenea della retta tangente alla curva algebrica con equazione omogenea $X^4-3Y^2T^2+2T^4=0$ nel punto $[1\ \ -1\ \ 1]$ nel piano? (Il punto appartiene alla curva ed è scritto usando coordinate omogenee in orizzontale invece che in verticale, per limitazioni tipografiche).
+41-4 C Gradiente di $p=X^4-3Y^2T^2+2T^4$: $\left(4X^3,\ -6YT^2,\ -6Y^2T+8T^3\right)$.
+  In $P=[-1\ 1\ 1]$ (sulla curva: $1-3+2=0$):
+  $$\frac{\partial p}{\partial X}=4(-1)^3=-4,\quad\frac{\partial p}{\partial Y}=-6,\quad\frac{\partial p}{\partial T}=-6+8=2.$$
+  La tangente è $-4X-6Y+2T=0$; moltiplicando per $-\frac12$ (lo stesso polinomio a meno di un fattore non nullo) si ottiene $2X+3Y-T=0$.
+  Verifica: il punto $[-1\ 1\ 1]$ la soddisfa: $-2+3-1=0$.
+  **Errore tipico:** fermarsi a $-4X-6Y+2T=0$ e non riconoscerla tra le opzioni: dividendo per $-2$ cambiano segno **tutti** i coefficienti.
+T: Quale delle seguenti è una forma implicita omogenea della retta tangente alla curva algebrica con equazione omogenea $X^4-3Y^2T^2+2T^4=0$ nel punto $[-1\ \ 1\ \ 1]$ nel piano? (Il punto appartiene alla curva ed è scritto usando coordinate omogenee in orizzontale invece che in verticale, per limitazioni tipografiche).
+41-5 APERTA
+KW: polinomio p(x,y)|equazione p(x,y)=0, grado d, punti complessi|complessificazione, Bézout|d1·d2, molteplicità, retta tangente|tangente algebrica, derivate parziali, punto singolare, equazione omogenea|omogeneizzazione, punti all'infinito, circonferenza|esempio
+> **Definizione (41.9–41.10).** Una **curva algebrica di grado $d$** è un polinomio $p(x,y)\in\mathbb{R}[x,y]$ con $\deg p=d>0$; per abuso di notazione si chiama così anche l'insieme dei punti che soddisfano $p(x,y)=0$ (equazione della curva). Esempi: rette (grado 1), circonferenze $x^2+y^2+\alpha x+\beta y+\gamma=0$, coppie di rette $(2x-y-1)(x+y+1)=0$, la cubica $x^3+x^2-y^2=0$. Il polinomio non è determinato dall'insieme ($k\,p$ e $p^n$ danno gli stessi punti). Considerando anche le soluzioni in $\mathbb{C}^2$ si parla di **punti complessi**.
+>
+> **Teorema di Bézout (caso affine, 41.15).** Due curve di grado $d_1$ e $d_2$, definite da polinomi che non sono multipli di uno stesso polinomio di grado positivo, si intersecano in **al più $d_1\cdot d_2$** punti complessi. Con una retta: sostituendo si ottiene un'equazione di grado al più $d$; una radice di molteplicità $m$ dà un punto di intersezione di **molteplicità $m$** (∞ se la retta è contenuta nella curva).
+>
+> **Tangenza.** Una retta è **algebricamente tangente** in $P$ se lo interseca con molteplicità $\geqslant 2$. Un punto $P$ è **singolare** se $\frac{\partial p}{\partial x}(P)=\frac{\partial p}{\partial y}(P)=0$. Se $P$ non è singolare la tangente esiste, è unica, coincide con quella algebrica e ha forma $\frac{\partial p}{\partial x}(P)(x-x_P)+\frac{\partial p}{\partial y}(P)(y-y_P)=0$ (Prop. 41.27). Per un punto singolare tutte le rette passanti sono algebricamente tangenti.
+>
+> **Caso proiettivo.** L'**equazione omogenea** di $C$ è $T^d\,p\!\left(\frac XT,\frac YT\right)=0$ (omogeneizzazione); le soluzioni con $T=0$ sono i **punti all'infinito** di $C$, cioè le direzioni in cui la curva va all'infinito. **Bézout proiettivo (41.33):** le estensioni a $\mathbb{P}^2(\mathbb{R})$ si intersecano in **esattamente** $d_1d_2$ punti complessi contati con molteplicità. Un punto è singolare se si annullano le tre derivate $\frac{\partial p}{\partial X},\frac{\partial p}{\partial Y},\frac{\partial p}{\partial T}$; in un punto non singolare la tangente è $\frac{\partial p}{\partial X}(P)X+\frac{\partial p}{\partial Y}(P)Y+\frac{\partial p}{\partial T}(P)T=0$.
+>
+> **Esempio.** $x^3+3x^2-y^2=0$ ha l'origine come unico punto singolare; in $(-2,2)$ la tangente è $y-2=0$, che incontra la curva in $(-2,2)$ con molteplicità 2 e in $(1,2)$ con molteplicità 1.
+x183 C Si mette a sistema la curva con la retta e si conta la molteplicità della radice corrispondente a $P$ (Osservazione 41.16, Notazione 41.17).
+  Dalla retta: $y=2x+1$. Sostituendo in $x^2-y^2+2y-1=0$, cioè $x^2-(y-1)^2=0$:
+  $$x^2-(2x+1-1)^2=x^2-4x^2=-3x^2=0.$$
+  L'unica radice è $x=0$ con **molteplicità 2**, che dà $y=1$, cioè $P={}^t(0\ 1)$. Quindi $P$ è un punto di intersezione di molteplicità 2 (la retta passa per il punto singolare $P$ della coppia di rette $x=\pm(y-1)$).
+  **Errore tipico:** contare i punti distinti trovati (uno solo) invece della molteplicità della radice $x=0$ dell'equazione risolvente.
+T: Quale è la molteplicità del punto di intersezione $P=\begin{pmatrix}0\\1\end{pmatrix}$ tra la curva algebrica con equazione $x^2-y^2+2y-1=0$ e la retta con forma implicita $2x-y+1=0$?
+OPT: $0$. | $1$. | $2$. | $3$.
+x184 D Si omogeneizza (grado 3): $X^3-XY^2-2X^2T+4T^3=0$, poi si pone $T=0$:
+  $$X^3-XY^2=X(X^2-Y^2)=X(X-Y)(X+Y)=0.$$
+  Le soluzioni sono $X=0$, $X=Y$, $X=-Y$, che danno i tre punti all'infinito $[0\ 1\ 0]$, $[1\ 1\ 0]$, $[1\ -1\ 0]$.
+  Delle liste proposte: $[0\ 0\ 0]$ non è un punto di $\mathbb{P}^2(\mathbb{R})$; $[-1\ -1\ 0]$ è lo stesso punto di $[1\ 1\ 0]$, quindi la lista che lo contiene ha solo due punti distinti e manca $[1\ -1\ 0]$; la lista con due punti dimentica la soluzione $X=0$.
+  **Errore tipico:** dividere per $X$ e perdere la soluzione $X=0$, cioè il punto $[0\ 1\ 0]$.
+T: Quali sono i punti all'infinito della curva algebrica di equazione $x^3-xy^2-2x^2+4=0$?
+OPT: $\begin{bmatrix}1\\1\\0\end{bmatrix},\ \begin{bmatrix}1\\-1\\0\end{bmatrix}$ | $\begin{bmatrix}0\\0\\0\end{bmatrix},\ \begin{bmatrix}1\\1\\0\end{bmatrix},\ \begin{bmatrix}1\\-1\\0\end{bmatrix}$ | $\begin{bmatrix}0\\1\\0\end{bmatrix},\ \begin{bmatrix}1\\1\\0\end{bmatrix},\ \begin{bmatrix}-1\\-1\\0\end{bmatrix}$ | $\begin{bmatrix}0\\1\\0\end{bmatrix},\ \begin{bmatrix}1\\1\\0\end{bmatrix},\ \begin{bmatrix}1\\-1\\0\end{bmatrix}$
+x185 D Per il **Teorema di Bézout (caso proiettivo)** le estensioni a $\mathbb{P}^2(\mathbb{R})$ di due curve di grado $d_1$ e $d_2$, definite da polinomi senza fattori comuni di grado positivo, si intersecano in **esattamente** $d_1\cdot d_2$ punti complessi contati con molteplicità.
+  Gradi: $xy^2-y$ ha grado $1+2=3$; $x^3y-xy^3-x^2$ ha grado $3+1=4$. Quindi i punti sono $3\cdot4=12$.
+  **Errore tipico:** sommare i gradi ($3+4=7$) oppure usare il grado in una sola variabile; il grado di un monomio è la somma degli esponenti.
+T: Sapendo che i due polinomi $xy^2-y$ e $x^3y-xy^3-x^2$ non sono multipli di uno stesso polinomio di grado positivo, quanti sono i punti di intersezione complessi delle estensioni a $\mathbb{P}^2(\mathbb{R})$ delle due curve algebriche definite da essi, contati ciascuno con la propria molteplicità?
+OPT: $4$. | $6$. | $7$. | $12$.
+x186 B Un punto è singolare se annulla le tre derivate parziali (Definizione 41.37). Con $p=X^2+4XY+4Y^2+2XT+4YT$:
+  $$\frac{\partial p}{\partial X}=2X+4Y+2T,\qquad\frac{\partial p}{\partial Y}=4X+8Y+4T,\qquad\frac{\partial p}{\partial T}=2X+4Y.$$
+  Dalla terza $X=-2Y$; sostituendo nella prima $-4Y+4Y+2T=0$, cioè $T=0$ (la seconda è il doppio della prima). Soluzioni $(-2\alpha,\alpha,0)$: il punto singolare è $[2\ -1\ 0]$.
+  Infatti $p=(X+2Y)^2+2T(X+2Y)=(X+2Y)(X+2Y+2T)$: due rette parallele, che si incontrano nel loro punto all'infinito $[2\ -1\ 0]$. Verifica: in $(2,-1,0)$ le derivate valgono $0,0,0$; in $(2,-1,1)$ la prima vale $2\neq0$.
+  **Errore tipico:** cercare il punto singolare tra i punti propri ($T=1$): le due rette sono parallele, quindi si incontrano solo all'infinito.
+  TRAP: la conica è una coppia di rette parallele: il punto singolare è il loro punto all'infinito, con $T=0$.
+T: Quale dei seguenti è un punto singolare della curva algebrica con equazione omogenea $X^2+4XY+4Y^2+2XT+4YT=0$?
+OPT: $\begin{bmatrix}2\\-1\\1\end{bmatrix}$ | $\begin{bmatrix}2\\-1\\0\end{bmatrix}$ | $\begin{bmatrix}2\\1\\1\end{bmatrix}$ | $\begin{bmatrix}2\\1\\0\end{bmatrix}$
+
+## L43 Classificazione delle coniche
+43-1 C Per la Proposizione 43.4 una conica è **degenere se e solo se $\det(A)=0$**. Sviluppando lungo la prima riga:
+  $$\det\begin{pmatrix}0&-1&1\\-1&1&-2\\1&-2&-5\end{pmatrix}=0\cdot(\dots)-(-1)\cdot\big((-1)(-5)-(-2)(1)\big)+1\cdot\big((-1)(-2)-1\cdot1\big)=7+1=8\neq0.$$
+  Quindi $C$ **non è degenere**. Inoltre $\det A_{(3,3)}=\det\begin{pmatrix}0&-1\\-1&1\end{pmatrix}=-1<0$, quindi per il Teorema 43.10 è un'**iperbole**: non è né un'ellisse né una parabola.
+  **Errore tipico:** guardare solo $A_{(3,3)}$ (che ha un'entrata nulla) e pensare che la conica sia degenere o una parabola: la degenerazione dipende da $\det A$, il tipo da $\det A_{(3,3)}$.
+T: Sapendo che la matrice $3\times3$ associata alla conica $C$ di equazione $y^2-2xy+2x-4y-5=0$ è $\begin{pmatrix}0&-1&1\\-1&1&-2\\1&-2&-5\end{pmatrix}$, quale delle seguenti affermazioni è vera?
+43-2 C Per la Proposizione 43.4 si calcola $\det(A)$, sviluppando lungo la prima riga:
+  $$\det\begin{pmatrix}0&-1&-1\\-1&1&-2\\-1&-2&-5\end{pmatrix}=0-(-1)\big((-1)(-5)-(-2)(-1)\big)+(-1)\big((-1)(-2)-1\cdot(-1)\big)=3-3=0.$$
+  Il determinante è nullo, quindi $C$ è **degenere**; una conica degenere non è né un'ellisse né una parabola (le forme canoniche euclidee e affini riguardano solo le coniche non degeneri). Con rango 2 e forma indefinita si tratta di due rette reali.
+  **Errore tipico:** confondere questa conica con quella quasi identica con $+2x$ (determinante $8$): basta un segno del termine lineare per cambiare il determinante.
+  TRAP: rispetto alla conica con $+2x$ cambia un solo segno, ma il determinante passa da 8 a 0.
+T: Sapendo che la matrice $3\times3$ associata alla conica $C$ di equazione $y^2-2xy-2x-4y-5=0$ è $\begin{pmatrix}0&-1&-1\\-1&1&-2\\-1&-2&-5\end{pmatrix}$, quale delle seguenti affermazioni è vera?
+43-3 B Si calcola il determinante della matrice associata:
+  $$\det\begin{pmatrix}1&-1&1\\-1&2&-2\\1&-2&2\end{pmatrix}=1\cdot(4-4)-(-1)\cdot(-2+2)+1\cdot(2-2)=0.$$
+  Quindi la conica è **degenere** (Proposizione 43.4) e non può essere una parabola, un'ellisse o un'iperbole, che sono coniche non degeneri: è un'unione di due rette (Teorema 43.13).
+  Più precisamente $\operatorname{rank}A=2$ (la terza riga è l'opposta della seconda) e la forma quadratica è semidefinita positiva (autovalori $0$ e $\frac{5\pm\sqrt{17}}{2}>0$), quindi è la coppia di **rette immaginarie** coniugate: infatti $x^2+2y^2-2xy+2x-4y+2=(x-y+1)^2+(y-1)^2$, che come insieme reale si riduce al solo punto ${}^t(0\ 1)$.
+  **Errore tipico:** vedere $\det A_{(3,3)}=1>0$ e concludere "ellisse" senza controllare prima che $\det A\neq0$.
+  TRAP: $\det A_{(3,3)}>0$ farebbe pensare a un'ellisse, ma $\det A=0$: la conica è degenere (due rette immaginarie).
+T: Sapendo che la matrice $3\times3$ associata alla conica $C$ di equazione $x^2+2y^2-2xy+2x-4y+2=0$ è $\begin{pmatrix}1&-1&1\\-1&2&-2\\1&-2&2\end{pmatrix}$, quale delle seguenti affermazioni è vera?
+43-4 C Prima si controlla la degenerazione:
+  $$\det\begin{pmatrix}1&-1&1\\-1&-3&-2\\1&-2&-3\end{pmatrix}=1\cdot(9-4)-(-1)\cdot(3+2)+1\cdot(2+3)=5+5+5=15\neq0,$$
+  quindi la conica non è degenere (non è unione di due rette). Poi, per il Teorema 43.10:
+  $$\det A_{(3,3)}=\det\begin{pmatrix}1&-1\\-1&-3\end{pmatrix}=-3-1=-4<0\ \Rightarrow\ \text{iperbole}.$$
+  **Errore tipico:** scegliere "ellisse" perché i coefficienti di $x^2$ e $y^2$ ci sono entrambi: conta il segno di $\det A_{(3,3)}=ac-\frac{b^2}{4}$, e qui $x^2$ e $y^2$ hanno coefficienti di segno opposto.
+T: Sapendo che la matrice $3\times3$ associata alla conica $C$ di equazione $x^2-3y^2-2xy+2x-4y-3=0$ è $\begin{pmatrix}1&-1&1\\-1&-3&-2\\1&-2&-3\end{pmatrix}$, quale delle seguenti affermazioni è vera?
+43-5 D Degenerazione:
+  $$\det\begin{pmatrix}1&-1&1\\-1&1&-2\\1&-2&1\end{pmatrix}=1\cdot(1-4)-(-1)\cdot(-1+2)+1\cdot(2-1)=-3+1+1=-1\neq0,$$
+  quindi la conica non è degenere (non è unione di due rette). Tipo (Teorema 43.10):
+  $$\det A_{(3,3)}=\det\begin{pmatrix}1&-1\\-1&1\end{pmatrix}=1-1=0\ \Rightarrow\ \text{parabola}.$$
+  Infatti la parte quadratica è $x^2-2xy+y^2=(x-y)^2$, un quadrato perfetto: la conica ha un solo punto all'infinito, $[1\ 1\ 0]$ (Corollario 43.12).
+  **Errore tipico:** vedere il quadrato perfetto $(x-y)^2$ e pensare a una conica degenere: lo è solo se tutto il polinomio si fattorizza, e qui $\det A\neq0$.
+T: Sapendo che la matrice $3\times3$ associata alla conica $C$ di equazione $x^2+y^2-2xy+2x-4y+1=0$ è $\begin{pmatrix}1&-1&1\\-1&1&-2\\1&-2&1\end{pmatrix}$, quale delle seguenti affermazioni è vera?
+43-6 C Degenerazione:
+  $$\det\begin{pmatrix}1&-1&1\\-1&3&-2\\1&-2&3\end{pmatrix}=1\cdot(9-4)-(-1)\cdot(-3+2)+1\cdot(2-3)=5-1-1=3\neq0:$$
+  la conica non è degenere. Tipo (Teorema 43.10): $\det A_{(3,3)}=\det\begin{pmatrix}1&-1\\-1&3\end{pmatrix}=3-1=2>0$, quindi è un'**ellisse**.
+  Per completezza: $a_{11}\cdot\det A=1\cdot3>0$, quindi è un'ellisse **immaginaria** (forma canonica affine $x^2+y^2+1=0$, nessun punto reale); tra le opzioni l'unica compatibile è comunque "ellisse", perché non è degenere, non è iperbole ($\det A_{(3,3)}>0$) né parabola ($\det A_{(3,3)}\neq0$).
+  **Errore tipico:** fermarsi al segno di $\det A_{(3,3)}$ va bene per scegliere il tipo, ma prima bisogna verificare $\det A\neq0$ per escludere le due rette.
+T: Sapendo che la matrice $3\times3$ associata alla conica $C$ di equazione $x^2+3y^2-2xy+2x-4y+3=0$ è $\begin{pmatrix}1&-1&1\\-1&3&-2\\1&-2&3\end{pmatrix}$, quale delle seguenti affermazioni è vera?
+43-7 C Per la Definizione 43.2, per $ax^2+bxy+cy^2+dx+ey+f=0$ la matrice è $\begin{pmatrix}a&\frac b2&\frac d2\\\frac b2&c&\frac e2\\\frac d2&\frac e2&f\end{pmatrix}$.
+  In $2xy+5y^2-6x+4y-1=0$: $a=0$ (manca $x^2$), $b=2$, $c=5$, $d=-6$, $e=4$, $f=-1$. Quindi
+  $$A=\begin{pmatrix}0&1&-3\\1&5&2\\-3&2&-1\end{pmatrix}.$$
+  Verifica: ${}^t(x\ y\ 1)A\,{}^t(x\ y\ 1)=5y^2+2xy-6x+4y-1$.
+  **Errore tipico:** non dimezzare i coefficienti misti e lineari (si ottengono $2$, $-6$, $4$ fuori diagonale), oppure scriverli solo sopra la diagonale: la matrice deve essere simmetrica.
+T: Quale delle seguenti è la matrice associata alla conica di equazione $2xy+5y^2-6x+4y-1=0$?
+OPT: $\begin{pmatrix}0&1&3\\1&5&2\\3&2&1\end{pmatrix}$ | $\begin{pmatrix}0&2&-6\\2&5&4\\-6&4&-1\end{pmatrix}$ | $\begin{pmatrix}0&1&-3\\1&5&2\\-3&2&-1\end{pmatrix}$ | $\begin{pmatrix}0&2&-6\\0&5&4\\0&0&-1\end{pmatrix}$
+43-8 A Per la Proposizione 43.4 si calcola $\det A$ lungo la prima riga:
+  $$\det\begin{pmatrix}0&-1&3\\-1&1&-2\\3&-2&-5\end{pmatrix}=0-(-1)\big((-1)(-5)-(-2)\cdot3\big)+3\big((-1)(-2)-1\cdot3\big)=11-3=8\neq0.$$
+  Quindi $C$ **non è degenere**. Inoltre $\det A_{(3,3)}=0\cdot1-(-1)^2=-1<0$: è un'**iperbole**, quindi non è né una parabola né un'ellisse.
+  **Errore tipico:** fare un errore di segno nello sviluppo del determinante (il cofattore dell'entrata $(1,2)$ va preso col segno meno) e ottenere $0$.
+T: Sapendo che la matrice $3\times3$ associata alla conica $C$ di equazione $y^2-2xy+6x-4y-5=0$ è $\begin{pmatrix}0&-1&3\\-1&1&-2\\3&-2&-5\end{pmatrix}$, quale delle seguenti affermazioni è vera?
+43-9 B Con $ax^2+bxy+cy^2+dx+ey+f$ la matrice è $\begin{pmatrix}a&\frac b2&\frac d2\\\frac b2&c&\frac e2\\\frac d2&\frac e2&f\end{pmatrix}$ (Definizione 43.2).
+  In $5x^2-6xy-2y^2+4x+1=0$: $a=5$, $b=-6$, $c=-2$, $d=4$, $e=0$ (manca il termine in $y$), $f=1$. Quindi
+  $$A=\begin{pmatrix}5&-3&2\\-3&-2&0\\2&0&1\end{pmatrix}.$$
+  **Errore tipico:** scrivere i coefficienti interi $-6$ e $4$ fuori diagonale, o perdere il segno del termine misto ($-6xy$ dà $-3$, non $3$).
+T: Quale delle seguenti è la matrice associata alla conica di equazione $5x^2-6xy-2y^2+4x+1=0$?
+OPT: $\begin{pmatrix}5&-6&4\\-6&-2&0\\4&0&1\end{pmatrix}$ | $\begin{pmatrix}5&-3&2\\-3&-2&0\\2&0&1\end{pmatrix}$ | $\begin{pmatrix}5&-6&4\\0&-2&0\\0&0&1\end{pmatrix}$ | $\begin{pmatrix}5&3&2\\3&2&0\\2&0&1\end{pmatrix}$
+43-10 C Con la Definizione 43.2: in $x^2-2xy+4y^2-6y+5=0$ si ha $a=1$, $b=-2$, $c=4$, $d=0$ (manca il termine in $x$), $e=-6$, $f=5$. Le entrate fuori diagonale sono le metà: $\frac b2=-1$, $\frac d2=0$, $\frac e2=-3$.
+  $$A=\begin{pmatrix}1&-1&0\\-1&4&-3\\0&-3&5\end{pmatrix}.$$
+  **Errore tipico:** dimenticare di dimezzare ($-2$ e $-6$ fuori diagonale) o i segni ($1$ e $3$ positivi).
+T: Quale delle seguenti è la matrice associata alla conica di equazione $x^2-2xy+4y^2-6y+5=0$?
+OPT: $\begin{pmatrix}1&1&0\\1&4&3\\0&3&5\end{pmatrix}$ | $\begin{pmatrix}1&-2&0\\-2&4&-6\\0&-6&5\end{pmatrix}$ | $\begin{pmatrix}1&-1&0\\-1&4&-3\\0&-3&5\end{pmatrix}$ | $\begin{pmatrix}1&-2&0\\0&4&-6\\0&0&5\end{pmatrix}$
+43-11 A Con la Definizione 43.2: in $x^2+4xy-2x-6y+5=0$ si ha $a=1$, $b=4$, $c=0$ (manca $y^2$), $d=-2$, $e=-6$, $f=5$. Fuori diagonale: $\frac b2=2$, $\frac d2=-1$, $\frac e2=-3$.
+  $$A=\begin{pmatrix}1&2&-1\\2&0&-3\\-1&-3&5\end{pmatrix}.$$
+  Verifica: ${}^t(x\ y\ 1)A\,{}^t(x\ y\ 1)=x^2+2\cdot2xy+2\cdot(-1)x+2\cdot(-3)y+5$.
+  **Errore tipico:** non dimezzare i coefficienti ($4$, $-2$, $-6$ fuori diagonale) o perdere i segni meno dei termini lineari.
+T: Quale delle seguenti è la matrice associata alla conica di equazione $x^2+4xy-2x-6y+5=0$?
+OPT: $\begin{pmatrix}1&2&-1\\2&0&-3\\-1&-3&5\end{pmatrix}$ | $\begin{pmatrix}1&2&1\\2&0&3\\1&3&5\end{pmatrix}$ | $\begin{pmatrix}1&4&-2\\4&0&-6\\-2&-6&5\end{pmatrix}$ | $\begin{pmatrix}1&4&-2\\0&0&-6\\0&0&5\end{pmatrix}$
+43-12 B Per la Proposizione 43.4 si calcola $\det A$ lungo la prima riga:
+  $$\det\begin{pmatrix}0&-1&5\\-1&1&-2\\5&-2&-5\end{pmatrix}=0-(-1)\big((-1)(-5)-(-2)\cdot5\big)+5\big((-1)(-2)-1\cdot5\big)=15-15=0.$$
+  Il determinante è nullo: $C$ è **degenere** (rango 2, forma indefinita: due rette reali). Non è quindi né una parabola né un'ellisse, che sono coniche non degeneri.
+  **Errore tipico:** confonderla con le coniche quasi uguali della serie (coefficiente di $x$ uguale a $2$ o $6$), che hanno determinante $8$ e sono iperboli.
+  TRAP: nella serie $y^2-2xy+kx-4y-5=0$ cambia solo $k$: per $k=10$ il determinante si annulla.
+T: Sapendo che la matrice $3\times3$ associata alla conica $C$ di equazione $y^2-2xy+10x-4y-5=0$ è $\begin{pmatrix}0&-1&5\\-1&1&-2\\5&-2&-5\end{pmatrix}$, quale delle seguenti affermazioni è vera?
+43-13 APERTA
+KW: matrice associata, forma quadratica|matrice simmetrica, coefficienti dimezzati|b/2, equazione omogenea, det(A)=0|degenere, A(3,3)|sottomatrice 2x2, ellisse, iperbole, parabola, a11·det(A)|ellisse reale|immaginaria, autovettori|assi, rango|rank, definitezza, forma canonica proiettiva|due rette|retta doppia
+> **Matrice associata (Oss. 43.1, Def. 43.2).** Il polinomio di una conica con equazione omogenea $aX^2+bXY+cY^2+dXT+eYT+fT^2=0$ è una forma quadratica in $(X,Y,T)$; la sua matrice simmetrica
+> $$A=\begin{pmatrix}a&\frac b2&\frac d2\\\frac b2&c&\frac e2\\\frac d2&\frac e2&f\end{pmatrix}$$
+> è la **matrice associata** alla conica: $aX^2+\dots+fT^2={}^t(X\ Y\ T)\,A\,{}^t(X\ Y\ T)$. Si indica con $A_{(3,3)}=\begin{pmatrix}a&\frac b2\\\frac b2&c\end{pmatrix}$ la sottomatrice della parte quadratica; è simmetrica, quindi diagonalizzabile con due autovettori ortogonali.
+>
+> **Degenerazione (Prop. 43.4).** Una conica è **degenere se e solo se $\det A=0$**.
+>
+> **Classificazione euclidea (Teor. 43.8).** Una conica non degenere, con un opportuno sistema di riferimento cartesiano i cui assi hanno la direzione di due autovettori ortogonali di $A_{(3,3)}$, ha una delle forme canoniche $ax^2+by^2-1=0$ (ellisse reale), $ax^2+by^2+1=0$ (ellisse immaginaria), $ax^2-by^2-1=0$ (iperbole), $ax^2-y=0$ (parabola), con $a,b>0$.
+>
+> **Classificazione affine (Teor. 43.10).** Per una conica non degenere: $\det A_{(3,3)}>0$ ellisse (reale se $a_{11}\det A<0$, forma $x^2+y^2-1=0$; immaginaria se $a_{11}\det A>0$, forma $x^2+y^2+1=0$); $\det A_{(3,3)}<0$ iperbole ($x^2-y^2-1=0$); $\det A_{(3,3)}=0$ parabola ($x^2-y=0$). Equivalentemente (Cor. 43.12) l'ellisse non ha punti all'infinito reali, la parabola ne ha uno, l'iperbole due.
+>
+> **Classificazione proiettiva (Teor. 43.13).** Dipende da $\operatorname{rank}A$ e dalla definitezza della forma $p(X,Y,T)$: rango 3 e indefinita: non degenere reale ($X^2+Y^2-T^2=0$); rango 3 e definita: non degenere immaginaria ($X^2+Y^2+T^2=0$); rango 2 indefinita: due rette reali ($X^2-Y^2=0$); rango 2 semidefinita: due rette immaginarie ($X^2+Y^2=0$); rango 1: retta reale doppia ($X^2=0$).
+>
+> **Esempio (43.9, 43.11, 43.14).** $5x^2-2xy+5y^2-8x-8y-4=0$: $A=\begin{pmatrix}5&-1&-4\\-1&5&-4\\-4&-4&-4\end{pmatrix}$, $\det A=-288\neq0$ (non degenere), $\det A_{(3,3)}=24>0$ e $a_{11}\det A<0$: ellisse reale, con assi nelle direzioni ${}^t(1\ -1)$ e ${}^t(1\ 1)$; proiettivamente rango 3 e forma indefinita (autovalori $6,\pm4\sqrt3$).
+x191 B Con la Definizione 43.2: in $2xy-y^2-y+4x=0$ si ha $a=0$ (manca $x^2$), $b=2$, $c=-1$, $d=4$, $e=-1$, $f=0$. Fuori diagonale vanno le metà: $\frac b2=1$, $\frac d2=2$, $\frac e2=-\frac12$.
+  $$A=\begin{pmatrix}0&1&2\\1&-1&-\frac12\\2&-\frac12&0\end{pmatrix}.$$
+  Verifica: ${}^t(x\ y\ 1)A\,{}^t(x\ y\ 1)=-y^2+2xy+4x-y$.
+  **Errore tipico:** scambiare le posizioni dei termini lineari: il coefficiente di $x$ va in posizione $(1,3)$ e quello di $y$ in posizione $(2,3)$, non il contrario.
+T: Quale delle seguenti è la matrice associata alla conica di equazione $2xy-y^2-y+4x=0$?
+OPT: $\begin{pmatrix}0&1&-\frac12\\1&-1&2\\-\frac12&2&0\end{pmatrix}$ | $\begin{pmatrix}0&1&2\\1&-1&-\frac12\\2&-\frac12&0\end{pmatrix}$ | $\begin{pmatrix}0&2&4\\2&-1&-1\\4&-1&0\end{pmatrix}$ | $\begin{pmatrix}0&1&2\\1&1&\frac12\\2&\frac12&0\end{pmatrix}$
+x192 B La matrice associata a $X^2+2XY-4XT+3T^2=0$ ($a=1$, $b=2$, $c=0$, $d=-4$, $e=0$, $f=3$) è
+  $$A=\begin{pmatrix}1&1&-2\\1&0&0\\-2&0&3\end{pmatrix}.$$
+  Sviluppando lungo la seconda riga: $\det A=-1\cdot\det\begin{pmatrix}1&-2\\0&3\end{pmatrix}=-1\cdot3=-3\neq0$.
+  Per la Proposizione 43.4 ($C$ degenere $\iff\det A=0$) la conica è **non degenere**. Le combinazioni "$\det A\neq0$ e degenere" e "$\det A=0$ e non degenere" sono impossibili per la proposizione stessa.
+  **Errore tipico:** sbagliare il segno del cofattore nello sviluppo lungo la seconda riga (posizione $(2,1)$, segno $-$) o dimenticare di dimezzare $-4XT$.
+T: Data la conica $C$ con equazione omogenea $X^2+2XY-4XT+3T^2=0$ e detta $A$ la matrice associata ad essa, quale delle seguenti proposizioni è vera?
+OPT: $\det(A)\neq0$ e $C$ è degenere. | $\det(A)\neq0$ e $C$ è non degenere. | $\det(A)=0$ e $C$ è degenere. | $\det(A)=0$ e $C$ è non degenere.
+x193 B Matrice associata a $x^2+2xy+3y^2+4y+5=0$ ($a=1$, $b=2$, $c=3$, $d=0$, $e=4$, $f=5$):
+  $$A=\begin{pmatrix}1&1&0\\1&3&2\\0&2&5\end{pmatrix},\quad\det A=1\cdot(15-4)-1\cdot(5-0)+0=6\neq0.$$
+  Non degenere. $\det A_{(3,3)}=3-1=2>0$: ellisse. Per il Teorema 43.10 si guarda $a_{11}\cdot\det A=1\cdot6=6>0$: **ellisse immaginaria** (forma canonica $x^2+y^2+1=0$, nessun punto reale).
+  Infatti $x^2+2xy+3y^2+4y+5=(x+y)^2+2(y+1)^2+3>0$ sempre.
+  **Errore tipico:** fermarsi a $\det A_{(3,3)}>0$ e rispondere "ellisse reale": il segno di $a_{11}\det A$ distingue reale ($<0$) da immaginaria ($>0$).
+  TRAP: è un'ellisse ma senza punti reali: serve il segno di $a_{11}\det A$.
+T: Data la conica $C$ di equazione $x^2+2xy+3y^2+4y+5=0$, quale delle seguenti proposizioni è vera?
+OPT: $C$ è un'ellisse reale. | $C$ è un'ellisse immaginaria. | $C$ è un'iperbole. | $C$ è una parabola.
+x194 C Matrice associata a $X^2+4XY+4Y^2-2XT-4YT+T^2=0$ ($a=1$, $b=4$, $c=4$, $d=-2$, $e=-4$, $f=1$):
+  $$A=\begin{pmatrix}1&2&-1\\2&4&-2\\-1&-2&1\end{pmatrix}.$$
+  La seconda riga è il doppio della prima e la terza è l'opposta della prima: $\operatorname{rank}A=1$. Per il Teorema 43.13, rango 1 significa **retta reale doppia**.
+  Infatti $X^2+4XY+4Y^2-2XT-4YT+T^2=(X+2Y-T)^2$: è la retta $x+2y-1=0$ contata due volte.
+  **Errore tipico:** vedere $\det A=0$ e scegliere subito "due rette distinte": per distinguere le coniche degeneri serve il rango (2 = due rette, 1 = retta doppia).
+T: Data la conica $C$ con equazione omogenea $X^2+4XY+4Y^2-2XT-4YT+T^2=0$, quale delle seguenti proposizioni è vera?
+OPT: $C$ è non degenere. | $C$ è l'unione di due rette distinte. | $C$ è una retta doppia. | Nessuna delle altre risposte.

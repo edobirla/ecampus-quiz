@@ -9,11 +9,13 @@ Web app (PWA, vanilla JS, nessun framework) per esercitarsi sui panieri eCampus:
 - `tools/` — pipeline dati:
   - `extract.py <paniere.pdf> <out.json> <cartella_img>` — domande, opzioni, risposte evidenziate (giallo/verde o X nella casella). Gestisce il font "cifrato" dei panieri eCampus (glyph id + tabella `SPECIAL`, da estendere se compaiono nuovi simboli: genera un atlante dei glifi come fatto per Chimica).
   - `scheda.py <scheda.pdf> <out.json>` — dati del corso dalla scheda (il nome della materia viene da qui).
+  - `sessioni.py <cartella> <out_map.json> <cartella_img>` — solo Geometria: quiz delle "Sessioni di studio" del prof (`NN_SSk_1.pdf` + `_Risposte.pdf`) → esercizi extra `x1…x214` (map di `build.mjs`), figure ritagliate in `img/ssN_M.png`.
   - `chem_map.py` — solo Chimica: collega il paniere ai riassunti (`90 Esercizi.md`, `95 Soluzioni.md`).
   - `build.mjs` (`cd tools && node build.mjs`) — unisce tutto in `app/data/<materia>/`.
   - `subjects.json` — elenco materie e percorsi dei file sorgente.
   - `content/<materia>/hints_*.txt` — indizi: `@<id>` poi 3 righe `- …` (markdown/TeX), dal più vago al più vicino alla soluzione; `@id !! nota` = avviso di revisione. Le opzioni si citano SEMPRE come `[[B]]` (lettera dell'ordine originale): l'app mescola le risposte e converte il segnaposto nella lettera mostrata. Mai lettere in chiaro, mai scartare tutte le opzioni sbagliate. Per una nuova materia: generarli e poi revisionarli con subagenti a lotti di ~95 domande, verificando che coprano tutti gli id.
   - `content/<materia>/*.txt` — risposte scritte a mano (formato in testa a `build.mjs`: `L-N X spiegazione`, `X!` = incerta, `X` = nessuna opzione corretta, `APERTA` + `KW:` + righe `>`), `gen*.txt` domande generate, `teoria_src/*.md` teoria (`=== N` separa le lezioni; `=== N dispense` = riscritta dalle dispense della prof, senza badge "riassunto generato"). Fisica: le dispense in `Fisica/Lezioni/DD.pdf` hanno numerazione diversa dal paniere (es. dispensa 50 = lezione 41).
+    Geometria (`tools/content/geometria/G<NN>_risposte.txt`, `hints_G<NN>.txt`, `teoria_src/G<NN>.md`, un gruppo di lezioni per file): il PDF del paniere non ha risposte evidenziate (tutte risolte e verificate con sympy) e appiattisce la matematica, quindi testi e opzioni sono riscritti con `T:`/`OPT:` in markdown/TeX (valgono anche per il paniere; `img/…` viene portato a `data/<materia>/img/…`); `t(3 0 -2)` nei testi semplici diventa ${}^t(3\ 0\ -2)$ nella build. Nessuna scheda PDF: `tools/raw/geometria_scheda.json` è scritta a mano. Dopo `extract.py` le immagini non citate da `subject.json` si possono cancellare (le opzioni-immagine sono state riscritte in TeX).
   - `test_grade.mjs` — controllo della correzione automatica (`node tools/test_grade.mjs`); `test_sync.mjs` — unione dei backup (`node tools/test_sync.mjs`).
 
 ## Aggiungere una materia
@@ -22,7 +24,7 @@ Web app (PWA, vanilla JS, nessun framework) per esercitarsi sui panieri eCampus:
 2. `python3 tools/extract.py "<Materia>/paniere.pdf" tools/raw/<id>.json app/data/<id>/img` e `python3 tools/scheda.py "<Materia>/scheda.pdf" tools/raw/<id>_scheda.json`.
 3. Aggiungere la voce in `tools/subjects.json` (id, short, color, raw, scheda, `paniere: true` se l'esame è da paniere, eventuale theoryDir con file `Lez NN - Titolo.md`).
 4. Scrivere in `tools/content/<id>/` le risposte mancanti (le chiuse non evidenziate), le risposte modello + KW delle aperte, i titoli delle lezioni (`## LN Titolo`), la teoria se manca (segnalata in app come "riassunto generato") e domande generate dove ce ne sono meno di 5 per lezione.
-5. `cd tools && node build.mjs`, poi `node tools/test_grade.mjs`, poi prova nel browser (`.claude/launch.json` → server "app" su :8765).
+5. `cd tools && node build.mjs`, poi `node tools/test_grade.mjs`, poi prova nel browser (`.claude/launch.json` → server "app" su :8767).
 6. Incrementare `VERSION` in `app/sw.js` quando cambiano i file dell'app.
 
 ## Convenzioni
@@ -42,4 +44,4 @@ Sito: https://edobirla.github.io/ecampus-quiz/ — repo pubblico `edobirla/ecamp
     git add -A && git commit -m "…" && git push origin main
     git subtree split --prefix app -b gh-pages-tmp && git push -f origin gh-pages-tmp:gh-pages && git branch -D gh-pages-tmp
 
-`gh` è in `~/.local/bin/gh`. I PDF e le cartelle `/Chimica`, `/Fisica` sono esclusi da `.gitignore` e non vanno mai pubblicati.
+`gh` è in `~/.local/bin/gh`. I PDF e le cartelle `/Chimica`, `/Fisica`, `/Geometria analitica` sono esclusi da `.gitignore` e non vanno mai pubblicati.

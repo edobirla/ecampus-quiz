@@ -1,0 +1,71 @@
+<h1>Lezione 12 — Operazioni elementari e metodo di eliminazione di Gauss</h1>
+<p>Con le operazioni elementari si trasforma una matrice in una matrice a scalini.</p>
+<h2>Operazioni elementari</h2>
+<p><strong>Definizione 12.1.</strong> Una <em>operazione elementare sulle righe</em> di <span class="m">A\in\mathbb{K}^{n,m}</span> è una delle modifiche:</p>
+<ul>
+<li><strong>I)</strong> scambio di due righe: <span class="m">A\xrightarrow{R_I\ i\leftrightarrow j}B</span>;</li>
+<li><strong>II)</strong> moltiplicazione di una riga per <span class="m">\lambda\in\mathbb{K}\setminus\{0\}</span>: <span class="m">A\xrightarrow{R_{II}\ \lambda\cdot i}B</span>;</li>
+<li><strong>III)</strong> sostituzione di una riga con la somma della riga stessa e di un multiplo di un&#39;altra riga: <span class="m">A\xrightarrow{R_{III}\ i+\lambda\cdot j}B</span>, con <span class="m">\lambda\in\mathbb{K}</span>.</li>
+</ul>
+<div class="callout esempio">
+
+<p><span class="m">\begin{pmatrix}-1&amp;2\\1&amp;0\\3&amp;4\end{pmatrix}\xrightarrow{R_I\ 2\leftrightarrow3}\begin{pmatrix}-1&amp;2\\3&amp;4\\1&amp;0\end{pmatrix}</span>, <span class="m">\quad\begin{pmatrix}2&amp;3&amp;-5\\2&amp;-1&amp;0\end{pmatrix}\xrightarrow{R_{II}\ (-3)\cdot2}\begin{pmatrix}2&amp;3&amp;-5\\-6&amp;3&amp;0\end{pmatrix}</span>, <span class="m">\quad\begin{pmatrix}1&amp;-1&amp;0\\3&amp;4&amp;-5\\2&amp;5&amp;4\end{pmatrix}\xrightarrow{R_{III}\ 3+2\cdot1}\begin{pmatrix}1&amp;-1&amp;0\\3&amp;4&amp;-5\\4&amp;3&amp;4\end{pmatrix}</span>.</p>
+</div>
+
+<div class="callout attenzione">
+
+<p>Nel tipo II il fattore deve essere <strong>non nullo</strong>; nel tipo III il coefficiente <span class="m">\lambda</span> può essere qualsiasi, anche <span class="m">0</span> (in quel caso la matrice resta invariata).</p>
+</div>
+
+<ul>
+<li><strong>Osservazione 12.4.</strong> L&#39;inversa di un&#39;operazione elementare è ancora elementare: si riscambiano le righe, si moltiplica per <span class="m">\lambda^{-1}</span>, si aggiunge <span class="m">-\lambda</span> volte la riga.</li>
+<li><strong>Definizione 12.5.</strong> Analogamente si definiscono le <em>operazioni elementari sulle colonne</em>, indicate con <span class="m">C_I</span>, <span class="m">C_{II}</span>, <span class="m">C_{III}</span>.</li>
+<li><strong>Osservazione 12.8.</strong> Le operazioni sulle righe non cambiano il sottospazio generato dalle righe (e quindi la sua dimensione); quelle sulle colonne non cambiano lo Span delle colonne.</li>
+</ul>
+<h2>Metodo di eliminazione di Gauss</h2>
+<p><strong>Algoritmo 12.9.</strong> Sia <span class="m">A\in\mathbb{K}^{n,m}</span> e <span class="m">B(1):=A</span>. Si ripetono al più <span class="m">n-1</span> passi; all&#39;<span class="m">i</span>-esimo si lavora sulla sottomatrice <span class="m">B(i)</span>:</p>
+<ol>
+<li>se <span class="m">B(i)</span> è nulla l&#39;algoritmo termina; altrimenti si cerca il <strong>minimo</strong> indice <span class="m">k</span> tale che la colonna <span class="m">k</span> di <span class="m">B(i)</span> non è nulla;</li>
+<li>se l&#39;entrata <span class="m">(1,k)</span> di <span class="m">B(i)</span> è <span class="m">0</span>, si cerca il <strong>minimo</strong> <span class="m">l</span> con entrata <span class="m">(l,k)</span> non nulla e si scambiano la prima riga e la riga <span class="m">l</span> (tipo I);</li>
+<li>per ogni riga <span class="m">j&gt;1</span> con <span class="m">B(i)^k_j\neq0</span> si somma alla riga <span class="m">j</span> la prima riga moltiplicata per <span class="m">-\dfrac{B(i)^k_j}{B(i)^k_1}</span> (tipo III), così l&#39;entrata <span class="m">(j,k)</span> diventa nulla;</li>
+<li>se <span class="m">i&lt;n-1</span> si fissa la prima riga e si passa alla sottomatrice <span class="m">B(i+1)</span> ottenuta togliendola; se <span class="m">i=n-1</span> si termina.</li>
+</ol>
+<p>Il risultato è la matrice ottenuta da <span class="m">A</span> con queste operazioni (righe fissate in ordine, eventuali righe mancanti nulle).</p>
+<div class="callout esempio">
+
+<p><span class="m d">\begin{pmatrix}0&amp;3&amp;-3&amp;1\\1&amp;1&amp;1&amp;2\\-1&amp;5&amp;-7&amp;2\end{pmatrix}\xrightarrow{R_I\ 1\leftrightarrow2}\begin{pmatrix}1&amp;1&amp;1&amp;2\\0&amp;3&amp;-3&amp;1\\-1&amp;5&amp;-7&amp;2\end{pmatrix}\xrightarrow{R_{III}\ 3+1\cdot1}\begin{pmatrix}1&amp;1&amp;1&amp;2\\0&amp;3&amp;-3&amp;1\\0&amp;6&amp;-6&amp;4\end{pmatrix}\xrightarrow{R_{III}\ 3+(-2)\cdot2}\begin{pmatrix}1&amp;1&amp;1&amp;2\\0&amp;3&amp;-3&amp;1\\0&amp;0&amp;0&amp;2\end{pmatrix}</span>
+Passo 1: prima colonna non nulla la 1, entrata <span class="m">(1,1)=0</span>, scambio con la riga 2, poi si annulla <span class="m">(3,1)</span> con coefficiente <span class="m">-\frac{-1}{1}=1</span>. Passo 2: sottomatrice delle righe 2–3, prima colonna non nulla la 2, coefficiente <span class="m">-\frac63=-2</span>.</p>
+</div>
+
+<ul>
+<li><strong>Proposizione 12.11.</strong> Il risultato è una matrice <strong>a scalini</strong>.</li>
+<li><strong>Osservazione 12.12.</strong> L&#39;elemento che al punto 2 diventa (o è già) non nullo è il pivot della riga <span class="m">i</span> del risultato.</li>
+</ul>
+<div class="callout attenzione">
+
+<p>Il metodo di Gauss &quot;puro&quot; non moltiplica mai le righe: i pivot restano quelli che escono dai conti (anche negativi). Se dopo un passo l&#39;entrata in alto della colonna del pivot è <span class="m">0</span>, serve uno scambio di righe.</p>
+</div>
+
+<h2>Gauss con normalizzazione</h2>
+<p><strong>Algoritmo 12.13.</strong> Si applica il metodo di Gauss ottenendo la matrice a scalini <span class="m">B</span>; poi ogni riga non nulla si moltiplica per <span class="m">\frac1p</span> (tipo II), dove <span class="m">p</span> è il suo pivot. Tutti i pivot diventano <span class="m">1</span>.</p>
+<div class="callout esempio">
+
+<p><span class="m">\begin{pmatrix}1&amp;1&amp;1&amp;2\\0&amp;3&amp;-3&amp;1\\0&amp;0&amp;0&amp;2\end{pmatrix}\xrightarrow{R_{II}\ \frac13\cdot2}\begin{pmatrix}1&amp;1&amp;1&amp;2\\0&amp;1&amp;-1&amp;\frac13\\0&amp;0&amp;0&amp;2\end{pmatrix}\xrightarrow{R_{II}\ \frac12\cdot3}\begin{pmatrix}1&amp;1&amp;1&amp;2\\0&amp;1&amp;-1&amp;\frac13\\0&amp;0&amp;0&amp;1\end{pmatrix}</span>.</p>
+</div>
+
+<p><strong>Osservazione 12.15.</strong> Le normalizzazioni si possono fare anche subito dopo il punto 2 di ogni passo.</p>
+<h2>Gauss-Jordan</h2>
+<p><strong>Algoritmo 12.16.</strong> Si applica Gauss con normalizzazione (pivot uguali a <span class="m">1</span>, righe nulle in basso). Poi, per ogni riga non nulla <span class="m">i</span> con pivot al posto <span class="m">(i,k)</span>, per ogni <span class="m">j&lt;i</span> con entrata <span class="m">x\neq0</span> al posto <span class="m">(j,k)</span> si somma alla riga <span class="m">j</span> la riga <span class="m">i</span> moltiplicata per <span class="m">-x</span> (tipo III). Si annullano così le entrate <strong>sopra</strong> i pivot.</p>
+<div class="callout esempio">
+
+<p><span class="m">\begin{pmatrix}1&amp;1&amp;1&amp;2\\0&amp;1&amp;-1&amp;\frac13\\0&amp;0&amp;0&amp;1\end{pmatrix}\xrightarrow{R_{III}\ 1+(-1)\cdot2}\begin{pmatrix}1&amp;0&amp;2&amp;\frac53\\0&amp;1&amp;-1&amp;\frac13\\0&amp;0&amp;0&amp;1\end{pmatrix}\xrightarrow{R_{III}\ 1+(-\frac53)\cdot3}\begin{pmatrix}1&amp;0&amp;2&amp;0\\0&amp;1&amp;-1&amp;\frac13\\0&amp;0&amp;0&amp;1\end{pmatrix}\xrightarrow{R_{III}\ 2+(-\frac13)\cdot3}\begin{pmatrix}1&amp;0&amp;2&amp;0\\0&amp;1&amp;-1&amp;0\\0&amp;0&amp;0&amp;1\end{pmatrix}</span>.</p>
+</div>
+
+<ul>
+<li><strong>Osservazione 12.18.</strong> Per una matrice quadrata <span class="m">A\in\mathbb{K}^{n,n}</span> si ottengono <span class="m">n</span> pivot se e solo se il risultato di Gauss-Jordan è <span class="m">I_n</span>.</li>
+<li><strong>Osservazione 12.19.</strong> In generale si ottengono <span class="m">r</span> pivot se e solo se la sottomatrice del risultato formata dalle righe e colonne dei pivot è <span class="m">I_r</span>.</li>
+</ul>
+<div class="callout esame">
+
+<p>Il paniere chiede il risultato di Gauss su matrici <span class="m">3\times3</span> (attenzione allo scambio di righe quando un pivot &quot;sparisce&quot; e ai segni: niente normalizzazione) e di Gauss-Jordan su matrici <span class="m">2\times4</span> (Gauss, poi pivot a <span class="m">1</span>, poi zero sopra il secondo pivot). Nelle sessioni di studio: riconoscere un&#39;operazione di tipo III e la prossima operazione di ciascun metodo. Aperta: operazioni elementari e uno dei tre metodi.</p>
+</div>

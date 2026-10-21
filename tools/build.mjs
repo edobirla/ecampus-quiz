@@ -44,7 +44,10 @@ function mdToHtml(md, linkFor = () => null) {
 
 // testo del paniere: è testo semplice (con * e < letterali), non markdown
 const plain = (s, subj) =>
-  esc(s).replace(/!\[\]\(img\/([^)]+)\)/g, `<img src="data/${subj}/img/$1" alt="" loading="lazy">`).replace(/\n\n/g, "<br>");
+  esc(s)
+    // vettori trasposti di Geometria scritti "t(3 0 -2)" -> ᵗ(3 0 −2) in TeX
+    .replace(/\bt\(\s*([-−]?\d+(?:\s+[-−]?\d+)+)\s*\)/g, (_, v) => `<span class="m">{}^t(${v.trim().replace(/−/g, "-").split(/\s+/).join("\\ ")})</span>`)
+    .replace(/!\[\]\(img\/([^)]+)\)/g, `<img src="data/${subj}/img/$1" alt="" loading="lazy">`).replace(/\n\n/g, "<br>");
 
 // ---------- Parole chiave per la correzione automatica delle aperte
 const STOP = new Set(("alla alle allo agli anche ancora avere aveva come con cosa cui dal dalla dalle dei del della delle dello " +
@@ -132,7 +135,7 @@ function parseExtra(x) {
 //           "5-34 APERTA" + "KW: parola|sinonimo, altra, =2.5" + righe "> risposta modello in markdown"
 //           "OPT: a | b | c | d" dopo una chiusa sostituisce le opzioni estratte (se il PDF le ha spezzate male)
 //           "KW: …" da solo dopo "N-M KW" aggiunge parole chiave a un'aperta che ha già la risposta modello
-//           al posto di "N-M" si può usare l'id di un esercizio extra ("x114"); "T: testo" sostituisce il testo della domanda
+//           al posto di "N-M" si può usare l'id di un esercizio extra ("x114"); "T: testo" sostituisce il testo della domanda (markdown/TeX, anche per il paniere)
 const qkey = (id) => (id.startsWith("x") ? id : `p${id}`);
 function parseAnswers(dir) {
   const answers = {}, lessons = {};
@@ -193,7 +196,7 @@ function parseHints(dir) {
 
 // Opzioni identiche nel PDF (es. due volte "15.0 cm/s"): si tiene solo la prima, così la risposta giusta è una sola.
 // Indice della risposta e segnaposto [[X]] degli indizi vengono rinumerati.
-const optKey = (o) => o.replace(/<img[^>]*src="([^"]+)"[^>]*>/g, " $1 ").replace(/<[^>]+>/g, "").replace(/[\s.;,:]+$/, "").replace(/\s+/g, " ").trim().toLowerCase();
+const optKey = (o) => (o.includes('class="m') ? (k) => k : (k) => k.toLowerCase())(o.replace(/<img[^>]*src="([^"]+)"[^>]*>/g, " $1 ").replace(/<[^>]+>/g, "").replace(/[\s.;,:]+$/, "").replace(/\s+/g, " ").trim());
 function dropDuplicates(r) {
   const keys = r.o.map(optKey);
   const keep = keys.map((k, i) => i).filter((i) => keys.indexOf(keys[i]) === i);
@@ -262,6 +265,7 @@ function buildSubject(S) {
     return mj ? +Object.entries(mj).sort((a, b) => b[1] - a[1])[0][0] : pl;
   };
 
+  const imgPath = (md) => md.replace(/\]\(img\//g, `](data/${S.id}/img/`);
   const qs = [];
   for (const L of raw.lessons) {
     for (const q of L.questions) {
@@ -271,10 +275,11 @@ function buildSubject(S) {
       const out = {
         id: key, l: a.l ?? lessonOf(L.num, q.n), src: "paniere",
         ref: `Paniere · Lez. ${String(L.num).padStart(3, "0")} · D. ${q.n}`,
-        type: q.type, text: plain(q.text, S.id), md: false,
+        // T:/OPT: scritti a mano sono markdown/TeX (matrici, esponenti che il PDF appiattisce)
+        type: q.type, text: a.t ? imgPath(a.t) : plain(q.text, S.id), md: !!(a.t || a.o?.some((o) => o.includes("$"))),
       };
       if (q.type === "closed") {
-        out.o = (a.o || q.options).map((o) => plain(o, S.id));
+        out.o = out.md && a.o ? a.o.map(imgPath) : (a.o || q.options).map((o) => plain(o, S.id));
         out.c = a.c ?? (q.correct.length === 1 ? q.correct[0] : e.letter ? "abcde".indexOf(e.letter) : null);
       }
       out.e = a.e || e.solution || null;
@@ -291,7 +296,7 @@ function buildSubject(S) {
     const a = answers[`x${i + 1}`] || {}; // correzioni scritte a mano agli esercizi dei riassunti
     qs.push({
       id: `x${i + 1}`, l: x.theory, src: "extra", ref: x.title.replace(/ \((a crocette)\)/, ""),
-      type: p.type, text: a.t || p.text, md: true, o: p.options, c: a.c ?? p.c, th: p.th, e: a.e || x.solution,
+      type: p.type, text: a.t || p.text, md: true, o: a.o || p.options, c: a.c ?? p.c, th: p.th, e: a.e || x.solution,
       a: p.type === "open" ? a.a || x.solution : undefined, kw: a.kw, u: a.u,
     });
   }
@@ -316,7 +321,7 @@ function buildSubject(S) {
       id: q.id, l: q.l, src: q.src, ref: q.ref, type: q.type,
       t: q.md ? mdToHtml(q.text, linkFor) : q.text,
     };
-    if (q.type === "closed") { r.o = q.o.map((o) => (q.md ? marked.parseInline(o) : o)); r.c = q.c; }
+    if (q.type === "closed") { r.o = q.o.map((o) => (!q.md ? o : o.includes("$") ? mdToHtml(o, linkFor).replace(/^<p>|<\/p>\n?$/g, "") : marked.parseInline(o))); r.c = q.c; }
     if (q.e) {
       // riga "TRAP: dettaglio" nella spiegazione = domanda a trabocchetto: l'app la mostra in evidenza nella soluzione
       const trap = q.e.match(/^TRAP:\s*(.+)$/m);

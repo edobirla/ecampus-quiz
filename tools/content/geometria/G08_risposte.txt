@@ -1,0 +1,471 @@
+## L30 Sottospazi affini
+30-1 B Un punto $Q$ appartiene al piano se esistono valori dei parametri $\lambda, \omega$ che soddisfano **contemporaneamente** le tre equazioni. Conviene partire dall'equazione più semplice, $y = 1+\lambda$, che dà subito $\lambda$, poi ricavare $\omega$ da $x$ e infine **controllare** $z$.
+  Punto ${}^t(0\ 3\ -2)$: da $y$: $1+\lambda = 3 \Rightarrow \lambda = 2$; da $x$: $3-2\cdot 2-\omega = 0 \Rightarrow \omega = -1$; controllo su $z$: $2-2+2\cdot(-1) = -2$ ✓. Il punto appartiene al piano.
+  Punto ${}^t(-2\ 0\ 3)$: $\lambda = -1$, $3+2-\omega = -2 \Rightarrow \omega = 7$, ma $z = 2+1+14 = 17 \ne 3$ ✗.
+  Punto ${}^t(-3\ 3\ 0)$: $\lambda = 2$, $3-4-\omega = -3 \Rightarrow \omega = 2$, ma $z = 2-2+4 = 4 \ne 0$ ✗.
+  Punto ${}^t(3\ 0\ -3)$: $\lambda = -1$, $3+2-\omega = 3 \Rightarrow \omega = 2$, ma $z = 2+1+4 = 7 \ne -3$ ✗.
+  **Errore tipico:** con due parametri, due equazioni qualsiasi si possono quasi sempre soddisfare: il punto appartiene al piano solo se anche la **terza** equazione torna. Chi si ferma dopo aver trovato $\lambda$ e $\omega$ può scegliere un punto sbagliato.
+T: Quale dei seguenti punti dello spazio appartiene al piano con forma parametrica $\begin{cases} x=3-2\lambda-\omega \\ y=1+\lambda \\ z=2-\lambda+2\omega \end{cases}$?
+OPT: ${}^t(-2\ 0\ 3)$. | ${}^t(0\ 3\ -2)$. | ${}^t(-3\ 3\ 0)$. | ${}^t(3\ 0\ -3)$.
+30-2 D Il punto appartiene al piano se il sistema nelle incognite $\lambda, \omega$ formato dalle tre equazioni ha soluzione. Da $y = 1-\lambda$ si ricava $\lambda$, da $x$ si ricava $\omega$, poi si controlla $z$.
+  Punto ${}^t(3\ 0\ -3)$: $1-\lambda = 0 \Rightarrow \lambda = 1$; $3-2-\omega = 3 \Rightarrow \omega = -2$; controllo: $z = 2-1+2\cdot(-2) = -3$ ✓.
+  Punto ${}^t(-3\ 3\ 0)$: $\lambda = -2$; $3+4-\omega = -3 \Rightarrow \omega = 10$; $z = 2+2+20 = 24 \ne 0$ ✗.
+  Punto ${}^t(-2\ 0\ 3)$: $\lambda = 1$; $1-\omega = -2 \Rightarrow \omega = 3$; $z = 2-1+6 = 7 \ne 3$ ✗.
+  Punto ${}^t(0\ 3\ -2)$: $\lambda = -2$; $7-\omega = 0 \Rightarrow \omega = 7$; $z = 2+2+14 = 18 \ne -2$ ✗.
+  **Errore tipico:** la domanda è quasi identica a un'altra in cui $y = 1+\lambda$: chi ricorda a memoria quella risposta sceglie ${}^t(0\ 3\ -2)$, che qui non va bene perché il segno di $\lambda$ in $y$ è cambiato.
+  TRAP: rispetto alla domanda gemella cambia solo il segno di $\lambda$ nella $y$, e questo cambia il punto giusto.
+T: Quale dei seguenti punti dello spazio appartiene al piano con forma parametrica $\begin{cases} x=3-2\lambda-\omega \\ y=1-\lambda \\ z=2-\lambda+2\omega \end{cases}$?
+OPT: ${}^t(-3\ 3\ 0)$. | ${}^t(-2\ 0\ 3)$. | ${}^t(0\ 3\ -2)$. | ${}^t(3\ 0\ -3)$.
+30-3 B Qui l'equazione più semplice è $z = 1-\lambda$, che dà $\lambda$; poi da $x = 2-\lambda+2\omega$ si ricava $\omega$ e si controlla $y = 3-2\lambda-\omega$.
+  Punto ${}^t(-3\ 3\ 0)$: $1-\lambda = 0 \Rightarrow \lambda = 1$; $2-1+2\omega = -3 \Rightarrow \omega = -2$; controllo: $y = 3-2+2 = 3$ ✓.
+  Punto ${}^t(3\ 0\ -3)$: $\lambda = 4$; $-2+2\omega = 3 \Rightarrow \omega = \tfrac52$; $y = 3-8-\tfrac52 = -\tfrac{15}{2} \ne 0$ ✗.
+  Punto ${}^t(0\ 3\ -2)$: $\lambda = 3$; $-1+2\omega = 0 \Rightarrow \omega = \tfrac12$; $y = 3-6-\tfrac12 = -\tfrac72 \ne 3$ ✗.
+  Punto ${}^t(-2\ 0\ 3)$: $\lambda = -2$; $4+2\omega = -2 \Rightarrow \omega = -3$; $y = 3+4+3 = 10 \ne 0$ ✗.
+  **Errore tipico:** l'ordine delle equazioni è diverso dalle domande simili ($x$ e $y$ hanno i due parametri, $z$ solo $\lambda$): chi sostituisce le coordinate nelle righe sbagliate (per esempio la prima coordinata del punto nella riga di $z$) ottiene risultati falsati.
+T: Quale dei seguenti punti dello spazio appartiene al piano con forma parametrica $\begin{cases} x=2-\lambda+2\omega \\ y=3-2\lambda-\omega \\ z=1-\lambda \end{cases}$?
+OPT: ${}^t(3\ 0\ -3)$. | ${}^t(-3\ 3\ 0)$. | ${}^t(0\ 3\ -2)$. | ${}^t(-2\ 0\ 3)$.
+30-4 C Un punto appartiene alla retta se esiste **un unico** valore di $\lambda$ che soddisfa tutte e tre le equazioni. Si ricava $\lambda$ da ciascuna coordinata e si controlla che i tre valori coincidano.
+  Punto ${}^t(6\ 7\ 7)$: $4-\lambda = 6 \Rightarrow \lambda = -2$; $1-3\lambda = 7 \Rightarrow \lambda = -2$; $3-2\lambda = 7 \Rightarrow \lambda = -2$ ✓.
+  Punto ${}^t(7\ 7\ 6)$: da $x$ $\lambda = -3$, da $y$ $\lambda = -2$ ✗.
+  Punto ${}^t(5\ -2\ 5)$: da $x$ $\lambda = -1$, da $y$ $\lambda = 1$ ✗.
+  Punto ${}^t(-2\ 5\ 5)$: da $x$ $\lambda = 6$, da $y$ $\lambda = -\tfrac43$ ✗.
+  **Errore tipico:** le opzioni sono permutazioni delle stesse cifre: chi controlla una sola coordinata (o legge il punto in un ordine diverso da $x, y, z$) può trovare un $\lambda$ che "funziona" per quella coordinata ma non per le altre.
+T: Quale dei seguenti punti dello spazio appartiene alla retta con forma parametrica $\begin{cases} x=4-\lambda \\ y=1-3\lambda \\ z=3-2\lambda \end{cases}$?
+OPT: ${}^t(7\ 7\ 6)$. | ${}^t(5\ -2\ 5)$. | ${}^t(6\ 7\ 7)$. | ${}^t(-2\ 5\ 5)$.
+30-5 D Si ricava $\lambda$ da ogni coordinata: il punto sta sulla retta solo se si ottiene sempre lo stesso valore.
+  Punto ${}^t(5\ -2\ 5)$: $4-\lambda = 5 \Rightarrow \lambda = -1$; $1+3\lambda = -2 \Rightarrow \lambda = -1$; $3-2\lambda = 5 \Rightarrow \lambda = -1$ ✓.
+  Punto ${}^t(-2\ 5\ 5)$: da $x$ $\lambda = 6$, da $y$ $\lambda = \tfrac43$ ✗.
+  Punto ${}^t(7\ 7\ 6)$: da $x$ $\lambda = -3$, da $y$ $\lambda = 2$ ✗.
+  Punto ${}^t(6\ 7\ 7)$: da $x$ $\lambda = -2$, da $y$ $\lambda = 2$ ✗.
+  **Errore tipico:** la retta differisce da quella di una domanda gemella solo per il segno di $3\lambda$ nella $y$; chi risponde a memoria sceglie ${}^t(6\ 7\ 7)$, che qui dà valori di $\lambda$ discordi.
+  TRAP: cambia solo il segno di $3\lambda$ nella $y$ rispetto alla domanda gemella, e il punto giusto è un altro.
+T: Quale dei seguenti punti dello spazio appartiene alla retta con forma parametrica $\begin{cases} x=4-\lambda \\ y=1+3\lambda \\ z=3-2\lambda \end{cases}$?
+OPT: ${}^t(-2\ 5\ 5)$. | ${}^t(7\ 7\ 6)$. | ${}^t(6\ 7\ 7)$. | ${}^t(5\ -2\ 5)$.
+30-6 D Si ricava $\lambda$ da ogni coordinata e si controlla che i valori coincidano.
+  Punto ${}^t(7\ 7\ 6)$: $1-3\lambda = 7 \Rightarrow \lambda = -2$; $3-2\lambda = 7 \Rightarrow \lambda = -2$; $4-\lambda = 6 \Rightarrow \lambda = -2$ ✓.
+  Punto ${}^t(6\ 7\ 7)$: da $x$ $\lambda = -\tfrac53$, da $y$ $\lambda = -2$ ✗.
+  Punto ${}^t(5\ -2\ 5)$: da $x$ $\lambda = -\tfrac43$, da $y$ $\lambda = \tfrac52$ ✗.
+  Punto ${}^t(-2\ 5\ 5)$: da $x$ $\lambda = 1$, da $y$ $\lambda = -1$ ✗.
+  **Errore tipico:** le opzioni sono le stesse delle domande sulla retta $x=4-\lambda,\dots$ ma la retta ha le righe permutate: chi non riparte dal calcolo e ricorda la risposta dell'altra domanda sbaglia.
+T: Quale dei seguenti punti dello spazio appartiene alla retta con forma parametrica $\begin{cases} x=1-3\lambda \\ y=3-2\lambda \\ z=4-\lambda \end{cases}$?
+OPT: ${}^t(6\ 7\ 7)$. | ${}^t(5\ -2\ 5)$. | ${}^t(-2\ 5\ 5)$. | ${}^t(7\ 7\ 6)$.
+30-7 A Si ricava $\lambda$ da ogni coordinata e si controlla che i valori coincidano.
+  Punto ${}^t(-2\ 5\ 5)$: $1+3\lambda = -2 \Rightarrow \lambda = -1$; $3-2\lambda = 5 \Rightarrow \lambda = -1$; $4-\lambda = 5 \Rightarrow \lambda = -1$ ✓.
+  Punto ${}^t(7\ 7\ 6)$: da $x$ $\lambda = 2$, da $y$ $\lambda = -2$ ✗.
+  Punto ${}^t(5\ -2\ 5)$: da $x$ $\lambda = \tfrac43$, da $y$ $\lambda = \tfrac52$ ✗.
+  Punto ${}^t(6\ 7\ 7)$: da $x$ $\lambda = \tfrac53$, da $y$ $\lambda = -2$ ✗.
+  **Errore tipico:** rispetto alla retta con $x = 1-3\lambda$ cambia solo il segno nella $x$: chi sceglie ${}^t(7\ 7\ 6)$ ha usato la retta della domanda gemella.
+T: Quale dei seguenti punti dello spazio appartiene alla retta con forma parametrica $\begin{cases} x=1+3\lambda \\ y=3-2\lambda \\ z=4-\lambda \end{cases}$?
+OPT: ${}^t(-2\ 5\ 5)$. | ${}^t(7\ 7\ 6)$. | ${}^t(5\ -2\ 5)$. | ${}^t(6\ 7\ 7)$.
+30-8 A Da $z = 1+\lambda$ si ricava $\lambda$, da $x = 2-\lambda+2\omega$ si ricava $\omega$, poi si controlla $y = 3-2\lambda-\omega$.
+  Punto ${}^t(-2\ 0\ 3)$: $1+\lambda = 3 \Rightarrow \lambda = 2$; $2-2+2\omega = -2 \Rightarrow \omega = -1$; controllo: $y = 3-4+1 = 0$ ✓.
+  Punto ${}^t(3\ 0\ -3)$: $\lambda = -4$; $6+2\omega = 3 \Rightarrow \omega = -\tfrac32$; $y = 3+8+\tfrac32 = \tfrac{25}{2} \ne 0$ ✗.
+  Punto ${}^t(-3\ 3\ 0)$: $\lambda = -1$; $3+2\omega = -3 \Rightarrow \omega = -3$; $y = 3+2+3 = 8 \ne 3$ ✗.
+  Punto ${}^t(0\ 3\ -2)$: $\lambda = -3$; $5+2\omega = 0 \Rightarrow \omega = -\tfrac52$; $y = 3+6+\tfrac52 = \tfrac{23}{2} \ne 3$ ✗.
+  **Errore tipico:** è la gemella della domanda con $z = 1-\lambda$: cambiando il segno di $\lambda$ in $z$ cambia il punto giusto; chi sceglie ${}^t(-3\ 3\ 0)$ ha risolto l'altra domanda.
+  TRAP: rispetto alla domanda gemella cambia solo il segno di $\lambda$ nella $z$.
+T: Quale dei seguenti punti dello spazio appartiene al piano con forma parametrica $\begin{cases} x=2-\lambda+2\omega \\ y=3-2\lambda-\omega \\ z=1+\lambda \end{cases}$?
+OPT: ${}^t(-2\ 0\ 3)$. | ${}^t(3\ 0\ -3)$. | ${}^t(-3\ 3\ 0)$. | ${}^t(0\ 3\ -2)$.
+30-9 C La retta per due punti distinti $A$ e $B$ ha forma parametrica $P = A + \lambda(B-A)$: punto base $A$ e vettore direttore $B-A$.
+  Con $A = {}^t(3\ 0\ -2)$ e $B = {}^t(7\ -5\ 5)$: $B - A = {}^t(7-3\ \ -5-0\ \ 5-(-2)) = {}^t(4\ -5\ 7)$.
+  $$\begin{cases} x = 3+4\lambda \\ y = -5\lambda \\ z = -2+7\lambda \end{cases}$$
+  Controllo: per $\lambda = 0$ si ottiene $A$, per $\lambda = 1$ si ottiene ${}^t(7\ -5\ 5) = B$ ✓.
+  Le altre: quella con $z = 2+7\lambda$ ha la direzione giusta ma per $\lambda = 0$ dà ${}^t(3\ 0\ 2)$, che non sta sulla retta (da $x$ e $y$ serve $\lambda = 0$, ma allora $z$ dovrebbe essere $-2$); quella con $z = -2-3\lambda$ ha direttore ${}^t(4\ -5\ -3)$, non proporzionale a ${}^t(4\ -5\ 7)$; quella con $x = -2-3\lambda$ è un'altra retta (per $\lambda=0$ dà ${}^t(-2\ 3\ 0)$, che non è sulla retta).
+  **Errore tipico:** sbagliare il segno nella differenza $-2$ della terza coordinata del punto base, o calcolare $B_z - A_z = 5-2 = 3$ invece di $5-(-2) = 7$.
+OPT: $\begin{cases} x=3+4\lambda \\ y=-5\lambda \\ z=2+7\lambda \end{cases}$ | $\begin{cases} x=-2-3\lambda \\ y=3+4\lambda \\ z=-5\lambda \end{cases}$ | $\begin{cases} x=3+4\lambda \\ y=-5\lambda \\ z=-2+7\lambda \end{cases}$ | $\begin{cases} x=3+4\lambda \\ y=-5\lambda \\ z=-2-3\lambda \end{cases}$
+30-10 C Retta per due punti: $P = A + \lambda(B-A)$.
+  Con $A = {}^t(-2\ 3\ 0)$ e $B = {}^t(-5\ 7\ -5)$: $B - A = {}^t(-5+2\ \ 7-3\ \ -5-0) = {}^t(-3\ 4\ -5)$.
+  $$\begin{cases} x = -2-3\lambda \\ y = 3+4\lambda \\ z = -5\lambda \end{cases}$$
+  Controllo: $\lambda = 1$ dà ${}^t(-5\ 7\ -5) = B$ ✓.
+  Le altre: quella con $y = -3+4\lambda$ ha punto base ${}^t(-2\ -3\ 0) \ne A$ e non passa per $A$; quella con $x = -2+7\lambda$ ha direttore ${}^t(7\ 4\ -5)$, non proporzionale; quella con $x = 3+4\lambda$ è la retta per ${}^t(3\ 0\ -2)$ e ${}^t(7\ -5\ 5)$ di un'altra domanda.
+  **Errore tipico:** confondere il segno della coordinata $y$ del punto base ($+3$, non $-3$).
+OPT: $\begin{cases} x=-2-3\lambda \\ y=-3+4\lambda \\ z=-5\lambda \end{cases}$ | $\begin{cases} x=3+4\lambda \\ y=-5\lambda \\ z=-2+7\lambda \end{cases}$ | $\begin{cases} x=-2-3\lambda \\ y=3+4\lambda \\ z=-5\lambda \end{cases}$ | $\begin{cases} x=-2+7\lambda \\ y=3+4\lambda \\ z=-5\lambda \end{cases}$
+30-11 B Retta per due punti: $P = A + \lambda(B-A)$.
+  Con $A = {}^t(3\ 0\ -2)$ e $B = {}^t(7\ -5\ -5)$: $B - A = {}^t(4\ -5\ -5-(-2)) = {}^t(4\ -5\ -3)$.
+  $$\begin{cases} x = 3+4\lambda \\ y = -5\lambda \\ z = -2-3\lambda \end{cases}$$
+  Controllo: $\lambda = 1$ dà ${}^t(7\ -5\ -5) = B$ ✓.
+  Le altre: quella con $z = 2-3\lambda$ ha la direzione giusta ma punto base ${}^t(3\ 0\ 2)$, che non sta sulla retta; quella con $z = -2+7\lambda$ è la retta di un'altra domanda (verso ${}^t(7\ -5\ 5)$); quella con $x = -2+7\lambda$ è un'altra retta ancora.
+  **Errore tipico:** calcolare $B_z - A_z$ come $-5-2 = -7$ (dimenticando il segno meno di $A_z = -2$) o confondere questa domanda con la gemella in cui $B_z = 5$.
+  TRAP: differisce dalla domanda gemella solo per il segno della terza coordinata di $B$.
+OPT: $\begin{cases} x=3+4\lambda \\ y=-5\lambda \\ z=2-3\lambda \end{cases}$ | $\begin{cases} x=3+4\lambda \\ y=-5\lambda \\ z=-2-3\lambda \end{cases}$ | $\begin{cases} x=3+4\lambda \\ y=-5\lambda \\ z=-2+7\lambda \end{cases}$ | $\begin{cases} x=-2+7\lambda \\ y=3+4\lambda \\ z=-5\lambda \end{cases}$
+30-12 B Retta per due punti: $P = A + \lambda(B-A)$.
+  Con $A = {}^t(-2\ 3\ 0)$ e $B = {}^t(5\ 7\ -5)$: $B - A = {}^t(5+2\ \ 7-3\ \ -5) = {}^t(7\ 4\ -5)$.
+  $$\begin{cases} x = -2+7\lambda \\ y = 3+4\lambda \\ z = -5\lambda \end{cases}$$
+  Controllo: $\lambda = 1$ dà ${}^t(5\ 7\ -5) = B$ ✓.
+  Le altre: quella con $y = -3+4\lambda$ ha punto base ${}^t(-2\ -3\ 0)$, fuori dalla retta; quella con $x = -2-3\lambda$ ha direttore ${}^t(-3\ 4\ -5)$ (è la retta della gemella con $B_x = -5$); quella con $x = 3+4\lambda$ è un'altra retta.
+  **Errore tipico:** calcolare $B_x - A_x = 5-2 = 3$ invece di $5-(-2) = 7$, o confondersi con la gemella in cui $B_x = -5$.
+OPT: $\begin{cases} x=3+4\lambda \\ y=-5\lambda \\ z=-2-3\lambda \end{cases}$ | $\begin{cases} x=-2+7\lambda \\ y=3+4\lambda \\ z=-5\lambda \end{cases}$ | $\begin{cases} x=-2-3\lambda \\ y=3+4\lambda \\ z=-5\lambda \end{cases}$ | $\begin{cases} x=-2+7\lambda \\ y=-3+4\lambda \\ z=-5\lambda \end{cases}$
+30-13 C Il piano per tre punti non allineati $A, B, B'$ ha forma parametrica $P = A + \lambda(B-A) + \mu(B'-A)$.
+  Con $A = {}^t(-2\ 1\ 3)$, $B = {}^t(2\ 4\ 7)$, $B' = {}^t(3\ 0\ -4)$:
+  $B - A = {}^t(4\ 3\ 4)$, $\quad B' - A = {}^t(3+2\ \ 0-1\ \ -4-3) = {}^t(5\ -1\ -7)$ (non proporzionali, quindi i punti non sono allineati).
+  $$\begin{cases} x = -2+4\lambda+5\mu \\ y = 1+3\lambda-\mu \\ z = 3+4\lambda-7\mu \end{cases}$$
+  Controllo: $(\lambda,\mu) = (1,0)$ dà $B$, $(0,1)$ dà ${}^t(3\ 0\ -4) = B'$ ✓.
+  Le altre: quella con $z = 3+4\lambda+\mu$ ha secondo vettore ${}^t(5\ -1\ 1)$, cioè passa per ${}^t(3\ 0\ 4)$ invece che per $B'$ (vettore normale ${}^t(7\ 16\ -19)$ invece di ${}^t(-17\ 48\ -19)$); le due con $x = 1+3\lambda-\mu$ hanno punto base ${}^t(1\ 3\ -2)$, che non sta su questo piano (sono i piani di altre domande, con le coordinate permutate).
+  **Errore tipico:** sbagliare il segno di $B'_z - A_z = -4-3 = -7$ (scrivendo $+1$ come se fosse $4-3$), cioè confondere questa domanda con la gemella in cui $B' = {}^t(3\ 0\ 4)$.
+  TRAP: la gemella differisce solo per il segno della terza coordinata di $B'$.
+OPT: $\begin{cases} x=-2+4\lambda+5\mu \\ y=1+3\lambda-\mu \\ z=3+4\lambda+\mu \end{cases}$ | $\begin{cases} x=1+3\lambda-\mu \\ y=3+4\lambda-7\mu \\ z=-2+4\lambda+5\mu \end{cases}$ | $\begin{cases} x=-2+4\lambda+5\mu \\ y=1+3\lambda-\mu \\ z=3+4\lambda-7\mu \end{cases}$ | $\begin{cases} x=1+3\lambda-\mu \\ y=3+4\lambda+\mu \\ z=-2+4\lambda+5\mu \end{cases}$
+30-14 B Piano per tre punti: $P = A + \lambda(B-A) + \mu(B'-A)$.
+  Con $A = {}^t(-2\ 1\ 3)$, $B = {}^t(2\ 4\ 7)$, $B' = {}^t(3\ 0\ 4)$:
+  $B - A = {}^t(4\ 3\ 4)$, $\quad B' - A = {}^t(5\ -1\ 1)$.
+  $$\begin{cases} x = -2+4\lambda+5\mu \\ y = 1+3\lambda-\mu \\ z = 3+4\lambda+\mu \end{cases}$$
+  Controllo: $(\lambda,\mu) = (0,1)$ dà ${}^t(3\ 0\ 4) = B'$ ✓, $(1,0)$ dà $B$ ✓.
+  Le altre: quella con $z = 3+4\lambda-7\mu$ passa per ${}^t(3\ 0\ -4)$ invece che per $B'$ (è il piano della gemella); le due con punto base ${}^t(1\ 3\ -2)$ non contengono $A$ (verifica: imponendo $x=-2$, $y=1$ i parametri sono determinati e $z$ non torna).
+  **Errore tipico:** confondere questa domanda con la gemella in cui $B'_z = -4$ e scegliere il secondo vettore ${}^t(5\ -1\ -7)$.
+OPT: $\begin{cases} x=1+3\lambda-\mu \\ y=3+4\lambda-7\mu \\ z=-2+4\lambda+5\mu \end{cases}$ | $\begin{cases} x=-2+4\lambda+5\mu \\ y=1+3\lambda-\mu \\ z=3+4\lambda+\mu \end{cases}$ | $\begin{cases} x=1+3\lambda-\mu \\ y=3+4\lambda+\mu \\ z=-2+4\lambda+5\mu \end{cases}$ | $\begin{cases} x=-2+4\lambda+5\mu \\ y=1+3\lambda-\mu \\ z=3+4\lambda-7\mu \end{cases}$
+30-15 A Piano per tre punti: $P = A + \lambda(B-A) + \mu(B'-A)$.
+  Con $A = {}^t(1\ 3\ -2)$, $B = {}^t(4\ 7\ 2)$, $B' = {}^t(0\ -4\ 3)$:
+  $B - A = {}^t(3\ 4\ 4)$, $\quad B' - A = {}^t(0-1\ \ -4-3\ \ 3+2) = {}^t(-1\ -7\ 5)$.
+  $$\begin{cases} x = 1+3\lambda-\mu \\ y = 3+4\lambda-7\mu \\ z = -2+4\lambda+5\mu \end{cases}$$
+  Controllo: $(0,1)$ dà ${}^t(0\ -4\ 3) = B'$ ✓, $(1,0)$ dà $B$ ✓.
+  Le altre: quella con $y = 3+4\lambda+\mu$ passa per ${}^t(0\ 4\ 3)$ invece che per $B'$ (è il piano della gemella); le due con punto base ${}^t(-2\ 1\ 3)$ non contengono $A$ (sono i piani di altre domande, con le coordinate permutate).
+  **Errore tipico:** calcolare $B'_y - A_y$ come $4-3 = 1$ leggendo male il segno di $-4$.
+OPT: $\begin{cases} x=1+3\lambda-\mu \\ y=3+4\lambda-7\mu \\ z=-2+4\lambda+5\mu \end{cases}$ | $\begin{cases} x=1+3\lambda-\mu \\ y=3+4\lambda+\mu \\ z=-2+4\lambda+5\mu \end{cases}$ | $\begin{cases} x=-2+4\lambda+5\mu \\ y=1+3\lambda-\mu \\ z=3+4\lambda+\mu \end{cases}$ | $\begin{cases} x=-2+4\lambda+5\mu \\ y=1+3\lambda-\mu \\ z=3+4\lambda-7\mu \end{cases}$
+30-16 C Piano per tre punti: $P = A + \lambda(B-A) + \mu(B'-A)$.
+  Con $A = {}^t(1\ 3\ -2)$, $B = {}^t(4\ 7\ 2)$, $B' = {}^t(0\ 4\ 3)$:
+  $B - A = {}^t(3\ 4\ 4)$, $\quad B' - A = {}^t(-1\ 1\ 5)$.
+  $$\begin{cases} x = 1+3\lambda-\mu \\ y = 3+4\lambda+\mu \\ z = -2+4\lambda+5\mu \end{cases}$$
+  Controllo: $(0,1)$ dà ${}^t(0\ 4\ 3) = B'$ ✓, $(1,0)$ dà $B$ ✓.
+  Le altre: quella con $y = 3+4\lambda-7\mu$ passa per ${}^t(0\ -4\ 3)$ (piano della gemella); le due con punto base ${}^t(-2\ 1\ 3)$ non contengono $A$.
+  **Errore tipico:** confondere questa domanda con la gemella in cui $B'_y = -4$, scegliendo il secondo vettore ${}^t(-1\ -7\ 5)$.
+OPT: $\begin{cases} x=1+3\lambda-\mu \\ y=3+4\lambda-7\mu \\ z=-2+4\lambda+5\mu \end{cases}$ | $\begin{cases} x=-2+4\lambda+5\mu \\ y=1+3\lambda-\mu \\ z=3+4\lambda+\mu \end{cases}$ | $\begin{cases} x=1+3\lambda-\mu \\ y=3+4\lambda+\mu \\ z=-2+4\lambda+5\mu \end{cases}$ | $\begin{cases} x=-2+4\lambda+5\mu \\ y=1+3\lambda-\mu \\ z=3+4\lambda-7\mu \end{cases}$
+30-17 APERTA
+KW: sottospazio affine, giacitura, dimensione 1, forma parametrica, punto base, vettore direttore|direttore, parametro, forma implicita|forma cartesiana, due equazioni, rango 2|non proporzionali, eliminare il parametro, risolvere il sistema
+> Una **retta** $r$ nello spazio $V^3_G$ è un **sottospazio affine** di dimensione 1: $r = P_0 + r_0$, dove $r_0$ è la retta parallela a $r$ passante per $O$ (la **giacitura**, un sottospazio vettoriale di dimensione 1).
+>
+> **Forma parametrica.** Scelti un punto $P_0 \in r$ (**punto base**) e un vettore non nullo $\mathbf v$ che genera la giacitura (**vettore direttore**), ogni punto di $r$ si scrive in modo unico come $P = P_0 + \lambda \mathbf v$, $\lambda \in \mathbb R$ (**parametro**). In coordinate:
+> $$\begin{cases} x = x_0 + \lambda v_x \\ y = y_0 + \lambda v_y \\ z = z_0 + \lambda v_z \end{cases} \qquad {}^t(v_x\ v_y\ v_z) \ne {}^t(0\ 0\ 0).$$
+> La retta per due punti distinti $A, B$ ha forma parametrica $P = A + \lambda(B-A)$.
+>
+> **Forma cartesiana (implicita).** Per un sottospazio affine $S$ di $\mathbb K^n$ è un sistema lineare con $n - \dim S$ equazioni che ha $S$ come insieme delle soluzioni; per la retta servono $3-1 = 2$ equazioni:
+> $$\begin{cases} a_1x+b_1y+c_1z+d_1 = 0 \\ a_2x+b_2y+c_2z+d_2 = 0 \end{cases}$$
+> con $(a_1,b_1,c_1)$ e $(a_2,b_2,c_2)$ **non proporzionali**, cioè la matrice dei coefficienti $A$ ha rango 2 e $\dim r = 3 - \operatorname{rank}(A) = 1$. Geometricamente è l'intersezione di due piani non paralleli. La giacitura ha forma implicita il sistema omogeneo associato.
+>
+> **Passaggi tra le forme.** Da implicita a parametrica si **risolve il sistema** ($\infty^{3-2} = \infty^1$ soluzioni). Da parametrica a implicita si **elimina il parametro** (per esempio si ricava $\lambda$ da una coordinata e si sostituisce nelle altre due), oppure si impone $\operatorname{rank}\begin{pmatrix} v_x & x-x_0 \\ v_y & y-y_0 \\ v_z & z-z_0 \end{pmatrix} < 2$, cioè si annullano i minori di ordine 2 e se ne tengono due indipendenti.
+>
+> **Esempio.** $\begin{cases} x=-6+7\lambda \\ y=3-3\lambda \\ z=-2+\lambda \end{cases}$: da $\lambda = z+2$ si ottiene $\begin{cases} x-7z-8=0 \\ y+3z+3=0 \end{cases}$. Né la forma parametrica né quella implicita sono uniche.
+30-18 APERTA
+KW: sottospazio affine, giacitura, dimensione 2, forma parametrica, punto base, due parametri, linearmente indipendenti, forma implicita|forma cartesiana, una equazione|un'equazione, vettore normale|vettore di giacitura, tre punti non allineati, determinante|eliminare i parametri
+> Un **piano** $\pi$ nello spazio $V^3_G$ è un **sottospazio affine** di dimensione 2: $\pi = P_0 + \pi_0$, dove $\pi_0$ (il piano parallelo a $\pi$ per $O$) è la **giacitura**.
+>
+> **Forma parametrica.** Scelti un **punto base** $P_0 \in \pi$ e due vettori $\mathbf v, \mathbf v'$ **linearmente indipendenti** che formano una base della giacitura, ogni punto si scrive in modo unico come $P = P_0 + \lambda\mathbf v + \lambda'\mathbf v'$ con $\lambda, \lambda' \in \mathbb R$ (**parametri**):
+> $$\begin{cases} x = x_0 + \lambda v_x + \lambda' v'_x \\ y = y_0 + \lambda v_y + \lambda' v'_y \\ z = z_0 + \lambda v_z + \lambda' v'_z \end{cases}$$
+> Il piano per tre punti non allineati $A, B, B'$ ha forma parametrica $P = A + \lambda(B-A) + \lambda'(B'-A)$.
+>
+> **Forma cartesiana (implicita).** Servono $3 - 2 = 1$ equazioni: $ax+by+cz+d = 0$ con $(a,b,c) \ne (0,0,0)$. La matrice dei coefficienti $A = (a\ b\ c)$ ha rango 1 e $\dim\pi = 3-1 = 2$. Il vettore ${}^t(a\ b\ c)$ è il **vettore di giacitura** (o **vettore normale**); la giacitura ha equazione $ax+by+cz = 0$.
+>
+> **Passaggi tra le forme.** Da implicita a parametrica si risolve l'equazione ($\infty^{3-1} = \infty^2$ soluzioni, due incognite libere). Da parametrica a implicita si eliminano i parametri, oppure si impone che $\mathbf v, \mathbf v', P-P_0$ siano linearmente dipendenti:
+> $$\det\begin{pmatrix} v_x & v'_x & x-x_0 \\ v_y & v'_y & y-y_0 \\ v_z & v'_z & z-z_0 \end{pmatrix} = 0,$$
+> che è un'equazione lineare in $x, y, z$.
+>
+> **Esempio.** $\begin{cases} x = 2-t+2s \\ y = -1+t-3s \\ z = 4-t+s \end{cases}$ ha forma implicita $2x+y-z+1 = 0$.
+x139 D Il punto appartiene al piano se il sistema nelle incognite $\lambda, \lambda'$ ha soluzione. Si usano $y$ e $z$ per trovare i parametri e si controlla $x$.
+  Punto ${}^t(6\ -2\ 2)$: $\lambda+\lambda' = 2$ e $-1+\lambda-2\lambda' = -2 \Rightarrow \lambda - 2\lambda' = -1$. Sottraendo: $3\lambda' = 3 \Rightarrow \lambda' = 1$, $\lambda = 1$. Controllo: $x = 2+3+1 = 6$ ✓.
+  Punto ${}^t(6\ -2\ 1)$: $\lambda+\lambda' = 1$, $\lambda-2\lambda' = -1 \Rightarrow \lambda' = \tfrac23$, $\lambda = \tfrac13$; $x = 2+1+\tfrac23 = \tfrac{11}{3} \ne 6$ ✗.
+  Punto ${}^t(6\ -1\ 2)$: $\lambda+\lambda' = 2$, $\lambda-2\lambda' = 0 \Rightarrow \lambda' = \tfrac23$, $\lambda = \tfrac43$; $x = 2+4+\tfrac23 = \tfrac{20}{3} \ne 6$ ✗.
+  Punto ${}^t(5\ -2\ 2)$: $\lambda = \lambda' = 1$ come sopra, ma $x = 6 \ne 5$ ✗.
+  **Errore tipico:** le opzioni differiscono di una sola coordinata da quella giusta: chi verifica solo due equazioni non le distingue.
+T: Quale dei seguenti punti appartiene al piano con forma parametrica $\begin{cases} x = 2+3\lambda+\lambda' \\ y = -1+\lambda-2\lambda' \\ z = \lambda+\lambda' \end{cases}$ in $\boldsymbol V^3_G$?
+OPT: $\begin{pmatrix} 6 \\ -2 \\ 1 \end{pmatrix}$. | $\begin{pmatrix} 6 \\ -1 \\ 2 \end{pmatrix}$. | $\begin{pmatrix} 5 \\ -2 \\ 2 \end{pmatrix}$. | $\begin{pmatrix} 6 \\ -2 \\ 2 \end{pmatrix}$.
+x140 D Si elimina il parametro ricavandolo dalla variabile $z$: $z = 1+t \Rightarrow t = z-1$.
+  Sostituendo in $x$: $x = 2+7(z-1) = 7z-5$, cioè $x - 7z + 5 = 0$.
+  Sostituendo in $y$: $y = -1-5(z-1) = 4-5z$, cioè $y + 5z - 4 = 0$.
+  $$\begin{cases} x-7z+5 = 0 \\ y+5z-4 = 0 \end{cases}$$
+  Controllo con il punto ${}^t(2\ -1\ 1)$ ($t=0$): $2-7+5 = 0$ ✓, $-1+5-4 = 0$ ✓.
+  **Errore tipico:** le altre opzioni hanno un coefficiente 2 davanti a $x$ o a $y$ senza raddoppiare anche gli altri termini dell'equazione: per esempio $2x-7z+5 = 0$ non passa per ${}^t(2\ -1\ 1)$ ($4-7+5 = 2 \ne 0$).
+T: Quale è la forma implicita della retta con forma parametrica $\begin{cases} x = 2+7t \\ y = -1-5t \\ z = 1+t \end{cases}$ in $\boldsymbol V^3_G$, ottenuta ricavando il parametro dalla variabile $z$?
+OPT: $\begin{cases} 2x-7z+5=0 \\ y+5z-4=0 \end{cases}$. | $\begin{cases} x-7z+5=0 \\ 2y+5z-4=0 \end{cases}$. | $\begin{cases} 2x-7z+5=0 \\ 2y+5z-4=0 \end{cases}$. | $\begin{cases} x-7z+5=0 \\ y+5z-4=0 \end{cases}$.
+x141 C La semiretta con estremo $P_0$ si parametrizza come $P = P_0 + t\mathbf v$ con $t \geqslant 0$, dove $\mathbf v$ ha **la stessa direzione e lo stesso verso** della semiretta.
+  Il vettore ${}^t(-2\ 4\ 6) = 2\cdot{}^t(-1\ 2\ 3)$ è un multiplo **positivo** del vettore dato, quindi ha stessa direzione e stesso verso: con $t \geqslant 0$ descrive proprio la semiretta richiesta.
+  ${}^t(2\ -4\ -6) = -2\cdot{}^t(-1\ 2\ 3)$ ha verso opposto: con $t \geqslant 0$ dà la semiretta opposta. ${}^t(-2\ 4\ 6)$ con $t \leqslant 0$ dà punti $P_0 + t\mathbf v$ con $t\mathbf v$ di verso opposto: ancora la semiretta opposta.
+  Quindi "nessuna delle altre" è falsa.
+  **Errore tipico:** pensare che basti la direzione giusta: per una semiretta conta anche il **verso**, che dipende dal segno del vettore e dal segno ammesso per $t$.
+T: Quale delle seguenti è una parametrizzazione della semiretta con estremo il punto $\begin{pmatrix} 1 \\ 0 \\ -2 \end{pmatrix}$ e con direzione e verso dati dal vettore $\begin{pmatrix} -1 \\ 2 \\ 3 \end{pmatrix}$?
+OPT: $P = \begin{pmatrix} 1 \\ 0 \\ -2 \end{pmatrix} + t\begin{pmatrix} 2 \\ -4 \\ -6 \end{pmatrix}$ con $t \in \{t \in \mathbb R \mid t \geqslant 0\}$. | $P = \begin{pmatrix} 1 \\ 0 \\ -2 \end{pmatrix} + t\begin{pmatrix} -2 \\ 4 \\ 6 \end{pmatrix}$ con $t \in \{t \in \mathbb R \mid t \leqslant 0\}$. | $P = \begin{pmatrix} 1 \\ 0 \\ -2 \end{pmatrix} + t\begin{pmatrix} -2 \\ 4 \\ 6 \end{pmatrix}$ con $t \in \{t \in \mathbb R \mid t \geqslant 0\}$. | Nessuna delle altre risposte.
+x142 B Il punto medio del segmento $AB$ è $M = A + \tfrac12(B-A) = \tfrac12 A + \tfrac12 B$, cioè la media coordinata per coordinata.
+  $$M = \tfrac12\begin{pmatrix} 6-2 \\ -3+5 \\ 1+3 \end{pmatrix} = \tfrac12\begin{pmatrix} 4 \\ 2 \\ 4 \end{pmatrix} = \begin{pmatrix} 2 \\ 1 \\ 2 \end{pmatrix}$$
+  **Errore tipico:** le altre opzioni sono $A+B$ (senza dividere per 2), $B-A$ e $\tfrac12(B-A)$: chi usa la differenza invece della somma, o dimentica il fattore $\tfrac12$, cade in una di queste.
+T: Quale dei seguenti è il punto medio del segmento con estremi $\begin{pmatrix} 6 \\ -3 \\ 1 \end{pmatrix}$ e $\begin{pmatrix} -2 \\ 5 \\ 3 \end{pmatrix}$?
+OPT: $\begin{pmatrix} -4 \\ 4 \\ 1 \end{pmatrix}$. | $\begin{pmatrix} 2 \\ 1 \\ 2 \end{pmatrix}$. | $\begin{pmatrix} 4 \\ 2 \\ 4 \end{pmatrix}$. | $\begin{pmatrix} -8 \\ 8 \\ 2 \end{pmatrix}$.
+
+## L31 Mutua posizione di sottospazi affini
+31-1 A Per confrontare una retta in forma parametrica con una in forma implicita si guardano (1) i **vettori direttori** e (2) l'**intersezione**.
+  Direttore della retta parametrica: $\mathbf v = {}^t(1\ -2\ 2)$. Direttore della retta implicita: prodotto vettoriale dei coefficienti delle due equazioni, $(4,1,-1)\times(2,1,0) = (1\cdot 0-(-1)\cdot 1,\ (-1)\cdot 2-4\cdot 0,\ 4\cdot 1-1\cdot 2) = (1,-2,2)$. Sono uguali: le rette sono **parallele**.
+  Intersezione: sostituendo la parametrica nelle equazioni,
+  $4(1+\lambda)+(1-2\lambda)-(3+2\lambda)-1 = 1 \ne 0$ per ogni $\lambda$; (la seconda dà $2(1+\lambda)+(1-2\lambda)-3 = 0$, sempre vera).
+  La prima equazione non è mai soddisfatta: nessun punto in comune, quindi le rette sono **parallele non coincidenti**.
+  **Errore tipico:** controllare solo la seconda equazione, che è identicamente soddisfatta, e concludere che le rette coincidono; oppure vedere che non si intersecano e dire "sghembe" senza confrontare i direttori.
+T: Quale è la mutua posizione delle due rette con forma parametrica $\begin{cases} x=1+\lambda \\ y=1-2\lambda \\ z=3+2\lambda \end{cases}$ e con forma implicita $\begin{cases} 4x+y-z-1=0 \\ 2x+y-3=0 \end{cases}$ nello spazio?
+31-2 C Due rette sono parallele se i loro **vettori direttori sono proporzionali** (multipli l'uno dell'altro); il punto base non conta.
+  Il direttore della retta data è $\mathbf v = {}^t(1\ -2\ -1)$ (i coefficienti di $\lambda$). Tra le opzioni:
+  ${}^t(2\ -4\ -2) = 2\mathbf v$ ✓; ${}^t(2\ -6\ 2)$, ${}^t(2\ -6\ -2)$ e ${}^t(2\ -4\ 2)$ non sono multipli di $\mathbf v$ (se la prima componente raddoppia, devono raddoppiare tutte: servirebbe $-4$ e $-2$).
+  **Errore tipico:** controllare solo le prime due componenti, o non accorgersi del segno della terza ($z = -1-\lambda$ ha coefficiente $-1$).
+T: Quale delle seguenti forme parametriche rappresenta una retta parallela alla retta con forma parametrica $\begin{cases} x=2+\lambda \\ y=3-2\lambda \\ z=-1-\lambda \end{cases}$ nello spazio?
+OPT: $\begin{cases} x=2+2\lambda \\ y=3-6\lambda \\ z=2\lambda \end{cases}$ | $\begin{cases} x=2+2\lambda \\ y=3-6\lambda \\ z=-2\lambda \end{cases}$ | $\begin{cases} x=2+2\lambda \\ y=3-4\lambda \\ z=-2\lambda \end{cases}$ | $\begin{cases} x=2+2\lambda \\ y=3-4\lambda \\ z=2\lambda \end{cases}$
+31-3 B La retta parallela a $r$ per $P$ ha **lo stesso vettore direttore** di $r$ e **punto base** $P$: $X = P + \lambda\mathbf v$.
+  Direttore di $r$: $\mathbf v = {}^t(-5\ 4\ -6)$; punto $P = {}^t(0\ 1\ -3)$. Quindi
+  $$\begin{cases} x = -5\lambda \\ y = 1+4\lambda \\ z = -3-6\lambda \end{cases}$$
+  Le altre: quella con $z = 3-6\lambda$ ha il direttore giusto ma passa per ${}^t(0\ 1\ 3) \ne P$ (e $P$ non vi appartiene: da $x$ serve $\lambda=0$, ma allora $z = 3$); quella con $z = -3+6\lambda$ ha direttore ${}^t(-5\ 4\ 6)$, non proporzionale; quella con $x=-5$, $y=4+\lambda$, $z=-6-3\lambda$ ha **scambiato** il ruolo di punto e direttore (punto base ${}^t(-5\ 4\ -6)$ e direttore ${}^t(0\ 1\ -3)$).
+  **Errore tipico:** scambiare punto base e vettore direttore, oppure sbagliare un segno della terza coordinata.
+T: Quale delle seguenti forme parametriche rappresenta la retta parallela alla retta con forma parametrica $\begin{cases} x=-2-5\lambda \\ y=2+4\lambda \\ z=4-6\lambda \end{cases}$ e passante per il punto $\begin{pmatrix} 0 \\ 1 \\ -3 \end{pmatrix}$ nello spazio?
+OPT: $\begin{cases} x=-5 \\ y=4+\lambda \\ z=-6-3\lambda \end{cases}$ | $\begin{cases} x=-5\lambda \\ y=1+4\lambda \\ z=-3-6\lambda \end{cases}$ | $\begin{cases} x=-5\lambda \\ y=1+4\lambda \\ z=3-6\lambda \end{cases}$ | $\begin{cases} x=-5\lambda \\ y=1+4\lambda \\ z=-3+6\lambda \end{cases}$
+31-4 D Retta parallela per un punto: stesso direttore, punto base $P$.
+  Direttore della retta data: $\mathbf v = {}^t(-5\ 4\ -6)$; $P = {}^t(-2\ 2\ 4)$:
+  $$\begin{cases} x = -2-5\lambda \\ y = 2+4\lambda \\ z = 4-6\lambda \end{cases}$$
+  Le altre: $z = 4+6\lambda$ ha direttore ${}^t(-5\ 4\ 6)$, non proporzionale; $z = -4-6\lambda$ ha il direttore giusto ma passa per ${}^t(-2\ 2\ -4) \ne P$; $x=-5-2\lambda$, $y=4+2\lambda$, $z=-6+4\lambda$ scambia punto base e direttore.
+  **Errore tipico:** scambiare punto e vettore, o copiare male il segno della coordinata $z$ del punto.
+T: Quale delle seguenti forme parametriche rappresenta la retta parallela alla retta con forma parametrica $\begin{cases} x=-5\lambda \\ y=1+4\lambda \\ z=-3-6\lambda \end{cases}$ e passante per il punto $\begin{pmatrix} -2 \\ 2 \\ 4 \end{pmatrix}$ nello spazio?
+OPT: $\begin{cases} x=-2-5\lambda \\ y=2+4\lambda \\ z=4+6\lambda \end{cases}$ | $\begin{cases} x=-5-2\lambda \\ y=4+2\lambda \\ z=-6+4\lambda \end{cases}$ | $\begin{cases} x=-2-5\lambda \\ y=2+4\lambda \\ z=-4-6\lambda \end{cases}$ | $\begin{cases} x=-2-5\lambda \\ y=2+4\lambda \\ z=4-6\lambda \end{cases}$
+31-5 A Retta parallela per un punto: stesso direttore, punto base $P$.
+  Direttore della retta data: $\mathbf v = {}^t(4\ -5\ -6)$; $P = {}^t(1\ 0\ -3)$:
+  $$\begin{cases} x = 1+4\lambda \\ y = -5\lambda \\ z = -3-6\lambda \end{cases}$$
+  Le altre: $z = -3+6\lambda$ ha direttore ${}^t(4\ -5\ 6)$, non proporzionale; $z = 3-6\lambda$ ha il direttore giusto ma passa per ${}^t(1\ 0\ 3) \ne P$; $x=4+\lambda$, $y=-5$, $z=-6-3\lambda$ scambia punto base e direttore.
+  **Errore tipico:** scambiare punto e direttore, o sbagliare il segno della coordinata $z$ del punto ($-3$).
+T: Quale delle seguenti forme parametriche rappresenta la retta parallela alla retta con forma parametrica $\begin{cases} x=2+4\lambda \\ y=-2-5\lambda \\ z=4-6\lambda \end{cases}$ e passante per il punto $\begin{pmatrix} 1 \\ 0 \\ -3 \end{pmatrix}$ nello spazio?
+OPT: $\begin{cases} x=1+4\lambda \\ y=-5\lambda \\ z=-3-6\lambda \end{cases}$ | $\begin{cases} x=4+\lambda \\ y=-5 \\ z=-6-3\lambda \end{cases}$ | $\begin{cases} x=1+4\lambda \\ y=-5\lambda \\ z=-3+6\lambda \end{cases}$ | $\begin{cases} x=1+4\lambda \\ y=-5\lambda \\ z=3-6\lambda \end{cases}$
+31-6 A Retta parallela per un punto: stesso direttore, punto base $P$.
+  Direttore della retta data: $\mathbf v = {}^t(4\ -5\ -6)$; $P = {}^t(2\ -2\ 4)$:
+  $$\begin{cases} x = 2+4\lambda \\ y = -2-5\lambda \\ z = 4-6\lambda \end{cases}$$
+  Le altre: $z = -4-6\lambda$ ha il direttore giusto ma passa per ${}^t(2\ -2\ -4) \ne P$; $z = 4+6\lambda$ ha direttore ${}^t(4\ -5\ 6)$, non proporzionale; $x=4+2\lambda$, $y=-5-2\lambda$, $z=-6+4\lambda$ scambia punto base e direttore.
+  **Errore tipico:** scambiare punto e direttore, o invertire un segno nella coordinata $z$.
+T: Quale delle seguenti forme parametriche rappresenta la retta parallela alla retta con forma parametrica $\begin{cases} x=1+4\lambda \\ y=-5\lambda \\ z=-3-6\lambda \end{cases}$ e passante per il punto $\begin{pmatrix} 2 \\ -2 \\ 4 \end{pmatrix}$ nello spazio?
+OPT: $\begin{cases} x=2+4\lambda \\ y=-2-5\lambda \\ z=4-6\lambda \end{cases}$ | $\begin{cases} x=4+2\lambda \\ y=-5-2\lambda \\ z=-6+4\lambda \end{cases}$ | $\begin{cases} x=2+4\lambda \\ y=-2-5\lambda \\ z=-4-6\lambda \end{cases}$ | $\begin{cases} x=2+4\lambda \\ y=-2-5\lambda \\ z=4+6\lambda \end{cases}$
+31-7 B Due rette sono parallele se i vettori direttori sono proporzionali.
+  Direttore della retta data: $\mathbf v = {}^t(1\ -3\ 1)$. Le opzioni hanno prima componente 2, quindi serve $2\mathbf v = {}^t(2\ -6\ 2)$: è la retta con $y = 3-6\lambda$, $z = 2\lambda$ ✓.
+  ${}^t(2\ -4\ 2)$, ${}^t(2\ -4\ -2)$, ${}^t(2\ -6\ -2)$ non sono multipli di $\mathbf v$.
+  **Errore tipico:** confondere la domanda con le gemelle in cui il coefficiente di $\lambda$ in $y$ è $-2$ o quello in $z$ è $-1$.
+T: Quale delle seguenti forme parametriche rappresenta una retta parallela alla retta con forma parametrica $\begin{cases} x=2+\lambda \\ y=3-3\lambda \\ z=-1+\lambda \end{cases}$ nello spazio?
+OPT: $\begin{cases} x=2+2\lambda \\ y=3-4\lambda \\ z=2\lambda \end{cases}$ | $\begin{cases} x=2+2\lambda \\ y=3-6\lambda \\ z=2\lambda \end{cases}$ | $\begin{cases} x=2+2\lambda \\ y=3-4\lambda \\ z=-2\lambda \end{cases}$ | $\begin{cases} x=2+2\lambda \\ y=3-6\lambda \\ z=-2\lambda \end{cases}$
+31-8 C Rette parallele = direttori proporzionali.
+  Direttore della retta data: $\mathbf v = {}^t(1\ -3\ -1)$; serve $2\mathbf v = {}^t(2\ -6\ -2)$: è la retta con $y = 3-6\lambda$, $z = -2\lambda$ ✓.
+  ${}^t(2\ -6\ 2)$ ha la terza componente di segno sbagliato; ${}^t(2\ -4\ \pm 2)$ hanno la seconda componente sbagliata.
+  **Errore tipico:** trascurare il segno meno di $z = -1-\lambda$ e scegliere la retta con $z = 2\lambda$.
+T: Quale delle seguenti forme parametriche rappresenta una retta parallela alla retta con forma parametrica $\begin{cases} x=2+\lambda \\ y=3-3\lambda \\ z=-1-\lambda \end{cases}$ nello spazio?
+OPT: $\begin{cases} x=2+2\lambda \\ y=3-6\lambda \\ z=2\lambda \end{cases}$ | $\begin{cases} x=2+2\lambda \\ y=3-4\lambda \\ z=2\lambda \end{cases}$ | $\begin{cases} x=2+2\lambda \\ y=3-6\lambda \\ z=-2\lambda \end{cases}$ | $\begin{cases} x=2+2\lambda \\ y=3-4\lambda \\ z=-2\lambda \end{cases}$
+31-9 A Rette parallele = direttori proporzionali.
+  Direttore della retta data: $\mathbf v = {}^t(1\ -2\ 1)$; serve $2\mathbf v = {}^t(2\ -4\ 2)$: è la retta con $y = 3-4\lambda$, $z = 2\lambda$ ✓.
+  ${}^t(2\ -4\ -2)$ ha la terza componente di segno sbagliato; ${}^t(2\ -6\ \pm 2)$ hanno la seconda componente sbagliata.
+  **Errore tipico:** confondere questa domanda con le gemelle (coefficiente $-3$ in $y$ o $-1$ in $z$).
+T: Quale delle seguenti forme parametriche rappresenta una retta parallela alla retta con forma parametrica $\begin{cases} x=2+\lambda \\ y=3-2\lambda \\ z=-1+\lambda \end{cases}$ nello spazio?
+OPT: $\begin{cases} x=2+2\lambda \\ y=3-4\lambda \\ z=2\lambda \end{cases}$ | $\begin{cases} x=2+2\lambda \\ y=3-4\lambda \\ z=-2\lambda \end{cases}$ | $\begin{cases} x=2+2\lambda \\ y=3-6\lambda \\ z=-2\lambda \end{cases}$ | $\begin{cases} x=2+2\lambda \\ y=3-6\lambda \\ z=2\lambda \end{cases}$
+31-10 B Un piano parallelo a $ax+by+cz+d=0$ ha coefficienti $(a,b,c)$ **proporzionali**; si possono prendere uguali: $2x-3y-z+d = 0$, e si cerca $d$ imponendo il passaggio per $P$.
+  Con $P = {}^t(-2\ 0\ 1)$: $2(-2)-3\cdot 0-1+d = 0 \Rightarrow -5+d = 0 \Rightarrow d = 5$.
+  Il piano è $2x-3y-z+5 = 0$.
+  **Errore tipico:** le opzioni con $+3y$ non sono parallele (coefficienti non proporzionali); quella con $+3$ come termine noto passa per ${}^t(-2\ 0\ -1)$, cioè corrisponde alla gemella con $z = -1$.
+T: Quale delle seguenti forme implicite rappresenta un piano parallelo al piano con forma implicita $2x-3y-z+4=0$ e passante per il punto ${}^t(-2\ 0\ 1)$ nello spazio?
+31-11 D Si confrontano coefficienti e termini noti (equivalentemente i ranghi della matrice incompleta e completa del sistema delle due equazioni).
+  $4x-8y+2z = 2\cdot(2x-4y+z)$: i coefficienti sono proporzionali, quindi la matrice incompleta $\begin{pmatrix} 2 & -4 & 1 \\ 4 & -8 & 2 \end{pmatrix}$ ha rango 1.
+  I termini noti invece no: $2\cdot(-3) = -6 \ne -5$. La matrice completa $\begin{pmatrix} 2 & -4 & 1 & 3 \\ 4 & -8 & 2 & 5 \end{pmatrix}$ ha rango 2 (il minore $\begin{vmatrix} 1 & 3 \\ 2 & 5 \end{vmatrix} = 5-6 = -1 \ne 0$).
+  $\operatorname{rank} A = 1$, $\operatorname{rank}(A|B) = 2$: piani **paralleli non coincidenti**.
+  **Errore tipico:** vedere i coefficienti proporzionali e concludere "coincidenti" senza controllare i termini noti; "nessuna delle altre" è falsa perché per due piani i casi coincidenti/paralleli/incidenti sono esaustivi.
+31-12 C Piano parallelo: $2x-3y-z+d = 0$, con $d$ dal passaggio per $P = {}^t(-2\ 0\ -1)$.
+  $2(-2)-3\cdot 0-(-1)+d = 0 \Rightarrow -4+1+d = 0 \Rightarrow d = 3$.
+  Il piano è $2x-3y-z+3 = 0$.
+  **Errore tipico:** sbagliare il segno di $-z$ con $z = -1$ (che dà $+1$) e trovare $d = 5$; le opzioni con $+3y$ non sono parallele.
+  TRAP: rispetto alla gemella cambia solo il segno della $z$ del punto, e quindi il termine noto.
+T: Quale delle seguenti forme implicite rappresenta un piano parallelo al piano con forma implicita $2x-3y-z+4=0$ e passante per il punto ${}^t(-2\ 0\ -1)$ nello spazio?
+31-13 A Piano parallelo: $2x+3y-z+d = 0$, con $d$ dal passaggio per $P = {}^t(-2\ 0\ 1)$.
+  $2(-2)+3\cdot 0-1+d = 0 \Rightarrow d = 5$.
+  Il piano è $2x+3y-z+5 = 0$.
+  **Errore tipico:** le opzioni con $-3y$ non sono parallele a questo piano (sono parallele alla gemella $2x-3y-z+4=0$); quella con termine noto $3$ passa per ${}^t(-2\ 0\ -1)$, non per $P$.
+T: Quale delle seguenti forme implicite rappresenta un piano parallelo al piano con forma implicita $2x+3y-z+4=0$ e passante per il punto ${}^t(-2\ 0\ 1)$ nello spazio?
+31-14 C Piano parallelo: $2x+3y-z+d = 0$, con $d$ dal passaggio per $P = {}^t(-2\ 0\ -1)$.
+  $2(-2)+0-(-1)+d = 0 \Rightarrow -3+d = 0 \Rightarrow d = 3$.
+  Il piano è $2x+3y-z+3 = 0$.
+  **Errore tipico:** dimenticare che $-z$ con $z=-1$ vale $+1$ e trovare $d = 5$; le opzioni con $-3y$ non sono parallele.
+T: Quale delle seguenti forme implicite rappresenta un piano parallelo al piano con forma implicita $2x+3y-z+4=0$ e passante per il punto ${}^t(-2\ 0\ -1)$ nello spazio?
+31-15 C Due piani sono paralleli quando i vettori normali (coefficienti di $x, y, z$) sono **proporzionali**; il termine noto è libero.
+  Il normale di $3x+y+2z+2=0$ è ${}^t(3\ 1\ 2)$; il doppio è ${}^t(6\ 2\ 4)$: è il piano $6x+2y+4z-3 = 0$ ✓.
+  ${}^t(6\ -2\ 4)$ ha la seconda componente di segno opposto; ${}^t(6\ 2\ 8)$ e ${}^t(6\ -2\ 8)$ hanno la terza componente quadruplicata invece che raddoppiata.
+  **Errore tipico:** raddoppiare solo alcuni coefficienti, o confondere la domanda con le gemelle ($-y$ o $4z$).
+31-16 D Piani paralleli = normali proporzionali.
+  Normale di $3x-y+2z+2=0$: ${}^t(3\ -1\ 2)$; il doppio è ${}^t(6\ -2\ 4)$: piano $6x-2y+4z-5 = 0$ ✓.
+  Le altre hanno normali ${}^t(6\ 2\ 8)$, ${}^t(6\ -2\ 8)$, ${}^t(6\ 2\ 4)$, non proporzionali a ${}^t(3\ -1\ 2)$.
+  **Errore tipico:** perdere il segno di $-y$ e scegliere $6x+2y+4z-3=0$.
+31-17 C Piani paralleli = normali proporzionali.
+  Normale di $3x+y+4z+2=0$: ${}^t(3\ 1\ 4)$; il doppio è ${}^t(6\ 2\ 8)$: piano $6x+2y+8z-3 = 0$ ✓.
+  Le altre hanno normali ${}^t(6\ -2\ 8)$, ${}^t(6\ 2\ 4)$, ${}^t(6\ -2\ 4)$, non proporzionali.
+  **Errore tipico:** raddoppiare $x$ e $y$ ma non $z$ (scegliendo $4z$), o cambiare il segno di $y$.
+31-18 C Piani paralleli = normali proporzionali.
+  Normale di $3x-y+4z+2=0$: ${}^t(3\ -1\ 4)$; il doppio è ${}^t(6\ -2\ 8)$: piano $6x-2y+8z-5 = 0$ ✓.
+  Le altre hanno normali ${}^t(6\ 2\ 8)$, ${}^t(6\ -2\ 4)$, ${}^t(6\ 2\ 4)$, non proporzionali.
+  **Errore tipico:** trascurare il segno di $-y$ o il coefficiente $4$ di $z$.
+31-19 C Si confrontano i coefficienti: $(2,-4,1)$ e $(4,-8,-2)$. Se fossero proporzionali il fattore sarebbe 2 (da $x$), ma $2\cdot 1 = 2 \ne -2$ per la $z$: **non** sono proporzionali.
+  La matrice incompleta $\begin{pmatrix} 2 & -4 & 1 \\ 4 & -8 & -2 \end{pmatrix}$ ha rango 2 (minore $\begin{vmatrix} -4 & 1 \\ -8 & -2 \end{vmatrix} = 8+8 = 16 \ne 0$), e quindi anche la completa ha rango 2.
+  $\operatorname{rank} A = \operatorname{rank}(A|B) = 2$: i piani sono **incidenti** (si intersecano in una retta).
+  **Errore tipico:** notare che $4x-8y$ e $-6$ sono il doppio di $2x-4y$ e $-3$ e concludere "coincidenti" o "paralleli", senza accorgersi del segno di $-2z$.
+  TRAP: il coefficiente di $z$ è $-2$, non $+2$: basta un segno per rendere i piani incidenti.
+31-20 A Il secondo piano è esattamente il doppio del primo: $4x-8y+2z-6 = 2(2x-4y+z-3)$.
+  Matrice incompleta e completa hanno entrambe rango 1: $\operatorname{rank} A = \operatorname{rank}(A|B) = 1$, quindi i piani sono **coincidenti** (due equazioni proporzionali descrivono lo stesso insieme).
+  **Errore tipico:** pensare che due equazioni diverse debbano dare piani diversi e scegliere "paralleli non coincidenti": moltiplicare un'equazione per un numero non nullo non cambia il piano.
+31-21 B Direttore della retta parametrica: ${}^t(1\ -2\ 2)$. Direttore della retta implicita: $(4,1,-1)\times(2,0,-1) = (1\cdot(-1)-(-1)\cdot 0,\ (-1)\cdot 2-4\cdot(-1),\ 4\cdot 0-1\cdot 2) = (-1,2,-2)$, proporzionale: rette **parallele**.
+  Intersezione: sostituendo la parametrica,
+  $4(1+\lambda)+(1-2\lambda)-(3+2\lambda)-2 = 4+1-3-2 + (4-2-2)\lambda = 0$,
+  $2(1+\lambda)-(3+2\lambda)+1 = 0$.
+  Entrambe le equazioni sono soddisfatte **per ogni** $\lambda$: ogni punto della prima retta sta sulla seconda, quindi le rette sono **coincidenti**.
+  **Errore tipico:** vedere due descrizioni diverse (una parametrica e una implicita) e pensare che rappresentino rette diverse; o fermarsi al parallelismo e rispondere "parallele non coincidenti".
+T: Quale è la mutua posizione delle due rette con forma parametrica $\begin{cases} x=1+\lambda \\ y=1-2\lambda \\ z=3+2\lambda \end{cases}$ e con forma implicita $\begin{cases} 4x+y-z-2=0 \\ 2x-z+1=0 \end{cases}$ nello spazio?
+31-22 D Direttore della retta parametrica: ${}^t(-3\ 6\ 2)$. Direttore della implicita: $(4,1,-1)\times(2,0,-1) = (-1,2,-2)$. Non sono proporzionali (il fattore $3$ suggerito da $x$ e $y$ darebbe $-6$ per la $z$, non $2$): le rette **non sono parallele**.
+  Intersezione: sostituendo,
+  $4(1-3\lambda)+(1+6\lambda)-(3+2\lambda)-6 = -4-8\lambda = 0 \Rightarrow \lambda = -\tfrac12$;
+  $2(1-3\lambda)-(3+2\lambda)-1 = -2-8\lambda = 0 \Rightarrow \lambda = -\tfrac14$.
+  I due valori sono diversi: nessun punto comune. Non parallele e senza intersezione: rette **sghembe**.
+  Con il metodo dei ranghi si trova $\operatorname{rank} A = 3$ e $\operatorname{rank}(A|B) = 4$.
+  **Errore tipico:** risolvere solo una delle due equazioni (trovando un $\lambda$) e concludere "incidenti" senza controllare l'altra.
+T: Quale è la mutua posizione delle due rette con forma parametrica $\begin{cases} x=1-3\lambda \\ y=1+6\lambda \\ z=3+2\lambda \end{cases}$ e con forma implicita $\begin{cases} 4x+y-z-6=0 \\ 2x-z-1=0 \end{cases}$ nello spazio?
+31-23 A Si sostituisce la parametrica della retta nell'equazione del piano:
+  $2(3+2\lambda)+(2-3\lambda)-(1+\lambda)-7 = (6+2-1-7) + (4-3-1)\lambda = 0$.
+  L'equazione è soddisfatta **per ogni** $\lambda$: tutti i punti della retta stanno nel piano, quindi la retta è **contenuta** nel piano.
+  (Infatti il direttore ${}^t(2\ -3\ 1)$ è ortogonale al normale ${}^t(2\ 1\ -1)$: $4-3-1 = 0$, e il punto ${}^t(3\ 2\ 1)$ sta nel piano: $6+2-1-7 = 0$.)
+  **Errore tipico:** vedere che direttore e normale sono ortogonali e dire "parallela non contenuta" senza controllare se un punto della retta sta nel piano.
+T: Quale è la posizione della retta con forma parametrica $\begin{cases} x=3+2\lambda \\ y=2-3\lambda \\ z=1+\lambda \end{cases}$ rispetto al piano con forma implicita $2x+y-z-7=0$ nello spazio?
+31-24 D Si sostituisce la parametrica nell'equazione del piano:
+  $2(3+2\lambda)+(2-3\lambda)-(1+\lambda)+7 = (6+2-1+7) + (4-3-1)\lambda = 14$.
+  Si ottiene $14 = 0$, falso per ogni $\lambda$: nessun punto in comune. Il coefficiente di $\lambda$ è nullo perché il direttore ${}^t(2\ -3\ 1)$ è ortogonale al normale ${}^t(2\ 1\ -1)$: la retta è **parallela ma non contenuta** nel piano.
+  **Errore tipico:** confondere questa domanda con la gemella in cui il termine noto è $-7$ (lì la retta è contenuta).
+  TRAP: cambia solo il segno del termine noto rispetto alla gemella, e la retta passa da contenuta a parallela esterna.
+T: Quale è la posizione della retta con forma parametrica $\begin{cases} x=3+2\lambda \\ y=2-3\lambda \\ z=1+\lambda \end{cases}$ rispetto al piano con forma implicita $2x+y-z+7=0$ nello spazio?
+31-25 B Si sostituisce la parametrica nell'equazione del piano:
+  $2(3+2\lambda)+(2-3\lambda)-(1-2\lambda)+7 = (6+2-1+7) + (4-3+2)\lambda = 14+3\lambda = 0 \Rightarrow \lambda = -\tfrac{14}{3}$.
+  C'è un solo valore di $\lambda$, quindi un solo punto comune: la retta è **incidente** al piano. Coerentemente, direttore ${}^t(2\ -3\ -2)$ e normale ${}^t(2\ 1\ -1)$ non sono ortogonali ($4-3+2 = 3 \ne 0$).
+  **Errore tipico:** rispondere come nella gemella con $z = 1+\lambda$ (parallela non contenuta) senza accorgersi che il coefficiente di $\lambda$ in $z$ è $-2$.
+T: Quale è la posizione della retta con forma parametrica $\begin{cases} x=3+2\lambda \\ y=2-3\lambda \\ z=1-2\lambda \end{cases}$ rispetto al piano con forma implicita $2x+y-z+7=0$ nello spazio?
+31-26 C Direttore della parametrica: ${}^t(-3\ 6\ 2)$. Direttore della implicita: $(2,1,0)\times(0,1,1) = (1\cdot 1-0\cdot 1,\ 0\cdot 0-2\cdot 1,\ 2\cdot 1-1\cdot 0) = (1,-2,2)$: non proporzionali, rette **non parallele**.
+  Intersezione: sostituendo,
+  $2(1-3\lambda)+(1+6\lambda)-3 = 0$ per ogni $\lambda$; $(1+6\lambda)+(3+2\lambda)-4 = 8\lambda = 0 \Rightarrow \lambda = 0$.
+  Esiste un punto comune, ${}^t(1\ 1\ 3)$ (per $\lambda = 0$): le rette sono **incidenti**.
+  **Errore tipico:** vedere che la prima equazione è identicamente soddisfatta e concludere "coincidenti": serve che lo siano entrambe.
+T: Quale è la mutua posizione delle due rette con forma parametrica $\begin{cases} x=1-3\lambda \\ y=1+6\lambda \\ z=3+2\lambda \end{cases}$ e con forma implicita $\begin{cases} 2x+y-3=0 \\ y+z-4=0 \end{cases}$ nello spazio?
+31-27 APERTA
+KW: parallele, incidenti, sghembe, coincidenti, vettori direttori|direttore, multipli|proporzionali, intersezione|si intersecano, giacitura, Rouché-Capelli, rango, matrice completa, matrice incompleta
+> Due sottospazi affini $S_1 = P_1 + W_1$ e $S_2 = P_2 + W_2$ sono **paralleli** se $W_1 \subseteq W_2$ o $W_2 \subseteq W_1$ (quindi un sottospazio è parallelo a sé stesso), **incidenti** se non sono paralleli e $S_1 \cap S_2 \ne \emptyset$, **sghembi** se $S_1 \cap S_2 = \emptyset$ e $W_1 \cap W_2 = \{\mathbf 0\}$.
+>
+> Per due rette nello spazio le possibilità, esaustive e mutuamente esclusive, sono:
+> - **coincidenti**;
+> - **parallele** (non coincidenti), se i vettori direttori sono multipli l'uno dell'altro;
+> - **incidenti**, se si intersecano in un punto;
+> - **sghembe**, se non si intersecano e i vettori direttori non sono multipli l'uno dell'altro.
+>
+> Se le rette hanno forme implicite $\begin{cases} a_1x+b_1y+c_1z+d_1=0 \\ a_2x+b_2y+c_2z+d_2=0 \end{cases}$ e $\begin{cases} a'_1x+b'_1y+c'_1z+d'_1=0 \\ a'_2x+b'_2y+c'_2z+d'_2=0 \end{cases}$, si considera il sistema di 4 equazioni in 3 incognite, con matrice incompleta $A$ ($4\times 3$) e completa $(A|B)$ ($4\times 4$). Per il teorema di Rouché-Capelli:
+>
+> | $\operatorname{rank}A$ | $\operatorname{rank}(A\vert B)$ | posizione |
+> |---|---|---|
+> | 2 | 2 | coincidenti |
+> | 2 | 3 | parallele non coincidenti |
+> | 3 | 3 | incidenti |
+> | 3 | 4 | sghembe |
+>
+> **Esempio.** Le rette $\begin{cases} x=1-2\lambda \\ y=\lambda \\ z=3-\lambda \end{cases}$ e $\begin{cases} x=3+\lambda \\ y=2-\lambda \\ z=-1+2\lambda \end{cases}$ sono sghembe: i direttori ${}^t(-2\ 1\ -1)$ e ${}^t(1\ -1\ 2)$ non sono proporzionali e il sistema delle sei equazioni non ha soluzione (con le forme implicite: rango 3 e 4).
+31-28 APERTA
+T: Verificare che il piano $\pi$ di equazione $x+2y-4z-3=0$ non è parallelo alla retta $r$ di equazione $\begin{cases} x-2y+3z+1=0 \\ x-z-3=0 \end{cases}$. Trovare il piano $\alpha$ che contiene la retta $r$ e passa per il punto $P(1,3,-1)$.
+KW: vettore direttore|direttore, prodotto vettoriale|minori, vettore normale|normale, prodotto scalare, non parallelo|incidente, rango 3, fascio di piani, sostituire|imporre il passaggio, 3x+y-5z-11=0
+> **Non parallelismo.** Il direttore di $r$ si ottiene dal prodotto vettoriale dei normali dei due piani che la definiscono:
+> $$\mathbf v = (1,-2,3)\times(1,0,-1) = ((-2)(-1)-3\cdot 0,\ 3\cdot 1-1\cdot(-1),\ 1\cdot 0-(-2)\cdot 1) = (2,4,2).$$
+> Il normale di $\pi$ è $\mathbf n = (1,2,-4)$ e $\mathbf v\cdot\mathbf n = 2+8-8 = 2 \ne 0$: il direttore non sta nella giacitura di $\pi$, quindi $r$ **non è parallela** a $\pi$ (è incidente). Equivalentemente, la matrice incompleta del sistema delle tre equazioni ha rango 3: $\det\begin{pmatrix} 1 & -2 & 3 \\ 1 & 0 & -1 \\ 1 & 2 & -4 \end{pmatrix} = 2 \ne 0$.
+>
+> **Piano $\alpha$.** I piani che contengono $r$ formano il **fascio** $a(x-2y+3z+1) + b(x-z-3) = 0$, $(a,b) \ne (0,0)$. Imponendo il passaggio per $P(1,3,-1)$:
+> $$a(1-6-3+1) + b(1+1-3) = -7a - b = 0 \Rightarrow b = -7a.$$
+> Con $a = 1$, $b = -7$: $x-2y+3z+1-7x+7z+21 = -6x-2y+10z+22 = 0$, cioè
+> $$\alpha:\ 3x+y-5z-11 = 0.$$
+> Verifica: $3+3+5-11 = 0$ ✓ ($P$ non sta su $r$, quindi $\alpha$ è unico).
+31-29 APERTA
+KW: contenuta, parallela non contenuta|parallela, incidente, un punto, giacitura, vettore direttore, vettore normale|normale, Rouché-Capelli, rango, matrice completa, matrice incompleta, sostituire
+> Una retta $r$ rispetto a un piano $\pi$ nello spazio può essere:
+> - **contenuta** nel piano ($r \subseteq \pi$);
+> - **parallela ma non contenuta**, se non si intersecano;
+> - **incidente**, se interseca il piano in un punto.
+>
+> Le possibilità sono esaustive e mutuamente esclusive. La retta è parallela al piano (contenuta o no) quando la sua giacitura è contenuta in quella del piano, cioè quando il vettore direttore $\mathbf v$ soddisfa l'equazione omogenea del piano: $a v_x + b v_y + c v_z = 0$.
+>
+> Con le forme implicite $\begin{cases} a_1x+b_1y+c_1z+d_1=0 \\ a_2x+b_2y+c_2z+d_2=0 \end{cases}$ e $a'x+b'y+c'z+d'=0$ si studia il sistema di 3 equazioni in 3 incognite, con matrice incompleta $A$ ($3\times 3$) e completa $(A|B)$. Per Rouché-Capelli:
+>
+> | $\operatorname{rank}A$ | $\operatorname{rank}(A\vert B)$ | posizione |
+> |---|---|---|
+> | 2 | 2 | contenuta |
+> | 2 | 3 | parallela non contenuta |
+> | 3 | 3 | incidente |
+>
+> Se la retta è in forma parametrica basta **sostituire** $x, y, z$ nell'equazione del piano: se si ottiene un'identità la retta è contenuta, se si ottiene un'uguaglianza impossibile è parallela non contenuta, se si ottiene un'equazione di primo grado in $\lambda$ (una soluzione) è incidente.
+>
+> **Esempio.** La retta $\begin{cases} x+z-3=0 \\ 2x-y+3z=0 \end{cases}$ e il piano $2y-z+1=0$: il sistema ha una sola soluzione, $\operatorname{rank}A = \operatorname{rank}(A|B) = 3$, la retta è incidente.
+31-30 APERTA
+KW: coincidenti, paralleli non coincidenti|paralleli, incidenti, retta, non si intersecano, coefficienti proporzionali|proporzionali, vettore normale|normale, Rouché-Capelli, rango, matrice completa, matrice incompleta
+> Due piani nello spazio possono essere **coincidenti** oppure, se distinti:
+> - **paralleli** (non coincidenti), se non si intersecano;
+> - **incidenti**, se si intersecano in una retta.
+>
+> Le possibilità sono esaustive e mutuamente esclusive (nello spazio due piani non possono essere sghembi né incontrarsi in un solo punto).
+>
+> Con le forme implicite $ax+by+cz+d=0$ e $a'x+b'y+c'z+d'=0$ si considera il sistema delle due equazioni, con matrice incompleta $A = \begin{pmatrix} a & b & c \\ a' & b' & c' \end{pmatrix}$ e completa $(A|B) = \begin{pmatrix} a & b & c & -d \\ a' & b' & c' & -d' \end{pmatrix}$. Per Rouché-Capelli:
+>
+> | $\operatorname{rank}A$ | $\operatorname{rank}(A\vert B)$ | posizione |
+> |---|---|---|
+> | 1 | 1 | coincidenti |
+> | 1 | 2 | paralleli non coincidenti |
+> | 2 | 2 | incidenti |
+>
+> In pratica: i piani sono paralleli se e solo se i vettori normali ${}^t(a\ b\ c)$ e ${}^t(a'\ b'\ c')$ sono proporzionali; sono coincidenti se è proporzionale anche il termine noto.
+>
+> **Esempio.** $x-3y+z-1=0$ e $2x-6y+2z=0$: $\operatorname{rank}A = 1$, $\operatorname{rank}(A|B) = 2$, piani paralleli non coincidenti. Il piano parallelo a $x-4y+2z-5=0$ per un punto $P$ si trova come $x-4y+2z+d=0$ imponendo il passaggio per $P$.
+31-31 APERTA
+T: Verificare che il piano $\pi$ di equazione $x-2y-4z-3=0$ non è parallelo alla retta $r$ di equazione $\begin{cases} x+2y+3z+1=0 \\ x-z-3=0 \end{cases}$. Trovare il piano $\alpha$ che contiene la retta $r$ e passa per il punto $P(1,-3,-1)$.
+KW: vettore direttore|direttore, prodotto vettoriale|minori, vettore normale|normale, prodotto scalare, non parallelo|incidente, rango 3, fascio di piani, sostituire|imporre il passaggio, 3x-y-5z-11=0
+> **Non parallelismo.** Direttore di $r$:
+> $$\mathbf v = (1,2,3)\times(1,0,-1) = (2\cdot(-1)-3\cdot 0,\ 3\cdot 1-1\cdot(-1),\ 1\cdot 0-2\cdot 1) = (-2,4,-2).$$
+> Normale di $\pi$: $\mathbf n = (1,-2,-4)$; $\mathbf v\cdot\mathbf n = -2-8+8 = -2 \ne 0$, quindi $r$ **non è parallela** a $\pi$. Equivalentemente $\det\begin{pmatrix} 1 & 2 & 3 \\ 1 & 0 & -1 \\ 1 & -2 & -4 \end{pmatrix} = -2 \ne 0$: rango 3, retta incidente al piano.
+>
+> **Piano $\alpha$.** Fascio dei piani per $r$: $a(x+2y+3z+1) + b(x-z-3) = 0$. Passaggio per $P(1,-3,-1)$:
+> $$a(1-6-3+1) + b(1+1-3) = -7a-b = 0 \Rightarrow b = -7a.$$
+> Con $a=1$, $b=-7$: $x+2y+3z+1-7x+7z+21 = -6x+2y+10z+22 = 0$, cioè
+> $$\alpha:\ 3x-y-5z-11 = 0.$$
+> Verifica: $3+3+5-11 = 0$ ✓.
+31-32 APERTA
+T: Verificare che la retta $r$ di equazione $\begin{cases} 2x-y-3z-1=0 \\ y-z-3=0 \end{cases}$ è parallela al piano $\pi$ di equazione $2x+y-5z-3=0$. Trovare il piano $\alpha$ che contiene la retta $r$ e passa per il punto $P(3,1,-1)$.
+KW: vettore direttore|direttore, prodotto vettoriale|minori, vettore normale|normale, prodotto scalare nullo|ortogonale, parallela, rango 2, rango 3, fascio di piani, sostituire|imporre il passaggio, x+3y-5z-11=0
+> **Parallelismo.** Direttore di $r$:
+> $$\mathbf v = (2,-1,-3)\times(0,1,-1) = ((-1)(-1)-(-3)\cdot 1,\ (-3)\cdot 0-2\cdot(-1),\ 2\cdot 1-(-1)\cdot 0) = (4,2,2).$$
+> Normale di $\pi$: $\mathbf n = (2,1,-5)$; $\mathbf v\cdot\mathbf n = 8+2-10 = 0$: il direttore sta nella giacitura di $\pi$, quindi $r$ è **parallela** a $\pi$. Con i ranghi: la matrice incompleta $\begin{pmatrix} 2 & -1 & -3 \\ 0 & 1 & -1 \\ 2 & 1 & -5 \end{pmatrix}$ ha determinante $0$ (la terza riga è la prima più due volte la seconda) e rango 2, mentre la completa ha rango 3 (termini noti $1, 3, 3$ e $1+2\cdot 3 = 7 \ne 3$): $r$ è parallela e **non contenuta** in $\pi$.
+>
+> **Piano $\alpha$.** Fascio dei piani per $r$: $a(2x-y-3z-1) + b(y-z-3) = 0$. Passaggio per $P(3,1,-1)$:
+> $$a(6-1+3-1) + b(1+1-3) = 7a - b = 0 \Rightarrow b = 7a.$$
+> Con $a=1$, $b=7$: $2x-y-3z-1+7y-7z-21 = 2x+6y-10z-22 = 0$, cioè
+> $$\alpha:\ x+3y-5z-11 = 0.$$
+> Verifica: $3+3+5-11 = 0$ ✓.
+31-33 APERTA
+T: Verificare che la retta $r$ di equazione $\begin{cases} 2x-y+3z-1=0 \\ y+z-3=0 \end{cases}$ è parallela al piano $\pi$ di equazione $2x+y+5z-3=0$. Trovare il piano $\alpha$ che contiene la retta $r$ e passa per il punto $P(3,1,1)$.
+KW: vettore direttore|direttore, prodotto vettoriale|minori, vettore normale|normale, prodotto scalare nullo|ortogonale, parallela, rango 2, rango 3, fascio di piani, sostituire|imporre il passaggio, x+3y+5z-11=0
+> **Parallelismo.** Direttore di $r$:
+> $$\mathbf v = (2,-1,3)\times(0,1,1) = ((-1)\cdot 1-3\cdot 1,\ 3\cdot 0-2\cdot 1,\ 2\cdot 1-(-1)\cdot 0) = (-4,-2,2).$$
+> Normale di $\pi$: $\mathbf n = (2,1,5)$; $\mathbf v\cdot\mathbf n = -8-2+10 = 0$: $r$ è **parallela** a $\pi$. Con i ranghi: la matrice incompleta $\begin{pmatrix} 2 & -1 & 3 \\ 0 & 1 & 1 \\ 2 & 1 & 5 \end{pmatrix}$ ha rango 2 (terza riga = prima + 2·seconda), la completa ha rango 3 ($1+2\cdot 3 = 7 \ne 3$): parallela **non contenuta**.
+>
+> **Piano $\alpha$.** Fascio dei piani per $r$: $a(2x-y+3z-1) + b(y+z-3) = 0$. Passaggio per $P(3,1,1)$:
+> $$a(6-1+3-1) + b(1+1-3) = 7a - b = 0 \Rightarrow b = 7a.$$
+> Con $a=1$, $b=7$: $2x-y+3z-1+7y+7z-21 = 2x+6y+10z-22 = 0$, cioè
+> $$\alpha:\ x+3y+5z-11 = 0.$$
+> Verifica: $3+3+5-11 = 0$ ✓.
+x143 B Si studiano le coppie con il metodo dei ranghi (sistema delle 4 equazioni: rango incompleta $r_i$, completa $r_c$).
+  $r_1$ e $r_2$: hanno la stessa prima equazione e le seconde $3x-z+1=0$, $3x-z=0$ sono piani paralleli distinti; il sistema è impossibile e $r_i = 2$, $r_c = 3$: rette **parallele non coincidenti**.
+  $r_1$ e $r_3$: dal sistema $x+2y-z=1$, $3x-z=-1$, $x+y=1$ si ricava $z = 3x+1$, poi $-2x+2y = 2 \Rightarrow y = x+1$, e $x+(x+1) = 1 \Rightarrow x = 0$: punto ${}^t(0\ 1\ 1)$, che soddisfa anche la quarta equazione. $r_i = r_c = 3$: rette **incidenti**.
+  $r_2$ e $r_3$: $r_i = 3$, $r_c = 4$: rette **sghembe**.
+  **Errore tipico:** pensare che $r_1$ e $r_2$ si intersechino perché hanno un'equazione in comune: stanno nello stesso piano ma sono parallele.
+T: Date le rette con forma implicita $r_1: \begin{cases} x+2y-z-1=0 \\ 3x-z+1=0 \end{cases}$, $r_2: \begin{cases} x+2y-z-1=0 \\ 3x-z=0 \end{cases}$, $r_3: \begin{cases} x+y-1=0 \\ 3x-z+1=0 \end{cases}$ nello spazio, quale delle seguenti coppie è una coppia di sottospazi affini incidenti?
+OPT: $r_1$ e $r_2$. | $r_1$ e $r_3$. | $r_2$ e $r_3$. | Nessuna delle altre risposte.
+x144 C Per due piani la tabella di Rouché-Capelli è: $r_i = r_c = 1$ coincidenti; $r_i = 1$, $r_c = 2$ **paralleli non coincidenti**; $r_i = r_c = 2$ incidenti.
+  Paralleli non coincidenti significa coefficienti proporzionali (incompleta di rango 1) ma sistema impossibile (completa di rango 2).
+  La combinazione $r_i = 2$, $r_c = 1$ è impossibile: la matrice completa contiene l'incompleta, quindi $r_c \geqslant r_i$.
+  **Errore tipico:** scambiare i ruoli delle due matrici, o confondere il caso "paralleli" con "coincidenti" (ranghi entrambi 1).
+T: Dati due piani con forma implicita in $\boldsymbol V^3_G$, e detti $r_i$ e $r_c$ i ranghi rispettivamente della matrice incompleta e della matrice completa associate al sistema di equazioni lineari ottenuto considerando le equazioni dei due piani, in quale dei seguenti casi i due piani sono paralleli non coincidenti?
+OPT: $r_i = 1$, $r_c = 1$. | $r_i = 2$, $r_c = 1$. | $r_i = 1$, $r_c = 2$. | $r_i = 2$, $r_c = 2$.
+x145 D Matrice completa del sistema: $\begin{pmatrix} 2 & 1 & 0 & -1 \\ 1 & 1 & -1 & 0 \\ 3 & 2 & -2 & -1 \\ 1 & 3 & -4 & -3 \end{pmatrix}$.
+  Rango dell'incompleta: il minore delle prime tre righe $\det\begin{pmatrix} 2 & 1 & 0 \\ 1 & 1 & -1 \\ 3 & 2 & -2 \end{pmatrix} = 2(-2+2) - 1(-2+3) + 0 = -1 \ne 0$, quindi $r_i = 3$.
+  Determinante della completa $4\times 4$: con l'eliminazione di Gauss (o con sympy) risulta diverso da zero, quindi $r_c = 4$. Il sistema è impossibile: le rette non si intersecano.
+  Coerentemente, i direttori $(2,1,0)\times(1,1,-1) = (-1,2,1)$ e $(3,2,-2)\times(1,3,-4) = (-2,10,7)$ non sono proporzionali.
+  $r_i = 3$, $r_c = 4$: rette **sghembe**.
+  **Errore tipico:** fermarsi al rango 3 dell'incompleta e concludere "incidenti" senza calcolare il rango della completa.
+T: Date le rette con forma implicita $\alpha: \begin{cases} 2x+y+1=0 \\ x+y-z=0 \end{cases}$, $\beta: \begin{cases} 3x+2y-2z+1=0 \\ x+3y-4z+3=0 \end{cases}$ in $\boldsymbol V^3_G$, e detti $r_i$ e $r_c$ i ranghi rispettivamente della matrice incompleta e della matrice completa associate al sistema di equazioni lineari $\begin{cases} 2x+y+1=0 \\ x+y-z=0 \\ 3x+2y-2z+1=0 \\ x+3y-4z+3=0 \end{cases}$, quale delle seguenti proposizioni è vera?
+OPT: $r_i = 2$, $r_c = 2$ e le rette sono coincidenti. | $r_i = 2$, $r_c = 3$ e le rette sono parallele non coincidenti. | $r_i = 3$, $r_c = 3$ e le rette sono incidenti. | $r_i = 3$, $r_c = 4$ e le rette sono sghembe.
+x146 C Matrice incompleta $\begin{pmatrix} 1 & -1 & 0 \\ 2 & -4 & 5 \\ 1 & 1 & -5 \end{pmatrix}$: $\det = 1(20-5) - (-1)(-10-5) + 0 = 15 - 15 = 0$, e il minore $\begin{vmatrix} 1 & -1 \\ 2 & -4 \end{vmatrix} = -2 \ne 0$: $r_i = 2$.
+  Matrice completa (termini noti $-3, -7, -3$): il minore con le colonne di $x$, $y$ e dei termini noti $\det\begin{pmatrix} 1 & -1 & -3 \\ 2 & -4 & -7 \\ 1 & 1 & -3 \end{pmatrix} = 1(12+7) + 1(-6+7) - 3(2+4) = 19+1-18 = 2 \ne 0$: $r_c = 3$.
+  $r_i = 2$, $r_c = 3$: la retta è **parallela al piano e non contenuta**. (Verifica: direttore di $r$ $(1,-1,0)\times(2,-4,5) = (-5,-5,-2)$, normale del piano $(1,1,-5)$, prodotto scalare $-5-5+10 = 0$.)
+  **Errore tipico:** associare la coppia $r_i = 2$, $r_c = 3$ a "incidente", o pensare che $r_i = 3$ indichi parallelismo: per retta e piano, rango 3 dell'incompleta significa un'unica soluzione, cioè incidenza.
+T: Dati la retta e il piano con forma implicita $r: \begin{cases} x-y+3=0 \\ 2x-4y+5z+7=0 \end{cases}$, $\alpha: x+y-5z+3=0$ in $\boldsymbol V^3_G$, e detti $r_i$ e $r_c$ i ranghi rispettivamente della matrice incompleta e della matrice completa associate al sistema di equazioni lineari $\begin{cases} x-y+3=0 \\ 2x-4y+5z+7=0 \\ x+y-5z+3=0 \end{cases}$, quale delle seguenti proposizioni è vera?
+OPT: $r_i = 2$, $r_c = 3$ e la retta è incidente al piano. | $r_i = 3$, $r_c = 3$ e la retta è parallela al piano non contenuta nel piano. | $r_i = 2$, $r_c = 3$ e la retta è parallela al piano non contenuta nel piano. | $r_i = 3$, $r_c = 3$ e la retta è incidente al piano.

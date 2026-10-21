@@ -1,0 +1,200 @@
+@p24-1
+- La matrice dei coefficienti ha una riga per equazione e una colonna per **ogni** incognita, nell'ordine $x_1,x_2,x_3,x_4$.
+- Se un'incognita non compare in un'equazione, il suo coefficiente è $0$: la prima riga inizia con $0$ (manca $x_1$), la seconda finisce con $0$ (manca $x_4$).
+- La matrice completa è $A$ con in più la colonna dei termini noti $(6,-1)$: non è il solo vettore $B$. Scarta [[D]] e controlla i segni.
+@p24-2
+- Tre equazioni, tre incognite: $A$ deve essere $3\times3$ e la completa $3\times4$.
+- Riscrivi ogni equazione con tutte le incognite: $0x_1+2x_2-3x_3=-1$, $4x_1+2x_2+0x_3=-3$, $3x_1+0x_2-2x_3=3$.
+- Una matrice con sole 2 colonne non può essere quella giusta, e il solo vettore dei termini noti non è la matrice completa: scarta [[B]] e [[A]].
+@p24-3
+- Le incognite del sistema sono $x_1,x_2,x_3$ anche se nessuna equazione le contiene tutte: $A$ è $2\times3$.
+- Prima riga $(4,-1,0)$, seconda riga $(0,2,-3)$: controlla i segni.
+- La completa aggiunge la colonna $(3,-2)$; scarta [[D]], che ha solo 2 colonne di coefficienti.
+@p24-4
+- Scrivi ogni equazione con $x_1,x_2,x_3$, mettendo $0$ dove un'incognita manca.
+- Righe: $(1,-3,0)$, $(0,3,-1)$, $(2,0,1)$, termini noti $(-2,0,3)$.
+- Una matrice $3\times2$ è sbagliata, e anche il solo vettore dei termini noti al posto della completa: scarta [[A]] e [[D]].
+@p24-5
+- $A$ è $2\times3$: una colonna per ciascuna di $x_1,x_2,x_3$.
+- Prima equazione $0x_1+1x_2-2x_3$, seconda $3x_1+0x_2-1x_3$: i coefficienti di $x_3$ sono negativi.
+- La completa è $A$ più la colonna $(-5,1)$; scarta [[B]] (dà solo $B$).
+@p24-6
+- Le incognite sono quattro: $A$ è $2\times4$, la completa $2\times5$.
+- Righe di $A$: $(1,-3,0,1)$ e $(0,1,-4,2)$.
+- La completa deve contenere anche la colonna dei termini noti $(0,-2)$: scarta [[B]] e [[C]].
+@x115
+- "Lineare" significa: ogni membro è un polinomio di grado al più 1 nelle incognite.
+- Non sono ammessi potenze, funzioni delle incognite (come il coseno) né prodotti di due incognite.
+- $z^2$ e $\cos z$ escludono subito [[A]] e [[C]]: controlla il termine $5xz$ dell'altro sistema.
+@x116
+- La matrice $\begin{pmatrix}3&-1\\4&6\end{pmatrix}$ ha 2 colonne: quante incognite ha il sistema?
+- Riga $i$ della matrice = coefficienti della $i$-esima equazione, termine noto $i$-esimo a secondo membro.
+- Nessuna $x_3$ può comparire: scarta [[A]] e [[B]].
+@x117
+- Ricorda la frase: "soluzione generica = una soluzione particolare + soluzione generica dell'omogeneo associato".
+- Per ottenere tutte le soluzioni di $AX=B$ devi traslare $\mathcal{S}_0$ con una soluzione di $AX=B$, non dell'omogeneo.
+- $\overline{X}_0+\mathcal{S}_0$ è ancora $\mathcal{S}_0$, non $\mathcal{S}$: scarta [[B]].
+@x118
+- Per un sistema compatibile il numero di parametri è $\dim\mathrm{Ker}(f_A)$.
+- Teorema della dimensione: $\dim\mathrm{Ker}(f_A)=n-\dim\mathrm{Im}(f_A)=n-\mathrm{rank}(A)$.
+- [[A]] e [[B]] sono vere (sono la stessa quantità scritta in due modi): confronta le altre due con $n-\mathrm{rank}(A)$.
+@p25-1
+- Usa il Teorema di Rouché-Capelli: confronta il rango dell'incompleta con quello della completa.
+- $\det\begin{pmatrix}3&2\\6&4\end{pmatrix}=0$, quindi $r_i=1$; ora calcola un minore della completa che usi la colonna dei termini noti.
+- La seconda equazione è il doppio della prima nei coefficienti, ma anche nel termine noto? Ranghi diversi = nessuna soluzione: scarta [[C]] e [[D]].
+@p25-2
+- Calcola $\det A$: se non è nullo, $r_i=2$.
+- $\det\begin{pmatrix}3&2\\6&-4\end{pmatrix}=-12-12$.
+- Una matrice completa $2\times3$ ha rango al più 2; se $r_i=r_c$ il sistema è compatibile: scarta [[C]].
+@p25-3
+- Con 2 incognite $r_i\le2$; un minore $2\times2$ non nullo di $A$ dà $r_i=2$.
+- La completa è $3\times3$: calcolane il determinante con attenzione ai segni.
+- Se $\det(A\,|\,B)=0$ allora $r_c=2$ e il sistema è compatibile; se no, $r_c=3$. Ricorda che "$r_c=3$ e ha soluzione" è impossibile: scarta [[C]].
+@p25-4
+- $r_i=2$ perché $\det\begin{pmatrix}1&-1\\1&-3\end{pmatrix}\neq0$.
+- Calcola $\det\left(\begin{array}{cc|c}1&-1&1\\1&-3&-2\\1&3&-7\end{array}\right)$ sviluppando lungo la prima riga.
+- Se il determinante è non nullo $r_c=3>r_i$; un rango della completa maggiore non può mai dare soluzioni: scarta [[D]].
+@p25-5
+- Guarda le righe di $A$: $(1,-1)$, $(3,-3)$, $(-3,3)$. Sono multiple l'una dell'altra?
+- Ora cerca nella completa un minore $2\times2$ non nullo che usi la colonna $(1,-2,7)$.
+- $r_i$ è 1, quindi scarta [[B]] e [[C]]; poi applica Rouché-Capelli.
+@p25-6
+- Confronta le due righe della matrice completa, termine noto compreso.
+- $(2,-6,4,2)$ è un multiplo di $(1,-3,2,1)$?
+- Se tutte le righe della completa sono proporzionali, $r_i=r_c=1$: scarta [[A]] e [[D]].
+@p25-7
+- $\det\begin{pmatrix}3&2\\6&4\end{pmatrix}=0$: $r_i=1$.
+- La riga $(6,4,-2)$ è il doppio di $(3,2,-1)$?
+- Ranghi uguali vuol dire sempre "ha soluzione": scarta [[A]].
+@p25-8
+- Attenzione al segno: la seconda equazione ha $+3x_2$. Le righe di $A$ sono proporzionali?
+- Calcola $\det\begin{pmatrix}2&-6\\1&3\end{pmatrix}$.
+- Con 2 righe, se $r_i=2$ anche $r_c=2$: scarta [[A]] e [[B]].
+@p25-9
+- Per un sistema compatibile in $n$ incognite il numero di soluzioni è $\infty^{n-\mathrm{rank}(A)}$.
+- Qui $n=3$ e $\mathrm{rank}(A)=3$.
+- L'esponente non è il rango: scarta [[C]].
+@p25-10
+- Calcola $\det A$: se è nullo, cerca un minore $2\times2$ non nullo per avere $r_i$.
+- Poi calcola l'orlato del minore con la colonna dei termini noti $(1,-2,-7)$.
+- Prova a vedere se la terza riga della completa è $3\cdot(\text{seconda})-(\text{prima})$, termine noto compreso. "$r_c=3$ e ha soluzione" è impossibile: scarta [[D]].
+@p25-11
+- Formula: $\infty^{n-\mathrm{rank}(A)}$, con $n$ = numero di incognite.
+- Le incognite sono 4 e il rango è 1, non 2 (la seconda equazione è il doppio della prima).
+- Non usare il numero di equazioni al posto del rango: scarta [[A]].
+@p25-12
+- Nei coefficienti la prima riga è il doppio della seconda: $r_i=1$.
+- Vale la stessa proporzione per i termini noti $-2$ e $1$?
+- Calcola $\det\begin{pmatrix}2&-2\\1&1\end{pmatrix}$ (colonne 1 e termini noti) per decidere $r_c$; con $r_i=r_c$ è "ha soluzione", altrimenti no.
+@p25-13
+- Usa $\infty^{n-r}$ con $n$ incognite e $r=\mathrm{rank}(A)$.
+- $n=3$, $r=2$.
+- Scarta [[A]]: una soluzione unica richiederebbe rango 3.
+@p25-14
+- Conta le incognite: sono $x_1,x_2,x_3,x_4$.
+- Il numero di parametri è $n-\mathrm{rank}(A)=4-2$.
+- Scarta [[C]]: con 4 incognite e rango 2 la soluzione non può essere unica.
+@p25-15
+- Calcola $\det A$ sviluppando lungo la prima riga (attenzione: qui c'è $-2x_3$ nella seconda equazione).
+- $\det A=2(-2-0)+3(2+2)+4(0+1)$.
+- Se $\det A\neq0$ allora $r_i=3$ e anche $r_c=3$; ranghi uguali danno sempre soluzione: scarta [[B]].
+@p25-16
+- $\det A=0$, quindi $r_i=2$ (trova un minore $2\times2$ non nullo).
+- Calcola l'orlato con la colonna dei termini noti $(1,-2,7)$.
+- Nell'incompleta la terza riga è $3\cdot(\text{seconda})-(\text{prima})$: i termini noti rispettano questa combinazione? Scarta [[D]], che è impossibile.
+@x119
+- Rouché-Capelli caratterizza la compatibilità: è una condizione necessaria **e** sufficiente.
+- "$P$ se $Q$" e "$P$ solo se $Q$" sono implicazioni in versi opposti: ognuna è solo metà.
+- [[A]] esprime solo l'implicazione "ranghi uguali ⇒ compatibile": è vera ma è solo metà del teorema.
+@x120
+- Il sistema si scrive $x_1A^1+\dots+x_nA^n=B$.
+- Avere una soluzione equivale a esprimere $B$ come combinazione lineare delle colonne, cioè $B\in\mathrm{Span}(A^1,\dots,A^n)$.
+- E $\mathrm{rank}(A)=\mathrm{rank}(A\,|\,B)$ è esattamente Rouché-Capelli: quante delle prime tre sono davvero non equivalenti?
+@x121
+- $\mathrm{rank}(A)=2$ è dato in tutte le opzioni: il punto è il rango della completa.
+- Calcola l'orlato del minore $\det\begin{pmatrix}1&2\\2&0\end{pmatrix}$ con la colonna dei termini noti.
+- Ranghi uguali = compatibile, ranghi diversi = incompatibile: [[B]] e [[C]] sono contraddittorie in sé.
+@x122
+- Teorema 25.6: un sistema quadrato ha una e una sola soluzione se e solo se $\det A\neq0$.
+- Con $\det A=0$ e $\mathrm{rank}(A)=r<n$, cosa succede se il sistema è compatibile? E se non lo è?
+- Prova con $x_1+x_2=2,\ 3x_1+3x_2=-1$ e con $x_1+x_2=2,\ 3x_1+3x_2=6$. Scarta [[B]].
+@p26-1
+- Regola di Cramer: $x_i=\det A_i/\det A$, dove $A_i$ è $A$ con la colonna $i$ sostituita dai termini noti.
+- Per $x_1$ sostituisci la **prima** colonna $\begin{pmatrix}2\\1\end{pmatrix}$ con $B=\begin{pmatrix}3\\0\end{pmatrix}$, nell'ordine.
+- La seconda colonna $\begin{pmatrix}3\\-4\end{pmatrix}$ resta com'è: scarta [[A]] e [[B]], che non contengono la colonna $\begin{pmatrix}3\\0\end{pmatrix}$.
+@p26-2
+- Per $x_2$ si sostituisce la **seconda** colonna di $A$ con i termini noti.
+- La prima colonna $\begin{pmatrix}2\\1\end{pmatrix}$ resta, la seconda diventa $\begin{pmatrix}0\\-3\end{pmatrix}$.
+- Controlla ordine e segno dei termini noti: scarta [[A]] e [[D]], che hanno $0$ in basso.
+@p26-3
+- Per $x_1$ sostituisci la prima colonna di $A$ con $B$.
+- $B=\begin{pmatrix}0\\-3\end{pmatrix}$: lo $0$ va in alto e il $-3$ in basso.
+- La seconda colonna deve restare $\begin{pmatrix}3\\-4\end{pmatrix}$; scarta [[A]] (componenti di $B$ scambiate).
+@p26-4
+- Per $x_1$ la prima colonna di $A$ diventa la colonna dei termini noti.
+- Qui $B=\begin{pmatrix}-3\\0\end{pmatrix}$.
+- Scarta [[D]]: il segno del termine noto è sbagliato.
+@p26-5
+- Cramer per $x_1$: prima colonna sostituita da $B$.
+- $B=\begin{pmatrix}0\\3\end{pmatrix}$, con il segno positivo.
+- Scarta [[C]]: lì il termine noto ha il segno cambiato.
+@p26-6
+- Per $x_2$ si sostituisce la seconda colonna di $A$; la prima $\begin{pmatrix}2\\1\end{pmatrix}$ resta.
+- Qui $B=\begin{pmatrix}3\\0\end{pmatrix}$: il $3$ va in alto.
+- Scarta [[A]] e [[B]], che hanno lo $0$ in alto.
+@p26-7
+- Per $x_2$ la seconda colonna diventa $B$.
+- $B=\begin{pmatrix}0\\3\end{pmatrix}$: $0$ in alto, $3$ in basso, segno positivo.
+- Scarta [[A]] e [[B]], in cui lo $0$ è in basso.
+@p26-8
+- Per $x_2$ sostituisci la seconda colonna con i termini noti.
+- $B=\begin{pmatrix}-3\\0\end{pmatrix}$: il $-3$ sta in alto.
+- Scarta [[C]]: il segno del $3$ è sbagliato.
+@x123
+- La Regola di Cramer richiede un sistema quadrato con $\det A\neq0$; i termini noti non contano.
+- Calcola $\det\begin{pmatrix}2&-1\\4&-2\end{pmatrix}$ e $\det\begin{pmatrix}2&-1\\1&-2\end{pmatrix}$.
+- I due sistemi $3\times3$ hanno la stessa matrice dei coefficienti: o si può applicare a entrambi o a nessuno. Controlla se la terza riga è $2\cdot(\text{prima})+(\text{seconda})$.
+@x124
+- In Cramer il denominatore è sempre $\det A$.
+- Per $x_1$ al numeratore c'è $A$ con la prima colonna sostituita da $\begin{pmatrix}1\\-2\end{pmatrix}$.
+- Scarta [[A]] e [[C]], che hanno $\det A$ al numeratore.
+@x125
+- Entrambe le frazioni devono avere $\det A=\det\begin{pmatrix}1&-1\\3&-2\end{pmatrix}$ al denominatore.
+- Per $x_1$ si sostituisce la prima colonna con $\begin{pmatrix}3\\0\end{pmatrix}$, per $x_2$ la seconda.
+- Scarta [[A]] e [[B]], in cui una frazione è capovolta.
+@x126
+- Algoritmo 26.7: si tengono le equazioni corrispondenti alle righe del minore non nullo e si eliminano le altre.
+- Il minore $\det\begin{pmatrix}1&-2\\2&-1\end{pmatrix}$ usa la prima e la seconda riga (colonne 1 e 3).
+- Confronta la terza equazione con la prima: sono proporzionali? Se togliessi la seconda, resterebbero due equazioni equivalenti. Scarta [[A]].
+@p27-1
+- Gauss con normalizzazione: riduci a scala la matrice completa e rendi uguali a 1 i pivot.
+- Fai $R_2-3R_1$: $\left(\begin{array}{cc|c}1&3&-3\\0&-4&10\end{array}\right)$, poi dividi la seconda riga per $-4$.
+- La prima equazione ha già pivot 1 e non va toccata: scarta [[A]] e [[B]].
+@p27-2
+- Elimina $x_1$ dalla seconda equazione con $R_2-2R_1$.
+- Ottieni $-2x_2=7$; poi normalizza.
+- La prima equazione resta $x_1+3x_2=-3$: scarta [[C]] e [[D]].
+@p27-3
+- Elimina $x_1$ dalla seconda equazione con $R_2-3R_1$.
+- Ottieni $4x_2=-6$ (attenzione: $-5-3\cdot(-3)=4$).
+- La prima equazione resta $x_1-3x_2=3$: scarta [[B]] e [[D]].
+@p27-4
+- Elimina $x_1$ dalla seconda equazione con $R_2-2R_1$.
+- Ottieni $2x_2=1-6$; poi dividi per 2.
+- La prima equazione resta $x_1-3x_2=3$: scarta [[A]] e [[B]].
+@x127
+- Gauss-Jordan: pivot uguali a 1 **e** zeri sopra e sotto ogni pivot.
+- Dopo $R_2-R_1$ e $R_3-2R_1$ le righe 2 e 3 sono $(0,0,2\,|\,-2)$ e $(0,0,1\,|\,-1)$.
+- Una matrice con un pivot uguale a $2$ non è ancora normalizzata: scarta [[A]] e [[C]], e poi controlla cosa c'è sopra il secondo pivot.
+@x128
+- Porta in alto l'equazione $x_1+x_2=1$, che ha pivot 1, e elimina $x_1$ dalle altre.
+- La seconda equazione diventa $0=0$ (è il doppio della terza), l'altra diventa $-3x_2=6$.
+- Puoi sempre verificare sostituendo nella prima equazione $2x_1-x_2=8$: scarta [[A]] e [[D]].
+@x129
+- Dopo Gauss-Jordan le incognite delle colonne con i pivot sono le dipendenti, le altre sono libere.
+- I pivot sono in colonna 1 e 4: quali incognite restano senza pivot?
+- Una coppia di parametri non può contenere entrambe le incognite dei pivot: scarta [[C]].
+@x130
+- La matrice completa ha 4 colonne: l'ultima è quella dei termini noti.
+- Che equazione corrisponde a una riga ridotta del tipo $(0\ 0\ 0\,|\,1)$?
+- Pivot nell'ultima colonna vuol dire $\mathrm{rank}(A)<\mathrm{rank}(A\,|\,B)$: scarta [[C]] e [[D]].

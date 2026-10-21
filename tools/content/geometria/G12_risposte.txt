@@ -1,0 +1,345 @@
+## L42 Coniche
+42-1 D Il fascio delle coniche che passano per due punti distinti $A$ e $B$ e sono (algebricamente) tangenti a una retta per $A$ e a una retta per $B$ si genera con due **coniche degeneri** (Osservazione 42.29 della dispensa). Si accoppiano le rette disponibili, cioè la retta $r_{AB}$ e le due tangenti, in modo che ogni coppia contenga $A$ e $B$ e sia tangente alle due rette nei due punti:
+  $$C_1 = s \cup r, \qquad C_2 = r_{AB} \cup r_{AB}.$$
+  Qui la tangente in $A$ è $s$ (che in figura passa per $A$) e la tangente in $B$ è $r$ (che passa per $B$). La coppia $s \cup r$ contiene $A$ (su $s$) e $B$ (su $r$); in $A$ la retta $s$ è contenuta nella conica, quindi la interseca "infinite volte", cioè è algebricamente tangente; lo stesso vale per $r$ in $B$. La retta doppia $r_{AB}\cup r_{AB}$ contiene $A$ e $B$ e ogni retta per $A$ o per $B$ la incontra con molteplicità 2, quindi è tangente a $s$ in $A$ e a $r$ in $B$. Le coniche degeneri del fascio sono quindi solo $s\cup r$ e la retta doppia $r_{AB}\cup r_{AB}$; tra le opzioni compare la coppia di tangenti $s \cup r$.
+  **Errore tipico:** la coppia formata da $s$ e $r_{AB}$ contiene entrambi i punti, ma in $B$ la retta $r$ la incontra solo una volta (in $B$ stesso, dove $B$ non è singolare): non è tangente a $r$. La coppia formata da $r_{AB}$ e $r$ fallisce per lo stesso motivo in $A$. La retta doppia $s\cup s$ non contiene $B$.
+T: Quale delle seguenti coniche è una conica degenere del fascio di coniche che contengono i due punti $A$ e $B$, e sono tangenti alla retta $s$ nel punto $A$ e alla retta $r$ nel punto $B$, indicati in figura? ($r_{PQ}$ indica la retta passante per $P$ e $Q$.) ![](img/p103_125_fig.png)
+OPT: $s\cup r_{AB}$ | $s\cup s$ | $r_{AB}\cup r$ | $s\cup r$
+42-2 B Fascio delle coniche per due punti $A$, $B$ tangenti a una retta in $A$ e a un'altra in $B$ (Osservazione 42.29): le due coniche degeneri che lo generano sono la **coppia delle due tangenti** e la **retta doppia** per i due punti:
+  $$C_1 = r \cup s, \qquad C_2 = r_{AB} \cup r_{AB}.$$
+  Qui la tangente in $A$ è $r$ e la tangente in $B$ è $s$. La retta doppia $r_{AB}\cup r_{AB}$ contiene $A$ e $B$, e tutti i suoi punti sono singolari: ogni retta per $A$ (in particolare $r$) e ogni retta per $B$ (in particolare $s$) la incontrano con molteplicità 2, quindi è algebricamente tangente a entrambe. La coppia $r\cup s$ non è tra le opzioni, quindi la risposta è la retta doppia.
+  **Errore tipico:** la coppia di $r$ e $r_{AB}$ contiene i due punti ma non è tangente a $s$ in $B$ ($s$ la incontra in $B$ con molteplicità 1). Stesso difetto, scambiando i ruoli, per la coppia di $r_{AB}$ e $s$. La retta doppia $r\cup r$ non contiene $B$. Molti scartano la retta doppia pensando che "una retta contata due volte" non sia una conica: invece è proprio una conica degenere (Notazione 42.21).
+  TRAP: la conica giusta è la retta doppia $r_{AB}\cup r_{AB}$, non una coppia di rette distinte.
+T: Quale delle seguenti coniche è una conica degenere del fascio di coniche che contengono i due punti $A$ e $B$, e sono tangenti alla retta $r$ nel punto $A$ e alla retta $s$ nel punto $B$, indicati in figura? ($r_{PQ}$ indica la retta passante per $P$ e $Q$.) ![](img/p103_382_fig.png)
+OPT: $r\cup r_{AB}$ | $r_{AB}\cup r_{AB}$ | $r_{AB}\cup s$ | $r\cup r$
+42-3 C Fascio delle coniche per tre punti non allineati, tangenti in uno di essi a una retta data (Osservazione 42.28). Se la retta $r$ passa per il punto di tangenza $C$, le due coniche degeneri che generano il fascio si ottengono accoppiando le rette $r_{AB}$, $r_{AC}$, $r_{BC}$ e $r$ in modo che ogni coppia contenga $A$, $B$, $C$ e sia tangente a $r$ in $C$:
+  $$C_1 = r_{CA}\cup r_{CB}, \qquad C_2 = r_{AB}\cup r.$$
+  - $r_{CA}\cup r_{CB}$: contiene i tre punti, e $C$ è il punto doppio (intersezione delle due rette), quindi ogni retta per $C$, anche $r$, la incontra con molteplicità 2.
+  - $r_{AB}\cup r$: $r_{AB}$ contiene $A$ e $B$, $r$ contiene $C$ ed è contenuta nella conica, quindi è tangente in $C$.
+  Tra le opzioni c'è la coppia formata da $r_{AB}$ e $r$.
+  **Errore tipico:** la coppia di $r_{BC}$ e $r$ non contiene $A$. Le coppie $r_{AB}\cup r_{BC}$ e $r_{AB}\cup r_{AC}$ contengono i tre punti, ma il loro punto doppio è $B$ o $A$, non $C$: la retta $r$ le incontra in $C$ con molteplicità 1, quindi non sono tangenti a $r$ in $C$.
+T: Quale delle seguenti coniche è una conica degenere del fascio di coniche che contengono i tre punti $A$, $B$ e $C$, e sono tangenti alla retta $r$ nel punto $C$, indicati in figura? ($r_{PQ}$ indica la retta passante per $P$ e $Q$.) ![](img/p104_105_fig.png)
+OPT: $r_{BC}\cup r$ | $r_{AB}\cup r_{BC}$ | $r_{AB}\cup r$ | $r_{AB}\cup r_{AC}$
+42-4 A Per l'Osservazione 42.30 per un punto che non è un punto base passa una e una sola conica del fascio. Si pone $p_1 = (x-y+1)(2x+3y+1)$, $p_2 = (x-2)(2x+y-3)$ e si impone che $\lambda p_1 + \mu p_2$ si annulli nel punto ${}^t(4\ 1)$:
+  $$p_1(4,1) = (4-1+1)(8+3+1) = 4\cdot 12 = 48, \qquad p_2(4,1) = (4-2)(8+1-3) = 2\cdot 6 = 12.$$
+  $$48\lambda + 12\mu = 0 \;\Longrightarrow\; \mu = -4\lambda.$$
+  Scegliendo $\lambda = 1$ si ha $\mu = -4$: la conica è $(x-y+1)(2x+3y+1)-4(x-2)(2x+y-3)=0$.
+  **Errore tipico:** risolvendo $48\lambda+12\mu=0$ si scambia il ruolo dei parametri e si scrive $\lambda=-4\mu$ (cioè il coefficiente 4 sul primo prodotto), oppure si perde il segno meno. Gli altri coefficienti (6, -6) corrispondono ad altri punti dello stesso fascio.
+42-5 D Si impone il passaggio per ${}^t(-1\ 1)$ alla conica generica $\lambda p_1 + \mu p_2 = 0$ con $p_1 = (x-y+1)(2x+3y+1)$ e $p_2 = (x-2)(2x+y-3)$:
+  $$p_1(-1,1) = (-1-1+1)(-2+3+1) = (-1)\cdot 2 = -2, \qquad p_2(-1,1) = (-1-2)(-2+1-3) = (-3)(-4) = 12.$$
+  $$-2\lambda + 12\mu = 0 \;\Longrightarrow\; \lambda = 6\mu.$$
+  Con $\mu = 1$ si ha $\lambda = 6$: la conica è $6(x-y+1)(2x+3y+1)+(x-2)(2x+y-3)=0$.
+  Verifica: $6\cdot(-2)+12 = 0$.
+  **Errore tipico:** sbagliare il segno di $p_1(-1,1)$ (il primo fattore vale $-1$) porta a $\lambda=-6\mu$, cioè al coefficiente $-6$ sul secondo prodotto; mettere il 6 sul fattore sbagliato porta a $\mu = 6\lambda$.
+42-6 B Si impone il passaggio per ${}^t(3\ -2)$ a $\lambda (x-y+1)(2x+3y+1) + \mu (x-2)(2x+y-3) = 0$:
+  $$p_1(3,-2) = (3+2+1)(6-6+1) = 6\cdot 1 = 6, \qquad p_2(3,-2) = (3-2)(6-2-3) = 1\cdot 1 = 1.$$
+  $$6\lambda + \mu = 0 \;\Longrightarrow\; \mu = -6\lambda.$$
+  Con $\lambda = 1$, $\mu = -6$: la conica è $(x-y+1)(2x+3y+1)-6(x-2)(2x+y-3)=0$.
+  **Errore tipico:** scrivere $\lambda = -6\mu$ invece di $\mu=-6\lambda$ (cioè mettere il 6 davanti al primo prodotto) o dimenticare il segno: le equazioni con coefficiente 6 o 4 sul primo prodotto passano per altri punti del fascio.
+42-7 C Conica del fascio $\lambda (x-y+1)(2x+3y+1) + \mu (x-2)(2x+y-3) = 0$ per ${}^t(-3\ 2)$:
+  $$p_1(-3,2) = (-3-2+1)(-6+6+1) = (-4)\cdot 1 = -4, \qquad p_2(-3,2) = (-3-2)(-6+2-3) = (-5)(-7) = 35.$$
+  $$-4\lambda + 35\mu = 0 \;\Longrightarrow\; 4\lambda = 35\mu.$$
+  Scegliendo $\lambda = 35$, $\mu = 4$: la conica è $35(x-y+1)(2x+3y+1)+4(x-2)(2x+y-3)=0$. Verifica: $35\cdot(-4)+4\cdot 35 = 0$.
+  **Errore tipico:** invertire i valori (mettere $\lambda = 4$, $\mu = 35$) o prendere una delle altre coppie (20 e 9, 20 e -3, 3 e 2), che corrispondono ai punti ${}^t(-2\ 2)$, ${}^t(-3\ 1)$, ${}^t(-3\ 3)$ dello stesso fascio.
+42-8 C Conica del fascio $\lambda (x-y+1)(2x+3y+1) + \mu (x-2)(2x+y-3) = 0$ per ${}^t(-3\ 1)$:
+  $$p_1(-3,1) = (-3-1+1)(-6+3+1) = (-3)(-2) = 6, \qquad p_2(-3,1) = (-3-2)(-6+1-3) = (-5)(-8) = 40.$$
+  $$6\lambda + 40\mu = 0 \;\Longrightarrow\; 3\lambda = -20\mu.$$
+  Con $\lambda = 20$, $\mu = -3$: la conica è $20(x-y+1)(2x+3y+1)-3(x-2)(2x+y-3)=0$. Verifica: $20\cdot 6 - 3\cdot 40 = 0$.
+  **Errore tipico:** dimenticare che entrambi i fattori di $p_1$ sono negativi (il prodotto è positivo) porta al segno sbagliato, cioè al coefficiente $+9$ o $+3$ sul secondo prodotto; le altre coppie appartengono ad altri punti del fascio.
+42-9 D Conica del fascio $\lambda (x-y+1)(2x+3y+1) + \mu (x-2)(2x+y-3) = 0$ per ${}^t(-2\ 2)$:
+  $$p_1(-2,2) = (-2-2+1)(-4+6+1) = (-3)\cdot 3 = -9, \qquad p_2(-2,2) = (-2-2)(-4+2-3) = (-4)(-5) = 20.$$
+  $$-9\lambda + 20\mu = 0 \;\Longrightarrow\; 9\lambda = 20\mu.$$
+  Con $\lambda = 20$, $\mu = 9$: la conica è $20(x-y+1)(2x+3y+1)+9(x-2)(2x+y-3)=0$. Verifica: $20\cdot(-9)+9\cdot 20 = 0$.
+  **Errore tipico:** confondere i segni dei fattori e arrivare a $\mu$ negativo (coefficiente $-3$), oppure usare un'equazione con coefficienti di un altro punto (35 e 4, 3 e 2) dello stesso fascio.
+42-10 C Conica del fascio $\lambda (x-y+1)(2x+3y+1) + \mu (x-2)(2x+y-3) = 0$ per ${}^t(-3\ 3)$:
+  $$p_1(-3,3) = (-3-3+1)(-6+9+1) = (-5)\cdot 4 = -20, \qquad p_2(-3,3) = (-3-2)(-6+3-3) = (-5)(-6) = 30.$$
+  $$-20\lambda + 30\mu = 0 \;\Longrightarrow\; 2\lambda = 3\mu.$$
+  Con $\lambda = 3$, $\mu = 2$: la conica è $3(x-y+1)(2x+3y+1)+2(x-2)(2x+y-3)=0$. Verifica: $3\cdot(-20)+2\cdot 30=0$.
+  **Errore tipico:** risolvere $2\lambda = 3\mu$ con $\lambda = 2$, $\mu = 3$ (valori scambiati), oppure scegliere coefficienti che vanno bene per altri punti del fascio (20 e 9 per ${}^t(-2\ 2)$, 35 e 4 per ${}^t(-3\ 2)$).
+42-11 A Un punto appartiene a una conica se e solo se le sue coordinate soddisfano l'equazione. Sostituendo in $x^2-3xy+2y^2-3x-6$:
+  - ${}^t(2\ -1)$: $4 + 6 + 2 - 6 - 6 = 0$, quindi appartiene;
+  - ${}^t(0\ -2)$: $0 - 0 + 8 - 0 - 6 = 2 \neq 0$;
+  - ${}^t(3\ 1)$: $9 - 9 + 2 - 9 - 6 = -13 \neq 0$;
+  - ${}^t(-3\ 0)$: $9 + 0 + 0 + 9 - 6 = 12 \neq 0$.
+  **Errore tipico:** sbagliare il segno del termine misto: con $x = 2$, $y = -1$ si ha $-3xy = -3\cdot 2\cdot(-1) = +6$, non $-6$. Anche $-3x$ con $x=-3$ vale $+9$.
+T: Quale dei seguenti punti del piano appartiene alla conica di equazione $x^2-3xy+2y^2-3x-6=0$?
+OPT: ${}^t(2\ -1)$ | ${}^t(0\ -2)$ | ${}^t(3\ 1)$ | ${}^t(-3\ 0)$
+42-12 C Fascio delle coniche per $A$ e $B$ tangenti a $r$ in $A$ e a $s$ in $B$ (Osservazione 42.29): è generato dalle due coniche degeneri
+  $$C_1 = r\cup s, \qquad C_2 = r_{AB}\cup r_{AB}.$$
+  La coppia delle due tangenti $r \cup s$ contiene $A$ (su $r$) e $B$ (su $s$), e ciascuna tangente è contenuta nella conica, quindi la conica è tangente a $r$ in $A$ e a $s$ in $B$. Tra le opzioni c'è $r\cup s$.
+  **Errore tipico:** la retta doppia $r\cup r$ non passa per $B$; la coppia di $r$ con $r_{AB}$ passa per entrambi i punti ma in $B$ non è tangente a $s$; la coppia di $r_{AB}$ con $s$ in $A$ non è tangente a $r$. L'altra conica degenere del fascio è la retta doppia $r_{AB}\cup r_{AB}$, non una coppia con una sola delle tangenti.
+T: Quale delle seguenti coniche è una conica degenere del fascio di coniche che contengono i due punti $A$ e $B$, e sono tangenti alla retta $r$ nel punto $A$ e alla retta $s$ nel punto $B$, indicati in figura? ($r_{PQ}$ indica la retta passante per $P$ e $Q$.) ![](img/p105_375_fig.png)
+OPT: $r\cup r$ | $r\cup r_{AB}$ | $r\cup s$ | $r_{AB}\cup s$
+42-13 C Fascio delle coniche per $A$, $B$, $C$ tangenti a $r$ nel punto $B$ (Osservazione 42.28, con il punto di tangenza $B$): le coniche degeneri che lo generano sono
+  $$C_1 = r_{BA}\cup r_{BC}, \qquad C_2 = r_{AC}\cup r.$$
+  - $r_{AB}\cup r_{BC}$ ha il punto doppio in $B$, quindi ogni retta per $B$ (in particolare $r$) la incontra con molteplicità 2;
+  - $r_{AC}\cup r$ contiene $A$ e $C$ su $r_{AC}$, e $B$ su $r$, che è contenuta nella conica.
+  Tra le opzioni compare $r_{AC}\cup r$.
+  **Errore tipico:** la coppia di $r_{AB}$ e $r$ non contiene $C$; la coppia di $r_{AB}$ e $r_{AC}$ ha il punto doppio in $A$, non in $B$, quindi non è tangente a $r$ in $B$; la coppia di $r_{AC}$ e $r_{BC}$ ha il punto doppio in $C$.
+T: Quale delle seguenti coniche è una conica degenere del fascio di coniche che contengono i tre punti $A$, $B$ e $C$, e sono tangenti alla retta $r$ nel punto $B$, indicati in figura? ($r_{PQ}$ indica la retta passante per $P$ e $Q$.) ![](img/p106_105_fig.png)
+OPT: $r_{AB}\cup r_{AC}$ | $r_{AB}\cup r$ | $r_{AC}\cup r$ | $r_{AC}\cup r_{BC}$
+42-14 D Conica del fascio $\lambda (x-y+1)(2x+3y+1) + \mu (x-2)(2x+y-3) = 0$ per ${}^t(-2\ -2)$:
+  $$p_1(-2,-2) = (-2+2+1)(-4-6+1) = 1\cdot(-9) = -9, \qquad p_2(-2,-2) = (-2-2)(-4-2-3) = (-4)(-9) = 36.$$
+  $$-9\lambda + 36\mu = 0 \;\Longrightarrow\; \lambda = 4\mu.$$
+  Con $\mu = 1$, $\lambda = 4$: la conica è $4(x-y+1)(2x+3y+1)+(x-2)(2x+y-3)=0$. Verifica: $4\cdot(-9)+36=0$.
+  **Errore tipico:** scrivere $\mu = -4\lambda$ (coefficiente $-4$ sul secondo prodotto) per un errore di segno o di ruolo dei parametri; i coefficienti 6 e -6 appartengono ad altri punti del fascio.
+T: Quale delle seguenti coniche è la conica del fascio di equazione $\lambda(x-y+1)(2x+3y+1)+\mu(x-2)(2x+y-3)=0$ che passa per il punto di coordinate ${}^t(-2\ -2)$?
+42-15 D Fascio delle coniche per $A$, $B$, $C$ tangenti a $r$ nel punto $A$ (Osservazione 42.28): le coniche degeneri che lo generano sono
+  $$C_1 = r_{AB}\cup r_{AC}, \qquad C_2 = r_{BC}\cup r.$$
+  La prima ha il punto doppio in $A$ (quindi è tangente a ogni retta per $A$, in particolare a $r$); la seconda contiene $B$ e $C$ su $r_{BC}$ e $A$ su $r$, che è contenuta nella conica. Tra le opzioni c'è $r_{BC}\cup r$.
+  **Errore tipico:** la coppia di $r_{AC}$ e $r$ non contiene $B$; le coppie $r_{AB}\cup r_{BC}$ e $r_{AC}\cup r_{BC}$ contengono i tre punti, ma il loro punto doppio è $B$ o $C$, quindi in $A$ la retta $r$ le incontra una volta sola e non sono tangenti.
+T: Quale delle seguenti coniche è una conica degenere del fascio di coniche che contengono i tre punti $A$, $B$ e $C$, e sono tangenti alla retta $r$ nel punto $A$, indicati in figura? ($r_{PQ}$ indica la retta passante per $P$ e $Q$.) ![](img/p106_410_fig.png)
+OPT: $r_{AB}\cup r_{BC}$ | $r_{AC}\cup r_{BC}$ | $r_{AC}\cup r$ | $r_{BC}\cup r$
+42-16 A Fascio delle coniche per $A$, $B$, $C$ tangenti a $r$ nel punto $C$ (Osservazione 42.28 con il punto di tangenza $C$): le coniche degeneri sono
+  $$C_1 = r_{CA}\cup r_{CB}, \qquad C_2 = r_{AB}\cup r.$$
+  La coppia $r_{AC}\cup r_{BC}$ contiene i tre punti e ha il punto doppio in $C$: ogni retta per $C$, in particolare $r$, la incontra con molteplicità 2, quindi è tangente a $r$ in $C$. Questa coppia è tra le opzioni.
+  **Errore tipico:** la coppia di $r_{AB}$ e $r_{AC}$ ha il punto doppio in $A$; la coppia di $r_{AC}$ e $r$ non contiene $B$; la coppia di $r_{BC}$ e $r$ non contiene $A$. L'altra conica degenere del fascio, $r_{AB}\cup r$, non è tra le opzioni.
+T: Quale delle seguenti coniche è una conica degenere del fascio di coniche che contengono i tre punti $A$, $B$ e $C$, e sono tangenti alla retta $r$ nel punto $C$, indicati in figura? ($r_{PQ}$ indica la retta passante per $P$ e $Q$.) ![](img/p107_105_fig.png)
+OPT: $r_{AC}\cup r_{BC}$ | $r_{AB}\cup r_{AC}$ | $r_{AC}\cup r$ | $r_{BC}\cup r$
+42-17 C Fascio delle coniche per $A$, $B$, $C$ tangenti a $r$ nel punto $B$ (Osservazione 42.28 con il punto di tangenza $B$): le coniche degeneri sono
+  $$C_1 = r_{BA}\cup r_{BC}, \qquad C_2 = r_{AC}\cup r.$$
+  La coppia $r_{AB}\cup r_{BC}$ contiene i tre punti e il suo punto doppio è $B$: la retta $r$, che passa per $B$, la incontra con molteplicità 2, quindi è tangente in $B$. È tra le opzioni.
+  **Errore tipico:** la coppia di $r_{AB}$ e $r$ non contiene $C$; la coppia di $r_{BC}$ e $r$ non contiene $A$; la coppia di $r_{AC}$ e $r_{BC}$ ha il punto doppio in $C$, non in $B$. L'altra conica degenere, $r_{AC}\cup r$, non compare.
+T: Quale delle seguenti coniche è una conica degenere del fascio di coniche che contengono i tre punti $A$, $B$ e $C$, e sono tangenti alla retta $r$ nel punto $B$, indicati in figura? ($r_{PQ}$ indica la retta passante per $P$ e $Q$.) ![](img/p107_321_fig.png)
+OPT: $r_{AB}\cup r$ | $r_{AC}\cup r_{BC}$ | $r_{AB}\cup r_{BC}$ | $r_{BC}\cup r$
+42-18 A Fascio delle coniche per $A$, $B$, $C$ tangenti a $r$ nel punto $A$ (Osservazione 42.28): le coniche degeneri sono
+  $$C_1 = r_{AB}\cup r_{AC}, \qquad C_2 = r_{BC}\cup r.$$
+  La coppia $r_{AB}\cup r_{AC}$ contiene i tre punti e ha il punto doppio in $A$, quindi è tangente a $r$ in $A$. È tra le opzioni.
+  **Errore tipico:** la coppia di $r_{AB}$ e $r_{BC}$ ha il punto doppio in $B$; la coppia di $r_{AC}$ e $r$ non contiene $B$; la coppia di $r_{AB}$ e $r$ non contiene $C$. L'altra conica degenere del fascio è $r_{BC}\cup r$.
+T: Quale delle seguenti coniche è una conica degenere del fascio di coniche che contengono i tre punti $A$, $B$ e $C$, e sono tangenti alla retta $r$ nel punto $A$, indicati in figura? ($r_{PQ}$ indica la retta passante per $P$ e $Q$.) ![](img/p107_536_fig.png)
+OPT: $r_{AB}\cup r_{AC}$ | $r_{AB}\cup r_{BC}$ | $r_{AC}\cup r$ | $r_{AB}\cup r$
+42-19 A Per quattro punti a tre a tre non allineati $A$, $B$, $C$, $D$ (Osservazione 42.26) le coniche degeneri del fascio sono le tre coppie di rette che, insieme, contengono **tutti e quattro** i punti, cioè le coppie di "lati opposti" del quadrangolo:
+  $$C_1 = r_{AB}\cup r_{CD}, \qquad C_2 = r_{AC}\cup r_{BD}, \qquad C_3 = r_{AD}\cup r_{BC}.$$
+  Controllando le opzioni: $r_{AD}\cup r_{BC}$ contiene $A$, $D$ e $B$, $C$, quindi è $C_3$.
+  **Errore tipico:** $r_{BD}\cup r_{CD}$ non contiene $A$; $r_{BC}\cup r_{BD}$ non contiene $A$; $r_{AB}\cup r_{BC}$ non contiene $D$. Una coppia di rette con un punto in comune tra quelli dati (qui $B$ o $D$) ne lascia sempre fuori uno.
+T: Quale delle seguenti coniche è una conica degenere del fascio di coniche che contengono i quattro punti $A$, $B$, $C$ e $D$, indicati in figura? ($r_{PQ}$ indica la retta passante per $P$ e $Q$.) ![](img/p108_105_fig.png)
+OPT: $r_{AD}\cup r_{BC}$ | $r_{BD}\cup r_{CD}$ | $r_{BC}\cup r_{BD}$ | $r_{AB}\cup r_{BC}$
+42-20 C Fascio per quattro punti a tre a tre non allineati (Osservazione 42.26): le coniche degeneri sono $r_{AB}\cup r_{CD}$, $r_{AC}\cup r_{BD}$ e $r_{AD}\cup r_{BC}$, cioè le coppie di rette in cui ogni punto compare esattamente una volta.
+  Tra le opzioni, $r_{AC}\cup r_{BD}$ contiene $A$, $C$ e $B$, $D$: è una conica degenere del fascio.
+  **Errore tipico:** $r_{AB}\cup r_{BC}$ non contiene $D$; $r_{BD}\cup r_{CD}$ non contiene $A$; $r_{AB}\cup r_{BD}$ non contiene $C$. Quando le due rette hanno una lettera in comune, uno dei quattro punti resta fuori.
+T: Quale delle seguenti coniche è una conica degenere del fascio di coniche che contengono i quattro punti $A$, $B$, $C$ e $D$, indicati in figura? ($r_{PQ}$ indica la retta passante per $P$ e $Q$.) ![](img/p108_348_fig.png)
+OPT: $r_{AB}\cup r_{BC}$ | $r_{BD}\cup r_{CD}$ | $r_{AC}\cup r_{BD}$ | $r_{AB}\cup r_{BD}$
+42-21 A Fascio per quattro punti a tre a tre non allineati (Osservazione 42.26): le coniche degeneri sono $r_{AB}\cup r_{CD}$, $r_{AC}\cup r_{BD}$ e $r_{AD}\cup r_{BC}$.
+  Tra le opzioni, $r_{AB}\cup r_{CD}$ contiene $A$, $B$ e $C$, $D$: è una conica degenere del fascio.
+  **Errore tipico:** $r_{AB}\cup r_{AD}$ non contiene $C$; $r_{AB}\cup r_{AC}$ non contiene $D$; $r_{AC}\cup r_{CD}$ non contiene $B$. Le coppie con una lettera ripetuta lasciano sempre fuori un punto.
+T: Quale delle seguenti coniche è una conica degenere del fascio di coniche che contengono i quattro punti $A$, $B$, $C$ e $D$, indicati in figura? ($r_{PQ}$ indica la retta passante per $P$ e $Q$.) ![](img/p109_105_fig.png)
+OPT: $r_{AB}\cup r_{CD}$ | $r_{AB}\cup r_{AD}$ | $r_{AB}\cup r_{AC}$ | $r_{AC}\cup r_{CD}$
+42-22 D Si sostituiscono le coordinate in $x^2-3xy+2y^2+2x-3$:
+  - ${}^t(2\ -1)$: $4 + 6 + 2 + 4 - 3 = 13 \neq 0$;
+  - ${}^t(0\ -2)$: $0 - 0 + 8 + 0 - 3 = 5 \neq 0$;
+  - ${}^t(3\ 1)$: $9 - 9 + 2 + 6 - 3 = 5 \neq 0$;
+  - ${}^t(-3\ 0)$: $9 + 0 + 0 - 6 - 3 = 0$, quindi appartiene.
+  **Errore tipico:** con $x=-3$ il termine $2x$ vale $-6$ (non $+6$): chi sbaglia il segno ottiene 12 e scarta il punto giusto.
+T: Quale dei seguenti punti del piano appartiene alla conica di equazione $x^2-3xy+2y^2+2x-3=0$?
+OPT: ${}^t(2\ -1)$ | ${}^t(0\ -2)$ | ${}^t(3\ 1)$ | ${}^t(-3\ 0)$
+42-23 B Si sostituiscono le coordinate in $x^2-3xy+2y^2+3y-2$:
+  - ${}^t(3\ 1)$: $9 - 9 + 2 + 3 - 2 = 3 \neq 0$;
+  - ${}^t(0\ -2)$: $0 - 0 + 8 - 6 - 2 = 0$, quindi appartiene;
+  - ${}^t(2\ -1)$: $4 + 6 + 2 - 3 - 2 = 7 \neq 0$;
+  - ${}^t(-3\ 0)$: $9 + 0 + 0 + 0 - 2 = 7 \neq 0$.
+  **Errore tipico:** dimenticare che $2y^2$ con $y = -2$ vale $+8$ (il quadrato è positivo) o sbagliare il segno di $3y$.
+T: Quale dei seguenti punti del piano appartiene alla conica di equazione $x^2-3xy+2y^2+3y-2=0$?
+OPT: ${}^t(3\ 1)$ | ${}^t(0\ -2)$ | ${}^t(2\ -1)$ | ${}^t(-3\ 0)$
+42-24 C Si sostituiscono le coordinate in $x^2-2xy+2y^2-3x+4$:
+  - ${}^t(0\ -2)$: $0 - 0 + 8 - 0 + 4 = 12 \neq 0$;
+  - ${}^t(2\ -1)$: $4 + 4 + 2 - 6 + 4 = 8 \neq 0$;
+  - ${}^t(3\ 1)$: $9 - 6 + 2 - 9 + 4 = 0$, quindi appartiene;
+  - ${}^t(-3\ 0)$: $9 + 0 + 0 + 9 + 4 = 22 \neq 0$.
+  **Errore tipico:** confondere questa conica con quelle simili di altre domande (con $-3xy$ invece di $-2xy$): i coefficienti cambiano e cambia il punto che le soddisfa.
+T: Quale dei seguenti punti del piano appartiene alla conica di equazione $x^2-2xy+2y^2-3x+4=0$?
+OPT: ${}^t(0\ -2)$ | ${}^t(2\ -1)$ | ${}^t(3\ 1)$ | ${}^t(-3\ 0)$
+42-25 A Fascio delle coniche per $A$ e $B$ tangenti a $s$ in $A$ e a $r$ in $B$ (Osservazione 42.29): le coniche degeneri che lo generano sono
+  $$C_1 = s\cup r, \qquad C_2 = r_{AB}\cup r_{AB}.$$
+  La coppia delle tangenti non è tra le opzioni; c'è invece la **retta doppia** $r_{AB}\cup r_{AB}$, che contiene $A$ e $B$ e, avendo tutti i punti singolari, è tangente a qualsiasi retta passante per $A$ o per $B$, in particolare a $s$ in $A$ e a $r$ in $B$.
+  **Errore tipico:** la coppia di $s$ e $r_{AB}$ non è tangente a $r$ in $B$; la coppia di $r_{AB}$ e $r$ non è tangente a $s$ in $A$; la retta doppia $s\cup s$ non contiene $B$. La retta doppia per $A$ e $B$ è spesso scartata perché "sembra una retta sola", ma è una conica degenere a tutti gli effetti.
+  TRAP: la risposta è la retta doppia $r_{AB}\cup r_{AB}$, perché la coppia delle due tangenti non è tra le opzioni.
+T: Quale delle seguenti coniche è una conica degenere del fascio di coniche che contengono i due punti $A$ e $B$, e sono tangenti alla retta $s$ nel punto $A$ e alla retta $r$ nel punto $B$, indicati in figura? ($r_{PQ}$ indica la retta passante per $P$ e $Q$.) ![](img/p110_105_fig.png)
+OPT: $r_{AB}\cup r_{AB}$ | $s\cup r_{AB}$ | $r_{AB}\cup r$ | $s\cup s$
+42-26 APERTA
+KW: curva algebrica|grado 2|grado due, ax^2+bxy+cy^2+dx+ey+f|equazione polinomiale, (a,b,c) non tutti nulli|(a,b,c)≠(0,0,0), stessa conica|multiplo|moltiplicando, equazione omogenea|piano proiettivo, ellisse|fuochi, iperbole, parabola|direttrice, degenere|prodotto di due polinomi di grado 1, unione di due rette|coppia di rette, retta doppia, punto singolare|punti singolari
+> **Definizione.** Una **conica** è una curva algebrica di grado 2, cioè l'insieme dei punti del piano che soddisfano un'equazione polinomiale di grado 2
+> $$ax^2+bxy+cy^2+dx+ey+f=0,\qquad (a,b,c)\neq(0,0,0).$$
+> Moltiplicando il polinomio per un numero reale $k\neq 0$ si ottiene la stessa conica. Estendendola al piano proiettivo $\mathbb{P}^2(\mathbb{R})$ si ottiene l'equazione omogenea $aX^2+bXY+cY^2+dXT+eYT+fT^2=0$.
+> **Definizioni geometriche.** Le coniche non degeneri si possono descrivere come luoghi: l'**ellisse** di fuochi $F_1,F_2$ è l'insieme dei punti con $\mathrm{dist}(P,F_1)+\mathrm{dist}(P,F_2)=2\alpha$ (forma $\frac{x^2}{\alpha^2}+\frac{y^2}{\beta^2}=1$; se $F_1=F_2$ è una circonferenza; se l'equazione è $ax^2+by^2=-1$ con $a,b>0$ è un'ellisse immaginaria); l'**iperbole** è l'insieme dei punti con $\lvert\mathrm{dist}(P,F_1)-\mathrm{dist}(P,F_2)\rvert=2\alpha$ (forma $\frac{x^2}{\alpha^2}-\frac{y^2}{\beta^2}=1$); la **parabola** di fuoco $F$ e direttrice $s$ è l'insieme dei punti equidistanti da $F$ e da $s$ (forma $x^2-4\gamma y=0$).
+> **Coniche degeneri.** Una conica $p(x,y)=0$ è **degenere** se $p$ è il prodotto di due polinomi di grado 1 (anche a coefficienti complessi). Allora la conica è l'unione di due rette $(ax+by+c)(a'x+b'y+c')=0$; se le terne $(a,b,c)$ e $(a',b',c')$ sono proporzionali le rette coincidono e si ha una **retta doppia** $s\cup s$, di equazione $(ax+by+c)^2=0$. Viceversa, per il teorema di Bézout, una conica che contiene una retta è il prodotto di due fattori di grado 1, quindi è degenere.
+> **Proposizione.** Una conica è degenere se e solo se ha almeno un punto singolare; i punti singolari sono l'intersezione delle due rette (tutta la retta, per una retta doppia).
+> **Esempi.** $(x+y)(x-2y+1)=0$ è una coppia di rette con punto singolare ${}^t(-\frac13\ \frac13)$; $x^2+y^2=0$, cioè $(x+iy)(x-iy)=0$, è una coppia di rette complesse con l'unico punto reale $O$; $(x+3y-1)^2=0$ è una retta doppia.
+42-27 APERTA
+KW: fascio di coniche, coniche degeneri|coppie di rette, r_AB|2x+y+3, r_CD|y+2, r_AC|x+y+2, r_BD|3x+y+5, impongo il passaggio per E|sostituisco E, λ=μ|lambda=mu, 3x^2+6xy+2y^2+15x+12y+16=0
+> Si usa il fascio delle coniche per i quattro punti $A={}^t(-1\ -1)$, $B={}^t(-2\ 1)$, $C={}^t(0\ -2)$, $D={}^t(-1\ -2)$ (a tre a tre non allineati), generato da due delle sue coniche degeneri (Osservazione 42.26).
+> **Rette per le coppie di punti:** $r_{AB}: 2x+y+3=0$, $r_{CD}: y+2=0$, $r_{AC}: x+y+2=0$, $r_{BD}: 3x+y+5=0$.
+> Coniche degeneri: $C_1=r_{AB}\cup r_{CD}$ e $C_2=r_{AC}\cup r_{BD}$, quindi il fascio è
+> $$\lambda(2x+y+3)(y+2)+\mu(x+y+2)(3x+y+5)=0.$$
+> **Passaggio per $E={}^t(-2\ -1)$:** $(2x+y+3)(y+2)=(-4-1+3)(-1+2)=-2$ e $(x+y+2)(3x+y+5)=(-2-1+2)(-6-1+5)=(-1)(-2)=2$, quindi $-2\lambda+2\mu=0$, cioè $\lambda=\mu$. Con $\lambda=\mu=1$:
+> $$(2x+y+3)(y+2)+(x+y+2)(3x+y+5)=0 \iff 3x^2+6xy+2y^2+15x+12y+16=0.$$
+> Verifica: i cinque punti soddisfano l'equazione (per esempio $A$: $3+6+2-15-12+16=0$). Usando invece $C_3=r_{AD}\cup r_{BC}$, con $r_{AD}: x+1=0$ e $r_{BC}: 3x+2y+4=0$, si trova $\lambda=2$, $\mu=1$ e la stessa conica.
+42-28 APERTA
+KW: fascio di coniche, tangente in D|tangenti alla retta in D, coniche degeneri, r_DA|x+y-2, r_DB|x=0, r_AB|2x-y-1, (r_DA∪r_DB) e (r_AB∪t)|retta tangente, passaggio per C|sostituisco C, μ=2λ|mu=2lambda, 5x^2-5xy+2y^2+4x-2y-4=0
+> Il fascio delle coniche che passano per $A={}^t(1\ 1)$, $B={}^t(0\ -1)$ e sono tangenti alla retta $t: x-y+2=0$ in $D={}^t(0\ 2)$ (che sta su $t$) è il fascio per i tre punti $A$, $B$, $D$ tangenti a $t$ in $D$ (Osservazione 42.28). Le sue coniche degeneri sono $r_{DA}\cup r_{DB}$ (punto doppio in $D$) e $r_{AB}\cup t$.
+> **Rette:** $r_{DA}: x+y-2=0$, $r_{DB}: x=0$, $r_{AB}: 2x-y-1=0$. Il fascio è
+> $$\lambda\,x(x+y-2)+\mu(2x-y-1)(x-y+2)=0.$$
+> **Passaggio per $C={}^t(-2\ -2)$:** $x(x+y-2)=(-2)(-6)=12$ e $(2x-y-1)(x-y+2)=(-3)(2)=-6$, quindi $12\lambda-6\mu=0$, cioè $\mu=2\lambda$. Con $\lambda=1$, $\mu=2$:
+> $$x(x+y-2)+2(2x-y-1)(x-y+2)=0 \iff 5x^2-5xy+2y^2+4x-2y-4=0.$$
+> Verifica: $A$, $B$, $C$, $D$ soddisfano l'equazione e in $D$ il gradiente $(10x-5y+4,\,-5x+4y-2)=(-6,6)$ è proporzionale a $(1,-1)$, cioè alla normale di $t$: la conica è tangente a $t$ in $D$.
+42-29 APERTA
+KW: fascio di coniche, tangente in D|tangenti alla retta in D, coniche degeneri, r_DA|x-y-2, r_DB|x=0, r_AB|2x+y-1, (r_DA∪r_DB) e (r_AB∪t)|retta tangente, passaggio per C|sostituisco C, μ=2λ|mu=2lambda, 5x^2+5xy+2y^2+4x+2y-4=0
+> Il fascio delle coniche per $A={}^t(1\ -1)$, $B={}^t(0\ 1)$ tangenti a $t: x+y+2=0$ in $D={}^t(0\ -2)$ (che sta su $t$) è il fascio per i tre punti $A$, $B$, $D$ tangenti a $t$ in $D$ (Osservazione 42.28). Coniche degeneri: $r_{DA}\cup r_{DB}$ (punto doppio in $D$) e $r_{AB}\cup t$.
+> **Rette:** $r_{DA}: x-y-2=0$, $r_{DB}: x=0$, $r_{AB}: 2x+y-1=0$. Il fascio è
+> $$\lambda\,x(x-y-2)+\mu(2x+y-1)(x+y+2)=0.$$
+> **Passaggio per $C={}^t(-2\ 2)$:** $x(x-y-2)=(-2)(-6)=12$ e $(2x+y-1)(x+y+2)=(-3)(2)=-6$, quindi $12\lambda-6\mu=0$, cioè $\mu=2\lambda$. Con $\lambda=1$, $\mu=2$:
+> $$x(x-y-2)+2(2x+y-1)(x+y+2)=0 \iff 5x^2+5xy+2y^2+4x+2y-4=0.$$
+> Verifica: i quattro punti soddisfano l'equazione e in $D$ il gradiente $(10x+5y+4,\,5x+4y+2)=(-6,-6)$ è proporzionale a $(1,1)$, normale di $t$: la conica è tangente a $t$ in $D$.
+42-30 APERTA
+KW: fascio di coniche, bitangenti|tangenti in A e in B, coniche degeneri, coppia delle tangenti|(x-y+1)(x+3y+2), retta doppia|r_AB∪r_AB, r_AB|x-2y+2, (x-2y+2)^2, passaggio per C|sostituisco C, μ=-6λ|mu=-6lambda, 5x^2-26xy+27y^2+21x-49y+22=0
+> Il fascio delle coniche tangenti a $r: x-y+1=0$ in $A={}^t(0\ 1)$ e a $s: x+3y+2=0$ in $B={}^t(-2\ 0)$ (con $A\in r$, $B\in s$) è generato dalle coniche degeneri $r\cup s$ e $r_{AB}\cup r_{AB}$ (Osservazione 42.29).
+> **Retta per $A$ e $B$:** $r_{AB}: x-2y+2=0$. Il fascio è
+> $$\lambda(x-y+1)(x+3y+2)+\mu(x-2y+2)^2=0.$$
+> **Passaggio per $C={}^t(1\ 1)$:** $(x-y+1)(x+3y+2)=1\cdot 6=6$ e $(x-2y+2)^2=1^2=1$, quindi $6\lambda+\mu=0$, cioè $\mu=-6\lambda$. Con $\lambda=1$, $\mu=-6$:
+> $$(x-y+1)(x+3y+2)-6(x-2y+2)^2=0 \iff 5x^2-26xy+27y^2+21x-49y+22=0.$$
+> Verifica: $A$, $B$, $C$ soddisfano l'equazione; in $A$ il gradiente è proporzionale a $(1,-1)$ e in $B$ a $(1,3)$, cioè alle normali di $r$ e $s$.
+42-31 APERTA
+KW: fascio di coniche, bitangenti|tangenti in A e in B, coniche degeneri, coppia delle tangenti|(x-y-1)(3x+y+2), retta doppia|r_AB∪r_AB, r_AB|2x-y-2, (2x-y-2)^2, passaggio per C|sostituisco C, μ=6λ|mu=6lambda, 27x^2-26xy+5y^2-49x+21y+22=0
+> Il fascio delle coniche tangenti a $r: x-y-1=0$ in $A={}^t(1\ 0)$ e a $s: 3x+y+2=0$ in $B={}^t(0\ -2)$ è generato dalle coniche degeneri $r\cup s$ e $r_{AB}\cup r_{AB}$ (Osservazione 42.29).
+> **Retta per $A$ e $B$:** $r_{AB}: 2x-y-2=0$. Il fascio è
+> $$\lambda(x-y-1)(3x+y+2)+\mu(2x-y-2)^2=0.$$
+> **Passaggio per $C={}^t(1\ 1)$:** $(x-y-1)(3x+y+2)=(-1)\cdot 6=-6$ e $(2x-y-2)^2=(-1)^2=1$, quindi $-6\lambda+\mu=0$, cioè $\mu=6\lambda$. Con $\lambda=1$, $\mu=6$:
+> $$(x-y-1)(3x+y+2)+6(2x-y-2)^2=0 \iff 27x^2-26xy+5y^2-49x+21y+22=0.$$
+> Verifica: $A$, $B$, $C$ soddisfano l'equazione; in $A$ il gradiente è proporzionale a $(1,-1)$ e in $B$ a $(3,1)$, normali di $r$ e $s$.
+42-32 APERTA
+KW: fascio di coniche, coniche degeneri|coppie di rette, r_AB|2x+y-3, r_CD|y-2, r_AC|x+y-2, r_BD|3x+y-5, impongo il passaggio per E|sostituisco E, λ=μ|lambda=mu, 3x^2+6xy+2y^2-15x-12y+16=0
+> Fascio delle coniche per i quattro punti $A={}^t(1\ 1)$, $B={}^t(2\ -1)$, $C={}^t(0\ 2)$, $D={}^t(1\ 2)$, a tre a tre non allineati (Osservazione 42.26).
+> **Rette:** $r_{AB}: 2x+y-3=0$, $r_{CD}: y-2=0$, $r_{AC}: x+y-2=0$, $r_{BD}: 3x+y-5=0$. Coniche degeneri $C_1=r_{AB}\cup r_{CD}$ e $C_2=r_{AC}\cup r_{BD}$; il fascio è
+> $$\lambda(2x+y-3)(y-2)+\mu(x+y-2)(3x+y-5)=0.$$
+> **Passaggio per $E={}^t(2\ 1)$:** $(2x+y-3)(y-2)=(2)(-1)=-2$ e $(x+y-2)(3x+y-5)=(1)(2)=2$, quindi $-2\lambda+2\mu=0$, cioè $\lambda=\mu$. Con $\lambda=\mu=1$:
+> $$(2x+y-3)(y-2)+(x+y-2)(3x+y-5)=0 \iff 3x^2+6xy+2y^2-15x-12y+16=0.$$
+> Verifica: i cinque punti soddisfano l'equazione (per esempio $A$: $3+6+2-15-12+16=0$). Con $C_3=r_{AD}\cup r_{BC}$, dove $r_{AD}: x-1=0$ e $r_{BC}: 3x+2y-4=0$, si ottiene $\lambda=2$, $\mu=1$ e la stessa conica.
+x187 C Una **conica** è una curva algebrica di **grado 2** (Definizione 42.1): serve un polinomio di grado esattamente 2 nelle variabili $x$, $y$.
+  - $x+3y-2=0$ ha grado 1: è una retta.
+  - $(x+1)(x+2y)-x^2-2xy$: sviluppando $(x+1)(x+2y)=x^2+2xy+x+2y$, quindi il polinomio è $x+2y$, di grado 1: è una retta, non una conica.
+  - $xy-3x+2=0$ ha grado 2 (il monomio $xy$ ha grado $1+1=2$): è una conica (un'iperbole).
+  - $x^2y+xy+y^2-2x+3y-2=0$ contiene $x^2y$, di grado 3: è una cubica.
+  **Errore tipico:** l'equazione con il prodotto $(x+1)(x+2y)$ "sembra" di grado 2, ma i termini di secondo grado si cancellano: il grado va calcolato dopo aver semplificato. Chi scarta $xy-3x+2$ pensa che servano $x^2$ o $y^2$: anche il termine misto $xy$ ha grado 2.
+  TRAP: in $(x+1)(x+2y)-x^2-2xy$ i termini di grado 2 si cancellano e resta una retta.
+T: Quale delle seguenti equazioni definisce una conica?
+OPT: $x+3y-2=0$ | $(x+1)(x+2y)-x^2-2xy=0$ | $xy-3x+2=0$ | $x^2y+xy+y^2-2x+3y-2=0$
+x188 B Per quattro punti a tre a tre non allineati il fascio è generato da due qualsiasi delle tre coniche degeneri $r_{AB}\cup r_{CD}$, $r_{AC}\cup r_{BD}$, $r_{AD}\cup r_{BC}$ (Osservazione 42.26): in ognuna ogni punto compare una sola volta.
+  La coppia formata da $r_{AB}\cup r_{CD}$ e $r_{AD}\cup r_{BC}$ è composta da due di queste, quindi genera il fascio.
+  **Errore tipico:** $r_{AC}\cup r_{BC}$ non contiene $D$; $r_{AB}\cup r_{BD}$ non contiene $C$; $r_{AB}\cup r_{AD}$ non contiene $C$. Basta che una delle due coniche non contenga uno dei quattro punti perché la coppia generi un fascio diverso.
+T: Quale delle seguenti coppie di coniche genera il fascio di coniche per i quattro punti a tre a tre non allineati $A$, $B$, $C$ e $D$? (Con $r_{PQ}$ indichiamo la retta per $P$ e $Q$.)
+OPT: $r_{AB}\cup r_{CD}$ e $r_{AC}\cup r_{BC}$ | $r_{AB}\cup r_{CD}$ e $r_{AD}\cup r_{BC}$ | $r_{AB}\cup r_{BD}$ e $r_{AD}\cup r_{BC}$ | $r_{AB}\cup r_{AD}$ e $r_{AD}\cup r_{BC}$
+x189 D Fascio per tre punti non allineati $A$, $B$, $C$ tangenti in $A$ alla retta $r$ (con $A\in r$), Osservazione 42.28: è generato da
+  $$C_1 = r_{AB}\cup r_{AC}, \qquad C_2 = r_{BC}\cup r.$$
+  Con le rette del testo: $C_1: (x+y-3)(3x+y-3)=0$ e $C_2: (x-y-1)(2x-y+3)=0$. Il fascio è quindi
+  $$\lambda(2x-y+3)(x-y-1)+\mu(x+y-3)(3x+y-3)=0.$$
+  **Errore tipico:** usare la retta doppia $r_{BC}\cup r_{BC}$ (non è tangente a $r$ in $A$ e non contiene $A$); oppure accoppiare $r$ con $r_{AC}$ o con $r_{AB}$: quelle coppie non contengono $B$ o $C$. La tangente $r$ va accoppiata con la retta che contiene gli **altri due** punti.
+T: Quale delle seguenti è un'equazione del fascio di coniche per i tre punti non allineati $A$, $B$ e $C$, e algebricamente tangenti alla retta $r$ con forma implicita $2x-y+3=0$, tali che $A$ appartiene ad $r$ e che le rette per i punti hanno forma implicita $r_{AB}: x+y-3=0$, $r_{AC}: 3x+y-3=0$, $r_{BC}: x-y-1=0$? (Con $r_{PQ}$ abbiamo indicato la retta per $P$ e $Q$.)
+OPT: $\lambda(x+y-3)(3x+y-3)+\mu(x-y-1)(x-y-1)=0$ | $\lambda(x+y-3)(3x+y-3)+\mu(3x+y-3)(2x-y+3)=0$ | $\lambda(2x-y+3)(x+y-3)+\mu(x+y-3)(3x+y-3)=0$ | $\lambda(2x-y+3)(x-y-1)+\mu(x+y-3)(3x+y-3)=0$
+x190 D Si sostituisce il punto ${}^t(1\ -2)$ nell'equazione del fascio:
+  $$(x+y-2)(x-2y-3) = (1-2-2)(1+4-3) = (-3)\cdot 2 = -6,$$
+  $$(x-3y+1)(y+1) = (1+6+1)(-2+1) = 8\cdot(-1) = -8.$$
+  La condizione è $-6\lambda-8\mu=0$, cioè $3\lambda=-4\mu$. Tra le coppie proposte solo $(\lambda,\mu)=(-4,3)$ la soddisfa: $-6\cdot(-4)-8\cdot 3=24-24=0$.
+  **Errore tipico:** la coppia $(4,3)$ dà $-24-24\neq 0$: si è perso il segno. Le coppie $(3,4)$ e $(-3,4)$ scambiano il ruolo dei coefficienti.
+T: Quali tra i seguenti sono i valori di $\lambda$ e $\mu$ tali che la conica del fascio di equazione $\lambda(x+y-2)(x-2y-3)+\mu(x-3y+1)(y+1)=0$ passa per il punto ${}^t(1\ -2)$?
+OPT: $(\lambda,\mu)=(3,4)$ | $(\lambda,\mu)=(4,3)$ | $(\lambda,\mu)=(-3,4)$ | $(\lambda,\mu)=(-4,3)$
+
+## L44 Polarità
+44-1 A La **polare** di $P_0$ rispetto alla conica non degenere con matrice $A$ è la retta ${}^tP\cdot A\cdot P_0=0$ (Definizione 44.1), dove $P_0$ si scrive in coordinate omogenee: ${}^t(2\ -1)$ diventa ${}^t(2\ -1\ 1)$.
+  La conica è non degenere: $\det A = 2(0\cdot(-2)-9)+1\cdot((-1)(-2)-0)+0 = -18+2=-16\neq 0$.
+  $$A\cdot P_0=\begin{pmatrix}2&-1&0\\-1&0&3\\0&3&-2\end{pmatrix}\begin{pmatrix}2\\-1\\1\end{pmatrix}=\begin{pmatrix}4+1+0\\-2+0+3\\0-3-2\end{pmatrix}=\begin{pmatrix}5\\1\\-5\end{pmatrix}.$$
+  La polare è $5X+Y-5T=0$, cioè (con $T=1$) $5x+y-5=0$.
+  **Errore tipico:** dimenticare la terza coordinata omogenea $T_0=1$ (si perde il contributo della terza colonna) oppure moltiplicare la riga sbagliata e invertire i segni di $y$ o del termine noto.
+T: Quale delle seguenti è una forma implicita della polare del punto ${}^t(2\ -1)$ rispetto alla conica con matrice associata $\begin{pmatrix}2&-1&0\\-1&0&3\\0&3&-2\end{pmatrix}$ nel piano?
+44-2 B Polare di $P_0={}^t(2\ 1\ 1)$ (coordinate omogenee di ${}^t(2\ 1)$): ${}^tP\cdot A\cdot P_0=0$.
+  $$A\cdot P_0=\begin{pmatrix}2&1&0\\1&0&-3\\0&-3&-2\end{pmatrix}\begin{pmatrix}2\\1\\1\end{pmatrix}=\begin{pmatrix}4+1+0\\2+0-3\\0-3-2\end{pmatrix}=\begin{pmatrix}5\\-1\\-5\end{pmatrix}.$$
+  La polare è $5X-Y-5T=0$, cioè $5x-y-5=0$. ($\det A=-16\neq0$, la conica è non degenere.)
+  **Errore tipico:** sbagliare il segno della seconda componente ($2-3=-1$) porta a $5x+y-5=0$; dimenticare $T_0=1$ fa perdere i $-3$ e $-2$ della terza colonna.
+T: Quale delle seguenti è una forma implicita della polare del punto ${}^t(2\ 1)$ rispetto alla conica con matrice associata $\begin{pmatrix}2&1&0\\1&0&-3\\0&-3&-2\end{pmatrix}$ nel piano?
+44-3 B Polare di $P_0={}^t(-2\ 1\ 1)$: ${}^tP\cdot A\cdot P_0=0$.
+  $$A\cdot P_0=\begin{pmatrix}2&-1&0\\-1&0&-3\\0&-3&-2\end{pmatrix}\begin{pmatrix}-2\\1\\1\end{pmatrix}=\begin{pmatrix}-4-1+0\\2+0-3\\0-3-2\end{pmatrix}=\begin{pmatrix}-5\\-1\\-5\end{pmatrix}.$$
+  La polare è $-5X-Y-5T=0$; moltiplicando per $-1$: $5X+Y+5T=0$, cioè $5x+y+5=0$. ($\det A=-16\neq 0$.)
+  **Errore tipico:** moltiplicare per $-1$ solo una parte dei coefficienti, ottenendo $5x+y-5=0$ o $5x-y+5=0$: tutti e tre i coefficienti cambiano segno insieme.
+T: Quale delle seguenti è una forma implicita della polare del punto ${}^t(-2\ 1)$ rispetto alla conica con matrice associata $\begin{pmatrix}2&-1&0\\-1&0&-3\\0&-3&-2\end{pmatrix}$ nel piano?
+44-4 D Polare di $P_0={}^t(-2\ -1\ 1)$: ${}^tP\cdot A\cdot P_0=0$.
+  $$A\cdot P_0=\begin{pmatrix}2&1&0\\1&0&3\\0&3&-2\end{pmatrix}\begin{pmatrix}-2\\-1\\1\end{pmatrix}=\begin{pmatrix}-4-1+0\\-2+0+3\\0-3-2\end{pmatrix}=\begin{pmatrix}-5\\1\\-5\end{pmatrix}.$$
+  La polare è $-5X+Y-5T=0$; moltiplicando per $-1$: $5X-Y+5T=0$, cioè $5x-y+5=0$. ($\det A=-16\neq 0$.)
+  **Errore tipico:** cambiare segno solo al primo coefficiente, ottenendo $5x+y-5=0$, o sbagliare la seconda componente ($-2+3=1$).
+T: Quale delle seguenti è una forma implicita della polare del punto ${}^t(-2\ -1)$ rispetto alla conica con matrice associata $\begin{pmatrix}2&1&0\\1&0&3\\0&3&-2\end{pmatrix}$ nel piano?
+44-5 APERTA
+KW: conica non degenere, matrice associata, piano proiettivo|coordinate omogenee, tP·A·P0=0|forma implicita omogenea, ogni retta è polare di uno e un solo punto|bigettiva, polo, P appartiene alla sua polare se e solo se P appartiene a C, tangente|polare tangente, reciprocità|P sulla polare di Q se e solo se Q sulla polare di P, fascio di rette per il polo
+> **Definizione.** Sia $\mathcal{C}$ una conica non degenere con matrice associata $A$ (simmetrica $3\times3$, $\det A\neq0$). Dato un punto $P_0={}^t(X_0\ Y_0\ T_0)$ del piano proiettivo $\mathbb{P}^2(\mathbb{R})$, la **retta polare** di $P_0$ rispetto a $\mathcal{C}$ è la retta di forma implicita omogenea
+> $$ {}^tP\cdot A\cdot P_0=0,\qquad P={}^t(X\ Y\ T).$$
+> Il punto la cui polare è una retta $r$ si chiama **polo** di $r$.
+> **Proprietà (Proposizione 44.3).**
+> 1. Ogni retta è la polare di uno e un solo punto; la funzione che associa a ogni punto di $\mathbb{P}^2(\mathbb{R})$ la sua polare è bigettiva.
+> 2. Un punto $P$ appartiene alla propria polare se e solo se $P\in\mathcal{C}$.
+> 3. $P\in\mathcal{C}$ se e solo se la sua polare è tangente a $\mathcal{C}$ (in $P$): la polare di un punto della conica è la tangente in quel punto.
+> 4. (Reciprocità) $P$ appartiene alla polare di $Q$ se e solo se $Q$ appartiene alla polare di $P$.
+> Di conseguenza le polari dei punti di una retta $r$ formano il fascio di rette per il polo di $r$ (Osservazione 44.7); per trovare il polo di $r$ si intersecano le polari di due punti di $r$.
+> **Esempio.** Per l'ellisse $X^2-2XY+4Y^2-4XT+4YT=0$, con matrice $\begin{pmatrix}1&-1&-2\\-1&4&2\\-2&2&0\end{pmatrix}$, la polare di ${}^t(6\ 2\ 1)$ è $2X+4Y-8T=0$, cioè $X+2Y-4T=0$; il punto ${}^t(2\ 1\ 1)$ sta sulla conica e la sua polare $X-4Y+2T=0$ è la tangente in esso.
+x195 B La polare di $P_0$ è ${}^tP\cdot A\cdot P_0=0$. Dall'equazione omogenea $6XY+Y^2-4XT-T^2=0$ la matrice associata (simmetrica, con metà dei coefficienti dei termini misti fuori diagonale) è
+  $$A=\begin{pmatrix}0&3&-2\\3&1&0\\-2&0&-1\end{pmatrix},\qquad \det A = 0-3(-3-0)-2(0+2)=9-4=5\neq0.$$
+  $$A\cdot\begin{pmatrix}1\\0\\-3\end{pmatrix}=\begin{pmatrix}0+0+6\\3+0+0\\-2+0+3\end{pmatrix}=\begin{pmatrix}6\\3\\1\end{pmatrix}.$$
+  La polare ha forma implicita omogenea $6X+3Y+T=0$.
+  **Errore tipico:** la retta $6x+3y+1=0$ è la stessa retta, ma scritta in forma **non omogenea**, mentre il testo chiede quella omogenea. $X-3T=0$ si ottiene confondendo il punto con i coefficienti della retta; mettere nella matrice i coefficienti interi $6$ e $-4$ invece delle metà $3$ e $-2$ dà coefficienti doppi.
+  TRAP: la forma non omogenea equivale, ma la domanda chiede la forma implicita omogenea in $X$, $Y$, $T$.
+T: Quale delle seguenti è la forma implicita omogenea della polare del punto ${}^t(1\ 0\ -3)$ rispetto alla conica non degenere con equazione omogenea $6XY+Y^2-4XT-T^2=0$?
+OPT: $6x+3y+1=0$ | $6X+3Y+T=0$ | $x-3=0$ | $X-3T=0$
+x196 B Per la Proposizione 44.3, data una conica non degenere, **ogni retta del piano proiettivo** $\mathbb{P}^2(\mathbb{R})$ è la polare di **uno e un solo punto** del piano proiettivo: la polarità è una biiezione tra i punti di $\mathbb{P}^2(\mathbb{R})$ e le sue rette.
+  Nel solo piano euclideo l'enunciato è falso: il polo di una retta può essere un punto all'infinito (per esempio, i diametri sono polari di punti all'infinito), e la polare di un punto può essere la retta all'infinito (quella del centro).
+  **Errore tipico:** restringere tutto al piano euclideo $\mathbb{R}^2$ sembra naturale, ma la polarità vive nel piano proiettivo: le rette "euclidee" hanno talvolta polo all'infinito, e la retta all'infinito ha come polo il centro della conica.
+T: Data una conica non degenere $\mathcal{C}$, quale delle seguenti proposizioni è vera?
+OPT: Ogni retta del piano euclideo $\mathbb{R}^2$ è la polare rispetto a $\mathcal{C}$ di uno e un solo punto del piano euclideo $\mathbb{R}^2$. | Ogni retta del piano proiettivo $\mathbb{P}^2(\mathbb{R})$ è la polare rispetto a $\mathcal{C}$ di uno e un solo punto del piano proiettivo $\mathbb{P}^2(\mathbb{R})$. | Ogni retta del piano proiettivo $\mathbb{P}^2(\mathbb{R})$ è la polare rispetto a $\mathcal{C}$ di uno e un solo punto del piano euclideo $\mathbb{R}^2$. | Nessuna delle altre risposte.
+x197 D È la **reciprocità** della polarità (Proposizione 44.3-5): $P$ appartiene alla polare di $Q$ se e solo se $Q$ appartiene alla polare di $P$. Qui la polare di $P$ è $r$ e quella di $Q$ è $s$, quindi
+  $$P\in s \iff Q\in r.$$
+  Infatti $P\in s$ significa ${}^tP\,A\,Q=0$, e $Q\in r$ significa ${}^tQ\,A\,P=0$; i due numeri coincidono perché $A$ è simmetrica.
+  **Errore tipico:** "$P\in r$" significa che $P$ sta sulla **propria** polare, cioè che $P\in\mathcal{C}$ (Proposizione 44.3-3): non ha legami con $Q$. Lo stesso per "$Q\in s$". L'enunciato che accoppia $P\in r$ con $Q\in s$ confonde la reciprocità con l'appartenenza alla conica.
+T: Data una conica non degenere $\mathcal{C}$ in $\mathbb{P}^2(\mathbb{R})$, due punti $P, Q\in\mathbb{P}^2(\mathbb{R})$ e le polari $r$ e $s$ rispettivamente di $P$ e $Q$ rispetto a $\mathcal{C}$, quale delle seguenti proposizioni è vera?
+OPT: $P\in r$ se e solo se $Q\in r$. | $P\in s$ se e solo se $Q\in s$. | $P\in r$ se e solo se $Q\in s$. | $P\in s$ se e solo se $Q\in r$.
+x198 C Se un punto $Q$ sta sulla conica, la sua polare è la **tangente** in $Q$ (Proposizione 44.3-4). Prima si controlla che $Q={}^t(2\ -3\ -1)$ stia sulla conica:
+  $$A\,Q=\begin{pmatrix}1&0&-3\\0&-2&1\\-3&1&-4\end{pmatrix}\begin{pmatrix}2\\-3\\-1\end{pmatrix}=\begin{pmatrix}2+0+3\\0+6-1\\-6-3+4\end{pmatrix}=\begin{pmatrix}5\\5\\-5\end{pmatrix},$$
+  $${}^tQ\,A\,Q = 2\cdot5+(-3)\cdot5+(-1)(-5)=10-15+5=0,$$
+  quindi $Q\in\mathcal{C}$. La tangente è la polare: $5X+5Y-5T=0$, cioè $X+Y-T=0$.
+  **Errore tipico:** scrivere come "tangente" la retta che ha per coefficienti le coordinate del punto ($2X-3Y-T=0$) confonde punto e retta; $X+Y+T=0$ viene da un errore di segno nella terza componente ($-6-3+4=-5$).
+T: Quale delle seguenti è la forma implicita omogenea della tangente alla conica non degenere con matrice associata $\begin{pmatrix}1&0&-3\\0&-2&1\\-3&1&-4\end{pmatrix}$ nel punto ${}^t(2\ -3\ -1)$?
+OPT: $2X-3Y-T=0$ | $2X+3Y+T=0$ | $X+Y-T=0$ | $X+Y+T=0$
+
+## L45 Centri, diametri, assi, asintoti
+45-1 APERTA
+KW: conica non degenere, centro|polo della retta all'infinito, ellissi e iperboli|le parabole non hanno centro, diametro|polare di un punto all'infinito, coniugato a P∞|direzione, i diametri passano per il centro, asse|ortogonale alla direzione, autovettori di A(3,3)|autovalori non nulli, simmetria, asintoto|contiene P∞, solo le iperboli|punti all'infinito dell'iperbole
+> In tutta la lezione $\mathcal{C}$ è una conica non degenere con matrice associata $A$, estesa al piano proiettivo.
+> **Centro.** Se il polo della retta all'infinito $T=0$ rispetto a $\mathcal{C}$ non è un punto all'infinito, si chiama **centro** di $\mathcal{C}$. Solo ellissi e iperboli hanno centro; per le parabole il polo della retta all'infinito è un punto all'infinito.
+> **Diametri.** Se la polare di un punto all'infinito $P_\infty$ non è la retta all'infinito, si chiama **diametro coniugato** a $P_\infty$ (cioè alla direzione definita da $P_\infty$). Se la conica ha centro, tutti i diametri passano per il centro (ogni $P_\infty$ sta sulla polare del centro, quindi per reciprocità il centro sta sulla polare di $P_\infty$): il centro si trova intersecando due diametri.
+> **Assi.** Un diametro coniugato a $P_\infty$ e ortogonale alla direzione di $P_\infty$ è un **asse**. Le direzioni a cui gli assi sono coniugati sono date dagli autovettori relativi agli autovalori **non nulli** di $A_{(3,3)}$ (Proposizione 45.9). Poiché $A_{(3,3)}$ è simmetrica, ha due autovettori ortogonali: ellissi e iperboli ($\det A_{(3,3)}\neq0$) hanno due assi ortogonali (le circonferenze infiniti), le parabole ($\det A_{(3,3)}=0$) uno solo. La conica è simmetrica rispetto ai suoi assi.
+> **Asintoti.** Se il diametro coniugato a $P_\infty$ contiene $P_\infty$, si chiama **asintoto**. Solo le iperboli hanno asintoti: le loro direzioni sono i due punti all'infinito dell'iperbole, e gli asintoti sono le polari (quindi le tangenti) di questi punti.
+> **Uso.** Per la forma canonica euclidea l'origine $O'$ è il centro (ellissi, iperboli) oppure l'intersezione dell'unico asse con la conica (parabole); gli assi danno le direzioni dei nuovi assi coordinati.
+> **Esempio.** Per l'iperbole $2X^2+6XY+2Y^2+2XT+T^2=0$ il centro è ${}^t(2\ -3\ 5)$; $A_{(3,3)}=\begin{pmatrix}2&3\\3&2\end{pmatrix}$ ha autovettori ${}^t(1\ 1)$ e ${}^t(1\ -1)$, e gli assi sono $5X+5Y+T=0$ e $X-Y-T=0$.
+x199 B Se la conica ha centro, tutti i diametri passano per il centro (Osservazione 45.5), quindi il centro è l'intersezione di due diametri distinti. Si risolve il sistema
+  $$\begin{cases}3X-8Y+3T=0\\5X+3Y-2T=0\end{cases}$$
+  Dalla seconda per 8 e la prima per 3: $40X+24Y-16T=0$ e $9X-24Y+9T=0$; sommando $49X-7T=0$, cioè $T=7X$. Con $X=1$: $T=7$ e $3-8Y+21=0$, quindi $Y=3$. Il punto è ${}^t(1\ 3\ 7)$, che non è all'infinito ($T\neq0$): è il centro, di coordinate cartesiane $(\frac17,\frac37)$.
+  Verifica: $3-24+21=0$ e $5+9-14=0$.
+  **Errore tipico:** ${}^t(1\ 3\ 0)$ è un punto all'infinito e non soddisfa le equazioni ($3-24=-21\neq0$). Se i due diametri si incontrassero in un punto all'infinito (diametri paralleli) la conica sarebbe una parabola senza centro, ma qui si incontrano in un punto proprio, e due diametri distinti bastano a determinarlo.
+T: Quale è il centro di una conica non degenere $\mathcal{C}$ che ha due diametri con forma implicita omogenea $3X-8Y+3T=0$ e $5X+3Y-2T=0$?
+OPT: ${}^t(1\ 3\ 0)$ | ${}^t(1\ 3\ 7)$ | Nessuno, perché $\mathcal{C}$ non ha centro. | Il centro non è univocamente determinato dalle informazioni del testo.
+x200 A Si cerca la proposizione **falsa**.
+  - Un asse è, per definizione (Definizione 45.8), un diametro con una proprietà in più (ortogonale alla direzione coniugata): ogni asse è un diametro. Vero.
+  - La frase "se un diametro coniugato a $P_\infty$ è ortogonale alla direzione di $P_\infty$, è un asse" è proprio la definizione di asse. Vero.
+  - Gli assi sono diametri e, se la conica ha centro, tutti i diametri passano per il centro (Osservazione 45.5). Vero.
+  - "Un diametro è anche un asse" è falso in generale: un'ellisse non circolare ha infiniti diametri (uno per ogni direzione) ma solo due assi.
+  **Errore tipico:** leggere di fretta e cercare la proposizione vera, oppure confondere il verso dell'implicazione: ogni asse è un diametro, ma non ogni diametro è un asse.
+  TRAP: la domanda chiede la proposizione falsa.
+T: Data una conica non degenere $\mathcal{C}$, quale delle seguenti proposizioni è falsa?
+OPT: Un diametro di $\mathcal{C}$ è anche un asse di $\mathcal{C}$. | Un asse di $\mathcal{C}$ è anche un diametro di $\mathcal{C}$. | Se un diametro di $\mathcal{C}$ coniugato a un punto all'infinito $P_\infty$ è ortogonale alla direzione definita da $P_\infty$, esso è un asse di $\mathcal{C}$. | Se $\mathcal{C}$ ha centro $C$, gli assi di $\mathcal{C}$ passano per $C$.
+x201 D La Proposizione 45.9 dice: le direzioni a cui gli **assi** sono coniugati sono date dagli autovettori relativi agli autovalori **non nulli** di $A_{(3,3)}$ (la sottomatrice $2\times2$ dei termini di secondo grado).
+  Due dettagli contano: si parla di **assi** (i diametri sono coniugati a tutte le direzioni, non solo agli autovettori) e servono autovalori **non nulli**: per una parabola $\det A_{(3,3)}=0$, e l'autovettore relativo all'autovalore nullo è la direzione del punto all'infinito della parabola, la cui polare è la retta all'infinito, che non è un diametro.
+  **Errore tipico:** le versioni con "diametri" sono false perché ogni direzione ha un diametro coniugato; la versione con "assi" ma senza "non nulli" è falsa per le parabole, che hanno un solo asse.
+T: Data una conica non degenere $\mathcal{C}$ con matrice associata $A$, quale delle seguenti proposizioni è vera?
+OPT: Le direzioni a cui i diametri di $\mathcal{C}$ sono coniugati sono dati dagli autovettori relativi agli autovalori di $A_{(3,3)}$. | Le direzioni a cui gli assi di $\mathcal{C}$ sono coniugati sono dati dagli autovettori relativi agli autovalori di $A_{(3,3)}$. | Le direzioni a cui i diametri di $\mathcal{C}$ sono coniugati sono dati dagli autovettori relativi agli autovalori non nulli di $A_{(3,3)}$. | Le direzioni a cui gli assi di $\mathcal{C}$ sono coniugati sono dati dagli autovettori relativi agli autovalori non nulli di $A_{(3,3)}$.
+x202 B Gli asintoti sono le polari dei punti all'infinito dell'iperbole (Definizione 45.13 e Osservazione 45.14). L'equazione omogenea è $X^2-XY-2Y^2+3XT+3YT+T^2=0$, con matrice
+  $$A=\begin{pmatrix}1&-\frac12&\frac32\\-\frac12&-2&\frac32\\\frac32&\frac32&1\end{pmatrix}.$$
+  **Punti all'infinito** ($T=0$): $X^2-XY-2Y^2=(X-2Y)(X+Y)=0$, quindi $P_1={}^t(2\ 1\ 0)$ e $P_2={}^t(1\ -1\ 0)$ (due punti reali distinti: è un'iperbole).
+  **Polari:**
+  $$A\,P_1=\begin{pmatrix}2-\frac12\\-1-2\\3+\frac32\end{pmatrix}=\begin{pmatrix}\frac32\\-3\\\frac92\end{pmatrix}\;\Rightarrow\; X-2Y+3T=0,\qquad A\,P_2=\begin{pmatrix}1+\frac12\\-\frac12+2\\\frac32-\frac32\end{pmatrix}=\begin{pmatrix}\frac32\\\frac32\\0\end{pmatrix}\;\Rightarrow\; X+Y=0.$$
+  Gli asintoti sono $x-2y+3=0$ e $x+y=0$; tra le opzioni c'è il primo.
+  **Errore tipico:** $x-2y+1=0$ ha la direzione giusta (parallela all'asintoto) ma il termine noto sbagliato: la direzione dice solo quale punto all'infinito usare, il termine noto viene dalla polare. Le rette con coefficienti $2x\pm y$ hanno direzioni che non sono punti all'infinito della conica.
+T: Quale delle seguenti forme implicite rappresenta un asintoto della conica non degenere di equazione $x^2-2y^2-xy+3x+3y+1=0$?
+OPT: $x-2y+1=0$ | $x-2y+3=0$ | $2x+y+1=0$ | $2x-y+3=0$

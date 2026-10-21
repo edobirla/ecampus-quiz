@@ -1,0 +1,507 @@
+## L35 Angoli e distanze nel caso affine
+35-1 B Un piano è **parallelo** a una retta se e solo se il vettore direttore della retta è ortogonale al vettore di giacitura del piano: $\langle w,n\rangle=0$ (Osservazione 35.8).
+  La retta $\begin{cases} x=1-3\lambda \\ y=4\lambda \\ z=3-2\lambda \end{cases}$ ha direttore $w={}^t(-3\ 4\ -2)$ (coefficienti di $\lambda$). Per ogni piano leggo la normale dai coefficienti di $x,y,z$:
+  - $2x+3y+2z-6=0$: $\langle {}^t(2\ 3\ 2),{}^t(-3\ 4\ -2)\rangle=(2)(-3)+(3)(4)+(2)(-2)=2$, non nullo: il piano non è parallelo alla retta.
+  - $2x+5y+7z-1=0$: $\langle {}^t(2\ 5\ 7),{}^t(-3\ 4\ -2)\rangle=(2)(-3)+(5)(4)+(7)(-2)=0$, la giacitura va bene; sostituendo $P$: $(2)(4)+(5)(0)+(7)(-1)+(-1)=0$, quindi $P$ sta sul piano: è la risposta.
+  - $2x+5y+7z-2=0$: $\langle {}^t(2\ 5\ 7),{}^t(-3\ 4\ -2)\rangle=(2)(-3)+(5)(4)+(7)(-2)=0$, la giacitura va bene; sostituendo $P$: $(2)(4)+(5)(0)+(7)(-1)+(-2)=-1$, diverso da $0$: il piano non passa per $P$.
+  - $2x+3y+2z-8=0$: $\langle {}^t(2\ 3\ 2),{}^t(-3\ 4\ -2)\rangle=(2)(-3)+(3)(4)+(2)(-2)=2$, non nullo: il piano non è parallelo alla retta.
+  In alternativa: la normale ${}^t(2\ 5\ 7)$ fissa la giacitura, e il termine noto si ricava imponendo il passaggio per $P={}^t(4\ 0\ -1)$, cioè $d=-((2)(4)+(5)(0)+(7)(-1))=-1$.
+  **Errore tipico:** cercare un piano con normale proporzionale al direttore della retta (quello è il piano **ortogonale** alla retta), oppure usare i termini noti della forma parametrica al posto dei coefficienti di $\lambda$; con il punto, scegliere il termine noto giusto per una giacitura sbagliata o viceversa.
+T: Quale delle seguenti forme implicite rappresenta un piano parallelo alla retta con forma parametrica $\begin{cases} x=1-3\lambda \\ y=4\lambda \\ z=3-2\lambda \end{cases}$ e passante per il punto ${}^t(4\ 0\ -1)$ nello spazio?
+OPT: $2x+3y+2z-6=0$ | $2x+5y+7z-1=0$ | $2x+5y+7z-2=0$ | $2x+3y+2z-8=0$
+35-2 B Una retta è **ortogonale** a un piano se e solo se il suo vettore direttore è un multiplo non nullo del **vettore di giacitura** (normale) del piano (Osservazione 35.8: l'angolo $\beta$ tra direttore e normale deve essere $0$, o $\pi$ se si prende il multiplo opposto).
+  Il piano $x-2y-z+4=0$ ha vettore di giacitura $n={}^t(1\ -2\ -1)$: si leggono i coefficienti di $x,y,z$, il termine noto non conta. In una forma parametrica il vettore direttore è dato dai **coefficienti di $\lambda$**, mentre i termini noti sono le coordinate del punto base, che qui è libero.
+  Controllo il direttore di ciascuna retta proposta:
+  - $\begin{cases} x=-2-6\lambda \\ y=4-4\lambda \\ z=-2-8\lambda \end{cases}$: direttore ${}^t(-6\ -4\ -8)$; i rapporti con le componenti di $n$ sono $\tfrac{-6}{1}, \tfrac{-4}{-2}, \tfrac{-8}{-1}$, non tutti uguali, quindi non è un multiplo di $n$.
+  - $\begin{cases} x=-6-2\lambda \\ y=-4+4\lambda \\ z=8+2\lambda \end{cases}$: direttore ${}^t(-2\ 4\ 2)=-2\cdot{}^t(1\ -2\ -1)$, multiplo di $n$: la retta è ortogonale al piano.
+  - $\begin{cases} x=-2-6\lambda \\ y=4-4\lambda \\ z=2+8\lambda \end{cases}$: direttore ${}^t(-6\ -4\ 8)$; i rapporti con le componenti di $n$ sono $\tfrac{-6}{1}, \tfrac{-4}{-2}, \tfrac{8}{-1}$, non tutti uguali, quindi non è un multiplo di $n$. Attenzione: qui è il **punto base** ${}^t(-2\ 4\ 2)$ a essere multiplo di $n$, non il direttore.
+  - $\begin{cases} x=-6-2\lambda \\ y=-4+4\lambda \\ z=-8-2\lambda \end{cases}$: direttore ${}^t(-2\ 4\ -2)$; i rapporti con le componenti di $n$ sono $\tfrac{-2}{1}, \tfrac{4}{-2}, \tfrac{-2}{-1}$, non tutti uguali, quindi non è un multiplo di $n$.
+  Quindi l'unica retta ortogonale al piano è $\begin{cases} x=-6-2\lambda \\ y=-4+4\lambda \\ z=8+2\lambda \end{cases}$, con direttore ${}^t(-2\ 4\ 2)$ parallelo a $n={}^t(1\ -2\ -1)$.
+  **Errore tipico:** confondere il punto base con il vettore direttore (i termini noti con i coefficienti di $\lambda$), oppure fermarsi a due componenti proporzionali senza controllare il segno della terza; un altro errore è cercare un direttore con prodotto scalare nullo con $n$, che è la condizione di **parallelismo**, non di ortogonalità.
+  TRAP: in alcune opzioni sono i termini noti (il punto base) a essere multipli del vettore normale, non i coefficienti di $\lambda$.
+T: Quale delle seguenti forme parametriche rappresenta una retta ortogonale al piano con forma implicita $x-2y-z+4=0$ nello spazio?
+OPT: $\begin{cases} x=-2-6\lambda \\ y=4-4\lambda \\ z=-2-8\lambda \end{cases}$ | $\begin{cases} x=-6-2\lambda \\ y=-4+4\lambda \\ z=8+2\lambda \end{cases}$ | $\begin{cases} x=-2-6\lambda \\ y=4-4\lambda \\ z=2+8\lambda \end{cases}$ | $\begin{cases} x=-6-2\lambda \\ y=-4+4\lambda \\ z=-8-2\lambda \end{cases}$
+35-3 A Una retta è **ortogonale** a un piano se e solo se il suo vettore direttore è un multiplo non nullo del **vettore di giacitura** (normale) del piano (Osservazione 35.8: l'angolo $\beta$ tra direttore e normale deve essere $0$, o $\pi$ se si prende il multiplo opposto).
+  Il piano $3x+2y+4z-3=0$ ha vettore di giacitura $n={}^t(3\ 2\ 4)$: si leggono i coefficienti di $x,y,z$, il termine noto non conta. In una forma parametrica il vettore direttore è dato dai **coefficienti di $\lambda$**, mentre i termini noti sono le coordinate del punto base, che qui è libero.
+  Controllo il direttore di ciascuna retta proposta:
+  - $\begin{cases} x=-2-6\lambda \\ y=4-4\lambda \\ z=-2-8\lambda \end{cases}$: direttore ${}^t(-6\ -4\ -8)=-2\cdot{}^t(3\ 2\ 4)$, multiplo di $n$: la retta è ortogonale al piano.
+  - $\begin{cases} x=-2-6\lambda \\ y=4-4\lambda \\ z=2+8\lambda \end{cases}$: direttore ${}^t(-6\ -4\ 8)$; i rapporti con le componenti di $n$ sono $\tfrac{-6}{3}, \tfrac{-4}{2}, \tfrac{8}{4}$, non tutti uguali, quindi non è un multiplo di $n$.
+  - $\begin{cases} x=-6-2\lambda \\ y=-4+4\lambda \\ z=8+2\lambda \end{cases}$: direttore ${}^t(-2\ 4\ 2)$; i rapporti con le componenti di $n$ sono $\tfrac{-2}{3}, \tfrac{4}{2}, \tfrac{2}{4}$, non tutti uguali, quindi non è un multiplo di $n$.
+  - $\begin{cases} x=-6-2\lambda \\ y=-4+4\lambda \\ z=-8-2\lambda \end{cases}$: direttore ${}^t(-2\ 4\ -2)$; i rapporti con le componenti di $n$ sono $\tfrac{-2}{3}, \tfrac{4}{2}, \tfrac{-2}{4}$, non tutti uguali, quindi non è un multiplo di $n$. Attenzione: qui è il **punto base** ${}^t(-6\ -4\ -8)$ a essere multiplo di $n$, non il direttore.
+  Quindi l'unica retta ortogonale al piano è $\begin{cases} x=-2-6\lambda \\ y=4-4\lambda \\ z=-2-8\lambda \end{cases}$, con direttore ${}^t(-6\ -4\ -8)$ parallelo a $n={}^t(3\ 2\ 4)$.
+  **Errore tipico:** confondere il punto base con il vettore direttore (i termini noti con i coefficienti di $\lambda$), oppure fermarsi a due componenti proporzionali senza controllare il segno della terza; un altro errore è cercare un direttore con prodotto scalare nullo con $n$, che è la condizione di **parallelismo**, non di ortogonalità.
+  TRAP: in alcune opzioni sono i termini noti (il punto base) a essere multipli del vettore normale, non i coefficienti di $\lambda$.
+T: Quale delle seguenti forme parametriche rappresenta una retta ortogonale al piano con forma implicita $3x+2y+4z-3=0$ nello spazio?
+OPT: $\begin{cases} x=-2-6\lambda \\ y=4-4\lambda \\ z=-2-8\lambda \end{cases}$ | $\begin{cases} x=-2-6\lambda \\ y=4-4\lambda \\ z=2+8\lambda \end{cases}$ | $\begin{cases} x=-6-2\lambda \\ y=-4+4\lambda \\ z=8+2\lambda \end{cases}$ | $\begin{cases} x=-6-2\lambda \\ y=-4+4\lambda \\ z=-8-2\lambda \end{cases}$
+35-4 C Una retta è **parallela** a un piano se e solo se il suo vettore direttore è **ortogonale** al vettore di giacitura del piano, cioè se il loro prodotto scalare standard è nullo (Osservazione 35.8: $\beta=\pi/2$; in questo caso la retta è contenuta nel piano o parallela ad esso).
+  Il piano $x-3y+2z-6=0$ ha vettore di giacitura $n={}^t(1\ -3\ 2)$. Il direttore di ogni retta si legge nei coefficienti di $\lambda$.
+  - $\begin{cases} x=1-\lambda \\ y=-\lambda \\ z=2+2\lambda \end{cases}$: $\langle {}^t(-1\ -1\ 2),{}^t(1\ -3\ 2)\rangle=(-1)(1)+(-1)(-3)+(2)(2)=6$, diverso da $0$: non è parallela al piano.
+  - $\begin{cases} x=2+2\lambda \\ y=1-\lambda \\ z=-\lambda \end{cases}$: $\langle {}^t(2\ -1\ -1),{}^t(1\ -3\ 2)\rangle=(2)(1)+(-1)(-3)+(-1)(2)=3$, diverso da $0$: non è parallela al piano.
+  - $\begin{cases} x=1-\lambda \\ y=\lambda \\ z=2+2\lambda \end{cases}$: $\langle {}^t(-1\ 1\ 2),{}^t(1\ -3\ 2)\rangle=(-1)(1)+(1)(-3)+(2)(2)=0$, quindi la retta è parallela al piano. Il punto base ${}^t(1\ 0\ 2)$ dà $-1\neq0$ nell'equazione del piano, quindi la retta è parallela e non contenuta.
+  - $\begin{cases} x=2+2\lambda \\ y=1-\lambda \\ z=\lambda \end{cases}$: $\langle {}^t(2\ -1\ 1),{}^t(1\ -3\ 2)\rangle=(2)(1)+(-1)(-3)+(1)(2)=7$, diverso da $0$: non è parallela al piano.
+  **Errore tipico:** cercare un direttore **proporzionale** al vettore normale: quella è la condizione di ortogonalità, l'opposto di quella richiesta. Un altro errore è fare il prodotto scalare con il punto base invece che con i coefficienti di $\lambda$.
+T: Quale delle seguenti forme parametriche rappresenta una retta parallela al piano con forma implicita $x-3y+2z-6=0$ nello spazio?
+OPT: $\begin{cases} x=1-\lambda \\ y=-\lambda \\ z=2+2\lambda \end{cases}$ | $\begin{cases} x=2+2\lambda \\ y=1-\lambda \\ z=-\lambda \end{cases}$ | $\begin{cases} x=1-\lambda \\ y=\lambda \\ z=2+2\lambda \end{cases}$ | $\begin{cases} x=2+2\lambda \\ y=1-\lambda \\ z=\lambda \end{cases}$
+35-5 A Una retta è **parallela** a un piano se e solo se il suo vettore direttore è **ortogonale** al vettore di giacitura del piano, cioè se il loro prodotto scalare standard è nullo (Osservazione 35.8: $\beta=\pi/2$; in questo caso la retta è contenuta nel piano o parallela ad esso).
+  Il piano $x+3y+2z-6=0$ ha vettore di giacitura $n={}^t(1\ 3\ 2)$. Il direttore di ogni retta si legge nei coefficienti di $\lambda$.
+  - $\begin{cases} x=1-\lambda \\ y=-\lambda \\ z=2+2\lambda \end{cases}$: $\langle {}^t(-1\ -1\ 2),{}^t(1\ 3\ 2)\rangle=(-1)(1)+(-1)(3)+(2)(2)=0$, quindi la retta è parallela al piano. Il punto base ${}^t(1\ 0\ 2)$ dà $-1\neq0$ nell'equazione del piano, quindi la retta è parallela e non contenuta.
+  - $\begin{cases} x=2+2\lambda \\ y=1-\lambda \\ z=-\lambda \end{cases}$: $\langle {}^t(2\ -1\ -1),{}^t(1\ 3\ 2)\rangle=(2)(1)+(-1)(3)+(-1)(2)=-3$, diverso da $0$: non è parallela al piano.
+  - $\begin{cases} x=2+2\lambda \\ y=1-\lambda \\ z=\lambda \end{cases}$: $\langle {}^t(2\ -1\ 1),{}^t(1\ 3\ 2)\rangle=(2)(1)+(-1)(3)+(1)(2)=1$, diverso da $0$: non è parallela al piano.
+  - $\begin{cases} x=1-\lambda \\ y=\lambda \\ z=2+2\lambda \end{cases}$: $\langle {}^t(-1\ 1\ 2),{}^t(1\ 3\ 2)\rangle=(-1)(1)+(1)(3)+(2)(2)=6$, diverso da $0$: non è parallela al piano.
+  **Errore tipico:** cercare un direttore **proporzionale** al vettore normale: quella è la condizione di ortogonalità, l'opposto di quella richiesta. Un altro errore è fare il prodotto scalare con il punto base invece che con i coefficienti di $\lambda$.
+T: Quale delle seguenti forme parametriche rappresenta una retta parallela al piano con forma implicita $x+3y+2z-6=0$ nello spazio?
+OPT: $\begin{cases} x=1-\lambda \\ y=-\lambda \\ z=2+2\lambda \end{cases}$ | $\begin{cases} x=2+2\lambda \\ y=1-\lambda \\ z=-\lambda \end{cases}$ | $\begin{cases} x=2+2\lambda \\ y=1-\lambda \\ z=\lambda \end{cases}$ | $\begin{cases} x=1-\lambda \\ y=\lambda \\ z=2+2\lambda \end{cases}$
+35-6 A Una retta è **parallela** a un piano se e solo se il suo vettore direttore è **ortogonale** al vettore di giacitura del piano, cioè se il loro prodotto scalare standard è nullo (Osservazione 35.8: $\beta=\pi/2$; in questo caso la retta è contenuta nel piano o parallela ad esso).
+  Il piano $2x+y-3z-7=0$ ha vettore di giacitura $n={}^t(2\ 1\ -3)$. Il direttore di ogni retta si legge nei coefficienti di $\lambda$.
+  - $\begin{cases} x=2+2\lambda \\ y=1-\lambda \\ z=\lambda \end{cases}$: $\langle {}^t(2\ -1\ 1),{}^t(2\ 1\ -3)\rangle=(2)(2)+(-1)(1)+(1)(-3)=0$, quindi la retta è parallela al piano. Il punto base ${}^t(2\ 1\ 0)$ dà $-2\neq0$ nell'equazione del piano, quindi la retta è parallela e non contenuta.
+  - $\begin{cases} x=1-\lambda \\ y=-\lambda \\ z=2+2\lambda \end{cases}$: $\langle {}^t(-1\ -1\ 2),{}^t(2\ 1\ -3)\rangle=(-1)(2)+(-1)(1)+(2)(-3)=-9$, diverso da $0$: non è parallela al piano.
+  - $\begin{cases} x=2+2\lambda \\ y=1-\lambda \\ z=-\lambda \end{cases}$: $\langle {}^t(2\ -1\ -1),{}^t(2\ 1\ -3)\rangle=(2)(2)+(-1)(1)+(-1)(-3)=6$, diverso da $0$: non è parallela al piano.
+  - $\begin{cases} x=1-\lambda \\ y=\lambda \\ z=2+2\lambda \end{cases}$: $\langle {}^t(-1\ 1\ 2),{}^t(2\ 1\ -3)\rangle=(-1)(2)+(1)(1)+(2)(-3)=-7$, diverso da $0$: non è parallela al piano.
+  **Errore tipico:** cercare un direttore **proporzionale** al vettore normale: quella è la condizione di ortogonalità, l'opposto di quella richiesta. Un altro errore è fare il prodotto scalare con il punto base invece che con i coefficienti di $\lambda$.
+T: Quale delle seguenti forme parametriche rappresenta una retta parallela al piano con forma implicita $2x+y-3z-7=0$ nello spazio?
+OPT: $\begin{cases} x=2+2\lambda \\ y=1-\lambda \\ z=\lambda \end{cases}$ | $\begin{cases} x=1-\lambda \\ y=-\lambda \\ z=2+2\lambda \end{cases}$ | $\begin{cases} x=2+2\lambda \\ y=1-\lambda \\ z=-\lambda \end{cases}$ | $\begin{cases} x=1-\lambda \\ y=\lambda \\ z=2+2\lambda \end{cases}$
+35-7 D Una retta è **parallela** a un piano se e solo se il suo vettore direttore è **ortogonale** al vettore di giacitura del piano, cioè se il loro prodotto scalare standard è nullo (Osservazione 35.8: $\beta=\pi/2$; in questo caso la retta è contenuta nel piano o parallela ad esso).
+  Il piano $2x+y+3z-7=0$ ha vettore di giacitura $n={}^t(2\ 1\ 3)$. Il direttore di ogni retta si legge nei coefficienti di $\lambda$.
+  - $\begin{cases} x=1-\lambda \\ y=\lambda \\ z=2+2\lambda \end{cases}$: $\langle {}^t(-1\ 1\ 2),{}^t(2\ 1\ 3)\rangle=(-1)(2)+(1)(1)+(2)(3)=5$, diverso da $0$: non è parallela al piano.
+  - $\begin{cases} x=2+2\lambda \\ y=1-\lambda \\ z=\lambda \end{cases}$: $\langle {}^t(2\ -1\ 1),{}^t(2\ 1\ 3)\rangle=(2)(2)+(-1)(1)+(1)(3)=6$, diverso da $0$: non è parallela al piano.
+  - $\begin{cases} x=1-\lambda \\ y=-\lambda \\ z=2+2\lambda \end{cases}$: $\langle {}^t(-1\ -1\ 2),{}^t(2\ 1\ 3)\rangle=(-1)(2)+(-1)(1)+(2)(3)=3$, diverso da $0$: non è parallela al piano.
+  - $\begin{cases} x=2+2\lambda \\ y=1-\lambda \\ z=-\lambda \end{cases}$: $\langle {}^t(2\ -1\ -1),{}^t(2\ 1\ 3)\rangle=(2)(2)+(-1)(1)+(-1)(3)=0$, quindi la retta è parallela al piano. Il punto base ${}^t(2\ 1\ 0)$ dà $-2\neq0$ nell'equazione del piano, quindi la retta è parallela e non contenuta.
+  **Errore tipico:** cercare un direttore **proporzionale** al vettore normale: quella è la condizione di ortogonalità, l'opposto di quella richiesta. Un altro errore è fare il prodotto scalare con il punto base invece che con i coefficienti di $\lambda$.
+T: Quale delle seguenti forme parametriche rappresenta una retta parallela al piano con forma implicita $2x+y+3z-7=0$ nello spazio?
+OPT: $\begin{cases} x=1-\lambda \\ y=\lambda \\ z=2+2\lambda \end{cases}$ | $\begin{cases} x=2+2\lambda \\ y=1-\lambda \\ z=\lambda \end{cases}$ | $\begin{cases} x=1-\lambda \\ y=-\lambda \\ z=2+2\lambda \end{cases}$ | $\begin{cases} x=2+2\lambda \\ y=1-\lambda \\ z=-\lambda \end{cases}$
+35-8 C Una retta è **parallela** a un piano se e solo se il suo vettore direttore è **ortogonale** al vettore di giacitura del piano, cioè se il loro prodotto scalare standard è nullo (Osservazione 35.8: $\beta=\pi/2$; in questo caso la retta è contenuta nel piano o parallela ad esso).
+  Il piano $4x-3y+5z-3=0$ ha vettore di giacitura $n={}^t(4\ -3\ 5)$. Il direttore di ogni retta si legge nei coefficienti di $\lambda$.
+  In più la retta deve passare per $P={}^t(4\ 2\ -1)$: deve esistere $\lambda$ che dà $P$, cioè $P$ meno il punto base deve essere un multiplo del direttore.
+  - $\begin{cases} x=2-2\lambda \\ y=3+4\lambda \\ z=-2+4\lambda \end{cases}$: $\langle {}^t(-2\ 4\ 4),{}^t(4\ -3\ 5)\rangle=(-2)(4)+(4)(-3)+(4)(5)=0$, quindi il direttore va bene, ma la retta **non passa** per $P$ (il punto base ${}^t(2\ 3\ -2)$ è diverso e $P-{}^t(2\ 3\ -2)$ non è multiplo di ${}^t(-2\ 4\ 4)$).
+  - $\begin{cases} x=4-3\lambda \\ y=2+4\lambda \\ z=-1 \end{cases}$: $\langle {}^t(-3\ 4\ 0),{}^t(4\ -3\ 5)\rangle=(-3)(4)+(4)(-3)+(0)(5)=-24$, diverso da $0$: non è parallela al piano.
+  - $\begin{cases} x=4-3\lambda \\ y=2-4\lambda \\ z=-1 \end{cases}$: $\langle {}^t(-3\ -4\ 0),{}^t(4\ -3\ 5)\rangle=(-3)(4)+(-4)(-3)+(0)(5)=0$, quindi la retta è parallela al piano e per $\lambda=0$ passa per $P$.
+  - $\begin{cases} x=4-3\lambda \\ y=-3-4\lambda \\ z=5 \end{cases}$: $\langle {}^t(-3\ -4\ 0),{}^t(4\ -3\ 5)\rangle=(-3)(4)+(-4)(-3)+(0)(5)=0$, quindi il direttore va bene, ma la retta **non passa** per $P$ (il punto base ${}^t(4\ -3\ 5)$ è diverso e $P-{}^t(4\ -3\ 5)$ non è multiplo di ${}^t(-3\ -4\ 0)$).
+  **Errore tipico:** cercare un direttore **proporzionale** al vettore normale: quella è la condizione di ortogonalità, l'opposto di quella richiesta. Un altro errore è fare il prodotto scalare con il punto base invece che con i coefficienti di $\lambda$, o dimenticare il passaggio per il punto dato.
+T: Quale delle seguenti forme parametriche rappresenta una retta parallela al piano con forma implicita $4x-3y+5z-3=0$ e passante per il punto ${}^t(4\ 2\ -1)$ nello spazio?
+OPT: $\begin{cases} x=2-2\lambda \\ y=3+4\lambda \\ z=-2+4\lambda \end{cases}$ | $\begin{cases} x=4-3\lambda \\ y=2+4\lambda \\ z=-1 \end{cases}$ | $\begin{cases} x=4-3\lambda \\ y=2-4\lambda \\ z=-1 \end{cases}$ | $\begin{cases} x=4-3\lambda \\ y=-3-4\lambda \\ z=5 \end{cases}$
+35-9 A Una retta è **parallela** a un piano se e solo se il suo vettore direttore è **ortogonale** al vettore di giacitura del piano, cioè se il loro prodotto scalare standard è nullo (Osservazione 35.8: $\beta=\pi/2$; in questo caso la retta è contenuta nel piano o parallela ad esso).
+  Il piano $4x-3y+5z-3=0$ ha vettore di giacitura $n={}^t(4\ -3\ 5)$. Il direttore di ogni retta si legge nei coefficienti di $\lambda$.
+  In più la retta deve passare per $P={}^t(2\ 3\ -2)$: deve esistere $\lambda$ che dà $P$, cioè $P$ meno il punto base deve essere un multiplo del direttore.
+  - $\begin{cases} x=2-2\lambda \\ y=3+4\lambda \\ z=-2+4\lambda \end{cases}$: $\langle {}^t(-2\ 4\ 4),{}^t(4\ -3\ 5)\rangle=(-2)(4)+(4)(-3)+(4)(5)=0$, quindi la retta è parallela al piano e per $\lambda=0$ passa per $P$.
+  - $\begin{cases} x=4-2\lambda \\ y=-3+4\lambda \\ z=5+4\lambda \end{cases}$: $\langle {}^t(-2\ 4\ 4),{}^t(4\ -3\ 5)\rangle=(-2)(4)+(4)(-3)+(4)(5)=0$, quindi il direttore va bene, ma la retta **non passa** per $P$ (il punto base ${}^t(4\ -3\ 5)$ è diverso e $P-{}^t(4\ -3\ 5)$ non è multiplo di ${}^t(-2\ 4\ 4)$).
+  - $\begin{cases} x=4-3\lambda \\ y=2-4\lambda \\ z=-1 \end{cases}$: $\langle {}^t(-3\ -4\ 0),{}^t(4\ -3\ 5)\rangle=(-3)(4)+(-4)(-3)+(0)(5)=0$, quindi il direttore va bene, ma la retta **non passa** per $P$ (il punto base ${}^t(4\ 2\ -1)$ è diverso e $P-{}^t(4\ 2\ -1)$ non è multiplo di ${}^t(-3\ -4\ 0)$).
+  - $\begin{cases} x=2-2\lambda \\ y=3-4\lambda \\ z=-2+4\lambda \end{cases}$: $\langle {}^t(-2\ -4\ 4),{}^t(4\ -3\ 5)\rangle=(-2)(4)+(-4)(-3)+(4)(5)=24$, diverso da $0$: non è parallela al piano.
+  **Errore tipico:** cercare un direttore **proporzionale** al vettore normale: quella è la condizione di ortogonalità, l'opposto di quella richiesta. Un altro errore è fare il prodotto scalare con il punto base invece che con i coefficienti di $\lambda$, o dimenticare il passaggio per il punto dato.
+T: Quale delle seguenti forme parametriche rappresenta una retta parallela al piano con forma implicita $4x-3y+5z-3=0$ e passante per il punto ${}^t(2\ 3\ -2)$ nello spazio?
+OPT: $\begin{cases} x=2-2\lambda \\ y=3+4\lambda \\ z=-2+4\lambda \end{cases}$ | $\begin{cases} x=4-2\lambda \\ y=-3+4\lambda \\ z=5+4\lambda \end{cases}$ | $\begin{cases} x=4-3\lambda \\ y=2-4\lambda \\ z=-1 \end{cases}$ | $\begin{cases} x=2-2\lambda \\ y=3-4\lambda \\ z=-2+4\lambda \end{cases}$
+35-10 C Una retta è **parallela** a un piano se e solo se il suo vettore direttore è **ortogonale** al vettore di giacitura del piano, cioè se il loro prodotto scalare standard è nullo (Osservazione 35.8: $\beta=\pi/2$; in questo caso la retta è contenuta nel piano o parallela ad esso).
+  Il piano $4x+3y-5z-3=0$ ha vettore di giacitura $n={}^t(4\ 3\ -5)$. Il direttore di ogni retta si legge nei coefficienti di $\lambda$.
+  In più la retta deve passare per $P={}^t(4\ -2\ 1)$: deve esistere $\lambda$ che dà $P$, cioè $P$ meno il punto base deve essere un multiplo del direttore.
+  - $\begin{cases} x=4-3\lambda \\ y=-3+4\lambda \\ z=-5 \end{cases}$: $\langle {}^t(-3\ 4\ 0),{}^t(4\ 3\ -5)\rangle=(-3)(4)+(4)(3)+(0)(-5)=0$, quindi il direttore va bene, ma la retta **non passa** per $P$ (il punto base ${}^t(4\ -3\ -5)$ è diverso e $P-{}^t(4\ -3\ -5)$ non è multiplo di ${}^t(-3\ 4\ 0)$).
+  - $\begin{cases} x=4-3\lambda \\ y=-2-4\lambda \\ z=1 \end{cases}$: $\langle {}^t(-3\ -4\ 0),{}^t(4\ 3\ -5)\rangle=(-3)(4)+(-4)(3)+(0)(-5)=-24$, diverso da $0$: non è parallela al piano.
+  - $\begin{cases} x=4-3\lambda \\ y=-2+4\lambda \\ z=1 \end{cases}$: $\langle {}^t(-3\ 4\ 0),{}^t(4\ 3\ -5)\rangle=(-3)(4)+(4)(3)+(0)(-5)=0$, quindi la retta è parallela al piano e per $\lambda=0$ passa per $P$.
+  - $\begin{cases} x=2-2\lambda \\ y=-3-4\lambda \\ z=2-4\lambda \end{cases}$: $\langle {}^t(-2\ -4\ -4),{}^t(4\ 3\ -5)\rangle=(-2)(4)+(-4)(3)+(-4)(-5)=0$, quindi il direttore va bene, ma la retta **non passa** per $P$ (il punto base ${}^t(2\ -3\ 2)$ è diverso e $P-{}^t(2\ -3\ 2)$ non è multiplo di ${}^t(-2\ -4\ -4)$).
+  **Errore tipico:** cercare un direttore **proporzionale** al vettore normale: quella è la condizione di ortogonalità, l'opposto di quella richiesta. Un altro errore è fare il prodotto scalare con il punto base invece che con i coefficienti di $\lambda$, o dimenticare il passaggio per il punto dato.
+T: Quale delle seguenti forme parametriche rappresenta una retta parallela al piano con forma implicita $4x+3y-5z-3=0$ e passante per il punto ${}^t(4\ -2\ 1)$ nello spazio?
+OPT: $\begin{cases} x=4-3\lambda \\ y=-3+4\lambda \\ z=-5 \end{cases}$ | $\begin{cases} x=4-3\lambda \\ y=-2-4\lambda \\ z=1 \end{cases}$ | $\begin{cases} x=4-3\lambda \\ y=-2+4\lambda \\ z=1 \end{cases}$ | $\begin{cases} x=2-2\lambda \\ y=-3-4\lambda \\ z=2-4\lambda \end{cases}$
+35-11 A Una retta è **parallela** a un piano se e solo se il suo vettore direttore è **ortogonale** al vettore di giacitura del piano, cioè se il loro prodotto scalare standard è nullo (Osservazione 35.8: $\beta=\pi/2$; in questo caso la retta è contenuta nel piano o parallela ad esso).
+  Il piano $4x+3y-5z-3=0$ ha vettore di giacitura $n={}^t(4\ 3\ -5)$. Il direttore di ogni retta si legge nei coefficienti di $\lambda$.
+  In più la retta deve passare per $P={}^t(2\ -3\ 2)$: deve esistere $\lambda$ che dà $P$, cioè $P$ meno il punto base deve essere un multiplo del direttore.
+  - $\begin{cases} x=2-2\lambda \\ y=-3-4\lambda \\ z=2-4\lambda \end{cases}$: $\langle {}^t(-2\ -4\ -4),{}^t(4\ 3\ -5)\rangle=(-2)(4)+(-4)(3)+(-4)(-5)=0$, quindi la retta è parallela al piano e per $\lambda=0$ passa per $P$.
+  - $\begin{cases} x=2-2\lambda \\ y=-3+4\lambda \\ z=2-4\lambda \end{cases}$: $\langle {}^t(-2\ 4\ -4),{}^t(4\ 3\ -5)\rangle=(-2)(4)+(4)(3)+(-4)(-5)=24$, diverso da $0$: non è parallela al piano.
+  - $\begin{cases} x=4-3\lambda \\ y=-2+4\lambda \\ z=1 \end{cases}$: $\langle {}^t(-3\ 4\ 0),{}^t(4\ 3\ -5)\rangle=(-3)(4)+(4)(3)+(0)(-5)=0$, quindi il direttore va bene, ma la retta **non passa** per $P$ (il punto base ${}^t(4\ -2\ 1)$ è diverso e $P-{}^t(4\ -2\ 1)$ non è multiplo di ${}^t(-3\ 4\ 0)$).
+  - $\begin{cases} x=4-2\lambda \\ y=3-4\lambda \\ z=-5-4\lambda \end{cases}$: $\langle {}^t(-2\ -4\ -4),{}^t(4\ 3\ -5)\rangle=(-2)(4)+(-4)(3)+(-4)(-5)=0$, quindi il direttore va bene, ma la retta **non passa** per $P$ (il punto base ${}^t(4\ 3\ -5)$ è diverso e $P-{}^t(4\ 3\ -5)$ non è multiplo di ${}^t(-2\ -4\ -4)$).
+  **Errore tipico:** cercare un direttore **proporzionale** al vettore normale: quella è la condizione di ortogonalità, l'opposto di quella richiesta. Un altro errore è fare il prodotto scalare con il punto base invece che con i coefficienti di $\lambda$, o dimenticare il passaggio per il punto dato.
+T: Quale delle seguenti forme parametriche rappresenta una retta parallela al piano con forma implicita $4x+3y-5z-3=0$ e passante per il punto ${}^t(2\ -3\ 2)$ nello spazio?
+OPT: $\begin{cases} x=2-2\lambda \\ y=-3-4\lambda \\ z=2-4\lambda \end{cases}$ | $\begin{cases} x=2-2\lambda \\ y=-3+4\lambda \\ z=2-4\lambda \end{cases}$ | $\begin{cases} x=4-3\lambda \\ y=-2+4\lambda \\ z=1 \end{cases}$ | $\begin{cases} x=4-2\lambda \\ y=3-4\lambda \\ z=-5-4\lambda \end{cases}$
+35-12 C Una retta è **ortogonale** a un piano se e solo se il suo vettore direttore è un multiplo non nullo del **vettore di giacitura** (normale) del piano (Osservazione 35.8: l'angolo $\beta$ tra direttore e normale deve essere $0$, o $\pi$ se si prende il multiplo opposto).
+  Il piano $3x+2y-4z-3=0$ ha vettore di giacitura $n={}^t(3\ 2\ -4)$: si leggono i coefficienti di $x,y,z$, il termine noto non conta. In una forma parametrica il vettore direttore è dato dai **coefficienti di $\lambda$**, mentre i termini noti sono le coordinate del punto base, che qui è libero.
+  Controllo il direttore di ciascuna retta proposta:
+  - $\begin{cases} x=-6-2\lambda \\ y=-4+4\lambda \\ z=-8-2\lambda \end{cases}$: direttore ${}^t(-2\ 4\ -2)$; i rapporti con le componenti di $n$ sono $\tfrac{-2}{3}, \tfrac{4}{2}, \tfrac{-2}{-4}$, non tutti uguali, quindi non è un multiplo di $n$.
+  - $\begin{cases} x=-2-6\lambda \\ y=4-4\lambda \\ z=-2-8\lambda \end{cases}$: direttore ${}^t(-6\ -4\ -8)$; i rapporti con le componenti di $n$ sono $\tfrac{-6}{3}, \tfrac{-4}{2}, \tfrac{-8}{-4}$, non tutti uguali, quindi non è un multiplo di $n$.
+  - $\begin{cases} x=-2-6\lambda \\ y=4-4\lambda \\ z=2+8\lambda \end{cases}$: direttore ${}^t(-6\ -4\ 8)=-2\cdot{}^t(3\ 2\ -4)$, multiplo di $n$: la retta è ortogonale al piano.
+  - $\begin{cases} x=-6-2\lambda \\ y=-4+4\lambda \\ z=8+2\lambda \end{cases}$: direttore ${}^t(-2\ 4\ 2)$; i rapporti con le componenti di $n$ sono $\tfrac{-2}{3}, \tfrac{4}{2}, \tfrac{2}{-4}$, non tutti uguali, quindi non è un multiplo di $n$. Attenzione: qui è il **punto base** ${}^t(-6\ -4\ 8)$ a essere multiplo di $n$, non il direttore.
+  Quindi l'unica retta ortogonale al piano è $\begin{cases} x=-2-6\lambda \\ y=4-4\lambda \\ z=2+8\lambda \end{cases}$, con direttore ${}^t(-6\ -4\ 8)$ parallelo a $n={}^t(3\ 2\ -4)$.
+  **Errore tipico:** confondere il punto base con il vettore direttore (i termini noti con i coefficienti di $\lambda$), oppure fermarsi a due componenti proporzionali senza controllare il segno della terza; un altro errore è cercare un direttore con prodotto scalare nullo con $n$, che è la condizione di **parallelismo**, non di ortogonalità.
+  TRAP: in alcune opzioni sono i termini noti (il punto base) a essere multipli del vettore normale, non i coefficienti di $\lambda$.
+T: Quale delle seguenti forme parametriche rappresenta una retta ortogonale al piano con forma implicita $3x+2y-4z-3=0$ nello spazio?
+OPT: $\begin{cases} x=-6-2\lambda \\ y=-4+4\lambda \\ z=-8-2\lambda \end{cases}$ | $\begin{cases} x=-2-6\lambda \\ y=4-4\lambda \\ z=-2-8\lambda \end{cases}$ | $\begin{cases} x=-2-6\lambda \\ y=4-4\lambda \\ z=2+8\lambda \end{cases}$ | $\begin{cases} x=-6-2\lambda \\ y=-4+4\lambda \\ z=8+2\lambda \end{cases}$
+35-13 B La distanza tra un punto $P={}^t(2\ 0\ -5)=(x_0,y_0,z_0)$ e un piano $ax+by+cz+d=0$ è (Osservazione 35.15)
+  $$\mathrm{dist}(P,\alpha)=\frac{\lvert ax_0+by_0+cz_0+d\rvert}{\sqrt{a^2+b^2+c^2}}$$
+  Numeratore: sostituisco $P$ nell'equazione $3x-3y+2z-2=0$: $(3)(2)+(-3)(0)+(2)(-5)+(-2)=-6$, in valore assoluto $6$.
+  Denominatore: $\sqrt{(3)^2+(-3)^2+(2)^2}=\sqrt{22}$.
+  Quindi $\mathrm{dist}=6/\sqrt{22}$; razionalizzando (moltiplico sopra e sotto per $\sqrt{22}$) ottengo $\frac{3 \sqrt{22}}{11}$.
+  Una distanza non è mai negativa: le opzioni con il segno meno sono sbagliate a priori, e l'altra opzione positiva ha la radice di un denominatore diverso.
+  **Errore tipico:** dimenticare il valore assoluto (il valore sostituito è $-6$, negativo, e porta all'opzione con il segno meno), oppure usare un denominatore sbagliato confondendo $a^2+b^2+c^2$ con quello di un altro piano.
+  TRAP: il valore che si ottiene sostituendo il punto è negativo: senza il valore assoluto si cade sull'opzione con il segno meno.
+T: Quale delle seguenti è la distanza tra il piano con forma implicita $3x-3y+2z-2=0$ e il punto ${}^t(2\ 0\ -5)$ nello spazio?
+OPT: $-\dfrac{3\sqrt{22}}{11}$ | $\dfrac{3\sqrt{22}}{11}$ | $\dfrac{2\sqrt{14}}{7}$ | $-\dfrac{2\sqrt{14}}{7}$
+35-14 C Una retta è **ortogonale** a un piano se e solo se il suo vettore direttore è un multiplo non nullo del **vettore di giacitura** (normale) del piano (Osservazione 35.8: l'angolo $\beta$ tra direttore e normale deve essere $0$, o $\pi$ se si prende il multiplo opposto).
+  Il piano $x-2y+z+4=0$ ha vettore di giacitura $n={}^t(1\ -2\ 1)$: si leggono i coefficienti di $x,y,z$, il termine noto non conta. In una forma parametrica il vettore direttore è dato dai **coefficienti di $\lambda$**, mentre i termini noti sono le coordinate del punto base, che qui è libero.
+  Controllo il direttore di ciascuna retta proposta:
+  - $\begin{cases} x=-6-2\lambda \\ y=-4+4\lambda \\ z=8+2\lambda \end{cases}$: direttore ${}^t(-2\ 4\ 2)$; i rapporti con le componenti di $n$ sono $\tfrac{-2}{1}, \tfrac{4}{-2}, \tfrac{2}{1}$, non tutti uguali, quindi non è un multiplo di $n$.
+  - $\begin{cases} x=-2-6\lambda \\ y=4-4\lambda \\ z=2+8\lambda \end{cases}$: direttore ${}^t(-6\ -4\ 8)$; i rapporti con le componenti di $n$ sono $\tfrac{-6}{1}, \tfrac{-4}{-2}, \tfrac{8}{1}$, non tutti uguali, quindi non è un multiplo di $n$.
+  - $\begin{cases} x=-6-2\lambda \\ y=-4+4\lambda \\ z=-8-2\lambda \end{cases}$: direttore ${}^t(-2\ 4\ -2)=-2\cdot{}^t(1\ -2\ 1)$, multiplo di $n$: la retta è ortogonale al piano.
+  - $\begin{cases} x=-2-6\lambda \\ y=4-4\lambda \\ z=-2-8\lambda \end{cases}$: direttore ${}^t(-6\ -4\ -8)$; i rapporti con le componenti di $n$ sono $\tfrac{-6}{1}, \tfrac{-4}{-2}, \tfrac{-8}{1}$, non tutti uguali, quindi non è un multiplo di $n$. Attenzione: qui è il **punto base** ${}^t(-2\ 4\ -2)$ a essere multiplo di $n$, non il direttore.
+  Quindi l'unica retta ortogonale al piano è $\begin{cases} x=-6-2\lambda \\ y=-4+4\lambda \\ z=-8-2\lambda \end{cases}$, con direttore ${}^t(-2\ 4\ -2)$ parallelo a $n={}^t(1\ -2\ 1)$.
+  **Errore tipico:** confondere il punto base con il vettore direttore (i termini noti con i coefficienti di $\lambda$), oppure fermarsi a due componenti proporzionali senza controllare il segno della terza; un altro errore è cercare un direttore con prodotto scalare nullo con $n$, che è la condizione di **parallelismo**, non di ortogonalità.
+  TRAP: in alcune opzioni sono i termini noti (il punto base) a essere multipli del vettore normale, non i coefficienti di $\lambda$.
+T: Quale delle seguenti forme parametriche rappresenta una retta ortogonale al piano con forma implicita $x-2y+z+4=0$ nello spazio?
+OPT: $\begin{cases} x=-6-2\lambda \\ y=-4+4\lambda \\ z=8+2\lambda \end{cases}$ | $\begin{cases} x=-2-6\lambda \\ y=4-4\lambda \\ z=2+8\lambda \end{cases}$ | $\begin{cases} x=-6-2\lambda \\ y=-4+4\lambda \\ z=-8-2\lambda \end{cases}$ | $\begin{cases} x=-2-6\lambda \\ y=4-4\lambda \\ z=-2-8\lambda \end{cases}$
+35-15 D Un piano è **parallelo** a una retta se e solo se il vettore direttore della retta è ortogonale al vettore di giacitura del piano: $\langle w,n\rangle=0$ (Osservazione 35.8).
+  La retta $\begin{cases} x=1-3\lambda \\ y=-4\lambda \\ z=-3+2\lambda \end{cases}$ ha direttore $w={}^t(-3\ -4\ 2)$ (coefficienti di $\lambda$). Per ogni piano leggo la normale dai coefficienti di $x,y,z$:
+  - $2x-5y-7z-2=0$: $\langle {}^t(2\ -5\ -7),{}^t(-3\ -4\ 2)\rangle=(2)(-3)+(-5)(-4)+(-7)(2)=0$, la giacitura va bene; sostituendo $P$: $(2)(4)+(-5)(0)+(-7)(1)+(-2)=-1$, diverso da $0$: il piano non passa per $P$.
+  - $2x-3y-2z-6=0$: $\langle {}^t(2\ -3\ -2),{}^t(-3\ -4\ 2)\rangle=(2)(-3)+(-3)(-4)+(-2)(2)=2$, non nullo: il piano non è parallelo alla retta.
+  - $2x-3y-2z-8=0$: $\langle {}^t(2\ -3\ -2),{}^t(-3\ -4\ 2)\rangle=(2)(-3)+(-3)(-4)+(-2)(2)=2$, non nullo: il piano non è parallelo alla retta.
+  - $2x-5y-7z-1=0$: $\langle {}^t(2\ -5\ -7),{}^t(-3\ -4\ 2)\rangle=(2)(-3)+(-5)(-4)+(-7)(2)=0$, la giacitura va bene; sostituendo $P$: $(2)(4)+(-5)(0)+(-7)(1)+(-1)=0$, quindi $P$ sta sul piano: è la risposta.
+  In alternativa: la normale ${}^t(2\ -5\ -7)$ fissa la giacitura, e il termine noto si ricava imponendo il passaggio per $P={}^t(4\ 0\ 1)$, cioè $d=-((2)(4)+(-5)(0)+(-7)(1))=-1$.
+  **Errore tipico:** cercare un piano con normale proporzionale al direttore della retta (quello è il piano **ortogonale** alla retta), oppure usare i termini noti della forma parametrica al posto dei coefficienti di $\lambda$; con il punto, scegliere il termine noto giusto per una giacitura sbagliata o viceversa.
+T: Quale delle seguenti forme implicite rappresenta un piano parallelo alla retta con forma parametrica $\begin{cases} x=1-3\lambda \\ y=-4\lambda \\ z=-3+2\lambda \end{cases}$ e passante per il punto ${}^t(4\ 0\ 1)$ nello spazio?
+OPT: $2x-5y-7z-2=0$ | $2x-3y-2z-6=0$ | $2x-3y-2z-8=0$ | $2x-5y-7z-1=0$
+35-16 A La retta ortogonale a un piano e passante per un punto dato è **unica**: ha come vettore direttore il vettore di giacitura del piano e come punto base il punto dato.
+  Il piano $2x-5y-3z+7=0$ ha vettore di giacitura $n={}^t(2\ -5\ -3)$, quindi la retta cercata è $x=3+2\lambda,\ y=-2-5\lambda,\ z=1-3\lambda$.
+  Per riconoscerla tra le opzioni bisogna controllare due cose: direttore multiplo di $n$ **e** passaggio per $P={}^t(3\ -2\ 1)$.
+  - $\begin{cases} x=3+2\lambda \\ y=-2-5\lambda \\ z=1-3\lambda \end{cases}$: direttore ${}^t(2\ -5\ -3)=n$ e per $\lambda=0$ si ottiene proprio $P$: è la retta cercata.
+  - $\begin{cases} x=2+3\lambda \\ y=-5-2\lambda \\ z=-3+\lambda \end{cases}$: ha punto base e direttore **scambiati**: il direttore ${}^t(3\ -2\ 1)$ non è multiplo di $n$ (la retta non è ortogonale al piano).
+  - $\begin{cases} x=3+2\lambda \\ y=-2-5\lambda \\ z=1+3\lambda \end{cases}$: direttore ${}^t(2\ -5\ 3)$, che differisce da $n$ nel segno di una sola componente, quindi non è un suo multiplo: la retta non è ortogonale al piano.
+  - $\begin{cases} x=3+2\lambda \\ y=-2-5\lambda \\ z=-1-3\lambda \end{cases}$: il direttore è giusto, ma il punto base ${}^t(3\ -2\ -1)$ è diverso da $P$ e $P-{}^t(3\ -2\ -1)$ non è multiplo di $n$: la retta non passa per $P$.
+  **Errore tipico:** scambiare il ruolo di punto e vettore (le opzioni con le coordinate di $P$ nei coefficienti di $\lambda$), o sbagliare un segno nel copiare il punto o la normale: bisogna verificare tutte e sei le componenti.
+  TRAP: in alcune opzioni le coordinate del punto e del vettore normale sono scambiate, e in altre cambia il segno di una sola componente.
+T: Quale delle seguenti forme parametriche rappresenta la retta ortogonale al piano con forma implicita $2x-5y-3z+7=0$ e passante per il punto ${}^t(3\ -2\ 1)$ nello spazio?
+OPT: $\begin{cases} x=3+2\lambda \\ y=-2-5\lambda \\ z=1-3\lambda \end{cases}$ | $\begin{cases} x=2+3\lambda \\ y=-5-2\lambda \\ z=-3+\lambda \end{cases}$ | $\begin{cases} x=3+2\lambda \\ y=-2-5\lambda \\ z=1+3\lambda \end{cases}$ | $\begin{cases} x=3+2\lambda \\ y=-2-5\lambda \\ z=-1-3\lambda \end{cases}$
+35-17 A La retta ortogonale a un piano e passante per un punto dato è **unica**: ha come vettore direttore il vettore di giacitura del piano e come punto base il punto dato.
+  Il piano $3x-2y+z+7=0$ ha vettore di giacitura $n={}^t(3\ -2\ 1)$, quindi la retta cercata è $x=2+3\lambda,\ y=-5-2\lambda,\ z=-3+\lambda$.
+  Per riconoscerla tra le opzioni bisogna controllare due cose: direttore multiplo di $n$ **e** passaggio per $P={}^t(2\ -5\ -3)$.
+  - $\begin{cases} x=2+3\lambda \\ y=-5-2\lambda \\ z=-3+\lambda \end{cases}$: direttore ${}^t(3\ -2\ 1)=n$ e per $\lambda=0$ si ottiene proprio $P$: è la retta cercata.
+  - $\begin{cases} x=3+2\lambda \\ y=-2-5\lambda \\ z=1-3\lambda \end{cases}$: ha punto base e direttore **scambiati**: il direttore ${}^t(2\ -5\ -3)$ non è multiplo di $n$ (la retta non è ortogonale al piano).
+  - $\begin{cases} x=2+3\lambda \\ y=-5-2\lambda \\ z=-3-\lambda \end{cases}$: direttore ${}^t(3\ -2\ -1)$, che differisce da $n$ nel segno di una sola componente, quindi non è un suo multiplo: la retta non è ortogonale al piano.
+  - $\begin{cases} x=2+3\lambda \\ y=-5-2\lambda \\ z=3+\lambda \end{cases}$: il direttore è giusto, ma il punto base ${}^t(2\ -5\ 3)$ è diverso da $P$ e $P-{}^t(2\ -5\ 3)$ non è multiplo di $n$: la retta non passa per $P$.
+  **Errore tipico:** scambiare il ruolo di punto e vettore (le opzioni con le coordinate di $P$ nei coefficienti di $\lambda$), o sbagliare un segno nel copiare il punto o la normale: bisogna verificare tutte e sei le componenti.
+  TRAP: in alcune opzioni le coordinate del punto e del vettore normale sono scambiate, e in altre cambia il segno di una sola componente.
+T: Quale delle seguenti forme parametriche rappresenta la retta ortogonale al piano con forma implicita $3x-2y+z+7=0$ e passante per il punto ${}^t(2\ -5\ -3)$ nello spazio?
+OPT: $\begin{cases} x=2+3\lambda \\ y=-5-2\lambda \\ z=-3+\lambda \end{cases}$ | $\begin{cases} x=3+2\lambda \\ y=-2-5\lambda \\ z=1-3\lambda \end{cases}$ | $\begin{cases} x=2+3\lambda \\ y=-5-2\lambda \\ z=-3-\lambda \end{cases}$ | $\begin{cases} x=2+3\lambda \\ y=-5-2\lambda \\ z=3+\lambda \end{cases}$
+35-18 A La retta ortogonale a un piano e passante per un punto dato è **unica**: ha come vettore direttore il vettore di giacitura del piano e come punto base il punto dato.
+  Il piano $2x-5y+3z+5=0$ ha vettore di giacitura $n={}^t(2\ -5\ 3)$, quindi la retta cercata è $x=3+2\lambda,\ y=-2-5\lambda,\ z=-1+3\lambda$.
+  Per riconoscerla tra le opzioni bisogna controllare due cose: direttore multiplo di $n$ **e** passaggio per $P={}^t(3\ -2\ -1)$.
+  - $\begin{cases} x=3+2\lambda \\ y=-2-5\lambda \\ z=-1+3\lambda \end{cases}$: direttore ${}^t(2\ -5\ 3)=n$ e per $\lambda=0$ si ottiene proprio $P$: è la retta cercata.
+  - $\begin{cases} x=2+3\lambda \\ y=-5-2\lambda \\ z=3-\lambda \end{cases}$: ha punto base e direttore **scambiati**: il direttore ${}^t(3\ -2\ -1)$ non è multiplo di $n$ (la retta non è ortogonale al piano).
+  - $\begin{cases} x=3+2\lambda \\ y=-2-5\lambda \\ z=1+3\lambda \end{cases}$: il direttore è giusto, ma il punto base ${}^t(3\ -2\ 1)$ è diverso da $P$ e $P-{}^t(3\ -2\ 1)$ non è multiplo di $n$: la retta non passa per $P$.
+  - $\begin{cases} x=3+2\lambda \\ y=-2-5\lambda \\ z=-1-3\lambda \end{cases}$: direttore ${}^t(2\ -5\ -3)$, che differisce da $n$ nel segno di una sola componente, quindi non è un suo multiplo: la retta non è ortogonale al piano.
+  **Errore tipico:** scambiare il ruolo di punto e vettore (le opzioni con le coordinate di $P$ nei coefficienti di $\lambda$), o sbagliare un segno nel copiare il punto o la normale: bisogna verificare tutte e sei le componenti.
+  TRAP: in alcune opzioni le coordinate del punto e del vettore normale sono scambiate, e in altre cambia il segno di una sola componente.
+T: Quale delle seguenti forme parametriche rappresenta la retta ortogonale al piano con forma implicita $2x-5y+3z+5=0$ e passante per il punto ${}^t(3\ -2\ -1)$ nello spazio?
+OPT: $\begin{cases} x=3+2\lambda \\ y=-2-5\lambda \\ z=-1+3\lambda \end{cases}$ | $\begin{cases} x=2+3\lambda \\ y=-5-2\lambda \\ z=3-\lambda \end{cases}$ | $\begin{cases} x=3+2\lambda \\ y=-2-5\lambda \\ z=1+3\lambda \end{cases}$ | $\begin{cases} x=3+2\lambda \\ y=-2-5\lambda \\ z=-1-3\lambda \end{cases}$
+35-19 C La retta ortogonale a un piano e passante per un punto dato è **unica**: ha come vettore direttore il vettore di giacitura del piano e come punto base il punto dato.
+  Il piano $3x-2y-z+5=0$ ha vettore di giacitura $n={}^t(3\ -2\ -1)$, quindi la retta cercata è $x=2+3\lambda,\ y=-5-2\lambda,\ z=3-\lambda$.
+  Per riconoscerla tra le opzioni bisogna controllare due cose: direttore multiplo di $n$ **e** passaggio per $P={}^t(2\ -5\ 3)$.
+  - $\begin{cases} x=2+3\lambda \\ y=-5-2\lambda \\ z=3+\lambda \end{cases}$: direttore ${}^t(3\ -2\ 1)$, che differisce da $n$ nel segno di una sola componente, quindi non è un suo multiplo: la retta non è ortogonale al piano.
+  - $\begin{cases} x=2+3\lambda \\ y=-5-2\lambda \\ z=-3-\lambda \end{cases}$: il direttore è giusto, ma il punto base ${}^t(2\ -5\ -3)$ è diverso da $P$ e $P-{}^t(2\ -5\ -3)$ non è multiplo di $n$: la retta non passa per $P$.
+  - $\begin{cases} x=2+3\lambda \\ y=-5-2\lambda \\ z=3-\lambda \end{cases}$: direttore ${}^t(3\ -2\ -1)=n$ e per $\lambda=0$ si ottiene proprio $P$: è la retta cercata.
+  - $\begin{cases} x=3+2\lambda \\ y=-2-5\lambda \\ z=-1+3\lambda \end{cases}$: ha punto base e direttore **scambiati**: il direttore ${}^t(2\ -5\ 3)$ non è multiplo di $n$ (la retta non è ortogonale al piano).
+  **Errore tipico:** scambiare il ruolo di punto e vettore (le opzioni con le coordinate di $P$ nei coefficienti di $\lambda$), o sbagliare un segno nel copiare il punto o la normale: bisogna verificare tutte e sei le componenti.
+  TRAP: in alcune opzioni le coordinate del punto e del vettore normale sono scambiate, e in altre cambia il segno di una sola componente.
+T: Quale delle seguenti forme parametriche rappresenta la retta ortogonale al piano con forma implicita $3x-2y-z+5=0$ e passante per il punto ${}^t(2\ -5\ 3)$ nello spazio?
+OPT: $\begin{cases} x=2+3\lambda \\ y=-5-2\lambda \\ z=3+\lambda \end{cases}$ | $\begin{cases} x=2+3\lambda \\ y=-5-2\lambda \\ z=-3-\lambda \end{cases}$ | $\begin{cases} x=2+3\lambda \\ y=-5-2\lambda \\ z=3-\lambda \end{cases}$ | $\begin{cases} x=3+2\lambda \\ y=-2-5\lambda \\ z=-1+3\lambda \end{cases}$
+35-20 A Un piano è **ortogonale** a una retta se e solo se il suo vettore di giacitura è un multiplo non nullo del vettore direttore della retta (Osservazione 35.8, $\beta=0$).
+  La retta $\begin{cases} x=-4-\lambda \\ y=-2+3\lambda \\ z=1+4\lambda \end{cases}$ ha direttore $w={}^t(-1\ 3\ 4)$ (coefficienti di $\lambda$). Confronto con la normale di ciascun piano:
+  - $2x-6y-8z+3=0$: normale ${}^t(2\ -6\ -8)=-2\cdot{}^t(-1\ 3\ 4)$: giacitura giusta: il piano è ortogonale alla retta.
+  - $8x+4y-2z+3=0$: normale ${}^t(8\ 4\ -2)$, che non è multiplo di ${}^t(-1\ 3\ 4)$ (rapporti $8/-1$, $4/3$, $-2/4$ non tutti uguali): non è ortogonale alla retta.
+  - $2x+6y-8z+3=0$: normale ${}^t(2\ 6\ -8)$, che non è multiplo di ${}^t(-1\ 3\ 4)$ (rapporti $2/-1$, $6/3$, $-8/4$ non tutti uguali): non è ortogonale alla retta.
+  - $8x-4y-2z+3=0$: normale ${}^t(8\ -4\ -2)$, che non è multiplo di ${}^t(-1\ 3\ 4)$ (rapporti $8/-1$, $-4/3$, $-2/4$ non tutti uguali): non è ortogonale alla retta.
+  Il termine noto non conta: ogni piano con quella normale è ortogonale alla retta.
+  **Errore tipico:** confondere la condizione di ortogonalità con quella di parallelismo (prodotto scalare nullo), oppure sbagliare un segno: alcune normali proposte hanno le stesse cifre del direttore (o di un suo multiplo) ma con un segno diverso, e quindi non sono proporzionali.
+  TRAP: le normali proposte differiscono solo per i segni di alcune componenti: un multiplo deve avere i rapporti tutti uguali, segno compreso.
+T: Quale delle seguenti forme implicite rappresenta un piano ortogonale alla retta con forma parametrica $\begin{cases} x=-4-\lambda \\ y=-2+3\lambda \\ z=1+4\lambda \end{cases}$ nello spazio?
+OPT: $2x-6y-8z+3=0$ | $8x+4y-2z+3=0$ | $2x+6y-8z+3=0$ | $8x-4y-2z+3=0$
+35-21 D Un piano è **ortogonale** a una retta se e solo se il suo vettore di giacitura è un multiplo non nullo del vettore direttore della retta (Osservazione 35.8, $\beta=0$).
+  La retta $\begin{cases} x=-1-4\lambda \\ y=3-2\lambda \\ z=4+\lambda \end{cases}$ ha direttore $w={}^t(-4\ -2\ 1)$ (coefficienti di $\lambda$). Confronto con la normale di ciascun piano:
+  - $2x+6y-8z+3=0$: normale ${}^t(2\ 6\ -8)$, che non è multiplo di ${}^t(-4\ -2\ 1)$ (rapporti $2/-4$, $6/-2$, $-8/1$ non tutti uguali): non è ortogonale alla retta.
+  - $2x-6y-8z+3=0$: normale ${}^t(2\ -6\ -8)$, che non è multiplo di ${}^t(-4\ -2\ 1)$ (rapporti $2/-4$, $-6/-2$, $-8/1$ non tutti uguali): non è ortogonale alla retta.
+  - $8x-4y-2z+3=0$: normale ${}^t(8\ -4\ -2)$, che non è multiplo di ${}^t(-4\ -2\ 1)$ (rapporti $8/-4$, $-4/-2$, $-2/1$ non tutti uguali): non è ortogonale alla retta.
+  - $8x+4y-2z+3=0$: normale ${}^t(8\ 4\ -2)=-2\cdot{}^t(-4\ -2\ 1)$: giacitura giusta: il piano è ortogonale alla retta.
+  Il termine noto non conta: ogni piano con quella normale è ortogonale alla retta.
+  **Errore tipico:** confondere la condizione di ortogonalità con quella di parallelismo (prodotto scalare nullo), oppure sbagliare un segno: alcune normali proposte hanno le stesse cifre del direttore (o di un suo multiplo) ma con un segno diverso, e quindi non sono proporzionali.
+  TRAP: le normali proposte differiscono solo per i segni di alcune componenti: un multiplo deve avere i rapporti tutti uguali, segno compreso.
+T: Quale delle seguenti forme implicite rappresenta un piano ortogonale alla retta con forma parametrica $\begin{cases} x=-1-4\lambda \\ y=3-2\lambda \\ z=4+\lambda \end{cases}$ nello spazio?
+OPT: $2x+6y-8z+3=0$ | $2x-6y-8z+3=0$ | $8x-4y-2z+3=0$ | $8x+4y-2z+3=0$
+35-22 A Un piano è **ortogonale** a una retta se e solo se il suo vettore di giacitura è un multiplo non nullo del vettore direttore della retta (Osservazione 35.8, $\beta=0$).
+  La retta $\begin{cases} x=-4-\lambda \\ y=2-3\lambda \\ z=1+4\lambda \end{cases}$ ha direttore $w={}^t(-1\ -3\ 4)$ (coefficienti di $\lambda$). Confronto con la normale di ciascun piano:
+  - $2x+6y-8z+3=0$: normale ${}^t(2\ 6\ -8)=-2\cdot{}^t(-1\ -3\ 4)$: giacitura giusta: il piano è ortogonale alla retta.
+  - $8x+4y-2z+3=0$: normale ${}^t(8\ 4\ -2)$, che non è multiplo di ${}^t(-1\ -3\ 4)$ (rapporti $8/-1$, $4/-3$, $-2/4$ non tutti uguali): non è ortogonale alla retta.
+  - $2x-6y-8z+3=0$: normale ${}^t(2\ -6\ -8)$, che non è multiplo di ${}^t(-1\ -3\ 4)$ (rapporti $2/-1$, $-6/-3$, $-8/4$ non tutti uguali): non è ortogonale alla retta.
+  - $8x-4y-2z+3=0$: normale ${}^t(8\ -4\ -2)$, che non è multiplo di ${}^t(-1\ -3\ 4)$ (rapporti $8/-1$, $-4/-3$, $-2/4$ non tutti uguali): non è ortogonale alla retta.
+  Il termine noto non conta: ogni piano con quella normale è ortogonale alla retta.
+  **Errore tipico:** confondere la condizione di ortogonalità con quella di parallelismo (prodotto scalare nullo), oppure sbagliare un segno: alcune normali proposte hanno le stesse cifre del direttore (o di un suo multiplo) ma con un segno diverso, e quindi non sono proporzionali.
+  TRAP: le normali proposte differiscono solo per i segni di alcune componenti: un multiplo deve avere i rapporti tutti uguali, segno compreso.
+T: Quale delle seguenti forme implicite rappresenta un piano ortogonale alla retta con forma parametrica $\begin{cases} x=-4-\lambda \\ y=2-3\lambda \\ z=1+4\lambda \end{cases}$ nello spazio?
+OPT: $2x+6y-8z+3=0$ | $8x+4y-2z+3=0$ | $2x-6y-8z+3=0$ | $8x-4y-2z+3=0$
+35-23 B Un piano è **ortogonale** a una retta se e solo se il suo vettore di giacitura è un multiplo non nullo del vettore direttore della retta (Osservazione 35.8, $\beta=0$).
+  La retta $\begin{cases} x=-1-4\lambda \\ y=-3+2\lambda \\ z=4+\lambda \end{cases}$ ha direttore $w={}^t(-4\ 2\ 1)$ (coefficienti di $\lambda$). Confronto con la normale di ciascun piano:
+  - $2x+6y-8z+3=0$: normale ${}^t(2\ 6\ -8)$, che non è multiplo di ${}^t(-4\ 2\ 1)$ (rapporti $2/-4$, $6/2$, $-8/1$ non tutti uguali): non è ortogonale alla retta.
+  - $8x-4y-2z+3=0$: normale ${}^t(8\ -4\ -2)=-2\cdot{}^t(-4\ 2\ 1)$: giacitura giusta: il piano è ortogonale alla retta.
+  - $2x-6y-8z+3=0$: normale ${}^t(2\ -6\ -8)$, che non è multiplo di ${}^t(-4\ 2\ 1)$ (rapporti $2/-4$, $-6/2$, $-8/1$ non tutti uguali): non è ortogonale alla retta.
+  - $8x+4y-2z+3=0$: normale ${}^t(8\ 4\ -2)$, che non è multiplo di ${}^t(-4\ 2\ 1)$ (rapporti $8/-4$, $4/2$, $-2/1$ non tutti uguali): non è ortogonale alla retta.
+  Il termine noto non conta: ogni piano con quella normale è ortogonale alla retta.
+  **Errore tipico:** confondere la condizione di ortogonalità con quella di parallelismo (prodotto scalare nullo), oppure sbagliare un segno: alcune normali proposte hanno le stesse cifre del direttore (o di un suo multiplo) ma con un segno diverso, e quindi non sono proporzionali.
+  TRAP: le normali proposte differiscono solo per i segni di alcune componenti: un multiplo deve avere i rapporti tutti uguali, segno compreso.
+T: Quale delle seguenti forme implicite rappresenta un piano ortogonale alla retta con forma parametrica $\begin{cases} x=-1-4\lambda \\ y=-3+2\lambda \\ z=4+\lambda \end{cases}$ nello spazio?
+OPT: $2x+6y-8z+3=0$ | $8x-4y-2z+3=0$ | $2x-6y-8z+3=0$ | $8x+4y-2z+3=0$
+35-24 B Un piano è **ortogonale** a una retta se e solo se il suo vettore di giacitura è un multiplo non nullo del vettore direttore della retta (Osservazione 35.8, $\beta=0$).
+  La retta $\begin{cases} x=2+2\lambda \\ y=1-3\lambda \\ z=5-4\lambda \end{cases}$ ha direttore $w={}^t(2\ -3\ -4)$ (coefficienti di $\lambda$). Confronto con la normale di ciascun piano:
+  - $2x-3y-4z+3=0$: normale ${}^t(2\ -3\ -4)=w$: giacitura giusta; sostituendo $P$: $(2)(2)+(-3)(-1)+(-4)(1)+(3)=6$, diverso da $0$: il piano non passa per $P$.
+  - $2x-3y-4z-3=0$: normale ${}^t(2\ -3\ -4)=w$: giacitura giusta; sostituendo $P$: $(2)(2)+(-3)(-1)+(-4)(1)+(-3)=0$, quindi il piano passa per $P$: è la risposta.
+  - $2x-y+z-3=0$: normale ${}^t(2\ -1\ 1)$, che non è multiplo di ${}^t(2\ -3\ -4)$ (rapporti $2/2$, $-1/-3$, $1/-4$ non tutti uguali): non è ortogonale alla retta.
+  - $2x+3y-4z+3=0$: normale ${}^t(2\ 3\ -4)$, che non è multiplo di ${}^t(2\ -3\ -4)$ (rapporti $2/2$, $3/-3$, $-4/-4$ non tutti uguali): non è ortogonale alla retta.
+  Costruzione diretta: il piano ortogonale per $P$ è $\langle w, X-P\rangle=0$, cioè $2(x-2)-3(y+1)-4(z-1)=0$, che si semplifica in $2x-3y-4z-3=0$.
+  **Errore tipico:** confondere la condizione di ortogonalità con quella di parallelismo (prodotto scalare nullo), oppure sbagliare un segno: alcune normali proposte hanno le stesse cifre del direttore (o di un suo multiplo) ma con un segno diverso, e quindi non sono proporzionali, e due piani hanno la stessa giacitura ma termini noti opposti: decide il passaggio per $P$.
+T: Quale delle seguenti forme implicite rappresenta il piano ortogonale alla retta con forma parametrica $\begin{cases} x=2+2\lambda \\ y=1-3\lambda \\ z=5-4\lambda \end{cases}$ e passante per il punto ${}^t(2\ -1\ 1)$ nello spazio?
+OPT: $2x-3y-4z+3=0$ | $2x-3y-4z-3=0$ | $2x-y+z-3=0$ | $2x+3y-4z+3=0$
+35-25 D Un piano è **ortogonale** a una retta se e solo se il suo vettore di giacitura è un multiplo non nullo del vettore direttore della retta (Osservazione 35.8, $\beta=0$).
+  La retta $\begin{cases} x=2+2\lambda \\ y=1-\lambda \\ z=5+\lambda \end{cases}$ ha direttore $w={}^t(2\ -1\ 1)$ (coefficienti di $\lambda$). Confronto con la normale di ciascun piano:
+  - $2x-y+z+3=0$: normale ${}^t(2\ -1\ 1)=w$: giacitura giusta; sostituendo $P$: $(2)(2)+(-1)(-3)+(1)(-4)+(3)=6$, diverso da $0$: il piano non passa per $P$.
+  - $2x-3y-4z-3=0$: normale ${}^t(2\ -3\ -4)$, che non è multiplo di ${}^t(2\ -1\ 1)$ (rapporti $2/2$, $-3/-1$, $-4/1$ non tutti uguali): non è ortogonale alla retta.
+  - $2x+y+z+3=0$: normale ${}^t(2\ 1\ 1)$, che non è multiplo di ${}^t(2\ -1\ 1)$ (rapporti $2/2$, $1/-1$, $1/1$ non tutti uguali): non è ortogonale alla retta.
+  - $2x-y+z-3=0$: normale ${}^t(2\ -1\ 1)=w$: giacitura giusta; sostituendo $P$: $(2)(2)+(-1)(-3)+(1)(-4)+(-3)=0$, quindi il piano passa per $P$: è la risposta.
+  Costruzione diretta: il piano ortogonale per $P$ è $\langle w, X-P\rangle=0$, cioè $2(x-2)-(y+3)+(z+4)=0$, che si semplifica in $2x-y+z-3=0$.
+  **Errore tipico:** confondere la condizione di ortogonalità con quella di parallelismo (prodotto scalare nullo), oppure sbagliare un segno: alcune normali proposte hanno le stesse cifre del direttore (o di un suo multiplo) ma con un segno diverso, e quindi non sono proporzionali, e due piani hanno la stessa giacitura ma termini noti opposti: decide il passaggio per $P$.
+T: Quale delle seguenti forme implicite rappresenta il piano ortogonale alla retta con forma parametrica $\begin{cases} x=2+2\lambda \\ y=1-\lambda \\ z=5+\lambda \end{cases}$ e passante per il punto ${}^t(2\ -3\ -4)$ nello spazio?
+OPT: $2x-y+z+3=0$ | $2x-3y-4z-3=0$ | $2x+y+z+3=0$ | $2x-y+z-3=0$
+35-26 A Un piano è **ortogonale** a una retta se e solo se il suo vettore di giacitura è un multiplo non nullo del vettore direttore della retta (Osservazione 35.8, $\beta=0$).
+  La retta $\begin{cases} x=2+2\lambda \\ y=1-3\lambda \\ z=5+4\lambda \end{cases}$ ha direttore $w={}^t(2\ -3\ 4)$ (coefficienti di $\lambda$). Confronto con la normale di ciascun piano:
+  - $2x-3y+4z-3=0$: normale ${}^t(2\ -3\ 4)=w$: giacitura giusta; sostituendo $P$: $(2)(2)+(-3)(-1)+(4)(-1)+(-3)=0$, quindi il piano passa per $P$: è la risposta.
+  - $2x+3y+4z+3=0$: normale ${}^t(2\ 3\ 4)$, che non è multiplo di ${}^t(2\ -3\ 4)$ (rapporti $2/2$, $3/-3$, $4/4$ non tutti uguali): non è ortogonale alla retta.
+  - $2x-y-z-3=0$: normale ${}^t(2\ -1\ -1)$, che non è multiplo di ${}^t(2\ -3\ 4)$ (rapporti $2/2$, $-1/-3$, $-1/4$ non tutti uguali): non è ortogonale alla retta.
+  - $2x-3y+4z+3=0$: normale ${}^t(2\ -3\ 4)=w$: giacitura giusta; sostituendo $P$: $(2)(2)+(-3)(-1)+(4)(-1)+(3)=6$, diverso da $0$: il piano non passa per $P$.
+  Costruzione diretta: il piano ortogonale per $P$ è $\langle w, X-P\rangle=0$, cioè $2(x-2)-3(y+1)+4(z+1)=0$, che si semplifica in $2x-3y+4z-3=0$.
+  **Errore tipico:** confondere la condizione di ortogonalità con quella di parallelismo (prodotto scalare nullo), oppure sbagliare un segno: alcune normali proposte hanno le stesse cifre del direttore (o di un suo multiplo) ma con un segno diverso, e quindi non sono proporzionali, e due piani hanno la stessa giacitura ma termini noti opposti: decide il passaggio per $P$.
+T: Quale delle seguenti forme implicite rappresenta il piano ortogonale alla retta con forma parametrica $\begin{cases} x=2+2\lambda \\ y=1-3\lambda \\ z=5+4\lambda \end{cases}$ e passante per il punto ${}^t(2\ -1\ -1)$ nello spazio?
+OPT: $2x-3y+4z-3=0$ | $2x+3y+4z+3=0$ | $2x-y-z-3=0$ | $2x-3y+4z+3=0$
+35-27 D Un piano è **parallelo** a una retta se e solo se il vettore direttore della retta è ortogonale al vettore di giacitura del piano: $\langle w,n\rangle=0$ (Osservazione 35.8).
+  La retta $\begin{cases} x=1-3\lambda \\ y=-4\lambda \\ z=-3+2\lambda \end{cases}$ ha direttore $w={}^t(-3\ -4\ 2)$ (coefficienti di $\lambda$). Per ogni piano leggo la normale dai coefficienti di $x,y,z$:
+  - $2x-3y-2z-8=0$: $\langle {}^t(2\ -3\ -2),{}^t(-3\ -4\ 2)\rangle=(2)(-3)+(-3)(-4)+(-2)(2)=2$, non nullo: il piano non è parallelo alla retta.
+  - $2x-3y-2z-6=0$: $\langle {}^t(2\ -3\ -2),{}^t(-3\ -4\ 2)\rangle=(2)(-3)+(-3)(-4)+(-2)(2)=2$, non nullo: il piano non è parallelo alla retta.
+  - $2x-5y-7z-1=0$: $\langle {}^t(2\ -5\ -7),{}^t(-3\ -4\ 2)\rangle=(2)(-3)+(-5)(-4)+(-7)(2)=0$, la giacitura va bene; sostituendo $P$: $(2)(3)+(-5)(-2)+(-7)(2)+(-1)=1$, diverso da $0$: il piano non passa per $P$.
+  - $2x-5y-7z-2=0$: $\langle {}^t(2\ -5\ -7),{}^t(-3\ -4\ 2)\rangle=(2)(-3)+(-5)(-4)+(-7)(2)=0$, la giacitura va bene; sostituendo $P$: $(2)(3)+(-5)(-2)+(-7)(2)+(-2)=0$, quindi $P$ sta sul piano: è la risposta.
+  In alternativa: la normale ${}^t(2\ -5\ -7)$ fissa la giacitura, e il termine noto si ricava imponendo il passaggio per $P={}^t(3\ -2\ 2)$, cioè $d=-((2)(3)+(-5)(-2)+(-7)(2))=-2$.
+  **Errore tipico:** cercare un piano con normale proporzionale al direttore della retta (quello è il piano **ortogonale** alla retta), oppure usare i termini noti della forma parametrica al posto dei coefficienti di $\lambda$; con il punto, scegliere il termine noto giusto per una giacitura sbagliata o viceversa.
+T: Quale delle seguenti forme implicite rappresenta un piano parallelo alla retta con forma parametrica $\begin{cases} x=1-3\lambda \\ y=-4\lambda \\ z=-3+2\lambda \end{cases}$ e passante per il punto ${}^t(3\ -2\ 2)$ nello spazio?
+OPT: $2x-3y-2z-8=0$ | $2x-3y-2z-6=0$ | $2x-5y-7z-1=0$ | $2x-5y-7z-2=0$
+35-28 D Un piano è **parallelo** a una retta se e solo se il vettore direttore della retta è ortogonale al vettore di giacitura del piano: $\langle w,n\rangle=0$ (Osservazione 35.8).
+  La retta $\begin{cases} x=1-3\lambda \\ y=4\lambda \\ z=3-2\lambda \end{cases}$ ha direttore $w={}^t(-3\ 4\ -2)$ (coefficienti di $\lambda$). Per ogni piano leggo la normale dai coefficienti di $x,y,z$:
+  - $2x+3y+2z-8=0$: $\langle {}^t(2\ 3\ 2),{}^t(-3\ 4\ -2)\rangle=(2)(-3)+(3)(4)+(2)(-2)=2$, non nullo: il piano non è parallelo alla retta.
+  - $2x+5y+7z-1=0$: $\langle {}^t(2\ 5\ 7),{}^t(-3\ 4\ -2)\rangle=(2)(-3)+(5)(4)+(7)(-2)=0$, la giacitura va bene; sostituendo $P$: $(2)(3)+(5)(2)+(7)(-2)+(-1)=1$, diverso da $0$: il piano non passa per $P$.
+  - $2x+3y+2z-6=0$: $\langle {}^t(2\ 3\ 2),{}^t(-3\ 4\ -2)\rangle=(2)(-3)+(3)(4)+(2)(-2)=2$, non nullo: il piano non è parallelo alla retta.
+  - $2x+5y+7z-2=0$: $\langle {}^t(2\ 5\ 7),{}^t(-3\ 4\ -2)\rangle=(2)(-3)+(5)(4)+(7)(-2)=0$, la giacitura va bene; sostituendo $P$: $(2)(3)+(5)(2)+(7)(-2)+(-2)=0$, quindi $P$ sta sul piano: è la risposta.
+  In alternativa: la normale ${}^t(2\ 5\ 7)$ fissa la giacitura, e il termine noto si ricava imponendo il passaggio per $P={}^t(3\ 2\ -2)$, cioè $d=-((2)(3)+(5)(2)+(7)(-2))=-2$.
+  **Errore tipico:** cercare un piano con normale proporzionale al direttore della retta (quello è il piano **ortogonale** alla retta), oppure usare i termini noti della forma parametrica al posto dei coefficienti di $\lambda$; con il punto, scegliere il termine noto giusto per una giacitura sbagliata o viceversa.
+T: Quale delle seguenti forme implicite rappresenta un piano parallelo alla retta con forma parametrica $\begin{cases} x=1-3\lambda \\ y=4\lambda \\ z=3-2\lambda \end{cases}$ e passante per il punto ${}^t(3\ 2\ -2)$ nello spazio?
+OPT: $2x+3y+2z-8=0$ | $2x+5y+7z-1=0$ | $2x+3y+2z-6=0$ | $2x+5y+7z-2=0$
+35-29 D La distanza tra un punto $P={}^t(3\ 4\ 0)=(x_0,y_0,z_0)$ e un piano $ax+by+cz+d=0$ è (Osservazione 35.15)
+  $$\mathrm{dist}(P,\alpha)=\frac{\lvert ax_0+by_0+cz_0+d\rvert}{\sqrt{a^2+b^2+c^2}}$$
+  Numeratore: sostituisco $P$ nell'equazione $2x-y+3z-6=0$: $(2)(3)+(-1)(4)+(3)(0)+(-6)=-4$, in valore assoluto $4$.
+  Denominatore: $\sqrt{(2)^2+(-1)^2+(3)^2}=\sqrt{14}$.
+  Quindi $\mathrm{dist}=4/\sqrt{14}$; razionalizzando (moltiplico sopra e sotto per $\sqrt{14}$) ottengo $\frac{2 \sqrt{14}}{7}$.
+  Una distanza non è mai negativa: le opzioni con il segno meno sono sbagliate a priori, e l'altra opzione positiva ha la radice di un denominatore diverso.
+  **Errore tipico:** dimenticare il valore assoluto (il valore sostituito è $-4$, negativo, e porta all'opzione con il segno meno), oppure usare un denominatore sbagliato confondendo $a^2+b^2+c^2$ con quello di un altro piano.
+  TRAP: il valore che si ottiene sostituendo il punto è negativo: senza il valore assoluto si cade sull'opzione con il segno meno.
+T: Quale delle seguenti è la distanza tra il piano con forma implicita $2x-y+3z-6=0$ e il punto ${}^t(3\ 4\ 0)$ nello spazio?
+OPT: $\dfrac{3\sqrt{22}}{11}$ | $-\dfrac{3\sqrt{22}}{11}$ | $-\dfrac{2\sqrt{14}}{7}$ | $\dfrac{2\sqrt{14}}{7}$
+35-30 D Un piano è **parallelo** a una retta se e solo se il vettore direttore della retta è ortogonale al vettore di giacitura del piano: $\langle w,n\rangle=0$ (Osservazione 35.8).
+  La retta $\begin{cases} x=4+7\lambda \\ y=-2-4\lambda \\ z=3+2\lambda \end{cases}$ ha direttore $w={}^t(7\ -4\ 2)$ (coefficienti di $\lambda$). Per ogni piano leggo la normale dai coefficienti di $x,y,z$:
+  - $3x+4y-2z+2=0$: $\langle {}^t(3\ 4\ -2),{}^t(7\ -4\ 2)\rangle=(3)(7)+(4)(-4)+(-2)(2)=1$, non nullo: il piano non è parallelo alla retta.
+  - $3x+2y+5z-2=0$: $\langle {}^t(3\ 2\ 5),{}^t(7\ -4\ 2)\rangle=(3)(7)+(2)(-4)+(5)(2)=23$, non nullo: il piano non è parallelo alla retta.
+  - $4x-2y+3z+2=0$: $\langle {}^t(4\ -2\ 3),{}^t(7\ -4\ 2)\rangle=(4)(7)+(-2)(-4)+(3)(2)=42$, non nullo: il piano non è parallelo alla retta.
+  - $2x+5y+3z-2=0$: $\langle {}^t(2\ 5\ 3),{}^t(7\ -4\ 2)\rangle=(2)(7)+(5)(-4)+(3)(2)=0$: il piano è parallelo alla retta.
+  Il punto base ${}^t(4\ -2\ 3)$ della retta dà $5$ nell'equazione del piano, quindi la retta è parallela al piano e non contenuta in esso.
+  **Errore tipico:** cercare un piano con normale proporzionale al direttore della retta (quello è il piano **ortogonale** alla retta), oppure usare i termini noti della forma parametrica al posto dei coefficienti di $\lambda$.
+T: Quale delle seguenti forme implicite rappresenta un piano parallelo alla retta con forma parametrica $\begin{cases} x=4+7\lambda \\ y=-2-4\lambda \\ z=3+2\lambda \end{cases}$ nello spazio?
+OPT: $3x+4y-2z+2=0$ | $3x+2y+5z-2=0$ | $4x-2y+3z+2=0$ | $2x+5y+3z-2=0$
+35-31 A La distanza tra un punto $P={}^t(3\ 4\ 0)=(x_0,y_0,z_0)$ e un piano $ax+by+cz+d=0$ è (Osservazione 35.15)
+  $$\mathrm{dist}(P,\alpha)=\frac{\lvert ax_0+by_0+cz_0+d\rvert}{\sqrt{a^2+b^2+c^2}}$$
+  Numeratore: sostituisco $P$ nell'equazione $3x-3y+2z-1=0$: $(3)(3)+(-3)(4)+(2)(0)+(-1)=-4$, in valore assoluto $4$.
+  Denominatore: $\sqrt{(3)^2+(-3)^2+(2)^2}=\sqrt{22}$.
+  Quindi $\mathrm{dist}=4/\sqrt{22}$; razionalizzando (moltiplico sopra e sotto per $\sqrt{22}$) ottengo $\frac{2 \sqrt{22}}{11}$.
+  Una distanza non è mai negativa: le opzioni con il segno meno sono sbagliate a priori, e l'altra opzione positiva ha la radice di un denominatore diverso.
+  **Errore tipico:** dimenticare il valore assoluto (il valore sostituito è $-4$, negativo, e porta all'opzione con il segno meno), oppure usare un denominatore sbagliato confondendo $a^2+b^2+c^2$ con quello di un altro piano.
+  TRAP: il valore che si ottiene sostituendo il punto è negativo: senza il valore assoluto si cade sull'opzione con il segno meno.
+T: Quale delle seguenti è la distanza tra il piano con forma implicita $3x-3y+2z-1=0$ e il punto ${}^t(3\ 4\ 0)$ nello spazio?
+OPT: $\dfrac{2\sqrt{22}}{11}$ | $-\dfrac{3\sqrt{14}}{7}$ | $-\dfrac{2\sqrt{22}}{11}$ | $\dfrac{3\sqrt{14}}{7}$
+35-32 A La distanza tra un punto $P={}^t(2\ 0\ -5)=(x_0,y_0,z_0)$ e un piano $ax+by+cz+d=0$ è (Osservazione 35.15)
+  $$\mathrm{dist}(P,\alpha)=\frac{\lvert ax_0+by_0+cz_0+d\rvert}{\sqrt{a^2+b^2+c^2}}$$
+  Numeratore: sostituisco $P$ nell'equazione $2x-y+3z+5=0$: $(2)(2)+(-1)(0)+(3)(-5)+(5)=-6$, in valore assoluto $6$.
+  Denominatore: $\sqrt{(2)^2+(-1)^2+(3)^2}=\sqrt{14}$.
+  Quindi $\mathrm{dist}=6/\sqrt{14}$; razionalizzando (moltiplico sopra e sotto per $\sqrt{14}$) ottengo $\frac{3 \sqrt{14}}{7}$.
+  Una distanza non è mai negativa: le opzioni con il segno meno sono sbagliate a priori, e l'altra opzione positiva ha la radice di un denominatore diverso.
+  **Errore tipico:** dimenticare il valore assoluto (il valore sostituito è $-6$, negativo, e porta all'opzione con il segno meno), oppure usare un denominatore sbagliato confondendo $a^2+b^2+c^2$ con quello di un altro piano.
+  TRAP: il valore che si ottiene sostituendo il punto è negativo: senza il valore assoluto si cade sull'opzione con il segno meno.
+T: Quale delle seguenti è la distanza tra il piano con forma implicita $2x-y+3z+5=0$ e il punto ${}^t(2\ 0\ -5)$ nello spazio?
+OPT: $\dfrac{3\sqrt{14}}{7}$ | $-\dfrac{2\sqrt{22}}{11}$ | $-\dfrac{3\sqrt{14}}{7}$ | $\dfrac{2\sqrt{22}}{11}$
+35-33 B Un piano è **ortogonale** a una retta se e solo se il suo vettore di giacitura è un multiplo non nullo del vettore direttore della retta (Osservazione 35.8, $\beta=0$).
+  La retta $\begin{cases} x=2+2\lambda \\ y=1-\lambda \\ z=5-\lambda \end{cases}$ ha direttore $w={}^t(2\ -1\ -1)$ (coefficienti di $\lambda$). Confronto con la normale di ciascun piano:
+  - $2x-y-z+3=0$: normale ${}^t(2\ -1\ -1)=w$: giacitura giusta; sostituendo $P$: $(2)(2)+(-1)(-3)+(-1)(4)+(3)=6$, diverso da $0$: il piano non passa per $P$.
+  - $2x-y-z-3=0$: normale ${}^t(2\ -1\ -1)=w$: giacitura giusta; sostituendo $P$: $(2)(2)+(-1)(-3)+(-1)(4)+(-3)=0$, quindi il piano passa per $P$: è la risposta.
+  - $2x+y-z+3=0$: normale ${}^t(2\ 1\ -1)$, che non è multiplo di ${}^t(2\ -1\ -1)$ (rapporti $2/2$, $1/-1$, $-1/-1$ non tutti uguali): non è ortogonale alla retta.
+  - $2x-3y+4z-3=0$: normale ${}^t(2\ -3\ 4)$, che non è multiplo di ${}^t(2\ -1\ -1)$ (rapporti $2/2$, $-3/-1$, $4/-1$ non tutti uguali): non è ortogonale alla retta.
+  Costruzione diretta: il piano ortogonale per $P$ è $\langle w, X-P\rangle=0$, cioè $2(x-2)-(y+3)-(z-4)=0$, che si semplifica in $2x-y-z-3=0$.
+  **Errore tipico:** confondere la condizione di ortogonalità con quella di parallelismo (prodotto scalare nullo), oppure sbagliare un segno: alcune normali proposte hanno le stesse cifre del direttore (o di un suo multiplo) ma con un segno diverso, e quindi non sono proporzionali, e due piani hanno la stessa giacitura ma termini noti opposti: decide il passaggio per $P$.
+T: Quale delle seguenti forme implicite rappresenta il piano ortogonale alla retta con forma parametrica $\begin{cases} x=2+2\lambda \\ y=1-\lambda \\ z=5-\lambda \end{cases}$ e passante per il punto ${}^t(2\ -3\ 4)$ nello spazio?
+OPT: $2x-y-z+3=0$ | $2x-y-z-3=0$ | $2x+y-z+3=0$ | $2x-3y+4z-3=0$
+35-34 B Un piano è **parallelo** a una retta se e solo se il vettore direttore della retta è ortogonale al vettore di giacitura del piano: $\langle w,n\rangle=0$ (Osservazione 35.8).
+  La retta $\begin{cases} x=3-2\lambda \\ y=2+5\lambda \\ z=5+7\lambda \end{cases}$ ha direttore $w={}^t(-2\ 5\ 7)$ (coefficienti di $\lambda$). Per ogni piano leggo la normale dai coefficienti di $x,y,z$:
+  - $3x+2y+5z-2=0$: $\langle {}^t(3\ 2\ 5),{}^t(-2\ 5\ 7)\rangle=(3)(-2)+(2)(5)+(5)(7)=39$, non nullo: il piano non è parallelo alla retta.
+  - $3x+4y-2z+2=0$: $\langle {}^t(3\ 4\ -2),{}^t(-2\ 5\ 7)\rangle=(3)(-2)+(4)(5)+(-2)(7)=0$: il piano è parallelo alla retta.
+  - $4x-2y+3z+2=0$: $\langle {}^t(4\ -2\ 3),{}^t(-2\ 5\ 7)\rangle=(4)(-2)+(-2)(5)+(3)(7)=3$, non nullo: il piano non è parallelo alla retta.
+  - $2x+5y+3z-2=0$: $\langle {}^t(2\ 5\ 3),{}^t(-2\ 5\ 7)\rangle=(2)(-2)+(5)(5)+(3)(7)=42$, non nullo: il piano non è parallelo alla retta.
+  Il punto base ${}^t(3\ 2\ 5)$ della retta dà $9$ nell'equazione del piano, quindi la retta è parallela al piano e non contenuta in esso.
+  **Errore tipico:** cercare un piano con normale proporzionale al direttore della retta (quello è il piano **ortogonale** alla retta), oppure usare i termini noti della forma parametrica al posto dei coefficienti di $\lambda$.
+T: Quale delle seguenti forme implicite rappresenta un piano parallelo alla retta con forma parametrica $\begin{cases} x=3-2\lambda \\ y=2+5\lambda \\ z=5+7\lambda \end{cases}$ nello spazio?
+OPT: $3x+2y+5z-2=0$ | $3x+4y-2z+2=0$ | $4x-2y+3z+2=0$ | $2x+5y+3z-2=0$
+35-35 A Un piano è **parallelo** a una retta se e solo se il vettore direttore della retta è ortogonale al vettore di giacitura del piano: $\langle w,n\rangle=0$ (Osservazione 35.8).
+  La retta $\begin{cases} x=2+5\lambda \\ y=5+7\lambda \\ z=3-2\lambda \end{cases}$ ha direttore $w={}^t(5\ 7\ -2)$ (coefficienti di $\lambda$). Per ogni piano leggo la normale dai coefficienti di $x,y,z$:
+  - $4x-2y+3z+2=0$: $\langle {}^t(4\ -2\ 3),{}^t(5\ 7\ -2)\rangle=(4)(5)+(-2)(7)+(3)(-2)=0$: il piano è parallelo alla retta.
+  - $3x+2y+5z-2=0$: $\langle {}^t(3\ 2\ 5),{}^t(5\ 7\ -2)\rangle=(3)(5)+(2)(7)+(5)(-2)=19$, non nullo: il piano non è parallelo alla retta.
+  - $2x+5y+3z-2=0$: $\langle {}^t(2\ 5\ 3),{}^t(5\ 7\ -2)\rangle=(2)(5)+(5)(7)+(3)(-2)=39$, non nullo: il piano non è parallelo alla retta.
+  - $3x+4y-2z+2=0$: $\langle {}^t(3\ 4\ -2),{}^t(5\ 7\ -2)\rangle=(3)(5)+(4)(7)+(-2)(-2)=47$, non nullo: il piano non è parallelo alla retta.
+  Il punto base ${}^t(2\ 5\ 3)$ della retta dà $9$ nell'equazione del piano, quindi la retta è parallela al piano e non contenuta in esso.
+  **Errore tipico:** cercare un piano con normale proporzionale al direttore della retta (quello è il piano **ortogonale** alla retta), oppure usare i termini noti della forma parametrica al posto dei coefficienti di $\lambda$.
+T: Quale delle seguenti forme implicite rappresenta un piano parallelo alla retta con forma parametrica $\begin{cases} x=2+5\lambda \\ y=5+7\lambda \\ z=3-2\lambda \end{cases}$ nello spazio?
+OPT: $4x-2y+3z+2=0$ | $3x+2y+5z-2=0$ | $2x+5y+3z-2=0$ | $3x+4y-2z+2=0$
+35-36 D Un piano è **parallelo** a una retta se e solo se il vettore direttore della retta è ortogonale al vettore di giacitura del piano: $\langle w,n\rangle=0$ (Osservazione 35.8).
+  La retta $\begin{cases} x=3+2\lambda \\ y=2+7\lambda \\ z=-2-4\lambda \end{cases}$ ha direttore $w={}^t(2\ 7\ -4)$ (coefficienti di $\lambda$). Per ogni piano leggo la normale dai coefficienti di $x,y,z$:
+  - $3x+4y-2z+2=0$: $\langle {}^t(3\ 4\ -2),{}^t(2\ 7\ -4)\rangle=(3)(2)+(4)(7)+(-2)(-4)=42$, non nullo: il piano non è parallelo alla retta.
+  - $4x-2y+3z+2=0$: $\langle {}^t(4\ -2\ 3),{}^t(2\ 7\ -4)\rangle=(4)(2)+(-2)(7)+(3)(-4)=-18$, non nullo: il piano non è parallelo alla retta.
+  - $2x+5y+3z-2=0$: $\langle {}^t(2\ 5\ 3),{}^t(2\ 7\ -4)\rangle=(2)(2)+(5)(7)+(3)(-4)=27$, non nullo: il piano non è parallelo alla retta.
+  - $3x+2y+5z-2=0$: $\langle {}^t(3\ 2\ 5),{}^t(2\ 7\ -4)\rangle=(3)(2)+(2)(7)+(5)(-4)=0$: il piano è parallelo alla retta.
+  Il punto base ${}^t(3\ 2\ -2)$ della retta dà $1$ nell'equazione del piano, quindi la retta è parallela al piano e non contenuta in esso.
+  **Errore tipico:** cercare un piano con normale proporzionale al direttore della retta (quello è il piano **ortogonale** alla retta), oppure usare i termini noti della forma parametrica al posto dei coefficienti di $\lambda$.
+T: Quale delle seguenti forme implicite rappresenta un piano parallelo alla retta con forma parametrica $\begin{cases} x=3+2\lambda \\ y=2+7\lambda \\ z=-2-4\lambda \end{cases}$ nello spazio?
+OPT: $3x+4y-2z+2=0$ | $4x-2y+3z+2=0$ | $2x+5y+3z-2=0$ | $3x+2y+5z-2=0$
+35-37 APERTA
+KW: vettore direttore|direttori, vettore di giacitura|vettore normale, prodotto scalare, arccos|arcocoseno, pi/2|π/2|retto, ortogonali|ortogonale, parallela|parallelo|contenuta, multipli|multiplo|proporzionali, angolo diedro|diedro, sghembe|incidenti
+> Lavoriamo in $V^3_E$ con il prodotto scalare standard. L'angolo tra due vettori non nulli $v,w$ è $\widehat{vw}=\arccos\dfrac{\langle v,w\rangle}{\lVert v\rVert\,\lVert w\rVert}\in[0,\pi]$; l'angolo tra rette e piani si riconduce a questo usando i **vettori direttori** delle rette e i **vettori di giacitura** (normali) dei piani, perché un sottospazio affine è parallelo alla sua giacitura.
+>
+> **Retta-retta.** Se $r$ ed $r'$ hanno forma parametrica con direttori $w={}^t(l\ m\ n)$ e $w'={}^t(l'\ m'\ n')$ e $\alpha=\arccos\dfrac{ll'+mm'+nn'}{\sqrt{l^2+m^2+n^2}\sqrt{l'^2+m'^2+n'^2}}$, l'angolo tra le rette (incidenti) è $\widehat{rr'}=\alpha$ se $\alpha\le\pi/2$ e $\pi-\alpha$ se $\alpha>\pi/2$. Le rette sono ortogonali se e solo se $\langle w,w'\rangle=0$. Se non si controlla che si intersechino il risultato è parziale: angolo $0$ = rette coincidenti o parallele; angolo non nullo = incidenti o sghembe.
+>
+> **Piano-piano.** Dati $ax+by+cz+d=0$ e $a'x+b'y+c'z+d'=0$, detto $\beta$ l'angolo tra i vettori di giacitura ${}^t(a\ b\ c)$ e ${}^t(a'\ b'\ c')$, l'angolo diedro è $\beta$ se $\beta\le\pi/2$ e $\pi-\beta$ altrimenti. I piani sono ortogonali se e solo se $aa'+bb'+cc'=0$; angolo $0$ = piani paralleli o coincidenti.
+>
+> **Retta-piano.** Con $r$ di direttore ${}^t(l\ m\ n)$ e $\alpha$ di normale ${}^t(a\ b\ c)$, detto $\beta$ l'angolo tra i due vettori, $\widehat{r\alpha}=\dfrac{\pi}{2}-\begin{cases}\beta & \beta\le\pi/2\\ \pi-\beta & \beta>\pi/2\end{cases}$ (si usa il complementare perché la normale è ortogonale al piano). La retta è **ortogonale** al piano se e solo se $\beta=0$, cioè direttore e normale sono multipli; è **parallela** (o contenuta) se e solo se $\beta=\pi/2$, cioè $al+bm+cn=0$.
+>
+> **Esempio.** $r$: $x=4+t,\ y=1-2t,\ z=3t$ e $\alpha$: $2x+y-z-3=0$. Direttore ${}^t(1\ -2\ 3)$, normale ${}^t(2\ 1\ -1)$, prodotto scalare $2-2-3=-3$, quindi $\beta=\arccos(-\sqrt{21}/14)>\pi/2$ e $\widehat{r\alpha}=\arccos(-\sqrt{21}/14)-\pi/2$.
+35-38 APERTA
+T: Verificare che la retta $r$ di equazione $\begin{cases} x+y-z+2=0 \\ 3x-z-1=0 \end{cases}$ non è ortogonale al piano $\pi$ di equazione $x+2y-5z+3=0$. Trovare il piano $\alpha$ che contiene la retta $r$ e passa per il punto $P={}^t(3\ 3\ 0)$.
+KW: vettore direttore|direttore, prodotto vettoriale|minori|sistema, (1, 2, 3)|1 2 3, vettore normale|giacitura, multiplo|proporzionali, non ortogonale|non è ortogonale, fascio di piani|fascio, 2x-y-3=0|2x - y - 3 = 0
+> **Direttore di $r$.** È ortogonale alle normali ${}^t(1\ 1\ -1)$ e ${}^t(3\ 0\ -1)$ dei due piani: $\;{}^t(1\ 1\ -1)\times{}^t(3\ 0\ -1)={}^t(-1\ -2\ -3)$, cioè $w={}^t(1\ 2\ 3)$. (Equivalente: dalla seconda $z=3x-1$, nella prima $y=2x-3$, quindi $r$: $x=t,\ y=-3+2t,\ z=-1+3t$.)
+>
+> **Non ortogonalità.** $r\perp\pi$ se e solo se $w$ è multiplo della normale $n={}^t(1\ 2\ -5)$ di $\pi$. I rapporti $1/1,\ 2/2,\ 3/(-5)$ non sono uguali, quindi $r$ **non** è ortogonale a $\pi$ (anzi $\langle w,n\rangle=1+4-15=-10\neq0$, quindi non è nemmeno parallela).
+>
+> **Piano $\alpha$.** I piani che contengono $r$ formano il fascio $\lambda(x+y-z+2)+\mu(3x-z-1)=0$. Imponendo il passaggio per $P$: $\lambda(3+3-0+2)+\mu(9-0-1)=8\lambda+8\mu=0$, quindi $\mu=-\lambda$. Con $\lambda=1,\mu=-1$: $(x+y-z+2)-(3x-z-1)=-2x+y+3=0$, cioè
+> $$\alpha:\ 2x-y-3=0.$$
+> Verifica: $P$ dà $6-3-3=0$; il punto ${}^t(0\ -3\ -1)$ di $r$ dà $0+3-3=0$ e $\langle{}^t(2\ -1\ 0),w\rangle=2-2+0=0$.
+35-39 APERTA
+KW: vettore normale|giacitura, (3, 1, -2)|3 1 -2, x-3y+7=0, 2y+z-2=0, distanza, raggio, sqrt(14)|√14|radice di 14, (x-2)^2+(y-3)^2+(z+4)^2=14, tangente
+> **Retta $r$.** È ortogonale a $\pi$: il suo direttore è la normale $n={}^t(3\ 1\ -2)$. Per $P={}^t(2\ 3\ -4)$: $x=2+3t,\ y=3+t,\ z=-4-2t$. Eliminando $t=y-3$: $x=2+3(y-3)$ e $z=-4-2(y-3)$, quindi una forma cartesiana è
+> $$r:\ \begin{cases} x-3y+7=0 \\ 2y+z-2=0 \end{cases}$$
+> (verifica: $P$ dà $2-9+7=0$ e $6-4-2=0$).
+>
+> **Sfera.** Una sfera di centro $P$ è tangente a $\pi$ se e solo se il raggio è la distanza di $P$ da $\pi$:
+> $$R=\mathrm{dist}(P,\pi)=\frac{\lvert 3\cdot2+3-2(-4)-3\rvert}{\sqrt{9+1+4}}=\frac{14}{\sqrt{14}}=\sqrt{14}.$$
+> Quindi la sfera è $(x-2)^2+(y-3)^2+(z+4)^2=14$, cioè $x^2+y^2+z^2-4x-6y+8z+15=0$. Il punto di tangenza è il piede della perpendicolare $r\cap\pi$: $3(2+3t)+(3+t)-2(-4-2t)-3=14+14t=0$, $t=-1$, punto ${}^t(-1\ 2\ -2)$.
+35-40 APERTA
+KW: vettore normale|giacitura, (3, -2, 1)|3 -2 1, x-3z+7=0, y+2z-2=0, distanza, raggio, sqrt(14)|√14|radice di 14, (x-2)^2+(y+4)^2+(z-3)^2=14, tangente
+> **Retta $r$.** Direttore = normale di $\pi$: $n={}^t(3\ -2\ 1)$. Per $P={}^t(2\ -4\ 3)$: $x=2+3t,\ y=-4-2t,\ z=3+t$. Con $t=z-3$: $x=2+3(z-3)$, $y=-4-2(z-3)$, quindi
+> $$r:\ \begin{cases} x-3z+7=0 \\ y+2z-2=0 \end{cases}$$
+> (verifica: $2-9+7=0$, $-4+6-2=0$).
+>
+> **Sfera tangente.** Il raggio è la distanza del centro dal piano:
+> $$R=\mathrm{dist}(P,\pi)=\frac{\lvert 3\cdot2-2(-4)+3-3\rvert}{\sqrt{9+4+1}}=\frac{14}{\sqrt{14}}=\sqrt{14}.$$
+> Sfera: $(x-2)^2+(y+4)^2+(z-3)^2=14$, cioè $x^2+y^2+z^2-4x+8y-6z+15=0$. Il punto di tangenza è $r\cap\pi$: $14+14t=0$, $t=-1$, cioè ${}^t(-1\ -2\ 2)$.
+35-41 APERTA
+T: Siano dati il punto $P={}^t(1\ -2\ 0)$ e il piano $\alpha$ con forma cartesiana $3x-y+4z-1=0$. Trovare la distanza tra $P$ e $\alpha$. Dire se la retta $r$ con forma cartesiana $\begin{cases} 2x-y+1=0 \\ 3x-y+z-3=0 \end{cases}$ è parallela al piano $\beta$ parallelo ad $\alpha$ e passante per $P$.
+KW: distanza, sqrt(26)|√26|radice di 26, 2sqrt(26)/13|2√26/13|4/√26, 3x-y+4z-5=0, vettore direttore|direttore, (-1, -2, 1)|1 2 -1, prodotto scalare, non è parallela|non parallela|incidente
+> **Distanza.** $\mathrm{dist}(P,\alpha)=\dfrac{\lvert 3\cdot1-(-2)+4\cdot0-1\rvert}{\sqrt{9+1+16}}=\dfrac{4}{\sqrt{26}}=\dfrac{2\sqrt{26}}{13}$.
+>
+> **Piano $\beta$.** Parallelo ad $\alpha$ significa stessa normale ${}^t(3\ -1\ 4)$: $3x-y+4z+d=0$; per $P$: $3+2+0+d=0$, $d=-5$, quindi $\beta:\ 3x-y+4z-5=0$.
+>
+> **Retta $r$.** Il direttore è ortogonale alle due normali: ${}^t(2\ -1\ 0)\times{}^t(3\ -1\ 1)={}^t(-1\ -2\ 1)$. La retta è parallela a $\beta$ se e solo se il direttore è ortogonale alla normale di $\beta$: $\langle{}^t(-1\ -2\ 1),{}^t(3\ -1\ 4)\rangle=-3+2+4=3\neq0$. Quindi $r$ **non è parallela** a $\beta$ (lo interseca in un punto).
+35-42 APERTA
+T: Siano dati il punto $P={}^t(1\ -2\ 1)$ e il piano $\alpha$ con forma cartesiana $3x+4y+z+2=0$. Trovare la distanza tra $P$ e $\alpha$. Dire se la retta $r$ con forma cartesiana $\begin{cases} x+3y-z+1=0 \\ 2x-y+2z-2=0 \end{cases}$ è ortogonale al piano $\beta$ parallelo ad $\alpha$ e passante per $P$.
+KW: distanza, sqrt(26)|√26|radice di 26, sqrt(26)/13|√26/13|2/√26, 3x+4y+z+4=0, vettore direttore|direttore, (5, -4, -7)|5 -4 -7, multiplo|proporzionali, non è ortogonale|non ortogonale
+> **Distanza.** $\mathrm{dist}(P,\alpha)=\dfrac{\lvert 3-8+1+2\rvert}{\sqrt{9+16+1}}=\dfrac{2}{\sqrt{26}}=\dfrac{\sqrt{26}}{13}$.
+>
+> **Piano $\beta$.** Stessa normale ${}^t(3\ 4\ 1)$, passaggio per $P$: $3-8+1+d=0$, $d=4$, quindi $\beta:\ 3x+4y+z+4=0$.
+>
+> **Retta $r$.** Direttore: ${}^t(1\ 3\ -1)\times{}^t(2\ -1\ 2)={}^t(5\ -4\ -7)$. $r\perp\beta$ se e solo se il direttore è multiplo della normale ${}^t(3\ 4\ 1)$: i rapporti $5/3,\ -4/4,\ -7/1$ non sono uguali, quindi $r$ **non è ortogonale** a $\beta$.
+35-43 APERTA
+T: Siano dati il punto $P={}^t(1\ 2\ -1)$ e il piano $\alpha$ con forma cartesiana $3x-4y-z+2=0$. Trovare la distanza tra $P$ e $\alpha$. Dire se la retta $r$ con forma cartesiana $\begin{cases} x-3y+z+1=0 \\ 2x+y-2z-2=0 \end{cases}$ è ortogonale al piano $\beta$ parallelo ad $\alpha$ e passante per $P$.
+KW: distanza, sqrt(26)|√26|radice di 26, sqrt(26)/13|√26/13|2/√26, 3x-4y-z+4=0, vettore direttore|direttore, (5, 4, 7)|5 4 7, multiplo|proporzionali, non è ortogonale|non ortogonale
+> **Distanza.** $\mathrm{dist}(P,\alpha)=\dfrac{\lvert 3-8+1+2\rvert}{\sqrt{9+16+1}}=\dfrac{2}{\sqrt{26}}=\dfrac{\sqrt{26}}{13}$.
+>
+> **Piano $\beta$.** Normale ${}^t(3\ -4\ -1)$, per $P$: $3-8+1+d=0$, $d=4$, quindi $\beta:\ 3x-4y-z+4=0$.
+>
+> **Retta $r$.** Direttore: ${}^t(1\ -3\ 1)\times{}^t(2\ 1\ -2)={}^t(5\ 4\ 7)$. Non è multiplo di ${}^t(3\ -4\ -1)$ (rapporti $5/3,\ 4/(-4),\ 7/(-1)$ diversi), quindi $r$ **non è ortogonale** a $\beta$.
+35-44 APERTA
+T: Verificare che il piano $\pi$ di equazione $x-2y-3z+3=0$ è ortogonale alla retta $r$ di equazione $\begin{cases} x-y+z+2=0 \\ 3x+z-1=0 \end{cases}$. Trovare il piano $\alpha$ che contiene la retta $r$ e passa per il punto $P={}^t(3\ -3\ 0)$.
+KW: vettore direttore|direttore, (-1, 2, 3)|1 -2 -3, vettore normale|giacitura, multiplo|proporzionali, ortogonale, fascio di piani|fascio, 2x+y-3=0
+> **Ortogonalità.** Direttore di $r$: ${}^t(1\ -1\ 1)\times{}^t(3\ 0\ 1)={}^t(-1\ 2\ 3)=-1\cdot{}^t(1\ -2\ -3)$, multiplo della normale di $\pi$: quindi $r\perp\pi$.
+>
+> **Piano $\alpha$.** Fascio dei piani per $r$: $\lambda(x-y+z+2)+\mu(3x+z-1)=0$. In $P$: $\lambda(3+3+0+2)+\mu(9+0-1)=8\lambda+8\mu=0$, $\mu=-\lambda$. Con $\lambda=1$: $(x-y+z+2)-(3x+z-1)=-2x-y+3=0$, cioè
+> $$\alpha:\ 2x+y-3=0.$$
+> Verifica: $P$ dà $6-3-3=0$.
+35-45 APERTA
+T: Verificare che il piano $\pi$ di equazione $x+2y-3z+3=0$ è ortogonale alla retta $r$ di equazione $\begin{cases} x+y+z+2=0 \\ 3x+z-1=0 \end{cases}$. Trovare il piano $\alpha$ che contiene la retta $r$ e passa per il punto $P={}^t(3\ 3\ 0)$.
+KW: vettore direttore|direttore, (1, 2, -3)|1 2 -3, vettore normale|giacitura, multiplo|proporzionali, ortogonale, fascio di piani|fascio, 2x-y-3=0
+> **Ortogonalità.** Direttore di $r$: ${}^t(1\ 1\ 1)\times{}^t(3\ 0\ 1)={}^t(1\ 2\ -3)$, che coincide con la normale di $\pi$: quindi $r\perp\pi$.
+>
+> **Piano $\alpha$.** Fascio $\lambda(x+y+z+2)+\mu(3x+z-1)=0$; in $P$: $8\lambda+8\mu=0$, $\mu=-\lambda$. Con $\lambda=1$: $-2x+y+3=0$, cioè
+> $$\alpha:\ 2x-y-3=0.$$
+> Verifica: $P$ dà $6-3-3=0$.
+35-46 APERTA
+T: Verificare che la retta $r$ di equazione $\begin{cases} x-y-z+2=0 \\ 3x-z-1=0 \end{cases}$ non è ortogonale al piano $\pi$ di equazione $x-2y-5z+3=0$. Trovare il piano $\alpha$ che contiene la retta $r$ e passa per il punto $P={}^t(3\ -3\ 0)$.
+KW: vettore direttore|direttore, (1, -2, 3)|1 -2 3, vettore normale|giacitura, multiplo|proporzionali, non è ortogonale|non ortogonale, fascio di piani|fascio, 2x+y-3=0
+> **Non ortogonalità.** Direttore di $r$: ${}^t(1\ -1\ -1)\times{}^t(3\ 0\ -1)={}^t(1\ -2\ 3)$. La normale di $\pi$ è ${}^t(1\ -2\ -5)$: i rapporti $1,\ 1,\ -3/5$ non sono uguali, quindi $r$ **non** è ortogonale a $\pi$.
+>
+> **Piano $\alpha$.** Fascio $\lambda(x-y-z+2)+\mu(3x-z-1)=0$; in $P$: $\lambda(3+3-0+2)+\mu(9-1)=8\lambda+8\mu=0$, $\mu=-\lambda$. Con $\lambda=1$: $-2x-y+3=0$, cioè
+> $$\alpha:\ 2x+y-3=0.$$
+> Verifica: $P$ dà $6-3-3=0$.
+35-47 APERTA
+T: Siano dati il punto $P={}^t(0\ -2\ 1)$ e il piano $\alpha$ con forma cartesiana $4x-y+3z-1=0$. Trovare la distanza tra $P$ e $\alpha$. Dire se la retta $r$ con forma cartesiana $\begin{cases} y-2z-1=0 \\ x-y+3z-3=0 \end{cases}$ è parallela al piano $\beta$ parallelo ad $\alpha$ e passante per $P$.
+KW: distanza, sqrt(26)|√26|radice di 26, 2sqrt(26)/13|2√26/13|4/√26, 4x-y+3z-5=0, vettore direttore|direttore, (1, -2, -1)|1 -2 -1, prodotto scalare, non è parallela|non parallela|incidente
+> **Distanza.** $\mathrm{dist}(P,\alpha)=\dfrac{\lvert 0+2+3-1\rvert}{\sqrt{16+1+9}}=\dfrac{4}{\sqrt{26}}=\dfrac{2\sqrt{26}}{13}$.
+>
+> **Piano $\beta$.** Normale ${}^t(4\ -1\ 3)$, per $P$: $0+2+3+d=0$, $d=-5$, quindi $\beta:\ 4x-y+3z-5=0$.
+>
+> **Retta $r$.** Direttore: ${}^t(0\ 1\ -2)\times{}^t(1\ -1\ 3)={}^t(1\ -2\ -1)$. Prodotto scalare con la normale di $\beta$: $4+2-3=3\neq0$, quindi $r$ **non è parallela** a $\beta$ (lo interseca in un punto).
+x159 D Per l'angolo tra una retta e un piano si usa il vettore di giacitura del piano, che è **ortogonale** al piano (Osservazione 35.8).
+  Prima si riduce l'angolo $\beta$ tra il direttore ${}^t(l\ m\ n)$ e la normale ${}^t(a\ b\ c)$ all'intervallo $[0,\pi/2]$: si prende $\beta$ se $\beta\le\pi/2$ e $\pi-\beta$ se $\beta>\pi/2$. Questo è l'angolo (acuto) tra la retta e la **normale** al piano.
+  Poiché la normale forma un angolo retto con il piano, l'angolo tra retta e piano è il **complementare**: $$\widehat{r\alpha}=\frac{\pi}{2}-\begin{cases}\beta & \beta\le\pi/2\\ \pi-\beta & \beta>\pi/2\end{cases}$$
+  Controllo: se la retta è ortogonale al piano, direttore e normale sono multipli, $\beta=0$ (o $\pi$) e si ottiene $\pi/2$; se la retta è contenuta nel piano, $\beta=\pi/2$ e si ottiene $0$.
+  Le altre espressioni non funzionano: $\beta$ da solo e $\pi-\beta$ sono angoli tra vettori (anche ottusi), e la riduzione all'intervallo $[0,\pi/2]$ senza il complementare dà l'angolo tra la retta e la normale, non tra la retta e il piano.
+  **Errore tipico:** applicare la stessa formula usata per due rette o per due piani, dimenticando che qui uno dei vettori (la normale) è ortogonale all'oggetto, e quindi serve il complementare $\pi/2-\dots$.
+  TRAP: la riduzione a $[0,\pi/2]$ è la formula giusta per retta-retta e piano-piano; per retta-piano va ancora sottratta da $\pi/2$.
+T: Dati una retta $r$ e un piano $\alpha$ di $V^3_E$ con intersezione non vuota e con forma rispettivamente parametrica $\begin{cases} x=x_0+lt \\ y=y_0+mt \\ z=z_0+nt \end{cases}$ e implicita $ax+by+cz+d=0$, e detto $\beta$ l'angolo $\arccos\left(\dfrac{\langle {}^t(l\ m\ n),{}^t(a\ b\ c)\rangle}{\lVert {}^t(l\ m\ n)\rVert\cdot\lVert {}^t(a\ b\ c)\rVert}\right)$, quale dei seguenti è l'angolo $\widehat{r\alpha}$ tra la retta e il piano?
+OPT: $\beta$. | $\pi-\beta$. | $\begin{cases}\beta & \text{se } \beta\le\frac{\pi}{2}\\ \pi-\beta & \text{se } \beta>\frac{\pi}{2}\end{cases}$ | $\frac{\pi}{2}-\begin{cases}\beta & \text{se } \beta\le\frac{\pi}{2}\\ \pi-\beta & \text{se } \beta>\frac{\pi}{2}\end{cases}$
+x160 B Un piano è **ortogonale** a una retta se e solo se il suo vettore di giacitura è un multiplo non nullo del vettore direttore della retta (Osservazione 35.8, $\beta=0$).
+  La retta $\begin{cases} x=2-3t \\ y=1+t \\ z=-3+4t \end{cases}$ ha direttore $w={}^t(-3\ 1\ 4)$ (coefficienti di $t$). Confronto con la normale di ciascun piano:
+  - $2x+y-3z-2=0$: normale ${}^t(2\ 1\ -3)$, che non è multiplo di ${}^t(-3\ 1\ 4)$ (rapporti $2/-3$, $1/1$, $-3/4$ non tutti uguali): non è ortogonale alla retta.
+  - $6x-2y-8z-3=0$: normale ${}^t(6\ -2\ -8)=-2\cdot{}^t(-3\ 1\ 4)$: giacitura giusta: il piano è ortogonale alla retta.
+  - $2x+y+3z+2=0$: normale ${}^t(2\ 1\ 3)$, che non è multiplo di ${}^t(-3\ 1\ 4)$ (rapporti $2/-3$, $1/1$, $3/4$ non tutti uguali): non è ortogonale alla retta.
+  - $6x+2y+8z+3=0$: normale ${}^t(6\ 2\ 8)$, che non è multiplo di ${}^t(-3\ 1\ 4)$ (rapporti $6/-3$, $2/1$, $8/4$ non tutti uguali): non è ortogonale alla retta.
+  Il termine noto non conta: ogni piano con quella normale è ortogonale alla retta.
+  **Errore tipico:** confondere la condizione di ortogonalità con quella di parallelismo (prodotto scalare nullo), oppure sbagliare un segno: alcune normali proposte hanno le stesse cifre del direttore (o di un suo multiplo) ma con un segno diverso, e quindi non sono proporzionali.
+  TRAP: le normali proposte differiscono solo per i segni di alcune componenti: un multiplo deve avere i rapporti tutti uguali, segno compreso.
+T: Quale delle seguenti forme implicite rappresenta un piano ortogonale alla retta con forma parametrica $\begin{cases} x=2-3t \\ y=1+t \\ z=-3+4t \end{cases}$ nello spazio euclideo?
+OPT: $2x+y-3z-2=0$ | $6x-2y-8z-3=0$ | $2x+y+3z+2=0$ | $6x+2y+8z+3=0$
+x161 B Una retta è **parallela** a un piano se e solo se il suo vettore direttore è **ortogonale** al vettore di giacitura del piano, cioè se il loro prodotto scalare standard è nullo (Osservazione 35.8: $\beta=\pi/2$; in questo caso la retta è contenuta nel piano o parallela ad esso).
+  Il piano $x-y+3z-5=0$ ha vettore di giacitura $n={}^t(1\ -1\ 3)$. Il direttore di ogni retta si legge nei coefficienti di $t$.
+  - $\begin{cases} x=2+t \\ y=1-t \\ z=5+3t \end{cases}$: $\langle {}^t(1\ -1\ 3),{}^t(1\ -1\ 3)\rangle=(1)(1)+(-1)(-1)+(3)(3)=11$, diverso da $0$: non è parallela al piano.
+  - $\begin{cases} x=2+2t \\ y=1-t \\ z=5-t \end{cases}$: $\langle {}^t(2\ -1\ -1),{}^t(1\ -1\ 3)\rangle=(2)(1)+(-1)(-1)+(-1)(3)=0$, quindi la retta è parallela al piano. Il punto base ${}^t(2\ 1\ 5)$ dà $11\neq0$ nell'equazione del piano, quindi la retta è parallela e non contenuta.
+  - $\begin{cases} x=2+t \\ y=1+t \\ z=5+3t \end{cases}$: $\langle {}^t(1\ 1\ 3),{}^t(1\ -1\ 3)\rangle=(1)(1)+(1)(-1)+(3)(3)=9$, diverso da $0$: non è parallela al piano.
+  - $\begin{cases} x=2+2t \\ y=1+t \\ z=5+t \end{cases}$: $\langle {}^t(2\ 1\ 1),{}^t(1\ -1\ 3)\rangle=(2)(1)+(1)(-1)+(1)(3)=4$, diverso da $0$: non è parallela al piano.
+  **Errore tipico:** cercare un direttore **proporzionale** al vettore normale: quella è la condizione di ortogonalità, l'opposto di quella richiesta. Un altro errore è fare il prodotto scalare con il punto base invece che con i coefficienti di $t$.
+T: Quale delle seguenti forme parametriche rappresenta una retta parallela al piano con forma implicita $x-y+3z-5=0$ in $V^3_E$?
+OPT: $\begin{cases} x=2+t \\ y=1-t \\ z=5+3t \end{cases}$ | $\begin{cases} x=2+2t \\ y=1-t \\ z=5-t \end{cases}$ | $\begin{cases} x=2+t \\ y=1+t \\ z=5+3t \end{cases}$ | $\begin{cases} x=2+2t \\ y=1+t \\ z=5+t \end{cases}$
+x162 B Due rette dello spazio sono **ortogonali** quando sono incidenti e i loro vettori direttori hanno prodotto scalare nullo (Osservazione 35.1: l'angolo tra rette si definisce per rette con intersezione non vuota).
+  La retta data $x=1-t,\ y=2t,\ z=2-t$ ha direttore $w={}^t(-1\ 2\ -1)$. Controllo i direttori:
+  - $x=1+t,\ y=t,\ z=1+t$: direttore ${}^t(1\ 1\ 1)$, $\langle w,{}^t(1\ 1\ 1)\rangle=-1+2-1=0$; ma intersecando con la retta data, $1-t=1+s$ e $2t=s$ danno $t=s=0$, e allora $z$ vale $2$ da una parte e $1$ dall'altra: le rette **non si incontrano**, sono sghembe con direzioni ortogonali.
+  - $x=-1+t,\ y=4+t,\ z=t$: direttore ${}^t(1\ 1\ 1)$, prodotto scalare $0$; intersezione: $1-t=-1+s$, $2t=4+s$, $2-t=s$. Dalla prima e dalla terza $s=2-t$, nella seconda $2t=6-t$, quindi $t=2$, $s=0$: il punto comune è ${}^t(-1\ 4\ 0)$. Le rette sono **incidenti e ortogonali**: è la risposta.
+  - $x=1-2t,\ y=4t,\ z=2-2t$: direttore ${}^t(-2\ 4\ -2)=2w$, è parallela (anzi coincide, perché passa per ${}^t(1\ 0\ 2)$ che sta sulla retta data).
+  - $x=1-2t,\ y=1+4t,\ z=2-2t$: direttore $2w$, parallela alla retta data (non coincidente).
+  **Errore tipico:** fermarsi al prodotto scalare nullo: due opzioni hanno lo stesso direttore ${}^t(1\ 1\ 1)$, ortogonale a $w$, ma solo una delle due rette incontra quella data. Un altro errore è scegliere un direttore proporzionale a $w$, che dà rette parallele.
+  TRAP: due opzioni hanno direttore ortogonale a quello della retta data; una però è sghemba, e solo quella incidente è la retta ortogonale secondo la definizione del corso.
+T: Quale delle seguenti forme parametriche rappresenta una retta ortogonale alla retta con forma parametrica $\begin{cases} x=1-t \\ y=2t \\ z=2-t \end{cases}$ nello spazio euclideo?
+OPT: $\begin{cases} x=1+t \\ y=t \\ z=1+t \end{cases}$ | $\begin{cases} x=-1+t \\ y=4+t \\ z=t \end{cases}$ | $\begin{cases} x=1-2t \\ y=4t \\ z=2-2t \end{cases}$ | $\begin{cases} x=1-2t \\ y=1+4t \\ z=2-2t \end{cases}$
