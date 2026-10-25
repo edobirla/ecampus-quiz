@@ -63,6 +63,7 @@ const I = {
   eye: ico('<path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>'),
   save: ico('<path d="M12 3v12M7 10l5 5 5-5"/><path d="M4 17v3h16v-3"/>'),
   doc: ico('<path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4M9 12h6M9 16h6"/>'),
+  trophy: ico('<path d="M8 4h8v6a4 4 0 0 1-8 0z"/><path d="M8 6H5a3 3 0 0 0 3 4M16 6h3a3 3 0 0 1-3 4M12 14v3M8 21h8M9 17h6v4H9z"/>'),
 };
 
 // ---------- impostazioni e stato
@@ -251,13 +252,72 @@ function bookingAlert() {
   $("#fs").hidden = false;
 }
 
+// ---------- esiti degli esami veri: in stats(id).real, quindi vanno nel backup e nella sincronizzazione (unione in sync.js)
+const localDay = (t = Date.now()) => new Date(t).toLocaleDateString("sv"); // AAAA-MM-GG nel fuso locale
+const fmtDay = (d) => new Date(d + "T12:00").toLocaleDateString("it-IT", { day: "numeric", month: "long", year: "numeric" });
+const realOf = (id) => stats(id).real.filter((r) => !r.del);
+const subjName = (id) => { const s = subjects.find((x) => x.id === id); return s ? s.short || s.name : id; };
+const gradeTxt = (r) => (r.res === "ok" ? (r.lode ? "30 e lode" : String(r.grade)) : r.res === "ko" ? "Non superato" : "In attesa");
+// all'apertura: data d'esame passata senza esito (o con esito "in attesa") → chiede com'è andata, al massimo una volta al giorno per materia
+function outcomePrompt() {
+  const today = localDay();
+  for (const s of subjects) {
+    const date = settings.examDate[s.id], key = `ecq:outnag:${s.id}`;
+    if (!date || date >= today || store.get(key) === today) continue;
+    const r = realOf(s.id).find((x) => x.date === date);
+    if (r && r.res !== "wait") continue;
+    store.set(key, today);
+    $("#fs").innerHTML = `<div class="fs-card"><div class="fs-ico">${I.trophy}</div><h2>Com'è andato l'esame di ${esc(s.short || s.name)}?</h2>
+      <p>Era il ${fmtDay(date)}.${r ? " L'ultima volta aspettavi ancora il risultato." : ""}</p>${outcomeForm({ subj: s.id, date, rid: r?.id, prompt: true })}</div>`;
+    $("#fs").hidden = false;
+    return true;
+  }
+  return false;
+}
+function outcomeForm({ subj, date, rid, prompt }) {
+  const r = rid ? realOf(subj).find((x) => x.id === rid) : null;
+  const g = r?.res === "ok" ? (r.lode ? "30L" : String(r.grade)) : "";
+  const grades = [...Array(13)].map((_, i) => String(18 + i)).concat("30L");
+  return `<div class="outform" data-rid="${rid || ""}">
+    ${prompt || rid ? `<input type="hidden" name="subj" value="${subj}">`
+      : `<label class="fld">Materia<select class="date" name="subj">${subjects.map((s) => `<option value="${s.id}" ${s.id === subj ? "selected" : ""}>${esc(s.short || s.name)}</option>`).join("")}</select></label>`}
+    ${prompt ? `<input type="hidden" name="date" value="${date}">` : `<label class="fld">Data dell'esame<input type="date" class="date" name="date" value="${date}"></label>`}
+    <label class="fld">Voto, se l'hai superato<select class="date" name="grade"><option value="">—</option>
+      ${grades.map((v) => `<option value="${v}" ${v === g ? "selected" : ""}>${v === "30L" ? "30 e lode" : v}</option>`).join("")}</select></label>
+    <button class="btn block" data-act="outsave" data-res="ok">Superato</button>
+    <div class="grid g2" style="margin-top:10px"><button class="btn secondary" data-act="outsave" data-res="ko">Non superato</button>
+      <button class="btn secondary" data-act="outsave" data-res="wait">Aspetto il risultato</button></div>
+    ${prompt ? `<div class="grid g2" style="margin-top:10px"><button class="btn ghost" data-act="outskip">Non l'ho sostenuto</button><button class="btn ghost" data-act="fsclose">Più tardi</button></div>`
+      : rid ? `<button class="btn danger block" data-act="outdel" style="margin-top:10px">Elimina</button>` : ""}</div>`;
+}
+const clearExamDate = (subj) => { settings.examDate[subj] = undefined; settings.examBooked[subj] = undefined; saveSettings(); };
+function saveOutcome(el, res) {
+  const f = el.closest(".outform"), v = (n) => f.querySelector(`[name=${n}]`).value;
+  const subj = v("subj"), date = v("date"), g = v("grade");
+  if (!date) return toast("Scegli la data dell'esame");
+  if (res === "ok" && !g) return toast("Scegli il voto");
+  const st = stats(subj);
+  let r = st.real.find((x) => x.id === f.dataset.rid);
+  if (!r) st.real.push((r = { id: "r" + Date.now().toString(36) }));
+  Object.assign(r, { date, res, grade: res === "ok" ? (g === "30L" ? 30 : +g) : undefined, lode: res === "ok" && g === "30L" ? 1 : undefined, mt: Date.now() });
+  st.real.sort((a, b) => (a.date < b.date ? -1 : 1));
+  saveStats(st, subj);
+  if (res !== "wait" && settings.examDate[subj] === date) clearExamDate(subj); // esame fatto: il piano aspetta la data del prossimo
+  toast(res === "ok" ? `Complimenti per il ${gradeTxt(r)}!` : res === "ko" ? "Salvato. Imposta la data del prossimo appello quando la sai" : "Va bene, te lo richiedo nei prossimi giorni");
+  return closeOutcome(el);
+}
+function closeOutcome(el) {
+  if (el.closest("#fs")) { $("#fs").hidden = true; outcomePrompt(); } else closeSheet();
+  route();
+}
+
 // ---------- shell: sidebar, topbar, tabbar
 const NAV = [
   ["", "Home", I.home], ["studio", "Studio", I.study], ["esame", "Esame", I.exam], ["teoria", "Teoria", I.book], ["altro", "Altro", I.more],
 ];
 function renderShell(route) {
   const top = route.split("/")[0];
-  const on = (k) => (k === top || (k === "altro" && ["preferiti", "errori", "scheda", "impostazioni", "cerca", "appunti"].includes(top)) ? "on" : "");
+  const on = (k) => (k === top || (k === "altro" && ["preferiti", "errori", "scheda", "impostazioni", "cerca", "appunti", "esiti"].includes(top)) ? "on" : "");
   const chip = `<button class="subject-chip" data-act="subjects"><i class="dot"></i><span>${esc(S.short || S.name)}</span>${I.down}</button>`;
   $("#tabbar").innerHTML = NAV.map(([k, t, i]) => `<a href="#/${k}" class="${on(k)}">${i}<span>${t}</span></a>`).join("");
   $("#sidebar").innerHTML = `
@@ -267,11 +327,12 @@ function renderShell(route) {
     <div class="side-sep"></div>
     <a class="side-link ${top === "cerca" ? "on" : ""}" href="#/cerca">${I.search}Cerca</a>
     <a class="side-link ${top === "appunti" ? "on" : ""}" href="#/appunti">${I.pen}Appunti</a>
+    <a class="side-link ${top === "esiti" ? "on" : ""}" href="#/esiti">${I.trophy}Esiti esami</a>
     <a class="side-link ${top === "preferiti" ? "on" : ""}" href="#/preferiti">${I.star}Preferiti</a>
     <a class="side-link ${top === "errori" ? "on" : ""}" href="#/errori">${I.redo}Ripasso errori</a>
     <a class="side-link ${top === "scheda" ? "on" : ""}" href="#/scheda">${I.doc}Scheda corso</a>
     <a class="side-link ${top === "impostazioni" ? "on" : ""}" href="#/impostazioni">${I.gear}Impostazioni</a>`;
-  const titles = { "": "Home", studio: "Studio", esame: "Esame", teoria: "Teoria", altro: "Altro", preferiti: "Preferiti", errori: "Ripasso errori", scheda: "Scheda corso", impostazioni: "Impostazioni", risultati: "Risultati", cerca: "Cerca", appunti: "Appunti" };
+  const titles = { "": "Home", studio: "Studio", esame: "Esame", teoria: "Teoria", altro: "Altro", preferiti: "Preferiti", errori: "Ripasso errori", scheda: "Scheda corso", impostazioni: "Impostazioni", risultati: "Risultati", cerca: "Cerca", appunti: "Appunti", esiti: "Esiti esami" };
   $("#topbar").innerHTML = `<h1>${titles[top] ?? ""}</h1>${chip}`;
 }
 
@@ -345,6 +406,8 @@ views[""] = () => {
         <div class="grow"><div class="t">Ripasso errori</div><div class="s">${review ? `${review} domande da ripassare` : "Nessun errore da ripassare"}</div></div>${I.chev.replace("<svg", '<svg class="chev"')}</button>
       <a class="row" href="#/preferiti"><span class="lnum" style="background:var(--warn-soft);color:#f5b301">${I.star}</span>
         <div class="grow"><div class="t">Preferiti</div><div class="s">${st.fav.length} domande salvate</div></div>${I.chev.replace("<svg", '<svg class="chev"')}</a>
+      <a class="row" href="#/esiti"><span class="lnum">${I.trophy}</span>
+        <div class="grow"><div class="t">Esiti esami</div><div class="s">Voti degli esami veri, media e andamento</div></div>${I.chev.replace("<svg", '<svg class="chev"')}</a>
       <button class="row" data-act="quick"><span class="lnum">${I.bolt}</span>
         <div class="grow"><div class="t">Quiz veloce</div><div class="s">20 domande casuali con correzione immediata</div></div>${I.chev.replace("<svg", '<svg class="chev"')}</button>
     </div>
@@ -443,18 +506,59 @@ const resumeCard = () => {
     <div class="actions" style="margin-top:12px"><a class="btn" href="#/quiz">Riprendi</a><button class="btn ghost" data-act="finish">Termina e vedi il riepilogo</button></div></div>`;
 };
 
-function chart(ex) {
+// lo = voto in fondo all'asse; avg = media progressiva allineata a ex (null dove non c'è ancora)
+function chart(ex, { lo = 0, avg } = {}) {
   const W = 320, H = 150, P = 22, n = ex.length;
   const x = (i) => P + (n === 1 ? (W - 2 * P) / 2 : (i * (W - 2 * P)) / (n - 1));
-  const y = (v) => H - P - (v / 30) * (H - 2 * P);
+  const y = (v) => H - P - ((v - lo) / (30 - lo)) * (H - 2 * P);
+  const avgPts = (avg || []).map((v, i) => (v == null ? "" : `${x(i)},${y(v)}`)).filter(Boolean).join(" ");
   const pts = ex.map((e, i) => `${x(i)},${y(e.score)}`).join(" ");
   return `<svg class="chart" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none">
     <line class="thr" x1="${P}" x2="${W - P}" y1="${y(18)}" y2="${y(18)}"/><text x="${W - P}" y="${y(18) - 5}" text-anchor="end">18</text>
     <polygon class="area" points="${x(0)},${H - P} ${pts} ${x(n - 1)},${H - P}"/>
     <polyline class="line" points="${pts}"/>
+    ${avgPts ? `<polyline class="avg" points="${avgPts}"/>` : ""}
     ${ex.map((e, i) => `<circle class="${e.passed ? "" : "fail"}" cx="${x(i)}" cy="${y(e.score)}" r="4"/>`).join("")}
   </svg>`;
 }
+
+views.esiti = () => {
+  const all = subjects.flatMap((s) => realOf(s.id).map((r) => ({ ...r, s: s.id }))).sort((a, b) => (a.date < b.date ? -1 : 1));
+  const done = all.filter((r) => r.res !== "wait"), ok = done.filter((r) => r.res === "ok"), wait = all.length - done.length;
+  const sum = ok.reduce((a, r) => a + r.grade, 0), avg = ok.length ? sum / ok.length : null;
+  const per = subjects.map((s) => {
+    const rs = done.filter((r) => r.s === s.id);
+    return { s, rs, pass: rs.find((r) => r.res === "ok"), w: all.some((r) => r.s === s.id && r.res === "wait") };
+  });
+  const tried = per.filter((p) => p.rs.length), first = per.filter((p) => p.rs[0]?.res === "ok").length;
+  let k = 0, acc = 0;
+  const run = done.map((r) => (r.res === "ok" ? ((acc += r.grade), ++k, acc / k) : k ? acc / k : null));
+  const f1 = (v) => v.toFixed(1).replace(".", ",");
+  return `<button class="btn block" data-act="outadd" style="margin-bottom:14px">${I.plus}Aggiungi un esito</button>
+  ${all.length ? `
+  <div class="card stats-strip">
+    <div class="stat ok"><div class="v">${ok.length}</div><div class="k">Superati</div></div>
+    <div class="stat ko"><div class="v">${done.length - ok.length}</div><div class="k">Bocciature</div></div>
+    <div class="stat"><div class="v">${avg ? f1(avg) : "–"}</div><div class="k">Media${avg ? ` · ${Math.round((avg * 110) / 30)}/110` : ""}</div></div>
+    <div class="stat"><div class="v">${wait}</div><div class="k">In attesa</div></div>
+  </div>
+  <div class="section card stats-strip">
+    <div class="stat"><div class="v">${done.length}</div><div class="k">Appelli sostenuti</div></div>
+    <div class="stat"><div class="v">${tried.length ? f1(done.length / tried.length) : "–"}</div><div class="k">Tentativi per materia</div></div>
+    <div class="stat"><div class="v">${tried.length ? pct(first, tried.length) + "%" : "–"}</div><div class="k">Al primo tentativo</div></div>
+    <div class="stat"><div class="v">${ok.length ? Math.max(...ok.map((r) => r.grade)) : "–"}</div><div class="k">Voto max${ok.some((r) => r.lode) ? ` · lodi: ${ok.filter((r) => r.lode).length}` : ""}</div></div>
+  </div>
+  ${done.length ? `<div class="section card"><b>Andamento</b><span class="muted small"> · voti in ordine di data, in rosso le bocciature, tratteggiata la media</span>
+    ${chart(done.map((r) => ({ score: r.res === "ok" ? r.grade : 17, passed: r.res === "ok" })), { lo: 16, avg: run })}</div>` : ""}
+  <div class="section"><div class="section-h"><h2>Per materia</h2></div><div class="list">
+    ${per.map(({ s, rs, pass, w }) => `<div class="row"><i class="dot" style="background:${s.color}"></i>
+      <div class="grow"><div class="t">${esc(s.short || s.name)}</div><div class="s">${rs.length ? `${rs.length} ${rs.length === 1 ? "appello" : "appelli"}` : "Nessun appello sostenuto"}${w ? " · risultato in attesa" : ""}</div></div>
+      ${pass ? `<span class="badge ok">${gradeTxt(pass)}</span>` : rs.length ? `<span class="badge ko">Da ridare</span>` : w ? `<span class="badge warn">In attesa</span>` : ""}</div>`).join("")}</div></div>
+  <div class="section"><div class="section-h"><h2>Storico</h2></div><div class="list">
+    ${all.slice().reverse().map((r) => `<button class="row" data-act="outedit" data-s="${r.s}" data-rid="${r.id}"><span class="st ${r.res === "ok" ? "ok" : r.res === "ko" ? "ko" : "na"}">${r.res === "ok" ? "✓" : r.res === "ko" ? "✕" : "…"}</span>
+      <div class="grow"><div class="t">${esc(subjName(r.s))} · ${gradeTxt(r)}</div><div class="s">${fmtDay(r.date)}</div></div>${I.chev.replace("<svg", '<svg class="chev"')}</button>`).join("")}</div></div>`
+  : `<div class="card empty">${I.trophy}<p>Nessun esito ancora. Il giorno dopo la data dell'esame l'app ti chiede com'è andato; qui puoi aggiungere anche gli esami che hai già dato.</p></div>`}`;
+};
 
 let selLessons = new Set();
 views.studio = () => {
@@ -631,6 +735,7 @@ views.altro = () => `
   <div class="list">
     <a class="row" href="#/cerca"><span class="lnum">${I.search}</span><div class="grow"><div class="t">Cerca</div></div>${I.chev.replace("<svg", '<svg class="chev"')}</a>
     <a class="row" href="#/appunti"><span class="lnum">${I.pen}</span><div class="grow"><div class="t">Appunti</div><div class="s">Evidenziazioni e note sulla teoria</div></div>${I.chev.replace("<svg", '<svg class="chev"')}</a>
+    <a class="row" href="#/esiti"><span class="lnum">${I.trophy}</span><div class="grow"><div class="t">Esiti esami</div><div class="s">Voti, media e andamento degli esami veri</div></div>${I.chev.replace("<svg", '<svg class="chev"')}</a>
     <a class="row" href="#/preferiti"><span class="lnum" style="background:var(--warn-soft);color:#f5b301">${I.star}</span><div class="grow"><div class="t">Preferiti</div></div>${I.chev.replace("<svg", '<svg class="chev"')}</a>
     <a class="row" href="#/errori"><span class="lnum" style="background:var(--ko-soft);color:var(--ko)">${I.redo}</span><div class="grow"><div class="t">Ripasso errori</div></div>${I.chev.replace("<svg", '<svg class="chev"')}</a>
     <a class="row" href="#/scheda"><span class="lnum">${I.doc}</span><div class="grow"><div class="t">Scheda corso</div></div>${I.chev.replace("<svg", '<svg class="chev"')}</a>
@@ -688,7 +793,7 @@ views.impostazioni = () => {
   <p class="muted small" style="margin:10px 4px">Per avere gli stessi dati su iPad e iPhone: dopo aver studiato su un dispositivo salva il backup (per esempio in iCloud Drive) e caricalo sull'altro. Ogni risposta ed esame ha un codice unico: caricare lo stesso file più volte non duplica niente.</p>
   <div class="section list">
     <button class="row" data-act="addsubj"><span class="lnum">${I.plus}</span><div class="grow"><div class="t">Aggiungi una materia</div><div class="s">Come caricare un nuovo paniere</div></div></button>
-    <button class="row" data-act="reset"><span class="lnum" style="background:var(--ko-soft);color:var(--ko)">${I.redo}</span><div class="grow"><div class="t" style="color:var(--ko)">Azzera statistiche di ${esc(S.short || S.name)}</div><div class="s">Esami, risposte e preferiti di questa materia</div></div></button>
+    <button class="row" data-act="reset"><span class="lnum" style="background:var(--ko-soft);color:var(--ko)">${I.redo}</span><div class="grow"><div class="t" style="color:var(--ko)">Azzera statistiche di ${esc(S.short || S.name)}</div><div class="s">Simulazioni, risposte e preferiti di questa materia (gli esiti degli esami veri restano)</div></div></button>
   </div>
   <p class="muted small" style="margin:18px 4px">I dati sono salvati solo su questo dispositivo. ${subjects.length} materie · ${S.questions.length} domande in ${esc(S.short)}.</p>`;
 };
@@ -987,7 +1092,20 @@ document.addEventListener("click", async (e) => {
       break;
     case "closesheet": closeSheet(); break;
     case "booked": settings.examBooked[S.id] = true; saveSettings(); $("#fs").hidden = true; toast("Perfetto, non te lo ricordo più"); break;
-    case "fsclose": $("#fs").hidden = true; break;
+    case "fsclose": $("#fs").hidden = true; outcomePrompt(); break;
+    case "outsave": saveOutcome(el, el.dataset.res); break;
+    case "outskip": { const subj = el.closest(".outform").querySelector("[name=subj]").value; clearExamDate(subj); toast("Imposta la data del prossimo appello quando la sai"); closeOutcome(el); break; }
+    case "outadd": openSheet(`<h3>Aggiungi un esito</h3>${outcomeForm({ subj: S.id, date: settings.examDate[S.id] || localDay() })}`); break;
+    case "outedit": {
+      const r = realOf(el.dataset.s).find((x) => x.id === el.dataset.rid);
+      openSheet(`<h3>${esc(subjName(el.dataset.s))}</h3>${outcomeForm({ subj: el.dataset.s, date: r.date, rid: r.id })}`); break;
+    }
+    case "outdel": {
+      if (!confirm("Eliminare questo esito?")) break;
+      const f = el.closest(".outform"), subj = f.querySelector("[name=subj]").value, s = stats(subj);
+      Object.assign(s.real.find((x) => x.id === f.dataset.rid), { del: 1, mt: Date.now() }); // resta come cancellazione, così si propaga agli altri dispositivi
+      saveStats(s, subj); closeOutcome(el); break;
+    }
     case "exam": newExam(); break;
     case "openexam": newExam(true); break;
     case "annot": {
@@ -1102,7 +1220,7 @@ document.addEventListener("click", async (e) => {
       break;
     }
     case "reset":
-      if (confirm(`Azzerare tutte le statistiche di ${S.short || S.name}?`)) { store.del(statKey()); toast("Statistiche azzerate"); route(); }
+      if (confirm(`Azzerare tutte le statistiche di ${S.short || S.name}?`)) { saveStats({ real: stats().real }); toast("Statistiche azzerate"); route(); } // gli esiti degli esami veri restano
       break;
     case "retrywrong": {
       const s = st();
@@ -1313,7 +1431,7 @@ async function start() {
   await loadSubject(subjects.some((s) => s.id === want) ? want : subjects[0].id);
   if (sess?.mode === "exam" && location.hash !== "#/quiz" && !location.hash.startsWith("#/teoria")) location.hash = "#/quiz";
   route();
-  bookingAlert();
+  if (!outcomePrompt()) bookingAlert();
   syncNow();
   syncNow();
   if ("serviceWorker" in navigator && location.protocol === "https:") {
