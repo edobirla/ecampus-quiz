@@ -1,5 +1,6 @@
 // Statistiche di una materia e unione dei backup tra dispositivi.
-// Forma: { q: {id: {ok, ko, st, t, l, a}}, log: [[id, ok(0/1), t, mt?, aiuti?]], exams: [{id, mt?…}], fav: [id], lastPractice }
+// Forma: { q: {id: {ok, ko, st, t, l, a}}, log: [[id, ok(0/1), t, mt?, aiuti?]], exams: [{id, mt?…}], fav: [id], lastPractice,
+//   real: [{id, date: "AAAA-MM-GG", res: "ok"|"ko"|"wait", grade?, lode?, mt, del?}] } — esiti degli esami veri (del = cancellato, si propaga)
 // aiuti (5° campo, solo nelle risposte nuove): 1 = data con indizi o teoria, 0 = senza aiuti. Le risposte vecchie (senza il campo) contano come senza aiuti.
 // st = serie di risposte giuste SENZA aiuti (una sola conta per mezza giornata: rispondere 3 volte di fila oggi non vale "saputa");
 // l = l'ultima risposta era giusta, a = l'ultima era giusta ma con aiuti.
@@ -28,7 +29,7 @@ export function rebuildQ(st) {
 
 // dati salvati prima del log (solo contatori): ricrea eventi equivalenti, con la serie di risposte giuste in fondo
 export function migrate(st) {
-  st = Object.assign({ q: {}, log: [], exams: [], fav: [] }, st);
+  st = Object.assign({ q: {}, log: [], exams: [], fav: [], real: [] }, st);
   if (!st.log.length && Object.keys(st.q).length) {
     for (const [id, r] of Object.entries(st.q)) {
       const seq = [...Array(Math.max(0, r.ok - r.st)).fill(1), ...Array(r.ko).fill(0), ...Array(r.st).fill(1)];
@@ -42,23 +43,26 @@ export function migrate(st) {
 
 export function mergeStats(local, incoming) {
   const a = migrate(local), b = migrate(incoming);
-  const before = { log: a.log.length, exams: a.exams.length };
+  const before = { log: a.log.length, exams: a.exams.length + a.real.length };
   const newer = (x, y) => ((y.mt || 0) > (x.mt || 0) ? y : x);
   const newer_e = (x, y) => ((y[3] || 0) > (x[3] || 0) ? y : x);
   const log = new Map(a.log.map((e) => [`${e[0]}|${e[2]}`, e]));
   for (const e of b.log) { const k = `${e[0]}|${e[2]}`; log.set(k, log.has(k) ? newer_e(log.get(k), e) : e); }
   const exams = new Map(a.exams.map((e) => [e.id, e]));
   for (const e of b.exams) exams.set(e.id, exams.has(e.id) ? newer(exams.get(e.id), e) : e);
+  const real = new Map(a.real.map((e) => [e.id, e]));
+  for (const e of b.real) real.set(e.id, real.has(e.id) ? newer(real.get(e.id), e) : e);
   const out = {
     ...a,
     log: [...log.values()],
     exams: [...exams.values()].sort((x, y) => x.d - y.d),
+    real: [...real.values()].sort((x, y) => (x.date < y.date ? -1 : 1)),
     // ponytail: unione semplice, un preferito tolto su un solo dispositivo ricompare; servirebbe la data di rimozione
     fav: [...new Set([...a.fav, ...b.fav])],
     lastPractice: [a.lastPractice, b.lastPractice].filter(Boolean).sort((x, y) => y.d - x.d)[0],
   };
   rebuildQ(out);
-  return { st: out, added: { answers: out.log.length - before.log, exams: out.exams.length - before.exams } };
+  return { st: out, added: { answers: out.log.length - before.log, exams: out.exams.length + out.real.length - before.exams } };
 }
 
 // Appunti sulla teoria di una materia: { hl: {id: evidenziazione}, ink: {id: tratto di penna} }.

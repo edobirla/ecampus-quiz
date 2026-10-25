@@ -24,6 +24,12 @@ const fixed = mergeStats({ log: [["b", 0, 200]], exams: [{ id: "e1", d: 1, score
   { log: [["b", 1, 200, 999]], exams: [{ id: "e1", d: 1, score: 18, mt: 999 }] }).st;
 assert.equal(fixed.q.b.ok, 1);
 assert.equal(fixed.exams[0].score, 18);
+
+// esiti degli esami veri: "in attesa" aggiornato su un dispositivo vince sull'altro, la cancellazione si propaga
+const rr = mergeStats({ real: [{ id: "r1", date: "2026-10-20", res: "wait", mt: 1 }] },
+  { real: [{ id: "r1", date: "2026-10-20", res: "ok", grade: 27, mt: 2 }, { id: "r2", date: "2026-06-01", res: "ko", mt: 1, del: 1 }] });
+assert.deepEqual(rr.st.real.map((r) => [r.id, r.res, !!r.del]), [["r2", "ko", true], ["r1", "ok", false]]);
+assert.equal(mergeStats(rr.st, rr.st).added.exams, 0);
 console.log("ok");
 
 // appunti: la cancellazione più recente vince, e riunire non duplica
