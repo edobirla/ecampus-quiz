@@ -6,6 +6,15 @@ resistenza, rigidezza, duttilità. La prova di trazione è il test standard con
 cui si misurano queste grandezze, ed è il vocabolario di base — sforzo,
 deformazione, modulo di Young, snervamento — che un ingegnere civile userà per
 tutta la carriera.</p>
+<p>Dopo aver capito quali fasi e microstrutture si formano negli acciai (Lezioni
+<a href="#/teoria/chimica/58/lez-58">58</a>–<a href="#/teoria/chimica/59/lez-59">59</a>), questa lezione (prima parte delle &quot;proprietà
+meccaniche dei metalli&quot;) introduce <strong>come si misurano</strong> le proprietà meccaniche
+che quelle microstrutture determinano. La dispensa contiene la teoria (sforzo e
+deformazione nominali, modulo di Poisson, strizione, sforzo di taglio) e tre
+sessioni: (1) il diagramma sforzo-deformazione di una lega di alluminio, (2) un
+esercizio sul modulo di Young, (3) un esercizio su sforzo e deformazione da una
+variazione di diametro. La <a href="#/teoria/chimica/61/lez-61">Lezione 61</a> prosegue con durezza,
+deformazione plastica e frattura.</p>
 <h2 id="lez-60-sforzo-deformazione">Sforzo e deformazione nominali</h2>
 <p>Una barra cilindrica di lunghezza iniziale <span class="m">l_0</span> e sezione iniziale <span class="m">A_0</span> è
 sottoposta a una forza di trazione <span class="m">F</span> lungo l&#39;asse. Si definiscono:</p>
@@ -15,23 +24,57 @@ sottoposta a una forza di trazione <span class="m">F</span> lungo l&#39;asse. Si
 <span class="m d">\varepsilon = \frac{l-l_0}{l_0} = \frac{\Delta l}{l_0} \qquad \text{deformazione nominale (adimensionale, o \%)}</span></p>
 </div>
 
+<p>Significato dei simboli e unità:</p>
+<ul>
+<li><span class="m">F</span>: forza di trazione applicata lungo l&#39;asse, in newton (N);</li>
+<li><span class="m">A_0</span>: area della sezione trasversale <strong>iniziale</strong> (prima del carico), in <span class="m">\mathrm{m^2}</span>;</li>
+<li><span class="m">\sigma</span>: sforzo, in pascal (<span class="m">1\ \mathrm{Pa} = 1\ \mathrm{N/m^2}</span>). Essendo il
+pascal un&#39;unità piccolissima per i metalli, si usano quasi sempre il
+<strong>megapascal</strong> (<span class="m">1\ \mathrm{MPa} = 10^6\ \mathrm{Pa} = 1\ \mathrm{N/mm^2}</span>) e il
+<strong>gigapascal</strong> (<span class="m">1\ \mathrm{GPa} = 10^9\ \mathrm{Pa}</span>);</li>
+<li><span class="m">l_0</span>: lunghezza iniziale; <span class="m">l</span>: lunghezza sotto lo sforzo <span class="m">\sigma</span>;
+<span class="m">\Delta l = l - l_0</span>: allungamento (positivo in trazione);</li>
+<li><span class="m">\varepsilon</span>: deformazione, rapporto tra due lunghezze, quindi
+<strong>adimensionale</strong> (si scrive spesso &quot;mm/mm&quot;); moltiplicata per 100 dà la
+deformazione percentuale.</li>
+</ul>
+<p>Perché dividere per <span class="m">A_0</span> e per <span class="m">l_0</span>? Per avere grandezze che non dipendono
+dalle dimensioni del provino: una barra di sezione doppia regge una forza
+doppia, una barra lunga il doppio si allunga il doppio, ma <span class="m">\sigma</span> ed
+<span class="m">\varepsilon</span> restano gli stessi. Così il risultato della prova descrive il
+<strong>materiale</strong>, non il pezzo.</p>
 <p><strong>&quot;Nominale&quot;</strong> significa che entrambe le grandezze usano le dimensioni
 <strong>iniziali</strong> del provino (<span class="m">A_0</span>, <span class="m">l_0</span>), non quelle istantanee — una
 semplificazione che vale finché le deformazioni restano piccole, ma che a
 grandi deformazioni (vicino alla rottura) inizia a discostarsi sensibilmente dai
 valori &quot;veri&quot; (calcolati con la sezione istantanea).</p>
+<div class="callout attenzione">
+
+<p><strong>Il &quot;carico in kg&quot; va convertito in newton.</strong> Nei testi tecnici un carico è
+spesso dato in &quot;kg&quot; (in realtà chilogrammi-forza): la forza è il peso
+<span class="m">F = m\,g</span>, con <span class="m">g = 9.81\ \mathrm{m/s^2}</span>. Dimenticare di moltiplicare per <span class="m">g</span>
+sbaglia il risultato di un fattore 10.</p>
+</div>
+
 <h2 id="lez-60-poisson">Deformazione trasversale e modulo di Poisson</h2>
-<p>Allungandosi lungo l&#39;asse (deformazione assiale <span class="m">\varepsilon_z=\Delta l/l_0&gt;0</span>),
-il provino si <strong>restringe</strong> trasversalmente (deformazione radiale
-<span class="m">\varepsilon_r&lt;0</span>). Il rapporto tra le due definisce il <strong>modulo di Poisson</strong>:</p>
+<p>Si osserva sperimentalmente che, oltre alla deformazione longitudinale, la
+sezione trasversale <strong>si contrae</strong>. Allungandosi lungo l&#39;asse (deformazione
+assiale <span class="m">\varepsilon_z=\Delta l/l_0&gt;0</span>), il provino si <strong>restringe</strong>
+trasversalmente (deformazione radiale <span class="m">\varepsilon_r&lt;0</span>). Il rapporto tra le due
+definisce il <strong>modulo di Poisson</strong>:</p>
 <div class="callout formula">
 
 <p><span class="m d">\nu = -\frac{\varepsilon_r}{\varepsilon_z} \qquad \varepsilon_r=\frac{A-A_0}{A_0}</span></p>
 </div>
 
+<p>dove <span class="m">A</span> è la sezione sotto carico (<span class="m">A&lt;A_0</span>, quindi <span class="m">\varepsilon_r&lt;0</span>). Il segno
+meno serve a rendere <span class="m">\nu</span> positivo: <span class="m">\varepsilon_r</span> e <span class="m">\varepsilon_z</span> hanno segni
+opposti. <span class="m">\nu</span> è adimensionale e dice &quot;di quanto si stringe il materiale per ogni
+unità di allungamento&quot;.</p>
 <p>Per i metalli, <span class="m">\nu</span> è tipicamente tra 0.25 e 0.4 (valore medio <span class="m">\approx0.3</span>). Un
 concetto equivalente, usato più spesso in ambito industriale, è il
-<strong>coefficiente di strizione</strong>:</p>
+<strong>coefficiente di strizione</strong> (che ha lo stesso significato di <span class="m">\varepsilon_r</span>,
+espresso in percentuale e con segno positivo):</p>
 <p><span class="m d">Z = 100\,\frac{A_0-A}{A_0}</span></p>
 <div class="callout attenzione">
 
@@ -47,26 +90,100 @@ coerente — la stessa idea, applicata alla geometria di un provino, del bilanci
 di materia usato per derivare la regola della leva (<a href="#/teoria/chimica/55/lez-55-regola-leva">Lezione 55</a>).</p>
 </div>
 
+<p>Derivazione passo per passo:</p>
+<ol>
+<li>La massa del tratto di provino considerato non cambia: <span class="m">m_0 = m</span>.</li>
+<li>Massa = densità × volume, e il volume di un cilindro è sezione × lunghezza:
+<span class="m">\rho_0 A_0 l_0 = \rho A l</span>.</li>
+<li>Se la densità resta praticamente la stessa (<span class="m">\rho_0 \approx \rho</span>), si
+semplifica: <span class="m">A_0 l_0 = A l</span>, cioè <span class="m">\dfrac{l}{l_0} = \dfrac{A_0}{A}</span> (il volume
+si conserva: se il provino si allunga, deve stringersi).</li>
+<li>Sostituisco nella definizione di deformazione:
+<span class="m">\varepsilon = \dfrac{l - l_0}{l_0} = \dfrac{l}{l_0} - 1 = \dfrac{A_0}{A} - 1 = \dfrac{A_0 - A}{A}</span>.</li>
+<li>Divido numeratore e denominatore per <span class="m">A_0</span> e moltiplico per 100:
+<span class="m">\dfrac{A_0 - A}{A} = \dfrac{(A_0 - A)/A_0}{A/A_0} = \dfrac{Z/100}{1 - Z/100} = \dfrac{Z}{100 - Z}</span>.</li>
+</ol>
+<p>Conclusione pratica: <strong>conoscendo le aree della sezione del provino scarico
+(<span class="m">A_0</span>) e sotto carico (<span class="m">A</span>) si calcola la deformazione nominale</strong>, senza misurare
+lunghezze. E poiché per una sezione circolare <span class="m">A = \pi d^2/4</span>, il rapporto delle
+aree è il quadrato del rapporto dei diametri: <span class="m">A_0/A = (d_0/d)^2</span>.</p>
+<div class="callout esempio">
+
+<p><strong>Strizione e deformazione da una variazione di diametro.</strong> Diametro iniziale
+10 mm, sotto carico 9.6 mm.</p>
+<ul>
+<li><span class="m">A_0 = \frac{\pi}{4}(10)^2 = 78.54\ \mathrm{mm^2}</span>; <span class="m">A = \frac{\pi}{4}(9.6)^2 = 72.38\ \mathrm{mm^2}</span>.</li>
+<li><span class="m">Z = 100\times\dfrac{78.54 - 72.38}{78.54} = 7.85\%</span>.</li>
+<li><span class="m">\varepsilon = \dfrac{Z}{100 - Z} = \dfrac{7.85}{92.15} = 0.0852</span> (8.5%).</li>
+<li>Verifica: <span class="m">\varepsilon = (d_0/d)^2 - 1 = (10/9.6)^2 - 1 = 1.0851 - 1 = 0.0851</span>.</li>
+</ul>
+</div>
+
 <h2 id="lez-60-taglio">Sforzo di taglio</h2>
 <p>Se invece due forze uguali e opposte agiscono parallelamente a due facce
-opposte di un cubetto di materiale (una coppia con braccio <span class="m">h</span> piccolo ma non
-nullo), il materiale è soggetto a uno <strong>sforzo di taglio</strong>:</p>
+opposte di un cubetto di materiale (le facce di area <span class="m">A</span>; le due forze formano
+una <strong>coppia</strong> con braccio <span class="m">h</span> piccolo ma non nullo), il materiale è soggetto a
+uno <strong>sforzo di taglio</strong>:</p>
 <p><span class="m d">\tau = \frac{F}{A}</span></p>
+<p>La differenza con la trazione è la direzione della forza rispetto alla
+superficie: in trazione <span class="m">F</span> è <strong>perpendicolare</strong> alla sezione su cui si divide,
+nel taglio è <strong>parallela</strong> (tangente) alla faccia. Anche <span class="m">\tau</span> si misura in Pa
+(MPa, GPa). Il taglio non allunga il cubetto ma lo fa <strong>scorrere</strong>: le due facce
+caricate si spostano l&#39;una rispetto all&#39;altra di una quantità <span class="m">a</span>, e le facce
+originariamente perpendicolari alle forze ruotano di un angolo <span class="m">\theta</span> rispetto
+alla verticale (il cubetto diventa un parallelepipedo inclinato, come un mazzo di
+carte spinto di lato).</p>
 <p>La deformazione di taglio <span class="m">\gamma</span> è definita come lo spostamento relativo <span class="m">a</span>
 delle due facce diviso <span class="m">h</span> (equivalente a <span class="m">\tan\theta</span>, con <span class="m">\theta</span> l&#39;angolo di
-cui ruotano le facce originariamente ortogonali alla forza). In campo elastico,
-<span class="m">\tau</span> e <span class="m">\gamma</span> sono proporzionali:</p>
+cui ruotano le facce originariamente ortogonali alla forza):</p>
+<p><span class="m d">\gamma = \frac{a}{h} = \tan\theta</span></p>
+<p>In campo elastico, <span class="m">\tau</span> e <span class="m">\gamma</span> sono proporzionali:</p>
 <p><span class="m d">\tau = G\,\gamma</span></p>
-<p>con <span class="m">G</span> il <strong>modulo di elasticità tangenziale</strong>, l&#39;analogo del modulo di Young
-per il taglio invece che per la trazione.</p>
+<p>con <span class="m">G</span> il <strong>modulo di elasticità tangenziale</strong> (Pa, di solito GPa), l&#39;analogo del
+modulo di Young per il taglio invece che per la trazione.</p>
+<table>
+<thead>
+<tr>
+<th align="left">Sollecitazione</th>
+<th align="left">Sforzo</th>
+<th align="left">Deformazione</th>
+<th align="left">Legge elastica</th>
+<th align="left">Modulo</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Trazione</td>
+<td align="left"><span class="m">\sigma = F/A_0</span> (forza ⊥ sezione)</td>
+<td align="left"><span class="m">\varepsilon = \Delta l/l_0</span></td>
+<td align="left"><span class="m">\sigma = E\varepsilon</span></td>
+<td align="left"><span class="m">E</span>, di Young</td>
+</tr>
+<tr>
+<td align="left">Taglio</td>
+<td align="left"><span class="m">\tau = F/A</span> (forza ∥ faccia)</td>
+<td align="left"><span class="m">\gamma = a/h = \tan\theta</span></td>
+<td align="left"><span class="m">\tau = G\gamma</span></td>
+<td align="left"><span class="m">G</span>, tangenziale</td>
+</tr>
+</tbody></table>
 <h2 id="lez-60-diagramma-sd">Il diagramma sforzo-deformazione</h2>
+<p>La prova di trazione si esegue con una macchina che applica una forza
+<strong>crescente</strong> a un provino di dimensioni standard e misura la deformazione
+corrispondente. La dispensa mostra due provini tipici: a sezione circolare e a
+sezione rettangolare, entrambi con <strong>tratto utile</strong> (la parte centrale, più
+sottile, su cui si misura l&#39;allungamento) di 50 mm. Le estremità sono più larghe
+per essere afferrate dalle ganasce della macchina senza rompersi lì.</p>
 <p>Riportando <span class="m">\sigma</span> in funzione di <span class="m">\varepsilon</span> durante una prova di trazione a
 carico crescente, si osservano due regimi:</p>
 <ul>
 <li><strong>Campo elastico</strong>: risposta <strong>lineare</strong>, <span class="m">\sigma=E\varepsilon</span> — la <strong>legge
 di Hooke</strong>. Il coefficiente <span class="m">E</span> è il <strong>modulo elastico</strong> (o <strong>modulo di
 Young</strong>), e si legge dalla pendenza del tratto lineare iniziale del
-diagramma.</li>
+diagramma (nella figura della dispensa, il tratto AB). In questo campo la
+deformazione è <strong>reversibile</strong>: togliendo il carico il provino torna alla
+lunghezza iniziale. <span class="m">E</span> si misura in Pa (in pratica GPa), perché <span class="m">\varepsilon</span> è
+adimensionale; misura la <strong>rigidezza</strong> del materiale: più <span class="m">E</span> è grande, meno il
+materiale si deforma sotto un dato sforzo.</li>
 <li><strong>Campo plastico</strong>: oltre un certo sforzo, la risposta non è più lineare: la
 deformazione cresce <strong>più che proporzionalmente</strong> allo sforzo, e parte della
 deformazione diventa <strong>permanente</strong> (non si recupera togliendo il carico).</li>
@@ -86,28 +203,77 @@ il carico di snervamento &quot;allo 0.2%&quot; è <strong>sempre leggermente sup
 limite elastico.</p>
 </div>
 
+<p>Perché la retta parallela funziona: quando si scarica un provino deformato
+plasticamente, la parte elastica della deformazione si recupera lungo una retta
+con la <strong>stessa pendenza</strong> <span class="m">E</span> del tratto elastico iniziale. La retta parallela
+che parte da <span class="m">\varepsilon = 0.002</span> rappresenta quindi tutti gli stati che,
+scaricati, lascerebbero una deformazione permanente dello 0.2%; il punto in cui
+incontra la curva è lo sforzo che produce proprio quella deformazione residua.</p>
 <p>Il punto di <strong>massimo</strong> della curva è il <strong>carico di rottura</strong>: da lì in poi il
 provino tende a rompersi, con una marcata <strong>strizione</strong> (restringimento
-localizzato) a metà del tratto utile.</p>
+localizzato) a metà del tratto utile. Dopo il massimo la curva <em>nominale</em> scende
+non perché il materiale diventi più debole, ma perché la sezione reale nella zona
+di strizione si riduce rapidamente mentre nel calcolo si continua a dividere per
+<span class="m">A_0</span>: è il limite delle grandezze nominali.</p>
+<p>Grandezze che si ricavano dal diagramma:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Grandezza</th>
+<th align="left">Come si legge</th>
+<th align="left">Che cosa dice</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Modulo di Young <span class="m">E</span></td>
+<td align="left">pendenza del tratto lineare</td>
+<td align="left">rigidezza</td>
+</tr>
+<tr>
+<td align="left">Carico di snervamento (0.2%)</td>
+<td align="left">intersezione con la retta parallela da <span class="m">\varepsilon = 0.002</span></td>
+<td align="left">sforzo oltre il quale restano deformazioni permanenti</td>
+</tr>
+<tr>
+<td align="left">Carico di rottura</td>
+<td align="left">massimo della curva</td>
+<td align="left">sforzo massimo sopportabile</td>
+</tr>
+<tr>
+<td align="left">Allungamento a rottura, strizione</td>
+<td align="left">deformazione finale, riduzione di sezione</td>
+<td align="left">duttilità</td>
+</tr>
+</tbody></table>
 <div class="callout esempio">
 
 <p><strong>Modulo di Young da un punto del diagramma sforzo-deformazione (lega di
-alluminio 7075).</strong> Nel tratto elastico si legge: <span class="m">\sigma=60\times10^3\ \mathrm{psi}</span>,
-<span class="m">\varepsilon=0.006</span>. Convertendo <span class="m">1\ \mathrm{psi}=6894.757\ \mathrm{Pa}</span>:
+alluminio 7075, sessione 1).</strong> Provini con diametro 0.5 pollici e tratto utile 2
+pollici (1 pollice = 2.54 cm). Nel tratto elastico si legge: <span class="m">\sigma=60\times10^3\ \mathrm{psi}</span>,
+<span class="m">\varepsilon=0.006</span> (0.6%). Il psi (<em>pounds per square inch</em>) è un&#39;unità
+anglosassone: <span class="m">1\ \mathrm{psi}=6894.757\ \mathrm{Pa}</span>. Convertendo:
 <span class="m d">\sigma = 60\times10^3\times6894.757\ \mathrm{Pa} = 413\,685\ \mathrm{kPa}</span>
 <span class="m d">E = \frac{\sigma}{\varepsilon} = \frac{413\,685\ \mathrm{kPa}}{0.006}
 \approx 68\,947\,570\ \mathrm{kPa} \approx 69\ \mathrm{GPa}</span></p>
+<p>(Passaggio di unità: <span class="m">68\,947\,570\ \mathrm{kPa} = 68\,947\,570\times10^3\ \mathrm{Pa}
+= 68.9\times10^9\ \mathrm{Pa} = 68.9\ \mathrm{GPa}</span>, valore tipico delle leghe di
+alluminio.)</p>
 <p>Oltre <span class="m">70\times10^3\ \mathrm{psi}</span> la curva perde linearità: il carico di
-snervamento (intersezione con la retta parallela traslata di 0.2%) si legge a
-<span class="m">\approx79\times10^3\ \mathrm{psi}</span> (<span class="m">\approx545\ \mathrm{MPa}</span>); il carico di
+snervamento (intersezione con la retta parallela traslata di 0.2%, punto C) si legge a
+<span class="m">\approx79\times10^3\ \mathrm{psi}</span> (<span class="m">79\times10^3\times6894.757 = 544\,686\ \mathrm{kPa}
+\approx545\ \mathrm{MPa}</span>); il carico di
 rottura a <span class="m">\approx88\times10^3\ \mathrm{psi}</span> (<span class="m">\approx606\ \mathrm{MPa}</span>).</p>
 </div>
 
 <div class="callout esempio">
 
-<p><strong>Modulo di Young da una prova diretta.</strong> Barra d&#39;acciaio, <span class="m">l_0=150\ \mathrm{mm}</span>,
+<p><strong>Modulo di Young da una prova diretta (sessione 2).</strong> Barra d&#39;acciaio, <span class="m">l_0=150\ \mathrm{mm}</span>,
 sezione quadrata di lato 20 mm (<span class="m">A_0=400\ \mathrm{mm^2}</span>), carico <span class="m">F=90\ \mathrm{kN}</span>,
 allungamento elastico <span class="m">\Delta l=0.1\ \mathrm{mm}</span>.</p>
+<p>Dati in unità SI: <span class="m">l_0 = 0.150\ \mathrm m</span>; <span class="m">\Delta l = 0.1\times10^{-3}\ \mathrm m</span>;
+<span class="m">A_0 = 20\times20 = 400\ \mathrm{mm^2} = 400\times10^{-6}\ \mathrm{m^2}</span> (perché
+<span class="m">1\ \mathrm{mm^2} = 10^{-6}\ \mathrm{m^2}</span>); <span class="m">F = 90\times10^3\ \mathrm N</span>.
+Dalla legge di Hooke <span class="m">E = \sigma/\varepsilon</span>:</p>
 <p><span class="m d">\sigma = \frac{F}{A_0} = \frac{90\times10^3\ \mathrm N}{400\times10^{-6}\ \mathrm{m^2}}
 = 225\times10^6\ \mathrm{Pa} = 225\ \mathrm{MPa}</span>
 <span class="m d">\varepsilon = \frac{\Delta l}{l_0} = \frac{0.1\times10^{-3}\ \mathrm m}{0.150\ \mathrm m}
@@ -123,32 +289,67 @@ risolto applicando correttamente <span class="m">E=\sigma/\varepsilon</span> ai 
 
 <div class="callout esempio">
 
-<p><strong>Sforzo e deformazione nominale da una variazione di diametro.</strong> Provino di
+<p><strong>Sforzo e deformazione nominale da una variazione di diametro (sessione 3).</strong> Provino di
 lega di alluminio, diametro iniziale <span class="m">13\ \mathrm{mm}</span>, carico <span class="m">11\,000\ \mathrm{kg}</span>
 (peso, quindi va moltiplicato per <span class="m">g</span>), diametro sotto carico <span class="m">12.4\ \mathrm{mm}</span>.</p>
+<p>Area nominale: <span class="m">A_0 = \frac{\pi}{4}(0.013\ \mathrm m)^2 = 1.327\times10^{-4}\ \mathrm{m^2}</span>.
+Forza: <span class="m">F = 11\,000\times9.81 = 107\,910\ \mathrm N</span>.</p>
 <p><span class="m d">\sigma_{nom} = \frac{F}{A_0} = \frac{11\,000\ \mathrm{kg}\times9.81\ \mathrm{m/s^2}}
-{\frac{\pi}{4}(0.013\ \mathrm m)^2} \approx 813.4\ \mathrm{MPa}</span></p>
+{\frac{\pi}{4}(0.013\ \mathrm m)^2} = \frac{107\,910\ \mathrm N}{1.327\times10^{-4}\ \mathrm{m^2}}
+\approx 813\ \mathrm{MPa}</span></p>
+<p>(La dispensa riporta 813.4 MPa; il conto esatto dà 813.0 MPa: differenza di
+arrotondamento, irrilevante.)</p>
 <p>Per la deformazione, si usa la relazione derivata sopra tra <span class="m">\varepsilon</span> e il
-rapporto delle aree (conservazione della massa):
-<span class="m d">\varepsilon = \frac{A_0}{A}-1 = \frac{(0.013)^2}{(0.0124)^2}-1 \approx 0.0991</span></p>
+rapporto delle aree (conservazione della massa); il fattore <span class="m">\pi/4</span> si semplifica:
+<span class="m d">\varepsilon = \frac{A_0}{A}-1 = \frac{(0.013)^2}{(0.0124)^2}-1 = 1.0991 - 1 \approx 0.0991</span></p>
+<p>cioè circa il 9.9%. Equivalentemente: <span class="m">Z = 100\,[1 - (12.4/13)^2] = 9.02\%</span> e
+<span class="m">\varepsilon = 9.02/(100 - 9.02) = 0.0991</span>.</p>
 <p>Nota che qui <strong>non serve conoscere <span class="m">l_0</span> o <span class="m">l</span></strong>: la conservazione della massa
 permette di ottenere <span class="m">\varepsilon</span> direttamente dal rapporto delle sezioni, un
 dato spesso più facile da misurare (con un calibro) della variazione di
 lunghezza su un provino già montato.</p>
 </div>
 
+<div class="callout esempio">
+
+<p><strong>Barra di rame (esercizio di allenamento).</strong> <span class="m">l_0 = 200\ \mathrm{mm}</span>, diametro
+10 mm, carico 15 kN, allungamento elastico 0.15 mm.</p>
+<ul>
+<li><span class="m">A_0 = \frac{\pi}{4}(0.010)^2 = 7.854\times10^{-5}\ \mathrm{m^2}</span>.</li>
+<li><span class="m">\sigma = 15\times10^3 / 7.854\times10^{-5} = 191.0\times10^6\ \mathrm{Pa} = 191.0\ \mathrm{MPa}</span>.</li>
+<li><span class="m">\varepsilon = 0.15/200 = 7.5\times10^{-4}</span>.</li>
+<li><span class="m">E = 191.0 / 7.5\times10^{-4} = 254\,700\ \mathrm{MPa} \approx 255\ \mathrm{GPa}</span>
+(anche qui più alto del valore tabulato per il rame, circa 120 GPa: il metodo
+è quello che conta).</li>
+</ul>
+</div>
+
+<div class="callout attenzione">
+
+<p><strong>Errori tipici nei calcoli.</strong> (1) Usare il diametro al posto del raggio
+nell&#39;area (<span class="m">A = \pi r^2 = \pi d^2/4</span>). (2) Lasciare <span class="m">A</span> in <span class="m">\mathrm{mm^2}</span> e <span class="m">F</span> in
+N: si ottengono direttamente MPa (<span class="m">1\ \mathrm{N/mm^2} = 1\ \mathrm{MPa}</span>), il che va
+bene, ma mescolare mm² con m² sbaglia di <span class="m">10^6</span>. (3) Dimenticare <span class="m">g</span> quando il
+carico è in kg. (4) Dividere <span class="m">\Delta l</span> per la lunghezza finale invece che per
+<span class="m">l_0</span>. (5) Esprimere <span class="m">E</span> in MPa e confrontarlo con un valore in GPa.</p>
+</div>
+
 <div class="callout sintesi">
 
 <ul>
-<li><span class="m">\sigma=F/A_0</span> (sforzo nominale), <span class="m">\varepsilon=\Delta l/l_0</span> (deformazione
-nominale) — entrambi riferiti alle dimensioni <strong>iniziali</strong>.</li>
-<li>Modulo di Poisson <span class="m">\nu=-\varepsilon_r/\varepsilon_z</span>; legato alla strizione <span class="m">Z</span>
-e a <span class="m">\varepsilon</span> dalla conservazione della massa.</li>
-<li>Sforzo di taglio <span class="m">\tau=F/A</span>, legge di Hooke a taglio <span class="m">\tau=G\gamma</span>.</li>
-<li>Legge di Hooke a trazione: <span class="m">\sigma=E\varepsilon</span> in campo elastico; <span class="m">E</span> =
-pendenza del tratto lineare del diagramma sforzo-deformazione.</li>
-<li>Carico di snervamento: convenzione allo 0.2% di deformazione plastica
-residua. Carico di rottura: massimo della curva.</li>
+<li><span class="m">\sigma=F/A_0</span> (sforzo nominale, Pa/MPa), <span class="m">\varepsilon=\Delta l/l_0</span> (deformazione
+nominale, adimensionale) — entrambi riferiti alle dimensioni <strong>iniziali</strong>.</li>
+<li>Modulo di Poisson <span class="m">\nu=-\varepsilon_r/\varepsilon_z</span> (0.25–0.4, medio 0.3);
+strizione <span class="m">Z=100(A_0-A)/A_0</span>; dalla conservazione della massa (<span class="m">A_0l_0 = Al</span>):
+<span class="m">\varepsilon = A_0/A - 1 = Z/(100-Z)</span>.</li>
+<li>Sforzo di taglio <span class="m">\tau=F/A</span> (forza parallela alla faccia), deformazione
+<span class="m">\gamma = a/h = \tan\theta</span>, legge di Hooke a taglio <span class="m">\tau=G\gamma</span>.</li>
+<li>Legge di Hooke a trazione: <span class="m">\sigma=E\varepsilon</span> in campo elastico (reversibile);
+<span class="m">E</span> = pendenza del tratto lineare del diagramma sforzo-deformazione.</li>
+<li>Campo plastico: deformazioni più che proporzionali e permanenti. Carico di
+snervamento: convenzione allo 0.2% di deformazione plastica residua (retta
+parallela al tratto elastico da <span class="m">\varepsilon = 0.002</span>). Carico di rottura:
+massimo della curva, seguito da strizione.</li>
 </ul>
 </div>
 
@@ -160,6 +361,10 @@ allungamento, sezione), oppure di ricavare <span class="m">\varepsilon</span> da
 sezione tramite la conservazione della massa. Presta sempre attenzione alle
 unità di misura (psi, kg-forza, MPa) — la conversione è spesso il passo che
 costa più punti, non la formula in sé.</p>
+<p>Nelle chiuse: perché &quot;nominali&quot; (dimensioni iniziali), che cosa lega il modulo
+di Poisson (deformazione trasversale e assiale), come si definisce il carico di
+snervamento (0.2% di deformazione plastica residua), che cosa rappresenta <span class="m">E</span>
+(pendenza del tratto elastico).</p>
 <p><strong>Allenati qui:</strong> Extra 127 · Extra 128 ·
 Extra 209 · Extra 210 · Extra 211</p>
 </div>

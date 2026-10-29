@@ -1,94 +1,320 @@
 <h1>Lezione 35 — Angoli e distanze nel caso affine</h1>
-<p>In questa lezione si generalizza ai <strong>sottospazi affini</strong> (rette e piani che non passano necessariamente per l&#39;origine) quanto visto per i sottospazi vettoriali del piano euclideo <span class="m">V^2_E</span> e dello spazio euclideo <span class="m">V^3_E</span>. Si fissa un sistema di riferimento cartesiano <span class="m">(O;x,y)</span> o <span class="m">(O;x,y,z)</span>, si identificano i vettori geometrici con i vettori colonna delle loro coordinate e si usa il <strong>prodotto scalare standard</strong> per calcolare angoli e distanze e per studiare parallelismo e ortogonalità.</p>
-<p>L&#39;idea chiave: la giacitura di un sottospazio affine è parallela al sottospazio stesso, quindi per gli angoli (diedri) bastano i <strong>vettori direttori</strong> e i <strong>vettori normali</strong> alla giacitura.</p>
+<h2>Introduzione</h2>
+<p>Nella lezione precedente abbiamo calcolato angoli tra <strong>sottospazi vettoriali</strong> del piano euclideo <span class="m">\boldsymbol V^2_E</span> e dello spazio euclideo <span class="m">\boldsymbol V^3_E</span> (rette e piani per l&#39;origine) usando il <strong>prodotto scalare standard</strong>. Ora estendiamo tutto ai <strong>sottospazi affini</strong> (Lezione 30), cioè a rette e piani in posizione qualsiasi, e introduciamo le <strong>distanze</strong>: tra due punti, tra un punto e una retta, tra un punto e un piano, tra due rette sghembe. Con gli stessi strumenti si studiano <strong>parallelismo e ortogonalità</strong> di rette e piani.</p>
+<p>Si lavora solo in <span class="m">\boldsymbol V^2_E</span> e <span class="m">\boldsymbol V^3_E</span>, con un riferimento cartesiano <span class="m">(O; x, y)</span> o <span class="m">(O; x, y, z)</span>, identificando i vettori con le colonne delle loro coordinate. Ricordiamo gli strumenti:</p>
+<ul>
+<li>prodotto scalare standard: <span class="m">\langle {}^t(u_1\ u_2\ u_3), {}^t(w_1\ w_2\ w_3)\rangle = u_1w_1 + u_2w_2 + u_3w_3</span>;</li>
+<li>norma: <span class="m">\lVert u\rVert = \sqrt{\langle u, u\rangle} = \sqrt{u_1^2 + u_2^2 + u_3^2}</span>;</li>
+<li>angolo tra due vettori non nulli: <span class="m">\widehat{uw} = \arccos\dfrac{\langle u, w\rangle}{\lVert u\rVert\,\lVert w\rVert} \in [0, \pi]</span>; <span class="m">u \perp w \iff \langle u, w\rangle = 0</span>.</li>
+</ul>
+<p><strong>L&#39;idea chiave.</strong> La giacitura di un sottospazio affine è <strong>parallela</strong> al sottospazio stesso (Lezione 31). Quindi le direzioni di una retta o di un piano sono le stesse della sua giacitura, e per gli angoli (e gli angoli diedri) bastano due tipi di vettori:</p>
+<ul>
+<li>il <strong>vettore direttore</strong> di una retta (dà la direzione della retta);</li>
+<li>il <strong>vettore normale</strong> (o di giacitura) di un piano, o di una retta del piano (dà la direzione <strong>perpendicolare</strong>).</li>
+</ul>
+<p>Gli esempi della dispensa sono le rette e i piani della lezione precedente traslati: gli angoli non cambiano traslando.</p>
 <h2>Angolo tra due rette</h2>
-<p><strong>Osservazione 35.1.</strong> Siano <span class="m">r</span>, <span class="m">r'</span> due rette di <span class="m">V^2_E</span> o <span class="m">V^3_E</span> con intersezione non vuota, con vettori direttori <span class="m">w</span> e <span class="m">w'</span>, e sia <span class="m">\alpha</span> l&#39;angolo tra <span class="m">w</span> e <span class="m">w'</span>. Allora
-<span class="m d">\widehat{rr'}=\begin{cases}\alpha &amp; \text{se } \alpha\le\frac{\pi}{2}\\ \pi-\alpha &amp; \text{se } \alpha&gt;\frac{\pi}{2}\end{cases}</span>
-In particolare <span class="m">r</span> ed <span class="m">r'</span> sono <strong>ortogonali</strong> se e solo se <span class="m">\langle w,w'\rangle=0</span>.</p>
-<p>Con le forme parametriche <span class="m">x=x_0+lt,\ y=y_0+mt,\ z=z_0+nt</span> e <span class="m">x=x_0'+l't,\ y=y_0'+m't,\ z=z_0'+n't</span>:
-<span class="m d">\alpha=\arccos\frac{ll'+mm'+nn'}{\sqrt{l^2+m^2+n^2}\cdot\sqrt{(l')^2+(m')^2+(n')^2}}</span>
-(nel piano si tolgono le terze componenti).</p>
-<div class="callout attenzione">
+<p>L&#39;angolo tra due rette che si intersecano è il <strong>più piccolo</strong> degli angoli che formano, quindi è sempre in <span class="m">[0, \tfrac\pi2]</span>. L&#39;angolo tra i loro direttori, invece, può essere in tutto <span class="m">[0, \pi]</span>: dipende dal verso scelto per i direttori (cambiando segno a uno dei due, l&#39;angolo <span class="m">\alpha</span> diventa <span class="m">\pi - \alpha</span>). Ecco perché nella formula compare la &quot;correzione&quot; <span class="m">\pi - \alpha</span>.</p>
+<p><strong>Osservazione 35.1.</strong> Siano <span class="m">r</span> e <span class="m">r'</span> rette di <span class="m">\boldsymbol V^2_E</span> o <span class="m">\boldsymbol V^3_E</span> con <strong>intersezione non vuota</strong>, con direttori <span class="m">w</span> e <span class="m">w'</span>, e sia <span class="m">\alpha</span> l&#39;angolo tra <span class="m">w</span> e <span class="m">w'</span>. Allora
+<span class="m d">\widehat{rr'} = \begin{cases} \alpha &amp; \text{se } \alpha \leqslant \frac\pi2 \\ \pi - \alpha &amp; \text{se } \alpha &gt; \frac\pi2\end{cases}</span>
+In particolare <span class="m">r</span> e <span class="m">r'</span> sono <strong>ortogonali</strong> se e solo se
+<span class="m d">\langle w, w'\rangle = 0.</span></p>
+<p>In coordinate, nel <strong>piano</strong>, con <span class="m">r: \begin{cases} x = x_0 + lt \\ y = y_0 + mt\end{cases}</span> e <span class="m">r': \begin{cases} x = x'_0 + l't \\ y = y'_0 + m't\end{cases}</span> (direttori <span class="m">{}^t(l\ m)</span> e <span class="m">{}^t(l'\ m')</span>):
+<span class="m d">\alpha = \arccos\frac{\langle{}^t(l\ m), {}^t(l'\ m')\rangle}{\lVert{}^t(l\ m)\rVert\cdot\lVert{}^t(l'\ m')\rVert} = \arccos\frac{ll' + mm'}{\sqrt{l^2 + m^2}\cdot\sqrt{(l')^2 + (m')^2}}.</span>
+Nello <strong>spazio</strong>, con direttori <span class="m">{}^t(l\ m\ n)</span> e <span class="m">{}^t(l'\ m'\ n')</span>:
+<span class="m d">\alpha = \arccos\frac{ll' + mm' + nn'}{\sqrt{l^2 + m^2 + n^2}\cdot\sqrt{(l')^2 + (m')^2 + (n')^2}}.</span>
+I numeri <span class="m">l, m, n</span> (i coefficienti di <span class="m">t</span> nella forma parametrica) si chiamano anche <strong>parametri direttori</strong> della retta.</p>
+<p>Un modo equivalente e comodo: <span class="m">\widehat{rr'} = \arccos\dfrac{\lvert\langle w, w'\rangle\rvert}{\lVert w\rVert\,\lVert w'\rVert}</span> (il valore assoluto fa automaticamente la correzione, perché <span class="m">\arccos(-c) = \pi - \arccos c</span>).</p>
+<p><strong>Senza controllare l&#39;intersezione.</strong> Si può calcolare l&#39;angolo tra i direttori anche senza sapere se le rette si intersecano, ma il risultato va interpretato:</p>
+<ul>
+<li>nel <strong>piano</strong> funziona tutto tranne il caso <span class="m">\alpha = 0</span>: le rette possono essere coincidenti o parallele non coincidenti;</li>
+<li>nello <strong>spazio</strong> il risultato è parziale: se l&#39;angolo è <span class="m">0</span> le rette sono coincidenti o parallele non coincidenti; se l&#39;angolo <strong>non</strong> è <span class="m">0</span> possono essere <strong>incidenti o sghembe</strong> (per le sghembe l&#39;&quot;angolo&quot; è quello tra le direzioni, ma le rette non si toccano).</li>
+</ul>
+<div class="callout esempio">
 
-<p>Si può calcolare l&#39;angolo tra i direttori anche senza controllare che le rette si intersechino, ma il risultato è parziale. Nel piano: angolo <span class="m">0</span> = rette coincidenti o parallele non coincidenti. Nello spazio, in più, un angolo diverso da <span class="m">0</span> può corrispondere a rette <strong>incidenti o sghembe</strong>.</p>
+<p><strong>Esempio 35.2.</strong> In <span class="m">\boldsymbol V^2_E</span>, <span class="m">r: \begin{cases} x = 1 + t \\ y = 1\end{cases}</span> e <span class="m">r': \begin{cases} x = 2 + t \\ y = 1 + t\end{cases}</span> (si intersecano in <span class="m">{}^t(2\ 1)</span>: <span class="m">t = 1</span> nella prima, <span class="m">t = 0</span> nella seconda). Direttori <span class="m">{}^t(1\ 0)</span> e <span class="m">{}^t(1\ 1)</span>:
+<span class="m d">\alpha = \arccos\frac{1\cdot 1 + 0\cdot 1}{\sqrt{1 + 0}\cdot\sqrt{1 + 1}} = \arccos\frac{1}{\sqrt2} = \frac\pi4.</span>
+Poiché <span class="m">\tfrac\pi4 \leqslant \tfrac\pi2</span>, <span class="m">\widehat{rr'} = \tfrac\pi4</span>. Le rette non sono ortogonali: il prodotto scalare dei direttori è <span class="m">1 \ne 0</span>.</p>
 </div>
 
 <div class="callout esempio">
 
-<p>In <span class="m">V^2_E</span>, <span class="m">r</span>: <span class="m">x=1+t,\ y=1</span> e <span class="m">r'</span>: <span class="m">x=2+t,\ y=1+t</span>. Direttori <span class="m">{}^t(1\ 0)</span> e <span class="m">{}^t(1\ 1)</span>: <span class="m">\alpha=\arccos\frac{1}{1\cdot\sqrt2}=\frac{\pi}{4}\le\frac{\pi}{2}</span>, quindi <span class="m">\widehat{rr'}=\frac{\pi}{4}</span>. Le rette non sono ortogonali (il prodotto scalare dei direttori è <span class="m">1\neq0</span>).</p>
+<p><strong>Esercizio 35.6.</strong> Rette di <span class="m">\boldsymbol V^3_E</span> <span class="m">\begin{cases} x = 2 - t \\ y = 3 \\ z = 2 + 2t\end{cases}</span> e <span class="m">\begin{cases} x = 1 + 2t \\ y = 3t \\ z = 2 - t\end{cases}</span>. Direttori <span class="m">w = {}^t(-1\ 0\ 2)</span> e <span class="m">w' = {}^t(2\ 3\ -1)</span>:
+<span class="m d">\langle w, w'\rangle = -2 + 0 - 2 = -4, \quad \lVert w\rVert = \sqrt5, \quad \lVert w'\rVert = \sqrt{14}, \quad \alpha = \arccos\frac{-4}{\sqrt{70}} = \arccos\left(-\frac{2\sqrt{70}}{35}\right).</span>
+Il coseno è negativo, quindi <span class="m">\alpha &gt; \tfrac\pi2</span> e l&#39;angolo tra le rette è <span class="m">\pi - \arccos\left(-\tfrac{2\sqrt{70}}{35}\right)</span> (cioè <span class="m">\arccos\tfrac{2\sqrt{70}}{35}</span>). Razionalizzazione: <span class="m">\tfrac{4}{\sqrt{70}} = \tfrac{4\sqrt{70}}{70} = \tfrac{2\sqrt{70}}{35}</span>.</p>
+<p><strong>Quiz 35.4 della dispensa (attenzione all&#39;incidenza).</strong> Retta <span class="m">r: x = 1 - t</span>, <span class="m">y = 2t</span>, <span class="m">z = 2 - t</span>, direttore <span class="m">{}^t(-1\ 2\ -1)</span>. La retta <span class="m">x = -1 + t</span>, <span class="m">y = 4 + t</span>, <span class="m">z = t</span> ha direttore <span class="m">{}^t(1\ 1\ 1)</span> con <span class="m">\langle{}^t(-1\ 2\ -1), {}^t(1\ 1\ 1)\rangle = 0</span> <strong>e</strong> interseca <span class="m">r</span> (in <span class="m">{}^t(-1\ 4\ 0)</span>, con <span class="m">t = 2</span> su <span class="m">r</span> e <span class="m">t = 0</span> sull&#39;altra): è ortogonale a <span class="m">r</span>. Anche <span class="m">x = 1 + t</span>, <span class="m">y = t</span>, <span class="m">z = 1 + t</span> ha direttore <span class="m">{}^t(1\ 1\ 1)</span>, ma non interseca <span class="m">r</span> (uguagliando, <span class="m">1 + t' = 1 - t</span> e <span class="m">t' = 2t</span> danno <span class="m">t = t' = 0</span>, ma poi <span class="m">z</span>: <span class="m">1 \ne 2</span>): le due rette sono sghembe, con direzioni ortogonali, e nel senso dell&#39;Osservazione 35.1 (che richiede intersezione non vuota) non sono &quot;ortogonali&quot;.</p>
 </div>
 
 <h2>Vettore di giacitura (normale)</h2>
-<p><strong>Definizione 35.3.</strong> Data una forma implicita <span class="m">ax+by+c=0</span> di una retta di <span class="m">V^2_E</span>, il vettore <span class="m">{}^t(a\ b)</span> è il <strong>vettore di giacitura</strong> (o <strong>vettore normale</strong>) della retta. Data una forma implicita <span class="m">ax+by+cz+d=0</span> di un piano di <span class="m">V^3_E</span>, il vettore <span class="m">{}^t(a\ b\ c)</span> è il <strong>vettore di giacitura</strong> (o <strong>vettore normale</strong>) del piano.</p>
+<p><strong>Definizione 35.3.</strong> Data una forma implicita <span class="m">ax + by + c = 0</span> di una retta di <span class="m">\boldsymbol V^2_E</span>, il vettore <span class="m">{}^t(a\ b)</span> è il <strong>vettore di giacitura</strong> della retta, o <strong>vettore normale</strong> alla retta. Data una forma implicita <span class="m">ax + by + cz + d = 0</span> di un piano di <span class="m">\boldsymbol V^3_E</span>, il vettore <span class="m">{}^t(a\ b\ c)</span> è il <strong>vettore di giacitura</strong> del piano, o <strong>vettore normale</strong> al piano.</p>
+<p>Si legge quindi <strong>dai coefficienti di <span class="m">x, y, (z)</span></strong>, senza il termine noto.</p>
 <div class="callout esempio">
 
-<p>Il piano <span class="m">x-y+4z+3=0</span> ha vettore di giacitura <span class="m">{}^t(1\ -1\ 4)</span>; scrivendolo come <span class="m">2x-2y+8z+6=0</span> si ottiene un altro vettore di giacitura, <span class="m">{}^t(2\ -2\ 8)</span>: i vettori di giacitura di un piano sono tutti multipli tra loro.</p>
+<p><strong>Esempio 35.4.</strong> Il piano <span class="m">x - y + 4z + 3 = 0</span> ha vettore di giacitura <span class="m">{}^t(1\ -1\ 4)</span>. Scrivendo lo stesso piano come <span class="m">2x - 2y + 8z + 6 = 0</span> si ottiene un altro vettore di giacitura, <span class="m">{}^t(2\ -2\ 8)</span>. I vettori di giacitura di un piano sono tutti <strong>multipli</strong> (non nulli) l&#39;uno dell&#39;altro, perché le forme implicite di un piano differiscono per un fattore non nullo.</p>
+<p><strong>Esercizio 35.4.</strong> Il piano <span class="m">4x - 2y + 6z - 1 = 0</span> ha vettore di giacitura <span class="m">{}^t(4\ -2\ 6)</span>. Per avere come vettore di giacitura <span class="m">{}^t(2\ -1\ 3)</span> si divide l&#39;equazione per <span class="m">2</span>: <span class="m">2x - y + 3z - \tfrac12 = 0</span>.</p>
 </div>
 
-<p><strong>Osservazione 35.5.</strong> I vettori di giacitura di una retta di <span class="m">V^2_E</span> (di un piano di <span class="m">V^3_E</span>) sono ortogonali alla sua giacitura, quindi si possono pensare <strong>ortogonali alla retta (al piano) stessa</strong>.</p>
+<p><strong>Osservazione 35.5 (perché &quot;normale&quot;).</strong> Il vettore <span class="m">{}^t(a\ b\ c)</span> è ortogonale alla giacitura del piano. Infatti la giacitura ha forma implicita <span class="m">ax + by + cz = 0</span>, cioè
+<span class="m d">\langle {}^t(a\ b\ c), {}^t(x\ y\ z)\rangle = 0:</span>
+i vettori della giacitura sono esattamente quelli ortogonali a <span class="m">{}^t(a\ b\ c)</span>. Poiché il piano è parallelo alla sua giacitura, il vettore di giacitura si può pensare <strong>ortogonale al piano stesso</strong>. Lo stesso vale per una retta <span class="m">ax + by + c = 0</span> del piano: <span class="m">{}^t(a\ b)</span> è ortogonale alla retta.</p>
+<p>Conseguenza utile nel piano: se una retta ha normale <span class="m">{}^t(a\ b)</span>, un suo direttore è <span class="m">{}^t(-b\ a)</span> (o <span class="m">{}^t(b\ -a)</span>), perché <span class="m">\langle{}^t(a\ b), {}^t(-b\ a)\rangle = -ab + ab = 0</span>.</p>
+<div class="callout attenzione">
+
+<p>Normale e direttore sono cose <strong>diverse</strong>: in una forma <strong>implicita</strong> si legge la normale (coefficienti di <span class="m">x, y, z</span>); in una forma <strong>parametrica</strong> si legge il direttore (coefficienti del parametro), mentre i termini noti sono il <strong>punto base</strong>. Confondere i due porta a scambiare &quot;parallelo&quot; con &quot;ortogonale&quot;.</p>
+</div>
+
 <h2>Angolo tra due rette del piano e angolo diedro tra due piani</h2>
-<p><strong>Osservazione 35.6.</strong> Rette <span class="m">ax+by+c=0</span> e <span class="m">a'x+b'y+c'=0</span> di <span class="m">V^2_E</span> con intersezione non vuota, oppure piani <span class="m">ax+by+cz+d=0</span> e <span class="m">a'x+b'y+c'z+d'=0</span> di <span class="m">V^3_E</span>: detto <span class="m">\beta</span> l&#39;angolo tra i vettori di giacitura,
-<span class="m d">\widehat{rr'}\ \text{(o } \widehat{\alpha\alpha'}\text{)}=\begin{cases}\beta &amp; \text{se } \beta\le\frac{\pi}{2}\\ \pi-\beta &amp; \text{se } \beta&gt;\frac{\pi}{2}\end{cases}</span>
-Le rette (i piani) sono <strong>ortogonali</strong> se e solo se il prodotto scalare dei vettori di giacitura è <span class="m">0</span>. Senza controllare l&#39;intersezione funziona tutto tranne il caso <span class="m">\beta=0</span>: rette (piani) coincidenti o paralleli non coincidenti.</p>
+<p><strong>Osservazione 35.6.</strong> Siano <span class="m">r: ax + by + c = 0</span> e <span class="m">r': a'x + b'y + c' = 0</span> due rette di <span class="m">\boldsymbol V^2_E</span> con intersezione non vuota. Ogni vettore di giacitura è ortogonale alla sua retta, quindi l&#39;angolo tra le normali è uguale (o supplementare) all&#39;angolo tra le rette: ruotando entrambe le rette di un angolo retto l&#39;angolo tra loro non cambia. Detto <span class="m">\beta</span> l&#39;angolo tra <span class="m">{}^t(a\ b)</span> e <span class="m">{}^t(a'\ b')</span>:
+<span class="m d">\widehat{rr'} = \begin{cases} \beta &amp; \text{se } \beta \leqslant \frac\pi2 \\ \pi - \beta &amp; \text{se } \beta &gt; \frac\pi2\end{cases}</span>
+e le rette sono <strong>ortogonali</strong> se e solo se <span class="m">\langle{}^t(a\ b), {}^t(a'\ b')\rangle = aa' + bb' = 0</span>.</p>
+<p>Allo stesso modo, per due piani <span class="m">\alpha: ax + by + cz + d = 0</span> e <span class="m">\alpha': a'x + b'y + c'z + d' = 0</span> di <span class="m">\boldsymbol V^3_E</span> con intersezione non vuota, l&#39;<strong>angolo diedro</strong> è
+<span class="m d">\widehat{\alpha\alpha'} = \begin{cases} \beta &amp; \text{se } \beta \leqslant \frac\pi2 \\ \pi - \beta &amp; \text{se } \beta &gt; \frac\pi2\end{cases}, \qquad \beta = \arccos\frac{aa' + bb' + cc'}{\sqrt{a^2 + b^2 + c^2}\sqrt{(a')^2 + (b')^2 + (c')^2}},</span>
+e i piani sono <strong>ortogonali</strong> se e solo se <span class="m">aa' + bb' + cc' = 0</span>.</p>
+<p><strong>Senza controllare l&#39;intersezione</strong> funziona tutto tranne il caso <span class="m">\beta = 0</span>: le rette (i piani) possono essere coincidenti o paralleli non coincidenti. Infatti due rette del piano o due piani dello spazio che non sono paralleli si intersecano sempre.</p>
 <div class="callout esempio">
 
-<p>I piani <span class="m">x+3y-z-2=0</span> e <span class="m">2x+y+5z=0</span> hanno vettori di giacitura <span class="m">{}^t(1\ 3\ -1)</span> e <span class="m">{}^t(2\ 1\ 5)</span>, con prodotto scalare <span class="m">2+3-5=0</span>: l&#39;angolo è <span class="m">\frac{\pi}{2}</span>, quindi l&#39;angolo diedro è <span class="m">\frac{\pi}{2}</span> e i piani sono ortogonali.</p>
+<p><strong>Esempio 35.7.</strong> Piani <span class="m">x + 3y - z - 2 = 0</span> e <span class="m">2x + y + 5z = 0</span>: normali <span class="m">{}^t(1\ 3\ -1)</span> e <span class="m">{}^t(2\ 1\ 5)</span>, prodotto scalare <span class="m">1\cdot 2 + 3\cdot 1 + (-1)\cdot 5 = 2 + 3 - 5 = 0</span>. Quindi <span class="m">\beta = \arccos 0 = \tfrac\pi2</span>, che è <span class="m">\leqslant \tfrac\pi2</span>: l&#39;angolo diedro è <span class="m">\tfrac\pi2</span> e i piani sono <strong>ortogonali</strong>.</p>
+<p><strong>Esercizio 35.5 (con i due metodi).</strong> Rette del piano <span class="m">x - 2y - 2 = 0</span> e <span class="m">x + 3y - 6 = 0</span>.</p>
+<ul>
+<li>Con le normali <span class="m">{}^t(1\ -2)</span> e <span class="m">{}^t(1\ 3)</span>: <span class="m">\langle\cdot,\cdot\rangle = 1 - 6 = -5</span>, norme <span class="m">\sqrt5</span> e <span class="m">\sqrt{10}</span>, <span class="m">\cos\beta = \tfrac{-5}{\sqrt{50}} = -\tfrac{1}{\sqrt2}</span>, <span class="m">\beta = \tfrac{3\pi}4 &gt; \tfrac\pi2</span>, quindi l&#39;angolo è <span class="m">\pi - \tfrac{3\pi}4 = \tfrac\pi4</span>.</li>
+<li>Con i direttori <span class="m">{}^t(2\ 1)</span> e <span class="m">{}^t(-3\ 1)</span> (ottenuti come <span class="m">{}^t(-b\ a)</span> da ogni normale): <span class="m">\langle\cdot,\cdot\rangle = -6 + 1 = -5</span>, norme <span class="m">\sqrt5</span> e <span class="m">\sqrt{10}</span>, stesso coseno, stesso risultato <span class="m">\tfrac\pi4</span>.</li>
+</ul>
+<p><strong>Esercizio 35.7.</strong> Il piano <span class="m">3x - y + 2z + 2 = 0</span> e il piano parametrico <span class="m">\begin{cases} x = 4 + t \\ y = t + 2s \\ z = 1 - t + 3s\end{cases}</span> sono ortogonali? Normale del secondo: ortogonale a <span class="m">{}^t(1\ 1\ -1)</span> e <span class="m">{}^t(0\ 2\ 3)</span>, cioè il loro prodotto vettoriale <span class="m">{}^t(1\cdot 3 - (-1)\cdot 2\ \ \ (-1)\cdot 0 - 1\cdot 3\ \ \ 1\cdot 2 - 1\cdot 0) = {}^t(5\ -3\ 2)</span>. Prodotto scalare con <span class="m">{}^t(3\ -1\ 2)</span>: <span class="m">15 + 3 + 4 = 22 \ne 0</span>. <strong>Non</strong> sono ortogonali.</p>
 </div>
 
 <h2>Angolo tra una retta e un piano</h2>
-<p><strong>Osservazione 35.8.</strong> Siano <span class="m">r</span>: <span class="m">x=x_0+lt,\ y=y_0+mt,\ z=z_0+nt</span> e <span class="m">\alpha</span>: <span class="m">ax+by+cz+d=0</span> con intersezione non vuota. Poiché il vettore di giacitura <span class="m">{}^t(a\ b\ c)</span> è ortogonale al piano, detto <span class="m">\beta</span> l&#39;angolo tra <span class="m">{}^t(l\ m\ n)</span> e <span class="m">{}^t(a\ b\ c)</span>:
-<span class="m d">\widehat{r\alpha}=\frac{\pi}{2}-\begin{cases}\beta &amp; \text{se } \beta\le\frac{\pi}{2}\\ \pi-\beta &amp; \text{se } \beta&gt;\frac{\pi}{2}\end{cases}</span></p>
+<p>L&#39;angolo tra una retta e un piano è l&#39;angolo tra la retta e la sua proiezione sul piano; è in <span class="m">[0, \tfrac\pi2]</span>. Il vettore normale al piano forma con la retta l&#39;angolo <strong>complementare</strong>: se la retta è &quot;quasi parallela&quot; al piano, è &quot;quasi ortogonale&quot; alla normale, e viceversa.</p>
+<p><strong>Osservazione 35.8.</strong> Siano <span class="m">r: \begin{cases} x = x_0 + lt \\ y = y_0 + mt \\ z = z_0 + nt\end{cases}</span> e <span class="m">\alpha: ax + by + cz + d = 0</span> con intersezione non vuota. Detto <span class="m">\beta</span> l&#39;angolo tra il direttore <span class="m">{}^t(l\ m\ n)</span> e la normale <span class="m">{}^t(a\ b\ c)</span>:
+<span class="m d">\widehat{r\alpha} = \frac\pi2 - \begin{cases} \beta &amp; \text{se } \beta \leqslant \frac\pi2 \\ \pi - \beta &amp; \text{se } \beta &gt; \frac\pi2\end{cases}</span>
+In particolare:</p>
 <ul>
-<li><span class="m">r</span> è <strong>ortogonale</strong> ad <span class="m">\alpha</span> se e solo se <span class="m">\beta=0</span>, cioè se <span class="m">{}^t(l\ m\ n)</span> e <span class="m">{}^t(a\ b\ c)</span> sono <strong>multipli</strong> uno dell&#39;altro.</li>
-<li><span class="m">r</span> è <strong>contenuta</strong> in <span class="m">\alpha</span> se e solo se <span class="m">\beta=\frac{\pi}{2}</span>, cioè <span class="m">\langle {}^t(l\ m\ n),{}^t(a\ b\ c)\rangle=al+bm+cn=0</span>.</li>
+<li><span class="m">r</span> è <strong>ortogonale</strong> ad <span class="m">\alpha</span> se e solo se <span class="m">\beta = 0</span> (o <span class="m">\pi</span>), cioè se e solo se <span class="m">{}^t(l\ m\ n)</span> e <span class="m">{}^t(a\ b\ c)</span> sono <strong>multipli</strong> l&#39;uno dell&#39;altro: <strong>direttore parallelo alla normale</strong>;</li>
+<li><span class="m">r</span> è <strong>contenuta</strong> in <span class="m">\alpha</span> se e solo se <span class="m">\beta = \tfrac\pi2</span>, cioè
+<span class="m d">\langle{}^t(l\ m\ n), {}^t(a\ b\ c)\rangle = al + bm + cn = 0:</span>
+<strong>direttore ortogonale alla normale</strong> (cioè contenuto nella giacitura del piano).</li>
 </ul>
-<p>Senza controllare l&#39;intersezione funziona tutto tranne il caso <span class="m">\beta=\frac{\pi}{2}</span>: la retta può essere contenuta nel piano oppure <strong>parallela</strong> ad esso e non contenuta.</p>
+<p><strong>Senza controllare l&#39;intersezione</strong> funziona tutto tranne il caso <span class="m">\beta = \tfrac\pi2</span>: la retta può essere contenuta nel piano oppure <strong>parallela</strong> ad esso e non contenuta. Per distinguere basta controllare se un punto della retta (per esempio il punto base) sta sul piano.</p>
+<p>In modo equivalente: <span class="m">\widehat{r\alpha} = \arcsin\dfrac{\lvert al + bm + cn\rvert}{\sqrt{l^2+m^2+n^2}\sqrt{a^2+b^2+c^2}}</span>, perché <span class="m">\cos\beta = \sin(\tfrac\pi2 - \beta)</span>.</p>
 <div class="callout esempio">
 
-<p><span class="m">r</span>: <span class="m">x=4+t,\ y=1-2t,\ z=3t</span> e <span class="m">\alpha</span>: <span class="m">2x+y-z-3=0</span>. Direttore <span class="m">{}^t(1\ -2\ 3)</span>, normale <span class="m">{}^t(2\ 1\ -1)</span>, prodotto scalare <span class="m">2-2-3=-3</span>, norme <span class="m">\sqrt{14}</span> e <span class="m">\sqrt6</span>:
-<span class="m d">\beta=\arccos\left(\frac{-3}{\sqrt{14}\sqrt6}\right)=\arccos\left(-\frac{\sqrt{21}}{14}\right)&gt;\frac{\pi}{2}</span>
-quindi <span class="m">\widehat{r\alpha}=\frac{\pi}{2}-\left(\pi-\arccos\left(-\frac{\sqrt{21}}{14}\right)\right)=\arccos\left(-\frac{\sqrt{21}}{14}\right)-\frac{\pi}{2}</span>.</p>
+<p><strong>Esempio 35.9.</strong> <span class="m">r: \begin{cases} x = 4 + t \\ y = 1 - 2t \\ z = 3t\end{cases}</span> e <span class="m">\alpha: 2x + y - z - 3 = 0</span>. Direttore <span class="m">{}^t(1\ -2\ 3)</span>, normale <span class="m">{}^t(2\ 1\ -1)</span>:
+<span class="m d">\langle\cdot,\cdot\rangle = 2 - 2 - 3 = -3, \quad \lVert{}^t(1\ -2\ 3)\rVert = \sqrt{14}, \quad \lVert{}^t(2\ 1\ -1)\rVert = \sqrt6,</span>
+<span class="m d">\beta = \arccos\frac{-3}{\sqrt{14}\sqrt6} = \arccos\frac{-3}{\sqrt{84}} = \arccos\frac{-3}{2\sqrt{21}} = \arccos\left(-\frac{\sqrt{21}}{14}\right)</span>
+(razionalizzando: <span class="m">\tfrac{3}{2\sqrt{21}} = \tfrac{3\sqrt{21}}{42} = \tfrac{\sqrt{21}}{14}</span>). Il coseno è negativo, quindi <span class="m">\beta &gt; \tfrac\pi2</span> e
+<span class="m d">\widehat{r\alpha} = \frac\pi2 - \left(\pi - \arccos\left(-\frac{\sqrt{21}}{14}\right)\right) = \arccos\left(-\frac{\sqrt{21}}{14}\right) - \frac\pi2.</span>
+(La retta interseca il piano: sostituendo, <span class="m">2(4+t) + (1-2t) - 3t - 3 = 6 - 3t = 0</span>, <span class="m">t = 2</span>.)</p>
+<p><strong>Esercizio 35.8.</strong> <span class="m">r: x = 2 + 3t</span>, <span class="m">y = 1 - t</span>, <span class="m">z = 3 + 2t</span> e <span class="m">x + y + z - 3 = 0</span>: <span class="m">\langle{}^t(3\ -1\ 2), {}^t(1\ 1\ 1)\rangle = 4</span>, norme <span class="m">\sqrt{14}</span> e <span class="m">\sqrt3</span>, <span class="m">\cos\beta = \tfrac{4}{\sqrt{42}} = \tfrac{2\sqrt{42}}{21} &gt; 0</span>, quindi <span class="m">\beta \leqslant \tfrac\pi2</span> e <span class="m">\widehat{r\alpha} = \tfrac\pi2 - \arccos\tfrac{2\sqrt{42}}{21}</span>.</p>
+</div>
+
+<div class="callout sintesi">
+
+<p>Tabella dei criteri (<span class="m">w</span>, <span class="m">w'</span> direttori; <span class="m">n</span>, <span class="m">n'</span> normali):</p>
+<table>
+<thead>
+<tr>
+<th>relazione</th>
+<th>condizione</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>retta ⟂ retta (incidenti)</td>
+<td><span class="m">\langle w, w'\rangle = 0</span></td>
+</tr>
+<tr>
+<td>retta ∥ retta</td>
+<td><span class="m">w</span> multiplo di <span class="m">w'</span></td>
+</tr>
+<tr>
+<td>piano ⟂ piano</td>
+<td><span class="m">\langle n, n'\rangle = 0</span></td>
+</tr>
+<tr>
+<td>piano ∥ piano</td>
+<td><span class="m">n</span> multiplo di <span class="m">n'</span></td>
+</tr>
+<tr>
+<td>retta ⟂ piano</td>
+<td><span class="m">w</span> multiplo di <span class="m">n</span></td>
+</tr>
+<tr>
+<td>retta ∥ piano (o contenuta)</td>
+<td><span class="m">\langle w, n\rangle = 0</span></td>
+</tr>
+</tbody></table>
+<p>Attenzione all&#39;&quot;inversione&quot;: tra retta e piano, <strong>ortogonale</strong> si traduce in &quot;multipli&quot; e <strong>parallelo</strong> in &quot;prodotto scalare nullo&quot; (l&#39;opposto che tra due rette), perché la normale è perpendicolare al piano.</p>
+</div>
+
+<h2>Costruzioni con ortogonalità e parallelismo</h2>
+<p>Queste sono le costruzioni più chieste dal paniere. In ognuna si deve fissare una <strong>direzione</strong> (direttore o normale) e poi imporre il passaggio per un <strong>punto</strong>.</p>
+<p><strong>Retta ortogonale al piano <span class="m">ax + by + cz + d = 0</span> per <span class="m">P = {}^t(x_0\ y_0\ z_0)</span>.</strong> Il direttore è la normale:
+<span class="m d">\begin{cases} x = x_0 + at \\ y = y_0 + bt \\ z = z_0 + ct\end{cases}</span>
+(anche un multiplo non nullo di <span class="m">{}^t(a\ b\ c)</span> va bene).</p>
+<p><strong>Piano ortogonale alla retta di direttore <span class="m">{}^t(l\ m\ n)</span> per <span class="m">P</span>.</strong> La normale è il direttore:
+<span class="m d">l(x - x_0) + m(y - y_0) + n(z - z_0) = 0.</span></p>
+<p><strong>Piano parallelo al piano <span class="m">ax + by + cz + d = 0</span> per <span class="m">P</span>.</strong> Stessa normale: <span class="m">ax + by + cz + d' = 0</span> con <span class="m">d' = -(ax_0 + by_0 + cz_0)</span>.</p>
+<p><strong>Retta parallela al piano <span class="m">ax + by + cz + d = 0</span> (per <span class="m">P</span>).</strong> Serve un direttore <span class="m">w</span> con <span class="m">\langle w, n\rangle = 0</span>: ce ne sono infiniti (tutti quelli della giacitura). Per riconoscerla tra più forme parametriche si controlla <span class="m">al + bm + cn = 0</span>, e se è dato il punto si controlla che il punto base sia <span class="m">P</span> (o che <span class="m">P</span> stia sulla retta).</p>
+<p><strong>Piano parallelo alla retta di direttore <span class="m">w</span> (per <span class="m">P</span>).</strong> Serve una normale <span class="m">n</span> con <span class="m">\langle n, w\rangle = 0</span>; poi <span class="m">d</span> si ricava da <span class="m">P</span>. Anche qui le scelte sono infinite (un modo: con <span class="m">w = {}^t(l\ m\ n)</span> si prende <span class="m">{}^t(m\ -l\ 0)</span>, che ha prodotto scalare <span class="m">lm - ml = 0</span>).</p>
+<p><strong>Procedura (domande a scelta multipla di questo tipo).</strong></p>
+<ol>
+<li>Leggi la direzione data: direttore (coefficienti del parametro) o normale (coefficienti di <span class="m">x, y, z</span>).</li>
+<li>Per ogni opzione leggi l&#39;altra direzione e controlla la condizione giusta: <strong>multipli</strong> per &quot;ortogonale retta–piano&quot;, <strong>prodotto scalare nullo</strong> per &quot;parallelo retta–piano&quot;.</li>
+<li>Se c&#39;è un punto, sostituiscilo: in una forma implicita deve soddisfare l&#39;equazione, in una parametrica deve essere il punto base (o dare un valore del parametro che soddisfa tutte le coordinate).</li>
+</ol>
+<div class="callout esempio">
+
+<p><strong>Retta ortogonale a un piano per un punto (paniere).</strong> Piano <span class="m">2x - 5y - 3z + 7 = 0</span>, punto <span class="m">{}^t(3\ -2\ 1)</span>: direttore <span class="m">{}^t(2\ -5\ -3)</span>,
+<span class="m d">\begin{cases} x = 3 + 2t \\ y = -2 - 5t \\ z = 1 - 3t\end{cases}</span>
+Errori tipici: usare il punto come direttore e la normale come punto base, oppure sbagliare un segno della normale.</p>
+<p><strong>Esercizio 35.9.</strong> Retta ortogonale a <span class="m">2x + 4z - 1 = 0</span> per <span class="m">{}^t(3\ -1\ 0)</span>: la normale è <span class="m">{}^t(2\ 0\ 4)</span> (il coefficiente di <span class="m">y</span> è <span class="m">0</span>!), quindi <span class="m">x = 3 + 2t</span>, <span class="m">y = -1</span>, <span class="m">z = 4t</span>.</p>
+<p><strong>Piano ortogonale a una retta per un punto (paniere).</strong> Retta <span class="m">x = 2 + 2\lambda</span>, <span class="m">y = 1 - 3\lambda</span>, <span class="m">z = 5 - 4\lambda</span>, punto <span class="m">{}^t(2\ -1\ 1)</span>: normale <span class="m">{}^t(2\ -3\ -4)</span>, piano <span class="m">2(x - 2) - 3(y + 1) - 4(z - 1) = 0</span>, cioè <span class="m">2x - 3y - 4z - 3 = 0</span>. Verifica: <span class="m">4 + 3 - 4 - 3 = 0</span> ✓.</p>
+<p><strong>Quiz 35.2 della dispensa.</strong> Piano ortogonale alla retta <span class="m">x = 2 - 3t</span>, <span class="m">y = 1 + t</span>, <span class="m">z = -3 + 4t</span>: serve normale multipla di <span class="m">{}^t(-3\ 1\ 4)</span>. Il piano <span class="m">6x - 2y - 8z - 3 = 0</span> ha normale <span class="m">{}^t(6\ -2\ -8) = -2\cdot{}^t(-3\ 1\ 4)</span>: va bene. Il piano <span class="m">6x + 2y + 8z + 3 = 0</span> no: <span class="m">{}^t(6\ 2\ 8)</span> ha i rapporti <span class="m">-2, 2, 2</span>, non costanti.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Retta parallela a un piano (paniere).</strong> Quale retta è parallela al piano <span class="m">x - 3y + 2z - 6 = 0</span>? Si cerca un direttore <span class="m">{}^t(l\ m\ n)</span> con <span class="m">l - 3m + 2n = 0</span>; per esempio <span class="m">{}^t(1\ 1\ 1)</span> (<span class="m">1 - 3 + 2 = 0</span>) va bene, <span class="m">{}^t(1\ -3\ 2)</span> no (è la normale: quella retta è <strong>ortogonale</strong> al piano, prodotto scalare <span class="m">1 + 9 + 4 = 14</span>).</p>
+<p><strong>Quiz 35.3 della dispensa.</strong> Piano <span class="m">x - y + 3z - 5 = 0</span>, normale <span class="m">{}^t(1\ -1\ 3)</span>. Direttori proposti: <span class="m">{}^t(1\ -1\ 3)</span> dà <span class="m">1 + 1 + 9 = 11</span>; <span class="m">{}^t(2\ -1\ -1)</span> dà <span class="m">2 + 1 - 3 = 0</span> ✓; <span class="m">{}^t(1\ 1\ 3)</span> dà <span class="m">1 - 1 + 9 = 9</span>; <span class="m">{}^t(2\ 1\ 1)</span> dà <span class="m">2 - 1 + 3 = 4</span>. Solo il secondo è parallelo.</p>
+<p><strong>Piano parallelo a una retta per un punto (paniere).</strong> Retta <span class="m">x = 1 - 3\lambda</span>, <span class="m">y = 4\lambda</span>, <span class="m">z = 3 - 2\lambda</span>, direttore <span class="m">w = {}^t(-3\ 4\ -2)</span>; punto <span class="m">{}^t(3\ 2\ -2)</span>. Il piano <span class="m">2x + 5y + 7z + d = 0</span> ha normale con <span class="m">\langle{}^t(2\ 5\ 7), w\rangle = -6 + 20 - 14 = 0</span>: giacitura giusta. Passaggio per il punto: <span class="m">6 + 10 - 14 + d = 0</span>, <span class="m">d = -2</span>: <span class="m">2x + 5y + 7z - 2 = 0</span>. Invece un piano con normale <span class="m">{}^t(2\ 3\ 2)</span> dà <span class="m">-6 + 12 - 4 = 2 \ne 0</span>: non è parallelo alla retta, qualunque sia il termine noto.</p>
+</div>
+
+<h2>Distanze</h2>
+<p><strong>Osservazione 35.10 (distanza tra due punti).</strong> La distanza tra <span class="m">A</span> e <span class="m">B</span> è la norma euclidea del vettore <span class="m">B - A</span>:
+<span class="m d">AB = \lVert B - A\rVert = \sqrt{(x_B - x_A)^2 + (y_B - y_A)^2} \quad\text{nel piano}, \qquad AB = \sqrt{(x_B - x_A)^2 + (y_B - y_A)^2 + (z_B - z_A)^2} \quad\text{nello spazio}.</span>
+È il teorema di Pitagora applicato alle componenti.</p>
+<div class="callout esempio">
+
+<p><strong>Esempio 35.11.</strong> <span class="m">A = {}^t(1\ -1)</span>, <span class="m">B = {}^t(4\ 3)</span>: <span class="m">B - A = {}^t(3\ 4)</span>, <span class="m">AB = \sqrt{9 + 16} = \sqrt{25} = 5</span>.</p>
+</div>
+
+<p><strong>Osservazione 35.12 (disuguaglianza triangolare).</strong> In un triangolo <span class="m">ABC</span> i lati corrispondono ai vettori <span class="m">C - A</span>, <span class="m">B - A</span>, <span class="m">C - B</span>, e vale
+<span class="m d">C - A = (B - A) + (C - B).</span>
+Per la disuguaglianza triangolare della norma (Lezione 33: <span class="m">\lVert u + w\rVert \leqslant \lVert u\rVert + \lVert w\rVert</span>, con uguaglianza solo se i vettori sono multipli positivi l&#39;uno dell&#39;altro):
+<span class="m d">\lVert C - A\rVert \leqslant \lVert B - A\rVert + \lVert C - B\rVert, \qquad\text{cioè}\qquad AC \leqslant AB + BC,</span>
+con <span class="m">AC = AB + BC</span> se e solo se <span class="m">B</span> appartiene al lato <span class="m">AC</span> (il triangolo degenera nel segmento <span class="m">AC</span>). È il fatto classico che &quot;la via diretta è la più breve&quot;.</p>
+<p><strong>Definizione 35.13.</strong> La <strong>distanza</strong> tra un punto <span class="m">P</span> e un insieme <span class="m">I</span> (nel piano o nello spazio euclideo), indicata con <span class="m">\mathrm{dist}(P, I)</span>, è la <strong>più piccola</strong> distanza tra <span class="m">P</span> e un punto di <span class="m">I</span>. La distanza tra due insiemi <span class="m">I_1</span> e <span class="m">I_2</span>, <span class="m">\mathrm{dist}(I_1, I_2)</span>, è la più piccola distanza tra un punto di <span class="m">I_1</span> e un punto di <span class="m">I_2</span>.</p>
+<p><strong>Osservazione 35.14.</strong> A rigore la definizione non è precisa, perché il minimo potrebbe non essere raggiunto (si dovrebbe parlare di <strong>estremo inferiore</strong> delle distanze); per i casi del corso (punti, rette, piani) il minimo esiste e la definizione funziona.</p>
+<h3>Distanza punto–retta (nel piano) e punto–piano (nello spazio)</h3>
+<p><strong>Osservazione 35.15.</strong> La distanza tra <span class="m">P = {}^t(x_0\ y_0)</span> e la retta <span class="m">r: ax + by + c = 0</span> del piano euclideo è
+<span class="m d">\mathrm{dist}(P, r) = \frac{\lvert ax_0 + by_0 + c\rvert}{\sqrt{a^2 + b^2}},</span>
+e la distanza tra <span class="m">P = {}^t(x_0\ y_0\ z_0)</span> e il piano <span class="m">\alpha: ax + by + cz + d = 0</span> è
+<span class="m d">\mathrm{dist}(P, \alpha) = \frac{\lvert ax_0 + by_0 + cz_0 + d\rvert}{\sqrt{a^2 + b^2 + c^2}}.</span>
+È la lunghezza dell&#39;<strong>unico</strong> segmento <span class="m">PQ</span> <strong>ortogonale</strong> alla retta (al piano) con <span class="m">Q</span> sulla retta (sul piano): il &quot;piede della perpendicolare&quot;. <span class="m">P</span> appartiene alla retta (al piano) se e solo se la distanza è <span class="m">0</span>, cioè se e solo se le sue coordinate soddisfano l&#39;equazione.</p>
+<p>La dispensa non dimostra la formula. Un&#39;idea del perché (per il piano): il piede <span class="m">Q</span> si ottiene muovendosi da <span class="m">P</span> lungo la normale, <span class="m">Q = P + t\,n</span> con <span class="m">n = {}^t(a\ b\ c)</span>. Imponendo <span class="m">Q \in \alpha</span>: <span class="m">a(x_0 + ta) + b(y_0 + tb) + c(z_0 + tc) + d = 0</span>, cioè <span class="m">t = -\dfrac{ax_0 + by_0 + cz_0 + d}{a^2 + b^2 + c^2}</span>. Allora <span class="m">PQ = \lvert t\rvert\,\lVert n\rVert = \dfrac{\lvert ax_0 + by_0 + cz_0 + d\rvert}{a^2 + b^2 + c^2}\sqrt{a^2 + b^2 + c^2}</span>, che semplificando dà la formula.</p>
+<p><strong>Procedura (distanza punto–piano).</strong></p>
+<ol>
+<li><strong>Numeratore</strong>: sostituisci le coordinate del punto nel primo membro dell&#39;equazione del piano (termine noto compreso) e prendi il <strong>valore assoluto</strong>.</li>
+<li><strong>Denominatore</strong>: radice della somma dei quadrati dei coefficienti di <span class="m">x, y, z</span> (<strong>senza</strong> il termine noto).</li>
+<li>Semplifica e, se richiesto, <strong>razionalizza</strong>: <span class="m">\dfrac{k}{\sqrt m} = \dfrac{k\sqrt m}{m}</span>.</li>
+<li>Controllo: il risultato è <span class="m">\geqslant 0</span>; è <span class="m">0</span> solo se il punto sta sul piano.</li>
+</ol>
+<div class="callout esempio">
+
+<p><strong>Esercizio 35.10.</strong> Distanza tra <span class="m">{}^t(1\ 0\ -4)</span> e <span class="m">6x - 3y - 2z = 0</span>: numeratore <span class="m">\lvert 6 - 0 + 8\rvert = 14</span>, denominatore <span class="m">\sqrt{36 + 9 + 4} = \sqrt{49} = 7</span>, distanza <span class="m">2</span>.</p>
+<p><strong>Paniere.</strong> Distanza tra <span class="m">{}^t(2\ 0\ -5)</span> e <span class="m">3x - 3y + 2z - 2 = 0</span>: numeratore <span class="m">\lvert 6 - 0 - 10 - 2\rvert = \lvert -6\rvert = 6</span>; denominatore <span class="m">\sqrt{9 + 9 + 4} = \sqrt{22}</span>; distanza <span class="m">\dfrac{6}{\sqrt{22}} = \dfrac{6\sqrt{22}}{22} = \dfrac{3\sqrt{22}}{11}</span>.</p>
+<p><strong>Paniere.</strong> Distanza tra <span class="m">{}^t(3\ 4\ 0)</span> e <span class="m">2x - y + 3z - 6 = 0</span>: numeratore <span class="m">\lvert 6 - 4 + 0 - 6\rvert = 4</span>, denominatore <span class="m">\sqrt{4 + 1 + 9} = \sqrt{14}</span>, distanza <span class="m">\dfrac{4}{\sqrt{14}} = \dfrac{4\sqrt{14}}{14} = \dfrac{2\sqrt{14}}{7}</span>.</p>
+</div>
+
+<h3>Distanza punto–retta nello spazio</h3>
+<p>Nello spazio una retta non ha una sola equazione e non c&#39;è la formula precedente: si cerca il <strong>piede della perpendicolare</strong>. Due metodi equivalenti:</p>
+<ul>
+<li>(dispensa) punto generico <span class="m">Q_\alpha</span> della retta, si impone che <span class="m">Q_\alpha - P</span> sia ortogonale al direttore;</li>
+<li>piano per <span class="m">P</span> ortogonale alla retta, intersecato con la retta.
+In entrambi i casi la distanza è <span class="m">\lVert Q - P\rVert</span> con <span class="m">Q</span> il piede trovato.</li>
+</ul>
+<div class="callout esempio">
+
+<p><strong>Esercizio 35.1 (nel piano).</strong> Retta ortogonale a <span class="m">x + 3y - 2 = 0</span> per <span class="m">{}^t(-1\ 2)</span>: il direttore è il vettore di giacitura <span class="m">{}^t(1\ 3)</span> (ortogonale alla retta data), quindi <span class="m">\begin{cases} x = -1 + t \\ y = 2 + 3t\end{cases}</span>.</p>
+<p><strong>Esercizio 35.2.</strong> Retta per <span class="m">P = {}^t(1\ 1\ -2)</span> ortogonale (e incidente) a <span class="m">r: \begin{cases} x + y + z + 1 = 0 \\ 3y + z + 5 = 0\end{cases}</span>, e <span class="m">\mathrm{dist}(P, r)</span>.</p>
+<ol>
+<li>Forma parametrica di <span class="m">r</span>: con <span class="m">y = \alpha</span>, dalla seconda <span class="m">z = -5 - 3\alpha</span>, dalla prima <span class="m">x = -1 - y - z = -1 - \alpha + 5 + 3\alpha = 4 + 2\alpha</span>. Quindi <span class="m">r: x = 4 + 2\alpha</span>, <span class="m">y = \alpha</span>, <span class="m">z = -5 - 3\alpha</span>, direttore <span class="m">{}^t(2\ 1\ -3)</span>.</li>
+<li>Punto generico <span class="m">Q_\alpha = {}^t(4 + 2\alpha\ \ \alpha\ \ -5 - 3\alpha)</span>. La retta <span class="m">s_\alpha</span> per <span class="m">P</span> e <span class="m">Q_\alpha</span> ha direttore
+<span class="m d">Q_\alpha - P = {}^t(2\alpha + 3\ \ \ \alpha - 1\ \ \ -3 - 3\alpha).</span></li>
+<li>Ortogonalità con <span class="m">r</span>: <span class="m">\langle Q_\alpha - P, {}^t(2\ 1\ -3)\rangle = 2(2\alpha + 3) + (\alpha - 1) - 3(-3 - 3\alpha) = 4\alpha + 6 + \alpha - 1 + 9 + 9\alpha = 14\alpha + 14 = 0</span>, quindi <span class="m">\alpha = -1</span>.</li>
+<li><span class="m">Q_{-1} = {}^t(2\ -1\ -2)</span>, <span class="m">Q_{-1} - P = {}^t(1\ -2\ 0)</span>: la retta cercata è <span class="m">s_{-1}: x = 1 + t</span>, <span class="m">y = 1 - 2t</span>, <span class="m">z = -2</span>.</li>
+<li><span class="m">\mathrm{dist}(P, r) = \mathrm{dist}(P, Q_{-1}) = \sqrt{1^2 + (-2)^2 + 0^2} = \sqrt5</span>.</li>
+</ol>
+</div>
+
+<h3>Distanza tra due rette sghembe</h3>
+<p>Se <span class="m">r</span> e <span class="m">s</span> sono sghembe, la loro distanza si calcola così:</p>
+<ol>
+<li>si trova il piano <span class="m">\alpha</span> che <strong>contiene <span class="m">s</span> ed è parallelo a <span class="m">r</span></strong> (punto base: un punto di <span class="m">s</span>; giacitura generata dai direttori di <span class="m">r</span> e di <span class="m">s</span>);</li>
+<li>poiché <span class="m">r</span> è parallela ad <span class="m">\alpha</span>, tutti i suoi punti hanno la stessa distanza da <span class="m">\alpha</span>, quindi <span class="m">\mathrm{dist}(r, s) = \mathrm{dist}(r, \alpha) = \mathrm{dist}(P, \alpha)</span> con <span class="m">P</span> un <strong>qualsiasi</strong> punto di <span class="m">r</span>.</li>
+</ol>
+<div class="callout esempio">
+
+<p><strong>Esercizio 35.3.</strong> <span class="m">r: \begin{cases} 2x - y - 2 = 0 \\ x + z - 1 = 0\end{cases}</span> e <span class="m">s: \begin{cases} x - 2y - 3 = 0 \\ x + y - z - 4 = 0\end{cases}</span>.</p>
+<ol>
+<li>Direttori: per <span class="m">r</span>, con <span class="m">x = t</span>: <span class="m">y = 2t - 2</span>, <span class="m">z = 1 - t</span>, direttore <span class="m">{}^t(1\ 2\ -1)</span>, e un punto (con <span class="m">t = 0</span>) <span class="m">P = {}^t(0\ -2\ 1)</span>. Per <span class="m">s</span>, con <span class="m">y = t</span>: <span class="m">x = 3 + 2t</span>, <span class="m">z = x + y - 4 = -1 + 3t</span>, direttore <span class="m">{}^t(2\ 1\ 3)</span>, punto <span class="m">{}^t(3\ 0\ -1)</span>.</li>
+<li>Piano <span class="m">\alpha</span> per <span class="m">{}^t(3\ 0\ -1)</span> con giacitura <span class="m">\operatorname{Span}({}^t(1\ 2\ -1), {}^t(2\ 1\ 3))</span>: <span class="m">\begin{cases} x = 3 + t + 2s \\ y = 2t + s \\ z = -1 - t + 3s\end{cases}</span>. Normale: <span class="m">{}^t(1\ 2\ -1) \times {}^t(2\ 1\ 3) = {}^t(2\cdot 3 - (-1)\cdot 1\ \ \ (-1)\cdot 2 - 1\cdot 3\ \ \ 1\cdot 1 - 2\cdot 2) = {}^t(7\ -5\ -3)</span>. Quindi <span class="m">7x - 5y - 3z + d = 0</span> e, con <span class="m">{}^t(3\ 0\ -1)</span>: <span class="m">21 + 3 + d = 0</span>, <span class="m">d = -24</span>: <span class="m">\alpha: 7x - 5y - 3z - 24 = 0</span>.</li>
+<li><span class="m">\mathrm{dist}(r, s) = \mathrm{dist}(P, \alpha) = \dfrac{\lvert 7\cdot 0 - 5\cdot(-2) - 3\cdot 1 - 24\rvert}{\sqrt{49 + 25 + 9}} = \dfrac{\lvert 10 - 3 - 24\rvert}{\sqrt{83}} = \dfrac{17}{\sqrt{83}} = \dfrac{17\sqrt{83}}{83}</span>.</li>
+</ol>
+</div>
+
+<h2>Sfera tangente a un piano</h2>
+<p>La <strong>sfera</strong> di centro <span class="m">C = {}^t(x_0\ y_0\ z_0)</span> e raggio <span class="m">R &gt; 0</span> è l&#39;insieme dei punti a distanza <span class="m">R</span> da <span class="m">C</span>: <span class="m">\lVert P - C\rVert = R</span>, cioè, elevando al quadrato,
+<span class="m d">(x - x_0)^2 + (y - y_0)^2 + (z - z_0)^2 = R^2.</span>
+Una sfera di centro <span class="m">C</span> è <strong>tangente</strong> a un piano <span class="m">\alpha</span> (lo tocca in un solo punto) se e solo se il raggio è uguale alla distanza del centro dal piano:
+<span class="m d">R = \mathrm{dist}(C, \alpha).</span>
+Il punto di tangenza è il piede della perpendicolare da <span class="m">C</span> ad <span class="m">\alpha</span>, cioè l&#39;intersezione di <span class="m">\alpha</span> con la retta per <span class="m">C</span> ortogonale ad <span class="m">\alpha</span>.</p>
+<div class="callout esempio">
+
+<p><strong>Svolto (paniere, aperta).</strong> <span class="m">P = {}^t(2\ 3\ -4)</span>, <span class="m">\pi: 3x + y - 2z - 3 = 0</span>. Forma cartesiana della retta <span class="m">r</span> ortogonale a <span class="m">\pi</span> per <span class="m">P</span> e sfera di centro <span class="m">P</span> tangente a <span class="m">\pi</span>.</p>
+<ol>
+<li>Direttore = normale <span class="m">{}^t(3\ 1\ -2)</span>: <span class="m">r: x = 2 + 3t</span>, <span class="m">y = 3 + t</span>, <span class="m">z = -4 - 2t</span>.</li>
+<li>Forma cartesiana eliminando <span class="m">t = y - 3</span>: <span class="m">x = 2 + 3(y - 3) = 3y - 7</span> e <span class="m">z = -4 - 2(y - 3) = 2 - 2y</span>, quindi <span class="m">r: \begin{cases} x - 3y + 7 = 0 \\ 2y + z - 2 = 0\end{cases}</span> (verifica con <span class="m">P</span>: <span class="m">2 - 9 + 7 = 0</span>, <span class="m">6 - 4 - 2 = 0</span> ✓).</li>
+<li>Raggio: <span class="m">R = \mathrm{dist}(P, \pi) = \dfrac{\lvert 6 + 3 + 8 - 3\rvert}{\sqrt{9 + 1 + 4}} = \dfrac{14}{\sqrt{14}} = \sqrt{14}</span>.</li>
+<li>Sfera: <span class="m">(x - 2)^2 + (y - 3)^2 + (z + 4)^2 = 14</span>.</li>
+<li>(Punto di tangenza: sostituendo <span class="m">r</span> in <span class="m">\pi</span>, <span class="m">3(2 + 3t) + (3 + t) - 2(-4 - 2t) - 3 = 14 + 14t = 0</span>, <span class="m">t = -1</span>, punto <span class="m">{}^t(-1\ 2\ -2)</span>.)</li>
+</ol>
+</div>
+
+<h2>Esercizi misti delle domande aperte</h2>
+<div class="callout esempio">
+
+<p><strong>Distanza, piano parallelo per un punto e posizione di una retta (paniere, aperta).</strong> <span class="m">P = {}^t(1\ -2\ 0)</span>, <span class="m">\alpha: 3x - y + 4z - 1 = 0</span>, <span class="m">r: \begin{cases} 2x - y + 1 = 0 \\ 3x - y + z - 3 = 0\end{cases}</span>. Trovare <span class="m">\mathrm{dist}(P, \alpha)</span> e dire se <span class="m">r</span> è parallela al piano <span class="m">\beta</span> parallelo ad <span class="m">\alpha</span> per <span class="m">P</span>.</p>
+<ol>
+<li><span class="m">\mathrm{dist}(P, \alpha) = \dfrac{\lvert 3 + 2 + 0 - 1\rvert}{\sqrt{9 + 1 + 16}} = \dfrac{4}{\sqrt{26}} = \dfrac{2\sqrt{26}}{13}</span>.</li>
+<li><span class="m">\beta</span>: stessa normale <span class="m">{}^t(3\ -1\ 4)</span>, <span class="m">3 + 2 + 0 + d = 0</span>, <span class="m">d = -5</span>: <span class="m">\beta: 3x - y + 4z - 5 = 0</span>.</li>
+<li>Direttore di <span class="m">r</span>: <span class="m">{}^t(2\ -1\ 0) \times {}^t(3\ -1\ 1) = {}^t\big((-1)\cdot 1 - 0\cdot(-1)\ \ \ 0\cdot 3 - 2\cdot 1\ \ \ 2\cdot(-1) - (-1)\cdot 3\big) = {}^t(-1\ -2\ 1)</span>.</li>
+<li><span class="m">\langle{}^t(-1\ -2\ 1), {}^t(3\ -1\ 4)\rangle = -3 + 2 + 4 = 3 \ne 0</span>: <span class="m">r</span> <strong>non</strong> è parallela a <span class="m">\beta</span> (lo interseca in un punto). Se si chiedesse l&#39;ortogonalità, si controllerebbe invece se il direttore è multiplo della normale.</li>
+</ol>
+<p><strong>Ortogonalità retta–piano e piano per retta e punto (paniere, aperta).</strong> <span class="m">\pi: x + 2y - 3z + 3 = 0</span>, <span class="m">r: \begin{cases} x + y + z + 2 = 0 \\ 3x + z - 1 = 0\end{cases}</span>, <span class="m">P = {}^t(3\ 3\ 0)</span>.</p>
+<ol>
+<li>Direttore: <span class="m">{}^t(1\ 1\ 1) \times {}^t(3\ 0\ 1) = {}^t(1\cdot 1 - 1\cdot 0\ \ \ 1\cdot 3 - 1\cdot 1\ \ \ 1\cdot 0 - 1\cdot 3) = {}^t(1\ 2\ -3)</span>, uguale alla normale di <span class="m">\pi</span>: <span class="m">r \perp \pi</span>.</li>
+<li>Fascio per <span class="m">r</span>: <span class="m">\lambda(x + y + z + 2) + \mu(3x + z - 1) = 0</span>; in <span class="m">P</span>: <span class="m">\lambda(3 + 3 + 0 + 2) + \mu(9 + 0 - 1) = 8\lambda + 8\mu = 0</span>, <span class="m">\mu = -\lambda</span>. Con <span class="m">\lambda = 1</span>: <span class="m">(x + y + z + 2) - (3x + z - 1) = -2x + y + 3 = 0</span>, cioè <span class="m">\alpha: 2x - y - 3 = 0</span>. Verifica: <span class="m">6 - 3 - 3 = 0</span> ✓.</li>
+</ol>
+</div>
+
+<div class="callout attenzione">
+
+<ul>
+<li>La distanza è sempre <strong>non negativa</strong>: senza il valore assoluto al numeratore si ottiene un numero negativo (opzione sbagliata).</li>
+<li>Al denominatore vanno solo <span class="m">a, b, c</span>: il termine noto <span class="m">d</span> <strong>non</strong> entra nella radice.</li>
+<li>Nell&#39;angolo retta–piano si usa <span class="m">\tfrac\pi2 - (\dots)</span>: è il <strong>complementare</strong> dell&#39;angolo tra direttore e normale. Dimenticarlo scambia &quot;parallela&quot; con &quot;ortogonale&quot;.</li>
+<li>Ortogonale <strong>retta–piano</strong> = direttore <strong>multiplo</strong> della normale; ortogonale <strong>retta–retta</strong> o <strong>piano–piano</strong> = prodotto scalare nullo. Parallela <strong>retta–piano</strong> = prodotto scalare nullo; paralleli <strong>piano–piano</strong> = normali multiple.</li>
+<li>&quot;Prodotto scalare nullo tra direttore e normale&quot; non distingue tra retta contenuta nel piano e retta parallela non contenuta: serve controllare un punto.</li>
+<li>In una forma come <span class="m">2x + 4z - 1 = 0</span> la normale è <span class="m">{}^t(2\ 0\ 4)</span>: il coefficiente mancante è <span class="m">0</span>, non va saltato.</li>
+</ul>
+</div>
+
+<div class="callout esame">
+
+<p>Il paniere chiede soprattutto di riconoscere, tra forme parametriche o implicite proposte: la retta <strong>ortogonale</strong> a un piano (direttore multiplo della normale, eventualmente per un punto dato), la retta <strong>parallela</strong> a un piano (direttore con prodotto scalare nullo con la normale, eventualmente per un punto), il piano <strong>ortogonale</strong> a una retta (normale multipla del direttore, termine noto dal punto), il piano <strong>parallelo</strong> a una retta (normale con prodotto scalare nullo con il direttore, termine noto dal punto), e la <strong>distanza punto-piano</strong> (attenzione al valore assoluto: le opzioni negative sono sempre sbagliate; razionalizzare per confrontare).</p>
+<p>Le aperte chiedono: &quot;Parlare degli angoli tra rette e piani nello spazio&quot; (definizioni di direttore e vettore normale, formule con l&#39;arccos e la correzione <span class="m">\pi - \alpha</span>, angolo retta–piano come complementare, condizioni di ortogonalità e parallelismo, casi in cui il risultato è ambiguo senza controllare l&#39;intersezione, un esempio); trovare la retta ortogonale a un piano per un punto in forma cartesiana e la <strong>sfera tangente</strong> (raggio = distanza del centro dal piano); distanza punto–piano e piano parallelo per un punto, con la verifica di parallelismo/ortogonalità di una retta data in forma cartesiana (direttore con il prodotto vettoriale); verificare che una retta (non) è ortogonale a un piano e trovare il piano che contiene la retta e passa per un punto (<strong>fascio di piani</strong>).</p>
 </div>
 
 <div class="callout sintesi">
 
 <ul>
-<li>retta ⟂ retta: <span class="m">\langle w,w'\rangle=0</span> (rette incidenti);</li>
-<li>piano ⟂ piano: <span class="m">\langle n,n'\rangle=0</span>;</li>
-<li>retta ⟂ piano: <span class="m">w</span> multiplo di <span class="m">n</span>;</li>
-<li>retta ∥ piano (o contenuta): <span class="m">\langle w,n\rangle=0</span>;</li>
-<li>piano ∥ piano: <span class="m">n</span> multiplo di <span class="m">n'</span>.</li>
+<li>Direttore: coefficienti del parametro nella forma parametrica. Normale (vettore di giacitura): coefficienti di <span class="m">x, y, z</span> nella forma implicita; è ortogonale alla retta del piano / al piano.</li>
+<li>Angolo tra rette (incidenti): <span class="m">\alpha</span> tra i direttori, risultato <span class="m">\alpha</span> o <span class="m">\pi - \alpha</span> (sempre <span class="m">\leqslant \tfrac\pi2</span>); <span class="m">\cos\alpha = \dfrac{ll' + mm' + nn'}{\sqrt{l^2+m^2+n^2}\sqrt{l'^2+m'^2+n'^2}}</span>.</li>
+<li>Rette del piano e piani: stessa cosa con le normali (angolo diedro); ortogonali <span class="m">\iff \langle n, n'\rangle = 0</span>.</li>
+<li>Retta–piano: <span class="m">\widehat{r\alpha} = \tfrac\pi2 - (\beta \text{ o } \pi - \beta)</span>, <span class="m">\beta</span> tra direttore e normale; ortogonale <span class="m">\iff</span> direttore <span class="m">\parallel</span> normale; parallela o contenuta <span class="m">\iff \langle w, n\rangle = 0</span>.</li>
+<li>Retta ortogonale al piano per <span class="m">P</span>: <span class="m">P + t\,{}^t(a\ b\ c)</span>. Piano ortogonale alla retta per <span class="m">P</span>: <span class="m">l(x-x_0) + m(y-y_0) + n(z-z_0) = 0</span>.</li>
+<li><span class="m">AB = \lVert B - A\rVert</span>; <span class="m">AC \leqslant AB + BC</span>.</li>
+<li><span class="m">\mathrm{dist}(P, r) = \dfrac{\lvert ax_0+by_0+c\rvert}{\sqrt{a^2+b^2}}</span> (piano), <span class="m">\mathrm{dist}(P, \alpha) = \dfrac{\lvert ax_0+by_0+cz_0+d\rvert}{\sqrt{a^2+b^2+c^2}}</span> (spazio).</li>
+<li>Punto–retta nello spazio: piede della perpendicolare (<span class="m">\langle Q_\alpha - P, w\rangle = 0</span>). Rette sghembe: piano per <span class="m">s</span> parallelo a <span class="m">r</span>, poi distanza di un punto di <span class="m">r</span> da quel piano.</li>
+<li>Sfera <span class="m">(x-x_0)^2 + (y-y_0)^2 + (z-z_0)^2 = R^2</span>; tangente al piano <span class="m">\iff R = \mathrm{dist}(C, \alpha)</span>.</li>
 </ul>
-<p>La normale si legge nei coefficienti di <span class="m">x,y,z</span> della forma implicita; il direttore nei coefficienti del parametro della forma parametrica (i termini noti sono il punto base).</p>
-</div>
-
-<h2>Distanze</h2>
-<p><strong>Osservazione 35.10.</strong> La distanza tra due punti <span class="m">A</span> e <span class="m">B</span> è la norma euclidea di <span class="m">B-A</span>:
-<span class="m d">AB=\sqrt{(x_B-x_A)^2+(y_B-y_A)^2+(z_B-z_A)^2}=\lVert B-A\rVert</span>
-(nel piano senza la terza componente). Per esempio la distanza tra <span class="m">{}^t(1\ -1)</span> e <span class="m">{}^t(4\ 3)</span> è <span class="m">\sqrt{9+16}=5</span>.</p>
-<p><strong>Osservazione 35.12 (disuguaglianza triangolare).</strong> In un triangolo <span class="m">ABC</span>, da <span class="m">C-A=(B-A)+(C-B)</span> si ottiene <span class="m">AC\le AB+BC</span>, con uguaglianza se e solo se <span class="m">B</span> appartiene al lato <span class="m">AC</span> (il triangolo degenera in un segmento).</p>
-<p><strong>Definizione 35.13.</strong> La distanza <span class="m">\mathrm{dist}(P,I)</span> tra un punto <span class="m">P</span> e un insieme <span class="m">I</span> è la più piccola distanza tra <span class="m">P</span> e un punto di <span class="m">I</span>; la distanza <span class="m">\mathrm{dist}(I_1,I_2)</span> tra due insiemi è la più piccola distanza tra un punto di <span class="m">I_1</span> e un punto di <span class="m">I_2</span>. (A rigore si dovrebbe parlare di estremo inferiore, perché il minimo può non essere raggiunto; per i casi del corso va bene così.)</p>
-<p><strong>Osservazione 35.15.</strong> Distanza punto-retta nel piano e punto-piano nello spazio:
-<span class="m d">\mathrm{dist}(P,r)=\frac{\lvert ax_0+by_0+c\rvert}{\sqrt{a^2+b^2}}\qquad \mathrm{dist}(P,\alpha)=\frac{\lvert ax_0+by_0+cz_0+d\rvert}{\sqrt{a^2+b^2+c^2}}</span>
-È la lunghezza dell&#39;unico segmento <span class="m">PQ</span> ortogonale a <span class="m">r</span> (ad <span class="m">\alpha</span>) con <span class="m">Q</span> sulla retta (sul piano). <span class="m">P</span> appartiene alla retta (al piano) se e solo se la distanza è <span class="m">0</span>.</p>
-<h2>Esercizi svolti (sessione di studio 35.1)</h2>
-<div class="callout esempio">
-
-<p><strong>Retta ortogonale a una retta del piano.</strong> La retta ortogonale a <span class="m">x+3y-2=0</span> per <span class="m">{}^t(-1\ 2)</span> ha come direttore il vettore di giacitura <span class="m">{}^t(1\ 3)</span>: <span class="m">x=-1+t,\ y=2+3t</span>.</p>
-</div>
-
-<div class="callout esempio">
-
-<p><strong>Retta ortogonale a una retta dello spazio e distanza punto-retta.</strong> <span class="m">r</span>: <span class="m">x+y+z+1=0,\ 3y+z+5=0</span>, cioè <span class="m">x=4+2\alpha,\ y=\alpha,\ z=-5-3\alpha</span>, e <span class="m">P={}^t(1\ 1\ -2)</span>. Il punto generico di <span class="m">r</span> è <span class="m">Q_\alpha={}^t(4+2\alpha\ \ \alpha\ \ -5-3\alpha)</span> e <span class="m">Q_\alpha-P={}^t(2\alpha+3\ \ \alpha-1\ \ -3-3\alpha)</span>. Imponendo l&#39;ortogonalità con <span class="m">{}^t(2\ 1\ -3)</span>: <span class="m">2(2\alpha+3)+(\alpha-1)-3(-3-3\alpha)=0</span>, <span class="m">\alpha=-1</span>. La retta cercata è <span class="m">x=1+t,\ y=1-2t,\ z=-2</span>, il piede è <span class="m">Q_{-1}={}^t(2\ -1\ -2)</span> e <span class="m">\mathrm{dist}(P,r)=\sqrt{1+4+0}=\sqrt5</span>.</p>
-</div>
-
-<div class="callout esempio">
-
-<p><strong>Distanza tra rette sghembe.</strong> <span class="m">r</span>: <span class="m">2x-y-2=0,\ x+z-1=0</span> (direttore <span class="m">{}^t(1\ 2\ -1)</span>) ed <span class="m">s</span>: <span class="m">x-2y-3=0,\ x+y-z-4=0</span> (direttore <span class="m">{}^t(2\ 1\ 3)</span>). Il piano per <span class="m">s</span> parallelo ad <span class="m">r</span> (punto base <span class="m">{}^t(3\ 0\ -1)</span>) è <span class="m">7x-5y-3z-24=0</span>. Allora <span class="m">\mathrm{dist}(r,s)</span> è la distanza di un punto di <span class="m">r</span>, per esempio <span class="m">{}^t(0\ -2\ 1)</span>, da questo piano:
-<span class="m d">\frac{\lvert 0+10-3-24\rvert}{\sqrt{49+25+9}}=\frac{17}{\sqrt{83}}=\frac{17\sqrt{83}}{83}</span></p>
-</div>
-
-<div class="callout esame">
-
-<p>Il paniere chiede soprattutto di riconoscere, tra forme parametriche o implicite proposte: la retta <strong>ortogonale</strong> a un piano (direttore multiplo della normale, eventualmente per un punto dato), la retta <strong>parallela</strong> a un piano (direttore con prodotto scalare nullo con la normale), il piano <strong>ortogonale</strong> o <strong>parallelo</strong> a una retta, e la <strong>distanza punto-piano</strong> (attenzione al valore assoluto: le opzioni negative sono sempre sbagliate). Le aperte chiedono di parlare degli angoli tra rette e piani, di trovare la retta ortogonale a un piano per un punto e la sfera tangente (raggio = distanza del centro dal piano), il piano parallelo per un punto, e il piano che contiene una retta data in forma cartesiana e passa per un punto (fascio di piani).</p>
 </div>

@@ -1,35 +1,106 @@
 <h1>Lezione 6 — Combinazioni lineari</h1>
-<p>Le combinazioni lineari sono le espressioni più semplici in uno spazio vettoriale (somme di prodotti per scalare) e anche le più generali: ogni espressione si riduce a una combinazione lineare con le proprietà degli spazi vettoriali.</p>
+<p>Le combinazioni lineari sono, da un lato, <strong>l&#39;espressione più semplice</strong> che si può scrivere in uno spazio vettoriale: somme di multipli di vettori. Dall&#39;altro sono anche <strong>la più generale</strong>: con le proprietà (SV) ogni espressione costruita con somme e prodotti per scalare (comunque complicata, con parentesi annidate) si riduce a una combinazione lineare. Le useremo per definire i sottospazi generati (Lezione 7), la dipendenza lineare (Lezione 8), le basi e le coordinate.</p>
 <h2>Definizione</h2>
-<p><strong>Definizione 6.1.</strong> Sia <span class="m">V</span> uno spazio vettoriale su <span class="m">K</span>, e siano <span class="m">\mathbf v_1,\dots,\mathbf v_n\in V</span>, <span class="m">\lambda_1,\dots,\lambda_n\in K</span>. La scrittura
+<p><strong>Definizione 6.1.</strong> Sia <span class="m">V</span> uno spazio vettoriale su <span class="m">K</span>, e siano <span class="m">\mathbf v_1,\dots,\mathbf v_n\in V</span> e <span class="m">\lambda_1,\dots,\lambda_n\in K</span>. La scrittura
 <span class="m d">\lambda_1\mathbf v_1+\lambda_2\mathbf v_2+\dots+\lambda_n\mathbf v_n</span>
-è una <strong>combinazione lineare</strong> dei vettori <span class="m">\mathbf v_i</span>; gli scalari <span class="m">\lambda_i</span> sono i <strong>coefficienti</strong>; il vettore <span class="m">\mathbf v=\lambda_1\mathbf v_1+\dots+\lambda_n\mathbf v_n</span> è il <strong>risultato</strong> (o valore) della combinazione.</p>
-<p>Zero vettori danno una sola combinazione lineare, il cui risultato è il vettore nullo.</p>
+è detta <strong>combinazione lineare</strong> dei vettori <span class="m">\mathbf v_i</span>. Gli scalari <span class="m">\lambda_i</span> sono i <strong>coefficienti</strong> della combinazione. Il vettore
+<span class="m d">\mathbf v=\lambda_1\mathbf v_1+\lambda_2\mathbf v_2+\dots+\lambda_n\mathbf v_n</span>
+è il <strong>risultato</strong> (o <strong>valore</strong>) della combinazione lineare.</p>
+<p>Caso limite: <strong>zero vettori</strong> danno una sola combinazione lineare (la &quot;somma vuota&quot;), il cui risultato è il vettore nullo <span class="m">\mathbf 0</span>.</p>
+<p>Intuizione geometrica: con due vettori geometrici <span class="m">\mathbf v,\mathbf w</span> non paralleli, una combinazione <span class="m">a\mathbf v+b\mathbf w</span> si ottiene allungando/accorciando (ed eventualmente ribaltando) i due vettori e poi sommandoli con il parallelogramma; al variare di <span class="m">a,b</span> i risultati descrivono tutto il piano che contiene <span class="m">\mathbf v</span> e <span class="m">\mathbf w</span>.</p>
 <div class="callout esempio">
 
+<p><strong>Esempio 6.2.</strong></p>
 <ol>
-<li>Con i vettori geometrici <span class="m">\mathbf v,\mathbf w</span> e coefficienti <span class="m">3</span> e <span class="m">2</span> si ha la combinazione <span class="m">3\mathbf v+2\mathbf w</span>, il cui risultato <span class="m">\mathbf u</span> si costruisce con il parallelogramma su <span class="m">3\mathbf v</span> e <span class="m">2\mathbf w</span>.</li>
-<li><span class="m">2\begin{pmatrix}2\\3\end{pmatrix}+0\begin{pmatrix}-1\\0\end{pmatrix}+(-3)\begin{pmatrix}1\\1\end{pmatrix}</span> ha risultato <span class="m">\begin{pmatrix}1\\3\end{pmatrix}</span>. La combinazione <span class="m">2\begin{pmatrix}2\\3\end{pmatrix}+(-3)\begin{pmatrix}1\\1\end{pmatrix}</span> è <strong>diversa</strong> ma ha lo <strong>stesso risultato</strong>.</li>
+<li>Con i vettori geometrici <span class="m">\mathbf v,\mathbf w</span> e coefficienti <span class="m">3</span> e <span class="m">2</span> si ha la combinazione <span class="m">3\mathbf v+2\mathbf w</span>: il risultato <span class="m">\mathbf u</span> è la diagonale del parallelogramma costruito su <span class="m">3\mathbf v</span> (il triplo di <span class="m">\mathbf v</span>) e <span class="m">2\mathbf w</span> (il doppio di <span class="m">\mathbf w</span>).</li>
+<li>Combinazione di <span class="m">{}^t(2\ 3)</span>, <span class="m">{}^t(-1\ 0)</span>, <span class="m">{}^t(1\ 1)</span> con coefficienti <span class="m">2,0,-3</span>:
+<span class="m d">2\begin{pmatrix}2\\3\end{pmatrix}+0\begin{pmatrix}-1\\0\end{pmatrix}+(-3)\begin{pmatrix}1\\1\end{pmatrix}=\begin{pmatrix}4+0-3\\6+0-3\end{pmatrix}=\begin{pmatrix}1\\3\end{pmatrix}.</span>
+La scrittura <span class="m">2\begin{pmatrix}2\\3\end{pmatrix}+(-3)\begin{pmatrix}1\\1\end{pmatrix}</span> è una combinazione lineare <strong>diversa</strong> (coinvolge solo due vettori) ma ha <strong>lo stesso risultato</strong> <span class="m">{}^t(1\ 3)</span>.</li>
 <li><span class="m">0\begin{pmatrix}2\\3\end{pmatrix}+0\begin{pmatrix}-1\\0\end{pmatrix}+0\begin{pmatrix}1\\1\end{pmatrix}=\mathbf 0_2</span>.</li>
 </ol>
 </div>
 
-<h2>Combinazione e risultato</h2>
-<p><strong>Osservazione 6.3.</strong> Una combinazione lineare <strong>non è solo il suo risultato</strong>: combinazioni diverse possono avere lo stesso risultato (anche se graficamente si scrivono nello stesso modo, <span class="m">\lambda_1\mathbf v_1+\dots+\lambda_n\mathbf v_n</span>).</p>
+<h2>Combinazione lineare e risultato non sono la stessa cosa</h2>
+<p><strong>Osservazione 6.3.</strong> Una combinazione lineare <strong>non è solo il suo risultato</strong> <span class="m">\mathbf v</span>: è la scrittura con i suoi vettori e i suoi coefficienti. Combinazioni diverse possono avere lo stesso risultato. Graficamente però combinazione e risultato si scrivono nello stesso modo, <span class="m">\lambda_1\mathbf v_1+\dots+\lambda_n\mathbf v_n</span>: dal contesto si capisce se si parla della scrittura o del vettore che essa produce.</p>
 <div class="callout esempio">
 
-<p>(Es. 6.4) La combinazione con coefficienti nulli dell&#39;esempio 3 ha lo stesso risultato <span class="m">\mathbf 0_2</span> della combinazione con coefficienti non nulli <span class="m">1,-1,-3</span>:
-<span class="m d">1\begin{pmatrix}2\\3\end{pmatrix}-1\begin{pmatrix}-1\\0\end{pmatrix}-3\begin{pmatrix}1\\1\end{pmatrix}=\begin{pmatrix}2+1-3\\3-0-3\end{pmatrix}=\begin{pmatrix}0\\0\end{pmatrix}.</span></p>
+<p><strong>Esempio 6.4.</strong> La combinazione dell&#39;Esempio 6.2-3, con coefficienti tutti nulli, ha lo stesso risultato <span class="m">\mathbf 0_2</span> della combinazione degli stessi vettori con coefficienti <strong>non nulli</strong> <span class="m">1,-1,-3</span>:
+<span class="m d">1\begin{pmatrix}2\\3\end{pmatrix}+(-1)\begin{pmatrix}-1\\0\end{pmatrix}+(-3)\begin{pmatrix}1\\1\end{pmatrix}=\begin{pmatrix}2+1-3\\3-0-3\end{pmatrix}=\begin{pmatrix}0\\0\end{pmatrix}.</span>
+Sommando questa combinazione &quot;nulla&quot; a quella dell&#39;Esempio 6.2-2 si ottengono infinite altre combinazioni con risultato <span class="m">{}^t(1\ 3)</span>: ad esempio con coefficienti <span class="m">2+1,\ 0-1,\ -3-3</span>, cioè <span class="m">3\,{}^t(2\ 3)-{}^t(-1\ 0)-6\,{}^t(1\ 1)={}^t(6+1-6\ \ 9-0-6)={}^t(1\ 3)</span>. Allo stesso modo <span class="m">(-1){}^t(2\ 3)+1\,{}^t(-1\ 0)+3\,{}^t(1\ 1)=\mathbf 0_2</span> è un&#39;altra combinazione con risultato nullo.</p>
+<p>Questo fenomeno (più combinazioni con lo stesso risultato) è esattamente la <strong>dipendenza lineare</strong> della Lezione 8.</p>
 </div>
 
-<p><strong>Osservazione 6.5.</strong> Le combinazioni lineari di un solo vettore <span class="m">\mathbf v</span> sono <span class="m">\lambda\mathbf v</span>: i loro risultati sono i <strong>multipli</strong> di <span class="m">\mathbf v</span>.</p>
-<p>Notazione: i segni meno nei coefficienti si scrivono senza parentesi, <span class="m">-2\mathbf v-3\mathbf w</span> invece di <span class="m">(-2)\mathbf v+(-3)\mathbf w</span>.</p>
-<div class="callout sintesi">
+<p><strong>Osservazione 6.5.</strong> Le combinazioni lineari di <strong>un solo</strong> vettore <span class="m">\mathbf v</span> sono le scritture <span class="m">\lambda\mathbf v</span> con <span class="m">\lambda\in K</span>: i loro risultati sono i <strong>multipli</strong> di <span class="m">\mathbf v</span> (per un vettore geometrico non nullo, i vettori della retta per l&#39;origine con la direzione di <span class="m">\mathbf v</span>).</p>
+<p><strong>Notazione 6.6.</strong> I segni meno nei coefficienti si scrivono senza parentesi: <span class="m">-2\mathbf v-3\mathbf w</span> invece di <span class="m">(-2)\mathbf v+(-3)\mathbf w</span>.</p>
+<h2>Calcolare il risultato</h2>
+<p>Per calcolare il risultato di una combinazione lineare di vettori colonna: si moltiplica ogni vettore per il suo coefficiente (coordinata per coordinata), poi si sommano i vettori ottenuti coordinata per coordinata.</p>
+<div class="callout esempio">
 
-<p>Per calcolare il risultato: moltiplicare ogni vettore per il suo coefficiente e sommare coordinata per coordinata. Per sapere se un vettore è risultato di una combinazione di vettori dati: scrivere l&#39;equazione in forma vettoriale con coefficienti incogniti e risolvere il sistema.</p>
+<p><strong>Combinazione di <span class="m">{}^t(2\ 3\ -1)</span>, <span class="m">{}^t(4\ -2\ 0)</span>, <span class="m">{}^t(1\ 0\ -3)</span> con coefficienti <span class="m">-3,1,0</span>.</strong>
+<span class="m d">-3\begin{pmatrix}2\\3\\-1\end{pmatrix}+1\begin{pmatrix}4\\-2\\0\end{pmatrix}+0\begin{pmatrix}1\\0\\-3\end{pmatrix}=\begin{pmatrix}-6\\-9\\3\end{pmatrix}+\begin{pmatrix}4\\-2\\0\end{pmatrix}+\begin{pmatrix}0\\0\\0\end{pmatrix}=\begin{pmatrix}-2\\-11\\3\end{pmatrix}.</span>
+Errori tipici: dimenticare che <span class="m">-3\cdot(-1)=+3</span>, oppure scrivere i coefficienti al posto del risultato.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Combinazione di polinomi (Es. 6.2).</strong> <span class="m">1\cdot(x^2-x)+(-1)(2x+3)+2(2x^2+3)=x^2-x-2x-3+4x^2+6=5x^2-3x+3</span>.</p>
+<p>Cerchiamo <strong>un&#39;altra</strong> combinazione degli stessi polinomi con lo stesso risultato. Imponiamo <span class="m">a_1(x^2-x)+a_2(2x+3)+a_3(2x^2+3)=5x^2-3x+3</span>; raccogliendo:
+<span class="m d">(a_1+2a_3-5)x^2+(-a_1+2a_2+3)x+(3a_2+3a_3-3)=0,</span>
+cioè il sistema <span class="m">a_1+2a_3=5</span>, <span class="m">-a_1+2a_2=-3</span>, <span class="m">3a_2+3a_3=3</span>. Posto <span class="m">a_2=\alpha</span>: dalla terza <span class="m">a_3=1-\alpha</span>, dalla prima <span class="m">a_1=5-2(1-\alpha)=3+2\alpha</span>; la seconda è verificata: <span class="m">-(3+2\alpha)+2\alpha=-3</span> ✓. Le soluzioni sono <span class="m">(a_1,a_2,a_3)=(3+2\alpha,\ \alpha,\ 1-\alpha)</span>, <span class="m">\alpha\in\mathbb R</span>. La combinazione data corrisponde ad <span class="m">\alpha=-1</span>; scegliendo <span class="m">\alpha=0</span> si ottiene la combinazione diversa <span class="m">3(x^2-x)+0(2x+3)+1(2x^2+3)</span>, che dà ancora <span class="m">3x^2-3x+2x^2+3=5x^2-3x+3</span>.</p>
+</div>
+
+<h2>Trovare una combinazione con un risultato dato</h2>
+<p>Per sapere se un vettore <span class="m">\mathbf b</span> è il risultato di una combinazione lineare di <span class="m">\mathbf v_1,\dots,\mathbf v_n</span> (e trovarla):</p>
+<ol>
+<li>si scrive la combinazione generica con <strong>coefficienti incogniti</strong> <span class="m">a_1\mathbf v_1+\dots+a_n\mathbf v_n</span>;</li>
+<li>si impone che sia uguale a <span class="m">\mathbf b</span>: è un&#39;<strong>equazione in forma vettoriale</strong> (Lezione 5);</li>
+<li>si passa al <strong>sistema</strong> (una equazione per coordinata) e lo si risolve;</li>
+<li>se il sistema non ha soluzioni, <span class="m">\mathbf b</span> non si ottiene; se ne ha una, la combinazione è unica; se ne ha infinite, si sceglie un valore del parametro.</li>
+</ol>
+<div class="callout esempio">
+
+<p><strong>Es. 6.1.</strong> Trovare una combinazione di <span class="m">{}^t(0\ 2)</span>, <span class="m">{}^t(1\ 3)</span>, <span class="m">{}^t(-3\ 4)</span> con risultato <span class="m">{}^t(5\ -5)</span>.
+<span class="m d">a\begin{pmatrix}0\\2\end{pmatrix}+b\begin{pmatrix}1\\3\end{pmatrix}+c\begin{pmatrix}-3\\4\end{pmatrix}=\begin{pmatrix}5\\-5\end{pmatrix}\iff\begin{cases}b-3c=5\\2a+3b+4c=-5\end{cases}</span>
+Posto <span class="m">c=\gamma</span>: <span class="m">b=5+3\gamma</span>; poi <span class="m">2a=-5-3(5+3\gamma)-4\gamma=-20-13\gamma</span>, <span class="m">a=\frac{-20-13\gamma}2</span>. Con <span class="m">\gamma=-2</span>: <span class="m">a=\frac{-20+26}2=3</span>, <span class="m">b=-1</span>, <span class="m">c=-2</span>. Verifica:
+<span class="m d">3\begin{pmatrix}0\\2\end{pmatrix}-\begin{pmatrix}1\\3\end{pmatrix}-2\begin{pmatrix}-3\\4\end{pmatrix}=\begin{pmatrix}0-1+6\\6-3-8\end{pmatrix}=\begin{pmatrix}5\\-5\end{pmatrix}\ \checkmark</span></p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Es. 6.5.</strong> Combinazione di <span class="m">{}^t(3\ 1\ 0)</span>, <span class="m">{}^t(2\ 0\ 1)</span>, <span class="m">{}^t(-1\ 1\ -3)</span> con risultato <span class="m">{}^t(2\ 0\ 3)</span>. Il sistema è
+<span class="m d">\begin{cases}3a+2b-c=2\\a+c=0\\b-3c=3\end{cases}</span>
+Dalla seconda <span class="m">a=-c</span>, dalla terza <span class="m">b=3+3c</span>; nella prima <span class="m">-3c+6+6c-c=2</span>, cioè <span class="m">2c=-4</span>, <span class="m">c=-2</span>, quindi <span class="m">a=2</span>, <span class="m">b=-3</span>. Combinazione (unica): <span class="m">2\,{}^t(3\ 1\ 0)-3\,{}^t(2\ 0\ 1)-2\,{}^t(-1\ 1\ -3)={}^t(6-6+2\ \ 2-0-2\ \ 0-3+6)={}^t(2\ 0\ 3)</span> ✓.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Tipo quiz.</strong></p>
+<ol>
+<li><em>Quale combinazione di <span class="m">{}^t(2\ 3)</span> e <span class="m">{}^t(4\ 6)</span> dà il vettore nullo?</em> Il secondo è il doppio del primo, quindi <span class="m">2\,{}^t(2\ 3)-{}^t(4\ 6)={}^t(4-4\ \ 6-6)=\mathbf 0</span>. Si controllano le altre proposte calcolando: ad esempio <span class="m">{}^t(2\ 3)-2\,{}^t(4\ 6)={}^t(-6\ -9)\ne\mathbf 0</span>.</li>
+<li><em>Quale coppia può dare <span class="m">{}^t(4\ 5\ 1)</span>?</em> Si risolve il sistema per ogni coppia. Con <span class="m">{}^t(2\ 3\ -1)</span> e <span class="m">{}^t(1\ 1\ 1)</span>: <span class="m">2a+b=4</span>, <span class="m">3a+b=5</span> danno <span class="m">a=1</span>, <span class="m">b=2</span>, e la terza coordinata <span class="m">-1+2=1</span> torna. Con <span class="m">{}^t(1\ 1\ -1)</span> e <span class="m">{}^t(2\ 2\ -2)</span> invece la prima e la seconda coordinata di ogni combinazione sono sempre uguali, mentre in <span class="m">{}^t(4\ 5\ 1)</span> sono <span class="m">4\ne5</span>: impossibile. Con <span class="m">{}^t(4\ 5\ -1)</span> e <span class="m">\mathbf 0</span> si ottengono solo i multipli di <span class="m">{}^t(4\ 5\ -1)</span>, e <span class="m">{}^t(4\ 5\ 1)</span> non lo è.</li>
+<li><em>Esiste una combinazione di <span class="m">{}^t(-1\ 3)</span> e <span class="m">{}^t(-2\ 6)</span> con coefficienti non tutti nulli e risultato <span class="m">\mathbf 0</span>?</em> Sì: <span class="m">{}^t(-2\ 6)=2\,{}^t(-1\ 3)</span>, quindi <span class="m">2\,{}^t(-1\ 3)-{}^t(-2\ 6)=\mathbf 0</span>.</li>
+</ol>
 </div>
 
 <div class="callout esame">
 
-<p>Domanda aperta: <strong>parlare delle combinazioni lineari</strong> (definizione, coefficienti, risultato, combinazioni diverse con lo stesso risultato, multipli). Nei quiz: calcolare il risultato di una combinazione, trovare la combinazione che dà il vettore nullo, capire se un vettore si ottiene da una coppia data.</p>
+<p>Domanda aperta: <strong>parlare delle combinazioni lineari</strong>. Schema:</p>
+<ol>
+<li>definizione (vettori <span class="m">\mathbf v_i</span>, coefficienti <span class="m">\lambda_i</span>, risultato o valore); combinazione di zero vettori con risultato <span class="m">\mathbf 0</span>;</li>
+<li>esempi: vettori geometrici (<span class="m">3\mathbf v+2\mathbf w</span> col parallelogramma), vettori colonna con il calcolo, polinomi;</li>
+<li>distinzione tra combinazione e risultato (Oss. 6.3), con l&#39;esempio di combinazioni diverse con lo stesso risultato, anche <span class="m">\mathbf 0</span> con coefficienti non nulli (Es. 6.4);</li>
+<li>le combinazioni di un solo vettore danno i multipli (Oss. 6.5);</li>
+<li>come si cerca una combinazione con risultato assegnato (equazione in forma vettoriale → sistema); collegamento con Span (Lezione 7) e dipendenza lineare (Lezione 8).</li>
+</ol>
+<p>Nei quiz: calcolare il risultato di una combinazione, trovare la combinazione che dà il vettore nullo, capire se un vettore si ottiene da una coppia data.</p>
+</div>
+
+<div class="callout sintesi">
+
+<ul>
+<li>Combinazione lineare: <span class="m">\lambda_1\mathbf v_1+\dots+\lambda_n\mathbf v_n</span>; coefficienti <span class="m">\lambda_i</span>; risultato = il vettore che si ottiene.</li>
+<li>Combinazioni diverse possono avere lo stesso risultato (anche <span class="m">\mathbf 0</span> con coefficienti non nulli).</li>
+<li>Combinazioni di un vettore = multipli.</li>
+<li>Risultato: moltiplicare e sommare coordinata per coordinata. Risultato assegnato: coefficienti incogniti → sistema.</li>
+</ul>
 </div>

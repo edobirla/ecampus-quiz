@@ -1,179 +1,286 @@
 <h1 id="lez-13">Lezione 13 — Numero di moli e formule chimiche</h1>
 <h2 id="lez-13-perche">Perché questa lezione esiste</h2>
-<p>Fin qui il corso ha lavorato su singoli atomi e singole molecole. Ma in laboratorio
-non si pesano atomi: si pesano <strong>grammi</strong>. Serve un ponte fra la scala atomica
-(masse dell&#39;ordine di <span class="m">10^{-23}</span> g, ingestibili) e la scala macroscopica del
-laboratorio (grammi, pesabili con una bilancia). Quel ponte è la <strong>mole</strong>, e questa
-lezione ne fissa la meccanica: come si passa da massa a numero di particelle e
-viceversa, e come si scrivono le formule chimiche in modo coerente con le masse.</p>
+<p>Fin qui il corso ha lavorato su singoli atomi e singole molecole. Ma in laboratorio non si pesano atomi: si pesano
+<strong>grammi</strong>. Serve un ponte fra la scala atomica (masse dell&#39;ordine di <span class="m">10^{-23}</span> g, ingestibili) e la scala macroscopica
+del laboratorio (grammi, pesabili con una bilancia). Quel ponte è la <strong>mole</strong>, e questa lezione ne fissa la meccanica:
+come si passa da massa a numero di particelle e viceversa, e come si scrivono le formule chimiche in modo coerente con
+le masse.</p>
+<p>Gli argomenti della dispensa sono due: (1) riepilogo sui concetti di <strong>massa atomica, mole, massa molare</strong>; (2) concetto
+di <strong>formula molecolare</strong> e <strong>formula minima</strong> (con cenni sulle formule di struttura). Sono la base di tutta la
+stechiometria: la <a href="#/teoria/chimica/14/lez-14">Lezione 14</a> (bilanciamento) li usa a ogni riga.</p>
 <h2 id="lez-13-massanontorna">Perché la massa &quot;non torna&quot; a livello atomico</h2>
+<p>La dispensa parte da una domanda: <strong>quanto pesa un atomo di carbonio-12?</strong> L&#39;atomo <span class="m">^{12}\chem{C}</span> ha 6 protoni, 6
+neutroni e 6 elettroni. Verrebbe da sommare le loro masse:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Particella</th>
+<th align="left">Massa (g)</th>
+<th align="left">×6</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">protone</td>
+<td align="left"><span class="m">1{,}6726\times10^{-24}</span></td>
+<td align="left"><span class="m">10{,}036\times10^{-24}</span></td>
+</tr>
+<tr>
+<td align="left">neutrone</td>
+<td align="left"><span class="m">1{,}6749\times10^{-24}</span></td>
+<td align="left"><span class="m">10{,}049\times10^{-24}</span></td>
+</tr>
+<tr>
+<td align="left">elettrone</td>
+<td align="left"><span class="m">9{,}109\times10^{-28}</span></td>
+<td align="left"><span class="m">0{,}005\times10^{-24}</span></td>
+</tr>
+<tr>
+<td align="left"><strong>somma</strong></td>
+<td align="left"></td>
+<td align="left"><span class="m">\mathbf{2{,}0090\times10^{-23}}</span></td>
+</tr>
+</tbody></table>
+<p>Ma la massa misurata di un atomo di <span class="m">^{12}\chem{C}</span> è <span class="m">1{,}992684\times10^{-23}</span> g: <strong>meno</strong> della somma, di circa
+<span class="m">1{,}6\times10^{-25}</span> g (lo 0,8%).</p>
 <div class="callout attenzione">
 
-<p><strong>Alla scala macroscopica</strong>, la massa complessiva di un oggetto composto
-<strong>coincide</strong> con la somma delle masse dei pezzi che lo compongono (due pesi di 1 kg
-insieme pesano 2 kg, sempre).</p>
-<p><strong>Alla scala atomica NON è così</strong>: la massa effettiva di un atomo <strong>non coincide</strong>
-con la somma delle masse dei protoni, neutroni ed elettroni che lo costituiscono.
-La differenza è il cosiddetto <strong>difetto di massa</strong>, legato all&#39;energia di legame
-nucleare (<span class="m">E = mc^2</span>) — argomento che il corso non sviluppa oltre, ma che spiega
-perché il numero che si legge sulla tavola periodica non è &quot;banalmente&quot; la somma
-dei numeri di massa dei nucleoni.</p>
+<p><strong>Alla scala macroscopica</strong>, la massa complessiva di un oggetto composto <strong>coincide</strong> con la somma delle masse dei pezzi
+che lo compongono (due pesi di 1 kg insieme pesano 2 kg, sempre).</p>
+<p><strong>Alla scala atomica NON è così</strong>: la massa effettiva di un atomo <strong>non coincide</strong> con la somma delle masse dei protoni,
+neutroni ed elettroni che lo costituiscono. La differenza è il cosiddetto <strong>difetto di massa</strong>, legato all&#39;energia di
+legame nucleare (<span class="m">E = mc^2</span>) — argomento che il corso non sviluppa oltre, ma che spiega perché il numero che si legge
+sulla tavola periodica non è &quot;banalmente&quot; la somma dei numeri di massa dei nucleoni.</p>
 </div>
 
-<p>Per il carbonio-12, la massa effettiva misurata di un singolo atomo è
-<span class="m">1{,}992684\times10^{-23}</span> g — un numero minuscolo, scomodo da maneggiare in
-laboratorio.</p>
+<p>Il senso fisico: quando protoni e neutroni si legano nel nucleo liberano un&#39;enorme energia (la stessa idea del «legame
+che libera energia» della <a href="#/teoria/chimica/9/lez-09-perche">Lezione 09</a>, ma con forze nucleari). Per la relazione di Einstein
+<span class="m">E = mc^2</span> (<span class="m">E</span> energia in J, <span class="m">m</span> massa in kg, <span class="m">c = 3{,}00\times10^8</span> m/s velocità della luce) un sistema che ha perso
+energia ha anche perso massa: <span class="m">\Delta m = \Delta E/c^2</span>.</p>
+<p>Per il carbonio-12, dunque, la massa effettiva misurata di un singolo atomo è <span class="m">1{,}992684\times10^{-23}</span> g — un numero
+minuscolo, scomodo da maneggiare in laboratorio. Ed è proprio questo numero, non la somma delle particelle, che si usa.</p>
 <h2 id="lez-13-avogadro">Il numero di Avogadro come fattore di conversione</h2>
-<p>La domanda chiave: <strong>a quanti atomi corrispondono 12 g esatti di carbonio-12?</strong></p>
+<p>La domanda chiave: <strong>a quanti atomi corrispondono 12 g esatti di carbonio-12?</strong> (La dispensa la presenta come «a chi
+assomiglia questo numero?».) Basta dividere la massa del campione per la massa di un atomo:</p>
 <div class="callout formula">
 
 <p><span class="m d">N_A = \frac{\text{massa in grammi}}{\text{massa effettiva di un singolo atomo}}
-= \frac{12\ \mathrm{g}}{1{,}992684\times10^{-23}\ \mathrm{g}}
-= 6{,}022029\times10^{23}</span></p>
+= \frac{12\ \mathrm{g}}{1{,}992684\times10^{-23}\ \mathrm{g}} = 6{,}022029\times10^{23}</span></p>
 </div>
 
-<p>Questo numero, il <strong>numero di Avogadro</strong> <span class="m">N_A \approx 6{,}022\times10^{23}</span>, non è
-arbitrario: è definito in modo che 12 g esatti di carbonio-12 contengano esattamente
-<span class="m">N_A</span> atomi. È il fattore di conversione fra la scala macroscopica (grammi) e la
-scala atomica (numero di particelle).</p>
+<p>Questo numero, il <strong>numero di Avogadro</strong> <span class="m">N_A \approx 6{,}022\times10^{23}</span>, non è arbitrario: è definito in modo che
+12 g esatti di carbonio-12 contengano esattamente <span class="m">N_A</span> atomi. È il fattore di conversione fra la scala macroscopica
+(grammi) e la scala atomica (numero di particelle). Come costante fisica si scrive con unità
+<span class="m">N_A = 6{,}022\times10^{23}\ \text{mol}^{-1}</span> («particelle per mole»).</p>
+<p>Per farsi un&#39;idea della grandezza: <span class="m">6\times10^{23}</span> granelli di sabbia coprirebbero un paese intero con uno strato di
+decine di metri. Eppure 12 g di carbonio (un cucchiaio di grafite) ne contengono tanti.</p>
 <h2 id="lez-13-mole">Definizione di mole</h2>
 <div class="callout formula">
 
-<p><strong>Una mole</strong> è la quantità di materia che contiene un numero di Avogadro di
-particelle — qualunque esse siano: atomi, molecole, ioni, o in linea di principio
-granelli di sabbia.</p>
+<p><strong>Una mole</strong> è la quantità di materia che contiene un numero di Avogadro di particelle — qualunque esse siano: atomi,
+molecole, ioni, o in linea di principio granelli di sabbia.</p>
 </div>
 
+<p>La mole è come la «dozzina»: una dozzina sono 12 oggetti, qualunque essi siano; una mole sono <span class="m">6{,}022\times10^{23}</span>
+oggetti. Maneggiare una mole di «qualcosa» equivale a maneggiare <span class="m">6{,}02\times10^{23}</span> particelle di quel «qualcosa». È
+l&#39;unità di misura SI della <strong>quantità di sostanza</strong> (simbolo mol). Quando si parla di moli bisogna sempre dire <strong>di che
+cosa</strong>: moli di atomi, di molecole, di ioni.</p>
 <div class="callout esempio">
 
 <ul>
 <li>1 mole di atomi di O <span class="m">= 6{,}02\times10^{23}</span> atomi di O.</li>
-<li>2 moli di molecole di <span class="m">\chem{Cl_2}</span> <span class="m">= 2\times6{,}02\times10^{23}</span> molecole di
-<span class="m">\chem{Cl_2}</span>.</li>
-<li><strong>Attenzione alla differenza fra moli di molecole e moli di atomi</strong>: in 1 mole di
-<span class="m">\chem{Cl_2}</span> ci sono 2 moli di <strong>atomi</strong> di Cl (ogni molecola ha due atomi).
-In 1 mole di <span class="m">\chem{CH_4}</span> ci sono 1 mole di atomi di C <strong>e</strong> 4 moli di atomi di H.
-In 1 mole di <span class="m">\chem{NaCl}</span> — che <strong>non è una molecola</strong> ma un composto ionico,
-vedi sotto — ci sono 1 mole di atomi di Na e 1 mole di atomi di Cl.</li>
+<li>2 moli di molecole di <span class="m">\chem{Cl_2}</span> <span class="m">= 2\times6{,}02\times10^{23}</span> molecole di <span class="m">\chem{Cl_2}</span>.</li>
+<li>½ mole di granelli di zucchero <span class="m">= 0{,}5\times6{,}02\times10^{23}</span> granelli.</li>
+<li><strong>Attenzione alla differenza fra moli di molecole e moli di atomi</strong>: in 1 mole di <span class="m">\chem{Cl_2}</span> ci sono 2 moli di
+<strong>atomi</strong> di Cl (ogni molecola ha due atomi). In 1 mole di <span class="m">\chem{CH_4}</span> ci sono 1 mole di atomi di C <strong>e</strong> 4 moli di
+atomi di H. In 1 mole di <span class="m">\chem{NaCl}</span> — che <strong>non è una molecola</strong> ma un composto ionico, vedi sotto — ci sono 1
+mole di atomi di Na e 1 mole di atomi di Cl.</li>
 </ul>
 </div>
 
 <h2 id="lez-13-uma-massamolare">Unità di massa atomica e massa molare</h2>
+<p>Per le masse degli atomi si usa un&#39;unità adatta alla loro scala.</p>
 <div class="callout formula">
 
-<p><strong>Unità di massa atomica (u.m.a.)</strong>: <span class="m">1\ \mathrm{u.m.a.} = 1{,}66057\times10^{-24}</span> g
-(circa <span class="m">1/12</span> della massa di un atomo di carbonio-12).</p>
+<p><strong>Unità di massa atomica (u.m.a.)</strong>: <span class="m">1\ \mathrm{u.m.a.} = 1{,}66057\times10^{-24}</span> g, definita come <span class="m">1/12</span> della
+massa di un atomo di carbonio-12.</p>
 </div>
 
+<p>Verifica: <span class="m">1{,}992684\times10^{-23}\ \text{g} / 12 = 1{,}66057\times10^{-24}</span> g. Nota anche che
+<span class="m">1\ \text{u.m.a.} = 1/N_A</span> grammi (<span class="m">1/6{,}022\times10^{23} = 1{,}6606\times10^{-24}</span>): non è un caso, ed è il motivo
+per cui il passaggio da u.m.a. a grammi per mole è immediato (vedi sotto). Si usa anche il simbolo u o Da (dalton).</p>
+<p>La <strong>massa atomica relativa</strong> di un elemento (quella della tavola periodica) è la massa media di un suo atomo espressa in
+u.m.a.: un numero puro che dice quante volte l&#39;atomo è più pesante di <span class="m">1/12</span> di <span class="m">^{12}\chem{C}</span>.</p>
 <div class="callout esempio">
 
-<p><strong>Perché il carbonio pesa 12,011 sulla tavola periodica — non 12.</strong> Si calcola la
-massa di <strong>una mole</strong> di atomi di carbonio a partire dalla massa di un singolo
-atomo:</p>
+<p><strong>Perché il carbonio pesa 12,011 sulla tavola periodica — non 12.</strong> Si calcola la massa di <strong>una mole</strong> di atomi di
+carbonio a partire dalla massa di un singolo atomo:</p>
 <p><span class="m d">\underbrace{(6{,}022\times10^{23}\ \text{atomi})}_{N_A}
 \times \underbrace{(12{,}011\ \mathrm{u.m.a.})}_{\text{massa media di un atomo}}
 \times \underbrace{(1{,}66057\times10^{-24}\ \mathrm{g/u.m.a.})}_{\text{conversione}}
 = 12{,}011\ \mathrm{g}</span></p>
-<p>Il numero <strong>12,011</strong> (non 12 esatto) è la massa atomica <strong>media</strong> del carbonio
-naturale, pesata sull&#39;abbondanza dei suoi isotopi (soprattutto <span class="m">^{12}</span>C e una
-piccola frazione di <span class="m">^{13}</span>C) — coerente con quanto già visto sugli isotopi in
+<p>(il prodotto <span class="m">6{,}022\times10^{23}\cdot1{,}66057\times10^{-24} = 1{,}0000</span>: per questo il numero resta 12,011).</p>
+<p>Il numero <strong>12,011</strong> (non 12 esatto) è la massa atomica <strong>media</strong> del carbonio naturale, pesata sull&#39;abbondanza dei suoi
+isotopi (soprattutto <span class="m">^{12}</span>C e una piccola frazione di <span class="m">^{13}</span>C) — coerente con quanto già visto sugli isotopi in
 <a href="#/teoria/chimica/3/lez-03">Lezione 03</a>. Il valore 12,011 si legge in <strong>due modi equivalenti</strong>:</p>
 <ul>
 <li><strong>1 atomo</strong> di C ha una massa (relativa, media) di 12,011 u.m.a.;</li>
 <li><strong>1 mole</strong> di atomi di C ha una massa di 12,011 g.</li>
 </ul>
-<p>Si dice che la <strong>massa molare</strong> del carbonio è <span class="m">12{,}011\ \mathrm{g/mol}</span>: il numero
-sulla tavola periodica, letto in grammi per mole, <strong>è già</strong> la massa molare —
-nessuna conversione ulteriore serve.</p>
+<p>Si dice che la <strong>massa molare</strong> del carbonio è <span class="m">12{,}011\ \mathrm{g/mol}</span>: il numero sulla tavola periodica, letto in
+grammi per mole, <strong>è già</strong> la massa molare — nessuna conversione ulteriore serve.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>La media isotopica, fatta.</strong> Il carbonio naturale è circa il 98,93% <span class="m">^{12}</span>C (massa 12,0000 u.m.a.) e l&#39;1,07% <span class="m">^{13}</span>C
+(massa 13,0034 u.m.a.):
+<span class="m d">0{,}9893\cdot12{,}0000 + 0{,}0107\cdot13{,}0034 = 11{,}8716 + 0{,}1391 = 12{,}011\ \text{u.m.a.}</span></p>
 </div>
 
 <div class="callout formula">
 
 <p><span class="m d">n\ (\text{moli}) = \frac{m\ (\text{massa in grammi})}{M\ (\text{massa molare, g/mol})}
-\qquad\Longleftrightarrow\qquad
-N\ (\text{numero di particelle}) = n \times N_A</span></p>
+\qquad\Longleftrightarrow\qquad N\ (\text{numero di particelle}) = n \times N_A</span></p>
+<p><span class="m">n</span> in mol, <span class="m">m</span> in g, <span class="m">M</span> in g/mol, <span class="m">N</span> numero puro, <span class="m">N_A = 6{,}022\times10^{23}\ \text{mol}^{-1}</span>. Combinando:
+massa di <strong>una</strong> particella <span class="m">= M/N_A</span>.</p>
 </div>
 
+<p>Il «triangolo» delle conversioni: <strong>grammi</strong> <span class="m">\xrightarrow{\ \div M\ }</span> <strong>moli</strong> <span class="m">\xrightarrow{\ \times N_A\ }</span>
+<strong>particelle</strong>, e all&#39;indietro moltiplicando per <span class="m">M</span> e dividendo per <span class="m">N_A</span>. Le moli stanno sempre al centro: non si
+passa mai direttamente da grammi a particelle senza passare per le moli.</p>
 <h2 id="lez-13-massa-composti">Massa molare di composti: molecolari vs ionici</h2>
-<p>Per un composto <strong>molecolare</strong>, la massa molare è la somma delle masse atomiche
-dei singoli atomi che compongono la molecola (pesate per gli indici della formula).
-Per un composto <strong>ionico</strong>, il concetto è formalmente lo stesso ma il nome cambia:</p>
+<p>Per un composto <strong>molecolare</strong>, la massa molare è la somma delle masse atomiche dei singoli atomi che compongono la
+molecola (pesate per gli indici della formula). Per esempio, per l&#39;acqua:
+<span class="m">M(\chem{H_2O}) = 2\cdot1{,}0079 + 15{,}9994 = 18{,}015</span> g/mol. Lo stesso numero in u.m.a. è la <strong>massa molecolare</strong>
+(o «peso molecolare»): una molecola d&#39;acqua ha massa 18,015 u.m.a.</p>
+<p>Per un composto <strong>ionico</strong>, il concetto è formalmente lo stesso ma il nome cambia:</p>
 <div class="callout attenzione">
 
-<p><strong>Per i composti ionici si parla di massa molare, non di &quot;peso molecolare&quot;.</strong> Un
-composto ionico come <span class="m">\chem{NaCl}</span> non esiste come entità discreta &quot;molecola&quot;: è un
-reticolo cristallino di ioni <span class="m">\chem{Na^+}</span> e <span class="m">\chem{Cl^-}</span> in rapporto 1:1
-(concetto già anticipato nella <a href="#/teoria/chimica/10/lez-10-reticolare">Lezione 10 — energia reticolare</a>).
-La formula <span class="m">\chem{NaCl}</span> è quindi una <strong>formula unità</strong>, non una formula molecolare:
-descrive il rapporto minimo fra gli ioni, non una molecola isolabile.</p>
+<p><strong>Per i composti ionici si parla di massa molare, non di &quot;peso molecolare&quot;.</strong> Un composto ionico come <span class="m">\chem{NaCl}</span> non
+esiste come entità discreta &quot;molecola&quot;: è un reticolo cristallino di ioni <span class="m">\chem{Na^+}</span> e <span class="m">\chem{Cl^-}</span> in rapporto 1:1
+(concetto già anticipato nella <a href="#/teoria/chimica/10/lez-10-reticolare">Lezione 10 — energia reticolare</a>). La formula <span class="m">\chem{NaCl}</span> è
+quindi una <strong>formula unità</strong>, non una formula molecolare: descrive il rapporto minimo fra gli ioni, non una molecola
+isolabile. Per lo stesso motivo si parla di <strong>peso formula</strong> (massa della formula unità).</p>
 </div>
 
 <div class="callout esempio">
 
 <p><strong>Tre masse molari di composti ionici, passo per passo.</strong></p>
-<p><span class="m">\chem{CuCl_2}</span> (cloruro rameico):
-<span class="m d">M = 65{,}38 + 2\times35{,}453 = 136{,}286\ \mathrm{g/mol}</span></p>
-<p><span class="m">\chem{NaN_3}</span> (sodio azide):
-<span class="m d">M = 22{,}9898 + 3\times14{,}0067 = 65{,}0069\ \mathrm{g/mol}</span></p>
-<p><span class="m">\chem{NaHCO_3}</span> (bicarbonato di sodio):
-<span class="m d">M = 22{,}9898 + 1{,}0079 + 12{,}011 + 3\times15{,}9994 = 84{,}0069\ \mathrm{g/mol}</span></p>
-<p>Il metodo è sempre lo stesso: somma le masse atomiche di ogni elemento, <strong>pesate
-per il numero di atomi di quell&#39;elemento nella formula</strong> — esattamente come nel
-la stessa logica di &quot;pesare per il coefficiente giusto&quot; che ricorre in ogni bilancio
-stechiometrico.</p>
+<p><span class="m">\chem{CuCl_2}</span> (cloruro rameico): un Cu e due Cl.
+<span class="m d">M = 65{,}38 + 2\times35{,}453 = 65{,}38 + 70{,}906 = 136{,}286\ \mathrm{g/mol}</span></p>
+<p><span class="m">\chem{NaN_3}</span> (sodio azide): un Na e tre N.
+<span class="m d">M = 22{,}9898 + 3\times14{,}0067 = 22{,}9898 + 42{,}0201 = 65{,}0099\ \mathrm{g/mol}</span>
+(la dispensa riporta 65,0069: è un errore di somma, il valore corretto è 65,0099; la differenza è irrilevante negli
+esercizi).</p>
+<p><span class="m">\chem{NaHCO_3}</span> (bicarbonato di sodio): Na, H, C e tre O.
+<span class="m d">M = 22{,}9898 + 1{,}0079 + 12{,}011 + 3\times15{,}9994 = 22{,}9898 + 1{,}0079 + 12{,}011 + 47{,}9982 = 84{,}0069\ \mathrm{g/mol}</span></p>
+<p>Il metodo è sempre lo stesso: somma le masse atomiche di ogni elemento, <strong>pesate per il numero di atomi di
+quell&#39;elemento nella formula</strong> — la stessa logica di &quot;pesare per il coefficiente giusto&quot; che ricorre in ogni bilancio
+stechiometrico. Attenzione alle parentesi: in <span class="m">\chem{Ca(NO_3)_2}</span> ci sono 1 Ca, 2 N e 6 O.</p>
+</div>
+
+<h3>Composizione percentuale</h3>
+<p>Dalla massa molare si ricava subito la <strong>percentuale in massa</strong> di ciascun elemento, cioè quanti grammi di
+quell&#39;elemento ci sono in 100 g di composto:</p>
+<p><span class="m d">\%_X = \frac{(\text{n° di atomi di } X \text{ nella formula})\cdot M_X}{M_{\text{composto}}}\times100</span></p>
+<div class="callout esempio">
+
+<p><strong>Percentuali in <span class="m">\chem{H_2O}</span> e in <span class="m">\chem{Na_3PO_4}</span>.</strong></p>
+<ul>
+<li><span class="m">\chem{H_2O}</span>: <span class="m">\%_H = 2\cdot1{,}0079/18{,}015\cdot100 = 11{,}19\%</span>; <span class="m">\%_O = 15{,}9994/18{,}015\cdot100 = 88{,}81\%</span>.
+La somma fa 100%, come deve.</li>
+<li><span class="m">\chem{Na_3PO_4}</span>: <span class="m">M = 3\cdot22{,}99 + 30{,}97 + 4\cdot16{,}00 = 68{,}97 + 30{,}97 + 64{,}00 = 163{,}94</span> g/mol;
+<span class="m">\%_{Na} = 68{,}97/163{,}94\cdot100 = 42{,}07\%</span>.</li>
+</ul>
+<p>Questo è il metodo per le domande «data la percentuale di un elemento, quale composto può essere?»: si calcola la
+percentuale per ogni candidato e si confronta con il dato.</p>
 </div>
 
 <h2 id="lez-13-formule">Formula molecolare vs formula minima</h2>
+<p>Una formula chimica dice <strong>quali</strong> elementi formano un composto e <strong>in che proporzione</strong>. Ce ne sono di tre livelli.</p>
 <div class="callout formula">
 
 <ul>
-<li><strong>Formula molecolare</strong>: indica il numero <strong>effettivo</strong> di atomi di ciascun
-elemento presenti in una molecola reale (es. <span class="m">\chem{C_6H_{12}O_6}</span>, glucosio).</li>
-<li><strong>Formula minima (o empirica)</strong>: indica il <strong>rapporto minimo</strong> in numeri interi
-fra gli atomi degli elementi presenti (per il glucosio: <span class="m">\chem{CH_2O}</span>).</li>
-<li><strong>Formula di struttura</strong>: mostra anche <strong>come sono connessi</strong> gli atomi (i
-legami), non solo quanti sono — è il livello di dettaglio della Lewis
-(<a href="#/teoria/chimica/9/lez-09-covalente">Lezione 09</a>).</li>
+<li><strong>Formula molecolare</strong>: indica il numero <strong>effettivo</strong> di atomi di ciascun elemento presenti in una molecola reale (es.
+<span class="m">\chem{C_6H_{12}O_6}</span>, glucosio).</li>
+<li><strong>Formula minima (o empirica)</strong>: indica il <strong>rapporto minimo</strong> in numeri interi fra gli atomi degli elementi presenti
+(per il glucosio: <span class="m">\chem{CH_2O}</span>).</li>
+<li><strong>Formula di struttura</strong>: mostra anche <strong>come sono connessi</strong> gli atomi (i legami), non solo quanti sono — è il livello
+di dettaglio della Lewis (<a href="#/teoria/chimica/9/lez-09-covalente">Lezione 09</a>).</li>
 </ul>
 </div>
 
+<p><strong>Dalla molecolare alla minima</strong>: si dividono tutti gli indici per il loro <strong>massimo comune divisore</strong> (MCD).</p>
+<ul>
+<li><span class="m">\chem{P_4O_{10}}</span>: MCD(4, 10) = 2 → <span class="m">\chem{P_2O_5}</span>.</li>
+<li><span class="m">\chem{C_{10}H_8}</span> (naftalene): MCD(10, 8) = 2 → <span class="m">\chem{C_5H_4}</span>.</li>
+<li><span class="m">\chem{C_6H_{12}O_6}</span>: MCD(6, 12, 6) = 6 → <span class="m">\chem{CH_2O}</span>.</li>
+<li><span class="m">\chem{H_2O_2}</span>: MCD = 2 → <span class="m">\chem{HO}</span>.</li>
+<li><span class="m">\chem{H_2O}</span>, <span class="m">\chem{CO_2}</span>: MCD = 1 → formula minima = molecolare.</li>
+</ul>
+<p><strong>Dalla minima alla molecolare</strong>: serve la massa molare. La massa molare vera è un multiplo intero <span class="m">k</span> della massa della
+formula minima (il «peso formula»): <span class="m">k = M/M_{\text{minima}}</span>, e si moltiplicano tutti gli indici per <span class="m">k</span>.</p>
 <div class="callout attenzione">
 
-<p>Più formule molecolari diverse possono avere la <strong>stessa</strong> formula minima: sia il
-glucosio <span class="m">\chem{C_6H_{12}O_6}</span> sia la formaldeide <span class="m">\chem{CH_2O}</span> condividono la
-formula minima <span class="m">\chem{CH_2O}</span> (rapporto 1:2:1), pur essendo composti profondamente
-diversi. La formula minima da sola <strong>non identifica univocamente</strong> un composto:
-serve anche la massa molare (o la formula molecolare) per distinguere fra i
-multipli possibili.</p>
+<p>Più formule molecolari diverse possono avere la <strong>stessa</strong> formula minima: sia il glucosio <span class="m">\chem{C_6H_{12}O_6}</span> sia la
+formaldeide <span class="m">\chem{CH_2O}</span> (e anche l&#39;acido acetico <span class="m">\chem{C_2H_4O_2}</span>, l&#39;acido lattico <span class="m">\chem{C_3H_6O_3}</span>) condividono
+la formula minima <span class="m">\chem{CH_2O}</span> (rapporto 1:2:1), pur essendo composti profondamente diversi. La formula minima da sola
+<strong>non identifica univocamente</strong> un composto: serve anche la massa molare (o la formula molecolare) per distinguere fra i
+multipli possibili. E nemmeno la formula molecolare basta sempre: composti diversi con la stessa formula molecolare
+(isomeri, per esempio etanolo <span class="m">\chem{CH_3CH_2OH}</span> e dimetiletere <span class="m">\chem{CH_3OCH_3}</span>, entrambi <span class="m">\chem{C_2H_6O}</span>) si
+distinguono solo con la formula di struttura.</p>
+</div>
+
+<p>Per i <strong>composti ionici</strong> la formula è sempre la formula minima (la formula unità): <span class="m">\chem{NaCl}</span>, <span class="m">\chem{CaCl_2}</span>,
+<span class="m">\chem{Al_2O_3}</span> indicano solo il rapporto fra gli ioni.</p>
+<div class="callout esempio">
+
+<p><strong>Formula molecolare da formula minima e massa molare.</strong> Un composto ha formula minima <span class="m">\chem{CH_2O}</span> e massa molecolare
+180.</p>
+<ol>
+<li>Peso della formula minima: <span class="m">12{,}01 + 2\cdot1{,}008 + 16{,}00 = 30{,}03 \approx 30</span>.</li>
+<li>Fattore: <span class="m">k = 180/30 = 6</span>.</li>
+<li>Formula molecolare: <span class="m">(\chem{CH_2O})_6 = \chem{C_6H_{12}O_6}</span>.</li>
+</ol>
+<p>Controllo: altre formule con lo stesso rapporto 1:2:1 (come <span class="m">\chem{C_3H_6O_3}</span>, massa 90, o <span class="m">\chem{C_5H_{10}O_5}</span>,
+massa 150) hanno massa diversa da 180 e vanno scartate.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Formula minima da composizione percentuale.</strong> Un composto contiene il 40,0% di C, il 6,71% di H e il 53,3% di O.</p>
+<ol>
+<li>Considero 100 g di composto: contengono 40,0 g di C, 6,71 g di H, 53,3 g di O.</li>
+<li>Converto in moli: C <span class="m">40{,}0/12{,}011 = 3{,}33</span> mol; H <span class="m">6{,}71/1{,}008 = 6{,}66</span> mol; O <span class="m">53{,}3/16{,}00 = 3{,}33</span> mol.</li>
+<li>Divido per il valore più piccolo (3,33): C 1,00; H 2,00; O 1,00.</li>
+<li>Formula minima: <span class="m">\chem{CH_2O}</span>.</li>
+</ol>
+<p>Se al passo 3 escono numeri come 1,5 o 1,33, si moltiplicano tutti per il fattore che li rende interi (×2 o ×3).</p>
 </div>
 
 <h2 id="lez-13-metodo">Metodo per contare atomi in un campione</h2>
-<p>Le due sessioni di esercizi non svolti (13/S2, 13/S3) chiedono entrambe lo stesso
-tipo di calcolo: dati i grammi di un composto, quanti atomi di ciascun elemento
-contiene il campione? Conviene fissare il procedimento in passi fissi.</p>
+<p>Le due sessioni di esercizi non svolti (13/S2, 13/S3) chiedono entrambe lo stesso tipo di calcolo: dati i grammi di un
+composto, quanti atomi di ciascun elemento contiene il campione? E poi: quanto pesa una sola molecola? Conviene fissare il
+procedimento in passi fissi.</p>
 <div class="callout formula">
 
 <ol>
-<li><strong>Calcola la massa molare</strong> del composto, sommando le masse atomiche pesate per
-gli indici della formula.</li>
+<li><strong>Calcola la massa molare</strong> del composto, sommando le masse atomiche pesate per gli indici della formula.</li>
 <li><strong>Converti la massa data in moli</strong> del composto: <span class="m">n = m/M</span>.</li>
-<li><strong>Converti le moli di composto in moli dell&#39;elemento</strong> cercato, moltiplicando per
-l&#39;indice di quell&#39;elemento nella formula.</li>
+<li><strong>Converti le moli di composto in moli dell&#39;elemento</strong> cercato, moltiplicando per l&#39;indice di quell&#39;elemento nella
+formula.</li>
 <li><strong>Converti le moli dell&#39;elemento in numero di atomi</strong>, moltiplicando per <span class="m">N_A</span>.</li>
 </ol>
 </div>
 
 <div class="callout esempio">
 
-<p><strong>Quanti atomi di ciascuna specie in 70,0 g di permanganato di potassio,
-<span class="m">\chem{KMnO_4}</span>?</strong></p>
+<p><strong>Sessione 2, esercizio 1: quanti atomi di ciascuna specie in 70,0 g di permanganato di potassio, <span class="m">\chem{KMnO_4}</span>?</strong></p>
 <p><strong>Passo 1 — massa molare.</strong>
-<span class="m d">M = 39{,}0983\,(\chem{K}) + 54{,}938\,(\chem{Mn}) + 4\times15{,}9994\,(\chem{O})
-= 158{,}034\ \mathrm{g/mol}</span></p>
+<span class="m d">M = 39{,}0983\,(\chem{K}) + 54{,}938\,(\chem{Mn}) + 4\times15{,}9994\,(\chem{O}) = 158{,}034\ \mathrm{g/mol}</span></p>
 <p><strong>Passo 2 — moli di composto.</strong>
 <span class="m d">n = \frac{70{,}0\ \mathrm{g}}{158{,}034\ \mathrm{g/mol}} = 0{,}4430\ \mathrm{mol}</span></p>
-<p><strong>Passo 3 e 4 — moli e atomi per ciascun elemento.</strong> Ogni formula unità contiene 1 K,
-1 Mn, 4 O:</p>
+<p><strong>Passo 3 e 4 — moli e atomi per ciascun elemento.</strong> Ogni formula unità contiene 1 K, 1 Mn, 4 O:</p>
 <table>
 <thead>
 <tr>
@@ -202,41 +309,111 @@ l&#39;indice di quell&#39;elemento nella formula.</li>
 <td align="left"><span class="m">\approx 1{,}067\times10^{24}</span></td>
 </tr>
 </tbody></table>
-<p>Nota che il passo 3 è quello più facile da dimenticare: senza moltiplicare per
-l&#39;indice 4 dell&#39;ossigeno, si conterebbero gli atomi di O come se fossero pari a
-quelli di K — errore concettuale, non solo aritmetico.</p>
+<p>Nota che il passo 3 è quello più facile da dimenticare: senza moltiplicare per l&#39;indice 4 dell&#39;ossigeno, si
+conterebbero gli atomi di O come se fossero pari a quelli di K — errore concettuale, non solo aritmetico.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Sessione 3, esercizio 1: quanti atomi di ciascuna specie in 30,0 g di acido nitrico, <span class="m">\chem{HNO_3}</span>?</strong></p>
+<ol>
+<li><span class="m">M = 1{,}0079 + 14{,}0067 + 3\times15{,}9994 = 1{,}0079 + 14{,}0067 + 47{,}9982 = 63{,}013</span> g/mol.</li>
+<li><span class="m">n = 30{,}0/63{,}013 = 0{,}4761</span> mol.</li>
+<li>Moli di H = moli di N = 0,4761; moli di O = <span class="m">3\times0{,}4761 = 1{,}428</span>.</li>
+<li>Atomi di H = atomi di N = <span class="m">0{,}4761\times6{,}022\times10^{23} = 2{,}867\times10^{23}</span>; atomi di O =
+<span class="m">1{,}428\times6{,}022\times10^{23} = 8{,}601\times10^{23}</span>.</li>
+</ol>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Sessioni 2 e 3, esercizio 2: massa in grammi di una molecola.</strong> Una mole pesa <span class="m">M</span> grammi e contiene <span class="m">N_A</span> molecole,
+quindi una molecola pesa <span class="m">M/N_A</span>.</p>
+<ul>
+<li><em>Benzene <span class="m">\chem{C_6H_6}</span></em>: <span class="m">M = 6\cdot12{,}011 + 6\cdot1{,}0079 = 72{,}066 + 6{,}047 = 78{,}113</span> g/mol.
+<span class="m">m = 78{,}113/6{,}022\times10^{23} = 1{,}297\times10^{-22}</span> g.</li>
+<li><em>Saccarosio <span class="m">\chem{C_{12}H_{22}O_{11}}</span></em>: <span class="m">M = 12\cdot12{,}011 + 22\cdot1{,}0079 + 11\cdot15{,}9994 = 144{,}132 +
+  22{,}174 + 175{,}993 = 342{,}299</span> g/mol. <span class="m">m = 342{,}30/6{,}022\times10^{23} = 5{,}684\times10^{-22}</span> g.</li>
+</ul>
+<p>In alternativa: la massa molecolare in u.m.a. (78,113 per il benzene) per <span class="m">1{,}66057\times10^{-24}</span> g/u.m.a. dà lo
+stesso risultato.</p>
+</div>
+
+<h3>Altri tipi di calcolo con le moli (domande del paniere)</h3>
+<div class="callout esempio">
+
+<p><strong>Sali idrati: quanta acqua si libera?</strong> Quanti grammi di acqua si ottengono decomponendo 0,100 g di
+<span class="m">\chem{MgCl_2\cdot6H_2O}</span>? Il «·6H₂O» indica 6 molecole di acqua di cristallizzazione per ogni formula unità, e fa parte
+della massa molare.</p>
+<ol>
+<li><span class="m">M = 24{,}31 + 2\cdot35{,}45 + 6\cdot18{,}02 = 24{,}31 + 70{,}90 + 108{,}12 = 203{,}3</span> g/mol.</li>
+<li><span class="m">n = 0{,}100/203{,}3 = 4{,}92\times10^{-4}</span> mol di sale.</li>
+<li>Moli di acqua: <span class="m">6\times4{,}92\times10^{-4} = 2{,}95\times10^{-3}</span> mol.</li>
+<li>Massa: <span class="m">2{,}95\times10^{-3}\cdot18{,}02 = 0{,}0532</span> g.</li>
+</ol>
+<p>Scorciatoia equivalente: la frazione in massa di acqua nel sale è <span class="m">108{,}12/203{,}3 = 0{,}532</span>, e
+<span class="m">0{,}532\cdot0{,}100 = 0{,}0532</span> g.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Miscele e densità.</strong> Un campione di 38,0 mL fatto di oro (<span class="m">\rho = 19{,}32</span> g/mL) e silice (<span class="m">\rho = 2{,}20</span> g/mL) ha
+densità 9,80 g/mL. Quanto oro contiene? (La densità <span class="m">\rho = m/V</span>, in g/mL, lega massa e volume.)</p>
+<ol>
+<li>Massa totale: <span class="m">m = \rho V = 9{,}80\cdot38{,}0 = 372{,}4</span> g.</li>
+<li>Detto <span class="m">V</span> il volume dell&#39;oro, quello della silice è <span class="m">38{,}0 - V</span>, e le masse si sommano:
+<span class="m">19{,}32\,V + 2{,}20\,(38{,}0 - V) = 372{,}4</span>.</li>
+<li><span class="m">19{,}32V - 2{,}20V = 372{,}4 - 83{,}6</span> → <span class="m">17{,}12\,V = 288{,}8</span> → <span class="m">V = 16{,}87</span> mL.</li>
+<li>Massa d&#39;oro: <span class="m">19{,}32\cdot16{,}87 = 326</span> g.</li>
+</ol>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Rapporti molari in una reazione.</strong> Quante moli di <span class="m">\chem{Fe_2O_3}</span> si ottengono da 30 moli di Fe? La reazione
+bilanciata (<a href="#/teoria/chimica/14/lez-14">Lezione 14</a>) è <span class="m">4\,\chem{Fe} + 3\,\chem{O_2} \rightarrow 2\,\chem{Fe_2O_3}</span>: 4 moli di Fe danno 2
+moli di ossido, rapporto 2 : 1. Da 30 moli di Fe: <span class="m">30\cdot\tfrac{2}{4} = 15</span> mol. Ragionamento alternativo, senza
+reazione: ogni <span class="m">\chem{Fe_2O_3}</span> contiene 2 atomi di Fe, quindi 30 moli di Fe bastano per 15 moli di ossido.</p>
+</div>
+
+<div class="callout attenzione">
+
+<p><strong>Errori tipici.</strong> (1) Dimenticare l&#39;indice dell&#39;elemento (passo 3) o le molecole d&#39;acqua di un idrato nella massa
+molare. (2) Confondere moli di molecole e moli di atomi (<span class="m">\chem{O_2}</span>: 1 mol di molecole = 2 mol di atomi). (3) Passare
+dalla molecolare alla minima moltiplicando invece di dividere. (4) Usare la massa molare per una sola molecola senza
+dividere per <span class="m">N_A</span>.</p>
 </div>
 
 <div class="callout sintesi">
 
 <p><strong>In sintesi.</strong></p>
 <ul>
-<li>Il <strong>numero di Avogadro</strong> <span class="m">N_A = 6{,}022\times10^{23}</span> è il fattore di conversione
-fra la massa in grammi (scala di laboratorio) e il numero di particelle (scala
-atomica): definito da 12 g esatti di <span class="m">^{12}</span>C.</li>
-<li><strong>1 mole</strong> = <span class="m">N_A</span> particelle, di qualunque tipo esse siano.</li>
-<li><span class="m">n = m/M</span>; <span class="m">N = n \times N_A</span>. Massa molare in g/mol = lo stesso numero della
-massa atomica/molecolare relativa.</li>
-<li>Per i composti <strong>ionici</strong> si parla di massa molare (non &quot;peso molecolare&quot;): non
-esistono come molecole discrete.</li>
-<li><strong>Formula minima</strong> = rapporto minimo di interi; <strong>formula molecolare</strong> = conteggio
-reale; composti diversi possono condividere la stessa formula minima.</li>
-<li>Metodo dei quattro passi: massa molare → moli di composto → moli dell&#39;elemento
-(pesate per l&#39;indice) → numero di atomi (<span class="m">\times N_A</span>).</li>
+<li>A scala atomica la massa di un atomo è minore della somma delle masse delle sue particelle (difetto di massa).</li>
+<li>Il <strong>numero di Avogadro</strong> <span class="m">N_A = 6{,}022\times10^{23}</span> è il fattore di conversione fra la massa in grammi (scala di
+laboratorio) e il numero di particelle (scala atomica): definito da 12 g esatti di <span class="m">^{12}</span>C
+(<span class="m">12/1{,}992684\times10^{-23}</span>).</li>
+<li><strong>1 mole</strong> = <span class="m">N_A</span> particelle, di qualunque tipo esse siano. 1 u.m.a. = <span class="m">1/12</span> della massa di <span class="m">^{12}</span>C
+<span class="m">= 1{,}66057\times10^{-24}</span> g.</li>
+<li><span class="m">n = m/M</span>; <span class="m">N = n \times N_A</span>; massa di una particella <span class="m">= M/N_A</span>. Massa molare in g/mol = lo stesso numero della massa
+atomica/molecolare relativa (12,011 per C, media isotopica).</li>
+<li>Per i composti <strong>ionici</strong> si parla di massa molare (non &quot;peso molecolare&quot;): non esistono come molecole discrete.</li>
+<li><strong>Formula minima</strong> = rapporto minimo di interi (dividere per l&#39;MCD); <strong>formula molecolare</strong> = conteggio reale
+(multiplo <span class="m">k = M/M_{\text{minima}}</span>); <strong>di struttura</strong> = anche i legami. Composti diversi possono condividere la stessa
+formula minima.</li>
+<li>Metodo dei quattro passi: massa molare → moli di composto → moli dell&#39;elemento (pesate per l&#39;indice) → numero di atomi
+(<span class="m">\times N_A</span>). Percentuale in massa: <span class="m">\%_X = (\text{indice}\cdot M_X/M)\cdot100</span>.</li>
 </ul>
 </div>
 
 <p>::: esame {#lez-13-esame}
-<strong>Come cade all&#39;esame.</strong> Il paniere (Lezione 013) ha <strong>7 domande chiuse e 1 aperta</strong>,
-ora tutte trascritte in <code>90 Esercizi.md</code>: formula minima da formula molecolare,
-formula minima da percentuali in peso, rapporti molari in una reazione bilanciata,
-stechiometria di composti idrati. La domanda 4 (percentuale di Na in una polvere
-bianca) ha un&#39;opzione corretta con testo non ricostruibile con certezza dall&#39;OCR —
-segnalato in rosso nella domanda stessa.</p>
-<p>Il tipo di calcolo più probabile, viste le due sessioni di esercizi non svolti
-allegate alle slide, è esattamente lo schema dell&#39;esempio sopra: dati i grammi di un
-composto, calcolare massa molare, moli e numero di atomi per ciascun elemento. Gli
-esercizi extra qui sotto coprono lo stesso schema con dati diversi da quelli del
-paniere.</p>
+<strong>Come cade all&#39;esame.</strong> Il paniere (Lezione 013) ha <strong>7 domande chiuse e 1 aperta</strong> («Numero di moli e formule
+chimiche»). Le chiuse coprono: formula minima da formula molecolare (<span class="m">\chem{P_4O_{10}}</span>, <span class="m">\chem{C_{10}H_8}</span>: dividere per
+l&#39;MCD), formula molecolare da formula minima e massa (<span class="m">\chem{CH_2O}</span>, 180 → fattore 6), acqua liberata da un sale
+idrato, massa d&#39;oro in una miscela nota la densità, rapporti molari in una reazione (<span class="m">\chem{Fe}</span> → <span class="m">\chem{Fe_2O_3}</span>),
+riconoscimento di un composto dalla percentuale in peso di sodio. Tutti i metodi sono svolti sopra.</p>
+<p><em>Per l&#39;aperta</em>, tre paragrafi: (1) perché serve la mole (scala atomica contro scala di laboratorio), definizione di
+<span class="m">N_A</span> da 12 g di <span class="m">^{12}</span>C, u.m.a.; (2) massa molare (doppia lettura del 12,011), <span class="m">n = m/M</span>, <span class="m">N = nN_A</span>, composti
+molecolari contro ionici; (3) formula molecolare, minima e di struttura, con un esempio di passaggio fra le due (e il
+fatto che la minima non identifica il composto).</p>
 <p><strong>Allenati qui:</strong> Paniere 1–8 · Extra 23 · Extra 24</p>
 </div>

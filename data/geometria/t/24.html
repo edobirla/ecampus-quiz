@@ -1,81 +1,226 @@
 <h1>Lezione 24 — Sistemi di equazioni lineari</h1>
-<h2>Definizioni</h2>
-<p>Un <strong>sistema di <span class="m">m</span> equazioni lineari in <span class="m">n</span> incognite</strong> in un campo <span class="m">\mathbb{K}</span> (o semplicemente <em>sistema lineare</em>) è un sistema in cui i membri delle equazioni sono polinomi in <span class="m">\mathbb{K}</span> di grado al più 1. È detto <strong>reale</strong> se <span class="m">\mathbb{K}=\mathbb{R}</span>, <strong>complesso</strong> se <span class="m">\mathbb{K}=\mathbb{C}</span>. Se il campo non è detto, il sistema è reale quando coefficienti e termini noti sono reali, complesso se almeno uno non è reale.</p>
-<div class="callout esempio">
-
-<p><span class="m">\begin{cases}x_1+x_2=2\\4x_1+3x_2=-1\end{cases}</span> è lineare e reale; <span class="m">\begin{cases}x_1^2-x_2=0\\x_1-3x_2=2\end{cases}</span> non è lineare, perché c&#39;è il quadrato <span class="m">x_1^2</span>.</p>
-</div>
-
-<p>La forma generale è
-<span class="m d">\begin{cases}a_{11}x_1+a_{12}x_2+\dots+a_{1n}x_n=b_1\\\ \ \vdots\\a_{m1}x_1+a_{m2}x_2+\dots+a_{mn}x_n=b_m\end{cases}</span>
-dove le <span class="m">a_{ij}</span> sono i <strong>coefficienti</strong> e le <span class="m">b_i</span> i <strong>termini noti</strong>.</p>
-<p>Una <strong>soluzione</strong> è una <span class="m">n</span>-upla <span class="m">(x_1,\dots,x_n)</span> di elementi di <span class="m">\mathbb{K}</span> che soddisfa <strong>simultaneamente</strong> tutte le equazioni. Un sistema è <strong>compatibile</strong> se ha almeno una soluzione.</p>
-<div class="callout esempio">
-
-<p><span class="m">(x_1,x_2)=(-7,9)</span> è soluzione del sistema precedente: <span class="m">-7+9=2</span> e <span class="m">4\cdot(-7)+3\cdot9=-1</span>. La coppia <span class="m">(-1,1)</span> non lo è: <span class="m">-1+1\neq2</span>.</p>
-</div>
-
-<p>Studiare un sistema significa affrontare tre problemi: la <strong>compatibilità</strong> (esistenza delle soluzioni), la <strong>quantità</strong> delle soluzioni (quanti parametri servono per descriverle) e il <strong>calcolo</strong> delle soluzioni.</p>
-<h2>Forma matriciale</h2>
+<p>Con questa lezione si comincia lo studio dei <strong>sistemi di equazioni lineari</strong> usando gli strumenti costruiti nelle lezioni precedenti: matrici, prodotto righe per colonne, rango e applicazioni lineari (nucleo, immagine, controimmagine). L&#39;idea centrale è che un sistema lineare non è altro che un&#39;<strong>equazione matriciale</strong> <span class="m">A\cdot X=B</span>, e che quindi tutto ciò che sappiamo sull&#39;applicazione lineare <span class="m">f_A(X)=A\cdot X</span> si traduce in informazioni sulle soluzioni. In questa lezione si fissano le definizioni e i primi risultati sulla struttura dell&#39;insieme delle soluzioni; nelle lezioni 25, 26 e 27 si vedranno come stabilire se esistono soluzioni (Rouché-Capelli) e come calcolarle (Cramer, Gauss-Jordan).</p>
+<h2>Sistemi lineari: definizione</h2>
+<p><strong>Definizione 24.1.</strong> Un <strong>sistema di <span class="m">m</span> equazioni lineari in <span class="m">n</span> incognite</strong> in un campo <span class="m">\mathbb K</span> (o semplicemente <em>sistema lineare</em>) è un sistema di <span class="m">m</span> equazioni in cui i due membri di ogni equazione sono <strong>polinomi in <span class="m">\mathbb K</span> di grado al più 1</strong> nelle incognite.</p>
+<p>In altre parole, le incognite possono comparire solo moltiplicate per una costante e sommate tra loro: niente potenze (<span class="m">x^2</span>), niente prodotti tra incognite (<span class="m">xz</span>), niente funzioni delle incognite (<span class="m">\sin x</span>, <span class="m">\cos z</span>, <span class="m">e^x</span>, <span class="m">\sqrt x</span>, <span class="m">1/x</span>).</p>
+<p><strong>Definizione 24.2.</strong> Un sistema lineare nel campo <span class="m">\mathbb R</span> è detto <strong>reale</strong>; nel campo <span class="m">\mathbb C</span> è detto <strong>complesso</strong>.</p>
+<p>Quando il campo non è indicato esplicitamente, la convenzione della dispensa è:</p>
 <ul>
-<li><span class="m">A=(a_{ij})</span> è la <strong>matrice dei coefficienti</strong> o <strong>matrice incompleta</strong> (<span class="m">m\times n</span>);</li>
-<li><span class="m">B={}^t(b_1\ \cdots\ b_m)</span> è il <strong>vettore</strong> (o colonna) <strong>dei termini noti</strong>;</li>
-<li><span class="m">X={}^t(x_1\ \cdots\ x_n)</span> è il <strong>vettore delle incognite</strong>;</li>
-<li><span class="m">(A\,|\,B)</span>, cioè <span class="m">A</span> con l&#39;aggiunta della colonna <span class="m">B</span>, è la <strong>matrice completa</strong> (<span class="m">m\times(n+1)</span>).</li>
+<li>il sistema è <strong>reale</strong> se coefficienti e termini noti sono tutti numeri reali;</li>
+<li>il sistema è <strong>complesso</strong> se coefficienti e termini noti sono numeri complessi e <strong>almeno uno</strong> di essi non è reale.</li>
 </ul>
-<p>Il sistema diventa l&#39;equazione vettoriale
-<span class="m d">A\cdot X=B,</span>
-e, poiché il prodotto righe per colonne è la combinazione lineare delle colonne <span class="m">A^1,\dots,A^n</span> di <span class="m">A</span> con coefficienti <span class="m">x_i</span>:
-<span class="m d">x_1A^1+x_2A^2+\dots+x_nA^n=B.</span>
-Risolvere il sistema vuol dire cercare i coefficienti di una combinazione lineare delle colonne di <span class="m">A</span> che dia <span class="m">B</span>.</p>
 <div class="callout esempio">
 
-<p>Per <span class="m">\begin{cases}x_1+x_2=2\\4x_1+3x_2=-1\end{cases}</span>: <span class="m">A=\begin{pmatrix}1&amp;1\\4&amp;3\end{pmatrix}</span>, <span class="m">B=\begin{pmatrix}2\\-1\end{pmatrix}</span>, <span class="m">(A\,|\,B)=\left(\begin{array}{cc|c}1&amp;1&amp;2\\4&amp;3&amp;-1\end{array}\right)</span>, e il sistema si scrive <span class="m">x_1\begin{pmatrix}1\\4\end{pmatrix}+x_2\begin{pmatrix}1\\3\end{pmatrix}=\begin{pmatrix}2\\-1\end{pmatrix}</span>.</p>
+<p><strong>Riconoscere un sistema lineare.</strong></p>
+<ul>
+<li><span class="m">\begin{cases}x_1+x_2=2\\4x_1+3x_2=-1\end{cases}</span> ha 2 equazioni e 2 incognite, ogni membro è un polinomio di grado al più 1: è <strong>lineare e reale</strong>.</li>
+<li><span class="m">\begin{cases}x_1^2-x_2=0\\x_1-3x_2=2\end{cases}</span> <strong>non è lineare</strong>: nella prima equazione compare <span class="m">x_1^2</span>, che ha grado 2.</li>
+<li><span class="m">\begin{cases}x+y=1\\\sin x-y=1\end{cases}</span> <strong>non è lineare</strong>: compare <span class="m">\sin x</span>, che non è un polinomio.</li>
+<li><span class="m">\begin{cases}x+y=i\\x-iy=1-i\end{cases}</span> <strong>è lineare</strong> (complesso): i coefficienti possono essere numeri complessi qualsiasi, quello che conta è che le incognite compaiano solo al primo grado.</li>
+<li>Fra <span class="m">\begin{cases}x+2y=1\\3x+2z^2=1\\5z+2t=2\end{cases}</span>, <span class="m">\begin{cases}x+2y=1\\3x+2\cos z=1\\5z+2t=2\end{cases}</span>, <span class="m">\begin{cases}x+2y=1\\3x+2z=1\\5xz+2t=2\end{cases}</span> e <span class="m">\begin{cases}x+2y=1\\3x+2z=1\\5z+2t=2\end{cases}</span> solo l&#39;ultimo è lineare: il primo contiene <span class="m">z^2</span>, il secondo <span class="m">\cos z</span>, il terzo il prodotto <span class="m">xz</span> (che è un monomio di grado 2).</li>
+</ul>
+</div>
+
+<h2>Forma generale, coefficienti e termini noti</h2>
+<p><strong>Notazione 24.5.</strong> Un sistema di <span class="m">m</span> equazioni lineari in <span class="m">n</span> incognite si scrive in generale come
+<span class="m d">\begin{cases}a_{11}x_1+a_{12}x_2+\dots+a_{1n}x_n=b_1\\a_{21}x_1+a_{22}x_2+\dots+a_{2n}x_n=b_2\\\quad\vdots\\a_{m1}x_1+a_{m2}x_2+\dots+a_{mn}x_n=b_m\end{cases}\tag{24.1}</span>
+dove:</p>
+<ul>
+<li><span class="m">x_1,\dots,x_n</span> sono le <span class="m">n</span> <strong>incognite</strong>;</li>
+<li>le <span class="m">m\cdot n</span> costanti <span class="m">a_{ij}\in\mathbb K</span> (<span class="m">i=1,\dots,m</span>, <span class="m">j=1,\dots,n</span>) sono i <strong>coefficienti</strong>: il primo indice <span class="m">i</span> dice in quale equazione si trova il coefficiente, il secondo indice <span class="m">j</span> dice di quale incognita è il coefficiente;</li>
+<li>le <span class="m">m</span> costanti <span class="m">b_i\in\mathbb K</span> sono i <strong>termini noti</strong>.</li>
+</ul>
+<p>Se il campo non serve, si dice semplicemente &quot;un sistema lineare&quot;, sottintendendo che coefficienti e termini noti stanno tutti in uno stesso campo <span class="m">\mathbb K</span>.</p>
+<h2>Soluzioni e compatibilità</h2>
+<p><strong>Definizione 24.7.</strong> Una <strong>soluzione</strong> del sistema (24.1) è una <span class="m">n</span>-upla <span class="m">(x_1,x_2,\dots,x_n)</span> di elementi di <span class="m">\mathbb K</span> che soddisfa <strong>simultaneamente tutte</strong> le equazioni. Un sistema lineare è detto <strong>compatibile</strong> se ha <strong>almeno una</strong> soluzione; altrimenti è detto <strong>incompatibile</strong> (o impossibile).</p>
+<p>Per verificare se una <span class="m">n</span>-upla è soluzione basta <strong>sostituire</strong> i valori in ogni equazione: deve valere l&#39;uguaglianza in tutte, nessuna esclusa.</p>
+<div class="callout esempio">
+
+<p><strong>Verificare una soluzione (Esempio 24.8).</strong> Per <span class="m">\begin{cases}x_1+x_2=2\\4x_1+3x_2=-1\end{cases}</span>:</p>
+<ul>
+<li><span class="m">(x_1,x_2)=(-7,9)</span>: <span class="m">-7+9=2</span> ✓ e <span class="m">4\cdot(-7)+3\cdot9=-28+27=-1</span> ✓. È una soluzione.</li>
+<li><span class="m">(x_1,x_2)=(-1,1)</span>: <span class="m">-1+1=0\neq2</span> ✗. Non è una soluzione (anche se la seconda equazione dà <span class="m">-4+3=-1</span> ✓: basta che <strong>una</strong> equazione non sia soddisfatta).</li>
+</ul>
+<p><strong>Esercizio 24.3.</strong> Per <span class="m">\begin{cases}x_1-x_2+3x_3-x_4=-2\\x_1+x_2-x_3+2x_4=7\\x_1-2x_2+5x_3-x_4=-5\end{cases}</span>:</p>
+<ul>
+<li><span class="m">(2,3,0,1)</span>: <span class="m">2-3+0-1=-2</span> ✓; <span class="m">2+3-0+2=7</span> ✓; <span class="m">2-6+0-1=-5</span> ✓. È soluzione.</li>
+<li><span class="m">(0,7,1,-2)</span>: <span class="m">0-7+3+2=-2</span> ✓; <span class="m">0+7-1-4=2\neq7</span> ✗. Non è soluzione.</li>
+</ul>
+</div>
+
+<p>Studiare un sistema lineare significa affrontare <strong>tre problemi</strong>:</p>
+<ol>
+<li><strong>la compatibilità</strong>: esistono soluzioni? (Lezione 25, Teorema di Rouché-Capelli);</li>
+<li><strong>la quantità delle soluzioni</strong>: siccome le soluzioni possono essere infinite, si cerca il <strong>numero di parametri</strong> che servono per descriverle tutte;</li>
+<li><strong>il calcolo delle soluzioni</strong>: trovarle esplicitamente (Lezioni 26 e 27).</li>
+</ol>
+<h2>Forma matriciale del sistema</h2>
+<p><strong>Osservazione 24.9.</strong> Il sistema (24.1) si può scrivere come <strong>uguaglianza tra due vettori colonna</strong> di <span class="m">\mathbb K^m</span>:
+<span class="m d">\begin{pmatrix}a_{11}x_1+\dots+a_{1n}x_n\\\vdots\\a_{m1}x_1+\dots+a_{mn}x_n\end{pmatrix}=\begin{pmatrix}b_1\\\vdots\\b_m\end{pmatrix},</span>
+e, poiché il vettore a sinistra è esattamente il <strong>prodotto righe per colonne</strong> della matrice dei coefficienti per il vettore delle incognite, come
+<span class="m d">\begin{pmatrix}a_{11}&amp;a_{12}&amp;\cdots&amp;a_{1n}\\a_{21}&amp;a_{22}&amp;\cdots&amp;a_{2n}\\\vdots&amp;\vdots&amp;&amp;\vdots\\a_{m1}&amp;a_{m2}&amp;\cdots&amp;a_{mn}\end{pmatrix}\cdot\begin{pmatrix}x_1\\x_2\\\vdots\\x_n\end{pmatrix}=\begin{pmatrix}b_1\\b_2\\\vdots\\b_m\end{pmatrix}.</span></p>
+<p><strong>Definizione 24.10.</strong> Dato il sistema (24.1):</p>
+<ul>
+<li><span class="m">A=(a_{ij})\in\mathbb K^{m,n}</span> è la <strong>matrice dei coefficienti</strong> o <strong>matrice incompleta</strong> (una riga per ogni equazione, una colonna per ogni incognita);</li>
+<li><span class="m">B={}^t(b_1\ b_2\ \cdots\ b_m)\in\mathbb K^m</span> è il <strong>vettore dei termini noti</strong> (o colonna dei termini noti);</li>
+<li><span class="m">X={}^t(x_1\ x_2\ \cdots\ x_n)\in\mathbb K^n</span> è il <strong>vettore delle incognite</strong>;</li>
+<li>la matrice <span class="m">m\times(n+1)</span> ottenuta aggiungendo ad <span class="m">A</span> la colonna <span class="m">B</span> come ultima colonna è la <strong>matrice completa</strong>, indicata con <span class="m">(A\,|\,B)</span>:
+<span class="m d">(A\,|\,B)=\left(\begin{array}{cccc|c}a_{11}&amp;a_{12}&amp;\cdots&amp;a_{1n}&amp;b_1\\a_{21}&amp;a_{22}&amp;\cdots&amp;a_{2n}&amp;b_2\\\vdots&amp;\vdots&amp;&amp;\vdots&amp;\vdots\\a_{m1}&amp;a_{m2}&amp;\cdots&amp;a_{mn}&amp;b_m\end{array}\right).</span></li>
+</ul>
+<p><strong>Osservazione 24.11.</strong> Con questi nomi, il sistema diventa una sola <strong>equazione vettoriale</strong>
+<span class="m d">A\cdot X=B,</span>
+in cui l&#39;incognita è il vettore colonna <span class="m">X</span>.</p>
+<p><strong>Osservazione 24.12 (lettura per colonne).</strong> Indicando con <span class="m">A^1,A^2,\dots,A^n</span> le colonne di <span class="m">A</span>, il prodotto <span class="m">A\cdot X</span> è la <strong>combinazione lineare delle colonne di <span class="m">A</span> con coefficienti le incognite</strong>:
+<span class="m d">x_1\begin{pmatrix}a_{11}\\a_{21}\\\vdots\\a_{m1}\end{pmatrix}+x_2\begin{pmatrix}a_{12}\\a_{22}\\\vdots\\a_{m2}\end{pmatrix}+\dots+x_n\begin{pmatrix}a_{1n}\\a_{2n}\\\vdots\\a_{mn}\end{pmatrix}=\begin{pmatrix}b_1\\b_2\\\vdots\\b_m\end{pmatrix},\qquad\text{cioè}\qquad x_1A^1+\dots+x_nA^n=B.</span>
+Risolvere il sistema vuol dire quindi <strong>cercare i coefficienti di una combinazione lineare delle colonne di <span class="m">A</span> che dia come risultato <span class="m">B</span></strong>. Questa lettura è la chiave della dimostrazione del Teorema di Rouché-Capelli (Lezione 25) e della Regola di Cramer (Lezione 26).</p>
+<div class="callout esempio">
+
+<p><strong>Esempio 24.13.</strong> Per <span class="m">\begin{cases}x_1+x_2=2\\4x_1+3x_2=-1\end{cases}</span>:
+<span class="m d">A=\begin{pmatrix}1&amp;1\\4&amp;3\end{pmatrix},\quad B=\begin{pmatrix}2\\-1\end{pmatrix},\quad X=\begin{pmatrix}x_1\\x_2\end{pmatrix},\quad (A\,|\,B)=\left(\begin{array}{cc|c}1&amp;1&amp;2\\4&amp;3&amp;-1\end{array}\right).</span>
+In forma matriciale <span class="m">\begin{pmatrix}1&amp;1\\4&amp;3\end{pmatrix}\begin{pmatrix}x_1\\x_2\end{pmatrix}=\begin{pmatrix}2\\-1\end{pmatrix}</span>, e in forma vettoriale per colonne <span class="m">x_1\begin{pmatrix}1\\4\end{pmatrix}+x_2\begin{pmatrix}1\\3\end{pmatrix}=\begin{pmatrix}2\\-1\end{pmatrix}</span>.</p>
+</div>
+
+<h3>Come si scrivono le matrici di un sistema (procedura)</h3>
+<ol>
+<li>Si fissa l&#39;<strong>ordine delle incognite</strong> (<span class="m">x_1,x_2,\dots</span> oppure <span class="m">x,y,z,t</span>): ogni incognita è una colonna, sempre la stessa per tutte le righe.</li>
+<li>Si riscrive ogni equazione con <strong>tutte</strong> le incognite, nell&#39;ordine fissato, mettendo il coefficiente <span class="m">0</span> davanti alle incognite che mancano e portando le costanti a destra.</li>
+<li>La riga <span class="m">i</span> di <span class="m">A</span> è la lista dei coefficienti dell&#39;equazione <span class="m">i</span>, <strong>con il loro segno</strong>; il termine noto (con il suo segno, anche se è <span class="m">0</span>) va nella colonna <span class="m">B</span>.</li>
+<li>La completa è <span class="m">A</span> con <span class="m">B</span> aggiunta come ultima colonna: è <span class="m">m\times(n+1)</span>. Il solo vettore <span class="m">B</span> <strong>non</strong> è la matrice completa.</li>
+</ol>
+<div class="callout esempio">
+
+<p><strong>Sistema con incognite mancanti.</strong> <span class="m">\begin{cases}3x_2-x_3+4x_4=6\\x_1-x_2-3x_3=-1\end{cases}</span> ha 4 incognite <span class="m">x_1,x_2,x_3,x_4</span>.</p>
+<ul>
+<li>Prima equazione: <span class="m">0\cdot x_1+3x_2-x_3+4x_4=6</span> → riga <span class="m">(0\ \ 3\ \ -1\ \ 4)</span>, termine noto <span class="m">6</span>.</li>
+<li>Seconda equazione: <span class="m">x_1-x_2-3x_3+0\cdot x_4=-1</span> → riga <span class="m">(1\ \ -1\ \ -3\ \ 0)</span>, termine noto <span class="m">-1</span>.</li>
+</ul>
+<p><span class="m d">A=\begin{pmatrix}0&amp;3&amp;-1&amp;4\\1&amp;-1&amp;-3&amp;0\end{pmatrix}\ (2\times4),\qquad (A\,|\,B)=\left(\begin{array}{cccc|c}0&amp;3&amp;-1&amp;4&amp;6\\1&amp;-1&amp;-3&amp;0&amp;-1\end{array}\right)\ (2\times5).</span></p>
+<p><strong>Esercizio 24.4.</strong> Per <span class="m">\begin{cases}y+z=0\\x-y=0\\y+t=0\\x-z=0\\-x+t=0\end{cases}</span> (incognite <span class="m">x,y,z,t</span>):
+<span class="m d">A=\begin{pmatrix}0&amp;1&amp;1&amp;0\\1&amp;-1&amp;0&amp;0\\0&amp;1&amp;0&amp;1\\1&amp;0&amp;-1&amp;0\\-1&amp;0&amp;0&amp;1\end{pmatrix},\qquad B=\begin{pmatrix}0\\0\\0\\0\\0\end{pmatrix},\qquad X=\begin{pmatrix}x\\y\\z\\t\end{pmatrix}.</span>
+Per il sistema complesso <span class="m">\begin{cases}(1-i)x_1+x_2-ix_3=i\\x_1-2ix_3=4-3i\end{cases}</span>: <span class="m">A=\begin{pmatrix}1-i&amp;1&amp;-i\\1&amp;0&amp;-2i\end{pmatrix}</span>, <span class="m">B=\begin{pmatrix}i\\4-3i\end{pmatrix}</span>.</p>
+<p><strong>Dal sistema alla matrice e viceversa.</strong> La matrice incompleta <span class="m">\begin{pmatrix}3&amp;-1\\4&amp;6\end{pmatrix}</span> con termini noti <span class="m">\begin{pmatrix}-1\\-3\end{pmatrix}</span> corrisponde al sistema <span class="m">\begin{cases}3x_1-x_2=-1\\4x_1+6x_2=-3\end{cases}</span>: la prima colonna dà i coefficienti di <span class="m">x_1</span>, la seconda quelli di <span class="m">x_2</span> (non compare nessuna <span class="m">x_3</span>, perché le colonne sono 2).</p>
 </div>
 
 <div class="callout attenzione">
 
-<p>Ogni colonna di <span class="m">A</span> corrisponde a un&#39;incognita: se un&#39;incognita manca in un&#39;equazione, nella riga corrispondente si scrive <span class="m">0</span>. Le operazioni sulle equazioni si traducono in operazioni elementari sulle righe di <span class="m">(A\,|\,B)</span>.</p>
+<ul>
+<li>Ogni colonna di <span class="m">A</span> corrisponde a <strong>un&#39;incognita fissata</strong>: se si &quot;compattano&quot; le righe scrivendo solo i coefficienti visibili, i numeri finiscono sotto l&#39;incognita sbagliata e la matrice descrive un altro sistema.</li>
+<li>I coefficienti vanno copiati <strong>con il segno</strong>: <span class="m">x_1-3x_2</span> dà <span class="m">(1\ \ -3)</span>, non <span class="m">(1\ \ 3)</span>.</li>
+<li>Un&#39;incognita senza coefficiente scritto ha coefficiente <span class="m">1</span> (o <span class="m">-1</span> se preceduta dal meno).</li>
+<li>Il termine noto <span class="m">0</span> va comunque scritto nella colonna <span class="m">B</span>.</li>
+</ul>
 </div>
 
+<p><strong>Osservazione 24.14.</strong> Le operazioni sulle equazioni che producono un sistema <strong>equivalente</strong> (stesse soluzioni), cioè scambiare due equazioni, moltiplicare un&#39;equazione per una costante non nulla, sommare a un&#39;equazione un multiplo di un&#39;altra, corrispondono esattamente alle <strong>operazioni elementari sulle righe</strong> (di tipo I, II e III) della matrice completa <span class="m">(A\,|\,B)</span>. Per questo basta lavorare sulla matrice completa, senza riscrivere ogni volta le incognite: è l&#39;idea del metodo di Gauss (Lezione 27).</p>
 <h2>Legame con le applicazioni lineari</h2>
-<p>Sia <span class="m">f_A:\mathbb{K}^n\to\mathbb{K}^m</span>, <span class="m">f_A(X)=A\cdot X</span>. L&#39;insieme delle soluzioni <span class="m">\{X\in\mathbb{K}^n\mid AX=B\}</span> è la <strong>controimmagine</strong> <span class="m">\mathrm{Preim}_{f_A}(B)</span>. Quindi il sistema è compatibile <strong>se e solo se</strong> <span class="m">B\in\mathrm{Im}(f_A)</span>.</p>
+<p><strong>Osservazione 24.16.</strong> Sia <span class="m">f_A:\mathbb K^n\to\mathbb K^m</span> l&#39;applicazione lineare associata ad <span class="m">A</span>, <span class="m">f_A(X)=A\cdot X</span>. Un vettore <span class="m">X\in\mathbb K^n</span> è soluzione del sistema se e solo se <span class="m">f_A(X)=B</span>, cioè se e solo se <span class="m">X</span> appartiene alla <strong>controimmagine</strong> di <span class="m">B</span>. Quindi:
+<span class="m d">\{\text{soluzioni di }A\cdot X=B\}=\operatorname{Preim}_{f_A}(B)=\{X\in\mathbb K^n\mid f_A(X)=B\},</span>
+e
+<span class="m d">A\cdot X=B\ \text{è compatibile}\iff B\in\operatorname{Im}(f_A).</span>
+L&#39;immagine di <span class="m">f_A</span> è lo spazio generato dalle colonne di <span class="m">A</span>: ritroviamo che il sistema ha soluzione esattamente quando <span class="m">B</span> è combinazione lineare delle colonne.</p>
 <h2>Sistemi omogenei</h2>
-<p>Un sistema con tutti i termini noti nulli, <span class="m">A\cdot X=0_m</span>, è detto <strong>omogeneo</strong>.</p>
-<ul>
-<li>È <strong>sempre compatibile</strong>: <span class="m">X=0_n</span> è soluzione, perché <span class="m">A\cdot0_n=0_m</span>.</li>
-<li>L&#39;insieme delle sue soluzioni è il <strong>nucleo</strong> <span class="m">\mathrm{Ker}(f_A)</span>, quindi un sottospazio vettoriale di <span class="m">\mathbb{K}^n</span>.</li>
-</ul>
-<p>Il sistema <span class="m">A\cdot X=0</span> è il <strong>sistema omogeneo associato</strong> ad <span class="m">A\cdot X=B</span>.</p>
-<p><strong>Proposizione 24.24.</strong> Se <span class="m">\mathcal{S}</span> è l&#39;insieme delle soluzioni di un sistema <strong>compatibile</strong> <span class="m">A\cdot X=B</span> e <span class="m">\mathcal{S}_0</span> quello dell&#39;omogeneo associato, allora
-<span class="m d">\mathcal{S}=\overline{X}+\mathcal{S}_0,</span>
-con <span class="m">\overline{X}</span> un qualsiasi elemento di <span class="m">\mathcal{S}</span>.
-<em>Dimostrazione:</em> <span class="m">\mathcal{S}=\mathrm{Preim}_{f_A}(B)\neq\emptyset</span>, quindi <span class="m">\mathrm{Preim}_{f_A}(B)=\overline{X}+\mathrm{Ker}(f_A)</span>, e <span class="m">\mathrm{Ker}(f_A)=\mathcal{S}_0</span>.</p>
-<div class="callout sintesi">
-
-<p>La soluzione generica di un sistema lineare compatibile è data da <strong>una soluzione particolare</strong> del sistema <strong>più la soluzione generica</strong> del sistema omogeneo associato.</p>
-</div>
-
+<p><strong>Definizione 24.17.</strong> Un sistema lineare in cui <strong>tutti i termini noti sono nulli</strong>, <span class="m">A\cdot X=0_m</span>, è detto <strong>omogeneo</strong>.</p>
 <div class="callout esempio">
 
-<p><span class="m">\begin{cases}x_1-x_2+2x_3+3x_4=0\\x_1-x_2+3x_3+4x_4=-3\\x_1-x_2+x_3+2x_4=3\end{cases}</span> ha soluzioni <span class="m">(6+\alpha-\beta,\ \alpha,\ -3-\beta,\ \beta)</span>, <span class="m">\alpha,\beta\in\mathbb{R}</span>. È la soluzione particolare <span class="m">(6,0,-3,0)</span> più le soluzioni <span class="m">(\alpha-\beta,\alpha,-\beta,\beta)</span> dell&#39;omogeneo associato.</p>
+<p><span class="m">\begin{cases}x_1-x_2+2x_3+3x_4=0\\x_1-x_2+3x_3+4x_4=0\\x_1-x_2+x_3+2x_4=0\end{cases}</span> è omogeneo (Esempio 24.18); <span class="m">\begin{cases}x_1-x_2+2x_3+3x_4=0\\x_1-x_2+3x_3+4x_4=-3\\x_1-x_2+x_3+2x_4=3\end{cases}</span> non lo è (Esempio 24.19), perché due termini noti sono diversi da zero. Non basta che <strong>un</strong> termine noto sia nullo: devono esserlo tutti.</p>
 </div>
 
-<p>Se <span class="m">B\neq0</span>, l&#39;insieme delle soluzioni <strong>non</strong> è un sottospazio vettoriale (<span class="m">0</span> non è soluzione).</p>
-<h2>Quante soluzioni</h2>
-<p>Sia <span class="m">k=\dim\mathrm{Ker}(f_A)</span>. Le soluzioni dell&#39;omogeneo, e (se è compatibile) quelle di <span class="m">AX=B</span>, si parametrizzano con <span class="m">k</span> parametri, e
-<span class="m d">k=\dim\mathrm{Ker}(f_A)=n-\dim\mathrm{Im}(f_A)=n-\mathrm{rank}(A).</span>
-Quindi un sistema lineare:</p>
-<ul>
-<li>se non è compatibile, ha <strong>zero</strong> soluzioni;</li>
-<li>se è compatibile, ha <span class="m">\infty^{n-\mathrm{rank}(A)}</span> soluzioni: <strong>una</strong> se <span class="m">n-\mathrm{rank}(A)=0</span> (si scrive <span class="m">\infty^0</span>), <strong>infinite</strong> altrimenti.</li>
-</ul>
+<p><strong>Osservazione 24.20.</strong> I sistemi omogenei sono <strong>sempre compatibili</strong>: hanno sempre la <strong>soluzione nulla</strong> <span class="m">X=0_n={}^t(0\ \cdots\ 0)</span>, perché <span class="m">A\cdot0_n=0_m</span>.</p>
+<p><strong>Osservazione 24.21.</strong> L&#39;insieme delle soluzioni di <span class="m">A\cdot X=0_m</span> è
+<span class="m d">\{X\in\mathbb K^n\mid f_A(X)=0_m\}=\operatorname{Ker}(f_A),</span>
+il <strong>nucleo</strong> di <span class="m">f_A</span>. In particolare è un <strong>sottospazio vettoriale</strong> di <span class="m">\mathbb K^n</span>: somme e multipli di soluzioni di un sistema omogeneo sono ancora soluzioni.</p>
+<p><strong>Definizione 24.22.</strong> Dato il sistema <span class="m">A\cdot X=B</span>, il sistema <span class="m">A\cdot X=0</span> (stessa matrice dei coefficienti, termini noti sostituiti da zeri) è il <strong>sistema omogeneo associato</strong> ad <span class="m">A\cdot X=B</span>. Ad esempio, il sistema omogeneo associato a quello dell&#39;Esempio 24.19 è quello dell&#39;Esempio 24.18.</p>
+<h2>Struttura delle soluzioni: <span class="m">\mathcal S=\overline X+\mathcal S_0</span></h2>
+<p>Le soluzioni di un sistema compatibile e quelle del suo omogeneo associato sono strettamente legate.</p>
+<p><strong>Proposizione 24.24.</strong> Sia <span class="m">\mathcal S</span> l&#39;insieme delle soluzioni di un sistema <strong>compatibile</strong> <span class="m">A\cdot X=B</span> e sia <span class="m">\mathcal S_0</span> l&#39;insieme delle soluzioni del sistema omogeneo associato <span class="m">A\cdot X=0</span>. Allora
+<span class="m d">\mathcal S=\overline X+\mathcal S_0=\{\overline X+Y\mid Y\in\mathcal S_0\},</span>
+dove <span class="m">\overline X</span> è <strong>un qualsiasi</strong> elemento di <span class="m">\mathcal S</span>.</p>
+<p><em>Dimostrazione.</em></p>
+<ol>
+<li>Per l&#39;Osservazione 24.16, <span class="m">\mathcal S=\operatorname{Preim}_{f_A}(B)</span>.</li>
+<li>Il sistema è compatibile, quindi questa controimmagine <strong>non è vuota</strong>: possiamo sceglierne un elemento <span class="m">\overline X</span> qualsiasi.</li>
+<li>Per una proprietà delle applicazioni lineari vista in precedenza, una controimmagine non vuota è un &quot;traslato&quot; del nucleo: <span class="m">\operatorname{Preim}_{f_A}(B)=\overline X+\operatorname{Ker}(f_A)</span>. (Il motivo: se <span class="m">X</span> è soluzione, <span class="m">A(X-\overline X)=B-B=0</span>, quindi <span class="m">X-\overline X\in\operatorname{Ker}f_A</span>; viceversa se <span class="m">Y\in\operatorname{Ker}f_A</span> allora <span class="m">A(\overline X+Y)=B+0=B</span>.)</li>
+<li>Per l&#39;Osservazione 24.21, <span class="m">\operatorname{Ker}(f_A)=\mathcal S_0</span>. Mettendo insieme, <span class="m">\mathcal S=\overline X+\mathcal S_0</span>. <span class="m">\blacksquare</span></li>
+</ol>
+<p><strong>Osservazione 24.26 (in parole).</strong> La <strong>soluzione generica</strong> di un sistema lineare compatibile è data da <strong>una soluzione particolare</strong> del sistema <strong>più la soluzione generica</strong> del sistema omogeneo associato.</p>
+<p><em>Interpretazione geometrica.</em> <span class="m">\mathcal S_0</span> è un sottospazio (passa per l&#39;origine: per esempio una retta o un piano per <span class="m">0</span>); <span class="m">\mathcal S</span> è lo stesso sottospazio <strong>spostato</strong> in modo da passare per <span class="m">\overline X</span>, cioè una retta o un piano parallelo che in generale non passa per l&#39;origine. Si può usare come <span class="m">\overline X</span> <strong>qualsiasi</strong> soluzione: cambia il punto di partenza, ma l&#39;insieme ottenuto è lo stesso.</p>
 <div class="callout esempio">
 
-<p><span class="m">\begin{cases}x_1+x_2=2\\4x_1+3x_2=-1\end{cases}</span>: <span class="m">n=2</span>, <span class="m">\mathrm{rank}\begin{pmatrix}1&amp;1\\4&amp;3\end{pmatrix}=2</span>, quindi <span class="m">\infty^{2-2}=\infty^0</span> soluzioni: una sola.</p>
+<p><strong>Esempio 24.25.</strong></p>
+<ol>
+<li><span class="m">\begin{cases}x_1+x_2=2\\4x_1+3x_2=-1\end{cases}</span> ha la sola soluzione <span class="m">{}^t(-7\ 9)</span>. Il suo omogeneo associato <span class="m">\begin{cases}x_1+x_2=0\\4x_1+3x_2=0\end{cases}</span> ha la sola soluzione <span class="m">{}^t(0\ 0)</span>. Infatti <span class="m">\{{}^t(-7\ 9)\}={}^t(-7\ 9)+\{{}^t(0\ 0)\}</span>.</li>
+<li><span class="m">\begin{cases}x_1-x_2+2x_3+3x_4=0\\x_1-x_2+3x_3+4x_4=-3\\x_1-x_2+x_3+2x_4=3\end{cases}</span> ha soluzioni
+<span class="m d">\begin{pmatrix}6+\alpha-\beta\\\alpha\\-3-\beta\\\beta\end{pmatrix}=\underbrace{\begin{pmatrix}6\\0\\-3\\0\end{pmatrix}}_{\text{soluzione particolare}}+\underbrace{\begin{pmatrix}\alpha-\beta\\\alpha\\-\beta\\\beta\end{pmatrix}}_{\text{soluzione generica dell'omogeneo}},\qquad\alpha,\beta\in\mathbb R.</span>
+Verifica della particolare: <span class="m">6-0-6+0=0</span> ✓, <span class="m">6-0-9+0=-3</span> ✓, <span class="m">6-0-3+0=3</span> ✓.</li>
+</ol>
+<p><strong>Esercizio 24.1.</strong> <span class="m">\begin{cases}2x-y+z=0\\x-y+z=0\end{cases}</span> è già omogeneo, quindi coincide con il suo omogeneo associato. Sottraendo le equazioni si ha <span class="m">x=0</span>, e poi <span class="m">z=y</span>: le soluzioni sono <span class="m">{}^t(0\ \alpha\ \alpha)</span>, <span class="m">\alpha\in\mathbb R</span>. Come soluzione particolare si può prendere <span class="m">{}^t(0\ 0\ 0)</span>, e allora <span class="m">\mathcal S={}^t(0\ 0\ 0)+\mathcal S_0</span>; ma si può anche prendere <span class="m">{}^t(0\ 1\ 1)</span>, e si ottiene <span class="m">{}^t(0\ 1+\alpha\ 1+\alpha)</span>, <span class="m">\alpha\in\mathbb R</span>, che è <strong>lo stesso insieme</strong> scritto con un altro parametro.</p>
+</div>
+
+<p><strong>Osservazione 24.27.</strong> L&#39;insieme delle soluzioni di un sistema <strong>omogeneo</strong> è un sottospazio vettoriale di <span class="m">\mathbb K^n</span>. Se invece <span class="m">B\neq0</span>, l&#39;insieme delle soluzioni <strong>non</strong> è un sottospazio vettoriale: non contiene il vettore nullo, perché <span class="m">A\cdot0=0\neq B</span>.</p>
+<div class="callout attenzione">
+
+<p>Nella formula <span class="m">\mathcal S=\overline X+\mathcal S_0</span> il vettore che si somma è una soluzione del sistema <strong>non omogeneo</strong> (<span class="m">\overline X\in\mathcal S</span>), e l&#39;insieme che si trasla è quello dell&#39;<strong>omogeneo</strong>. Scritture come <span class="m">\mathcal S=X_0+\mathcal S_0</span> con <span class="m">X_0</span> soluzione dell&#39;omogeneo (darebbe solo <span class="m">\mathcal S_0</span>), oppure <span class="m">\mathcal S_0=\overline X+\mathcal S</span>, sono sbagliate. La proposizione richiede che il sistema sia <strong>compatibile</strong>: se <span class="m">\mathcal S=\emptyset</span> non c&#39;è nessun <span class="m">\overline X</span> da scegliere, mentre <span class="m">\mathcal S_0</span> non è mai vuoto.</p>
+</div>
+
+<h2>Quante soluzioni: <span class="m">\infty^{n-\operatorname{rank}A}</span></h2>
+<p><strong>Osservazione 24.28.</strong> Sia <span class="m">k=\dim\operatorname{Ker}(f_A)</span>. Scelta una base <span class="m">\{Y_1,\dots,Y_k\}</span> del nucleo, le soluzioni dell&#39;omogeneo sono tutte e sole le combinazioni <span class="m">\alpha_1Y_1+\dots+\alpha_kY_k</span>: si descrivono con <strong><span class="m">k</span> parametri</strong> <span class="m">\alpha_1,\dots,\alpha_k\in\mathbb K</span>. Se <span class="m">k=0</span>, il nucleo è <span class="m">\{0_n\}</span> e l&#39;omogeneo ha la sola soluzione nulla. Per la Proposizione 24.24, se <span class="m">A\cdot X=B</span> è compatibile anche le sue soluzioni <span class="m">\overline X+\alpha_1Y_1+\dots+\alpha_kY_k</span> dipendono da <span class="m">k</span> parametri; se <span class="m">k=0</span> c&#39;è esattamente una soluzione.</p>
+<p>Il numero di parametri si calcola con il <strong>teorema fondamentale dell&#39;algebra lineare</strong> (teorema della dimensione, <span class="m">\dim\operatorname{Ker}f+\dim\operatorname{Im}f=\dim</span> del dominio) e con il fatto che <span class="m">\dim\operatorname{Im}(f_A)=\operatorname{rank}(A)</span>:
+<span class="m d">k=\dim\operatorname{Ker}(f_A)=n-\dim\operatorname{Im}(f_A)=n-\operatorname{rank}(f_A)=n-\operatorname{rank}(A).</span></p>
+<p><strong>Osservazione 24.29 (le sole possibilità).</strong> Un sistema lineare <span class="m">A\cdot X=B</span> in <span class="m">n</span> incognite:</p>
+<ul>
+<li>se <strong>non è compatibile</strong>, ha <strong>zero</strong> soluzioni;</li>
+<li>se <strong>è compatibile</strong>, le sue soluzioni dipendono da <span class="m">k=n-\operatorname{rank}(A)</span> parametri: si dice che ha <strong><span class="m">\infty^{k}</span> soluzioni</strong>. Se <span class="m">k=0</span> (scritto <span class="m">\infty^0</span>) la soluzione è <strong>una sola</strong>; se <span class="m">k\geqslant1</span> le soluzioni sono <strong>infinite</strong>.</li>
+</ul>
+<p>In particolare un sistema lineare non può mai avere, ad esempio, esattamente 2 o 3 soluzioni: o nessuna, o una, o infinite.</p>
+<table>
+<thead>
+<tr>
+<th>Situazione</th>
+<th>Numero di soluzioni</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>sistema incompatibile</td>
+<td><span class="m">0</span></td>
+</tr>
+<tr>
+<td>compatibile, <span class="m">\operatorname{rank}A=n</span></td>
+<td><span class="m">\infty^0</span> = una sola</td>
+</tr>
+<tr>
+<td>compatibile, <span class="m">\operatorname{rank}A=r&lt;n</span></td>
+<td><span class="m">\infty^{n-r}</span> (infinite, <span class="m">n-r</span> parametri)</td>
+</tr>
+</tbody></table>
+<div class="callout esempio">
+
+<p><strong>Esempio 24.30.</strong> <span class="m">\begin{cases}x_1+x_2=2\\4x_1+3x_2=-1\end{cases}</span>: <span class="m">n=2</span> incognite, <span class="m">\operatorname{rank}\begin{pmatrix}1&amp;1\\4&amp;3\end{pmatrix}=2</span> (il determinante è <span class="m">3-4=-1\neq0</span>). Quindi <span class="m">\infty^{2-2}=\infty^0</span>: una sola soluzione, <span class="m">(-7,9)</span>.</p>
+<p><strong>Esercizio 24.5.</strong></p>
+<ol>
+<li><span class="m">\begin{cases}x_1+x_2=2\\x_1+x_2=2\\2x_1+2x_2=4\\2x_1+x_2=1\end{cases}</span> (compatibile): le prime tre righe di <span class="m">A</span> sono multiple di <span class="m">(1\ 1)</span>, la quarta <span class="m">(2\ 1)</span> non lo è, e <span class="m">\det\begin{pmatrix}1&amp;1\\2&amp;1\end{pmatrix}=1-2=-1\neq0</span>: <span class="m">\operatorname{rank}A=2=n</span>. Soluzioni: <span class="m">\infty^0</span>, una sola (la si trova dalla prima e dalla quarta: <span class="m">x_1=-1</span>, <span class="m">x_2=3</span>).</li>
+<li><span class="m">\begin{cases}x_1+x_2+x_4=0\\x_2+x_3=0\\x_1+2x_2+x_3+x_4=0\\2x_1+4x_2+2x_3+2x_4=0\end{cases}</span> (omogeneo, quindi compatibile): la terza riga è la somma delle prime due, la quarta è il doppio della terza, le prime due sono indipendenti: <span class="m">\operatorname{rank}A=2</span>. Con <span class="m">n=4</span> incognite: <span class="m">\infty^{4-2}=\infty^2</span> soluzioni.</li>
+</ol>
+</div>
+
+<div class="callout attenzione">
+
+<p>L&#39;esponente è <strong>numero di incognite meno rango di <span class="m">A</span></strong>: non il rango, non il numero di equazioni, non &quot;incognite meno equazioni&quot;. Equazioni ripetute o combinazione di altre non tolgono parametri. E la formula vale <strong>solo se il sistema è compatibile</strong>: un sistema incompatibile ha zero soluzioni qualunque sia <span class="m">n-\operatorname{rank}A</span>.</p>
 </div>
 
 <div class="callout esame">
 
-<p>Il paniere chiede di scrivere matrice dei coefficienti e matrice completa di un sistema (attenzione agli zeri delle incognite mancanti e ai segni), di riconoscere un sistema lineare, la relazione <span class="m">\mathcal{S}=\overline{X}+\mathcal{S}_0</span> e il numero di soluzioni <span class="m">\infty^{n-\mathrm{rank}(A)}=\infty^{\dim\mathrm{Ker}(f_A)}</span>. Domanda aperta: relazione tra le soluzioni di un sistema e quelle dell&#39;omogeneo associato.</p>
+<p>Il paniere chiede di scrivere <strong>matrice dei coefficienti e matrice completa</strong> di un sistema con incognite mancanti: le opzioni sbagliate tolgono gli zeri (matrici con meno colonne), cambiano i segni dei coefficienti negativi, oppure danno il solo vettore dei termini noti al posto della completa. Controlla: numero di colonne di <span class="m">A</span> = numero di incognite, completa con una colonna in più, segni copiati.</p>
+<p><strong>Domanda aperta</strong> (relazione tra le soluzioni di un sistema e quelle dell&#39;omogeneo associato): definire sistema omogeneo associato; dire che le soluzioni dell&#39;omogeneo sono <span class="m">\operatorname{Ker}(f_A)</span>, un sottospazio, e che l&#39;omogeneo è sempre compatibile; enunciare la Proposizione 24.24 <span class="m">\mathcal S=\overline X+\mathcal S_0</span> con l&#39;ipotesi di compatibilità e la dimostrazione tramite controimmagine; dire che <span class="m">\mathcal S</span> non è un sottospazio se <span class="m">B\neq0</span>; aggiungere che il numero di parametri è <span class="m">\dim\operatorname{Ker}f_A=n-\operatorname{rank}A</span>; chiudere con l&#39;Esempio 24.25.</p>
+</div>
+
+<div class="callout sintesi">
+
+<ul>
+<li>Sistema lineare: incognite solo al primo grado. Forma matriciale <span class="m">A\cdot X=B</span>; per colonne <span class="m">x_1A^1+\dots+x_nA^n=B</span>.</li>
+<li><span class="m">A</span> = incompleta (<span class="m">m\times n</span>), <span class="m">(A\,|\,B)</span> = completa (<span class="m">m\times(n+1)</span>); zeri per le incognite mancanti, segni conservati.</li>
+<li>Soluzioni <span class="m">=\operatorname{Preim}_{f_A}(B)</span>; compatibile <span class="m">\iff B\in\operatorname{Im}f_A</span>.</li>
+<li>Omogeneo: sempre compatibile, soluzioni <span class="m">=\operatorname{Ker}f_A</span> (sottospazio).</li>
+<li>Sistema compatibile: <span class="m">\mathcal S=\overline X+\mathcal S_0</span> (soluzione particolare + generica dell&#39;omogeneo); se <span class="m">B\neq0</span>, <span class="m">\mathcal S</span> non è un sottospazio.</li>
+<li>Soluzioni: <span class="m">0</span> se incompatibile, altrimenti <span class="m">\infty^{n-\operatorname{rank}A}</span> (<span class="m">\infty^0</span> = una sola).</li>
+</ul>
 </div>

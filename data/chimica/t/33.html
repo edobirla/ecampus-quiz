@@ -1,5 +1,7 @@
-<h1 id="lez-33">Lezione 33 — Spontaneità dei processi ed energia libera di Gibbs</h1>
+<h1 id="lez-33">Lezione 33 — Spontaneità ed energia libera di Gibbs</h1>
 <h2 id="lez-33-perche">Perché questa lezione esiste</h2>
+<p>Come si fa a stabilire se un processo chimico avviene <strong>spontaneamente</strong>? E che cosa
+c&#39;entrano l&#39;entropia e il secondo principio?</p>
 <p>Le due lezioni precedenti hanno dato lo strumento per calcolare <span class="m">\Delta S</span> del
 <strong>sistema</strong>. Ma il secondo principio, nella sua forma pura (<span class="m">\Delta S_{univ}&gt;0</span>),
 richiede anche <span class="m">\Delta S</span> dell&#39;<strong>ambiente</strong> — un dato spesso scomodo da avere. Questa
@@ -7,79 +9,163 @@ lezione introduce una funzione che permette di giudicare la spontaneità guardan
 <strong>solo il sistema</strong>: l&#39;energia libera di Gibbs. È probabilmente la singola idea più
 usata in tutto il corso da qui in avanti (equilibrio chimico, elettrochimica,
 diagrammi di stato passano tutti da <span class="m">\Delta G</span>).</p>
+<p>Ricorda il secondo principio applicato all&#39;universo (sistema + ambiente, che insieme
+formano un sistema isolato):</p>
+<p><span class="m d">\Delta S_{univ} = \Delta S_{sist} + \Delta S_{amb} \;\begin{cases} &gt;0 &amp; \text{irreversibile (spontaneo)}\\ =0 &amp; \text{reversibile (equilibrio)}\end{cases}</span></p>
 <h2 id="lez-33-esempio-guida">Un esempio guida: il ghiaccio che fonde in un bicchiere a 25 °C</h2>
-<p>Chiediti: 2 kg di ghiaccio fondono in un bicchiere lasciato a 25 °C. È spontaneo?
-Il calore <span class="m">Q=m\lambda_{fus}</span> passa dall&#39;ambiente (25 °C) al sistema (0 °C durante
-tutta la fusione) — una differenza di temperatura finita, quindi la trasformazione è
-irreversibile per costruzione.</p>
+<p>Chiediti: 2 kg di ghiaccio fondono in un bicchiere lasciato a 25 °C. Di quanto varia
+l&#39;entropia dell&#39;universo? È spontaneo? Per semplicità si considera solo il calore che
+serve per la fusione, <span class="m">Q=m\lambda_{fus}</span>. Il calore passa dall&#39;ambiente (25 °C) al
+sistema (0 °C durante tutta la fusione) — una differenza di temperatura finita, quindi
+la trasformazione è irreversibile per costruzione.</p>
 <p>Per calcolare <span class="m">\Delta S_{sist}</span> e <span class="m">\Delta S_{amb}</span> separatamente, <strong>supponi</strong> (anche
 se non è realmente vero) che il calore venga trasferito in modo reversibile a
 ciascuna delle due temperature: il sistema resta a <span class="m">T_{FUS}=273\ \mathrm K</span> per tutta
-la fusione, l&#39;ambiente resta a <span class="m">T_{AMB}=298\ \mathrm K</span>.</p>
+la fusione, l&#39;ambiente resta a <span class="m">T_{AMB}=298\ \mathrm K</span>. Si può fare perché <span class="m">S</span> è una
+funzione di stato: <span class="m">\Delta S</span> non dipende da come avviene la trasformazione, quindi
+<strong>basta</strong> sceglierne una reversibile per fare i conti
+(<a href="#/teoria/chimica/32/lez-32-clausius">Lezione 32</a>).</p>
+<p>Moli d&#39;acqua: <span class="m">2000/18=111.1\ \mathrm{mol}</span>; calore di fusione
+<span class="m">111.1\times6.01=667.8\ \mathrm{kJ}</span>.</p>
 <p><span class="m d">\Delta S_{sist} = \frac{m\lambda_{fus}}{T_{FUS}} = \frac{(2000/18)\,\mathrm{mol}
 \times 6.01\,\mathrm{kJ/mol}}{273\,\mathrm K} \approx +2.45\ \mathrm{kJ/K}</span></p>
 <p><span class="m d">\Delta S_{amb} = -\frac{m\lambda_{fus}}{T_{AMB}} = -\frac{(2000/18)\,\mathrm{mol}
 \times 6.01\,\mathrm{kJ/mol}}{298\,\mathrm K} \approx -2.24\ \mathrm{kJ/K}</span></p>
 <p>(il segno di <span class="m">\Delta S_{amb}</span> è negativo perché l&#39;ambiente <strong>cede</strong> calore).</p>
 <p><span class="m d">\Delta S_{univ} = \Delta S_{sist} + \Delta S_{amb} \approx +0.21\ \mathrm{kJ/K} &gt; 0</span></p>
-<p>Positivo: il processo è spontaneo. Nota il punto chiave: se sistema e ambiente
-fossero alla <strong>stessa</strong> temperatura (0 °C + <span class="m">\delta T</span> infinitesimo), i due termini si
-cancellerebbero esattamente e <span class="m">\Delta S_{univ}=0</span> — condizione di equilibrio (fusione
+<p>Positivo: il processo è spontaneo. Lo stesso calore, diviso per una temperatura più
+bassa (sistema) e per una più alta (ambiente), dà un guadagno di entropia maggiore
+della perdita: per questo il calore va spontaneamente dal caldo al freddo.</p>
+<p><strong>Che cosa servirebbe perché il processo fosse reversibile?</strong> Le temperature di
+sistema e ambiente dovrebbero differire al più di una quantità <strong>infinitesima</strong>
+(<span class="m">T_{amb}=0\,^\circ\mathrm C+\delta T</span>): il calore passerebbe lentissimamente e in
+ogni istante ci sarebbe equilibrio termico fra sistema e ambiente. Allora</p>
+<p><span class="m d">\Delta S_{sist}=+2.45\ \mathrm{kJ/K},\qquad \Delta S_{amb}=-\frac{667.8}{273}=-2.45\ \mathrm{kJ/K},\qquad \Delta S_{univ}=0</span></p>
+<p>I due termini si cancellano esattamente: condizione di equilibrio (fusione
 reversibile). La differenza finita di temperatura è ciò che rende il processo reale
 irreversibile.</p>
 <h2 id="lez-33-derivazione">Dalla condizione sull&#39;universo alla condizione sul sistema</h2>
 <p>Il problema dell&#39;esempio precedente è che serve <span class="m">\Delta S_{amb}</span>, che richiede di
 conoscere come l&#39;ambiente scambia calore — un dato spesso indisponibile. Si può
 eliminarlo con un passaggio algebrico.</p>
-<p>Supponi che ambiente e sistema siano in equilibrio meccanico (stessa <span class="m">P</span>) e che lo
-scambio di calore avvenga a <span class="m">P</span> costante, quindi <span class="m">Q_{sist \to amb} = -\Delta H_{sist}</span>
-e, per l&#39;ambiente (che riceve reversibilmente quel calore a temperatura <span class="m">T</span>
-costante):</p>
+<p>Supponi che ambiente e sistema siano in equilibrio meccanico (stessa <span class="m">P</span>) e termico
+(stessa <span class="m">T</span>), e che lo scambio di calore avvenga a <span class="m">P</span> costante. Il calore assorbito
+dal sistema è <span class="m">Q=\Delta H_{sist}</span>, quindi quello ricevuto dall&#39;ambiente è
+<span class="m">-\Delta H_{sist}</span> e, per l&#39;ambiente (che riceve reversibilmente quel calore a
+temperatura <span class="m">T</span> costante):</p>
 <p><span class="m d">\Delta S_{amb} = \frac{-\Delta H_{sist}}{T}</span></p>
-<p>Sostituendo nel secondo principio:</p>
-<p><span class="m d">\Delta S_{univ} = \Delta S_{sist} + \Delta S_{amb} = \Delta S_{sist} -
-\frac{\Delta H_{sist}}{T} &gt; 0 \quad\Longrightarrow\quad \Delta H_{sist} -
-T\,\Delta S_{sist} &lt; 0</span></p>
+<p><strong>Dimostrazione passo per passo.</strong></p>
+<ol>
+<li>Secondo principio: <span class="m">\Delta S_{univ}=\Delta S_{sist}+\Delta S_{amb}&gt;0</span>.</li>
+<li>Sostituisco <span class="m">\Delta S_{amb}</span>: <span class="m">\Delta S_{sist}-\dfrac{\Delta H_{sist}}{T}&gt;0</span>.</li>
+<li>Moltiplico per <span class="m">T</span> (positiva, il verso non cambia):
+<span class="m">T\Delta S_{sist}-\Delta H_{sist}&gt;0</span>.</li>
+<li>Moltiplico per <span class="m">-1</span> (il verso si inverte): <span class="m">\Delta H_{sist}-T\Delta S_{sist}&lt;0</span>.</li>
+</ol>
 <p>A questo punto definisci una nuova funzione di stato, l&#39;<strong>energia libera di Gibbs</strong>:</p>
 <div class="callout formula">
 
 <p><span class="m d">G = H - TS</span></p>
+<p><span class="m">G</span> (J o kJ; per le reazioni kJ/mol), <span class="m">H</span> entalpia, <span class="m">T</span> temperatura assoluta (K), <span class="m">S</span>
+entropia (J/K). È una funzione di stato perché combinazione di funzioni di stato.</p>
 </div>
 
 <p>A temperatura costante, <span class="m">\Delta G = \Delta H - T\Delta S</span>. Confrontando con la
 disequazione appena trovata:</p>
 <div class="callout formula">
 
-<p><span class="m d">\Delta G_{sist} &lt; 0 \quad\Longleftrightarrow\quad \Delta S_{univ} &gt; 0</span></p>
+<p><span class="m d">\Delta G_{sist} &lt; 0 \quad\Longleftrightarrow\quad \Delta S_{univ} &gt; 0
+\qquad\text{e precisamente}\qquad \Delta S_{univ} = -\frac{\Delta G_{sist}}{T}</span></p>
 </div>
 
 <div class="callout formula">
 
 <p>Criterio fondamentale di spontaneità (a <span class="m">T,P</span> costanti):
 <span class="m d">\Delta G &lt; 0 \Rightarrow \text{processo spontaneo} \qquad \Delta G = 0
-\Rightarrow \text{equilibrio}</span></p>
+\Rightarrow \text{equilibrio} \qquad \Delta G &gt; 0 \Rightarrow \text{spontaneo il processo inverso}</span></p>
 </div>
 
-<p>Il vantaggio è enorme: <strong>per giudicare se una trasformazione è spontanea basta
-guardare <span class="m">\Delta H</span> e <span class="m">\Delta S</span> del sistema</strong>, senza mai dover calcolare nulla
+<p>Il vantaggio è enorme: per applicare il criterio su <span class="m">\Delta S_{univ}</span> servono sia
+<span class="m">\Delta S_{sist}</span> sia <span class="m">\Delta S_{amb}</span>; <strong>per giudicare con <span class="m">\Delta G</span> basta guardare
+<span class="m">\Delta H</span> e <span class="m">\Delta S</span> del sistema</strong>, senza mai dover calcolare nulla
 sull&#39;ambiente.</p>
 <div class="callout attenzione">
 
 <p><span class="m">G=H-TS</span> è una funzione <strong>ausiliaria</strong>, costruita apposta per raccogliere in
 un&#39;unica grandezza l&#39;effetto energetico (<span class="m">H</span>) e l&#39;effetto probabilistico/entropico
 (<span class="m">S</span>) senza dover più guardare l&#39;ambiente. Non ha un significato fisico &quot;diretto&quot;
-come l&#39;energia interna; il suo unico scopo è dare il segno giusto per la
-spontaneità.</p>
+come l&#39;energia interna; il suo scopo è dare il segno giusto per la spontaneità (e,
+come si vede sotto, il lavoro utile massimo).</p>
 </div>
 
+<h3>Il significato di <span class="m">G</span>: competizione fra energia ed entropia</h3>
+<ol>
+<li><strong>Energia libera</strong> significa energia capace di causare un cambiamento, cioè
+capace di fare lavoro.</li>
+<li><span class="m">G=H-TS</span> misura la <strong>competizione</strong> fra l&#39;effetto energetico (<span class="m">H</span>: la tendenza
+dell&#39;energia a portarsi sui valori minimi, come un corpo che cade verso
+un&#39;energia potenziale più bassa) e l&#39;effetto probabilistico (<span class="m">S</span>: la tendenza
+dell&#39;entropia a portarsi sui valori massimi).</li>
+</ol>
+<p>Si scrive anche: <span class="m">\underbrace{G}_{\text{energia libera}} = \underbrace{H}_{\text{energia totale}} - \underbrace{TS}_{\text{energia già disordinata}}</span>.</p>
+<p>Immagina <span class="m">G</span> come un&#39;&quot;altitudine&quot;: per una trasformazione A → B,</p>
+<ul>
+<li>se <span class="m">G_{prod}&lt;G_{reag}</span> (<span class="m">\Delta G&lt;0</span>) il sistema &quot;scende&quot; spontaneamente da A a B;</li>
+<li>se <span class="m">G_{prod}=G_{reag}</span> (<span class="m">\Delta G=0</span>) A e B sono in <strong>equilibrio</strong>;</li>
+<li>se <span class="m">G_{prod}&gt;G_{reag}</span> (<span class="m">\Delta G&gt;0</span>) è spontanea la trasformazione <strong>inversa</strong>
+B → A.</li>
+</ul>
+<p>Le quattro combinazioni di segni:</p>
+<table>
+<thead>
+<tr>
+<th><span class="m">\Delta H</span></th>
+<th><span class="m">\Delta S</span></th>
+<th><span class="m">\Delta G=\Delta H-T\Delta S</span></th>
+<th>Spontaneità</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><span class="m">&lt;0</span></td>
+<td><span class="m">&gt;0</span></td>
+<td>sempre <span class="m">&lt;0</span></td>
+<td>spontaneo a ogni <span class="m">T</span></td>
+</tr>
+<tr>
+<td><span class="m">&gt;0</span></td>
+<td><span class="m">&lt;0</span></td>
+<td>sempre <span class="m">&gt;0</span></td>
+<td>mai spontaneo (lo è l&#39;inverso)</td>
+</tr>
+<tr>
+<td><span class="m">&lt;0</span></td>
+<td><span class="m">&lt;0</span></td>
+<td><span class="m">&lt;0</span> solo se <span class="m">T&lt;\Delta H/\Delta S</span></td>
+<td>spontaneo a <strong>bassa</strong> <span class="m">T</span></td>
+</tr>
+<tr>
+<td><span class="m">&gt;0</span></td>
+<td><span class="m">&gt;0</span></td>
+<td><span class="m">&lt;0</span> solo se <span class="m">T&gt;\Delta H/\Delta S</span></td>
+<td>spontaneo ad <strong>alta</strong> <span class="m">T</span></td>
+</tr>
+</tbody></table>
+<p>Per questo una reazione <strong>endotermica</strong> (<span class="m">\Delta H&gt;0</span>) può essere spontanea: basta che
+l&#39;aumento di entropia sia abbastanza grande, e <span class="m">T</span> abbastanza alta, perché
+<span class="m">T\Delta S&gt;\Delta H</span> (esempi: fusione del ghiaccio sopra 0 °C, scioglimento di
+<span class="m">\chem{NH_4NO_3}</span> in acqua).</p>
 <h2 id="lez-33-lavoro-utile">Energia libera come lavoro utile massimo</h2>
 <p><span class="m">G</span> ha anche un&#39;interpretazione operativa: <span class="m">\Delta G_{reaz}</span> (a <span class="m">T,P</span> costanti)
-rappresenta la massima quantità di lavoro <strong>utile</strong> ottenibile dalla trasformazione.</p>
+rappresenta la massima quantità di lavoro <strong>utile</strong> ottenibile dalla trasformazione
+(lavoro diverso da quello di espansione, per esempio lavoro elettrico in una pila).</p>
 <ul>
-<li>Processo spontaneo (<span class="m">\Delta G&lt;0</span>): il sistema può compiere lavoro sull&#39;ambiente. Il
-valore assoluto di <span class="m">\Delta G</span> è la quantità massima di lavoro utile estraibile.</li>
-<li>Processo non spontaneo (<span class="m">\Delta G&gt;0</span>): serve fornire dall&#39;esterno <strong>almeno</strong>
-<span class="m">\Delta G</span> di lavoro perché la trasformazione avvenga.</li>
+<li>Processo spontaneo (<span class="m">\Delta G&lt;0</span>, <span class="m">\Delta S_{univ}&gt;0</span>): il sistema può compiere
+lavoro sull&#39;ambiente. Il valore assoluto di <span class="m">\Delta G</span> è la quantità massima di
+lavoro utile estraibile, ed eguaglia esattamente la diminuzione di energia libera.</li>
+<li>Processo non spontaneo (<span class="m">\Delta G&gt;0</span>, <span class="m">\Delta S_{univ}&lt;0</span>): l&#39;ambiente deve fare
+lavoro sul sistema; serve fornire dall&#39;esterno <strong>almeno</strong> <span class="m">\Delta G</span> di lavoro
+perché la trasformazione avvenga (è il minimo, uguale all&#39;aumento di energia
+libera).</li>
 </ul>
 <p>Da qui il concetto di <strong>rendimento</strong> di una reazione, cioè la frazione di energia
 totale disponibile (<span class="m">\Delta H</span>) che è effettivamente convertibile in lavoro utile
@@ -87,19 +173,30 @@ totale disponibile (<span class="m">\Delta H</span>) che è effettivamente conve
 <div class="callout formula">
 
 <p><span class="m d">\Delta H_{reaz} = \Delta G_{reaz} + T\Delta S_{reaz} \qquad \text{Rendimento
-(\%)} = \frac{\Delta G_{reaz}}{\Delta H_{reaz}}\times 100</span></p>
+(\%)} = \frac{E_{utilizzabile}}{E_{totale}}\times100 = \frac{\Delta G_{reaz}}{\Delta H_{reaz}}\times 100</span></p>
 </div>
 
+<p>Esempi: per la sintesi dell&#39;ammoniaca (sotto) il rendimento è
+<span class="m">16.45/46.11\times100\approx36\%</span>; per la combustione del butano
+<span class="m">2746/2877\times100\approx95\%</span>.</p>
 <h2 id="lez-33-esempio-ammoniaca">Esempio guida: sintesi dell&#39;ammoniaca</h2>
 <p><span class="m">\tfrac12 N_2(g) + \tfrac32 H_2(g) \rightarrow NH_3(g)</span> a 298 K:
 <span class="m">\Delta H^\circ=-46.11\ \mathrm{kJ/mol}</span>, <span class="m">\Delta S^\circ=-99.38\
 \mathrm{J\,mol^{-1}K^{-1}}</span>, <span class="m">\Delta G^\circ=-16.45\ \mathrm{kJ/mol}</span>.</p>
+<p>Ipotesi: la miscela è in un cilindro con pistone (il sistema), con
+<span class="m">\chem{N_2}</span>, <span class="m">\chem{H_2}</span> e <span class="m">\chem{NH_3}</span> ciascuno alla pressione parziale di 1 atm
+(stato standard, gas ideali) a 298 K; sistema e ambiente in equilibrio termico e
+meccanico (<span class="m">T_{amb}=T</span>, <span class="m">P_{amb}=P</span>), così che le eventuali irreversibilità siano
+dovute solo alla reazione chimica. Il calore ceduto all&#39;ambiente è
+<span class="m">Q=-\Delta H^\circ</span>.</p>
 <p>Verifica con il metodo &quot;lungo&quot; (via <span class="m">\Delta S_{univ}</span>):</p>
 <p><span class="m d">\Delta S_{univ} = \Delta S_{sist} - \frac{\Delta H_{sist}}{T_{amb}} =
 -99.38\ \frac{\mathrm J}{\mathrm{mol\,K}} - \frac{-46110\,\mathrm J}{298\,\mathrm K}
-\approx +55.35\ \mathrm{J/K} &gt; 0</span></p>
-<p>Spontaneo. E infatti <span class="m">\Delta G^\circ=-16.45\ \mathrm{kJ/mol}&lt;0</span>: stessa conclusione,
-molto meno lavoro.</p>
+= -99.38+154.73 \approx +55.35\ \mathrm{J/K} &gt; 0</span></p>
+<p>Spontaneo, anche se l&#39;entropia del sistema diminuisce (2 moli di gas diventano 1): il
+calore ceduto fa crescere l&#39;entropia dell&#39;ambiente più di quanto cali quella del
+sistema. E infatti <span class="m">\Delta G^\circ=-16.45\ \mathrm{kJ/mol}&lt;0</span>: stessa conclusione,
+molto meno lavoro. Controllo: <span class="m">-\Delta G^\circ/T=16450/298=55.2\ \mathrm{J/K}</span>.</p>
 <div class="callout attenzione">
 
 <p><strong>Spontaneo non significa veloce.</strong> A 298 K, N₂ e H₂ nel loro stato standard non
@@ -118,22 +215,40 @@ spontaneità termodinamica con velocità di reazione.</p>
 <p><span class="m d">\Delta G(T) \approx \Delta H(T_0) - T\,\Delta S(T_0)</span></p>
 </div>
 
-<p>Questa è una retta in funzione di <span class="m">T</span> (in kelvin). Interseca l&#39;asse <span class="m">T</span> nel punto
-<span class="m">T^* = \Delta H/\Delta S</span>: la temperatura alla quale il sistema è esattamente in
-equilibrio (<span class="m">\Delta G=0</span>). Da un lato di <span class="m">T^*</span> la trasformazione è spontanea, dall&#39;altro
-è spontanea la trasformazione inversa.</p>
+<p>Questa è una retta in funzione di <span class="m">T</span> (in kelvin), di pendenza <span class="m">-\Delta S</span>. Interseca
+l&#39;asse <span class="m">T</span> nel punto <span class="m">T^* = \Delta H/\Delta S</span>: la temperatura alla quale il sistema è
+esattamente in equilibrio (<span class="m">\Delta G=0</span>). Da un lato di <span class="m">T^*</span> la trasformazione è
+spontanea, dall&#39;altro è spontanea la trasformazione inversa.</p>
 <div class="callout esempio">
 
-<p><strong>Fusione del ghiaccio: per quali temperature è spontanea?</strong></p>
+<p><strong>Fusione del ghiaccio: per quali temperature è spontanea?</strong> Stabilire se sono
+spontanei o di equilibrio i processi <span class="m">\chem{H_2O(s)}\rightarrow\chem{H_2O(l)}</span> a 1 atm
+e (a) 10 °C, (b) −5 °C, (c) 0 °C.</p>
 <p><span class="m">\Delta H_{fus}(0°C)=6.01\ \mathrm{kJ/mol}</span>. A 0 °C (273 K) c&#39;è equilibrio
-solido-liquido, quindi <span class="m">\Delta G=0</span> e puoi ricavare <span class="m">\Delta S</span> da lì:
+solido-liquido, quindi il caso (c) ha <span class="m">\Delta G=0</span> e puoi ricavare <span class="m">\Delta S</span> da lì:
 <span class="m d">\Delta S(0°C) = \frac{\Delta H(0°C)}{273\,\mathrm K} = \frac{6010\,\mathrm{J/mol}}
 {273\,\mathrm K} \approx 22.01\ \mathrm{J\,mol^{-1}K^{-1}}</span></p>
-<p>Usando <span class="m">\Delta G(T) \approx \Delta H(0°C) - T\cdot\Delta S(0°C)</span>: per <span class="m">T&lt;273\
-\mathrm K</span> risulta <span class="m">\Delta G&gt;0</span> (fusione non spontanea — è spontanea la
-solidificazione), per <span class="m">T&gt;273\ \mathrm K</span> risulta <span class="m">\Delta G&lt;0</span> (il ghiaccio fonde
-spontaneamente). Risultato in linea con l&#39;esperienza quotidiana, ma ora ricavato da
-un criterio quantitativo.</p>
+<p>A rigore servirebbero <span class="m">\Delta H</span> e <span class="m">\Delta S</span> a 10 °C e a −5 °C, ma variano poco con
+<span class="m">T</span>: si usano i valori a 0 °C, <span class="m">\Delta G(T) \approx 6010 - 22.01\,T</span> (J/mol).</p>
+<ul>
+<li>(a) <span class="m">T=283\ \mathrm K</span>: <span class="m">\Delta G\approx6010-6229=-219\ \mathrm{J/mol}&lt;0</span>: il
+ghiaccio fonde spontaneamente.</li>
+<li>(b) <span class="m">T=268\ \mathrm K</span>: <span class="m">\Delta G\approx6010-5899=+111\ \mathrm{J/mol}&gt;0</span>: la
+fusione non è spontanea, è spontanea la solidificazione.</li>
+<li>(c) <span class="m">T=273\ \mathrm K</span>: <span class="m">\Delta G=0</span>, equilibrio.</li>
+</ul>
+<p>In generale per <span class="m">T&lt;273\ \mathrm K</span> risulta <span class="m">\Delta G&gt;0</span>, per <span class="m">T&gt;273\ \mathrm K</span>
+risulta <span class="m">\Delta G&lt;0</span>. Risultato in linea con l&#39;esperienza quotidiana, ma ora ricavato
+da un criterio quantitativo.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Temperatura di equilibrio di una reazione.</strong> <span class="m">\Delta H^\circ=+120\ \mathrm{kJ/mol}</span>,
+<span class="m">\Delta S^\circ=+250\ \mathrm{J\,mol^{-1}K^{-1}}</span> (costanti).
+<span class="m">T^*=\Delta H^\circ/\Delta S^\circ=120\,000/250=480\ \mathrm K</span> (attenzione: kJ in J).
+A 800 K: <span class="m">\Delta G^\circ=120-800\times0.250=-80\ \mathrm{kJ/mol}&lt;0</span>, spontanea
+(endotermica con <span class="m">\Delta S&gt;0</span>: spontanea sopra <span class="m">T^*</span>).</p>
 </div>
 
 <div class="callout esempio">
@@ -141,32 +256,66 @@ un criterio quantitativo.</p>
 <p><strong>Combustione di 58 g di butano (<span class="m">\mathrm{C_4H_{10}}</span>), reagenti e prodotti in stato
 standard a 298 K.</strong></p>
 <p><strong>Passo 1 — bilancia.</strong> <span class="m">\mathrm{C_4H_{10}(g)} + \tfrac{13}{2}\mathrm{O_2(g)}
-\rightarrow 4\,\mathrm{CO_2(g)} + 5\,\mathrm{H_2O(l)}</span>.</p>
+\rightarrow 4\,\mathrm{CO_2(g)} + 5\,\mathrm{H_2O(l)}</span> (combustione completa).</p>
 <p><strong>Passo 2 — calcola <span class="m">\Delta H^\circ</span></strong> con la legge di Hess (vista in
 <a href="#/teoria/chimica/30/lez-30-formazione-standard">Lezione 30</a>):
 <span class="m d">\Delta H^\circ = 4(-393.51)+5(-285.83)-1(-126.15) = -2877\ \mathrm{kJ/mol\ C_4H_{10}}</span>
 Poiché 58 g di butano corrispondono esattamente a 1 mole (<span class="m">M=58\ \mathrm{g/mol}</span>), il
-calore liberato è <span class="m">2877\ \mathrm{kJ}</span>.</p>
+calore liberato (calore o entalpia di <strong>combustione</strong>) è <span class="m">2877\ \mathrm{kJ}</span>.</p>
 <p><strong>Passo 3 — calcola <span class="m">\Delta G^\circ</span></strong> allo stesso modo con i valori tabulati di
-<span class="m">\Delta G^\circ_f</span>: <span class="m">\Delta G^\circ \approx -2746\ \mathrm{kJ/mol}</span>. Negativo:
-reazione spontanea a 298 K.</p>
+<span class="m">\Delta G^\circ_f</span> (<span class="m">\chem{CO_2}=-394.36</span>, <span class="m">\chem{H_2O(l)}=-237.13</span>,
+<span class="m">\chem{C_4H_{10}}=-17.03\ \mathrm{kJ/mol}</span>, <span class="m">\chem{O_2}=0</span>):
+<span class="m d">\Delta G^\circ = 4(-394.36)+5(-237.13)-(-17.03) = -1577.4-1185.7+17.0 \approx -2746\ \mathrm{kJ/mol}</span>
+Negativo: reazione spontanea a 298 K.</p>
 <p><strong>Passo 4 — variazione di entropia del sistema, dell&#39;ambiente, dell&#39;universo.</strong>
 <span class="m d">\Delta S_{sist}^\circ = \frac{\Delta H^\circ - \Delta G^\circ}{T} =
 \frac{-2877 - (-2746)}{298}\ \mathrm{kJ/(mol\,K)} \approx -439.6\ \mathrm{J/(mol\,K)}</span>
 <span class="m d">\Delta S_{amb}^\circ = \frac{-\Delta H^\circ}{T_{amb}} =
 \frac{2877\,\mathrm{kJ}}{298\,\mathrm K} \approx +9654\ \mathrm{J/(mol\,K)}</span>
+(il segno è <strong>+</strong>: l&#39;ambiente riceve il calore della combustione; sistema e ambiente
+sono in equilibrio termico a 298 K).
 <span class="m d">\Delta S_{univ}^\circ = -439.6 + 9654 \approx +9214.4\ \mathrm{J/(mol\,K)} &gt; 0
 \qquad\text{spontaneo}</span></p>
 <p>Nota il fatto notevole: <span class="m">\Delta S_{univ}^\circ \cdot T = -\Delta G_{sist}^\circ</span>
-esattamente. È la stessa identità dimostrata sopra in forma generale — un&#39;ulteriore
-conferma che valutare <span class="m">\Delta G_{sist}</span> equivale sempre a valutare
-<span class="m">\Delta S_{univ}</span>, con molto meno lavoro.</p>
+esattamente (<span class="m">2746/298=9.214\ \mathrm{kJ/K}</span>). È la stessa identità dimostrata sopra
+in forma generale — un&#39;ulteriore conferma che valutare <span class="m">\Delta G_{sist}</span> equivale
+sempre a valutare <span class="m">\Delta S_{univ}</span>, con molto meno lavoro.</p>
 <p><strong>Potere calorifico superiore e inferiore.</strong> Se l&#39;acqua prodotta è considerata
 liquida si ottiene il calore di combustione più alto (potere calorifico
 <strong>superiore</strong>); se è considerata vapore (come avviene realmente in molti impianti,
 dove l&#39;acqua esce come vapore nei fumi) si ottiene un valore più basso (potere
 calorifico <strong>inferiore</strong>) — la differenza è esattamente il calore latente di
-vaporizzazione dell&#39;acqua prodotta.</p>
+vaporizzazione dell&#39;acqua prodotta. Con acqua gassosa
+(<span class="m">\Delta H^\circ_f=-241.82</span>): <span class="m">\Delta H^\circ=4(-393.51)+5(-241.82)+126.15=-2657\ \mathrm{kJ/mol}</span>.
+Nell&#39;industria si riferisce il calore all&#39;unità di massa:
+<span class="m d">Q_{SUP}=\frac{2877\ \mathrm{kJ/mol}}{58\ \mathrm{g/mol}}\times10^3\ \mathrm{g/kg}=49\,603\ \mathrm{kJ/kg} \qquad Q_{INF}=\frac{2657}{58}\times10^3=45\,810\ \mathrm{kJ/kg}</span>
+La differenza (<span class="m">2877-2657=220\ \mathrm{kJ}</span>) è il calore di evaporazione di 5 moli
+d&#39;acqua (<span class="m">5\times44=220\ \mathrm{kJ}</span>).</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Da <span class="m">\Delta H^\circ</span> e <span class="m">\Delta G^\circ</span> all&#39;entropia dell&#39;universo.</strong>
+<span class="m">\Delta H^\circ=-92</span>, <span class="m">\Delta G^\circ=-33\ \mathrm{kJ/mol}</span> a 298 K.
+<span class="m">\Delta S^\circ_{sist}=(-92+33)/298=-0.198\ \mathrm{kJ/K}=-198\ \mathrm{J/K}</span>;
+<span class="m">\Delta S^\circ_{amb}=92\,000/298=+308.7\ \mathrm{J/K}</span>;
+<span class="m">\Delta S^\circ_{univ}=+110.7\ \mathrm{J/K}</span>, che coincide con
+<span class="m">-\Delta G^\circ/T=33\,000/298=110.7\ \mathrm{J/K}</span>.</p>
+</div>
+
+<div class="callout attenzione">
+
+<ul>
+<li><span class="m">\Delta G&lt;0</span> vale come criterio solo a <strong><span class="m">T</span> e <span class="m">P</span> costanti</strong>; in un sistema
+isolato il criterio resta <span class="m">\Delta S&gt;0</span>.</li>
+<li>Unità: <span class="m">\Delta H</span> di solito in kJ, <span class="m">\Delta S</span> in J/K. Convertire prima di
+calcolare <span class="m">\Delta H-T\Delta S</span> o <span class="m">T^*=\Delta H/\Delta S</span>.</li>
+<li><span class="m">T</span> sempre in kelvin.</li>
+<li><span class="m">\Delta S_{sist}&lt;0</span> non significa &quot;non spontaneo&quot;: conta il segno di <span class="m">\Delta G</span> (o
+di <span class="m">\Delta S_{univ}</span>).</li>
+<li>Il segno di <span class="m">\Delta S_{amb}</span> è opposto a quello di <span class="m">\Delta H_{sist}</span>: una reazione
+esotermica aumenta l&#39;entropia dell&#39;ambiente.</li>
+</ul>
 </div>
 
 <div class="callout sintesi">
@@ -174,10 +323,16 @@ vaporizzazione dell&#39;acqua prodotta.</p>
 <ul>
 <li>Il secondo principio richiede <span class="m">\Delta S_{univ}&gt;0</span>, ma calcolare <span class="m">\Delta S_{amb}</span>
 richiede spesso dati indisponibili.</li>
+<li>Ghiaccio a 25 °C: <span class="m">\Delta S_{sist}=+2.45</span>, <span class="m">\Delta S_{amb}=-2.24</span>,
+<span class="m">\Delta S_{univ}=+0.21\ \mathrm{kJ/K}</span>; reversibile solo con differenza di
+temperatura infinitesima (<span class="m">\Delta S_{univ}=0</span>).</li>
+<li><span class="m">\Delta S_{amb}=-\Delta H_{sist}/T</span> ⇒ <span class="m">\Delta S_{univ}=-\Delta G_{sist}/T</span>.</li>
 <li>L&#39;energia libera di Gibbs <span class="m">G=H-TS</span> permette di valutare la spontaneità guardando
 solo il sistema: <span class="m">\Delta G&lt;0</span> spontaneo, <span class="m">\Delta G=0</span> equilibrio, a <span class="m">T,P</span> costanti.</li>
+<li><span class="m">G</span> = competizione fra energia (<span class="m">H</span>, verso il minimo) ed entropia (<span class="m">S</span>, verso il
+massimo); quattro combinazioni di segni di <span class="m">\Delta H</span> e <span class="m">\Delta S</span>.</li>
 <li><span class="m">\Delta G_{reaz}</span> è la massima quantità di lavoro utile ottenibile (o il minimo
-lavoro richiesto se <span class="m">\Delta G&gt;0</span>).</li>
+lavoro richiesto se <span class="m">\Delta G&gt;0</span>); rendimento <span class="m">=\Delta G/\Delta H</span>.</li>
 <li>Spontaneità termodinamica (<span class="m">\Delta G&lt;0</span>) non implica velocità di reazione
 osservabile: sono due questioni distinte (termodinamica vs cinetica).</li>
 <li><span class="m">\Delta G(T)\approx\Delta H-T\Delta S</span> è una retta in <span class="m">T</span>; <span class="m">T^*=\Delta H/\Delta S</span>
@@ -190,10 +345,14 @@ osservabile: sono due questioni distinte (termodinamica vs cinetica).</li>
 <p><strong>Come cade all&#39;esame.</strong> Il criterio <span class="m">\Delta G&lt;0</span> è probabilmente la singola formula
 più richiesta di tutto il blocco termodinamico, sia nelle domande chiuse (segno di
 <span class="m">\Delta G</span>, cosa succede sopra/sotto <span class="m">T^*</span>) sia nell&#39;aperta (spiega perché una
-reazione con <span class="m">\Delta H&gt;0</span> può comunque essere spontanea). Nella risposta aperta,
-struttura sempre in tre parti: (1) il criterio <span class="m">\Delta G=\Delta H-T\Delta S</span> nasce
-dal secondo principio applicato a sistema+ambiente, (2) <span class="m">\Delta G&lt;0</span> per
-compensazione tra effetto energetico e probabilistico, (3) un esempio numerico o
-concettuale (NH₃, ghiaccio, NH₄NO₃ della prossima lezione).</p>
+reazione con <span class="m">\Delta H&gt;0</span> può comunque essere spontanea). Nella risposta aperta
+(&quot;2° principio e trasformazioni spontanee, energia libera di Gibbs, criterio
+fondamentale&quot;), struttura sempre in tre parti: (1) il secondo principio
+(<span class="m">\Delta S_{univ}&gt;0</span> spontaneo, <span class="m">=0</span> equilibrio) con l&#39;esempio del ghiaccio a 25 °C, e
+il criterio <span class="m">\Delta G=\Delta H-T\Delta S</span> che nasce dal secondo principio applicato a
+sistema+ambiente (dimostrazione con <span class="m">\Delta S_{amb}=-\Delta H/T</span>), (2) <span class="m">\Delta G&lt;0</span>
+per compensazione tra effetto energetico e probabilistico, con il significato di
+lavoro utile massimo, (3) un esempio numerico o concettuale (NH₃ con la nota sulla
+cinetica, ghiaccio sopra/sotto 273 K, NH₄NO₃ della prossima lezione).</p>
 <p><strong>Allenati qui:</strong> Paniere Lez. 33 domanda 1 · Extra 70 · Extra 71</p>
 </div>

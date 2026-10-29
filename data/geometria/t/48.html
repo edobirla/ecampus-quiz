@@ -1,56 +1,162 @@
 <h1>Lezione 48 — Curve differenziabili</h1>
-<p>Le curve differenziabili rappresentano, in fisica, le traiettorie delle particelle che si muovono nello spazio. Si lavora nel piano euclideo <span class="m">V^2_E</span> con riferimento <span class="m">(O;x,y)</span> e nello spazio <span class="m">V^3_E</span> con riferimento <span class="m">(O;x,y,z)</span>.</p>
+<p>Finora le curve sono state descritte con <strong>equazioni</strong> (curve algebriche). Questa lezione introduce un punto di vista diverso: una curva come <strong>funzione</strong> che a ogni valore di un parametro <span class="m">t</span> associa un punto, come la posizione di una particella che si muove nello spazio al variare del tempo. Per questo le curve differenziabili sono fondamentali in fisica: rappresentano le <strong>traiettorie</strong>, e la derivata rappresenta la <strong>velocità</strong>. La forma parametrica di una retta, <span class="m">{}^t(x_0+lt\ \ y_0+mt\ \ z_0+nt)</span>, è il primo esempio.</p>
+<p>Si lavora nel piano euclideo <span class="m">V^2_E</span> con riferimento <span class="m">(O;x,y)</span> e nello spazio euclideo <span class="m">V^3_E</span> con riferimento <span class="m">(O;x,y,z)</span>, identificando i vettori con le colonne delle loro coordinate.</p>
 <h2>Curve differenziabili</h2>
-<p>Non si dà la definizione generale di funzione derivabile: basta sapere che un polinomio <span class="m">f(t)</span> è derivabile e la sua derivata <span class="m">f'(t)</span> è <span class="m">\frac{\partial f}{\partial t}</span>. Le funzioni <span class="m">f:\mathbb{R}\to\mathbb{R}</span> derivabili in ogni <span class="m">t</span> si dicono <em>differenziabili</em> (i polinomi lo sono). Tutto si potrebbe estendere a intervalli <span class="m">\{a&lt;t&lt;b\}</span>, ma per semplicità non lo si fa.</p>
-<p><strong>Definizione 48.1.</strong> Una <em>curva differenziabile</em> nello spazio euclideo è una funzione
-<span class="m d">\gamma:\mathbb{R}\ni t\longmapsto\gamma(t)={}^t(x(t)\ y(t)\ z(t))\in\mathbb{R}^3</span>
-con <span class="m">x(t),y(t),z(t)</span> differenziabili. <span class="m">t</span> è il <em>parametro</em>; i punti dell&#39;immagine sono i <em>punti della curva</em>.</p>
-<p><strong>Osservazione 48.2.</strong> Le curve differenziabili nel piano <span class="m">\gamma(t)={}^t(x(t)\ y(t))\in\mathbb{R}^2</span> sono il caso particolare con <span class="m">z(t)=0</span>.</p>
+<p>Per definire le curve differenziabili servono le funzioni derivabili <span class="m">f:\mathbb R\to\mathbb R</span>, con derivata indicata <span class="m">f'</span>. La dispensa non dà la definizione generale di derivata: basta sapere che un <strong>polinomio</strong> <span class="m">f(t)</span> è derivabile e la sua derivata <span class="m">f'(t)</span> è la derivata (parziale) rispetto a <span class="m">t</span>, <span class="m">\frac{\partial f}{\partial t}</span>, che si calcola con la regola
+<span class="m d">\frac{d}{dt}\,t^n=n\,t^{n-1},\qquad \frac{d}{dt}(c)=0,\qquad\frac{d}{dt}\big(af(t)+bg(t)\big)=af'(t)+bg'(t).</span>
+Per esempio <span class="m">(3t^4-2t^2+5t-7)'=12t^3-4t+5</span>. Le funzioni <span class="m">f:\mathbb R\to\mathbb R</span> derivabili in ogni <span class="m">t\in\mathbb R</span> si dicono <strong>differenziabili</strong>; i polinomi lo sono. Tutto si potrebbe estendere a funzioni definite su intervalli <span class="m">\{t\in\mathbb R\mid a&lt;t&lt;b\}</span>, ma per semplicità non lo si fa.</p>
+<p><strong>Definizione 48.1.</strong> Una <strong>curva differenziabile</strong> nello spazio euclideo è una funzione
+<span class="m d">\gamma:\mathbb R\ni t\longmapsto\gamma(t)=\begin{pmatrix}x(t)\\y(t)\\z(t)\end{pmatrix}\in\mathbb R^3</span>
+con <span class="m">x(t)</span>, <span class="m">y(t)</span>, <span class="m">z(t)</span> funzioni differenziabili. La variabile <span class="m">t</span> è il <strong>parametro</strong> della curva; i punti dell&#39;immagine di <span class="m">\gamma</span> (cioè i <span class="m">\gamma(t)</span> al variare di <span class="m">t</span>) sono i <strong>punti della curva</strong>.</p>
+<p>Attenzione alla distinzione: la curva è la <strong>funzione</strong> <span class="m">\gamma</span>, non solo l&#39;insieme dei suoi punti. Due funzioni diverse possono avere la stessa immagine (per esempio <span class="m">\gamma(t)</span> e <span class="m">\gamma(2t)</span> percorrono la stessa traiettoria a velocità diverse).</p>
+<p><strong>Osservazione 48.2.</strong> Le curve differenziabili nel piano,
+<span class="m d">\gamma:\mathbb R\ni t\longmapsto\gamma(t)=\begin{pmatrix}x(t)\\y(t)\end{pmatrix}\in\mathbb R^2,</span>
+sono un caso particolare di quelle nello spazio, con <span class="m">z(t)=0</span> per ogni <span class="m">t</span>.</p>
 <div class="callout esempio">
 
+<p><strong>Esempio 48.3.</strong></p>
 <ol>
-<li><span class="m">\gamma(t)={}^t(1+2t\ \ 3-2t\ \ 4-3t)</span>: l&#39;immagine è una retta, e <span class="m">\gamma</span> è una sua forma parametrica.</li>
-<li><span class="m">\gamma(s)={}^t(s^2\ s^3\ s^4)</span> è una curva differenziabile con parametro <span class="m">s</span>.</li>
+<li><span class="m">\gamma(t)={}^t(1+2t\ \ 3-2t\ \ 4-3t)</span> è una curva differenziabile nello spazio (componenti polinomiali di grado 1). La sua immagine è una <strong>retta</strong>, e <span class="m">\gamma</span> è una forma parametrica di quella retta (passa per <span class="m">{}^t(1\ 3\ 4)</span> con vettore direttore <span class="m">{}^t(2\ -2\ -3)</span>). Il parametro è <span class="m">t</span>.</li>
+<li><span class="m">\gamma(s)={}^t(s^2\ s^3\ s^4)</span> è una curva differenziabile nello spazio, con parametro <span class="m">s</span> (il nome del parametro non conta).</li>
 </ol>
 </div>
 
-<h2>Vettore e versore tangente</h2>
-<p><strong>Definizione 48.4.</strong> Il <em>vettore tangente</em> alla curva <span class="m">\gamma</span> nel punto <span class="m">\gamma(\bar t)</span> è
-<span class="m d">\gamma'(\bar t)={}^t(x'(\bar t)\ \ y'(\bar t)\ \ z'(\bar t)).</span>
-Se <span class="m">\gamma'(\bar t)\neq0</span>, il suo versore
-<span class="m d">\frac{1}{\lVert\gamma'(\bar t)\rVert}\,\gamma'(\bar t)</span>
-è il <em>vettore tangente unitario</em> o <em>versore tangente</em> nel punto <span class="m">\gamma(\bar t)</span>.</p>
+<p><strong>Trovare il parametro di un punto.</strong> Per sapere se un punto <span class="m">P={}^t(x_P\ y_P\ z_P)</span> sta sulla curva, e per quale valore del parametro, si risolve <span class="m">\gamma(t)=P</span> <strong>componente per componente</strong>: si risolve l&#39;equazione più semplice (spesso quella di primo grado) e si controlla che il valore trovato soddisfi anche le altre. Se nessun valore le soddisfa tutte, il punto non sta sulla curva.</p>
 <div class="callout esempio">
 
+<p><strong>Parametro di un punto.</strong> <span class="m">\gamma(t)={}^t(t^3-2t\ \ 3t-1\ \ t^4-2t^3)</span>, punto <span class="m">{}^t(4\ 5\ 0)</span>.</p>
+<ul>
+<li>Seconda componente: <span class="m">3t-1=5</span>, <span class="m">t=2</span>.</li>
+<li>Controllo nella prima: <span class="m">2^3-2\cdot2=8-4=4</span> ✓; nella terza: <span class="m">2^4-2\cdot2^3=16-16=0</span> ✓.</li>
+</ul>
+<p>Il punto corrisponde a <span class="m">t=2</span>. (Se si partisse dalla terza, <span class="m">t^4-2t^3=t^3(t-2)=0</span> dà <span class="m">t=0</span> o <span class="m">t=2</span>, e <span class="m">t=0</span> va scartato perché dà <span class="m">3\cdot0-1=-1\neq5</span>.)</p>
+</div>
+
+<h2>Vettore e versore tangente</h2>
+<p><strong>Definizione 48.4.</strong> Sia <span class="m">\gamma</span> una curva differenziabile e <span class="m">\gamma(\bar t)</span> un suo punto. Il vettore
+<span class="m d">\gamma'(\bar t):=\begin{pmatrix}x'(\bar t)\\y'(\bar t)\\z'(\bar t)\end{pmatrix}</span>
+si chiama <strong>vettore tangente</strong> alla curva <span class="m">\gamma</span> nel punto <span class="m">\gamma(\bar t)</span>: si deriva ogni componente e si calcola nel valore <span class="m">\bar t</span>. Se <span class="m">\gamma'(\bar t)\neq{}^t(0\ 0\ 0)</span>, il suo <strong>versore</strong>
+<span class="m d">\frac{1}{\lVert\gamma'(\bar t)\rVert}\cdot\gamma'(\bar t)</span>
+si chiama <strong>vettore tangente unitario</strong> o <strong>versore tangente</strong> a <span class="m">\gamma</span> nel punto <span class="m">\gamma(\bar t)</span>.</p>
+<p>Significato: <span class="m">\gamma'(\bar t)</span> è il limite dei vettori <span class="m">\frac{\gamma(\bar t+h)-\gamma(\bar t)}{h}</span> (spostamento diviso tempo) per <span class="m">h\to0</span>: è la <strong>velocità</strong> della particella nell&#39;istante <span class="m">\bar t</span>. La sua direzione è quella della <strong>retta tangente</strong> alla traiettoria; la sua norma <span class="m">\lVert\gamma'(\bar t)\rVert</span> è la velocità scalare. Il versore tangente conserva solo la direzione e il verso (norma 1). La retta tangente alla curva in <span class="m">\gamma(\bar t)</span> (se <span class="m">\gamma'(\bar t)\neq0</span>) ha forma parametrica <span class="m">\gamma(\bar t)+\lambda\,\gamma'(\bar t)</span>, <span class="m">\lambda\in\mathbb R</span>.</p>
+<p>Ricordiamo che per <span class="m">v={}^t(v_1\ v_2\ v_3)</span> la norma è <span class="m">\lVert v\rVert=\sqrt{v_1^2+v_2^2+v_3^2}</span>.</p>
+<div class="callout esempio">
+
+<p><strong>Esempio 48.5.</strong></p>
 <ol>
-<li>Per la retta: <span class="m">\gamma'(t)={}^t(2\ -2\ -3)</span>, che coincide con il vettore direttore; versore <span class="m">\frac{1}{\sqrt{17}}{}^t(2\ -2\ -3)</span>.</li>
-<li>Per <span class="m">\gamma(s)={}^t(s^2\ s^3\ s^4)</span>: <span class="m">\gamma'(s)={}^t(2s\ 3s^2\ 4s^3)</span>. Nel punto <span class="m">\gamma(-1)={}^t(1\ -1\ 1)</span> il vettore tangente è <span class="m">{}^t(-2\ 3\ -4)</span> e il versore <span class="m">\frac{1}{\sqrt{29}}{}^t(-2\ 3\ -4)</span>.</li>
+<li>Retta <span class="m">\gamma(t)={}^t(1+2t\ \ 3-2t\ \ 4-3t)</span>:
+<span class="m d">\gamma'(t)=\begin{pmatrix}\frac{\partial(1+2t)}{\partial t}\\[2pt]\frac{\partial(3-2t)}{\partial t}\\[2pt]\frac{\partial(4-3t)}{\partial t}\end{pmatrix}=\begin{pmatrix}2\\-2\\-3\end{pmatrix},</span>
+costante, e coincide con il <strong>vettore direttore</strong> della retta. <span class="m">\lVert\gamma'(t)\rVert=\sqrt{4+4+9}=\sqrt{17}</span>, versore tangente <span class="m">\frac1{\sqrt{17}}\,{}^t(2\ -2\ -3)</span> in ogni punto.</li>
+<li><span class="m">\gamma(s)={}^t(s^2\ s^3\ s^4)</span>: <span class="m">\gamma'(s)={}^t(2s\ \ 3s^2\ \ 4s^3)</span>. Nel punto <span class="m">\gamma(-1)={}^t\big((-1)^2\ (-1)^3\ (-1)^4\big)={}^t(1\ -1\ 1)</span>:
+<span class="m d">\gamma'(-1)=\begin{pmatrix}2(-1)\\3(-1)^2\\4(-1)^3\end{pmatrix}=\begin{pmatrix}-2\\3\\-4\end{pmatrix},\qquad\lVert\gamma'(-1)\rVert=\sqrt{4+9+16}=\sqrt{29},</span>
+versore tangente <span class="m">\frac1{\sqrt{29}}\,{}^t(-2\ 3\ -4)</span>.</li>
 </ol>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Esercizio 48.2 (dispensa) — punto dato con le coordinate.</strong> <span class="m">\gamma(s)={}^t(3s-2\ \ s^5-2s^4\ \ s^3-6)</span>, punto <span class="m">P={}^t(4\ 0\ 2)</span>.</p>
+<ol>
+<li>Parametro: <span class="m">3s-2=4</span>, <span class="m">s=2</span>; controllo <span class="m">2^5-2\cdot2^4=32-32=0</span> ✓, <span class="m">2^3-6=2</span> ✓.</li>
+<li><span class="m">\gamma'(s)={}^t(3\ \ 5s^4-8s^3\ \ 3s^2)</span>; in <span class="m">s=2</span>: <span class="m">{}^t(3\ \ 80-64\ \ 12)={}^t(3\ 16\ 12)</span>.</li>
+<li><span class="m">\lVert\gamma'(2)\rVert=\sqrt{9+256+144}=\sqrt{409}</span>; versore tangente <span class="m">\frac1{\sqrt{409}}\,{}^t(3\ 16\ 12)</span>.</li>
+</ol>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Vettore tangente di una curva piana.</strong> <span class="m">\gamma(t)={}^t(t^2-2t\ \ 3t^3-1)</span>, punto <span class="m">{}^t(-1\ 2)</span>.</p>
+<p>Parametro: <span class="m">t^2-2t=-1</span>, cioè <span class="m">(t-1)^2=0</span>, <span class="m">t=1</span>; controllo <span class="m">3-1=2</span> ✓. <span class="m">\gamma'(t)={}^t(2t-2\ \ 9t^2)</span>, quindi <span class="m">\gamma'(1)={}^t(0\ 9)</span>. Il vettore tangente nel punto è il <strong>vettore numerico</strong> <span class="m">{}^t(0\ 9)</span>, non l&#39;espressione <span class="m">{}^t(2t-2\ \ 9t^2)</span> e non le coordinate del punto. (Versore: <span class="m">{}^t(0\ 1)</span>.)</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Esercizio 48.3 (dispensa) — tangenti ortogonali.</strong> <span class="m">\gamma_1(t)={}^t(t^2-1\ \ t^3-2t+1\ \ t^4-t)</span> e <span class="m">\gamma_2(t)={}^t(-2t\ \ 3t^2+t\ \ t^3+t)</span> passano per <span class="m">O</span>: i vettori tangenti in <span class="m">O</span> sono ortogonali?</p>
+<ul>
+<li><span class="m">\gamma_1(t)=O</span>: <span class="m">t^2-1=0</span> dà <span class="m">t=\pm1</span>; <span class="m">t=1</span>: <span class="m">1-2+1=0</span> ✓, <span class="m">1-1=0</span> ✓; <span class="m">t=-1</span>: <span class="m">-1+2+1=2\neq0</span> ✗. Quindi <span class="m">t=1</span>. <span class="m">\gamma_1'(t)={}^t(2t\ \ 3t^2-2\ \ 4t^3-1)</span>, <span class="m">\gamma_1'(1)={}^t(2\ 1\ 3)</span>.</li>
+<li><span class="m">\gamma_2(t)=O</span>: <span class="m">-2t=0</span>, <span class="m">t=0</span> (e le altre componenti sono <span class="m">0</span> ✓). <span class="m">\gamma_2'(t)={}^t(-2\ \ 6t+1\ \ 3t^2+1)</span>, <span class="m">\gamma_2'(0)={}^t(-2\ 1\ 1)</span>.</li>
+<li>Prodotto scalare: <span class="m">2(-2)+1\cdot1+3\cdot1=-4+1+3=0</span>: <strong>sì</strong>, sono ortogonali.</li>
+</ul>
 </div>
 
 <div class="callout attenzione">
 
-<p>Se il punto è dato con le coordinate (es. <span class="m">{}^t(4\ 5\ 0)</span>), prima si trova il valore del parametro risolvendo <span class="m">\gamma(t)=P</span> componente per componente, e solo dopo si calcola <span class="m">\gamma'</span> in quel valore. Il vettore tangente in un punto è un vettore numerico, non un&#39;espressione in <span class="m">t</span>.</p>
-</div>
-
-<h2>Curve regolari</h2>
-<p><strong>Definizione 48.6.</strong> Una curva differenziabile è <em>regolare</em> se il vettore tangente è sempre non nullo:
-<span class="m d">\gamma'(t)\neq0_3\quad\text{per ogni }t\in\mathbb{R}.</span></p>
-<div class="callout esempio">
-
 <ul>
-<li>La retta <span class="m">\gamma(t)={}^t(1+2t\ \ 3-2t\ \ 4-3t)</span> è regolare: <span class="m">\gamma'(t)={}^t(2\ -2\ -3)\neq0</span> sempre.</li>
-<li><span class="m">\gamma(s)={}^t(s^2\ s^3\ s^4)</span> non è regolare: <span class="m">\gamma'(0)={}^t(0\ 0\ 0)</span>.</li>
-<li><span class="m">\gamma(s)={}^t(s^3-2s^2+s\ \ s^4-4s\ \ s^2-2s+3)</span>: <span class="m">\gamma'(s)={}^t(3s^2-4s+1\ \ 4s^3-4\ \ 2s-2)</span>. Il sistema <span class="m">3s^2-4s+1=0,\ 4s^3-4=0,\ 2s-2=0</span> ha la soluzione <span class="m">s=1</span>, quindi <span class="m">\gamma</span> non è regolare.</li>
+<li>Se il punto è dato con le <strong>coordinate</strong>, prima si trova il valore del parametro risolvendo <span class="m">\gamma(t)=P</span> componente per componente (controllando <strong>tutte</strong> le componenti), solo dopo si calcola <span class="m">\gamma'</span> in quel valore. Non si sostituiscono le coordinate del punto al posto di <span class="m">t</span>.</li>
+<li>Il vettore tangente in un punto è un vettore di <strong>numeri</strong>, non un&#39;espressione in <span class="m">t</span>.</li>
+<li>Il <strong>versore</strong> ha norma 1: va diviso per <span class="m">\lVert\gamma'(\bar t)\rVert</span>. Un multiplo del vettore tangente non normalizzato non è il versore.</li>
 </ul>
 </div>
 
-<div class="callout sintesi">
+<h2>Curve regolari</h2>
+<p><strong>Definizione 48.6.</strong> Una curva differenziabile <span class="m">\gamma</span> è <strong>regolare</strong> se il vettore tangente è <strong>sempre non nullo</strong>:
+<span class="m d">\gamma'(t)\neq0_3\qquad\text{per ogni }t\in\mathbb R.</span>
+Fisicamente: la particella non si ferma mai. Nei punti in cui <span class="m">\gamma'(t)=0</span> la curva può avere una &quot;cuspide&quot; (punta) e il versore tangente non è definito.</p>
+<p><span class="m">\gamma'(t)=0</span> significa che <strong>tutte</strong> le componenti si annullano <strong>nello stesso</strong> <span class="m">t</span>. Quindi:</p>
+<ul>
+<li><span class="m">\gamma</span> <strong>non</strong> è regolare se esiste un <span class="m">t</span> che annulla contemporaneamente tutte le componenti di <span class="m">\gamma'</span>;</li>
+<li><span class="m">\gamma</span> è regolare se le componenti di <span class="m">\gamma'</span> non hanno zeri comuni; in particolare basta che <strong>una</strong> componente non si annulli mai (una costante non nulla, o un polinomio come <span class="m">6t^2+3</span> che è sempre <span class="m">\ge3</span>).</li>
+</ul>
+<div class="callout esame">
 
-<p>Per decidere se una curva è regolare: si derivano le componenti, si cercano gli zeri della componente più semplice e si controlla se le altre si annullano negli stessi valori. Se una componente di <span class="m">\gamma'</span> non si annulla mai (es. è una costante non nulla, o <span class="m">6s^2+3</span>), la curva è regolare.</p>
+<p><strong>Procedura: la curva è regolare?</strong></p>
+<ol>
+<li>Derivare tutte le componenti: <span class="m">\gamma'(t)</span>.</li>
+<li>Trovare gli zeri della componente più semplice (spesso di primo grado). Se una componente non si annulla mai, la curva è <strong>regolare</strong>: fine.</li>
+<li>Sostituire ciascuno zero trovato nelle altre componenti: se per qualche valore si annullano tutte, la curva <strong>non</strong> è regolare (in quel valore <span class="m">\gamma'=0</span>); se nessuno zero è comune, è regolare.</li>
+</ol>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Esempio 48.7.</strong></p>
+<ol>
+<li>La retta <span class="m">\gamma(t)={}^t(1+2t\ \ 3-2t\ \ 4-3t)</span> è regolare: <span class="m">\gamma'(t)={}^t(2\ -2\ -3)\neq0</span> per ogni <span class="m">t</span>.</li>
+<li><span class="m">\gamma(s)={}^t(s^2\ s^3\ s^4)</span> <strong>non</strong> è regolare: <span class="m">\gamma'(0)={}^t(0\ 0\ 0)</span>.</li>
+</ol>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Esercizio 48.1.</strong> <span class="m">\gamma(s)={}^t(s^3-2s^2+s\ \ s^4-4s\ \ s^2-2s+3)</span>.
+<span class="m d">\gamma'(s)=\begin{pmatrix}3s^2-4s+1\\4s^3-4\\2s-2\end{pmatrix}.</span>
+Sistema <span class="m">\gamma'(s)=0</span>: dalla terza, <span class="m">2s-2=0</span>, <span class="m">s=1</span>. Nella prima: <span class="m">3-4+1=0</span> ✓; nella seconda: <span class="m">4-4=0</span> ✓. <span class="m">\gamma'(1)=0</span>: la curva <strong>non</strong> è regolare.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Esercizio 48.4 (dispensa).</strong> <span class="m">\gamma(s)={}^t(s-s^2\ \ 3s^2-4s^3\ \ -5)</span>: <span class="m">\gamma'(s)={}^t(1-2s\ \ 6s-12s^2\ \ 0)</span>. La terza componente è sempre <span class="m">0</span>, quindi conta solo il resto: <span class="m">1-2s=0</span> per <span class="m">s=\frac12</span>; <span class="m">6\cdot\frac12-12\cdot\frac14=3-3=0</span> ✓. <span class="m">\gamma'(\frac12)=0</span>: <strong>non</strong> regolare.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Per quali valori si annulla il vettore tangente?</strong> <span class="m">\gamma(s)={}^t(s^3+3s^2-2\ \ -s^4-2s^3+2s^2\ \ s^2+4s+3)</span>.
+<span class="m">\gamma'(s)={}^t(3s^2+6s\ \ -4s^3-6s^2+4s\ \ 2s+4)</span>. Terza: <span class="m">s=-2</span>. Prima: <span class="m">3\cdot4-12=0</span> ✓. Seconda: <span class="m">-4(-8)-6\cdot4+4(-2)=32-24-8=0</span> ✓. Il vettore tangente si annulla (solo) per <span class="m">s=-2</span>. Attenzione: <span class="m">s=0</span> annulla prima e seconda componente, ma non la terza (<span class="m">4\neq0</span>), quindi lì <span class="m">\gamma'\neq0</span>.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Quale curva piana è regolare?</strong> Si confrontano curve <span class="m">\gamma(t)={}^t(x(t)\ y(t))</span>:</p>
+<ul>
+<li><span class="m">{}^t(t^2-3t\ \ 2t^2-6t+3)</span>: <span class="m">\gamma'={}^t(2t-3\ \ 4t-6)</span>, entrambe nulle in <span class="m">t=\frac32</span>: non regolare.</li>
+<li><span class="m">{}^t(t^2-2t+1\ \ t^3-3t)</span>: <span class="m">\gamma'={}^t(2t-2\ \ 3t^2-3)</span>, entrambe nulle in <span class="m">t=1</span>: non regolare.</li>
+<li><span class="m">{}^t(4\ \ t^3-3t)</span>: <span class="m">x'=0</span> sempre, <span class="m">y'=3t^2-3</span> nulla in <span class="m">t=\pm1</span>: non regolare (una componente costante dà derivata <strong>zero</strong>, non aiuta).</li>
+<li><span class="m">{}^t(t\ \ t^5-t^4+4t^3-4t^2+2t-5)</span>: <span class="m">x'(t)=1\neq0</span> sempre: <strong>regolare</strong>.</li>
+</ul>
 </div>
 
 <div class="callout esame">
 
-<p>Il paniere chiede il versore tangente in <span class="m">\gamma(\bar s)</span> (derivare, sostituire, normalizzare: occhio alle opzioni non normalizzate) e quale tra quattro curve piane è regolare (cercare zeri comuni di <span class="m">x'</span> e <span class="m">y'</span>). Gli extra chiedono il parametro di un punto, il vettore tangente in un punto, i valori in cui <span class="m">\gamma'</span> si annulla. Domanda aperta: &quot;Parlare delle curve differenziabili nello spazio&quot;.</p>
+<p>Il paniere (extra della lezione) chiede: il <strong>valore del parametro</strong> di un punto della curva; il <strong>vettore tangente</strong> in un punto dato con le coordinate; il <strong>versore tangente</strong> in <span class="m">\gamma(\bar s)</span> (derivare, sostituire, normalizzare: occhio alle opzioni non normalizzate); i <strong>valori del parametro in cui <span class="m">\gamma'</span> si annulla</strong>; <strong>quale curva è regolare</strong> (cercare zeri comuni delle componenti di <span class="m">\gamma'</span>).</p>
+<p>Domanda aperta: &quot;Parlare delle curve differenziabili nello spazio&quot;: funzioni differenziabili (polinomi), Definizione 48.1 con parametro e punti della curva, curve piane come caso particolare, esempi (retta in forma parametrica, <span class="m">{}^t(s^2\ s^3\ s^4)</span>), vettore tangente e versore tangente (Definizione 48.4, significato di velocità), curve regolari (Definizione 48.6) con un esempio regolare e uno non regolare.</p>
+</div>
+
+<div class="callout sintesi">
+
+<ul>
+<li>Curva differenziabile: <span class="m">\gamma(t)={}^t(x(t)\ y(t)\ z(t))</span> con componenti differenziabili (polinomi); <span class="m">t</span> parametro, immagine = punti della curva; curve piane con <span class="m">z(t)=0</span>.</li>
+<li>Vettore tangente in <span class="m">\gamma(\bar t)</span>: <span class="m">\gamma'(\bar t)={}^t(x'(\bar t)\ y'(\bar t)\ z'(\bar t))</span> (velocità); versore tangente <span class="m">\frac{\gamma'(\bar t)}{\lVert\gamma'(\bar t)\rVert}</span> se <span class="m">\gamma'(\bar t)\neq0</span>.</li>
+<li>Punto dato con le coordinate: prima il parametro (tutte le componenti), poi la derivata.</li>
+<li>Regolare: <span class="m">\gamma'(t)\neq0</span> per ogni <span class="m">t</span>; non regolare se esiste un <span class="m">t</span> che annulla tutte le componenti di <span class="m">\gamma'</span>; basta una componente mai nulla per essere regolare.</li>
+</ul>
 </div>

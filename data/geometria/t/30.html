@@ -1,41 +1,135 @@
 <h1>Lezione 30 — Sottospazi affini</h1>
-<p>In tutta la lezione si fissano un riferimento cartesiano <span class="m">(O; x, y)</span> per il piano <span class="m">\boldsymbol V^2_G</span> e <span class="m">(O; x, y, z)</span> per lo spazio <span class="m">\boldsymbol V^3_G</span>, e si identificano i vettori geometrici con i vettori colonna delle loro coordinate. I sottospazi affini generalizzano rette e piani e sono legati ai sistemi lineari.</p>
-<h2>Definizione e prime proprietà</h2>
-<p><strong>Definizione 30.1.</strong> Un <strong>sottospazio affine</strong> di uno spazio vettoriale <span class="m">V</span> su un campo <span class="m">\mathbb K</span> è un sottoinsieme della forma
+<h2>Introduzione</h2>
+<p>Fino a questo punto abbiamo studiato i <strong>sottospazi vettoriali</strong>: insiemi chiusi rispetto a somma e prodotto per scalare, che contengono sempre il vettore nullo. Nel piano e nello spazio i sottospazi vettoriali sono le rette e i piani <strong>che passano per l&#39;origine</strong> <span class="m">O</span>. Ma una retta qualsiasi, per esempio <span class="m">y = 1</span> nel piano, non passa per l&#39;origine e non è un sottospazio vettoriale: la somma di due suoi punti, <span class="m">{}^t(0\ 1) + {}^t(1\ 1) = {}^t(1\ 2)</span>, non sta più sulla retta.</p>
+<p>I <strong>sottospazi affini</strong> risolvono questo problema: sono &quot;sottospazi vettoriali traslati&quot;. Generalizzano le rette e i piani del piano e dello spazio (anche quelli che non passano per <span class="m">O</span>) e, come vedremo, sono esattamente gli insiemi delle soluzioni dei sistemi lineari <strong>non omogenei</strong> compatibili. Sono quindi il ponte tra la geometria (rette, piani) e l&#39;algebra lineare (sistemi, rango).</p>
+<p>In tutta la lezione si fissano un sistema di riferimento cartesiano <span class="m">(O; x, y)</span> per il piano <span class="m">\boldsymbol V^2_G</span> e un sistema di riferimento cartesiano <span class="m">(O; x, y, z)</span> per lo spazio <span class="m">\boldsymbol V^3_G</span>, e si identificano i vettori geometrici con i vettori colonna delle loro coordinate: il punto (vettore applicato in <span class="m">O</span>) di coordinate <span class="m">x, y, z</span> si scrive <span class="m">{}^t(x\ y\ z)</span>.</p>
+<h2>Definizione di sottospazio affine</h2>
+<p><strong>Definizione 30.1.</strong> Un <strong>sottospazio affine</strong> di uno spazio vettoriale <span class="m">V</span> su un campo <span class="m">\mathbb K</span> è un sottoinsieme <span class="m">S</span> di <span class="m">V</span> della forma
 <span class="m d">S = v + W = \{v + w \in V \mid w \in W\},</span>
-con <span class="m">v \in V</span> e <span class="m">W</span> sottospazio vettoriale di <span class="m">V</span>. <span class="m">W</span> è la <strong>giacitura</strong> (o spazio delle differenze) di <span class="m">S</span>.</p>
+dove <span class="m">v \in V</span> è un vettore fissato e <span class="m">W</span> è un sottospazio vettoriale di <span class="m">V</span>. Il sottospazio vettoriale <span class="m">W</span> si chiama <strong>giacitura</strong> di <span class="m">S</span> (o anche <strong>spazio delle differenze</strong> di <span class="m">S</span>).</p>
+<p>A parole: si prende un sottospazio vettoriale <span class="m">W</span> e lo si <strong>trasla</strong> sommando a tutti i suoi elementi lo stesso vettore <span class="m">v</span>. Il risultato ha la stessa &quot;forma&quot; di <span class="m">W</span> (una retta resta una retta, un piano resta un piano), ma in generale non passa più per l&#39;origine.</p>
+<p><strong>Osservazione 30.2.</strong> Il sottospazio affine <span class="m">S</span> è soltanto un <strong>insieme</strong>: si può scrivere nella forma <span class="m">v + W</span> con <span class="m">v</span> e <span class="m">W</span> opportuni, ma la coppia <span class="m">(v, W)</span> non fa parte della definizione. Lo stesso insieme si può scrivere in molti modi diversi (vedi la Proposizione 30.6).</p>
 <div class="callout esempio">
 
-<ul>
-<li>In ogni <span class="m">V</span> ci sono i sottospazi affini <span class="m">\{0\} = 0 + \{0\}</span> e <span class="m">V = 0 + V</span>.</li>
-<li>Una retta <span class="m">r</span> del piano o dello spazio: fissato <span class="m">v \in r</span>, si ha <span class="m">r = v + r_0</span>, dove <span class="m">r_0</span> è la retta parallela a <span class="m">r</span> per <span class="m">O</span>.</li>
-<li>Un piano <span class="m">\pi</span> dello spazio: <span class="m">\pi = v + \pi_0</span>, con <span class="m">\pi_0</span> il piano parallelo a <span class="m">\pi</span> per <span class="m">O</span>.</li>
-<li><span class="m">\{p \in \mathbb R[x] \mid p(0) = 1\} = 1 + \{q \in \mathbb R[x] \mid q(0) = 0\}</span>.</li>
-</ul>
+<p><strong>Esempio 30.3.</strong> In ogni spazio vettoriale <span class="m">V</span> ci sono sempre i sottospazi affini <span class="m">\{0\} = 0 + \{0\}</span> (il solo vettore nullo) e <span class="m">V = 0 + V</span> (tutto lo spazio).</p>
+<p><strong>Esempio 30.4.</strong></p>
+<ol>
+<li><strong>Retta.</strong> Sia <span class="m">r</span> una retta di <span class="m">\boldsymbol V^2_G</span> (o di <span class="m">\boldsymbol V^3_G</span>) e fissiamo un suo punto <span class="m">v \in r</span>. Sia <span class="m">r_0</span> la retta <strong>parallela a <span class="m">r</span> passante per <span class="m">O</span></strong>. Ogni punto di <span class="m">r</span> si scrive come <span class="m">v + w</span> con <span class="m">w</span> vettore di <span class="m">r_0</span> (il vettore che va da <span class="m">v</span> al punto, trasportato in <span class="m">O</span>), e viceversa ogni <span class="m">v + w</span> con <span class="m">w \in r_0</span> sta su <span class="m">r</span>. Quindi <span class="m">r = v + r_0</span>. Poiché <span class="m">r_0</span> passa per <span class="m">O</span> è un sottospazio vettoriale, e <span class="m">r</span> è un sottospazio affine con giacitura <span class="m">r_0</span>.</li>
+<li><strong>Piano.</strong> Sia <span class="m">\pi</span> un piano di <span class="m">\boldsymbol V^3_G</span>, <span class="m">v \in \pi</span> e <span class="m">\pi_0</span> il piano parallelo a <span class="m">\pi</span> per <span class="m">O</span>. Allo stesso modo <span class="m">\pi = v + \pi_0</span>: <span class="m">\pi</span> è un sottospazio affine con giacitura <span class="m">\pi_0</span>.</li>
+<li><strong>Polinomi.</strong> In <span class="m">\mathbb R[x]</span> consideriamo <span class="m">\{p \in \mathbb R[x] \mid p(0) = 1\}</span>. Ogni <span class="m">p</span> con <span class="m">p(0) = 1</span> si scrive <span class="m">p(x) = 1 + q(x)</span> con <span class="m">q(x) = p(x) - 1</span>, e <span class="m">q(0) = p(0) - 1 = 0</span>; viceversa <span class="m">1 + q</span> con <span class="m">q(0) = 0</span> vale <span class="m">1</span> in <span class="m">0</span>. Quindi
+<span class="m d">\{p \in \mathbb R[x] \mid p(0) = 1\} = 1 + \{q \in \mathbb R[x] \mid q(0) = 0\},</span>
+e poiché <span class="m">\{q \mid q(0) = 0\}</span> è un sottospazio vettoriale di <span class="m">\mathbb R[x]</span>, l&#39;insieme di partenza è un sottospazio affine (che <strong>non</strong> è un sottospazio vettoriale: il polinomio nullo vale <span class="m">0</span> in <span class="m">0</span>, non <span class="m">1</span>).</li>
+</ol>
 </div>
 
-<p>Proprietà principali:</p>
+<h2>Prime proprietà</h2>
+<p><strong>Osservazione 30.5 (non vuoto).</strong> Un sottospazio affine è sempre <strong>non vuoto</strong>: se <span class="m">S = v + W</span>, allora <span class="m">v = v + 0 \in S</span> perché <span class="m">0 \in W</span>. (L&#39;insieme vuoto non è un sottospazio affine; questo sarà importante quando parleremo di intersezioni.)</p>
+<p><strong>Proposizione 30.6.</strong> Sia <span class="m">S = v + W</span> un sottospazio affine di <span class="m">V</span>. La giacitura <span class="m">W</span> è <strong>univocamente determinata</strong> da <span class="m">S</span>, mentre il vettore <span class="m">v</span> può essere sostituito con <strong>un qualsiasi elemento di <span class="m">S</span></strong>.</p>
+<p>La dispensa non la dimostra. L&#39;idea: se <span class="m">v' \in S</span>, allora <span class="m">v' = v + w_0</span> con <span class="m">w_0 \in W</span>, e <span class="m">v' + W = v + (w_0 + W) = v + W</span> perché <span class="m">w_0 + W = W</span> (<span class="m">W</span> è chiuso per somma). Quindi come &quot;punto di partenza&quot; va bene qualunque punto di <span class="m">S</span>; la giacitura invece è sempre la stessa (lo si vede bene dalla Proposizione 30.12 qui sotto, che la descrive usando solo <span class="m">S</span>).</p>
+<p><strong>Osservazione 30.7 (la giacitura parametrizza <span class="m">S</span>).</strong> La funzione
+<span class="m d">f : W \ni w \longmapsto v + w \in S</span>
+è <strong>biettiva</strong>. È suriettiva per definizione di <span class="m">S</span>; è iniettiva perché se <span class="m">f(w) = f(w')</span> allora <span class="m">v + w = v + w'</span> e, sottraendo <span class="m">v</span>, <span class="m">w = w'</span>. Quindi gli elementi di <span class="m">S</span> corrispondono uno a uno agli elementi di <span class="m">W</span>: la giacitura &quot;parametrizza&quot; il sottospazio affine. Attenzione però: la corrispondenza <strong>dipende dalla scelta di <span class="m">v</span></strong> (cambiando <span class="m">v</span> lo stesso <span class="m">w</span> va in un punto diverso).</p>
+<p><strong>Osservazione 30.8 (soluzioni di un sistema).</strong> L&#39;insieme <span class="m">S</span> delle soluzioni di un sistema lineare <strong>compatibile</strong> <span class="m">A \cdot X = B</span>, con <span class="m">X \in \mathbb K^n</span>, è un sottospazio affine di <span class="m">\mathbb K^n</span>. Infatti, come visto studiando i sistemi lineari,
+<span class="m d">S = \bar X + S_0,</span>
+dove <span class="m">\bar X</span> è una qualsiasi soluzione (una &quot;soluzione particolare&quot;) e <span class="m">S_0</span> è l&#39;insieme delle soluzioni del <strong>sistema omogeneo associato</strong> <span class="m">A \cdot X = 0</span>. Poiché <span class="m">S_0</span> è un sottospazio vettoriale di <span class="m">\mathbb K^n</span> (è il nucleo dell&#39;applicazione lineare <span class="m">X \mapsto AX</span>), <span class="m">S</span> è un sottospazio affine con giacitura <span class="m">S_0</span>.</p>
+<p><strong>Osservazione 30.9.</strong> Un sottospazio affine <span class="m">S</span> è un sottospazio vettoriale <strong>se e solo se <span class="m">0 \in S</span></strong>.</p>
 <ul>
-<li>un sottospazio affine è sempre <strong>non vuoto</strong> (<span class="m">v = v + 0 \in S</span>);</li>
-<li>(<strong>Prop. 30.6</strong>) la giacitura <span class="m">W</span> è univocamente determinata da <span class="m">S</span>, mentre <span class="m">v</span> può essere sostituito da un qualsiasi elemento di <span class="m">S</span>;</li>
-<li>la funzione <span class="m">W \ni w \mapsto v + w \in S</span> è biettiva: la giacitura <strong>parametrizza</strong> <span class="m">S</span>, ma la parametrizzazione dipende dalla scelta di <span class="m">v</span>;</li>
-<li>l&#39;insieme delle soluzioni di un sistema <strong>compatibile</strong> <span class="m">A\cdot X = B</span> è un sottospazio affine: <span class="m">S = \bar X + S_0</span>, con <span class="m">\bar X</span> una soluzione e <span class="m">S_0</span> le soluzioni del sistema omogeneo associato;</li>
-<li><span class="m">S</span> è un sottospazio vettoriale <strong>se e solo se</strong> <span class="m">0 \in S</span>;</li>
-<li>la differenza di due elementi di <span class="m">S</span> sta nella giacitura; anzi (<strong>Prop. 30.12</strong>) <span class="m">W = \{v_2 - v_1 \mid v_1, v_2 \in S\}</span>.</li>
+<li>Se <span class="m">S</span> è un sottospazio vettoriale, contiene <span class="m">0</span> (lo contiene ogni sottospazio vettoriale).</li>
+<li>Viceversa, se <span class="m">0 \in S</span>, per la Proposizione 30.6 possiamo scegliere proprio <span class="m">0</span> come vettore di partenza: <span class="m">S = 0 + W = W</span>, che è un sottospazio vettoriale.</li>
 </ul>
-<p><strong>Definizione 30.13.</strong> La <strong>dimensione</strong> di <span class="m">S</span> è la dimensione della sua giacitura: <span class="m">\dim(S) = \dim W</span>. Una retta ha dimensione 1, un piano dimensione 2.</p>
+<p>Per esempio la retta <span class="m">y = 1</span> non contiene l&#39;origine, quindi non è un sottospazio vettoriale; la retta <span class="m">y = 2x</span> sì.</p>
+<h3>Differenze di punti</h3>
+<p>In un sottospazio affine <strong>non</strong> si possono sommare gli elementi (la somma resta nel sottospazio se e solo se questo contiene il vettore nullo, cioè è un sottospazio vettoriale). Si possono però fare le <strong>differenze</strong>, con il risultato che sta nella giacitura.</p>
+<p><strong>Osservazione 30.10.</strong> Se <span class="m">v, v' \in S</span>, allora <span class="m">v - v' \in W</span>. Infatti <span class="m">v \in S = v' + W</span> (Proposizione 30.6, scegliendo <span class="m">v'</span> come punto di partenza), quindi esiste <span class="m">w \in W</span> con <span class="m">v = v' + w</span>, cioè <span class="m">v - v' = w \in W</span>. Esiste quindi una funzione
+<span class="m d">S \times S \ni (v, v') \longmapsto v - v' \in W.</span>
+Geometricamente: se <span class="m">v</span> e <span class="m">v'</span> sono due punti della retta <span class="m">r</span>, il vettore che li congiunge, trasportato nell&#39;origine, sta sulla retta <span class="m">r_0</span> parallela a <span class="m">r</span> per <span class="m">O</span>.</p>
+<p><strong>Proposizione 30.12.</strong> La giacitura di <span class="m">S = v + W</span> si può definire <strong>intrinsecamente</strong> (cioè usando solo l&#39;insieme <span class="m">S</span>) come
+<span class="m d">W = \{v_2 - v_1 \mid v_1, v_2 \in S\}.</span></p>
+<p><em>Dimostrazione.</em> Bisogna dimostrare due inclusioni.</p>
+<ul>
+<li><span class="m">\{v_2 - v_1 \mid v_1, v_2 \in S\} \subseteq W</span>: è l&#39;Osservazione 30.10 (ogni differenza di due punti di <span class="m">S</span> sta in <span class="m">W</span>).</li>
+<li><span class="m">W \subseteq \{v_2 - v_1 \mid v_1, v_2 \in S\}</span>: preso <span class="m">w \in W</span>, scriviamo <span class="m">w = (v + w) - v</span>. Qui <span class="m">v \in S</span> e <span class="m">v + w \in v + W = S</span>, quindi <span class="m">w</span> è la differenza di due elementi di <span class="m">S</span>. <span class="m">\square</span></li>
+</ul>
+<p>Questa proposizione spiega il nome &quot;spazio delle differenze&quot; e mostra che la giacitura non dipende da come si scrive <span class="m">S</span>.</p>
+<h3>Dimensione</h3>
+<p><strong>Definizione 30.13.</strong> La <strong>dimensione</strong> di un sottospazio affine <span class="m">S</span> è la dimensione della sua giacitura:
+<span class="m d">\dim(S) = \dim(W).</span></p>
+<div class="callout esempio">
+
+<p><strong>Esempio 30.14.</strong></p>
+<ol>
+<li>Una retta <span class="m">r = v + r_0</span> ha dimensione <span class="m">1</span>, perché la giacitura <span class="m">r_0</span> è una retta per l&#39;origine, di dimensione <span class="m">1</span>.</li>
+<li>Un piano <span class="m">\pi = v + \pi_0</span> ha dimensione <span class="m">2</span>.</li>
+<li><span class="m">\{p \in \mathbb R[x] \mid p(0) = 1\}</span> <strong>non ha</strong> una dimensione: la sua giacitura <span class="m">\{q \in \mathbb R[x] \mid q(0) = 0\}</span> non è finitamente generata. Se invece ci si restringe ai polinomi di grado <span class="m">\leqslant d</span>, <span class="m">\{p \in \mathbb R_{\leqslant d}[x] \mid p(0) = 1\}</span> ha giacitura <span class="m">\{q \in \mathbb R_{\leqslant d}[x] \mid q(0) = 0\}</span> (i polinomi senza termine noto, con base <span class="m">x, x^2, \dots, x^d</span>), di dimensione <span class="m">d</span>: il sottospazio affine ha dimensione <span class="m">d</span>.</li>
+<li>Un punto <span class="m">\{P\} = P + \{0\}</span> ha dimensione <span class="m">0</span>.</li>
+</ol>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Esercizio 30.3 (dispensa).</strong> Dimensione del sottospazio affine di <span class="m">\mathbb R^4</span>
+<span class="m d">S = {}^t(1\ -1\ 0\ 2) + \operatorname{Span}\big({}^t(2\ 1\ -3\ 2),\ {}^t(0\ 3\ -1\ 4),\ {}^t(-4\ 1\ 5\ 0)\big).</span>
+La dimensione è quella della giacitura, cioè il numero massimo di generatori linearmente indipendenti. I primi due non sono multipli l&#39;uno dell&#39;altro (il primo ha prima componente <span class="m">2</span>, il secondo <span class="m">0</span>, ma il secondo non è nullo). Il terzo è combinazione dei primi due: <span class="m">-2\cdot{}^t(2\ 1\ -3\ 2) + {}^t(0\ 3\ -1\ 4) = {}^t(-4\ \ -2+3\ \ 6-1\ \ -4+4) = {}^t(-4\ 1\ 5\ 0)</span>. Quindi la giacitura ha dimensione <span class="m">2</span> e <span class="m">\dim(S) = 2</span>. Il punto <span class="m">{}^t(1\ -1\ 0\ 2)</span> non conta per la dimensione.</p>
+</div>
+
+<p><strong>Notazione 30.15 (punti e vettori).</strong> Nei sottospazi affini, soprattutto nel piano e nello spazio, gli elementi si indicano con lettere maiuscole (<span class="m">P</span>, <span class="m">Q</span>, <span class="m">P_0</span>) e si chiamano <strong>punti</strong>; gli elementi della giacitura si indicano con lettere minuscole in grassetto (<span class="m">\mathbf v</span>, <span class="m">\mathbf w</span>) e si chiamano <strong>vettori</strong>. Si scrive quindi <span class="m">P = P_0 + \mathbf v</span>: &quot;il punto <span class="m">P</span> si ottiene spostando il punto <span class="m">P_0</span> del vettore <span class="m">\mathbf v</span>&quot;.</p>
 <div class="callout attenzione">
 
-<p>In un sottospazio affine non si possono sommare gli elementi (si può solo se contiene <span class="m">0</span>), ma si possono fare le <strong>differenze</strong>, che stanno nella giacitura. Per questo gli elementi si chiamano <strong>punti</strong> (<span class="m">P</span>, <span class="m">Q</span>) e quelli della giacitura <strong>vettori</strong> (<span class="m">\mathbf v</span>): si scrive <span class="m">P = P_0 + \mathbf v</span>.</p>
+<ul>
+<li>Un sottospazio affine <strong>non</strong> è in generale un sottospazio vettoriale: lo è solo se contiene l&#39;origine.</li>
+<li><strong>Punto + vettore = punto</strong>, <strong>punto − punto = vettore</strong> (della giacitura); <strong>punto + punto</strong> non ha senso geometrico (dipende dal riferimento). Fa eccezione la combinazione <span class="m">\tfrac12 A + \tfrac12 B</span> del punto medio, che è lecita perché i coefficienti hanno somma <span class="m">1</span> (si riscrive come <span class="m">A + \tfrac12(B - A)</span>).</li>
+<li>La dimensione si legge dalla giacitura, non dal numero di vettori scritti nello Span: se i generatori sono dipendenti bisogna calcolare il rango.</li>
+</ul>
 </div>
 
-<h2>Forma parametrica e forma cartesiana (implicita)</h2>
-<p>Sia <span class="m">S = P_0 + W</span> di dimensione <span class="m">m</span> e <span class="m">\{\mathbf v_1, \dots, \mathbf v_m\}</span> una base di <span class="m">W</span>. Ogni punto di <span class="m">S</span> si scrive in modo unico come
-<span class="m d">P = P_0 + \lambda_1\mathbf v_1 + \lambda_2\mathbf v_2 + \dots + \lambda_m\mathbf v_m.</span></p>
-<p><strong>Definizione 30.16.</strong> Questa è la <strong>forma parametrica</strong> di <span class="m">S</span>: <span class="m">P_0</span> è il <strong>punto base</strong>, i <span class="m">\lambda_i</span> sono i <strong>parametri</strong>. Per una retta (<span class="m">m = 1</span>) <span class="m">P = P_0 + \lambda\mathbf v</span>, e <span class="m">\mathbf v</span> è il <strong>vettore direttore</strong>.</p>
-<p><strong>Proposizione 30.18.</strong> Le soluzioni di un sistema lineare compatibile <span class="m">A\cdot X = B</span> in <span class="m">\mathbb K^n</span> formano un sottospazio affine, e viceversa ogni sottospazio affine di <span class="m">\mathbb K^n</span> è l&#39;insieme delle soluzioni di un sistema compatibile. La giacitura è l&#39;insieme delle soluzioni del sistema omogeneo <span class="m">A\cdot X = 0</span> e
-<span class="m d">\dim(S) = n - \operatorname{rank}(A).</span></p>
-<p><strong>Definizione 30.23.</strong> Se <span class="m">S \ne \mathbb K^n</span>, un sistema con <span class="m">n - \dim(S)</span> equazioni che ha come soluzioni proprio <span class="m">S</span> è una <strong>forma cartesiana</strong> o <strong>forma implicita</strong> di <span class="m">S</span> (per <span class="m">S = \mathbb K^n</span> si usa <span class="m">0 = 0</span>). Se la matrice dei coefficienti ha una sola riga (retta nel piano, piano nello spazio), la sua trasposta è il <strong>vettore di giacitura</strong> o <strong>vettore normale</strong>.</p>
+<h2>Forma parametrica</h2>
+<p>Sia <span class="m">S = P_0 + W</span> un sottospazio affine di dimensione <span class="m">m</span> di uno spazio vettoriale finitamente generato, e sia <span class="m">\mathcal B = \{\mathbf v_1, \dots, \mathbf v_m\}</span> una <strong>base</strong> della giacitura <span class="m">W</span>. Ogni vettore di <span class="m">W</span> si scrive in modo unico come combinazione lineare della base, quindi ogni punto di <span class="m">S</span> si scrive <strong>in modo unico</strong> come
+<span class="m d">P = P_0 + \lambda_1\mathbf v_1 + \lambda_2\mathbf v_2 + \dots + \lambda_m\mathbf v_m. \tag{30.1}</span></p>
+<p><strong>Definizione 30.16.</strong> L&#39;uguaglianza (30.1) è una <strong>forma parametrica</strong> di <span class="m">S</span>. Il punto <span class="m">P_0</span> è il <strong>punto base</strong> della parametrizzazione, i coefficienti <span class="m">\lambda_1, \dots, \lambda_m</span> sono i <strong>parametri</strong>.</p>
+<p><strong>Definizione 30.17.</strong> Se <span class="m">P = P_0 + \lambda\mathbf v</span> è una forma parametrica di un sottospazio affine di dimensione <span class="m">1</span> (una retta) di <span class="m">\boldsymbol V^2_G</span> o <span class="m">\boldsymbol V^3_G</span>, il vettore <span class="m">\mathbf v</span> è il <strong>vettore direttore</strong> della retta.</p>
+<p>Il significato: facendo variare i parametri in <span class="m">\mathbb R</span> si percorrono <strong>tutti</strong> i punti di <span class="m">S</span>, ognuno una sola volta. Il punto base è il punto che si ottiene con tutti i parametri nulli; i vettori <span class="m">\mathbf v_i</span> danno le &quot;direzioni&quot; in cui ci si può muovere restando in <span class="m">S</span>.</p>
+<div class="callout attenzione">
+
+<p>Nessuna delle due scelte è unica: il punto base può essere <strong>qualunque</strong> punto di <span class="m">S</span> e la base della giacitura può essere <strong>qualunque</strong> base di <span class="m">W</span>. Per esempio, per una retta, il direttore può essere sostituito da un qualsiasi multiplo non nullo (anche negativo). Due forme parametriche &quot;diverse&quot; possono quindi descrivere lo stesso insieme: per riconoscerle bisogna controllare che i direttori siano proporzionali e che il punto base dell&#39;una stia sull&#39;altra.</p>
+</div>
+
+<h2>Sottospazi affini e sistemi lineari: la forma cartesiana</h2>
+<p><strong>Proposizione 30.18.</strong> L&#39;insieme delle soluzioni di un sistema lineare compatibile <span class="m">A \cdot X = B</span> con <span class="m">X \in \mathbb K^n</span> è un sottospazio affine di <span class="m">\mathbb K^n</span>. <strong>Viceversa</strong>, ogni sottospazio affine di <span class="m">\mathbb K^n</span> è l&#39;insieme delle soluzioni di un sistema lineare compatibile <span class="m">A \cdot X = B</span>.</p>
+<p><em>Dimostrazione.</em> La prima affermazione è l&#39;Osservazione 30.8. Dimostriamo il viceversa. Sia <span class="m">S = P + W</span> un sottospazio affine di <span class="m">\mathbb K^n</span> e sia <span class="m">\mathcal B_W = \{\mathbf v_1, \dots, \mathbf v_m\}</span> una base di <span class="m">W</span>.</p>
+<ol>
+<li>Per il teorema di completamento a una base esistono <span class="m">\mathbf v_{m+1}, \dots, \mathbf v_n</span> tali che <span class="m">\{\mathbf v_1, \dots, \mathbf v_m, \mathbf v_{m+1}, \dots, \mathbf v_n\}</span> è una base di <span class="m">\mathbb K^n</span>.</li>
+<li>Un&#39;applicazione lineare è determinata dalle immagini di una base: definiamo <span class="m">f : \mathbb K^n \to \mathbb K^n</span> con <span class="m">f(\mathbf v_i) = 0</span> per <span class="m">i = 1, \dots, m</span> e <span class="m">f(\mathbf v_i) = \mathbf v_i</span> per <span class="m">i = m+1, \dots, n</span>.</li>
+<li>L&#39;immagine di <span class="m">f</span> è generata da <span class="m">\mathbf v_{m+1}, \dots, \mathbf v_n</span>, che sono indipendenti: <span class="m">\operatorname{rank}(f) = n - m</span>. Per il teorema della dimensione <span class="m">\dim\operatorname{Ker}(f) = m</span>, e poiché <span class="m">\mathbf v_1, \dots, \mathbf v_m \in \operatorname{Ker}(f)</span> sono indipendenti, <span class="m">\operatorname{Ker}(f) = \operatorname{Span}(\mathbf v_1, \dots, \mathbf v_m) = W</span>.</li>
+<li>Ogni applicazione lineare <span class="m">\mathbb K^n \to \mathbb K^n</span> è <span class="m">f = f_A</span> per una matrice <span class="m">A \in \mathbb K^{n,n}</span>. Le soluzioni di <span class="m">A \cdot X = 0</span> formano <span class="m">\operatorname{Ker}(f_A) = W</span>.</li>
+<li>Poniamo <span class="m">B = f_A(P) = A \cdot P</span>. Il sistema <span class="m">A\cdot X = B</span> è compatibile (<span class="m">P</span> è una soluzione) e, per l&#39;Osservazione 30.8, le sue soluzioni sono <span class="m">P + \operatorname{Ker}(f_A) = P + W = S</span>. <span class="m">\square</span></li>
+</ol>
+<p><strong>Osservazione 30.19.</strong> La dimostrazione mostra anche che la <strong>giacitura</strong> del sottospazio affine delle soluzioni di <span class="m">A \cdot X = B</span> è l&#39;insieme delle soluzioni del <strong>sistema omogeneo associato</strong> <span class="m">A \cdot X = 0</span>: si ottiene semplicemente cancellando i termini noti.</p>
+<p><strong>Osservazione 30.20 (dimensione e rango).</strong> Se <span class="m">S</span> è l&#39;insieme delle soluzioni del sistema compatibile <span class="m">A\cdot X = B</span> in <span class="m">\mathbb K^n</span>,
+<span class="m d">\dim(S) = n - \operatorname{rank}(A).</span>
+Infatti <span class="m">\dim S = \dim W = \dim\operatorname{Ker}(f_A) = n - \operatorname{rank}(f_A) = n - \operatorname{rank}(A)</span> (teorema della dimensione). È la stessa cosa del teorema di Rouché-Capelli: le soluzioni sono <span class="m">\infty^{n - \operatorname{rank} A}</span>.</p>
+<p><strong>Corollario 30.21.</strong> Un sottospazio affine <span class="m">S \ne \mathbb K^n</span> è l&#39;insieme delle soluzioni di un sistema compatibile con <strong>esattamente <span class="m">n - \dim(S)</span> equazioni</strong>.</p>
+<p><em>Dimostrazione.</em> Nella matrice <span class="m">A \in \mathbb K^{n,n}</span> della dimostrazione precedente, <span class="m">n - \operatorname{rank}(A)</span> righe sono combinazioni lineari delle altre e si possono eliminare (insieme alle stesse righe di <span class="m">B</span>) senza cambiare le soluzioni. Restano <span class="m">\operatorname{rank}(A) = n - \dim(S)</span> equazioni. <span class="m">\square</span></p>
+<p><strong>Osservazione 30.22.</strong> Se <span class="m">S = \mathbb K^n</span> non si può usare un sistema &quot;senza equazioni&quot;, ma si usa l&#39;equazione <span class="m">0 = 0</span>.</p>
+<p><strong>Definizione 30.23.</strong> Sia <span class="m">S</span> un sottospazio affine di <span class="m">\mathbb K^n</span>. Se <span class="m">S \ne \mathbb K^n</span>, un sistema lineare <span class="m">A \cdot X = B</span> con <strong><span class="m">n - \dim(S)</span> equazioni</strong> che ha come insieme delle soluzioni proprio <span class="m">S</span> si chiama <strong>forma cartesiana</strong> o <strong>forma implicita</strong> di <span class="m">S</span>. Se <span class="m">S = \mathbb K^n</span>, la forma cartesiana è <span class="m">0 = 0</span>.</p>
+<p>Il numero di equazioni è quindi il <strong>minimo possibile</strong>: <span class="m">n - \dim(S)</span>, che si chiama anche <em>codimensione</em>. Un sistema con equazioni in più (dipendenti) descrive lo stesso insieme ma non è, a rigore, una forma cartesiana.</p>
+<p><strong>Definizione 30.24.</strong> Se <span class="m">A\cdot X = B</span> è una forma implicita di un sottospazio affine di dimensione <span class="m">1</span> in <span class="m">\boldsymbol V^2_G</span> (una retta del piano) o di dimensione <span class="m">2</span> in <span class="m">\boldsymbol V^3_G</span> (un piano dello spazio), la matrice <span class="m">A</span> ha <strong>una sola riga</strong>; la sua trasposta <span class="m">{}^tA</span> è un vettore colonna che si chiama <strong>vettore di giacitura</strong> o <strong>vettore normale</strong>.</p>
+<h3>I tre casi del piano e dello spazio (Osservazione 30.25)</h3>
+<p><strong>1. Retta nel piano <span class="m">\boldsymbol V^2_G</span>.</strong> Forma implicita:
+<span class="m d">ax + by + c = 0, \qquad (a, b) \ne (0, 0).</span>
+In forma matriciale <span class="m">\begin{pmatrix} a &amp; b\end{pmatrix}\begin{pmatrix} x \\ y\end{pmatrix} = \begin{pmatrix} -c\end{pmatrix}</span>: matrice dei coefficienti <span class="m">A = \begin{pmatrix} a &amp; b \end{pmatrix}</span>, incognite <span class="m">X = {}^t(x\ y)</span>, termini noti <span class="m">B = (-c)</span> (attenzione al segno: il termine noto passa a destra). Il rango di <span class="m">A</span> è <span class="m">1</span> e <span class="m">\dim r = 2 - 1 = 1</span>. Il vettore <span class="m">{}^t(a\ b)</span> è il <strong>vettore di giacitura</strong>; la giacitura di <span class="m">r</span> ha forma implicita <span class="m">ax + by = 0</span>.</p>
+<p>Forma parametrica: <span class="m">P = P_0 + \lambda\mathbf v</span> con <span class="m">\mathbf v \ne 0</span>, cioè
+<span class="m d">\begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} x_0 \\ y_0 \end{pmatrix} + \lambda\begin{pmatrix} v_x \\ v_y \end{pmatrix}, \qquad \begin{cases} x = x_0 + \lambda v_x \\ y = y_0 + \lambda v_y \end{cases}, \qquad {}^t(v_x\ v_y) \ne {}^t(0\ 0).</span></p>
+<p><strong>2. Piano nello spazio <span class="m">\boldsymbol V^3_G</span>.</strong> Forma implicita:
+<span class="m d">ax + by + cz + d = 0, \qquad (a, b, c) \ne (0, 0, 0),</span>
+cioè <span class="m">A = \begin{pmatrix} a &amp; b &amp; c\end{pmatrix}</span>, <span class="m">X = {}^t(x\ y\ z)</span>, <span class="m">B = (-d)</span>. Rango <span class="m">1</span>, <span class="m">\dim\pi = 3 - 1 = 2</span>. Il vettore <span class="m">{}^t(a\ b\ c)</span> è il <strong>vettore di giacitura</strong> (normale) del piano; la giacitura ha forma implicita <span class="m">ax + by + cz = 0</span>.</p>
+<p>Forma parametrica: <span class="m">P = P_0 + \lambda\mathbf v + \lambda'\mathbf v'</span> con <span class="m">\mathbf v, \mathbf v'</span> <strong>linearmente indipendenti</strong>:
+<span class="m d">\begin{cases} x = x_0 + \lambda v_x + \lambda' v'_x \\ y = y_0 + \lambda v_y + \lambda' v'_y \\ z = z_0 + \lambda v_z + \lambda' v'_z \end{cases}</span>
+Due parametri, perché il piano ha dimensione <span class="m">2</span>.</p>
+<p><strong>3. Retta nello spazio <span class="m">\boldsymbol V^3_G</span>.</strong> Forma implicita: un sistema di <strong>due</strong> equazioni
+<span class="m d">\begin{cases} a_1x + b_1y + c_1z + d_1 = 0 \\ a_2x + b_2y + c_2z + d_2 = 0 \end{cases}</span>
+con le terne <span class="m">(a_1, b_1, c_1)</span> e <span class="m">(a_2, b_2, c_2)</span> <strong>non proporzionali</strong>. Matrice <span class="m">A = \begin{pmatrix} a_1 &amp; b_1 &amp; c_1 \\ a_2 &amp; b_2 &amp; c_2 \end{pmatrix}</span> di rango <span class="m">2</span>, termini noti <span class="m">B = {}^t(-d_1\ -d_2)</span>, e <span class="m">\dim r = 3 - 2 = 1</span>. Geometricamente la retta è l&#39;<strong>intersezione di due piani non paralleli</strong>. La giacitura ha forma implicita <span class="m">a_1x + b_1y + c_1z = 0</span>, <span class="m">a_2x + b_2y + c_2z = 0</span>.</p>
+<p>Forma parametrica: <span class="m">P = P_0 + \lambda\mathbf v</span> con <span class="m">\mathbf v \ne 0</span>:
+<span class="m d">\begin{cases} x = x_0 + \lambda v_x \\ y = y_0 + \lambda v_y \\ z = z_0 + \lambda v_z \end{cases}</span></p>
 <div class="callout sintesi">
 
 <table>
@@ -44,6 +138,7 @@ con <span class="m">v \in V</span> e <span class="m">W</span> sottospazio vettor
 <th>sottospazio</th>
 <th>forma implicita</th>
 <th>rango di <span class="m">A</span></th>
+<th>n. equazioni</th>
 <th>forma parametrica</th>
 </tr>
 </thead>
@@ -51,11 +146,13 @@ con <span class="m">v \in V</span> e <span class="m">W</span> sottospazio vettor
 <td>retta in <span class="m">\boldsymbol V^2_G</span></td>
 <td><span class="m">ax+by+c=0</span>, <span class="m">(a,b)\ne(0,0)</span></td>
 <td>1</td>
+<td>1</td>
 <td><span class="m">P = P_0 + \lambda\mathbf v</span>, <span class="m">\mathbf v \ne 0</span></td>
 </tr>
 <tr>
 <td>piano in <span class="m">\boldsymbol V^3_G</span></td>
 <td><span class="m">ax+by+cz+d=0</span>, <span class="m">(a,b,c)\ne(0,0,0)</span></td>
+<td>1</td>
 <td>1</td>
 <td><span class="m">P = P_0 + \lambda\mathbf v + \lambda'\mathbf v'</span>, <span class="m">\mathbf v, \mathbf v'</span> lin. indip.</td>
 </tr>
@@ -63,66 +160,263 @@ con <span class="m">v \in V</span> e <span class="m">W</span> sottospazio vettor
 <td>retta in <span class="m">\boldsymbol V^3_G</span></td>
 <td>due equazioni con coefficienti non proporzionali</td>
 <td>2</td>
+<td>2</td>
 <td><span class="m">P = P_0 + \lambda\mathbf v</span>, <span class="m">\mathbf v \ne 0</span></td>
 </tr>
 </tbody></table>
-<p>In ogni caso <span class="m">\dim = (\text{dimensione dello spazio}) - \operatorname{rank}(A)</span>; la giacitura ha come forma implicita il sistema omogeneo associato (per esempio <span class="m">ax+by+cz = 0</span> per il piano).</p>
+<p>Sempre: <span class="m">\dim = (\text{dimensione dello spazio}) - \operatorname{rank}(A)</span>; numero di parametri <span class="m">=</span> dimensione; numero di equazioni <span class="m">=</span> dimensione dello spazio <span class="m">-</span> dimensione. La giacitura ha come forma implicita il sistema omogeneo associato.</p>
 </div>
 
-<p>In coordinate, la retta nello spazio è
-<span class="m d">\begin{cases} x = x_0 + \lambda v_x \\ y = y_0 + \lambda v_y \\ z = z_0 + \lambda v_z \end{cases}</span>
-e il piano è
-<span class="m d">\begin{cases} x = x_0 + \lambda v_x + \lambda' v'_x \\ y = y_0 + \lambda v_y + \lambda' v'_y \\ z = z_0 + \lambda v_z + \lambda' v'_z \end{cases}</span></p>
-<div class="callout esempio">
-
-<p>La retta <span class="m">\begin{cases} x+2y-z-2=0 \\ x+3y+2z+1=0 \end{cases}</span> ha matrice dei coefficienti di rango 2; un&#39;altra forma implicita è <span class="m">\begin{cases} 2x+5y+z-1=0 \\ y+3z+3=0 \end{cases}</span>. Una forma parametrica è <span class="m">\begin{cases} x=-6+7\lambda \\ y=3-3\lambda \\ z=-2+\lambda \end{cases}</span> (punto base <span class="m">{}^t(-6\ 3\ -2)</span>, direttore <span class="m">{}^t(7\ -3\ 1)</span>); un&#39;altra è <span class="m">P = {}^t(1\ 0\ -1) + \lambda\,{}^t(-7\ 3\ -1)</span>. Nessuna delle due forme è unica.</p>
-</div>
-
-<h3>Da implicita a parametrica</h3>
-<p>Basta <strong>risolvere il sistema</strong>: con <span class="m">r = \operatorname{rank}(A)</span> le soluzioni dipendono da <span class="m">n - r</span> parametri, <span class="m">X = X_0 + \lambda_1\mathbf v_1 + \dots + \lambda_{n-r}\mathbf v_{n-r}</span>. Retta nel piano e retta nello spazio: <span class="m">\infty^1</span> soluzioni; piano nello spazio: <span class="m">\infty^2</span>.</p>
-<div class="callout esempio">
-
-<p>Risolvendo <span class="m">\begin{cases} x+2y-z-2=0 \\ x+3y+2z+1=0 \end{cases}</span> si ottiene <span class="m">(x,y,z) = (8+7\lambda, -3-3\lambda, \lambda)</span>, cioè <span class="m">\begin{cases} x = 8+7\lambda \\ y = -3-3\lambda \\ z = \lambda \end{cases}</span>.</p>
-</div>
-
-<h3>Da parametrica a implicita</h3>
-<p>Si <strong>eliminano i parametri</strong>: si ricavano uno alla volta e si sostituiscono nelle altre equazioni, ottenendo <span class="m">n - m</span> equazioni. In modo più teorico, <span class="m">P \in S</span> se e solo se <span class="m">\mathbf v_1, \dots, \mathbf v_m, P - P_0</span> sono linearmente dipendenti, cioè la matrice con queste colonne ha rango <span class="m">&lt; m+1</span> (tutti i minori di ordine <span class="m">m+1</span> nulli).</p>
-<ul>
-<li>Retta nel piano: <span class="m">\det\begin{pmatrix} v_x &amp; x-x_0 \\ v_y &amp; y-y_0 \end{pmatrix} = 0</span>.</li>
-<li>Piano nello spazio: <span class="m">\det\begin{pmatrix} v_x &amp; v'_x &amp; x-x_0 \\ v_y &amp; v'_y &amp; y-y_0 \\ v_z &amp; v'_z &amp; z-z_0 \end{pmatrix} = 0</span>.</li>
-<li>Retta nello spazio: i tre minori <span class="m">2\times 2</span> di <span class="m">\begin{pmatrix} v_x &amp; x-x_0 \\ v_y &amp; y-y_0 \\ v_z &amp; z-z_0 \end{pmatrix}</span> sono nulli; una delle tre equazioni dipende dalle altre e va eliminata.</li>
-</ul>
-<div class="callout esempio">
-
-<p>Da <span class="m">\begin{cases} x=-6+7\lambda \\ y=3-3\lambda \\ z=-2+\lambda \end{cases}</span>, con <span class="m">\lambda = z+2</span>: <span class="m">\begin{cases} x-7z-8=0 \\ y+3z+3=0 \end{cases}</span>. Con i minori si ottiene invece <span class="m">3x+7y-3=0</span>, <span class="m">-x+7z+8=0</span>, <span class="m">-y-3z-3=0</span>, e le prime due bastano.</p>
-</div>
-
-<h2>Rette, piani, semirette e segmenti</h2>
-<p><strong>Retta per due punti</strong> distinti <span class="m">A, B</span>: punto base <span class="m">A</span> e direttore <span class="m">B - A</span>,
-<span class="m d">P = A + \lambda(B - A), \qquad \begin{cases} x = a_x + \lambda(b_x - a_x) \\ y = a_y + \lambda(b_y - a_y) \\ z = a_z + \lambda(b_z - a_z) \end{cases}</span></p>
-<p><strong>Piano per tre punti</strong> non allineati <span class="m">A, B, B'</span>:
-<span class="m d">P = A + \lambda(B - A) + \lambda'(B' - A).</span></p>
-<p>La forma parametrica <span class="m">\mathbb R \ni \lambda \mapsto P_0 + \lambda\mathbf v \in r</span> è biettiva, quindi i sottoinsiemi della retta corrispondono a sottoinsiemi di <span class="m">\mathbb R</span>:</p>
-<ul>
-<li><strong>semiretta</strong> di estremo <span class="m">P_0</span>, con <span class="m">\mathbf v</span> della stessa direzione <strong>e verso</strong> della semiretta: <span class="m">P = P_0 + \lambda\mathbf v</span> con <span class="m">\lambda \geqslant 0</span>;</li>
-<li><strong>segmento</strong> <span class="m">AB</span>: <span class="m">P = A + \lambda(B - A)</span> con <span class="m">0 \leqslant \lambda \leqslant 1</span>;</li>
-<li><strong>punto medio</strong> di <span class="m">AB</span>: <span class="m">M = A + \tfrac12(B - A) = \tfrac12 A + \tfrac12 B</span>.</li>
-</ul>
 <div class="callout attenzione">
 
-<p>Per una semiretta conta anche il <strong>verso</strong>: <span class="m">P_0 + t(-\mathbf v)</span> con <span class="m">t \geqslant 0</span>, oppure <span class="m">P_0 + t\mathbf v</span> con <span class="m">t \leqslant 0</span>, descrive la semiretta <strong>opposta</strong>. Un multiplo positivo di <span class="m">\mathbf v</span> con <span class="m">t \geqslant 0</span> va invece bene.</p>
+<ul>
+<li>Nello spazio <strong>una sola</strong> equazione lineare descrive un <strong>piano</strong>, non una retta: per una retta ne servono due. È un errore frequente scrivere &quot;la retta <span class="m">2x + y - z = 1</span>&quot; in <span class="m">\boldsymbol V^3_G</span>.</li>
+<li>Le due equazioni di una retta nello spazio devono avere coefficienti di <span class="m">x, y, z</span> <strong>non proporzionali</strong>; se lo fossero, i due piani sarebbero paralleli (o coincidenti) e il sistema non descriverebbe una retta.</li>
+<li>Neanche la forma implicita è unica: si può moltiplicare un&#39;equazione per un numero non nullo, o sostituirla con una combinazione lineare delle due (purché il rango resti <span class="m">2</span>).</li>
+</ul>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Esempio 30.26.</strong> Retta <span class="m">r</span> di <span class="m">\boldsymbol V^3_G</span> con forma implicita
+<span class="m d">\begin{cases} x + 2y - z - 2 = 0 \\ x + 3y + 2z + 1 = 0 \end{cases}, \qquad \text{cioè} \qquad \begin{pmatrix} 1 &amp; 2 &amp; -1 \\ 1 &amp; 3 &amp; 2 \end{pmatrix}\begin{pmatrix} x \\ y \\ z\end{pmatrix} = \begin{pmatrix} 2 \\ -1 \end{pmatrix}.</span>
+La matrice dei coefficienti ha rango <span class="m">2</span>: le righe <span class="m">{}^t(1\ 2\ -1)</span> e <span class="m">{}^t(1\ 3\ 2)</span> non sono proporzionali (il minore <span class="m">\det\begin{pmatrix} 1 &amp; 2 \\ 1 &amp; 3\end{pmatrix} = 3 - 2 = 1 \ne 0</span>). La giacitura ha forma implicita <span class="m">x + 2y - z = 0</span>, <span class="m">x + 3y + 2z = 0</span>.</p>
+<p><strong>Un&#39;altra forma implicita</strong> è <span class="m">\begin{cases} 2x + 5y + z - 1 = 0 \\ y + 3z + 3 = 0 \end{cases}</span>: la prima equazione è la somma delle due originali, <span class="m">(x+2y-z-2) + (x+3y+2z+1) = 2x+5y+z-1</span>; la seconda è la differenza, <span class="m">(x+3y+2z+1) - (x+2y-z-2) = y+3z+3</span>. Combinazioni lineari indipendenti delle equazioni danno lo stesso insieme di soluzioni.</p>
+<p><strong>Una forma parametrica</strong> è <span class="m">P = {}^t(-6\ 3\ -2) + \lambda\,{}^t(7\ -3\ 1)</span>, cioè <span class="m">\begin{cases} x = -6 + 7\lambda \\ y = 3 - 3\lambda \\ z = -2 + \lambda\end{cases}</span>: punto base <span class="m">{}^t(-6\ 3\ -2)</span>, direttore <span class="m">{}^t(7\ -3\ 1) \ne 0</span>. Verifica: sostituendo nella prima equazione <span class="m">(-6+7\lambda) + 2(3-3\lambda) - (-2+\lambda) - 2 = -6+6+2-2 + (7-6-1)\lambda = 0</span> ✓; nella seconda <span class="m">(-6+7\lambda) + 3(3-3\lambda) + 2(-2+\lambda) + 1 = -6+9-4+1 + (7-9+2)\lambda = 0</span> ✓.</p>
+<p><strong>Un&#39;altra forma parametrica</strong> è <span class="m">P = {}^t(1\ 0\ -1) + \lambda\,{}^t(-7\ 3\ -1)</span>: il direttore è l&#39;opposto del precedente e <span class="m">{}^t(1\ 0\ -1)</span> è il punto che si ottiene con <span class="m">\lambda = 1</span> nella prima (<span class="m">-6+7 = 1</span>, <span class="m">3 - 3 = 0</span>, <span class="m">-2+1 = -1</span>).</p>
+</div>
+
+<h2>Da forma implicita a forma parametrica</h2>
+<p><strong>Osservazione 30.27.</strong> Per passare dalla forma implicita alla forma parametrica basta <strong>risolvere il sistema</strong>. Se <span class="m">A\cdot X = B</span> è la forma implicita di <span class="m">S \subseteq \mathbb K^n</span> e <span class="m">r = \operatorname{rank}(A)</span>, le soluzioni dipendono da <span class="m">n - r</span> parametri liberi e si scrivono
+<span class="m d">X = X_0 + \lambda_1\mathbf v_1 + \lambda_2\mathbf v_2 + \dots + \lambda_{n-r}\mathbf v_{n-r},</span>
+che è una forma parametrica di <span class="m">S</span>: <span class="m">X_0</span> (la soluzione con tutti i parametri nulli) è il punto base, i <span class="m">\mathbf v_i</span> (i coefficienti dei parametri) formano una base della giacitura.</p>
+<p><strong>Osservazione 30.28.</strong> Non c&#39;è una formula generale, ma si sa quanti parametri escono:</p>
+<ol>
+<li>retta del piano <span class="m">ax+by+c=0</span>: rango <span class="m">1</span>, <span class="m">\infty^{2-1} = \infty^1</span> soluzioni, un parametro;</li>
+<li>piano <span class="m">ax+by+cz+d=0</span>: rango <span class="m">1</span>, <span class="m">\infty^{3-1} = \infty^2</span> soluzioni, due parametri;</li>
+<li>retta nello spazio (due equazioni): rango <span class="m">2</span>, <span class="m">\infty^{3-2} = \infty^1</span> soluzioni, un parametro.</li>
+</ol>
+<p><strong>Procedura (implicita → parametrica).</strong></p>
+<ol>
+<li>Controlla il rango della matrice dei coefficienti (deve essere <span class="m">1</span> per un piano o una retta del piano, <span class="m">2</span> per una retta nello spazio).</li>
+<li>Scegli come parametri le incognite &quot;libere&quot; (tante quante <span class="m">n - \operatorname{rank}A</span>), per esempio quelle che non corrispondono ai pivot dopo la riduzione di Gauss.</li>
+<li>Ricava le altre incognite in funzione dei parametri.</li>
+<li>Scrivi <span class="m">x, y, z</span> come &quot;numero + coefficiente <span class="m">\cdot</span> parametro&quot;: i numeri danno il punto base, i coefficienti dei parametri i vettori della giacitura.</li>
+</ol>
+<div class="callout esempio">
+
+<p><strong>Esempio 30.29.</strong> Forma parametrica della retta <span class="m">\begin{cases} x + 2y - z - 2 = 0 \\ x + 3y + 2z + 1 = 0\end{cases}</span>.</p>
+<p>Matrice completa e riduzione di Gauss (<span class="m">R_2 \to R_2 - R_1</span>):
+<span class="m d">\left(\begin{array}{ccc|c} 1 &amp; 2 &amp; -1 &amp; 2 \\ 1 &amp; 3 &amp; 2 &amp; -1 \end{array}\right) \longrightarrow \left(\begin{array}{ccc|c} 1 &amp; 2 &amp; -1 &amp; 2 \\ 0 &amp; 1 &amp; 3 &amp; -3 \end{array}\right).</span>
+I pivot sono sulle colonne di <span class="m">x</span> e <span class="m">y</span>: <span class="m">z</span> è libera, poniamo <span class="m">z = \lambda</span>. Dalla seconda riga <span class="m">y + 3\lambda = -3</span>, quindi <span class="m">y = -3 - 3\lambda</span>. Dalla prima <span class="m">x = 2 - 2y + z = 2 - 2(-3-3\lambda) + \lambda = 2 + 6 + 6\lambda + \lambda = 8 + 7\lambda</span>. Quindi <span class="m">(x, y, z) = (8 + 7\lambda, -3 - 3\lambda, \lambda)</span>:
+<span class="m d">\begin{pmatrix} x \\ y \\ z \end{pmatrix} = \begin{pmatrix} 8 \\ -3 \\ 0 \end{pmatrix} + \lambda\begin{pmatrix} 7 \\ -3 \\ 1 \end{pmatrix}, \qquad \begin{cases} x = 8 + 7\lambda \\ y = -3 - 3\lambda \\ z = \lambda \end{cases}</span>
+Il direttore <span class="m">{}^t(7\ -3\ 1)</span> è lo stesso dell&#39;Esempio 30.26; il punto base è diverso (<span class="m">{}^t(8\ -3\ 0)</span> si ottiene con <span class="m">\lambda = 2</span> nella forma <span class="m">{}^t(-6\ 3\ -2) + \lambda\,{}^t(7\ -3\ 1)</span>): è la stessa retta.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Piano (Esercizio 30.5.2).</strong> Forma parametrica del piano <span class="m">3x - 2y - 4z - 2 = 0</span>. Una sola equazione, rango <span class="m">1</span>, due parametri. Poniamo <span class="m">x = \lambda_1</span>, <span class="m">y = \lambda_2</span> e ricaviamo <span class="m">z</span>: <span class="m">4z = 3\lambda_1 - 2\lambda_2 - 2</span>, cioè
+<span class="m d">\begin{cases} x = \lambda_1 \\ y = \lambda_2 \\ z = -\tfrac12 + \tfrac34\lambda_1 - \tfrac12\lambda_2 \end{cases}</span>
+Punto base <span class="m">{}^t(0\ 0\ -\tfrac12)</span>, giacitura generata da <span class="m">{}^t(1\ 0\ \tfrac34)</span> e <span class="m">{}^t(0\ 1\ -\tfrac12)</span> (indipendenti). Verifica col punto base: <span class="m">3\cdot 0 - 0 - 4\cdot(-\tfrac12) - 2 = 0</span> ✓.</p>
+<p><strong>Retta (Esercizio 30.5.1).</strong> <span class="m">\begin{cases} x + y - 2z + 1 = 0 \\ 2x + 2y - 3z + 3 = 0 \end{cases}</span>. Con <span class="m">R_2 \to R_2 - 2R_1</span>: <span class="m">(2x+2y-3z+3) - 2(x+y-2z+1) = z + 1 = 0</span>, quindi <span class="m">z = -1</span>. Nella prima: <span class="m">x + y + 2 + 1 = 0</span>, <span class="m">x = -3 - y</span>. Qui la variabile libera è <span class="m">y = \lambda</span>: <span class="m">\begin{cases} x = -3 - \lambda \\ y = \lambda \\ z = -1 \end{cases}</span>. (Nota: non si può scegliere <span class="m">z</span> come parametro, perché <span class="m">z</span> è fissata.)</p>
+</div>
+
+<h2>Da forma parametrica a forma implicita</h2>
+<p><strong>Osservazione 30.30.</strong> Per passare dalla forma parametrica alla forma implicita bisogna <strong>eliminare i parametri</strong>. La forma parametrica <span class="m">P = P_0 + \lambda_1\mathbf v_1 + \dots + \lambda_m\mathbf v_m</span> è un sistema di <span class="m">n</span> equazioni (una per coordinata) nelle <span class="m">n + m</span> incognite &quot;coordinate + parametri&quot;. Per individuare un punto bastano le coordinate, quindi i parametri sono superflui: si ricavano uno alla volta da un&#39;equazione e si sostituiscono nelle altre. Alla fine restano <span class="m">n - m</span> equazioni nelle sole coordinate: è una forma implicita.</p>
+<p><strong>Metodo dei minori (più teorico).</strong> Si riscrive la forma parametrica come
+<span class="m d">P - P_0 = \lambda_1\mathbf v_1 + \dots + \lambda_m\mathbf v_m.</span>
+Quindi <span class="m">P \in S</span> se e solo se <span class="m">P - P_0 \in \operatorname{Span}(\mathbf v_1, \dots, \mathbf v_m)</span>, cioè se e solo se i vettori <span class="m">\mathbf v_1, \dots, \mathbf v_m, P - P_0</span> sono <strong>linearmente dipendenti</strong> (i <span class="m">\mathbf v_i</span> sono indipendenti, quindi <span class="m">P - P_0</span> deve dipendere da loro). Questo equivale a chiedere che la matrice con colonne
+<span class="m d">\begin{pmatrix} \mathbf v_1 &amp; \mathbf v_2 &amp; \cdots &amp; \mathbf v_m &amp; P - P_0 \end{pmatrix}</span>
+abbia rango <strong>strettamente minore di <span class="m">m + 1</span></strong>, cioè che <strong>tutti i minori di ordine <span class="m">m+1</span> siano nulli</strong>. Ogni minore dà un&#39;equazione lineare in <span class="m">x, y, z</span>; se le equazioni sono più di <span class="m">n - m</span>, si eliminano quelle dipendenti dalle altre fino a restare con <span class="m">n - m</span>.</p>
+<p><strong>Osservazione 30.31 (i tre casi).</strong></p>
+<ol>
+<li><strong>Retta nel piano</strong> <span class="m">P = P_0 + \lambda\mathbf v</span>: <span class="m">\operatorname{rank}\begin{pmatrix} v_x &amp; x - x_0 \\ v_y &amp; y - y_0\end{pmatrix} &lt; 2</span>, cioè
+<span class="m d">\det\begin{pmatrix} v_x &amp; x - x_0 \\ v_y &amp; y - y_0\end{pmatrix} = 0.</span></li>
+<li><strong>Piano nello spazio</strong> <span class="m">P = P_0 + \lambda\mathbf v + \lambda'\mathbf v'</span>: <span class="m">\operatorname{rank} &lt; 3</span>, cioè
+<span class="m d">\det\begin{pmatrix} v_x &amp; v'_x &amp; x - x_0 \\ v_y &amp; v'_y &amp; y - y_0 \\ v_z &amp; v'_z &amp; z - z_0\end{pmatrix} = 0.</span></li>
+<li><strong>Retta nello spazio</strong> <span class="m">P = P_0 + \lambda\mathbf v</span>: <span class="m">\operatorname{rank}\begin{pmatrix} v_x &amp; x - x_0 \\ v_y &amp; y - y_0 \\ v_z &amp; z - z_0\end{pmatrix} &lt; 2</span>, cioè tutti e tre i minori <span class="m">2\times 2</span> nulli:
+<span class="m d">\det\begin{pmatrix} v_x &amp; x - x_0 \\ v_y &amp; y - y_0\end{pmatrix} = 0,\quad \det\begin{pmatrix} v_x &amp; x - x_0 \\ v_z &amp; z - z_0\end{pmatrix} = 0,\quad \det\begin{pmatrix} v_y &amp; y - y_0 \\ v_z &amp; z - z_0\end{pmatrix} = 0.</span>
+Sono tre equazioni, ma una dipende dalle altre due (non si sa a priori quale): si elimina e restano le due della forma implicita.</li>
+</ol>
+<div class="callout esempio">
+
+<p><strong>Esempio 30.32.</strong> Forma implicita della retta <span class="m">\begin{cases} x = -6 + 7\lambda \\ y = 3 - 3\lambda \\ z = -2 + \lambda\end{cases}</span>.</p>
+<p><em>Eliminando il parametro.</em> Dalla terza equazione <span class="m">\lambda = z + 2</span>. Sostituisco nelle altre due:
+<span class="m d">x = -6 + 7(z + 2) = 7z + 8, \qquad y = 3 - 3(z + 2) = -3z - 3,</span>
+cioè <span class="m">\begin{cases} x - 7z - 8 = 0 \\ y + 3z + 3 = 0\end{cases}</span>.</p>
+<p><em>Con i minori.</em> <span class="m">P_0 = {}^t(-6\ 3\ -2)</span>, <span class="m">\mathbf v = {}^t(7\ -3\ 1)</span>:
+<span class="m d">\det\begin{pmatrix} 7 &amp; x + 6 \\ -3 &amp; y - 3\end{pmatrix} = 7(y-3) + 3(x+6) = 3x + 7y - 3,</span>
+<span class="m d">\det\begin{pmatrix} 7 &amp; x + 6 \\ 1 &amp; z + 2\end{pmatrix} = 7(z+2) - (x+6) = -x + 7z + 8,</span>
+<span class="m d">\det\begin{pmatrix} -3 &amp; y - 3 \\ 1 &amp; z + 2\end{pmatrix} = -3(z+2) - (y-3) = -y - 3z - 3.</span>
+Le tre equazioni <span class="m">3x + 7y - 3 = 0</span>, <span class="m">-x + 7z + 8 = 0</span>, <span class="m">-y - 3z - 3 = 0</span> non sono indipendenti; le prime due hanno coefficienti <span class="m">{}^t(3\ 7\ 0)</span> e <span class="m">{}^t(-1\ 0\ 7)</span> non proporzionali, quindi bastano: <span class="m">\begin{cases} 3x + 7y - 3 = 0 \\ -x + 7z + 8 = 0 \end{cases}</span>. È una forma implicita diversa da quella trovata eliminando il parametro, ma descrive la stessa retta (per esempio <span class="m">3(x - 7z - 8) + 7(y + 3z + 3) = 3x + 7y - 3</span>).</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Retta nel piano (Esercizio 30.4.1).</strong> <span class="m">\begin{cases} x = 3 - 2\lambda \\ y = -1 + 3\lambda\end{cases}</span>: <span class="m">\det\begin{pmatrix} -2 &amp; x - 3 \\ 3 &amp; y + 1\end{pmatrix} = -2(y+1) - 3(x-3) = -3x - 2y + 7 = 0</span>, cioè <span class="m">3x + 2y - 7 = 0</span>. Controllo eliminando il parametro: <span class="m">\lambda = (y+1)/3</span>, <span class="m">x = 3 - \tfrac23(y+1)</span>, <span class="m">3x = 9 - 2y - 2</span>, <span class="m">3x + 2y - 7 = 0</span> ✓.</p>
+<p><strong>Piano (Esercizio 30.4.2).</strong> <span class="m">\begin{cases} x = 2 - t + 2s \\ y = -1 + t - 3s \\ z = 4 - t + s\end{cases}</span>: <span class="m">P_0 = {}^t(2\ -1\ 4)</span>, <span class="m">\mathbf v = {}^t(-1\ 1\ -1)</span>, <span class="m">\mathbf v' = {}^t(2\ -3\ 1)</span>. Sviluppo lungo la terza colonna:
+<span class="m d">\det\begin{pmatrix} -1 &amp; 2 &amp; x-2 \\ 1 &amp; -3 &amp; y+1 \\ -1 &amp; 1 &amp; z-4\end{pmatrix} = (x-2)\det\begin{pmatrix} 1 &amp; -3 \\ -1 &amp; 1\end{pmatrix} - (y+1)\det\begin{pmatrix} -1 &amp; 2 \\ -1 &amp; 1\end{pmatrix} + (z-4)\det\begin{pmatrix} -1 &amp; 2 \\ 1 &amp; -3\end{pmatrix}</span>
+<span class="m d">= (x-2)(1-3) - (y+1)(-1+2) + (z-4)(3-2) = -2x + 4 - y - 1 + z - 4 = -2x - y + z - 1.</span>
+Quindi <span class="m">2x + y - z + 1 = 0</span>. Verifica con il punto base: <span class="m">4 - 1 - 4 + 1 = 0</span> ✓.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Quiz 30.2 della dispensa.</strong> Forma implicita della retta <span class="m">\begin{cases} x = 2 + 7t \\ y = -1 - 5t \\ z = 1 + t\end{cases}</span> ricavando il parametro dalla variabile <span class="m">z</span>: <span class="m">t = z - 1</span>, quindi <span class="m">x = 2 + 7(z-1) = 7z - 5</span> e <span class="m">y = -1 - 5(z-1) = -5z + 4</span>, cioè <span class="m">\begin{cases} x - 7z + 5 = 0 \\ y + 5z - 4 = 0\end{cases}</span>. Le varianti con coefficienti &quot;raddoppiati&quot; su una sola equazione (come <span class="m">2x - 7z + 5 = 0</span>) sono sbagliate: si può moltiplicare <strong>tutta</strong> un&#39;equazione per un numero, non un solo termine.</p>
+</div>
+
+<h2>Retta per due punti, piano per tre punti</h2>
+<p>La forma parametrica è particolarmente comoda per scrivere rette e piani passanti per punti dati.</p>
+<p><strong>Osservazione 30.33 (retta per due punti).</strong> Dati due punti <strong>distinti</strong> <span class="m">A</span> e <span class="m">B</span> (in <span class="m">\boldsymbol V^2_G</span> o <span class="m">\boldsymbol V^3_G</span>) c&#39;è un&#39;unica retta che li contiene. Prendendo <span class="m">A</span> come punto base e <span class="m">B - A</span> (che è non nullo perché <span class="m">A \ne B</span>, e sta nella giacitura perché differenza di due punti della retta) come direttore:
+<span class="m d">P = A + \lambda(B - A).</span>
+In coordinate, nel piano <span class="m">\begin{cases} x = a_x + \lambda(b_x - a_x) \\ y = a_y + \lambda(b_y - a_y)\end{cases}</span>; nello spazio
+<span class="m d">\begin{cases} x = a_x + \lambda(b_x - a_x) \\ y = a_y + \lambda(b_y - a_y) \\ z = a_z + \lambda(b_z - a_z)\end{cases}</span>
+Con <span class="m">\lambda = 0</span> si ottiene <span class="m">A</span>, con <span class="m">\lambda = 1</span> si ottiene <span class="m">B</span>.</p>
+<p><strong>Osservazione 30.34 (piano per tre punti).</strong> Dati tre punti <strong>non allineati</strong> <span class="m">A, B, B'</span> di <span class="m">\boldsymbol V^3_G</span> c&#39;è un unico piano che li contiene. Con <span class="m">A</span> come punto base e <span class="m">B - A</span>, <span class="m">B' - A</span> come base della giacitura (sono indipendenti proprio perché i punti non sono allineati):
+<span class="m d">P = A + \lambda(B - A) + \lambda'(B' - A), \qquad \begin{cases} x = a_x + \lambda(b_x - a_x) + \lambda'(b'_x - a_x) \\ y = a_y + \lambda(b_y - a_y) + \lambda'(b'_y - a_y) \\ z = a_z + \lambda(b_z - a_z) + \lambda'(b'_z - a_z)\end{cases}</span></p>
+<p><strong>Procedura (retta per due punti / piano per tre punti).</strong></p>
+<ol>
+<li>Scegli un punto come punto base (di solito il primo, <span class="m">A</span>).</li>
+<li>Calcola le differenze <span class="m">B - A</span> (e <span class="m">B' - A</span>), coordinata per coordinata, <strong>sottraendo sempre le coordinate di <span class="m">A</span></strong>.</li>
+<li>Scrivi <span class="m">x = a_x + \lambda(\dots)</span>, ecc.</li>
+<li>Verifica: con <span class="m">\lambda = 1</span> (e <span class="m">\lambda' = 0</span>, poi <span class="m">\lambda = 0</span>, <span class="m">\lambda' = 1</span>) devi ritrovare gli altri punti.</li>
+<li>Per riconoscere la forma giusta tra quelle proposte: il direttore può essere un multiplo di <span class="m">B - A</span> (anche <span class="m">A - B</span>) e il punto base può essere <span class="m">B</span> invece di <span class="m">A</span>; controlla quindi proporzionalità del direttore <strong>e</strong> appartenenza del punto base.</li>
+</ol>
+<div class="callout esempio">
+
+<p><strong>Retta per due punti.</strong> Retta per <span class="m">A = {}^t(3\ 0\ -2)</span> e <span class="m">B = {}^t(7\ -5\ 5)</span>: <span class="m">B - A = {}^t(7-3\ \ -5-0\ \ 5-(-2)) = {}^t(4\ -5\ 7)</span>, quindi
+<span class="m d">\begin{cases} x = 3 + 4\lambda \\ y = -5\lambda \\ z = -2 + 7\lambda\end{cases}</span>
+Con <span class="m">\lambda = 1</span>: <span class="m">{}^t(7\ -5\ 5) = B</span> ✓. Attenzione al segno nella terza componente: <span class="m">5 - (-2) = 7</span>, non <span class="m">3</span>.</p>
+<p><strong>Esercizio 30.6.</strong> Retta del piano per <span class="m">{}^t(2\ -3)</span> e <span class="m">{}^t(-4\ -5)</span>: differenza <span class="m">{}^t(-6\ -2)</span>, quindi <span class="m">x = 2 - 6t</span>, <span class="m">y = -3 - 2t</span>.</p>
+<p><strong>Esercizio 30.7 (con forma implicita).</strong> Retta dello spazio per <span class="m">{}^t(2\ 0\ 0)</span> e <span class="m">{}^t(5\ 1\ 2)</span>: direttore <span class="m">{}^t(3\ 1\ 2)</span>. Minori: <span class="m">\det\begin{pmatrix} 3 &amp; x-2 \\ 1 &amp; y\end{pmatrix} = 3y - x + 2</span> e <span class="m">\det\begin{pmatrix} 1 &amp; y \\ 2 &amp; z\end{pmatrix} = z - 2y</span>. Forma implicita <span class="m">\begin{cases} x - 3y - 2 = 0 \\ 2y - z = 0\end{cases}</span> (coefficienti non proporzionali). Verifica con <span class="m">{}^t(5\ 1\ 2)</span>: <span class="m">5 - 3 - 2 = 0</span>, <span class="m">2 - 2 = 0</span> ✓.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Piano per tre punti.</strong> Piano per <span class="m">A = {}^t(-2\ 1\ 3)</span>, <span class="m">B = {}^t(2\ 4\ 7)</span>, <span class="m">B' = {}^t(3\ 0\ -4)</span>:
+<span class="m d">B - A = {}^t(4\ 3\ 4), \qquad B' - A = {}^t(5\ -1\ -7),</span>
+non proporzionali (i punti non sono allineati). Forma parametrica:
+<span class="m d">\begin{cases} x = -2 + 4\lambda + 5\mu \\ y = 1 + 3\lambda - \mu \\ z = 3 + 4\lambda - 7\mu\end{cases}</span>
+Controllo: <span class="m">\lambda = 1, \mu = 0</span> dà <span class="m">{}^t(2\ 4\ 7) = B</span>; <span class="m">\lambda = 0, \mu = 1</span> dà <span class="m">{}^t(3\ 0\ -4) = B'</span> ✓.</p>
+<p><strong>Esercizio 30.8.</strong> Piano per <span class="m">{}^t(0\ -2\ 3)</span>, <span class="m">{}^t(1\ 3\ 4)</span>, <span class="m">{}^t(-2\ -3\ 2)</span>: differenze <span class="m">{}^t(1\ 5\ 1)</span> e <span class="m">{}^t(-2\ -1\ -1)</span>, quindi <span class="m">\begin{cases} x = t - 2s \\ y = -2 + 5t - s \\ z = 3 + t - s\end{cases}</span>. Con il determinante si ottiene anche la forma implicita:
+<span class="m d">\det\begin{pmatrix} 1 &amp; -2 &amp; x \\ 5 &amp; -1 &amp; y+2 \\ 1 &amp; -1 &amp; z-3\end{pmatrix} = x(-5+1) - (y+2)(-1+2) + (z-3)(-1+10) = -4x - y + 9z - 29,</span>
+cioè <span class="m">4x + y - 9z + 29 = 0</span> (verifica con <span class="m">{}^t(0\ -2\ 3)</span>: <span class="m">0 - 2 - 27 + 29 = 0</span> ✓).</p>
+</div>
+
+<h2>Appartenenza di un punto a una retta o a un piano</h2>
+<p>Per sapere se un punto <span class="m">Q</span> appartiene a un sottospazio affine:</p>
+<ul>
+<li>se è dato in <strong>forma implicita</strong>, basta <strong>sostituire</strong> le coordinate di <span class="m">Q</span> in tutte le equazioni: <span class="m">Q</span> appartiene se e solo se sono tutte soddisfatte;</li>
+<li>se è dato in <strong>forma parametrica</strong>, bisogna stabilire se <strong>esistono valori dei parametri</strong> che danno <span class="m">Q</span>: si risolve il sistema nelle incognite <span class="m">\lambda, \lambda', \dots</span> formato dalle equazioni <span class="m">x_Q = x_0 + \dots</span>, ecc.</li>
+</ul>
+<p><strong>Procedura (forma parametrica).</strong></p>
+<ol>
+<li>Scrivi le equazioni ponendo le coordinate di <span class="m">Q</span> al posto di <span class="m">x, y, z</span>.</li>
+<li>Ricava i parametri dalle equazioni più semplici (una per una retta, due per un piano).</li>
+<li><strong>Sostituisci i valori trovati nell&#39;equazione rimasta</strong> e controlla che sia soddisfatta. Solo in questo caso <span class="m">Q</span> appartiene.</li>
+</ol>
+<div class="callout esempio">
+
+<p><strong>Quiz 30.1 della dispensa.</strong> Quale punto appartiene al piano <span class="m">\begin{cases} x = 2 + 3\lambda + \lambda' \\ y = -1 + \lambda - 2\lambda' \\ z = \lambda + \lambda'\end{cases}</span>?</p>
+<p>Punto <span class="m">{}^t(6\ -2\ 2)</span>: da <span class="m">z</span>, <span class="m">\lambda + \lambda' = 2</span>; da <span class="m">x</span>, <span class="m">3\lambda + \lambda' = 4</span>. Sottraendo, <span class="m">2\lambda = 2</span>, <span class="m">\lambda = 1</span>, e <span class="m">\lambda' = 1</span>. Controllo su <span class="m">y</span>: <span class="m">-1 + 1 - 2 = -2</span> ✓. Il punto appartiene.</p>
+<p>Punto <span class="m">{}^t(6\ -2\ 1)</span>: da <span class="m">z</span>, <span class="m">\lambda + \lambda' = 1</span>; da <span class="m">x</span>, <span class="m">3\lambda + \lambda' = 4</span>; quindi <span class="m">\lambda = \tfrac32</span>, <span class="m">\lambda' = -\tfrac12</span>. Controllo su <span class="m">y</span>: <span class="m">-1 + \tfrac32 + 1 = \tfrac32 \ne -2</span> ✗. Non appartiene, anche se due equazioni su tre sono state soddisfatte.</p>
+<p><strong>Retta.</strong> Il punto <span class="m">{}^t(3\ -2\ 1)</span> sta sulla retta <span class="m">x = 4 - \lambda</span>, <span class="m">y = 1 - 3\lambda</span>, <span class="m">z = 3 - 2\lambda</span>? Da <span class="m">x</span>: <span class="m">\lambda = 1</span>; da <span class="m">y</span>: <span class="m">1 - 3 = -2</span> ✓; da <span class="m">z</span>: <span class="m">3 - 2 = 1</span> ✓. Sì. (Per una retta il parametro si ricava da <strong>una</strong> equazione e si controllano le <strong>altre due</strong>.)</p>
+</div>
+
+<div class="callout attenzione">
+
+<p>Con due parametri si trovano quasi sempre <span class="m">\lambda</span> e <span class="m">\lambda'</span> che soddisfano <strong>due</strong> equazioni qualsiasi: questo non dimostra niente. Il punto appartiene al piano solo se anche la <strong>terza</strong> equazione è soddisfatta. Analogamente per una retta: il parametro ricavato da una coordinata deve funzionare per tutte e tre.</p>
+</div>
+
+<h2>Semirette, segmenti e punto medio</h2>
+<p><strong>Osservazione 30.35.</strong> Una forma parametrica <span class="m">P = P_0 + \lambda\mathbf v</span> di una retta <span class="m">r</span> dà una funzione biettiva
+<span class="m d">\mathbb R \ni \lambda \longmapsto P_0 + \lambda\mathbf v \in r:</span>
+a ogni numero reale corrisponde un punto della retta, e viceversa. Con <span class="m">\lambda = 0</span> si è in <span class="m">P_0</span>, con <span class="m">\lambda = 1</span> in <span class="m">P_0 + \mathbf v</span>, con <span class="m">\lambda = 2</span> due &quot;passi&quot; avanti, con <span class="m">\lambda = -1</span> un passo indietro, con <span class="m">\lambda = \tfrac12</span> a metà tra <span class="m">P_0</span> e <span class="m">P_0 + \mathbf v</span>. La retta diventa così una &quot;copia&quot; della retta reale, e i sottoinsiemi della retta corrispondono a sottoinsiemi di <span class="m">\mathbb R</span>.</p>
+<p><strong>Osservazione 30.36 (semiretta).</strong> Sia <span class="m">\bar r</span> una semiretta di estremo <span class="m">P_0</span>, contenuta nella retta <span class="m">r</span>. Si sceglie una forma parametrica di <span class="m">r</span> con punto base <span class="m">P_0</span> e direttore <span class="m">\mathbf v</span> con <strong>la stessa direzione e lo stesso verso</strong> della semiretta. Allora i punti della semiretta sono
+<span class="m d">P = P_0 + \lambda\mathbf v, \qquad \lambda \in \{t \in \mathbb R \mid t \geqslant 0\}.</span></p>
+<p><strong>Osservazione 30.37 (segmento).</strong> Sia <span class="m">AB</span> un segmento. Con la forma parametrica <span class="m">P = A + \lambda(B - A)</span> della retta <span class="m">AB</span>, i punti del segmento sono
+<span class="m d">P = A + \lambda(B - A), \qquad \lambda \in \{t \in \mathbb R \mid 0 \leqslant t \leqslant 1\}:</span>
+<span class="m">\lambda = 0</span> dà <span class="m">A</span>, <span class="m">\lambda = 1</span> dà <span class="m">B</span>, i valori intermedi i punti tra i due.</p>
+<p>In particolare il <strong>punto medio</strong> (il punto del segmento equidistante dagli estremi) si ottiene con <span class="m">\lambda = \tfrac12</span>:
+<span class="m d">M = A + \tfrac12(B - A) = \tfrac12 A + \tfrac12 B,</span>
+cioè <strong>la media delle coordinate</strong>: <span class="m">M = {}^t\big(\tfrac{a_x+b_x}{2}\ \ \tfrac{a_y+b_y}{2}\ \ \tfrac{a_z+b_z}{2}\big)</span>.</p>
+<div class="callout esempio">
+
+<p><strong>Quiz 30.4 della dispensa.</strong> Punto medio del segmento di estremi <span class="m">{}^t(6\ -3\ 1)</span> e <span class="m">{}^t(-2\ 5\ 3)</span>:
+<span class="m d">M = {}^t\Big(\tfrac{6 + (-2)}{2}\ \ \tfrac{-3 + 5}{2}\ \ \tfrac{1 + 3}{2}\Big) = {}^t(2\ 1\ 2).</span>
+Errori tipici: non dividere per <span class="m">2</span> (si ottiene <span class="m">{}^t(4\ 2\ 4)</span>), oppure fare la differenza invece della somma.</p>
+<p><strong>Quiz 30.3 della dispensa.</strong> Semiretta di estremo <span class="m">{}^t(1\ 0\ -2)</span> con direzione e verso dati da <span class="m">{}^t(-1\ 2\ 3)</span>. Il vettore <span class="m">{}^t(-2\ 4\ 6) = 2\cdot{}^t(-1\ 2\ 3)</span> ha la stessa direzione e lo stesso verso (multiplo <strong>positivo</strong>), quindi <span class="m">P = {}^t(1\ 0\ -2) + t\,{}^t(-2\ 4\ 6)</span> con <span class="m">t \geqslant 0</span> è corretta. Invece <span class="m">{}^t(2\ -4\ -6)</span> con <span class="m">t \geqslant 0</span>, o <span class="m">{}^t(-2\ 4\ 6)</span> con <span class="m">t \leqslant 0</span>, descrivono la semiretta <strong>opposta</strong>.</p>
+</div>
+
+<div class="callout attenzione">
+
+<p>Per una semiretta conta anche il <strong>verso</strong>: <span class="m">P_0 + t(-\mathbf v)</span> con <span class="m">t \geqslant 0</span>, oppure <span class="m">P_0 + t\mathbf v</span> con <span class="m">t \leqslant 0</span>, è la semiretta <strong>opposta</strong>. Un multiplo positivo di <span class="m">\mathbf v</span> con <span class="m">t \geqslant 0</span> va invece bene. E il punto base deve essere proprio l&#39;<strong>estremo</strong> della semiretta.</p>
 </div>
 
 <h2>Intersezione di sottospazi affini</h2>
-<p>Diversamente dai sottospazi vettoriali (che contengono tutti <span class="m">0</span>), due sottospazi affini possono <strong>non intersecarsi</strong>: per esempio due punti distinti, o due rette parallele come <span class="m">y = 0</span> e <span class="m">y = 1</span>.</p>
-<p><strong>Proposizione 30.40.</strong> Se <span class="m">S_1 \cap S_2 \ne \emptyset</span>, allora <span class="m">S_1 \cap S_2</span> è un sottospazio affine: scelto <span class="m">P</span> nell&#39;intersezione, <span class="m">S_1 \cap S_2 = P + (W_1 \cap W_2)</span>. Lo stesso vale per un numero qualsiasi di sottospazi affini, se l&#39;intersezione è non vuota.</p>
+<p><strong>Osservazione 30.38.</strong> Diversamente dai sottospazi vettoriali, che contengono tutti il vettore nullo e quindi si intersecano sempre, due sottospazi affini <strong>possono non intersecarsi</strong>. Il caso più banale: due punti distinti <span class="m">S_1 = \{P_1\}</span> e <span class="m">S_2 = \{P_2\}</span> (in qualunque spazio diverso da <span class="m">\{0\}</span>).</p>
+<p><strong>Esempio 30.39.</strong> Le rette parallele <span class="m">y = 0</span> e <span class="m">y = 1</span> del piano non hanno punti in comune.</p>
+<p><strong>Proposizione 30.40.</strong> Siano <span class="m">S_1</span> e <span class="m">S_2</span> sottospazi affini di <span class="m">V</span> con <span class="m">S_1 \cap S_2 \ne \emptyset</span>. Allora <span class="m">S_1 \cap S_2</span> è un sottospazio affine di <span class="m">V</span>, con giacitura <span class="m">W_1 \cap W_2</span>.</p>
+<p><em>Dimostrazione.</em> Sia <span class="m">P \in S_1 \cap S_2</span>. Per la Proposizione 30.6 possiamo usare <span class="m">P</span> come punto base di entrambi: <span class="m">S_1 = P + W_1</span> e <span class="m">S_2 = P + W_2</span>. Un punto <span class="m">P + w</span> sta in entrambi se e solo se <span class="m">w \in W_1</span> e <span class="m">w \in W_2</span>, quindi
+<span class="m d">S_1 \cap S_2 = P + (W_1 \cap W_2),</span>
+che è un sottospazio affine perché l&#39;intersezione di due sottospazi vettoriali <span class="m">W_1 \cap W_2</span> è un sottospazio vettoriale. <span class="m">\square</span></p>
+<p><strong>Osservazione 30.41.</strong> Lo stesso vale per un numero qualsiasi (anche infinito) di sottospazi affini, <strong>purché l&#39;intersezione sia non vuota</strong>.</p>
+<p><strong>Come si calcola un&#39;intersezione in pratica.</strong></p>
+<ul>
+<li>Entrambi in <strong>forma implicita</strong>: si mettono tutte le equazioni in un unico sistema; le soluzioni (se ci sono) sono l&#39;intersezione.</li>
+<li>Entrambi in <strong>forma parametrica</strong>: si uguagliano le coordinate, usando <strong>nomi diversi</strong> per i parametri dei due sottospazi (<span class="m">t</span> e <span class="m">t'</span>), e si risolve nelle incognite <span class="m">t, t'</span>.</li>
+<li>Uno <strong>parametrico e uno implicito</strong>: si sostituisce la parametrica nelle equazioni dell&#39;implicito e si risolve nei parametri.</li>
+</ul>
 <div class="callout esempio">
 
-<p>Le rette <span class="m">\begin{cases} x=4+t \\ y=1+t \\ z=1+2t \end{cases}</span> e <span class="m">\begin{cases} x=4+2t' \\ y=-2-t' \\ z=-2+t' \end{cases}</span>: il sistema delle sei equazioni ha la soluzione <span class="m">t = -2</span>, <span class="m">t' = -1</span>, e l&#39;intersezione è il punto <span class="m">{}^t(2\ -1\ -3)</span>.</p>
-<p>Fascio di piani per <span class="m">P = {}^t(1\ 3\ -1)</span> e <span class="m">Q = {}^t(2\ 1\ 4)</span>: la retta <span class="m">PQ</span> è <span class="m">x = 1+t</span>, <span class="m">y = 3-2t</span>, <span class="m">z = -1+5t</span>, con forma implicita <span class="m">2x+y-5=0</span>, <span class="m">5x-z-6=0</span>; i piani che la contengono sono <span class="m">\lambda(2x+y-5) + \mu(5x-z-6) = 0</span>. Imponendo il passaggio per <span class="m">R = {}^t(1\ 2\ -3)</span> si ha <span class="m">\lambda = 2\mu</span> e il piano <span class="m">2(2x+y-5) + (5x-z-6) = 0</span>.</p>
+<p><strong>Esercizio 30.2 (dispensa).</strong> Intersezione delle rette <span class="m">\begin{cases} x = 4 + t \\ y = 1 + t \\ z = 1 + 2t\end{cases}</span> e <span class="m">\begin{cases} x = 4 + 2t' \\ y = -2 - t' \\ z = -2 + t'\end{cases}</span>.</p>
+<p>Uguaglio le coordinate:
+<span class="m d">4 + t = 4 + 2t', \qquad 1 + t = -2 - t', \qquad 1 + 2t = -2 + t'.</span>
+Dalla prima <span class="m">t = 2t'</span>. Nella seconda <span class="m">1 + 2t' = -2 - t'</span>, cioè <span class="m">3t' = -3</span>, <span class="m">t' = -1</span> e <span class="m">t = -2</span>. Controllo sulla terza: <span class="m">1 + 2(-2) = -3</span> e <span class="m">-2 + (-1) = -3</span> ✓. Il punto comune è (con <span class="m">t = -2</span> nella prima retta) <span class="m">{}^t(4-2\ \ 1-2\ \ 1-4) = {}^t(2\ -1\ -3)</span>.</p>
+<p>Se avessi usato lo stesso nome <span class="m">t</span> per entrambi i parametri, avrei cercato un punto raggiunto <strong>con lo stesso valore</strong> del parametro sulle due rette, cosa che in generale non succede.</p>
+</div>
+
+<h3>Fascio di piani</h3>
+<p>Dalla Lezione sulle rette e i piani: data una retta <span class="m">r</span> dello spazio con forma implicita <span class="m">\begin{cases} a_1x + b_1y + c_1z + d_1 = 0 \\ a_2x + b_2y + c_2z + d_2 = 0\end{cases}</span>, i piani che <strong>contengono <span class="m">r</span></strong> sono tutti e soli
+<span class="m d">\lambda(a_1x + b_1y + c_1z + d_1) + \mu(a_2x + b_2y + c_2z + d_2) = 0, \qquad (\lambda, \mu) \ne (0, 0).</span>
+È il <strong>fascio (proprio) di piani</strong> di asse <span class="m">r</span>. Per trovare il piano del fascio che passa per un punto <span class="m">R \notin r</span> si sostituiscono le coordinate di <span class="m">R</span> e si ottiene una relazione tra <span class="m">\lambda</span> e <span class="m">\mu</span>; le coppie proporzionali danno lo stesso piano, quindi se ne sceglie una.</p>
+<div class="callout esempio">
+
+<p><strong>Esercizio 30.1 (dispensa).</strong> Fascio di piani che contengono <span class="m">P = {}^t(1\ 3\ -1)</span> e <span class="m">Q = {}^t(2\ 1\ 4)</span>, e piano del fascio che contiene <span class="m">R = {}^t(1\ 2\ -3)</span>.</p>
+<ol>
+<li>I piani che contengono <span class="m">P</span> e <span class="m">Q</span> sono quelli che contengono la retta <span class="m">r = PQ</span>. Direttore <span class="m">Q - P = {}^t(1\ -2\ 5)</span>, forma parametrica <span class="m">\begin{cases} x = 1 + t \\ y = 3 - 2t \\ z = -1 + 5t\end{cases}</span>.</li>
+<li>Forma implicita eliminando <span class="m">t = x - 1</span>: <span class="m">y = 3 - 2(x - 1) = 5 - 2x</span> e <span class="m">z = -1 + 5(x - 1) = 5x - 6</span>, cioè <span class="m">\begin{cases} 2x + y - 5 = 0 \\ 5x - z - 6 = 0\end{cases}</span>.</li>
+<li>Fascio: <span class="m">\lambda(2x + y - 5) + \mu(5x - z - 6) = 0</span>.</li>
+<li>Passaggio per <span class="m">R</span>: <span class="m">\lambda(2 + 2 - 5) + \mu(5 + 3 - 6) = -\lambda + 2\mu = 0</span>, cioè <span class="m">\lambda = 2\mu</span>. Le soluzioni sono <span class="m">(2\mu, \mu)</span> con <span class="m">\mu \ne 0</span>; scelgo <span class="m">\mu = 1</span>, <span class="m">\lambda = 2</span>.</li>
+<li>Piano: <span class="m">2(2x + y - 5) + (5x - z - 6) = 9x + 2y - z - 16 = 0</span>. Verifica: <span class="m">P</span>: <span class="m">9 + 6 + 1 - 16 = 0</span> ✓; <span class="m">Q</span>: <span class="m">18 + 2 - 4 - 16 = 0</span> ✓; <span class="m">R</span>: <span class="m">9 + 4 + 3 - 16 = 0</span> ✓.</li>
+</ol>
+</div>
+
+<div class="callout attenzione">
+
+<ul>
+<li>Due sottospazi affini possono avere intersezione <strong>vuota</strong>: in quel caso l&#39;intersezione non è un sottospazio affine (che è sempre non vuoto). Bisogna sempre controllare che il sistema abbia soluzione.</li>
+<li>Quando si intersecano due forme parametriche, i parametri vanno chiamati con <strong>nomi diversi</strong>.</li>
+</ul>
 </div>
 
 <div class="callout esame">
 
-<p>Il paniere chiede: riconoscere quale punto appartiene a una retta o a un piano in forma parametrica (trovare i parametri da alcune equazioni e <strong>controllare l&#39;ultima</strong>); scrivere la retta per due punti e il piano per tre punti (<span class="m">A + \lambda(B-A) + \mu(B'-A)</span>, attenzione ai segni); passare da forma parametrica a implicita eliminando il parametro; semirette e punto medio. Domande aperte: forma parametrica e cartesiana di rette e piani nello spazio.</p>
+<p>Il paniere chiede: riconoscere quale punto appartiene a una retta o a un piano in forma parametrica (trovare i parametri da alcune equazioni e <strong>controllare l&#39;ultima</strong>); scrivere la retta per due punti e il piano per tre punti (<span class="m">A + \lambda(B-A) + \mu(B'-A)</span>, attenzione ai segni delle differenze); passare da forma parametrica a implicita eliminando il parametro; semirette e punto medio.</p>
+<p>Domande aperte: &quot;Parlare della forma parametrica e della forma cartesiana delle rette nello spazio&quot; e &quot;… dei piani nello spazio&quot;. Schema di risposta: definizione di sottospazio affine <span class="m">P_0 + W</span> e di dimensione; forma parametrica (punto base, direttore o due vettori indipendenti della giacitura, numero di parametri <span class="m">=</span> dimensione); forma cartesiana (sistema con <span class="m">3 - \dim</span> equazioni: una per il piano, due non proporzionali per la retta; <span class="m">\dim = 3 - \operatorname{rank}A</span>; vettore normale del piano <span class="m">{}^t(a\ b\ c)</span>; giacitura = sistema omogeneo); non unicità delle due forme; come si passa dall&#39;una all&#39;altra (risolvere il sistema / eliminare i parametri o annullare i minori) con un esempio; retta per due punti e piano per tre punti.</p>
+</div>
+
+<div class="callout sintesi">
+
+<ul>
+<li>Sottospazio affine: <span class="m">S = P_0 + W</span>, con <span class="m">W</span> (giacitura) sottospazio vettoriale; è sempre non vuoto; <span class="m">W = \{Q - P \mid P, Q \in S\}</span> è unica, il punto base no; <span class="m">S</span> è sottospazio vettoriale <span class="m">\iff 0 \in S</span>.</li>
+<li><span class="m">\dim S = \dim W</span>; per le soluzioni di <span class="m">AX = B</span> in <span class="m">\mathbb K^n</span>: <span class="m">\dim S = n - \operatorname{rank}A</span>, giacitura = soluzioni di <span class="m">AX = 0</span>.</li>
+<li>Forma parametrica: <span class="m">P = P_0 + \lambda_1\mathbf v_1 + \dots + \lambda_m\mathbf v_m</span> (<span class="m">\mathbf v_i</span> base di <span class="m">W</span>); per una retta <span class="m">\mathbf v</span> = direttore.</li>
+<li>Forma cartesiana: sistema con <span class="m">n - \dim S</span> equazioni. Retta del piano <span class="m">ax+by+c=0</span>; piano <span class="m">ax+by+cz+d=0</span> con normale <span class="m">{}^t(a\ b\ c)</span>; retta dello spazio = due equazioni non proporzionali.</li>
+<li>Implicita → parametrica: risolvere il sistema. Parametrica → implicita: eliminare i parametri, oppure <span class="m">\operatorname{rank}(\mathbf v_1 \cdots \mathbf v_m\ \ P - P_0) &lt; m + 1</span> (minori nulli).</li>
+<li>Retta per <span class="m">A, B</span>: <span class="m">A + \lambda(B - A)</span>; piano per <span class="m">A, B, B'</span>: <span class="m">A + \lambda(B - A) + \lambda'(B' - A)</span>.</li>
+<li>Semiretta: <span class="m">\lambda \geqslant 0</span> con <span class="m">\mathbf v</span> nel verso giusto; segmento: <span class="m">0 \leqslant \lambda \leqslant 1</span>; punto medio <span class="m">\tfrac12(A + B)</span>.</li>
+<li><span class="m">S_1 \cap S_2 \ne \emptyset \Rightarrow S_1 \cap S_2 = P + (W_1 \cap W_2)</span>; l&#39;intersezione può essere vuota.</li>
+<li>Fascio di piani per una retta: <span class="m">\lambda(\text{eq}_1) + \mu(\text{eq}_2) = 0</span>.</li>
+</ul>
 </div>

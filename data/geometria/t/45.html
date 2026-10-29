@@ -1,77 +1,239 @@
 <h1>Lezione 45 — Centri, diametri, assi, asintoti</h1>
-<p>Si lavora nel piano euclideo con un riferimento cartesiano fissato, estendendo le coniche al piano proiettivo (coordinate <span class="m">{}^t(X\ Y\ T)</span>). <span class="m">\mathcal{C}</span> è sempre una conica <strong>non degenere</strong> con matrice associata <span class="m">A</span>; <span class="m">A_{(3,3)}</span> è la sottomatrice <span class="m">2\times2</span> dei termini di secondo grado (si cancellano terza riga e terza colonna).</p>
+<p>Questa lezione usa la polarità (lezione 44) per definire gli <strong>elementi notevoli</strong> di una conica non degenere: il <strong>centro</strong>, i <strong>diametri</strong>, gli <strong>assi</strong> e gli <strong>asintoti</strong>. Con essi si trova esplicitamente il riferimento cartesiano in cui la conica ha la sua forma canonica euclidea (lezione 43), cioè si &quot;raddrizza&quot; la conica.</p>
+<p>L&#39;idea che lega tutto: questi elementi sono <strong>polari di punti all&#39;infinito</strong> o <strong>poli della retta all&#39;infinito</strong>. La retta all&#39;infinito ha equazione <span class="m">T=0</span> e i suoi punti <span class="m">{}^t(l\ m\ 0)</span> rappresentano le <strong>direzioni</strong> <span class="m">{}^t(l\ m)</span> del piano.</p>
+<p>Si lavora nel piano euclideo con un riferimento cartesiano fissato, estendendo le coniche al piano proiettivo (coordinate <span class="m">{}^t(X\ Y\ T)</span>). <span class="m">\mathcal C</span> è sempre una conica <strong>non degenere</strong> con matrice associata <span class="m">A</span>; <span class="m">A_{(3,3)}</span> è la sottomatrice <span class="m">2\times2</span> dei termini di secondo grado, ottenuta cancellando la terza riga e la terza colonna di <span class="m">A</span>:
+<span class="m d">A=\begin{pmatrix}a&amp;\frac b2&amp;\frac d2\\[2pt]\frac b2&amp;c&amp;\frac e2\\[2pt]\frac d2&amp;\frac e2&amp;f\end{pmatrix},\qquad A_{(3,3)}=\begin{pmatrix}a&amp;\frac b2\\[2pt]\frac b2&amp;c\end{pmatrix}.</span>
+Ricordiamo dalla classificazione: <span class="m">\det A_{(3,3)}&gt;0</span> ellisse, <span class="m">&lt;0</span> iperbole, <span class="m">=0</span> parabola.</p>
 <h2>Centro</h2>
-<p><strong>Definizione 45.1.</strong> Se il polo della retta all&#39;infinito (<span class="m">T=0</span>) rispetto a <span class="m">\mathcal{C}</span> non è un punto all&#39;infinito, esso si chiama <strong>centro</strong> di <span class="m">\mathcal{C}</span>.</p>
-<p><strong>Osservazione 45.2.</strong> Solo <strong>ellissi e iperboli</strong> hanno centro; per le parabole il polo della retta all&#39;infinito è un punto all&#39;infinito.</p>
+<p><strong>Definizione 45.1.</strong> Sia <span class="m">\mathcal C</span> una conica non degenere. Se il <strong>polo della retta all&#39;infinito</strong> (<span class="m">T=0</span>) rispetto a <span class="m">\mathcal C</span> <strong>non</strong> è un punto all&#39;infinito, esso si chiama <strong>centro</strong> di <span class="m">\mathcal C</span>.</p>
+<p><strong>Come si calcola.</strong> La retta <span class="m">T=0</span> ha coefficienti <span class="m">{}^t(0\ 0\ 1)</span>; il suo polo <span class="m">C={}^t(X_C\ Y_C\ T_C)</span> soddisfa <span class="m">A\,C=k\,{}^t(0\ 0\ 1)</span>, cioè le <strong>prime due righe</strong> di <span class="m">A\,C</span> devono essere nulle:
+<span class="m d">\begin{cases}aX+\frac b2Y+\frac d2T=0\\[2pt]\frac b2X+cY+\frac e2T=0\end{cases}</span>
+In coordinate affini (<span class="m">T=1</span>) queste due equazioni sono <span class="m">\frac12\frac{\partial p}{\partial x}=0</span> e <span class="m">\frac12\frac{\partial p}{\partial y}=0</span>: il centro è il punto in cui si annullano le derivate parziali del polinomio affine. Il sistema ha matrice dei coefficienti <span class="m">A_{(3,3)}</span>:</p>
+<ul>
+<li>se <span class="m">\det A_{(3,3)}\neq0</span> (ellisse o iperbole) ha un&#39;unica soluzione con <span class="m">T=1</span>: il centro esiste;</li>
+<li>se <span class="m">\det A_{(3,3)}=0</span> (parabola) l&#39;unica soluzione proiettiva ha <span class="m">T=0</span>: il polo è all&#39;infinito e non c&#39;è centro.</li>
+</ul>
+<p><strong>Osservazione 45.2.</strong> Solo <strong>ellissi e iperboli</strong> hanno centro. Per le parabole il polo della retta all&#39;infinito è un punto all&#39;infinito (la direzione dell&#39;asse; anzi, la parabola è tangente alla retta all&#39;infinito in quel punto).</p>
 <div class="callout esempio">
 
-<ul>
-<li>Il centro dell&#39;ellisse <span class="m">X^2+2XY+4Y^2-2XT+T^2=0</span> è <span class="m">{}^t(4\ -1\ 3)</span>.</li>
-<li>Il centro dell&#39;iperbole <span class="m">2X^2+6XY+2Y^2+2XT+T^2=0</span> è <span class="m">{}^t(2\ -3\ 5)</span>.</li>
-</ul>
+<p><strong>Esempio 45.3.</strong></p>
+<ol>
+<li><strong>Ellisse</strong> <span class="m">X^2+2XY+4Y^2-2XT+T^2=0</span>: <span class="m">A=\begin{pmatrix}1&amp;1&amp;-1\\1&amp;4&amp;0\\-1&amp;0&amp;1\end{pmatrix}</span>. Sistema delle prime due righe con <span class="m">T=1</span>:
+<span class="m d">\begin{cases}x+y-1=0\\x+4y=0\end{cases}\Rightarrow\ x=-4y,\ -4y+y=1,\ y=-\tfrac13,\ x=\tfrac43.</span>
+Centro <span class="m">{}^t\!\left(\frac43\ -\frac13\right)</span>, cioè in coordinate omogenee (moltiplicando per 3) <span class="m">C={}^t(4\ -1\ 3)</span>. Verifica: <span class="m">AC=\begin{pmatrix}4-1-3\\4-4+0\\-4+0+3\end{pmatrix}=\begin{pmatrix}0\\0\\-1\end{pmatrix}</span>, multiplo di <span class="m">{}^t(0\ 0\ 1)</span>: la polare di <span class="m">C</span> è <span class="m">T=0</span> ✓.</li>
+<li><strong>Iperbole</strong> <span class="m">2X^2+6XY+2Y^2+2XT+T^2=0</span>: <span class="m">A=\begin{pmatrix}2&amp;3&amp;1\\3&amp;2&amp;0\\1&amp;0&amp;1\end{pmatrix}</span>. Sistema: <span class="m">2x+3y+1=0</span>, <span class="m">3x+2y=0</span>. Dalla seconda <span class="m">y=-\frac32x</span>; nella prima <span class="m">2x-\frac92x+1=0</span>, <span class="m">-\frac52x=-1</span>, <span class="m">x=\frac25</span>, <span class="m">y=-\frac35</span>. Centro <span class="m">C={}^t(2\ -3\ 5)</span>. Verifica: <span class="m">AC=\begin{pmatrix}4-9+5\\6-6+0\\2+0+5\end{pmatrix}=\begin{pmatrix}0\\0\\7\end{pmatrix}</span> ✓.</li>
+</ol>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Esercizio 45.2 (dispensa) — quali coniche hanno centro?</strong></p>
+<ol>
+<li><span class="m">x^2-4xy+4y^2+4x-6y=0</span>: <span class="m">A_{(3,3)}=\begin{pmatrix}1&amp;-2\\-2&amp;4\end{pmatrix}</span>, <span class="m">\det=4-4=0</span>: è una parabola (conica non degenere, <span class="m">\det A=-1</span>), <strong>non</strong> ha centro.</li>
+<li><span class="m">X^2+XY+Y^2-XT-YT-5T^2=0</span>: <span class="m">A=\begin{pmatrix}1&amp;\frac12&amp;-\frac12\\\frac12&amp;1&amp;-\frac12\\-\frac12&amp;-\frac12&amp;-5\end{pmatrix}</span>, <span class="m">\det A_{(3,3)}=1-\frac14=\frac34\neq0</span>. Sistema: <span class="m">x+\frac12y-\frac12=0</span>, <span class="m">\frac12x+y-\frac12=0</span>; sottraendo, <span class="m">\frac12x-\frac12y=0</span>, <span class="m">x=y</span>; poi <span class="m">\frac32x=\frac12</span>, <span class="m">x=y=\frac13</span>. Centro <span class="m">{}^t(1\ 1\ 3)</span>.</li>
+</ol>
 </div>
 
 <h2>Diametri</h2>
-<p><strong>Definizione 45.4.</strong> Se la polare di un punto all&#39;infinito <span class="m">P_\infty</span> non è la retta all&#39;infinito, essa si chiama <strong>diametro</strong> di <span class="m">\mathcal{C}</span> <strong>coniugato</strong> a <span class="m">P_\infty</span> (o alla direzione definita da <span class="m">P_\infty</span>).</p>
-<p><strong>Osservazione 45.5.</strong> Se la conica ha centro, <strong>tutti i diametri passano per il centro</strong>: ogni <span class="m">P_\infty</span> sta sulla polare del centro (la retta all&#39;infinito), quindi per reciprocità il centro sta sulla polare di <span class="m">P_\infty</span>. Il centro si trova perciò intersecando due diametri.</p>
+<p><strong>Definizione 45.4.</strong> Sia <span class="m">\mathcal C</span> una conica non degenere. Se la <strong>polare di un punto all&#39;infinito</strong> <span class="m">P_\infty</span> rispetto a <span class="m">\mathcal C</span> <strong>non</strong> è la retta all&#39;infinito, essa si chiama <strong>diametro</strong> di <span class="m">\mathcal C</span> <strong>coniugato</strong> a <span class="m">P_\infty</span>, o alla direzione definita da <span class="m">P_\infty</span>.</p>
+<p>Calcolo: per la direzione <span class="m">{}^t(l\ m)</span> si prende <span class="m">P_\infty={}^t(l\ m\ 0)</span> e si calcola <span class="m">A\,P_\infty</span>, cioè <span class="m">l</span> volte la prima colonna più <span class="m">m</span> volte la seconda (la terza colonna non contribuisce perché <span class="m">T=0</span>).</p>
+<p>Significato geometrico: il diametro coniugato a una direzione è il luogo dei <strong>punti medi delle corde</strong> parallele a quella direzione. Per esempio in una circonferenza i diametri sono le rette per il centro, perpendicolari alle corde di cui dimezzano la lunghezza.</p>
+<p><strong>Osservazione 45.5.</strong> Se la conica ha centro, <strong>tutti i diametri passano per il centro</strong>. Dimostrazione con la reciprocità: la polare del centro <span class="m">C</span> è la retta all&#39;infinito, quindi ogni punto all&#39;infinito <span class="m">P_\infty</span> sta sulla polare di <span class="m">C</span>; per reciprocità <span class="m">C</span> sta sulla polare di <span class="m">P_\infty</span>, cioè sul diametro coniugato a <span class="m">P_\infty</span>. Conseguenza pratica: <strong>il centro si trova intersecando due diametri qualsiasi</strong>.</p>
+<p>Per le parabole, invece, i diametri sono tutti <strong>paralleli</strong> (passano tutti per il punto all&#39;infinito che è il polo di <span class="m">T=0</span>, cioè sono paralleli all&#39;asse).</p>
 <div class="callout esempio">
 
-<ul>
-<li>Ellisse <span class="m">X^2+2XY+4Y^2-2XT+T^2=0</span>: il diametro coniugato a <span class="m">{}^t(2\ -1\ 0)</span> è <span class="m">X-2Y-2T=0</span>, che passa per il centro.</li>
-<li>Iperbole <span class="m">2X^2+6XY+2Y^2+2XT+T^2=0</span>: il diametro coniugato a <span class="m">{}^t(3\ 1\ 0)</span> è <span class="m">9X+11Y+3T=0</span>.</li>
-<li>Parabola <span class="m">X^2+2XY+Y^2+2XT+T^2=0</span>: il diametro coniugato a <span class="m">{}^t(3\ -1\ 0)</span> è <span class="m">2X+2Y+3T=0</span>.</li>
-</ul>
+<p><strong>Esempio 45.6.</strong></p>
+<ol>
+<li>Ellisse <span class="m">X^2+2XY+4Y^2-2XT+T^2=0</span>, direzione <span class="m">P_\infty={}^t(2\ -1\ 0)</span>:
+<span class="m d">AP_\infty=2\begin{pmatrix}1\\1\\-1\end{pmatrix}-1\begin{pmatrix}1\\4\\0\end{pmatrix}=\begin{pmatrix}1\\-2\\-2\end{pmatrix},</span>
+diametro <span class="m">X-2Y-2T=0</span>. Passa per il centro <span class="m">{}^t(4\ -1\ 3)</span>: <span class="m">4+2-6=0</span> ✓.</li>
+<li>Iperbole <span class="m">2X^2+6XY+2Y^2+2XT+T^2=0</span>, direzione <span class="m">{}^t(3\ 1\ 0)</span>: <span class="m">AP_\infty=3\,{}^t(2\ 3\ 1)+{}^t(3\ 2\ 0)={}^t(9\ 11\ 3)</span>, diametro <span class="m">9X+11Y+3T=0</span>. Passa per il centro <span class="m">{}^t(2\ -3\ 5)</span>: <span class="m">18-33+15=0</span> ✓.</li>
+</ol>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Esempio 45.7 (parabola).</strong> <span class="m">X^2+2XY+Y^2+2XT+T^2=0</span>, <span class="m">A=\begin{pmatrix}1&amp;1&amp;1\\1&amp;1&amp;0\\1&amp;0&amp;1\end{pmatrix}</span> (<span class="m">\det A=1(1-0)-1(1-0)+1(0-1)=-1\neq0</span>). Direzione <span class="m">{}^t(3\ -1\ 0)</span>: <span class="m">AP_\infty=3\,{}^t(1\ 1\ 1)-{}^t(1\ 1\ 0)={}^t(2\ 2\ 3)</span>, diametro <span class="m">2X+2Y+3T=0</span>.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Esercizio 45.3 (dispensa).</strong> Diametro di <span class="m">x^2-2xy+4x+2=0</span> coniugato alla direzione <span class="m">{}^t(2\ 3)</span>. <span class="m">A=\begin{pmatrix}1&amp;-1&amp;2\\-1&amp;0&amp;0\\2&amp;0&amp;2\end{pmatrix}</span>, <span class="m">P_\infty={}^t(2\ 3\ 0)</span>:
+<span class="m d">AP_\infty=\begin{pmatrix}2-3+0\\-2+0+0\\4+0+0\end{pmatrix}=\begin{pmatrix}-1\\-2\\4\end{pmatrix},</span>
+diametro <span class="m">-x-2y+4=0</span>, cioè <span class="m">x+2y-4=0</span>.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Centro da due diametri.</strong> Una conica non degenere ha i diametri <span class="m">3X-8Y+3T=0</span> e <span class="m">5X+3Y-2T=0</span>. Il centro sta su entrambi (Osservazione 45.5), quindi è il punto di intersezione dei due diametri. Il modo più rapido per intersecare due rette in forma omogenea è il prodotto vettoriale dei vettori dei coefficienti (il risultato è ortogonale a entrambi, cioè soddisfa entrambe le equazioni):
+<span class="m d">{}^t(3\ -8\ 3)\times{}^t(5\ 3\ -2)={}^t\big((-8)(-2)-3\cdot3,\ \ 3\cdot5-3\cdot(-2),\ \ 3\cdot3-(-8)\cdot5\big)={}^t(7\ 21\ 49)={}^t(1\ 3\ 7)\cdot7.</span>
+Il centro è <span class="m">{}^t(1\ 3\ 7)</span>, cioè il punto euclideo <span class="m">{}^t\!\left(\frac17\ \frac37\right)</span> (verifica: <span class="m">3-24+21=0</span>, <span class="m">5+9-14=0</span> ✓). Dato che l&#39;intersezione ha <span class="m">T\neq0</span>, la conica ha centro; se due diametri fossero paralleli (<span class="m">T=0</span> nell&#39;intersezione) la conica sarebbe una parabola.</p>
 </div>
 
 <h2>Assi</h2>
-<p><strong>Definizione 45.8.</strong> Se il diametro coniugato a <span class="m">P_\infty</span> è <strong>ortogonale</strong> alla direzione definita da <span class="m">P_\infty</span>, esso si chiama <strong>asse</strong> di <span class="m">\mathcal{C}</span>. Ogni asse è quindi un diametro, ma non ogni diametro è un asse.</p>
-<p><strong>Proposizione 45.9.</strong> Le direzioni a cui gli assi sono coniugati sono date dagli <strong>autovettori relativi agli autovalori non nulli</strong> di <span class="m">A_{(3,3)}</span>.</p>
-<p><strong>Osservazione 45.10.</strong> <span class="m">A_{(3,3)}</span> è simmetrica, quindi diagonalizzabile con una matrice ortogonale, con due autovettori ortogonali; il suo determinante è il prodotto degli autovalori.</p>
+<p><strong>Definizione 45.8.</strong> Sia <span class="m">\mathcal C</span> una conica non degenere. Se il diametro di <span class="m">\mathcal C</span> coniugato a <span class="m">P_\infty</span> è <strong>ortogonale</strong> alla direzione definita da <span class="m">P_\infty</span>, esso si chiama <strong>asse</strong> di <span class="m">\mathcal C</span>.</p>
+<p>Quindi <strong>ogni asse è un diametro</strong>, ma <strong>non ogni diametro è un asse</strong>: un asse è un diametro &quot;speciale&quot;, perpendicolare alle corde che dimezza. Per questo l&#39;asse è un <strong>asse di simmetria</strong> della conica.</p>
+<p><strong>Proposizione 45.9.</strong> Le direzioni a cui gli assi di una conica non degenere sono coniugati sono date dagli <strong>autovettori relativi agli autovalori non nulli</strong> di <span class="m">A_{(3,3)}</span>. (La dispensa non dà la dimostrazione.)</p>
+<p>Perché: il diametro coniugato a <span class="m">{}^t(l\ m\ 0)</span> ha coefficienti di <span class="m">X</span> e <span class="m">Y</span> dati da <span class="m">A_{(3,3)}\,{}^t(l\ m)</span>, cioè ha vettore normale <span class="m">A_{(3,3)}\,{}^t(l\ m)</span>. Il diametro è ortogonale alla direzione <span class="m">{}^t(l\ m)</span> quando il suo vettore normale è <strong>parallelo</strong> a <span class="m">{}^t(l\ m)</span>, cioè quando <span class="m">A_{(3,3)}\,{}^t(l\ m)=\lambda\,{}^t(l\ m)</span>: <span class="m">{}^t(l\ m)</span> è un <strong>autovettore</strong>. Se <span class="m">\lambda=0</span>, i coefficienti di <span class="m">X</span> e <span class="m">Y</span> sono nulli e la polare è la retta all&#39;infinito, che non è un diametro: per questo servono autovalori <strong>non nulli</strong>.</p>
+<p><strong>Osservazione 45.10.</strong> <span class="m">A_{(3,3)}</span> è simmetrica reale, quindi (teorema spettrale) è diagonalizzabile con una matrice ortogonale e ha due autovettori ortogonali; il suo determinante è il prodotto degli autovalori (contati con molteplicità). Quindi:</p>
 <ul>
-<li>Ellissi e iperboli (<span class="m">\det A_{(3,3)}\neq0</span>, autovalori entrambi non nulli) hanno <strong>due assi ortogonali</strong> (le circonferenze ne hanno infiniti).</li>
-<li>Le parabole (<span class="m">\det A_{(3,3)}=0</span>, un autovalore nullo) hanno <strong>un solo asse</strong>.</li>
+<li><strong>ellissi e iperboli</strong> (<span class="m">\det A_{(3,3)}\neq0</span>, entrambi gli autovalori non nulli): <strong>due assi ortogonali</strong>. Le iperboli ne hanno esattamente due; le ellissi tipicamente due, ma le <strong>circonferenze infiniti</strong> (per una circonferenza <span class="m">A_{(3,3)}</span> è multipla dell&#39;identità, ogni vettore è autovettore, ogni diametro è asse);</li>
+<li><strong>parabole</strong> (<span class="m">\det A_{(3,3)}=0</span>, un autovalore nullo): <strong>un solo asse</strong>.</li>
 </ul>
-<p>Gli autovettori danno le direzioni degli assi del riferimento in cui la conica è in forma canonica euclidea: ogni conica non degenere è simmetrica rispetto ai suoi assi; ellissi e iperboli sono simmetriche anche rispetto al centro.</p>
+<p>Gli autovettori ortogonali danno le direzioni degli assi del riferimento in cui la conica è in forma canonica euclidea; per questo ogni conica non degenere è <strong>simmetrica rispetto ai suoi assi</strong>. Ellissi e iperboli, avendo due assi di simmetria ortogonali, sono simmetriche anche rispetto al loro <strong>centro</strong> (punto di incontro degli assi). Le parabole hanno un solo asse di simmetria.</p>
 <div class="callout esempio">
 
-<ul>
-<li>Iperbole <span class="m">2X^2+6XY+2Y^2+2XT+T^2=0</span>: <span class="m">A_{(3,3)}=\begin{pmatrix}2&amp;3\\3&amp;2\end{pmatrix}</span> ha autovettori ortogonali <span class="m">{}^t(1\ 1)</span> e <span class="m">{}^t(1\ -1)</span>; gli assi (polari di <span class="m">{}^t(1\ 1\ 0)</span> e <span class="m">{}^t(1\ -1\ 0)</span>) sono <span class="m">5X+5Y+T=0</span> e <span class="m">X-Y-T=0</span>.</li>
-<li>Parabola <span class="m">X^2+2XY+Y^2+2XT+T^2=0</span>: <span class="m">A_{(3,3)}=\begin{pmatrix}1&amp;1\\1&amp;1\end{pmatrix}</span>, l&#39;autovettore dell&#39;autovalore non nullo è <span class="m">{}^t(1\ 1)</span> e l&#39;asse è <span class="m">2X+2Y+T=0</span>.</li>
-</ul>
+<p><strong>Esempio 45.11.</strong></p>
+<ol>
+<li><strong>Iperbole</strong> <span class="m">2X^2+6XY+2Y^2+2XT+T^2=0</span>: <span class="m">A_{(3,3)}=\begin{pmatrix}2&amp;3\\3&amp;2\end{pmatrix}</span>. Polinomio caratteristico: <span class="m">(2-\lambda)^2-9=0</span>, <span class="m">2-\lambda=\pm3</span>, autovalori <span class="m">\lambda=5</span> e <span class="m">\lambda=-1</span>. Autovettori: per <span class="m">5</span>, <span class="m">\begin{pmatrix}-3&amp;3\\3&amp;-3\end{pmatrix}v=0</span> dà <span class="m">v={}^t(1\ 1)</span>; per <span class="m">-1</span>, <span class="m">\begin{pmatrix}3&amp;3\\3&amp;3\end{pmatrix}v=0</span> dà <span class="m">v={}^t(1\ -1)</span> (ortogonali, come previsto). Assi = polari dei punti all&#39;infinito corrispondenti:
+<span class="m d">A\begin{pmatrix}1\\1\\0\end{pmatrix}=\begin{pmatrix}5\\5\\1\end{pmatrix}\Rightarrow 5X+5Y+T=0,\qquad A\begin{pmatrix}1\\-1\\0\end{pmatrix}=\begin{pmatrix}-1\\1\\1\end{pmatrix}\Rightarrow X-Y-T=0.</span>
+Entrambi passano per il centro <span class="m">{}^t(2\ -3\ 5)</span>: <span class="m">10-15+5=0</span>, <span class="m">2+3-5=0</span> ✓.</li>
+<li><strong>Ellisse</strong> <span class="m">X^2+2XY+4Y^2-2XT+T^2=0</span>: <span class="m">A_{(3,3)}=\begin{pmatrix}1&amp;1\\1&amp;4\end{pmatrix}</span>, autovalori <span class="m">\frac{5\pm\sqrt{13}}2</span> (da <span class="m">\lambda^2-5\lambda+3=0</span>), autovettori <span class="m">{}^t\!\left(1\ \ \frac{3+\sqrt{13}}2\right)</span> e <span class="m">{}^t\!\left(1\ \ \frac{3-\sqrt{13}}2\right)</span>. Gli assi sono <span class="m">\frac{5+\sqrt{13}}2X+(7+2\sqrt{13})Y-T=0</span> e <span class="m">\frac{5-\sqrt{13}}2X+(7-2\sqrt{13})Y-T=0</span> (i numeri sono brutti, ma il metodo è lo stesso).</li>
+</ol>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Esempio 45.12 (parabola).</strong> <span class="m">X^2+2XY+Y^2+2XT+T^2=0</span>: <span class="m">A_{(3,3)}=\begin{pmatrix}1&amp;1\\1&amp;1\end{pmatrix}</span>, autovalori <span class="m">0</span> e <span class="m">2</span> (traccia 2, determinante 0). Autovettore di <span class="m">2</span>: <span class="m">\begin{pmatrix}-1&amp;1\\1&amp;-1\end{pmatrix}v=0</span>, <span class="m">v={}^t(1\ 1)</span>. Asse: <span class="m">A\,{}^t(1\ 1\ 0)={}^t(2\ 2\ 1)</span>, cioè <span class="m">2X+2Y+T=0</span>. (L&#39;autovettore di <span class="m">0</span>, <span class="m">{}^t(1\ -1)</span>, ha polare <span class="m">A\,{}^t(1\ -1\ 0)={}^t(0\ 0\ 1)</span>, la retta all&#39;infinito: non è un diametro. Ed è proprio il polo di <span class="m">T=0</span>, la direzione dell&#39;asse.)</p>
+<p><strong>Esercizio 45.4 (dispensa).</strong> Assi di <span class="m">X^2+2XY+Y^2+XT=0</span>: stessa <span class="m">A_{(3,3)}</span>, autovettore di <span class="m">2</span> ancora <span class="m">{}^t(1\ 1)</span>; <span class="m">A=\begin{pmatrix}1&amp;1&amp;\frac12\\1&amp;1&amp;0\\\frac12&amp;0&amp;0\end{pmatrix}</span>, <span class="m">A\,{}^t(1\ 1\ 0)={}^t(2\ 2\ \frac12)</span>, asse <span class="m">4X+4Y+T=0</span> (unico: è una parabola).</p>
 </div>
 
 <h2>Asintoti</h2>
-<p><strong>Definizione 45.13.</strong> Se il diametro coniugato a un punto all&#39;infinito <span class="m">P_\infty</span> <strong>contiene</strong> <span class="m">P_\infty</span>, esso si chiama <strong>asintoto</strong> di <span class="m">\mathcal{C}</span>.</p>
-<p><strong>Osservazione 45.14.</strong> Solo le <strong>iperboli</strong> hanno asintoti; le loro direzioni sono i due punti all&#39;infinito dell&#39;iperbole (si trovano ponendo <span class="m">T=0</span>), e gli asintoti sono le polari di questi punti.</p>
+<p><strong>Definizione 45.13.</strong> Sia <span class="m">\mathcal C</span> una conica non degenere. Se il diametro di <span class="m">\mathcal C</span> coniugato a un punto all&#39;infinito <span class="m">P_\infty</span> <strong>contiene</strong> <span class="m">P_\infty</span>, esso si chiama <strong>asintoto</strong> di <span class="m">\mathcal C</span>.</p>
+<p>Un diametro che contiene il proprio polo <span class="m">P_\infty</span>: per la Proposizione 44.3-3 ciò accade esattamente quando <span class="m">P_\infty\in\mathcal C</span>, e allora la polare è la <strong>tangente</strong> alla conica in <span class="m">P_\infty</span>. Gli asintoti sono quindi le <strong>tangenti alla conica nei suoi punti all&#39;infinito</strong> (che non siano la retta all&#39;infinito stessa).</p>
+<p><strong>Osservazione 45.14.</strong> Solo le <strong>iperboli</strong> hanno asintoti. Le direzioni dei due asintoti sono date dai <strong>due punti all&#39;infinito dell&#39;iperbole</strong>, e gli asintoti sono le <strong>polari</strong> di questi punti.</p>
+<ul>
+<li>Iperbole: due punti all&#39;infinito reali distinti → due asintoti.</li>
+<li>Ellisse: nessun punto all&#39;infinito reale → niente asintoti.</li>
+<li>Parabola: un solo punto all&#39;infinito, in cui è tangente alla retta all&#39;infinito (<span class="m">T=0</span> non è un diametro) → niente asintoti.</li>
+</ul>
+<p><strong>Come si trovano i punti all&#39;infinito.</strong> Si pone <span class="m">T=0</span> nell&#39;equazione omogenea: restano i termini di secondo grado, <span class="m">aX^2+bXY+cY^2=0</span>. Si pone <span class="m">Y=1</span> e si risolve l&#39;equazione di secondo grado in <span class="m">X</span> (oppure si fattorizza). Il discriminante <span class="m">b^2-4ac=-4\det A_{(3,3)}</span> dice quanti punti reali ci sono: due per l&#39;iperbole, uno (doppio) per la parabola, nessuno per l&#39;ellisse.</p>
 <div class="callout esempio">
 
-<p>Per l&#39;iperbole <span class="m">2X^2+6XY+2Y^2+2XT+T^2=0</span> i punti all&#39;infinito sono <span class="m">{}^t\!\left(\frac{-3\pm\sqrt5}{2}\ 1\ 0\right)</span> e gli asintoti sono le loro polari.</p>
+<p><strong>Esempio 45.15.</strong> Iperbole <span class="m">2X^2+6XY+2Y^2+2XT+T^2=0</span>. Con <span class="m">T=0</span>: <span class="m">2X^2+6XY+2Y^2=0</span>; con <span class="m">Y=1</span>: <span class="m">2X^2+6X+2=0</span>, <span class="m">X^2+3X+1=0</span>, <span class="m">X=\frac{-3\pm\sqrt{9-4}}2=\frac{-3\pm\sqrt5}2</span>. Punti all&#39;infinito <span class="m">{}^t\!\left(\frac{-3+\sqrt5}2\ \ 1\ \ 0\right)</span> e <span class="m">{}^t\!\left(\frac{-3-\sqrt5}2\ \ 1\ \ 0\right)</span>. Gli asintoti sono le loro polari:
+<span class="m d">\sqrt5X+\frac{-5+3\sqrt5}2Y+\frac{-3+\sqrt5}2T=0,\qquad -\sqrt5X+\frac{-5-3\sqrt5}2Y+\frac{-3-\sqrt5}2T=0.</span>
+(Per il primo: <span class="m">A\,P_\infty</span> ha prima componente <span class="m">2\cdot\frac{-3+\sqrt5}2+3=\sqrt5</span>, seconda <span class="m">3\cdot\frac{-3+\sqrt5}2+2=\frac{-5+3\sqrt5}2</span>, terza <span class="m">\frac{-3+\sqrt5}2</span>.)</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Esercizio 45.5 (dispensa) — quali coniche hanno asintoti?</strong></p>
+<ol>
+<li><p><span class="m">2x^2+3xy+3y^2-3x-y+4=0</span>: punti all&#39;infinito <span class="m">2X^2+3XY+3Y^2=0</span>, discriminante <span class="m">9-24=-15&lt;0</span>: nessun punto reale all&#39;infinito (è un&#39;ellisse), <strong>nessun asintoto</strong>.</p>
+</li>
+<li><p><span class="m">x^2+xy-6y^2-2x-y=0</span>: <span class="m">X^2+XY-6Y^2=(X+3Y)(X-2Y)=0</span>, punti all&#39;infinito <span class="m">{}^t(3\ -1\ 0)</span> e <span class="m">{}^t(2\ 1\ 0)</span>. <span class="m">A=\begin{pmatrix}1&amp;\frac12&amp;-1\\\frac12&amp;-6&amp;-\frac12\\-1&amp;-\frac12&amp;0\end{pmatrix}</span>.</p>
+<ul>
+<li><span class="m">A\,{}^t(3\ -1\ 0)=\begin{pmatrix}3-\frac12\\\frac32+6\\-3+\frac12\end{pmatrix}=\begin{pmatrix}\frac52\\\frac{15}2\\-\frac52\end{pmatrix}</span>: asintoto <span class="m">x+3y-1=0</span> (dividendo per <span class="m">\frac52</span>);</li>
+<li><span class="m">A\,{}^t(2\ 1\ 0)=\begin{pmatrix}2+\frac12\\1-6\\-2-\frac12\end{pmatrix}=\begin{pmatrix}\frac52\\-5\\-\frac52\end{pmatrix}</span>: asintoto <span class="m">x-2y-1=0</span>.</li>
+</ul>
+<p>Controllo: ciascun asintoto ha la direzione del proprio punto all&#39;infinito (<span class="m">{}^t(3\ -1)</span> è parallelo a <span class="m">x+3y-1=0</span> perché <span class="m">3+3(-1)=0</span> ✓) ed entrambi passano per il centro <span class="m">{}^t(1\ 0)</span> ✓.</p>
+</li>
+</ol>
 </div>
 
 <h2>Riferimento canonico</h2>
-<p><strong>Osservazione 45.16.</strong> L&#39;origine <span class="m">O'</span> del riferimento in cui la conica è in forma canonica euclidea è:</p>
+<p><strong>Osservazione 45.16.</strong> Con diametri e assi si trova l&#39;origine <span class="m">O'</span> del riferimento cartesiano in cui la conica è in forma canonica euclidea:</p>
 <ul>
-<li>per ellissi e iperboli, il <strong>centro</strong> (intersezione di due diametri qualsiasi);</li>
-<li>per le parabole, l&#39;intersezione dell&#39;unico <strong>asse</strong> con la conica.</li>
+<li>per le coniche con centro (ellissi e iperboli), <span class="m">O'</span> è il <strong>centro</strong>, che si ottiene intersecando due diametri qualsiasi (per esempio i due assi);</li>
+<li>per le coniche senza centro (parabole), <span class="m">O'</span> è l&#39;intersezione dell&#39;unico <strong>asse</strong> con la conica stessa (il <strong>vertice</strong>).</li>
 </ul>
-<div class="callout esempio">
+<p>Gli assi del nuovo riferimento hanno le direzioni dei due autovettori ortogonali di <span class="m">A_{(3,3)}</span>, normalizzati (divisi per la norma) per avere una base ortonormale.</p>
+<div class="callout esame">
 
-<p><span class="m">2x^2-12xy-7y^2-12x-14y-12=0</span>: <span class="m">A=\begin{pmatrix}2&amp;-6&amp;-6\\-6&amp;-7&amp;-7\\-6&amp;-7&amp;-12\end{pmatrix}</span>, <span class="m">\det A=250\neq0</span> (non degenere), <span class="m">\det A_{(3,3)}=-50&lt;0</span> (iperbole). Gli autovettori di <span class="m">A_{(3,3)}</span> sono <span class="m">{}^t(2\ -1)</span> e <span class="m">{}^t(1\ 2)</span>; le loro polari, cioè gli assi, sono <span class="m">2x-y-1=0</span> e <span class="m">x+2y+2=0</span>, che si intersecano nel centro <span class="m">{}^t(0\ -1)</span>. Con il cambio di riferimento
-<span class="m d">\begin{pmatrix}x\\y\end{pmatrix}=\begin{pmatrix}\frac{2\sqrt5}{5}&amp;\frac{\sqrt5}{5}\\-\frac{\sqrt5}{5}&amp;\frac{2\sqrt5}{5}\end{pmatrix}\begin{pmatrix}x'\\y'\end{pmatrix}+\begin{pmatrix}0\\-1\end{pmatrix}</span>
-si ottiene la forma canonica <span class="m">(x')^2-2(y')^2=1</span>, con asintoti <span class="m">y'=\pm\frac{\sqrt2}{2}x'</span>.</p>
+<p><strong>Procedura: forma canonica euclidea di una conica con centro.</strong></p>
+<ol>
+<li>Scrivere <span class="m">A</span> e <span class="m">A_{(3,3)}</span>; calcolare <span class="m">\det A</span> (deve essere <span class="m">\neq0</span>) e <span class="m">\det A_{(3,3)}</span> (segno → ellisse o iperbole).</li>
+<li>Autovalori e autovettori di <span class="m">A_{(3,3)}</span> (due autovettori ortogonali <span class="m">v_1</span>, <span class="m">v_2</span>).</li>
+<li>Assi: polari di <span class="m">{}^t(v_1\ 0)</span> e <span class="m">{}^t(v_2\ 0)</span>.</li>
+<li>Centro: intersezione degli assi (o soluzione del sistema delle prime due righe).</li>
+<li>Cambio di riferimento <span class="m">\begin{pmatrix}x\\y\end{pmatrix}=M\begin{pmatrix}x'\\y'\end{pmatrix}+C</span>, con <span class="m">M</span> matrice ortogonale le cui colonne sono <span class="m">\frac{v_1}{\lVert v_1\rVert}</span>, <span class="m">\frac{v_2}{\lVert v_2\rVert}</span> (con <span class="m">\det M=1</span>).</li>
+<li>Sostituire e semplificare: si ottiene <span class="m">\lambda_1(x')^2+\lambda_2(y')^2+k=0</span>, dove <span class="m">\lambda_1,\lambda_2</span> sono gli autovalori e <span class="m">k=\frac{\det A}{\det A_{(3,3)}}</span>; dividere per <span class="m">-k</span>.</li>
+</ol>
+<p>Per una <strong>parabola</strong>: asse (autovettore dell&#39;autovalore non nullo), vertice = asse <span class="m">\cap</span> conica, poi lo stesso cambio di riferimento.</p>
 </div>
 
-<div class="callout sintesi">
+<div class="callout esempio">
+
+<p><strong>Esercizio 45.1 — forma canonica euclidea.</strong> <span class="m">2x^2-12xy-7y^2-12x-14y-12=0</span>.</p>
+<ol>
+<li><span class="m">A=\begin{pmatrix}2&amp;-6&amp;-6\\-6&amp;-7&amp;-7\\-6&amp;-7&amp;-12\end{pmatrix}</span>, <span class="m">A_{(3,3)}=\begin{pmatrix}2&amp;-6\\-6&amp;-7\end{pmatrix}</span>.
+<span class="m">\det A</span> (prima riga): <span class="m">2\big((-7)(-12)-(-7)(-7)\big)-(-6)\big((-6)(-12)-(-7)(-6)\big)+(-6)\big((-6)(-7)-(-7)(-6)\big)=2(84-49)+6(72-42)-6(42-42)=70+180-0=250\neq0</span>: non degenere.
+<span class="m">\det A_{(3,3)}=2(-7)-36=-50&lt;0</span>: <strong>iperbole</strong>.</li>
+<li>Autovalori di <span class="m">A_{(3,3)}</span>: <span class="m">\lambda^2-(2-7)\lambda+(-50)=\lambda^2+5\lambda-50=0</span>, <span class="m">\lambda=\frac{-5\pm15}2</span>: <span class="m">\lambda_1=5</span>, <span class="m">\lambda_2=-10</span>. Autovettori: per <span class="m">5</span>, <span class="m">\begin{pmatrix}-3&amp;-6\\-6&amp;-12\end{pmatrix}v=0</span>, <span class="m">v_1={}^t(2\ -1)</span>; per <span class="m">-10</span>, <span class="m">\begin{pmatrix}12&amp;-6\\-6&amp;3\end{pmatrix}v=0</span>, <span class="m">v_2={}^t(1\ 2)</span>.</li>
+<li>Assi: <span class="m">A\,{}^t(2\ -1\ 0)={}^t(4+6\ \ -12+7\ \ -12+7)={}^t(10\ -5\ -5)</span>, cioè <span class="m">2x-y-1=0</span>; <span class="m">A\,{}^t(1\ 2\ 0)={}^t(2-12\ \ -6-14\ \ -6-14)={}^t(-10\ -20\ -20)</span>, cioè <span class="m">x+2y+2=0</span>.</li>
+<li>Centro: dalla prima <span class="m">y=2x-1</span>; nella seconda <span class="m">x+4x-2+2=0</span>, <span class="m">x=0</span>, <span class="m">y=-1</span>. <span class="m">C={}^t(0\ -1)</span>.</li>
+<li><span class="m">\lVert v_1\rVert=\lVert v_2\rVert=\sqrt5</span>:
+<span class="m d">\begin{pmatrix}x\\y\end{pmatrix}=\begin{pmatrix}\frac{2\sqrt5}5&amp;\frac{\sqrt5}5\\-\frac{\sqrt5}5&amp;\frac{2\sqrt5}5\end{pmatrix}\begin{pmatrix}x'\\y'\end{pmatrix}+\begin{pmatrix}0\\-1\end{pmatrix}.</span></li>
+<li>Sostituendo si ottiene <span class="m">5(x')^2-10(y')^2-5=0</span> (infatti <span class="m">k=\frac{250}{-50}=-5</span>), cioè dividendo per 5:
+<span class="m d">(x')^2-2(y')^2=1,</span>
+nel riferimento <span class="m">(C;x',y')</span>. Asintoti: <span class="m">(x')^2-2(y')^2=0</span>, cioè <span class="m">y'=\pm\frac{\sqrt2}2x'</span>.</li>
+</ol>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Vertice di una parabola.</strong> Parabola <span class="m">x^2+2xy+y^2+2x+1=0</span> (Esempio 45.7), asse <span class="m">2x+2y+1=0</span>, cioè <span class="m">x+y=-\frac12</span>. Sostituendo nella conica: <span class="m">(x+y)^2+2x+1=\frac14+2x+1=0</span>, <span class="m">x=-\frac58</span>, <span class="m">y=-\frac12+\frac58=\frac18</span>. Il vertice, origine del riferimento canonico, è <span class="m">{}^t\!\left(-\frac58\ \frac18\right)</span>.</p>
+</div>
+
+<table>
+<thead>
+<tr>
+<th>Elemento</th>
+<th>Definizione con la polarità</th>
+<th>Chi lo ha</th>
+<th>Come si calcola</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Centro</td>
+<td>polo della retta all&#39;infinito (se non all&#39;infinito)</td>
+<td>ellissi, iperboli</td>
+<td>prime due righe di <span class="m">AC</span> nulle, o intersezione di due diametri</td>
+</tr>
+<tr>
+<td>Diametro</td>
+<td>polare di un punto all&#39;infinito (se non è <span class="m">T=0</span>)</td>
+<td>tutte</td>
+<td><span class="m">A\,{}^t(l\ m\ 0)</span></td>
+</tr>
+<tr>
+<td>Asse</td>
+<td>diametro ortogonale alla propria direzione</td>
+<td>tutte (1 per la parabola, 2 o infiniti per ellisse, 2 per iperbole)</td>
+<td>autovettori degli autovalori <strong>non nulli</strong> di <span class="m">A_{(3,3)}</span></td>
+</tr>
+<tr>
+<td>Asintoto</td>
+<td>diametro che contiene il proprio punto all&#39;infinito</td>
+<td>solo iperboli</td>
+<td>polari dei punti all&#39;infinito della conica</td>
+</tr>
+</tbody></table>
+<div class="callout attenzione">
 
 <ul>
-<li>Centro = polo della retta all&#39;infinito (solo ellissi e iperboli).</li>
-<li>Diametro = polare di un punto all&#39;infinito; passa per il centro.</li>
-<li>Asse = diametro ortogonale alla sua direzione coniugata; direzioni = autovettori degli autovalori non nulli di <span class="m">A_{(3,3)}</span>.</li>
-<li>Asintoto = diametro che contiene il proprio punto all&#39;infinito = polare di un punto all&#39;infinito dell&#39;iperbole.</li>
+<li>&quot;Ogni asse è un diametro&quot; è <strong>vero</strong>; &quot;ogni diametro è un asse&quot; è <strong>falso</strong>.</li>
+<li>La Proposizione 45.9 riguarda gli <strong>assi</strong> e gli autovalori <strong>non nulli</strong>: le direzioni di tutti i diametri sono arbitrarie (ogni direzione ha il suo diametro), non solo quelle degli autovettori.</li>
+<li>Se due diametri dati si intersecano in un punto con <span class="m">T\neq0</span>, quello è il centro; non ha senso dire che &quot;il centro non è determinato&quot;: due diametri distinti bastano.</li>
+<li>Gli asintoti si calcolano come polari dei <strong>punti all&#39;infinito della conica</strong> (soluzioni di <span class="m">aX^2+bXY+cY^2=0</span>), non degli autovettori: gli autovettori danno gli assi.</li>
+<li>Il centro è una nozione proiettiva calcolata in coordinate omogenee: <span class="m">{}^t(4\ -1\ 3)</span> è il punto euclideo <span class="m">{}^t\!\left(\frac43\ -\frac13\right)</span>, non <span class="m">{}^t(4\ -1)</span>.</li>
 </ul>
 </div>
 
 <div class="callout esame">
 
-<p>Il paniere chiede (aperta) di parlare di centri, diametri, assi e asintoti. Nei quiz: centro come intersezione di due diametri, quale tra diametro e asse implica l&#39;altro, la Proposizione 45.9 (assi, autovalori <strong>non nulli</strong>), calcolo di un asintoto come polare di un punto all&#39;infinito.</p>
+<p>Domanda aperta: &quot;Parlare dei centri, dei diametri, degli assi e degli asintoti di una conica&quot;: dare le quattro definizioni tramite la polarità (centro = polo della retta all&#39;infinito; diametro = polare di un punto all&#39;infinito; asse = diametro ortogonale alla direzione coniugata; asintoto = diametro che contiene il proprio punto all&#39;infinito), dire chi li possiede (Osservazioni 45.2, 45.10, 45.14), il fatto che i diametri passano per il centro (con la reciprocità), la Proposizione 45.9 sugli autovettori di <span class="m">A_{(3,3)}</span>, l&#39;uso per trovare il riferimento canonico (Osservazione 45.16), con un esempio.</p>
+<p>Nei quiz (extra): centro come intersezione di due diametri; quale tra &quot;diametro è asse&quot; e &quot;asse è diametro&quot; è falsa; la Proposizione 45.9 (assi, autovalori <strong>non nulli</strong>); calcolo di un asintoto come polare di un punto all&#39;infinito della conica.</p>
+</div>
+
+<div class="callout sintesi">
+
+<ul>
+<li><span class="m">A_{(3,3)}</span> = parte di secondo grado; <span class="m">\det A_{(3,3)}&gt;0</span> ellisse, <span class="m">&lt;0</span> iperbole, <span class="m">=0</span> parabola.</li>
+<li>Centro = polo di <span class="m">T=0</span> = soluzione di <span class="m">\frac{\partial p}{\partial x}=\frac{\partial p}{\partial y}=0</span>; esiste solo per ellissi e iperboli.</li>
+<li>Diametro coniugato a <span class="m">{}^t(l\ m)</span> = polare di <span class="m">{}^t(l\ m\ 0)</span>; tutti i diametri passano per il centro (paralleli per la parabola).</li>
+<li>Asse = diametro ortogonale alla direzione coniugata; direzioni = autovettori degli autovalori non nulli di <span class="m">A_{(3,3)}</span>; due assi (infiniti per la circonferenza), uno per la parabola.</li>
+<li>Asintoto = polare di un punto all&#39;infinito della conica; solo per l&#39;iperbole (due).</li>
+<li>Origine del riferimento canonico: centro (ellisse, iperbole) o vertice = asse <span class="m">\cap</span> conica (parabola).</li>
+</ul>
 </div>

@@ -1,80 +1,203 @@
 <h1>Lezione 66 — Proprietà magnetiche della materia</h1>
-<h2>La materia si magnetizza</h2>
-<p>Ogni materiale posto in un campo magnetico si <strong>magnetizza</strong>. Gli atomi contengono elettroni che girano e hanno spin. Si comportano come piccole spire, cioè piccoli dipoli magnetici. Il campo esterno li orienta, oppure ne crea di nuovi. Il materiale produce così un proprio campo, che si somma a quello esterno.</p>
-<h2>Grandezze</h2>
-<p>La <strong>magnetizzazione</strong> <span class="m">\vec M</span> è il momento magnetico per unità di volume. Si misura in A/m.</p>
-<p>Il campo nel materiale si scrive:
-<span class="m d">\vec B = \mu_0\left(\vec H + \vec M\right) = \mu_0\,\mu_r\,\vec H</span>
+<h2>Di cosa parla questa lezione</h2>
+<p>Finora il campo magnetico è stato studiato <strong>nel vuoto</strong>. Ma se dentro un solenoide si infila un nucleo di ferro, il campo diventa centinaia o migliaia di volte più intenso; se si infila un pezzo di rame, quasi non cambia. La materia reagisce al campo magnetico in modi molto diversi.</p>
+<p>Questa lezione spiega:</p>
+<ul>
+<li>perché la materia si magnetizza (origine microscopica: gli atomi sono piccoli dipoli magnetici);</li>
+<li>quali grandezze descrivono la magnetizzazione (<span class="m">\vec M</span>, <span class="m">\vec H</span>, <span class="m">\mu_r</span>, <span class="m">\chi_m</span>);</li>
+<li>la <strong>classificazione</strong> dei materiali in <strong>diamagnetici</strong>, <strong>paramagnetici</strong> e <strong>ferromagnetici</strong>;</li>
+<li>le proprietà dei ferromagnetici: domini, saturazione, isteresi, temperatura di Curie.</li>
+</ul>
+<h2>Origine microscopica: gli atomi come piccole spire</h2>
+<p>Negli atomi gli elettroni si muovono attorno al nucleo. Un elettrone su un&#39;orbita è una carica che gira: equivale a una piccolissima <strong>spira percorsa da corrente</strong> e quindi ha un <strong>momento magnetico orbitale</strong>.</p>
+<p><strong>Calcolo con il modello di Bohr (orbita circolare).</strong></p>
+<ol>
+<li>Un elettrone di carica <span class="m">e</span> che gira con velocità <span class="m">v</span> su un&#39;orbita di raggio <span class="m">r</span> compie un giro nel tempo <span class="m">T = 2\pi r/v</span>.</li>
+<li>La corrente equivalente è la carica che passa in un punto per unità di tempo: <span class="m">i = \dfrac{e}{T} = \dfrac{ev}{2\pi r}</span>.</li>
+<li>Il momento magnetico è corrente per area: <span class="m">m = i\,\pi r^2 = \dfrac{ev}{2\pi r}\,\pi r^2 = \dfrac{e\,v\,r}{2}</span>.</li>
+</ol>
+<p>Inoltre ogni elettrone possiede un momento magnetico intrinseco, legato allo <strong>spin</strong>. L&#39;ordine di grandezza dei momenti atomici è il <strong>magnetone di Bohr</strong>, <span class="m">\mu_B \approx 9{,}27 \cdot 10^{-24}\,\mathrm{A\,m^2}</span>.</p>
+<p>In molti atomi questi momenti si compensano a coppie e l&#39;atomo non ha momento proprio; in altri la compensazione è incompleta e l&#39;atomo ha un <strong>momento magnetico permanente</strong>. Come si comportano questi microscopici dipoli in presenza di un campo esterno decide la classe del materiale.</p>
+<h2>Grandezze che descrivono la magnetizzazione</h2>
+<h3>Magnetizzazione</h3>
+<p>Un materiale in un campo si <strong>magnetizza</strong>: i suoi dipoli atomici si orientano (o ne nascono di nuovi), e il materiale acquista nel complesso un momento magnetico. La <strong>magnetizzazione</strong> è il momento magnetico per unità di volume:
+<span class="m d">\vec M = \frac{d\vec m}{dV}</span>
+dove <span class="m">\vec M</span> si misura in (A·m²)/m³ = <strong>A/m</strong>.</p>
+<p>Un materiale magnetizzato produce un proprio campo magnetico, che si somma a quello esterno. Si può pensare che la magnetizzazione equivalga a delle correnti microscopiche (correnti &quot;amperiane&quot; o di magnetizzazione) che scorrono sulla superficie del materiale: all&#39;interno le correnti delle spire atomiche vicine si cancellano, sul bordo no.</p>
+<h3>Campo magnetizzante <span class="m">\vec H</span></h3>
+<p>Conviene separare il contributo delle correnti &quot;vere&quot; (di conduzione, che si controllano con un generatore) da quello del materiale. Si definisce il <strong>campo magnetizzante</strong> <span class="m">\vec H</span>, legato solo alle correnti di conduzione:
+<span class="m d">\oint \vec H \cdot d\vec l = i_{conduzione}</span>
+e il campo magnetico totale nel materiale è
+<span class="m d">\vec B = \mu_0\left(\vec H + \vec M\right)</span>
 dove:</p>
 <ul>
-<li><span class="m">\vec B</span> = campo magnetico nel materiale (T);</li>
-<li><span class="m">\vec H</span> = campo magnetizzante, legato alle sole correnti di conduzione (A/m);</li>
-<li><span class="m">\mu_0 = 4\pi \cdot 10^{-7}\,\mathrm{T\,m/A}</span>;</li>
-<li><span class="m">\mu_r</span> = permeabilità magnetica relativa (numero puro).</li>
+<li><span class="m">\vec B</span> = campo magnetico (induzione magnetica) nel materiale (T);</li>
+<li><span class="m">\vec H</span> = campo magnetizzante (A/m);</li>
+<li><span class="m">\vec M</span> = magnetizzazione (A/m);</li>
+<li><span class="m">\mu_0 = 4\pi \cdot 10^{-7}\,\mathrm{T\,m/A}</span>.</li>
 </ul>
-<p>La <strong>suscettività magnetica</strong> dice quanto il materiale si magnetizza:
-<span class="m d">\chi_m = \mu_r - 1 \qquad \vec M = \chi_m \vec H</span></p>
-<p>In un solenoide pieno di materiale il campo diventa <span class="m">B = \mu_0\mu_r n i</span>.</p>
-<h2>Tre classi di materiali</h2>
+<p>Nel vuoto <span class="m">\vec M = 0</span> e <span class="m">\vec B = \mu_0 \vec H</span>.</p>
+<h3>Suscettività e permeabilità</h3>
+<p>Per i materiali <strong>lineari</strong> (dia- e paramagnetici) la magnetizzazione è proporzionale al campo magnetizzante:
+<span class="m d">\vec M = \chi_m\,\vec H</span>
+dove <span class="m">\chi_m</span> è la <strong>suscettività magnetica</strong> (numero puro). Sostituendo:
+<span class="m d">\vec B = \mu_0(1 + \chi_m)\vec H = \mu_0\,\mu_r\,\vec H \qquad\qquad \mu_r = 1 + \chi_m</span>
+dove <span class="m">\mu_r</span> è la <strong>permeabilità magnetica relativa</strong> (numero puro) e <span class="m">\mu = \mu_0\mu_r</span> la permeabilità assoluta del materiale.</p>
+<p><strong>Il solenoide pieno di materiale.</strong> Applicando la circuitazione di <span class="m">\vec H</span> al rettangolo del solenoide (come nella lezione 64, ma contando solo le correnti di conduzione): <span class="m">H h = n h i</span>, quindi <span class="m">H = n i</span>, indipendentemente dal materiale. Allora
+<span class="m d">B = \mu_0\,\mu_r\,H = \mu_0\,\mu_r\,n\,i</span>
+Il materiale moltiplica il campo del solenoide vuoto per <span class="m">\mu_r</span>.</p>
+<h2>Le tre classi di materiali</h2>
 <table>
 <thead>
 <tr>
 <th>Tipo</th>
+<th><span class="m">\chi_m</span></th>
 <th><span class="m">\mu_r</span></th>
-<th>Cosa succede</th>
+<th>Meccanismo</th>
 <th>Vicino a un magnete</th>
+<th>Dipendenza dalla temperatura</th>
 <th>Esempi</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>Diamagnetico</td>
-<td>appena minore di 1</td>
-<td>momenti indotti opposti al campo</td>
-<td>debolmente respinto</td>
-<td>acqua, rame, oro, bismuto</td>
+<td><strong>Diamagnetico</strong></td>
+<td>piccola, <strong>negativa</strong> (<span class="m">\sim -10^{-5}</span>)</td>
+<td>appena <strong>minore di 1</strong></td>
+<td>momenti <strong>indotti</strong>, opposti al campo</td>
+<td><strong>debolmente respinto</strong></td>
+<td>nessuna</td>
+<td>acqua, rame, oro, argento, bismuto, gas nobili</td>
 </tr>
 <tr>
-<td>Paramagnetico</td>
-<td>appena maggiore di 1</td>
-<td>momenti permanenti che si allineano in parte</td>
-<td>debolmente attratto</td>
-<td>alluminio, platino, ossigeno</td>
+<td><strong>Paramagnetico</strong></td>
+<td>piccola, <strong>positiva</strong> (<span class="m">10^{-5}</span>–<span class="m">10^{-3}</span>)</td>
+<td>appena <strong>maggiore di 1</strong></td>
+<td>momenti <strong>permanenti</strong> che si allineano in parte</td>
+<td><strong>debolmente attratto</strong></td>
+<td>cala come <span class="m">1/T</span> (Curie)</td>
+<td>alluminio, platino, ossigeno, sodio</td>
 </tr>
 <tr>
-<td>Ferromagnetico</td>
-<td>molto maggiore di 1 (fino a <span class="m">10^3</span>–<span class="m">10^5</span>)</td>
-<td>domini che si allineano tutti</td>
-<td>fortemente attratto</td>
-<td>ferro, nichel, cobalto</td>
+<td><strong>Ferromagnetico</strong></td>
+<td><strong>molto grande</strong> e non costante</td>
+<td><span class="m">10^2</span>–<span class="m">10^5</span></td>
+<td><strong>domini</strong> di Weiss che si allineano</td>
+<td><strong>fortemente attratto</strong></td>
+<td>diventa paramagnetico sopra <span class="m">T_C</span></td>
+<td>ferro, nichel, cobalto e leghe</td>
 </tr>
 </tbody></table>
-<h2>Diamagnetismo</h2>
-<p>Il campo esterno modifica il moto degli elettroni. Nascono momenti magnetici <strong>opposti</strong> al campo, come vuole la legge di Lenz. Il materiale viene quindi debolmente respinto. L&#39;effetto è piccolissimo (<span class="m">\chi_m \approx -10^{-5}</span>). È presente in <strong>tutti</strong> i materiali, ma si vede solo dove non ci sono effetti più forti. Non dipende dalla temperatura.</p>
-<h2>Paramagnetismo</h2>
-<p>Gli atomi hanno già un proprio momento magnetico. Senza campo i momenti puntano a caso. Il campo li allinea un po&#39;. L&#39;agitazione termica li disordina. Il risultato è una debole magnetizzazione <strong>concorde</strong> al campo (<span class="m">\chi_m</span> piccola e positiva). Più alta è la temperatura, più debole è l&#39;effetto (legge di Curie: <span class="m">\chi_m \propto 1/T</span>).</p>
-<h2>Ferromagnetismo</h2>
-<p>Nei ferromagnetici i momenti atomici vicini si allineano spontaneamente tra loro. Formano regioni già magnetizzate, dette <strong>domini di Weiss</strong>. Senza campo esterno i domini puntano in direzioni diverse e il pezzo non è magnetizzato. Il campo esterno fa crescere i domini allineati e ruota gli altri. La magnetizzazione diventa enorme.</p>
-<p>Proprietà tipiche:</p>
+<h3>Diamagnetismo</h3>
+<p>Riguarda materiali i cui atomi <strong>non hanno momento magnetico proprio</strong> (i momenti degli elettroni si compensano).</p>
 <ul>
-<li><span class="m">\mu_r</span> molto grande e <strong>non costante</strong>: dipende dal campo applicato.</li>
-<li><strong>Saturazione</strong>: quando tutti i domini sono allineati, <span class="m">M</span> non cresce più.</li>
-<li><strong>Isteresi</strong>: la magnetizzazione dipende dalla storia del materiale. Togliendo il campo resta una magnetizzazione residua (<strong>rimanenza</strong>). Per annullarla serve un campo opposto, detto <strong>campo coercitivo</strong>. Il grafico <span class="m">B</span>–<span class="m">H</span> forma un <strong>ciclo di isteresi</strong>. L&#39;area del ciclo è energia persa in calore a ogni giro.</li>
-<li>Materiali <strong>duri</strong> (ciclo largo): diventano magneti permanenti. Materiali <strong>dolci</strong> (ciclo stretto): nuclei di trasformatori ed elettromagneti.</li>
+<li>Quando si applica un campo esterno, il moto orbitale degli elettroni viene leggermente modificato (è un effetto di induzione: durante l&#39;accensione del campo nasce un campo elettrico indotto che accelera o frena gli elettroni).</li>
+<li>Per la <strong>legge di Lenz</strong> la variazione si oppone al campo applicato: nasce un piccolo momento magnetico <strong>indotto</strong>, <strong>opposto</strong> al campo esterno.</li>
+<li>La magnetizzazione è opposta a <span class="m">\vec H</span>: <span class="m">\chi_m &lt; 0</span>, <span class="m">\mu_r &lt; 1</span>. Il campo dentro il materiale è leggermente più debole che nel vuoto.</li>
+<li>Il materiale viene <strong>debolmente respinto</strong> dalle zone di campo intenso (cioè da un polo magnetico).</li>
+<li>L&#39;effetto è piccolissimo (<span class="m">\chi_m \approx -10^{-5}</span>) e <strong>non dipende dalla temperatura</strong> (non c&#39;è un ordine che l&#39;agitazione termica possa distruggere).</li>
+<li>Il diamagnetismo è presente in <strong>tutti</strong> i materiali, ma si osserva solo dove non è coperto da effetti più forti (para- o ferromagnetismo).</li>
 </ul>
-<h2>Temperatura di Curie</h2>
-<p>Sopra la <strong>temperatura di Curie</strong> l&#39;agitazione termica distrugge l&#39;ordine dei domini. Il ferromagnetico diventa <strong>paramagnetico</strong>. Per il ferro la temperatura di Curie è circa 770 °C.</p>
+<p>Un caso estremo sono i <strong>superconduttori</strong>, che espellono completamente il campo dal loro interno (effetto Meissner): sono diamagneti perfetti, con <span class="m">\chi_m = -1</span>; per questo un magnete può levitare sopra un superconduttore.</p>
+<h3>Paramagnetismo</h3>
+<p>Riguarda materiali i cui atomi <strong>hanno un momento magnetico permanente</strong>.</p>
+<ul>
+<li>Senza campo esterno i momenti atomici sono orientati a caso per l&#39;agitazione termica: la magnetizzazione media è nulla.</li>
+<li>Con un campo esterno, ogni momento tende ad allinearsi al campo (posizione di energia minima, <span class="m">U = -\vec m \cdot \vec B</span>), ma l&#39;agitazione termica continua a disordinarlo. Il risultato è un <strong>allineamento parziale</strong>.</li>
+<li>La magnetizzazione è <strong>concorde</strong> al campo: <span class="m">\chi_m &gt; 0</span> piccola, <span class="m">\mu_r</span> appena maggiore di 1.</li>
+<li>Il materiale è <strong>debolmente attratto</strong> verso le zone di campo intenso.</li>
+<li>Più alta è la temperatura, più forte è il disordine e più debole la magnetizzazione: <strong>legge di Curie</strong>
+<span class="m d">\chi_m = \frac{C}{T}</span>
+dove <span class="m">C</span> è una costante del materiale (costante di Curie, in K) e <span class="m">T</span> la temperatura assoluta (K).</li>
+<li>Anche nei paramagnetici è presente il diamagnetismo, ma è più debole e viene coperto.</li>
+</ul>
+<h3>Ferromagnetismo</h3>
+<p>Riguarda pochi elementi (ferro, nichel, cobalto, alcune terre rare) e molte loro leghe.</p>
+<ul>
+<li>In questi materiali c&#39;è un&#39;interazione (di origine quantistica) che tende ad allineare <strong>spontaneamente</strong> tra loro i momenti degli atomi vicini, anche senza campo esterno.</li>
+<li>Il materiale è diviso in tante piccole regioni, i <strong>domini di Weiss</strong> (dimensioni tipiche da micrometri a millimetri), ciascuna già completamente magnetizzata in una certa direzione.</li>
+<li>In un pezzo di ferro non magnetizzato i domini sono orientati in direzioni diverse e i loro effetti si compensano.</li>
+<li>Applicando un campo esterno, i domini orientati come il campo <strong>crescono</strong> a spese degli altri (le pareti tra domini si spostano) e, con campi più intensi, i domini <strong>ruotano</strong> verso la direzione del campo. La magnetizzazione diventa enorme.</li>
+</ul>
+<p><strong>Proprietà tipiche dei ferromagnetici.</strong></p>
+<ol>
+<li><strong><span class="m">\mu_r</span> molto grande</strong> (da centinaia a centinaia di migliaia) e <strong>non costante</strong>: la relazione tra <span class="m">B</span> e <span class="m">H</span> non è lineare e dipende dal campo applicato.</li>
+<li><strong>Saturazione</strong>: quando tutti i domini sono allineati, la magnetizzazione non può crescere più; aumentando <span class="m">H</span>, <span class="m">B</span> cresce solo come nel vuoto (<span class="m">\mu_0 H</span>). Per il ferro il campo di saturazione è circa 2 T.</li>
+<li><strong>Isteresi</strong>: la magnetizzazione dipende dalla <strong>storia</strong> del materiale, non solo dal campo attuale.<ul>
+<li>Partendo da un materiale smagnetizzato e aumentando <span class="m">H</span>, <span class="m">B</span> segue la <strong>curva di prima magnetizzazione</strong> fino alla saturazione.</li>
+<li>Riportando <span class="m">H</span> a zero, <span class="m">B</span> <strong>non torna a zero</strong>: resta una magnetizzazione residua, il <strong>campo residuo</strong> o <strong>rimanenza</strong> <span class="m">B_r</span>. Il materiale è diventato un magnete permanente.</li>
+<li>Per annullare <span class="m">B</span> bisogna applicare un campo opposto, detto <strong>campo coercitivo</strong> <span class="m">H_c</span>.</li>
+<li>Facendo variare <span class="m">H</span> ciclicamente tra un valore positivo e uno negativo, il grafico <span class="m">B</span>–<span class="m">H</span> descrive una curva chiusa, il <strong>ciclo di isteresi</strong>.</li>
+<li>L&#39;<strong>area del ciclo</strong> è l&#39;energia dissipata in calore, per unità di volume, a ogni ciclo (perdite per isteresi).</li>
+</ul>
+</li>
+<li><strong>Materiali duri e dolci</strong>:<ul>
+<li><strong>duri</strong> (ciclo largo, grande rimanenza e grande campo coercitivo, per esempio acciai speciali, leghe AlNiCo, ferriti, neodimio-ferro-boro): servono per <strong>magneti permanenti</strong>;</li>
+<li><strong>dolci</strong> (ciclo stretto, piccole perdite, per esempio ferro dolce, ferro-silicio): servono per <strong>nuclei di trasformatori, motori ed elettromagneti</strong>, dove la magnetizzazione deve seguire un campo che cambia continuamente senza sprecare energia.</li>
+</ul>
+</li>
+</ol>
+<h3>Temperatura di Curie</h3>
+<p>L&#39;allineamento spontaneo dei domini compete con l&#39;agitazione termica. Sopra una temperatura caratteristica, la <strong>temperatura di Curie</strong> <span class="m">T_C</span>, l&#39;agitazione termica distrugge l&#39;ordine: i domini scompaiono e il materiale diventa <strong>paramagnetico</strong>. Riportato sotto <span class="m">T_C</span>, torna ferromagnetico (ma smagnetizzato).</p>
+<table>
+<thead>
+<tr>
+<th>Materiale</th>
+<th>Temperatura di Curie</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Ferro</td>
+<td>circa 770 °C (1043 K)</td>
+</tr>
+<tr>
+<td>Nichel</td>
+<td>circa 358 °C (631 K)</td>
+</tr>
+<tr>
+<td>Cobalto</td>
+<td>circa 1115 °C (1388 K)</td>
+</tr>
+</tbody></table>
+<p>Per questo scaldare un magnete permanente oltre la sua temperatura di Curie lo smagnetizza.</p>
+<div class="callout esempio">
+
+<p><strong>Effetto di un nucleo.</strong> Solenoide con <span class="m">n = 1000\,\mathrm{spire/m}</span> e <span class="m">i = 1\,\mathrm A</span>.</p>
+<ol>
+<li>Vuoto: <span class="m">B_0 = \mu_0 n i = 4\pi \cdot 10^{-7} \cdot 1000 \cdot 1 \approx 1{,}26 \cdot 10^{-3}\,\mathrm T</span>.</li>
+<li>Con un nucleo di alluminio (<span class="m">\chi_m \approx 2{,}2 \cdot 10^{-5}</span>): <span class="m">B = (1 + 2{,}2 \cdot 10^{-5})B_0</span>, praticamente invariato (aumento di 22 parti per milione).</li>
+<li>Con un nucleo di rame (<span class="m">\chi_m \approx -1 \cdot 10^{-5}</span>): diminuzione di 10 parti per milione, impercettibile.</li>
+<li>Con un nucleo di ferro dolce con <span class="m">\mu_r \approx 1000</span> (a questo valore di <span class="m">H</span>): <span class="m">B \approx 1000 \cdot 1{,}26 \cdot 10^{-3} = 1{,}26\,\mathrm T</span>, mille volte di più.</li>
+</ol>
+<p>Con <span class="m">\mu_r = 5000</span> la formula darebbe 6,3 T, ma il ferro satura attorno a 2 T: è un esempio di come per i ferromagnetici <span class="m">\mu_r</span> non sia una costante.</p>
+</div>
+
+<div class="callout attenzione">
+
+<ul>
+<li>Diamagnetici: <span class="m">\mu_r</span> appena <strong>minore</strong> di 1 e <strong>respinti</strong>; paramagnetici: <span class="m">\mu_r</span> appena <strong>maggiore</strong> di 1 e <strong>attratti</strong>. Non invertire.</li>
+<li>Il diamagnetismo c&#39;è in tutti i materiali e non dipende dalla temperatura; il paramagnetismo cala con la temperatura.</li>
+<li>Per i ferromagnetici non ha senso dare &quot;il&quot; valore di <span class="m">\mu_r</span>: dipende dal campo e dalla storia (isteresi).</li>
+</ul>
+</div>
+
 <div class="callout esame">
 
-<p>Domanda aperta tipica: classificare i materiali. Basta dire per ciascuna classe il valore di <span class="m">\mu_r</span> (o <span class="m">\chi_m</span>), il meccanismo (momenti indotti, momenti permanenti, domini), il comportamento vicino a un magnete e un esempio. Per i ferromagnetici aggiungere isteresi e temperatura di Curie.</p>
+<p>Domanda aperta tipica: &quot;Si discuta la classificazione dei materiali sulla base delle loro proprietà di magnetizzazione&quot;. Struttura della risposta:</p>
+<ol>
+<li>la materia si magnetizza perché gli atomi sono dipoli magnetici (momenti orbitali e di spin); definisci <span class="m">\vec M</span>, <span class="m">\vec B = \mu_0(\vec H + \vec M) = \mu_0\mu_r\vec H</span>, <span class="m">\chi_m = \mu_r - 1</span>;</li>
+<li>per ciascuna classe: segno e ordine di grandezza di <span class="m">\chi_m</span> (o <span class="m">\mu_r</span>), meccanismo (momenti indotti opposti / momenti permanenti parzialmente allineati / domini), comportamento vicino a un magnete, dipendenza dalla temperatura, esempi;</li>
+<li>per i ferromagnetici: domini di Weiss, saturazione, ciclo di isteresi (rimanenza, campo coercitivo, area = energia persa), materiali duri e dolci, temperatura di Curie.</li>
+</ol>
 </div>
 
 <div class="callout sintesi">
 
 <ul>
-<li><span class="m">B = \mu_0\mu_r H</span>, <span class="m">\chi_m = \mu_r - 1</span>.</li>
-<li>Diamagnetici: <span class="m">\mu_r</span> appena &lt; 1, debolmente respinti, presenti in tutti i materiali (rame, acqua).</li>
-<li>Paramagnetici: <span class="m">\mu_r</span> appena &gt; 1, debolmente attratti, effetto che cala con la temperatura (alluminio).</li>
-<li>Ferromagnetici: <span class="m">\mu_r \gg 1</span>, domini di Weiss, saturazione e isteresi (ferro, nichel, cobalto).</li>
-<li>Sopra la temperatura di Curie un ferromagnetico diventa paramagnetico.</li>
+<li>Gli atomi sono piccoli dipoli magnetici (orbita: <span class="m">m = evr/2</span>; spin); la materia in un campo si magnetizza.</li>
+<li>Magnetizzazione <span class="m">\vec M</span> (A/m); <span class="m">\vec B = \mu_0(\vec H + \vec M) = \mu_0\mu_r\vec H</span>; <span class="m">\chi_m = \mu_r - 1</span>; solenoide pieno: <span class="m">B = \mu_0\mu_r n i</span>.</li>
+<li>Diamagnetici: <span class="m">\chi_m \approx -10^{-5}</span>, momenti indotti opposti (Lenz), debolmente respinti, indipendenti da <span class="m">T</span>, presenti in tutti i materiali.</li>
+<li>Paramagnetici: <span class="m">\chi_m</span> piccola positiva, momenti permanenti parzialmente allineati, debolmente attratti, <span class="m">\chi_m = C/T</span>.</li>
+<li>Ferromagnetici: <span class="m">\mu_r \gg 1</span> non costante, domini di Weiss, saturazione, isteresi (rimanenza, coercitivo), duri e dolci.</li>
+<li>Sopra la temperatura di Curie (ferro circa 770 °C) un ferromagnetico diventa paramagnetico.</li>
 </ul>
 </div>

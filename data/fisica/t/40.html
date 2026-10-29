@@ -1,71 +1,174 @@
-<h1>Lezione 40 — Macchine termiche, ciclo di Carnot, entropia</h1>
+<h1>Lezione 40 — Macchine termiche, ciclo di Carnot, frigoriferi ed entropia</h1>
+<h2>Introduzione</h2>
+<p>Le <strong>macchine termiche</strong> sono dispositivi che producono lavoro ripetendo un ciclo di trasformazioni in cui scambiano calore con l&#39;ambiente. I due principi della termodinamica ne fissano i limiti: il primo dice che il lavoro non può superare il calore assorbito; il secondo che non può nemmeno eguagliarlo. Il prototipo ideale è la macchina di <strong>Carnot</strong>, che fa da termine di confronto per le macchine reali; invertendo il suo ciclo si ottiene il prototipo del <strong>frigorifero</strong>. In questa lezione definiamo il rendimento, studiamo il ciclo di Carnot con tutti i passaggi, dimostriamo il teorema di Carnot e rileggiamo il secondo principio con l&#39;entropia.</p>
 <h2>Macchina termica</h2>
-<p>Una <strong>macchina termica</strong> trasforma calore in lavoro ripetendo un ciclo. A ogni ciclo:</p>
+<p>Una <strong>macchina termica</strong> usa un fluido (per esempio un gas) che percorre un <strong>ciclo</strong>. A ogni ciclo:</p>
 <ol>
-<li>assorbe il calore <span class="m">Q_C</span> dalla sorgente calda (temperatura <span class="m">T_C</span>);</li>
+<li>assorbe il calore <span class="m">Q_C</span> dalla <strong>sorgente calda</strong> (temperatura <span class="m">T_C</span>);</li>
 <li>compie il lavoro <span class="m">L</span>;</li>
-<li>cede il calore <span class="m">Q_F</span> alla sorgente fredda (temperatura <span class="m">T_F</span>).</li>
+<li>cede il calore <span class="m">Q_F</span> alla <strong>sorgente fredda</strong> (temperatura <span class="m">T_F</span>), di solito l&#39;ambiente.</li>
 </ol>
-<p>In un ciclo <span class="m">\Delta U = 0</span>, quindi per il primo principio:</p>
+<p>In un ciclo il fluido torna allo stato iniziale, quindi <span class="m">\Delta U = 0</span> e per il primo principio il lavoro netto è uguale al calore netto scambiato:</p>
 <p><span class="m d">L = Q_C - Q_F</span></p>
-<p>dove <span class="m">Q_C</span> e <span class="m">Q_F</span> sono i valori assoluti dei calori (in J) e <span class="m">L</span> è il lavoro per ciclo (in J).</p>
+<p>dove <span class="m">Q_C</span> e <span class="m">Q_F</span> sono i <strong>valori assoluti</strong> dei calori (in J) e <span class="m">L</span> è il lavoro per ciclo (in J). Con i segni algebrici si scriverebbe <span class="m">L = Q_{ass} + Q_{ced}</span> con <span class="m">Q_{ced} &lt; 0</span>.</p>
 <h2>Rendimento</h2>
-<p>Il <strong>rendimento</strong> è la frazione del calore assorbito che diventa lavoro.</p>
-<p><span class="m d">\eta = \frac{L}{Q_C} = 1 - \frac{Q_F}{Q_C}</span></p>
+<p>Il <strong>rendimento</strong> è la frazione del calore assorbito che diventa lavoro utile:</p>
+<p><span class="m d">\eta = \frac{L}{Q_C} = \frac{Q_C - Q_F}{Q_C} = 1 - \frac{Q_F}{Q_C}</span></p>
 <p>dove:</p>
 <ul>
-<li><span class="m">\eta</span> = rendimento, numero puro tra 0 e 1</li>
+<li><span class="m">\eta</span> = rendimento, numero puro tra 0 e 1 (spesso in percentuale)</li>
 <li><span class="m">L</span> = lavoro per ciclo, in J</li>
-<li><span class="m">Q_C</span> = calore assorbito dalla sorgente calda, in J</li>
-<li><span class="m">Q_F</span> = calore ceduto alla sorgente fredda, in J</li>
+<li><span class="m">Q_C</span> = calore <strong>assorbito</strong> dalla sorgente calda, in J</li>
+<li><span class="m">Q_F</span> = calore <strong>ceduto</strong> alla sorgente fredda, in J (in valore assoluto)</li>
 </ul>
-<p>Per il secondo principio <span class="m">Q_F</span> non può essere zero, quindi <span class="m">\eta &lt; 1</span> sempre.</p>
+<p>Per il secondo principio (Kelvin-Planck) <span class="m">Q_F</span> non può essere zero, quindi <strong><span class="m">\eta &lt; 1</span> sempre</strong>.</p>
 <div class="callout esempio">
 
-<p>Una macchina assorbe 85 kcal e ne cede 78: <span class="m">L = 7\,\mathrm{kcal} = 7\cdot 4186 \approx 29\,\mathrm{kJ}</span>.
-Una macchina produce 10 kJ di lavoro cedendo 35 kJ: ha assorbito <span class="m">10 + 35 = 45\,\mathrm{kJ}</span>, quindi <span class="m">\eta = 10/45 \approx 0{,}22</span>.
-Assorbe 450 kcal e cede 150 kcal: <span class="m">\eta = 1 - 150/450 = 2/3</span>.</p>
+<p><strong>Macchina a vapore.</strong> Assorbe 85 kcal dal generatore e ne cede 78 al condensatore a ogni ciclo.
+<span class="m d">L = Q_C - Q_F = 85 - 78 = 7\,\mathrm{kcal} = 7\cdot4186 \approx 29\,\mathrm{kJ}</span>
+Rendimento: <span class="m">7/85 \approx 8\%</span>.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Dati lavoro e calore ceduto.</strong> Una macchina produce 10 kJ di lavoro cedendo 35 kJ alla sorgente fredda. Il calore assorbito è <span class="m">Q_C = L + Q_F = 10 + 35 = 45</span> kJ, quindi
+<span class="m d">\eta = \frac{10}{45} \approx 0{,}22</span>
+Errore tipico: dividere 10 per 35 (0,29), usando il calore ceduto al posto di quello assorbito.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Dati i due calori.</strong> Una macchina assorbe 450 kcal e ne cede 150: <span class="m">\eta = 1 - \dfrac{150}{450} = 1 - \dfrac13 = \dfrac23</span>. Qui non serve convertire in joule: si fa un rapporto.</p>
 </div>
 
 <div class="callout attenzione">
 
-<p>Leggi bene quale calore dà il testo. Se è il calore <strong>assorbito</strong>, <span class="m">\eta = L/Q</span>. Se è il calore <strong>ceduto</strong>, prima calcola <span class="m">Q_C = L + Q_F</span>. Con 3200 J di lavoro e 8200 J letti come calore assorbito: <span class="m">\eta = 3200/8200 \approx 0{,}39</span>.</p>
+<p>Leggi bene <strong>quale</strong> calore dà il testo. Se è il calore <strong>assorbito</strong>, <span class="m">\eta = L/Q</span>. Se è il calore <strong>ceduto</strong>, prima calcola <span class="m">Q_C = L + Q_F</span>. Una domanda dice che una macchina &quot;produce 8200 J di calore&quot; compiendo 3200 J di lavoro: il paniere intende 8200 J come calore assorbito, <span class="m">\eta = 3200/8200 \approx 0{,}39</span>. Se fossero il calore ceduto, si avrebbe <span class="m">Q_C = 11\,400</span> J e <span class="m">\eta \approx 0{,}28</span>.</p>
 </div>
 
-<h2>Ciclo di Carnot</h2>
-<p>È il ciclo ideale di una macchina che lavora tra due sole sorgenti. Tutte le fasi sono <strong>reversibili</strong> e il fluido è un gas perfetto.</p>
+<h2>Il ciclo di Carnot</h2>
+<p>È il ciclo ideale di una macchina che scambia calore con <strong>due sole sorgenti</strong> a temperature <span class="m">T_C &gt; T_F</span>. È fatto di quattro trasformazioni <strong>reversibili</strong> di un gas perfetto: due isoterme e due adiabatiche.</p>
 <ol>
-<li><strong>A → B, espansione isoterma</strong> a <span class="m">T_C</span>: il gas assorbe <span class="m">Q_C = nRT_C\ln(V_B/V_A)</span>.</li>
-<li><strong>B → C, espansione adiabatica</strong>: nessun calore; il gas si raffredda da <span class="m">T_C</span> a <span class="m">T_F</span>.</li>
-<li><strong>C → D, compressione isoterma</strong> a <span class="m">T_F</span>: il gas cede <span class="m">Q_F</span> alla sorgente fredda.</li>
-<li><strong>D → A, compressione adiabatica</strong>: nessun calore; il gas torna a <span class="m">T_C</span>.</li>
+<li><strong>A → B, espansione isoterma</strong> a <span class="m">T_C</span>: il gas, a contatto con la sorgente calda, si espande e assorbe calore. <span class="m">\Delta U = 0</span>, quindi
+<span class="m d">Q_C = L_{AB} = nRT_C\ln\frac{V_B}{V_A} &gt; 0 \qquad \Delta S_{AB} = \frac{Q_C}{T_C} = nR\ln\frac{V_B}{V_A}</span></li>
+<li><strong>B → C, espansione adiabatica</strong>: il gas viene isolato termicamente e continua a espandersi; <span class="m">Q = 0</span>, <span class="m">\Delta S = 0</span>. Compie lavoro a spese dell&#39;energia interna e si raffredda da <span class="m">T_C</span> a <span class="m">T_F</span>: <span class="m">L_{BC} = -\Delta U = nC_V(T_C - T_F)</span>.</li>
+<li><strong>C → D, compressione isoterma</strong> a <span class="m">T_F</span>: a contatto con la sorgente fredda il gas viene compresso e cede calore:
+<span class="m d">Q_{CD} = nRT_F\ln\frac{V_D}{V_C} &lt; 0, \qquad Q_F = |Q_{CD}| = nRT_F\ln\frac{V_C}{V_D}</span></li>
+<li><strong>D → A, compressione adiabatica</strong>: di nuovo isolato, il gas viene compresso e si scalda da <span class="m">T_F</span> a <span class="m">T_C</span>, tornando ad A. <span class="m">Q = 0</span>, <span class="m">L_{DA} = nC_V(T_F - T_C)</span>.</li>
 </ol>
-<p>In un ciclo l&#39;entropia del gas torna al valore iniziale. Cambia solo nelle isoterme: <span class="m">Q_C/T_C = Q_F/T_F</span>. Sostituendo nel rendimento:</p>
-<p><span class="m d">\eta_C = 1 - \frac{T_F}{T_C}</span></p>
+<p>I lavori delle due adiabatiche sono uguali e opposti e si cancellano. Il lavoro netto è l&#39;area racchiusa dal ciclo, <span class="m">L = Q_C - Q_F</span>.</p>
+<h3>Il rendimento di Carnot: due derivazioni</h3>
+<p><strong>Con le adiabatiche.</strong> Le due adiabatiche collegano le stesse due isoterme:</p>
+<ul>
+<li>B → C: <span class="m">T_CV_B^{\gamma-1} = T_FV_C^{\gamma-1}</span>;</li>
+<li>D → A: <span class="m">T_CV_A^{\gamma-1} = T_FV_D^{\gamma-1}</span>.</li>
+</ul>
+<p>Divido la prima per la seconda: <span class="m">\left(\dfrac{V_B}{V_A}\right)^{\gamma-1} = \left(\dfrac{V_C}{V_D}\right)^{\gamma-1}</span>, quindi <span class="m">\dfrac{V_B}{V_A} = \dfrac{V_C}{V_D}</span>. I due logaritmi nei calori sono uguali e si semplificano:
+<span class="m d">\frac{Q_F}{Q_C} = \frac{nRT_F\ln(V_C/V_D)}{nRT_C\ln(V_B/V_A)} = \frac{T_F}{T_C}</span></p>
+<p><strong>Con l&#39;entropia.</strong> In un ciclo l&#39;entropia del gas (funzione di stato) torna al valore iniziale: <span class="m">\Delta S_{ciclo} = 0</span>. Cambia solo nelle isoterme: <span class="m">+Q_C/T_C</span> nella prima, <span class="m">-Q_F/T_F</span> nella seconda. Quindi <span class="m">\dfrac{Q_C}{T_C} = \dfrac{Q_F}{T_F}</span>, la stessa relazione.</p>
+<p>Sostituendo nel rendimento:</p>
+<p><span class="m d">\eta_C = 1 - \frac{Q_F}{Q_C} = 1 - \frac{T_F}{T_C}</span></p>
 <p>dove <span class="m">T_F</span> e <span class="m">T_C</span> sono le temperature delle sorgenti <strong>in kelvin</strong>.</p>
-<p>Il rendimento di Carnot dipende <strong>solo dalle due temperature</strong>, non dal gas usato.</p>
+<p>Il rendimento di Carnot:</p>
+<ul>
+<li>è <strong>sempre minore di 1</strong> (servirebbe <span class="m">T_F = 0</span> K, irraggiungibile);</li>
+<li>dipende <strong>solo dalle due temperature</strong>, non dal gas né dai dettagli della macchina;</li>
+<li><strong>aumenta</strong> se si alza <span class="m">T_C</span> o si abbassa <span class="m">T_F</span> (cresce il rapporto <span class="m">T_C/T_F</span>).</li>
+</ul>
 <div class="callout esempio">
 
-<p>Tra 27 °C e 127 °C: <span class="m">\eta = 1 - 300/400 = 0{,}25</span>.
-Tra 20 °C e 200 °C: <span class="m">\eta = 1 - 293/473 \approx 0{,}38</span>.
-Tra 300 K e 450 K: <span class="m">\eta_{max} = 1 - 300/450 \approx 0{,}33</span>.
-Carnot tra 450 K e 320 K che assorbe 2500 J: <span class="m">\eta \approx 0{,}289</span>, quindi <span class="m">L \approx 0{,}289 \cdot 2500 \approx 720\,\mathrm J</span>.</p>
+<p><strong>Calcoli diretti (sempre in kelvin).</strong></p>
+<ul>
+<li>Tra 27 °C e 127 °C: <span class="m">\eta = 1 - \dfrac{300}{400} = 0{,}25</span>. (Con i Celsius si otterrebbe <span class="m">1 - 27/127 \approx 0{,}79</span>: sbagliato.)</li>
+<li>Tra 20 °C e 200 °C: <span class="m">\eta = 1 - \dfrac{293{,}15}{473{,}15} \approx 1 - 0{,}62 = 0{,}38</span>, cioè 38%.</li>
+<li>Tra 300 K e 450 K: <span class="m">\eta_{max} = 1 - \dfrac{300}{450} \approx 0{,}33</span>. È il <strong>massimo</strong> rendimento ottenibile da qualunque macchina tra queste temperature.</li>
+</ul>
 </div>
 
 <div class="callout esempio">
 
-<p>Scarico a 230 °C (503 K), rendimento voluto 28%: <span class="m">T_C = T_F/(1 - \eta) = 503/0{,}72 \approx 699\,\mathrm K \approx 426\,^\circ\mathrm C</span>.</p>
+<p><strong>Lavoro di una macchina di Carnot.</strong> Tra <span class="m">T_C = 450</span> K e <span class="m">T_F = 320</span> K, assorbendo 2500 J per ciclo:
+<span class="m d">\eta = 1 - \frac{320}{450} \approx 0{,}289 \qquad L = \eta\,Q_C \approx 0{,}289\cdot2500 \approx 720\,\mathrm J</span>
+Il calore ceduto è <span class="m">2500 - 720 = 1780</span> J (controllo: <span class="m">Q_F/Q_C = 1780/2500 \approx 0{,}71 = 320/450</span>).</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Temperatura calda necessaria.</strong> Lo scarico di una macchina è a 230 °C (503 K). Quale temperatura calda serve per un rendimento di Carnot del 28%?
+<span class="m d">1 - \frac{T_F}{T_C} = 0{,}28 \;\Rightarrow\; \frac{T_F}{T_C} = 0{,}72 \;\Rightarrow\; T_C = \frac{503}{0{,}72} \approx 699\,\mathrm K \approx 426\,^\circ\mathrm C</span></p>
+</div>
+
+<h2>Altri cicli: rendimento minore di Carnot</h2>
+<div class="callout esempio">
+
+<p><strong>Ciclo rettangolare (due isocore e due isobare).</strong> Una mole di gas monoatomico percorre A → B (isocora, la pressione raddoppia) → C (isobara, il volume raddoppia) → D (isocora, la pressione torna a <span class="m">p_A</span>) → A (isobara). <span class="m">p_A = 1</span> atm, <span class="m">V_A = 0{,}0225\,\mathrm{m^3}</span>, <span class="m">p_C = 2p_A</span>, <span class="m">V_C = 2V_A</span>.</p>
+<ol>
+<li>Lavoro: area del rettangolo, <span class="m">L = (2p_A - p_A)(2V_A - V_A) = p_AV_A = 1{,}013\cdot10^5\cdot0{,}0225 \approx 2280\,\mathrm J</span>.</li>
+<li>Calore assorbito (in A → B → C la temperatura sale; in C → D → A scende):<ul>
+<li>A → B: <span class="m">Q = nC_V\Delta T = \tfrac32V_A\Delta p = \tfrac32p_AV_A</span>;</li>
+<li>B → C: <span class="m">Q = nC_p\Delta T = \tfrac52p_B\Delta V = \tfrac52\cdot2p_AV_A = 5p_AV_A</span>;</li>
+<li>totale <span class="m">Q_{ABC} = 6{,}5\,p_AV_A \approx 14{,}8\,\mathrm{kJ}</span>.</li>
+</ul>
+</li>
+<li>Rendimento: <span class="m">\eta = \dfrac{L}{Q_{ABC}} = \dfrac{1}{6{,}5} \approx 0{,}154</span>.</li>
+<li>Carnot tra la temperatura minima (in A) e massima (in C, dove <span class="m">pV</span> è 4 volte quello di A): <span class="m">\eta_C = 1 - \dfrac{T_A}{4T_A} = 0{,}75</span>. Il ciclo rettangolare rende circa un quinto di Carnot, come previsto dal teorema di Carnot.</li>
+</ol>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Ciclo isocora – isoterma – isobara.</strong> Gas monoatomico: A (5,00 L, 1 atm, 300 K) → B isocora fino a 3 atm → C isoterma fino a 1 atm → A isobara.</p>
+<ol>
+<li><span class="m">n = \dfrac{p_AV_A}{RT_A} = \dfrac{1{,}013\cdot10^5\cdot5\cdot10^{-3}}{8{,}314\cdot300} \approx 0{,}203\,\mathrm{mol}</span>; <span class="m">T_B = 3T_A = 900\,\mathrm K</span>; <span class="m">V_C = 3V_A = 15\,\mathrm L</span>, <span class="m">T_C = 900</span> K.</li>
+<li>A → B: <span class="m">L = 0</span>, <span class="m">Q = \Delta U = \tfrac32nR(T_B - T_A) = \tfrac32V_A\Delta p \approx 1{,}52\,\mathrm{kJ}</span>.</li>
+<li>B → C: <span class="m">\Delta U = 0</span>, <span class="m">Q = L = nRT_B\ln3 = p_BV_B\ln 3 \approx 1{,}67\,\mathrm{kJ}</span>.</li>
+<li>C → A: <span class="m">L = p_A(V_A - V_C) \approx -1{,}01\,\mathrm{kJ}</span>, <span class="m">\Delta U \approx -1{,}52\,\mathrm{kJ}</span>, <span class="m">Q = \Delta U + L \approx -2{,}53\,\mathrm{kJ}</span>.</li>
+<li>Ciclo: <span class="m">L_{tot} \approx 0{,}66\,\mathrm{kJ} = Q_{tot}</span>, <span class="m">\Delta U_{tot} = 0</span>. Rendimento: <span class="m">0{,}66/(1{,}52 + 1{,}67) \approx 0{,}21</span>, contro Carnot tra 300 e 900 K: <span class="m">1 - 1/3 \approx 0{,}67</span>.</li>
+</ol>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Ciclo Otto (motore a benzina).</strong> Schema: compressione adiabatica, scoppio a volume costante (la pressione triplica), espansione adiabatica, scarico a volume costante; rapporto di compressione <span class="m">r = V_{max}/V_{min} = 4</span>. Nelle adiabatiche non c&#39;è calore; il calore entra nello scoppio (<span class="m">nC_V(T_2 - T_1)</span>) ed esce nello scarico. Usando <span class="m">TV^{\gamma-1}</span> costante sulle due adiabatiche, le temperature allo scarico sono quelle allo scoppio divise per <span class="m">r^{\gamma-1}</span>, e si trova
+<span class="m d">\eta_{Otto} = 1 - \frac{1}{r^{\gamma - 1}}</span>
+Con <span class="m">\gamma = 1{,}4</span>: <span class="m">\eta = 1 - 4^{-0{,}4} \approx 0{,}43</span>. Carnot tra le temperature estreme del ciclo (massima dopo lo scoppio, <span class="m">3T_1</span>; minima alla fine dello scarico, <span class="m">T_1/4^{\gamma-1}</span>) darebbe <span class="m">1 - \dfrac{1}{3\cdot4^{0{,}4}} \approx 0{,}81</span>.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Ciclo con due adiabatiche e due isobare.</strong> Una mole di gas ideale: A → B isobara con <span class="m">V_B = 2V_A</span>; B → C adiabatica; C → D isobara; D → A adiabatica; <span class="m">V_D = 8V_A</span>, <span class="m">V_C = 16V_A</span>, <span class="m">p_D = p_A/32</span>.</p>
+<ol>
+<li>Tipo di gas: sull&#39;adiabatica DA, <span class="m">p_AV_A^\gamma = p_DV_D^\gamma</span>, cioè <span class="m">32 = 8^\gamma = 2^{3\gamma}</span>, quindi <span class="m">3\gamma = 5</span>, <span class="m">\gamma = 5/3</span>: <strong>monoatomico</strong>.</li>
+<li>Calore assorbito in AB: <span class="m">Q_{AB} = nC_p\Delta T = \tfrac52p_A(2V_A - V_A) = 2{,}5\,p_AV_A</span>. Calore ceduto in CD: <span class="m">|Q_{CD}| = \tfrac52p_D(V_C - V_D) = \tfrac52\cdot\tfrac{p_A}{32}\cdot8V_A = 0{,}625\,p_AV_A</span>.</li>
+<li>Rendimento: <span class="m">\eta = 1 - \dfrac{0{,}625}{2{,}5} = 0{,}75</span>.</li>
+</ol>
 </div>
 
 <h2>Teorema di Carnot</h2>
+<p>Il teorema dice due cose:</p>
 <ol>
-<li><strong>Tutte le macchine reversibili</strong> che lavorano tra le <strong>stesse due temperature</strong> hanno lo <strong>stesso rendimento</strong>, <span class="m">1 - T_F/T_C</span>.</li>
-<li><strong>Nessuna macchina</strong> (reale, irreversibile) che lavora tra quelle temperature può avere un rendimento maggiore.</li>
+<li><strong>Tutte le macchine reversibili</strong> che lavorano tra le <strong>stesse due temperature</strong> hanno lo <strong>stesso rendimento</strong>, <span class="m">1 - T_F/T_C</span>, qualunque sia il fluido.</li>
+<li><strong>Nessuna macchina</strong> (reale, irreversibile) che lavora tra quelle due temperature può avere un rendimento <strong>maggiore</strong> di quello di Carnot. Le macchine reali hanno rendimento minore.</li>
 </ol>
-<p>Il ragionamento in tre passi: se una macchina X avesse rendimento maggiore di Carnot, si potrebbe usare il suo lavoro per far girare un Carnot al contrario. Il risultato netto sarebbe calore che passa dal freddo al caldo senza lavoro esterno. Questo viola l&#39;enunciato di Clausius, quindi X non esiste.</p>
-<p>Per <strong>aumentare il rendimento</strong> bisogna alzare <span class="m">T_C</span> e abbassare <span class="m">T_F</span>. Un rendimento pari a 1 richiederebbe <span class="m">T_F = 0\,\mathrm K</span>, che non si può raggiungere.</p>
+<p><strong>Dimostrazione per assurdo</strong> (della seconda parte, che contiene anche la prima):</p>
+<ol>
+<li>Supponiamo che esista una macchina X, tra <span class="m">T_C</span> e <span class="m">T_F</span>, con <span class="m">\eta_X &gt; \eta_C</span>.</li>
+<li>Il ciclo di Carnot è reversibile: lo facciamo girare <strong>al contrario</strong> come frigorifero (C inverso), e lo regoliamo in modo che usi esattamente il lavoro <span class="m">L</span> prodotto da X. Il sistema X + C inverso non scambia lavoro con l&#39;esterno.</li>
+<li>Da <span class="m">\eta_X &gt; \eta_C</span> con lo stesso <span class="m">L</span>: <span class="m">\dfrac{L}{Q_C^X} &gt; \dfrac{L}{Q_C^{C}}</span>, quindi <span class="m">Q_C^X &lt; Q_C^C</span>: X prende dalla sorgente calda meno calore di quanto C inverso gliene restituisce.</li>
+<li>Per il primo principio, in ciascuna macchina <span class="m">L = Q_C - Q_F</span>; essendo <span class="m">L</span> uguale, anche <span class="m">Q_F^X &lt; Q_F^C</span>: C inverso preleva dalla sorgente fredda più calore di quanto X gliene dia.</li>
+<li>Risultato netto: un calore positivo <span class="m">Q_C^C - Q_C^X = Q_F^C - Q_F^X</span> passa dalla sorgente <strong>fredda</strong> a quella <strong>calda</strong>, senza lavoro esterno e senza altri effetti.</li>
+<li>Questo viola l&#39;<strong>enunciato di Clausius</strong>. Quindi la premessa è falsa: <strong>non esiste macchina con rendimento maggiore di Carnot</strong>. Se X è a sua volta reversibile, si può scambiare il ruolo delle due macchine e si trova <span class="m">\eta_C \le \eta_X</span>: le due macchine reversibili hanno lo stesso rendimento.</li>
+</ol>
+<p><strong>Come migliorare il rendimento</strong>: bisogna <strong>aumentare la temperatura della sorgente calda e diminuire quella della sorgente fredda</strong>. Le macchine reali cercano di avvicinarsi a Carnot riducendo attriti e irreversibilità.</p>
+<h2>Dal teorema di Carnot ai due enunciati</h2>
+<ul>
+<li><strong>Kelvin-Planck</strong>: il rendimento massimo è <span class="m">1 - T_F/T_C</span>, che vale 1 solo se <span class="m">T_F = 0</span> K, irraggiungibile. Un motore che trasforma in lavoro <strong>tutto</strong> il calore assorbito da <strong>un&#39;unica</strong> sorgente a temperatura finita non può esistere.</li>
+<li><strong>Clausius</strong>: immaginiamo un <strong>frigorifero perfetto</strong> che porta il calore <span class="m">Q</span> dalla sorgente fredda alla calda senza assorbire lavoro. Nel ciclo il fluido ha <span class="m">\Delta S = 0</span>; la sorgente fredda perde <span class="m">Q/T_F</span>, la calda guadagna <span class="m">Q/T_C</span>, che è <strong>più piccolo</strong> perché <span class="m">T_C &gt; T_F</span>. L&#39;entropia del sistema isolato complessivo diminuirebbe di <span class="m">Q/T_F - Q/T_C &gt; 0</span>: viola il secondo principio. Il frigorifero perfetto non esiste.</li>
+</ul>
 <h2>Frigorifero e pompa di calore</h2>
-<p>Il frigorifero è una macchina termica al contrario. Riceve il lavoro <span class="m">L</span>, preleva il calore <span class="m">Q_F</span> dall&#39;interno freddo e cede <span class="m">Q_C = Q_F + L</span> all&#39;ambiente caldo.</p>
+<p>Una <strong>macchina frigorifera</strong> (o pompa di calore) fa il contrario di una macchina termica: <strong>riceve lavoro</strong> <span class="m">L</span>, <strong>preleva</strong> il calore <span class="m">Q_F</span> dalla sorgente fredda (l&#39;interno del frigorifero) e <strong>cede</strong> <span class="m">Q_C</span> alla sorgente calda (la cucina). Il ciclo frigorifero ideale è il <strong>ciclo di Carnot percorso al contrario</strong> (possibile perché è reversibile). Per il primo principio:</p>
+<p><span class="m d">Q_C = Q_F + L</span></p>
+<p>L&#39;efficienza si misura con il <strong>coefficiente di prestazione</strong> (COP, dall&#39;inglese <em>coefficient of performance</em>): il rapporto tra il calore tolto alla sorgente fredda e il lavoro speso.</p>
 <p><span class="m d">COP = \frac{Q_F}{L}</span></p>
 <p>dove:</p>
 <ul>
@@ -73,35 +176,44 @@ Carnot tra 450 K e 320 K che assorbe 2500 J: <span class="m">\eta \approx 0{,}28
 <li><span class="m">Q_F</span> = calore tolto alla sorgente fredda, in J</li>
 <li><span class="m">L</span> = lavoro fornito, in J</li>
 </ul>
-<p>Il COP è <strong>sempre positivo</strong> e di solito è <strong>maggiore di 1</strong>: si sposta più calore del lavoro speso. Per un frigorifero di Carnot <span class="m">COP = T_F/(T_C - T_F)</span>.</p>
+<p>Il COP è <strong>sempre positivo</strong> (è un rapporto di quantità positive) e di solito è <strong>maggiore di 1</strong>: si sposta più calore di quanto lavoro si spende. Non è un &quot;rendimento&quot; limitato a 1. Per un frigorifero di Carnot, usando <span class="m">Q_C/Q_F = T_C/T_F</span>:
+<span class="m d">COP_{Carnot} = \frac{Q_F}{Q_C - Q_F} = \frac{T_F}{T_C - T_F}</span>
+Più le due temperature sono vicine, più il COP è grande.</p>
 <div class="callout esempio">
 
-<p>Con 18 kJ di lavoro il frigorifero toglie 115 kJ dall&#39;interno: <span class="m">COP = 115/18 \approx 6{,}4</span>.</p>
+<p><strong>COP di un refrigeratore.</strong> Con 18 kJ di lavoro il refrigeratore toglie 115 kJ dal suo interno:
+<span class="m d">COP = \frac{115}{18} \approx 6{,}4</span>
+All&#39;ambiente cede <span class="m">115 + 18 = 133</span> kJ.</p>
 </div>
 
-<h2>Entropia</h2>
-<p>L&#39;<strong>entropia</strong> è una funzione di stato che misura il grado di disordine e di irreversibilità.</p>
-<p><span class="m d">\Delta S = \int_A^B \frac{\delta Q_{rev}}{T}</span></p>
-<p>dove <span class="m">\Delta S</span> è in J/K, <span class="m">\delta Q_{rev}</span> è il calore scambiato in modo reversibile (J) e <span class="m">T</span> la temperatura assoluta (K).</p>
+<div class="callout esempio">
+
+<p><strong>COP massimo.</strong> Un frigorifero con interno a 270 K in una cucina a 300 K: <span class="m">COP_{max} = \dfrac{270}{300 - 270} = 9</span>. Per ogni joule di lavoro si possono togliere al massimo 9 J dall&#39;interno.</p>
+</div>
+
+<h2>Entropia: riepilogo per la domanda aperta</h2>
+<p>L&#39;<strong>entropia</strong> <span class="m">S</span> è una <strong>funzione di stato</strong> introdotta dal secondo principio.</p>
 <ul>
-<li>In un ciclo reversibile, come Carnot: <span class="m">\Delta S_{gas} = 0</span> e <span class="m">Q_C/T_C = Q_F/T_F</span>.</li>
-<li>In un sistema isolato: <span class="m">\Delta S \ge 0</span> (uguale a 0 solo se tutto è reversibile).</li>
-<li>A livello microscopico: <span class="m">S = k_B\ln W</span>. Più configurazioni possibili significa più disordine e più entropia.</li>
+<li><strong>Definizione</strong>: <span class="m">\Delta S = \displaystyle\int_A^B\frac{\delta Q_{rev}}{T}</span>, calcolata lungo una trasformazione reversibile; si misura in J/K. In un&#39;isoterma <span class="m">\Delta S = Q/T</span>.</li>
+<li><strong>Ciclo reversibile</strong> (Carnot): <span class="m">\Delta S_{gas} = 0</span> e <span class="m">Q_C/T_C = Q_F/T_F</span>.</li>
+<li><strong>Secondo principio</strong>: in un sistema isolato <span class="m">\Delta S \ge 0</span> (uguale a 0 solo se tutto è reversibile, positiva nei processi reali). L&#39;entropia dell&#39;universo cresce: indica il <strong>verso spontaneo</strong> delle trasformazioni (&quot;freccia del tempo&quot;).</li>
+<li><strong>Significato microscopico</strong>: <span class="m">S = k_B\ln W</span>, misura del <strong>disordine</strong>, cioè del numero di configurazioni microscopiche compatibili con lo stato; i sistemi isolati evolvono verso gli stati più probabili.</li>
+<li><strong>Sistemi non isolati</strong>: l&#39;entropia può diminuire (gas che cede calore), ma quella della sorgente aumenta almeno altrettanto.</li>
 </ul>
-<p>Un frigorifero &quot;perfetto&quot;, senza lavoro, farebbe diminuire l&#39;entropia totale: la sorgente fredda perde <span class="m">Q/T_F</span>, la calda guadagna solo <span class="m">Q/T_C</span>, che è più piccolo. Per questo è impossibile.</p>
 <div class="callout esame">
 
-<p>Domanda aperta: &quot;Cos&#39;è l&#39;entropia&quot;. Rispondi così: funzione di stato; definizione <span class="m">\Delta S = \int\delta Q_{rev}/T</span> in J/K; in un sistema isolato non diminuisce mai (costante se reversibile, cresce se irreversibile); misura il disordine, <span class="m">S = k_B\ln W</span>; indica il verso spontaneo delle trasformazioni.</p>
+<p>Domande chiuse: temperatura calda per un dato rendimento (<span class="m">T_C = T_F/(1 - \eta)</span>, in kelvin); conseguenza del teorema di Carnot (stesso rendimento per tutte le reversibili tra le stesse temperature); lavoro = calore assorbito − calore ceduto (con conversione kcal → kJ); COP <span class="m">= Q_F/L</span>; rendimento di Carnot (in kelvin); come migliorare il rendimento (alzare <span class="m">T_C</span>, abbassare <span class="m">T_F</span>); lavoro di una Carnot (<span class="m">\eta\,Q_C</span>); COP sempre maggiore di zero; rendimento con lavoro e calore ceduto (<span class="m">Q_C = L + Q_F</span>); rendimento massimo tra due temperature; rendimento da due calori.</p>
+<p>Domanda aperta: &quot;Cosa è l&#39;entropia in termodinamica&quot;. Rispondi così: funzione di stato; definizione <span class="m">\Delta S = \int\delta Q_{rev}/T</span> in J/K (isoterma <span class="m">Q/T</span>); si calcola su un percorso reversibile anche per processi irreversibili; in un sistema isolato non diminuisce mai (costante se reversibile, cresce se irreversibile): è il secondo principio; esempio: calore che passa dal caldo al freddo fa crescere l&#39;entropia totale; interpretazione statistica <span class="m">S = k_B\ln W</span> (disordine); indica il verso spontaneo delle trasformazioni.</p>
 </div>
 
 <div class="callout sintesi">
 
 <ul>
 <li>Macchina termica: <span class="m">L = Q_C - Q_F</span>; <span class="m">\eta = L/Q_C = 1 - Q_F/Q_C &lt; 1</span>.</li>
-<li>Carnot: 2 isoterme + 2 adiabatiche reversibili; <span class="m">\eta_C = 1 - T_F/T_C</span> in kelvin.</li>
-<li>Teorema di Carnot: stesso rendimento per tutte le reversibili tra le stesse temperature; nessuna macchina fa meglio.</li>
-<li>Rendimento più alto: <span class="m">T_C</span> più alta, <span class="m">T_F</span> più bassa.</li>
-<li>Frigorifero: <span class="m">COP = Q_F/L &gt; 0</span>, spesso maggiore di 1.</li>
-<li>Entropia: <span class="m">\Delta S = \int\delta Q_{rev}/T</span>; sistema isolato <span class="m">\Delta S \ge 0</span>.</li>
+<li>Carnot: 2 isoterme + 2 adiabatiche reversibili; <span class="m">Q_F/Q_C = T_F/T_C</span>; <span class="m">\eta_C = 1 - T_F/T_C</span> in kelvin, dipende solo dalle temperature.</li>
+<li>Teorema di Carnot: tutte le reversibili tra le stesse temperature hanno lo stesso rendimento; nessuna macchina fa meglio (altrimenti si viola Clausius).</li>
+<li>Rendimento più alto: <span class="m">T_C</span> più alta, <span class="m">T_F</span> più bassa; <span class="m">\eta = 1</span> richiederebbe <span class="m">T_F = 0</span> K.</li>
+<li>Frigorifero: <span class="m">Q_C = Q_F + L</span>; <span class="m">COP = Q_F/L &gt; 0</span>, spesso maggiore di 1; Carnot: <span class="m">T_F/(T_C - T_F)</span>.</li>
+<li>Entropia: <span class="m">\Delta S = \int\delta Q_{rev}/T</span>; sistema isolato <span class="m">\Delta S \ge 0</span>; <span class="m">S = k_B\ln W</span>.</li>
 </ul>
 </div>

@@ -1,31 +1,76 @@
 <h1 id="lez-42">Lezione 42 — Elettrochimica: pila Daniell e potenziali elettrochimici standard</h1>
 <h2 id="lez-42-perche">Perché questa lezione esiste</h2>
-<p>Hai già bilanciato reazioni REDOX con il metodo del numero di ossidazione (Lezioni
-17–18): sai separare una reazione in una semireazione di ossidazione e una di
-riduzione. L&#39;elettrochimica prende esattamente quella separazione e la rende
-<strong>fisica</strong>: se le due semireazioni avvengono in due luoghi diversi, collegati da un
-filo, gli elettroni che si scambiano diventano corrente elettrica utilizzabile. È
-il principio di ogni pila e batteria, ed è centrale per l&#39;ingegnere anche fuori
-dall&#39;elettronica: corrosione dei metalli, produzione industriale di alluminio e
-cloro, protezione delle strutture sono tutti fenomeni elettrochimici.</p>
+<p><strong>Elettrochimica: il ramo della chimica che studia la conversione dell&#39;energia
+elettrica in energia chimica e viceversa.</strong> Hai già bilanciato reazioni REDOX con il
+metodo del numero di ossidazione (Lezioni 17–18): sai separare una reazione in una
+semireazione di ossidazione e una di riduzione. L&#39;elettrochimica prende esattamente
+quella separazione e la rende <strong>fisica</strong>: se le due semireazioni avvengono in due
+luoghi diversi, collegati da un filo, gli elettroni che si scambiano diventano
+corrente elettrica utilizzabile.</p>
+<p>Perché interessa all&#39;ingegnere, qualunque sia il suo indirizzo:</p>
+<ul>
+<li>le <strong>pile</strong> (energia chimica → elettrica) alimentano tutti i dispositivi elettronici
+e i veicoli elettrici e ibridi;</li>
+<li>i <strong>processi elettrolitici</strong> (energia elettrica → chimica) producono materiali di
+grande interesse, per esempio l&#39;alluminio dalla bauxite (oltre 20 milioni di
+tonnellate l&#39;anno);</li>
+<li>la <strong>corrosione</strong> dei metalli è un fenomeno elettrochimico: degrada manufatti e
+impianti, con problemi di qualità, sicurezza e costi. Il progettista deve scegliere
+i materiali valutando non solo le prestazioni strutturali ma anche il comportamento
+chimico nell&#39;ambiente in cui lavorano.</li>
+</ul>
+<p>Il percorso della lezione: tre semplici esperimenti → semireazioni → pila Daniell e
+ponte salino → notazione delle pile → potenziali standard e elettrodo a idrogeno →
+relazione tra <span class="m">\Delta G</span> e potenziale.</p>
 <h2 id="lez-42-semireazioni">Tre esperimenti per arrivare alla pila</h2>
-<p><strong>Esperimento 1 — zinco in acido cloridrico.</strong> Una lamina di zinco immersa in
-<span class="m">\mathrm{HCl(aq)}</span> si consuma sviluppando idrogeno gassoso:
+<p><strong>Esperimento 1 — zinco in acido cloridrico.</strong> Una lamina di zinco (il metallo
+dell&#39;involucro delle comuni batterie) immersa in <span class="m">\mathrm{HCl(aq)}</span> (il disincrostante
+dei supermercati) si consuma, sviluppando una cospicua quantità di gas. Il gas è
+idrogeno: avvicinando una fiamma si ha una piccola deflagrazione (l&#39;idrogeno brucia
+con l&#39;ossigeno dell&#39;aria). La reazione, bilanciata:
+<span class="m d">\mathrm{Zn(s) + 2HCl(aq) \rightarrow ZnCl_2(aq) + H_2(g)}</span>
+Scrivendo le specie ioniche (HCl è un acido forte, completamente dissociato;
+<span class="m">\mathrm{ZnCl_2}</span> è un sale):
+<span class="m d">\mathrm{Zn(s) + 2H^+(aq) + 2Cl^-(aq) \rightarrow Zn^{2+}(aq) + 2Cl^-(aq) + H_2(g)}</span>
+Gli ioni <span class="m">\mathrm{Cl^-}</span> compaiono identici a sinistra e a destra: sono <strong>ioni
+spettatori</strong> e si cancellano. Resta la <strong>reazione ionica netta</strong>:
 <span class="m d">\mathrm{Zn(s) + 2H^+(aq) \rightarrow Zn^{2+}(aq) + H_2(g)}</span>
-Separando in trasferimento di elettroni: lo zinco perde due elettroni (si
-<strong>ossida</strong>), gli ioni <span class="m">\mathrm{H^+}</span> li acquistano (si <strong>riducono</strong>):</p>
+che dice: lo zinco a contatto con un acido qualsiasi (HF, <span class="m">\mathrm{HNO_3}</span>…) si
+&quot;corrode&quot; formando <span class="m">\mathrm{Zn^{2+}}</span> e idrogeno. Separando in trasferimento di
+elettroni:</p>
 <p><span class="m d">\text{ossidazione:}\quad \mathrm{Zn(s) \rightarrow Zn^{2+}(aq) + 2e^-}
 \qquad\qquad \text{riduzione:}\quad \mathrm{2H^+(aq) + 2e^- \rightarrow H_2(g)}</span></p>
-<p><strong>Esperimento 2 — zinco in solfato rameico.</strong> Stessa logica, ma il partner redox è
-<span class="m">\mathrm{Cu^{2+}}</span> invece di <span class="m">\mathrm{H^+}</span>:
+<ul>
+<li><strong>Ossidazione</strong>: una specie <strong>perde</strong> elettroni (il suo numero di ossidazione
+aumenta). Lo zinco passa da 0 a +2.</li>
+<li><strong>Riduzione</strong>: una specie <strong>acquista</strong> elettroni (il numero di ossidazione
+diminuisce). Gli <span class="m">\mathrm{H^+}</span> passano da +1 a 0, usando i 2 elettroni forniti da
+ogni atomo di zinco.</li>
+</ul>
+<p>Sommando membro a membro le due semireazioni si riottiene la redox complessiva.</p>
+<p><strong>Esperimento 2 — zinco in solfato rameico.</strong> La lamina di zinco in una soluzione di
+<span class="m">\mathrm{CuSO_4}</span> (azzurra; è l&#39;anticrittogamico venduto per il giardinaggio): dopo
+qualche ora il colore scompare, la lamina si consuma e si forma un precipitato tra il
+rosso e il grigio scuro (rame metallico).
+<span class="m d">\mathrm{Zn(s) + CuSO_4(aq) \rightarrow ZnSO_4(aq) + Cu(s)}</span>
+Gli ioni solfato sono spettatori; la reazione netta è la stessa con qualunque sale di
+rame(II) (<span class="m">\mathrm{CuCl_2}</span>, <span class="m">\mathrm{Cu(NO_3)_2}</span>):
 <span class="m d">\mathrm{Zn(s) + Cu^{2+}(aq) \rightarrow Zn^{2+}(aq) + Cu(s)}</span>
-Lo zinco si ossida, il rame si riduce (deposita come metallo).</p>
+<span class="m d">\text{ossidazione:}\ \mathrm{Zn\to Zn^{2+}+2e^-}\qquad\text{riduzione:}\ \mathrm{Cu^{2+}+2e^-\to Cu}</span>
+Per ogni mole di Zn ossidato si liberano 2 moli di elettroni; per ogni mole di
+<span class="m">\mathrm{Cu^{2+}}</span> ridotto ne servono 2. La reazione avviene all&#39;<strong>interfaccia</strong> tra la
+lamina e la soluzione: lì gli elettroni passano direttamente dallo zinco agli ioni
+rame; la <span class="m">[\mathrm{Cu^{2+}}]</span> diminuisce, la <span class="m">[\mathrm{Zn^{2+}}]</span> aumenta, il rame
+metallico precipita.</p>
 <p><strong>Esperimento 3 — rame in solfato di zinco: non succede nulla.</strong> Se inverti i
-ruoli (lamina di rame in <span class="m">\mathrm{ZnSO_4}</span>), <strong>non si osserva alcuna reazione</strong>. La
-6) (zinco che riduce il rame) è spontanea; la sua inversa (rame che riduce lo
-zinco) non lo è. Questo è il punto chiave: <strong>la spontaneità di una redox dipende
-da quale specie &quot;vuole&quot; ridursi di più</strong>, e questa tendenza si può misurare e
-tabulare — è lo scopo del resto della lezione.</p>
+ruoli (lamina di rame in <span class="m">\mathrm{ZnSO_4}</span>, soluzione trasparente), in linea di
+principio potrebbe avvenire <span class="m">\mathrm{Cu(s)+ZnSO_4(aq)\to CuSO_4(aq)+Zn(s)}</span>, con il
+rame che si ossida e lo zinco che si riduce. Invece <strong>non si osserva alcuna reazione</strong>,
+per quanto tempo si aspetti. Questa reazione è esattamente l&#39;inversa
+dell&#39;esperimento 2: lo zinco che riduce il rame è spontaneo, il rame che riduce lo
+zinco no. Questo è il punto chiave: <strong>la spontaneità di una redox dipende da quale
+specie &quot;vuole&quot; ridursi di più</strong>, e questa tendenza si può misurare e tabulare — è lo
+scopo del resto della lezione.</p>
 <div class="callout attenzione">
 
 <p>Il <strong>bilancio degli elettroni tra le due semireazioni è un vincolo assoluto</strong>
@@ -37,22 +82,52 @@ Lezioni 17–18.</p>
 </div>
 
 <h2 id="lez-42-pila-daniell">La pila Daniell</h2>
-<p>Puoi &quot;catturare&quot; gli elettroni scambiati nell&#39;esperimento 2 e convogliarli in un
-circuito esterno, separando fisicamente le due semireazioni in due contenitori
-(becher) collegati da un <strong>ponte salino</strong>:</p>
+<p>Si possono &quot;catturare&quot; gli elettroni scambiati nell&#39;esperimento 2 e convogliarli in un
+circuito esterno (per esempio per accendere una lampadina)? Sì: basta <strong>separare
+fisicamente</strong> le due semireazioni, in modo che gli elettroni debbano passare per un
+filo. Si ottiene una <strong>cella galvanica</strong> (o <strong>pila</strong>); quella zinco-rame si chiama
+<strong>pila Daniell</strong>.</p>
+<p>Costruzione:</p>
 <ul>
-<li>Nel becher del rame (soluzione di <span class="m">\mathrm{Cu^{2+}}</span> con elettrodo di rame)
-avviene la <strong>riduzione</strong>: è la <strong>semicella catodica</strong>, l&#39;elettrodo è il
-<strong>catodo</strong>.</li>
-<li>Nel becher dello zinco (soluzione di <span class="m">\mathrm{Zn^{2+}}</span> con elettrodo di zinco)
-avviene l&#39;<strong>ossidazione</strong>: è la <strong>semicella anodica</strong>, l&#39;elettrodo è
-l&#39;<strong>anodo</strong>.</li>
+<li>due contenitori (becher): uno con una soluzione di <span class="m">\mathrm{Cu^{2+}}</span> (per esempio
+1 M) e una lamina di rame, l&#39;altro con una soluzione di <span class="m">\mathrm{Zn^{2+}}</span> (1 M) e una
+lamina di zinco;</li>
+<li>le due lamine (gli <strong>elettrodi</strong>) collegate da un filo, eventualmente con un
+voltmetro;</li>
+<li>un <strong>ponte salino</strong>: un tubo di vetro o plastica piegato a U, riempito di una
+soluzione salina (tipicamente <span class="m">\mathrm{Na_2SO_4}</span> o <span class="m">\mathrm{NaNO_3}</span>, spesso
+gelificata perché non si versi), chiuso alle estremità e immerso nei due becher.
+Connette elettricamente le due soluzioni, che altrimenti resterebbero separate.</li>
 </ul>
-<p>Il catodo si carica positivamente (raccoglie ioni <span class="m">\mathrm{Cu^{2+}}</span> che si
-riducono, aumenta di spessore), l&#39;anodo si carica negativamente (rilascia elettroni
-e si consuma, passando in soluzione come <span class="m">\mathrm{Zn^{2+}}</span>). Con soluzioni a
-concentrazione 1 M, un voltmetro misura una differenza di potenziale (fem, <span class="m">\Delta E</span>)
-di circa <span class="m">+1.10\ \mathrm V</span>.</p>
+<p>Senza ponte salino il voltmetro non misura nessuna tensione; con il ponte salino la
+pila funziona.</p>
+<p>Le due semicelle:</p>
+<ul>
+<li>nel becher del rame avviene la <strong>riduzione</strong> (<span class="m">\mathrm{Cu^{2+}+2e^-\to Cu}</span>): è la
+<strong>semicella catodica</strong>, l&#39;elettrodo di rame è il <strong>catodo</strong>;</li>
+<li>nel becher dello zinco avviene l&#39;<strong>ossidazione</strong> (<span class="m">\mathrm{Zn\to Zn^{2+}+2e^-}</span>): è
+la <strong>semicella anodica</strong>, l&#39;elettrodo di zinco è l&#39;<strong>anodo</strong>.</li>
+</ul>
+<p>Al catodo ogni ione <span class="m">\mathrm{Cu^{2+}}</span> si avvicina all&#39;elettrodo, cattura 2 elettroni e
+si deposita come rame metallico: il catodo <strong>aumenta di spessore</strong> e si carica
+<strong>positivamente</strong> (cede elettroni alla riduzione). All&#39;anodo gli atomi di zinco perdono
+2 elettroni e passano in soluzione come <span class="m">\mathrm{Zn^{2+}}</span>: l&#39;anodo <strong>si consuma</strong> e si
+carica <strong>negativamente</strong> (raccoglie gli elettroni rilasciati). Gli elettroni
+viaggiano nel <strong>circuito esterno</strong> dall&#39;anodo (−) al catodo (+); la corrente
+convenzionale va in verso opposto, dal catodo all&#39;anodo. Con soluzioni 1 M il voltmetro
+misura una differenza di potenziale (<strong>forza elettromotrice</strong>, fem, <span class="m">\Delta E</span>) di circa
+<span class="m">+1.10\ \mathrm V</span>.</p>
+<h3>Il ruolo del ponte salino</h3>
+<p>Durante il funzionamento la semicella anodica si arricchisce di <span class="m">\mathrm{Zn^{2+}}</span> e
+quella catodica si impoverisce di <span class="m">\mathrm{Cu^{2+}}</span>. Senza ponte salino la soluzione
+catodica avrebbe un eccesso di <span class="m">\mathrm{SO_4^{2-}}</span> (carica negativa) e quella anodica
+un eccesso di <span class="m">\mathrm{Zn^{2+}}</span> (carica positiva): una <strong>separazione di cariche</strong> di
+segno opposto, che non avviene mai spontaneamente (servirebbe lavoro). Per questo, senza
+ponte salino, la pila si ferma subito. Con il ponte salino gli ioni migrano e
+ristabiliscono l&#39;elettroneutralità: gli <strong>anioni</strong> (es. <span class="m">\mathrm{SO_4^{2-}}</span>, o quelli
+del sale del ponte) vanno verso la semicella <strong>anodica</strong>, i <strong>cationi</strong> (es.
+<span class="m">\mathrm{Zn^{2+}}</span>, <span class="m">\mathrm{Na^+}</span> o <span class="m">\mathrm{K^+}</span> del ponte) verso quella
+<strong>catodica</strong>. Il ponte trasporta <strong>ioni</strong>, non elettroni.</p>
 <div class="callout attenzione">
 
 <p>Senza il <strong>ponte salino</strong> la pila non funziona: man mano che <span class="m">\mathrm{Zn^{2+}}</span> si
@@ -60,18 +135,68 @@ accumula nell&#39;anodo e <span class="m">\mathrm{Cu^{2+}}</span> si consuma nel
 tenderebbero a separare cariche di segno opposto — cosa che non avviene mai
 spontaneamente. Il ponte salino permette a ioni &quot;spettatori&quot; (es. <span class="m">\mathrm{SO_4^{2-}}</span>)
 di migrare tra le due semicelle per mantenere l&#39;elettroneutralità, senza
-partecipare alla redox.</p>
+partecipare alla redox. E se le due soluzioni venissero mescolate direttamente, lo
+zinco reagirebbe a contatto con il <span class="m">\mathrm{Cu^{2+}}</span> (esperimento 2): rame depositato
+sullo zinco, nessuna corrente utile nel circuito.</p>
 </div>
 
-<p><strong>Notazione schematica di una pila.</strong> <span class="m">\mathrm{Zn(s)/Zn^{2+}(aq,1M)\,//\,Cu^{2+}(aq,1M)/Cu(s)}</span>:
-a sinistra del doppio slash <code>//</code> (il ponte salino) l&#39;<strong>anodo</strong>, a destra il
-<strong>catodo</strong>; ogni singolo slash <code>/</code> separa fasi diverse (solido/soluzione).</p>
+<p><strong>Notazione schematica di una pila.</strong>
+<span class="m d">\mathrm{Zn(s)\,/\,Zn^{2+}(aq,1M)\,//\,Cu^{2+}(aq,1M)\,/\,Cu(s)}\qquad \Delta E = +1.10\ \mathrm V</span>
+A sinistra del doppio slash <code>//</code> (il ponte salino, o un setto poroso) la semicella
+<strong>anodica</strong>, a destra quella <strong>catodica</strong>; ogni singolo slash <code>/</code> separa specie in fasi
+diverse (solido/soluzione); per le specie in soluzione si indica la concentrazione.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Anodo</th>
+<th>Catodo</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>semireazione</td>
+<td>ossidazione</td>
+<td>riduzione</td>
+</tr>
+<tr>
+<td>segno nella pila</td>
+<td>−</td>
+<td>+</td>
+</tr>
+<tr>
+<td>nella pila Daniell</td>
+<td>Zn (si consuma)</td>
+<td>Cu (si ispessisce)</td>
+</tr>
+<tr>
+<td>posizione nella notazione</td>
+<td>a sinistra</td>
+<td>a destra</td>
+</tr>
+<tr>
+<td>ioni dal ponte salino</td>
+<td>arrivano anioni</td>
+<td>arrivano cationi</td>
+</tr>
+</tbody></table>
 <h2 id="lez-42-potenziali-standard">Potenziali elettrochimici standard</h2>
-<p>La fem misurata dipende da <strong>quali</strong> due semicelle accoppi. Per tabulare in modo
-universale la tendenza di ogni specie a ridursi, si fissa una <strong>condizione
-standard</strong> di riferimento (soluti 1 M, gas a 1 bar, 25 °C) e una <strong>semireazione di
-riferimento</strong> a cui si assegna arbitrariamente potenziale zero:</p>
+<p>La fem misurata dipende da <strong>quali</strong> due semicelle accoppi, dalle concentrazioni e
+dalla temperatura. Per razionalizzare lo studio e la progettazione delle pile si
+fissano delle <strong>condizioni standard</strong>:</p>
+<ul>
+<li>reagenti e prodotti nel loro stato standard;</li>
+<li>soluti in fase acquosa a concentrazione 1 M;</li>
+<li>gas alla pressione di 1 bar;</li>
+<li>(tabelle a 25 °C).</li>
+</ul>
+<p>Poi, invece di tabulare le fem di tutte le coppie possibili, si tabula il potenziale
+di ogni <strong>semireazione di riduzione</strong> rispetto a una <strong>semireazione di riferimento</strong>,
+a cui si assegna per convenzione potenziale zero:</p>
 <p><span class="m d">\mathrm{2H^+(aq,1M) + 2e^- \rightarrow H_2(g,1bar)} \qquad E^\circ = 0.00\ \mathrm V</span></p>
+<p><strong>Elettrodo standard a idrogeno</strong>: una soluzione acida con <span class="m">[\mathrm{H^+}] = 1</span> M
+(pH 0) in cui è immerso un elettrodo di <strong>platino</strong> (chimicamente inerte, serve solo da
+collegamento elettrico), attorno al quale si fa gorgogliare un flusso continuo di
+idrogeno gassoso a 1 bar.</p>
 <p>Per misurare il potenziale standard di riduzione di una specie qualsiasi, costruisci
 una pila tra quella semicella (in condizioni standard) e l&#39;elettrodo standard a
 idrogeno, e leggi la fem: se la specie si riduce effettivamente rispetto
@@ -79,21 +204,112 @@ all&#39;idrogeno (fa da catodo), le assegni potenziale di riduzione <strong>posi
 ossida (fa da anodo), potenziale di riduzione <strong>negativo</strong>.</p>
 <div class="callout esempio">
 
-<p>Con l&#39;elettrodo standard a idrogeno come riferimento: lo zinco (che si ossida
-rispetto all&#39;idrogeno) ha <span class="m">E^\circ(\mathrm{Zn^{2+}/Zn}) = -0.76\ \mathrm V</span>; il rame
-(che si riduce rispetto all&#39;idrogeno) ha <span class="m">E^\circ(\mathrm{Cu^{2+}/Cu}) = +0.34\ \mathrm V</span>.
-Tutte le semireazioni tabulate sono scritte per convenzione come <strong>riduzioni</strong>.</p>
-<p><strong>Ferro contro idrogeno.</strong> <span class="m">E^\circ(\mathrm{Fe^{2+}/Fe})=-0.44\ \mathrm V</span>, più basso
-di quello dell&#39;idrogeno (<span class="m">0.00\ \mathrm V</span>): il ferro ha tendenza a ridursi
+<p><strong>Zinco.</strong> La pila <span class="m">\mathrm{Zn/Zn^{2+}(1M)//H^+(1M)/H_2/Pt}</span> ha fem 0.76 V: l&#39;elettrodo
+a idrogeno è positivo (catodo, ci avviene la riduzione degli <span class="m">\mathrm{H^+}</span>), lo zinco
+negativo (anodo, si ossida). Quindi <span class="m">E^\circ(\mathrm{Zn^{2+}/Zn}) = -0.76\ \mathrm V</span>.</p>
+<p><strong>Rame.</strong> Rispetto all&#39;idrogeno il rame si riduce (catodo) e l&#39;idrogeno si ossida:
+<span class="m">E^\circ(\mathrm{Cu^{2+}/Cu}) = +0.34\ \mathrm V</span>.</p>
+<p><strong>Ricostruire la Daniell</strong>: <span class="m">\Delta E^\circ = 0.34 - (-0.76) = 1.10\ \mathrm V</span>, il
+valore misurato. Tutte le semireazioni tabulate sono scritte per convenzione come
+<strong>riduzioni</strong>.</p>
+<p><strong>Ferro contro idrogeno</strong> (esempio della dispensa: ferro in <span class="m">\mathrm{FeCl_2}</span> 1 M
+accoppiato all&#39;elettrodo a idrogeno). <span class="m">E^\circ(\mathrm{Fe^{2+}/Fe})=-0.44\ \mathrm V</span>, più
+basso di quello dell&#39;idrogeno (<span class="m">0.00\ \mathrm V</span>): il ferro ha tendenza a ridursi
 <strong>inferiore</strong>, quindi rispetto all&#39;idrogeno si ossida sempre. Riscrivendo la
 semireazione del ferro come ossidazione (cambiando segno al potenziale):
 <span class="m d">\mathrm{RED:}\ 2\mathrm H^++2e^-\to\mathrm H_2 \ (E^\circ=0.00\mathrm V) \qquad
 \mathrm{OX:}\ \mathrm{Fe}\to\mathrm{Fe^{2+}}+2e^- \ (E^\circ=+0.44\mathrm V)</span>
 <span class="m d">\mathrm{REDOX:}\ \mathrm{Fe+2H^+\to Fe^{2+}+H_2} \qquad \Delta E^\circ=0.00+0.44=+0.44\ \mathrm V</span>
-Il segno <strong>positivo</strong> della fem complessiva dice che la pila, così costruita,
-funziona davvero — è il criterio pratico di spontaneità che userai sempre.</p>
+Catodo (+): l&#39;elettrodo a idrogeno; anodo (−): il ferro. Il segno <strong>positivo</strong> della
+fem complessiva dice che la pila, così costruita, funziona davvero — è il criterio
+pratico di spontaneità che userai sempre.</p>
 </div>
 
+<p>Alcuni potenziali standard di riduzione a 25 °C (V), dal più ossidante al più
+riducente:</p>
+<table>
+<thead>
+<tr>
+<th>Semireazione</th>
+<th><span class="m">E^\circ</span></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><span class="m">\mathrm{Au^+ + e^- \to Au}</span></td>
+<td>+1.68</td>
+</tr>
+<tr>
+<td><span class="m">\mathrm{MnO_4^- + 8H^+ + 5e^- \to Mn^{2+} + 4H_2O}</span></td>
+<td>+1.51</td>
+</tr>
+<tr>
+<td><span class="m">\mathrm{Au^{3+} + 3e^- \to Au}</span></td>
+<td>+1.50</td>
+</tr>
+<tr>
+<td><span class="m">\mathrm{Cl_2 + 2e^- \to 2Cl^-}</span></td>
+<td>+1.36</td>
+</tr>
+<tr>
+<td><span class="m">\mathrm{Cr_2O_7^{2-} + 14H^+ + 6e^- \to 2Cr^{3+} + 7H_2O}</span></td>
+<td>+1.33</td>
+</tr>
+<tr>
+<td><span class="m">\mathrm{Pt^{2+} + 2e^- \to Pt}</span></td>
+<td>+1.20</td>
+</tr>
+<tr>
+<td><span class="m">\mathrm{Ag^+ + e^- \to Ag}</span></td>
+<td>+0.80</td>
+</tr>
+<tr>
+<td><span class="m">\mathrm{Cu^{2+} + 2e^- \to Cu}</span></td>
+<td>+0.34</td>
+</tr>
+<tr>
+<td><span class="m">\mathrm{2H^+ + 2e^- \to H_2}</span></td>
+<td>0.00</td>
+</tr>
+<tr>
+<td><span class="m">\mathrm{Pb^{2+} + 2e^- \to Pb}</span></td>
+<td>−0.13</td>
+</tr>
+<tr>
+<td><span class="m">\mathrm{Sn^{2+} + 2e^- \to Sn}</span></td>
+<td>−0.14</td>
+</tr>
+<tr>
+<td><span class="m">\mathrm{Ni^{2+} + 2e^- \to Ni}</span></td>
+<td>−0.23</td>
+</tr>
+<tr>
+<td><span class="m">\mathrm{Cd^{2+} + 2e^- \to Cd}</span></td>
+<td>−0.40</td>
+</tr>
+<tr>
+<td><span class="m">\mathrm{Fe^{2+} + 2e^- \to Fe}</span></td>
+<td>−0.44</td>
+</tr>
+<tr>
+<td><span class="m">\mathrm{Cr^{3+} + 3e^- \to Cr}</span></td>
+<td>−0.74</td>
+</tr>
+<tr>
+<td><span class="m">\mathrm{Zn^{2+} + 2e^- \to Zn}</span></td>
+<td>−0.76</td>
+</tr>
+<tr>
+<td><span class="m">\mathrm{Al^{3+} + 3e^- \to Al}</span></td>
+<td>−1.66</td>
+</tr>
+</tbody></table>
+<p>Come si legge: più alto è <span class="m">E^\circ</span>, più la forma ossidata (a sinistra) tende a
+ridursi, cioè è un <strong>ossidante forte</strong> (<span class="m">\mathrm{MnO_4^-}</span>, <span class="m">\mathrm{Cl_2}</span>). Più basso
+è <span class="m">E^\circ</span>, più la forma ridotta (a destra) tende a ossidarsi, cioè è un <strong>riducente
+forte</strong> (Al, Zn). Una specie della colonna di sinistra ossida spontaneamente (in
+condizioni standard) qualunque forma ridotta che stia <strong>più in basso</strong> in tabella. I
+metalli con <span class="m">E^\circ&lt;0</span> (Al, Zn, Fe, Ni, Sn, Pb) si sciolgono negli acidi liberando
+<span class="m">\mathrm{H_2}</span>; quelli con <span class="m">E^\circ&gt;0</span> (Cu, Ag, Au, Pt) no.</p>
 <div class="callout formula">
 
 <p><strong>Come costruire la fem di una pila da una tabella di potenziali standard di
@@ -110,23 +326,115 @@ riscritta come ossidazione, cambiando il segno del suo potenziale.
 quando bilanci la redox complessiva (a differenza delle entalpie in Hess!): sono
 grandezze intensive (energia per unità di carica), non estensive. Se devi
 moltiplicare una semireazione per 5 per bilanciare gli elettroni, il suo potenziale
-resta invariato — è un errore molto comune nel primo approccio a questi esercizi.</p>
+resta invariato — è un errore molto comune nel primo approccio a questi esercizi.
+(<span class="m">\mathrm{Cu^{2+}+2e^-\to Cu}</span> e <span class="m">2\mathrm{Cu^{2+}}+4e^-\to2\mathrm{Cu}</span> hanno entrambe
+<span class="m">E^\circ = +0.34</span> V.)</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Sessione di studio 3 (nella dispensa della Lezione 39).</strong></p>
+<p><em>Stagno e platino in HI 1 M: perché solo uno sviluppa gas?</em> Semireazioni di riduzione:
+<span class="m">2\mathrm{H^+}+2e^-\to\mathrm{H_2}</span> (0.00 V); <span class="m">\mathrm{Sn^{2+}}+2e^-\to\mathrm{Sn}</span>
+(−0.14 V); <span class="m">\mathrm{Pt^{2+}}+2e^-\to\mathrm{Pt}</span> (+1.20 V).</p>
+<ul>
+<li>Il platino ha il potenziale di riduzione più alto: potrebbe solo <strong>ridursi</strong> (ioni
+<span class="m">\mathrm{Pt^{2+}}</span> → Pt), ma in soluzione non ci sono ioni <span class="m">\mathrm{Pt^{2+}}</span>: il
+platino resta inalterato.</li>
+<li>Lo stagno ha il potenziale più basso: può solo <strong>ossidarsi</strong> (anodo):
+<span class="m">\mathrm{Sn}\to\mathrm{Sn^{2+}}+2e^-</span>, <span class="m">E^\circ_{ox} = +0.14</span> V; gli <span class="m">\mathrm{H^+}</span> si
+riducono (catodo) a <span class="m">\mathrm{H_2}</span>.</li>
+<li>Redox: <span class="m">\mathrm{Sn}+2\mathrm{H^+}\to\mathrm{Sn^{2+}}+\mathrm{H_2}</span>, <span class="m">\Delta E^\circ = 0.00+0.14 = +0.14</span> V <span class="m">&gt;0</span>,
+quindi <span class="m">\Delta G^\circ&lt;0</span>: spontanea. Il gas che si sviluppa (solo sullo stagno) è
+<strong>idrogeno</strong>.</li>
+</ul>
+<p><em>Pila <span class="m">\mathrm{Ni/Ni(NO_3)_2(1M)//AgNO_3(1M)/Ag}</span>: si consumano 20 g di un elettrodo.
+Quale? Quanto metallo si deposita sull&#39;altro?</em> <span class="m">E^\circ(\mathrm{Ni^{2+}/Ni}) = -0.23</span> V,
+<span class="m">E^\circ(\mathrm{Ag^+/Ag}) = +0.80</span> V: <span class="m">\mathrm{Ag^+}</span> ha maggiore tendenza a ridursi,
+quindi il <strong>nichel si ossida</strong> (anodo, si consuma):
+<span class="m">\mathrm{Ni}+2\mathrm{Ag^+}\to2\mathrm{Ag}+\mathrm{Ni^{2+}}</span> (<span class="m">\Delta E^\circ = 1.03</span> V).</p>
+<ol>
+<li><span class="m">n(\mathrm{Ni}) = 20.0/58.7 = 0.34</span> mol.</li>
+<li>Per la stechiometria, <span class="m">n(\mathrm{Ag}) = 2n(\mathrm{Ni}) = 0.68</span> mol.</li>
+<li>Massa di argento depositata: <span class="m">0.68\times107.9 = 73.4</span> g.</li>
+</ol>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Domande del paniere sulla tabella dei potenziali.</strong></p>
+<ul>
+<li><strong>Alluminio in <span class="m">\mathrm{H_2SO_4}</span> 2 M</strong>: <span class="m">E^\circ(\mathrm{Al^{3+}/Al}) = -1.66</span> V <span class="m">&lt;0</span>:
+l&#39;Al si ossida e gli <span class="m">\mathrm{H^+}</span> si riducono, il gas è <strong><span class="m">\mathrm{H_2}</span></strong>:
+<span class="m">2\mathrm{Al}+3\mathrm{H_2SO_4}\to\mathrm{Al_2(SO_4)_3}+3\mathrm{H_2}</span> (l&#39;acido diluito
+non si riduce a <span class="m">\mathrm{SO_2}</span>).</li>
+<li><strong>Oro, permanganato e dicromato (aperta)</strong>: in ambiente acido
+<span class="m">E^\circ(\mathrm{MnO_4^-/Mn^{2+}}) = 1.51</span> V è (di poco) superiore a
+<span class="m">E^\circ(\mathrm{Au^{3+}/Au}) = 1.50</span> V: il permanganato può ossidare l&#39;oro
+(<span class="m">\Delta E^\circ&gt;0</span>). <span class="m">E^\circ(\mathrm{Cr_2O_7^{2-}/Cr^{3+}}) = 1.33</span> V è inferiore a
+1.50 V: <span class="m">\Delta E^\circ = 1.33-1.50 &lt;0</span>, il dicromato non può.</li>
+<li><strong>Barretta di Cu in una miscela</strong> di <span class="m">\mathrm{Zn(NO_3)_2}</span>, <span class="m">\mathrm{AgNO_3}</span>,
+<span class="m">\mathrm{Cd(NO_3)_2}</span> (0.1 M) e <span class="m">\mathrm{HNO_3}</span> 0.001 M (aperta). Il rame
+(<span class="m">E^\circ = 0.337</span> V) può ridurre solo le specie con potenziale più alto: solo
+<span class="m">\mathrm{Ag^+}</span> (0.799 V). Si osserva deposito di <strong>argento</strong> sulla barretta e la
+soluzione si colora d&#39;azzurro per gli ioni <span class="m">\mathrm{Cu^{2+}}</span>:
+<span class="m">\mathrm{Cu}+2\mathrm{Ag^+}\to\mathrm{Cu^{2+}}+2\mathrm{Ag}</span>
+(<span class="m">\Delta E^\circ = 0.462</span> V). <span class="m">\mathrm{Zn^{2+}}</span> (−0.763) e <span class="m">\mathrm{Cd^{2+}}</span> (−0.403) non
+reagiscono; nemmeno gli <span class="m">\mathrm{H^+}</span> (a pH 3 il loro potenziale è ancora più basso
+di 0 V): niente idrogeno.</li>
+<li><strong>Il riducente più forte</strong> tra varie specie è quella con il potenziale di riduzione
+<strong>più basso</strong> (es. Zn a −0.76 V).</li>
+<li><strong>Pila Cr/Sn</strong>: <span class="m">\Delta E^\circ = E^\circ(\mathrm{Sn^{2+}/Sn}) - E^\circ(\mathrm{Cr^{3+}/Cr}) = -0.136-(-0.74) = 0.604</span> V.</li>
+</ul>
+</div>
+
+<h3>Combinare semireazioni: si sommano i <span class="m">\Delta G</span>, non i potenziali</h3>
+<p>Se una semireazione si ottiene combinando altre <strong>semireazioni</strong> (non una pila
+completa), il numero di elettroni cambia e i potenziali non si sommano direttamente:
+si sommano gli <strong><span class="m">\Delta G^\circ = -nFE^\circ</span></strong> (estensivi) e poi si ridivide.</p>
+<div class="callout esempio">
+
+<p><strong><span class="m">E^\circ</span> di <span class="m">\mathrm{Au^{3+}}+2e^-\to\mathrm{Au^+}</span> (aperta)</strong>, dati
+<span class="m">\mathrm{Au^{3+}}+3e^-\to\mathrm{Au}</span> (<span class="m">E^\circ_1 = 1.50</span> V) e
+<span class="m">\mathrm{Au^+}+e^-\to\mathrm{Au}</span> (<span class="m">E^\circ_2 = 1.68</span> V).</p>
+<ol>
+<li>La reazione cercata è (1) meno (2): <span class="m">\mathrm{Au^{3+}}+3e^- - (\mathrm{Au^+}+e^-) \to \mathrm{Au} - \mathrm{Au}</span>,
+cioè <span class="m">\mathrm{Au^{3+}}+2e^-\to\mathrm{Au^+}</span>.</li>
+<li><span class="m">\Delta G^\circ_1 = -3F(1.50) = -4.50F</span>; <span class="m">\Delta G^\circ_2 = -1F(1.68) = -1.68F</span>.</li>
+<li><span class="m">\Delta G^\circ = \Delta G^\circ_1 - \Delta G^\circ_2 = -4.50F + 1.68F = -2.82F</span>.</li>
+<li><span class="m">E^\circ = -\Delta G^\circ/(2F) = 2.82/2 = 1.41</span> V.</li>
+</ol>
+<p>(Sottraendo direttamente i potenziali si otterrebbe <span class="m">1.50-1.68 = -0.18</span> V: sbagliato.)</p>
 </div>
 
 <h2 id="lez-42-dg-e-potenziale">Relazione tra <span class="m">\Delta G</span> e potenziale elettrochimico</h2>
 <p>Dalla termodinamica chimica sai che <span class="m">\Delta G</span> (a <span class="m">T,P</span> costanti) è il massimo
-lavoro <strong>non-espansivo</strong> che il sistema può compiere. Il lavoro elettrico è
-lavoro non-espansivo: una pila, funzionando, compie lavoro elettrico
-sull&#39;ambiente (es. aziona un motorino).</p>
-<p>Il lavoro necessario per spostare una carica <span class="m">q</span> tra due punti a differenza di
-potenziale <span class="m">E</span> è <span class="m">w_e = qE</span>. Per <span class="m">n</span> moli di elettroni, la carica trasportata è
-<span class="m">q=nN_Ae</span> (con <span class="m">N_A</span> numero di Avogadro ed <span class="m">e</span> carica elementare); il prodotto
-<span class="m">N_Ae=F=96485\ \mathrm{C\,mol^{-1}}</span> si chiama <strong>costante di Faraday</strong>. Quindi:</p>
+lavoro <strong>non-espansivo</strong> che il sistema può compiere, <span class="m">\Delta G = w_e</span> (&quot;espansivo&quot; è
+il lavoro dovuto a variazioni di volume; tutto il resto è non-espansivo). Il lavoro
+elettrico è lavoro non-espansivo: una pila (il sistema), funzionando, compie lavoro
+elettrico sull&#39;ambiente (es. aziona un motorino).</p>
+<p>Derivazione passo per passo:</p>
+<ol>
+<li>Dalla fisica, il lavoro per spostare una carica <span class="m">q</span> tra due punti a differenza di
+potenziale <span class="m">E</span> è <span class="m">w_e = qE</span>.</li>
+<li><span class="m">n</span> moli di elettroni portano la carica <span class="m">q = -n N_A e</span> (<span class="m">N_A</span> = numero di Avogadro,
+<span class="m">-e</span> = carica del singolo elettrone; il segno meno perché l&#39;elettrone è negativo).</li>
+<li>Quindi <span class="m">w_e = -nN_AeE</span>.</li>
+<li>Il prodotto <span class="m">N_Ae = 6.022\times10^{23}\times1.602\times10^{-19} = 96\,485\ \mathrm{C\,mol^{-1}}</span>
+è la <strong>costante di Faraday</strong> <span class="m">F</span>: la carica di una mole di elettroni.</li>
+<li>Sostituendo in <span class="m">\Delta G = w_e</span>:</li>
+</ol>
 <div class="callout formula">
 
 <p><span class="m d">\Delta G = w_e = -nFE \qquad\text{(o, in condizioni standard,}\ \Delta G^\circ=-nFE^\circ\text{)}</span></p>
 </div>
 
+<ul>
+<li><span class="m">\Delta G</span> in J (per la reazione come scritta);</li>
+<li><span class="m">n</span> = moli di elettroni scambiati nella redox bilanciata;</li>
+<li><span class="m">F = 96\,485\ \mathrm{C/mol}</span>;</li>
+<li><span class="m">E</span> = fem in V (1 V·C = 1 J).</li>
+</ul>
 <p>Il segno meno riflette la convenzione: una pila che eroga energia (lavoro fatto
 <strong>dal</strong> sistema <strong>sull&#39;ambiente</strong>) ha <span class="m">\Delta G&lt;0</span>, quindi deve corrispondere a
 <span class="m">E&gt;0</span>. Questo lega direttamente il criterio termodinamico di spontaneità (già visto
@@ -136,40 +444,96 @@ per <span class="m">\Delta G</span>) al criterio elettrochimico:</p>
 <p><span class="m d">\text{Reazione spontanea} \iff \Delta G&lt;0 \iff E\,(\text{o }\Delta E) &gt; 0</span></p>
 </div>
 
+<p>Nota: <span class="m">E</span> è intensivo, <span class="m">\Delta G</span> estensivo. Se raddoppi i coefficienti della
+reazione, <span class="m">n</span> raddoppia ed <span class="m">E</span> resta lo stesso, quindi <span class="m">\Delta G</span> raddoppia. Per
+esempio <span class="m">\mathrm{Fe^{2+}}+\mathrm{H_2}\to\mathrm{Fe}+2\mathrm{H^+}</span> (<span class="m">E^\circ = -0.44</span> V, <span class="m">n=2</span>):
+<span class="m">\Delta G^\circ = -2\times96\,485\times(-0.44) = +84.9</span> kJ; scritta con coefficienti
+doppi (<span class="m">n=4</span>): <span class="m">+169.8</span> kJ.</p>
+<p>Combinando con <span class="m">\Delta G^\circ = -RT\ln K</span> (<a href="#/teoria/chimica/39/lez-39-costante-K">Lezione 39</a>) si ottiene
+anche <span class="m">E^\circ = \dfrac{RT}{nF}\ln K</span>: una fem standard positiva corrisponde a <span class="m">K&gt;1</span>.</p>
 <div class="callout esempio">
 
 <p>La corrosione dello zinco in una soluzione di <span class="m">\mathrm{Cu^{2+}}</span>
-(<span class="m">\mathrm{Zn+CuSO_4\to ZnSO_4+Cu}</span>) è spontanea perché <span class="m">\Delta E^\circ=+1.10\ \mathrm V&gt;0</span>.
-La reazione inversa (corrosione del rame in <span class="m">\mathrm{Zn^{2+}}</span>) ha
-<span class="m">\Delta E^\circ=-1.10\ \mathrm V&lt;0</span>: non spontanea — coerente con l&#39;esperimento 3,
-in cui non si osservava nulla. Analogamente, il platino immerso in una soluzione
-acida non si corrode perché <span class="m">\mathrm{Pt+2H^+\to Pt^{2+}+H_2}</span> ha
-<span class="m">\Delta E^\circ=-1.20\ \mathrm V&lt;0</span>.</p>
+(<span class="m">\mathrm{Zn+CuSO_4\to ZnSO_4+Cu}</span>) è spontanea perché <span class="m">\Delta E^\circ=+1.10\ \mathrm V&gt;0</span>
+(<span class="m">\Delta G^\circ = -2\times96\,485\times1.10 = -212</span> kJ). La reazione inversa
+(corrosione del rame in <span class="m">\mathrm{Zn^{2+}}</span>) ha <span class="m">\Delta E^\circ=-1.10\ \mathrm V&lt;0</span>: non
+spontanea — coerente con l&#39;esperimento 3, in cui non si osservava nulla. La corrosione
+del ferro in soluzione acida è spontanea (<span class="m">\Delta E^\circ = +0.44</span> V). Il platino
+immerso in una soluzione acida non si corrode perché <span class="m">\mathrm{Pt+2H^+\to Pt^{2+}+H_2}</span>
+ha <span class="m">\Delta E^\circ=-1.20\ \mathrm V&lt;0</span>.</p>
+</div>
+
+<h3>Pile non standard (anticipo della Lezione 43)</h3>
+<p>Se le concentrazioni non sono 1 M, la fem si corregge con l&#39;equazione di Nernst
+(<a href="#/teoria/chimica/43/lez-43-nernst">Lezione 43</a>): a 25 °C, <span class="m">\Delta E = \Delta E^\circ - \dfrac{0.0592}{n}\log Q</span>.</p>
+<div class="callout esempio">
+
+<p><strong>Pila Ag/Zn (aperta)</strong>: argento in <span class="m">\mathrm{AgNO_3}</span> 1.5 M, zinco in
+<span class="m">\mathrm{Zn(NO_3)_2}</span> 0.8 M.</p>
+<ol>
+<li>Catodo: Ag (<span class="m">E^\circ = 0.799</span> V); anodo: Zn (<span class="m">-0.763</span> V). <span class="m">\Delta E^\circ = 1.562</span> V.</li>
+<li>Redox: <span class="m">\mathrm{Zn}+2\mathrm{Ag^+}\to\mathrm{Zn^{2+}}+2\mathrm{Ag}</span>, <span class="m">n = 2</span>,
+<span class="m">Q = [\mathrm{Zn^{2+}}]/[\mathrm{Ag^+}]^2 = 0.8/1.5^2 = 0.356</span>.</li>
+<li><span class="m">\Delta E = 1.562 - 0.0296\log0.356 = 1.562+0.013 = 1.575</span> V.</li>
+<li>Schema: <span class="m">\mathrm{Zn/Zn^{2+}(0.8M)//Ag^+(1.5M)/Ag}</span>; elettroni nel circuito esterno
+dallo zinco (−) all&#39;argento (+), corrente in verso opposto; ponte salino necessario
+per l&#39;elettroneutralità.</li>
+</ol>
+<p><strong>Pila Cu/Zn non standard (aperta)</strong>: Cu in <span class="m">\mathrm{CuCl_2}</span> 1.4 M, Zn in
+<span class="m">\mathrm{Zn(NO_3)_2}</span> 0.7 M. <span class="m">\Delta E^\circ = 0.337+0.763 = 1.100</span> V;
+<span class="m">Q = 0.7/1.4 = 0.5</span>; <span class="m">\Delta E = 1.100 - 0.0296\log0.5 = 1.109</span> V. Catodo il rame,
+anodo lo zinco; corrente esterna dal rame allo zinco. Aumentando <span class="m">[\mathrm{Cu^{2+}}]</span>
+(specie che si riduce al catodo) la fem aumenta.</p>
+</div>
+
+<div class="callout attenzione">
+
+<p>Altre domande-trabocchetto sulle pile:</p>
+<ul>
+<li>gli <strong>elettroni</strong> viaggiano nel circuito esterno, dall&#39;anodo al catodo; il ponte
+salino trasporta solo <strong>ioni</strong> (cationi verso il catodo);</li>
+<li>nella <strong>pila</strong> il catodo è positivo e l&#39;anodo negativo; nell&#39;<strong>elettrolisi</strong> i segni
+si invertono (<a href="#/teoria/chimica/43/lez-43-elettrolisi">Lezione 43</a>), ma l&#39;anodo resta sempre il luogo
+dell&#39;ossidazione;</li>
+<li>la fem &quot;vera&quot; si misura <strong>a circuito aperto</strong>, senza passaggio di corrente (con
+corrente si legge una tensione minore per cadute ohmiche e polarizzazione);</li>
+<li>una pila converte energia <strong>chimica</strong> in energia <strong>elettrica</strong>.</li>
+</ul>
 </div>
 
 <div class="callout sintesi">
 
 <ul>
+<li>Ossidazione = perdita di elettroni, riduzione = acquisto; le due semireazioni
+devono scambiare lo stesso numero di elettroni; gli ioni spettatori si eliminano.</li>
 <li>Una redox spontanea &quot;separata&quot; in due semicelle collegate da un ponte salino è
 una <strong>cella galvanica</strong> (pila): riduzione al <strong>catodo</strong> (+), ossidazione
-all&#39;<strong>anodo</strong> (−).</li>
-<li>I potenziali standard di riduzione sono tabulati rispetto all&#39;elettrodo standard
-a idrogeno (<span class="m">E^\circ=0.00\ \mathrm V</span> per convenzione).</li>
+all&#39;<strong>anodo</strong> (−). Notazione: anodo // catodo.</li>
+<li>Il ponte salino mantiene l&#39;elettroneutralità delle due soluzioni; senza, la pila si
+ferma.</li>
+<li>I potenziali standard di riduzione (1 M, 1 bar, 25 °C) sono tabulati rispetto
+all&#39;elettrodo standard a idrogeno (<span class="m">E^\circ=0.00\ \mathrm V</span> per convenzione); più
+alto <span class="m">E^\circ</span>, più forte l&#39;ossidante.</li>
 <li><span class="m">\Delta E^\circ = E^\circ_{rid,catodo} - E^\circ_{rid,anodo}</span>: la semireazione con
 potenziale più alto è quella che avviene davvero come riduzione.</li>
-<li><span class="m">\Delta G = -nFE</span>: lega termodinamica ed elettrochimica. <span class="m">E&gt;0 \iff \Delta G&lt;0
-  \iff</span> reazione spontanea.</li>
-<li>I potenziali standard <strong>non</strong> si moltiplicano per i coefficienti stechiometrici.</li>
+<li><span class="m">\Delta G = -nFE</span> (<span class="m">F = 96\,485</span> C/mol): lega termodinamica ed elettrochimica.
+<span class="m">E&gt;0 \iff \Delta G&lt;0 \iff</span> reazione spontanea.</li>
+<li>I potenziali standard <strong>non</strong> si moltiplicano per i coefficienti stechiometrici;
+per combinare semireazioni si sommano i <span class="m">\Delta G^\circ</span>.</li>
 </ul>
 </div>
 
 <div class="callout esame">
 
-<p><strong>Come cade all&#39;esame.</strong> Il paniere &quot;044&quot; (23 domande chiuse) mescola
-elettrochimica con richiami di REDOX e di termodinamica: aspettati domande che
-chiedono di identificare anodo/catodo da una tabella di potenziali, calcolare
-<span class="m">\Delta E^\circ</span> e dedurre la spontaneità dal segno. Il metodo sicuro: scrivi
-<strong>sempre</strong> le semireazioni come riduzioni, confronta i potenziali tabulati, e solo
-alla fine decidi quale va invertita.</p>
+<p><strong>Come cade all&#39;esame.</strong> Il paniere di elettrochimica mescola elettrochimica con
+richiami di REDOX e di termodinamica: aspettati domande che chiedono di identificare
+anodo/catodo da una tabella di potenziali, calcolare <span class="m">\Delta E^\circ</span> e dedurre la
+spontaneità dal segno, il ruolo del ponte salino, il verso degli elettroni, i segni
+degli elettrodi, <span class="m">\Delta G = -nFE</span>. Le aperte: quale gas si sviluppa da un metallo in
+acido, perché il permanganato ossida l&#39;oro e il dicromato no, <span class="m">E^\circ</span> di una coppia
+da altre due semireazioni, cosa succede a una barretta di rame in una miscela di sali,
+fem di pile con disegno, anodo, catodo e verso della corrente. Il metodo sicuro:
+scrivi <strong>sempre</strong> le semireazioni come riduzioni, confronta i potenziali tabulati, e
+solo alla fine decidi quale va invertita.</p>
 <p><strong>Allenati qui:</strong> Extra 91 · Extra 92 · domande reali del paniere: Lez.44 q1, Lez.45 q10, Lez.46 q1–q4, Lez.48 (16 domande)</p>
 </div>

@@ -1,31 +1,119 @@
 <h1 id="lez-44">Lezione 44 — Corrosione del ferro e metodi di protezione</h1>
 <h2 id="lez-44-perche">Perché questa lezione esiste</h2>
 <p>La corrosione è l&#39;applicazione più rilevante dell&#39;elettrochimica per un ingegnere
-civile: ogni struttura in ferro (armature, tubazioni, pontili) è, dal punto di
-vista chimico, una possibile pila spontanea in cui il metallo fa da anodo
-sacrificale. Capire <em>perché</em> il ferro si corrode — e non, per esempio, l&#39;oro —
+civile: ogni struttura in ferro (armature, tubazioni, pontili, scafi, serbatoi) è,
+dal punto di vista chimico, una possibile <strong>pila spontanea</strong> in cui il metallo fa da
+anodo e si consuma. Capire <em>perché</em> il ferro si corrode — e non, per esempio, l&#39;oro —
 permette di progettare la protezione giusta invece di limitarsi a osservarne il
 degrado.</p>
+<p>La lezione (dispensa &quot;Cenni sulla corrosione&quot;) usa direttamente gli strumenti delle
+lezioni precedenti di elettrochimica: i <strong>potenziali standard di riduzione</strong> (chi ha
+<span class="m">E^\circ</span> più alto si riduce, chi lo ha più basso si ossida), l&#39;<strong>equazione di
+Nernst</strong> (il potenziale dipende dalle concentrazioni) e le <strong>leggi di Faraday</strong> (la
+carica che passa è proporzionale alle moli che reagiscono). Il percorso è:</p>
+<ol>
+<li>il meccanismo elettrochimico della corrosione del ferro in aria umida;</li>
+<li>dove la corrosione è più rapida: screpolature, saldature, sali disciolti;</li>
+<li>la corrosione per <strong>aerazione differenziale</strong>;</li>
+<li>la corrosione <strong>galvanica</strong> (contatto con un metallo più nobile);</li>
+<li>i metodi di protezione: vernici e plastiche, zincatura/cromatura, <strong>protezione
+catodica</strong> con anodo sacrificale;</li>
+<li>due esercizi numerici: corrente erogata da un anodo sacrificale e velocità di
+assottigliamento di una parete d&#39;acciaio.</li>
+</ol>
+<h3>Richiamo: che cosa vuol dire &quot;corrodersi&quot;</h3>
+<p><strong>Corrosione: ossidazione spontanea di un metallo da parte dell&#39;ambiente in cui si
+trova</strong> (aria, acqua, terreno), con perdita di materiale e di proprietà meccaniche.
+È una reazione <strong>redox</strong>: c&#39;è sempre una specie che si ossida (il metallo, che cede
+elettroni) e una che si riduce (l&#39;ossidante dell&#39;ambiente, di solito l&#39;ossigeno
+disciolto in acqua o gli ioni <span class="m">\mathrm{H^+}</span> di un ambiente acido). Come in una pila:</p>
+<ul>
+<li>la zona dove il metallo si ossida è l&#39;<strong>anodo</strong> (ossidazione all&#39;anodo, sempre);</li>
+<li>la zona dove l&#39;ossidante si riduce è il <strong>catodo</strong> (riduzione al catodo, sempre);</li>
+<li>gli elettroni viaggiano <strong>dentro il metallo</strong> dall&#39;anodo al catodo;</li>
+<li>il film d&#39;acqua (meglio se salata) fa da <strong>ponte salino/elettrolita</strong>, chiudendo il
+circuito con il moto degli ioni.</li>
+</ul>
+<p>La differenza con una pila di laboratorio è che qui anodo e catodo sono due zone
+<strong>dello stesso pezzo di metallo</strong>, cortocircuitate: l&#39;energia non si recupera come
+lavoro elettrico, si spreca tutta nel consumo del metallo.</p>
 <h2 id="lez-44-meccanismo">Il meccanismo elettrochimico della corrosione del ferro</h2>
 <p>Considera un pezzo di ferro esposto all&#39;aria, ricoperto da un sottile film
-d&#39;acqua. Due semireazioni sono in competizione:</p>
+d&#39;acqua (una goccia di pioggia, la condensa, l&#39;umidità). Due semireazioni di
+riduzione sono in competizione, con i loro potenziali standard a 25 °C:</p>
 <p><span class="m d">\text{1)}\quad \mathrm{Fe^{2+} + 2e^- \rightarrow Fe} \qquad E^\circ = -0.44\ \mathrm V</span>
 <span class="m d">\text{2)}\quad \mathrm{O_2(g) + 2H_2O(l) + 4e^- \rightarrow 4OH^-(aq)} \qquad E^\circ = +0.40\ \mathrm V</span></p>
+<p>Da dove viene l&#39;ossigeno della 2)? Una certa quantità di <span class="m">\mathrm{O_2}</span> dell&#39;aria è
+<strong>disciolta nell&#39;acqua</strong>, in quantità proporzionale alla sua pressione parziale
+(<strong>legge di Henry</strong>, <span class="m">C = k_H\,p_{O_2}</span>). Quindi nel film d&#39;acqua c&#39;è sempre un po&#39;
+di ossigeno pronto a ridursi.</p>
 <p>Poiché <span class="m">E^\circ</span> della 2) è <strong>più alto</strong> di quello della 1), è l&#39;ossigeno disciolto
-in acqua (per la legge di Henry) a ridursi davvero, mentre il ferro fa da anodo e si
-ossida: <span class="m">\mathrm{Fe\to Fe^{2+}+2e^-}</span>. Applicando Nernst alla 2) a pH 7 (invece che
-in condizioni standard, dove <span class="m">[\mathrm{OH^-}]=1\ \mathrm M</span> e pH 14):</p>
-<p><span class="m d">E = E^\circ - \frac{0.0592}{4}\log[\mathrm{OH^-}]^4 = (+0.40) - (-0.42) = +0.82\ \mathrm V</span></p>
-<p>un potenziale ancora più favorevole alla riduzione dell&#39;ossigeno — la corrosione a
-pH neutro (l&#39;acqua piovana o l&#39;umidità atmosferica) è quindi più spontanea che in
-condizioni standard basiche.</p>
-<p>Gli ioni <span class="m">\mathrm{Fe^{2+}}</span> prodotti reagiscono con gli <span class="m">\mathrm{OH^-}</span> generati
-dalla 2), formando idrossido ferroso <span class="m">\mathrm{Fe(OH)_2}</span>, insolubile, che precipita.
-In presenza di ossigeno dell&#39;aria, l&#39;idrossido ferroso si trasforma in idrossido
-ferrico <span class="m">\mathrm{Fe(OH)_3}</span> — la comune <strong>ruggine</strong>. La precipitazione
-dell&#39;idrossido sposta continuamente l&#39;equilibrio verso destra (principio di Le
-Chatelier: sottrarre un prodotto solido dalla soluzione favorisce ulteriore
-ossidazione), rendendo il processo autosostenuto.</p>
+in acqua a ridursi davvero (procede la 2) da sinistra a destra), mentre la 1)
+procede <strong>al contrario</strong>: il ferro fa da anodo e si ossida,
+<span class="m">\mathrm{Fe\to Fe^{2+}+2e^-}</span>.</p>
+<h3>La reazione complessiva e la sua spontaneità</h3>
+<p>Per sommare le due semireazioni bisogna che gli elettroni si compensino: la 2)
+consuma 4 elettroni, l&#39;ossidazione del ferro ne produce 2, quindi si moltiplica
+quest&#39;ultima per 2:</p>
+<p><span class="m d">\begin{aligned}
+2\,\mathrm{Fe} &amp;\to 2\,\mathrm{Fe^{2+}} + 4e^- &amp;&amp;\text{(anodo, ossidazione)}\\
+\mathrm{O_2} + 2\,\mathrm{H_2O} + 4e^- &amp;\to 4\,\mathrm{OH^-} &amp;&amp;\text{(catodo, riduzione)}\\ \hline
+2\,\mathrm{Fe} + \mathrm{O_2} + 2\,\mathrm{H_2O} &amp;\to 2\,\mathrm{Fe^{2+}} + 4\,\mathrm{OH^-}
+\end{aligned}</span></p>
+<p>La forza elettromotrice standard è catodo meno anodo (i potenziali <strong>non</strong> si
+moltiplicano per 2: sono grandezze intensive):</p>
+<p><span class="m d">\Delta E^\circ = E^\circ_{catodo} - E^\circ_{anodo} = (+0.40) - (-0.44) = +0.84\ \mathrm V &gt; 0</span></p>
+<p>e quindi <span class="m">\Delta G^\circ = -nF\Delta E^\circ = -4 \cdot 96500 \cdot 0.84 \approx
+-3.2\cdot10^{5}\ \mathrm J</span>: la corrosione è <strong>spontanea</strong>.</p>
+<h3>Perché a pH 7 la corrosione è ancora più favorita (Nernst)</h3>
+<p>Il valore <span class="m">+0.40\ \mathrm V</span> è riferito alle <strong>condizioni standard</strong>, cioè
+<span class="m">[\mathrm{OH^-}] = 1\ \mathrm M</span>: una soluzione a <strong>pH 14</strong>, fortemente basica. L&#39;acqua
+piovana o l&#39;umidità atmosferica sono invece circa neutre, pH 7, cioè
+<span class="m">[\mathrm{OH^-}]=10^{-7}\ \mathrm M</span>. Applichiamo l&#39;equazione di Nernst alla 2)
+(con <span class="m">n = 4</span> elettroni e <span class="m">p_{O_2}</span> presa unitaria, come fa la dispensa):</p>
+<p><span class="m d">E = E^\circ - \frac{RT}{nF}\ln\frac{[\mathrm{OH^-}]^4}{p_{O_2}}
+= E^\circ - \frac{0.0259}{4}\ln[\mathrm{OH^-}]^4</span></p>
+<p>dove <span class="m">RT/F = 8.314 \cdot 298/96500 = 0.0259\ \mathrm V</span> a 25 °C. Passaggi:</p>
+<ul>
+<li><span class="m">\ln[\mathrm{OH^-}]^4 = 4\ln(10^{-7}) = 4 \cdot (-16.12) = -64.5</span>;</li>
+<li><span class="m">\dfrac{0.0259}{4}\cdot(-64.5) = -0.417 \approx -0.42\ \mathrm V</span>;</li>
+<li><span class="m">E = (+0.40) - (-0.42) = +0.82\ \mathrm V</span>.</li>
+</ul>
+<p>La stessa cosa in logaritmi decimali: <span class="m">E = E^\circ - \dfrac{0.0592}{4}\log[\mathrm{OH^-}]^4
+= 0.40 - 0.0148\cdot(-28) = 0.40 + 0.41 = +0.81 \approx +0.82\ \mathrm V</span>.</p>
+<p>Il potenziale della riduzione dell&#39;ossigeno sale da <span class="m">+0.40</span> a circa <span class="m">+0.82\ \mathrm V</span>:
+diminuire <span class="m">[\mathrm{OH^-}]</span> (un prodotto della 2) sposta la semireazione verso destra,
+coerentemente con Le Chatelier. La differenza con il ferro diventa
+<span class="m">0.82-(-0.44)=1.26\ \mathrm V</span>: <strong>a pH neutro la corrosione è più spontanea che in
+ambiente basico</strong>. Per lo stesso motivo un ambiente fortemente basico (come
+il calcestruzzo, pH ≈ 12–13) protegge le armature.</p>
+<h3>Dalla ruggine al processo autosostenuto</h3>
+<p>Gli ioni <span class="m">\mathrm{Fe^{2+}}</span> prodotti all&#39;anodo reagiscono con gli <span class="m">\mathrm{OH^-}</span> generati
+dalla 2) al catodo, formando idrossido ferroso, <strong>insolubile</strong>, che precipita:</p>
+<p><span class="m d">\mathrm{Fe^{2+} + 2OH^- \rightarrow Fe(OH)_2(s)}</span></p>
+<p>In presenza dell&#39;ossigeno dell&#39;aria, l&#39;idrossido ferroso (ferro +2) si ossida a
+idrossido ferrico (ferro +3), la comune <strong>ruggine</strong>:</p>
+<p><span class="m d">\mathrm{4Fe(OH)_2 + O_2 + 2H_2O \rightarrow 4Fe(OH)_3}</span></p>
+<p>(la ruggine si scrive anche come ossido idrato <span class="m">\mathrm{Fe_2O_3\cdot xH_2O}</span>: è la
+stessa sostanza, <span class="m">2\,\mathrm{Fe(OH)_3} = \mathrm{Fe_2O_3\cdot 3H_2O}</span>).</p>
+<p>La precipitazione dell&#39;idrossido sposta continuamente l&#39;equilibrio verso destra
+(<strong>principio di Le Chatelier</strong>: sottrarre un prodotto dalla soluzione, facendolo
+precipitare come solido, favorisce ulteriore ossidazione), rendendo il processo
+<strong>termodinamicamente</strong> favorito e autosostenuto: la ruggine non protegge il ferro
+(è porosa e si sfalda), quindi la corrosione continua in profondità.</p>
+<h3>Dove la corrosione è più rapida</h3>
+<p>La dispensa elenca i punti in cui questi processi avvengono più facilmente:</p>
+<ul>
+<li>dove ci sono <strong>screpolature</strong> della superficie;</li>
+<li>in corrispondenza delle <strong>saldature</strong>;</li>
+<li>nelle zone del metallo <strong>particolarmente sollecitate</strong> dal punto di vista
+meccanico (tensioni interne, deformazioni).</li>
+</ul>
+<p>Inoltre il processo è <strong>molto più veloce se nell&#39;acqua sono disciolti dei sali</strong>,
+come il cloruro di sodio dell&#39;acqua di mare (o i sali antigelo sparsi sulle strade):
+gli ioni aumentano la <strong>conducibilità elettrica</strong> della soluzione e quindi
+favoriscono il trasferimento di cariche tra la zona anodica e quella catodica. In
+un&#39;acqua pura, poco conduttiva, il circuito si chiude male e la corrosione è lenta.</p>
 <div class="callout attenzione">
 
 <p><strong>Errata nel materiale del corso.</strong> La slide 2 di <code>44.pdf</code> scrive il potenziale
@@ -39,35 +127,111 @@ alto del potenziale della 1)&quot;: <span class="m">+0.40 &gt; -0.44</span> è v
 falso). Usa sempre <span class="m">-0.44\ \mathrm V</span> per <span class="m">E^\circ(\mathrm{Fe^{2+}/Fe})</span>.</p>
 </div>
 
-<p><strong>Corrosione per aerazione differenziale.</strong> La corrosione non è uniforme: nelle
-zone a <strong>bassa</strong> concentrazione di ossigeno (screpolature, saldature, sotto
-depositi superficiali, sotto il livello dell&#39;acqua) avviene la semireazione di
-<strong>ossidazione</strong> (il ferro si consuma); nelle zone ad <strong>alta</strong> concentrazione di
-ossigeno avviene la <strong>riduzione</strong>. È il motivo per cui la corrosione è
-particolarmente insidiosa dal punto di vista ingegneristico: si concentra proprio
-nelle zone meno ispezionabili (fessure, giunti, punti a contatto con il terreno),
-non in modo uniforme sulla superficie esposta.</p>
-<p><strong>Corrosione galvanica.</strong> Se un manufatto in ferro è a contatto con un metallo a
-potenziale di riduzione <strong>più alto</strong> (es. il rame, <span class="m">E^\circ=+0.34\ \mathrm V</span>), la
-zona di contatto favorisce ulteriormente la corrosione del ferro: il rame non si
-ossida (non ci sono ioni <span class="m">\mathrm{Cu^{2+}}</span> liberi, solo il metallo), ma <strong>catalizza</strong>
-il trasferimento di elettroni fungendo da collettore per la riduzione
-dell&#39;ossigeno, che avviene sulla sua superficie mentre il ferro vicino si ossida
-come anodo.</p>
+<h3>La goccia d&#39;acqua sul ferro (figura della dispensa, descritta)</h3>
+<p>La dispensa mostra una goccia d&#39;acqua appoggiata su una lamiera di ferro:</p>
+<ul>
+<li>al <strong>centro</strong> della goccia, sotto lo spessore maggiore d&#39;acqua, l&#39;ossigeno arriva
+con difficoltà (deve diffondere attraverso tutta la goccia): qui c&#39;è poco
+<span class="m">\mathrm{O_2}</span>, la zona è <strong>anodica</strong> (<span class="m">\mathrm{Fe\to Fe^{2+}+2e^-}</span>) e il metallo
+si scava (zona &quot;–&quot;, corrosione maggiore);</li>
+<li>ai <strong>bordi</strong> della goccia, dove lo strato d&#39;acqua è sottile, l&#39;ossigeno arriva
+facilmente: la zona è <strong>catodica</strong>
+(<span class="m">\mathrm{H_2O+\tfrac12O_2+2e^-\to2OH^-}</span>, zona &quot;+&quot;, corrosione minore);</li>
+<li>gli elettroni corrono <strong>nel metallo</strong> dal centro verso i bordi;</li>
+<li>dove gli <span class="m">\mathrm{Fe^{2+}}</span> (che diffondono verso l&#39;esterno) incontrano gli
+<span class="m">\mathrm{OH^-}</span> (che diffondono verso l&#39;interno) precipita l&#39;idrossido, che si
+ossida a ruggine: per questo l&#39;anello di ruggine si forma <strong>fra</strong> il centro e il
+bordo, non dove il ferro si consuma.</li>
+</ul>
+<p>Questa è già un esempio del meccanismo successivo.</p>
+<p><strong>Corrosione per aerazione differenziale.</strong> La corrosione non è uniforme: la
+corrosione può essere favorita dall&#39;esistenza, nella stessa struttura metallica, di
+zone a <strong>differente concentrazione di ossigeno</strong>. Nelle zone a <strong>bassa</strong>
+concentrazione di ossigeno (cricche, screpolature, fessure, saldature, sotto
+accumuli di depositi superficiali, sotto il livello dell&#39;acqua) avviene la
+semireazione di <strong>ossidazione</strong> (il ferro si consuma); nelle zone ad <strong>alta</strong>
+concentrazione di ossigeno avviene la <strong>riduzione</strong> dell&#39;ossigeno. È il motivo per
+cui la corrosione è particolarmente insidiosa dal punto di vista ingegneristico: si
+concentra proprio nelle zone meno ispezionabili (fessure, giunti, punti a contatto
+con il terreno o sott&#39;acqua), non in modo uniforme sulla superficie esposta.</p>
+<p><em>Perché proprio lì?</em> La riduzione dell&#39;ossigeno ha bisogno di <span class="m">\mathrm{O_2}</span>: avviene
+dove ce n&#39;è di più, e per Nernst il suo potenziale è più alto dove <span class="m">p_{O_2}</span> è
+maggiore. Ma il circuito va chiuso: gli elettroni consumati nella zona areata devono
+essere forniti da qualche altra parte, e li fornisce il ferro della zona <strong>povera</strong>
+di ossigeno, che si ossida. La zona areata è &quot;protetta&quot; (fa da catodo) a spese di
+quella non areata.</p>
+<div class="callout esempio">
+
+<p><strong>Il pilone di ferro immerso in acqua (dalla dispensa).</strong> Un pilone di ferro piantato
+in un fondale, con una parte fuori e una parte sotto il pelo dell&#39;acqua, subisce
+corrosione per aerazione differenziale. In prossimità del <strong>pelo libero</strong> la
+concentrazione di <span class="m">\mathrm{O_2}</span> è più alta: lì avviene la semireazione di riduzione
+dell&#39;ossigeno (2), che consuma gli elettroni provenienti dall&#39;ossidazione del ferro
+nella <strong>zona sommersa</strong>, più in basso, dove l&#39;ossigeno è scarso. Gli ioni
+<span class="m">\mathrm{Fe^{2+}}</span> formati sott&#39;acqua si trasformano poi in ruggine per reazione con
+gli <span class="m">\mathrm{OH^-}</span> prodotti dalla 2). Risultato: il pilone si assottiglia poco sotto
+il livello dell&#39;acqua, cioè proprio dove non lo si vede.</p>
+</div>
+
+<p><strong>Corrosione galvanica.</strong> Un&#39;altra modalità di corrosione si verifica quando un
+manufatto in ferro è a contatto con un metallo a potenziale di riduzione <strong>più
+alto</strong> (es. il rame, <span class="m">E^\circ(\mathrm{Cu^{2+}/Cu})=+0.34\ \mathrm V</span>): la zona di
+contatto è soggetta a corrosione del ferro. Il rame in realtà non subisce alcun
+processo: potrebbe solo ridursi, ma non ci sono ioni <span class="m">\mathrm{Cu^{2+}}</span> liberi, c&#39;è
+solo il metallo. Quella che avviene sulla sua superficie è la riduzione
+dell&#39;ossigeno (2), con formazione finale di ruggine. Il rame funge da <strong>collettore
+di elettroni</strong>: <strong>catalizza</strong> il trasferimento di elettroni, offrendo una superficie
+su cui l&#39;ossigeno si riduce facilmente, mentre il ferro vicino si ossida come anodo.</p>
+<p>Nella figura della dispensa un tubo di ferro è stretto da una fascetta di rame in una
+soluzione salina ossigenata: il tubo di ferro, ai due lati della fascetta, è
+l&#39;<strong>anodo</strong> (<span class="m">\mathrm{Fe\to Fe^{2+}+2e^-}</span>); la fascetta di rame è il <strong>catodo</strong>
+(<span class="m">\mathrm{H_2O+2e^-+\tfrac12O_2\to2OH^-}</span>); fra i due precipita <span class="m">\mathrm{Fe(OH)_3}</span>.</p>
+<div class="callout attenzione">
+
+<p>Nella corrosione galvanica l&#39;<strong>ossidante</strong> non è il rame: è sempre l&#39;ossigeno
+disciolto. Il rame non si consuma e non cambia numero di ossidazione; accelera la
+corrosione del ferro perché diventa una grande superficie catodica, e il ferro
+resta l&#39;unico anodo del sistema. Regola generale: accoppiare due metalli diversi
+in presenza di un elettrolita fa corrodere quello con <span class="m">E^\circ</span> <strong>più basso</strong>.</p>
+</div>
+
 <h2 id="lez-44-protezione">Protezione dei metalli dalla corrosione</h2>
-<p><strong>Rivestimento con metalli a potenziale di riduzione minore del ferro</strong> (zincatura,
-cromatura): lo zinco o il cromo si ossidano al posto del ferro sottostante, e lo
-strato di ossido che si forma spesso <strong>passiva</strong> la superficie, cioè la protegge
-dall&#39;ulteriore ossidazione bloccando l&#39;accesso dell&#39;ossigeno al metallo.</p>
-<p><strong>Protezione catodica</strong> (o &quot;anodo sacrificale&quot;): il manufatto da proteggere viene
-collegato elettricamente a un metallo che si ossida più facilmente del ferro (es.
-magnesio, <span class="m">E^\circ(\mathrm{Mg^{2+}/Mg})\approx-2.37\ \mathrm V</span>, molto più basso di
-<span class="m">-0.44\ \mathrm V</span>). Il blocco di magnesio diventa l&#39;<strong>anodo</strong> (si consuma,
-sacrificandosi), mentre la struttura in ferro diventa il <strong>catodo</strong> — e al catodo
-avviene solo riduzione, mai ossidazione, quindi il ferro non si corrode finché il
-blocco di magnesio non è esaurito. Va sostituito periodicamente. Per le acque
-marine si preferiscono anodi di zinco o alluminio, perché il magnesio si consuma
-troppo rapidamente in quell&#39;ambiente.</p>
+<p>La dispensa elenca tre strategie.</p>
+<p><strong>1. Barriera: vernici, smalti, materie plastiche.</strong> Si ricopre il metallo con uno
+strato che impedisce all&#39;acqua e all&#39;ossigeno di raggiungerlo: senza elettrolita e
+senza ossidante la pila non si forma. Funziona finché lo strato è integro: un
+graffio espone il metallo (e crea anche una zona di aerazione differenziale).</p>
+<p><strong>2. Rivestimento con metalli a potenziale di riduzione minore del ferro</strong>
+(zincatura, cromatura: es. Zn, <span class="m">E^\circ=-0.76\ \mathrm V</span>; Cr, <span class="m">E^\circ\approx-0.74\ \mathrm V</span>):
+lo zinco o il cromo si ossidano al posto del ferro sottostante, e lo strato di ossido
+che si forma <strong>passiva</strong> la superficie, cioè la protegge dall&#39;ulteriore ossidazione
+bloccando l&#39;accesso dell&#39;ossigeno al metallo. <strong>Passivazione</strong>: formazione di uno
+strato di ossido compatto, aderente e impermeabile che blocca la corrosione (al
+contrario della ruggine, porosa). Se il rivestimento di zinco si graffia, è comunque
+lo zinco (più ossidabile) a ossidarsi per primo, non il ferro esposto.</p>
+<p><strong>3. Protezione catodica</strong> (o &quot;anodo sacrificale&quot;): il manufatto da proteggere viene
+collegato elettricamente a un metallo che si ossida più facilmente del ferro e che
+pertanto viene &quot;sacrificato&quot; (es. magnesio, <span class="m">E^\circ(\mathrm{Mg^{2+}/Mg})\approx-2.37\ \mathrm V</span>,
+molto più basso di <span class="m">-0.44\ \mathrm V</span>). Il blocco di magnesio diventa l&#39;<strong>anodo</strong>
+(si consuma, sacrificandosi):</p>
+<p><span class="m d">\mathrm{Mg \rightarrow Mg^{2+} + 2e^-}</span></p>
+<p>mentre la struttura in ferro diventa il <strong>catodo</strong> — e al catodo avviene solo
+riduzione, mai ossidazione: sul ferro si riduce l&#39;ossigeno, oppure vengono
+<strong>ridotti eventuali ioni <span class="m">\mathrm{Fe^{2+}}</span></strong> presenti sul metallo (ruggine formatasi
+in precedenza) o nel terreno, secondo <span class="m">\mathrm{Fe^{2+}+2e^-\to Fe}</span>. Quindi il ferro
+non si corrode finché il blocco di magnesio non è esaurito. Periodicamente basta
+ripristinare il blocco che si è consumato, con evidente risparmio di tempo e costi
+rispetto alla sostituzione della struttura.</p>
+<p><em>Esempio della dispensa (figura del Brown–LeMay):</em> una tubazione in ferro interrata
+per il trasporto dell&#39;acqua è collegata, con un filo di rame isolato saldato al
+tubo, a un blocco di magnesio sepolto a circa 30 cm di profondità. Il blocco di
+magnesio è circondato da una miscela di gesso, solfato di sodio e argilla, che
+migliora la <strong>conduttività degli ioni</strong> nel terreno. Il condotto è in effetti il
+catodo di una cella voltaica.</p>
+<p>Lo stesso principio protegge le <strong>eliche delle navi</strong>, generalmente in bronzo (lega
+rame–stagno), e gli scafi. Per le acque marine si usano anodi sacrificali di
+<strong>zinco</strong> o <strong>alluminio</strong>: il magnesio non è adatto perché in acqua di mare si consuma
+troppo velocemente.</p>
 <div class="callout formula">
 
 <p><strong>Criterio di scelta dell&#39;anodo sacrificale</strong>: deve avere <span class="m">E^\circ_{rid}</span> <strong>più
@@ -76,6 +240,58 @@ galvanica risultante sia sempre lui a fare da anodo (a ossidarsi) e il metallo d
 proteggere a fare da catodo.</p>
 </div>
 
+<table>
+<thead>
+<tr>
+<th>Metallo</th>
+<th><span class="m">E^\circ_{rid}</span> (V)</th>
+<th>Rispetto al ferro (<span class="m">-0.44</span>)</th>
+<th>Come anodo sacrificale per il ferro</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Mg</td>
+<td><span class="m">-2.37</span></td>
+<td>molto più basso</td>
+<td>sì (terreno; in mare si consuma troppo)</td>
+</tr>
+<tr>
+<td>Al</td>
+<td><span class="m">-1.66</span></td>
+<td>più basso</td>
+<td>sì (acque marine)</td>
+</tr>
+<tr>
+<td>Mn</td>
+<td><span class="m">-1.18</span></td>
+<td>più basso</td>
+<td>sì</td>
+</tr>
+<tr>
+<td>Zn</td>
+<td><span class="m">-0.76</span></td>
+<td>più basso</td>
+<td>sì (zincatura, acque marine)</td>
+</tr>
+<tr>
+<td>Ni</td>
+<td><span class="m">-0.25</span></td>
+<td>più alto</td>
+<td>no: accelera la corrosione</td>
+</tr>
+<tr>
+<td>Pb</td>
+<td><span class="m">-0.13</span></td>
+<td>più alto</td>
+<td>no</td>
+</tr>
+<tr>
+<td>Cu</td>
+<td><span class="m">+0.34</span></td>
+<td>più alto</td>
+<td>no: corrosione galvanica</td>
+</tr>
+</tbody></table>
 <div class="callout esempio">
 
 <p>Le eliche delle navi, spesso in bronzo (lega rame-stagno, potenziali di riduzione
@@ -84,22 +300,119 @@ ancora più facilmente ossidabile del bronzo stesso. Si usano tipicamente anodi
 sacrificali di zinco o alluminio, coerenti con la regola sopra.</p>
 </div>
 
+<h2 id="lez-44-esercizi">Esercizi svolti della dispensa: corrosione e leggi di Faraday</h2>
+<p>Entrambi gli esercizi usano lo stesso filo logico: <strong>massa → moli di metallo → moli
+di elettroni (dalla semireazione) → carica</strong> con la costante di Faraday
+<span class="m">F = 96500\ \mathrm{C/mol}</span> (carica di una mole di elettroni), e poi
+<span class="m">I = Q/t</span> (corrente in ampere = coulomb al secondo).</p>
+<div class="callout esempio">
+
+<p><strong>Corrente erogata da un anodo sacrificale.</strong> Un anodo sacrificale di magnesio di
+2.2 kg è collegato allo scafo di acciaio di una nave. Se l&#39;anodo si corrode
+completamente in 100 giorni, qual è la corrente media erogata in questo periodo?</p>
+<ol>
+<li>Semireazione: <span class="m">\mathrm{Mg\to Mg^{2+}+2e^-}</span>: <strong>2 moli di elettroni per ogni mole
+di magnesio</strong>.</li>
+<li>Moli di magnesio (<span class="m">M = 24.305\ \mathrm{g/mol}</span>):
+<span class="m">n_{Mg} = \dfrac{2200\ \mathrm g}{24.305\ \mathrm{g/mol}} = 90.52\ \mathrm{mol}</span>.</li>
+<li>Moli di elettroni: <span class="m">n_{e^-} = 2 \cdot 90.52 = 181.04\ \mathrm{mol}</span>.</li>
+<li>Carica: <span class="m">Q = n_{e^-}\,F = 181.04 \cdot 96500 = 1.747\cdot10^{7}\ \mathrm C</span>
+(17 470 360 C).</li>
+<li>Tempo in secondi: <span class="m">t = 100\ \mathrm{giorni}\cdot 24\ \mathrm{h/giorno}\cdot
+   3600\ \mathrm{s/h} = 8.64\cdot10^{6}\ \mathrm s</span>.</li>
+<li>Corrente: <span class="m">I = \dfrac{Q}{t} = \dfrac{1.747\cdot10^{7}}{8.64\cdot10^{6}} = 2.02\ \mathrm A</span>.</li>
+</ol>
+<p>(Nella slide il denominatore è scritto &quot;100 g&quot;: è un refuso per 100 giorni.)</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Tempo per assottigliare una parete.</strong> La parete di una vasca di acciaio contenente
+acqua aerata si corrode a una velocità di <span class="m">54.7\ \mathrm{mg\,dm^{-2}\,giorno^{-1}}</span>.
+Quanto tempo impiega a diminuire di 0.50 mm di spessore? (densità dell&#39;acciaio
+<span class="m">7.87\ \mathrm{g/cm^3}</span>)</p>
+<ol>
+<li>Si ragiona su una superficie di riferimento di <span class="m">1\ \mathrm{dm^2} = 100\ \mathrm{cm^2}</span>
+(quadrato di 10 cm × 10 cm).</li>
+<li>Spessore consumato: <span class="m">S = 0.50\ \mathrm{mm} = 0.050\ \mathrm{cm}</span>.</li>
+<li>Massa consumata per <span class="m">\mathrm{cm^2}</span>: volume per cm² × densità
+<span class="m">= 0.050\ \mathrm{cm}\cdot 7.87\ \mathrm{g/cm^3} = 0.3935\ \mathrm{g/cm^2}</span>.</li>
+<li>Per dm²: <span class="m">0.3935\ \mathrm{g/cm^2}\cdot100\ \mathrm{cm^2/dm^2} = 39.35\ \mathrm{g/dm^2}</span>.</li>
+<li>Velocità di corrosione in grammi: <span class="m">54.7\ \mathrm{mg} = 54.7\cdot10^{-3}\ \mathrm g</span>
+per dm² al giorno.</li>
+<li>Tempo: <span class="m">t = \dfrac{39.35\ \mathrm{g/dm^2}}{54.7\cdot10^{-3}\ \mathrm{g\,dm^{-2}\,giorno^{-1}}}
+   = 719\ \mathrm{giorni}</span> (circa 2 anni).</li>
+</ol>
+<p>Qui la semireazione <span class="m">\mathrm{Fe\to Fe^{2+}+2e^-}</span> non serve per il calcolo (si lavora
+direttamente in massa); servirebbe se si chiedesse la corrente di corrosione:
+<span class="m">\dfrac{54.7\cdot10^{-3}}{55.85}=9.79\cdot10^{-4}</span> mol di Fe al giorno per dm²,
+cioè <span class="m">1.96\cdot10^{-3}</span> mol di elettroni, <span class="m">189\ \mathrm C</span> al giorno,
+<span class="m">I = 189/86400 = 2.2\ \mathrm{mA}</span> per dm².</p>
+</div>
+
+<h2 id="lez-44-ripasso">Ripasso di elettrochimica per le domande del paniere</h2>
+<p>Le domande del paniere collegate a questa lezione sono di elettrochimica generale.
+Il metodo è sempre lo stesso: confrontare i potenziali di riduzione.</p>
+<p><strong>Metallo in un acido diluito.</strong> Un metallo attivo, con <span class="m">E^\circ</span> negativo (Al, Zn,
+Fe, Mg...), immerso in un acido <strong>diluito</strong> e non ossidante (HCl, <span class="m">\mathrm{H_2SO_4}</span>
+2 M) viene ossidato dagli ioni <span class="m">\mathrm{H^+}</span>, che si riducono a idrogeno gassoso
+(<span class="m">2\mathrm{H^+}+2e^-\to\mathrm{H_2}</span>, <span class="m">E^\circ = 0</span> V per definizione). Per
+l&#39;alluminio (<span class="m">E^\circ=-1.66</span> V):</p>
+<p><span class="m d">2\,\mathrm{Al(s)} + 3\,\mathrm{H_2SO_4(aq)} \rightarrow \mathrm{Al_2(SO_4)_3(aq)} + 3\,\mathrm{H_2(g)}</span></p>
+<p>Il gas che si libera è <strong>idrogeno</strong>. Lo zolfo del solfato non si riduce (a <span class="m">\mathrm{SO_2}</span>
+si arriverebbe solo con acido solforico concentrato e caldo), l&#39;<span class="m">\mathrm{SO_3}</span> non
+c&#39;entra (stesso numero di ossidazione +6 del solfato, non è una riduzione) e
+l&#39;ossigeno non si forma (servirebbe un&#39;ossidazione dell&#39;acqua, cioè un ossidante
+fortissimo, non un riducente come Al). Un metallo <strong>nobile</strong> (<span class="m">E^\circ&gt;0</span>: Cu, Ag,
+Au) invece non sviluppa idrogeno con gli acidi diluiti.</p>
+<div class="callout esempio">
+
+<p><strong>Pila oro–nichel (domanda aperta del paniere).</strong> Elettrodo di oro in una soluzione
+di <span class="m">\mathrm{Au(NO_3)_3}</span> (3.83 g in 200 mL) ed elettrodo di nichel in una soluzione di
+<span class="m">\mathrm{Ni(NO_3)_2}</span> (2.91 g in 100 mL). Potenziali: <span class="m">E^\circ(\mathrm{Au^{3+}/Au})=+1.50</span> V,
+<span class="m">E^\circ(\mathrm{Ni^{2+}/Ni})=-0.25</span> V.</p>
+<p><em>Concentrazioni.</em> <span class="m">M(\mathrm{Au(NO_3)_3}) = 197.0 + 3\cdot62.0 = 383.0\ \mathrm{g/mol}</span>:
+<span class="m">n = 3.83/383.0 = 0.0100</span> mol in 0.200 L, <span class="m">[\mathrm{Au^{3+}}]=0.0500</span> M.
+<span class="m">M(\mathrm{Ni(NO_3)_2}) = 58.69 + 2\cdot62.01 = 182.7\ \mathrm{g/mol}</span>:
+<span class="m">n = 2.91/182.7 = 0.01593</span> mol in 0.100 L, <span class="m">[\mathrm{Ni^{2+}}]=0.1593</span> M.</p>
+<p><em>a) Redox.</em> L&#39;oro ha il potenziale più alto: si riduce
+(<span class="m">\mathrm{Au^{3+}+3e^-\to Au}</span>); il nichel si ossida (<span class="m">\mathrm{Ni\to Ni^{2+}+2e^-}</span>).
+Il minimo comune multiplo degli elettroni è 6: si moltiplica la prima per 2 e la
+seconda per 3:</p>
+<p><span class="m d">2\,\mathrm{Au^{3+}} + 3\,\mathrm{Ni} \rightarrow 2\,\mathrm{Au} + 3\,\mathrm{Ni^{2+}} \qquad (n=6)</span></p>
+<p><em>b) Elettrodi e f.e.m. standard.</em> Catodo (riduzione, polo +): oro. Anodo
+(ossidazione, polo –): nichel. <span class="m">\Delta E^\circ = 1.50 - (-0.25) = 1.75</span> V.</p>
+<p><em>c) F.e.m. nelle condizioni date (Nernst).</em>
+<span class="m">Q = \dfrac{[\mathrm{Ni^{2+}}]^3}{[\mathrm{Au^{3+}}]^2} = \dfrac{0.1593^3}{0.0500^2}
+= \dfrac{4.04\cdot10^{-3}}{2.50\cdot10^{-3}} = 1.62</span>;
+<span class="m">\Delta E = 1.75 - \dfrac{0.0592}{6}\log 1.62 = 1.75 - 0.00987\cdot0.209 = 1.75 - 0.002 \approx 1.75</span> V.
+La correzione è trascurabile perché <span class="m">Q</span> è vicino a 1.</p>
+</div>
+
 <div class="callout sintesi">
 
 <ul>
-<li>La corrosione del ferro è una redox spontanea: <span class="m">\mathrm{O_2}</span> disciolto si
-riduce (<span class="m">E^\circ=+0.40\ \mathrm V</span>, più alto), il ferro si ossida
-(<span class="m">E^\circ=-0.44\ \mathrm V</span>, più basso).</li>
+<li>La corrosione del ferro è una redox spontanea: <span class="m">\mathrm{O_2}</span> disciolto (legge di
+Henry) si riduce (<span class="m">E^\circ=+0.40\ \mathrm V</span>, più alto), il ferro si ossida
+(<span class="m">E^\circ=-0.44\ \mathrm V</span>, più basso); <span class="m">\Delta E^\circ = 0.84</span> V.</li>
+<li>A pH 7 (Nernst) il potenziale dell&#39;ossigeno sale a <span class="m">+0.82</span> V: in ambiente neutro
+la corrosione è più favorita che in ambiente basico.</li>
 <li>Gli ioni <span class="m">\mathrm{Fe^{2+}}</span> precipitano come <span class="m">\mathrm{Fe(OH)_2}</span>, poi si
 ossidano a <span class="m">\mathrm{Fe(OH)_3}</span> (ruggine): la precipitazione sposta l&#39;equilibrio
 verso ulteriore corrosione (Le Chatelier).</li>
+<li>Zone critiche: screpolature, saldature, zone sollecitate; i sali disciolti (acqua
+di mare) aumentano la conducibilità e accelerano la corrosione.</li>
 <li><strong>Aerazione differenziale</strong>: le zone a bassa concentrazione di <span class="m">\mathrm{O_2}</span>
-(fessure, saldature) sono l&#39;anodo e si corrodono; le zone areate sono il catodo.</li>
+(fessure, saldature, sotto depositi, sott&#39;acqua) sono l&#39;anodo e si corrodono; le
+zone areate sono il catodo.</li>
 <li><strong>Corrosione galvanica</strong>: il contatto con un metallo a potenziale più alto (es.
-rame) accelera la corrosione del ferro, che diventa l&#39;unico anodo del sistema.</li>
-<li><strong>Protezione</strong>: rivestimento con metalli più facilmente ossidabili, o
-protezione catodica con anodo sacrificale (potenziale di riduzione più basso di
-quello del metallo da proteggere).</li>
+rame) accelera la corrosione del ferro, che diventa l&#39;unico anodo del sistema; il
+rame fa da collettore di elettroni, l&#39;ossidante resta l&#39;ossigeno.</li>
+<li><strong>Protezione</strong>: vernici/smalti/plastiche (barriera); rivestimento con metalli più
+facilmente ossidabili che si passivano (zincatura, cromatura); protezione catodica
+con anodo sacrificale (potenziale di riduzione più basso di quello del metallo da
+proteggere: Mg nel terreno, Zn o Al in mare).</li>
+<li>Esercizi: massa → moli → moli di <span class="m">e^-</span> (dalla semireazione) → <span class="m">Q = nF</span> → <span class="m">I = Q/t</span>.</li>
 </ul>
 </div>
 
@@ -109,6 +422,10 @@ quello del metallo da proteggere).</li>
 concettuali più che con calcoli: sapere spiegare <em>perché</em> la corrosione avviene
 dove l&#39;ossigeno è scarso (non dove è abbondante — è un punto controintuitivo che
 il paniere sfrutta come trabocchetto) e <em>perché</em> l&#39;anodo sacrificale deve avere
-potenziale più basso, non più alto, del metallo da proteggere.</p>
+potenziale più basso, non più alto, del metallo da proteggere. Altre domande
+tipiche: quale specie si ossida all&#39;anodo (il ferro metallico), quale è l&#39;agente
+ossidante (l&#39;ossigeno, non il metallo più nobile), quale gas si sviluppa da un
+metallo attivo in acido diluito (idrogeno), e la pila completa (redox bilanciata,
+anodo/catodo, <span class="m">\Delta E^\circ</span>, Nernst).</p>
 <p><strong>Allenati qui:</strong> Extra 95 · Extra 105 · domande reali del paniere: Lez.48 q1,7,30</p>
 </div>

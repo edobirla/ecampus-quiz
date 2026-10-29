@@ -1,100 +1,371 @@
-<h1>Lezione 62 — Forze magnetiche su magneti e spire</h1>
-<h2>Ago magnetico in un campo</h2>
-<p>Un ago magnetico in un campo uniforme non viene spinto: viene solo ruotato. Sul polo nord e sul polo sud agiscono due forze uguali e opposte. Le due forze non stanno sulla stessa retta: formano una <strong>coppia di forze</strong>. La coppia orienta l&#39;ago lungo le linee del campo. La forza risultante è nulla. Una spira percorsa da corrente si comporta allo stesso modo.</p>
-<h2>Forza su un filo percorso da corrente</h2>
-<p>Una corrente è fatta di cariche in moto. Il campo magnetico spinge ogni carica con la forza di Lorentz. Le cariche trasmettono questa spinta al reticolo del conduttore, quindi al filo intero.</p>
-<p>La forza su un tratto piccolissimo di filo è la <strong>seconda legge elementare di Laplace</strong>:
+<h1>Lezione 62 — Azioni magnetiche su magneti, fili e spire</h1>
+<h2>Di cosa parla questa lezione</h2>
+<p>Nelle lezioni precedenti il campo magnetico <span class="m">\vec B</span> è stato definito attraverso la <strong>forza di Lorentz</strong> <span class="m">\vec F = q\,\vec v \times \vec B</span>, cioè la forza che il campo esercita su <strong>una</strong> carica in moto. Una corrente elettrica non è altro che un enorme numero di cariche che si muovono tutte insieme dentro un conduttore. Se il campo spinge ogni carica, spingerà anche il conduttore che le contiene.</p>
+<p>In questa lezione si risponde a tre domande:</p>
+<ol>
+<li>che forza subisce un <strong>filo</strong> percorso da corrente immerso in un campo magnetico (seconda legge elementare di Laplace);</li>
+<li>che cosa succede a un <strong>circuito chiuso</strong> (una spira): la forza totale in un campo uniforme è nulla, ma compare un <strong>momento torcente</strong> che lo fa ruotare;</li>
+<li>come si descrive in modo compatto questo comportamento: il <strong>momento magnetico</strong> della spira, la sua <strong>energia potenziale</strong> e l&#39;analogia con il dipolo elettrico.</li>
+</ol>
+<p>Si parte dal caso più antico e familiare, l&#39;ago magnetico della bussola, e si chiude con un&#39;applicazione importante, l&#39;<strong>effetto Hall</strong>.</p>
+<h2>Ago magnetico in un campo magnetico</h2>
+<p>Un <strong>ago magnetico</strong> è una calamita sottile e allungata: ha un polo nord a un&#39;estremità e un polo sud all&#39;altra. Si ottiene, per esempio, strofinando una sottile lamina di ferro su una calamita: il ferro si <strong>magnetizza</strong> e diventa a sua volta un magnete.</p>
+<p>Messo in un campo magnetico, l&#39;ago si comporta esattamente come un piccolo <strong>dipolo elettrico</strong> in un campo elettrico: tende a <strong>orientarsi parallelamente alle linee del campo</strong>, con il polo nord che punta nel verso del campo. È proprio così che, spostando una bussola attorno a una calamita, si disegnano le linee di campo: si scopre che hanno la stessa forma delle linee del campo elettrico di due cariche opposte poste ai poli.</p>
+<h3>Perché l&#39;ago ruota ma non trasla</h3>
+<p>Pensa ai due poli come a due &quot;cariche magnetiche&quot; opposte (è solo un modello, perché poli isolati non esistono). In un campo <strong>uniforme</strong>:</p>
+<ul>
+<li>sul polo nord agisce una forza <span class="m">\vec F</span> nel verso del campo;</li>
+<li>sul polo sud agisce una forza <span class="m">-\vec F</span>, uguale in modulo e opposta in verso.</li>
+</ul>
+<p>La <strong>forza risultante</strong> è <span class="m">\vec F + (-\vec F) = 0</span>: il centro dell&#39;ago non viene spinto da nessuna parte. Però le due forze sono applicate in due punti diversi (le estremità dell&#39;ago) e, se l&#39;ago non è già allineato al campo, <strong>non stanno sulla stessa retta</strong>. Due forze uguali, opposte e non allineate formano una <strong>coppia di forze</strong>. Una coppia non fa traslare un corpo, ma lo fa <strong>ruotare</strong>.</p>
+<p>Se <span class="m">d</span> è la lunghezza dell&#39;ago e <span class="m">\theta</span> l&#39;angolo tra l&#39;ago e il campo, il braccio della coppia (distanza tra le due rette d&#39;azione) è <span class="m">d\sin\theta</span> e il momento vale
+<span class="m d">M = F\,d\sin\theta</span>
+dove <span class="m">M</span> è il momento della coppia (N·m), <span class="m">F</span> il modulo di ciascuna forza (N), <span class="m">d</span> la lunghezza dell&#39;ago (m). Il momento si annulla quando <span class="m">\sin\theta = 0</span>, cioè quando l&#39;ago è allineato al campo: lì la rotazione si ferma.</p>
+<div class="callout attenzione">
+
+<p>L&#39;ago in un campo uniforme subisce <strong>solo una coppia di forze</strong>. Non c&#39;è una forza &quot;sul solo polo nord&quot; o &quot;sul solo polo sud&quot;: agiscono su entrambi. E non c&#39;è &quot;una forza più una coppia&quot;: la risultante è nulla. Una forza netta compare solo se il campo <strong>non è uniforme</strong> (è il motivo per cui una calamita attira la limatura di ferro: vicino ai poli il campo è più intenso).</p>
+</div>
+
+<p>Come vedremo, una spira percorsa da corrente si comporta nello stesso identico modo: anche lei, in un campo uniforme, subisce solo una coppia. Per questo l&#39;ago e la spira sono entrambi chiamati <strong>dipoli magnetici</strong>.</p>
+<h2>Dalla forza di Lorentz alla forza su un filo</h2>
+<h3>Il modello microscopico</h3>
+<p>Considera un conduttore percorso da corrente. Al suo interno ci sono <span class="m">n</span> portatori di carica per unità di volume (per un metallo sono elettroni, di carica <span class="m">-e</span>), che si muovono tutti con la stessa <strong>velocità di deriva</strong> media <span class="m">\vec v_d</span>. La densità di corrente è
+<span class="m d">\vec j = n(-e)\vec v_d = -ne\,\vec v_d</span>
+dove:</p>
+<ul>
+<li><span class="m">\vec j</span> = densità di corrente (A/m²);</li>
+<li><span class="m">n</span> = numero di portatori per unità di volume (m⁻³);</li>
+<li><span class="m">e = 1{,}6 \cdot 10^{-19}\,\mathrm C</span> = carica elementare;</li>
+<li><span class="m">\vec v_d</span> = velocità di deriva (m/s).</li>
+</ul>
+<p>(Gli elettroni hanno carica negativa, quindi si muovono in verso <strong>opposto</strong> alla corrente: <span class="m">\vec j</span> e <span class="m">\vec v_d</span> sono antiparalleli.)</p>
+<p>Se il conduttore è immerso in un campo <span class="m">\vec B</span>, su <strong>ciascun</strong> elettrone agisce la forza di Lorentz
+<span class="m d">\vec f = -e\,\vec v_d \times \vec B</span></p>
+<h3>Passaggio dalla carica al filo, passo per passo</h3>
+<ol>
+<li><strong>La forza passa al reticolo.</strong> Gli elettroni non possono uscire dal conduttore: urtano continuamente gli ioni del reticolo cristallino e trasmettono loro la spinta. Il conduttore è trattato come un corpo rigido (indeformabile), quindi la forza sugli elettroni diventa forza sul filo.</li>
+<li><strong>Conto gli elettroni in un pezzetto di filo.</strong> Prendo un tratto di lunghezza <span class="m">ds</span> e sezione <span class="m">S</span>. Il suo volume è <span class="m">d\tau = S\,ds</span> e contiene <span class="m">n\,S\,ds</span> elettroni.</li>
+<li><strong>Sommo le forze.</strong> Tutti gli elettroni del tratto subiscono la stessa forza, quindi
+<span class="m d">d\vec F = (n\,S\,ds)\,(-e\,\vec v_d \times \vec B) = (-ne\vec v_d) \times \vec B\;S\,ds = \vec j \times \vec B\;S\,ds</span></li>
+<li><strong>Passo dalla densità all&#39;intensità di corrente.</strong> La corrente è <span class="m">i = jS</span>. Introduco il vettore <span class="m">d\vec s</span>: modulo <span class="m">ds</span>, direzione del filo, verso della corrente (cioè di <span class="m">\vec j</span>). Allora <span class="m">\vec j\,S\,ds = jS\,d\vec s = i\,d\vec s</span>.</li>
+</ol>
+<p>Il risultato è la <strong>seconda legge elementare di Laplace</strong>:
 <span class="m d">d\vec F = i\,d\vec s \times \vec B</span>
 dove:</p>
 <ul>
 <li><span class="m">d\vec F</span> = forza sul tratto di filo (N);</li>
 <li><span class="m">i</span> = intensità di corrente (A);</li>
-<li><span class="m">d\vec s</span> = tratto di filo, orientato come la corrente (m);</li>
-<li><span class="m">\vec B</span> = campo magnetico (T).</li>
+<li><span class="m">d\vec s</span> = tratto infinitesimo di filo, orientato nel verso della corrente (m);</li>
+<li><span class="m">\vec B</span> = campo magnetico nel punto del tratto (T).</li>
 </ul>
-<p>Per un filo rettilineo lungo <span class="m">L</span> in un campo uniforme:
-<span class="m d">\vec F = i\vec L \times \vec B \qquad F = BiL\sin\theta</span>
-dove:</p>
+<p>Nota che nella formula finale non compaiono più né <span class="m">n</span>, né <span class="m">e</span>, né <span class="m">\vec v_d</span>: conta solo la corrente. Il risultato è lo stesso se i portatori sono positivi (in quel caso si muovono nel verso della corrente e la carica è <span class="m">+e</span>: i due segni cambiano insieme).</p>
+<h3>Filo di lunghezza finita</h3>
+<p>Per un filo che va da un estremo <span class="m">A</span> a un estremo <span class="m">B</span>, percorso da una corrente stazionaria <span class="m">i</span>, si sommano (integrano) tutti i contributi:
+<span class="m d">\vec F = i\int_A^B d\vec s \times \vec B</span></p>
+<p>Il caso più semplice è un <strong>filo rettilineo</strong> di lunghezza <span class="m">L</span> in un campo <strong>uniforme</strong>. Allora <span class="m">\vec B</span> è lo stesso in ogni punto e si può portare fuori dall&#39;integrale; la somma dei <span class="m">d\vec s</span> lungo un segmento è il vettore <span class="m">\vec L</span>, lungo quanto il filo e orientato come la corrente:
+<span class="m d">\vec F = i\,\vec L \times \vec B \qquad\qquad F = i\,L\,B\sin\theta</span>
+dove <span class="m">\theta</span> è l&#39;angolo tra il filo (verso della corrente) e il campo.</p>
+<p>Proprietà della forza (sono quelle del prodotto vettoriale):</p>
 <ul>
-<li><span class="m">\vec L</span> = vettore lungo quanto il filo, nel verso della corrente (m);</li>
-<li><span class="m">\theta</span> = angolo tra filo e campo.</li>
+<li>è <strong>perpendicolare al filo</strong> e <strong>perpendicolare al campo</strong>, quindi perpendicolare al piano che li contiene;</li>
+<li>il verso si trova con la regola della mano destra: dita lungo la corrente, le pieghi verso <span class="m">\vec B</span>, il pollice indica <span class="m">\vec F</span> (oppure: vite destrorsa che porta <span class="m">\vec L</span> su <span class="m">\vec B</span> per l&#39;angolo minore);</li>
+<li>è <strong>massima</strong> (<span class="m">F = iLB</span>) quando filo e campo sono perpendicolari;</li>
+<li>è <strong>nulla</strong> quando il filo è parallelo (o antiparallelo) al campo;</li>
+<li>se si inverte la corrente, la forza si inverte.</li>
 </ul>
-<p>La forza è perpendicolare sia al filo sia al campo. È massima se filo e campo sono perpendicolari. È nulla se sono paralleli.</p>
 <div class="callout esempio">
 
-<p>Un filo di 0,5 m porta 2 A, perpendicolare a un campo di 0,4 T. La forza vale <span class="m">F = 0{,}4 \cdot 2 \cdot 0{,}5 = 0{,}4\,\mathrm{N}</span>.</p>
+<p><strong>Filo perpendicolare al campo.</strong> Un filo di 0,5 m porta una corrente di 2 A ed è perpendicolare a un campo uniforme di 0,4 T.</p>
+<ul>
+<li>Angolo: <span class="m">\theta = 90°</span>, quindi <span class="m">\sin\theta = 1</span>.</li>
+<li>Forza: <span class="m">F = iLB = 2 \cdot 0{,}5 \cdot 0{,}4 = 0{,}4\,\mathrm N</span>.</li>
+</ul>
+<p>Se lo stesso filo formasse un angolo di 30° con il campo: <span class="m">F = 0{,}4 \cdot \sin 30° = 0{,}4 \cdot 0{,}5 = 0{,}2\,\mathrm N</span>. Se fosse parallelo al campo: <span class="m">F = 0</span>.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Calcolo vettoriale completo (esercizio della dispensa).</strong> Un filo lungo 50 cm, disposto lungo l&#39;asse <span class="m">x</span>, è percorso da una corrente di 0,5 A nel verso positivo delle <span class="m">x</span>. Nella regione c&#39;è il campo <span class="m">\vec B = (3\,\mathrm{mT})\,\hat j + (10\,\mathrm{mT})\,\hat k</span>. Calcolare la forza sul filo.</p>
+<ol>
+<li>Vettore filo: <span class="m">\vec L = 0{,}5\,\hat i\ \mathrm m</span>. Campo in tesla: <span class="m">\vec B = 0{,}003\,\hat j + 0{,}01\,\hat k</span>.</li>
+<li>Prodotto vettoriale con il determinante:
+<span class="m d">\vec L \times \vec B = \begin{vmatrix} \hat i &amp; \hat j &amp; \hat k \\ 0{,}5 &amp; 0 &amp; 0 \\ 0 &amp; 0{,}003 &amp; 0{,}01 \end{vmatrix}</span><ul>
+<li>componente <span class="m">\hat i</span>: <span class="m">0 \cdot 0{,}01 - 0 \cdot 0{,}003 = 0</span>;</li>
+<li>componente <span class="m">\hat j</span>: <span class="m">-(0{,}5 \cdot 0{,}01 - 0 \cdot 0) = -0{,}005</span>;</li>
+<li>componente <span class="m">\hat k</span>: <span class="m">0{,}5 \cdot 0{,}003 - 0 \cdot 0 = 0{,}0015</span>.</li>
+</ul>
+</li>
+<li>Moltiplico per la corrente <span class="m">i = 0{,}5\,\mathrm A</span>:
+<span class="m d">\vec F = 0{,}5\,(-0{,}005\,\hat j + 0{,}0015\,\hat k) = (-2{,}5\,\hat j + 0{,}75\,\hat k) \cdot 10^{-3}\,\mathrm N = 0{,}25 \cdot 10^{-3}\,(-10\,\hat j + 3\,\hat k)\,\mathrm N</span></li>
+<li>Modulo: <span class="m">F = 10^{-3}\sqrt{2{,}5^2 + 0{,}75^2} \approx 2{,}6 \cdot 10^{-3}\,\mathrm N</span>.</li>
+</ol>
+<p>Controllo: la forza non ha componente lungo <span class="m">x</span>, cioè lungo il filo, come deve essere.</p>
 </div>
 
 <h2>Filo curvo e circuito chiuso</h2>
-<p>Un filo piano di forma qualsiasi, tra gli estremi A e B, subisce la stessa forza di un filo dritto da A a B:
-<span class="m d">\vec F = i\,\overrightarrow{AB} \times \vec B</span>
-Conta solo il vettore che unisce gli estremi, non il percorso.</p>
-<p>Conseguenza: in un circuito chiuso gli estremi coincidono, quindi <span class="m">\overrightarrow{AB} = 0</span>. In un campo uniforme <strong>la forza totale su un circuito chiuso è nulla</strong>. Il circuito non trasla, ma può ruotare.</p>
-<h2>Momento torcente su una spira</h2>
-<p>Prendi una spira rettangolare di lati <span class="m">a</span> e <span class="m">b</span>, percorsa da corrente <span class="m">i</span>, in un campo uniforme <span class="m">\vec B</span>. Chiama <span class="m">\theta</span> l&#39;angolo tra il campo e la normale alla spira.</p>
-<ul>
-<li>Su due lati opposti agiscono forze uguali e opposte sulla stessa retta: si annullano e non fanno ruotare.</li>
-<li>Sugli altri due lati agiscono forze <span class="m">F = iaB</span> uguali e opposte, ma su rette diverse: formano una coppia con braccio <span class="m">b\sin\theta</span>.</li>
-</ul>
-<p>Il momento della coppia vale:
-<span class="m d">M = iaB\,b\sin\theta = iSB\sin\theta</span>
-dove <span class="m">S = ab</span> è l&#39;area della spira (m²) e <span class="m">M</span> è in N·m.</p>
-<h2>Momento magnetico</h2>
-<p>Il <strong>momento magnetico</strong> di una spira piana riassume corrente e geometria:
-<span class="m d">\vec m = iS\,\hat u_n</span>
-dove:</p>
-<ul>
-<li><span class="m">\vec m</span> = momento magnetico (A·m²);</li>
-<li><span class="m">i</span> = corrente (A);</li>
-<li><span class="m">S</span> = area della spira (m²);</li>
-<li><span class="m">\hat u_n</span> = versore normale alla spira. Il verso segue la regola della mano destra: le dita girano come la corrente, il pollice indica <span class="m">\hat u_n</span>.</li>
-</ul>
-<p>Con <span class="m">N</span> spire avvolte strette (una bobina): <span class="m">\vec m = NiS\,\hat u_n</span>.</p>
-<p>Il momento torcente in un campo uniforme vale, per qualunque spira piana:
-<span class="m d">\vec M = \vec m \times \vec B \qquad M = NiSB\sin\theta</span>
-Quindi il momento dipende da <strong>corrente, area, campo e orientazione</strong> della spira.</p>
-<p>La spira ruota finché <span class="m">\vec m</span> si allinea a <span class="m">\vec B</span>. È il principio del motore elettrico e del galvanometro.</p>
+<h3>Filo piano di forma qualsiasi</h3>
+<p>Supponi ora che il filo da <span class="m">A</span> a <span class="m">B</span> sia curvo (ma giaccia in un piano) e che il campo sia <strong>uniforme</strong>. Poiché <span class="m">\vec B</span> è costante, esce dall&#39;integrale:
+<span class="m d">\vec F = i\left(\int_A^B d\vec s\right) \times \vec B</span>
+La somma di tutti i piccoli spostamenti <span class="m">d\vec s</span> lungo il percorso da <span class="m">A</span> a <span class="m">B</span> è semplicemente lo spostamento totale, cioè il vettore <span class="m">\overrightarrow{AB}</span> (come quando cammini: qualunque strada fai, lo spostamento netto è il vettore che va dalla partenza all&#39;arrivo). Quindi
+<span class="m d">\vec F = i\,\overrightarrow{AB} \times \vec B</span></p>
+<p>Un filo curvo subisce <strong>la stessa forza di un filo rettilineo con gli stessi estremi</strong>, percorso dalla stessa corrente. La forma del percorso non conta: conta solo il vettore che unisce gli estremi.</p>
 <div class="callout esempio">
 
-<p>Spira quadrata di lato 20 cm (<span class="m">S = 0{,}04\,\mathrm{m^2}</span>), corrente 2 A, campo 4 T.</p>
+<p>Un filo a forma di semicirconferenza di raggio <span class="m">R = 10\,\mathrm{cm}</span> porta 3 A e giace in un piano perpendicolare a un campo uniforme di 0,2 T. Gli estremi distano un diametro, <span class="m">|\overrightarrow{AB}| = 2R = 0{,}2\,\mathrm m</span>, e il vettore <span class="m">\overrightarrow{AB}</span> è perpendicolare a <span class="m">\vec B</span>. Quindi
+<span class="m d">F = i\,(2R)\,B = 3 \cdot 0{,}2 \cdot 0{,}2 = 0{,}12\,\mathrm N</span>
+esattamente come per il diametro rettilineo, anche se il filo è lungo <span class="m">\pi R \approx 0{,}31\,\mathrm m</span>.</p>
+</div>
+
+<h3>Circuito chiuso</h3>
+<p>In un circuito chiuso il punto di arrivo coincide con quello di partenza: <span class="m">B = A</span>, quindi <span class="m">\overrightarrow{AB} = \vec 0</span>. Ne segue:</p>
+<p><strong>In un campo magnetico uniforme la forza totale su un circuito chiuso (piano) è nulla.</strong></p>
+<p>Il circuito, nel suo insieme, non viene spinto. Questo però <strong>non</strong> significa che resti fermo: le forze sui vari tratti sono applicate in punti diversi e possono avere un momento risultante diverso da zero. Il circuito può <strong>ruotare</strong>. È lo stesso comportamento dell&#39;ago magnetico.</p>
+<div class="callout attenzione">
+
+<p>Il risultato vale solo se il campo è <strong>uniforme</strong>. In un campo non uniforme (per esempio quello prodotto da un filo vicino, che cala con la distanza) i lati di una spira sentono campi diversi e la forza totale può essere diversa da zero.</p>
+</div>
+
+<h2>Momento meccanico su una spira rettangolare</h2>
+<p>Prendi una spira rettangolare rigida, di lati <span class="m">a</span> e <span class="m">b</span>, percorsa da una corrente stazionaria <span class="m">i</span>, libera di ruotare attorno al proprio asse verticale. È immersa in un campo uniforme <span class="m">\vec B</span> orizzontale (perpendicolare all&#39;asse di rotazione), che forma un angolo <span class="m">\theta</span> con il versore <span class="m">\hat u_n</span> normale al piano della spira. Il verso di <span class="m">\hat u_n</span> è quello di avanzamento di una vite destrorsa che gira come la corrente.</p>
+<p>Chiama:</p>
 <ul>
-<li>Campo parallelo al piano della spira (<span class="m">\theta = 90°</span>): <span class="m">M = 2 \cdot 0{,}04 \cdot 4 = 0{,}32\,\mathrm{N\,m}</span>, il massimo.</li>
-<li>Campo perpendicolare al piano della spira (<span class="m">\theta = 0</span>): <span class="m">\vec m</span> è parallelo a <span class="m">\vec B</span>, quindi <span class="m">M = 0</span>.</li>
+<li><span class="m">AB</span> e <span class="m">CD</span> i due lati <strong>verticali</strong>, di lunghezza <span class="m">a</span> (paralleli all&#39;asse di rotazione);</li>
+<li><span class="m">AD</span> e <span class="m">BC</span> i due lati <strong>orizzontali</strong>, di lunghezza <span class="m">b</span>.</li>
 </ul>
+<p>Considera ogni forza applicata nel punto medio del suo lato.</p>
+<p><strong>Lati orizzontali (<span class="m">AD</span> e <span class="m">BC</span>).</strong> Sono percorsi da correnti opposte, quindi subiscono forze uguali e opposte. Sono forze verticali (perpendicolari sia al lato orizzontale sia al campo orizzontale) e stanno <strong>sulla stessa retta</strong> (l&#39;asse verticale della spira): il braccio è nullo. Si annullano e non producono alcun momento. Al più tendono a &quot;stirare&quot; la spira, che però è rigida.</p>
+<p><strong>Lati verticali (<span class="m">AB</span> e <span class="m">CD</span>).</strong> Ogni lato verticale è sempre perpendicolare al campo orizzontale, quindi su ciascuno agisce una forza orizzontale di modulo
+<span class="m d">F = i\,a\,B</span>
+Le due forze sono uguali e opposte (correnti opposte), ma guardando la spira dall&#39;alto si vede che <strong>non sono sulla stessa retta</strong>: formano una coppia. La distanza tra le loro rette d&#39;azione (il braccio) è la proiezione del lato <span class="m">b</span> nella direzione perpendicolare al campo, cioè <span class="m">b\sin\theta</span>.</p>
+<p>Il momento della coppia è quindi
+<span class="m d">M = F \cdot b\sin\theta = i\,a\,B\,b\sin\theta = i\,(ab)\,B\sin\theta</span>
+e, poiché <span class="m">ab = S</span> è l&#39;area della spira,
+<span class="m d">M = i\,S\,B\sin\theta</span>
+dove:</p>
+<ul>
+<li><span class="m">M</span> = momento meccanico (N·m), diretto lungo l&#39;asse verticale;</li>
+<li><span class="m">i</span> = corrente (A);</li>
+<li><span class="m">S</span> = area della spira (m²);</li>
+<li><span class="m">B</span> = campo (T);</li>
+<li><span class="m">\theta</span> = angolo tra la normale alla spira e il campo.</li>
+</ul>
+<h2>Momento magnetico di una spira</h2>
+<p>La formula appena trovata contiene sempre il prodotto <span class="m">iS</span> e la direzione della normale. Conviene allora definire un vettore che riassuma tutte le proprietà &quot;magnetiche&quot; della spira: il <strong>momento magnetico</strong>
+<span class="m d">\vec m = i\,S\,\hat u_n</span>
+dove:</p>
+<ul>
+<li><span class="m">\vec m</span> = momento magnetico (A·m², equivalente a J/T);</li>
+<li><span class="m">i</span> = corrente nella spira (A);</li>
+<li><span class="m">S</span> = area della superficie delimitata dalla spira (m²);</li>
+<li><span class="m">\hat u_n</span> = versore normale al piano della spira, con verso dato dalla regola della mano destra: le dita piegate seguono la corrente, il pollice indica <span class="m">\hat u_n</span> (equivalente: verso di avanzamento di una vite destrorsa che ruota come la corrente).</li>
+</ul>
+<p>Con questa definizione il momento meccanico si scrive in forma vettoriale:
+<span class="m d">\vec M = \vec m \times \vec B \qquad\qquad M = m\,B\sin\theta</span></p>
+<p>Anche se l&#39;abbiamo ricavata per un rettangolo, questa relazione vale <strong>per qualunque spira piana</strong> (circolare, triangolare, di forma irregolare): una spira qualsiasi si può pensare come un mosaico di tante piccole spire rettangolari affiancate, le cui correnti sui lati in comune si cancellano.</p>
+<h3>Bobine</h3>
+<p>Per avere un momento magnetico più grande si avvolge strettamente lo stesso filo <span class="m">N</span> volte, ottenendo una <strong>bobina</strong> di <span class="m">N</span> spire uguali con la stessa sezione <span class="m">S</span>, percorse dalla stessa corrente <span class="m">i</span>. Ogni spira contribuisce con <span class="m">iS</span>, quindi:
+<span class="m d">\vec m = N\,i\,S\,\hat u_n \qquad\qquad M = N\,i\,S\,B\sin\theta</span></p>
+<h3>Da cosa dipende il momento torcente</h3>
+<p>Leggendo <span class="m">M = NiSB\sin\theta</span>:</p>
+<ul>
+<li>dalla <strong>corrente</strong> <span class="m">i</span> (e dal numero di spire <span class="m">N</span>);</li>
+<li>dalla <strong>superficie</strong> <span class="m">S</span> della spira;</li>
+<li>dall&#39;intensità del <strong>campo</strong> <span class="m">B</span>;</li>
+<li>dall&#39;<strong>orientazione</strong> della spira nel campo, tramite <span class="m">\sin\theta</span>.</li>
+</ul>
+<p>Tutte e quattro le grandezze contano: se ne manca una nella risposta, la risposta è incompleta.</p>
+<h3>I due casi limite</h3>
+<table>
+<thead>
+<tr>
+<th>Posizione della spira</th>
+<th>Angolo <span class="m">\theta</span> tra <span class="m">\hat u_n</span> e <span class="m">\vec B</span></th>
+<th><span class="m">\sin\theta</span></th>
+<th>Momento</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Campo <strong>perpendicolare</strong> al piano della spira (parallelo alla normale)</td>
+<td><span class="m">0</span> (o <span class="m">\pi</span>)</td>
+<td>0</td>
+<td><strong>nullo</strong></td>
+</tr>
+<tr>
+<td>Campo <strong>parallelo</strong> al piano della spira (giace nel piano)</td>
+<td><span class="m">90°</span></td>
+<td>1</td>
+<td><strong>massimo</strong>, <span class="m">M = NiSB</span></td>
+</tr>
+</tbody></table>
+<div class="callout attenzione">
+
+<p>La trappola più frequente: &quot;campo ortogonale alla superficie della spira&quot; significa che <span class="m">\vec B</span> è <strong>parallelo</strong> a <span class="m">\vec m</span> (la normale), cioè <span class="m">\theta = 0</span>. In questo caso il momento è <strong>zero</strong>, qualunque siano corrente, area e campo. Il momento massimo si ha invece quando il campo giace nel piano della spira.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Spira quadrata, due orientazioni.</strong> Lato 20 cm, corrente 2 A, campo uniforme 4 T.</p>
+<ol>
+<li>Area: <span class="m">S = (0{,}20\,\mathrm m)^2 = 0{,}04\,\mathrm{m^2}</span> (attenzione: 20 cm = 0,20 m, non 20).</li>
+<li>Momento magnetico: <span class="m">m = iS = 2 \cdot 0{,}04 = 0{,}08\,\mathrm{A\,m^2}</span>.</li>
+<li><strong>Campo nel piano della spira</strong> (<span class="m">\theta = 90°</span>): <span class="m">M = mB = 0{,}08 \cdot 4 = 0{,}32\,\mathrm{N\,m}</span>, il valore massimo.</li>
+<li><strong>Campo ortogonale alla superficie</strong> (<span class="m">\theta = 0</span>): <span class="m">M = 0{,}08 \cdot 4 \cdot \sin 0 = 0\,\mathrm{N\,m}</span>.</li>
+</ol>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Stesso caso con corrente piccola.</strong> Spira quadrata di lato 20 cm, corrente 2 mA, campo 0,5 T ortogonale alla superficie.</p>
+<ul>
+<li><span class="m">m = 2 \cdot 10^{-3} \cdot 0{,}04 = 8 \cdot 10^{-5}\,\mathrm{A\,m^2}</span>.</li>
+<li><span class="m">\theta = 0</span>, quindi <span class="m">M = 8 \cdot 10^{-5} \cdot 0{,}5 \cdot 0 = 0\,\mathrm{N\,m}</span>.</li>
+</ul>
+<p>Se il campo fosse nel piano della spira, il momento sarebbe <span class="m">8 \cdot 10^{-5} \cdot 0{,}5 = 4 \cdot 10^{-5}\,\mathrm{N\,m}</span>.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Quante spire conviene fare? (esercizio della dispensa).</strong> Si vuole avvolgere un filo lungo <span class="m">L_t = 25\,\mathrm{cm}</span>, percorso da <span class="m">i = 4{,}5\,\mathrm{mA}</span>, per formare una bobina circolare da mettere in un campo uniforme <span class="m">B = 5{,}7\,\mathrm{mT}</span>. Si vuole il momento torcente <strong>massimo</strong>: (a) che angolo deve formare l&#39;asse della bobina con il campo? (b) quante spire? (c) quanto vale il momento massimo?</p>
+<p>(a) <span class="m">M = mB\sin\theta</span> è massimo per <span class="m">\sin\theta = 1</span>: l&#39;asse della bobina (direzione di <span class="m">\vec m</span>) deve essere <strong>perpendicolare</strong> al campo, <span class="m">\theta = 90°</span>.</p>
+<p>(b) Con <span class="m">N</span> spire circolari di raggio <span class="m">R</span> il filo si divide in <span class="m">N</span> circonferenze: <span class="m">L_t = N \cdot 2\pi R</span>, quindi <span class="m">R = \dfrac{L_t}{2\pi N}</span>. Il momento magnetico è
+<span class="m d">m = N\,i\,\pi R^2 = N\,i\,\pi\left(\frac{L_t}{2\pi N}\right)^2 = N\,i\,\pi\,\frac{L_t^2}{4\pi^2 N^2} = \frac{i\,L_t^2}{4\pi N}</span>
+<span class="m">m</span> è inversamente proporzionale a <span class="m">N</span>: conviene il <strong>minimo numero di spire</strong>, cioè <span class="m">N = 1</span>. (Più spire significa spire più piccole: l&#39;area cala come <span class="m">1/N^2</span>, il numero di spire cresce solo come <span class="m">N</span>.)</p>
+<p>(c) Con <span class="m">N = 1</span> e <span class="m">\theta = 90°</span>:
+<span class="m d">M = \frac{i\,L_t^2\,B}{4\pi} = \frac{4{,}5 \cdot 10^{-3} \cdot (0{,}25)^2 \cdot 5{,}7 \cdot 10^{-3}}{4\pi} = \frac{4{,}5 \cdot 10^{-3} \cdot 0{,}0625 \cdot 5{,}7 \cdot 10^{-3}}{12{,}57} \approx 1{,}28 \cdot 10^{-7}\,\mathrm{N\,m}</span></p>
+</div>
+
+<p>La spira tende a ruotare finché <span class="m">\vec m</span> non si allinea con <span class="m">\vec B</span>. Questo è il principio di funzionamento del <strong>motore elettrico</strong> (un dispositivo, il commutatore, inverte la corrente a ogni mezzo giro, così la spira continua a girare) e del <strong>galvanometro</strong> (una bobina trattenuta da una molla ruota di un angolo proporzionale alla corrente).</p>
+<h2>Posizioni di equilibrio e piccole oscillazioni</h2>
+<p>Il momento <span class="m">M = mB\sin\theta</span> si annulla in due posizioni:</p>
+<ul>
+<li><span class="m">\theta = 0</span>: <span class="m">\vec m</span> concorde con <span class="m">\vec B</span>. È un equilibrio <strong>stabile</strong>: se sposti un poco la spira, il momento la riporta indietro.</li>
+<li><span class="m">\theta = \pi</span>: <span class="m">\vec m</span> opposto a <span class="m">\vec B</span>. È un equilibrio <strong>instabile</strong>: basta un minimo spostamento e la spira si gira fino a portarsi nella posizione opposta (<span class="m">\theta = 0</span>).</li>
+</ul>
+<h3>Oscillazioni attorno alla posizione stabile</h3>
+<p>Sia <span class="m">I</span> il momento d&#39;inerzia della spira rispetto all&#39;asse di rotazione (kg·m²). Sposto la spira di un piccolo angolo <span class="m">\theta</span> dalla posizione stabile.</p>
+<ol>
+<li>Il campo esercita un <strong>momento di richiamo</strong>, che tende a ridurre <span class="m">\theta</span>: <span class="m">M = -mB\sin\theta</span> (il segno meno indica che si oppone allo spostamento).</li>
+<li>Per angoli piccoli <span class="m">\sin\theta \approx \theta</span> (in radianti), quindi <span class="m">M \approx -mB\,\theta</span>.</li>
+<li>Seconda legge della dinamica per le rotazioni, <span class="m">I\,\ddot\theta = M</span>:
+<span class="m d">I\,\frac{d^2\theta}{dt^2} = -mB\,\theta \quad\Rightarrow\quad \frac{d^2\theta}{dt^2} + \frac{mB}{I}\,\theta = 0</span></li>
+<li>È l&#39;equazione del <strong>moto armonico</strong> (come il pendolo o la molla), con pulsazione
+<span class="m d">\omega = \sqrt{\frac{mB}{I}} \qquad\qquad T = 2\pi\sqrt{\frac{I}{mB}}</span>
+dove <span class="m">\omega</span> è in rad/s e il periodo <span class="m">T</span> in s.</li>
+</ol>
+<p>Misurando il periodo si può ricavare <span class="m">B</span> (se si conosce <span class="m">m</span>) o <span class="m">m</span> (se si conosce <span class="m">B</span>). È anche ciò che fa l&#39;ago di una bussola quando oscilla prima di fermarsi verso nord.</p>
+<h2>Energia potenziale del dipolo magnetico</h2>
+<p>Una spira in un campo magnetico si comporta in modo del tutto analogo a un <strong>dipolo elettrico</strong> in un campo elettrostatico, con il momento magnetico <span class="m">\vec m</span> al posto del momento di dipolo elettrico <span class="m">\vec p</span>. Per questo la spira si chiama <strong>dipolo magnetico</strong>.</p>
+<h3>Ricavo dell&#39;energia</h3>
+<ol>
+<li>Quando la spira ruota di <span class="m">d\theta</span>, il momento del campo compie il lavoro <span class="m">dW = M\,d\theta</span>. Il momento tende a far diminuire <span class="m">\theta</span>, quindi <span class="m">dW = -mB\sin\theta\,d\theta</span>.</li>
+<li>Per una rotazione da <span class="m">\theta_1</span> a <span class="m">\theta_2</span>:
+<span class="m d">W = \int_{\theta_1}^{\theta_2} -mB\sin\theta\,d\theta = mB\left[\cos\theta\right]_{\theta_1}^{\theta_2} = mB(\cos\theta_2 - \cos\theta_1)</span></li>
+<li>Il lavoro di una forza conservativa è l&#39;opposto della variazione di energia potenziale: <span class="m">W = -[U(\theta_2) - U(\theta_1)]</span>. Confrontando:
+<span class="m d">U(\theta) = -mB\cos\theta = -\vec m \cdot \vec B</span>
+dove <span class="m">U</span> è l&#39;energia potenziale (J), <span class="m">m</span> in A·m², <span class="m">B</span> in T.</li>
+</ol>
+<h3>Lettura dell&#39;energia</h3>
+<ul>
+<li><span class="m">\theta = 0</span> (<span class="m">\vec m</span> parallelo a <span class="m">\vec B</span>): <span class="m">U = -mB</span>, <strong>minimo</strong>. È la posizione di equilibrio stabile: il sistema tende sempre verso di essa.</li>
+<li><span class="m">\theta = 90°</span>: <span class="m">U = 0</span>.</li>
+<li><span class="m">\theta = \pi</span> (<span class="m">\vec m</span> antiparallelo): <span class="m">U = +mB</span>, <strong>massimo</strong>. Equilibrio instabile.</li>
+</ul>
+<p>La differenza di energia tra le due posizioni estreme è <span class="m">2mB</span>: è il lavoro necessario per &quot;capovolgere&quot; il dipolo.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Dipolo elettrico</th>
+<th>Dipolo magnetico</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Momento</td>
+<td><span class="m">\vec p = q\vec d</span> (C·m)</td>
+<td><span class="m">\vec m = iS\,\hat u_n</span> (A·m²)</td>
+</tr>
+<tr>
+<td>Momento meccanico</td>
+<td><span class="m">\vec M = \vec p \times \vec E</span></td>
+<td><span class="m">\vec M = \vec m \times \vec B</span></td>
+</tr>
+<tr>
+<td>Energia potenziale</td>
+<td><span class="m">U = -\vec p \cdot \vec E</span></td>
+<td><span class="m">U = -\vec m \cdot \vec B</span></td>
+</tr>
+<tr>
+<td>Forza risultante in campo uniforme</td>
+<td>nulla</td>
+<td>nulla</td>
+</tr>
+</tbody></table>
+<div class="callout esempio">
+
+<p><strong>Dipolo che ruota da fermo (esercizio della dispensa).</strong> Un dipolo magnetico con <span class="m">m = 20{,}0\,\mathrm{mJ/T}</span> viene lasciato libero, da fermo, in un campo uniforme <span class="m">B = 52\,\mathrm{mT}</span>. Quando il suo asse passa per la direzione del campo, la sua energia cinetica è <span class="m">0{,}80\,\mathrm{mJ}</span>. Qual era l&#39;angolo iniziale tra asse e campo?</p>
+<ol>
+<li>Quando l&#39;asse è parallelo al campo l&#39;energia potenziale è minima, <span class="m">U_0 = -mB</span>.</li>
+<li>Conservazione dell&#39;energia (parte da fermo): l&#39;energia cinetica acquistata è la diminuzione di energia potenziale:
+<span class="m d">E_c = U_{in} - U_0 = -mB\cos\theta_{in} - (-mB) = mB(1 - \cos\theta_{in})</span></li>
+<li>Risolvo: <span class="m">\cos\theta_{in} = 1 - \dfrac{E_c}{mB}</span>.</li>
+<li>Numeri: <span class="m">mB = 20{,}0 \cdot 10^{-3} \cdot 52 \cdot 10^{-3} = 1{,}04 \cdot 10^{-3}\,\mathrm J</span>; <span class="m">\dfrac{E_c}{mB} = \dfrac{0{,}80}{1{,}04} \approx 0{,}769</span>.</li>
+<li><span class="m">\cos\theta_{in} = 1 - 0{,}769 = 0{,}231</span>, quindi <span class="m">\theta_{in} = \arccos(0{,}231) \approx 77°</span>.</li>
+</ol>
+</div>
+
+<h2>Approfondimento: l&#39;effetto Hall</h2>
+<p>Considera un conduttore a forma di lastrina piatta, a sezione rettangolare. La corrente scorre lungo la dimensione più lunga (asse <span class="m">x</span>) con densità <span class="m">\vec j</span>. La larghezza della lastrina (lungo <span class="m">y</span>) è <span class="m">b</span>, lo spessore (lungo <span class="m">z</span>) è <span class="m">a</span>. Un campo uniforme <span class="m">\vec B</span> è diretto lungo <span class="m">z</span>, perpendicolare alla corrente e alla faccia larga della lastrina.</p>
+<p><strong>Cosa succede, passo per passo.</strong></p>
+<ol>
+<li>Le cariche in moto (velocità di deriva <span class="m">\vec v_d</span>) subiscono la forza di Lorentz trasversale <span class="m">\vec F = q\,\vec v_d \times \vec B</span>, diretta lungo <span class="m">y</span>.</li>
+<li>Questa forza agisce su ogni carica come un campo &quot;elettromotore&quot; <span class="m">\vec E^* = \vec F/q = \vec v_d \times \vec B</span>, di modulo <span class="m">v_d B</span>.</li>
+<li>Le cariche derivano lateralmente e si accumulano su una delle due facce laterali; sulla faccia opposta resta un eccesso di carica di segno contrario.</li>
+<li>Le cariche accumulate creano un campo elettrostatico trasversale <span class="m">\vec E_H</span> (il <strong>campo di Hall</strong>). L&#39;accumulo continua finché la forza elettrica non bilancia quella magnetica: all&#39;equilibrio <span class="m">E_H = v_d B</span>.</li>
+<li>Tra le due facce laterali si misura allora una differenza di potenziale, la <strong>tensione di Hall</strong>:
+<span class="m d">V_H = E_H\,b = v_d\,B\,b</span></li>
+</ol>
+<p>Esprimendo <span class="m">v_d</span> con la corrente (<span class="m">i = j\,ab = n q v_d\,ab</span>, quindi <span class="m">v_d = i/(nqab)</span>):
+<span class="m d">V_H = \frac{i\,B}{n\,q\,a}</span>
+dove <span class="m">V_H</span> è in V, <span class="m">n</span> è la densità dei portatori (m⁻³), <span class="m">q</span> la loro carica (C), <span class="m">a</span> lo spessore della lastrina nella direzione di <span class="m">\vec B</span> (m).</p>
+<p><strong>Perché è importante.</strong></p>
+<ul>
+<li>Il <strong>segno</strong> della tensione dipende dal segno dei portatori: se sono positivi il campo di Hall punta in un verso, se sono negativi nel verso opposto. Storicamente è così che si è scoperto che nei metalli la corrente è portata da cariche negative, e che in alcuni semiconduttori i portatori si comportano come cariche positive (le &quot;lacune&quot;).</li>
+<li>Dal valore di <span class="m">V_H</span> si ricava la <strong>densità dei portatori</strong> <span class="m">n</span>.</li>
+<li>Noti <span class="m">n</span>, <span class="m">q</span> e <span class="m">a</span>, la tensione è proporzionale a <span class="m">B</span>: le <strong>sonde di Hall</strong> sono i comuni strumenti per misurare i campi magnetici.</li>
+</ul>
+<div class="callout esempio">
+
+<p>Lastrina di rame (<span class="m">n \approx 8{,}5 \cdot 10^{28}\,\mathrm{m^{-3}}</span>) spessa <span class="m">a = 0{,}1\,\mathrm{mm}</span>, con <span class="m">i = 10\,\mathrm A</span> in un campo di 1 T:
+<span class="m d">V_H = \frac{10 \cdot 1}{8{,}5 \cdot 10^{28} \cdot 1{,}6 \cdot 10^{-19} \cdot 10^{-4}} = \frac{10}{1{,}36 \cdot 10^{6}} \approx 7{,}4 \cdot 10^{-6}\,\mathrm V</span>
+Pochi microvolt: nei metalli <span class="m">n</span> è enorme e l&#39;effetto è piccolo. Nei semiconduttori, con <span class="m">n</span> molto minore, la tensione è molto più grande, ed è per questo che le sonde di Hall sono fatte di semiconduttore.</p>
 </div>
 
 <div class="callout attenzione">
 
-<p>&quot;Campo perpendicolare alla superficie&quot; vuol dire campo parallelo alla normale, cioè <span class="m">\theta = 0</span>. Il momento è <strong>nullo</strong>, non massimo.</p>
+<ul>
+<li>La forza su un filo è sempre <strong>perpendicolare al filo</strong>: non può mai essere &quot;parallela ai fili&quot;.</li>
+<li>Forza risultante nulla non significa momento nullo: un circuito chiuso in un campo uniforme non trasla, ma può ruotare.</li>
+<li>Nelle formule l&#39;angolo <span class="m">\theta</span> del momento è quello tra <strong>normale</strong> alla spira e campo, non tra piano della spira e campo.</li>
+<li>Le aree vanno in m²: un quadrato di 20 cm ha area <span class="m">0{,}04\,\mathrm{m^2}</span>, non <span class="m">400</span>.</li>
+</ul>
 </div>
 
-<h2>Equilibrio e oscillazioni</h2>
-<p>Il momento si annulla in due posizioni:</p>
-<ul>
-<li><span class="m">\theta = 0</span> (<span class="m">\vec m</span> concorde a <span class="m">\vec B</span>): equilibrio <strong>stabile</strong>;</li>
-<li><span class="m">\theta = \pi</span> (<span class="m">\vec m</span> opposto a <span class="m">\vec B</span>): equilibrio <strong>instabile</strong>. Basta una piccola spinta e la spira si gira.</li>
-</ul>
-<p>Spostata di poco dalla posizione stabile, la spira oscilla come un pendolo, con pulsazione:
-<span class="m d">\omega = \sqrt{\frac{mB}{I}}</span>
-dove <span class="m">I</span> è il momento d&#39;inerzia della spira (kg·m²) e <span class="m">\omega</span> è in rad/s.</p>
-<h2>Energia del dipolo magnetico</h2>
-<p>Una spira in un campo si comporta come un dipolo elettrico in un campo elettrico. Per questo si chiama <strong>dipolo magnetico</strong>. La sua energia potenziale è:
-<span class="m d">U = -\vec m \cdot \vec B = -mB\cos\theta</span>
-dove <span class="m">U</span> è in J. L&#39;energia è minima nell&#39;equilibrio stabile (<span class="m">\theta = 0</span>) e massima in quello instabile (<span class="m">\theta = \pi</span>). Per il dipolo elettrico vale l&#39;analoga <span class="m">U = -\vec p \cdot \vec E</span>.</p>
-<h2>Effetto Hall</h2>
-<p>In una lastrina percorsa da corrente, immersa in un campo perpendicolare, la forza di Lorentz spinge le cariche verso un lato. Le cariche si accumulano sui due bordi. Tra i bordi nasce una tensione, detta <strong>tensione di Hall</strong>. Il suo segno rivela il segno dei portatori di carica. Serve anche a misurare i campi magnetici (sonde di Hall).</p>
 <div class="callout esame">
 
-<p>Chiedono spesso da cosa dipende il momento su una spira (corrente, area, campo, orientazione) e che cosa succede a un ago o a una spira in un campo uniforme (coppia, nessuna forza risultante).</p>
+<p>Le domande chiuse chiedono che cosa subisce un <strong>ago magnetico</strong> in un campo (una coppia di forze, risultante nulla) e da cosa dipende il <strong>momento torcente</strong> su una spira (corrente, superficie, campo e orientazione: <span class="m">M = NiSB\sin\theta</span>). Nelle aperte collegate (lezione successiva) si chiede di definire il momento magnetico <span class="m">\vec m = iS\hat u_n</span> e l&#39;azione del campo (<span class="m">\vec M = \vec m \times \vec B</span>, energia <span class="m">U = -\vec m\cdot\vec B</span>, equilibrio stabile e instabile), e di descrivere la forza su un filo (<span class="m">d\vec F = i\,d\vec s \times \vec B</span>, <span class="m">\vec F = i\vec L \times \vec B</span>) e su un circuito chiuso (nulla in campo uniforme).</p>
 </div>
 
 <div class="callout sintesi">
 
 <ul>
-<li>Ago o spira in campo uniforme: solo una coppia di forze, forza risultante nulla.</li>
-<li>Filo: <span class="m">\vec F = i\vec L \times \vec B</span>, <span class="m">F = BiL\sin\theta</span>; circuito chiuso in campo uniforme: <span class="m">\vec F = 0</span>.</li>
-<li>Momento magnetico: <span class="m">\vec m = NiS\,\hat u_n</span> (A·m²).</li>
-<li>Momento torcente: <span class="m">\vec M = \vec m \times \vec B</span>, <span class="m">M = NiSB\sin\theta</span>; nullo se il campo è perpendicolare alla spira.</li>
-<li>Energia: <span class="m">U = -\vec m \cdot \vec B</span>; equilibrio stabile con <span class="m">\vec m</span> parallelo a <span class="m">\vec B</span>.</li>
+<li>Ago magnetico o spira in campo uniforme: coppia di forze, forza risultante nulla, tendenza ad allinearsi al campo.</li>
+<li>Seconda legge di Laplace: <span class="m">d\vec F = i\,d\vec s \times \vec B</span> (dalla forza di Lorentz sui portatori, trasmessa al reticolo).</li>
+<li>Filo rettilineo in campo uniforme: <span class="m">\vec F = i\vec L \times \vec B</span>, <span class="m">F = iLB\sin\theta</span>; filo piano curvo: <span class="m">\vec F = i\,\overrightarrow{AB} \times \vec B</span>.</li>
+<li>Circuito chiuso in campo uniforme: <span class="m">\vec F = 0</span>, ma può esserci un momento.</li>
+<li>Momento magnetico: <span class="m">\vec m = NiS\,\hat u_n</span> (A·m²); momento meccanico <span class="m">\vec M = \vec m \times \vec B</span>, <span class="m">M = NiSB\sin\theta</span>.</li>
+<li><span class="m">M = 0</span> con campo perpendicolare alla spira; massimo con campo nel piano della spira.</li>
+<li>Equilibrio stabile <span class="m">\theta = 0</span>, instabile <span class="m">\theta = \pi</span>; piccole oscillazioni con <span class="m">\omega = \sqrt{mB/I}</span>.</li>
+<li>Energia del dipolo magnetico: <span class="m">U = -\vec m \cdot \vec B</span> (analoga a <span class="m">U = -\vec p \cdot \vec E</span>).</li>
+<li>Effetto Hall: <span class="m">V_H = iB/(nqa)</span>; il segno rivela il segno dei portatori; sonde per misurare <span class="m">B</span>.</li>
 </ul>
 </div>

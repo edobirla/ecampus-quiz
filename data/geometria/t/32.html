@@ -1,51 +1,241 @@
 <h1>Lezione 32 — Applicazioni affini</h1>
-<p>Le applicazioni affini e le affinità generalizzano le applicazioni lineari e gli isomorfismi. Si fissano i riferimenti cartesiani <span class="m">(O;x,y)</span> del piano <span class="m">V^2_G</span> e <span class="m">(O;x,y,z)</span> dello spazio <span class="m">V^3_G</span>, identificando i vettori geometrici con le colonne delle loro coordinate.</p>
-<h2>Applicazioni affini</h2>
-<p><strong>Definizione 32.1.</strong> La <em>traslazione</em> di vettore <span class="m">v</span> in uno spazio vettoriale <span class="m">V</span> è <span class="m">T_v\colon V\ni P\mapsto P+v\in V</span> (<span class="m">v</span> = vettore di traslazione).</p>
-<p><strong>Definizione 32.2.</strong> Una funzione <span class="m">\varphi\colon V_1\to V_2</span> tra spazi sullo stesso campo della forma <span class="m">\varphi=T\circ f</span>, con <span class="m">f</span> lineare e <span class="m">T</span> traslazione di <span class="m">V_2</span>, è un&#39;<strong>applicazione affine</strong>.</p>
+<p>In questa lezione si introducono le <strong>applicazioni affini</strong> e le <strong>affinità</strong>. Sono la generalizzazione naturale delle applicazioni lineari e degli isomorfismi: un&#39;applicazione lineare manda sempre l&#39;origine nell&#39;origine, mentre in geometria servono anche trasformazioni che &quot;spostano&quot; tutto, come le traslazioni o le rotazioni attorno a un punto diverso dall&#39;origine. Un&#39;applicazione affine è esattamente &quot;un&#39;applicazione lineare seguita da una traslazione&quot;.</p>
+<p>Si introduce poi un nuovo modo di scrivere i punti, aggiungendo una <strong>coordinata fittizia uguale a <span class="m">1</span></strong>: serve per associare una matrice a ogni applicazione affine (anche quando non è lineare) e per controllare con un calcolo di rango se alcuni punti sono <strong>allineati</strong> o <strong>complanari</strong>.</p>
+<p>In tutta la lezione si fissano un riferimento cartesiano <span class="m">(O;x,y)</span> del piano <span class="m">V^2_G</span> e un riferimento cartesiano <span class="m">(O;x,y,z)</span> dello spazio <span class="m">V^3_G</span>, e si identificano i vettori geometrici con le colonne delle loro coordinate.</p>
+<h2>Traslazioni e applicazioni affini</h2>
+<p><strong>Definizione 32.1 (traslazione).</strong> In uno spazio vettoriale <span class="m">V</span>, la <em>traslazione di vettore <span class="m">v</span></em> è la funzione
+<span class="m d">T_v\colon V\ni P\longmapsto P+v\in V.</span>
+Il vettore <span class="m">v</span> si chiama <strong>vettore di traslazione</strong>. Quando non serve specificarlo si scrive semplicemente <span class="m">T</span>.</p>
+<p>Geometricamente: ogni punto viene spostato dello stesso vettore <span class="m">v</span> (stessa direzione, stesso verso, stessa lunghezza). <span class="m">T_0</span> (traslazione del vettore nullo) è l&#39;identità. Una traslazione con <span class="m">v\neq0</span> <strong>non</strong> è lineare, perché <span class="m">T_v(O)=v\neq O</span>, mentre ogni applicazione lineare manda <span class="m">O</span> in <span class="m">O</span>.</p>
+<p><strong>Definizione 32.2 (applicazione affine).</strong> Siano <span class="m">V_1,V_2</span> spazi vettoriali sullo stesso campo <span class="m">\mathbb{K}</span>. Una funzione <span class="m">\varphi\colon V_1\to V_2</span> della forma
+<span class="m d">\varphi=T\circ f,</span>
+con <span class="m">f\colon V_1\to V_2</span> <strong>lineare</strong> e <span class="m">T\colon V_2\to V_2</span> una <strong>traslazione</strong> di <span class="m">V_2</span>, si chiama <strong>applicazione affine</strong>. In pratica: prima si applica <span class="m">f</span>, poi si trasla il risultato.</p>
+<p><strong>Notazione 32.3.</strong> Come per le applicazioni lineari, se <span class="m">\varphi</span> si applica a una colonna scritta esplicitamente si omettono le parentesi: <span class="m">\varphi\,{}^t(x_1\ \cdots\ x_n)</span>.</p>
 <p><strong>Osservazione 32.4.</strong></p>
+<ol>
+<li><strong>Il vettore di traslazione è l&#39;immagine dell&#39;origine.</strong> Se <span class="m">\varphi=T_v\circ f</span>, allora
+<span class="m d">\varphi(O)=T_v(f(O))=T_v(O)=O+v=v,</span>
+dove <span class="m">f(O)=O</span> perché <span class="m">f</span> è lineare. Quindi per trovare <span class="m">v</span> basta calcolare <span class="m">\varphi(O)</span>.</li>
+<li><strong>Lineare <span class="m">\Rightarrow</span> affine, ma non viceversa.</strong> Ogni applicazione lineare <span class="m">f</span> è affine (si prende <span class="m">T=T_0</span>). Un&#39;applicazione affine è lineare <strong>se e solo se</strong> <span class="m">T=T_0</span>, cioè se e solo se <span class="m">\varphi(O)=O</span>.</li>
+</ol>
+<h3>Applicazioni affini tra <span class="m">\mathbb{K}^m</span> e <span class="m">\mathbb{K}^n</span></h3>
+<p><strong>Osservazione 32.5.</strong> Se <span class="m">V_1=\mathbb{K}^m</span> e <span class="m">V_2=\mathbb{K}^n</span>, le applicazioni lineari sono <span class="m">P\mapsto A\cdot P</span> con <span class="m">A\in\mathbb{K}^{n,m}</span> e le traslazioni sono <span class="m">P\mapsto P+v</span> con <span class="m">v\in\mathbb{K}^n</span>. Quindi ogni applicazione affine si scrive
+<span class="m d">\varphi(P)=A\cdot P+v,\qquad A\in\mathbb{K}^{n,m}\ (\text{parte lineare}),\quad v\in\mathbb{K}^n\ (\text{vettore di traslazione}).</span></p>
+<p><strong>Osservazione 32.7 (riconoscere un&#39;applicazione affine).</strong> Le applicazioni lineari <span class="m">\mathbb{K}^m\to\mathbb{K}^n</span> sono quelle le cui componenti sono polinomi <strong>omogenei di grado 1</strong> (senza termine noto). Aggiungendo la traslazione, si aggiungono termini noti. Quindi: le applicazioni affini da <span class="m">\mathbb{K}^m</span> a <span class="m">\mathbb{K}^n</span> sono <strong>tutte e sole</strong> quelle della forma
+<span class="m d">\varphi\,{}^t(x_1\ \cdots\ x_m)={}^t\big(p_1(x_1,\dots,x_m)\ \ \cdots\ \ p_n(x_1,\dots,x_m)\big)</span>
+con ogni <span class="m">p_i</span> <strong>polinomio di grado al più 1</strong>. I termini noti dei <span class="m">p_i</span> (eventualmente <span class="m">0</span>) formano le coordinate di <span class="m">v</span>; le parti di grado 1 (eventualmente <span class="m">0</span>) formano la parte lineare, cioè le righe di <span class="m">A</span>.</p>
+<p>Conseguenza pratica: compaiono <span class="m">x_i^2</span>, <span class="m">x_1x_2</span>, <span class="m">\cos x_1</span>, <span class="m">\sqrt{x_2}</span>, <span class="m">\frac1{x_1}</span>, <span class="m">|x_1|</span>…? Allora l&#39;applicazione <strong>non</strong> è affine.</p>
+<div class="callout esempio">
+
+<p><strong>Esempio 32.6 e 32.8.</strong></p>
+<ol>
+<li><span class="m">\varphi\colon\mathbb{R}^2\to\mathbb{R}^3</span>,
+<span class="m d">\varphi\,{}^t(x_1\ x_2)=\begin{pmatrix}3&amp;2\\-1&amp;0\\1&amp;4\end{pmatrix}\begin{pmatrix}x_1\\x_2\end{pmatrix}+\begin{pmatrix}0\\1\\-2\end{pmatrix}=\begin{pmatrix}3x_1+2x_2\\-x_1+1\\x_1+4x_2-2\end{pmatrix}</span>
+è affine: ogni componente è un polinomio di grado <span class="m">\leqslant1</span>. Non è lineare perché <span class="m">\varphi(O)={}^t(0\ 1\ -2)\neq O</span>.</li>
+<li>Le <strong>rotazioni del piano attorno a un punto qualsiasi</strong> sono affini (vedi sotto).</li>
+<li><span class="m">q\colon\mathbb{R}\ni x\mapsto x^2+x+2\in\mathbb{R}</span> <strong>non</strong> è affine: il polinomio ha grado <span class="m">2</span>.</li>
+<li><span class="m">\varphi\colon\mathbb{R}^2\to\mathbb{R}^3</span>, <span class="m">\varphi\,{}^t(x_1\ x_2)={}^t(x_1-x_2+5,\ x_1-x_2+1,\ \cos x_1+x_2)</span> <strong>non</strong> è affine per colpa di <span class="m">\cos x_1</span> nella terza componente (basta una componente &quot;cattiva&quot;).</li>
+</ol>
+</div>
+
+<h3>Rotazioni attorno a un punto</h3>
+<div class="callout esempio">
+
+<p><strong>Esercizio 32.1 (rotazione di centro <span class="m">C</span>).</strong> Sia <span class="m">\mathrm{rot}_{O,\alpha}</span> la rotazione di angolo <span class="m">\alpha</span> (verso antiorario) attorno all&#39;origine: in coordinate è lineare,
+<span class="m d">\mathrm{rot}_{O,\alpha}\begin{pmatrix}x\\y\end{pmatrix}=\begin{pmatrix}\cos\alpha&amp;-\sin\alpha\\\sin\alpha&amp;\cos\alpha\end{pmatrix}\begin{pmatrix}x\\y\end{pmatrix}.</span>
+Per ruotare attorno a <span class="m">C={}^t(c_x\ c_y)</span> si fa così: (1) si trasla tutto in modo che <span class="m">C</span> vada nell&#39;origine (<span class="m">T_{-C}</span>, inversa di <span class="m">T_C</span>); (2) si ruota attorno all&#39;origine; (3) si riporta l&#39;origine in <span class="m">C</span> (<span class="m">T_C</span>). Quindi
+<span class="m d">\mathrm{rot}_{C,\alpha}=T_C\circ\mathrm{rot}_{O,\alpha}\circ T_{-C}.</span>
+Calcolo, con <span class="m">R=\begin{pmatrix}\cos\alpha&amp;-\sin\alpha\\\sin\alpha&amp;\cos\alpha\end{pmatrix}</span>:
+<span class="m d">\mathrm{rot}_{C,\alpha}\begin{pmatrix}x\\y\end{pmatrix}=R\left(\begin{pmatrix}x\\y\end{pmatrix}-\begin{pmatrix}c_x\\c_y\end{pmatrix}\right)+\begin{pmatrix}c_x\\c_y\end{pmatrix}=R\begin{pmatrix}x\\y\end{pmatrix}+\left(-R\begin{pmatrix}c_x\\c_y\end{pmatrix}+\begin{pmatrix}c_x\\c_y\end{pmatrix}\right).</span>
+È della forma <span class="m">A\cdot P+v</span> con <span class="m">A=R</span> e
+<span class="m d">v=\begin{pmatrix}c_x-c_x\cos\alpha+c_y\sin\alpha\\c_y-c_x\sin\alpha-c_y\cos\alpha\end{pmatrix}=\begin{pmatrix}(1-\cos\alpha)c_x+\sin\alpha\,c_y\\-\sin\alpha\,c_x+(1-\cos\alpha)c_y\end{pmatrix},</span>
+quindi è affine.</p>
+<p><strong>Caso numerico.</strong> Rotazione di <span class="m">\frac\pi2</span> attorno a <span class="m">C={}^t(1\ 2)</span>: <span class="m">\cos\frac\pi2=0</span>, <span class="m">\sin\frac\pi2=1</span>, quindi <span class="m">A=\begin{pmatrix}0&amp;-1\\1&amp;0\end{pmatrix}</span> e <span class="m">v={}^t\big((1-0)\cdot1+1\cdot2,\ -1\cdot1+(1-0)\cdot2\big)={}^t(3\ 1)</span>: <span class="m">\varphi\,{}^t(x\ y)={}^t(-y+3,\ x+1)</span>. Controllo: <span class="m">\varphi(C)={}^t(-2+3,\ 1+1)={}^t(1\ 2)=C</span>, il centro resta fermo come deve.</p>
+</div>
+
+<h3>Proprietà delle applicazioni affini</h3>
+<p><strong>Lemma 32.9.</strong> Se <span class="m">\varphi=T\circ f\colon V_1\to V_2</span> è affine, per ogni coppia di punti <span class="m">P,P'</span> di <span class="m">V_1</span>:
+<span class="m d">\varphi(P')-\varphi(P)=f(P'-P).</span>
+<em>Dimostrazione.</em> Sia <span class="m">T=T_v</span>. Allora
+<span class="m d">\varphi(P')-\varphi(P)=T(f(P'))-T(f(P))=(f(P')+v)-(f(P)+v)=f(P')-f(P)=f(P'-P),</span>
+usando nell&#39;ordine: la definizione di composizione, la definizione di <span class="m">T_v</span>, le proprietà della somma in <span class="m">V_2</span> (le due <span class="m">v</span> si cancellano), la linearità di <span class="m">f</span>. <span class="m">\square</span></p>
+<p>Significato: <strong>sui vettori &quot;differenza di due punti&quot; un&#39;applicazione affine agisce come la sua parte lineare</strong>; la traslazione sparisce. È lo strumento per ricavare <span class="m">f</span> conoscendo <span class="m">\varphi</span> su alcuni punti.</p>
+<p><strong>Proposizione 32.10.</strong> Sia <span class="m">\varphi=T\circ f\colon V_1\to V_2</span> affine e <span class="m">S</span> un sottospazio affine di <span class="m">V_1</span>. Allora <span class="m">\varphi(S)</span> è un sottospazio affine di <span class="m">V_2</span> e <strong>la giacitura di <span class="m">\varphi(S)</span> è l&#39;immagine tramite <span class="m">f</span> della giacitura di <span class="m">S</span></strong>.</p>
+<p><em>Perché (la dispensa non la dimostra, ma l&#39;idea è immediata).</em> Se <span class="m">S=P_0+W</span> (<span class="m">P_0</span> punto di <span class="m">S</span>, <span class="m">W</span> giacitura), ogni punto di <span class="m">S</span> è <span class="m">P_0+w</span> con <span class="m">w\in W</span> e, per il Lemma 32.9, <span class="m">\varphi(P_0+w)=\varphi(P_0)+f(w)</span>. Quindi <span class="m">\varphi(S)=\varphi(P_0)+f(W)</span>: è il sottospazio affine passante per <span class="m">\varphi(P_0)</span> con giacitura <span class="m">f(W)</span> (che è un sottospazio vettoriale perché immagine di un sottospazio tramite un&#39;applicazione lineare).</p>
+<div class="callout attenzione">
+
+<p>Nell&#39;enunciato la giacitura dell&#39;immagine è <span class="m">f(W)</span>, cioè l&#39;immagine <strong>della giacitura</strong> tramite la <strong>parte lineare</strong> <span class="m">f</span>. Sono false le varianti &quot;la giacitura di <span class="m">\varphi(S)</span> è <span class="m">f(S)</span>&quot; (immagine di <span class="m">S</span> stesso, non della sua giacitura) e &quot;l&#39;immagine della giacitura tramite <span class="m">\varphi</span> è un sottospazio affine&quot; detta come se fosse la giacitura. Leggere bene chi viene trasformato (S o W) e da chi (<span class="m">\varphi</span> o <span class="m">f</span>).</p>
+</div>
+
+<p><strong>Proposizione 32.11.</strong> Se <span class="m">S</span> e <span class="m">S'</span> sono paralleli, anche <span class="m">\varphi(S)</span> e <span class="m">\varphi(S')</span> sono paralleli.
+<em>Dimostrazione.</em> Siano <span class="m">W,W'</span> le giaciture. Per la Prop. 32.10 le giaciture delle immagini sono <span class="m">f(W)</span> e <span class="m">f(W')</span>. Paralleli significa che una giacitura è contenuta nell&#39;altra, diciamo <span class="m">W\subseteq W'</span>. Allora <span class="m">f(W)\subseteq f(W')</span>, quindi anche le immagini sono parallele. <span class="m">\square</span></p>
+<p><strong>Osservazione 32.12.</strong> Ogni traslazione è bigettiva (l&#39;inversa di <span class="m">T_v</span> è <span class="m">T_{-v}</span>). Quindi <span class="m">\varphi=T\circ f</span> è bigettiva <strong>se e solo se</strong> <span class="m">f</span> è bigettiva. In tal caso <span class="m">f</span> è un isomorfismo e quindi <span class="m">\dim V_1=\dim V_2</span>.</p>
+<p><strong>Proposizione 32.13.</strong> La composizione di applicazioni affini è affine; l&#39;inversa di un&#39;applicazione affine invertibile è affine.
+<em>Verifica in coordinate.</em> Se <span class="m">\varphi_1(P)=A_1P+v_1</span> e <span class="m">\varphi_2(Q)=A_2Q+v_2</span>, allora
+<span class="m d">\varphi_2(\varphi_1(P))=A_2(A_1P+v_1)+v_2=(A_2A_1)P+(A_2v_1+v_2),</span>
+di nuovo della forma &quot;matrice per <span class="m">P</span> più vettore&quot;. Se <span class="m">Q=AP+v</span> con <span class="m">A</span> invertibile, ricavando <span class="m">P</span>: <span class="m">P=A^{-1}(Q-v)=A^{-1}Q-A^{-1}v</span>, che è affine.</p>
+<p><strong>Definizione 32.14 (affinità).</strong> Un&#39;applicazione affine <strong>invertibile</strong> <span class="m">\varphi\colon V\to V</span> (stesso spazio come dominio e codominio) si chiama <strong>affinità</strong>.</p>
+<p><strong>Corollario 32.15.</strong> Composizione di affinità e inversa di un&#39;affinità sono affinità.</p>
+<p><strong>Teorema 32.16.</strong> Sia <span class="m">\varphi</span> un&#39;affinità di <span class="m">V</span>. Due sottospazi affini <span class="m">S,S'</span> sono</p>
 <ul>
-<li>Il vettore di traslazione è <span class="m">v=\varphi(O)</span>: <span class="m">\varphi(O)=T_v(f(O))=T_v(O)=v</span>.</li>
-<li>Ogni applicazione lineare è affine, non viceversa: un&#39;applicazione affine è lineare se e solo se <span class="m">T=T_0</span>, cioè <span class="m">\varphi(O)=O</span>.</li>
+<li><strong>incidenti</strong> se e solo se lo sono <span class="m">\varphi(S)</span> e <span class="m">\varphi(S')</span>;</li>
+<li><strong>paralleli</strong> se e solo se lo sono <span class="m">\varphi(S)</span> e <span class="m">\varphi(S')</span>;</li>
+<li><strong>sghembi</strong> se e solo se lo sono <span class="m">\varphi(S)</span> e <span class="m">\varphi(S')</span>.</li>
 </ul>
-<p><strong>Osservazione 32.5–32.7.</strong> Da <span class="m">\mathbb{K}^m</span> a <span class="m">\mathbb{K}^n</span>: <span class="m">\varphi(P)=A\cdot P+v</span> con <span class="m">A\in\mathbb{K}^{n,m}</span>, <span class="m">v\in\mathbb{K}^n</span>. Equivalentemente, le applicazioni affini sono tutte e sole quelle le cui componenti sono <strong>polinomi di grado al più 1</strong> nelle coordinate: i termini noti formano <span class="m">v</span>, le parti di grado 1 formano la parte lineare.</p>
-<div class="callout esempio">
-
-<p><span class="m">\varphi\,{}^t(x_1\ x_2)=\begin{pmatrix}3&amp;2\\-1&amp;0\\1&amp;4\end{pmatrix}{}^t(x_1\ x_2)+{}^t(0\ 1\ -2)={}^t(3x_1+2x_2,\ -x_1+1,\ x_1+4x_2-2)</span> è affine <span class="m">\mathbb{R}^2\to\mathbb{R}^3</span>. Anche le rotazioni del piano attorno a un punto qualsiasi sono affini. Invece <span class="m">q\colon\mathbb{R}\ni x\mapsto x^2+x+2</span> non è affine (grado 2).</p>
-</div>
-
-<p><strong>Lemma 32.9.</strong> Se <span class="m">\varphi=T\circ f</span> è affine, <span class="m">\varphi(P')-\varphi(P)=f(P'-P)</span> per ogni <span class="m">P,P'</span> (le traslazioni si cancellano nella differenza).</p>
-<p><strong>Proposizione 32.10.</strong> L&#39;immagine di un sottospazio affine <span class="m">S</span> di <span class="m">V_1</span> è un sottospazio affine di <span class="m">V_2</span>, e <strong>la giacitura di <span class="m">\varphi(S)</span> è l&#39;immagine tramite <span class="m">f</span> della giacitura di <span class="m">S</span></strong>.</p>
-<p><strong>Proposizione 32.11.</strong> Se <span class="m">S</span> e <span class="m">S'</span> sono paralleli, anche <span class="m">\varphi(S)</span> e <span class="m">\varphi(S')</span> lo sono (da <span class="m">W\subseteq W'</span> segue <span class="m">f(W)\subseteq f(W')</span>).</p>
-<p><strong>Osservazione 32.12.</strong> Le traslazioni sono bigettive, quindi <span class="m">\varphi=T\circ f</span> è bigettiva se e solo se lo è <span class="m">f</span>; in tal caso <span class="m">\dim V_1=\dim V_2</span>.</p>
-<p><strong>Proposizione 32.13.</strong> La composizione di applicazioni affini è affine; l&#39;inversa di un&#39;applicazione affine invertibile è affine.</p>
-<p><strong>Definizione 32.14.</strong> Un&#39;applicazione affine <span class="m">\varphi\colon V\to V</span> invertibile è un&#39;<strong>affinità</strong>. Composizione e inverse di affinità sono affinità (Cor. 32.15).</p>
-<p><strong>Teorema 32.16.</strong> Se <span class="m">\varphi</span> è un&#39;affinità, due sottospazi affini <span class="m">S,S'</span> sono incidenti / paralleli / sghembi se e solo se lo sono <span class="m">\varphi(S)</span> e <span class="m">\varphi(S')</span>. Per questo le classificazioni della Lezione 31 sono dette <em>affini</em>.</p>
+<p><strong>Osservazione 32.17.</strong> Per questo le classificazioni delle posizioni reciproche viste nella Lezione 31 (coincidenti, paralleli, incidenti, sghembi) si chiamano <strong>classificazioni affini</strong>: classificano le configurazioni &quot;a meno di affinità&quot;, perché le affinità non cambiano queste proprietà. Le affinità invece possono cambiare angoli e lunghezze (per esempio <span class="m">\varphi\,{}^t(x\ y)={}^t(2x\ y)</span> allunga in orizzontale): per quelle servono le isometrie (Lezione 37).</p>
 <h2>Forma matriciale delle applicazioni affini</h2>
-<p>A ogni punto <span class="m">P={}^t(P_1\ \cdots\ P_n)</span> di <span class="m">\mathbb{K}^n</span> si appende una <strong>coordinata fittizia</strong> uguale a <span class="m">1</span>: <span class="m">P_a={}^t(P_1\ \cdots\ P_n\ 1)</span>. La mappa <span class="m">P\mapsto P_a</span> è affine ma non lineare.</p>
-<p>Scrivendo <span class="m">A\cdot P+v=\sum_i P_i\,(\text{colonna }i\text{ di }A)+1\cdot v</span>, il vettore <span class="m">v</span> diventa una colonna in più; aggiungendo la riga <span class="m">(0\ \cdots\ 0\ 1)</span>:
-<span class="m d">(\varphi(P))_a=\begin{pmatrix}A&amp;v\\0&amp;1\end{pmatrix}\cdot P_a.</span></p>
-<p><strong>Definizione 32.19.</strong> <span class="m">[\varphi]:=\begin{pmatrix}A&amp;v\\0&amp;1\end{pmatrix}</span> (con <span class="m">f=f_A</span>, <span class="m">T=T_v</span>) è la <strong>matrice associata</strong> all&#39;applicazione affine <span class="m">\varphi\colon\mathbb{K}^m\to\mathbb{K}^n</span>; è <span class="m">(n+1)\times(m+1)</span>.</p>
+<p>Per semplicità si lavora in <span class="m">\mathbb{K}^n</span> (per uno spazio finitamente generato qualsiasi basta fissare una base).</p>
+<p><strong>Coordinata fittizia.</strong> A ogni punto <span class="m">P={}^t(P_1\ \cdots\ P_n)</span> si appende una coordinata in più uguale a <span class="m">1</span>:
+<span class="m d">P_a:={}^t(P_1\ \ P_2\ \cdots\ P_n\ \ 1)\in\mathbb{K}^{n+1}.</span></p>
+<p><strong>Osservazione 32.18.</strong> La mappa <span class="m">\mathbb{K}^n\ni P\mapsto P_a\in\mathbb{K}^{n+1}</span> è <strong>affine ma non lineare</strong>: è la composizione dell&#39;applicazione lineare <span class="m">P\mapsto{}^t(P_1\ \cdots\ P_n\ 0)</span> con la traslazione <span class="m">T_{e_{n+1}}</span>, dove <span class="m">e_{n+1}={}^t(0\ \cdots\ 0\ 1)</span>; e manda <span class="m">O</span> in <span class="m">e_{n+1}\neq O</span>.</p>
+<h3>Costruzione della matrice associata, passo per passo</h3>
+<p>Sia <span class="m">\varphi(P)=A\cdot P+v</span> con <span class="m">A=(a_{ij})\in\mathbb{K}^{n,m}</span>, <span class="m">v\in\mathbb{K}^n</span>.</p>
+<ol>
+<li>Il prodotto righe per colonne <span class="m">A\cdot P</span> è la combinazione lineare delle colonne di <span class="m">A</span> con coefficienti le coordinate di <span class="m">P</span>:
+<span class="m d">\varphi(P)=P_1\begin{pmatrix}a_{11}\\\vdots\\a_{n1}\end{pmatrix}+\cdots+P_m\begin{pmatrix}a_{1m}\\\vdots\\a_{nm}\end{pmatrix}+1\cdot\begin{pmatrix}v_1\\\vdots\\v_n\end{pmatrix}.</span></li>
+<li>L&#39;ultimo addendo è &quot;una colonna in più, moltiplicata per <span class="m">1</span>&quot;. Quindi è ancora un prodotto righe per colonne, con la matrice <span class="m">(A\mid v)</span> e il vettore <span class="m">P_a</span>:
+<span class="m d">\varphi(P)=\begin{pmatrix}a_{11}&amp;\cdots&amp;a_{1m}&amp;v_1\\\vdots&amp;&amp;\vdots&amp;\vdots\\a_{n1}&amp;\cdots&amp;a_{nm}&amp;v_n\end{pmatrix}\begin{pmatrix}P_1\\\vdots\\P_m\\1\end{pmatrix}.</span></li>
+<li>Per avere anche a sinistra un punto con la coordinata fittizia, si aggiunge l&#39;equazione <span class="m">1=0\cdot P_1+\cdots+0\cdot P_m+1\cdot1</span>, cioè la riga <span class="m">(0\ \cdots\ 0\ 1)</span>:
+<span class="m d">\begin{pmatrix}(\varphi(P))_1\\\vdots\\(\varphi(P))_n\\1\end{pmatrix}=\begin{pmatrix}a_{11}&amp;\cdots&amp;a_{1m}&amp;v_1\\\vdots&amp;&amp;\vdots&amp;\vdots\\a_{n1}&amp;\cdots&amp;a_{nm}&amp;v_n\\0&amp;\cdots&amp;0&amp;1\end{pmatrix}\begin{pmatrix}P_1\\\vdots\\P_m\\1\end{pmatrix},\qquad\text{cioè}\qquad(\varphi(P))_a=\begin{pmatrix}A&amp;v\\0&amp;1\end{pmatrix}P_a.</span></li>
+</ol>
+<p>Così un&#39;applicazione affine (anche non lineare) diventa un <strong>prodotto matrice per vettore</strong>.</p>
+<p><strong>Definizione 32.19 (matrice associata).</strong> Data <span class="m">\varphi=T_v\circ f_A\colon\mathbb{K}^m\to\mathbb{K}^n</span>, la matrice
+<span class="m d">[\varphi]:=\begin{pmatrix}A&amp;v\\0&amp;1\end{pmatrix}</span>
+si chiama <strong>matrice associata</strong> a <span class="m">\varphi</span>. Ha <span class="m">n+1</span> righe e <span class="m">m+1</span> colonne: le prime <span class="m">m</span> colonne contengono <span class="m">A</span> (con sotto degli zeri), l&#39;ultima colonna contiene <span class="m">v</span> (con sotto un <span class="m">1</span>).</p>
+<h3>Ricetta d&#39;esame: matrice associata da una formula</h3>
+<ol>
+<li>Scrivere ogni componente <span class="m">p_i</span> come <span class="m">(\text{coeff. di }x_1)x_1+\cdots+(\text{coeff. di }x_m)x_m+(\text{termine noto})</span>, <strong>con i segni</strong>, mettendo <span class="m">0</span> per le variabili che mancano.</li>
+<li>La riga <span class="m">i</span> di <span class="m">[\varphi]</span> è: coefficienti di <span class="m">x_1,\dots,x_m</span>, poi il termine noto.</li>
+<li>Aggiungere in fondo la riga <span class="m">(0\ \cdots\ 0\ 1)</span> (lunga <span class="m">m+1</span>).</li>
+<li>Controllo: <span class="m">[\varphi]\cdot{}^t(x_1\ \cdots\ x_m\ 1)</span> deve ridare le componenti di <span class="m">\varphi</span> seguite da <span class="m">1</span>.</li>
+</ol>
 <div class="callout esempio">
 
-<p>Per l&#39;applicazione dell&#39;esempio precedente <span class="m">[\varphi]=\begin{pmatrix}3&amp;2&amp;0\\-1&amp;0&amp;1\\1&amp;4&amp;-2\\0&amp;0&amp;1\end{pmatrix}</span>. Per la rotazione di angolo <span class="m">\alpha</span> (antiorario) attorno a <span class="m">C={}^t(c_x\ c_y)</span>: <span class="m">[\varphi]=\begin{pmatrix}\cos\alpha&amp;-\sin\alpha&amp;(1-\cos\alpha)c_x+\sin\alpha\,c_y\\\sin\alpha&amp;\cos\alpha&amp;-\sin\alpha\,c_x+(1-\cos\alpha)c_y\\0&amp;0&amp;1\end{pmatrix}</span>, ricavata da <span class="m">\mathrm{rot}_{C,\alpha}=T_C\circ\mathrm{rot}_{O,\alpha}\circ T_{-C}</span>.</p>
+<p><strong>Esempio del paniere.</strong> <span class="m">\theta\colon\mathbb{R}^2\to\mathbb{R}^2</span>, <span class="m">\theta\,{}^t(x\ y)={}^t(2x-3y+2,\ 3x+y-1)</span>.</p>
+<ul>
+<li>Prima componente: coefficienti <span class="m">2</span> e <span class="m">-3</span>, termine noto <span class="m">2</span> → riga <span class="m">(2\ \ -3\ \ 2)</span>.</li>
+<li>Seconda componente: coefficienti <span class="m">3</span> e <span class="m">1</span>, termine noto <span class="m">-1</span> → riga <span class="m">(3\ \ 1\ \ -1)</span>.</li>
+<li>Riga finale <span class="m">(0\ \ 0\ \ 1)</span>.
+<span class="m d">[\theta]=\begin{pmatrix}2&amp;-3&amp;2\\3&amp;1&amp;-1\\0&amp;0&amp;1\end{pmatrix}.\qquad\text{Controllo: }\begin{pmatrix}2&amp;-3&amp;2\\3&amp;1&amp;-1\\0&amp;0&amp;1\end{pmatrix}\begin{pmatrix}x\\y\\1\end{pmatrix}=\begin{pmatrix}2x-3y+2\\3x+y-1\\1\end{pmatrix}.</span></li>
+</ul>
 </div>
 
-<p><strong>Proposizione 32.22.</strong> <span class="m">\varphi\colon\mathbb{K}^n\to\mathbb{K}^n</span> è un&#39;affinità se e solo se <span class="m">[\varphi]</span> (quadrata) è invertibile.</p>
 <div class="callout esempio">
 
-<p><strong>Trovare un&#39;affinità da 4 punti.</strong> Se <span class="m">\varphi\,{}^t(1\ 1\ 0)={}^t(2\ 0\ 4)</span>, <span class="m">\varphi\,{}^t(1\ 2\ -1)={}^t(3\ -3\ 3)</span>, <span class="m">\varphi\,{}^t(0\ 0\ 1)={}^t(0\ 1\ 5)</span>, <span class="m">\varphi\,{}^t(1\ 1\ 1)={}^t(1\ 2\ 7)</span>: per il Lemma 32.9 le differenze danno <span class="m">f</span> su una base (es. <span class="m">f\,{}^t(0\ 0\ 1)={}^t(-1\ 2\ 3)</span>), da cui <span class="m">A=\begin{pmatrix}1&amp;0&amp;-1\\2&amp;-1&amp;2\\0&amp;2&amp;3\end{pmatrix}</span>; poi <span class="m">v=\varphi(P)-A P={}^t(1\ -1\ 2)</span>.</p>
+<p><strong>Esempio 32.20.</strong> Per <span class="m">\varphi\,{}^t(x_1\ x_2)={}^t(3x_1+2x_2,\ -x_1+1,\ x_1+4x_2-2)</span> (da <span class="m">\mathbb{R}^2</span> a <span class="m">\mathbb{R}^3</span>, quindi <span class="m">[\varphi]</span> è <span class="m">4\times3</span>; la seconda componente non contiene <span class="m">x_2</span>, quindi il suo coefficiente è <span class="m">0</span>):
+<span class="m d">[\varphi]=\begin{pmatrix}3&amp;2&amp;0\\-1&amp;0&amp;1\\1&amp;4&amp;-2\\0&amp;0&amp;1\end{pmatrix}.</span>
+Per la rotazione di angolo <span class="m">\alpha</span> attorno a <span class="m">C={}^t(c_x\ c_y)</span>:
+<span class="m d">[\mathrm{rot}_{C,\alpha}]=\begin{pmatrix}\cos\alpha&amp;-\sin\alpha&amp;(1-\cos\alpha)c_x+\sin\alpha\,c_y\\\sin\alpha&amp;\cos\alpha&amp;-\sin\alpha\,c_x+(1-\cos\alpha)c_y\\0&amp;0&amp;1\end{pmatrix}.</span></p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Esercizio 32.3 (da <span class="m">\mathbb{R}^4</span> a <span class="m">\mathbb{R}^4</span>).</strong> <span class="m">\varphi\,{}^t(x_1\ x_2\ x_3\ x_4)={}^t(x_2-5x_1+2x_3-x_4-1,\ x_1+x_2-4x_4,\ x_1-x_4+5,\ x_1-x_2+3x_3-1)</span>.
+Attenzione all&#39;ordine: nella prima componente <span class="m">x_2</span> compare prima di <span class="m">x_1</span>, ma nella matrice le colonne vanno nell&#39;ordine <span class="m">x_1,x_2,x_3,x_4</span>. Riordinando:</p>
+<ul>
+<li><span class="m">-5x_1+x_2+2x_3-x_4-1</span> → <span class="m">(-5\ \ 1\ \ 2\ \ -1\ \ -1)</span>;</li>
+<li><span class="m">x_1+x_2+0x_3-4x_4+0</span> → <span class="m">(1\ \ 1\ \ 0\ \ -4\ \ 0)</span>;</li>
+<li><span class="m">x_1+0x_2+0x_3-x_4+5</span> → <span class="m">(1\ \ 0\ \ 0\ \ -1\ \ 5)</span>;</li>
+<li><span class="m">x_1-x_2+3x_3+0x_4-1</span> → <span class="m">(1\ \ -1\ \ 3\ \ 0\ \ -1)</span>.
+<span class="m d">[\varphi]=\begin{pmatrix}-5&amp;1&amp;2&amp;-1&amp;-1\\1&amp;1&amp;0&amp;-4&amp;0\\1&amp;0&amp;0&amp;-1&amp;5\\1&amp;-1&amp;3&amp;0&amp;-1\\0&amp;0&amp;0&amp;0&amp;1\end{pmatrix}.</span></li>
+</ul>
+</div>
+
+<p><strong>Osservazione 32.21.</strong> Se dominio e codominio coincidono (<span class="m">\mathbb{K}^n\to\mathbb{K}^n</span>), <span class="m">[\varphi]</span> è quadrata <span class="m">(n+1)\times(n+1)</span>; se <span class="m">\varphi</span> è invertibile, è un&#39;affinità.</p>
+<p><strong>Proposizione 32.22.</strong> <span class="m">\varphi\colon\mathbb{K}^n\to\mathbb{K}^n</span> è un&#39;affinità <strong>se e solo se</strong> <span class="m">[\varphi]</span> è invertibile.</p>
+<p><em>Perché.</em> Sviluppando il determinante lungo l&#39;ultima riga <span class="m">(0\ \cdots\ 0\ 1)</span> resta solo il termine <span class="m">1\cdot\det A</span>, quindi <span class="m">\det[\varphi]=\det A</span>. Allora <span class="m">[\varphi]</span> è invertibile <span class="m">\iff\det A\neq0\iff f_A</span> è bigettiva <span class="m">\iff\varphi</span> è bigettiva (Oss. 32.12). Inoltre la composizione corrisponde al prodotto: <span class="m">[\varphi_2\circ\varphi_1]=[\varphi_2][\varphi_1]</span> (si verifica con la formula <span class="m">(A_2A_1,\ A_2v_1+v_2)</span> vista sopra).</p>
+<div class="callout esempio">
+
+<p><strong>Esercizio 32.4.</strong></p>
+<ol>
+<li><span class="m">\varphi\colon\mathbb{R}^4\to\mathbb{R}^4</span>, <span class="m">\varphi\,{}^t(x_1\ x_2\ x_3\ x_4)={}^t(x_1-x_2-x_4+1,\ 2x_1-x_2-2x_3-2,\ x_2-x_3+1,\ 3x_1+x_2+4x_3)</span>. La parte lineare è
+<span class="m d">A=\begin{pmatrix}1&amp;-1&amp;0&amp;-1\\2&amp;-1&amp;-2&amp;0\\0&amp;1&amp;-1&amp;0\\3&amp;1&amp;4&amp;0\end{pmatrix}.</span>
+Sviluppo lungo la quarta colonna (unico elemento non nullo <span class="m">a_{14}=-1</span>, segno <span class="m">(-1)^{1+4}=-1</span>):
+<span class="m d">\det A=(-1)\cdot(-1)\cdot\det\begin{pmatrix}2&amp;-1&amp;-2\\0&amp;1&amp;-1\\3&amp;1&amp;4\end{pmatrix}=2(4+1)-(-1)(0+3)+(-2)(0-3)=10+3+6=19\neq0.</span>
+Quindi <span class="m">\varphi</span> è un&#39;affinità.</li>
+<li><span class="m">\varphi\colon\mathbb{R}^2\to\mathbb{R}^3</span>, <span class="m">\varphi\,{}^t(x\ y)={}^t(x-y,\ 2x+3y-3,\ x+4y-2)</span>: <strong>non</strong> è un&#39;affinità, perché dominio e codominio sono diversi (<span class="m">\dim 2\neq\dim3</span>, Oss. 32.12); la matrice associata è <span class="m">4\times3</span>, non quadrata.</li>
+</ol>
+</div>
+
+<h3>Trovare un&#39;affinità conoscendo l&#39;immagine di alcuni punti</h3>
+<p>Procedura (con il Lemma 32.9):</p>
+<ol>
+<li>Fissato un punto <span class="m">P_0</span> tra quelli dati, calcolare le differenze <span class="m">P_i-P_0</span> e <span class="m">\varphi(P_i)-\varphi(P_0)</span>: per il Lemma, <span class="m">f(P_i-P_0)=\varphi(P_i)-\varphi(P_0)</span>.</li>
+<li>Se i vettori <span class="m">P_i-P_0</span> formano una base, <span class="m">f</span> è determinata: ricavare <span class="m">f(e_1),\dots,f(e_n)</span>, che sono le colonne di <span class="m">A</span>.</li>
+<li>Trovare <span class="m">v=\varphi(P_0)-A\cdot P_0</span> (e controllare sugli altri punti).</li>
+</ol>
+<div class="callout esempio">
+
+<p><strong>Esercizio 32.2.</strong> <span class="m">\varphi\,{}^t(1\ 1\ 0)={}^t(2\ 0\ 4)</span>, <span class="m">\varphi\,{}^t(1\ 2\ -1)={}^t(3\ -3\ 3)</span>, <span class="m">\varphi\,{}^t(0\ 0\ 1)={}^t(0\ 1\ 5)</span>, <span class="m">\varphi\,{}^t(1\ 1\ 1)={}^t(1\ 2\ 7)</span>. Si scrive <span class="m">\varphi=T\circ f</span> e si usa <span class="m">P_0={}^t(1\ 1\ 0)</span>.</p>
+<p><strong>Passo 1 (differenze).</strong></p>
+<ul>
+<li><span class="m">{}^t(1\ 2\ -1)-{}^t(1\ 1\ 0)={}^t(0\ 1\ -1)</span> e <span class="m">{}^t(3\ -3\ 3)-{}^t(2\ 0\ 4)={}^t(1\ -3\ -1)</span>: <span class="m">f\,{}^t(0\ 1\ -1)={}^t(1\ -3\ -1)</span>.</li>
+<li><span class="m">{}^t(0\ 0\ 1)-{}^t(1\ 1\ 0)={}^t(-1\ -1\ 1)</span> e <span class="m">{}^t(0\ 1\ 5)-{}^t(2\ 0\ 4)={}^t(-2\ 1\ 1)</span>: <span class="m">f\,{}^t(-1\ -1\ 1)={}^t(-2\ 1\ 1)</span>.</li>
+<li><span class="m">{}^t(1\ 1\ 1)-{}^t(1\ 1\ 0)={}^t(0\ 0\ 1)</span> e <span class="m">{}^t(1\ 2\ 7)-{}^t(2\ 0\ 4)={}^t(-1\ 2\ 3)</span>: <span class="m">f\,{}^t(0\ 0\ 1)={}^t(-1\ 2\ 3)</span>.</li>
+</ul>
+<p>I tre vettori <span class="m">{}^t(0\ 1\ -1)</span>, <span class="m">{}^t(-1\ -1\ 1)</span>, <span class="m">{}^t(0\ 0\ 1)</span> formano una base di <span class="m">\mathbb{R}^3</span>, quindi <span class="m">f</span> è determinata.</p>
+<p><strong>Passo 2 (colonne di <span class="m">A</span>).</strong> <span class="m">f(e_3)={}^t(-1\ 2\ 3)</span> subito. Da <span class="m">{}^t(0\ 1\ -1)=e_2-e_3</span> e linearità: <span class="m">f(e_2)=f\,{}^t(0\ 1\ -1)+f(e_3)={}^t(1\ -3\ -1)+{}^t(-1\ 2\ 3)={}^t(0\ -1\ 2)</span>. Da <span class="m">{}^t(-1\ -1\ 1)=-e_1-e_2+e_3</span>: <span class="m">f(e_1)=-f\,{}^t(-1\ -1\ 1)-f(e_2)+f(e_3)={}^t(2\ -1\ -1)+{}^t(0\ 1\ -2)+{}^t(-1\ 2\ 3)={}^t(1\ 2\ 0)</span>. Quindi
+<span class="m d">A=\begin{pmatrix}1&amp;0&amp;-1\\2&amp;-1&amp;2\\0&amp;2&amp;3\end{pmatrix}.</span>
+<strong>Passo 3 (traslazione).</strong> <span class="m">A\,{}^t(1\ 1\ 0)={}^t(1\ 1\ 2)</span>, quindi <span class="m">v={}^t(2\ 0\ 4)-{}^t(1\ 1\ 2)={}^t(1\ -1\ 2)</span>. Controllo sugli altri punti: <span class="m">A\,{}^t(1\ 2\ -1)={}^t(2\ -2\ 1)</span> e <span class="m">+v</span> dà <span class="m">{}^t(3\ -3\ 3)</span> ✓; <span class="m">A\,{}^t(0\ 0\ 1)={}^t(-1\ 2\ 3)</span>, <span class="m">+v={}^t(0\ 1\ 5)</span> ✓; <span class="m">A\,{}^t(1\ 1\ 1)={}^t(0\ 3\ 5)</span>, <span class="m">+v={}^t(1\ 2\ 7)</span> ✓.
+<span class="m d">\varphi\,{}^t(x_1\ x_2\ x_3)=A\,{}^t(x_1\ x_2\ x_3)+{}^t(1\ -1\ 2),\qquad[\varphi]=\begin{pmatrix}1&amp;0&amp;-1&amp;1\\2&amp;-1&amp;2&amp;-1\\0&amp;2&amp;3&amp;2\\0&amp;0&amp;0&amp;1\end{pmatrix}.</span></p>
 </div>
 
 <h2>Allineamento e complanarità</h2>
-<p><strong>Proposizione 32.23.</strong> I punti <span class="m">P^{(1)},\dots,P^{(m)}</span> di <span class="m">\mathbb{K}^n</span> sono <strong>allineati</strong> se e solo se la matrice <span class="m">(n+1)\times m</span> con colonne <span class="m">P^{(1)}_a,\dots,P^{(m)}_a</span> ha rango al più <span class="m">2</span>.</p>
-<p><strong>Proposizione 32.25.</strong> Sono <strong>complanari</strong> se e solo se tale matrice ha rango al più <span class="m">3</span>. In generale (Oss. 32.26) stanno in un sottospazio affine di dimensione <span class="m">k</span> se e solo se il rango è al più <span class="m">k+1</span>.</p>
+<p>La coordinata fittizia permette di decidere con un rango se dei punti stanno su una retta o su un piano.</p>
+<p><strong>Proposizione 32.23 (allineamento).</strong> I punti <span class="m">P^{(1)},\dots,P^{(m)}</span> di <span class="m">\mathbb{K}^n</span> sono <strong>allineati</strong> (contenuti in un sottospazio affine di dimensione <span class="m">1</span>) se e solo se la matrice <span class="m">(n+1)\times m</span> che ha per colonne <span class="m">P^{(1)}_a,\dots,P^{(m)}_a</span> ha <strong>rango al più <span class="m">2</span></strong>.</p>
+<p><strong>Proposizione 32.25 (complanarità).</strong> Sono <strong>complanari</strong> (contenuti in un sottospazio affine di dimensione <span class="m">2</span>) se e solo se tale matrice ha <strong>rango al più <span class="m">3</span></strong>.</p>
+<p><strong>Osservazione 32.26 (caso generale).</strong> Sono contenuti in un sottospazio affine di dimensione <span class="m">k</span> se e solo se il rango è <strong>al più <span class="m">k+1</span></strong>.</p>
+<p><em>Perché &quot;<span class="m">k+1</span>&quot;.</em> Sottraendo la prima colonna da tutte le altre (operazione che non cambia il rango) le colonne diventano <span class="m">P^{(1)}_a</span> e <span class="m">{}^t\big(P^{(i)}-P^{(1)}\ \ 0\big)</span>: l&#39;ultima riga è <span class="m">(1\ 0\ \cdots\ 0)</span>, quindi il rango è <span class="m">1+\mathrm{rank}\big(P^{(2)}-P^{(1)},\dots,P^{(m)}-P^{(1)}\big)</span>. I punti stanno in un sottospazio affine di dimensione <span class="m">k</span> esattamente quando i vettori differenza generano uno spazio di dimensione <span class="m">\leqslant k</span>. Il <span class="m">+1</span> è &quot;il punto di partenza&quot;.</p>
 <div class="callout esempio">
 
-<p><span class="m">{}^t(1\ 0\ 2),{}^t(3\ -1\ 1),{}^t(-3\ 2\ 4)</span> sono allineati: <span class="m">\mathrm{rank}\begin{pmatrix}1&amp;3&amp;-3\\0&amp;-1&amp;2\\2&amp;1&amp;4\\1&amp;1&amp;1\end{pmatrix}=2</span>. I punti <span class="m">{}^t(1\ 1),{}^t(2\ -1),{}^t(1\ 3),{}^t(-1\ 2)</span> non lo sono: il rango è <span class="m">3&gt;2</span>.</p>
+<p><strong>Esempio 32.24.</strong></p>
+<ol>
+<li><span class="m">{}^t(1\ 0\ 2)</span>, <span class="m">{}^t(3\ -1\ 1)</span>, <span class="m">{}^t(-3\ 2\ 4)</span> in <span class="m">\mathbb{R}^3</span>:
+<span class="m d">\begin{pmatrix}1&amp;3&amp;-3\\0&amp;-1&amp;2\\2&amp;1&amp;4\\1&amp;1&amp;1\end{pmatrix}\ \xrightarrow{R_3\to R_3-2R_1,\ R_4\to R_4-R_1}\ \begin{pmatrix}1&amp;3&amp;-3\\0&amp;-1&amp;2\\0&amp;-5&amp;10\\0&amp;-2&amp;4\end{pmatrix}\ \xrightarrow{R_3\to R_3-5R_2,\ R_4\to R_4-2R_2}\ \begin{pmatrix}1&amp;3&amp;-3\\0&amp;-1&amp;2\\0&amp;0&amp;0\\0&amp;0&amp;0\end{pmatrix}.</span>
+Rango <span class="m">2</span>: <strong>allineati</strong>. (Infatti <span class="m">{}^t(3\ -1\ 1)-{}^t(1\ 0\ 2)={}^t(2\ -1\ -1)</span> e <span class="m">{}^t(-3\ 2\ 4)-{}^t(1\ 0\ 2)={}^t(-4\ 2\ 2)=-2\cdot{}^t(2\ -1\ -1)</span>.)</li>
+<li><span class="m">{}^t(1\ 1)</span>, <span class="m">{}^t(2\ -1)</span>, <span class="m">{}^t(1\ 3)</span>, <span class="m">{}^t(-1\ 2)</span> in <span class="m">\mathbb{R}^2</span>: <span class="m">\mathrm{rank}\begin{pmatrix}1&amp;2&amp;1&amp;-1\\1&amp;-1&amp;3&amp;2\\1&amp;1&amp;1&amp;1\end{pmatrix}=3&gt;2</span> (il minore delle prime tre colonne vale <span class="m">1(-1-3)-2(1-3)+1(1+1)=-4+4+2=2\neq0</span>): <strong>non</strong> allineati.</li>
+</ol>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Terne nel piano.</strong> Per tre punti di <span class="m">\mathbb{R}^2</span> la matrice è <span class="m">3\times3</span>: sono allineati <span class="m">\iff</span> il determinante è <span class="m">0</span>. <span class="m">{}^t(2\ -1)</span>, <span class="m">{}^t(3\ 2)</span>, <span class="m">{}^t(5\ 8)</span>:
+<span class="m d">\det\begin{pmatrix}2&amp;3&amp;5\\-1&amp;2&amp;8\\1&amp;1&amp;1\end{pmatrix}=2(2-8)-3(-1-8)+5(-1-2)=-12+27-15=0:</span>
+allineati (le differenze <span class="m">{}^t(1\ 3)</span> e <span class="m">{}^t(3\ 9)</span> sono proporzionali). Invece <span class="m">{}^t(2\ -1)</span>, <span class="m">{}^t(3\ 2)</span>, <span class="m">{}^t(4\ 1)</span> danno differenze <span class="m">{}^t(1\ 3)</span> e <span class="m">{}^t(2\ 2)</span>, non proporzionali: non allineati.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Esercizio 32.5 (complanarità).</strong> <span class="m">{}^t(1\ 0\ 1)</span>, <span class="m">{}^t(0\ 1\ -1)</span>, <span class="m">{}^t(1\ 2\ -3)</span>, <span class="m">{}^t(2\ -1\ 3)</span>:
+<span class="m d">\begin{pmatrix}1&amp;0&amp;1&amp;2\\0&amp;1&amp;2&amp;-1\\1&amp;-1&amp;-3&amp;3\\1&amp;1&amp;1&amp;1\end{pmatrix}\xrightarrow{R_3-R_1,\ R_4-R_1}\begin{pmatrix}1&amp;0&amp;1&amp;2\\0&amp;1&amp;2&amp;-1\\0&amp;-1&amp;-4&amp;1\\0&amp;1&amp;0&amp;-1\end{pmatrix}\xrightarrow{R_3+R_2,\ R_4-R_2}\begin{pmatrix}1&amp;0&amp;1&amp;2\\0&amp;1&amp;2&amp;-1\\0&amp;0&amp;-2&amp;0\\0&amp;0&amp;-2&amp;0\end{pmatrix}\xrightarrow{R_4-R_3}\begin{pmatrix}1&amp;0&amp;1&amp;2\\0&amp;1&amp;2&amp;-1\\0&amp;0&amp;-2&amp;0\\0&amp;0&amp;0&amp;0\end{pmatrix}.</span>
+Rango <span class="m">3\leqslant3</span>: i quattro punti sono <strong>complanari</strong>.</p>
+<p><strong>Esercizio 32.6 (parametro).</strong> Per quali <span class="m">k</span> sono allineati <span class="m">{}^t(1\ 2\ 1)</span>, <span class="m">{}^t(2\ -1\ 3)</span>, <span class="m">{}^t(k\ -4\ 5)</span>, <span class="m">{}^t(-1\ 8\ -k)</span>? Usando le differenze dal primo punto (equivalente al rango <span class="m">\leqslant2</span>): <span class="m">{}^t(1\ -3\ 2)</span>, <span class="m">{}^t(k-1\ \ -6\ \ 4)</span>, <span class="m">{}^t(-2\ \ 6\ \ -k-1)</span> devono essere tutti multipli di <span class="m">{}^t(1\ -3\ 2)</span>. Il secondo: <span class="m">-6=2\cdot(-3)</span> e <span class="m">4=2\cdot2</span>, quindi il fattore è <span class="m">2</span> e serve <span class="m">k-1=2</span>, cioè <span class="m">k=3</span>. Il terzo: <span class="m">-2=-2\cdot1</span>, <span class="m">6=-2\cdot(-3)</span>, quindi serve <span class="m">-k-1=-2\cdot2=-4</span>, cioè <span class="m">k=3</span>. Risultato: <span class="m">k=3</span>.</p>
+</div>
+
+<div class="callout attenzione">
+
+<ul>
+<li>Nella matrice associata la riga <span class="m">(0\ \cdots\ 0\ 1)</span> <strong>fa parte della definizione</strong>: la matrice <span class="m">n\times(m+1)</span> senza quella riga non è <span class="m">[\varphi]</span>.</li>
+<li>Il termine noto va nell&#39;<strong>ultima colonna</strong>, con il suo segno; le variabili mancanti danno coefficiente <span class="m">0</span>; le colonne seguono l&#39;ordine <span class="m">x_1,x_2,\dots</span> anche se nella formula le variabili sono scritte in ordine diverso.</li>
+<li>Allineati: rango <span class="m">\leqslant2</span> (non <span class="m">\leqslant1</span>); complanari: rango <span class="m">\leqslant3</span>. Il rango si calcola sulle colonne <strong>con l&#39;<span class="m">1</span> aggiunto</strong>.</li>
+<li>Un&#39;applicazione affine con <span class="m">v\neq0</span> non è lineare: non manda <span class="m">O</span> in <span class="m">O</span>.</li>
+</ul>
 </div>
 
 <div class="callout esame">
 
-<p>Il paniere chiede la <strong>matrice associata</strong> <span class="m">\begin{pmatrix}A&amp;v\\0&amp;1\end{pmatrix}</span> di un&#39;applicazione affine: attenzione ai segni dei coefficienti, ai termini noti e alla riga <span class="m">(0\ \cdots\ 0\ 1)</span> (le opzioni senza quella riga sono sbagliate). Nei quiz: riconoscere le applicazioni non affini (componenti non polinomiali di grado <span class="m">\leqslant1</span>), la Prop. 32.10 sulla giacitura, i punti allineati. Domande aperte: applicazioni affini e loro forma matriciale.</p>
+<p>Il paniere chiede la <strong>matrice associata</strong> <span class="m">\begin{pmatrix}A&amp;v\\0&amp;1\end{pmatrix}</span> di applicazioni affini del piano come <span class="m">{}^t(x\ y)\mapsto{}^t(2x-3y+2,\ 3x+y-1)</span>: tra le opzioni ci sono la versione senza la riga <span class="m">(0\ 0\ 1)</span>, quella con un segno di un coefficiente perso e quella con il termine noto di segno sbagliato. Si risponde con la ricetta: riga per riga coefficienti di <span class="m">x</span>, di <span class="m">y</span>, termine noto, poi <span class="m">(0\ 0\ 1)</span>, e controllo con il prodotto per <span class="m">{}^t(x\ y\ 1)</span>. Nei quiz: riconoscere l&#39;applicazione non affine (una componente non polinomiale di grado <span class="m">\leqslant1</span>), l&#39;enunciato giusto della Prop. 32.10 sulla giacitura, punti allineati con il rango.</p>
+<p><strong>Domande aperte.</strong> &quot;Parlare delle applicazioni affini&quot;: traslazione, definizione <span class="m">\varphi=T\circ f</span>, <span class="m">v=\varphi(O)</span>, lineare <span class="m">\Rightarrow</span> affine e non viceversa, forma <span class="m">A\cdot P+v</span> in <span class="m">\mathbb{K}^n</span> e caratterizzazione con polinomi di grado <span class="m">\leqslant1</span>, Lemma 32.9 (con dimostrazione), Prop. 32.10–32.11, affinità e Teorema 32.16, un esempio (rotazione attorno a un punto). &quot;Parlare della forma matriciale&quot;: coordinata fittizia <span class="m">P_a</span>, costruzione di <span class="m">\begin{pmatrix}A&amp;v\\0&amp;1\end{pmatrix}</span> con <span class="m">(\varphi(P))_a=[\varphi]P_a</span>, dimensioni <span class="m">(n+1)\times(m+1)</span>, Prop. 32.22 (affinità <span class="m">\iff[\varphi]</span> invertibile), uso per allineamento/complanarità (rango <span class="m">\leqslant2</span>, <span class="m">\leqslant3</span>, <span class="m">\leqslant k+1</span>), un esempio numerico.</p>
+</div>
+
+<div class="callout sintesi">
+
+<ul>
+<li><span class="m">T_v(P)=P+v</span>; applicazione affine <span class="m">\varphi=T\circ f</span> (<span class="m">f</span> lineare); <span class="m">v=\varphi(O)</span>; lineare <span class="m">\iff\varphi(O)=O</span>.</li>
+<li>In coordinate <span class="m">\varphi(P)=AP+v</span>: componenti = polinomi di grado <span class="m">\leqslant1</span>.</li>
+<li><span class="m">\varphi(P')-\varphi(P)=f(P'-P)</span>; giacitura di <span class="m">\varphi(S)</span> = <span class="m">f</span>(giacitura di <span class="m">S</span>); il parallelismo si conserva.</li>
+<li>Affinità = affine invertibile da <span class="m">V</span> in <span class="m">V</span>; conserva incidenza, parallelismo, sghembità (classificazioni affini).</li>
+<li><span class="m">P_a={}^t(P\ \ 1)</span>, <span class="m">[\varphi]=\begin{pmatrix}A&amp;v\\0&amp;1\end{pmatrix}</span>, <span class="m">(\varphi(P))_a=[\varphi]P_a</span>; affinità <span class="m">\iff[\varphi]</span> invertibile (<span class="m">\det[\varphi]=\det A</span>).</li>
+<li>Allineati <span class="m">\iff</span> rango delle <span class="m">P_a</span> <span class="m">\leqslant2</span>; complanari <span class="m">\iff\leqslant3</span>; dimensione <span class="m">k</span> <span class="m">\iff\leqslant k+1</span>.</li>
+</ul>
 </div>

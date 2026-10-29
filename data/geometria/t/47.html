@@ -1,53 +1,148 @@
 <h1>Lezione 47 — Quadriche</h1>
-<p>Le quadriche sono le superfici algebriche di grado due, generalizzazione delle coniche nello spazio. Si studia quando sono degeneri e come classificarle (euclidea, affine, proiettiva).</p>
+<p>Le <strong>quadriche</strong> sono le superfici algebriche di grado 2: sono per lo spazio quello che le coniche sono per il piano. Quasi tutte le idee viste per le coniche (matrice associata, degenerazione, polarità, classificazione) si generalizzano alle quadriche, con matrici <span class="m">4\times4</span> invece che <span class="m">3\times3</span>. La lezione mostra:</p>
+<ol>
+<li>la definizione e la <strong>matrice associata</strong>;</li>
+<li>quando una quadrica è <strong>degenere</strong> e il <strong>piano polare</strong>;</li>
+<li>la <strong>classificazione euclidea</strong> e <strong>affine</strong> delle quadriche non degeneri;</li>
+<li>la <strong>classificazione proiettiva</strong> di tutte le quadriche (degeneri comprese), che si fa con semplici calcoli (determinante, rango, segni degli autovalori).</li>
+</ol>
+<p>Si lavora nello spazio euclideo <span class="m">V^3_E</span> con un riferimento cartesiano <span class="m">(O;x,y,z)</span> fissato.</p>
 <h2>Quadriche e matrice associata</h2>
-<p><strong>Definizione 47.1.</strong> Una <em>quadrica</em> è una superficie algebrica di grado 2, cioè l&#39;insieme dei punti che soddisfano un&#39;equazione polinomiale <span class="m">p(x,y,z)=0</span> di grado 2.</p>
+<p><strong>Definizione 47.1.</strong> Una <strong>quadrica</strong> è una superficie algebrica di grado 2, cioè l&#39;insieme dei punti che soddisfano un&#39;equazione polinomiale <span class="m">p(x,y,z)=0</span> di grado 2. La forma generale è
+<span class="m d">a_{11}x^2+a_{22}y^2+a_{33}z^2+2a_{12}xy+2a_{13}xz+2a_{23}yz+2a_{14}x+2a_{24}y+2a_{34}z+a_{44}=0,</span>
+con almeno un coefficiente di secondo grado non nullo.</p>
 <div class="callout esempio">
 
+<p><strong>Esempio 47.2.</strong></p>
 <ol>
 <li>Sfere, coni e cilindri sono quadriche.</li>
-<li>Una coppia di piani è una quadrica: <span class="m">(ax+by+cz+d)(a'x+b'y+c'z+d')=0</span> ha grado 2.</li>
-<li><span class="m">4xy+3z^2-2z+3=0</span> è una quadrica.</li>
+<li>Una coppia di piani è una quadrica: <span class="m">(ax+by+cz+d)(a'x+b'y+c'z+d')=0</span> è un&#39;equazione di grado 2.</li>
+<li><span class="m">4xy+3z^2-2z+3=0</span> è una quadrica (grado 2).</li>
 </ol>
 </div>
 
-<p><strong>Osservazione 47.3.</strong> Nello spazio proiettivo <span class="m">\mathbb{P}^3(\mathbb{R})</span> si usa l&#39;equazione omogenea <span class="m">T^2\,p\!\left(\frac XT,\frac YT,\frac ZT\right)=0</span>, che è una forma quadratica. Esiste una matrice <span class="m">4\times4</span> simmetrica <span class="m">A</span> con
-<span class="m d">p(X,Y,Z,T)=(X\ Y\ Z\ T)\cdot A\cdot{}^t(X\ Y\ Z\ T).</span></p>
-<p><strong>Definizione 47.4.</strong> <span class="m">A</span> è la <em>matrice associata</em> alla quadrica.</p>
-<p>Costruzione pratica: sulla diagonale i coefficienti di <span class="m">X^2,Y^2,Z^2,T^2</span>; nella posizione <span class="m">(i,j)</span> e <span class="m">(j,i)</span> la <strong>metà</strong> del coefficiente del termine misto corrispondente.</p>
-<p><strong>Notazione 47.5.</strong> <span class="m">A_{(4,4)}</span> è la sottomatrice <span class="m">3\times3</span> ottenuta da <span class="m">A</span> togliendo quarta riga e quarta colonna.</p>
-<p><strong>Osservazione 47.6.</strong> <span class="m">A</span> è simmetrica e reale, quindi diagonalizzabile (teorema spettrale). Anche <span class="m">A_{(4,4)}</span> è simmetrica reale: è diagonalizzabile con una matrice ortogonale e ha tre autovettori ortogonali.</p>
+<p><strong>Osservazione 47.3.</strong> Le quadriche si estendono allo spazio proiettivo <span class="m">\mathbb P^3(\mathbb R)</span> con l&#39;equazione omogenea
+<span class="m d">T^2\,p\!\left(\frac XT,\frac YT,\frac ZT\right)=0.</span>
+Il polinomio omogeneo di grado 2 è una <strong>forma quadratica</strong> in <span class="m">(X,Y,Z,T)</span>, quindi esiste un&#39;unica matrice <strong>simmetrica</strong> <span class="m">4\times4</span> <span class="m">A</span> tale che
+<span class="m d">p(X,Y,Z,T)=\begin{pmatrix}X&amp;Y&amp;Z&amp;T\end{pmatrix}\cdot A\cdot\begin{pmatrix}X\\Y\\Z\\T\end{pmatrix}.</span></p>
+<p><strong>Definizione 47.4.</strong> <span class="m">A</span> si chiama <strong>matrice associata</strong> alla quadrica.</p>
+<p><strong>Costruzione pratica</strong> (con le variabili nell&#39;ordine <span class="m">X</span>, <span class="m">Y</span>, <span class="m">Z</span>, <span class="m">T</span>):</p>
+<ul>
+<li>sulla <strong>diagonale</strong> i coefficienti di <span class="m">X^2</span>, <span class="m">Y^2</span>, <span class="m">Z^2</span>, <span class="m">T^2</span> (il termine noto dell&#39;equazione affine va in posizione <span class="m">(4,4)</span>);</li>
+<li>nelle posizioni <span class="m">(i,j)</span> e <span class="m">(j,i)</span> la <strong>metà</strong> del coefficiente del termine misto corrispondente: <span class="m">XY\to(1,2)</span>, <span class="m">XZ\to(1,3)</span>, <span class="m">YZ\to(2,3)</span>, e i termini di primo grado dell&#39;equazione affine diventano <span class="m">XT\to(1,4)</span>, <span class="m">YT\to(2,4)</span>, <span class="m">ZT\to(3,4)</span>.</li>
+</ul>
+<p>Si divide per 2 perché nel prodotto <span class="m">{}^tPAP</span> il termine misto <span class="m">XY</span> compare due volte: <span class="m">a_{12}XY+a_{21}YX=2a_{12}XY</span>.</p>
+<p><span class="m d">A=\begin{pmatrix}
+\text{coeff. }X^2&amp;\frac12\text{coeff. }XY&amp;\frac12\text{coeff. }XZ&amp;\frac12\text{coeff. }XT\\
+\frac12\text{coeff. }XY&amp;\text{coeff. }Y^2&amp;\frac12\text{coeff. }YZ&amp;\frac12\text{coeff. }YT\\
+\frac12\text{coeff. }XZ&amp;\frac12\text{coeff. }YZ&amp;\text{coeff. }Z^2&amp;\frac12\text{coeff. }ZT\\
+\frac12\text{coeff. }XT&amp;\frac12\text{coeff. }YT&amp;\frac12\text{coeff. }ZT&amp;\text{coeff. }T^2
+\end{pmatrix}</span></p>
 <div class="callout esempio">
 
-<p><span class="m">x^2-y^2-3z^2-2xy+4xz+2y=0</span> ha equazione omogenea <span class="m">X^2-Y^2-3Z^2-2XY+4XZ+2YT=0</span> e matrice
-<span class="m d">A=\begin{pmatrix}1&amp;-1&amp;2&amp;0\\-1&amp;-1&amp;0&amp;1\\2&amp;0&amp;-3&amp;0\\0&amp;1&amp;0&amp;0\end{pmatrix},\qquad\det A=7\neq0.</span></p>
+<p><strong>Costruire la matrice.</strong> <span class="m">2x^2-y^2+4xz-6yz+2x-8z+5=0</span>. Equazione omogenea: <span class="m">2X^2-Y^2+4XZ-6YZ+2XT-8ZT+5T^2=0</span>. Coefficienti: <span class="m">X^2:2</span>, <span class="m">Y^2:-1</span>, <span class="m">Z^2:0</span>, <span class="m">T^2:5</span>; <span class="m">XY:0\to0</span>; <span class="m">XZ:4\to2</span>; <span class="m">YZ:-6\to-3</span>; <span class="m">XT:2\to1</span>; <span class="m">YT:0\to0</span>; <span class="m">ZT:-8\to-4</span>.
+<span class="m d">A=\begin{pmatrix}2&amp;0&amp;2&amp;1\\0&amp;-1&amp;-3&amp;0\\2&amp;-3&amp;0&amp;-4\\1&amp;0&amp;-4&amp;5\end{pmatrix}.</span>
+Controllo: la matrice è simmetrica, e <span class="m">{}^tPAP</span> ridà l&#39;equazione.</p>
+</div>
+
+<p><strong>Notazione 47.5.</strong> <span class="m">A_{(4,4)}</span> è la sottomatrice <span class="m">3\times3</span> di <span class="m">A</span> ottenuta <strong>togliendo la quarta riga e la quarta colonna</strong>: contiene solo i termini di secondo grado in <span class="m">x</span>, <span class="m">y</span>, <span class="m">z</span> (è la matrice della &quot;parte quadratica&quot;). È l&#39;analogo di <span class="m">A_{(3,3)}</span> per le coniche.</p>
+<p><strong>Osservazione 47.6.</strong> <span class="m">A</span> è simmetrica e reale, quindi per il <strong>Teorema spettrale</strong> è diagonalizzabile (e ha autovalori reali). Anche <span class="m">A_{(4,4)}</span> è simmetrica e reale; di essa serve qualcosa in più: è diagonalizzabile con una matrice diagonalizzante <strong>ortogonale</strong> e ha <strong>tre autovettori ortogonali</strong>. Questi daranno le direzioni degli assi del riferimento canonico.</p>
+<div class="callout esempio">
+
+<p><strong>Esercizio 47.1 — matrice e determinante.</strong> <span class="m">x^2-y^2-3z^2-2xy+4xz+2y=0</span>. Omogenea: <span class="m">X^2-Y^2-3Z^2-2XY+4XZ+2YT=0</span>. Matrice (<span class="m">XY:-2\to-1</span>, <span class="m">XZ:4\to2</span>, <span class="m">YT:2\to1</span>):
+<span class="m d">A=\begin{pmatrix}1&amp;-1&amp;2&amp;0\\-1&amp;-1&amp;0&amp;1\\2&amp;0&amp;-3&amp;0\\0&amp;1&amp;0&amp;0\end{pmatrix}.</span>
+Determinante: la quarta riga ha un solo elemento non nullo, <span class="m">a_{42}=1</span>, con segno <span class="m">(-1)^{4+2}=+1</span>. Il minore si ottiene togliendo riga 4 e colonna 2:
+<span class="m d">\det A=+1\cdot\det\begin{pmatrix}1&amp;2&amp;0\\-1&amp;0&amp;1\\2&amp;-3&amp;0\end{pmatrix}=1\,(0\cdot0-1\cdot(-3))-2\,((-1)\cdot0-1\cdot2)+0=3+4=7.</span>
+<span class="m">\det A=7\neq0</span>: la quadrica è <strong>non degenere</strong>.</p>
 </div>
 
 <h2>Quadriche degeneri</h2>
-<p><strong>Definizione 47.7.</strong> Una quadrica con matrice associata <span class="m">A</span> è <em>degenere</em> se <span class="m">\det(A)=0</span>.</p>
-<p><strong>Notazione 47.8.</strong> Una quadrica degenere unione di due piani coincidenti è un <em>piano doppio</em>, indicato <span class="m">\pi\cup\pi</span>.</p>
-<p><strong>Proposizione 47.9.</strong> Una quadrica è degenere se e solo se ha (almeno) un punto singolare. Il cono ha come unico punto singolare il vertice; il cilindro il suo unico punto all&#39;infinito; per una coppia di piani i punti singolari sono l&#39;intersezione dei due piani.</p>
-<p><strong>Definizione 47.10.</strong> Se <span class="m">S</span> è non degenere con matrice <span class="m">A</span> e <span class="m">P_0={}^t(X_0\ Y_0\ Z_0\ T_0)</span>, il <em>piano polare</em> di <span class="m">P_0</span> rispetto a <span class="m">S</span> è
-<span class="m d">{}^tP\cdot A\cdot P_0=0,\qquad P={}^t(X\ Y\ Z\ T).</span></p>
-<h2>Classificazione euclidea</h2>
-<p><strong>Teorema 47.11.</strong> Una quadrica non degenere, con un&#39;opportuna scelta del riferimento cartesiano, ha una e una sola delle forme canoniche euclidee (<span class="m">a,b,c&gt;0</span>):</p>
+<p><strong>Definizione 47.7.</strong> Una quadrica con matrice associata <span class="m">A</span> è <strong>degenere</strong> se <span class="m">\det(A)=0</span>.</p>
+<p><strong>Notazione 47.8.</strong> Una quadrica degenere che è unione di due piani <strong>coincidenti</strong> si chiama <strong>piano doppio</strong> e si indica con <span class="m">\pi\cup\pi</span>, dove <span class="m">\pi</span> è il piano che coincide con la quadrica come insieme (equazione del tipo <span class="m">(ax+by+cz+d)^2=0</span>).</p>
+<p><strong>Proposizione 47.9.</strong> Una quadrica è degenere <strong>se e solo se</strong> ha (almeno) un <strong>punto singolare</strong>. In particolare:</p>
 <ul>
-<li><span class="m">ax^2+by^2+cz^2-1=0</span> — ellissoide reale,</li>
-<li><span class="m">ax^2+by^2+cz^2+1=0</span> — ellissoide immaginario,</li>
-<li><span class="m">ax^2+by^2-cz^2+1=0</span> — iperboloide ellittico,</li>
-<li><span class="m">ax^2+by^2-cz^2-1=0</span> — iperboloide iperbolico,</li>
-<li><span class="m">ax^2+by^2-z=0</span> — paraboloide ellittico,</li>
-<li><span class="m">ax^2-by^2-z=0</span> — paraboloide iperbolico.</li>
+<li>il <strong>cono</strong> ha come unico punto singolare il <strong>vertice</strong>;</li>
+<li>il <strong>cilindro</strong> ha come unico punto singolare il suo <strong>unico punto all&#39;infinito</strong> (la direzione delle generatrici: tutte le generatrici, parallele, &quot;si incontrano&quot; lì);</li>
+<li>per una <strong>coppia di piani</strong> i punti singolari sono l&#39;<strong>intersezione</strong> dei due piani (una retta se sono incidenti, una retta all&#39;infinito se sono paralleli, tutto il piano se coincidono).</li>
 </ul>
-<p>Le direzioni degli assi sono date da tre autovettori ortogonali di <span class="m">A_{(4,4)}</span>.</p>
+<p>(Dimostrazione non data.) Il legame con il determinante: in coordinate omogenee le derivate parziali di <span class="m">{}^tPAP</span> sono le componenti di <span class="m">2AP</span>, quindi i punti singolari sono le soluzioni non nulle di <span class="m">AP=0</span>, che esistono se e solo se <span class="m">\det A=0</span>. I punti singolari formano il nucleo di <span class="m">A</span>: un punto se <span class="m">\operatorname{rank}A=3</span>, una retta se <span class="m">\operatorname{rank}A=2</span>, un piano se <span class="m">\operatorname{rank}A=1</span>.</p>
+<div class="callout esempio">
+
+<p><strong>Esempi di quadriche degeneri.</strong></p>
+<ul>
+<li><strong>Cono</strong> <span class="m">x^2+y^2-z^2=0</span>: <span class="m">A=\begin{pmatrix}1&amp;0&amp;0&amp;0\\0&amp;1&amp;0&amp;0\\0&amp;0&amp;-1&amp;0\\0&amp;0&amp;0&amp;0\end{pmatrix}</span>, ultima riga nulla, <span class="m">\det A=0</span>. <span class="m">AP=0</span> dà <span class="m">X=Y=Z=0</span>: unico punto singolare <span class="m">{}^t(0\ 0\ 0\ 1)</span>, il vertice.</li>
+<li><strong>Cilindro</strong> <span class="m">x^2+y^2-1=0</span>: <span class="m">A=\operatorname{diag}(1,1,0,-1)</span>, terza riga nulla; <span class="m">AP=0</span> dà <span class="m">X=Y=T=0</span>: punto singolare <span class="m">{}^t(0\ 0\ 1\ 0)</span>, il punto all&#39;infinito dell&#39;asse <span class="m">z</span>.</li>
+<li><strong>Esercizio 47.3 (dispensa)</strong> <span class="m">xz-yz-2x+2y+z-2=0</span>: raccogliendo, <span class="m">xz-yz-2x+2y=(x-y)(z-2)</span> e <span class="m">z-2</span> resta, quindi il polinomio è <span class="m">(z-2)(x-y)+(z-2)=(z-2)(x-y+1)</span>: <strong>due piani</strong>, degenere (rango 2).</li>
+</ul>
+</div>
+
+<p><strong>Definizione 47.10.</strong> Sia <span class="m">S</span> una quadrica <strong>non degenere</strong> con matrice <span class="m">A</span> e <span class="m">P_0={}^t(X_0\ Y_0\ Z_0\ T_0)</span> un punto dello spazio proiettivo. Il <strong>piano polare</strong> di <span class="m">P_0</span> rispetto a <span class="m">S</span> è il piano
+<span class="m d">\begin{pmatrix}X&amp;Y&amp;Z&amp;T\end{pmatrix}\cdot A\cdot\begin{pmatrix}X_0\\Y_0\\Z_0\\T_0\end{pmatrix}=0,\qquad\text{cioè}\quad{}^tP\cdot A\cdot P_0=0.</span>
+Come per le coniche, le componenti di <span class="m">AP_0</span> sono i coefficienti di <span class="m">X</span>, <span class="m">Y</span>, <span class="m">Z</span>, <span class="m">T</span>. Valgono le stesse proprietà (reciprocità; se <span class="m">P_0\in S</span> il piano polare è il piano tangente in <span class="m">P_0</span>).</p>
+<div class="callout esempio">
+
+<p><strong>Piano polare.</strong> Quadrica <span class="m">X^2+2Y^2+2YZ+2ZT-3T^2=0</span>, punto <span class="m">P_0={}^t(2\ 1\ 0\ -2)</span>.
+<span class="m d">A=\begin{pmatrix}1&amp;0&amp;0&amp;0\\0&amp;2&amp;1&amp;0\\0&amp;1&amp;0&amp;1\\0&amp;0&amp;1&amp;-3\end{pmatrix},\qquad AP_0=\begin{pmatrix}2\\2+0+0\\1+0-2\\0+0+6\end{pmatrix}=\begin{pmatrix}2\\2\\-1\\6\end{pmatrix}.</span>
+Piano polare: <span class="m">2X+2Y-Z+6T=0</span> (in forma omogenea; quella affine sarebbe <span class="m">2x+2y-z+6=0</span>).</p>
+</div>
+
+<h2>Classificazione euclidea</h2>
+<p><strong>Teorema 47.11.</strong> Una quadrica <strong>non degenere</strong> <span class="m">S</span> con matrice <span class="m">A</span> può essere rappresentata, con un&#39;opportuna scelta del riferimento cartesiano, da una e una sola delle seguenti <strong>forme canoniche euclidee</strong> (<span class="m">a,b,c&gt;0</span>):</p>
+<table>
+<thead>
+<tr>
+<th>Forma canonica euclidea</th>
+<th>Nome</th>
+<th>Descrizione</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><span class="m">ax^2+by^2+cz^2-1=0</span></td>
+<td>ellissoide reale</td>
+<td>superficie chiusa, &quot;sfera schiacciata&quot;</td>
+</tr>
+<tr>
+<td><span class="m">ax^2+by^2+cz^2+1=0</span></td>
+<td>ellissoide immaginario</td>
+<td>nessun punto reale</td>
+</tr>
+<tr>
+<td><span class="m">ax^2+by^2-cz^2+1=0</span></td>
+<td>iperboloide ellittico</td>
+<td>due falde (a due fogli)</td>
+</tr>
+<tr>
+<td><span class="m">ax^2+by^2-cz^2-1=0</span></td>
+<td>iperboloide iperbolico</td>
+<td>una falda (a un foglio), contiene rette</td>
+</tr>
+<tr>
+<td><span class="m">ax^2+by^2-z=0</span></td>
+<td>paraboloide ellittico</td>
+<td>&quot;scodella&quot;</td>
+</tr>
+<tr>
+<td><span class="m">ax^2-by^2-z=0</span></td>
+<td>paraboloide iperbolico</td>
+<td>&quot;sella&quot;, contiene rette</td>
+</tr>
+</tbody></table>
+<p>Le direzioni degli assi del riferimento canonico sono date da <strong>tre autovettori ortogonali</strong> di <span class="m">A_{(4,4)}</span>. (Dimostrazione non data, è lunga.)</p>
+<p>Per capire i nomi conviene guardare le sezioni con i piani <span class="m">z=k</span>:</p>
+<ul>
+<li>iperboloide <strong>ellittico</strong> <span class="m">x^2+y^2-z^2+1=0</span>: <span class="m">x^2+y^2=k^2-1</span>, vuoto per <span class="m">\lvert k\rvert&lt;1</span>: due falde separate (le sezioni orizzontali sono ellissi, quelle verticali iperboli);</li>
+<li>iperboloide <strong>iperbolico</strong> <span class="m">x^2+y^2-z^2-1=0</span>: <span class="m">x^2+y^2=k^2+1</span>, sempre una circonferenza: una sola falda, a forma di &quot;clessidra aperta&quot; (le sezioni verticali sono iperboli);</li>
+<li>paraboloide ellittico <span class="m">x^2+y^2=z</span>: sezioni orizzontali circonferenze (ellissi), verticali parabole;</li>
+<li>paraboloide iperbolico <span class="m">x^2-y^2=z</span>: sezioni orizzontali iperboli, verticali parabole.</li>
+</ul>
 <h2>Classificazione affine</h2>
-<p><strong>Teorema 47.12.</strong> Una quadrica non degenere ha una e una sola forma canonica affine (a meno di affinità), determinata dal numero di autovalori positivi e negativi di <span class="m">A_{(4,4)}</span> (con molteplicità) e dal segno di <span class="m">\det A</span>:</p>
+<p><strong>Teorema 47.12.</strong> Una quadrica non degenere <span class="m">S</span> può essere rappresentata da una e una sola <strong>forma canonica affine</strong> (a meno di un&#39;affinità), determinata dal <strong>numero di autovalori positivi e negativi di <span class="m">A_{(4,4)}</span></strong> (contati con la molteplicità algebrica) e dal <strong>segno di <span class="m">\det A</span></strong>:</p>
 <table>
 <thead>
 <tr>
 <th>Autovalori di <span class="m">A_{(4,4)}</span> (pos. e neg.)</th>
 <th><span class="m">\det A</span></th>
-<th>Forma canonica</th>
+<th>Forma canonica affine</th>
 <th>Nome</th>
 </tr>
 </thead>
@@ -88,19 +183,66 @@
 <td>paraboloide iperbolico</td>
 </tr>
 </tbody></table>
+<p>(Segue dal Teorema 47.11.) Lettura della tabella:</p>
+<ul>
+<li><strong>nessun autovalore nullo</strong> di <span class="m">A_{(4,4)}</span> (<span class="m">\det A_{(4,4)}\neq0</span>): ellissoidi e iperboloidi (quadriche &quot;a centro&quot;); <strong>un autovalore nullo</strong> (<span class="m">\det A_{(4,4)}=0</span>): paraboloidi;</li>
+<li>tutti dello stesso segno → ellissoide; segni misti → iperboloide;</li>
+<li>il segno di <span class="m">\det A</span> distingue reale/immaginario e ellittico/iperbolico. Verifica sulle forme canoniche: per <span class="m">x^2+y^2+z^2-1</span>, <span class="m">A=\operatorname{diag}(1,1,1,-1)</span>, <span class="m">\det A=-1&lt;0</span> (reale); per <span class="m">x^2+y^2-z^2+1</span>, <span class="m">\det A=1\cdot1\cdot(-1)\cdot1=-1&lt;0</span>; per <span class="m">x^2+y^2-z</span>, <span class="m">A=\begin{pmatrix}1&amp;0&amp;0&amp;0\\0&amp;1&amp;0&amp;0\\0&amp;0&amp;0&amp;-\frac12\\0&amp;0&amp;-\frac12&amp;0\end{pmatrix}</span>, <span class="m">\det A=1\cdot1\cdot(0-\frac14)=-\frac14&lt;0</span>.</li>
+</ul>
+<p><strong>Come contare gli autovalori positivi e negativi senza calcolarli.</strong> Si calcola il polinomio caratteristico <span class="m">\det(tI-B)</span> della matrice simmetrica <span class="m">B</span>; siccome tutte le sue radici sono reali, per la <strong>regola dei segni di Cartesio</strong> il numero di radici positive è uguale al numero di <strong>variazioni di segno</strong> nella successione dei coefficienti (saltando gli zeri), e il numero di radici negative è uguale alle variazioni di segno dei coefficienti di <span class="m">p(-t)</span>. Per una <span class="m">3\times3</span>:
+<span class="m d">\det(tI-B)=t^3-(\operatorname{tr}B)\,t^2+(\text{somma dei minori principali }2\times2)\,t-\det B.</span></p>
+<div class="callout esame">
+
+<p><strong>Procedura: classificare una quadrica.</strong></p>
+<ol>
+<li>Scrivere l&#39;equazione omogenea e la matrice <span class="m">A</span> (metà dei coefficienti misti!).</li>
+<li>Calcolare <span class="m">\det A</span> (sviluppando lungo la riga o colonna con più zeri).</li>
+<li>Se <span class="m">\det A=0</span>: quadrica <strong>degenere</strong>; calcolare il rango di <span class="m">A</span> (e, se serve, i segni degli autovalori di <span class="m">A</span>) e usare la classificazione proiettiva: rango 3 cono/cilindro, rango 2 due piani, rango 1 piano doppio.</li>
+<li>Se <span class="m">\det A\neq0</span>: calcolare gli autovalori di <span class="m">A_{(4,4)}</span> (o solo i loro segni) e usare la tabella affine con il segno di <span class="m">\det A</span>.</li>
+</ol>
+</div>
+
 <div class="callout esempio">
 
-<p><span class="m">x^2+y^2+z^2-2xy-2xz-2yz+1=0</span>: <span class="m">\det A=-4\neq0</span> (non degenere). Gli autovalori di <span class="m">A_{(4,4)}=\begin{pmatrix}1&amp;-1&amp;-1\\-1&amp;1&amp;-1\\-1&amp;-1&amp;1\end{pmatrix}</span> sono <span class="m">2</span> (m.a. 2) e <span class="m">-1</span> (m.a. 1): 2 positivi e 1 negativo con <span class="m">\det A&lt;0</span>, quindi <strong>iperboloide ellittico</strong>.</p>
+<p><strong>Esercizio 47.2 — classificazione.</strong> <span class="m">x^2+y^2+z^2-2xy-2xz-2yz+1=0</span>.
+<span class="m d">A=\begin{pmatrix}1&amp;-1&amp;-1&amp;0\\-1&amp;1&amp;-1&amp;0\\-1&amp;-1&amp;1&amp;0\\0&amp;0&amp;0&amp;1\end{pmatrix},\qquad A_{(4,4)}=\begin{pmatrix}1&amp;-1&amp;-1\\-1&amp;1&amp;-1\\-1&amp;-1&amp;1\end{pmatrix}.</span>
+<span class="m">A</span> è &quot;a blocchi&quot;, quindi <span class="m">\det A=\det A_{(4,4)}\cdot1</span>. Sviluppando <span class="m">\det A_{(4,4)}</span> lungo la prima riga:
+<span class="m d">1\,(1\cdot1-(-1)(-1))-(-1)\,((-1)\cdot1-(-1)(-1))+(-1)\,((-1)(-1)-1\cdot(-1))=0+(-2)-2=-4.</span>
+<span class="m">\det A=-4\neq0</span>: non degenere. Autovalori di <span class="m">A_{(4,4)}</span>: si nota che <span class="m">A_{(4,4)}=2I-J</span>, dove <span class="m">J</span> è la matrice con tutti 1; <span class="m">J</span> ha autovalori <span class="m">3</span> (autovettore <span class="m">{}^t(1\ 1\ 1)</span>) e <span class="m">0</span> (doppio), quindi <span class="m">A_{(4,4)}</span> ha autovalori <span class="m">2-3=-1</span> (m.a. 1) e <span class="m">2-0=2</span> (m.a. 2). Due positivi e uno negativo, con <span class="m">\det A&lt;0</span>: <strong>iperboloide ellittico</strong> (a due falde).</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Esercizio 47.1 continuato — classificazione con la regola dei segni.</strong> <span class="m">A_{(4,4)}=B=\begin{pmatrix}1&amp;-1&amp;2\\-1&amp;-1&amp;0\\2&amp;0&amp;-3\end{pmatrix}</span>, <span class="m">\det A=7</span>.</p>
+<ul>
+<li><span class="m">\operatorname{tr}B=1-1-3=-3</span>;</li>
+<li>minori principali <span class="m">2\times2</span>: <span class="m">(1)(-1)-(-1)^2=-2</span>; <span class="m">(1)(-3)-2^2=-7</span>; <span class="m">(-1)(-3)-0=3</span>; somma <span class="m">-6</span>;</li>
+<li><span class="m">\det B=1(3-0)-(-1)(3-0)+2(0+2)=3+3+4=10</span>.</li>
+</ul>
+<p><span class="m">\det(tI-B)=t^3+3t^2-6t-10</span>. Segni dei coefficienti: <span class="m">+,+,-,-</span>: una variazione → <strong>1 autovalore positivo</strong>. <span class="m">p(-t)=-t^3+3t^2+6t-10</span>: segni <span class="m">-,+,+,-</span>: due variazioni → <strong>2 autovalori negativi</strong>. Quindi &quot;2 e 1, o viceversa&quot;, con <span class="m">\det A=7&gt;0</span>: <strong>iperboloide iperbolico</strong> (a una falda).</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Esercizio 47.4 (dispensa).</strong> <span class="m">2X^2-Y^2-Z^2-8XY-8XZ-2YZ+2YT=0</span>.
+<span class="m d">A=\begin{pmatrix}2&amp;-4&amp;-4&amp;0\\-4&amp;-1&amp;-1&amp;1\\-4&amp;-1&amp;-1&amp;0\\0&amp;1&amp;0&amp;0\end{pmatrix}.</span>
+<span class="m">\det A</span>: lungo la quarta riga, solo <span class="m">a_{42}=1</span> con segno <span class="m">+</span>; minore senza riga 4 e colonna 2: <span class="m">\det\begin{pmatrix}2&amp;-4&amp;0\\-4&amp;-1&amp;1\\-4&amp;-1&amp;0\end{pmatrix}=2(0+1)-(-4)(0+4)+0=2+16=18&gt;0</span>.
+<span class="m">A_{(4,4)}=\begin{pmatrix}2&amp;-4&amp;-4\\-4&amp;-1&amp;-1\\-4&amp;-1&amp;-1\end{pmatrix}</span>: seconda e terza riga uguali, quindi un autovalore è <span class="m">0</span>; traccia <span class="m">0</span>, quindi gli altri due sono <span class="m">\mu</span> e <span class="m">-\mu</span>; somma dei minori principali <span class="m">2\times2</span>: <span class="m">(-2-16)+(-2-16)+(1-1)=-36=\mu\cdot(-\mu)</span>, <span class="m">\mu=6</span>. Autovalori <span class="m">6</span>, <span class="m">-6</span>, <span class="m">0</span>: &quot;1 e 1&quot; con <span class="m">\det A&gt;0</span>: <strong>paraboloide iperbolico</strong>.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Un ellissoide reale.</strong> <span class="m">x^2+2y^2+3z^2-2xy+2x-4=0</span>: <span class="m">A=\begin{pmatrix}1&amp;-1&amp;0&amp;1\\-1&amp;2&amp;0&amp;0\\0&amp;0&amp;3&amp;0\\1&amp;0&amp;0&amp;-4\end{pmatrix}</span>. Sviluppando lungo la terza riga (<span class="m">a_{33}=3</span>, segno <span class="m">+</span>): <span class="m">\det A=3\det\begin{pmatrix}1&amp;-1&amp;1\\-1&amp;2&amp;0\\1&amp;0&amp;-4\end{pmatrix}=3\,\big(1(-8)-(-1)(4)+1(0-2)\big)=3(-6)=-18&lt;0</span>. <span class="m">A_{(4,4)}</span> ha autovalori <span class="m">3</span> e le radici di <span class="m">t^2-3t+1=0</span> (somma 3, prodotto 1: entrambe positive): tre positivi, <span class="m">\det A&lt;0</span>: <strong>ellissoide reale</strong>.</p>
 </div>
 
 <h2>Classificazione proiettiva</h2>
-<p><strong>Teorema 47.13.</strong> Ogni quadrica ha una e una sola forma canonica proiettiva (a meno di trasformazioni proiettive), determinata dal rango di <span class="m">A</span> e dal numero di autovalori positivi e negativi di <span class="m">A</span>:</p>
+<p><strong>Teorema 47.13.</strong> Ogni quadrica (anche degenere) può essere rappresentata da una e una sola <strong>forma canonica proiettiva</strong> (a meno di una trasformazione proiettiva), determinata dal <strong>rango di <span class="m">A</span></strong> e dal <strong>numero di autovalori positivi e negativi di <span class="m">A</span></strong> (con molteplicità):</p>
 <table>
 <thead>
 <tr>
 <th><span class="m">\operatorname{rank}A</span></th>
 <th>Autovalori di <span class="m">A</span> (pos. e neg.)</th>
-<th>Forma canonica</th>
+<th>Forma canonica proiettiva</th>
 <th>Quadrica</th>
 </tr>
 </thead>
@@ -150,24 +292,57 @@
 <td>1</td>
 <td>qualsiasi</td>
 <td><span class="m">X^2=0</span></td>
-<td>degenere – piano doppio</td>
+<td>degenere – un piano doppio</td>
 </tr>
 </tbody></table>
-<div class="callout sintesi">
-
+<p>(Dimostrazione non data.) Osservazioni:</p>
 <ul>
-<li><span class="m">\det A\neq0</span> → non degenere (rango 4); <span class="m">\det A=0</span> → degenere.</li>
-<li>Rango 3 → cono o cilindro; rango 2 → due piani distinti; rango 1 → piano doppio.</li>
-<li>Per le non degeneri: segni degli autovalori di <span class="m">A_{(4,4)}</span> + segno di <span class="m">\det A</span> → nome della quadrica.</li>
+<li>Proiettivamente <strong>non</strong> si distinguono ellissoide, iperboloide ellittico e paraboloide ellittico (tutti &quot;reali ellittici&quot;, 3 e 1), né iperboloide iperbolico e paraboloide iperbolico (&quot;reali iperbolici&quot;, 2 e 2: sono le quadriche che contengono rette). Allo stesso modo cono e cilindro sono la stessa quadrica proiettiva (il cilindro è un cono con il vertice all&#39;infinito).</li>
+<li>Il <strong>rango</strong> dice &quot;quanto&quot; è degenere la quadrica: <span class="m">4</span> non degenere, <span class="m">3</span> cono o cilindro, <span class="m">2</span> coppia di piani distinti, <span class="m">1</span> piano doppio. <span class="m">\det A=0</span> equivale a rango <span class="m">&lt;4</span>.</li>
+<li><span class="m">X^2+Y^2=(X+iY)(X-iY)</span>: due piani immaginari coniugati, che si incontrano nella retta reale <span class="m">X=Y=0</span>; <span class="m">X^2-Y^2=(X-Y)(X+Y)</span>: due piani reali.</li>
 </ul>
+<div class="callout esempio">
+
+<p><strong>Rango e tipo di quadrica degenere.</strong></p>
+<ul>
+<li><strong>Cono</strong> <span class="m">x^2+y^2-z^2=0</span>: <span class="m">A=\operatorname{diag}(1,1,-1,0)</span>, rango 3, autovalori <span class="m">1,1,-1,0</span> (2 e 1): <strong>cono/cilindro reale</strong>. Ecco perché <span class="m">x^2+y^2-z^2=0</span> <strong>non</strong> è un iperboloide: senza termine noto l&#39;ultima riga di <span class="m">A</span> è nulla e la quadrica è degenere.</li>
+<li><strong>Piano doppio</strong> <span class="m">x^2+2xy+y^2=0</span>, cioè <span class="m">(x+y)^2=0</span>: <span class="m">A</span> ha le prime due righe uguali a <span class="m">(1,1,0,0)</span> e le altre nulle, rango 1: <strong>piano doppio</strong>.</li>
+<li><strong>Due piani reali</strong> <span class="m">x^2+2xy+2xz+2x+2y+2z+1=0</span>: <span class="m">A=\begin{pmatrix}1&amp;1&amp;1&amp;1\\1&amp;0&amp;0&amp;1\\1&amp;0&amp;0&amp;1\\1&amp;1&amp;1&amp;1\end{pmatrix}</span>: prima riga = quarta, seconda = terza; le righe <span class="m">(1,1,1,1)</span> e <span class="m">(1,0,0,1)</span> non sono proporzionali, rango 2. Gli autovalori non nulli hanno prodotto uguale alla somma dei minori principali <span class="m">2\times2</span>, che è negativa (<span class="m">-4</span>), quindi uno positivo e uno negativo: <strong>due piani reali</strong>. Verifica: con <span class="m">u=y+z</span>, <span class="m">x^2+2xu+2x+2u+1=(x+1)^2+2u(x+1)=(x+1)(x+2y+2z+1)</span>.</li>
+</ul>
+</div>
+
+<p><strong>Come si calcola il rango</strong> di una <span class="m">4\times4</span>: si cercano righe uguali o proporzionali (ognuna &quot;in più&quot; abbassa il rango), oppure si riduce a scalini con l&#39;eliminazione di Gauss e si contano le righe non nulle; in alternativa si cerca il minore non nullo di ordine massimo.</p>
+<div class="callout esempio">
+
+<p><strong>Rango 3: cono o cilindro.</strong> <span class="m">A=\begin{pmatrix}0&amp;0&amp;0&amp;1\\0&amp;1&amp;1&amp;1\\0&amp;1&amp;1&amp;1\\1&amp;1&amp;1&amp;1\end{pmatrix}</span> (quadrica <span class="m">y^2+z^2+2yz+2x+2y+2z+1=0</span>). Seconda e terza riga uguali: <span class="m">\det A=0</span>, degenere. Le righe <span class="m">(0,0,0,1)</span>, <span class="m">(0,1,1,1)</span>, <span class="m">(1,1,1,1)</span> sono indipendenti (scalini: la terza ha un 1 in prima colonna, la seconda in seconda, la prima solo in quarta): rango 3, <strong>cono o cilindro</strong>. Infatti l&#39;equazione è <span class="m">(y+z)^2+2(y+z)+2x+1=0</span>, un cilindro parabolico.</p>
+<p><strong>Rango 4 con equazione &quot;povera&quot;.</strong> <span class="m">2x+2yz+1=0</span>: <span class="m">A=\begin{pmatrix}0&amp;0&amp;0&amp;1\\0&amp;0&amp;1&amp;0\\0&amp;1&amp;0&amp;0\\1&amp;0&amp;0&amp;1\end{pmatrix}</span>. Sviluppando lungo la prima riga: solo <span class="m">a_{14}=1</span>, segno <span class="m">(-1)^{1+4}=-1</span>, minore <span class="m">\det\begin{pmatrix}0&amp;0&amp;1\\0&amp;1&amp;0\\1&amp;0&amp;0\end{pmatrix}=-1</span>; <span class="m">\det A=(-1)(-1)=1\neq0</span>: <strong>non degenere</strong> (è un paraboloide iperbolico), anche se l&#39;equazione non contiene quadrati.</p>
 </div>
 
 <div class="callout attenzione">
 
-<p>Nella matrice associata i termini misti vanno divisi per 2 (es. <span class="m">-2xy</span> dà <span class="m">-1</span> in posizione <span class="m">(1,2)</span> e <span class="m">(2,1)</span>). <span class="m">x^2+y^2-z^2=0</span> non è un iperboloide: senza termine noto l&#39;ultima riga di <span class="m">A</span> è nulla, quindi è degenere (un cono).</p>
+<ul>
+<li>Nella matrice associata i termini misti vanno <strong>divisi per 2</strong> (<span class="m">-2xy</span> dà <span class="m">-1</span> in posizione <span class="m">(1,2)</span> e <span class="m">(2,1)</span>), i termini di primo grado vanno nella <strong>quarta</strong> riga/colonna (anche loro divisi per 2), il termine noto in posizione <span class="m">(4,4)</span>.</li>
+<li>Degenere/non degenere si decide con <span class="m">\det A</span> (la matrice <span class="m">4\times4</span>), non con <span class="m">A_{(4,4)}</span>: <span class="m">\det A_{(4,4)}=0</span> indica un paraboloide (o una quadrica degenere), non una quadrica degenere.</li>
+<li>Righe ripetute danno <span class="m">\det A=0</span>, ma per dire &quot;piano doppio&quot; serve <strong>rango 1</strong>; con rango 2 si hanno due piani distinti, con rango 3 cono o cilindro.</li>
+<li>Nella classificazione affine si contano gli autovalori di <span class="m">A_{(4,4)}</span>; nella proiettiva quelli di <span class="m">A</span>.</li>
+<li>Il piano polare chiesto &quot;in forma implicita omogenea&quot; va scritto con <span class="m">X,Y,Z,T</span>.</li>
+</ul>
 </div>
 
 <div class="callout esame">
 
-<p>Il paniere dà la matrice <span class="m">4\times4</span> di una quadrica e chiede se è non degenere, cono/cilindro, due piani o piano doppio: basta calcolare determinante e rango. Gli extra chiedono la matrice associata, il piano polare in forma omogenea, il riconoscimento di quadriche degeneri. Domanda aperta: &quot;Parlare delle quadriche e delle quadriche degeneri, in particolare dando la definizione&quot;.</p>
+<p>Il paniere dà la matrice <span class="m">4\times4</span> di una quadrica e chiede se è <strong>non degenere</strong>, <strong>cono o cilindro</strong>, <strong>due piani</strong> (non piano doppio) o <strong>piano doppio</strong>: si calcola <span class="m">\det A</span> (se <span class="m">\neq0</span> non degenere) e altrimenti il <strong>rango</strong> (3, 2, 1). Gli extra chiedono la matrice associata a un&#39;equazione, <span class="m">\det A</span> e degenerazione, il piano polare in forma omogenea, il riconoscimento di <span class="m">x^2+y^2-z^2=0</span> come quadrica degenere.</p>
+<p>Domanda aperta: &quot;Parlare delle quadriche e delle quadriche degeneri, in particolare dando la definizione&quot;: definizione 47.1 con esempi, equazione omogenea e matrice associata (come si costruisce), <span class="m">A_{(4,4)}</span> e teorema spettrale, definizione di quadrica degenere (<span class="m">\det A=0</span>), piano doppio, Proposizione 47.9 (punti singolari di cono, cilindro, coppia di piani), piano polare, classificazioni euclidea, affine (tabella) e proiettiva (rango e segni), con un esempio.</p>
+</div>
+
+<div class="callout sintesi">
+
+<ul>
+<li>Quadrica = superficie di grado 2; matrice <span class="m">A</span> simmetrica <span class="m">4\times4</span> (diagonale = quadrati, fuori diagonale = metà dei misti; quarta riga/colonna = termini di primo grado e noto); <span class="m">A_{(4,4)}</span> = parte quadratica.</li>
+<li>Degenere <span class="m">\iff\det A=0\iff</span> ha un punto singolare. Rango 3 cono/cilindro, 2 due piani, 1 piano doppio.</li>
+<li>Piano polare: <span class="m">{}^tP\,A\,P_0=0</span>.</li>
+<li>Euclidea: ellissoide reale/immaginario, iperboloide ellittico (due falde)/iperbolico (una falda), paraboloide ellittico/iperbolico; assi = autovettori ortogonali di <span class="m">A_{(4,4)}</span>.</li>
+<li>Affine: segni degli autovalori di <span class="m">A_{(4,4)}</span> + segno di <span class="m">\det A</span> (3/0: ellissoide, reale se <span class="m">\det A&lt;0</span>; 2/1: iperboloide, ellittico se <span class="m">\det A&lt;0</span>; 2/0: paraboloide ellittico, <span class="m">\det A&lt;0</span>; 1/1: paraboloide iperbolico, <span class="m">\det A&gt;0</span>).</li>
+<li>Proiettiva: rango di <span class="m">A</span> + segni degli autovalori di <span class="m">A</span>.</li>
+</ul>
 </div>

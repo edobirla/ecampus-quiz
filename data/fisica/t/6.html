@@ -1,111 +1,285 @@
 <h1>Lezione 06 — Moto rettilineo uniforme e uniformemente accelerato</h1>
-<h2>Il moto su una retta</h2>
-<p>Se il moto avviene su una retta, basta una coordinata <span class="m">x</span>. Il carattere vettoriale resta nel <strong>segno</strong>: positivo nel verso dell&#39;asse, negativo nel verso opposto. Le formule si scrivono senza frecce, ma i segni vanno rispettati.</p>
+<p>Applichiamo le definizioni della lezione 5 al caso più semplice: il <strong>moto lungo una retta</strong>. Ricaviamo, integrando, le leggi orarie dei due moti fondamentali, il <strong>moto rettilineo uniforme</strong> (velocità costante) e il <strong>moto uniformemente accelerato</strong> (accelerazione costante), con i loro grafici. Il caso più importante di moto uniformemente accelerato è la <strong>caduta libera</strong> dei corpi sotto l&#39;accelerazione di gravità. Chiude il piano inclinato senza attrito.</p>
+<h2>Il moto rettilineo</h2>
+<p>Se il moto avviene lungo una retta, conviene far coincidere l&#39;asse <span class="m">x</span> con la retta stessa. La posizione è data da una sola coordinata:
+<span class="m d">\vec r = x\,\hat i</span>
+e lo spostamento da un punto 1 a un punto 2 è <span class="m">\Delta\vec r = (x_2 - x_1)\,\hat i</span>.</p>
+<p>Il carattere vettoriale di posizione, spostamento, velocità e accelerazione resta tutto nel <strong>segno</strong>: il verso positivo è quello del versore <span class="m">\hat i</span>, scelto arbitrariamente; un numero positivo punta nel verso dell&#39;asse, uno negativo nel verso opposto. Si possono quindi scrivere le formule <strong>senza frecce</strong>, ma <strong>rispettando sempre i segni</strong>.</p>
+<h3>Velocità media vettoriale e velocità scalare media</h3>
+<p>Per il moto rettilineo la velocità media è
+<span class="m d">v_m = \frac{\Delta x}{\Delta t} = \frac{x_2 - x_1}{t_2 - t_1}</span>
+con il segno dello spostamento. La <strong>velocità scalare media</strong> invece usa la lunghezza totale <span class="m">\ell</span> percorsa lungo la traiettoria, senza tenere conto del verso: <span class="m">v_s = \ell/\Delta t</span>.</p>
+<div class="callout esempio">
+
+<p>Un punto avanza di un tratto <span class="m">\Delta x</span> in un tempo <span class="m">t_1</span> e poi torna al punto di partenza percorrendo la stessa distanza in un tempo <span class="m">t_2</span>.</p>
+<ul>
+<li>Spostamento totale nullo ⇒ <strong>velocità media vettoriale nulla</strong>.</li>
+<li>Strada percorsa <span class="m">2\Delta x</span> ⇒ <strong>velocità scalare media</strong> <span class="m">v_s = \dfrac{2\Delta x}{t_1 + t_2}</span>.</li>
+</ul>
+<p>Con <span class="m">\Delta x = 100\,\mathrm m</span>, <span class="m">t_1 = 20\,\mathrm s</span>, <span class="m">t_2 = 30\,\mathrm s</span>: <span class="m">v_s = 200/50 = 4\,\mathrm{m/s}</span>.</p>
+</div>
+
+<h3>Velocità e accelerazione istantanee</h3>
+<p><span class="m d">v = \lim_{\Delta t\to 0}\frac{\Delta x}{\Delta t} = \frac{dx}{dt} \qquad a = \lim_{\Delta t\to 0}\frac{\Delta v}{\Delta t} = \frac{dv}{dt} = \frac{d^2x}{dt^2}</span>
+Il segno di <span class="m">v</span> dice in che verso ci si muove; il segno di <span class="m">a</span> dice in che verso cambia la velocità. Se <span class="m">v</span> e <span class="m">a</span> hanno <strong>lo stesso segno</strong> il corpo <strong>accelera</strong> (il modulo della velocità cresce); se hanno <strong>segno opposto</strong> il corpo <strong>rallenta</strong>.</p>
+<h2>La legge oraria</h2>
+<p>Il moto è noto quando si conosce la posizione in ogni istante: la funzione <span class="m">x = x(t)</span> è la <strong>legge oraria</strong>. Se si conosce la velocità <span class="m">v(t)</span> in ogni istante, la legge oraria si trova con l&#39;operazione inversa della derivata, l&#39;<strong>integrale</strong>:
+<span class="m d">x(t) = x_0 + \int_{0}^{t} v(t')\,dt'</span>
+dove <span class="m">x_0</span> è la posizione al tempo <span class="m">t_0 = 0</span>. Allo stesso modo, nota l&#39;accelerazione,
+<span class="m d">v(t) = v_0 + \int_{0}^{t} a(t')\,dt'</span>
+Mettendo insieme le due si ha la <strong>legge oraria generale</strong> del moto in una dimensione:
+<span class="m d">x(t) = x_0 + v_0\,t + \int_0^t\!\left(\int_0^{t'} a(t'')\,dt''\right)dt'</span>
+Servono sempre due <strong>condizioni iniziali</strong>, <span class="m">x_0</span> e <span class="m">v_0</span>.</p>
 <h2>Moto rettilineo uniforme</h2>
-<p>Il moto è uniforme quando la velocità è costante. L&#39;accelerazione è zero. Spazi uguali in tempi uguali: lo spazio è <strong>proporzionale</strong> al tempo.</p>
-<p><span class="m d">x(t) = x_0 + v\,t</span>
+<h3>Definizione</h3>
+<p>Un moto è <strong>rettilineo uniforme</strong> quando avviene lungo una retta con <strong>velocità costante</strong> (in modulo e verso). L&#39;<strong>accelerazione è nulla</strong>. Per il primo principio della dinamica è il moto di un corpo non soggetto a forze, o soggetto a forze con risultante nulla.</p>
+<h3>Legge oraria (derivazione)</h3>
+<p>Con <span class="m">v(t) = v_0</span> costante, l&#39;integrale è immediato: <span class="m">\int_0^t v_0\,dt' = v_0\,t</span>. Quindi
+<span class="m d">x(t) = x_0 + v_0\,t</span>
 dove:</p>
 <ul>
 <li><span class="m">x(t)</span> = posizione all&#39;istante <span class="m">t</span> (m);</li>
-<li><span class="m">x_0</span> = posizione a <span class="m">t = 0</span> (m);</li>
-<li><span class="m">v</span> = velocità costante (m/s);</li>
+<li><span class="m">x_0</span> = posizione all&#39;istante <span class="m">t_0 = 0</span> (m);</li>
+<li><span class="m">v_0 = v</span> = velocità costante (m/s);</li>
 <li><span class="m">t</span> = tempo (s).</li>
 </ul>
-<p>Formule inverse: <span class="m">v = \Delta x/\Delta t</span>, <span class="m">t = \Delta x/v</span>.</p>
-<p>Grafici: <span class="m">x(t)</span> è una retta con pendenza <span class="m">v</span>; <span class="m">v(t)</span> è una retta orizzontale; l&#39;area sotto <span class="m">v(t)</span> è lo spazio percorso.</p>
+<p>Formule inverse: <span class="m">\Delta x = v\,\Delta t</span>, quindi <span class="m">v = \dfrac{\Delta x}{\Delta t}</span> e <span class="m">\Delta t = \dfrac{\Delta x}{v}</span>.</p>
+<h3>Proprietà</h3>
+<ul>
+<li>Il corpo percorre <strong>spazi uguali in tempi uguali</strong>: le distanze percorse sono <strong>direttamente proporzionali</strong> agli intervalli di tempo (<span class="m">\Delta x = v\,\Delta t</span>). In un tempo doppio si fa una strada doppia.</li>
+<li>La velocità è la stessa in ogni istante: se a <span class="m">t = 10\,\mathrm s</span> vale <span class="m">15\,\mathrm{m/s}</span>, a <span class="m">t = 20\,\mathrm s</span> vale ancora <span class="m">15\,\mathrm{m/s}</span>.</li>
+</ul>
+<h3>Grafici</h3>
+<ul>
+<li><strong>Posizione–tempo</strong> <span class="m">x(t)</span>: una <strong>retta</strong>; l&#39;intercetta è <span class="m">x_0</span> e la <strong>pendenza</strong> è la velocità <span class="m">v</span> (più ripida = più veloce; pendenza negativa = moto nel verso negativo).</li>
+<li><strong>Velocità–tempo</strong> <span class="m">v(t)</span>: una <strong>retta orizzontale</strong> all&#39;altezza <span class="m">v</span>.</li>
+<li>L&#39;<strong>area</strong> sotto il grafico <span class="m">v(t)</span> tra <span class="m">0</span> e <span class="m">t</span> è un rettangolo di base <span class="m">t</span> e altezza <span class="m">v</span>: vale <span class="m">v\,t</span>, cioè lo <strong>spazio percorso</strong>.</li>
+<li><strong>Accelerazione–tempo</strong>: la retta <span class="m">a = 0</span>.</li>
+</ul>
 <div class="callout esempio">
 
+<p><strong>Viaggio da A a B (dalla dispensa).</strong> Un&#39;auto va da A a B, distanti <span class="m">d_{AB} = 657\,\mathrm{km}</span>, in <span class="m">t = 8{,}76\,\mathrm h</span>.</p>
+<ol>
+<li>Supponendo il moto uniforme, la velocità è <span class="m">v = \dfrac{657\,\mathrm{km}}{8{,}76\,\mathrm h} = 75\,\mathrm{km/h}</span>.</li>
+<li>Una località C dista <span class="m">d_C = 200\,\mathrm{km}</span> da A. Dalla legge oraria <span class="m">d_C = v\,t</span>: <span class="m">t = \dfrac{d_C}{v} = \dfrac{200\,\mathrm{km}}{75\,\mathrm{km/h}} \approx 2{,}67\,\mathrm h</span> (circa 2 h 40 min).</li>
+</ol>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Distrazione alla guida.</strong></p>
 <ul>
-<li>A 110 km/h (30,6 m/s) guardi fuori per 2 s: percorri <span class="m">\approx 61\,\mathrm m</span>. A 130 km/h (36,1 m/s): <span class="m">\approx 72\,\mathrm m</span>.</li>
-<li>110 m/s per 18 min (1080 s): <span class="m">s = 118\,800\,\mathrm m = 118{,}8\,\mathrm{km}</span>.</li>
-<li>200 km/h per 15 min (0,25 h): 50 km.</li>
-<li>657 km in 8,76 h: <span class="m">v = 75\,\mathrm{km/h}</span>. Una città a 200 km si raggiunge in <span class="m">200/75 = 2{,}67\,\mathrm h</span>.</li>
-<li>Se la velocità è costante e a <span class="m">t = 10\,\mathrm s</span> vale 15 m/s, a <span class="m">t = 20\,\mathrm s</span> vale ancora 15 m/s.</li>
+<li>A <span class="m">110\,\mathrm{km/h}</span>, guardando fuori dal finestrino per <span class="m">2{,}0\,\mathrm s</span>. In m/s: <span class="m">110/3{,}6 \approx 30{,}6\,\mathrm{m/s}</span>. Distanza: <span class="m">30{,}6\cdot 2{,}0 \approx 61\,\mathrm m</span>.</li>
+<li>A <span class="m">130\,\mathrm{km/h}</span> per <span class="m">2\,\mathrm s</span>: <span class="m">130/3{,}6 \approx 36{,}1\,\mathrm{m/s}</span>, distanza <span class="m">\approx 72\,\mathrm m</span>.</li>
+</ul>
+<p>Settanta metri &quot;alla cieca&quot;: il motivo per cui la distrazione è pericolosa.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Unità diverse.</strong></p>
+<ul>
+<li>Auto a <span class="m">110\,\mathrm{m/s}</span> per <span class="m">18\,\mathrm{min}</span>: <span class="m">t = 18\cdot 60 = 1080\,\mathrm s</span>; <span class="m">s = 110\cdot 1080 = 118\,800\,\mathrm m = 118{,}8\,\mathrm{km}</span>.</li>
+<li>Treno a <span class="m">200\,\mathrm{km/h}</span> per <span class="m">15\,\mathrm{min}</span>: conviene lavorare in ore, <span class="m">15\,\mathrm{min} = 0{,}25\,\mathrm h</span>; <span class="m">s = 200\cdot 0{,}25 = 50\,\mathrm{km}</span>.</li>
 </ul>
 </div>
 
-<h2>Moto uniformemente accelerato</h2>
-<p>Il moto è uniformemente accelerato quando l&#39;accelerazione è costante. La velocità cambia di quantità uguali in tempi uguali.</p>
-<p><span class="m d">v(t) = v_0 + a\,t</span>
-<span class="m d">x(t) = x_0 + v_0\,t + \tfrac12\,a\,t^2</span>
-<span class="m d">v^2 = v_0^2 + 2a\,(x - x_0)</span>
-dove:</p>
+<h2>Moto rettilineo uniformemente accelerato</h2>
+<h3>Definizione</h3>
+<p>Un moto è <strong>uniformemente accelerato</strong> quando l&#39;<strong>accelerazione è costante</strong> (in modulo, direzione e verso). La velocità cambia di <strong>quantità uguali in tempi uguali</strong>.</p>
+<h3>Velocità (derivazione)</h3>
+<p>Con <span class="m">a</span> costante:
+<span class="m d">v(t) = v_0 + \int_0^t a\,dt' = v_0 + a\,t</span>
+La velocità è una <strong>funzione lineare</strong> del tempo.</p>
+<h3>Legge oraria (derivazione)</h3>
+<p>Si integra la velocità appena trovata:
+<span class="m d">x(t) = x_0 + \int_0^t (v_0 + a\,t')\,dt' = x_0 + v_0\,t + \tfrac12\,a\,t^2</span>
+(l&#39;integrale di <span class="m">a\,t'</span> è <span class="m">a\,t^2/2</span>). La posizione è una funzione <strong>quadratica</strong> del tempo: il grafico <span class="m">x(t)</span> è una <strong>parabola</strong>.</p>
+<h3>Relazione senza il tempo (derivazione)</h3>
+<p>Spesso il tempo non è dato. Lo si elimina tra le due equazioni. Dalla prima, <span class="m">t = \dfrac{v - v_0}{a}</span>. Sostituendo nella seconda:
+<span class="m d">x - x_0 = v_0\frac{v - v_0}{a} + \frac12 a\frac{(v - v_0)^2}{a^2} = \frac{2v_0(v - v_0) + (v - v_0)^2}{2a} = \frac{(v - v_0)(v + v_0)}{2a} = \frac{v^2 - v_0^2}{2a}</span>
+Moltiplicando per <span class="m">2a</span>:
+<span class="m d">v^2 = v_0^2 + 2a\,(x - x_0)</span></p>
+<h3>Velocità media</h3>
+<p>Poiché la velocità cresce linearmente, la velocità media è la media aritmetica tra iniziale e finale:
+<span class="m d">x - x_0 = \frac{v_0 + v}{2}\,t</span>
+(è l&#39;area del trapezio sotto il grafico <span class="m">v(t)</span>). Vale <strong>solo</strong> se l&#39;accelerazione è costante.</p>
+<p>Riassumendo, con:</p>
 <ul>
-<li><span class="m">x_0, v_0</span> = posizione (m) e velocità (m/s) a <span class="m">t = 0</span>;</li>
-<li><span class="m">a</span> = accelerazione costante (m/s²), negativa se il corpo frena nel verso positivo;</li>
-<li><span class="m">x, v</span> = posizione e velocità all&#39;istante <span class="m">t</span>.</li>
+<li><span class="m">x_0, v_0</span> = posizione (m) e velocità (m/s) all&#39;istante <span class="m">t_0 = 0</span>;</li>
+<li><span class="m">a</span> = accelerazione costante (m/s²), con segno: negativa se il corpo frena muovendosi nel verso positivo;</li>
+<li><span class="m">x, v</span> = posizione e velocità all&#39;istante <span class="m">t</span>;</li>
 </ul>
-<p>La terza formula non contiene il tempo: serve quando il tempo non è dato.</p>
-<p>Grafici: <span class="m">v(t)</span> è una retta con pendenza <span class="m">a</span>; <span class="m">x(t)</span> è una parabola.</p>
-<p>Casi utili:</p>
+<p><span class="m d">v = v_0 + a\,t \qquad x = x_0 + v_0\,t + \tfrac12\,a\,t^2 \qquad v^2 = v_0^2 + 2a\,(x - x_0)</span></p>
+<h3>Grafici</h3>
 <ul>
-<li><strong>partenza da fermo</strong>: <span class="m">v = at</span>, <span class="m">x = \tfrac12at^2</span>, quindi <span class="m">a = 2x/t^2</span>;</li>
-<li><strong>frenata fino a fermarsi</strong>: tempo <span class="m">t = v_0/a</span>, spazio <span class="m">x = v_0^2/(2a)</span> (con <span class="m">a</span> in modulo).</li>
+<li><span class="m">a(t)</span>: retta orizzontale all&#39;altezza <span class="m">a</span>; l&#39;area sotto è <span class="m">\Delta v = a\,t</span>.</li>
+<li><span class="m">v(t)</span>: retta di <strong>pendenza <span class="m">a</span></strong> e intercetta <span class="m">v_0</span>; l&#39;area sotto (un trapezio) è lo spazio percorso.</li>
+<li><span class="m">x(t)</span>: <strong>parabola</strong>, rivolta verso l&#39;alto se <span class="m">a &gt; 0</span>, verso il basso se <span class="m">a &lt; 0</span>; la pendenza della tangente in ogni punto è la velocità in quell&#39;istante.</li>
 </ul>
+<h3>Casi particolari utili</h3>
+<p><strong>Partenza da fermo</strong> (<span class="m">v_0 = 0</span>, <span class="m">x_0 = 0</span>):
+<span class="m d">v = a\,t \qquad x = \tfrac12\,a\,t^2 \qquad v^2 = 2a\,x \qquad \Rightarrow \quad a = \frac{2x}{t^2}</span>
+<strong>Frenata fino all&#39;arresto</strong> (velocità iniziale <span class="m">v_0</span>, decelerazione di modulo <span class="m">a</span>): si pone <span class="m">v = 0</span>.</p>
+<ul>
+<li>Dalla prima: <span class="m">0 = v_0 - a\,t \Rightarrow t_{arresto} = \dfrac{v_0}{a}</span>.</li>
+<li>Dalla terza: <span class="m">0 = v_0^2 - 2a\,d \Rightarrow d_{arresto} = \dfrac{v_0^2}{2a}</span>.</li>
+</ul>
+<p>Lo spazio di frenata cresce con il <strong>quadrato</strong> della velocità: a velocità doppia serve uno spazio quadruplo.</p>
 <div class="callout esempio">
 
+<p><strong>Accelerazione da distanza e tempo.</strong> Un aeroplano al decollo copre <span class="m">600\,\mathrm m</span> in <span class="m">15\,\mathrm s</span> partendo da fermo, con accelerazione costante.
+<span class="m d">a = \frac{2x}{t^2} = \frac{2\cdot 600}{15^2} = \frac{1200}{225} \approx 5{,}3\,\mathrm{m/s^2}</span>
+Un&#39;auto di Formula 1 che in partenza fa <span class="m">600\,\mathrm m</span> in <span class="m">15\,\mathrm s</span> prima della prima curva ha esattamente la stessa accelerazione: i dati sono uguali, e il tipo di veicolo non conta.
+Velocità al decollo: <span class="m">v = at = 5{,}33\cdot 15 = 80\,\mathrm{m/s}</span> (controllo: <span class="m">2x/t = 1200/15 = 80</span>).</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Spazio di frenata del treno.</strong> Un treno a <span class="m">50\,\mathrm{m/s}</span> frena con decelerazione costante <span class="m">2\,\mathrm{m/s^2}</span>. A che distanza dalla stazione deve iniziare a frenare per fermarsi lì?
+<span class="m d">d = \frac{v_0^2}{2a} = \frac{50^2}{2\cdot 2} = \frac{2500}{4} = 625\,\mathrm m</span>
+Tempo di frenata: <span class="m">50/2 = 25\,\mathrm s</span>.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Frenata dell&#39;auto.</strong> Un&#39;auto a <span class="m">33{,}3\,\mathrm{m/s}</span> (120 km/h) frena con decelerazione <span class="m">2\,\mathrm{m/s^2}</span>.</p>
 <ul>
-<li>Aereo: 600 m in 15 s partendo da fermo. <span class="m">a = 2\cdot 600/15^2 = 1200/225 \approx 5{,}3\,\mathrm{m/s^2}</span>.</li>
-<li>Treno a 50 m/s che frena a 2 m/s²: si ferma in <span class="m">2500/4 = 625\,\mathrm m</span>.</li>
-<li>Auto a 33,3 m/s che frena a 2 m/s²: si ferma in <span class="m">33{,}3/2 \approx 16{,}6\,\mathrm s</span>, dopo circa 277 m.</li>
-<li>Auto da 40 km/h (11,1 m/s) a 90 km/h (25 m/s) in 8 s: <span class="m">a = 13{,}9/8 \approx 1{,}74\,\mathrm{m/s^2}</span>.</li>
-<li>Da fermo a 60 km/h (16,7 m/s) in 5,1 s: <span class="m">a \approx 3{,}27\,\mathrm{m/s^2}</span>. La massa dell&#39;auto non serve.</li>
-<li>A 75 km/h (20,8 m/s) con <span class="m">a = -2{,}3\,\mathrm{m/s^2}</span>, dopo 4 s: <span class="m">v = 20{,}8 - 9{,}2 \approx 11{,}6\,\mathrm{m/s}</span>.</li>
-<li>Con <span class="m">a = 4\,\mathrm{m/s^2}</span> da fermo: la legge oraria è <span class="m">x = 2t^2</span> (e la velocità <span class="m">v = 4t</span>).</li>
+<li>Tempo: <span class="m">t = v_0/a = 33{,}3/2 \approx 16{,}6\,\mathrm s</span> (arrotondando per difetto 16,65).</li>
+<li>Spazio: <span class="m">d = v_0^2/(2a) = 1109/4 \approx 277\,\mathrm m</span>.</li>
 </ul>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Accelerazione media da km/h.</strong></p>
+<ul>
+<li>Da <span class="m">40\,\mathrm{km/h}</span> a <span class="m">90\,\mathrm{km/h}</span> in <span class="m">8\,\mathrm s</span>: <span class="m">40/3{,}6 = 11{,}1\,\mathrm{m/s}</span>, <span class="m">90/3{,}6 = 25\,\mathrm{m/s}</span>; <span class="m">a = (25 - 11{,}1)/8 = 13{,}9/8 \approx 1{,}74\,\mathrm{m/s^2}</span>.</li>
+<li>Auto di massa <span class="m">950\,\mathrm{kg}</span> che da ferma arriva a <span class="m">60\,\mathrm{km/h}</span> in <span class="m">5{,}1\,\mathrm s</span>: <span class="m">60/3{,}6 = 16{,}7\,\mathrm{m/s}</span>; <span class="m">a = 16{,}7/5{,}1 \approx 3{,}27\,\mathrm{m/s^2}</span>. La <strong>massa non serve</strong>: è un dato di cinematica che non entra nel calcolo (servirebbe per la forza).</li>
+</ul>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Velocità dopo una frenata.</strong> Auto a <span class="m">75\,\mathrm{km/h}</span> che frena con <span class="m">a = -2{,}3\,\mathrm{m/s^2}</span>. Dopo <span class="m">4\,\mathrm s</span>:
+<span class="m d">v_0 = 75/3{,}6 \approx 20{,}8\,\mathrm{m/s} \qquad v = 20{,}8 + (-2{,}3)\cdot 4 = 20{,}8 - 9{,}2 \approx 11{,}6\,\mathrm{m/s}</span></p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Scrivere la legge oraria.</strong> Un&#39;auto ha accelerazione costante <span class="m">4\,\mathrm{m/s^2}</span> e parte da ferma dall&#39;origine. Allora
+<span class="m d">S = \tfrac12\cdot 4\cdot t^2 = 2\,t^2 \qquad v = 4\,t</span></p>
 </div>
 
 <h2>Caduta libera e lancio verticale</h2>
-<p>Vicino alla Terra ogni corpo, senza attrito dell&#39;aria, ha la stessa accelerazione: <span class="m">g = 9{,}8\,\mathrm{m/s^2}</span>, verso il basso. Non dipende dalla massa.</p>
-<p>Si prende l&#39;asse y verso l&#39;alto. Un corpo lanciato da quota <span class="m">y_0</span> con velocità <span class="m">v_0</span>:
-<span class="m d">v(t) = v_0 - g\,t \qquad y(t) = y_0 + v_0\,t - \tfrac12\,g\,t^2 \qquad v^2 = v_0^2 - 2g\,(y - y_0)</span>
-dove <span class="m">g = 9{,}8\,\mathrm{m/s^2}</span> è l&#39;accelerazione di gravità (in modulo).</p>
-<p>Risultati da sapere:</p>
+<h3>L&#39;accelerazione di gravità</h3>
+<p>Un caso notevole di moto uniformemente accelerato è quello di un <strong>grave in caduta libera</strong>. Vicino alla superficie terrestre ogni corpo è soggetto a un&#39;accelerazione verticale, l&#39;<strong>accelerazione di gravità</strong> <span class="m">g</span>:</p>
 <ul>
-<li><strong>caduta da fermo</strong> per un tempo <span class="m">t</span>: <span class="m">h = \tfrac12gt^2</span>. In 1 s: 4,9 m. In 3,5 s: <span class="m">\approx 60\,\mathrm m</span>.</li>
-<li><strong>velocità dopo una caduta</strong> <span class="m">h</span>: <span class="m">v = \sqrt{2gh}</span>.</li>
-<li><strong>altezza massima</strong> con lancio <span class="m">v_0</span>: <span class="m">h = v_0^2/(2g)</span>. Per salire di 50 m serve <span class="m">v_0 = \sqrt{2\cdot 9{,}8\cdot 50} \approx 31{,}3\,\mathrm{m/s}</span>.</li>
-<li><strong>tempo di salita</strong> <span class="m">v_0/g</span>; il tempo di discesa è uguale. Se torna giù dopo 2 s, sale per 1 s: <span class="m">v_0 = 9{,}8\,\mathrm{m/s}</span>.</li>
+<li><strong>direzione</strong>: verticale; <strong>verso</strong>: verso il centro della Terra (in basso);</li>
+<li><strong>modulo</strong>: <span class="m">g = 9{,}8\,\mathrm{m/s^2}</span> (più precisamente <span class="m">9{,}81</span>).</li>
 </ul>
-<p>Nel <strong>punto più alto</strong> la velocità è zero. L&#39;accelerazione invece è ancora <span class="m">g</span>, verso il basso.</p>
+<p>Trascurando la resistenza dell&#39;aria, <span class="m">g</span> è <strong>la stessa per tutti i corpi</strong>, qualunque sia la loro massa (Galileo): un sasso pesante e uno leggero lasciati cadere insieme arrivano a terra insieme.</p>
+<h3>Le equazioni</h3>
+<p>Si sceglie l&#39;asse <span class="m">y</span> <strong>verticale verso l&#39;alto</strong>: l&#39;accelerazione vale <span class="m">-g</span>. Per un corpo lanciato all&#39;istante <span class="m">t_0 = 0</span> dalla quota <span class="m">y_0</span> con velocità iniziale <span class="m">v_0</span> (positiva se verso l&#39;alto), sostituendo <span class="m">a = -g</span> nelle formule generali:
+<span class="m d">v(t) = v_0 - g\,t</span>
+<span class="m d">y(t) = y_0 + v_0\,t - \tfrac12\,g\,t^2</span>
+<span class="m d">v^2 = v_0^2 - 2g\,(y - y_0)</span>
+dove <span class="m">g = 9{,}8\,\mathrm{m/s^2}</span> è il modulo dell&#39;accelerazione di gravità.</p>
+<h3>Risultati da sapere (con derivazione)</h3>
+<p><strong>Caduta da fermo</strong> da altezza <span class="m">h</span> (<span class="m">v_0 = 0</span>; conviene misurare la distanza caduta verso il basso):</p>
+<ul>
+<li>spazio caduto in un tempo <span class="m">t</span>: <span class="m">h = \tfrac12\,g\,t^2</span>;</li>
+<li>tempo di caduta: <span class="m">t = \sqrt{2h/g}</span>;</li>
+<li>velocità d&#39;arrivo: da <span class="m">v^2 = 2gh</span>, <span class="m">v = \sqrt{2gh}</span> (non dipende dalla massa).</li>
+</ul>
+<p><strong>Lancio verso l&#39;alto</strong> con velocità <span class="m">v_0</span> da terra:</p>
+<ul>
+<li>il corpo <strong>rallenta</strong> perché <span class="m">g</span> è opposta alla velocità; all&#39;inizio il moto è uniformemente accelerato con accelerazione <strong>opposta al moto</strong>;</li>
+<li><strong>tempo di salita</strong>: nel punto più alto <span class="m">v = 0</span>, quindi <span class="m">0 = v_0 - g\,t_s \Rightarrow t_s = v_0/g</span>;</li>
+<li><strong>altezza massima</strong>: da <span class="m">0 = v_0^2 - 2g\,h_{max} \Rightarrow h_{max} = \dfrac{v_0^2}{2g}</span>; al contrario, per salire di <span class="m">h</span> serve <span class="m">v_0 = \sqrt{2gh}</span>;</li>
+<li><strong>tempo di discesa</strong> uguale a quello di salita (il moto è simmetrico): il corpo torna al punto di partenza dopo <span class="m">t_{tot} = 2v_0/g</span>, con velocità di <strong>modulo <span class="m">v_0</span></strong> diretta verso il basso.</li>
+</ul>
+<p>Nel <strong>punto più alto</strong> la velocità è <strong>zero</strong> ma l&#39;accelerazione <strong>no</strong>: è ancora <span class="m">g</span>, diretta <strong>verso il basso</strong>. Se l&#39;accelerazione fosse nulla lì, il corpo resterebbe fermo in aria.</p>
 <div class="callout esempio">
 
-<p>Palla lanciata in su a 35 m/s. A 30 m di quota: <span class="m">v^2 = 1225 - 2\cdot 9{,}8\cdot 30 = 637</span>, quindi <span class="m">v \approx 25{,}2\,\mathrm{m/s}</span>. La massa della palla non conta.</p>
+<p><strong>Cadute.</strong></p>
+<ul>
+<li>Sasso che impiega <span class="m">1\,\mathrm s</span> a toccare terra: <span class="m">h = \tfrac12\cdot 9{,}8\cdot 1^2 = 4{,}9\,\mathrm m</span>.</li>
+<li>Pietra che colpisce il fondo di un precipizio dopo <span class="m">3{,}5\,\mathrm s</span>: <span class="m">h = \tfrac12\cdot 9{,}8\cdot 3{,}5^2 = 4{,}9\cdot 12{,}25 \approx 60\,\mathrm m</span>.</li>
+<li>Velocità dopo una caduta di <span class="m">30\,\mathrm m</span>: <span class="m">v = \sqrt{2\cdot 9{,}8\cdot 30} \approx 24\,\mathrm{m/s}</span>.</li>
+</ul>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Lanci verso l&#39;alto.</strong></p>
+<ul>
+<li>Con quale velocità lanciare una palla di ferro perché salga di <span class="m">50\,\mathrm m</span>? <span class="m">v_0 = \sqrt{2gh} = \sqrt{2\cdot 9{,}8\cdot 50} = \sqrt{980} \approx 31{,}3\,\mathrm{m/s}</span>. (Il materiale e la massa non contano.)</li>
+<li>Una palla torna a terra dopo <span class="m">2\,\mathrm s</span>: sale per <span class="m">1\,\mathrm s</span> e scende per <span class="m">1\,\mathrm s</span>. Da <span class="m">t_s = v_0/g</span>: <span class="m">v_0 = g\,t_s = 9{,}8\cdot 1 = 9{,}8\,\mathrm{m/s}</span>.</li>
+<li>Palla da baseball (<span class="m">0{,}2\,\mathrm{kg}</span>) lanciata in su a <span class="m">20\,\mathrm{m/s}</span>: nel punto più alto la velocità è <strong>zero</strong> e l&#39;accelerazione è diretta <strong>verso il basso</strong> (<span class="m">g</span>). Sale fino a <span class="m">h = 400/19{,}6 \approx 20{,}4\,\mathrm m</span> in <span class="m">20/9{,}8 \approx 2{,}04\,\mathrm s</span>.</li>
+</ul>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Velocità a una certa quota.</strong> Una palla di <span class="m">140\,\mathrm g</span> è lanciata verso l&#39;alto a <span class="m">35{,}0\,\mathrm{m/s}</span>. Velocità a <span class="m">30{,}0\,\mathrm m</span> di quota:
+<span class="m d">v^2 = v_0^2 - 2g\,(y - y_0) = 35^2 - 2\cdot 9{,}8\cdot 30 = 1225 - 588 = 637 \;\Rightarrow\; v = \sqrt{637} \approx 25{,}2\,\mathrm{m/s}</span>
+La palla passa da quella quota due volte, in salita e in discesa, con la stessa velocità in modulo. La massa non serve.</p>
 </div>
 
 <div class="callout attenzione">
 
-<p>Due sassi lanciati in verticale dalla stessa quota e nello stesso istante hanno la stessa accelerazione <span class="m">g</span>. Se arrivano in acqua in tempi diversi, è perché le <strong>velocità iniziali</strong> sono diverse. Massa e forza di gravità non c&#39;entrano.</p>
+<p><strong>I due sassi dal ponte.</strong> Due ragazzi lanciano due sassi lungo la verticale, nello stesso istante e dalla stessa quota, ma uno arriva in acqua prima. Perché? Entrambi hanno la stessa accelerazione <span class="m">g</span>, qualunque sia la loro massa: l&#39;unica differenza possibile sono le <strong>velocità iniziali</strong>. Massa, peso e &quot;forza di gravità diversa&quot; non c&#39;entrano.</p>
 </div>
 
 <h2>Piano inclinato senza attrito</h2>
-<p>Su un piano inclinato di un angolo <span class="m">\alpha</span> il corpo scende con accelerazione costante:
+<p>Un corpo su un piano inclinato di un angolo <span class="m">\alpha</span> rispetto all&#39;orizzontale, senza attrito, scende con accelerazione costante diretta lungo il piano:
 <span class="m d">a = g\sin\alpha</span>
-dove <span class="m">\alpha</span> è l&#39;inclinazione rispetto all&#39;orizzontale.</p>
-<p>Due corpi uguali partono dalla stessa altezza su due piani con pendenza diversa:</p>
+Il motivo: dell&#39;accelerazione di gravità, verticale, conta solo la componente <strong>parallela al piano</strong>, che vale <span class="m">g\sin\alpha</span> (la componente perpendicolare <span class="m">g\cos\alpha</span> è compensata dal piano). Per <span class="m">\alpha = 90°</span> si ritrova la caduta libera, per <span class="m">\alpha = 0</span> il corpo resta fermo.</p>
+<p>Confrontiamo due corpi identici lasciati liberi dalla stessa altezza <span class="m">h</span> su due piani di pendenza diversa. La lunghezza del piano è <span class="m">L = h/\sin\alpha</span>.</p>
 <ul>
-<li><strong>tempo</strong>: arriva prima quello sul piano più ripido. Ha accelerazione maggiore e strada più corta.</li>
-<li><strong>velocità finale</strong>: è la stessa, <span class="m">v = \sqrt{2gh}</span>. Conta solo il dislivello <span class="m">h</span>.</li>
+<li><strong>Tempo</strong>: da <span class="m">L = \tfrac12 a t^2</span>,
+<span class="m d">t = \sqrt{\frac{2L}{a}} = \sqrt{\frac{2h}{g\sin^2\alpha}} = \frac{1}{\sin\alpha}\sqrt{\frac{2h}{g}}</span>
+Più il piano è ripido, più <span class="m">\sin\alpha</span> è grande e più <span class="m">t</span> è piccolo: <strong>arriva prima il corpo sul piano più ripido</strong> (ha accelerazione maggiore e strada più corta).</li>
+<li><strong>Velocità finale</strong>: da <span class="m">v^2 = 2aL = 2\,g\sin\alpha\cdot\dfrac{h}{\sin\alpha} = 2gh</span>,
+<span class="m d">v = \sqrt{2gh}</span>
+<strong>La stessa per i due piani</strong>: conta solo il dislivello <span class="m">h</span>, non la pendenza.</li>
 </ul>
-<h2>Velocità media vettoriale e scalare</h2>
-<p>Se vai avanti di <span class="m">\Delta x</span> in un tempo <span class="m">t_1</span> e torni indietro in <span class="m">t_2</span>:</p>
+<div class="callout esempio">
+
+<p><span class="m">h = 5\,\mathrm m</span>. Piano a <span class="m">30°</span>: <span class="m">t = \dfrac{1}{0{,}5}\sqrt{10/9{,}8} \approx 2\cdot 1{,}01 = 2{,}02\,\mathrm s</span>. Piano a <span class="m">60°</span>: <span class="m">t = \dfrac{1}{0{,}866}\cdot 1{,}01 \approx 1{,}17\,\mathrm s</span>. In entrambi i casi <span class="m">v = \sqrt{2\cdot 9{,}8\cdot 5} \approx 9{,}9\,\mathrm{m/s}</span>.</p>
+</div>
+
+<div class="callout attenzione">
+
 <ul>
-<li>velocità media vettoriale = 0 (spostamento nullo);</li>
-<li>velocità scalare media = <span class="m">2\Delta x/(t_1 + t_2)</span>.</li>
+<li>Nelle formule i segni contano: con l&#39;asse verso l&#39;alto, <span class="m">g</span> entra come <span class="m">-g</span>; una frenata nel verso positivo ha <span class="m">a &lt; 0</span>.</li>
+<li>Convertire sempre km/h in m/s prima di usare <span class="m">g</span> o accelerazioni in m/s².</li>
+<li><span class="m">v^2 = v_0^2 + 2a\Delta x</span> e <span class="m">x = \tfrac{v_0+v}{2}t</span> valgono solo con accelerazione costante.</li>
+<li>Dati come la massa del corpo spesso sono &quot;esca&quot;: in cinematica non servono.</li>
 </ul>
+</div>
+
 <div class="callout esame">
 
-<p>Aperte frequenti: discutere il moto rettilineo uniforme (definizione, legge oraria, grafici); esporre il moto uniformemente accelerato (le tre formule, caduta libera).</p>
+<p>Chiuse: problemi numerici di moto uniforme (spazio percorso guardando fuori dal finestrino, distanza in un certo tempo, velocità costante che non cambia) e di moto uniformemente accelerato (accelerazione da spazio e tempo con partenza da fermo, spazio e tempo di frenata, accelerazione media da km/h, velocità dopo una frenata, legge oraria <span class="m">S = 2t^2</span> per <span class="m">a = 4\,\mathrm{m/s^2}</span>); caduta libera (altezza da tempo di caduta, velocità di lancio per un&#39;altezza, tempo di volo simmetrico, velocità a una quota); punto più alto (<span class="m">v = 0</span>, accelerazione verso il basso); sassi lanciati insieme (velocità iniziali diverse); piano inclinato (prima arriva il più ripido, stessa velocità finale).</p>
+<p>Aperte:</p>
+<ul>
+<li><strong>Moto rettilineo uniforme</strong>: traiettoria rettilinea, velocità costante, accelerazione nulla; legge oraria <span class="m">x = x_0 + vt</span> (derivata integrando); spazi proporzionali ai tempi; grafici (<span class="m">x(t)</span> retta di pendenza <span class="m">v</span>, <span class="m">v(t)</span> orizzontale, area = spazio); legame con il primo principio.</li>
+<li><strong>Moto uniformemente accelerato</strong>: accelerazione costante; <span class="m">v = v_0 + at</span> (lineare); <span class="m">x = x_0 + v_0t + \tfrac12at^2</span> (parabola); <span class="m">v^2 = v_0^2 + 2a\Delta x</span>; grafici; accelera o decelera secondo i segni; esempio della caduta libera con <span class="m">g = 9{,}8\,\mathrm{m/s^2}</span> uguale per tutti i corpi.</li>
+</ul>
 </div>
 
 <div class="callout sintesi">
 
 <ul>
-<li>Uniforme: <span class="m">a = 0</span>, <span class="m">x = x_0 + vt</span>, spazi proporzionali ai tempi.</li>
-<li>Uniformemente accelerato: <span class="m">v = v_0 + at</span>, <span class="m">x = x_0 + v_0t + \tfrac12at^2</span>, <span class="m">v^2 = v_0^2 + 2a\Delta x</span>.</li>
-<li>Frenata: <span class="m">t = v_0/a</span>, <span class="m">d = v_0^2/(2a)</span>.</li>
-<li>Gravità: <span class="m">g = 9{,}8\,\mathrm{m/s^2}</span> verso il basso, uguale per tutti; <span class="m">h = \tfrac12gt^2</span>, <span class="m">v = \sqrt{2gh}</span>.</li>
+<li>Moto rettilineo: una coordinata <span class="m">x</span>; il verso è nel segno. Velocità media vettoriale ≠ scalare media (<span class="m">2\Delta x/(t_1+t_2)</span> su andata e ritorno).</li>
+<li>Legge oraria: <span class="m">x(t) = x_0 + \int v\,dt</span>, <span class="m">v(t) = v_0 + \int a\,dt</span>.</li>
+<li>Uniforme: <span class="m">a = 0</span>, <span class="m">x = x_0 + vt</span>; spazi proporzionali ai tempi; <span class="m">x(t)</span> retta, area sotto <span class="m">v(t)</span> = spazio.</li>
+<li>Uniformemente accelerato: <span class="m">v = v_0 + at</span>, <span class="m">x = x_0 + v_0t + \tfrac12at^2</span>, <span class="m">v^2 = v_0^2 + 2a\Delta x</span>, <span class="m">\Delta x = \tfrac{v_0 + v}{2}t</span>.</li>
+<li>Da fermo: <span class="m">a = 2x/t^2</span>. Frenata: <span class="m">t = v_0/a</span>, <span class="m">d = v_0^2/(2a)</span>.</li>
+<li>Gravità: <span class="m">g = 9{,}8\,\mathrm{m/s^2}</span> verso il basso, uguale per tutti; <span class="m">h = \tfrac12gt^2</span>, <span class="m">v = \sqrt{2gh}</span>, <span class="m">h_{max} = v_0^2/(2g)</span>, <span class="m">t_s = v_0/g</span>, volo <span class="m">2v_0/g</span>.</li>
 <li>Punto più alto: <span class="m">v = 0</span> ma <span class="m">a = g</span> verso il basso.</li>
-<li>Piano inclinato: <span class="m">a = g\sin\alpha</span>; stessa velocità finale, prima arriva il più ripido.</li>
+<li>Piano inclinato liscio: <span class="m">a = g\sin\alpha</span>; prima arriva il più ripido; stessa velocità finale <span class="m">\sqrt{2gh}</span>.</li>
 </ul>
 </div>

@@ -1,61 +1,171 @@
 <h1>Lezione 44 — Polarità</h1>
-<p>Si lavora nel piano euclideo con un riferimento cartesiano fissato e si estendono le coniche al piano proiettivo <span class="m">\mathbb{P}^2(\mathbb{R})</span>, con coordinate omogenee <span class="m">{}^t(X\ Y\ T)</span>. Data una conica non degenere, la polarità associa a ogni punto una retta e viceversa; è molto utile per trovare le tangenti.</p>
+<p>Questa lezione introduce la <strong>polarità</strong> rispetto a una conica non degenere: un modo di associare a ogni punto del piano proiettivo una retta (la sua <strong>polare</strong>) e, viceversa, a ogni retta un punto (il suo <strong>polo</strong>). È uno strumento molto comodo per trovare le <strong>rette tangenti</strong> a una conica e sarà la base della lezione 45 (centro, diametri, assi e asintoti sono tutti definiti con la polarità).</p>
+<p>Si lavora nel piano euclideo <span class="m">V^2_E</span> con un riferimento cartesiano <span class="m">(O;x,y)</span> fissato, si identificano i vettori con le colonne delle coordinate e si estendono le coniche al piano proiettivo <span class="m">\mathbb P^2(\mathbb R)</span> con coordinate omogenee <span class="m">{}^t(X\ Y\ T)</span>. Un punto del piano euclideo <span class="m">{}^t(x_0\ y_0)</span> ha coordinate omogenee <span class="m">{}^t(x_0\ y_0\ 1)</span> (o un loro multiplo non nullo); i punti con <span class="m">T=0</span> sono i punti all&#39;infinito, cioè le direzioni.</p>
+<h2>Richiamo: la matrice associata a una conica</h2>
+<p>L&#39;equazione omogenea di una conica <span class="m">aX^2+bXY+cY^2+dXT+eYT+fT^2=0</span> è una forma quadratica in <span class="m">(X,Y,T)</span>, quindi si scrive
+<span class="m d">\begin{pmatrix}X&amp;Y&amp;T\end{pmatrix}A\begin{pmatrix}X\\Y\\T\end{pmatrix}=0,\qquad A=\begin{pmatrix}a&amp;\frac b2&amp;\frac d2\\[2pt]\frac b2&amp;c&amp;\frac e2\\[2pt]\frac d2&amp;\frac e2&amp;f\end{pmatrix}.</span></p>
+<ul>
+<li>Sulla diagonale: i coefficienti di <span class="m">X^2</span>, <span class="m">Y^2</span>, <span class="m">T^2</span>.</li>
+<li>Fuori dalla diagonale, nelle due posizioni simmetriche: la <strong>metà</strong> del coefficiente del termine misto (<span class="m">XY</span> in posizione <span class="m">(1,2)</span> e <span class="m">(2,1)</span>, <span class="m">XT</span> in <span class="m">(1,3)</span> e <span class="m">(3,1)</span>, <span class="m">YT</span> in <span class="m">(2,3)</span> e <span class="m">(3,2)</span>).</li>
+<li><span class="m">A</span> è <strong>simmetrica</strong>. La conica è non degenere se e solo se <span class="m">\det A\neq0</span>.</li>
+</ul>
+<p>Per esempio <span class="m">X^2-2XY+4Y^2-4XT+4YT=0</span> ha <span class="m">a=1</span>, <span class="m">b=-2</span>, <span class="m">c=4</span>, <span class="m">d=-4</span>, <span class="m">e=4</span>, <span class="m">f=0</span>, quindi
+<span class="m d">A=\begin{pmatrix}1&amp;-1&amp;-2\\-1&amp;4&amp;2\\-2&amp;2&amp;0\end{pmatrix}.</span></p>
 <h2>Retta polare</h2>
-<p><strong>Definizione 44.1.</strong> Sia <span class="m">\mathcal{C}</span> una conica non degenere con matrice associata <span class="m">A</span>. Dato un punto <span class="m">P_0={}^t(X_0\ Y_0\ T_0)</span> del piano proiettivo, la <strong>retta polare</strong> (o <strong>polare</strong>) di <span class="m">P_0</span> rispetto a <span class="m">\mathcal{C}</span> è la retta con forma implicita omogenea
-<span class="m d">\begin{pmatrix}X&amp;Y&amp;T\end{pmatrix}\cdot A\cdot\begin{pmatrix}X_0\\Y_0\\T_0\end{pmatrix}=0,\qquad\text{cioè}\quad {}^tP\cdot A\cdot P_0=0.</span>
-In pratica: si calcola il vettore <span class="m">A\cdot P_0</span>, le cui componenti sono i coefficienti di <span class="m">X</span>, <span class="m">Y</span>, <span class="m">T</span>. Un punto del piano euclideo <span class="m">{}^t(x_0\ y_0)</span> si scrive <span class="m">{}^t(x_0\ y_0\ 1)</span>.</p>
+<p><strong>Definizione 44.1.</strong> Sia <span class="m">\mathcal C</span> una conica <strong>non degenere</strong> con matrice associata <span class="m">A</span>. Dato un punto <span class="m">P_0={}^t(X_0\ Y_0\ T_0)</span> del piano proiettivo, la <strong>retta polare</strong> (o semplicemente <strong>polare</strong>) di <span class="m">P_0</span> rispetto a <span class="m">\mathcal C</span> è la retta con forma implicita omogenea
+<span class="m d">\begin{pmatrix}X&amp;Y&amp;T\end{pmatrix}\cdot A\cdot\begin{pmatrix}X_0\\Y_0\\T_0\end{pmatrix}=0,\qquad\text{cioè}\qquad {}^tP\cdot A\cdot P_0=0,\quad P={}^t(X\ Y\ T).</span></p>
+<p>Come si calcola in pratica: il prodotto <span class="m">A\cdot P_0</span> è un vettore colonna di <strong>numeri</strong> <span class="m">{}^t(\alpha\ \beta\ \gamma)</span>; allora <span class="m">{}^tP\,(A P_0)=\alpha X+\beta Y+\gamma T</span>, e la polare è
+<span class="m d">\alpha X+\beta Y+\gamma T=0.</span>
+Le componenti di <span class="m">A\cdot P_0</span> sono quindi <strong>i coefficienti</strong> di <span class="m">X</span>, <span class="m">Y</span>, <span class="m">T</span>. Si ottiene davvero una retta perché <span class="m">A</span> è invertibile (conica non degenere) e <span class="m">P_0\neq0</span>, quindi <span class="m">A P_0\neq0</span>: i tre coefficienti non sono tutti nulli. Nella forma affine si pone <span class="m">X=x</span>, <span class="m">Y=y</span>, <span class="m">T=1</span>: <span class="m">\alpha x+\beta y+\gamma=0</span> (se <span class="m">\alpha=\beta=0</span> la polare è la retta all&#39;infinito <span class="m">T=0</span>).</p>
+<p>Un&#39;altra lettura utile: se <span class="m">p(X,Y,T)</span> è il polinomio della conica, <span class="m">A\cdot P_0=\frac12\nabla p(P_0)</span>, cioè la polare è
+<span class="m d">\frac{\partial p}{\partial X}(P_0)\,X+\frac{\partial p}{\partial Y}(P_0)\,Y+\frac{\partial p}{\partial T}(P_0)\,T=0,</span>
+che per un punto della conica è proprio la formula della <strong>retta tangente</strong> vista per le curve algebriche.</p>
 <div class="callout esempio">
 
-<p>Ellisse <span class="m">X^2-2XY+4Y^2-4XT+4YT=0</span>, con matrice
-<span class="m d">A=\begin{pmatrix}1&amp;-1&amp;-2\\-1&amp;4&amp;2\\-2&amp;2&amp;0\end{pmatrix}.</span></p>
-<ul>
-<li>Polare di <span class="m">P_0={}^t(6\ 2\ 1)</span>: <span class="m">2X+4Y-8T=0</span>, cioè <span class="m">X+2Y-4T=0</span>.</li>
-<li>Polare del punto all&#39;infinito <span class="m">P_\infty={}^t(2\ -1\ 0)</span>: <span class="m">3X-6Y-6T=0</span>, cioè <span class="m">X-2Y-2T=0</span>.</li>
-</ul>
+<p><strong>Esempio 44.2.</strong> Ellisse <span class="m">\mathcal C: X^2-2XY+4Y^2-4XT+4YT=0</span>, <span class="m">A=\begin{pmatrix}1&amp;-1&amp;-2\\-1&amp;4&amp;2\\-2&amp;2&amp;0\end{pmatrix}</span>.</p>
+<ol>
+<li><p>Polare di <span class="m">P_0={}^t(6\ 2\ 1)</span> (il punto <span class="m">{}^t(6\ 2)</span> del piano euclideo):
+<span class="m d">A P_0=\begin{pmatrix}1\cdot6+(-1)\cdot2+(-2)\cdot1\\(-1)\cdot6+4\cdot2+2\cdot1\\(-2)\cdot6+2\cdot2+0\cdot1\end{pmatrix}=\begin{pmatrix}6-2-2\\-6+8+2\\-12+4+0\end{pmatrix}=\begin{pmatrix}2\\4\\-8\end{pmatrix}.</span>
+Polare: <span class="m">2X+4Y-8T=0</span>, equivalente (dividendo per 2) a <span class="m">X+2Y-4T=0</span>, cioè <span class="m">x+2y-4=0</span>.</p>
+</li>
+<li><p>Polare del punto all&#39;infinito <span class="m">P_\infty={}^t(2\ -1\ 0)</span> (la direzione <span class="m">{}^t(2\ -1)</span>):
+<span class="m d">A P_\infty=\begin{pmatrix}2+1+0\\-2-4+0\\-4-2+0\end{pmatrix}=\begin{pmatrix}3\\-6\\-6\end{pmatrix},</span>
+polare <span class="m">3X-6Y-6T=0</span>, cioè <span class="m">X-2Y-2T=0</span>.</p>
+</li>
+</ol>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Polare con matrice data e punto euclideo.</strong> Conica con matrice <span class="m">A=\begin{pmatrix}2&amp;1&amp;0\\1&amp;0&amp;3\\0&amp;3&amp;-2\end{pmatrix}</span> e punto <span class="m">{}^t(1\ 1)</span>.</p>
+<p>Prima si controlla che la conica sia non degenere: sviluppando lungo la prima riga, <span class="m">\det A=2(0\cdot(-2)-3\cdot3)-1(1\cdot(-2)-3\cdot0)+0=2(-9)-1(-2)=-18+2=-16\neq0</span>.</p>
+<p>Il punto in coordinate omogenee è <span class="m">P_0={}^t(1\ 1\ 1)</span> (si aggiunge <span class="m">T_0=1</span>!):
+<span class="m d">AP_0=\begin{pmatrix}2+1+0\\1+0+3\\0+3-2\end{pmatrix}=\begin{pmatrix}3\\4\\1\end{pmatrix}.</span>
+Polare: <span class="m">3X+4Y+T=0</span>, cioè <span class="m">3x+4y+1=0</span>.</p>
 </div>
 
 <h2>Proprietà della polarità</h2>
-<p><strong>Proposizione 44.3.</strong> Sia <span class="m">\mathcal{C}</span> una conica non degenere (polarità rispetto a <span class="m">\mathcal{C}</span>).</p>
+<p><strong>Proposizione 44.3.</strong> Sia <span class="m">\mathcal C</span> una conica non degenere (la polarità è rispetto a <span class="m">\mathcal C</span>).</p>
 <ol>
-<li>Ogni retta è la polare di uno e un solo punto.</li>
-<li>La funzione da <span class="m">\mathbb{P}^2(\mathbb{R})</span> all&#39;insieme delle rette di <span class="m">\mathbb{P}^2(\mathbb{R})</span> che associa a ogni punto la sua polare è bigettiva.</li>
-<li>Un punto <span class="m">P</span> appartiene alla sua polare se e solo se <span class="m">P\in\mathcal{C}</span>.</li>
-<li>Un punto <span class="m">P</span> appartiene a <span class="m">\mathcal{C}</span> se e solo se la sua polare è tangente a <span class="m">\mathcal{C}</span>.</li>
-<li><span class="m">P</span> appartiene alla polare di <span class="m">Q</span> se e solo se <span class="m">Q</span> appartiene alla polare di <span class="m">P</span> (<strong>reciprocità</strong>).</li>
+<li>Ogni retta è la retta polare di <strong>uno e un solo</strong> punto.</li>
+<li>La funzione da <span class="m">\mathbb P^2(\mathbb R)</span> all&#39;insieme delle rette di <span class="m">\mathbb P^2(\mathbb R)</span> che associa a ogni punto la sua polare è <strong>bigettiva</strong>.</li>
+<li>Un punto <span class="m">P</span> appartiene alla sua polare <strong>se e solo se</strong> <span class="m">P</span> appartiene a <span class="m">\mathcal C</span>.</li>
+<li>Un punto <span class="m">P</span> appartiene a <span class="m">\mathcal C</span> <strong>se e solo se</strong> la sua polare è <strong>tangente</strong> a <span class="m">\mathcal C</span> (ed è la tangente in <span class="m">P</span>).</li>
+<li><strong>Reciprocità</strong>: <span class="m">P</span> appartiene alla polare di <span class="m">Q</span> se e solo se <span class="m">Q</span> appartiene alla polare di <span class="m">P</span>.</li>
 </ol>
+<p>La dispensa non dà la dimostrazione (&quot;non è difficile&quot;); ecco perché valgono, perché aiuta a ricordarle.</p>
+<ul>
+<li><strong>(1) e (2).</strong> Una retta <span class="m">\alpha X+\beta Y+\gamma T=0</span> è individuata dal vettore dei coefficienti <span class="m">v={}^t(\alpha\ \beta\ \gamma)</span>, a meno di multipli. Essa è la polare di <span class="m">P</span> se e solo se <span class="m">AP</span> è un multiplo non nullo di <span class="m">v</span>, cioè <span class="m">P=k\,A^{-1}v</span>. Siccome <span class="m">\det A\neq0</span>, <span class="m">A^{-1}</span> esiste e c&#39;è esattamente un punto proiettivo <span class="m">P=A^{-1}v</span>: la corrispondenza punto <span class="m">\mapsto</span> polare è invertibile.</li>
+<li><strong>(3).</strong> <span class="m">P</span> sta sulla propria polare se e solo se <span class="m">{}^tP\,A\,P=0</span>, che è esattamente l&#39;equazione della conica calcolata in <span class="m">P</span>.</li>
+<li><strong>(5).</strong> <span class="m">{}^tP\,A\,Q</span> è un numero, quindi è uguale al suo trasposto: <span class="m">{}^tP\,A\,Q={}^tQ\,{}^tA\,P={}^tQ\,A\,P</span> perché <span class="m">A</span> è <strong>simmetrica</strong>. Dunque &quot;<span class="m">P</span> sta sulla polare di <span class="m">Q</span>&quot; (<span class="m">{}^tP A Q=0</span>) e &quot;<span class="m">Q</span> sta sulla polare di <span class="m">P</span>&quot; (<span class="m">{}^tQ A P=0</span>) sono la stessa condizione.</li>
+<li><strong>(4).</strong> Sia <span class="m">P\in\mathcal C</span> e <span class="m">Q\neq P</span> un punto della polare di <span class="m">P</span>. I punti della retta <span class="m">PQ</span> sono <span class="m">P+tQ</span>; sostituendo nell&#39;equazione della conica:
+<span class="m d">{}^t(P+tQ)A(P+tQ)={}^tPAP+2t\,{}^tPAQ+t^2\,{}^tQAQ=0+0+t^2\,{}^tQAQ,</span>
+perché <span class="m">{}^tPAP=0</span> (<span class="m">P\in\mathcal C</span>) e <span class="m">{}^tPAQ=0</span> (<span class="m">Q</span> sulla polare di <span class="m">P</span>). Resta <span class="m">t^2\,{}^tQAQ=0</span>: <span class="m">t=0</span> (cioè il punto <span class="m">P</span>) è radice <strong>doppia</strong>. La retta incontra la conica in <span class="m">P</span> con molteplicità 2: è la tangente in <span class="m">P</span>.</li>
+</ul>
 <div class="callout attenzione">
 
-<p>Le proprietà valgono nel <strong>piano proiettivo</strong>: il polo di una retta può essere un punto all&#39;infinito, e la polare di un punto può essere la retta all&#39;infinito. Nel solo piano euclideo la corrispondenza non è biettiva.</p>
+<p>Tutte queste proprietà valgono nel <strong>piano proiettivo</strong>. Nel solo piano euclideo la corrispondenza non è bigettiva: il polo di una retta può essere un <strong>punto all&#39;infinito</strong> (per esempio i diametri di una conica hanno poli all&#39;infinito) e la polare di un punto può essere la <strong>retta all&#39;infinito</strong> (la polare del centro di un&#39;ellisse o di un&#39;iperbole). L&#39;enunciato &quot;ogni retta del piano euclideo è la polare di uno e un solo punto del piano euclideo&quot; è quindi <strong>falso</strong>; quello corretto parla di rette e punti di <span class="m">\mathbb P^2(\mathbb R)</span>.</p>
 </div>
 
 <div class="callout esempio">
 
-<p>Per l&#39;ellisse precedente:</p>
-<ul>
-<li>La polare di <span class="m">R={}^t(2\ 1\ 1)</span> è <span class="m">-X+4Y-2T=0</span>, cioè <span class="m">X-4Y+2T=0</span>: <span class="m">R</span> sta sulla conica, quindi questa è la <strong>tangente</strong> in <span class="m">R</span>.</li>
-<li>La polare di <span class="m">Q_0={}^t(10\ 3\ 4)</span> è <span class="m">-X+10Y-14T=0</span>. <span class="m">Q_0</span> sta sulla polare di <span class="m">P_0={}^t(6\ 2\ 1)</span> e, per reciprocità, <span class="m">P_0</span> sta sulla polare di <span class="m">Q_0</span>.</li>
-</ul>
+<p><strong>Esempio 44.4</strong> (ellisse dell&#39;Esempio 44.2).</p>
+<ol>
+<li><strong>Tangente in un punto.</strong> <span class="m">R={}^t(2\ 1\ 1)</span>. Prima si verifica che <span class="m">R\in\mathcal C</span>: <span class="m">4-4+4-8+4=0</span> ✓. Polare:
+<span class="m d">AR=\begin{pmatrix}2-1-2\\-2+4+2\\-4+2+0\end{pmatrix}=\begin{pmatrix}-1\\4\\-2\end{pmatrix},</span>
+cioè <span class="m">-X+4Y-2T=0</span>, equivalente a <span class="m">X-4Y+2T=0</span>. Poiché <span class="m">R\in\mathcal C</span>, questa è la <strong>tangente</strong> alla conica in <span class="m">R</span> (e infatti <span class="m">R</span> ci sta sopra: <span class="m">2-4+2=0</span>).</li>
+<li><strong>Reciprocità.</strong> <span class="m">Q_0={}^t(10\ 3\ 4)</span>:
+<span class="m d">AQ_0=\begin{pmatrix}10-3-8\\-10+12+8\\-20+6+0\end{pmatrix}=\begin{pmatrix}-1\\10\\-14\end{pmatrix},</span>
+polare <span class="m">-X+10Y-14T=0</span>, cioè <span class="m">X-10Y+14T=0</span>. <span class="m">Q_0</span> sta sulla polare di <span class="m">P_0</span> (<span class="m">X+2Y-4T</span>: <span class="m">10+6-16=0</span> ✓) e, per reciprocità, <span class="m">P_0={}^t(6\ 2\ 1)</span> sta sulla polare di <span class="m">Q_0</span>: <span class="m">6-20+14=0</span> ✓.</li>
+</ol>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Tangente con matrice data.</strong> Conica con <span class="m">A=\begin{pmatrix}1&amp;0&amp;-3\\0&amp;-2&amp;1\\-3&amp;1&amp;-4\end{pmatrix}</span>, punto <span class="m">P={}^t(2\ -3\ -1)</span>.</p>
+<p>Verifica che <span class="m">P</span> sta sulla conica: <span class="m">AP=\begin{pmatrix}2+0+3\\0+6-1\\-6-3+4\end{pmatrix}=\begin{pmatrix}5\\5\\-5\end{pmatrix}</span> e <span class="m">{}^tP\,(AP)=2\cdot5+(-3)\cdot5+(-1)(-5)=10-15+5=0</span> ✓.</p>
+<p>Tangente in <span class="m">P</span> = polare di <span class="m">P</span>: <span class="m">5X+5Y-5T=0</span>, cioè <span class="m">X+Y-T=0</span>. (Controllo: <span class="m">P</span> ci sta sopra, <span class="m">2-3+1=0</span>.)</p>
 </div>
 
 <h2>Polo di una retta</h2>
-<p><strong>Definizione 44.5.</strong> Data una retta <span class="m">r</span>, il punto la cui polare è <span class="m">r</span> si chiama <strong>polo</strong> di <span class="m">r</span> rispetto a <span class="m">\mathcal{C}</span>. Per esempio il polo di <span class="m">X+2Y-4T=0</span> rispetto all&#39;ellisse precedente è <span class="m">{}^t(6\ 2\ 1)</span>.</p>
-<p><strong>Osservazione 44.7.</strong> Per la reciprocità, data una retta <span class="m">r</span> con polo <span class="m">P</span>, le polari dei punti di <span class="m">r</span> formano il <strong>fascio di rette per <span class="m">P</span></strong>. Per esempio le polari di <span class="m">{}^t(10\ 3\ 4)</span> e di <span class="m">{}^t(6\ -1\ 1)</span>, punti di <span class="m">X+2Y-4T=0</span>, sono <span class="m">X-10Y+14T=0</span> e <span class="m">5X-8Y-14T=0</span>, ed entrambe passano per <span class="m">{}^t(6\ 2\ 1)</span>.</p>
+<p><strong>Definizione 44.5.</strong> Sia <span class="m">\mathcal C</span> una conica non degenere con matrice <span class="m">A</span>. Data una retta <span class="m">r</span> del piano proiettivo, il punto la cui polare è <span class="m">r</span> (unico, per la Proposizione 44.3) si chiama <strong>polo</strong> di <span class="m">r</span> rispetto a <span class="m">\mathcal C</span>.</p>
 <div class="callout esempio">
 
-<p><strong>Trovare il polo.</strong> Polo di <span class="m">r: 3X-4Y-T=0</span> rispetto a <span class="m">X^2-2XY+3Y^2-2XT=0</span>, con matrice <span class="m">\begin{pmatrix}1&amp;-1&amp;-1\\-1&amp;3&amp;0\\-1&amp;0&amp;0\end{pmatrix}</span>. Si prendono due punti di <span class="m">r</span>, <span class="m">Q_1={}^t(1\ 1\ -1)</span> e <span class="m">Q_2={}^t(3\ 2\ 1)</span>. Il polo <span class="m">P</span> sta sulle polari di <span class="m">Q_1</span> e <span class="m">Q_2</span> (reciprocità): esse sono <span class="m">X+2Y-T=0</span> e <span class="m">3Y-3T=0</span>, che si intersecano in <span class="m">P={}^t(-1\ 1\ 1)</span>.</p>
+<p><strong>Esempio 44.6.</strong> Rispetto all&#39;ellisse dell&#39;Esempio 44.2, il polo della retta <span class="m">X+2Y-4T=0</span> è <span class="m">P_0={}^t(6\ 2\ 1)</span>, perché quella retta è la polare di <span class="m">P_0</span>.</p>
 </div>
 
-<div class="callout sintesi">
+<p><strong>Osservazione 44.7.</strong> Per la reciprocità (Proposizione 44.3-5), data una retta <span class="m">r</span> con polo <span class="m">P</span>, <strong>le polari dei punti di <span class="m">r</span> formano il fascio di rette per <span class="m">P</span></strong>. Infatti se <span class="m">Q\in r</span>, cioè <span class="m">Q</span> sta sulla polare di <span class="m">P</span>, allora <span class="m">P</span> sta sulla polare di <span class="m">Q</span>: tutte le polari dei punti di <span class="m">r</span> passano per <span class="m">P</span>.</p>
+<div class="callout esempio">
+
+<p><strong>Esempio 44.8.</strong> Retta <span class="m">r: X+2Y-4T=0</span>, polo <span class="m">P_0={}^t(6\ 2\ 1)</span>.</p>
+<ul>
+<li><span class="m">Q_0={}^t(10\ 3\ 4)\in r</span> (<span class="m">10+6-16=0</span>); la sua polare <span class="m">X-10Y+14T=0</span> contiene <span class="m">P_0</span>: <span class="m">6-20+14=0</span> ✓.</li>
+<li><span class="m">Q_0'={}^t(6\ -1\ 1)\in r</span> (<span class="m">6-2-4=0</span>); polare: <span class="m">AQ_0'=\begin{pmatrix}6+1-2\\-6-4+2\\-12-2+0\end{pmatrix}=\begin{pmatrix}5\\-8\\-14\end{pmatrix}</span>, cioè <span class="m">5X-8Y-14T=0</span>, che contiene <span class="m">P_0</span>: <span class="m">30-16-14=0</span> ✓.</li>
+</ul>
+</div>
+
+<p><strong>Come si trova il polo di una retta.</strong> Due metodi equivalenti.</p>
+<ul>
+<li><strong>Metodo della dispensa (reciprocità).</strong> Si prendono due punti distinti <span class="m">Q_1</span>, <span class="m">Q_2</span> della retta <span class="m">r</span>. Il polo <span class="m">P</span> ha <span class="m">r</span> come polare, quindi <span class="m">Q_1</span> e <span class="m">Q_2</span> stanno sulla polare di <span class="m">P</span>; per reciprocità <span class="m">P</span> sta sulla polare di <span class="m">Q_1</span> <strong>e</strong> su quella di <span class="m">Q_2</span>. Il polo è l&#39;<strong>intersezione delle polari di due punti di <span class="m">r</span></strong>.</li>
+<li><strong>Metodo diretto (matrice inversa).</strong> Se <span class="m">r:\alpha X+\beta Y+\gamma T=0</span>, il polo è il punto <span class="m">P</span> con <span class="m">AP=k\,{}^t(\alpha\ \beta\ \gamma)</span>, cioè si risolve il sistema lineare <span class="m">AP={}^t(\alpha\ \beta\ \gamma)</span> (o si calcola <span class="m">A^{-1}\,{}^t(\alpha\ \beta\ \gamma)</span>).</li>
+</ul>
+<div class="callout esempio">
+
+<p><strong>Esercizio 44.1 — polo di una retta.</strong> Polo di <span class="m">r: 3X-4Y-T=0</span> rispetto a <span class="m">\mathcal C: X^2-2XY+3Y^2-2XT=0</span>.</p>
+<p>Matrice: <span class="m">a=1</span>, <span class="m">b=-2</span>, <span class="m">c=3</span>, <span class="m">d=-2</span>, <span class="m">e=0</span>, <span class="m">f=0</span>:
+<span class="m d">A=\begin{pmatrix}1&amp;-1&amp;-1\\-1&amp;3&amp;0\\-1&amp;0&amp;0\end{pmatrix}.</span>
+Due punti di <span class="m">r</span>: <span class="m">Q_1={}^t(1\ 1\ -1)</span> (<span class="m">3-4+1=0</span> ✓) e <span class="m">Q_2={}^t(3\ 2\ 1)</span> (<span class="m">9-8-1=0</span> ✓).</p>
+<ul>
+<li>Polare di <span class="m">Q_1</span>: <span class="m">AQ_1=\begin{pmatrix}1-1+1\\-1+3+0\\-1+0+0\end{pmatrix}=\begin{pmatrix}1\\2\\-1\end{pmatrix}</span>, retta <span class="m">X+2Y-T=0</span>.</li>
+<li>Polare di <span class="m">Q_2</span>: <span class="m">AQ_2=\begin{pmatrix}3-2-1\\-3+6+0\\-3+0+0\end{pmatrix}=\begin{pmatrix}0\\3\\-3\end{pmatrix}</span>, retta <span class="m">3Y-3T=0</span>, cioè <span class="m">Y=T</span>.</li>
+<li>Intersezione: con <span class="m">Y=T</span> nella prima, <span class="m">X+2T-T=0</span>, cioè <span class="m">X=-T</span>. Con <span class="m">T=1</span>: <span class="m">P={}^t(-1\ 1\ 1)</span>.</li>
+</ul>
+<p>Verifica con il metodo diretto: <span class="m">AP=\begin{pmatrix}-1-1-1\\1+3+0\\1+0+0\end{pmatrix}=\begin{pmatrix}-3\\4\\1\end{pmatrix}=-1\cdot\begin{pmatrix}3\\-4\\-1\end{pmatrix}</span>, proporzionale ai coefficienti di <span class="m">r</span> ✓.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Esercizio 44.3 (dispensa) — polo con il sistema lineare.</strong> Polo di <span class="m">2X+Y=0</span> rispetto a <span class="m">X^2-XY-2XT+4YT-T^2=0</span>.</p>
+<p><span class="m">A=\begin{pmatrix}1&amp;-\frac12&amp;-1\\-\frac12&amp;0&amp;2\\-1&amp;2&amp;-1\end{pmatrix}</span>. Si cerca <span class="m">P={}^t(X\ Y\ T)</span> con <span class="m">AP=k\,{}^t(2\ 1\ 0)</span>. Con il metodo dei due punti: <span class="m">Q_1={}^t(0\ 0\ 1)</span> e <span class="m">Q_2={}^t(1\ -2\ 0)</span> stanno sulla retta.</p>
+<ul>
+<li><span class="m">AQ_1={}^t(-1\ 2\ -1)</span>: polare <span class="m">-X+2Y-T=0</span>.</li>
+<li><span class="m">AQ_2=\begin{pmatrix}1+1+0\\-\frac12+0+0\\-1-4+0\end{pmatrix}=\begin{pmatrix}2\\-\frac12\\-5\end{pmatrix}</span>: polare <span class="m">4X-Y-10T=0</span> (moltiplicando per 2).</li>
+<li>Dalla seconda <span class="m">Y=4X-10T</span>; nella prima <span class="m">-X+8X-20T-T=0</span>, cioè <span class="m">7X=21T</span>, <span class="m">X=3T</span>, <span class="m">Y=12T-10T=2T</span>. Polo <span class="m">{}^t(3\ 2\ 1)</span>, come nel risultato della dispensa.</li>
+</ul>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Esercizio 44.2 (dispensa) — polare e tangenza.</strong> Polare di <span class="m">P={}^t(2\ 1\ -3)</span> rispetto a <span class="m">2X^2-3XY-XT+5YT-T^2=0</span>; è tangente?</p>
+<p><span class="m">A=\begin{pmatrix}2&amp;-\frac32&amp;-\frac12\\-\frac32&amp;0&amp;\frac52\\-\frac12&amp;\frac52&amp;-1\end{pmatrix}</span>, <span class="m">AP=\begin{pmatrix}4-\frac32+\frac32\\-3+0-\frac{15}2\\-1+\frac52+3\end{pmatrix}=\begin{pmatrix}4\\-\frac{21}2\\\frac92\end{pmatrix}</span>. Moltiplicando per 2: <span class="m">8X-21Y+9T=0</span>.</p>
+<p>È tangente solo se <span class="m">P\in\mathcal C</span>: <span class="m">{}^tP\,AP=2\cdot4+1\cdot(-\frac{21}2)+(-3)\cdot\frac92=8-\frac{21}2-\frac{27}2=8-24=-16\neq0</span>. <span class="m">P\notin\mathcal C</span>, quindi la polare <strong>non</strong> è tangente a <span class="m">\mathcal C</span> in <span class="m">P</span> (e <span class="m">P</span> non sta sulla propria polare: <span class="m">16-21-27\neq0</span>).</p>
+</div>
+
+<p><strong>Significato geometrico (per un punto esterno).</strong> Se <span class="m">P</span> è esterno a un&#39;ellisse, dalle due tangenti condotte da <span class="m">P</span> alla conica si ottengono due punti di tangenza <span class="m">T_1</span>, <span class="m">T_2</span>: la polare di <span class="m">P</span> è la retta <span class="m">T_1T_2</span>. Infatti <span class="m">P</span> sta sulla tangente in <span class="m">T_1</span>, che è la polare di <span class="m">T_1</span>; per reciprocità <span class="m">T_1</span> sta sulla polare di <span class="m">P</span>; lo stesso per <span class="m">T_2</span>. Questo dà un metodo per trovare le tangenti da un punto esterno: si interseca la polare di <span class="m">P</span> con la conica e si uniscono i punti trovati con <span class="m">P</span>.</p>
+<div class="callout attenzione">
 
 <ul>
-<li>Polare di <span class="m">P_0</span>: <span class="m">{}^tP\,A\,P_0=0</span> (coefficienti = componenti di <span class="m">A\,P_0</span>).</li>
-<li><span class="m">P\in\mathcal{C}</span> <span class="m">\iff</span> <span class="m">P</span> sta sulla sua polare <span class="m">\iff</span> la polare è la tangente in <span class="m">P</span>.</li>
-<li>Reciprocità: <span class="m">P</span> sulla polare di <span class="m">Q</span> <span class="m">\iff</span> <span class="m">Q</span> sulla polare di <span class="m">P</span>.</li>
-<li>Polo di una retta: intersezione delle polari di due suoi punti.</li>
+<li>Il punto euclideo <span class="m">{}^t(x_0\ y_0)</span> va scritto <span class="m">{}^t(x_0\ y_0\ 1)</span>: dimenticare <span class="m">T_0=1</span> fa perdere il contributo dell&#39;ultima colonna di <span class="m">A</span> e sbaglia il termine noto.</li>
+<li>Le componenti di <span class="m">AP_0</span> sono i coefficienti nell&#39;ordine <span class="m">X</span>, <span class="m">Y</span>, <span class="m">T</span>; nella forma affine il terzo diventa il <strong>termine noto</strong>.</li>
+<li>Le forme <span class="m">5x+y-5=0</span> e <span class="m">-5x-y+5=0</span> sono la stessa retta (moltiplicare per <span class="m">-1</span> è lecito), ma <span class="m">5x+y+5=0</span> è un&#39;altra retta: si confrontano i coefficienti a meno di un fattore comune.</li>
+<li>La polare è la tangente <strong>solo</strong> se il punto sta sulla conica: va sempre verificato.</li>
+<li>Le opzioni scritte in minuscolo (<span class="m">x</span>, <span class="m">y</span>) sono forme affini, quelle in maiuscolo (<span class="m">X</span>, <span class="m">Y</span>, <span class="m">T</span>) forme omogenee: se la domanda chiede la forma omogenea, una forma affine non è la risposta, anche se rappresenta la stessa retta.</li>
 </ul>
 </div>
 
 <div class="callout esame">
 
-<p>Il paniere chiede di calcolare la polare di un punto rispetto a una conica data con la matrice (ricordare <span class="m">T_0=1</span> e, se serve, moltiplicare tutto per <span class="m">-1</span>), la tangente in un punto della conica, e gli enunciati della Proposizione 44.3. Aperta: definizione della retta polare e sue proprietà.</p>
+<p>Il paniere chiede di calcolare la <strong>polare di un punto</strong> <span class="m">{}^t(x_0\ y_0)</span> rispetto a una conica data con la matrice: si aggiunge <span class="m">T_0=1</span>, si calcola <span class="m">A\cdot P_0</span> riga per riga, si legge la retta (moltiplicando per <span class="m">-1</span> o semplificando se serve per riconoscere l&#39;opzione). Gli extra chiedono anche la polare in forma omogenea con un punto proiettivo, la <strong>tangente in un punto della conica</strong> (polare del punto), gli enunciati della Proposizione 44.3 (attenzione a &quot;piano proiettivo&quot; contro &quot;piano euclideo&quot;) e la <strong>reciprocità</strong> (<span class="m">P\in</span> polare di <span class="m">Q</span> <span class="m">\iff</span> <span class="m">Q\in</span> polare di <span class="m">P</span>).</p>
+<p>Domanda aperta: &quot;Parlare della retta polare di un punto rispetto a una conica non degenere, in particolare dando la definizione e descrivendone le proprietà&quot;: definizione con <span class="m">{}^tP A P_0=0</span>, come si calcola, le cinque proprietà della Proposizione 44.3 (con la spiegazione della reciprocità dalla simmetria di <span class="m">A</span>), il polo di una retta e come trovarlo, l&#39;Osservazione 44.7 sul fascio di rette per il polo, un esempio numerico.</p>
+</div>
+
+<div class="callout sintesi">
+
+<ul>
+<li>Matrice <span class="m">A</span> simmetrica <span class="m">3\times3</span>: diagonale = coefficienti dei quadrati, fuori diagonale = metà dei misti; conica non degenere <span class="m">\iff\det A\neq0</span>.</li>
+<li>Polare di <span class="m">P_0</span>: <span class="m">{}^tP\,A\,P_0=0</span>; i coefficienti di <span class="m">X,Y,T</span> sono le componenti di <span class="m">AP_0</span>.</li>
+<li>Proprietà: corrispondenza punto–retta bigettiva in <span class="m">\mathbb P^2(\mathbb R)</span>; <span class="m">P</span> sulla sua polare <span class="m">\iff P\in\mathcal C</span> <span class="m">\iff</span> la polare è la tangente in <span class="m">P</span>; reciprocità (<span class="m">A</span> simmetrica).</li>
+<li>Polo di una retta: intersezione delle polari di due suoi punti, oppure soluzione di <span class="m">AP={}^t(\alpha\ \beta\ \gamma)</span>.</li>
+<li>Le polari dei punti di una retta formano il fascio di rette per il suo polo.</li>
+</ul>
 </div>

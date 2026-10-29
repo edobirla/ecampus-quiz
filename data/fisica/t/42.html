@@ -1,87 +1,282 @@
-<h1>Lezione 42 — Campo elettrico</h1>
-<h2>Che cos&#39;è il campo elettrico</h2>
-<p>Una carica modifica lo spazio attorno a sé. Un&#39;altra carica non &quot;sente&quot; direttamente la prima: sente il campo nel punto in cui si trova.
-In un punto P c&#39;è un campo elettrico se una carica di prova messa in P subisce una forza elettrica.</p>
-<p>Il campo è la forza sulla carica di prova divisa per il valore della carica:</p>
-<p><span class="m d">\vec E = \frac{\vec F}{q_0}</span></p>
+<h1>Lezione 42 — Campo elettrico e operatori vettoriali</h1>
+<p>Nella lezione 41 la forza tra due cariche era descritta come un&#39;azione <strong>a distanza</strong>: <span class="m">q_1</span> agisce su <span class="m">q_2</span> direttamente. In questa lezione si introduce un modo diverso e più potente di descrivere l&#39;interazione: il <strong>campo elettrico</strong>. Vedremo:</p>
+<ul>
+<li>perché serve il concetto di campo e come si definisce;</li>
+<li>il campo di una carica puntiforme e di più cariche (sovrapposizione);</li>
+<li>le distribuzioni continue di carica (densità <span class="m">\rho</span>, <span class="m">\sigma</span>, <span class="m">\lambda</span>);</li>
+<li>le <strong>linee di campo</strong> e le loro regole;</li>
+<li>come si usa il campo per calcolare forze ed equilibri;</li>
+<li>gli strumenti matematici (operatore <strong>nabla</strong>: gradiente, rotore, divergenza, flusso, teoremi di Stokes e della divergenza) che servono in tutto l&#39;elettromagnetismo.</li>
+</ul>
+<h2>Che cos&#39;è un campo</h2>
+<p>In fisica un <strong>campo</strong> è una grandezza che, in una regione di spazio, ha un valore in ogni punto: è una <strong>funzione delle coordinate</strong>.</p>
+<ul>
+<li><strong>Campo scalare</strong>: in ogni punto un numero (esempio: la temperatura in una stanza, la pressione, il potenziale elettrico).</li>
+<li><strong>Campo vettoriale</strong>: in ogni punto un vettore, con modulo, direzione e verso (esempio: la velocità di un fluido, il campo gravitazionale, il campo elettrico).</li>
+</ul>
+<h2>Perché il campo elettrico</h2>
+<p>L&#39;idea di un&#39;azione istantanea a distanza contrasta con la relatività, secondo cui nessuna informazione viaggia più veloce della luce. Il campo risolve il problema facendo da <strong>mediatore</strong>:</p>
+<ol>
+<li>una carica, per il solo fatto di trovarsi in un punto, <strong>genera un campo</strong> in tutto lo spazio attorno a sé;</li>
+<li>un&#39;altra carica <strong>non sente direttamente la prima</strong>: interagisce con il campo che trova <strong>nel punto in cui si trova</strong>.</li>
+</ol>
+<p>È la stessa idea del campo gravitazionale: la Terra crea un campo <span class="m">\vec g</span>, e un sasso sente il campo nel punto in cui sta.</p>
+<h2>Definizione del campo elettrico</h2>
+<p>Guardiamo la legge di Coulomb dal punto di vista di una carica sorgente <span class="m">Q</span>. La forza su una seconda carica <span class="m">q</span> dipende da: costanti, la carica <span class="m">Q</span>, la posizione di <span class="m">q</span> e <strong>il valore di <span class="m">q</span> stesso</strong>. Se nello stesso punto mettiamo una carica doppia, la forza raddoppia. Il rapporto <strong>forza/carica</strong>, invece, non dipende da <span class="m">q</span>: dipende solo dalla sorgente e dal punto. È questo rapporto che chiamiamo campo.</p>
+<p>C&#39;è una sottigliezza: la seconda carica, con la sua presenza, potrebbe spostare le cariche sorgenti (pensa a un conduttore) e alterare il campo che vogliamo misurare. Per questo si usa una <strong>carica di prova</strong> <span class="m">q_0</span> piccolissima, che non disturba le altre cariche, e si definisce il campo come limite:</p>
+<p><span class="m d">\vec E = \lim_{q_0 \to 0}\frac{\vec F}{q_0}</span></p>
 <p>dove:</p>
 <ul>
-<li><span class="m">\vec E</span> = campo elettrico (N/C, equivalente a V/m);</li>
+<li><span class="m">\vec E</span> = campo elettrico nel punto (N/C);</li>
 <li><span class="m">\vec F</span> = forza elettrica sulla carica di prova (N);</li>
-<li><span class="m">q_0</span> = carica di prova, piccola per non disturbare le altre cariche (C).</li>
+<li><span class="m">q_0</span> = carica di prova (C), positiva per convenzione.</li>
 </ul>
-<p>Il campo è un vettore. Non dipende dalla carica di prova: se raddoppi <span class="m">q_0</span>, raddoppia la forza, ma il rapporto resta uguale. Dipende solo dalle cariche che lo generano (le sorgenti) e dal punto.</p>
+<p>Il campo è un <strong>vettore</strong> (rapporto tra un vettore e uno scalare), ha la direzione della forza su una carica di prova positiva e si misura in <strong>newton su coulomb</strong>. Vedremo nella lezione 47 che <span class="m">\mathrm{N/C} = \mathrm{V/m}</span> (volt su metro).</p>
+<p><strong>Quando c&#39;è un campo?</strong> In un punto P c&#39;è un campo elettrico se un <strong>corpo di prova carico</strong>, messo in P, <strong>subisce una forza di origine elettrica</strong>. Non basta che in P ci sia un corpo di prova, né che ci sia una carica nelle vicinanze: conta la forza che una carica di prova sentirebbe.</p>
+<div class="callout attenzione">
+
+<p>Il campo <strong>non dipende dalla carica di prova</strong>: né dal suo valore né dal suo segno. Se raddoppi <span class="m">q_0</span> raddoppia la forza, ma il rapporto resta uguale. Se cambi segno a <span class="m">q_0</span> la forza si inverte, ma il campo resta lo stesso. Il campo dipende solo dalle <strong>cariche sorgenti</strong> e dal <strong>punto</strong>.</p>
+</div>
+
 <h2>Campo di una carica puntiforme</h2>
-<p>Dividendo la forza di Coulomb per <span class="m">q_0</span>:</p>
-<p><span class="m d">E = \frac{1}{4\pi\varepsilon_0}\,\frac{Q}{r^2}</span></p>
+<p>Una carica <span class="m">Q</span> ferma nell&#39;origine di un sistema inerziale genera un campo che non cambia nel tempo: un <strong>campo elettrostatico</strong>. Lo ricaviamo così:</p>
+<ol>
+<li>forza di Coulomb su una carica di prova <span class="m">q_0</span> in un punto a distanza <span class="m">r</span>: <span class="m">\vec F = \dfrac{1}{4\pi\varepsilon_0}\dfrac{Qq_0}{r^2}\hat u_r</span>;</li>
+<li>divido per <span class="m">q_0</span>:</li>
+</ol>
+<p><span class="m d">\vec E(\vec r) = \frac{1}{4\pi\varepsilon_0}\,\frac{Q}{r^2}\,\hat u_r, \qquad E = \frac{1}{4\pi\varepsilon_0}\,\frac{|Q|}{r^2}</span></p>
 <p>dove:</p>
 <ul>
-<li><span class="m">Q</span> = carica che genera il campo (C);</li>
-<li><span class="m">r</span> = distanza dalla carica (m);</li>
-<li><span class="m">\varepsilon_0 = 8{,}85 \cdot 10^{-12}\,\mathrm{C^2/(N\,m^2)}</span>.</li>
+<li><span class="m">Q</span> = carica sorgente (C), con il suo segno;</li>
+<li><span class="m">r</span> = distanza dalla carica al punto (m);</li>
+<li><span class="m">\hat u_r</span> = versore che va dalla carica al punto.</li>
 </ul>
-<p>Il campo è radiale. Esce dalla carica se <span class="m">Q &gt; 0</span>, entra se <span class="m">Q &lt; 0</span>.
-Con più cariche vale la sovrapposizione: il campo totale è la somma vettoriale dei campi di ogni carica.</p>
-<h2>Forza su una carica nel campo</h2>
-<p>Conosciuto il campo, la forza su una carica <span class="m">q</span> è:</p>
+<p>Se la carica non è nell&#39;origine ma nel punto <span class="m">\vec r_0 = (x_0, y_0, z_0)</span>, il campo nel punto <span class="m">\vec r = (x, y, z)</span> è:</p>
+<p><span class="m d">\vec E(\vec r) = \frac{1}{4\pi\varepsilon_0}\,\frac{Q}{|\vec r - \vec r_0|^2}\,\hat u_0, \qquad \hat u_0 = \frac{\vec r - \vec r_0}{|\vec r - \vec r_0|}</span></p>
+<p>dove <span class="m">\hat u_0</span> è il versore che va dalla carica verso il punto in cui si calcola il campo.</p>
+<p>Proprietà:</p>
+<ul>
+<li>il campo è <strong>radiale</strong>: <strong>uscente</strong> dalla carica se <span class="m">Q &gt; 0</span>, <strong>entrante</strong> se <span class="m">Q &lt; 0</span>;</li>
+<li>il modulo cala come <span class="m">1/r^2</span>: a distanza doppia il campo è un quarto.</li>
+</ul>
+<h2>Più cariche: sovrapposizione</h2>
+<p>Con più cariche sorgenti <span class="m">Q_i</span> nelle posizioni <span class="m">\vec r_i</span>, la carica di prova in P sente la somma vettoriale delle forze di Coulomb:</p>
+<p><span class="m d">\vec F = \sum_i \frac{1}{4\pi\varepsilon_0}\,\frac{Q_i\,q_0}{r_i^2}\,\hat u_i</span></p>
+<p>Dividendo per <span class="m">q_0</span>:</p>
+<p><span class="m d">\vec E(P) = \sum_i \vec E_i = \frac{1}{4\pi\varepsilon_0}\sum_i \frac{Q_i}{r_i^2}\,\hat u_i</span></p>
+<p>dove:</p>
+<ul>
+<li><span class="m">r_i</span> = distanza tra la carica <span class="m">Q_i</span> e il punto P (m);</li>
+<li><span class="m">\hat u_i</span> = versore da <span class="m">Q_i</span> verso P.</li>
+</ul>
+<p>È il <strong>principio di sovrapposizione</strong> per il campo: il campo totale è la somma vettoriale dei campi delle singole sorgenti, ciascuno calcolato come se le altre non ci fossero.</p>
+<h2>Distribuzioni continue di carica</h2>
+<p>In pratica le cariche sono spesso moltissime e piccolissime rispetto al sistema (gli elettroni in un filo): conviene trattarle come una distribuzione <strong>continua</strong>, descritta da una <strong>densità di carica</strong>.</p>
+<p><strong>Densità di volume.</strong> Un elementino di volume <span class="m">d\tau</span> attorno al punto <span class="m">(x, y, z)</span> contiene la carica</p>
+<p><span class="m d">dq = \rho(x, y, z)\,d\tau, \qquad Q = \int_\tau \rho\,d\tau</span></p>
+<p>dove:</p>
+<ul>
+<li><span class="m">\rho</span> = densità di carica di volume (C/m³);</li>
+<li><span class="m">d\tau</span> = elemento di volume (m³);</li>
+<li><span class="m">Q</span> = carica totale del corpo (C).</li>
+</ul>
+<p>Se il corpo è carico in modo <strong>uniforme</strong>, <span class="m">\rho</span> è costante e vale <span class="m">\rho = Q/\tau</span> (carica totale su volume).</p>
+<p>Allo stesso modo, come si fa per la massa:</p>
+<ul>
+<li><strong>densità superficiale</strong> <span class="m">\sigma = dq/dS</span> (C/m²), per cariche distribuite su una superficie;</li>
+<li><strong>densità lineare</strong> <span class="m">\lambda = dq/dl</span> (C/m), per cariche distribuite lungo un filo.</li>
+</ul>
+<p><strong>Campo di una distribuzione continua.</strong> Ogni elementino <span class="m">dq</span> si comporta come una carica puntiforme e genera</p>
+<p><span class="m d">d\vec E = \frac{1}{4\pi\varepsilon_0}\,\frac{\rho\,d\tau}{r^2}\,\hat u_r</span></p>
+<p>e per sovrapposizione il campo totale è l&#39;integrale su tutto il corpo:</p>
+<p><span class="m d">\vec E = \frac{1}{4\pi\varepsilon_0}\int_\tau \frac{\rho\,\hat u_r}{r^2}\,d\tau</span></p>
+<p>Con cariche su superfici o fili si sostituisce <span class="m">\rho\,d\tau</span> con <span class="m">\sigma\,dS</span> o <span class="m">\lambda\,dl</span>. Esempi completi (anello e disco) sono nella lezione 44.</p>
+<h2>Linee di campo (linee di forza)</h2>
+<p>Il campo si rappresenta con le <strong>linee di campo</strong>. Si costruiscono così: si mette idealmente una carica di prova in ogni punto, si traccia un trattino parallelo al campo con il suo verso, e si uniscono i trattini in linee continue.</p>
+<p>Regole:</p>
+<ol>
+<li>in ogni punto la linea è <strong>tangente</strong> al campo e <strong>concorde</strong> con esso;</li>
+<li>le linee sono <strong>più fitte dove il campo è più intenso</strong>;</li>
+<li>le linee <strong>non si incrociano mai</strong>: in ogni punto il campo ha una sola direzione;</li>
+<li>le linee <strong>nascono dalle cariche positive</strong> e <strong>finiscono sulle cariche negative</strong>; se ci sono cariche di un solo segno, le linee si chiudono all&#39;infinito;</li>
+<li>con cariche opposte e uguali in modulo, ogni linea che parte dalla positiva termina sulla negativa (eventualmente passando per l&#39;infinito); se i moduli sono diversi, alcune linee partono o arrivano dall&#39;infinito;</li>
+<li>in un <strong>campo uniforme</strong> le linee sono <strong>rette parallele</strong> (direzione e verso costanti) ed <strong>equidistanti</strong> (modulo costante).</li>
+</ol>
+<p>Esempi:</p>
+<ul>
+<li><strong>carica positiva isolata</strong>: semirette uscenti in tutte le direzioni; <strong>negativa</strong>: semirette entranti;</li>
+<li><strong>due cariche opposte</strong> (dipolo): le linee escono dalla positiva, si curvano a lobi e rientrano nella negativa;</li>
+<li><strong>due cariche positive uguali</strong>: le linee si respingono e si piegano verso l&#39;infinito; a metà strada c&#39;è un punto dove il campo è nullo e nessuna linea lo attraversa.</li>
+</ul>
+<h2>Forza su una carica in un campo</h2>
+<p>Se in un punto il campo è <span class="m">\vec E</span>, una carica <span class="m">q</span> messa lì subisce</p>
 <p><span class="m d">\vec F = q\,\vec E</span></p>
-<p>Se <span class="m">q &gt; 0</span> la forza ha il verso del campo. Se <span class="m">q &lt; 0</span> ha verso opposto.</p>
-<div class="callout esempio">
-
-<p>Una carica di <span class="m">-2 \cdot 10^{-9}</span> C subisce una forza di <span class="m">3 \cdot 10^{-6}</span> N verso il basso.
-<span class="m">E = F/|q| = 3 \cdot 10^{-6}/2 \cdot 10^{-9} = 1500\,\mathrm{N/C} = 1{,}5\,\mathrm{kV/m}</span>.
-La carica è negativa, quindi il campo punta al contrario della forza: verso l&#39;alto.</p>
-</div>
-
-<div class="callout esempio">
-
-<p>Tenere sospesa una carica di <span class="m">0{,}2</span> mC con massa 5 g. La forza elettrica deve bilanciare il peso: <span class="m">qE = mg</span>.
-<span class="m">E = \dfrac{0{,}005 \cdot 9{,}8}{0{,}2 \cdot 10^{-3}} = 245\,\mathrm{N/C}</span>.</p>
-</div>
-
-<h2>Linee di campo</h2>
-<p>Le linee di campo disegnano il campo. In ogni punto la linea è tangente al campo e ha il suo verso.</p>
+<p>dove:</p>
 <ul>
-<li>Escono dalle cariche positive ed entrano in quelle negative.</li>
-<li>Sono più fitte dove il campo è più intenso.</li>
-<li>Non si incrociano mai: in ogni punto il campo ha una sola direzione.</li>
-<li>In un campo uniforme sono rette parallele e ugualmente distanziate.</li>
+<li><span class="m">\vec F</span> = forza (N); <span class="m">q</span> = carica (C, con segno); <span class="m">\vec E</span> = campo nel punto (N/C).</li>
 </ul>
-<h2>Equilibrio tra cariche</h2>
-<p>Una carica è in equilibrio dove la forza totale è zero. Può essere stabile o instabile.</p>
+<p>Se <span class="m">q &gt; 0</span> la forza ha il verso del campo; se <span class="m">q &lt; 0</span> ha verso <strong>opposto</strong>.</p>
 <div class="callout esempio">
 
-<p>Cariche <span class="m">q</span> e <span class="m">4q</span> positive, a distanza <span class="m">d</span>. Dove si annulla la forza su una terza carica, tra le due?
-<span class="m">\dfrac{kq}{x^2} = \dfrac{k\,4q}{(d - x)^2} \Rightarrow d - x = 2x \Rightarrow x = d/3</span> (misurato da <span class="m">q</span>).
-Il punto è più vicino alla carica più piccola.</p>
+<p><strong>Campo da una forza misurata.</strong> In un campo uniforme vicino alla superficie terrestre, una particella con carica <span class="m">q = -2{,}0 \cdot 10^{-9}</span> C subisce una forza elettrica di <span class="m">3{,}0 \cdot 10^{-6}</span> N <strong>verso il basso</strong>. Trovare modulo e verso del campo.</p>
+<ol>
+<li>Modulo: <span class="m">E = \dfrac{F}{|q|} = \dfrac{3{,}0 \cdot 10^{-6}}{2{,}0 \cdot 10^{-9}} = 1{,}5 \cdot 10^3\,\mathrm{N/C} = 1{,}5\,\mathrm{kV/m}</span>.</li>
+<li>Verso: <span class="m">\vec F = q\vec E</span> con <span class="m">q &lt; 0</span>, quindi <span class="m">\vec E</span> è opposto a <span class="m">\vec F</span>: il campo punta <strong>verso l&#39;alto</strong>.</li>
+</ol>
 </div>
 
 <div class="callout esempio">
 
-<p>Due cariche positive uguali agli estremi di un&#39;asta. Una carica negativa può scorrere lungo l&#39;asta ed è al centro.
-Al centro le due attrazioni si bilanciano. Se la sposti verso un estremo, l&#39;attrazione di quella carica cresce e la tira ancora di più. L&#39;equilibrio è <strong>instabile</strong>.</p>
+<p><strong>Tenere sospesa una carica.</strong> Carica <span class="m">q = 0{,}2\,\mathrm{mC}</span>, massa <span class="m">m = 5</span> g. Quale campo verticale la tiene ferma?</p>
+<ol>
+<li>Conversioni: <span class="m">q = 0{,}2 \cdot 10^{-3} = 2 \cdot 10^{-4}</span> C; <span class="m">m = 5 \cdot 10^{-3}</span> kg.</li>
+<li>Equilibrio: la forza elettrica, verso l&#39;alto, bilancia il peso: <span class="m">qE = mg</span>.</li>
+<li><span class="m">E = \dfrac{mg}{q} = \dfrac{5 \cdot 10^{-3} \cdot 9{,}8}{2 \cdot 10^{-4}} = \dfrac{0{,}049}{2 \cdot 10^{-4}} = 245\,\mathrm{N/C}</span>, diretto verso l&#39;alto (carica positiva).</li>
+</ol>
 </div>
 
-<div class="callout esempio">
-
-<p>Quattro cariche di uguale modulo ai vertici di un quadrato di lato <span class="m">a</span>. Sulla carica in un vertice le due vicine danno insieme <span class="m">\sqrt2\,kq^2/a^2</span>. L&#39;opposta dà solo <span class="m">kq^2/(2a^2)</span>. Con qualunque scelta dei segni la somma non si annulla mai.</p>
-</div>
-
-<h2>Strumenti matematici (essenziale)</h2>
-<p>L&#39;operatore nabla <span class="m">\nabla = \left(\dfrac{\partial}{\partial x}, \dfrac{\partial}{\partial y}, \dfrac{\partial}{\partial z}\right)</span> serve a descrivere i campi.</p>
+<h2>Equilibrio di una carica tra altre cariche</h2>
+<p>Una carica è in <strong>equilibrio</strong> dove la forza totale su di essa (cioè il campo delle altre cariche) è zero. L&#39;equilibrio è:</p>
 <ul>
-<li><strong>Gradiente</strong> <span class="m">\nabla V</span> di un campo scalare <span class="m">V</span>: vettore che punta dove <span class="m">V</span> cresce più in fretta. È perpendicolare alle superfici dove <span class="m">V</span> è costante.</li>
-<li><strong>Divergenza</strong> <span class="m">\nabla \cdot \vec E</span>: scalare che misura quanto campo &quot;esce&quot; da un punto. Un campo con divergenza nulla ovunque si dice solenoidale.</li>
-<li><strong>Rotore</strong> <span class="m">\nabla \times \vec E</span>: vettore che misura quanto il campo &quot;gira&quot; attorno a un punto.</li>
-<li>Un campo è <strong>conservativo</strong> se è il gradiente di una funzione. Allora il suo rotore è nullo e il lavoro lungo un giro chiuso è zero. Vale anche il contrario.</li>
+<li><strong>stabile</strong> se, spostando un po&#39; la carica, la forza la riporta indietro;</li>
+<li><strong>instabile</strong> se la forza la allontana ancora di più.</li>
 </ul>
+<div class="callout esempio">
+
+<p><strong>Punto di forza nulla tra <span class="m">q</span> e <span class="m">4q</span>.</strong> Due cariche positive <span class="m">q</span> e <span class="m">4q</span> distano <span class="m">d</span>. Dove, tra le due, una terza carica non sente forza?</p>
+<ol>
+<li>Sia <span class="m">x</span> la distanza da <span class="m">q</span>; la distanza da <span class="m">4q</span> è <span class="m">d - x</span>. Tra le due cariche positive le due forze sulla terza carica hanno versi opposti, quindi basta uguagliare i moduli:
+<span class="m d">\frac{kq}{x^2} = \frac{k\,4q}{(d - x)^2}</span></li>
+<li>Semplifico <span class="m">kq</span> e faccio la radice (tutte le quantità sono positive): <span class="m">\dfrac{1}{x} = \dfrac{2}{d - x}</span>, quindi <span class="m">d - x = 2x</span>.</li>
+<li><span class="m">x = d/3</span>, misurato da <span class="m">q</span>. Il punto è più vicino alla carica più piccola, come ci si aspetta.</li>
+</ol>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Carica negativa al centro di un&#39;asta.</strong> Agli estremi di un&#39;asta ci sono due cariche positive uguali; una carica negativa può scorrere lungo l&#39;asta ed è al centro.</p>
+<ol>
+<li>Al centro le due attrazioni hanno lo stesso modulo e versi opposti: forza nulla, quindi <strong>equilibrio</strong>.</li>
+<li>Sposto la carica di un tratto <span class="m">x</span> verso destra. Ora è più vicina alla carica di destra: l&#39;attrazione verso destra (<span class="m">\propto 1/(L/2 - x)^2</span>) supera quella verso sinistra (<span class="m">\propto 1/(L/2 + x)^2</span>).</li>
+<li>La forza netta punta nello stesso verso dello spostamento: la carica si allontana ancora dal centro. L&#39;equilibrio è <strong>instabile</strong>.</li>
+</ol>
+<p>(Se invece la carica al centro fosse positiva, spostandola verrebbe respinta indietro dalla carica più vicina: equilibrio stabile lungo l&#39;asta.)</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Quattro cariche ai vertici di un quadrato.</strong> Quattro cariche di uguale modulo <span class="m">q</span> sono ai vertici di un quadrato di lato <span class="m">a</span>. La forza su una di esse può essere nulla?</p>
+<ol>
+<li>Le due cariche <strong>vicine</strong> sono a distanza <span class="m">a</span> e danno forze di modulo <span class="m">kq^2/a^2</span>, perpendicolari tra loro: la loro somma, se hanno lo stesso effetto (entrambe attrattive o entrambe repulsive), vale <span class="m">\sqrt2\,kq^2/a^2 \approx 1{,}41\,kq^2/a^2</span> lungo la diagonale.</li>
+<li>La carica <strong>opposta</strong> è a distanza <span class="m">a\sqrt2</span> e dà una forza lungo la diagonale di modulo <span class="m">kq^2/(2a^2) = 0{,}5\,kq^2/a^2</span>.</li>
+<li><span class="m">1{,}41 \neq 0{,}5</span>: la forza della carica opposta non basta a compensare le altre due. Se le due vicine hanno segni diversi, le loro forze non sono lungo la diagonale e la carica opposta (che agisce solo lungo la diagonale) non può annullare la componente perpendicolare.</li>
+<li>Conclusione: con qualunque scelta dei segni la forza <strong>non è mai nulla</strong>.</li>
+</ol>
+</div>
+
+<h2>Strumenti matematici: l&#39;operatore nabla</h2>
+<p>Per descrivere i campi in elettromagnetismo si usa l&#39;operatore vettoriale <strong>nabla</strong>, che &quot;applica le derivate parziali come se fossero le componenti di un vettore&quot;:</p>
+<p><span class="m d">\nabla = \frac{\partial}{\partial x}\,\hat i + \frac{\partial}{\partial y}\,\hat j + \frac{\partial}{\partial z}\,\hat k</span></p>
+<p>Si può applicare a un campo scalare (gradiente), oppure a un campo vettoriale con un prodotto vettoriale (rotore) o scalare (divergenza).</p>
+<h3>Flusso di un vettore</h3>
+<p>Sia <span class="m">\vec v(x, y, z)</span> un campo vettoriale e <span class="m">\Sigma</span> una superficie dentro la regione dove il campo agisce. Il <strong>flusso elementare</strong> attraverso un pezzetto <span class="m">d\Sigma</span> è</p>
+<p><span class="m d">d\Phi = \vec v \cdot \hat u_n\,d\Sigma</span></p>
+<p>dove:</p>
+<ul>
+<li><span class="m">\hat u_n</span> = versore normale all&#39;elemento di superficie; per una superficie <strong>chiusa</strong> si sceglie <strong>uscente</strong>.</li>
+</ul>
+<p>Il flusso attraverso tutta la superficie è l&#39;integrale di superficie:</p>
+<p><span class="m d">\Phi = \int_\Sigma \vec v \cdot \hat u_n\,d\Sigma</span></p>
+<p>Caso semplice: se <span class="m">\vec v</span> ha modulo costante sulla superficie e forma ovunque lo stesso angolo <span class="m">\theta</span> con la normale, <span class="m">\Phi = v\,\Sigma\cos\theta</span>.</p>
+<h3>Gradiente</h3>
+<p>Applicando nabla a un campo scalare <span class="m">V</span> si ottiene un <strong>vettore</strong>, il gradiente:</p>
+<p><span class="m d">\nabla V = \frac{\partial V}{\partial x}\,\hat i + \frac{\partial V}{\partial y}\,\hat j + \frac{\partial V}{\partial z}\,\hat k</span></p>
+<p>Significato: la variazione di <span class="m">V</span> per uno spostamento piccolo <span class="m">d\vec s</span> è la proiezione del gradiente sullo spostamento,</p>
+<p><span class="m d">dV = \frac{\partial V}{\partial x}dx + \frac{\partial V}{\partial y}dy + \frac{\partial V}{\partial z}dz = \nabla V \cdot d\vec s</span></p>
+<p>Conseguenze:</p>
+<ul>
+<li>sulle <strong>superfici di livello</strong> (<span class="m">V</span> = costante) lo spostamento non cambia <span class="m">V</span>: <span class="m">\nabla V \cdot d\vec s = 0</span>, quindi il gradiente è <strong>perpendicolare</strong> alla superficie di livello;</li>
+<li>il gradiente punta nel verso della <strong>massima crescita</strong> di <span class="m">V</span>.</li>
+</ul>
+<p><strong>Teorema del gradiente.</strong> Siccome <span class="m">\nabla V \cdot d\vec s = dV</span> è un differenziale esatto,</p>
+<p><span class="m d">\int_A^B \nabla V \cdot d\vec s = V(B) - V(A)</span></p>
+<p>dipende <strong>solo dagli estremi</strong>, non dal percorso. Lungo una linea chiusa (<span class="m">B = A</span>) l&#39;integrale, detto <strong>circuitazione</strong>, è zero: <span class="m">\oint \nabla V \cdot d\vec s = 0</span>. Un campo che è il gradiente di una funzione è quindi <strong>conservativo</strong>. Vale anche il contrario: se un campo ha circuitazione nulla lungo qualsiasi linea chiusa, esiste una funzione <span class="m">V(x, y, z)</span> di cui è il gradiente.</p>
+<h3>Rotore e teorema di Stokes</h3>
+<p>Il prodotto vettoriale di nabla con un campo vettoriale <span class="m">\vec E</span> è un vettore detto <strong>rotore</strong>:</p>
+<p><span class="m d">\nabla \times \vec E = \left(\frac{\partial E_z}{\partial y} - \frac{\partial E_y}{\partial z}\right)\hat i + \left(\frac{\partial E_x}{\partial z} - \frac{\partial E_z}{\partial x}\right)\hat j + \left(\frac{\partial E_y}{\partial x} - \frac{\partial E_x}{\partial y}\right)\hat k</span></p>
+<p>Significato: preso un pezzetto di superficie <span class="m">d\Sigma</span> attorno a un punto, delimitato dalla linea chiusa <span class="m">\gamma</span>, la circuitazione di <span class="m">\vec E</span> su <span class="m">\gamma</span> è</p>
+<p><span class="m d">d\Gamma = (\nabla \times \vec E) \cdot \hat u_n\,d\Sigma</span></p>
+<p>Il rotore misura quanto il campo &quot;gira&quot; attorno al punto. In forma finita si ottiene il <strong>teorema di Stokes</strong>:</p>
+<p><span class="m d">\oint_\gamma \vec E \cdot d\vec s = \int_\Sigma (\nabla \times \vec E) \cdot \hat u_n\,d\Sigma</span></p>
+<p>cioè: la circuitazione lungo una linea chiusa è uguale al <strong>flusso del rotore</strong> attraverso una qualunque superficie che ha quella linea come bordo.</p>
+<h3>Divergenza e teorema della divergenza</h3>
+<p>Il prodotto scalare di nabla con un campo vettoriale è uno <strong>scalare</strong>, la divergenza:</p>
+<p><span class="m d">\nabla \cdot \vec E = \frac{\partial E_x}{\partial x} + \frac{\partial E_y}{\partial y} + \frac{\partial E_z}{\partial z}</span></p>
+<p>Significato: il flusso uscente da una piccola superficie chiusa che racchiude il volumetto <span class="m">d\tau</span> è <span class="m">d\Phi = (\nabla \cdot \vec E)\,d\tau</span>. La divergenza misura quanto campo &quot;nasce&quot; (o &quot;sparisce&quot;) in un punto. In forma finita, <strong>teorema della divergenza</strong> (di Gauss-Ostrogradskij):</p>
+<p><span class="m d">\oint_\Sigma \vec E \cdot \hat u_n\,d\Sigma = \int_\tau (\nabla \cdot \vec E)\,d\tau</span></p>
+<p>cioè il flusso uscente da una superficie chiusa è l&#39;integrale della divergenza nel volume racchiuso.</p>
+<p>Un campo con <strong>flusso nullo attraverso ogni superficie chiusa</strong> si dice <strong>solenoidale</strong>; la sua divergenza è identicamente nulla, e viceversa. Nei campi solenoidali il flusso attraverso superfici diverse appoggiate allo stesso contorno è sempre lo stesso.</p>
+<h3>Operazioni composte</h3>
+<ul>
+<li><strong>Il rotore di un gradiente è zero</strong>: <span class="m">\nabla \times (\nabla V) = 0</span>. Si vede componente per componente, per esempio la <span class="m">x</span>: <span class="m">\dfrac{\partial}{\partial y}\dfrac{\partial V}{\partial z} - \dfrac{\partial}{\partial z}\dfrac{\partial V}{\partial y} = 0</span>, perché l&#39;ordine delle derivate parziali si può scambiare. (È come il prodotto vettoriale di un vettore per se stesso.) Quindi un campo conservativo è <strong>irrotazionale</strong>. Viceversa, un campo con rotore nullo in un dominio semplicemente connesso è conservativo.</li>
+<li><strong>La divergenza di un rotore è zero</strong>: <span class="m">\nabla \cdot (\nabla \times \vec A) = 0</span>. Quindi un rotore è sempre solenoidale; viceversa, un campo solenoidale è il rotore di un altro campo <span class="m">\vec A</span>.</li>
+<li><span class="m">V</span> è una &quot;primitiva&quot; scalare di un campo conservativo ed è definita a meno di una costante; <span class="m">\vec A</span> è una &quot;primitiva&quot; vettoriale di un campo solenoidale, definita a meno di un gradiente.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Proprietà del campo</th>
+<th>Condizione integrale</th>
+<th>Condizione locale</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>conservativo (irrotazionale)</td>
+<td><span class="m">\oint \vec E \cdot d\vec s = 0</span> per ogni linea chiusa</td>
+<td><span class="m">\nabla \times \vec E = 0</span>, <span class="m">\vec E = \pm\nabla V</span></td>
+</tr>
+<tr>
+<td>solenoidale</td>
+<td><span class="m">\oint \vec E \cdot \hat u_n\,d\Sigma = 0</span> per ogni superficie chiusa</td>
+<td><span class="m">\nabla \cdot \vec E = 0</span>, <span class="m">\vec E = \nabla \times \vec A</span></td>
+</tr>
+</tbody></table>
+<div class="callout esempio">
+
+<p><strong>Flusso del campo gravitazionale attraverso una sfera.</strong> Una massa <span class="m">M</span> nell&#39;origine genera il campo <span class="m">\vec g = -\dfrac{GM}{r^2}\hat u_r</span> (verso il centro). Calcolare il flusso attraverso una sfera di raggio <span class="m">R</span> centrata in <span class="m">M</span>.</p>
+<ol>
+<li>Normale uscente: <span class="m">\hat u_n = \hat u_r</span>. Sulla sfera il campo ha modulo costante <span class="m">GM/R^2</span> ed è parallelo alla normale ma con verso <strong>opposto</strong>: <span class="m">\vec g \cdot \hat u_n = -GM/R^2</span>.</li>
+<li>Il prodotto scalare è costante, quindi si porta fuori dall&#39;integrale:
+<span class="m d">\Phi = \oint \vec g \cdot \hat u_n\,dS = -\frac{GM}{R^2}\oint dS = -\frac{GM}{R^2}\,4\pi R^2 = -4\pi G M</span></li>
+<li>Il risultato non dipende da <span class="m">R</span>: è un&#39;anticipazione del teorema di Gauss (lezione 45). Il segno meno indica un flusso entrante.</li>
+</ol>
+</div>
+
+<div class="callout attenzione">
+
+<ul>
+<li>&quot;Il campo è la forza sulla carica di prova&quot; è sbagliato: è la forza <strong>divisa</strong> per la carica (N/C, non N).</li>
+<li>Il campo di una carica <strong>negativa</strong> punta verso la carica (linee entranti), non fuori.</li>
+<li>Le linee di campo non sono traiettorie delle cariche: dicono la direzione della forza, non della velocità.</li>
+</ul>
+</div>
+
+<div class="callout esame">
+
+<p>Domande tipiche: definizione di campo (<span class="m">\vec E = \vec F/q_0</span>, con la carica di prova), quando c&#39;è un campo in un punto (se una carica di prova vi subisce una forza elettrica), linee di campo (uscenti dalle positive, entranti nelle negative), forza <span class="m">\propto 1/r^2</span> (distanza doppia → un quarto, distanza dimezzata → quadrupla), azione e reazione tra cariche diverse (forze uguali in modulo), ragionamento sui segni, punto di forza nulla tra <span class="m">q</span> e <span class="m">4q</span>, stabilità dell&#39;equilibrio, quadrato di cariche, calcoli con <span class="m">F = qE</span> e <span class="m">qE = mg</span>.</p>
+<p>Aperta <strong>&quot;Si enunci e discuta la legge di Coulomb&quot;</strong>: scrivi <span class="m">\vec F_{12} = \dfrac{1}{4\pi\varepsilon_0}\dfrac{q_1q_2}{r^2}\hat u_r</span> con il significato di ogni simbolo e il valore di <span class="m">\varepsilon_0</span>; poi discuti: cariche puntiformi ferme nel vuoto; modulo proporzionale al prodotto delle cariche e inverso al quadrato della distanza; direzione lungo la congiungente; repulsiva per segni uguali, attrattiva per segni opposti; forze uguali e opposte sulle due cariche (terzo principio); analogia e differenze con la gravitazione; sovrapposizione con più cariche; unità di carica (coulomb).</p>
+</div>
+
 <div class="callout sintesi">
 
 <ul>
-<li>Campo elettrico: <span class="m">\vec E = \vec F/q_0</span>, in N/C = V/m; non dipende dalla carica di prova.</li>
-<li>Carica puntiforme: <span class="m">E = \dfrac{1}{4\pi\varepsilon_0}\dfrac{Q}{r^2}</span>, uscente se <span class="m">Q&gt;0</span>, entrante se <span class="m">Q&lt;0</span>.</li>
-<li>Forza su una carica: <span class="m">\vec F = q\vec E</span>; per <span class="m">q&lt;0</span> è opposta al campo.</li>
-<li>Linee di campo: da + a −, fitte dove il campo è forte, mai incrociate.</li>
-<li>Forza <span class="m">\propto 1/r^2</span>: distanza doppia, forza un quarto.</li>
+<li>Campo = grandezza definita punto per punto; scalare o vettoriale. Il campo elettrico fa da mediatore tra le cariche.</li>
+<li><span class="m">\vec E = \lim_{q_0 \to 0}\vec F/q_0</span>, in N/C = V/m; non dipende da valore e segno della carica di prova.</li>
+<li>Carica puntiforme: <span class="m">\vec E = \dfrac{1}{4\pi\varepsilon_0}\dfrac{Q}{r^2}\hat u_r</span>, uscente se <span class="m">Q &gt; 0</span>, entrante se <span class="m">Q &lt; 0</span>.</li>
+<li>Sovrapposizione: <span class="m">\vec E = \sum_i \vec E_i</span>; distribuzioni continue con <span class="m">\rho</span> (C/m³), <span class="m">\sigma</span> (C/m²), <span class="m">\lambda</span> (C/m).</li>
+<li>Linee di campo: tangenti al campo, fitte dove è intenso, mai incrociate, da + a −; parallele ed equidistanti in campo uniforme.</li>
+<li><span class="m">\vec F = q\vec E</span>: per <span class="m">q &lt; 0</span> forza opposta al campo.</li>
+<li>Nabla: gradiente (vettore, ⊥ alle superfici di livello, verso la massima crescita), rotore (Stokes), divergenza (teorema della divergenza).</li>
+<li>Gradiente ⇒ conservativo ⇒ rotore nullo; rotore ⇒ solenoidale ⇒ divergenza nulla.</li>
 </ul>
 </div>

@@ -1,112 +1,397 @@
-<h1>Lezione 21 — Quantità di moto e impulso</h1>
+<h1>Lezione 21 — Impulso, quantità di moto e loro conservazione</h1>
+<h2>Di che cosa parla questa lezione</h2>
+<p>Finora la dinamica del punto materiale è stata scritta con <span class="m">\vec F = m\vec a</span>: conosco la forza istante per istante e ricavo l&#39;accelerazione. In molte situazioni reali, però, la forza non si conosce in dettaglio. Pensa a un pallone colpito di testa, a una palla che rimbalza su un muro, a un proiettile che esce da un fucile: la forza dura pochi millesimi di secondo, è enorme e cambia in modo complicato. Quello che si misura bene è lo stato del corpo <strong>prima</strong> e <strong>dopo</strong>.</p>
+<p>Per trattare questi casi la dispensa introduce due grandezze nuove:</p>
+<ul>
+<li>l&#39;<strong>impulso</strong> di una forza, che misura l&#39;effetto complessivo di una forza che agisce per un certo intervallo di tempo;</li>
+<li>la <strong>quantità di moto</strong> (o momento lineare), che descrive lo &quot;stato di moto&quot; di un corpo.</li>
+</ul>
+<p>Il legame tra le due è il <strong>teorema dell&#39;impulso</strong>. Da qui seguono la forma più generale del secondo principio, <span class="m">\vec F = d\vec p/dt</span>, e la <strong>conservazione della quantità di moto</strong>, una delle leggi più importanti di tutta la fisica. La lezione si chiude con i <strong>sistemi a massa variabile</strong> (il razzo). Le domande del paniere chiedono anche il <strong>terzo principio</strong> e la <strong>conservazione dell&#39;energia meccanica</strong> (lezioni 10 e 19-20): li riprendiamo qui perché servono a capire quando si conserva la quantità di moto e quando l&#39;energia.</p>
+<h2>Impulso di una forza</h2>
+<h3>Impulso istantaneo</h3>
+<p>Consideriamo una forza <span class="m">\vec F</span> che agisce su un corpo di massa <span class="m">m</span> per un intervallo di tempo brevissimo <span class="m">dt</span>. Si chiama <strong>impulso istantaneo</strong> (o elementare) della forza la grandezza:</p>
+<p><span class="m d">d\vec J = \vec F\,dt</span></p>
+<p>dove:</p>
+<ul>
+<li><span class="m">d\vec J</span> = impulso elementare, in <span class="m">\mathrm{N\cdot s}</span>;</li>
+<li><span class="m">\vec F</span> = forza che agisce sul corpo in quell&#39;istante, in <span class="m">\mathrm N</span>;</li>
+<li><span class="m">dt</span> = intervallo di tempo infinitesimo, in <span class="m">\mathrm s</span>.</li>
+</ul>
+<h3>Impulso in un intervallo finito</h3>
+<p>Se la forza agisce tra l&#39;istante <span class="m">t_1</span> e l&#39;istante <span class="m">t_2</span> e nel frattempo cambia (forza &quot;non stazionaria&quot;), bisogna sommare tutti gli impulsi elementari. La somma di infiniti contributi infinitesimi è un integrale:</p>
+<p><span class="m d">\vec J = \int_{t_1}^{t_2} \vec F(t)\,dt</span></p>
+<p>Per calcolarlo bisogna conoscere l&#39;<strong>andamento temporale</strong> della forza, cioè la funzione <span class="m">\vec F(t)</span>. Graficamente, per una forza con direzione fissa, l&#39;impulso è l&#39;<strong>area sotto il grafico</strong> di <span class="m">F(t)</span> tra <span class="m">t_1</span> e <span class="m">t_2</span>.</p>
+<p>Se invece la forza è <strong>costante</strong>, esce dall&#39;integrale e resta:</p>
+<p><span class="m d">\vec J = \vec F\int_{t_1}^{t_2}dt = \vec F\,(t_2 - t_1) = \vec F\,\Delta t</span></p>
+<h3>Proprietà dell&#39;impulso</h3>
+<ul>
+<li>È una grandezza <strong>vettoriale</strong>: ha la direzione e il verso della forza (o, se la forza cambia direzione, della somma vettoriale dei contributi).</li>
+<li>Ha le dimensioni di una forza per un tempo. Si misura in <span class="m">\mathrm{N\cdot s}</span>.</li>
+<li>Spesso si indica anche con <span class="m">\vec I</span> invece di <span class="m">\vec J</span>: è la stessa cosa.</li>
+</ul>
+<h3>Forza media</h3>
+<p>Quando la forza è variabile e complicata (un colpo, un urto) si definisce la <strong>forza media</strong> <span class="m">\vec F_m</span>: la forza costante che, agendo per lo stesso tempo <span class="m">\Delta t</span>, darebbe lo stesso impulso.</p>
+<p><span class="m d">\vec F_m = \frac{\vec J}{\Delta t} = \frac{1}{\Delta t}\int_{t_1}^{t_2}\vec F\,dt</span></p>
+<p>È il valore &quot;medio nel tempo&quot; della forza. Sul grafico <span class="m">F(t)</span> è l&#39;altezza del rettangolo con base <span class="m">\Delta t</span> e con la stessa area della curva.</p>
 <h2>Quantità di moto</h2>
-<p>La quantità di moto misura &quot;quanto moto&quot; ha un corpo. Conta sia la massa sia la velocità.</p>
+<h3>Definizione</h3>
+<p>La <strong>quantità di moto</strong> (o <strong>momento lineare</strong>) di un punto materiale di massa <span class="m">m</span> che si muove con velocità <span class="m">\vec v</span> è il vettore:</p>
 <p><span class="m d">\vec p = m\vec v</span></p>
 <p>dove:</p>
 <ul>
-<li><span class="m">\vec p</span> = quantità di moto (o momento lineare), in <span class="m">\mathrm{kg\cdot m/s}</span>, cioè <span class="m">\mathrm{N\cdot s}</span>;</li>
+<li><span class="m">\vec p</span> = quantità di moto, in <span class="m">\mathrm{kg\cdot m/s}</span>;</li>
 <li><span class="m">m</span> = massa, in <span class="m">\mathrm{kg}</span>;</li>
 <li><span class="m">\vec v</span> = velocità, in <span class="m">\mathrm{m/s}</span>.</li>
 </ul>
-<p>È un <strong>vettore</strong>: ha la stessa direzione e lo stesso verso della velocità. Se la velocità cambia solo verso, la quantità di moto cambia.</p>
-<p>Proprietà utili:</p>
+<h3>Unità di misura</h3>
+<p>L&#39;unità SI della quantità di moto è <span class="m">\mathrm{kg\cdot m/s}</span>. È la <strong>stessa</strong> unità dell&#39;impulso. Verifichiamolo: un newton è <span class="m">1\,\mathrm N = 1\,\mathrm{kg\cdot m/s^2}</span>; moltiplicando per un secondo:</p>
+<p><span class="m d">1\,\mathrm{N\cdot s} = 1\,\mathrm{kg\cdot\frac{m}{s^2}\cdot s} = 1\,\mathrm{kg\cdot m/s}</span></p>
+<p>Quindi la quantità di moto si può esprimere indifferentemente in <span class="m">\mathrm{kg\cdot m/s}</span> o in <span class="m">\mathrm{N\cdot s}</span>.</p>
+<h3>Significato e proprietà</h3>
+<p>La quantità di moto misura &quot;quanto moto&quot; possiede un corpo tenendo conto sia della massa sia della velocità. Un camion lento e un proiettile velocissimo possono avere la stessa quantità di moto: per fermarli serve lo stesso impulso.</p>
 <ul>
-<li><span class="m">p</span> è proporzionale a <span class="m">m</span> e a <span class="m">v</span>. Se la velocità diventa 10 volte più grande, anche <span class="m">p</span> diventa 10 volte più grande. Se raddoppiano sia <span class="m">m</span> sia <span class="m">v</span>, <span class="m">p</span> quadruplica.</li>
-<li>Dipende dal sistema di riferimento, perché la velocità dipende dal riferimento. Vale lo stesso per l&#39;energia cinetica.</li>
-<li>L&#39;energia cinetica invece è uno scalare e dipende da <span class="m">v^2</span>. Una palla che rimbalza con la stessa velocità in verso opposto cambia <span class="m">\vec p</span> ma non <span class="m">K</span>.</li>
+<li>È un <strong>vettore</strong> con la stessa direzione e lo stesso verso della velocità (la massa è positiva). Se la velocità cambia <strong>solo di verso</strong>, la quantità di moto cambia: <span class="m">\vec p</span> diventa <span class="m">-\vec p</span>, e la variazione è <span class="m">-2\vec p</span>.</li>
+<li>È <strong>direttamente proporzionale</strong> sia alla massa sia alla velocità. Se la velocità diventa 10 volte più grande, anche <span class="m">p</span> diventa 10 volte più grande. Se raddoppiano sia <span class="m">m</span> sia <span class="m">v</span>, <span class="m">p' = (2m)(2v) = 4mv</span>: la quantità di moto <strong>quadruplica</strong> (i fattori si moltiplicano).</li>
+<li><strong>Dipende dal sistema di riferimento</strong>, perché la velocità dipende dal riferimento. Un passeggero seduto in un treno ha <span class="m">\vec p = 0</span> per chi è sul treno e <span class="m">\vec p = m\vec v_{treno}</span> per chi è sul binario.</li>
 </ul>
-<h2>Secondo principio con la quantità di moto</h2>
-<p>La forma più generale del secondo principio usa la quantità di moto. È anche la forma originale di Newton.</p>
-<p><span class="m d">\vec F = \frac{d\vec p}{dt}</span></p>
-<p>dove:</p>
-<ul>
-<li><span class="m">\vec F</span> = forza risultante sul corpo, in <span class="m">\mathrm N</span>;</li>
-<li><span class="m">d\vec p/dt</span> = rapidità di variazione della quantità di moto, in <span class="m">\mathrm{kg\cdot m/s^2} = \mathrm N</span>.</li>
-</ul>
-<p>Se la massa è costante, <span class="m">d\vec p/dt = m\,d\vec v/dt = m\vec a</span>: si ritrova <span class="m">\vec F = m\vec a</span>.</p>
-<h2>Impulso di una forza</h2>
-<p>L&#39;impulso misura l&#39;effetto di una forza che agisce per un certo tempo.</p>
-<p><span class="m d">\vec J = \int_{t_1}^{t_2} \vec F\,dt \qquad \text{se } \vec F \text{ è costante: } \vec J = \vec F\,\Delta t</span></p>
-<p>dove:</p>
-<ul>
-<li><span class="m">\vec J</span> = impulso (spesso indicato anche con <span class="m">\vec I</span>), in <span class="m">\mathrm{N\cdot s}</span>;</li>
-<li><span class="m">\vec F</span> = forza, in <span class="m">\mathrm N</span>;</li>
-<li><span class="m">\Delta t = t_2 - t_1</span> = durata dell&#39;azione, in <span class="m">\mathrm s</span>.</li>
-</ul>
-<p>L&#39;impulso è un vettore. Per una forza che varia nel tempo serve conoscere come cambia <span class="m">F(t)</span>.</p>
+<h3>Confronto con l&#39;energia cinetica</h3>
+<p>L&#39;energia cinetica <span class="m">K = \tfrac12 mv^2</span> contiene anch&#39;essa la velocità, quindi <strong>anche lei dipende dal riferimento</strong>. Ma ci sono differenze importanti:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Quantità di moto <span class="m">\vec p = m\vec v</span></th>
+<th>Energia cinetica <span class="m">K = \tfrac12 mv^2</span></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Natura</td>
+<td>vettore</td>
+<td>scalare</td>
+</tr>
+<tr>
+<td>Dipende da <span class="m">v</span> come</td>
+<td><span class="m">v</span> (lineare)</td>
+<td><span class="m">v^2</span> (quadratica)</td>
+</tr>
+<tr>
+<td>Se la velocità si inverte</td>
+<td>cambia (<span class="m">\vec p \to -\vec p</span>)</td>
+<td>non cambia</td>
+</tr>
+<tr>
+<td>Se <span class="m">v</span> diventa 10 volte</td>
+<td>10 volte</td>
+<td>100 volte</td>
+</tr>
+<tr>
+<td>Unità</td>
+<td><span class="m">\mathrm{kg\cdot m/s} = \mathrm{N\cdot s}</span></td>
+<td><span class="m">\mathrm J = \mathrm{kg\cdot m^2/s^2}</span></td>
+</tr>
+<tr>
+<td>Dipende dal riferimento</td>
+<td>sì</td>
+<td>sì</td>
+</tr>
+</tbody></table>
+<div class="callout attenzione">
+
+<p>&quot;Scalare&quot; non vuol dire &quot;uguale per tutti gli osservatori&quot;. L&#39;energia cinetica è uno scalare (non ha direzione), ma il suo valore cambia da un riferimento all&#39;altro perché contiene la velocità. Quindi quantità di moto ed energia cinetica dipendono <strong>entrambe</strong> dal riferimento.</p>
+</div>
+
 <h2>Teorema dell&#39;impulso</h2>
-<p>L&#39;impulso della forza risultante è uguale alla variazione della quantità di moto nello stesso intervallo di tempo.</p>
-<p><span class="m d">\vec J = \Delta\vec p = m\vec v_f - m\vec v_i</span></p>
-<p>Ragionamento in 3 passi:</p>
+<h3>Dimostrazione passo per passo</h3>
 <ol>
-<li>Dal secondo principio: <span class="m">\vec F = m\,d\vec v/dt</span>.</li>
-<li>Moltiplichi per <span class="m">dt</span>: <span class="m">\vec F\,dt = m\,d\vec v</span>, cioè <span class="m">d\vec J = d\vec p</span>.</li>
-<li>Sommi (integri) da <span class="m">t_1</span> a <span class="m">t_2</span>: <span class="m">\vec J = \vec p_2 - \vec p_1</span>.</li>
+<li>Partiamo dal secondo principio per un corpo di massa costante: <span class="m">\vec F = m\vec a = m\,\dfrac{d\vec v}{dt}</span>, dove <span class="m">\vec F</span> è la <strong>forza risultante</strong> sul corpo.</li>
+<li>Moltiplichiamo entrambi i membri per <span class="m">dt</span>: <span class="m">\vec F\,dt = m\,d\vec v</span>.</li>
+<li>Il primo membro è l&#39;impulso elementare; il secondo, essendo <span class="m">m</span> costante, è <span class="m">d(m\vec v) = d\vec p</span>. Quindi: <span class="m">d\vec J = d\vec p</span>.</li>
+<li>Sommiamo (integriamo) tra <span class="m">t_1</span> e <span class="m">t_2</span>: a sinistra si ottiene l&#39;impulso totale, a destra la somma delle variazioni infinitesime della quantità di moto, cioè la variazione totale:</li>
 </ol>
-<p>Il teorema vale <strong>sempre</strong>: per sistemi isolati e non isolati. In un sistema isolato l&#39;impulso esterno è nullo, quindi <span class="m">\vec p</span> non cambia.</p>
-<p>Da qui si ricava la <strong>forza media</strong> in un urto:</p>
-<p><span class="m d">\bar F = \frac{\Delta p}{\Delta t}</span></p>
-<p>Allungare il tempo del contatto riduce la forza. Per questo airbag e materassini attutiscono i colpi.</p>
+<p><span class="m d">\vec J = \int_{t_1}^{t_2}\vec F\,dt = \int_{\vec p_1}^{\vec p_2} d\vec p = \vec p_2 - \vec p_1 = \Delta\vec p</span></p>
+<h3>Enunciato</h3>
+<p><strong>Teorema dell&#39;impulso</strong>: l&#39;impulso della forza (risultante) che agisce su un punto materiale tra due istanti è uguale alla variazione che la quantità di moto del punto subisce nello stesso intervallo di tempo.</p>
+<p><span class="m d">\vec J = \Delta\vec p = m\vec v_f - m\vec v_i</span></p>
+<h3>Validità</h3>
+<p>Il teorema discende direttamente dal secondo principio, senza altre ipotesi. Quindi vale <strong>sempre</strong>:</p>
+<ul>
+<li>per sistemi <strong>isolati</strong> e <strong>non isolati</strong>;</li>
+<li>qualunque sia il tipo di forza (conservativa o no): non ha nulla a che vedere con la conservazione dell&#39;energia.</li>
+</ul>
+<p>Nel caso particolare di sistema isolato (forza risultante nulla) l&#39;impulso è zero e quindi <span class="m">\Delta\vec p = 0</span>: è la conservazione della quantità di moto, che è dunque un <strong>caso particolare</strong> del teorema, non il teorema stesso.</p>
+<h3>Forza media in un urto</h3>
+<p>Combinando il teorema con la definizione di forza media:</p>
+<p><span class="m d">\vec F_m = \frac{\Delta\vec p}{\Delta t}</span></p>
+<p>A parità di variazione di quantità di moto, <strong>più lungo è il tempo di contatto, più piccola è la forza media</strong>. È il principio degli airbag, dei caschi imbottiti, dei materassini nel salto in alto, delle ginocchia piegate quando si atterra da un salto: allungano il <span class="m">\Delta t</span> dell&#39;arresto e quindi riducono la forza.</p>
 <div class="callout esempio">
 
-<p>Sasso di <span class="m">2{,}5\,\mathrm{kg}</span> lasciato cadere da fermo. Dopo <span class="m">4\,\mathrm s</span> la gravità ha dato l&#39;impulso <span class="m">J = mg\,t = 2{,}5 \cdot 9{,}8 \cdot 4 = 98\,\mathrm{N\cdot s}</span>. Quindi <span class="m">p = 98\,\mathrm{N\cdot s}</span>.</p>
-<p>Palla di <span class="m">1\,\mathrm{kg}</span> che arriva su una parete a <span class="m">2\,\mathrm{m/s}</span> e rimbalza a <span class="m">1{,}5\,\mathrm{m/s}</span>. Prendi positivo il verso di allontanamento: <span class="m">v_i = -2</span>, <span class="m">v_f = +1{,}5</span>. Allora <span class="m">\Delta p = 1 \cdot (1{,}5 - (-2)) = 3{,}5\,\mathrm{N\cdot s}</span>, in allontanamento dalla parete.</p>
-<p>Pallone di <span class="m">0{,}45\,\mathrm{kg}</span> che arriva a <span class="m">25\,\mathrm{m/s}</span> e riparte a <span class="m">10\,\mathrm{m/s}</span> in verso opposto: <span class="m">J = 0{,}45 \cdot (10 + 25) = 15{,}75\,\mathrm{kg\cdot m/s}</span>.</p>
+<p><strong>Sasso in caduta libera.</strong> Un sasso di <span class="m">2{,}5\,\mathrm{kg}</span> parte da fermo e cade senza attrito. Quanto vale la sua quantità di moto dopo <span class="m">4\,\mathrm s</span>?</p>
+<p>L&#39;unica forza è il peso, costante: <span class="m">F = mg = 2{,}5 \cdot 9{,}8 = 24{,}5\,\mathrm N</span>. L&#39;impulso in <span class="m">4\,\mathrm s</span> è <span class="m">J = F\,\Delta t = 24{,}5 \cdot 4 = 98\,\mathrm{N\cdot s}</span>. Poiché <span class="m">p_i = 0</span>:</p>
+<p><span class="m d">p_f = p_i + J = 0 + 98 = 98\,\mathrm{N\cdot s}</span></p>
+<p>Verifica per altra via: <span class="m">v = gt = 9{,}8 \cdot 4 = 39{,}2\,\mathrm{m/s}</span>, e <span class="m">p = mv = 2{,}5 \cdot 39{,}2 = 98\,\mathrm{kg\cdot m/s}</span>. Stesso risultato.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Pallina che rimbalza su una parete.</strong> Una pallina di <span class="m">1\,\mathrm{kg}</span> arriva perpendicolarmente su una parete a <span class="m">2\,\mathrm{m/s}</span> e rimbalza a <span class="m">1{,}5\,\mathrm{m/s}</span>. Variazione della quantità di moto?</p>
+<ol>
+<li>Scelgo un asse: positivo il verso di <strong>allontanamento</strong> dalla parete.</li>
+<li>Prima: la pallina va verso la parete, quindi <span class="m">v_i = -2\,\mathrm{m/s}</span>. Dopo: <span class="m">v_f = +1{,}5\,\mathrm{m/s}</span>.</li>
+<li><span class="m">\Delta p = m(v_f - v_i) = 1\cdot(1{,}5 - (-2)) = 3{,}5\,\mathrm{N\cdot s}</span>.</li>
+</ol>
+<p>Il segno positivo dice che la variazione (cioè l&#39;impulso dato dalla parete) è diretta <strong>in allontanamento dalla parete</strong>. Nota che i moduli si sono <strong>sommati</strong>: <span class="m">2 + 1{,}5</span>.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Pallone respinto di testa.</strong> Un pallone di <span class="m">0{,}45\,\mathrm{kg}</span> arriva a <span class="m">25\,\mathrm{m/s}</span> e, dopo la respinta, ha <span class="m">10\,\mathrm{m/s}</span> nella stessa direzione e verso opposto. Impulso ricevuto?</p>
+<p>Positivo il verso di arrivo: <span class="m">v_i = +25</span>, <span class="m">v_f = -10\,\mathrm{m/s}</span>.</p>
+<p><span class="m d">J = m(v_f - v_i) = 0{,}45\cdot(-10 - 25) = 0{,}45 \cdot(-35) = -15{,}75\,\mathrm{kg\cdot m/s}</span></p>
+<p>Il modulo è <span class="m">15{,}75\,\mathrm{kg\cdot m/s}</span>; il segno meno indica che l&#39;impulso è diretto in verso opposto a quello di arrivo, cioè verso cui il pallone viene respinto.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Punto che cade e rimbalza (dalla dispensa).</strong> Un punto di massa <span class="m">m = 1{,}2\,\mathrm{kg}</span> cade in verticale, tocca terra a <span class="m">25\,\mathrm{m/s}</span> e rimbalza a <span class="m">10\,\mathrm{m/s}</span>. Il contatto dura <span class="m">0{,}020\,\mathrm s</span>.</p>
+<p>(a) Asse <span class="m">y</span> verso l&#39;alto: <span class="m">v_0 = -25\,\mathrm{m/s}</span>, <span class="m">v_1 = +10\,\mathrm{m/s}</span>.</p>
+<p><span class="m d">\vec J = m v_1 - m v_0 = 1{,}2\cdot(10 - (-25))\,\hat\jmath = 1{,}2 \cdot 35\,\hat\jmath = 42\,\hat\jmath\ \mathrm{kg\cdot m/s}</span></p>
+<p>(b) Forza media sul punto: <span class="m">\vec F_m = \vec J/\Delta t = 42/0{,}020\,\hat\jmath = 2100\,\hat\jmath\ \mathrm N</span>, verso l&#39;alto. Per il terzo principio il punto esercita sul pavimento una forza media uguale e opposta: <span class="m">-2100\,\hat\jmath\ \mathrm N</span>, verso il basso. È circa 180 volte il peso del corpo (<span class="m">1{,}2 \cdot 9{,}8 \approx 11{,}8\,\mathrm N</span>): ecco perché negli urti il peso si può trascurare.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Rimbalzo obliquo su una parete (dalla dispensa).</strong> Un punto di <span class="m">0{,}165\,\mathrm{kg}</span> colpisce una parete a <span class="m">2{,}00\,\mathrm{m/s}</span> con un angolo <span class="m">\theta_1 = 30{,}0°</span> rispetto alla normale. Nel rimbalzo la componente normale si inverte, quella parallela resta uguale.</p>
+<p>Prendo l&#39;asse <span class="m">x</span> parallelo alla parete e l&#39;asse <span class="m">y</span> lungo la normale. Prima: <span class="m">\vec v_1 = (v\sin\theta_1,\ v\cos\theta_1)</span>. Dopo: <span class="m">\vec v_2 = (v\sin\theta_1,\ -v\cos\theta_1)</span>.</p>
+<p>(a) Angolo dopo il rimbalzo: <span class="m">\tan\theta_2 = v_{2x}/v_{2y} = -\tan\theta_1</span>, quindi <span class="m">\theta_2 = -\theta_1</span>: la pallina riparte con un angolo di <strong>ampiezza uguale</strong>, <span class="m">30°</span>, dall&#39;altra parte della normale (come la luce in uno specchio).</p>
+<p>(b) Variazione della quantità di moto: la componente parallela non cambia, quella normale passa da <span class="m">+mv\cos\theta_1</span> a <span class="m">-mv\cos\theta_1</span>:</p>
+<p><span class="m d">\Delta\vec p = (0,\ -2mv\cos 30°) \qquad |\Delta\vec p| = 2 \cdot 0{,}165 \cdot 2{,}00 \cdot 0{,}866 \approx 0{,}57\,\mathrm{kg\cdot m/s}</span></p>
+<p>diretta perpendicolarmente alla parete (verso le <span class="m">y</span> negative del disegno, cioè in allontanamento dalla parete).</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Palla da baseball respinta con la stessa velocità.</strong> Una palla a <span class="m">30\,\mathrm{m/s}</span> viene colpita e torna indietro a <span class="m">30\,\mathrm{m/s}</span>. La quantità di moto passa da <span class="m">+30m</span> a <span class="m">-30m</span>: è <strong>variata</strong> (<span class="m">\Delta p = -60m</span>). L&#39;energia cinetica <span class="m">\tfrac12 m\cdot 30^2</span> invece è <strong>la stessa</strong> prima e dopo, perché dipende solo dal modulo della velocità.</p>
 </div>
 
 <div class="callout attenzione">
 
-<p>Nei rimbalzi le velocità hanno versi opposti: i moduli si <strong>sommano</strong>, non si sottraggono. Scegli sempre un verso positivo prima di fare i conti.</p>
+<p>Nei rimbalzi le velocità prima e dopo hanno versi opposti. Scegli <strong>sempre</strong> un verso positivo e dai il segno alle velocità: i moduli si <strong>sommano</strong> (<span class="m">|\Delta v| = v_i + v_f</span>), non si sottraggono. L&#39;errore tipico è fare <span class="m">25 - 10</span> invece di <span class="m">25 + 10</span>.</p>
 </div>
 
+<h2>Il secondo principio scritto con la quantità di moto</h2>
+<h3>Forma generale</h3>
+<p>Se la massa è costante si può portare dentro la derivata:</p>
+<p><span class="m d">m\vec a = m\frac{d\vec v}{dt} = \frac{d(m\vec v)}{dt} = \frac{d\vec p}{dt}</span></p>
+<p>e il secondo principio si scrive:</p>
+<p><span class="m d">\vec F = \frac{d\vec p}{dt}</span></p>
+<p>dove <span class="m">\vec F</span> è la forza risultante (in <span class="m">\mathrm N</span>) e <span class="m">d\vec p/dt</span> la rapidità con cui cambia la quantità di moto (in <span class="m">\mathrm{kg\cdot m/s^2} = \mathrm N</span>).</p>
+<p>La dispensa sottolinea due cose:</p>
+<ul>
+<li>questa è la <strong>forma originale</strong> con cui Newton enunciò la legge, ed è la <strong>più generale</strong>: vale anche quando la massa cambia (razzi, gocce che si ingrandiscono), dove <span class="m">\vec F = m\vec a</span> non basta;</li>
+<li>lo <strong>stato dinamico</strong> di un punto materiale è descritto dalla sua quantità di moto, e l&#39;effetto di una forza è far variare nel tempo questo stato.</li>
+</ul>
+<p>In parole: <strong>la forza è la variazione temporale della quantità di moto</strong>. Non è un&#39;energia per unità di tempo (quella è la potenza, in watt), né una quantità di moto moltiplicata per un tempo (che avrebbe unità <span class="m">\mathrm{kg\cdot m}</span>).</p>
 <h2>Conservazione della quantità di moto</h2>
-<p>Se la risultante delle forze esterne è nulla, la quantità di moto totale non cambia.</p>
-<p><span class="m d">\vec F_{est} = 0 \;\Rightarrow\; \frac{d\vec P}{dt} = 0 \;\Rightarrow\; \vec P_{iniziale} = \vec P_{finale}</span></p>
-<p>dove <span class="m">\vec P</span> = somma delle quantità di moto di tutti i corpi del sistema, in <span class="m">\mathrm{kg\cdot m/s}</span>.</p>
-<p>Perché le forze interne non contano? Per il <strong>terzo principio</strong>. Ogni forza interna ha una reazione uguale e opposta dentro il sistema. Sommate, si annullano a coppie.</p>
-<p>Un sistema così si chiama <strong>isolato</strong>. Se parte da fermo, la quantità di moto totale resta zero: se un pezzo va avanti, l&#39;altro va indietro.</p>
+<h3>Per un punto materiale</h3>
+<p>Dalla forma <span class="m">\vec F = d\vec p/dt</span>: se sul corpo non agiscono forze, o se la loro risultante è nulla,</p>
+<p><span class="m d">\vec F = 0 \;\Rightarrow\; \frac{d\vec p}{dt} = 0 \;\Rightarrow\; \vec p = \text{costante}</span></p>
+<p>È un altro modo di dire il principio d&#39;inerzia: senza forze, la velocità (e quindi la quantità di moto) non cambia.</p>
+<h3>Per un sistema di più corpi</h3>
+<p>La legge diventa davvero potente per un <strong>sistema</strong> di corpi che interagiscono. Prendiamo due corpi 1 e 2. Su ciascuno agiscono:</p>
+<ul>
+<li>la forza che gli fa l&#39;altro corpo (forza <strong>interna</strong> al sistema): <span class="m">\vec F_{12}</span> su 1 dovuta a 2, <span class="m">\vec F_{21}</span> su 2 dovuta a 1;</li>
+<li>eventuali forze <strong>esterne</strong> <span class="m">\vec F_1^{(e)}</span> e <span class="m">\vec F_2^{(e)}</span>.</li>
+</ul>
+<p>Scriviamo il secondo principio per ciascuno e sommiamo:</p>
+<p><span class="m d">\frac{d\vec p_1}{dt} = \vec F_{12} + \vec F_1^{(e)} \qquad \frac{d\vec p_2}{dt} = \vec F_{21} + \vec F_2^{(e)}</span></p>
+<p><span class="m d">\frac{d(\vec p_1 + \vec p_2)}{dt} = (\vec F_{12} + \vec F_{21}) + (\vec F_1^{(e)} + \vec F_2^{(e)})</span></p>
+<p>Per il <strong>terzo principio</strong> <span class="m">\vec F_{12} = -\vec F_{21}</span>, quindi la prima parentesi è zero. Resta:</p>
+<p><span class="m d">\frac{d\vec P}{dt} = \vec F^{(e)}_{tot} \qquad \text{con } \vec P = \vec p_1 + \vec p_2</span></p>
+<p>Se la risultante delle forze esterne è nulla:</p>
+<p><span class="m d">\vec F^{(e)}_{tot} = 0 \;\Rightarrow\; \vec P_{iniziale} = \vec P_{finale}</span></p>
+<p><strong>Principio di conservazione della quantità di moto</strong>: in un sistema <strong>isolato</strong> (nessuna forza esterna, o risultante esterna nulla) la quantità di moto totale resta costante, qualunque cosa succeda all&#39;interno (urti, esplosioni, spinte, calci).</p>
+<p>Osservazioni importanti:</p>
+<ul>
+<li>Le forze interne <strong>non</strong> possono cambiare la quantità di moto totale: possono solo trasferirla da un corpo all&#39;altro.</li>
+<li>La legge è <strong>vettoriale</strong>: si conserva ogni componente. Se le forze esterne sono nulle solo in orizzontale (per esempio il peso è bilanciato dalla reazione del piano), si conserva la componente orizzontale.</li>
+<li>Se il sistema parte <strong>da fermo</strong>, <span class="m">\vec P = 0</span> e resta zero: se un pezzo va avanti, un altro deve andare indietro, con <span class="m">m_1v_1 = m_2v_2</span> in modulo.</li>
+</ul>
 <div class="callout esempio">
 
-<p>Uomo di <span class="m">70\,\mathrm{kg}</span> fermo sul ghiaccio calcia un sasso di <span class="m">100\,\mathrm g</span>. L&#39;uomo va a <span class="m">0{,}2\,\mathrm{cm/s} = 0{,}002\,\mathrm{m/s}</span>. Il sasso: <span class="m">70 \cdot 0{,}002 = 0{,}1 \cdot v</span>, quindi <span class="m">v = 1{,}4\,\mathrm{m/s}</span> in verso opposto all&#39;uomo.</p>
-<p>Uomo di <span class="m">88{,}4\,\mathrm{kg}</span> che calcia una pietra di <span class="m">71{,}7\,\mathrm g</span> a <span class="m">3{,}87\,\mathrm{m/s}</span>: <span class="m">v = 0{,}0717 \cdot 3{,}87 / 88{,}4 \approx 3{,}1 \cdot 10^{-3}\,\mathrm{m/s} = 3{,}1\,\mathrm{mm/s}</span>.</p>
+<p><strong>Uomo che calcia un sasso sul ghiaccio.</strong> Un uomo di <span class="m">70\,\mathrm{kg}</span> fermo su una superficie senza attrito calcia un sasso di <span class="m">100\,\mathrm g</span>. Dopo il calcio l&#39;uomo ha velocità <span class="m">0{,}2\,\mathrm{cm/s}</span>. Velocità del sasso?</p>
+<ol>
+<li>Il sistema uomo + sasso è isolato in orizzontale e parte fermo: <span class="m">P = 0</span>.</li>
+<li>Converto: <span class="m">0{,}2\,\mathrm{cm/s} = 0{,}002\,\mathrm{m/s}</span>; <span class="m">100\,\mathrm g = 0{,}1\,\mathrm{kg}</span>.</li>
+<li><span class="m">0 = 70 \cdot 0{,}002 + 0{,}1\cdot v \Rightarrow v = -\dfrac{0{,}14}{0{,}1} = -1{,}4\,\mathrm{m/s}</span>.</li>
+</ol>
+<p>Il sasso va a <span class="m">1{,}4\,\mathrm{m/s}</span> in verso <strong>opposto</strong> all&#39;uomo. La velocità è 700 volte quella dell&#39;uomo perché la massa è 700 volte più piccola.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Uomo che calcia una pietra.</strong> Uomo di <span class="m">88{,}4\,\mathrm{kg}</span> fermo su superficie liscia; la pietra di <span class="m">71{,}7\,\mathrm g</span> parte a <span class="m">3{,}87\,\mathrm{m/s}</span>. Velocità dell&#39;uomo?</p>
+<p><span class="m d">V = \frac{m\,v}{M} = \frac{0{,}0717 \cdot 3{,}87}{88{,}4} = \frac{0{,}2775}{88{,}4} \approx 3{,}1\cdot 10^{-3}\,\mathrm{m/s} = 3{,}1\,\mathrm{mm/s}</span></p>
+<p>in verso opposto alla pietra. Attenzione alla conversione grammi → kg: dimenticarla porta a un risultato 1000 volte più grande.</p>
 </div>
 
 <div class="callout attenzione">
 
-<p>Pattinatore fermo su ghiaccio senza attrito. Saltare, spingere con i pattini o strisciare non serve: senza attrito il ghiaccio non dà nessuna spinta orizzontale. L&#39;unico modo è <strong>lanciare qualcosa</strong> (per esempio un guanto) in un verso: lui si muove nel verso opposto.</p>
+<p><strong>Pattinatore fermo su ghiaccio perfettamente liscio.</strong> Come fa a raggiungere il bordo? Saltare, spingere con i pattini, strisciare: tutti questi metodi hanno bisogno dell&#39;<strong>attrito</strong> con il ghiaccio per ricevere una spinta orizzontale. Senza attrito non c&#39;è alcuna forza esterna orizzontale, quindi la quantità di moto del pattinatore resta zero. L&#39;unica possibilità è usare una forza <strong>interna</strong> a un sistema più grande: <strong>lanciare un oggetto</strong> (un guanto, un cappello) in verso opposto al bordo. Per la conservazione, <span class="m">0 = m_{guanto}\vec v_{guanto} + M\vec V</span>, il pattinatore si muove in verso opposto al guanto.</p>
 </div>
 
 <h2>Terzo principio della dinamica</h2>
-<p>Se A esercita una forza su B, B esercita su A una forza uguale in modulo e direzione e opposta in verso.</p>
-<p><span class="m d">\vec F_{AB} = -\vec F_{BA}</span></p>
-<p>Le due forze agiscono su corpi <strong>diversi</strong>, quindi non si annullano sullo stesso corpo. Si annullano solo quando sommi le forze su tutto il sistema.</p>
-<h2>Conservazione dell&#39;energia meccanica</h2>
-<p>L&#39;energia meccanica è la somma di energia cinetica e potenziale: <span class="m">E = K + U</span>. Si conserva solo se lavorano <strong>forze conservative</strong> (peso, forza elastica). Se c&#39;è attrito, l&#39;energia meccanica diminuisce: la differenza è il lavoro (negativo) dell&#39;attrito.</p>
-<p>La quantità di moto e l&#39;energia meccanica sono due leggi diverse. La prima richiede forze esterne nulle. La seconda richiede forze non conservative nulle.</p>
-<h2>Sistemi a massa variabile: il razzo</h2>
-<p>Un razzo espelle gas all&#39;indietro ad alta velocità. Il sistema razzo + gas è isolato, quindi la quantità di moto totale si conserva. Il gas va indietro, il razzo accelera in avanti.</p>
-<p><span class="m d">\text{spinta} = u\,\frac{dm}{dt} \qquad v = v_0 + u\ln\frac{M_0}{M_0 - ct}</span></p>
-<p>dove:</p>
+<h3>Enunciato</h3>
+<p>In un sistema di riferimento inerziale, se un corpo A esercita una forza <span class="m">\vec F_{A\to B}</span> sul corpo B, allora B esercita su A una forza <span class="m">\vec F_{B\to A}</span> con <strong>stesso modulo</strong>, <strong>stessa direzione</strong> (la stessa retta d&#39;azione) e <strong>verso opposto</strong>:</p>
+<p><span class="m d">\vec F_{B\to A} = -\vec F_{A\to B}</span></p>
+<p>Si chiama anche <strong>principio di azione e reazione</strong>: &quot;a ogni azione corrisponde una reazione uguale e opposta, agente sulla stessa retta&quot;. Come gli altri principi della dinamica, non si dimostra: è frutto dell&#39;esperienza ed è uno dei fondamenti della meccanica classica (valida per corpi più grandi degli atomi e velocità molto minori di quella della luce).</p>
+<h3>Cosa vuol dire davvero</h3>
 <ul>
-<li><span class="m">u</span> = velocità del gas rispetto al razzo, in <span class="m">\mathrm{m/s}</span>;</li>
-<li><span class="m">dm/dt = c</span> = massa di gas espulsa al secondo, in <span class="m">\mathrm{kg/s}</span>;</li>
-<li><span class="m">M_0</span> = massa iniziale del razzo, in <span class="m">\mathrm{kg}</span>;</li>
-<li><span class="m">v_0</span> = velocità iniziale, <span class="m">v</span> = velocità al tempo <span class="m">t</span>, in <span class="m">\mathrm{m/s}</span>.</li>
+<li>Le due forze agiscono su <strong>corpi diversi</strong>: una su A, l&#39;altra su B. Per questo <strong>non si annullano</strong> tra loro quando studi il moto di un singolo corpo. Si annullano solo quando sommi le forze su <strong>tutto il sistema</strong> A + B.</li>
+<li>Le forze nascono sempre <strong>a coppie</strong>: non esiste una forza &quot;isolata&quot;. La Terra attira la mela con il peso <span class="m">m\vec g</span>, la mela attira la Terra con una forza uguale e opposta (che però, data la massa enorme della Terra, produce un&#39;accelerazione trascurabile).</li>
+<li>Vale per forze a contatto (spinta, urto) e per forze a distanza (gravità, forze elettriche).</li>
 </ul>
-<p>Con la gravità si aggiunge il termine <span class="m">-gt</span>.</p>
+<h3>Conseguenze</h3>
+<ul>
+<li>È il motivo per cui <strong>le forze interne si annullano</strong> nella somma su un sistema, e quindi la quantità di moto di un sistema isolato si conserva (dimostrazione sopra).</li>
+<li>Spiega il rinculo del fucile, la spinta del razzo, il nuotatore che spinge l&#39;acqua indietro per andare avanti, il piede che spinge il terreno indietro (con l&#39;attrito) per camminare in avanti.</li>
+<li>Nell&#39;esempio del rimbalzo, il pavimento spinge il corpo verso l&#39;alto con <span class="m">2100\,\mathrm N</span> e il corpo spinge il pavimento verso il basso con <span class="m">2100\,\mathrm N</span>.</li>
+</ul>
+<h2>Conservazione dell&#39;energia meccanica</h2>
+<p>Questo argomento (lezioni 19-20) serve per confrontarlo con la conservazione della quantità di moto: sono due leggi <strong>diverse</strong>, con condizioni diverse.</p>
+<h3>Enunciato</h3>
+<p>L&#39;<strong>energia meccanica</strong> di un corpo (o sistema) è la somma dell&#39;energia cinetica e dell&#39;energia potenziale:</p>
+<p><span class="m d">E = K + U = \tfrac12 mv^2 + U</span></p>
+<p>dove <span class="m">E</span>, <span class="m">K</span>, <span class="m">U</span> sono in joule. Se sul sistema compiono lavoro <strong>solo forze conservative</strong> (peso, forza elastica, gravitazione), l&#39;energia meccanica si conserva:</p>
+<p><span class="m d">K_i + U_i = K_f + U_f</span></p>
+<h3>Perché</h3>
+<ol>
+<li>Il <strong>teorema dell&#39;energia cinetica</strong> dice che il lavoro di tutte le forze è uguale alla variazione di energia cinetica: <span class="m">W = \Delta K</span>.</li>
+<li>Per una forza <strong>conservativa</strong> il lavoro dipende solo dai punti iniziale e finale ed è uguale a meno la variazione di energia potenziale: <span class="m">W_c = -\Delta U</span>.</li>
+<li>Se lavorano solo forze conservative, <span class="m">\Delta K = -\Delta U</span>, cioè <span class="m">\Delta K + \Delta U = 0</span>: <span class="m">E</span> è costante.</li>
+</ol>
+<h3>Quando non vale</h3>
+<p>Se lavorano anche forze <strong>non conservative</strong> (attrito, resistenza dell&#39;aria, forze dissipative degli urti), l&#39;energia meccanica cambia, e la variazione è proprio il lavoro di queste forze:</p>
+<p><span class="m d">W_{nc} = \Delta E = E_f - E_i</span></p>
+<p>L&#39;attrito fa un lavoro negativo: l&#39;energia meccanica diminuisce e la differenza diventa calore. Forze che non compiono lavoro (la reazione normale di un piano fermo, la tensione di un filo sempre perpendicolare al moto) non disturbano la conservazione.</p>
+<h3>Confronto tra le due leggi di conservazione</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Quantità di moto</th>
+<th>Energia meccanica</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Grandezza</td>
+<td><span class="m">\vec P = \sum m_i\vec v_i</span> (vettore)</td>
+<td><span class="m">E = K + U</span> (scalare)</td>
+</tr>
+<tr>
+<td>Si conserva se</td>
+<td>risultante delle forze <strong>esterne</strong> nulla</td>
+<td>lavorano solo forze <strong>conservative</strong></td>
+</tr>
+<tr>
+<td>Le forze interne</td>
+<td>non la cambiano mai</td>
+<td>possono cambiarla (se non conservative)</td>
+</tr>
+<tr>
+<td>Esempio tipico</td>
+<td>urti, esplosioni, rinculo</td>
+<td>caduta, molle, pendolo, piani lisci</td>
+</tr>
+</tbody></table>
+<p>Negli urti anelastici la quantità di moto si conserva ma l&#39;energia meccanica no. In una caduta libera l&#39;energia meccanica si conserva ma la quantità di moto del sasso no (il peso è una forza esterna).</p>
+<div class="callout esempio">
+
+<p><strong>Blocco tra due colline (dalla dispensa).</strong> Due colline alte <span class="m">H = 850\,\mathrm m</span> e <span class="m">h = 750\,\mathrm m</span> sono separate da una valle; il percorso tra le cime è lungo <span class="m">L = 3{,}2\,\mathrm{km}</span> con pendenza media <span class="m">\theta = 30°</span> su entrambi i lati. Un blocco parte da fermo dalla cima più alta.</p>
+<p>(a) <strong>Senza attrito</strong>: l&#39;energia meccanica si conserva.</p>
+<p><span class="m d">mgH = mgh + \tfrac12 mv^2 \;\Rightarrow\; v = \sqrt{2g(H - h)} = \sqrt{2 \cdot 9{,}8 \cdot 100} \approx 44{,}3\,\mathrm{m/s}</span></p>
+<p>(b) <strong>Con attrito</strong>, quale coefficiente <span class="m">\mu</span> lo fa fermare esattamente sull&#39;altra cima? Il blocco è fermo all&#39;inizio e alla fine, quindi la variazione di energia meccanica è solo potenziale, ed è uguale al lavoro (negativo) dell&#39;attrito. Su un piano inclinato la forza normale è <span class="m">mg\cos\theta</span> e l&#39;attrito <span class="m">\mu mg\cos\theta</span>, lungo tutto il percorso <span class="m">L</span>:</p>
+<p><span class="m d">mg(h - H) = -\mu\,mg\cos\theta\,L \;\Rightarrow\; \mu = \frac{H - h}{L\cos\theta} = \frac{100}{3200 \cdot 0{,}866} \approx 0{,}036</span></p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Pista da skateboard (dalla dispensa).</strong> Una pista ha un tratto piano lungo <span class="m">L = 40\,\mathrm{cm}</span> con attrito <span class="m">\mu = 0{,}20</span> e due estremità curve lisce. Un punto parte da fermo da un&#39;estremità alta <span class="m">h = L/2</span>. Dove si ferma?</p>
+<ul>
+<li>Energia iniziale (rispetto al piano): <span class="m">E_0 = mgh = mgL/2</span>.</li>
+<li>Ogni attraversamento completo del tratto piano costa il lavoro dell&#39;attrito: <span class="m">\mu mgL</span>. Le parti curve non tolgono energia.</li>
+<li>Numero di attraversamenti possibili: <span class="m">n = \dfrac{mgL/2}{\mu mgL} = \dfrac{1}{2\mu} = \dfrac{1}{0{,}40} = 2{,}5</span>.</li>
+</ul>
+<p>Il punto fa due attraversamenti completi e si ferma a metà del terzo: cioè <strong>al centro del tratto piano</strong>, a <span class="m">20\,\mathrm{cm}</span> dalle due estremità.</p>
+</div>
+
+<h2>Sistemi a massa variabile: il razzo</h2>
+<h3>L&#39;idea</h3>
+<p>La forma <span class="m">\vec F = d\vec p/dt</span> ammette una possibilità nuova: la velocità di un corpo può cambiare <strong>anche senza forze esterne</strong>, se cambia la sua massa. È il caso del razzo, che espelle continuamente gas ad alta velocità.</p>
+<p>In realtà il sistema &quot;giusto&quot; da considerare è <strong>razzo + combustibile espulso</strong>: la massa totale di questo sistema resta costante, e nello spazio libero (senza gravità né attriti) il sistema è isolato, quindi la sua quantità di moto si conserva. Il gas viene spinto indietro e, per il terzo principio, spinge il razzo in avanti.</p>
+<h3>Derivazione passo per passo</h3>
+<p>Mettiamoci in un riferimento inerziale nello spazio libero.</p>
+<ul>
+<li>All&#39;istante <span class="m">t</span> il razzo ha massa <span class="m">m</span> e velocità <span class="m">v</span>. Quantità di moto: <span class="m">mv</span>.</li>
+<li>All&#39;istante <span class="m">t + dt</span> il razzo ha espulso una massa <span class="m">dm</span> di gas (con <span class="m">dm &gt; 0</span>): la sua massa è <span class="m">m - dm</span> e la sua velocità <span class="m">v + dv</span>. Il gas espulso ha velocità <span class="m">V</span> (nel riferimento inerziale).</li>
+</ul>
+<p>Conservazione della quantità di moto del sistema:</p>
+<p><span class="m d">mv = (m - dm)(v + dv) + dm\,V</span></p>
+<p>Sviluppo il prodotto:</p>
+<p><span class="m d">mv = mv + m\,dv - v\,dm - dm\,dv + V\,dm</span></p>
+<p>Semplifico <span class="m">mv</span> e trascuro <span class="m">dm\,dv</span> (prodotto di due infinitesimi, molto più piccolo degli altri termini):</p>
+<p><span class="m d">0 = m\,dv + (V - v)\,dm</span></p>
+<p>La quantità <span class="m">u = V - v</span> è la <strong>velocità del gas rispetto al razzo</strong> (a meno di infinitesimi, <span class="m">u = V - (v + dv)</span>). Quindi:</p>
+<p><span class="m d">m\,dv = -u\,dm</span></p>
+<p>Il gas va all&#39;indietro, quindi <span class="m">u</span> è negativa e <span class="m">dv</span> è positiva: il razzo accelera in avanti. In modulo, dividendo per <span class="m">dt</span>:</p>
+<p><span class="m d">m\frac{dv}{dt} = |u|\frac{dm}{dt}</span></p>
+<p>Il primo membro è massa per accelerazione, cioè la forza che fa accelerare il razzo. Questa forza si chiama <strong>spinta</strong>:</p>
+<p><span class="m d">\text{spinta} = |u|\,\frac{dm}{dt}</span></p>
+<p>dove <span class="m">|u|</span> è la velocità relativa del gas (in <span class="m">\mathrm{m/s}</span>) e <span class="m">dm/dt</span> il <strong>tasso di espulsione</strong> della massa (in <span class="m">\mathrm{kg/s}</span>). La spinta è in newton: <span class="m">\mathrm{m/s\cdot kg/s} = \mathrm{kg\cdot m/s^2}</span>.</p>
+<h3>Velocità in funzione del tempo</h3>
+<p>Supponiamo che <span class="m">|u|</span> e il tasso di espulsione <span class="m">c = dm/dt</span> siano costanti. Allora la massa del razzo decresce linearmente: <span class="m">m(t) = M_0 - ct</span>, con <span class="m">M_0</span> massa iniziale. Dall&#39;equazione <span class="m">m\,dv = |u|\,dm</span>, con <span class="m">dm = c\,dt</span>:</p>
+<p><span class="m d">dv = |u|\,\frac{c\,dt}{M_0 - ct}</span></p>
+<p>Integro da <span class="m">0</span> a <span class="m">t</span> (con <span class="m">\int \frac{c\,dt}{M_0 - ct} = -\ln(M_0 - ct)</span>):</p>
+<p><span class="m d">v(t) - v_0 = |u|\left[-\ln(M_0 - ct)\right]_0^t = |u|\ln\frac{M_0}{M_0 - ct}</span></p>
+<p><span class="m d">v(t) = v_0 + |u|\ln\frac{M_0}{M_0 - ct}</span></p>
+<p>dove <span class="m">v_0</span> è la velocità iniziale. La velocità cresce con il logaritmo del rapporto tra massa iniziale e massa attuale. Se il razzo sale in verticale in presenza di gravità, il peso è una forza esterna che agisce in verso opposto e toglie <span class="m">gt</span>:</p>
+<p><span class="m d">v(t) = v_0 + |u|\ln\frac{M_0}{M_0 - ct} - gt</span></p>
+<p>Lo stesso calcolo, con i segni invertiti, vale per sistemi in cui la massa <strong>aumenta</strong>, come una goccia di pioggia su cui condensa l&#39;umidità durante la caduta.</p>
+<div class="callout esempio">
+
+<p><strong>Razzo al decollo (dalla dispensa).</strong> Massa iniziale <span class="m">M_0 = 10^6\,\mathrm{kg}</span>, tasso di combustione <span class="m">c = 1{,}2\cdot 10^3\,\mathrm{kg/s}</span>, gas espulsi a <span class="m">|u| = 3\cdot 10^4\,\mathrm{m/s}</span> rispetto al razzo. Parte da fermo in verticale. Velocità dopo <span class="m">t = 100\,\mathrm s</span>?</p>
+<ol>
+<li>Massa espulsa: <span class="m">ct = 1{,}2\cdot 10^3 \cdot 100 = 1{,}2\cdot 10^5\,\mathrm{kg}</span>. Massa rimasta: <span class="m">10^6 - 1{,}2\cdot 10^5 = 8{,}8\cdot 10^5\,\mathrm{kg}</span>.</li>
+<li>Logaritmo: <span class="m">\ln\dfrac{10^6}{8{,}8\cdot 10^5} = \ln 1{,}136 \approx 0{,}128</span>.</li>
+<li>Termine di spinta: <span class="m">3\cdot 10^4 \cdot 0{,}128 \approx 3835\,\mathrm{m/s}</span>.</li>
+<li>Termine di gravità: <span class="m">gt = 9{,}8 \cdot 100 = 980\,\mathrm{m/s}</span>.</li>
+</ol>
+<p><span class="m d">v(100\,\mathrm s) = 0 + 3835 - 980 \approx 2855\,\mathrm{m/s}</span></p>
+</div>
+
 <div class="callout esame">
 
-<p>Le aperte chiedono di definire quantità di moto e impulso e dove si usano. Risposta: la quantità di moto serve per urti, esplosioni, rinculi, razzi (dove si conserva). L&#39;impulso serve per forze brevi e intense, come colpi e rimbalzi, dove si conosce <span class="m">\Delta p</span> ma non la forza istante per istante.</p>
+<p>Le domande aperte di questa lezione e come rispondere:</p>
+<ul>
+<li><strong>Esporre il teorema dell&#39;impulso</strong>: definisci l&#39;impulso (<span class="m">\vec J = \int\vec F\,dt</span>, <span class="m">\vec F\Delta t</span> se costante, unità <span class="m">\mathrm{N\cdot s}</span>), la quantità di moto (<span class="m">\vec p = m\vec v</span>), ricava il teorema da <span class="m">\vec F\,dt = m\,d\vec v</span> integrando, enuncia <span class="m">\vec J = \Delta\vec p</span>, aggiungi che vale sempre (sistemi isolati e non) e che ne segue la forza media <span class="m">\vec F_m = \Delta\vec p/\Delta t</span> (airbag).</li>
+<li><strong>Conservazione dell&#39;energia meccanica e quando si applica</strong>: <span class="m">E = K + U</span> costante se lavorano solo forze conservative; derivazione da <span class="m">W = \Delta K</span> e <span class="m">W_c = -\Delta U</span>; con forze non conservative <span class="m">W_{nc} = \Delta E</span>; esempio di caduta o di molla.</li>
+<li><strong>Terzo principio</strong>: enunciato con <span class="m">\vec F_{BA} = -\vec F_{AB}</span> sulla stessa retta, forze su corpi diversi, esempi (rinculo, camminare, razzo), conseguenza: le forze interne si annullano e la quantità di moto di un sistema isolato si conserva.</li>
+<li><strong>Conservazione della quantità di moto</strong>: dimostrazione con due corpi e terzo principio, <span class="m">d\vec P/dt = \vec F^{(e)}</span>, quindi <span class="m">\vec P</span> costante se le forze esterne sono nulle; vale componente per componente; esempi (calcio al sasso sul ghiaccio, urti, esplosioni, razzo).</li>
+<li><strong>Definire l&#39;impulso e dove si usa</strong>: forze brevi e intense (colpi, rimbalzi, urti) di cui non si conosce l&#39;andamento ma si conosce l&#39;effetto <span class="m">\Delta\vec p</span>; calcolo della forza media; sistemi di protezione che allungano il tempo.</li>
+<li><strong>Definire la quantità di moto e dove si usa</strong>: <span class="m">\vec p = m\vec v</span>, vettore, unità; descrive lo stato dinamico (<span class="m">\vec F = d\vec p/dt</span>); si usa negli urti, nelle esplosioni, nel rinculo, nei razzi e in tutti i sistemi isolati, dove si conserva.</li>
+</ul>
+<p>Nelle chiuse: attenzione al segno delle velocità nei rimbalzi, alle conversioni (g → kg, cm/s → m/s, km/h → m/s), alle unità (<span class="m">\mathrm{N\cdot s} = \mathrm{kg\cdot m/s}</span>, mai <span class="m">\mathrm{N/s}</span>) e alla differenza tra <span class="m">p \propto v</span> e <span class="m">K \propto v^2</span>.</p>
 </div>
 
 <div class="callout sintesi">
 
 <ul>
-<li><span class="m">\vec p = m\vec v</span>, unità <span class="m">\mathrm{kg\cdot m/s} = \mathrm{N\cdot s}</span>; dipende dal riferimento.</li>
-<li><span class="m">\vec F = d\vec p/dt</span> è la forma generale del secondo principio.</li>
-<li>Teorema dell&#39;impulso: <span class="m">\vec J = \int\vec F\,dt = \Delta\vec p</span>; vale sempre.</li>
-<li>Forza media: <span class="m">\bar F = \Delta p/\Delta t</span>.</li>
-<li>Sistema isolato: <span class="m">\vec P</span> totale costante, perché le forze interne si annullano (terzo principio).</li>
-<li>Energia meccanica costante solo con forze conservative.</li>
+<li>Impulso: <span class="m">\vec J = \int_{t_1}^{t_2}\vec F\,dt</span> (<span class="m">= \vec F\Delta t</span> se <span class="m">\vec F</span> costante), vettore, in <span class="m">\mathrm{N\cdot s}</span>.</li>
+<li>Quantità di moto: <span class="m">\vec p = m\vec v</span>, vettore, in <span class="m">\mathrm{kg\cdot m/s} = \mathrm{N\cdot s}</span>; dipende dal riferimento come <span class="m">K</span>.</li>
+<li>Teorema dell&#39;impulso: <span class="m">\vec J = \Delta\vec p</span>; vale sempre. Forza media <span class="m">\vec F_m = \Delta\vec p/\Delta t</span>.</li>
+<li>Secondo principio generale: <span class="m">\vec F = d\vec p/dt</span>.</li>
+<li>Sistema isolato: <span class="m">\vec P</span> totale costante, perché le forze interne si annullano per il terzo principio.</li>
+<li>Terzo principio: <span class="m">\vec F_{BA} = -\vec F_{AB}</span>, forze su corpi diversi, stessa retta.</li>
+<li>Energia meccanica <span class="m">E = K + U</span> costante solo con forze conservative; altrimenti <span class="m">W_{nc} = \Delta E</span>.</li>
+<li>Razzo: spinta <span class="m">= |u|\,dm/dt</span>; <span class="m">v = v_0 + |u|\ln\frac{M_0}{M_0 - ct}\ (-gt)</span>.</li>
 </ul>
 </div>

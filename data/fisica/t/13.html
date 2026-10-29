@@ -1,84 +1,249 @@
 <h1>Lezione 13 — Sistemi non inerziali e forze apparenti</h1>
-<h2>Cos&#39;è un sistema non inerziale</h2>
-<p>Un sistema è <strong>non inerziale</strong> se accelera o ruota rispetto a un sistema inerziale. Esempi: un&#39;auto che frena, un ascensore che parte, una giostra, la Terra stessa.</p>
-<p>In un sistema non inerziale il principio d&#39;inerzia non vale. Un corpo libero sembra accelerare senza che niente lo spinga.</p>
-<h2>Le forze apparenti</h2>
-<p>Per usare comunque <span class="m">F = ma</span> l&#39;osservatore non inerziale aggiunge delle <strong>forze apparenti</strong> (dette anche fittizie o d&#39;inerzia):
-<span class="m d">m\vec a\,' = \vec F_{reali} + \vec F_{app}</span>
-dove <span class="m">\vec a\,'</span> = accelerazione misurata nel sistema non inerziale (m/s²), <span class="m">\vec F_{reali}</span> = forze dovute a interazioni vere (N), <span class="m">\vec F_{app}</span> = forze apparenti (N).</p>
-<p>Le forze apparenti vengono dai termini di trascinamento e di Coriolis del moto relativo. Proprietà:</p>
+<p>Le leggi della dinamica valgono nella forma <span class="m">\vec F = m\vec a</span> nei sistemi <strong>inerziali</strong>, che si muovono di moto rettilineo uniforme l&#39;uno rispetto all&#39;altro: in essi lo stato di moto di un corpo cambia solo quando agisce una forza dovuta a un altro corpo. Ma spesso osserviamo il mondo da sistemi che <strong>accelerano</strong> o <strong>ruotano</strong>: un&#39;auto che frena o curva, un ascensore che parte, una giostra, la Terra stessa. Questa lezione mostra come si scrive la dinamica in questi sistemi, usando le leggi dei moti relativi (lezione 9), e introduce le <strong>forze apparenti</strong>: trascinamento, centrifuga, Coriolis.</p>
+<h2>Sistemi non inerziali</h2>
+<p>Tutti i sistemi che si muovono, rispetto a un sistema inerziale considerato fisso, di moto <strong>non rettilineo uniforme</strong> si dicono <strong>sistemi non inerziali</strong>. In pratica: un sistema non è inerziale quando <strong>ruota</strong> oppure quando la sua velocità <strong>varia</strong> in intensità o in direzione.</p>
+<p>In un sistema non inerziale il principio d&#39;inerzia <strong>non vale</strong>: un corpo libero (nessuna forza) sembra accelerare senza che niente lo spinga. Esempio: in un autobus che frena, una pallina ferma sul pavimento rotola in avanti da sola.</p>
+<h2>La seconda legge vista da un sistema non inerziale</h2>
+<p>Supponiamo che una forza <strong>reale</strong> <span class="m">\vec F</span> (dovuta all&#39;interazione con altri corpi) agisca su un corpo di massa <span class="m">m</span>, producendo un&#39;accelerazione <span class="m">\vec a</span> nel sistema <strong>fisso</strong> (inerziale): <span class="m">\vec F = m\vec a</span>.</p>
+<p>Nella lezione 9 abbiamo ricavato la legge di composizione delle accelerazioni:
+<span class="m d">\vec a = \vec a\,' + \vec a_{tr} + \vec a_{Co}</span>
+Ricavo l&#39;accelerazione relativa <span class="m">\vec a\,'</span> (quella misurata nel sistema mobile) e moltiplico per <span class="m">m</span>:
+<span class="m d">m\vec a\,' = m\vec a - m\vec a_{tr} - m\vec a_{Co} = \vec F - m\vec a_{tr} - m\vec a_{Co}</span>
+Quindi, nel sistema <strong>non inerziale</strong>, il prodotto <span class="m">m\vec a\,'</span> è uguale alla <strong>somma</strong> di:</p>
 <ul>
-<li><strong>non</strong> derivano dall&#39;interazione con un altro corpo;</li>
-<li>quindi <strong>non hanno reazione</strong>: il terzo principio non vale per loro;</li>
-<li>esistono solo per l&#39;osservatore non inerziale; per quello fermo non esistono;</li>
-<li>sono proporzionali alla massa (per questo si chiamano &quot;d&#39;inerzia&quot;);</li>
-<li>non sono immaginarie: si <strong>misurano</strong> con un dinamometro.</li>
+<li>la <strong>forza reale</strong> <span class="m">\vec F</span>, causata da un&#39;interazione effettiva e presente in ogni sistema;</li>
+<li>il termine di <strong>trascinamento</strong> <span class="m">\vec F_{tr} = -m\vec a_{tr}</span>;</li>
+<li>il termine di <strong>Coriolis</strong> <span class="m">\vec F_{Co} = -m\vec a_{Co} = -2m\,\vec\omega\times\vec v\,'</span>.</li>
 </ul>
-<h2>Sistema che trasla con accelerazione</h2>
-<p>Se il sistema accelera con <span class="m">\vec A</span>, compare la forza apparente di trascinamento:
-<span class="m d">\vec F_t = -m\vec A</span>
-dove <span class="m">m</span> = massa del corpo (kg) e <span class="m">\vec A</span> = accelerazione del sistema (m/s²). È sempre opposta all&#39;accelerazione del sistema.</p>
-<div class="callout esempio">
-
-<p>Un furgone frena a <span class="m">-2{,}8\,\mathrm{m/s^2}</span>. Una cassa di <span class="m">0{,}25\,\mathrm{kg}</span> scorre senza attrito sul pianale.</p>
+<p>Scritto in modo compatto:
+<span class="m d">m\vec a\,' = \vec F + \vec F_{tr} + \vec F_{Co}</span>
+dove <span class="m">\vec a\,'</span> = accelerazione misurata nel sistema non inerziale (m/s²), <span class="m">\vec F</span> = risultante delle forze reali (N), <span class="m">\vec F_{tr}</span> e <span class="m">\vec F_{Co}</span> = forze apparenti (N).</p>
+<p>Gli ultimi due termini <strong>non</strong> sono prodotti da un&#39;interazione con un altro corpo: sono un <strong>effetto dinamico</strong> dovuto al fatto di trovarsi in un sistema di riferimento non inerziale. Per questa caratteristica prendono il nome di <strong>forze di inerzia</strong>, o più comunemente <strong>forze apparenti</strong> o <strong>fittizie</strong>. Grazie a esse l&#39;osservatore non inerziale può continuare a usare la &quot;seconda legge&quot;, purché aggiunga alle forze vere anche quelle apparenti.</p>
+<h2>Proprietà delle forze apparenti</h2>
 <ul>
-<li>Da terra: la cassa continua a velocità costante (nessuna forza orizzontale).</li>
-<li>Dal furgone: la cassa accelera in avanti, spinta da <span class="m">F' = 0{,}25 \cdot 2{,}8 = 0{,}7\,\mathrm N</span>.
-Lo stesso ti succede in un&#39;auto che frena di colpo: ti senti spinto in avanti da <span class="m">-m\vec A</span>.</li>
+<li><strong>Non</strong> derivano dall&#39;interazione con un altro corpo: <strong>nessun ente fisico</strong> ne è responsabile.</li>
+<li>Quindi <strong>non hanno reazione</strong>: per esse il terzo principio non vale (non c&#39;è un &quot;altro corpo&quot; su cui applicare la reazione).</li>
+<li>Esistono <strong>solo per l&#39;osservatore non inerziale</strong>; per l&#39;osservatore fermo (inerziale) <strong>non esistono</strong>: lui spiega lo stesso fenomeno con le sole forze reali e l&#39;inerzia.</li>
+<li>Sono <strong>proporzionali alla massa</strong> (inerziale) del corpo: per questo si chiamano <strong>forze d&#39;inerzia</strong>. Come il peso, danno a tutti i corpi la stessa accelerazione.</li>
+<li><strong>Non sono immaginarie</strong>: i loro effetti sono reali per chi sta nel sistema e si possono <strong>misurare con un dinamometro</strong>.</li>
+<li>Non sono &quot;forze&quot; nel senso newtoniano (effetto dell&#39;interazione tra corpi): non dipendono dalla presenza o meno di altri corpi.</li>
 </ul>
-</div>
-
-<h2>L&#39;ascensore</h2>
-<p>Un corpo su una bilancia dentro un ascensore che accelera con <span class="m">a_R</span>. La bilancia misura la reazione vincolare <span class="m">R</span>.</p>
-<ul>
-<li>Ascensore fermo o a velocità costante: <span class="m">R = mg</span>.</li>
-<li>Accelera verso l&#39;<strong>alto</strong>: <span class="m">R = m(g + a_R)</span>, ti senti più pesante.</li>
-<li>Accelera verso il <strong>basso</strong> con <span class="m">a_R &lt; g</span>: <span class="m">R = m(g - a_R)</span>, ti senti più leggero.</li>
-<li><strong>Caduta libera</strong> (<span class="m">a_R = g</span>): <span class="m">R = 0</span>. Il corpo è in equilibrio nell&#39;ascensore ma la bilancia segna zero.</li>
-<li>Scende con <span class="m">a_R &gt; g</span>: il corpo si stacca e accelera verso il soffitto con <span class="m">a' = a_R - g</span>.</li>
-</ul>
-<p>Gli aerei per l&#39;addestramento all&#39;assenza di peso sfruttano proprio la caduta libera.</p>
-<h2>Sistema rotante: forza centrifuga</h2>
-<p>Una massa ferma sul bordo di una piattaforma che ruota con <span class="m">\omega</span> costante. Nel sistema della piattaforma è ferma, quindi la risultante deve essere nulla. La forza reale che la trattiene (centripeta) è bilanciata da una forza apparente, la <strong>forza centrifuga</strong>:
-<span class="m d">F_{cf} = m\omega^2 r = \frac{mv^2}{r}</span>
-dove <span class="m">m</span> = massa (kg), <span class="m">\omega</span> = velocità angolare (rad/s), <span class="m">r</span> = distanza dall&#39;asse (m), <span class="m">v</span> = velocità (m/s). È diretta radialmente <strong>verso l&#39;esterno</strong>.</p>
-<div class="callout esempio">
-
-<p>Auto in curva. Il passeggero dice: &quot;Una forza mi spinge verso l&#39;esterno&quot; (forza centrifuga). L&#39;osservatore a terra dice: &quot;Il passeggero tende ad andare dritto per inerzia; è il sedile che lo spinge verso il centro&quot;. Stessa scena, due descrizioni corrette.</p>
-</div>
-
-<p><strong>Si può misurare la forza centrifuga?</strong> Sì, ma solo in un sistema non inerziale. Un dinamometro che trattiene un corpo su una giostra segna una forza. Per l&#39;osservatore rotante è la centrifuga. Per l&#39;osservatore inerziale è la forza centripeta che il dinamometro esercita sul corpo.</p>
-<p><strong>Peso e latitudine.</strong> La Terra ruota, quindi a latitudine <span class="m">\alpha</span> si sente una piccola forza centrifuga <span class="m">m\omega^2 R\cos\alpha</span>. Il peso misurato è leggermente minore all&#39;Equatore che ai poli (circa lo <span class="m">0{,}3\%</span>). La verticale del filo a piombo devia di pochi decimi di grado.</p>
-<h2>Sistema rotante: forza di Coriolis</h2>
-<p>Se il corpo si <strong>muove</strong> rispetto al sistema rotante, compare una seconda forza apparente:
-<span class="m d">\vec F_{Co} = -2m\,\vec\omega \times \vec v\,'</span>
-dove <span class="m">\vec\omega</span> = velocità angolare del sistema (rad/s) e <span class="m">\vec v\,'</span> = velocità del corpo rispetto al sistema rotante (m/s).</p>
-<p>Caratteristiche:</p>
-<ul>
-<li>è perpendicolare alla velocità relativa: devia il corpo senza cambiarne il modulo della velocità;</li>
-<li>è nulla se il corpo è fermo nel sistema rotante o si muove parallelo all&#39;asse.</li>
-</ul>
-<p>Esempio della giostra: dal centro lanci una palla verso l&#39;esterno. Da terra la palla va dritta. Per chi sta sulla giostra (che gira in senso antiorario) la palla curva verso destra: serve la forza di Coriolis per spiegarlo.</p>
-<p>Effetti sulla Terra:</p>
-<ul>
-<li>nell&#39;emisfero Nord i corpi in moto vengono deviati verso <strong>destra</strong>, nel Sud verso <strong>sinistra</strong>;</li>
-<li>venti e correnti marine deviano; i cicloni girano in senso antiorario a Nord e orario a Sud;</li>
-<li>un grave che cade viene deviato verso Est;</li>
-<li>una sponda dei fiumi si erode più dell&#39;altra.</li>
-</ul>
-<p>Se la velocità angolare cambia nel tempo, compare anche una terza forza apparente, <span class="m">-m\,\dfrac{d\vec\omega}{dt} \times \vec r\,'</span>.</p>
 <div class="callout attenzione">
 
-<p>Nei problemi normali la Terra si tratta come inerziale. Gli effetti sono piccoli: un grave che cade da <span class="m">100\,\mathrm m</span> devia di pochi centimetri. Contano solo per fenomeni lunghi e su grandi distanze.</p>
+<p>&quot;Apparente&quot; non vuol dire &quot;che non si misura&quot; o &quot;che non ha effetti&quot;. Vuol dire che <strong>dipende dal sistema di riferimento</strong>: c&#39;è per l&#39;osservatore accelerato e non c&#39;è per quello inerziale. Il passeggero in curva viene davvero schiacciato contro la portiera, e un dinamometro solidale con lui misura davvero una forza.</p>
+</div>
+
+<h2>Sistema che trasla con accelerazione: la forza di trascinamento</h2>
+<p>Il caso più semplice: il sistema mobile <strong>trasla senza ruotare</strong> (<span class="m">\vec\omega = 0</span>) con accelerazione <span class="m">\vec A</span> (accelerazione rettilinea del sistema). Allora <span class="m">\vec a_{tr} = \vec A</span> e <span class="m">\vec a_{Co} = 0</span>, e compare solo la <strong>forza apparente di trascinamento</strong>:
+<span class="m d">\vec F_{tr} = -m\vec A</span>
+dove <span class="m">m</span> = massa del corpo (kg) e <span class="m">\vec A</span> = accelerazione del sistema rispetto al sistema inerziale (m/s²). È <strong>sempre opposta</strong> all&#39;accelerazione del sistema: in un&#39;auto che accelera ci si sente spinti all&#39;indietro contro il sedile, in un&#39;auto che frena ci si sente spinti in avanti.</p>
+<div class="callout esempio">
+
+<p><strong>Esercizio della dispensa: la cassa nel furgone che frena.</strong> Un osservatore O&#39; viaggia su un furgone che si muove a velocità costante. Nel rimorchio c&#39;è una cassa di <span class="m">0{,}25\,\mathrm{kg}</span> che può scorrere <strong>senza attrito</strong> sul pavimento. A un certo punto il furgone frena con decelerazione costante, che un osservatore sul ciglio della strada misura pari a <span class="m">-2{,}8\,\mathrm{m/s^2}</span>.</p>
+<p><em>Che cosa vede l&#39;osservatore a terra?</em> Sulla cassa non agisce nessuna forza orizzontale (niente attrito). Per il primo principio, nel suo sistema inerziale la cassa <strong>continua a muoversi di moto rettilineo uniforme</strong> con la velocità che aveva prima della frenata. È il furgone che rallenta &quot;sotto&quot; la cassa.</p>
+<p><em>Che cosa vede O&#39;?</em> Per lui, solidale con il furgone (non inerziale, <span class="m">A = -2{,}8\,\mathrm{m/s^2}</span>), la cassa che prima era ferma comincia ad <strong>accelerare in avanti</strong>, nel verso del moto che il furgone aveva prima della frenata. Lo spiega con una forza fittizia:
+<span class="m d">F' = -mA = -0{,}25\cdot(-2{,}8) = +0{,}7\,\mathrm N</span>
+diretta in avanti (nel verso di marcia). La cassa accelera rispetto al furgone con <span class="m">a' = 2{,}8\,\mathrm{m/s^2}</span>.</p>
+<p>Lo stesso succede a noi in un&#39;auto che frena di colpo: ci sentiamo spinti in avanti dalla forza <span class="m">-m\vec A</span>, e la cintura (forza reale) ci trattiene.</p>
+</div>
+
+<h2>L&#39;ascensore: il caso emblematico</h2>
+<p>Il caso più semplice e più significativo di dinamica in un sistema non inerziale è l&#39;<strong>ascensore</strong>, fino al caso estremo dell&#39;ascensore in <strong>caduta libera</strong>.</p>
+<p><strong>Ascensore fermo.</strong> Sul pavimento c&#39;è una bilancia (in realtà un <strong>dinamometro</strong>) con sopra un corpo di massa <span class="m">m</span>. La bilancia misura la <strong>reazione vincolare</strong> che il pavimento, tramite la bilancia, esercita sul corpo, opposta alla forza peso. In equilibrio:
+<span class="m d">R = mg</span></p>
+<p><strong>Ascensore con accelerazione costante <span class="m">\vec a_R</span>.</strong> Il pavimento continua a trasmettere, tramite la bilancia, una reazione vincolare <span class="m">\vec R</span> al corpo. Nel sistema dell&#39;ascensore (non inerziale) agiscono sul corpo:</p>
+<ul>
+<li>la forza <strong>reale</strong> di gravità <span class="m">\vec F_g = m\vec g</span>;</li>
+<li>la forza <strong>fittizia di trascinamento</strong> <span class="m">\vec F_t = -m\vec a_R</span>, nella sua forma più semplice (accelerazione rettilinea del sistema);</li>
+<li>la <strong>reazione vincolare</strong> <span class="m">\vec R</span> (forza reale).</li>
+</ul>
+<p>Finché il corpo è in <strong>equilibrio statico</strong> dentro l&#39;ascensore (fermo rispetto al pavimento), la reazione vincolare è attiva e compensa la risultante delle altre due forze, <span class="m">\vec F_g + \vec F_t</span>, purché questa sia diretta <strong>verso il basso</strong> (il pavimento può solo spingere, non tirare):
+<span class="m d">\vec R + m\vec g - m\vec a_R = 0</span></p>
+<p>Prendo come positivo il verso <strong>verso l&#39;alto</strong> e analizzo i casi.</p>
+<ol>
+<li><strong>Ascensore fermo o a velocità costante</strong> (<span class="m">a_R = 0</span>): <span class="m">R = mg</span>. Nessuna differenza rispetto a terra (relatività galileiana).</li>
+<li><strong>Accelera verso l&#39;alto</strong> (sale aumentando la velocità, o scende frenando), <span class="m">a_R &gt; 0</span>: la forza fittizia <span class="m">-ma_R</span> è verso il basso e si somma al peso:
+<span class="m d">R - mg - ma_R = 0 \quad\Rightarrow\quad R = m(g + a_R)</span>
+La bilancia segna <strong>di più</strong>: ci si sente più pesanti.</li>
+<li><strong>Accelera verso il basso</strong> con <span class="m">a_R &lt; g</span> (scende aumentando la velocità, o sale frenando): la forza fittizia è verso l&#39;alto e si sottrae al peso:
+<span class="m d">R = m(g - a_R)</span>
+La bilancia segna <strong>di meno</strong>: ci si sente più leggeri.</li>
+<li><strong>Caduta libera</strong>, <span class="m">a_R = g</span> verso il basso: <span class="m">R = m(g - g) = 0</span>. Il corpo è <strong>in equilibrio</strong> rispetto all&#39;ascensore (ci resta fermo), ma la bilancia segna un <strong>peso nullo</strong>: forza fittizia e peso si annullano esattamente. Il corpo <strong>fluttua</strong>.</li>
+<li><strong>Accelera verso il basso con <span class="m">a_R &gt; g</span></strong>: la forza fittizia verso l&#39;alto, <span class="m">ma_R</span>, è più forte della gravità. Il corpo si <strong>stacca</strong> dal pavimento (la reazione non può diventare negativa) e accelera verso il <strong>soffitto</strong> con accelerazione relativa
+<span class="m d">a' = a_R - g \quad\text{(verso l'alto)}</span></li>
+</ol>
+<p>Per questo le simulazioni di assenza di gravità si fanno su <strong>grandi aerei</strong> che, raggiunta un&#39;alta quota, vengono lasciati cadere in <strong>caduta libera</strong> per un certo tempo: dentro, tutto fluttua.</p>
+<div class="callout esempio">
+
+<p><strong>Numeri.</strong> Una persona di <span class="m">70\,\mathrm{kg}</span> su una bilancia in ascensore (<span class="m">g = 9{,}8\,\mathrm{m/s^2}</span>).</p>
+<ul>
+<li>Ascensore che parte verso l&#39;alto con <span class="m">a_R = 2\,\mathrm{m/s^2}</span>: <span class="m">R = 70\cdot(9{,}8 + 2) = 826\,\mathrm N</span> (la bilancia &quot;segna&quot; <span class="m">84{,}3\,\mathrm{kg}</span>).</li>
+<li>Ascensore che parte verso il basso con <span class="m">2\,\mathrm{m/s^2}</span>: <span class="m">R = 70\cdot 7{,}8 = 546\,\mathrm N</span> (segna <span class="m">55{,}7\,\mathrm{kg}</span>).</li>
+<li>Cavo spezzato (caduta libera): <span class="m">R = 0</span>.</li>
+<li>Ascensore spinto verso il basso con <span class="m">a_R = 2g</span>: la persona va verso il soffitto con <span class="m">a' = 2g - g = g</span>. Se si misura, dentro l&#39;ascensore, un&#39;accelerazione <span class="m">g</span> verso l&#39;alto per un corpo che prima era appoggiato al pavimento, l&#39;ascensore sta scendendo con accelerazione <span class="m">2g</span> (lezione 11).</li>
+</ul>
+</div>
+
+<h2>Sistema rotante: la forza centrifuga</h2>
+<p>Passiamo a una forza fittizia che sperimentiamo spesso nella vita quotidiana. Consideriamo una massa <span class="m">m</span> <strong>fissa</strong> sul bordo di una piattaforma circolare di raggio <span class="m">R</span> che ruota con velocità angolare <strong>costante</strong> <span class="m">\omega</span>, e descriviamola nel sistema <strong>solidale con la piattaforma</strong>. In questo sistema la massa ha posizione fissa: velocità relativa e accelerazione relativa <strong>nulle</strong>, <span class="m">\vec v\,' = 0</span> e <span class="m">\vec a\,' = 0</span>.</p>
+<p>Siamo in un sistema non inerziale. Dalla legge dei moti relativi, con <span class="m">\vec a_{O'} = 0</span> (il centro è fermo), <span class="m">d\vec\omega/dt = 0</span> (rotazione uniforme) e <span class="m">\vec v\,' = 0</span> (niente Coriolis):
+<span class="m d">m\vec a\,' = \vec F - m\,\vec\omega\times(\vec\omega\times\vec r\,') = 0</span>
+Poiché <span class="m">\vec\omega\times(\vec\omega\times\vec r\,') = -\omega^2\vec r\,'</span> (con <span class="m">\vec r\,'</span> nel piano della piattaforma, perpendicolare all&#39;asse):
+<span class="m d">\vec F + m\omega^2\vec r\,' = 0</span>
+Avendo accelerazione relativa nulla, le due forze <strong>si annullano</strong>:</p>
+<ul>
+<li>quella <strong>attiva</strong> (reale), <span class="m">\vec F = -m\omega^2\vec r\,'</span>, che sappiamo essere la <strong>forza centripeta</strong> (diretta verso il centro): è ciò che tiene la massa sulla piattaforma (un perno, una molla, un filo, l&#39;attrito);</li>
+<li>quella <strong>fittizia</strong>, la <strong>forza centrifuga</strong>:
+<span class="m d">\vec F_{cf} = m\omega^2\vec r\,', \qquad F_{cf} = m\omega^2 r = \frac{mv^2}{r}</span>
+dove <span class="m">m</span> = massa (kg), <span class="m">\omega</span> = velocità angolare (rad/s), <span class="m">r</span> = distanza dall&#39;asse di rotazione (m), <span class="m">v = \omega r</span> = velocità del punto vista da terra (m/s).</li>
+</ul>
+<p>Dall&#39;espressione si vede che la forza centrifuga è diretta come <span class="m">\vec r\,'</span>, cioè <strong>radialmente verso l&#39;esterno</strong> (&quot;ad uscire&quot;). Ha lo stesso modulo della forza centripeta e verso opposto, ma <strong>non</strong> sono una coppia azione-reazione: la centrifuga esiste solo nel sistema rotante e non ha reazione.</p>
+<h3>Due osservatori, due descrizioni corrette</h3>
+<p>È l&#39;esempio della piattaforma della dispensa 09, con un corpo trattenuto da una <strong>molla</strong> e uno da un <strong>filo</strong>:</p>
+<ul>
+<li>l&#39;osservatore <strong>fermo</strong> vede i corpi in moto circolare uniforme e conclude che la molla e il filo esercitano le forze <strong>centripete</strong> necessarie, <span class="m">F_{el} = m\omega^2 R</span> e <span class="m">T = m'\omega^2 R'</span>;</li>
+<li>l&#39;osservatore <strong>sulla piattaforma</strong> vede i corpi <strong>fermi</strong> e spiega l&#39;equilibrio con due forze <strong>centrifughe</strong> che bilanciano la molla e il filo: <span class="m">F_{centrifuga} = F_{el}</span> e <span class="m">F'_{centrifuga} = T</span>.</li>
+</ul>
+<div class="callout esempio">
+
+<p><strong>Il passeggero in curva.</strong> Un&#39;auto percorre una curva a velocità costante.</p>
+<ul>
+<li>Il passeggero (sistema non inerziale) dice: &quot;Una forza mi spinge verso l&#39;esterno della curva&quot;: è la <strong>forza centrifuga</strong>. Per restare fermo rispetto all&#39;auto si appoggia alla portiera, che lo spinge verso l&#39;interno: le due forze si bilanciano.</li>
+<li>L&#39;osservatore a terra (inerziale) dice: &quot;Il passeggero tende per <strong>inerzia</strong> ad andare dritto; è la portiera (o il sedile, la cintura) che lo spinge verso il <strong>centro</strong> della curva, fornendo la forza centripeta che lo fa curvare&quot;.</li>
+</ul>
+<p>Stessa scena, due descrizioni entrambe corrette, ciascuna nel proprio sistema.</p>
+</div>
+
+<h3>Si può misurare la forza centrifuga?</h3>
+<p><strong>Sì, ma soltanto in un sistema di riferimento non inerziale.</strong> Un dinamometro (una molla tarata) che trattiene un corpo su una giostra si allunga e segna una forza. Per l&#39;osservatore che ruota con la giostra quella lettura <strong>è</strong> la forza centrifuga, che il dinamometro bilancia. Per l&#39;osservatore inerziale a terra non c&#39;è nessuna forza centrifuga: il dinamometro sta esercitando sul corpo la forza <strong>centripeta</strong> necessaria al moto circolare. Che sia &quot;apparente&quot; non significa che non si possa misurare: significa che esiste solo per l&#39;osservatore rotante. Non serve nessuno strumento speciale: basta un comune dinamometro.</p>
+<div class="callout esempio">
+
+<p><strong>Esercizio della dispensa: corpo legato a un asse con due fili.</strong> Un corpo di massa <span class="m">m = 1{,}34\,\mathrm{kg}</span> ruota attorno a un&#39;asta verticale, a cui è collegato con due fili senza massa lunghi <span class="m">L = 1{,}70\,\mathrm m</span>, attaccati all&#39;asta in due punti distanti anch&#39;essi <span class="m">L</span>: i due fili tesi e l&#39;asta formano un <strong>triangolo equilatero</strong>. La tensione del filo superiore è <span class="m">T_1 = 35\,\mathrm N</span>. Trovare la forza centrifuga nel sistema solidale con il corpo.</p>
+<p><em>Geometria.</em> Nel triangolo equilatero ogni filo forma <span class="m">60°</span> con l&#39;asta, cioè <span class="m">30°</span> con l&#39;orizzontale: il filo superiore sale verso l&#39;asta a <span class="m">30°</span>, quello inferiore scende a <span class="m">30°</span>. La distanza del corpo dall&#39;asse è l&#39;altezza del triangolo: <span class="m">r = L\cos30° = 1{,}70\cdot 0{,}866 \approx 1{,}47\,\mathrm m</span>.</p>
+<p><em>Equilibrio nel sistema rotante</em> (il corpo è fermo): forze reali <span class="m">T_1</span>, <span class="m">T_2</span>, peso, più la centrifuga orizzontale verso l&#39;esterno.</p>
+<ul>
+<li>Verticale: <span class="m">T_1\sin30° - T_2\sin30° - mg = 0</span> ⇒ <span class="m">T_2 = T_1 - \dfrac{mg}{\sin30°} = 35 - \dfrac{1{,}34\cdot 9{,}8}{0{,}5} = 35 - 26{,}3 = 8{,}7\,\mathrm N</span>.</li>
+<li>Orizzontale: le componenti orizzontali delle tensioni puntano entrambe verso l&#39;asta e sono bilanciate dalla centrifuga:
+<span class="m d">F_{cf} = (T_1 + T_2)\cos30° = (35 + 8{,}7)\cdot 0{,}866 \approx 37{,}9\,\mathrm N</span></li>
+</ul>
+<p>La forza centrifuga vale circa <span class="m">37{,}9\,\mathrm N</span>, verso l&#39;esterno: uguale e opposta alla forza centripeta <span class="m">mv^2/r</span> vista dall&#39;osservatore inerziale. Da qui anche la velocità: <span class="m">v = \sqrt{F r/m} = \sqrt{37{,}9\cdot 1{,}47/1{,}34} \approx 6{,}45\,\mathrm{m/s}</span>.</p>
+</div>
+
+<h3>La centrifuga terrestre: il peso dipende dalla latitudine</h3>
+<p>La superficie terrestre non è un sistema inerziale: ruota con <span class="m">\omega = 7{,}27\cdot 10^{-5}\,\mathrm{rad/s}</span>. In un punto a <strong>latitudine</strong> <span class="m">\alpha</span> un osservatore solidale con la Terra sente una piccola <strong>forza centrifuga</strong>. La distanza dall&#39;asse terrestre è <span class="m">R_T\cos\alpha</span>, quindi il modulo è
+<span class="m d">F_{cf} = m\omega^2 R_T\cos\alpha</span>
+diretta perpendicolarmente all&#39;asse, verso l&#39;esterno: forma con la verticale lo stesso angolo <span class="m">\alpha</span>. La sua componente lungo la verticale (verso l&#39;alto) è <span class="m">m\omega^2 R_T\cos^2\alpha</span> e si sottrae al peso. Chiamata <span class="m">g_0</span> l&#39;intensità di <span class="m">g</span> ai poli (dove la centrifuga è nulla), il peso misurato a latitudine <span class="m">\alpha</span> è circa
+<span class="m d">mg \approx mg_0 - m\omega^2 R_T\cos^2\alpha</span></p>
+<p><em>Ordine di grandezza.</em> <span class="m">\omega^2 R_T = (7{,}27\cdot 10^{-5})^2\cdot 6{,}37\cdot 10^6 \approx 0{,}034\,\mathrm{m/s^2}</span>, cioè circa lo <span class="m">0{,}3\%</span> di <span class="m">g</span>. Quindi la variazione relativa del peso è
+<span class="m d">\frac{mg - mg_0}{mg_0} \approx -0{,}3\%\cdot\cos^2\alpha</span></p>
+<ul>
+<li>ai <strong>poli</strong> (<span class="m">\cos^2\alpha = 0</span>) si ritrova il valore di riferimento;</li>
+<li>all&#39;<strong>Equatore</strong> (<span class="m">\cos^2\alpha = 1</span>) il peso è circa lo <span class="m">0{,}3\%</span> <strong>minore</strong>.</li>
+</ul>
+<p>C&#39;è anche una componente della centrifuga <strong>tangente</strong> alla superficie (verso l&#39;Equatore), che produce una lieve <strong>deviazione della verticale</strong>: il filo a piombo non punta esattamente verso il centro della Terra, ma ne devia di circa un decimo di grado.</p>
+<h2>Le altre forze apparenti in un sistema rotante</h2>
+<p>Per un sistema rotante, oltre alla forza centrifuga, ci sono altre due forze fittizie (vengono dagli altri termini di <span class="m">\vec a_{tr}</span> e da <span class="m">\vec a_{Co}</span>):</p>
+<ol>
+<li>una legata alla <strong>variazione della velocità angolare</strong> nel tempo (accelerazione angolare <span class="m">\vec\alpha = d\vec\omega/dt</span>): <span class="m">\vec F = -m\,\dfrac{d\vec\omega}{dt}\times\vec r\,'</span>. È quella che ci spinge &quot;indietro&quot; quando una giostra parte;</li>
+<li>una legata al <strong>moto del corpo rispetto al sistema rotante</strong>: la <strong>forza di Coriolis</strong> <span class="m">\vec F_{Co} = -2m\,\vec\omega\times\vec v\,'</span>.</li>
+</ol>
+<h2>La forza di Coriolis</h2>
+<p>Se un corpo <strong>si muove</strong> con velocità <span class="m">\vec v\,'</span> rispetto a un sistema che ruota con <span class="m">\vec\omega</span>, nel sistema rotante compare la forza apparente
+<span class="m d">\vec F_{Co} = -2m\,\vec\omega\times\vec v\,'</span>
+dove <span class="m">m</span> = massa (kg), <span class="m">\vec\omega</span> = velocità angolare del sistema (rad/s), <span class="m">\vec v\,'</span> = velocità del corpo rispetto al sistema rotante (m/s). Il modulo è <span class="m">F_{Co} = 2m\omega v'\sin\gamma</span>, con <span class="m">\gamma</span> angolo tra <span class="m">\vec\omega</span> e <span class="m">\vec v\,'</span>.</p>
+<p>Caratteristiche:</p>
+<ul>
+<li>è <strong>perpendicolare alla velocità relativa</strong> (e a <span class="m">\vec\omega</span>): <strong>devia</strong> il corpo, curvandone la traiettoria, senza cambiare il modulo della sua velocità relativa;</li>
+<li>è <strong>nulla</strong> se il corpo è <strong>fermo</strong> nel sistema rotante, o se si muove <strong>parallelamente all&#39;asse</strong> di rotazione;</li>
+<li>è proporzionale alla massa, come tutte le forze apparenti.</li>
+</ul>
+<h3>La palla lanciata sulla giostra</h3>
+<p>L&#39;esempio della dispensa: un osservatore O&#39; sta al <strong>centro</strong> di una piattaforma che ruota e lancia una palla in direzione <strong>radiale</strong>, verso l&#39;esterno.</p>
+<ul>
+<li>L&#39;osservatore <strong>fermo</strong> a terra vede la palla allontanarsi <strong>in linea retta</strong> (dopo il lancio non ci sono forze orizzontali: primo principio).</li>
+<li>L&#39;osservatore <strong>sulla piattaforma</strong> vede invece una <strong>traiettoria curva</strong>: mentre la palla vola, la piattaforma sotto di lei ruota. La sola forza centrifuga non basta a spiegarlo (spingerebbe la palla lungo il raggio, verso l&#39;esterno). Deve ammettere una forza <strong>trasversale</strong> apparente: la <strong>forza di Coriolis</strong>.</li>
+</ul>
+<p>Il verso della deviazione:</p>
+<ul>
+<li>rotazione <strong>antioraria</strong> (vista dall&#39;alto) e moto di <strong>allontanamento</strong> dal centro: deviazione verso <strong>destra</strong>;</li>
+<li>rotazione <strong>oraria</strong>, oppure moto di <strong>avvicinamento</strong> al centro: deviazione verso <strong>sinistra</strong>.</li>
+</ul>
+<p>Si può verificare con la formula: con rotazione antioraria <span class="m">\vec\omega</span> punta in alto (<span class="m">\hat k</span>); se <span class="m">\vec v\,' = v'\hat i</span> (verso l&#39;esterno lungo <span class="m">x</span>), <span class="m">\vec\omega\times\vec v\,' = \omega v'\,(\hat k\times\hat i) = \omega v'\,\hat j</span>, quindi <span class="m">\vec F_{Co} = -2m\omega v'\,\hat j</span>: verso <span class="m">-y</span>, cioè alla <strong>destra</strong> di chi guarda nel verso del moto.</p>
+<h3>Coriolis sulla Terra</h3>
+<p>La Terra, che ruota attorno all&#39;asse passante per i poli, è un sistema non inerziale simile alla piattaforma. La forza di Coriolis spiega diversi fenomeni macroscopici, che dipendono dall&#39;<strong>emisfero</strong> (boreale o australe):</p>
+<ul>
+<li><strong>corpo in caduta</strong> verso il centro della Terra: la forza di Coriolis lo spinge verso <strong>Est</strong> (un grave lasciato cadere da <span class="m">100\,\mathrm m</span> si sposta di circa <span class="m">2\,\mathrm{cm}</span> verso Est, lezione 10);</li>
+<li>moto lungo un <strong>meridiano</strong> dal Polo verso l&#39;Equatore (nell&#39;emisfero Nord): la forza è verso <strong>Ovest</strong>; viceversa, partendo dall&#39;Equatore verso il Polo è verso <strong>Est</strong>;</li>
+<li>in generale, nell&#39;emisfero <strong>boreale</strong> (Nord) un corpo in moto orizzontale è sempre spinto verso la <strong>destra</strong> del suo moto; nell&#39;emisfero <strong>australe</strong> (Sud) verso la <strong>sinistra</strong>;</li>
+<li>i <strong>venti</strong> deviano verso destra nell&#39;emisfero Nord e verso sinistra nell&#39;emisfero Sud: è l&#39;origine della circolazione dei venti dominanti (gli <strong>alisei</strong>, i venti da ponente o <em>westerlies</em>, i venti da levante o <em>easterlies</em>) attorno alle zone di alta e bassa pressione;</li>
+<li>i <strong>cicloni</strong> (zone di bassa pressione) ruotano in senso <strong>antiorario</strong> nell&#39;emisfero Nord e <strong>orario</strong> nell&#39;emisfero Sud;</li>
+<li>l&#39;effetto di Coriolis è una delle cause del senso di circolazione delle <strong>correnti marine</strong>;</li>
+<li>l&#39;<strong>erosione prevalente</strong> di una sponda dei fiumi rispetto all&#39;altra.</li>
+</ul>
+<p><em>Verifica della caduta verso Est.</em> Sistema locale con <span class="m">x</span> verso Est, <span class="m">y</span> verso Nord, <span class="m">z</span> verso l&#39;alto; a latitudine <span class="m">\lambda</span> si ha <span class="m">\vec\omega = \omega(\cos\lambda\,\hat j + \sin\lambda\,\hat k)</span>. Un grave che cade ha <span class="m">\vec v\,' = -v\hat k</span>. Allora <span class="m">\vec\omega\times\vec v\,' = \omega\cos\lambda\,(\hat j\times(-v\hat k)) = -\omega v\cos\lambda\,\hat i</span>, e <span class="m">\vec F_{Co} = -2m\,\vec\omega\times\vec v\,' = +2m\omega v\cos\lambda\,\hat i</span>: verso <strong>Est</strong>.</p>
+<div class="callout attenzione">
+
+<p>Nei problemi normali la Terra si tratta come <strong>inerziale</strong>: gli effetti delle forze apparenti terrestri sono piccoli (un grave che cade da <span class="m">100\,\mathrm m</span> devia di pochi centimetri; un corpo a <span class="m">10\,\mathrm{m/s}</span> ha un&#39;accelerazione di Coriolis di circa <span class="m">7\cdot 10^{-4}\,\mathrm{m/s^2}</span>). Contano solo per fenomeni <strong>lunghi</strong> e su <strong>grandi distanze</strong> (venti, correnti, cicloni, proiettili a lunga gittata).</p>
+</div>
+
+<div class="callout attenzione">
+
+<p>Le leggende sul verso dei vortici nei lavandini dipendono dalla forma del lavandino e dai moti residui dell&#39;acqua, non da Coriolis: su pochi centimetri e pochi secondi l&#39;effetto è troppo piccolo.</p>
+</div>
+
+<h2>Riepilogo delle forze apparenti</h2>
+<table>
+<thead>
+<tr>
+<th>Forza apparente</th>
+<th>Espressione</th>
+<th>Quando compare</th>
+<th>Direzione</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>di trascinamento (traslazione)</td>
+<td><span class="m">-m\vec A</span></td>
+<td>sistema che accelera</td>
+<td>opposta all&#39;accelerazione del sistema</td>
+</tr>
+<tr>
+<td>centrifuga</td>
+<td><span class="m">m\omega^2 r</span></td>
+<td>sistema che ruota (anche corpo fermo)</td>
+<td>radiale, verso l&#39;esterno</td>
+</tr>
+<tr>
+<td>dovuta a <span class="m">\dot{\vec\omega}</span></td>
+<td><span class="m">-m\,\dot{\vec\omega}\times\vec r\,'</span></td>
+<td>rotazione non uniforme</td>
+<td>tangenziale</td>
+</tr>
+<tr>
+<td>di Coriolis</td>
+<td><span class="m">-2m\,\vec\omega\times\vec v\,'</span></td>
+<td>sistema che ruota e corpo in moto in esso</td>
+<td>perpendicolare a <span class="m">\vec v\,'</span> e <span class="m">\vec\omega</span></td>
+</tr>
+</tbody></table>
+<div class="callout esame">
+
+<ul>
+<li><strong>&quot;È possibile misurare una forza centrifuga?&quot;</strong> (chiusa): sì, ma <strong>soltanto in un sistema di riferimento non inerziale</strong> (rotante), per esempio con un normale dinamometro solidale con la giostra. Non è vero che &quot;non si misura perché apparente&quot;, non serve un sistema inerziale (lì la centrifuga non esiste: c&#39;è solo la centripeta), non esiste un dinamometro &quot;speciale&quot;.</li>
+<li>Domande collegate in altre lezioni: ascensore che scende con <span class="m">2g</span> (lezione 11), astronauta che galleggia perché nel riferimento dello shuttle la centrifuga compensa la gravità (lezione 12), corpo in un sistema in caduta libera e accelerazione di Coriolis (aperte, lezione 9).</li>
+<li>Per una risposta aperta sulle forze apparenti: definizione di sistema non inerziale; <span class="m">m\vec a\,' = \vec F + \vec F_{tr} + \vec F_{Co}</span>; proprietà (nessun corpo le esercita, niente reazione, proporzionali alla massa, misurabili, esistono solo per l&#39;osservatore accelerato); esempi (auto che frena, ascensore, centrifuga in curva, Coriolis e cicloni).</li>
+</ul>
 </div>
 
 <div class="callout sintesi">
 
 <ul>
-<li>Non inerziale = accelerato o rotante; lì si aggiungono forze apparenti.</li>
-<li>Traslazione accelerata: <span class="m">\vec F_t = -m\vec A</span> (auto che frena, ascensore).</li>
-<li>Rotazione: centrifuga <span class="m">m\omega^2 r</span> verso l&#39;esterno; Coriolis <span class="m">-2m\,\vec\omega\times\vec v\,'</span> sui corpi in moto.</li>
-<li>Le forze apparenti non hanno reazione e non vengono da un corpo, ma si misurano con un dinamometro.</li>
-<li>La forza centrifuga esiste solo nel sistema non inerziale.</li>
+<li>Non inerziale = sistema che accelera o ruota rispetto a un inerziale; lì il principio d&#39;inerzia non vale.</li>
+<li><span class="m">m\vec a\,' = \vec F + \vec F_{tr} + \vec F_{Co}</span>, con <span class="m">\vec F_{tr} = -m\vec a_{tr}</span> e <span class="m">\vec F_{Co} = -2m\,\vec\omega\times\vec v\,'</span>.</li>
+<li>Forze apparenti: nessun corpo le esercita, niente reazione, proporzionali alla massa, misurabili con un dinamometro, esistono solo per l&#39;osservatore non inerziale.</li>
+<li>Traslazione accelerata: <span class="m">\vec F_t = -m\vec A</span> (furgone che frena: <span class="m">0{,}7\,\mathrm N</span> sulla cassa).</li>
+<li>Ascensore: <span class="m">R = m(g + a_R)</span> in su, <span class="m">R = m(g - a_R)</span> in giù, <span class="m">R = 0</span> in caduta libera, con <span class="m">a_R &gt; g</span> il corpo va al soffitto con <span class="m">a_R - g</span>.</li>
+<li>Centrifuga <span class="m">m\omega^2 r</span> verso l&#39;esterno, uguale e opposta alla centripeta nel sistema rotante; si misura solo nel sistema non inerziale. Peso all&#39;Equatore circa lo 0,3% minore che ai poli.</li>
+<li>Coriolis: solo per corpi in moto nel sistema rotante; devia a destra nell&#39;emisfero Nord e a sinistra nel Sud; caduta verso Est, venti, cicloni, correnti, sponde dei fiumi.</li>
 </ul>
 </div>

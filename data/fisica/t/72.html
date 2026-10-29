@@ -1,93 +1,268 @@
 <h1>Lezione 72 — Equazioni di Maxwell e onde elettromagnetiche</h1>
-<h2>Come nascono i campi</h2>
-<p>Campi elettrici e magnetici hanno due tipi di sorgente ciascuno.</p>
+<h2>Di cosa parla questa lezione</h2>
+<p>È la lezione che riunisce tutto l&#39;elettromagnetismo. Le leggi studiate separatamente (Gauss per il campo elettrico e per quello magnetico, Faraday, Ampère) vengono messe insieme; Maxwell si accorse che la legge di Ampère, così com&#39;era, era incompleta e la corresse aggiungendo la <strong>corrente di spostamento</strong>. Con questa correzione le quattro equazioni prevedono l&#39;esistenza di <strong>onde elettromagnetiche</strong> che viaggiano alla velocità della luce: la luce stessa è un&#39;onda elettromagnetica.</p>
+<p>In questa lezione:</p>
+<ul>
+<li>quali sono le sorgenti dei campi elettrici e magnetici;</li>
+<li>la legge di <strong>Ampère-Maxwell</strong> e la corrente di spostamento;</li>
+<li>le quattro <strong>equazioni di Maxwell</strong> in forma integrale e locale;</li>
+<li>le <strong>onde elettromagnetiche</strong>: come nascono, velocità, proprietà, energia, spettro.</li>
+</ul>
+<h2>Come si producono i campi elettrici e magnetici</h2>
+<p>Ciascuno dei due campi ha due tipi di sorgente: una &quot;statica&quot; e una legata alla variazione nel tempo dell&#39;altro campo.</p>
 <table>
 <thead>
 <tr>
 <th></th>
 <th>Sorgente &quot;statica&quot;</th>
-<th>Sorgente &quot;variabile&quot;</th>
+<th>Sorgente &quot;dinamica&quot;</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>Campo elettrico</td>
-<td>cariche elettriche (Gauss)</td>
-<td>campo magnetico variabile (Faraday)</td>
+<td><strong>Campo elettrico</strong></td>
+<td><strong>cariche elettriche</strong> (anche ferme): legge di Coulomb, teorema di Gauss; le linee partono dalle cariche positive e finiscono sulle negative</td>
+<td><strong>campo magnetico variabile nel tempo</strong>: legge di Faraday-Neumann-Lenz; linee chiuse, campo non conservativo</td>
 </tr>
 <tr>
-<td>Campo magnetico</td>
-<td>correnti e magneti (Ampère)</td>
-<td>campo elettrico variabile (Maxwell)</td>
+<td><strong>Campo magnetico</strong></td>
+<td><strong>correnti</strong> (cariche in moto) e magneti permanenti (correnti microscopiche negli atomi): leggi di Laplace e di Ampère</td>
+<td><strong>campo elettrico variabile nel tempo</strong>: termine di Maxwell (corrente di spostamento)</td>
 </tr>
 </tbody></table>
-<p>Quindi un campo che cambia nel tempo genera l&#39;altro campo. Da qui nascono le onde elettromagnetiche.</p>
-<h2>Legge di Ampère-Maxwell</h2>
-<p>La legge di Ampère <span class="m">\oint \vec B \cdot d\vec l = \mu_0 i</span> non basta quando le correnti variano. Esempio: un condensatore che si carica. Nei fili passa corrente. Tra le armature no, ma lì il campo elettrico cresce. Una linea attorno al filo darebbe risultati diversi a seconda della superficie scelta: una taglia il filo, l&#39;altra passa tra le armature.</p>
-<p>Maxwell aggiunse la <strong>corrente di spostamento</strong>:
-<span class="m d">i_s = \varepsilon_0\frac{d\Phi_E}{dt}</span>
+<p>Note importanti:</p>
+<ul>
+<li>Il campo magnetico <strong>non</strong> ha sorgenti puntiformi (non esistono monopoli magnetici): le sue linee sono sempre chiuse.</li>
+<li>Una carica <strong>ferma</strong> produce solo campo elettrico; una carica in <strong>moto uniforme</strong> produce campo elettrico e magnetico; una carica <strong>accelerata</strong> irradia onde elettromagnetiche.</li>
+<li>La simmetria tra le due sorgenti &quot;dinamiche&quot; è ciò che permette ai campi di sostenersi a vicenda e di propagarsi come onde, anche lontano da cariche e correnti.</li>
+</ul>
+<h2>La legge di Ampère-Maxwell</h2>
+<h3>Il problema della legge di Ampère</h3>
+<p>Il teorema di Ampère <span class="m">\oint \vec B \cdot d\vec l = \mu_0\,i_{conc}</span> è stato ricavato per correnti <strong>stazionarie</strong>. Con correnti variabili porta a una contraddizione.</p>
+<p>Esempio: un <strong>condensatore a facce piane che si sta caricando</strong>. Nei fili di collegamento scorre la corrente <span class="m">i</span>; tra le armature non passa nessuna carica (c&#39;è il vuoto o un isolante), ma il campo elettrico cresce perché la carica sulle armature aumenta.</p>
+<ol>
+<li>Prendo come linea chiusa <span class="m">\gamma</span> una circonferenza attorno al filo, vicino al condensatore.</li>
+<li>Scelgo come superficie con bordo <span class="m">\gamma</span> un <strong>disco piatto</strong> che taglia il filo: la corrente concatenata è <span class="m">i</span>, quindi <span class="m">\oint \vec B \cdot d\vec l = \mu_0 i</span>.</li>
+<li>Scelgo invece una superficie a forma di <strong>sacchetto</strong> con lo stesso bordo, che passa <strong>tra le armature</strong> senza toccare il filo: nessuna corrente la attraversa, quindi <span class="m">\oint \vec B \cdot d\vec l = 0</span>.</li>
+</ol>
+<p>La stessa circuitazione avrebbe due valori diversi: impossibile. La legge di Ampère, con le sole correnti di conduzione, non può essere completa. (Lo stesso si vede con l&#39;equazione di continuità: dalla forma locale <span class="m">\nabla \times \vec B = \mu_0\vec J</span>, prendendo la divergenza, si avrebbe <span class="m">\nabla \cdot \vec J = 0</span> sempre, che contraddice <span class="m">\nabla \cdot \vec J = -\partial\rho/\partial t</span> quando la carica si accumula, come sulle armature.)</p>
+<h3>La corrente di spostamento</h3>
+<p>Maxwell notò che tra le armature, al posto della corrente, c&#39;è un <strong>flusso elettrico che cambia</strong>. Calcoliamo quanto cambia.</p>
+<ol>
+<li>Tra le armature (area <span class="m">S</span>, carica <span class="m">q</span>) il campo è <span class="m">E = \dfrac{\sigma}{\varepsilon_0} = \dfrac{q}{\varepsilon_0 S}</span>.</li>
+<li>Il flusso elettrico attraverso una superficie tra le armature è <span class="m">\Phi_E = E\,S = \dfrac{q}{\varepsilon_0}</span>.</li>
+<li>Derivo nel tempo: <span class="m">\dfrac{d\Phi_E}{dt} = \dfrac{1}{\varepsilon_0}\dfrac{dq}{dt} = \dfrac{i}{\varepsilon_0}</span>.</li>
+<li>Quindi <span class="m">\varepsilon_0\,\dfrac{d\Phi_E}{dt} = i</span>: questa quantità è <strong>esattamente uguale alla corrente nei fili</strong>.</li>
+</ol>
+<p>Maxwell definì la <strong>corrente di spostamento</strong>:
+<span class="m d">i_s = \varepsilon_0\,\frac{d\Phi_E}{dt}</span>
 dove:</p>
 <ul>
 <li><span class="m">i_s</span> = corrente di spostamento (A);</li>
 <li><span class="m">\varepsilon_0 = 8{,}85 \cdot 10^{-12}\,\mathrm{F/m}</span> = costante dielettrica del vuoto;</li>
-<li><span class="m">\Phi_E</span> = flusso del campo elettrico (V·m).</li>
+<li><span class="m">\Phi_E</span> = flusso del campo elettrico attraverso la superficie (V·m).</li>
 </ul>
-<p>La legge completa è:
-<span class="m d">\oint \vec B \cdot d\vec l = \mu_0\left(i + \varepsilon_0\frac{d\Phi_E}{dt}\right)</span>
-Tra le armature la corrente di spostamento è uguale alla corrente nei fili. Così la legge torna coerente. Significato: <strong>un campo elettrico variabile genera un campo magnetico</strong>, proprio come una corrente.</p>
-<h2>Le quattro equazioni di Maxwell</h2>
-<p>Descrivono tutto l&#39;elettromagnetismo. Forma integrale nel vuoto:</p>
+<p>Non è un movimento di cariche: è un campo elettrico che varia. Ma produce campo magnetico <strong>esattamente come</strong> una corrente.</p>
+<h3>La legge completa</h3>
+<p><span class="m d">\oint_\gamma \vec B \cdot d\vec l = \mu_0\left(i + \varepsilon_0\,\frac{d\Phi_E}{dt}\right) = \mu_0\,i + \mu_0\varepsilon_0\,\frac{d\Phi_E}{dt}</span>
+dove <span class="m">i</span> è la corrente di conduzione concatenata con <span class="m">\gamma</span> e <span class="m">\Phi_E</span> il flusso elettrico attraverso una superficie con bordo <span class="m">\gamma</span>.</p>
+<p>Con questa correzione il paradosso sparisce: attraverso il disco passa la corrente di conduzione <span class="m">i</span>, attraverso il sacchetto passa una corrente di spostamento uguale, <span class="m">i_s = i</span>. La &quot;corrente totale&quot; (conduzione + spostamento) è continua, non si interrompe mai.</p>
+<p><strong>Significato: un campo elettrico variabile nel tempo genera un campo magnetico</strong>, così come un campo magnetico variabile genera un campo elettrico (Faraday). È la simmetria che rende possibili le onde elettromagnetiche.</p>
+<p><strong>Forma locale.</strong> Con Stokes e la densità di corrente:
+<span class="m d">\nabla \times \vec B = \mu_0\vec J + \mu_0\varepsilon_0\,\frac{\partial \vec E}{\partial t}</span>
+Prendendo la divergenza (la divergenza di un rotore è sempre nulla) e usando <span class="m">\nabla \cdot \vec E = \rho/\varepsilon_0</span> si ottiene <span class="m">0 = \mu_0\left(\nabla \cdot \vec J + \dfrac{\partial\rho}{\partial t}\right)</span>: l&#39;equazione di continuità. La correzione di Maxwell rende la legge di Ampère <strong>compatibile con la conservazione della carica</strong>.</p>
+<div class="callout esempio">
+
+<p><strong>Campo magnetico tra le armature.</strong> Un condensatore con armature circolari di raggio <span class="m">R = 5\,\mathrm{cm}</span> si carica con corrente <span class="m">i = 1\,\mathrm A</span>. Campo magnetico tra le armature a distanza <span class="m">r</span> dall&#39;asse?</p>
 <ol>
-<li><strong>Gauss elettrico</strong>: <span class="m">\displaystyle\oint_S \vec E \cdot d\vec S = \frac{Q_{int}}{\varepsilon_0}</span>. Le cariche sono sorgenti del campo elettrico.</li>
-<li><strong>Gauss magnetico</strong>: <span class="m">\displaystyle\oint_S \vec B \cdot d\vec S = 0</span>. Non esistono monopoli magnetici.</li>
-<li><strong>Faraday-Neumann-Lenz</strong>: <span class="m">\displaystyle\oint_\gamma \vec E \cdot d\vec l = -\frac{d\Phi_B}{dt}</span>. Un campo magnetico variabile genera un campo elettrico.</li>
-<li><strong>Ampère-Maxwell</strong>: <span class="m">\displaystyle\oint_\gamma \vec B \cdot d\vec l = \mu_0 i + \mu_0\varepsilon_0\frac{d\Phi_E}{dt}</span>. Correnti e campi elettrici variabili generano un campo magnetico.</li>
+<li>Il campo elettrico è uniforme tra le armature, quindi la corrente di spostamento è distribuita uniformemente sulla sezione. Una circonferenza di raggio <span class="m">r &lt; R</span> concatena la frazione <span class="m">r^2/R^2</span>: <span class="m">i_s(r) = i\,\dfrac{r^2}{R^2}</span>.</li>
+<li>Per simmetria <span class="m">\vec B</span> è tangente alle circonferenze coassiali: <span class="m">B \cdot 2\pi r = \mu_0\,i\,\dfrac{r^2}{R^2}</span>, quindi <span class="m">B = \dfrac{\mu_0 i r}{2\pi R^2}</span> (stessa forma del campo dentro un filo).</li>
+<li>Al bordo (<span class="m">r = R</span>): <span class="m">B = \dfrac{\mu_0 i}{2\pi R} = \dfrac{2 \cdot 10^{-7} \cdot 1}{0{,}05} = 4 \cdot 10^{-6}\,\mathrm T</span>.
+Tra le armature, dove non passa nessuna carica, c&#39;è un campo magnetico misurabile.</li>
 </ol>
-<p>dove <span class="m">S</span> è una superficie chiusa, <span class="m">\gamma</span> una linea chiusa, <span class="m">Q_{int}</span> la carica interna (C), <span class="m">i</span> la corrente concatenata (A).</p>
-<p>Forma locale (differenziale):
+</div>
+
+<h2>Le equazioni di Maxwell</h2>
+<p>Le quattro equazioni di Maxwell, insieme alla forza di Lorentz, descrivono <strong>tutti</strong> i fenomeni elettromagnetici classici.</p>
+<h3>Forma integrale (nel vuoto)</h3>
+<ol>
+<li><p><strong>Legge di Gauss per il campo elettrico</strong>
+<span class="m d">\oint_S \vec E \cdot d\vec S = \frac{Q_{int}}{\varepsilon_0}</span>
+Il flusso del campo elettrico attraverso una superficie chiusa è proporzionale alla carica racchiusa: <strong>le cariche sono le sorgenti del campo elettrico</strong> (le linee partono dalle cariche positive e finiscono sulle negative).</p>
+</li>
+<li><p><strong>Legge di Gauss per il campo magnetico</strong>
+<span class="m d">\oint_S \vec B \cdot d\vec S = 0</span>
+Il flusso magnetico attraverso qualsiasi superficie chiusa è nullo: <strong>non esistono monopoli magnetici</strong>, le linee di <span class="m">\vec B</span> sono chiuse.</p>
+</li>
+<li><p><strong>Legge di Faraday-Neumann-Lenz</strong>
+<span class="m d">\oint_\gamma \vec E \cdot d\vec l = -\frac{d\Phi_B}{dt}</span>
+La circuitazione del campo elettrico è uguale all&#39;opposto della variazione del flusso magnetico: <strong>un campo magnetico variabile genera un campo elettrico</strong> (non conservativo).</p>
+</li>
+<li><p><strong>Legge di Ampère-Maxwell</strong>
+<span class="m d">\oint_\gamma \vec B \cdot d\vec l = \mu_0\,i + \mu_0\varepsilon_0\,\frac{d\Phi_E}{dt}</span>
+La circuitazione del campo magnetico dipende dalle correnti concatenate e dalla variazione del flusso elettrico: <strong>correnti e campi elettrici variabili generano campo magnetico</strong>.</p>
+</li>
+</ol>
+<p>Simboli: <span class="m">S</span> = superficie chiusa; <span class="m">\gamma</span> = linea chiusa, con <span class="m">\Phi_B</span> e <span class="m">\Phi_E</span> flussi attraverso una superficie che ha <span class="m">\gamma</span> come bordo; <span class="m">Q_{int}</span> = carica racchiusa (C); <span class="m">i</span> = corrente di conduzione concatenata (A); <span class="m">\varepsilon_0 = 8{,}85 \cdot 10^{-12}\,\mathrm{F/m}</span>; <span class="m">\mu_0 = 4\pi \cdot 10^{-7}\,\mathrm{T\,m/A}</span>.</p>
+<h3>Forma locale (differenziale)</h3>
+<p>Applicando il teorema della divergenza alle prime due e il teorema di Stokes alle ultime due:
 <span class="m d">\begin{aligned}
 \nabla \cdot \vec E &amp;= \frac{\rho}{\varepsilon_0} &amp; \nabla \cdot \vec B &amp;= 0 \\
 \nabla \times \vec E &amp;= -\frac{\partial \vec B}{\partial t} &amp; \nabla \times \vec B &amp;= \mu_0\vec J + \mu_0\varepsilon_0\frac{\partial \vec E}{\partial t}
 \end{aligned}</span>
 dove <span class="m">\rho</span> è la densità di carica (C/m³) e <span class="m">\vec J</span> la densità di corrente (A/m²).</p>
-<p>A queste si aggiunge la forza di Lorentz <span class="m">\vec F = q(\vec E + \vec v \times \vec B)</span>, che dice come i campi agiscono sulle cariche.</p>
-<h2>Onde elettromagnetiche</h2>
-<p>Nel vuoto, senza cariche e correnti, restano solo i termini &quot;variabili&quot;. Un campo <span class="m">\vec E</span> variabile crea un campo <span class="m">\vec B</span> variabile, che crea un campo <span class="m">\vec E</span> variabile, e così via. I due campi si sostengono a vicenda e si propagano nello spazio. È un&#39;<strong>onda elettromagnetica</strong>.</p>
-<p>Proprietà:</p>
 <ul>
-<li>Si propaga <strong>anche nel vuoto</strong>: non serve un mezzo.</li>
-<li>È <strong>trasversale</strong>: <span class="m">\vec E</span> e <span class="m">\vec B</span> sono perpendicolari tra loro e alla direzione di propagazione.</li>
-<li><span class="m">E</span> e <span class="m">B</span> oscillano in fase, con <span class="m">E = cB</span>.</li>
-<li>Trasporta <strong>energia</strong> e quantità di moto, ma non carica.</li>
-<li>È prodotta da <strong>cariche accelerate</strong>, per esempio la corrente oscillante in un&#39;antenna.</li>
+<li>Le due equazioni con la <strong>divergenza</strong> dicono da dove &quot;nascono&quot; i campi (cariche per <span class="m">\vec E</span>, nulla per <span class="m">\vec B</span>).</li>
+<li>Le due equazioni con il <strong>rotore</strong> dicono come i campi &quot;vorticano&quot; (attorno a <span class="m">\vec B</span> variabili per <span class="m">\vec E</span>; attorno a correnti ed <span class="m">\vec E</span> variabili per <span class="m">\vec B</span>).</li>
+<li>Nel caso <strong>statico</strong> (niente derivate temporali) le equazioni si separano: elettrostatica (<span class="m">\nabla \times \vec E = 0</span>, campo conservativo) e magnetostatica (<span class="m">\nabla \times \vec B = \mu_0\vec J</span>, Ampère). Con campi variabili i due campi sono <strong>accoppiati</strong>.</li>
 </ul>
-<p>La velocità nel vuoto si ricava dalle equazioni:
-<span class="m d">c = \frac{1}{\sqrt{\mu_0\varepsilon_0}} \approx 3 \cdot 10^8\,\mathrm{m/s}</span>
-Maxwell notò che è proprio la velocità della luce. Conclusione: <strong>la luce è un&#39;onda elettromagnetica</strong>.</p>
-<p>Relazione tra lunghezza d&#39;onda e frequenza:
-<span class="m d">c = \lambda f</span>
-dove <span class="m">\lambda</span> = lunghezza d&#39;onda (m) e <span class="m">f</span> = frequenza (Hz).</p>
+<h3>Completamento: forza di Lorentz e conservazione della carica</h3>
+<p>Le equazioni dicono come le cariche producono i campi; la <strong>forza di Lorentz</strong> dice come i campi agiscono sulle cariche:
+<span class="m d">\vec F = q\left(\vec E + \vec v \times \vec B\right)</span>
+La conservazione della carica, <span class="m">\nabla \cdot \vec J = -\partial\rho/\partial t</span>, è contenuta nelle equazioni stesse (vedi sopra).</p>
+<h3>Nei materiali</h3>
+<p>Nei materiali si usano i campi ausiliari <span class="m">\vec D = \varepsilon_0\varepsilon_r\vec E</span> e <span class="m">\vec H = \vec B/(\mu_0\mu_r)</span>, e nelle equazioni compaiono solo le cariche e le correnti &quot;libere&quot;: <span class="m">\nabla \cdot \vec D = \rho_{lib}</span>, <span class="m">\nabla \times \vec H = \vec J_{lib} + \partial\vec D/\partial t</span>. Le altre due restano invariate.</p>
+<h2>Onde elettromagnetiche</h2>
+<h3>Come nascono</h3>
+<p>Nel vuoto, lontano da cariche e correnti (<span class="m">\rho = 0</span>, <span class="m">\vec J = 0</span>), le equazioni diventano:
+<span class="m d">\nabla \cdot \vec E = 0 \qquad \nabla \cdot \vec B = 0 \qquad \nabla \times \vec E = -\frac{\partial \vec B}{\partial t} \qquad \nabla \times \vec B = \mu_0\varepsilon_0\frac{\partial \vec E}{\partial t}</span>
+Restano solo i termini &quot;dinamici&quot;. Un campo elettrico che varia crea un campo magnetico che varia, che a sua volta crea un campo elettrico che varia, e così via: i due campi si <strong>generano a vicenda</strong> e la perturbazione si propaga nello spazio. È un&#39;<strong>onda elettromagnetica</strong>.</p>
+<h3>Equazione delle onde e velocità (ricavo)</h3>
+<ol>
+<li>Prendo il rotore della terza equazione: <span class="m">\nabla \times (\nabla \times \vec E) = -\dfrac{\partial}{\partial t}(\nabla \times \vec B)</span>.</li>
+<li>Identità vettoriale: <span class="m">\nabla \times (\nabla \times \vec E) = \nabla(\nabla \cdot \vec E) - \nabla^2\vec E = -\nabla^2\vec E</span> (perché <span class="m">\nabla \cdot \vec E = 0</span>).</li>
+<li>Sostituisco la quarta equazione a destra: <span class="m">-\dfrac{\partial}{\partial t}\left(\mu_0\varepsilon_0\dfrac{\partial\vec E}{\partial t}\right) = -\mu_0\varepsilon_0\dfrac{\partial^2\vec E}{\partial t^2}</span>.</li>
+<li>Risultato:
+<span class="m d">\nabla^2\vec E = \mu_0\varepsilon_0\,\frac{\partial^2\vec E}{\partial t^2}</span>
+È l&#39;<strong>equazione delle onde</strong> (la stessa vista per le onde meccaniche, <span class="m">\partial^2 y/\partial x^2 = \frac{1}{v^2}\partial^2 y/\partial t^2</span>), con velocità <span class="m">v^2 = \dfrac{1}{\mu_0\varepsilon_0}</span>. Per <span class="m">\vec B</span> si ottiene la stessa equazione.</li>
+<li>Valore numerico:
+<span class="m d">c = \frac{1}{\sqrt{\mu_0\varepsilon_0}} = \frac{1}{\sqrt{4\pi \cdot 10^{-7} \cdot 8{,}854 \cdot 10^{-12}}} = \frac{1}{\sqrt{1{,}113 \cdot 10^{-17}}} \approx 3{,}00 \cdot 10^8\,\mathrm{m/s}</span></li>
+</ol>
+<p>Maxwell notò che questa velocità, calcolata solo da costanti elettriche e magnetiche misurate in laboratorio, coincide con la <strong>velocità della luce</strong> misurata indipendentemente. Conclusione: <strong>la luce è un&#39;onda elettromagnetica</strong>. Hertz (1887) produsse e rivelò per primo onde elettromagnetiche con circuiti oscillanti, confermando la teoria.</p>
+<p>In un mezzo materiale la velocità è <span class="m">v = \dfrac{1}{\sqrt{\mu\varepsilon}} = \dfrac{c}{\sqrt{\varepsilon_r\mu_r}} = \dfrac{c}{n}</span>, con <span class="m">n</span> indice di rifrazione.</p>
+<h3>L&#39;onda piana armonica</h3>
+<p>Un&#39;onda che si propaga lungo <span class="m">x</span>:
+<span class="m d">\vec E = E_0\sin(kx - \omega t)\,\hat y \qquad \vec B = B_0\sin(kx - \omega t)\,\hat z</span>
+dove <span class="m">E_0</span> (V/m) e <span class="m">B_0</span> (T) sono le ampiezze, <span class="m">k = 2\pi/\lambda</span> il numero d&#39;onda (rad/m), <span class="m">\omega = 2\pi f</span> la pulsazione (rad/s). Sostituendo nelle equazioni di Maxwell si trova <span class="m">\omega/k = c</span> e <span class="m">E_0 = cB_0</span>.</p>
+<h3>Proprietà delle onde elettromagnetiche</h3>
+<ul>
+<li>Si propagano <strong>anche nel vuoto</strong>: a differenza delle onde meccaniche (suono, onde in una corda), non hanno bisogno di un mezzo materiale. Quello che oscilla sono i campi.</li>
+<li>Nel vuoto viaggiano tutte alla stessa velocità <span class="m">c \approx 3 \cdot 10^8\,\mathrm{m/s}</span>, qualunque sia la frequenza.</li>
+<li>Sono <strong>trasversali</strong>: <span class="m">\vec E</span> e <span class="m">\vec B</span> sono perpendicolari tra loro e perpendicolari alla direzione di propagazione; <span class="m">\vec E \times \vec B</span> punta nel verso di propagazione.</li>
+<li><span class="m">\vec E</span> e <span class="m">\vec B</span> oscillano <strong>in fase</strong> (massimi e zeri negli stessi punti e negli stessi istanti), con <span class="m">E = cB</span> in ogni istante.</li>
+<li>Trasportano <strong>energia</strong> e <strong>quantità di moto</strong> (esercitano una pressione di radiazione), ma non trasportano carica né materia.</li>
+<li>Possono essere <strong>polarizzate</strong> (la direzione di <span class="m">\vec E</span> definisce la polarizzazione).</li>
+<li>Sono prodotte da <strong>cariche accelerate</strong>: per esempio gli elettroni che oscillano avanti e indietro nell&#39;antenna di un trasmettitore, oppure le transizioni degli elettroni negli atomi (luce) e dei nuclei (raggi gamma).</li>
+<li>Relazione fondamentale tra lunghezza d&#39;onda e frequenza:
+<span class="m d">c = \lambda\,f</span>
+dove <span class="m">\lambda</span> = lunghezza d&#39;onda (m) e <span class="m">f</span> = frequenza (Hz).</li>
+</ul>
+<h3>Energia trasportata</h3>
+<p>La densità di energia è divisa a metà tra i due campi (lezione 71): <span class="m">u = \tfrac12\varepsilon_0 E^2 + \dfrac{B^2}{2\mu_0} = \varepsilon_0 E^2</span>. Il flusso di energia (potenza per unità di area) è dato dal <strong>vettore di Poynting</strong>
+<span class="m d">\vec S = \frac{1}{\mu_0}\,\vec E \times \vec B</span>
+(W/m²), diretto nel verso di propagazione. Il suo valor medio è l&#39;<strong>intensità</strong> dell&#39;onda: per un&#39;onda armonica <span class="m">I = \tfrac12 c\,\varepsilon_0 E_0^2 = \dfrac{E_0 B_0}{2\mu_0}</span>.</p>
 <div class="callout esempio">
 
-<p>Una radio FM a 100 MHz: <span class="m">\lambda = c/f = 3 \cdot 10^8/10^8 = 3\,\mathrm{m}</span>.</p>
+<p><strong>Lunghezze d&#39;onda.</strong></p>
+<ul>
+<li>Radio FM a 100 MHz: <span class="m">\lambda = \dfrac{c}{f} = \dfrac{3 \cdot 10^8}{10^8} = 3\,\mathrm m</span>.</li>
+<li>Luce verde con <span class="m">\lambda = 500\,\mathrm{nm}</span>: <span class="m">f = \dfrac{3 \cdot 10^8}{5 \cdot 10^{-7}} = 6 \cdot 10^{14}\,\mathrm{Hz}</span>.</li>
+<li>Forno a microonde a 2,45 GHz: <span class="m">\lambda = \dfrac{3 \cdot 10^8}{2{,}45 \cdot 10^9} \approx 12\,\mathrm{cm}</span>.</li>
+</ul>
 </div>
 
-<p>L&#39;energia trasportata per unità di tempo e di area è data dal vettore di Poynting <span class="m">\vec S = \dfrac{1}{\mu_0}\vec E \times \vec B</span> (W/m²). Punta nella direzione di propagazione.</p>
-<h2>Spettro elettromagnetico</h2>
-<p>Tutte queste onde sono dello stesso tipo. Cambiano solo frequenza e lunghezza d&#39;onda. In ordine di <strong>frequenza crescente</strong> (lunghezza d&#39;onda decrescente):</p>
-<p>onde radio → microonde → infrarosso → luce visibile → ultravioletto → raggi X → raggi gamma.</p>
-<p>I raggi gamma hanno la frequenza più alta e l&#39;energia per fotone più grande.</p>
+<div class="callout esempio">
+
+<p><strong>Campi e intensità.</strong> Un&#39;onda ha campo elettrico di ampiezza <span class="m">E_0 = 100\,\mathrm{V/m}</span>.</p>
+<ol>
+<li>Campo magnetico: <span class="m">B_0 = E_0/c = 100/(3 \cdot 10^8) \approx 3{,}3 \cdot 10^{-7}\,\mathrm T</span> (molto piccolo: l&#39;effetto magnetico di un&#39;onda sulle cariche è di solito trascurabile rispetto a quello elettrico).</li>
+<li>Intensità: <span class="m">I = \tfrac12 \cdot 3 \cdot 10^8 \cdot 8{,}85 \cdot 10^{-12} \cdot 100^2 \approx 13{,}3\,\mathrm{W/m^2}</span>.</li>
+</ol>
+</div>
+
+<h2>Lo spettro elettromagnetico</h2>
+<p>Tutte le onde elettromagnetiche sono dello <strong>stesso tipo</strong>: cambiano solo frequenza e lunghezza d&#39;onda (e quindi il modo in cui interagiscono con la materia). In ordine di <strong>frequenza crescente</strong> (lunghezza d&#39;onda decrescente):</p>
+<table>
+<thead>
+<tr>
+<th>Tipo</th>
+<th>Lunghezza d&#39;onda (indicativa)</th>
+<th>Frequenza (indicativa)</th>
+<th>Sorgenti e usi</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Onde radio</td>
+<td>da km a circa 30 cm</td>
+<td>fino a circa 1 GHz</td>
+<td>antenne; radio, TV</td>
+</tr>
+<tr>
+<td>Microonde</td>
+<td>da 30 cm a 1 mm</td>
+<td>1 GHz – 300 GHz</td>
+<td>radar, telefonia, forni a microonde</td>
+</tr>
+<tr>
+<td>Infrarosso</td>
+<td>da 1 mm a 700 nm</td>
+<td>fino a <span class="m">4 \cdot 10^{14}</span> Hz</td>
+<td>corpi caldi; termocamere, telecomandi</td>
+</tr>
+<tr>
+<td>Luce visibile</td>
+<td>da 700 nm (rosso) a 400 nm (violetto)</td>
+<td><span class="m">4</span>–<span class="m">7{,}5 \cdot 10^{14}</span> Hz</td>
+<td>Sole, lampade; visione</td>
+</tr>
+<tr>
+<td>Ultravioletto</td>
+<td>da 400 nm a 10 nm</td>
+<td>fino a <span class="m">3 \cdot 10^{16}</span> Hz</td>
+<td>Sole; abbronzatura, sterilizzazione</td>
+</tr>
+<tr>
+<td>Raggi X</td>
+<td>da 10 nm a 0,01 nm</td>
+<td>fino a <span class="m">3 \cdot 10^{19}</span> Hz</td>
+<td>tubi a raggi X; radiografie</td>
+</tr>
+<tr>
+<td>Raggi gamma</td>
+<td>sotto 0,01 nm</td>
+<td>oltre</td>
+<td>nuclei radioattivi; radioterapia</td>
+</tr>
+</tbody></table>
+<p>All&#39;aumentare della frequenza aumenta l&#39;energia trasportata da ogni &quot;pacchetto&quot; (fotone), <span class="m">E = hf</span>: i raggi gamma hanno la frequenza più alta e i fotoni più energetici, e sono i più penetranti e pericolosi.</p>
+<div class="callout attenzione">
+
+<ul>
+<li>La corrente di spostamento <strong>non</strong> è un flusso di cariche: è <span class="m">\varepsilon_0\,d\Phi_E/dt</span>, un campo elettrico che varia.</li>
+<li>Le onde elettromagnetiche non hanno bisogno di un mezzo; le onde sonore sì.</li>
+<li>Nel vuoto tutte le onde elettromagnetiche hanno la stessa velocità <span class="m">c</span>: cambia la lunghezza d&#39;onda, non la velocità.</li>
+<li>Le onde e.m. sono trasversali, non longitudinali.</li>
+</ul>
+</div>
+
 <div class="callout esame">
 
-<p>Le aperte chiedono: sorgenti dei campi, legge di Ampère-Maxwell (con l&#39;esempio del condensatore), le quattro equazioni e le proprietà delle onde. Per ogni equazione scrivi la formula e il suo significato in una frase.</p>
+<p>Le domande aperte di questa lezione:</p>
+<ul>
+<li><strong>&quot;Come possono essere prodotti i campi elettrici e magnetici?&quot;</strong>: campo elettrico da cariche (Gauss) e da campi magnetici variabili (Faraday); campo magnetico da correnti e magneti (Ampère, Laplace) e da campi elettrici variabili (Maxwell); niente monopoli magnetici; cariche accelerate producono onde.</li>
+<li><strong>&quot;Si esponga la legge di Ampère-Maxwell&quot;</strong>: parti da Ampère, mostra la contraddizione con il condensatore che si carica (due superfici con lo stesso bordo), ricava <span class="m">\varepsilon_0\,d\Phi_E/dt = i</span>, scrivi <span class="m">\oint \vec B \cdot d\vec l = \mu_0 i + \mu_0\varepsilon_0\,d\Phi_E/dt</span>, la forma locale e il significato (campo elettrico variabile genera campo magnetico; compatibilità con la conservazione della carica).</li>
+<li><strong>&quot;Si descriva la forma generale delle equazioni di Maxwell&quot;</strong>: le quattro equazioni in forma integrale e locale, ciascuna con il suo significato in una frase, più la forza di Lorentz.</li>
+<li><strong>&quot;Esporre i concetti fondamentali delle onde elettromagnetiche&quot;</strong>: origine (campi che si generano a vicenda, cariche accelerate), equazione delle onde e <span class="m">c = 1/\sqrt{\mu_0\varepsilon_0}</span>, la luce come onda e.m., trasversalità, <span class="m">E = cB</span>, propagazione nel vuoto, energia (<span class="m">u_E = u_B</span>, vettore di Poynting), <span class="m">c = \lambda f</span>, spettro.</li>
+</ul>
 </div>
 
 <div class="callout sintesi">
 
 <ul>
-<li>Campo elettrico da cariche e da campi magnetici variabili; campo magnetico da correnti e da campi elettrici variabili.</li>
-<li>Ampère-Maxwell: <span class="m">\oint \vec B \cdot d\vec l = \mu_0 i + \mu_0\varepsilon_0\,d\Phi_E/dt</span> (corrente di spostamento).</li>
-<li>Maxwell: Gauss per <span class="m">\vec E</span>, Gauss per <span class="m">\vec B</span>, Faraday, Ampère-Maxwell.</li>
-<li>Onde e.m.: trasversali, anche nel vuoto, <span class="m">E = cB</span>, <span class="m">c = 1/\sqrt{\mu_0\varepsilon_0} \approx 3 \cdot 10^8\,\mathrm{m/s}</span>, <span class="m">c = \lambda f</span>.</li>
-<li>Spettro: dalle onde radio (frequenza bassa) ai raggi gamma (frequenza alta).</li>
+<li>Sorgenti: <span class="m">\vec E</span> da cariche e da <span class="m">\vec B</span> variabili; <span class="m">\vec B</span> da correnti e da <span class="m">\vec E</span> variabili; niente monopoli magnetici.</li>
+<li>Corrente di spostamento <span class="m">i_s = \varepsilon_0\,d\Phi_E/dt</span>; Ampère-Maxwell: <span class="m">\oint \vec B \cdot d\vec l = \mu_0 i + \mu_0\varepsilon_0\,d\Phi_E/dt</span>, coerente con la conservazione della carica.</li>
+<li>Maxwell: <span class="m">\oint \vec E\cdot d\vec S = Q/\varepsilon_0</span>; <span class="m">\oint \vec B\cdot d\vec S = 0</span>; <span class="m">\oint \vec E\cdot d\vec l = -d\Phi_B/dt</span>; <span class="m">\oint \vec B\cdot d\vec l = \mu_0 i + \mu_0\varepsilon_0\,d\Phi_E/dt</span>; forme locali con divergenza e rotore; più la forza di Lorentz.</li>
+<li>Onde e.m.: equazione delle onde, <span class="m">c = 1/\sqrt{\mu_0\varepsilon_0} \approx 3 \cdot 10^8\,\mathrm{m/s}</span>; la luce è un&#39;onda e.m.</li>
+<li>Trasversali, nel vuoto, <span class="m">\vec E \perp \vec B</span> in fase, <span class="m">E = cB</span>, <span class="m">c = \lambda f</span>, energia divisa a metà, <span class="m">\vec S = \vec E \times \vec B/\mu_0</span>.</li>
+<li>Spettro per frequenza crescente: radio, microonde, infrarosso, visibile, ultravioletto, X, gamma.</li>
 </ul>
 </div>

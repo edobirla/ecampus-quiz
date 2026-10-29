@@ -1,51 +1,174 @@
 <h1>Lezione 33 — Prodotti scalari</h1>
-<p>I prodotti scalari e le norme sono gli strumenti per misurare angoli e lunghezze. D&#39;ora in poi si considerano solo spazi vettoriali <strong>reali</strong>.</p>
-<h2>Prodotti scalari</h2>
-<p><strong>Definizione 33.1.</strong> Un&#39;applicazione <span class="m">\langle\cdot,\cdot\rangle\colon V\times V\to\mathbb{R}</span> è una <strong>forma bilineare</strong> se</p>
+<p>Fino a qui gli spazi vettoriali sono stati studiati solo con somma e prodotto per scalari: non c&#39;era modo di parlare di <strong>lunghezze</strong> e di <strong>angoli</strong>. In questa lezione si introducono i <strong>prodotti scalari</strong> e le <strong>norme</strong> associate, gli strumenti astratti che permettono di misurare lunghezze e (nella lezione successiva) angoli. L&#39;idea guida è il prodotto scalare &quot;da fisica&quot; <span class="m">\lVert v\rVert\lVert w\rVert\cos\theta</span>, ma qui lo si definisce attraverso le sue proprietà algebriche, in modo che abbia senso in ogni spazio vettoriale.</p>
+<p><strong>D&#39;ora in poi si considerano solo spazi vettoriali reali</strong> (campo <span class="m">\mathbb{R}</span>): serve poter dire &quot;<span class="m">\geqslant0</span>&quot;, cosa che in <span class="m">\mathbb{C}</span> non ha senso.</p>
+<h2>Forme bilineari</h2>
+<p><strong>Definizione 33.1.</strong> Dato uno spazio vettoriale reale <span class="m">V</span>, un&#39;applicazione <span class="m">\langle\cdot,\cdot\rangle\colon V\times V\to\mathbb{R}</span> (prende due vettori e restituisce un numero) è una <strong>forma bilineare</strong> se:</p>
 <ul>
-<li>(Bil-Sx) per ogni <span class="m">w</span>, <span class="m">\langle\cdot,w\rangle</span> è lineare: <span class="m">\langle v_1+v_2,w\rangle=\langle v_1,w\rangle+\langle v_2,w\rangle</span> e <span class="m">\langle\lambda v,w\rangle=\lambda\langle v,w\rangle</span>;</li>
-<li>(Bil-Dx) per ogni <span class="m">w</span>, <span class="m">\langle w,\cdot\rangle</span> è lineare (stesse due proprietà nel secondo argomento).</li>
+<li><strong>(Bil-Sx)</strong> per ogni <span class="m">w\in V</span> l&#39;applicazione <span class="m">\langle\cdot,w\rangle\colon V\to\mathbb{R}</span> è lineare, cioè
+(a) <span class="m">\langle v_1+v_2,w\rangle=\langle v_1,w\rangle+\langle v_2,w\rangle</span> per ogni <span class="m">v_1,v_2</span>;
+(b) <span class="m">\langle\lambda v,w\rangle=\lambda\langle v,w\rangle</span> per ogni <span class="m">v</span> e <span class="m">\lambda\in\mathbb{R}</span>;</li>
+<li><strong>(Bil-Dx)</strong> per ogni <span class="m">w\in V</span> l&#39;applicazione <span class="m">\langle w,\cdot\rangle\colon V\to\mathbb{R}</span> è lineare, cioè
+(a) <span class="m">\langle w,v_1+v_2\rangle=\langle w,v_1\rangle+\langle w,v_2\rangle</span>;
+(b) <span class="m">\langle w,\lambda v\rangle=\lambda\langle w,v\rangle</span>.</li>
 </ul>
+<p>In parole: &quot;bi-lineare&quot; = lineare in ciascuno dei due argomenti quando l&#39;altro è fissato.</p>
+<p><strong>Come si verifica in <span class="m">\mathbb{R}^n</span>.</strong> Se <span class="m">\langle X,Y\rangle</span> è dato da un polinomio nelle coordinate <span class="m">x_i</span> di <span class="m">X</span> e <span class="m">y_j</span> di <span class="m">Y</span>, è bilineare quando ogni monomio è del tipo <span class="m">c\,x_iy_j</span> (un <span class="m">x</span> e un <span class="m">y</span>, ciascuno con esponente <span class="m">1</span>): allora fissando <span class="m">Y</span> resta un polinomio di grado <span class="m">1</span> senza termine noto nelle <span class="m">x</span> (cioè una funzione lineare), e lo stesso fissando <span class="m">X</span>.</p>
 <div class="callout esempio">
 
-<p><span class="m">\langle X,Y\rangle=3x_1y_1+2x_2y_1-x_2y_3-4x_3y_3</span> su <span class="m">\mathbb{R}^3</span> è bilineare: fissato uno dei due vettori, si ottiene un polinomio di grado 1 senza termine noto nelle variabili dell&#39;altro.</p>
+<p><strong>Esempio 33.2.</strong> <span class="m">\langle X,Y\rangle=3x_1y_1+2x_2y_1-x_2y_3-4x_3y_3</span> su <span class="m">\mathbb{R}^3</span> è bilineare: fissato <span class="m">Y</span>, è <span class="m">(3y_1)x_1+(2y_1-y_3)x_2+(-4y_3)x_3</span>, polinomio di grado <span class="m">1</span> senza termine noto nelle <span class="m">x</span>; fissato <span class="m">X</span>, è <span class="m">(3x_1+2x_2)y_1+(-x_2-4x_3)y_3</span>, idem nelle <span class="m">y</span>.
+Controesempi: <span class="m">x_1y_1+1</span> (termine noto) o <span class="m">x_1^2y_1</span> (grado 2 in <span class="m">x</span>) non sono bilineari.</p>
 </div>
 
-<p><strong>Definizione 33.3.</strong> È <strong>simmetrica</strong> se (Sim) <span class="m">\langle v,w\rangle=\langle w,v\rangle</span> per ogni <span class="m">v,w</span>.</p>
-<p><strong>Definizione 33.5.</strong> È <strong>definita positiva</strong> se (Pos) <span class="m">\langle v,v\rangle\geqslant0</span> per ogni <span class="m">v</span>, con <span class="m">\langle v,v\rangle=0</span> se e solo se <span class="m">v=0</span>. Equivalentemente (Oss. 33.7) (Pos′) <span class="m">\langle v,v\rangle&gt;0</span> per ogni <span class="m">v\neq0</span>, perché <span class="m">\langle0,0\rangle=0</span> per bilinearità.</p>
-<p><strong>Definizione 33.8.</strong> Un <strong>prodotto scalare</strong> su <span class="m">V</span> è una forma bilineare simmetrica e definita positiva.</p>
+<p><strong>Definizione 33.3 (simmetrica).</strong> Una forma bilineare è <strong>simmetrica</strong> se
+<strong>(Sim)</strong> <span class="m">\langle v,w\rangle=\langle w,v\rangle</span> per ogni <span class="m">v,w\in V</span>.
+In <span class="m">\mathbb{R}^n</span>: scambiando <span class="m">x</span> e <span class="m">y</span> si deve ottenere la stessa espressione; per ogni <span class="m">i\neq j</span> il coefficiente di <span class="m">x_iy_j</span> deve essere uguale a quello di <span class="m">x_jy_i</span>.</p>
 <div class="callout esempio">
 
-<p><span class="m">\langle X,Y\rangle=x_1y_1-x_1y_2-x_2y_1+5x_2y_2</span> su <span class="m">\mathbb{R}^2</span> è un prodotto scalare: è bilineare, simmetrico, e completando il quadrato <span class="m">\langle X,X\rangle=x_1^2-2x_1x_2+5x_2^2=(x_1-x_2)^2+4x_2^2\geqslant0</span>, nullo solo se <span class="m">x_1-x_2=0</span> e <span class="m">x_2=0</span>.</p>
+<p><strong>Esempio 33.4.</strong> <span class="m">\langle X,Y\rangle=x_1y_1-x_1y_2-x_2y_1+5x_2y_2</span> su <span class="m">\mathbb{R}^2</span> è simmetrica: scambiando i ruoli, <span class="m">\langle Y,X\rangle=y_1x_1-y_1x_2-y_2x_1+5y_2x_2</span>, che è la stessa espressione (il coefficiente di <span class="m">x_1y_2</span> e quello di <span class="m">x_2y_1</span> sono entrambi <span class="m">-1</span>).</p>
+<p><strong>Esercizio 33.5.</strong> <span class="m">\langle X,Y\rangle=3x_1y_1-x_1y_2-x_2y_2</span> su <span class="m">\mathbb{R}^2</span> <strong>non</strong> è simmetrica: con <span class="m">X={}^t(1\ 0)</span>, <span class="m">Y={}^t(0\ 1)</span> si ha <span class="m">\langle X,Y\rangle=-x_1y_2=-1</span>, mentre <span class="m">\langle Y,X\rangle=3\cdot0\cdot1-0\cdot0-1\cdot0=0</span>. Infatti <span class="m">x_1y_2</span> ha coefficiente <span class="m">-1</span> e <span class="m">x_2y_1</span> ha coefficiente <span class="m">0</span>.</p>
 </div>
 
-<p><strong>Osservazione 33.10.</strong> Per verificare che un&#39;applicazione sia un prodotto scalare bastano (Bil-Sx), (Sim) e (Pos): (Bil-Dx) segue da (Bil-Sx) e (Sim).</p>
-<p><strong>Definizione 33.11.</strong> Il <strong>prodotto scalare standard</strong> su <span class="m">\mathbb{R}^n</span> è <span class="m">\langle X,Y\rangle:={}^tX\cdot Y=x_1y_1+x_2y_2+\cdots+x_ny_n</span>. È effettivamente un prodotto scalare (Prop. 33.12).</p>
+<p><strong>Definizione 33.5 (definita positiva).</strong> Una forma bilineare è <strong>definita positiva</strong> se
+<strong>(Pos)</strong> <span class="m">\langle v,v\rangle\geqslant0</span> per ogni <span class="m">v\in V</span>, e <span class="m">\langle v,v\rangle=0</span> se e solo se <span class="m">v=0</span>.</p>
+<p><strong>Osservazione 33.7.</strong> (Pos) equivale a
+<strong>(Pos′)</strong> <span class="m">\langle v,v\rangle&gt;0</span> per ogni <span class="m">v\neq0</span>.
+Infatti per bilinearità <span class="m">\langle0,0\rangle=0</span> sempre: per (Bil-Sx) l&#39;applicazione <span class="m">\langle\cdot,0\rangle</span> è lineare, e un&#39;applicazione lineare manda <span class="m">0</span> in <span class="m">0</span>. Quindi la parte &quot;<span class="m">\langle v,v\rangle=0</span> se <span class="m">v=0</span>&quot; è automatica, e resta da chiedere solo che sia <span class="m">&gt;0</span> sui vettori non nulli.</p>
+<p><strong>Come si verifica (Pos) in <span class="m">\mathbb{R}^n</span>: completamento dei quadrati.</strong> Si scrive <span class="m">\langle X,X\rangle</span> come somma di quadrati con coefficienti positivi; poi si controlla che si annulli solo per <span class="m">X=0</span>.</p>
 <div class="callout esempio">
 
-<p><span class="m">\langle{}^t(3\ -1\ 0),{}^t(2\ 4\ -5)\rangle=6-4+0=2</span>. Per la base canonica: <span class="m">\langle e_i,e_j\rangle=1</span> se <span class="m">i=j</span>, <span class="m">0</span> se <span class="m">i\neq j</span>.</p>
+<p><strong>Esempio 33.6.</strong> Per la forma dell&#39;Esempio 33.4:
+<span class="m d">\langle X,X\rangle=x_1^2-x_1x_2-x_2x_1+5x_2^2=x_1^2-2x_1x_2+5x_2^2.</span>
+Per completare il quadrato <span class="m">x_1^2-2x_1x_2</span> serve <span class="m">+x_2^2</span>: si aggiunge e si toglie,
+<span class="m d">x_1^2-2x_1x_2+x_2^2-x_2^2+5x_2^2=(x_1-x_2)^2+4x_2^2\geqslant0.</span>
+Somma di quadrati: mai negativa, e nulla se e solo se <span class="m">x_1-x_2=0</span> e <span class="m">2x_2=0</span>, cioè <span class="m">x_1=x_2=0</span>. Quindi è definita positiva.</p>
 </div>
 
-<p><strong>Osservazione 33.14.</strong> (Bil) e (Sim) permettono di &quot;fare i conti&quot;: <span class="m">\langle\lambda v+\mu w,\lambda v+\mu w\rangle=\lambda^2\langle v,v\rangle+2\lambda\mu\langle v,w\rangle+\mu^2\langle w,w\rangle</span> e in generale
-<span class="m d">\Big\langle\sum_{i=1}^n\lambda_iv_i,\sum_{j=1}^m\mu_jw_j\Big\rangle=\sum_{i,j}\lambda_i\mu_j\langle v_i,w_j\rangle.</span></p>
+<h2>Prodotto scalare</h2>
+<p><strong>Definizione 33.8.</strong> Un <strong>prodotto scalare</strong> su uno spazio vettoriale reale <span class="m">V</span> è una forma <strong>bilineare</strong>, <strong>simmetrica</strong> e <strong>definita positiva</strong>.</p>
+<p><strong>Osservazione 33.10.</strong> Per verificare che un&#39;applicazione è un prodotto scalare bastano (Bil-Sx), (Sim) e (Pos): (Bil-Dx) segue dalle altre. Infatti, per esempio, <span class="m">\langle w,v_1+v_2\rangle\overset{(Sim)}=\langle v_1+v_2,w\rangle\overset{(Bil\text{-}Sx)}=\langle v_1,w\rangle+\langle v_2,w\rangle\overset{(Sim)}=\langle w,v_1\rangle+\langle w,v_2\rangle</span>, e allo stesso modo per il prodotto per scalare.</p>
+<div class="callout esempio">
+
+<p><strong>Esempio 33.9.</strong> La forma <span class="m">\langle X,Y\rangle=x_1y_1-x_1y_2-x_2y_1+5x_2y_2</span> è bilineare, simmetrica (Es. 33.4) e definita positiva (Es. 33.6): è un <strong>prodotto scalare</strong> su <span class="m">\mathbb{R}^2</span>, diverso da quello standard.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Esercizio 33.1.</strong> <span class="m">\langle X,Y\rangle=x_1y_1-2x_1y_3-2x_3y_1+5x_2y_2+7x_3y_3</span> è un prodotto scalare su <span class="m">\mathbb{R}^3</span>.</p>
+<ul>
+<li><strong>(Bil)</strong>: ogni monomio contiene esattamente un <span class="m">x</span> e un <span class="m">y</span> di grado 1, quindi fissando <span class="m">Y</span> (o <span class="m">X</span>) si ottiene un polinomio di grado <span class="m">1</span> senza termine noto.</li>
+<li><strong>(Sim)</strong>: i termini misti sono <span class="m">-2x_1y_3</span> e <span class="m">-2x_3y_1</span>, con lo stesso coefficiente; scambiando <span class="m">X</span> e <span class="m">Y</span> l&#39;espressione non cambia.</li>
+<li><strong>(Pos)</strong>:
+<span class="m d">\langle X,X\rangle=x_1^2-4x_1x_3+5x_2^2+7x_3^2.</span>
+Completo il quadrato di <span class="m">x_1^2-4x_1x_3</span> aggiungendo e togliendo <span class="m">4x_3^2</span>:
+<span class="m d">=(x_1^2-4x_1x_3+4x_3^2)-4x_3^2+5x_2^2+7x_3^2=(x_1-2x_3)^2+5x_2^2+3x_3^2\geqslant0,</span>
+nullo se e solo se <span class="m">x_1-2x_3=0</span>, <span class="m">\sqrt5x_2=0</span>, <span class="m">\sqrt3x_3=0</span>, cioè <span class="m">x_3=0</span>, <span class="m">x_2=0</span>, <span class="m">x_1=0</span>. <span class="m">\square</span></li>
+</ul>
+</div>
+
+<p><strong>Definizione 33.11 (prodotto scalare standard).</strong> Su <span class="m">\mathbb{R}^n</span>:
+<span class="m d">\langle X,Y\rangle:={}^tX\cdot Y=\begin{pmatrix}x_1&amp;\cdots&amp;x_n\end{pmatrix}\begin{pmatrix}y_1\\\vdots\\y_n\end{pmatrix}=x_1y_1+x_2y_2+\cdots+x_ny_n.</span>
+Si moltiplicano le coordinate corrispondenti e si sommano.</p>
+<p><strong>Proposizione 33.12.</strong> Il prodotto scalare standard è un prodotto scalare. (È bilineare perché ogni monomio è <span class="m">x_iy_i</span>; è simmetrico perché <span class="m">x_iy_i=y_ix_i</span>; e <span class="m">\langle X,X\rangle=x_1^2+\cdots+x_n^2</span> è somma di quadrati, nulla solo se tutte le <span class="m">x_i</span> sono <span class="m">0</span>.)</p>
+<div class="callout esempio">
+
+<p><strong>Esempio 33.13 e Esercizio 33.3.</strong></p>
+<ul>
+<li><span class="m">\langle{}^t(3\ -1\ 0),{}^t(2\ 4\ -5)\rangle=3\cdot2+(-1)\cdot4+0\cdot(-5)=6-4+0=2</span>.</li>
+<li><span class="m">\langle{}^t(2\ -4\ 3),{}^t(5\ -2\ -6)\rangle=10+8-18=0</span>.</li>
+<li><span class="m">\langle{}^t(1\ 3\ 0\ -1),{}^t(0\ 2\ -1\ 4)\rangle=0+6+0-4=2</span>.</li>
+<li><span class="m">\langle{}^t(5\ 2\ -1),{}^t(-1\ 3\ 0)\rangle=-5+6+0=1</span>.</li>
+<li>Base canonica: <span class="m">\langle e_i,e_j\rangle=1</span> se <span class="m">i=j</span>, <span class="m">0</span> se <span class="m">i\neq j</span> (nella somma sopravvive solo il termine con entrambe le coordinate uguali a <span class="m">1</span>).</li>
+</ul>
+</div>
+
+<h3>Fare i conti con i prodotti scalari</h3>
+<p><strong>Osservazione 33.14.</strong> Bilinearità e simmetria permettono di &quot;sviluppare&quot; come un prodotto di binomi:
+<span class="m d">\langle\lambda v+\mu w,\lambda v+\mu w\rangle=\langle\lambda v,\lambda v\rangle+\langle\lambda v,\mu w\rangle+\langle\mu w,\lambda v\rangle+\langle\mu w,\mu w\rangle</span>
+(per (Bil-Sx-a) e (Bil-Dx-a)),
+<span class="m d">=\lambda^2\langle v,v\rangle+\lambda\mu\langle v,w\rangle+\lambda\mu\langle w,v\rangle+\mu^2\langle w,w\rangle</span>
+(portando fuori gli scalari con (Bil-Sx-b) e (Bil-Dx-b)),
+<span class="m d">=\lambda^2\langle v,v\rangle+2\lambda\mu\langle v,w\rangle+\mu^2\langle w,w\rangle</span>
+(per (Sim) i due termini centrali sono uguali). È l&#39;analogo di <span class="m">(a+b)^2=a^2+2ab+b^2</span>. In generale
+<span class="m d">\Big\langle\sum_{i=1}^n\lambda_iv_i,\ \sum_{j=1}^m\mu_jw_j\Big\rangle=\sum_{i=1}^n\sum_{j=1}^m\lambda_i\mu_j\langle v_i,w_j\rangle.\qquad(33.1)</span></p>
+<div class="callout esempio">
+
+<p><strong>Esempio 33.15.</strong> Con la (33.1) e la base canonica si ritrova la formula del prodotto standard: <span class="m">\langle X,Y\rangle=\langle\sum x_ie_i,\sum y_je_j\rangle=\sum_{i,j}x_iy_j\langle e_i,e_j\rangle</span>; i termini con <span class="m">i\neq j</span> sono nulli e quelli con <span class="m">i=j</span> valgono <span class="m">x_iy_i</span>, quindi <span class="m">\langle X,Y\rangle=x_1y_1+\cdots+x_ny_n</span>.</p>
+</div>
+
 <h2>Norme</h2>
-<p><strong>Definizione 33.16.</strong> La <strong>norma associata</strong> al prodotto scalare <span class="m">\langle\cdot,\cdot\rangle</span> è <span class="m">\lVert v\rVert:=\sqrt{\langle v,v\rangle}</span>. È definita per ogni <span class="m">v</span> perché <span class="m">\langle v,v\rangle\geqslant0</span> (Oss. 33.18).</p>
-<p><strong>Definizione 33.19.</strong> La <strong>norma standard</strong> su <span class="m">\mathbb{R}^n</span> (associata al prodotto standard) è <span class="m">\lVert X\rVert=\sqrt{{}^tX\cdot X}=\sqrt{x_1^2+\cdots+x_n^2}</span>.</p>
+<p><strong>Definizione 33.16.</strong> Dato un prodotto scalare su <span class="m">V</span>, la <strong>norma associata</strong> di <span class="m">v\in V</span> è
+<span class="m d">\lVert v\rVert:=\sqrt{\langle v,v\rangle}.</span>
+È la &quot;lunghezza&quot; di <span class="m">v</span> misurata con quel prodotto scalare.</p>
+<p><strong>Osservazione 33.18.</strong> La norma è definita per <strong>ogni</strong> <span class="m">v</span>: l&#39;argomento della radice è <span class="m">\langle v,v\rangle\geqslant0</span> per (Pos).</p>
+<p><strong>Definizione 33.19 (norma standard).</strong> La norma associata al prodotto scalare standard di <span class="m">\mathbb{R}^n</span>:
+<span class="m d">\lVert X\rVert=\sqrt{{}^tX\cdot X}=\sqrt{x_1^2+x_2^2+\cdots+x_n^2}.</span>
+Procedura: <strong>elevare al quadrato ogni coordinata, sommare, fare la radice</strong>.</p>
 <div class="callout esempio">
 
-<p><span class="m">\lVert{}^t(2\ -1\ 0)\rVert=\sqrt{4+1+0}=\sqrt5</span>; <span class="m">\lVert e_i\rVert=1</span>. Con il prodotto scalare dell&#39;esempio precedente invece <span class="m">\lVert{}^t(1\ -1)\rVert=\sqrt{1+1+1+5}=\sqrt8=2\sqrt2</span>: la norma dipende dal prodotto scalare.</p>
+<p><strong>Esempio 33.20 ed esercizi.</strong></p>
+<ul>
+<li><span class="m">\lVert{}^t(2\ -1\ 0)\rVert=\sqrt{4+1+0}=\sqrt5</span>; <span class="m">\lVert{}^t(-2\ 5)\rVert=\sqrt{4+25}=\sqrt{29}</span>; <span class="m">\lVert{}^t(0\ 3\ -4)\rVert=\sqrt{0+9+16}=5</span>.</li>
+<li>In <span class="m">\mathbb{R}^4</span>: <span class="m">\lVert{}^t(3\ 0\ -4\ 0)\rVert=\sqrt{9+16}=5</span>; <span class="m">\lVert{}^t(2\ -2\ 2\ -2)\rVert=\sqrt{4\cdot4}=4</span>; <span class="m">\lVert{}^t(2\ 0\ 2\ -1)\rVert=\sqrt{4+4+1}=3</span>; <span class="m">\lVert{}^t(0\ -2\ 0\ 0)\rVert=\sqrt4=2</span>; <span class="m">\lVert{}^t(2\ 0\ -2\ 1)\rVert=\sqrt{4+4+1}=3</span>.</li>
+<li><span class="m">\lVert e_i\rVert=\sqrt{1^2}=1</span>.</li>
+</ul>
 </div>
 
-<p><strong>Proposizione 33.21.</strong> <span class="m">\langle v,w\rangle=\tfrac12\left(\lVert v\rVert^2+\lVert w\rVert^2-\lVert v-w\rVert^2\right)</span>.</p>
-<p><strong>Proposizione 33.22.</strong> <span class="m">\lVert v\rVert\geqslant0</span> con <span class="m">\lVert v\rVert=0</span> se e solo se <span class="m">v=0</span>; <span class="m">\lVert\lambda v\rVert=\lvert\lambda\rvert\cdot\lVert v\rVert</span>.</p>
-<p><strong>Teorema 33.23 (Cauchy-Schwarz).</strong> <span class="m">\lvert\langle v,w\rangle\rvert\leqslant\lVert v\rVert\cdot\lVert w\rVert</span>, con uguaglianza se e solo se <span class="m">v,w</span> sono linearmente dipendenti.</p>
-<p><strong>Proposizione 33.24 (disuguaglianza triangolare).</strong> <span class="m">\lVert v+w\rVert\leqslant\lVert v\rVert+\lVert w\rVert</span>, con uguaglianza se e solo se <span class="m">v</span> è multiplo di <span class="m">w</span> con fattore positivo o nullo, o viceversa.</p>
 <div class="callout esempio">
 
-<p>In <span class="m">\mathbb{R}^3</span> standard, i vettori ortogonali a <span class="m">{}^t(3\ 4\ -2)</span> e <span class="m">{}^t(1\ 1\ 0)</span> con norma <span class="m">3</span>: si risolve <span class="m">3x_1+4x_2-2x_3=0</span>, <span class="m">x_1+x_2=0</span>, <span class="m">x_1^2+x_2^2+x_3^2=9</span>, ottenendo <span class="m">{}^t(-2\ 2\ 1)</span> e <span class="m">{}^t(2\ -2\ -1)</span>.</p>
+<p><strong>La norma dipende dal prodotto scalare (Es. 33.17 e Esercizio 33.6).</strong> Con il prodotto dell&#39;Esempio 33.9:
+<span class="m d">\lVert{}^t(1\ -1)\rVert=\sqrt{1\cdot1-1\cdot(-1)-(-1)\cdot1+5\cdot(-1)(-1)}=\sqrt{1+1+1+5}=\sqrt8=2\sqrt2,</span>
+mentre la norma standard dello stesso vettore è <span class="m">\sqrt2</span>. Con il prodotto dell&#39;Esercizio 33.1, <span class="m">X={}^t(0\ 1\ 0)</span> ha norma <span class="m">\sqrt{5\cdot1\cdot1}=\sqrt5</span>, invece la norma standard è <span class="m">1</span>.</p>
+</div>
+
+<h3>Proprietà delle norme</h3>
+<p>La dispensa elenca questi risultati senza dimostrarli; sotto, per capirli, sono indicati i passaggi essenziali.</p>
+<p><strong>Proposizione 33.21 (dalla norma si ricava il prodotto scalare).</strong> Per ogni <span class="m">v,w</span>:
+<span class="m d">\langle v,w\rangle=\tfrac12\left(\lVert v\rVert^2+\lVert w\rVert^2-\lVert v-w\rVert^2\right).</span>
+<em>Perché.</em> Con l&#39;Oss. 33.14 (<span class="m">\lambda=1</span>, <span class="m">\mu=-1</span>): <span class="m">\lVert v-w\rVert^2=\langle v-w,v-w\rangle=\lVert v\rVert^2-2\langle v,w\rangle+\lVert w\rVert^2</span>; si ricava <span class="m">\langle v,w\rangle</span>. È il teorema di Carnot scritto con i vettori.</p>
+<p><strong>Proposizione 33.22.</strong></p>
+<ol>
+<li><span class="m">\lVert v\rVert\geqslant0</span>, e <span class="m">\lVert v\rVert=0</span> se e solo se <span class="m">v=0</span> (segue da (Pos));</li>
+<li><span class="m">\lVert\lambda v\rVert=\lvert\lambda\rvert\cdot\lVert v\rVert</span>, perché <span class="m">\sqrt{\langle\lambda v,\lambda v\rangle}=\sqrt{\lambda^2\langle v,v\rangle}=\lvert\lambda\rvert\sqrt{\langle v,v\rangle}</span> (attenzione: <span class="m">\sqrt{\lambda^2}=\lvert\lambda\rvert</span>, non <span class="m">\lambda</span>).</li>
+</ol>
+<p><strong>Teorema 33.23 (disuguaglianza di Cauchy-Schwarz).</strong> Per ogni <span class="m">v,w\in V</span>:
+<span class="m d">\lvert\langle v,w\rangle\rvert\leqslant\lVert v\rVert\cdot\lVert w\rVert,</span>
+e vale l&#39;<strong>uguaglianza se e solo se <span class="m">v</span> e <span class="m">w</span> sono linearmente dipendenti</strong>.</p>
+<p><em>Idea della dimostrazione (non richiesta dalla dispensa).</em> Se <span class="m">w=0</span> entrambi i membri sono <span class="m">0</span>. Se <span class="m">w\neq0</span>, per ogni <span class="m">t\in\mathbb{R}</span> si ha <span class="m">0\leqslant\lVert v-tw\rVert^2=\lVert v\rVert^2-2t\langle v,w\rangle+t^2\lVert w\rVert^2</span>. Un polinomio di secondo grado in <span class="m">t</span> sempre <span class="m">\geqslant0</span> ha discriminante <span class="m">\leqslant0</span>: <span class="m">4\langle v,w\rangle^2-4\lVert v\rVert^2\lVert w\rVert^2\leqslant0</span>, che è la tesi. L&#39;uguaglianza vale quando esiste <span class="m">t</span> con <span class="m">v-tw=0</span>, cioè quando i vettori sono dipendenti.</p>
+<p><strong>Proposizione 33.24 (disuguaglianza triangolare).</strong> Per ogni <span class="m">v,w\in V</span>:
+<span class="m d">\lVert v+w\rVert\leqslant\lVert v\rVert+\lVert w\rVert,</span>
+con l&#39;uguaglianza se e solo se <span class="m">v</span> è multiplo di <span class="m">w</span> con fattore <strong>positivo o nullo</strong>, o viceversa.
+<em>Perché.</em> <span class="m">\lVert v+w\rVert^2=\lVert v\rVert^2+2\langle v,w\rangle+\lVert w\rVert^2\leqslant\lVert v\rVert^2+2\lVert v\rVert\lVert w\rVert+\lVert w\rVert^2=(\lVert v\rVert+\lVert w\rVert)^2</span> per Cauchy-Schwarz; poi si fa la radice. Geometricamente: in un triangolo un lato è al più la somma degli altri due; si ha uguaglianza quando il triangolo è &quot;schiacciato&quot; con i vettori nello stesso verso.</p>
+<div class="callout esempio">
+
+<p><strong>Esercizio 33.2.</strong> In <span class="m">\mathbb{R}^3</span> standard, trovare i vettori <span class="m">X</span> ortogonali a <span class="m">{}^t(3\ 4\ -2)</span> e a <span class="m">{}^t(1\ 1\ 0)</span> (prodotto scalare nullo) con norma <span class="m">3</span>:
+<span class="m d">\begin{cases}3x_1+4x_2-2x_3=0\\x_1+x_2=0\\\sqrt{x_1^2+x_2^2+x_3^2}=3\end{cases}</span>
+Dalla seconda <span class="m">x_2=-x_1</span>; sostituendo nella prima <span class="m">3x_1-4x_1-2x_3=0</span>, cioè <span class="m">x_3=-\frac{x_1}2</span>. Nella terza (elevando al quadrato): <span class="m">x_1^2+x_1^2+\frac{x_1^2}4=\frac94x_1^2=9</span>, quindi <span class="m">x_1^2=4</span>, <span class="m">x_1=\pm2</span>. Soluzioni: <span class="m">X={}^t(2\ -2\ -1)</span> e <span class="m">X={}^t(-2\ 2\ 1)</span>.</p>
+</div>
+
+<div class="callout attenzione">
+
+<ul>
+<li>Nella definizione di prodotto scalare serve una forma <strong>bilineare</strong> (non &quot;lineare&quot;: un&#39;applicazione da <span class="m">V\times V</span> lineare nella coppia sarebbe un&#39;altra cosa), <strong>simmetrica</strong> e <strong>definita positiva</strong>: tutte e tre.</li>
+<li>Norma standard: <strong>somma dei quadrati e poi radice</strong>. Non si sommano le coordinate (con o senza valore assoluto) e non si dimentica la radice. La norma è sempre <span class="m">\geqslant0</span>.</li>
+<li>La disuguaglianza triangolare è con <span class="m">\leqslant</span> (non <span class="m">\geqslant</span>, né stretta: l&#39;uguaglianza è possibile).</li>
+<li><span class="m">\lVert\lambda v\rVert=\lvert\lambda\rvert\lVert v\rVert</span>: il valore assoluto è essenziale (<span class="m">\lVert-2v\rVert=2\lVert v\rVert</span>).</li>
+</ul>
 </div>
 
 <div class="callout esame">
 
-<p>Il paniere chiede la <strong>norma standard</strong> di vettori di <span class="m">\mathbb{R}^4</span> (somma dei quadrati, poi radice). Nei quiz: le tre proprietà del prodotto scalare (forma <em>bilineare</em>, simmetrica, definita positiva), il prodotto scalare standard, la disuguaglianza triangolare con <span class="m">\leqslant</span>. Domande aperte: prodotti scalari e norme associate, con definizione ed enunciato di un risultato (Cauchy-Schwarz, triangolare, Prop. 33.22).</p>
+<p>Il paniere chiede la <strong>norma standard</strong> di vettori di <span class="m">\mathbb{R}^4</span> (es. <span class="m">{}^t(3\ 0\ -4\ 0)</span>, <span class="m">{}^t(2\ -2\ 2\ -2)</span>, <span class="m">{}^t(2\ 0\ 2\ -1)</span>, <span class="m">{}^t(0\ -2\ 0\ 0)</span> hanno norme <span class="m">5,4,3,2</span>): quadrati, somma, radice, per ciascun vettore. Nei quiz: le tre proprietà del prodotto scalare, il calcolo del prodotto standard, la disuguaglianza triangolare con <span class="m">\leqslant</span>.</p>
+<p><strong>Domande aperte.</strong> &quot;Prodotti scalari e norme associate&quot;: forma bilineare (Bil-Sx, Bil-Dx), simmetrica, definita positiva (con Pos′), definizione di prodotto scalare, prodotto standard <span class="m">{}^tX\,Y</span>, un esempio non standard con il completamento dei quadrati, sviluppo (33.1); norma <span class="m">\sqrt{\langle v,v\rangle}</span>, norma standard, dipendenza dal prodotto scalare. &quot;Norme, con definizione e un risultato&quot;: definizione + uno tra Prop. 33.21, Prop. 33.22, Cauchy-Schwarz (con il caso di uguaglianza), disuguaglianza triangolare.</p>
+</div>
+
+<div class="callout sintesi">
+
+<ul>
+<li>Prodotto scalare = forma bilineare + simmetrica + definita positiva; bastano (Bil-Sx), (Sim), (Pos).</li>
+<li>Standard: <span class="m">\langle X,Y\rangle={}^tXY=\sum x_iy_i</span>; <span class="m">\langle e_i,e_j\rangle=\delta_{ij}</span>.</li>
+<li><span class="m">\langle\lambda v+\mu w,\lambda v+\mu w\rangle=\lambda^2\lVert v\rVert^2+2\lambda\mu\langle v,w\rangle+\mu^2\lVert w\rVert^2</span>.</li>
+<li><span class="m">\lVert v\rVert=\sqrt{\langle v,v\rangle}</span>; standard <span class="m">\sqrt{x_1^2+\cdots+x_n^2}</span>; dipende dal prodotto scalare.</li>
+<li><span class="m">\langle v,w\rangle=\frac12(\lVert v\rVert^2+\lVert w\rVert^2-\lVert v-w\rVert^2)</span>; <span class="m">\lVert\lambda v\rVert=\lvert\lambda\rvert\lVert v\rVert</span>.</li>
+<li>Cauchy-Schwarz <span class="m">\lvert\langle v,w\rangle\rvert\leqslant\lVert v\rVert\lVert w\rVert</span> (= <span class="m">\iff</span> dipendenti); triangolare <span class="m">\lVert v+w\rVert\leqslant\lVert v\rVert+\lVert w\rVert</span>.</li>
+</ul>
 </div>

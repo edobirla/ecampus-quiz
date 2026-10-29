@@ -1,76 +1,147 @@
-<h1>Lezione 69 — F.e.m. indotta</h1>
-<h2>Due modi di cambiare il flusso</h2>
-<p>La f.e.m. indotta vale sempre <span class="m">\mathcal E = -d\Phi_B/dt</span>. Il flusso può cambiare in due modi:</p>
+<h1>Lezione 69 — F.e.m. indotta: variazioni di flusso e f.e.m. di movimento</h1>
+<h2>Di cosa parla questa lezione</h2>
+<p>La legge di Faraday-Neumann <span class="m">\mathcal E = -d\Phi_B/dt</span> vale sempre, ma il flusso può cambiare per due motivi fisicamente diversi:</p>
 <ul>
-<li>il <strong>campo cambia nel tempo</strong> e il circuito è fermo: la f.e.m. nasce dal campo elettrico indotto;</li>
-<li>il <strong>circuito si muove</strong> (o si deforma) in un campo fisso: è la <strong>f.e.m. di movimento</strong>, dovuta alla forza di Lorentz.</li>
+<li>il <strong>campo cambia nel tempo</strong> e il circuito è fermo: le cariche sono spinte dal <strong>campo elettrico indotto</strong> (lezione 68);</li>
+<li>il <strong>circuito si muove</strong> o si deforma in un campo costante: le cariche, che si muovono insieme al conduttore, sono spinte dalla <strong>forza di Lorentz</strong>. È la <strong>f.e.m. di movimento</strong> (o mozionale).</li>
 </ul>
-<p>Con variazioni finite si usa il valore medio:
-<span class="m d">|\mathcal E| = \frac{\Delta \Phi}{\Delta t}</span>
-dove <span class="m">\Delta\Phi</span> è la variazione di flusso (Wb) e <span class="m">\Delta t</span> l&#39;intervallo di tempo (s).</p>
+<p>Questa lezione si concentra sui calcoli: f.e.m. media da una variazione finita di flusso, sbarretta in moto, spira che entra o esce da una regione di campo, bilancio energetico, spira e sbarra rotanti.</p>
+<h2>F.e.m. media da una variazione finita di flusso</h2>
+<p>Se il flusso concatenato passa da <span class="m">\Phi_{in}</span> a <span class="m">\Phi_{fin}</span> nell&#39;intervallo <span class="m">\Delta t</span>:
+<span class="m d">\mathcal E_{media} = -\frac{\Phi_{fin} - \Phi_{in}}{\Delta t} \qquad |\mathcal E| = \frac{|\Delta\Phi|}{\Delta t}</span>
+dove <span class="m">\Delta\Phi</span> è in Wb, <span class="m">\Delta t</span> in s, <span class="m">\mathcal E</span> in V. Se il flusso varia in modo uniforme (linearmente) la f.e.m. è costante e uguale al valore medio.</p>
 <div class="callout esempio">
 
-<p>Il flusso in una bobina passa da −30 Wb a +38 Wb in 0,42 s. Attenzione ai segni: <span class="m">\Delta\Phi = 38 - (-30) = 68\,\mathrm{Wb}</span>. Quindi <span class="m">|\mathcal E| = 68/0{,}42 \approx 162\,\mathrm{V}</span>.</p>
+<p><strong>Flusso che cambia segno (paniere).</strong> Il flusso concatenato con una bobina passa da <span class="m">-30\,\mathrm{Wb}</span> a <span class="m">+38\,\mathrm{Wb}</span> in 0,42 s. Modulo della f.e.m.?</p>
+<ol>
+<li>Variazione con i segni: <span class="m">\Delta\Phi = \Phi_{fin} - \Phi_{in} = 38 - (-30) = 38 + 30 = 68\,\mathrm{Wb}</span>.</li>
+<li><span class="m">|\mathcal E| = \dfrac{68}{0{,}42} \approx 162\,\mathrm V</span>.</li>
+</ol>
+<p>Il segno meno del flusso iniziale significa che all&#39;inizio il campo attraversava la bobina in verso opposto: per arrivare a <span class="m">+38</span> il flusso deve prima annullarsi (variazione di 30) e poi crescere fino a 38 (altra variazione di 38). Errori tipici: fare <span class="m">38 - 30 = 8\,\mathrm{Wb}</span> (circa 19 V), oppure usare solo il flusso finale, <span class="m">38/0{,}42 \approx 90\,\mathrm V</span>.</p>
 </div>
 
-<h2>F.e.m. di movimento</h2>
-<p>Una sbarretta di lunghezza <span class="m">l</span> si muove con velocità <span class="m">\vec v</span> in un campo <span class="m">\vec B</span>, perpendicolare a entrambi. Le cariche nella sbarretta si muovono con lei. Su ognuna agisce la forza di Lorentz <span class="m">q\vec v \times \vec B</span>, diretta lungo la sbarretta. Le cariche positive vanno da un lato, le negative dall&#39;altro. Tra i capi nasce una f.e.m.:
-<span class="m d">\mathcal E = B\,l\,v</span>
+<h2>F.e.m. di movimento: la sbarretta in moto</h2>
+<h3>Il ragionamento con la forza di Lorentz</h3>
+<p>Una sbarretta conduttrice di lunghezza <span class="m">l</span> si muove con velocità costante <span class="m">\vec v</span> in un campo uniforme <span class="m">\vec B</span>; sbarretta, velocità e campo sono a due a due perpendicolari.</p>
+<ol>
+<li>Gli elettroni liberi della sbarretta si muovono con lei, con velocità <span class="m">\vec v</span>. Ciascuno subisce la forza di Lorentz <span class="m">\vec F = q\,\vec v \times \vec B</span>, che è diretta <strong>lungo la sbarretta</strong>.</li>
+<li>Questa forza agisce come un campo &quot;elettromotore&quot; <span class="m">\vec E^* = \vec F/q = \vec v \times \vec B</span>, di modulo <span class="m">vB</span>, parallelo alla sbarretta.</li>
+<li>Le cariche si spostano: un&#39;estremità della sbarretta si carica positivamente, l&#39;altra negativamente (finché, in una sbarretta isolata, il campo elettrostatico delle cariche accumulate bilancia <span class="m">\vec E^*</span>, come nell&#39;effetto Hall).</li>
+<li>La f.e.m. è il lavoro per unità di carica lungo la sbarretta: <span class="m">\mathcal E = \int \vec E^* \cdot d\vec l = vB \cdot l</span>.</li>
+</ol>
+<p><span class="m d">\mathcal E = B\,l\,v</span>
 dove:</p>
 <ul>
 <li><span class="m">\mathcal E</span> = f.e.m. ai capi della sbarretta (V);</li>
 <li><span class="m">B</span> = campo magnetico (T);</li>
-<li><span class="m">l</span> = lunghezza della sbarretta, perpendicolare a <span class="m">\vec v</span> (m);</li>
+<li><span class="m">l</span> = lunghezza della sbarretta, perpendicolare sia a <span class="m">\vec v</span> sia a <span class="m">\vec B</span> (m);</li>
 <li><span class="m">v</span> = velocità (m/s).</li>
 </ul>
-<p>Lo stesso risultato viene da Faraday. La sbarretta, scorrendo su due binari, spazza ogni secondo un&#39;area <span class="m">lv</span>. Il flusso cresce di <span class="m">Blv</span> al secondo.</p>
+<p>In generale, per un conduttore di forma qualsiasi che si muove: <span class="m">\mathcal E = \oint (\vec v \times \vec B)\cdot d\vec l</span>. Se la sbarretta non è perpendicolare, conta solo la componente &quot;utile&quot;: <span class="m">\mathcal E = (\vec v \times \vec B)\cdot\vec l</span>.</p>
+<h3>Lo stesso risultato con la legge di Faraday</h3>
+<p>Ora la sbarretta scorre senza attrito su due binari conduttori paralleli, distanti <span class="m">l</span>, chiusi da una resistenza <span class="m">R</span>: si forma un circuito rettangolare la cui area cresce.</p>
+<ol>
+<li>Se <span class="m">x</span> è la posizione della sbarretta, l&#39;area del circuito è <span class="m">S = l\,x</span> e il flusso è <span class="m">\Phi = B\,l\,x</span>.</li>
+<li>La sbarretta avanza con <span class="m">dx/dt = v</span>, quindi in ogni secondo spazza un&#39;area <span class="m">l v</span>.</li>
+<li><span class="m">\left|\dfrac{d\Phi}{dt}\right| = B\,l\,\dfrac{dx}{dt} = B\,l\,v</span>.</li>
+</ol>
+<p>I due punti di vista (forza di Lorentz sulle cariche, variazione del flusso concatenato) danno lo <strong>stesso risultato</strong>: la legge di Faraday li contiene entrambi.</p>
+<p><strong>Verso della corrente</strong> (Lenz): l&#39;area cresce, il flusso aumenta, la corrente indotta crea un campo opposto a <span class="m">\vec B</span> dentro il circuito.</p>
 <div class="callout esempio">
 
-<p>Sbarretta di 0,5 m, a 4 m/s, in un campo di 0,2 T: <span class="m">\mathcal E = 0{,}2 \cdot 0{,}5 \cdot 4 = 0{,}4\,\mathrm{V}</span>.</p>
+<p>Sbarretta di 0,5 m che scorre a 4 m/s su binari, in un campo di 0,2 T perpendicolare al piano dei binari, con resistenza totale 0,1 Ω.</p>
+<ol>
+<li><span class="m">\mathcal E = Blv = 0{,}2 \cdot 0{,}5 \cdot 4 = 0{,}4\,\mathrm V</span>.</li>
+<li><span class="m">i = \mathcal E/R = 0{,}4/0{,}1 = 4\,\mathrm A</span>.</li>
+<li>Forza magnetica sulla sbarretta: <span class="m">F = ilB = 4 \cdot 0{,}5 \cdot 0{,}2 = 0{,}4\,\mathrm N</span>, frenante.</li>
+<li>Potenza meccanica per mantenere la velocità: <span class="m">Fv = 0{,}4 \cdot 4 = 1{,}6\,\mathrm W</span>; potenza dissipata: <span class="m">Ri^2 = 0{,}1 \cdot 16 = 1{,}6\,\mathrm W</span>. Coincidono.</li>
+</ol>
 </div>
 
-<h2>Spira che entra o esce da un campo</h2>
-<p>Una spira rettangolare si muove a velocità costante verso una regione con campo uniforme.</p>
-<ul>
-<li><strong>Mentre entra</strong>: l&#39;area dentro il campo cresce, il flusso cresce, circola corrente.</li>
-<li><strong>Tutta dentro</strong>: il flusso non cambia più, la corrente è <strong>zero</strong>.</li>
-<li><strong>Mentre esce</strong>: il flusso cala, la corrente circola in verso opposto.</li>
-</ul>
-<p>Conta solo il lato che taglia il bordo del campo, cioè il lato <strong>perpendicolare alla velocità</strong>. La f.e.m. vale <span class="m">Blv</span> con <span class="m">l</span> = quel lato.</p>
+<h2>Il bilancio di energia</h2>
+<p>La corrente indotta <span class="m">i</span> scorre nella sbarretta di lunghezza <span class="m">l</span>, che si trova nel campo <span class="m">\vec B</span>. Quindi subisce la forza (seconda legge di Laplace) <span class="m">F = i\,l\,B</span>, diretta in verso <strong>opposto alla velocità</strong>: la forza <strong>frena</strong> il moto (legge di Lenz).</p>
+<p><strong>Passaggi.</strong></p>
+<ol>
+<li><span class="m">i = \dfrac{\mathcal E}{R} = \dfrac{Blv}{R}</span>, quindi la forza frenante è <span class="m">F = ilB = \dfrac{B^2 l^2 v}{R}</span>: proporzionale alla velocità, come un attrito viscoso.</li>
+<li>Per mantenere la velocità costante un agente esterno deve spingere con una forza uguale e opposta, spendendo la potenza <span class="m">P_{mecc} = F v = \dfrac{B^2 l^2 v^2}{R}</span>.</li>
+<li>La potenza elettrica generata è <span class="m">\mathcal E\,i = Blv \cdot \dfrac{Blv}{R} = \dfrac{B^2 l^2 v^2}{R}</span>.</li>
+<li>La potenza dissipata nella resistenza è <span class="m">R i^2 = R\dfrac{B^2 l^2 v^2}{R^2} = \dfrac{B^2 l^2 v^2}{R}</span>.</li>
+</ol>
+<p><span class="m d">P_{mecc} = F v = \mathcal E\,i = R\,i^2</span>
+Il lavoro meccanico si trasforma in energia elettrica e poi in calore: nessuna energia si crea dal nulla. È la conservazione dell&#39;energia che &quot;sta dietro&quot; alla legge di Lenz.</p>
+<h3>Sbarretta lasciata libera</h3>
+<p>Se la sbarretta (massa <span class="m">m</span>) riceve una velocità iniziale <span class="m">v_0</span> e poi viene lasciata andare, la sola forza orizzontale è quella frenante:
+<span class="m d">m\frac{dv}{dt} = -\frac{B^2 l^2}{R}\,v \quad\Rightarrow\quad v(t) = v_0\,e^{-t/\tau_m} \qquad \tau_m = \frac{mR}{B^2 l^2}</span>
+La velocità cala esponenzialmente e l&#39;energia cinetica iniziale <span class="m">\tfrac12 m v_0^2</span> finisce tutta in calore nella resistenza. È un modello del freno elettromagnetico.</p>
+<h2>Spira che entra o esce da una regione di campo</h2>
+<p>Una spira rettangolare rigida si muove a velocità costante <span class="m">v</span> verso (o fuori da) una regione in cui c&#39;è un campo uniforme <span class="m">B</span> perpendicolare al piano della spira; fuori dalla regione il campo è nullo. Il lato perpendicolare alla velocità ha lunghezza <span class="m">a</span>, quello parallelo alla velocità lunghezza <span class="m">b</span>.</p>
+<p><strong>Le tre fasi.</strong></p>
+<ol>
+<li><strong>Mentre entra</strong>: solo una parte della spira è nel campo; l&#39;area immersa è <span class="m">a\,x(t)</span>, con <span class="m">x</span> che cresce di <span class="m">v</span> al secondo. Il flusso <strong>cresce</strong>: <span class="m">d\Phi/dt = Bav</span>. Circola una corrente costante <span class="m">i = Bav/R</span>.</li>
+<li><strong>Tutta dentro</strong>: il flusso è <span class="m">Bab</span>, costante. La corrente è <strong>zero</strong> (anche se la spira si muove nel campo: le f.e.m. di movimento dei due lati perpendicolari alla velocità sono uguali e si cancellano lungo il circuito).</li>
+<li><strong>Mentre esce</strong>: l&#39;area immersa cala, il flusso <strong>diminuisce</strong> con la stessa rapidità <span class="m">Bav</span>: la corrente ha lo stesso modulo ma <strong>verso opposto</strong> rispetto all&#39;entrata.</li>
+</ol>
+<p>La durata di ciascuna fase di entrata o uscita è <span class="m">b/v</span> (il tempo per far passare tutto il lato <span class="m">b</span> attraverso il bordo del campo).</p>
+<p><strong>Quale lato conta.</strong> La f.e.m. è prodotta dal lato che &quot;taglia&quot; il bordo della regione di campo, cioè il lato <strong>perpendicolare alla velocità</strong> (lunghezza <span class="m">a</span>). I lati paralleli alla velocità non tagliano linee di campo: su di essi <span class="m">\vec v \times \vec B</span> è perpendicolare al lato e non spinge le cariche lungo il filo.</p>
 <div class="callout esempio">
 
-<p>Spira con lato <span class="m">a = 20\,\mathrm{cm}</span> lungo <span class="m">y</span> e lato <span class="m">b = 30\,\mathrm{cm}</span> lungo <span class="m">x</span>. Resistenza 10 Ω. Esce a 10 m/s lungo <span class="m">x</span> da un campo di 2 T.</p>
-<ul>
-<li>Il lato che taglia il bordo è quello lungo <span class="m">y</span>: <span class="m">l = 0{,}20\,\mathrm{m}</span>.</li>
-<li><span class="m">\mathcal E = 2 \cdot 0{,}20 \cdot 10 = 4\,\mathrm{V}</span>.</li>
-<li><span class="m">i = \mathcal E/R = 4/10 = 0{,}4\,\mathrm{A}</span>.</li>
-</ul>
+<p><strong>Spira che esce dal campo (paniere).</strong> Spira di lati <span class="m">a = 20\,\mathrm{cm}</span> (parallelo all&#39;asse <span class="m">y</span>) e <span class="m">b = 30\,\mathrm{cm}</span> (parallelo all&#39;asse <span class="m">x</span>), resistenza <span class="m">R = 10\,\Omega</span>. Esce con velocità costante <span class="m">v_0 = 10\,\mathrm{m/s}</span> verso le <span class="m">x</span> positive dal semipiano <span class="m">x &lt; 0</span>, dove c&#39;è un campo <span class="m">B = 2\,\mathrm T</span> perpendicolare al piano. Quanto vale la corrente durante l&#39;uscita?</p>
+<ol>
+<li>Il bordo del campo è la retta <span class="m">x = 0</span> (parallela a <span class="m">y</span>). Il lato che la attraversa e &quot;taglia&quot; le linee è quello parallelo a <span class="m">y</span>: <span class="m">l = a = 0{,}20\,\mathrm m</span>.</li>
+<li>Durante l&#39;uscita la parte di spira ancora nel campo ha area <span class="m">a \cdot x_{dentro}(t)</span>, con <span class="m">x_{dentro}</span> che diminuisce di <span class="m">v_0</span> al secondo: <span class="m">\left|\dfrac{d\Phi}{dt}\right| = B\,a\,v_0</span>.</li>
+<li><span class="m">\mathcal E = B\,a\,v_0 = 2 \cdot 0{,}20 \cdot 10 = 4\,\mathrm V</span>.</li>
+<li><span class="m">i = \dfrac{\mathcal E}{R} = \dfrac{4}{10} = 0{,}4\,\mathrm A</span>.</li>
+<li>La corrente è costante per tutta l&#39;uscita, che dura <span class="m">b/v_0 = 0{,}30/10 = 0{,}03\,\mathrm s</span>; prima (spira tutta dentro) e dopo (tutta fuori) la corrente è nulla.</li>
+<li>Verso (Lenz): il flusso diminuisce, la corrente crea un campo <strong>concorde</strong> a <span class="m">\vec B</span> dentro la spira.</li>
+</ol>
 </div>
 
 <div class="callout attenzione">
 
-<p>Errore tipico: usare il lato parallelo alla velocità (qui 30 cm). Quel lato non taglia linee di campo e non dà f.e.m.</p>
+<p>Errore tipico: usare il lato parallelo alla velocità (qui 30 cm): si otterrebbe <span class="m">2 \cdot 0{,}30 \cdot 10 = 6\,\mathrm V</span> e <span class="m">0{,}6\,\mathrm A</span>, sbagliato. Conta il lato perpendicolare al moto. E una corrente si misura in ampere: un risultato in newton è una forza, non una corrente.</p>
 </div>
 
-<h2>Il bilancio di energia</h2>
-<p>La corrente indotta <span class="m">i</span> scorre nel lato di lunghezza <span class="m">l</span>. Il campo esercita su di esso una forza <span class="m">F = ilB</span> che <strong>frena</strong> il moto (Lenz). Per tenere la velocità costante bisogna spingere con la stessa forza.</p>
-<p>La potenza meccanica spesa è <span class="m">Fv = ilBv = \mathcal E i</span>. È uguale alla potenza elettrica, che si trasforma in calore nella resistenza, <span class="m">Ri^2</span>. Nessuna energia si crea dal nulla.</p>
 <div class="callout esempio">
 
-<p>Nella spira di prima: <span class="m">F = 0{,}4 \cdot 0{,}20 \cdot 2 = 0{,}16\,\mathrm{N}</span>. Potenza: <span class="m">0{,}16 \cdot 10 = 1{,}6\,\mathrm{W}</span>, uguale a <span class="m">\mathcal E i = 4 \cdot 0{,}4 = 1{,}6\,\mathrm{W}</span>.</p>
+<p><strong>Bilancio di energia per la stessa spira.</strong></p>
+<ul>
+<li>Forza magnetica sul lato di 20 cm percorso da corrente: <span class="m">F = i\,a\,B = 0{,}4 \cdot 0{,}20 \cdot 2 = 0{,}16\,\mathrm N</span>, frenante.</li>
+<li>Potenza meccanica per mantenere <span class="m">v_0</span>: <span class="m">F v_0 = 0{,}16 \cdot 10 = 1{,}6\,\mathrm W</span>.</li>
+<li>Potenza elettrica: <span class="m">\mathcal E\,i = 4 \cdot 0{,}4 = 1{,}6\,\mathrm W</span>; dissipata: <span class="m">R i^2 = 10 \cdot 0{,}16 = 1{,}6\,\mathrm W</span>.</li>
+<li>Energia totale dissipata durante l&#39;uscita: <span class="m">1{,}6\,\mathrm W \cdot 0{,}03\,\mathrm s = 0{,}048\,\mathrm J</span>.</li>
+</ul>
 </div>
 
 <h2>Spira che ruota</h2>
-<p>Una spira di area <span class="m">S</span> che ruota con velocità angolare <span class="m">\omega</span> in un campo <span class="m">B</span> ha:
-<span class="m d">\mathcal E = BS\omega\sin\omega t</span>
-La f.e.m. è alternata. È il principio dell&#39;alternatore.</p>
+<p>Una spira di area <span class="m">S</span> (o una bobina di <span class="m">N</span> spire) ruota con velocità angolare <span class="m">\omega</span> costante in un campo uniforme <span class="m">B</span>, attorno a un asse perpendicolare al campo. Il flusso è <span class="m">\Phi = NBS\cos\omega t</span> e
+<span class="m d">\mathcal E = NBS\,\omega\sin\omega t</span>
+La f.e.m. è <strong>alternata</strong>: è il principio dell&#39;alternatore (vedi lezione 67). Qui il flusso cambia perché cambia l&#39;orientamento; dal punto di vista microscopico è ancora una f.e.m. di movimento, dovuta alla forza di Lorentz sulle cariche dei lati che tagliano le linee di campo.</p>
+<h2>Sbarra che ruota attorno a un estremo</h2>
+<p>Una sbarra conduttrice di lunghezza <span class="m">L</span> ruota con velocità angolare <span class="m">\omega</span> attorno a un suo estremo, in un piano perpendicolare a un campo uniforme <span class="m">B</span> (è il modello del <strong>disco di Faraday</strong>, la prima dinamo).</p>
+<ol>
+<li>Un tratto <span class="m">dr</span> a distanza <span class="m">r</span> dal perno si muove con velocità <span class="m">v = \omega r</span>, perpendicolare a sé stesso e al campo.</li>
+<li>Il suo contributo alla f.e.m. è <span class="m">d\mathcal E = B\,v\,dr = B\,\omega\,r\,dr</span>.</li>
+<li>Integro da <span class="m">0</span> a <span class="m">L</span>:
+<span class="m d">\mathcal E = \int_0^L B\omega r\,dr = \frac12\,B\,\omega\,L^2</span></li>
+</ol>
+<p>Stesso risultato con Faraday: in un giro (<span class="m">T = 2\pi/\omega</span>) la sbarra spazza l&#39;area <span class="m">\pi L^2</span>, quindi <span class="m">|d\Phi/dt| = B\pi L^2/T = \tfrac12 B\omega L^2</span>.</p>
+<div class="callout esempio">
+
+<p>Sbarra di 1 m che ruota a 10 giri/s in un campo di 0,05 T: <span class="m">\omega = 2\pi \cdot 10 \approx 62{,}8\,\mathrm{rad/s}</span>, <span class="m">\mathcal E = \tfrac12 \cdot 0{,}05 \cdot 62{,}8 \cdot 1^2 \approx 1{,}57\,\mathrm V</span>.</p>
+</div>
+
+<div class="callout esame">
+
+<p>Le domande chiuse sono calcoli: f.e.m. media da una variazione di flusso con segni diversi (<span class="m">|\Delta\Phi|/\Delta t</span>, attenzione a <span class="m">38 - (-30) = 68</span>) e corrente in una spira che entra o esce da un campo (<span class="m">i = Blv/R</span>, con <span class="m">l</span> il lato perpendicolare alla velocità). Converti sempre i centimetri in metri e controlla che il risultato abbia l&#39;unità giusta.</p>
+</div>
+
 <div class="callout sintesi">
 
 <ul>
-<li><span class="m">|\mathcal E| = \Delta\Phi/\Delta t</span>; attenzione ai segni del flusso.</li>
-<li>F.e.m. di movimento: <span class="m">\mathcal E = Blv</span>, dovuta alla forza di Lorentz sulle cariche.</li>
-<li>Spira che entra o esce: corrente solo mentre il flusso cambia; usa il lato perpendicolare al moto.</li>
-<li>Corrente indotta: <span class="m">i = \mathcal E/R</span>; la forza sul conduttore frena il moto.</li>
-<li>Lavoro meccanico = energia elettrica = calore nella resistenza.</li>
+<li><span class="m">|\mathcal E| = |\Delta\Phi|/\Delta t</span>; attenzione ai segni del flusso.</li>
+<li>F.e.m. di movimento: <span class="m">\mathcal E = Blv</span>, dalla forza di Lorentz sulle cariche (<span class="m">\vec E^* = \vec v \times \vec B</span>); stesso risultato con Faraday (area spazzata <span class="m">lv</span> al secondo).</li>
+<li>Corrente <span class="m">i = Blv/R</span>; forza frenante <span class="m">F = ilB = B^2l^2v/R</span>; <span class="m">Fv = \mathcal E i = Ri^2</span>.</li>
+<li>Spira che entra/esce: corrente solo mentre entra o esce, versi opposti; conta il lato perpendicolare al moto; tutta dentro, corrente nulla.</li>
+<li>Spira rotante: <span class="m">\mathcal E = NBS\omega\sin\omega t</span>; sbarra rotante: <span class="m">\mathcal E = \tfrac12 B\omega L^2</span>.</li>
 </ul>
 </div>

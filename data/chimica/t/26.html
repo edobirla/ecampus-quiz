@@ -1,124 +1,313 @@
 <h1 id="lez-26">Lezione 26 — Stechiometria dei gas e legge di Dalton nella pratica</h1>
 <h2 id="lez-26-perche">Perché questa lezione esiste</h2>
-<p>Conoscere <span class="m">PV=nRT</span> non basta: la maggior parte degli esercizi chiede di applicarla
-a una <strong>reazione chimica</strong> in cui uno o più reagenti sono gassosi, spesso misurati
-in condizioni di <span class="m">T</span> e <span class="m">P</span> diverse fra loro. Questa lezione raccoglie il tipo di
-ragionamento che serve in questi casi, con il reagente limitante (<a href="#/teoria/chimica/14/lez-14-limitante">Lezione
-14</a>) come filo conduttore.</p>
+<p>Conoscere <span class="m">PV=nRT</span> non basta: la maggior parte degli esercizi chiede di applicarla a una <strong>reazione chimica</strong> in cui
+uno o più reagenti sono gassosi, spesso misurati in condizioni di <span class="m">T</span> e <span class="m">P</span> diverse fra loro. Questa lezione raccoglie
+il tipo di ragionamento che serve in questi casi, con il reagente limitante (<a href="#/teoria/chimica/14/lez-14-limitante">Lezione 14</a>) come filo
+conduttore, e lo applica anche alle miscele di gas (legge di Dalton, <a href="#/teoria/chimica/25/lez-25-miscele-dalton">Lezione 25</a>).</p>
+<p>La dispensa ha due sessioni: <strong>26/S2</strong>, un video sulla <strong>legge di Graham</strong> sulla diffusione dei gas, e <strong>26/S3</strong>,
+&quot;Esercizi vari (svolti) sui gas&quot;, tutti rifatti qui sotto. Il paniere chiede inoltre la <strong>teoria cinetica dei gas</strong>,
+che spiega a livello molecolare <em>perché</em> i gas obbediscono a <span class="m">PV=nRT</span>: è sviluppata in una sezione apposita, con la
+derivazione completa (la dispensa disponibile non contiene una sessione testuale su questo argomento).</p>
+<h2 id="lez-26-cinetica">Teoria cinetica dei gas</h2>
+<p>La teoria cinetica descrive il gas ideale come un insieme enorme di particelle in moto caotico e ricava le grandezze
+macroscopiche (pressione, temperatura) dal moto delle singole molecole.</p>
+<h3>Postulati</h3>
+<ol>
+<li>Un gas è formato da un numero enorme di <strong>particelle</strong> (atomi o molecole) in <strong>moto continuo, rettilineo e
+casuale</strong> in tutte le direzioni.</li>
+<li>Il <strong>volume proprio</strong> delle particelle (covolume) è <strong>trascurabile</strong> rispetto al volume del recipiente: le distanze
+medie fra le particelle sono molto grandi rispetto alle loro dimensioni.</li>
+<li>Fra le particelle <strong>non ci sono forze di attrazione o repulsione</strong> (salvo durante gli urti): fra un urto e l&#39;altro
+ogni particella si muove di moto rettilineo uniforme.</li>
+<li>Gli <strong>urti</strong> fra particelle e contro le pareti sono <strong>perfettamente elastici</strong>: l&#39;energia cinetica totale si
+conserva.</li>
+<li>L&#39;<strong>energia cinetica media</strong> delle particelle è <strong>proporzionale alla temperatura assoluta</strong> del gas (è questo il
+significato microscopico della temperatura).</li>
+</ol>
+<p>La <strong>pressione</strong> è l&#39;effetto macroscopico degli <strong>urti</strong> delle particelle contro le pareti del recipiente: ogni urto
+trasferisce alla parete una piccola quantità di moto; la somma di tutti gli urti per unità di tempo e di superficie è
+la pressione.</p>
+<h3>Derivazione della pressione</h3>
+<p>Si consideri un recipiente cubico di lato <span class="m">L</span> (m), volume <span class="m">V = L^3</span>, con <span class="m">N</span> molecole di massa <span class="m">m</span> (kg).</p>
+<ol>
+<li><strong>Un urto.</strong> Una molecola con componente della velocità <span class="m">u_x</span> (m/s) lungo <span class="m">x</span> urta la parete perpendicolare a <span class="m">x</span>:
+l&#39;urto è elastico, quindi rimbalza con <span class="m">-u_x</span>. La variazione della sua quantità di moto è
+<span class="m">\Delta p = m(-u_x) - m u_x = -2mu_x</span>; per il principio di azione e reazione la parete riceve <span class="m">+2mu_x</span>.</li>
+<li><strong>Frequenza degli urti.</strong> Per tornare sulla stessa parete la molecola deve percorrere <span class="m">2L</span> (andata e ritorno),
+impiegando un tempo <span class="m">\Delta t = 2L/u_x</span>. Il numero di urti al secondo su quella parete è <span class="m">u_x/(2L)</span>.</li>
+<li><strong>Forza di una molecola.</strong> Forza = quantità di moto trasferita al secondo:
+<span class="m">f = 2mu_x\cdot\dfrac{u_x}{2L} = \dfrac{mu_x^2}{L}</span>.</li>
+<li><strong>Tutte le molecole.</strong> Sommando su <span class="m">N</span> molecole e usando la media dei quadrati <span class="m">\langle u_x^2\rangle</span>:
+<span class="m">F = \dfrac{Nm\langle u_x^2\rangle}{L}</span>.</li>
+<li><strong>Isotropia.</strong> Il moto è casuale, nessuna direzione è privilegiata: <span class="m">\langle u_x^2\rangle = \langle u_y^2\rangle =
+   \langle u_z^2\rangle</span>, e poiché <span class="m">u^2 = u_x^2 + u_y^2 + u_z^2</span> si ha <span class="m">\langle u_x^2\rangle = \tfrac13\langle
+   u^2\rangle</span>.</li>
+<li><strong>Pressione.</strong> <span class="m">P = F/L^2</span>:
+<span class="m d">P = \frac{Nm\langle u^2\rangle}{3L^3} = \frac{Nm\langle u^2\rangle}{3V} \quad\Longrightarrow\quad PV = \frac13Nm\langle u^2\rangle = \frac23N\left(\frac12m\langle u^2\rangle\right) = \frac23N\langle E_k\rangle</span></li>
+</ol>
+<h3>Significato della temperatura</h3>
+<p>Confrontando con l&#39;equazione di stato <span class="m">PV = nRT</span> (con <span class="m">N = n\cdot N_A</span>):</p>
+<p><span class="m d">\frac23 nN_A\langle E_k\rangle = nRT \quad\Longrightarrow\quad \langle E_k\rangle = \frac32\frac{R}{N_A}T = \frac32k_BT</span></p>
+<div class="callout formula">
+
+<p><span class="m d">\langle E_k\rangle = \frac32k_BT \qquad\qquad E_{k,\text{molare}} = \frac32RT \qquad\qquad u_{qm} = \sqrt{\langle u^2\rangle} = \sqrt{\frac{3RT}{M}}</span></p>
+<p><span class="m">k_B = R/N_A = 1.381\times10^{-23}\ \mathrm{J/K}</span> (costante di Boltzmann); <span class="m">R = 8.314\ \mathrm{J/(mol\,K)}</span>;
+<span class="m">T</span> in K; <span class="m">M</span> = massa molare <strong>in kg/mol</strong>; <span class="m">u_{qm}</span> = velocità quadratica media (m/s). L&#39;ultima formula si ottiene da
+<span class="m">\tfrac12 m\langle u^2\rangle = \tfrac32 k_BT</span> moltiplicando per <span class="m">N_A</span>: <span class="m">\tfrac12 M\langle u^2\rangle = \tfrac32RT</span>.</p>
+<p>L&#39;energia cinetica media dipende <strong>solo dalla temperatura assoluta</strong>, non dal tipo di gas: a parità di <span class="m">T</span> tutte le
+molecole hanno la stessa energia cinetica media; quelle più leggere si muovono quindi più velocemente.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Velocità quadratica media dell&#39;azoto a <span class="m">25\ ^\circ\mathrm C</span>.</strong> <span class="m">M = 28.0\ \mathrm{g/mol} = 0.0280\ \mathrm{kg/mol}</span>,
+<span class="m">T = 298.15\ \mathrm K</span>:
+<span class="m d">u_{qm} = \sqrt{\frac{3\times8.314\times298.15}{0.0280}} = \sqrt{\frac{7436}{0.0280}} = \sqrt{2.656\times10^5} = 515\ \mathrm{m/s}</span>
+Per l&#39;idrogeno (<span class="m">M = 0.002016</span> kg/mol) alla stessa temperatura: <span class="m">\sqrt{7436/0.002016} = 1920\ \mathrm{m/s}</span>.</p>
+</div>
+
+<p><strong>Distribuzione delle velocità.</strong> Non tutte le molecole hanno la stessa velocità: gli urti continui le distribuiscono
+secondo la <strong>distribuzione di Maxwell-Boltzmann</strong>, una curva a campana asimmetrica (poche molecole lentissime, molte
+intorno a un valore più probabile, una coda di molecole velocissime). Aumentando la temperatura la curva si allarga e
+il massimo si sposta verso velocità più alte.</p>
+<h3>Le leggi dei gas spiegate dalla teoria cinetica</h3>
+<ul>
+<li><strong>Boyle</strong> (<span class="m">T</span> costante): l&#39;energia media delle molecole non cambia; dimezzando il volume, le molecole urtano le pareti
+il doppio delle volte per unità di superficie → la pressione raddoppia.</li>
+<li><strong>Aumento di <span class="m">T</span> a volume costante</strong> (recipiente rigido): il numero di molecole e il volume non cambiano, ma aumenta
+l&#39;energia cinetica media, cioè la <strong>velocità e quindi l&#39;energia con cui le molecole urtano le pareti</strong> (e anche la
+frequenza degli urti) → la pressione aumenta. <strong>Non</strong> aumentano le interazioni fra le molecole (trascurate nel
+modello) né il numero di molecole.</li>
+<li><strong>Charles</strong> (<span class="m">P</span> costante): per mantenere la pressione al crescere dell&#39;energia degli urti, il gas deve espandersi.</li>
+<li><strong>Avogadro</strong>: <span class="m">PV = \tfrac23N\langle E_k\rangle</span>; a parità di <span class="m">P</span>, <span class="m">V</span> e <span class="m">T</span> (quindi di <span class="m">\langle E_k\rangle</span>) il
+numero di molecole <span class="m">N</span> è lo stesso per tutti i gas.</li>
+<li><strong>Dalton</strong>: le molecole non interagiscono, quindi ciascun gas urta le pareti come se fosse solo; le pressioni si
+sommano.</li>
+</ul>
 <h2 id="lez-26-graham">Legge di Graham sulla diffusione dei gas</h2>
 <div class="callout attenzione">
 
-<p><strong>Nota sulla fonte.</strong> La slide 26/S2 rimanda solo a un video (link esterno,
-contenuto multimediale non testuale — la stessa situazione già segnalata per altre
-sessioni video nel corso). La formula della legge di Graham qui sotto è quindi
-riportata come richiamo standard, non trascritta da un testo del corso: se
+<p><strong>Nota sulla fonte.</strong> La sessione 26/S2 della dispensa rimanda solo a un video (animazione sulla diffusione dei gas). La
+formula della legge di Graham qui sotto è quindi riportata come richiamo standard, ricavata dalla teoria cinetica: se
 comparisse all&#39;esame con un enunciato diverso, fidati del testo della domanda.</p>
 </div>
 
-<p>La legge di Graham lega la velocità di <strong>effusione</strong> (o diffusione) di un gas alla
-sua massa molare: a parità di <span class="m">T</span> e <span class="m">P</span>, un gas più leggero si muove più
-velocemente di uno più pesante, perché a parità di energia cinetica media
-(<span class="m">\propto T</span>) una massa minore richiede una velocità maggiore.</p>
+<p>La <strong>diffusione</strong> è il mescolamento spontaneo di un gas con un altro (le molecole si spargono grazie al loro moto
+casuale); l&#39;<strong>effusione</strong> è la fuoriuscita di un gas attraverso un piccolo foro verso il vuoto. La legge di Graham lega
+la velocità di effusione (o diffusione) di un gas alla sua massa molare: a parità di <span class="m">T</span> e <span class="m">P</span>, un gas più leggero si
+muove più velocemente di uno più pesante, perché a parità di energia cinetica media (<span class="m">\propto T</span>) una massa minore
+richiede una velocità maggiore (<span class="m">u_{qm} = \sqrt{3RT/M}</span>).</p>
 <p><span class="m d">\frac{v_1}{v_2} = \sqrt{\frac{M_2}{M_1}}</span></p>
-<p>Il rapporto delle velocità di effusione di due gas è l&#39;inverso della radice
-quadrata del rapporto delle loro masse molari.</p>
-<h2 id="lez-26-limitante-gas">Reagente limitante con gas in condizioni diverse</h2>
-<p>Quando reagenti e/o prodotti gassosi <strong>non</strong> sono misurati nelle stesse condizioni
-di <span class="m">T</span> e <span class="m">P</span>, non si può applicare direttamente l&#39;ipotesi di Avogadro (che richiede
-condizioni identiche): bisogna prima convertire ciascun volume in <strong>moli</strong> con
-<span class="m">PV=nRT</span>, usando la <span class="m">T</span> e la <span class="m">P</span> proprie di quella misura, e solo dopo confrontare
-le moli secondo la stechiometria.</p>
+<p>Il rapporto delle velocità di effusione di due gas è l&#39;inverso della radice quadrata del rapporto delle loro masse
+molari. Derivazione: facendo il rapporto delle velocità quadratiche medie alla stessa <span class="m">T</span>,
+<span class="m">\dfrac{u_1}{u_2} = \sqrt{\dfrac{3RT/M_1}{3RT/M_2}} = \sqrt{\dfrac{M_2}{M_1}}</span>.</p>
 <div class="callout esempio">
 
-<p><strong>4 L di idrogeno a <span class="m">20\,^\circ\mathrm{C}</span> e 1 atm reagiscono con 6 L di ossigeno a
-<span class="m">60\,^\circ\mathrm{C}</span> e 3 bar</strong> per dare acqua. Quanti litri di acqua si ottengono
-se il volume finale è misurato a 2 atm e <span class="m">25\,^\circ\mathrm{C}</span>?</p>
-<p><strong>Passo 1 — moli di ciascun reagente, ognuno nelle sue condizioni.</strong></p>
-<p><span class="m d">n_{\chem{H_2}} = \frac{(1\ \mathrm{atm})(4\ \mathrm L)}{\left(0.08206\ \frac{\mathrm{atm\cdot L}}{\mathrm{mol\cdot K}}\right)(293\ \mathrm K)} = 0.166\ \mathrm{mol}</span></p>
-<p><span class="m d">n_{\chem{O_2}} = \frac{(3\times10^5\ \mathrm{Pa})(6\times10^{-3}\ \mathrm{m^3})}{\left(8.31\ \frac{\mathrm J}{\mathrm{mol\cdot K}}\right)(333\ \mathrm K)} = 0.650\ \mathrm{mol}</span></p>
-<p><strong>Passo 2 — reagente limitante.</strong> <span class="m">2\,\chem{H_2}+\chem{O_2}\rightarrow2\,\chem{H_2O}</span>:
-per consumare <span class="m">0.166\ \mathrm{mol}</span> di <span class="m">\chem{H_2}</span> servono <span class="m">0.083\ \mathrm{mol}</span> di
-<span class="m">\chem{O_2}</span>, molte meno delle <span class="m">0.650\ \mathrm{mol}</span> disponibili. <strong><span class="m">\chem{H_2}</span> è
-il reagente limitante</strong> (<a href="#/teoria/chimica/14/lez-14-limitante">Lezione 14</a>).</p>
-<p><strong>Passo 3 — moli di prodotto e conversione nelle condizioni richieste.</strong> Si formano
-<span class="m">0.166\ \mathrm{mol}</span> di <span class="m">\chem{H_2O}</span> (stesso rapporto 1:1 con <span class="m">\chem{H_2}</span>
-consumato). A <span class="m">2\ \mathrm{atm}</span> e <span class="m">298\ \mathrm K</span>:</p>
-<p><span class="m d">V_{\chem{H_2O}} = \frac{nRT}{P} = \frac{(0.166\ \mathrm{mol})\left(0.08206\ \frac{\mathrm{atm\cdot L}}{\mathrm{mol\cdot K}}\right)(298\ \mathrm K)}{2\ \mathrm{atm}} \approx 2.03\ \mathrm L</span></p>
+<p><strong>Idrogeno contro ossigeno.</strong> <span class="m">v_{H_2}/v_{O_2} = \sqrt{32.00/2.016} = \sqrt{15.87} = 3.98</span>: l&#39;idrogeno effonde circa
+<strong>4 volte</strong> più velocemente dell&#39;ossigeno. Allo stesso modo un palloncino gonfiato con elio si sgonfia più in fretta di
+uno gonfiato con aria.</p>
+</div>
+
+<h2 id="lez-26-avogadro">Reazione fra gas nelle stesse condizioni: il principio di Avogadro</h2>
+<div class="callout esempio">
+
+<p><strong>4 L di idrogeno a TPS reagiscono con 6 L di ossigeno a TPS per dare acqua. Quanti litri di acqua si ottengono (a
+TPS)?</strong> TPS = temperatura e pressione standard: <span class="m">0\ ^\circ\mathrm C</span> (273.15 K) e 1 atm.</p>
+<p>Reazione: <span class="m">2\,\chem{H_2(g)} + \chem{O_2(g)} \rightarrow 2\,\chem{H_2O(g)}</span>.</p>
+<p>Per l&#39;<strong>ipotesi di Avogadro</strong> (volumi uguali di gas diversi, nelle stesse condizioni di <span class="m">T</span> e <span class="m">P</span>, contengono lo stesso
+numero di molecole) la reazione si può leggere in due modi equivalenti:</p>
+<ul>
+<li>2 moli di <span class="m">\chem{H_2}</span> reagiscono con 1 mole di <span class="m">\chem{O_2}</span> per dare 2 moli di acqua;</li>
+<li><strong>2 volumi</strong> di <span class="m">\chem{H_2}</span> reagiscono con <strong>1 volume</strong> di <span class="m">\chem{O_2}</span> per dare <strong>2 volumi</strong> di acqua (nelle
+stesse condizioni di temperatura e pressione).</li>
+</ul>
+<p><strong>Reagente limitante.</strong> Per ogni litro di <span class="m">\chem{O_2}</span> servono 2 litri di <span class="m">\chem{H_2}</span>: per 6 L di <span class="m">\chem{O_2}</span>
+servirebbero 12 L di <span class="m">\chem{H_2}</span>, ce ne sono solo 4. Quindi <strong><span class="m">\chem{H_2}</span> è il reagente limitante</strong> e
+<span class="m">\chem{O_2}</span> è in eccesso. I 4 L di <span class="m">\chem{H_2}</span> consumano 2 L di <span class="m">\chem{O_2}</span> e producono 4 L di acqua.</p>
+<p><strong>Bilancio iniziale/finale</strong>, in volumi e in moli (moli calcolate con <span class="m">n = PV/RT</span> a 1 atm e 273.15 K; il
+denominatore vale <span class="m">0.08206\times273.15 = 22.41</span>):</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Volume iniziale (L)</th>
+<th>moli iniziali</th>
+<th>Volume finale (L)</th>
+<th>moli finali</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><span class="m">\chem{H_2}</span></td>
+<td>4</td>
+<td><span class="m">4/22.41 = 0.1785</span></td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td><span class="m">\chem{O_2}</span></td>
+<td>6</td>
+<td><span class="m">6/22.41 = 0.2677</span></td>
+<td><span class="m">6-2 = 4</span></td>
+<td><span class="m">0.1785</span></td>
+</tr>
+<tr>
+<td><span class="m">\chem{H_2O}</span></td>
+<td>0</td>
+<td>0</td>
+<td><strong>4</strong></td>
+<td><span class="m">0.1785</span></td>
+</tr>
+<tr>
+<td><strong>Totale</strong></td>
+<td><strong>10</strong></td>
+<td><strong>0.4462</strong></td>
+<td><strong>8</strong></td>
+<td><strong>0.3570</strong></td>
+</tr>
+</tbody></table>
+<p>Si ottengono <strong>4 L di acqua</strong> (gassosa, a TPS per ipotesi del problema).</p>
 </div>
 
 <div class="callout attenzione">
 
-<p><strong>Le condizioni di <span class="m">T</span> e <span class="m">P</span> indicate per ciascuna specie sono solo le condizioni
-della misura di volume, non le condizioni a cui avviene realmente la reazione.</strong>
-Convertire in moli, ragionare in moli, e riconvertire in volume solo alla fine
-nelle condizioni richieste dalla domanda. Nota anche che a <span class="m">2\ \mathrm{atm}</span> e
-<span class="m">25\,^\circ\mathrm{C}</span> l&#39;acqua è <strong>liquida</strong>, non gassosa: il calcolo del volume
-tramite <span class="m">PV=nRT</span> ha senso solo se si sta calcolando (per ipotesi o per confronto)
-il volume che l&#39;acqua occuperebbe <em>se</em> fosse gas in quelle condizioni.</p>
+<p><strong>Il volume totale e le moli totali non si conservano</strong> quando i gas reagiscono fra loro (a differenza del semplice
+mescolamento senza reazione, dove si sommano): in <span class="m">2\,\chem{H_2}(g)+\chem{O_2}(g)\rightarrow2\,\chem{H_2O}(g)</span>,
+partendo da <span class="m">0.4462\ \mathrm{mol}</span> totali in <span class="m">10\ \mathrm L</span> si arriva a <span class="m">0.3570\ \mathrm{mol}</span> in <span class="m">8\ \mathrm L</span>
+(l&#39;ossigeno in eccesso resta, l&#39;idrogeno si consuma tutto): sia le moli totali sia il volume totale sono diminuiti,
+perché la reazione consuma 3 moli gassose ogni 2 che ne produce. <strong>Si conserva la massa</strong>, non il numero di moli.</p>
+</div>
+
+<h2 id="lez-26-limitante-gas">Reagente limitante con gas in condizioni diverse</h2>
+<p>Quando reagenti e/o prodotti gassosi <strong>non</strong> sono misurati nelle stesse condizioni di <span class="m">T</span> e <span class="m">P</span>, non si può applicare
+direttamente l&#39;ipotesi di Avogadro (che richiede condizioni identiche): bisogna prima convertire ciascun volume in
+<strong>moli</strong> con <span class="m">PV=nRT</span>, usando la <span class="m">T</span> e la <span class="m">P</span> proprie di quella misura, e solo dopo confrontare le moli secondo la
+stechiometria.</p>
+<div class="callout esempio">
+
+<p><strong>4 L di idrogeno a <span class="m">20\,^\circ\mathrm{C}</span> e 1 atm reagiscono con 6 L di ossigeno a <span class="m">60\,^\circ\mathrm{C}</span> e 3 bar</strong>
+per dare acqua. Quanti litri di acqua si ottengono se il volume finale è misurato a 2 atm e <span class="m">25\,^\circ\mathrm{C}</span>?</p>
+<p><strong>Passo 1 — moli di ciascun reagente, ognuno nelle sue condizioni.</strong> Per l&#39;idrogeno conviene usare atm e L; per
+l&#39;ossigeno, dato in bar, conviene il S.I.: <span class="m">3\ \mathrm{bar} = 3\times10^5\ \mathrm{Pa} = 3\times10^5\ \mathrm{N/m^2}</span>,
+<span class="m">6\ \mathrm L = 6\times10^{-3}\ \mathrm{m^3}</span>, <span class="m">R = 8.31\ \mathrm{J/(mol\,K)}</span>.</p>
+<p><span class="m d">n_{\chem{H_2}} = \frac{(1\ \mathrm{atm})(4\ \mathrm L)}{\left(0.08206\ \frac{\mathrm{atm\cdot L}}{\mathrm{mol\cdot K}}\right)(293.15\ \mathrm K)} = \frac{4}{24.06} = 0.1663\ \mathrm{mol}</span></p>
+<p><span class="m d">n_{\chem{O_2}} = \frac{(3\times10^5\ \mathrm{Pa})(6\times10^{-3}\ \mathrm{m^3})}{\left(8.31\ \frac{\mathrm J}{\mathrm{mol\cdot K}}\right)(333.15\ \mathrm K)} = \frac{1800}{2768} = 0.6502\ \mathrm{mol}</span></p>
+<p><strong>Passo 2 — reagente limitante.</strong> <span class="m">2\,\chem{H_2}+\chem{O_2}\rightarrow2\,\chem{H_2O}</span>: per consumare tutto
+l&#39;<span class="m">\chem{H_2}</span> servono <span class="m">0.1663/2 = 0.083\ \mathrm{mol}</span> di <span class="m">\chem{O_2}</span>, molte meno delle <span class="m">0.650\ \mathrm{mol}</span>
+disponibili. <strong><span class="m">\chem{H_2}</span> è il reagente limitante</strong> (<a href="#/teoria/chimica/14/lez-14-limitante">Lezione 14</a>) e si consuma totalmente.
+Ossigeno che resta: <span class="m">0.6502 - 0.083 \approx 0.568\ \mathrm{mol}</span>.</p>
+<p><strong>Passo 3 — moli di prodotto e conversione nelle condizioni richieste.</strong> Si formano tante moli di <span class="m">\chem{H_2O}</span> quante
+di <span class="m">\chem{H_2}</span> consumate (rapporto 2:2), cioè <span class="m">0.1663\ \mathrm{mol}</span>. A <span class="m">2\ \mathrm{atm}</span> e <span class="m">298.15\ \mathrm K</span>:</p>
+<p><span class="m d">V_{\chem{H_2O}} = \frac{nRT}{P} = \frac{(0.1663\ \mathrm{mol})\left(0.08206\ \frac{\mathrm{atm\cdot L}}{\mathrm{mol\cdot K}}\right)(298.15\ \mathrm K)}{2\ \mathrm{atm}} \approx 2.03\ \mathrm L</span></p>
+<p>(La dispensa, nel passo 2 e 3, ricopia per errore <span class="m">0.1633</span> invece di <span class="m">0.1663</span> mol e ottiene <span class="m">1.998\ \mathrm L</span>: la
+differenza è solo un errore di trascrizione; con il valore corretto il risultato è circa <span class="m">2.0\ \mathrm L</span> in entrambi i
+casi.)</p>
+</div>
+
+<div class="callout attenzione">
+
+<p><strong>Le condizioni di <span class="m">T</span> e <span class="m">P</span> indicate per ciascuna specie sono solo le condizioni della misura di volume, non le
+condizioni a cui avviene realmente la reazione.</strong> Convertire in moli, ragionare in moli, e riconvertire in volume solo
+alla fine nelle condizioni richieste dalla domanda. Nota anche che a <span class="m">2\ \mathrm{atm}</span> e <span class="m">25\,^\circ\mathrm{C}</span>
+l&#39;acqua è <strong>liquida</strong>, non gassosa: il calcolo del volume tramite <span class="m">PV=nRT</span> ha senso solo se si sta calcolando (per
+ipotesi o per confronto) il volume che l&#39;acqua occuperebbe <em>se</em> fosse gas in quelle condizioni.</p>
+</div>
+
+<h2 id="lez-26-calcare">Reazione fra un solido, una soluzione e un gas</h2>
+<div class="callout esempio">
+
+<p><strong>Calcare e acido cloridrico.</strong> A 250 g di carbonato di calcio <span class="m">\chem{CaCO_3}</span> (calcare) si aggiunge una soluzione
+acquosa di HCl al 37% in peso (densità <span class="m">1.186\ \mathrm{g/cm^3}</span>). Reazione:
+<span class="m">\chem{CaCO_3(s)} + 2\,\chem{HCl(aq)} \rightarrow \chem{CaCl_2(aq)} + \chem{H_2O(l)} + \chem{CO_2(g)}</span>.
+(1) Volume di soluzione di HCl stechiometrico; (2) volume di <span class="m">\chem{CO_2}</span> prodotto a <span class="m">25\ ^\circ\mathrm C</span> e 1 atm.</p>
+<ol>
+<li><strong>Moli di <span class="m">\chem{CaCO_3}</span></strong>: <span class="m">M = 40.08 + 12.01 + 3(16.00) \approx 100\ \mathrm{g/mol}</span>;
+<span class="m">n = 250/100 = 2.5\ \mathrm{mol}</span>.</li>
+<li><strong>Quantità stechiometrica di HCl</strong> (rapporto 1:2): <span class="m">2\times2.5 = 5\ \mathrm{mol}</span>.</li>
+<li><strong>Massa di HCl</strong>: <span class="m">5\ \mathrm{mol}\times36.5\ \mathrm{g/mol} = 182.5\ \mathrm g</span>.</li>
+<li><strong>Massa di soluzione</strong>: la soluzione è al 37% in peso (37 g di HCl ogni 100 g di soluzione), quindi
+<span class="m">m_{soluz} = 182.5/0.37 = 493.2\ \mathrm g</span>.</li>
+<li><strong>Volume di soluzione</strong>: <span class="m">V = m/\rho = 493.2\ \mathrm g / 1.186\ \mathrm{g/cm^3} = 415.9\ \mathrm{cm^3} =
+   0.4159\ \mathrm L</span>.</li>
+<li><strong><span class="m">\chem{CO_2}</span></strong>: si producono 2.5 mol (rapporto 1:1 con il carbonato). A 298 K e 1 atm:
+<span class="m d">V_{CO_2} = \frac{(2.5\ \mathrm{mol})(0.08206)(298\ \mathrm K)}{1\ \mathrm{atm}} = 61.14\ \mathrm L</span></li>
+</ol>
 </div>
 
 <h2 id="lez-26-miscele-pratica">Miscele di gas: applicazione pratica della legge di Dalton</h2>
+<p><strong>Frazioni molari.</strong> In una miscela omogenea di due sostanze A e B le frazioni molari sono
+<span class="m">x_A = \dfrac{n_A}{n_A + n_B} = \dfrac{n_A}{n_{TOT}}</span> e <span class="m">x_B = \dfrac{n_B}{n_{TOT}}</span>, con <span class="m">n_A</span>, <span class="m">n_B</span> numeri di moli;
+ovviamente <span class="m">x_A + x_B = 1</span>. In generale, per <span class="m">N</span> componenti, <span class="m">x_j = n_j/n_{TOT}</span> e <span class="m">\sum_{i=1}^N x_i = 1</span>.</p>
+<p><strong>Legge di Dalton in termini di frazioni molari.</strong> In una miscela di gas ideali la <strong>pressione parziale</strong> del gas
+<span class="m">j</span>-esimo è il prodotto della pressione totale per la sua frazione molare: <span class="m">P_j = P_{TOT}\cdot x_j</span>. Forma equivalente
+della legge di Dalton: la pressione totale esercitata da una miscela di gas ideali è uguale alla somma delle pressioni
+parziali che sarebbero esercitate dai gas se fossero presenti <strong>da soli in un eguale volume</strong>:</p>
+<p><span class="m d">P_A + P_B = P_{TOT}\cdot(x_A + x_B) = P_{TOT}</span></p>
 <div class="callout esempio">
 
-<p><strong>Un pallone da 4.0 L con <span class="m">\chem{N_2}</span> a <span class="m">25\,^\circ\mathrm{C}</span> e 803 kPa</strong> è
-collegato, tramite una valvola, a <strong>un pallone da 10 L con Ar a <span class="m">25\,^\circ\mathrm{C}</span>
-e 47 kPa</strong>. Aprendo la valvola i due gas si mescolano. Quali sono pressione totale,
-pressioni parziali e densità della miscela?</p>
+<p><strong>Un pallone da 4.0 L con <span class="m">\chem{N_2}</span> a <span class="m">25\,^\circ\mathrm{C}</span> e 803 kPa</strong> è collegato, tramite una valvola, a <strong>un
+pallone da 10 L con Ar a <span class="m">25\,^\circ\mathrm{C}</span> e 47 kPa</strong>. Aprendo la valvola i due gas si mescolano. Quali sono
+pressione totale, pressioni parziali e densità della miscela?</p>
+<p><strong>Passo 0 — conversione delle pressioni.</strong> <span class="m">803\ \mathrm{kPa} = 8.03\ \mathrm{bar} = 803\,000/101\,325 =
+7.925\ \mathrm{atm}</span>; <span class="m">47\ \mathrm{kPa} = 0.47\ \mathrm{bar} = 0.4639\ \mathrm{atm}</span>.</p>
 <p><strong>Passo 1 — moli di ciascun gas, prima del mescolamento.</strong></p>
-<p><span class="m d">n_{\chem{N_2}} = \frac{(7.925\ \mathrm{atm})(4.0\ \mathrm L)}{\left(0.08206\ \frac{\mathrm{atm\cdot L}}{\mathrm{mol\cdot K}}\right)(298\ \mathrm K)} = 1.296\ \mathrm{mol} \qquad n_{Ar} = \frac{(0.464\ \mathrm{atm})(10.0\ \mathrm L)}{\left(0.08206\ \frac{\mathrm{atm\cdot L}}{\mathrm{mol\cdot K}}\right)(298\ \mathrm K)} = 0.199\ \mathrm{mol}</span></p>
-<p><strong>Passo 2 — dopo l&#39;apertura, il volume disponibile è <span class="m">4+10=14\ \mathrm L</span></strong> (i due
-palloni comunicano), la temperatura resta <span class="m">298\ \mathrm K</span> e le moli totali sono
-<span class="m">1.296+0.199=1.4857\ \mathrm{mol}</span>:</p>
+<p><span class="m d">n_{\chem{N_2}} = \frac{(7.925\ \mathrm{atm})(4.0\ \mathrm L)}{\left(0.08206\ \frac{\mathrm{atm\cdot L}}{\mathrm{mol\cdot K}}\right)(298\ \mathrm K)} = \frac{31.70}{24.45} = 1.296\ \mathrm{mol} \qquad n_{Ar} = \frac{(0.4639\ \mathrm{atm})(10.0\ \mathrm L)}{\left(0.08206\ \frac{\mathrm{atm\cdot L}}{\mathrm{mol\cdot K}}\right)(298\ \mathrm K)} = \frac{4.639}{24.45} = 0.1897\ \mathrm{mol}</span></p>
+<p><strong>Passo 2 — dopo l&#39;apertura, il volume disponibile è <span class="m">4+10=14\ \mathrm L</span></strong> (i due palloni comunicano), la temperatura
+resta <span class="m">298\ \mathrm K</span> e le moli totali sono <span class="m">1.296+0.1897=1.4857\ \mathrm{mol}</span>:</p>
 <p><span class="m d">P_{TOT} = \frac{n_{TOT}RT}{V} = \frac{(1.4857\ \mathrm{mol})\left(0.08206\ \frac{\mathrm{atm\cdot L}}{\mathrm{mol\cdot K}}\right)(298\ \mathrm K)}{14\ \mathrm L} = 2.595\ \mathrm{atm}</span></p>
-<p><strong>Passo 3 — pressioni parziali via frazione molare.</strong> <span class="m">x_{\chem{N_2}}=1.296/1.4857=0.8723</span>,
-<span class="m">x_{Ar}=0.1277</span>, quindi <span class="m">P_{\chem{N_2}}=2.264\ \mathrm{atm}</span> e <span class="m">P_{Ar}=0.331\ \mathrm{atm}</span>
-(la somma torna <span class="m">2.595\ \mathrm{atm}</span>, verifica di Dalton).</p>
-<p><strong>Passo 4 — massa molare e densità della miscela.</strong> La massa molare media è la
-media delle masse molari <strong>pesata sulle frazioni molari</strong>:</p>
+<p><strong>Passo 3 — pressioni parziali via frazione molare.</strong>
+<span class="m">x_{\chem{N_2}}=\dfrac{1.296}{1.296+0.1897}=0.8723</span>, <span class="m">x_{Ar}=\dfrac{0.1897}{1.4857}=0.1277</span>, quindi
+<span class="m">P_{\chem{N_2}}=2.595\times0.8723=2.264\ \mathrm{atm}</span> e <span class="m">P_{Ar}=2.595\times0.1277=0.331\ \mathrm{atm}</span> (la somma torna
+<span class="m">2.595\ \mathrm{atm}</span>, verifica di Dalton).</p>
+<p><strong>Passo 4 — massa molare e densità della miscela.</strong> La massa molare media (il &quot;peso molecolare&quot; della miscela) è la
+<strong>media pesata</strong> delle masse molari dei gas costituenti; i &quot;pesi&quot; sono le <strong>frazioni molari</strong>:</p>
 <div class="callout formula">
 
 <p><span class="m d">M_{mix} = \sum_{i=1}^N x_i \cdot M_i</span></p>
 </div>
 
-<p><span class="m d">M_{mix} = (28)(0.8723) + (39.95)(0.1277) = 29.53\ \mathrm{g/mol}</span></p>
-<p><span class="m d">\rho_{mix} = \frac{P_{TOT}\cdot M_{mix}}{R\cdot T} = \frac{(2.595\ \mathrm{atm})(29.53\ \mathrm{g/mol})}{\left(0.08206\ \frac{\mathrm{atm\cdot L}}{\mathrm{mol\cdot K}}\right)(298\ \mathrm K)} = 3.133\ \mathrm{g/L}</span></p>
+<p><span class="m d">M_{mix} = M_{N_2}x_{N_2} + M_{Ar}x_{Ar} = (28)(0.8723) + (39.95)(0.1277) = 24.42 + 5.10 = 29.53\ \mathrm{g/mol}</span></p>
+<p>La densità di un gas ideale, dalla definizione e dall&#39;equazione di stato, è <span class="m">\rho = \dfrac mV = \dfrac{nM}{V} =
+\dfrac{PM}{RT}</span> (aumenta proporzionalmente alla pressione, è inversamente proporzionale alla temperatura; a parità di
+<span class="m">T</span> e <span class="m">P</span> gas con massa molare diversa hanno densità diversa). Per la miscela si usa <span class="m">M_{mix}</span>:</p>
+<p><span class="m d">\rho_{mix} = \frac{P_{TOT}\cdot M_{mix}}{R\cdot T} = \frac{(2.595\ \mathrm{atm})(29.53\ \mathrm{g/mol})}{\left(0.08206\ \frac{\mathrm{atm\cdot L}}{\mathrm{mol\cdot K}}\right)(298\ \mathrm K)} = 3.133\ \mathrm{g/L} = 3.133\ \mathrm{kg/m^3}</span></p>
 </div>
 
 <div class="callout attenzione">
 
-<p><strong>Il volume totale e le moli totali non si conservano separatamente</strong> quando i gas
-reagiscono fra loro (a differenza del semplice mescolamento senza reazione appena
-visto, dove valgono entrambe): in <span class="m">2\,\chem{H_2}(g)+\chem{O_2}(g)\rightarrow2\,\chem{H_2O}(g)</span>,
-partendo da <span class="m">0.4462\ \mathrm{mol}</span> totali in <span class="m">10\ \mathrm L</span> si arriva a
-<span class="m">0.3570\ \mathrm{mol}</span> in <span class="m">8\ \mathrm L</span> (l&#39;ossigeno in eccesso resta, l&#39;idrogeno si
-consuma tutto): sia le moli totali sia il volume totale sono diminuiti, perché la
-reazione consuma più moli gassose di quante ne produca.</p>
+<p><strong>Errori tipici con le miscele.</strong> (1) Usare per ciascun gas, dopo il mescolamento, il suo volume iniziale invece del
+volume totale (14 L). (2) Fare la media semplice delle masse molari (<span class="m">(28+39.95)/2</span>) invece della media pesata sulle
+frazioni molari. (3) Dimenticare di convertire kPa in atm (o di usare <span class="m">R = 8.314</span> con Pa e m³). Verifica sempre che
+<span class="m">\sum P_k = P_{TOT}</span> e <span class="m">\sum x_k = 1</span>.</p>
 </div>
 
 <div class="callout sintesi">
 
 <ul>
-<li><strong>Graham</strong>: <span class="m">v_1/v_2 = \sqrt{M_2/M_1}</span> — un gas più leggero effonde più
-velocemente.</li>
-<li>Con reagenti/prodotti gassosi misurati in condizioni diverse: converti sempre in
-moli con <span class="m">PV=nRT</span> <strong>nelle condizioni proprie di ciascuna misura</strong>, confronta le
-moli per il reagente limitante, riconverti in volume solo alla fine.</li>
-<li>Mescolando gas che non reagiscono, a <span class="m">T</span> costante: <span class="m">P_{TOT}</span> e <span class="m">n_{TOT}</span> si
-ottengono semplicemente sommando; <span class="m">M_{mix}=\sum x_i M_i</span>; <span class="m">\rho_{mix}=P_{TOT}M_{mix}/RT</span>.</li>
-<li>Se i gas <strong>reagiscono</strong>, moli totali e volume totale cambiano secondo la
-stechiometria — non si conservano.</li>
+<li><strong>Teoria cinetica</strong>: particelle puntiformi, in moto casuale, senza interazioni, urti elastici; pressione = urti sulle
+pareti; <span class="m">PV = \tfrac13Nm\langle u^2\rangle = \tfrac23N\langle E_k\rangle</span>; <span class="m">\langle E_k\rangle = \tfrac32k_BT</span> (dipende
+solo da <span class="m">T</span>); <span class="m">u_{qm} = \sqrt{3RT/M}</span>.</li>
+<li><strong>Graham</strong>: <span class="m">v_1/v_2 = \sqrt{M_2/M_1}</span> — un gas più leggero effonde più velocemente.</li>
+<li>Reagenti gassosi <strong>nelle stesse condizioni</strong>: i volumi stanno come i coefficienti (Avogadro), si ragiona direttamente
+in litri.</li>
+<li>Con reagenti/prodotti gassosi misurati in condizioni diverse: converti sempre in moli con <span class="m">PV=nRT</span> <strong>nelle condizioni
+proprie di ciascuna misura</strong>, confronta le moli per il reagente limitante, riconverti in volume solo alla fine.</li>
+<li>Mescolando gas che non reagiscono, a <span class="m">T</span> costante: <span class="m">P_{TOT}</span> e <span class="m">n_{TOT}</span> si ottengono semplicemente sommando;
+<span class="m">P_j = x_jP_{TOT}</span>; <span class="m">M_{mix}=\sum x_i M_i</span>; <span class="m">\rho_{mix}=P_{TOT}M_{mix}/RT</span>.</li>
+<li>Se i gas <strong>reagiscono</strong>, moli totali e volume totale cambiano secondo la stechiometria — non si conservano.</li>
 </ul>
 </div>
 
 <div class="callout esame">
 
-<p><strong>Come cade all&#39;esame.</strong> Questi esercizi combinano quasi sempre due argomenti:
-bilanciamento/reagente limitante (<a href="#/teoria/chimica/14/lez-14">Lezione 14</a>) e <span class="m">PV=nRT</span>. L&#39;errore più
-costoso è confrontare direttamente i volumi di partenza (validi solo se <strong>stesse</strong>
-<span class="m">T</span> e <span class="m">P</span>) invece di convertire tutto in moli.</p>
-<p>Sequenza da seguire: converti ogni volume gassoso in moli, ciascuno alle proprie
-condizioni → applica il bilanciamento per trovare il reagente limitante → calcola
-moli di prodotto → converti in volume solo se richiesto, nelle condizioni indicate
-dalla domanda.</p>
+<p><strong>Come cade all&#39;esame.</strong> Una chiusa sulla <strong>teoria cinetica</strong> (perché, in un recipiente rigido, la pressione di un gas
+aumenta con la temperatura: aumenta l&#39;energia con cui le molecole urtano le pareti) e un&#39;aperta <strong>&quot;Lo studente dimostri
+di conoscere la teoria cinetica dei gas&quot;</strong>: postulati, derivazione della pressione dagli urti, legame energia
+cinetica–temperatura, velocità quadratica media, interpretazione delle leggi dei gas, legge di Graham. Gli esercizi
+numerici combinano quasi sempre due argomenti: bilanciamento/reagente limitante (<a href="#/teoria/chimica/14/lez-14">Lezione 14</a>) e <span class="m">PV=nRT</span>.
+L&#39;errore più costoso è confrontare direttamente i volumi di partenza (validi solo se <strong>stesse</strong> <span class="m">T</span> e <span class="m">P</span>) invece di
+convertire tutto in moli.</p>
+<p>Sequenza da seguire: converti ogni volume gassoso in moli, ciascuno alle proprie condizioni → applica il bilanciamento
+per trovare il reagente limitante → calcola moli di prodotto → converti in volume solo se richiesto, nelle condizioni
+indicate dalla domanda.</p>
 <p><strong>Allenati qui:</strong> Extra 55 · Extra 56</p>
 </div>

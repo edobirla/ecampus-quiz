@@ -1,105 +1,178 @@
-<h1>Lezione 45 — Flusso e teorema di Gauss</h1>
-<h2>Il flusso di un campo</h2>
-<p>Il flusso misura quante linee di campo attraversano una superficie.
-Per una superficie piana <span class="m">S</span> in un campo uniforme, il flusso è il prodotto scalare tra il campo e il vettore superficie:</p>
+<h1>Lezione 45 — Flusso del campo elettrico e teorema di Gauss</h1>
+<p>Calcolare il campo sommando i contributi di tutte le cariche (come per l&#39;anello e il disco) è spesso faticoso. Il <strong>teorema di Gauss</strong> dà un altro strumento: collega il <strong>flusso</strong> del campo attraverso una superficie chiusa alla <strong>carica racchiusa</strong>. Quando la distribuzione di carica è molto simmetrica (sferica, cilindrica, piana) permette di trovare il campo in poche righe. Nella sua forma locale è anche la <strong>prima equazione di Maxwell</strong>, uno dei pilastri dell&#39;elettromagnetismo. In questa lezione:</p>
+<ul>
+<li>definizione di flusso del campo elettrico;</li>
+<li>enunciato e dimostrazione del teorema di Gauss;</li>
+<li>forma locale (prima equazione di Maxwell);</li>
+<li>applicazioni: carica puntiforme, filo infinito, sfera carica (dentro e fuori);</li>
+<li>limiti di applicabilità e linee di forza.</li>
+</ul>
+<h2>Il flusso del campo elettrico</h2>
+<p><strong>Superficie piana e campo uniforme.</strong> A una superficie piana di area <span class="m">S</span> si associa il <strong>vettore superficie</strong> <span class="m">\vec S = S\,\hat u_n</span>: modulo uguale all&#39;area, direzione <strong>perpendicolare</strong> alla superficie. Il flusso del campo è il <strong>prodotto scalare</strong> tra il campo e il vettore superficie:</p>
 <p><span class="m d">\Phi = \vec E \cdot \vec S = E\,S\cos\theta</span></p>
 <p>dove:</p>
 <ul>
-<li><span class="m">\Phi</span> = flusso (<span class="m">\mathrm{N\,m^2/C}</span> = V·m);</li>
-<li><span class="m">\vec S</span> = vettore superficie: modulo uguale all&#39;area (m²), direzione perpendicolare alla superficie;</li>
-<li><span class="m">\theta</span> = angolo tra campo e normale alla superficie.</li>
+<li><span class="m">\Phi</span> = flusso del campo elettrico (<span class="m">\mathrm{N\,m^2/C}</span>, equivalente a V·m);</li>
+<li><span class="m">\vec E</span> = campo (N/C);</li>
+<li><span class="m">S</span> = area (m²);</li>
+<li><span class="m">\theta</span> = angolo tra il campo e la <strong>normale</strong> alla superficie (non tra il campo e la superficie).</li>
 </ul>
-<p>Il flusso è massimo se il campo è perpendicolare alla superficie (<span class="m">\theta = 0</span>). È nullo se il campo scorre parallelo alla superficie (<span class="m">\theta = 90°</span>).
-Se il campo non è uniforme o la superficie è curva, si somma su tanti pezzetti: <span class="m">\Phi = \int_S \vec E \cdot \hat n\,dS</span>.
-Per una superficie <strong>chiusa</strong> la normale punta verso l&#39;esterno. Il flusso uscente è positivo, quello entrante negativo.</p>
+<p>Il flusso conta, in modo intuitivo, <strong>quante linee di campo attraversano la superficie</strong>:</p>
+<ul>
+<li><span class="m">\theta = 0</span> (campo perpendicolare alla superficie): flusso massimo, <span class="m">\Phi = ES</span>;</li>
+<li><span class="m">\theta = 90°</span> (campo parallelo alla superficie, la &quot;sfiora&quot;): <span class="m">\Phi = 0</span>;</li>
+<li><span class="m">\theta &gt; 90°</span>: flusso negativo (il campo attraversa la superficie nel verso opposto alla normale).</li>
+</ul>
+<p><strong>Caso generale.</strong> Se il campo non è uniforme o la superficie è curva, si divide la superficie in pezzetti <span class="m">dS</span>, ciascuno quasi piano e con campo quasi costante:</p>
+<p><span class="m d">d\Phi = \vec E \cdot \hat u_n\,dS, \qquad \Phi_S(\vec E) = \int_S \vec E \cdot \hat u_n\,dS</span></p>
+<p>dove <span class="m">\hat u_n</span> è il versore normale al pezzetto. Per una superficie <strong>chiusa</strong> (che delimita un volume) si sceglie la normale <strong>uscente</strong>: il flusso uscente è <strong>positivo</strong>, quello entrante <strong>negativo</strong>. L&#39;integrale su una superficie chiusa si scrive <span class="m">\oint_S</span>.</p>
+<div class="callout esempio">
+
+<p><strong>Flusso attraverso un quadrato inclinato.</strong> Campo uniforme <span class="m">E = 500</span> N/C, quadrato di lato 10 cm (<span class="m">S = 0{,}01\,\mathrm{m^2}</span>), normale inclinata di 60° rispetto al campo.
+<span class="m">\Phi = ES\cos 60° = 500 \cdot 0{,}01 \cdot 0{,}5 = 2{,}5\,\mathrm{N\,m^2/C}</span>. Se il quadrato viene ruotato fino a essere parallelo al campo (<span class="m">\theta = 90°</span>), il flusso diventa zero.</p>
+</div>
+
 <div class="callout attenzione">
 
-<p>Il flusso non è &quot;campo per area&quot; e non è un prodotto vettoriale. È un <strong>prodotto scalare</strong> tra due vettori: il campo e il vettore superficie.</p>
+<p>Il flusso <strong>non</strong> è &quot;campo per area&quot; (vale solo per <span class="m">\theta = 0</span>), <strong>non</strong> è un prodotto vettoriale e <strong>non</strong> è il prodotto scalare del campo per la superficie intesa come numero (un prodotto scalare richiede due vettori). È il <strong>prodotto scalare del vettore campo per il vettore superficie</strong>: il risultato è uno scalare.</p>
 </div>
 
 <h2>Il teorema di Gauss</h2>
-<p>Il flusso del campo elettrico attraverso una superficie <strong>chiusa</strong> dipende solo dalla carica racchiusa dentro:</p>
-<p><span class="m d">\Phi_S(\vec E) = \oint_S \vec E \cdot \hat n\,dS = \frac{Q_{\text{int}}}{\varepsilon_0}</span></p>
+<blockquote>
+<p>Il flusso del campo elettrostatico nel vuoto attraverso una <strong>superficie chiusa qualunque</strong> <span class="m">S</span> è uguale alla <strong>somma algebrica delle cariche contenute dentro</strong> <span class="m">S</span>, divisa per <span class="m">\varepsilon_0</span>.</p>
+</blockquote>
+<p><span class="m d">\Phi_S(\vec E) = \oint_S \vec E \cdot \hat u_n\,dS = \frac{Q_{int}}{\varepsilon_0} = \frac{1}{\varepsilon_0}\sum_i Q_i</span></p>
+<p>e per una distribuzione continua di densità <span class="m">\rho</span>:</p>
+<p><span class="m d">\oint_S \vec E \cdot \hat u_n\,dS = \frac{1}{\varepsilon_0}\int_\tau \rho\,d\tau</span></p>
 <p>dove:</p>
 <ul>
-<li><span class="m">S</span> = superficie chiusa di forma qualsiasi;</li>
-<li><span class="m">Q_{\text{int}}</span> = somma algebrica delle cariche dentro <span class="m">S</span> (C);</li>
-<li><span class="m">\varepsilon_0 = 8{,}85 \cdot 10^{-12}\,\mathrm{C^2/(N\,m^2)}</span>.</li>
+<li><span class="m">S</span> = superficie <strong>chiusa</strong> di forma qualsiasi (detta superficie gaussiana);</li>
+<li><span class="m">Q_{int}</span> = somma algebrica (con i segni) delle cariche <strong>dentro</strong> <span class="m">S</span> (C);</li>
+<li><span class="m">\tau</span> = volume racchiuso da <span class="m">S</span>;</li>
+<li><span class="m">\varepsilon_0 = 8{,}854 \cdot 10^{-12}\,\mathrm{C^2/(N\,m^2)}</span>.</li>
 </ul>
-<p>Conseguenze:</p>
+<p>Le cariche <strong>esterne</strong> a <span class="m">S</span> non contribuiscono al flusso (contribuiscono però al campo nei punti della superficie!).</p>
+<h2>Dimostrazione</h2>
+<p><strong>1. Una carica puntiforme dentro la superficie.</strong> Sia <span class="m">Q</span> dentro una superficie chiusa <span class="m">S</span> di forma qualunque. Prendiamo un pezzetto <span class="m">dS</span> a distanza <span class="m">r</span> da <span class="m">Q</span>, con normale <span class="m">\hat u_n</span> che forma un angolo <span class="m">\theta</span> con la direzione radiale (quella del campo):
+<span class="m d">d\Phi = \vec E \cdot \hat u_n\,dS = \frac{1}{4\pi\varepsilon_0}\,\frac{Q}{r^2}\,\cos\theta\,dS</span>
+Il prodotto <span class="m">dS\cos\theta = dS_n</span> è la <strong>proiezione</strong> del pezzetto sulla sfera di raggio <span class="m">r</span> centrata in <span class="m">Q</span>. Il rapporto <span class="m">dS_n/r^2</span> è, per definizione, l&#39;<strong>angolo solido</strong> <span class="m">d\Omega</span> sotto cui il pezzetto è visto da <span class="m">Q</span> (il &quot;cono&quot; con vertice in <span class="m">Q</span> e base <span class="m">dS</span>). Quindi:
+<span class="m d">d\Phi = \frac{Q}{4\pi\varepsilon_0}\,d\Omega</span>
+Il flusso del pezzetto dipende solo dall&#39;angolo solido, non dalla distanza né dall&#39;inclinazione: allontanandosi il campo cala come <span class="m">1/r^2</span> ma l&#39;area vista nello stesso cono cresce come <span class="m">r^2</span>. Integrando su tutta la superficie chiusa, l&#39;angolo solido totale attorno a un punto interno è <span class="m">4\pi</span>:
+<span class="m d">\Phi = \frac{Q}{4\pi\varepsilon_0}\oint d\Omega = \frac{Q}{4\pi\varepsilon_0}\,4\pi = \frac{Q}{\varepsilon_0}</span></p>
+<p><strong>2. Una carica fuori dalla superficie.</strong> Ogni cono con vertice in <span class="m">Q</span> che tocca la superficie la taglia <strong>due volte</strong>: in <span class="m">dS</span> e in <span class="m">dS'</span>. Il termine <span class="m">dS_n/r^2</span> vale <span class="m">d\Omega</span> in entrambi i punti, quindi i due flussi hanno lo <strong>stesso modulo</strong>; ma in un punto il campo entra (normale uscente discorde al campo) e nell&#39;altro esce:
+<span class="m d">d\Phi = \frac{Q}{4\pi\varepsilon_0}\frac{dS_n}{r^2} - \frac{Q}{4\pi\varepsilon_0}\frac{dS'_n}{r'^2} = 0</span>
+Il flusso totale di una carica esterna è zero: <strong>solo le cariche interne contano</strong>.</p>
+<p><strong>3. Più cariche.</strong> Per il principio di sovrapposizione <span class="m">\vec E = \sum_i \vec E_i</span>, quindi il flusso elementare è la somma dei flussi dei singoli campi:
+<span class="m d">d\Phi = \Big(\sum_i \vec E_i\Big) \cdot \hat u_n\,dS = \sum_i d\Phi_i \quad\Rightarrow\quad \Phi = \sum_i \oint d\Phi_i = \sum_{i\ interne}\frac{Q_i}{\varepsilon_0} = \frac{Q_{int}}{\varepsilon_0}</span>
+Lo stesso vale per una distribuzione continua, sostituendo la somma con <span class="m">\int \rho\,d\tau</span>.</p>
+<p><strong>Verifica con la sfera.</strong> Per <span class="m">Q</span> al centro di una sfera di raggio <span class="m">r</span> il campo <span class="m">E = Q/(4\pi\varepsilon_0 r^2)</span> è perpendicolare alla sfera e uguale ovunque: <span class="m">\Phi = E \cdot 4\pi r^2 = Q/\varepsilon_0</span>. Il raggio si semplifica: lo stesso flusso per ogni sfera, perché le linee che escono dalla carica sono sempre le stesse.</p>
+<h2>Conseguenze</h2>
 <ul>
-<li>Le cariche fuori dalla superficie non contano: le loro linee entrano ed escono, flusso netto zero.</li>
-<li>Se dentro non c&#39;è carica, il flusso è <strong>nullo</strong>. Il campo può esserci, ma tante linee entrano quante escono.</li>
-<li>Se dentro ci sono cariche opposte che si bilanciano, il flusso è nullo.</li>
-<li>Vale per qualsiasi superficie chiusa, non solo per la sfera.</li>
+<li>Il teorema vale per <strong>qualsiasi superficie chiusa</strong> (sfera, cubo, patata…), non solo per la sfera. Su una superficie <strong>aperta</strong> non vale.</li>
+<li>Vale anche se la carica totale interna è zero: allora il flusso è zero.</li>
+<li>Se dentro la superficie <strong>non c&#39;è carica</strong>, il flusso è <strong>nullo</strong>, anche se c&#39;è un campo: tante linee entrano quante ne escono.</li>
+<li>Se dentro ci sono cariche positive e negative che si <strong>bilanciano</strong> (per esempio un dipolo), il flusso è nullo.</li>
+<li>Flusso nullo <strong>non</strong> significa campo nullo sulla superficie.</li>
 </ul>
-<p><strong>Perché vale (idea).</strong></p>
-<ol>
-<li>Per una carica <span class="m">Q</span> al centro di una sfera di raggio <span class="m">r</span>: <span class="m">E = \dfrac{Q}{4\pi\varepsilon_0 r^2}</span> è perpendicolare alla sfera ovunque.</li>
-<li>Flusso <span class="m">= E \cdot 4\pi r^2 = Q/\varepsilon_0</span>. Il raggio si semplifica.</li>
-<li>Per una superficie qualsiasi conta solo l&#39;angolo solido, che per una superficie chiusa è sempre <span class="m">4\pi</span>. Il risultato non cambia. Con più cariche si sommano i contributi.</li>
-</ol>
 <h2>Forma locale: prima equazione di Maxwell</h2>
-<p>Il teorema della divergenza dice che il flusso uscente da una superficie chiusa è l&#39;integrale della divergenza nel volume. Unendolo a Gauss si ottiene una legge valida punto per punto:</p>
+<p>Il teorema della divergenza (lezione 42) dice che il flusso uscente da una superficie chiusa è l&#39;integrale della divergenza nel volume racchiuso:
+<span class="m d">\oint_S \vec E \cdot \hat u_n\,dS = \int_\tau \nabla \cdot \vec E\,d\tau</span>
+Il teorema di Gauss, per una distribuzione continua, dice:
+<span class="m d">\oint_S \vec E \cdot \hat u_n\,dS = \frac{1}{\varepsilon_0}\int_\tau \rho\,d\tau</span>
+I primi membri sono uguali, quindi <span class="m">\int_\tau \left(\nabla \cdot \vec E - \rho/\varepsilon_0\right)d\tau = 0</span> per <strong>qualsiasi</strong> volume <span class="m">\tau</span>. Questo è possibile solo se la funzione integrata è zero in ogni punto:</p>
 <p><span class="m d">\nabla \cdot \vec E = \frac{\rho}{\varepsilon_0}</span></p>
 <p>dove:</p>
 <ul>
-<li><span class="m">\nabla \cdot \vec E</span> = divergenza del campo (V/m²);</li>
-<li><span class="m">\rho</span> = densità di carica di volume nel punto (C/m³).</li>
+<li><span class="m">\nabla \cdot \vec E</span> = divergenza del campo nel punto (V/m², cioè N/(C·m));</li>
+<li><span class="m">\rho</span> = densità di carica di volume <strong>nello stesso punto</strong> (C/m³).</li>
 </ul>
-<p>Dove c&#39;è carica positiva il campo &quot;nasce&quot;; dove non c&#39;è carica la divergenza è zero.</p>
-<h2>Come si usa: calcolare il campo con la simmetria</h2>
-<p>Gauss vale sempre. Ma serve a <strong>calcolare</strong> il campo solo se la distribuzione è molto simmetrica (sferica, cilindrica, piana). Serve una superficie dove il campo è costante e perpendicolare, o parallelo.</p>
-<p><strong>Carica puntiforme.</strong> Sfera di raggio <span class="m">r</span> centrata sulla carica: <span class="m">E \cdot 4\pi r^2 = Q/\varepsilon_0</span>, quindi <span class="m">E = \dfrac{Q}{4\pi\varepsilon_0 r^2}</span>. È la legge di Coulomb.</p>
-<p><strong>Filo infinito</strong> con carica per unità di lunghezza <span class="m">\lambda</span>. Si usa un cilindro coassiale di raggio <span class="m">r</span> e lunghezza <span class="m">L</span>.</p>
+<p>È la <strong>prima equazione di Maxwell</strong> (forma differenziale del teorema di Gauss). Mentre Gauss riguarda una regione estesa, questa è un&#39;equazione <strong>locale</strong>: collega grandezze nello stesso punto. Dice che le cariche positive sono le &quot;sorgenti&quot; del campo (le linee nascono dove <span class="m">\rho &gt; 0</span> e finiscono dove <span class="m">\rho &lt; 0</span>) e che dove non c&#39;è carica la divergenza è nulla. Proprio perché è locale si generalizza facilmente al caso di grandezze che variano nel tempo: per questo le leggi generali dell&#39;elettromagnetismo si scrivono con le equazioni di Maxwell.</p>
+<h2>Come si usa Gauss per calcolare il campo</h2>
+<p>Il teorema vale <strong>sempre</strong>, ma serve a <strong>calcolare</strong> il campo solo quando la simmetria permette di scegliere una superficie gaussiana su cui, pezzo per pezzo, il campo è:</p>
+<ul>
+<li><strong>perpendicolare</strong> alla superficie e di <strong>modulo costante</strong> (allora il flusso è <span class="m">E</span> per l&#39;area), oppure</li>
+<li><strong>parallelo</strong> alla superficie (flusso nullo).</li>
+</ul>
+<p>Allora <span class="m">E</span> esce dall&#39;integrale e si ricava da <span class="m">E \cdot (\text{area}) = Q_{int}/\varepsilon_0</span>. Le simmetrie utili sono: <strong>sferica</strong>, <strong>cilindrica</strong> (filo infinito), <strong>piana</strong> (piano infinito).</p>
+<h3>Carica puntiforme</h3>
+<p>Superficie gaussiana: sfera di raggio <span class="m">r</span> centrata nella carica. Il campo è radiale, quindi in ogni punto parallelo alla normale, e per simmetria ha lo stesso modulo su tutta la sfera:
+<span class="m d">\oint \vec E \cdot \hat u_n\,dS = E\oint dS = E \cdot 4\pi r^2 = \frac{Q}{\varepsilon_0} \quad\Rightarrow\quad E = \frac{1}{4\pi\varepsilon_0}\,\frac{Q}{r^2}</span>
+Si ritrova la legge di Coulomb: Gauss e Coulomb sono equivalenti per l&#39;elettrostatica.</p>
+<h3>Filo infinito uniformemente carico</h3>
+<p>Filo rettilineo infinito con carica per unità di lunghezza <span class="m">\lambda</span>: ogni tratto <span class="m">dl</span> ha carica <span class="m">dq = \lambda\,dl</span>.</p>
+<p><strong>Simmetria.</strong> Il campo ha simmetria <strong>cilindrica</strong>: ha lo stesso modulo in tutti i punti di un cilindro coassiale al filo. Inoltre è <strong>radiale</strong>: per ogni tratto <span class="m">dl</span> di filo che dà in P un campo con una componente parallela al filo, c&#39;è un tratto simmetrico <span class="m">dl'</span> (dall&#39;altra parte rispetto a P) che dà una componente parallela opposta. Resta solo la componente perpendicolare al filo.</p>
+<p><strong>Superficie gaussiana:</strong> cilindro coassiale di raggio <span class="m">r</span> e lunghezza <span class="m">L</span>.</p>
 <ol>
-<li>Per simmetria il campo è radiale: sulle basi il flusso è zero.</li>
-<li>Sulla superficie laterale il campo è costante e perpendicolare: flusso <span class="m">= E \cdot 2\pi r L</span>.</li>
-<li>Carica racchiusa <span class="m">= \lambda L</span>. Quindi:</li>
+<li><strong>Basi</strong>: il campo è radiale, quindi parallelo alle basi (perpendicolare alla loro normale): flusso <strong>zero</strong>.</li>
+<li><strong>Superficie laterale</strong>: il campo è perpendicolare in ogni punto e ha modulo costante: flusso <span class="m">= E \cdot 2\pi rL</span>.</li>
+<li><strong>Carica racchiusa</strong>: il tratto di filo dentro il cilindro, <span class="m">\lambda L</span>.</li>
+<li>Gauss: <span class="m">E \cdot 2\pi rL = \dfrac{\lambda L}{\varepsilon_0}</span>; <span class="m">L</span> si semplifica:</li>
 </ol>
 <p><span class="m d">E = \frac{\lambda}{2\pi\varepsilon_0\,r}</span></p>
 <p>dove:</p>
 <ul>
-<li><span class="m">\lambda</span> = carica per unità di lunghezza (C/m);</li>
+<li><span class="m">\lambda</span> = densità lineare di carica (C/m);</li>
 <li><span class="m">r</span> = distanza dal filo (m).</li>
 </ul>
-<p>Il campo del filo cala come <span class="m">1/r</span>, più lentamente di quello di una carica puntiforme (<span class="m">1/r^2</span>).</p>
-<p><strong>Sfera piena uniforme</strong>, raggio <span class="m">R</span>, carica <span class="m">Q</span>. Superficie di Gauss sferica di raggio <span class="m">r</span>:</p>
-<ul>
-<li>dentro (<span class="m">r &lt; R</span>): la carica racchiusa è <span class="m">Q\,r^3/R^3</span>, quindi <span class="m">E = \dfrac{Q\,r}{4\pi\varepsilon_0 R^3} = \dfrac{\rho\,r}{3\varepsilon_0}</span>;</li>
-<li>fuori (<span class="m">r &gt; R</span>): <span class="m">E = \dfrac{Q}{4\pi\varepsilon_0 r^2}</span>, come se tutta la carica fosse al centro.</li>
-</ul>
+<p>Il risultato non dipende da <span class="m">L</span>: facendo tendere <span class="m">L</span> all&#39;infinito non cambia, e il campo in ogni punto dipende solo dalla distanza dal filo. Il verso è uscente se <span class="m">\lambda &gt; 0</span>, entrante se <span class="m">\lambda &lt; 0</span>. Il campo del filo cala come <span class="m">1/r</span>: <strong>più lentamente</strong> di quello di una carica puntiforme (<span class="m">1/r^2</span>).</p>
+<h3>Sfera uniformemente carica (piena)</h3>
+<p>Carica <span class="m">Q</span> distribuita uniformemente nel volume di una sfera di raggio <span class="m">R</span>: <span class="m">\rho = \dfrac{Q}{\tfrac43\pi R^3}</span>. Campo radiale, superficie gaussiana sferica concentrica di raggio <span class="m">r</span>.</p>
+<p><strong>Dentro (<span class="m">r &lt; R</span>).</strong> La carica racchiusa è solo quella nella sfera di raggio <span class="m">r</span>:
+<span class="m d">Q_{int} = \int_0^r \rho\,4\pi r'^2\,dr' = \rho\,\frac43\pi r^3 = Q\,\frac{r^3}{R^3}</span>
+Gauss:
+<span class="m d">E(r)\,4\pi r^2 = \frac{\rho}{\varepsilon_0}\,\frac43\pi r^3 \quad\Rightarrow\quad E(r) = \frac{\rho}{3\varepsilon_0}\,r = \frac{1}{4\pi\varepsilon_0}\,\frac{Q}{R^3}\,r</span>
+Dentro la sfera il campo <strong>cresce linearmente</strong> con la distanza dal centro (zero al centro).</p>
+<p><strong>Fuori (<span class="m">r &gt; R</span>).</strong> La carica racchiusa è sempre tutta <span class="m">Q</span>:
+<span class="m d">E(r)\,4\pi r^2 = \frac{Q}{\varepsilon_0} \quad\Rightarrow\quad E(r) = \frac{1}{4\pi\varepsilon_0}\,\frac{Q}{r^2}</span>
+Fuori il campo è quello di una carica puntiforme <span class="m">Q</span> posta nel centro.</p>
+<p><strong>Andamento</strong>: <span class="m">E</span> sale come una retta da 0 (centro) fino al massimo <span class="m">\dfrac{Q}{4\pi\varepsilon_0 R^2}</span> sulla superficie, poi scende come <span class="m">1/r^2</span>. Le due espressioni coincidono in <span class="m">r = R</span>.</p>
 <div class="callout esempio">
 
-<p>Sfera di raggio 30 cm con <span class="m">0{,}8\,\mu\mathrm C</span> uniforme. Campo a 25 cm dal centro (dentro):
-<span class="m">E = \dfrac{kQr}{R^3} = \dfrac{8{,}99 \cdot 10^9 \cdot 0{,}8 \cdot 10^{-6} \cdot 0{,}25}{0{,}027} \approx 66{,}6\,\mathrm{kV/m}</span>.</p>
+<p><strong>Campo dentro una sfera carica.</strong> Sfera di raggio <span class="m">R = 30</span> cm con <span class="m">Q = 0{,}8\,\mu\mathrm C</span> distribuita uniformemente. Campo a <span class="m">r = 25</span> cm dal centro.</p>
+<ol>
+<li><span class="m">r &lt; R</span>: siamo dentro, uso <span class="m">E = \dfrac{kQr}{R^3}</span>.</li>
+<li><span class="m">R^3 = 0{,}3^3 = 0{,}027\,\mathrm{m^3}</span>.</li>
+<li><span class="m">E = \dfrac{8{,}99 \cdot 10^9 \cdot 0{,}8 \cdot 10^{-6} \cdot 0{,}25}{0{,}027} = \dfrac{1798}{0{,}027} \approx 6{,}66 \cdot 10^4\,\mathrm{V/m} = 66{,}6</span> kV/m.</li>
+</ol>
+<p>(Se si usasse per errore <span class="m">kQ/r^2</span> si otterrebbe <span class="m">1{,}15 \cdot 10^5</span> V/m: la formula della carica puntiforme vale solo <strong>fuori</strong>.)</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Flusso attraverso una sfera senza cariche interne.</strong> Una regione sferica è attraversata da un campo elettrico ma non contiene cariche. Per Gauss <span class="m">\Phi = Q_{int}/\varepsilon_0 = 0</span>: il flusso è <strong>certamente nullo</strong>. Il campo c&#39;è, ma le linee che entrano da una parte escono dall&#39;altra.</p>
 </div>
 
 <div class="callout attenzione">
 
-<p>Un cubo carico non ha simmetria sufficiente. Gauss resta vero, ma non permette di ricavare il campo esattamente. Si può usare solo in modo approssimato <strong>a grande distanza</strong>, dove il cubo sembra una carica puntiforme.</p>
+<p><strong>Il cubo carico.</strong> Un cubo con carica uniforme nel volume <strong>non</strong> ha simmetria sufficiente: su nessuna superficie semplice il campo è costante e perpendicolare. Gauss resta <strong>vero</strong> (il flusso attraverso qualsiasi superficie chiusa che racchiude il cubo è <span class="m">Q/\varepsilon_0</span>), ma <strong>non permette di ricavare il campo</strong> in modo esatto. Si può usare solo <strong>in modo approssimato a grandi distanze</strong>, dove il cubo sembra una carica puntiforme e il campo è quasi radiale.</p>
 </div>
 
-<h2>Linee di forza: esempi di disposizione</h2>
-<p>Il teorema di Gauss si vede bene con le linee: il flusso conta le linee che escono meno quelle che entrano.</p>
+<h2>Linee di forza e teorema di Gauss</h2>
+<p>Con le linee di campo il teorema diventa intuitivo: il flusso attraverso una superficie chiusa conta le linee <strong>uscenti meno le entranti</strong>, e le linee nascono solo sulle cariche positive e muoiono solo sulle negative. Esempi di disposizione:</p>
 <ul>
-<li><strong>Carica positiva isolata</strong>: semirette uscenti in tutte le direzioni.</li>
-<li><strong>Dipolo</strong> (<span class="m">+q</span> e <span class="m">-q</span>): le linee partono da <span class="m">+q</span>, si curvano e finiscono tutte su <span class="m">-q</span>. Una sfera che racchiude tutti e due ha flusso zero.</li>
-<li><strong>Due cariche positive uguali</strong>: le linee si respingono. Tra le cariche c&#39;è un punto dove il campo è zero. Le linee vanno all&#39;infinito.</li>
-<li><strong>Due piastre con cariche opposte</strong>: tra le piastre linee parallele ed equidistanti (campo uniforme).</li>
+<li><strong>Carica positiva isolata</strong>: semirette uscenti in tutte le direzioni, uniformemente distribuite; più fitte vicino alla carica (campo <span class="m">\propto 1/r^2</span>). Ogni superficie che la racchiude è attraversata da tutte le linee: flusso <span class="m">Q/\varepsilon_0</span>.</li>
+<li><strong>Carica negativa isolata</strong>: semirette entranti.</li>
+<li><strong>Dipolo</strong> (<span class="m">+q</span> e <span class="m">-q</span>): le linee partono da <span class="m">+q</span>, si curvano a lobi e finiscono tutte su <span class="m">-q</span>. Una superficie che racchiude entrambe le cariche ha flusso zero; una che racchiude solo <span class="m">+q</span> ha flusso <span class="m">q/\varepsilon_0</span>.</li>
+<li><strong>Due cariche positive uguali</strong>: le linee si respingono e si piegano verso l&#39;infinito; a metà strada il campo è zero e le linee non attraversano il piano mediano.</li>
+<li><strong>Due piastre parallele con cariche opposte</strong>: tra le piastre linee <strong>parallele ed equidistanti</strong> (campo uniforme), fuori praticamente nessuna linea.</li>
+<li><strong>Filo carico</strong>: linee radiali che escono perpendicolarmente al filo, in piani perpendicolari al filo.</li>
 </ul>
 <div class="callout esame">
 
-<p>Aperta tipica: &quot;enuncia Gauss con un esempio&quot;. Scrivi <span class="m">\oint \vec E \cdot \hat n\,dS = Q_{\text{int}}/\varepsilon_0</span>, precisa &quot;superficie chiusa qualsiasi, contano solo le cariche interne&quot; e ricava il campo della carica puntiforme o del filo.</p>
+<p>Domande chiuse: definizione di flusso (prodotto scalare del vettore campo per il vettore superficie), campo del filo <span class="m">\propto 1/r</span>, Gauss sul cubo (sì, ma solo approssimato e a grandi distanze), campo dentro una sfera carica (<span class="m">kQr/R^3</span>, 66,6 kV/m), flusso nullo senza cariche interne, Gauss vale solo per superfici <strong>chiuse</strong> (di forma qualsiasi).</p>
+<p>Aperta <strong>&quot;Si enunci il teorema di Gauss, fornendo un esempio esplicativo&quot;</strong>: definisci il flusso, enuncia <span class="m">\oint_S \vec E \cdot \hat u_n\,dS = Q_{int}/\varepsilon_0</span> precisando &quot;superficie chiusa qualsiasi, somma algebrica delle sole cariche interne, le esterne non contano&quot;; idea della dimostrazione (angolo solido <span class="m">4\pi</span>); forma locale <span class="m">\nabla \cdot \vec E = \rho/\varepsilon_0</span>; esempio: campo della carica puntiforme (sfera gaussiana) o del filo infinito (cilindro, <span class="m">E = \lambda/(2\pi\varepsilon_0 r)</span>).</p>
+<p>Aperta <strong>&quot;Fare un esempio di disposizione delle linee di forza&quot;</strong>: regole (tangenti al campo, da + a −, fitte dove il campo è intenso, mai incrociate) e almeno due esempi descritti: carica isolata (radiali), dipolo (lobi da + a −, verso opposto a <span class="m">\vec p</span> sull&#39;asse perpendicolare), due cariche uguali (punto di campo nullo), piastre parallele (campo uniforme).</p>
 </div>
 
 <div class="callout sintesi">
 
 <ul>
-<li>Flusso: <span class="m">\Phi = \vec E \cdot \vec S</span> (prodotto scalare); positivo se esce da una superficie chiusa.</li>
-<li>Gauss: <span class="m">\oint \vec E \cdot \hat n\,dS = Q_{\text{int}}/\varepsilon_0</span>, solo per superfici chiuse, di forma qualsiasi.</li>
-<li>Nessuna carica interna: flusso nullo.</li>
-<li>Forma locale: <span class="m">\nabla \cdot \vec E = \rho/\varepsilon_0</span>.</li>
-<li>Utile per calcolare il campo solo con simmetria: filo <span class="m">E = \lambda/(2\pi\varepsilon_0 r)</span>, sfera piena dentro <span class="m">E \propto r</span>.</li>
+<li>Flusso: <span class="m">\Phi = \vec E \cdot \vec S = ES\cos\theta</span>, in generale <span class="m">\int_S \vec E \cdot \hat u_n\,dS</span>; normale uscente per superfici chiuse.</li>
+<li>Gauss: <span class="m">\oint_S \vec E \cdot \hat u_n\,dS = Q_{int}/\varepsilon_0</span>, superficie chiusa qualsiasi, contano solo le cariche interne.</li>
+<li>Dimostrazione: <span class="m">d\Phi = \dfrac{Q}{4\pi\varepsilon_0}d\Omega</span>, angolo solido totale <span class="m">4\pi</span>; carica esterna → contributi opposti.</li>
+<li>Nessuna carica interna (o cariche bilanciate): flusso nullo.</li>
+<li>Prima equazione di Maxwell: <span class="m">\nabla \cdot \vec E = \rho/\varepsilon_0</span>.</li>
+<li>Gauss calcola il campo solo con simmetria: carica puntiforme <span class="m">kQ/r^2</span>; filo <span class="m">\lambda/(2\pi\varepsilon_0 r)</span>; sfera piena <span class="m">\rho r/(3\varepsilon_0)</span> dentro, <span class="m">kQ/r^2</span> fuori.</li>
+<li>Cubo: Gauss vero, ma campo calcolabile solo approssimativamente a grande distanza.</li>
 </ul>
 </div>

@@ -1,77 +1,245 @@
 <h1>Lezione 20 — Nucleo e immagine</h1>
-<p>Si definiscono il nucleo e l&#39;immagine di un&#39;applicazione lineare e si studiano iniettività, surgettività e bigettività. <span class="m">0_V</span> e <span class="m">0_W</span> indicano i vettori nulli di <span class="m">V</span> e di <span class="m">W</span>.</p>
+<p>A ogni applicazione lineare <span class="m">f: V \to W</span> associamo due sottospazi: il <strong>nucleo</strong>, nel dominio, che misura &quot;quanto <span class="m">f</span> schiaccia&quot; (quali vettori finiscono in zero), e l&#39;<strong>immagine</strong>, nel codominio, che dice &quot;dove arriva&quot; <span class="m">f</span>. Con essi si caratterizzano iniettività e surgettività, e il <strong>Teorema fondamentale dell&#39;algebra lineare</strong> lega le loro dimensioni a quella del dominio.</p>
+<p>In questa lezione, per chiarezza, <span class="m">0_V</span> è il vettore nullo di <span class="m">V</span> e <span class="m">0_W</span> quello di <span class="m">W</span>.</p>
 <h2>Nucleo</h2>
-<p><strong>Definizione 20.1.</strong> Sia <span class="m">f: V \to W</span> lineare. Il <strong>nucleo</strong> di <span class="m">f</span> è la controimmagine del vettore nullo di <span class="m">W</span>:
-<span class="m d">\mathrm{Ker}(f) := \mathrm{Preim}_f(0_W) = \{v \in V \mid f(v) = 0_W\}.</span></p>
+<p><strong>Definizione 20.1.</strong> Sia <span class="m">f: V \to W</span> un&#39;applicazione <span class="m">\mathbb{K}</span>-lineare. Il <strong>nucleo</strong> di <span class="m">f</span> è la controimmagine del vettore nullo di <span class="m">W</span>:
+<span class="m d">\mathrm{Ker}(f) := \mathrm{Preim}_f(0_W) = \{v \in V \mid f(v) = 0_W\}.</span>
+(Ker viene dal tedesco <em>Kern</em>, &quot;nocciolo&quot;.) È l&#39;insieme dei vettori del <strong>dominio</strong> che <span class="m">f</span> manda nello zero del codominio.</p>
 <div class="callout esempio">
 
-<ul>
-<li>Funzione costante nulla: <span class="m">\mathrm{Ker}(f) = V</span>.</li>
-<li>Identità: <span class="m">\mathrm{Ker}(\mathrm{id}_V) = \{0\}</span>.</li>
-<li>Proiezione: <span class="m">\mathrm{Ker}(\mathrm{proj}_i) = \{X \in \mathbb{K}^n \mid x_i = 0\}</span>.</li>
-<li><span class="m">A = \begin{pmatrix} 1 &amp; 1 &amp; -3 \\ 1 &amp; -1 &amp; 1 \end{pmatrix}</span>: <span class="m">\mathrm{Ker}(f_A)</span> è l&#39;insieme delle soluzioni di <span class="m">x_1 + x_2 - 3x_3 = 0</span>, <span class="m">x_1 - x_2 + x_3 = 0</span>, cioè dei vettori <span class="m">{}^t(k\ 2k\ k)</span>: <span class="m">\mathrm{Ker}(f_A) = \mathrm{Span}({}^t(1\ 2\ 1))</span>.</li>
-</ul>
+<p><strong>Esempio 20.2.</strong></p>
+<ol>
+<li>Funzione costante nulla <span class="m">f: V \to W</span>: <span class="m">\mathrm{Ker}(f) = V</span>, perché <span class="m">f(v) = 0</span> per ogni <span class="m">v</span>.</li>
+<li>Identità: <span class="m">\mathrm{Ker}(\mathrm{id}_V) = \{0\}</span>, perché <span class="m">\mathrm{id}_V(v) = v = 0</span> solo se <span class="m">v = 0</span>.</li>
+<li>Proiezione sulla <span class="m">i</span>-esima coordinata: <span class="m">\mathrm{Ker}(\mathrm{proj}_i) = \{X \in \mathbb{K}^n \mid x_i = 0\}</span>.</li>
+<li><span class="m">A = \begin{pmatrix} 1 &amp; 1 &amp; -3 \\ 1 &amp; -1 &amp; 1 \end{pmatrix}</span>, <span class="m">f_A: \mathbb{R}^3 \ni {}^t(x_1\ x_2\ x_3) \mapsto {}^t(x_1 + x_2 - 3x_3,\ \ x_1 - x_2 + x_3) \in \mathbb{R}^2</span>. Il nucleo è l&#39;insieme delle soluzioni del <strong>sistema omogeneo</strong> <span class="m">AX = 0</span>:
+<span class="m d">\begin{cases} x_1 + x_2 - 3x_3 = 0 \\ x_1 - x_2 + x_3 = 0 \end{cases}</span>
+Riduciamo la matrice: <span class="m">\begin{pmatrix} 1 &amp; 1 &amp; -3 \\ 1 &amp; -1 &amp; 1 \end{pmatrix} \xrightarrow{R_2 - R_1} \begin{pmatrix} 1 &amp; 1 &amp; -3 \\ 0 &amp; -2 &amp; 4 \end{pmatrix}</span>. Dalla seconda riga <span class="m">-2x_2 + 4x_3 = 0</span>, cioè <span class="m">x_2 = 2x_3</span>; dalla prima <span class="m">x_1 = -x_2 + 3x_3 = -2x_3 + 3x_3 = x_3</span>. Con <span class="m">x_3 = k</span> libero, le soluzioni sono <span class="m">{}^t(k\ \ 2k\ \ k)</span>:
+<span class="m d">\mathrm{Ker}(f_A) = \mathrm{Span}\left(\begin{pmatrix} 1 \\ 2 \\ 1 \end{pmatrix}\right).</span></li>
+</ol>
 </div>
 
-<p><strong>Osservazione 20.3.</strong> <span class="m">0_V \in \mathrm{Ker}(f)</span> sempre, perché <span class="m">f(0_V) = 0_W</span>; quindi il nucleo non è mai vuoto.</p>
-<p><strong>Proposizione 20.4.</strong> Il nucleo è un <strong>sottospazio vettoriale del dominio</strong> <span class="m">V</span>: contiene <span class="m">0_V</span>; se <span class="m">f(v_1) = f(v_2) = 0_W</span> allora <span class="m">f(v_1 + v_2) = 0_W</span>; se <span class="m">f(v) = 0_W</span> allora <span class="m">f(\lambda v) = \lambda\cdot 0_W = 0_W</span>.</p>
+<p><strong>Regola pratica.</strong> Per <span class="m">f_A</span> il nucleo è lo spazio delle soluzioni del sistema lineare omogeneo <span class="m">AX = 0</span>: le sue equazioni si ottengono <strong>ponendo uguale a zero ogni componente</strong> della legge di <span class="m">f</span>, tutte (non solo alcune). Una base del nucleo si trova risolvendo il sistema con Gauss, dando valori <span class="m">1, 0, \dots</span> alle variabili libere; <span class="m">\dim\mathrm{Ker}(f_A) = m - \mathrm{rank}(A)</span> (numero di variabili libere).</p>
+<p><strong>Osservazione 20.3.</strong> <span class="m">0_V \in \mathrm{Ker}(f)</span> sempre, perché <span class="m">f(0_V) = 0_W</span> (Osservazione 19.10). Quindi il nucleo non è mai vuoto.</p>
+<p><strong>Proposizione 20.4.</strong> Il nucleo di <span class="m">f: V \to W</span> è un <strong>sottospazio vettoriale del dominio</strong> <span class="m">V</span>.</p>
+<p><em>Dimostrazione.</em> Verifichiamo le tre proprietà dei sottospazi (Proposizione 7.3).</p>
+<ul>
+<li>(SSV1) <span class="m">0_V \in \mathrm{Ker}(f)</span> per l&#39;osservazione precedente.</li>
+<li>(SSV2) Se <span class="m">v_1, v_2 \in \mathrm{Ker}(f)</span>, cioè <span class="m">f(v_1) = f(v_2) = 0_W</span>, per linearità <span class="m">f(v_1 + v_2) = f(v_1) + f(v_2) = 0_W + 0_W = 0_W</span>, quindi <span class="m">v_1 + v_2 \in \mathrm{Ker}(f)</span>.</li>
+<li>(SSV3) Se <span class="m">v \in \mathrm{Ker}(f)</span> e <span class="m">\lambda \in \mathbb{K}</span>, <span class="m">f(\lambda v) = \lambda f(v) = \lambda\cdot 0_W = 0_W</span>, quindi <span class="m">\lambda v \in \mathrm{Ker}(f)</span>. <span class="m">\square</span></li>
+</ul>
 <div class="callout attenzione">
 
-<p>Il nucleo è fatto di vettori di <span class="m">V</span>: contiene <span class="m">0_V</span>, non <span class="m">0_W</span> (che è il valore assunto da <span class="m">f</span> sul nucleo).</p>
+<p>Il nucleo è fatto di vettori di <span class="m">V</span>: contiene <span class="m">0_V</span>, <strong>non</strong> <span class="m">0_W</span> (che è il valore che <span class="m">f</span> assume sul nucleo, e sta in <span class="m">W</span>). L&#39;affermazione &quot;<span class="m">0_W \in \mathrm{Ker}(f)</span>&quot; è in generale <strong>falsa</strong> (non ha nemmeno senso se <span class="m">V \neq W</span>), mentre &quot;<span class="m">0_V \in \mathrm{Ker}(f)</span>&quot;, &quot;<span class="m">\mathrm{Ker}(f) \neq \emptyset</span>&quot; e &quot;<span class="m">\mathrm{Ker}(f)</span> è un sottospazio di <span class="m">V</span>&quot; sono vere.</p>
 </div>
 
 <p><strong>Proposizione 20.5.</strong> Un&#39;applicazione lineare è <strong>iniettiva se e solo se il suo nucleo è <span class="m">\{0\}</span></strong>.</p>
-<p><em>Dimostrazione.</em> Se <span class="m">f</span> è iniettiva e <span class="m">v \neq 0_V</span>, allora <span class="m">f(v) \neq f(0_V) = 0_W</span>, quindi <span class="m">\mathrm{Ker} f = \{0_V\}</span>. Viceversa, se <span class="m">\mathrm{Ker} f = \{0_V\}</span> e <span class="m">f(v_1) = f(v_2)</span>, allora <span class="m">f(v_1 - v_2) = 0_W</span>, cioè <span class="m">v_1 - v_2 \in \mathrm{Ker} f</span>, quindi <span class="m">v_1 = v_2</span>.</p>
-<p><strong>Osservazione 20.7.</strong> Se <span class="m">\mathrm{Preim}_f(w)</span> non è vuota e <span class="m">\bar v</span> è un suo elemento, allora <span class="m">\mathrm{Preim}_f(w) = \bar v + \mathrm{Ker}(f)</span>: la controimmagine è un <strong>traslato del nucleo</strong>. Per <span class="m">w \neq 0</span> non è un sottospazio (non contiene <span class="m">0_V</span>).</p>
+<p><em>Dimostrazione.</em></p>
+<p>(<span class="m">\Rightarrow</span>) Sia <span class="m">f</span> iniettiva. Sappiamo <span class="m">f(0_V) = 0_W</span>. Se <span class="m">v \neq 0_V</span>, per l&#39;iniettività <span class="m">f(v) \neq f(0_V) = 0_W</span>, quindi <span class="m">v \notin \mathrm{Ker}(f)</span>. Dunque <span class="m">\mathrm{Ker}(f) = \{0_V\}</span>.</p>
+<p>(<span class="m">\Leftarrow</span>) Sia <span class="m">\mathrm{Ker}(f) = \{0_V\}</span> e siano <span class="m">v_1, v_2</span> con <span class="m">f(v_1) = f(v_2)</span>. Allora <span class="m">f(v_1) - f(v_2) = 0_W</span>; per linearità <span class="m">f(v_1) - f(v_2) = f(v_1 - v_2)</span>, quindi <span class="m">v_1 - v_2 \in \mathrm{Ker}(f) = \{0_V\}</span>, cioè <span class="m">v_1 = v_2</span>. <span class="m">\square</span></p>
+<p>Il punto è che per un&#39;applicazione lineare basta controllare l&#39;iniettività &quot;in zero&quot;: se l&#39;unico vettore che va in <span class="m">0</span> è <span class="m">0</span>, allora due vettori diversi non possono mai avere la stessa immagine. Per funzioni non lineari questo è falso (per <span class="m">x \mapsto x^2</span> solo <span class="m">0</span> va in <span class="m">0</span>, ma <span class="m">1</span> e <span class="m">-1</span> hanno la stessa immagine).</p>
 <div class="callout esempio">
 
-<p>Per la stessa <span class="m">A</span>: <span class="m">f_A({}^t(-1\ 0\ 1)) = {}^t(-4\ 0)</span>, quindi <span class="m">\mathrm{Preim}_{f_A}({}^t(-4\ 0)) = {}^t(-1\ 0\ 1) + \mathrm{Span}({}^t(1\ 2\ 1))</span>, cioè i vettori <span class="m">{}^t(-1+\lambda,\ 2\lambda,\ 1+\lambda)</span>.</p>
+<p><strong>Esempio 20.6.</strong> Con le applicazioni dell&#39;Esempio 20.2:</p>
+<ol>
+<li>la funzione nulla ha nucleo <span class="m">V</span>, che è <span class="m">\{0\}</span> solo se <span class="m">V = \{0\}</span>: non è mai iniettiva, salvo se il dominio è <span class="m">\{0\}</span>;</li>
+<li>l&#39;identità ha nucleo <span class="m">\{0\}</span>: è sempre iniettiva;</li>
+<li>la proiezione ha nucleo <span class="m">\{x_i = 0\} \neq \{0_n\}</span> (per <span class="m">n \geq 2</span>): non è iniettiva;</li>
+<li><span class="m">f_A</span> ha nucleo <span class="m">\mathrm{Span}({}^t(1\ 2\ 1)) \neq \{0_3\}</span>: non è iniettiva (per esempio <span class="m">{}^t(1\ 2\ 1)</span> e <span class="m">0</span> hanno la stessa immagine).</li>
+</ol>
+</div>
+
+<h3>Controimmagini: traslati del nucleo</h3>
+<p><strong>Osservazione 20.7.</strong> Sia <span class="m">f: V \to W</span> lineare, <span class="m">w \in W</span>. Se <span class="m">\mathrm{Preim}_f(w)</span> non è vuota, scelto un suo elemento qualsiasi <span class="m">\bar v</span> (con <span class="m">f(\bar v) = w</span>), si ha
+<span class="m d">\mathrm{Preim}_f(w) = \bar v + \mathrm{Ker}(f) = \{\bar v + u \mid u \in \mathrm{Ker}(f)\}.</span></p>
+<p><em>Dimostrazione.</em> (<span class="m">\supseteq</span>) Se <span class="m">v = \bar v + u</span> con <span class="m">u \in \mathrm{Ker}(f)</span>, allora <span class="m">f(v) = f(\bar v) + f(u) = w + 0_W = w</span>. (<span class="m">\subseteq</span>) Se <span class="m">f(v) = w</span>, allora <span class="m">f(v - \bar v) = f(v) - f(\bar v) = w - w = 0_W</span>, quindi <span class="m">u := v - \bar v \in \mathrm{Ker}(f)</span> e <span class="m">v = \bar v + u</span>. <span class="m">\square</span></p>
+<p>È lo stesso fenomeno già visto per i sistemi lineari: <strong>soluzione generale = una soluzione particolare + soluzioni del sistema omogeneo associato</strong>.</p>
+<p><strong>Osservazione 20.9.</strong> <span class="m">\mathrm{Preim}_f(0_W) = \mathrm{Ker}(f)</span> è un sottospazio; per <span class="m">w \neq 0_W</span> invece <span class="m">\mathrm{Preim}_f(w)</span> <strong>non</strong> è un sottospazio, perché non contiene <span class="m">0_V</span> (<span class="m">f(0_V) = 0_W \neq w</span>). È un &quot;sottospazio traslato&quot; (un sottospazio affine, si vedrà più avanti).</p>
+<div class="callout esempio">
+
+<p><strong>Esempio 20.8.</strong> Per la stessa <span class="m">A = \begin{pmatrix} 1 &amp; 1 &amp; -3 \\ 1 &amp; -1 &amp; 1 \end{pmatrix}</span>: <span class="m">f_A\,{}^t(-1\ 0\ 1) = {}^t(-1 + 0 - 3,\ -1 - 0 + 1) = {}^t(-4\ 0)</span>. Quindi
+<span class="m d">\mathrm{Preim}_{f_A}\begin{pmatrix} -4 \\ 0 \end{pmatrix} = \begin{pmatrix} -1 \\ 0 \\ 1 \end{pmatrix} + \mathrm{Span}\left(\begin{pmatrix} 1 \\ 2 \\ 1 \end{pmatrix}\right) = \left\{\begin{pmatrix} -1 + \lambda \\ 2\lambda \\ 1 + \lambda \end{pmatrix} \;\middle|\; \lambda \in \mathbb{R}\right\}.</span></p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Esercizio 20.6.</strong> Controimmagine di <span class="m">{}^t(2\ 4\ 0)</span> per <span class="m">f_A: \mathbb{R}^4 \to \mathbb{R}^3</span> con <span class="m">A = \begin{pmatrix} 1 &amp; 3 &amp; -2 &amp; -1 \\ 2 &amp; 1 &amp; 1 &amp; 3 \\ 0 &amp; -1 &amp; 1 &amp; 1 \end{pmatrix}</span>.</p>
+<p><em>Con la definizione.</em> Si risolve <span class="m">AX = {}^t(2\ 4\ 0)</span>:
+<span class="m d">\left(\begin{array}{cccc|c} 1 &amp; 3 &amp; -2 &amp; -1 &amp; 2 \\ 2 &amp; 1 &amp; 1 &amp; 3 &amp; 4 \\ 0 &amp; -1 &amp; 1 &amp; 1 &amp; 0 \end{array}\right) \xrightarrow{R_2 - 2R_1} \left(\begin{array}{cccc|c} 1 &amp; 3 &amp; -2 &amp; -1 &amp; 2 \\ 0 &amp; -5 &amp; 5 &amp; 5 &amp; 0 \\ 0 &amp; -1 &amp; 1 &amp; 1 &amp; 0 \end{array}\right) \xrightarrow[R_3 - R_2]{-\frac15 R_2} \left(\begin{array}{cccc|c} 1 &amp; 3 &amp; -2 &amp; -1 &amp; 2 \\ 0 &amp; 1 &amp; -1 &amp; -1 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \end{array}\right).</span>
+(la seconda riga, divisa per <span class="m">-5</span>, diventa <span class="m">(0\ 1\ -1\ -1 \mid 0)</span>, e la terza riga è il suo opposto: sommandola si annulla). Con <span class="m">x_3 = \alpha</span>, <span class="m">x_4 = \beta</span> liberi: <span class="m">x_2 = \alpha + \beta</span>, <span class="m">x_1 = 2 - 3x_2 + 2x_3 + x_4 = 2 - 3\alpha - 3\beta + 2\alpha + \beta = 2 - \alpha - 2\beta</span>:
+<span class="m d">\mathrm{Preim}_{f_A}\begin{pmatrix} 2 \\ 4 \\ 0 \end{pmatrix} = \left\{\begin{pmatrix} 2 - \alpha - 2\beta \\ \alpha + \beta \\ \alpha \\ \beta \end{pmatrix} \;\middle|\; \alpha, \beta \in \mathbb{R}\right\}.</span>
+<em>Con l&#39;Osservazione 20.7.</em> Una soluzione particolare (<span class="m">\alpha = \beta = 0</span>) è <span class="m">{}^t(2\ 0\ 0\ 0)</span> (infatti <span class="m">A\,{}^t(2\ 0\ 0\ 0) = 2A^1 = {}^t(2\ 4\ 0)</span>); il nucleo si ottiene con termine noto <span class="m">0</span>: base <span class="m">{}^t(-1\ 1\ 1\ 0)</span> (<span class="m">\alpha = 1, \beta = 0</span>) e <span class="m">{}^t(-2\ 1\ 0\ 1)</span> (<span class="m">\alpha = 0, \beta = 1</span>). Quindi la controimmagine è <span class="m">{}^t(2\ 0\ 0\ 0) + \mathrm{Span}({}^t(-1\ 1\ 1\ 0), {}^t(-2\ 1\ 0\ 1))</span>.</p>
 </div>
 
 <h2>Immagine e rango</h2>
-<p>L&#39;immagine è <span class="m">\mathrm{Im}(f) = \{w \in W \mid \exists v \in V \text{ con } f(v) = w\}</span>. Contiene sempre <span class="m">0_W</span>.</p>
-<p><strong>Proposizione 20.11.</strong> L&#39;immagine è un <strong>sottospazio vettoriale del codominio</strong> <span class="m">W</span>. Più in generale, l&#39;immagine <span class="m">f(U)</span> di un sottospazio <span class="m">U \subseteq V</span> è un sottospazio di <span class="m">W</span>.</p>
-<p><strong>Definizione 20.13.</strong> Se <span class="m">V</span> è finitamente generato, il <strong>rango</strong> di <span class="m">f</span> è <span class="m">\mathrm{rank}(f) := \dim(\mathrm{Im}(f))</span>.</p>
-<p><strong>Osservazione 20.14.</strong> Se <span class="m">\{v_1, \dots, v_m\}</span> è una base di <span class="m">V</span>, allora <span class="m">\mathrm{Im}(f) = \mathrm{Span}(f(v_1), \dots, f(v_m))</span>. In particolare l&#39;immagine di <span class="m">f_A</span> è generata dalle <strong>colonne</strong> <span class="m">A^1, \dots, A^m</span> di <span class="m">A</span>, perché <span class="m">f_A(e_j) = A\,e_j = A^j</span>.</p>
-<div class="callout esempio">
-
-<p>Per <span class="m">A = \begin{pmatrix} 1 &amp; 1 &amp; -3 \\ 1 &amp; -1 &amp; 1 \end{pmatrix}</span>: <span class="m">\mathrm{Im}(f_A) = \mathrm{Span}({}^t(1\ 1), {}^t(1\ -1), {}^t(-3\ 1)) = \mathbb{R}^2</span>. Le immagini di nulla, identità e proiezione sono <span class="m">\{0_W\}</span>, <span class="m">V</span> e <span class="m">\mathbb{K}</span>.</p>
-</div>
-
-<p><strong>Proposizione 20.16.</strong> Se <span class="m">V</span> è finitamente generato, <span class="m">f</span> è <strong>surgettiva</strong> se e solo se <span class="m">W</span> è finitamente generato e <span class="m">\mathrm{rank}(f) = \dim(W)</span>.</p>
-<h2>Teorema fondamentale dell&#39;algebra lineare</h2>
-<p><strong>Teorema 20.18.</strong> Sia <span class="m">f: V \to W</span> lineare con <span class="m">V</span> finitamente generato. Allora
-<span class="m d">\dim(\mathrm{Ker}(f)) + \dim(\mathrm{Im}(f)) = \dim(V),</span>
-cioè <span class="m">\dim(\mathrm{Ker} f) + \mathrm{rank}(f) = \dim V</span>.</p>
-<p><em>Dimostrazione.</em> Sia <span class="m">\{v_1, \dots, v_p\}</span> una base di <span class="m">\mathrm{Ker} f</span> e <span class="m">\{w_1, \dots, w_q\}</span> una base di <span class="m">\mathrm{Im} f</span>; si scelgono <span class="m">u_i \in V</span> con <span class="m">f(u_i) = w_i</span>. Si dimostra che <span class="m">\{v_1, \dots, v_p, u_1, \dots, u_q\}</span> è una base di <span class="m">V</span>.</p>
+<p>Ricordiamo che l&#39;<strong>immagine</strong> di <span class="m">f: V \to W</span> è
+<span class="m d">\mathrm{Im}(f) = \{w \in W \mid \exists v \in V \text{ con } f(v) = w\},</span>
+l&#39;insieme dei vettori del <strong>codominio</strong> che sono &quot;raggiunti&quot; da <span class="m">f</span>.</p>
+<p><strong>Osservazione 20.10.</strong> <span class="m">0_W \in \mathrm{Im}(f)</span> sempre, perché <span class="m">0_W = f(0_V)</span>.</p>
+<p><strong>Proposizione 20.11.</strong> L&#39;immagine di <span class="m">f: V \to W</span> è un <strong>sottospazio vettoriale del codominio</strong> <span class="m">W</span>.</p>
+<p><em>Dimostrazione.</em></p>
 <ul>
-<li><em>Generano:</em> dato <span class="m">v</span>, si scrive <span class="m">f(v) = \sum \lambda_i w_i</span>; allora <span class="m">f(v - \sum \lambda_i u_i) = 0</span>, quindi <span class="m">v - \sum \lambda_i u_i = \sum \mu_j v_j</span> e <span class="m">v = \sum \mu_j v_j + \sum \lambda_i u_i</span>.</li>
-<li><em>Sono indipendenti:</em> se <span class="m">\sum \mu_j v_j + \sum \lambda_i u_i = 0</span>, applicando <span class="m">f</span> si ottiene <span class="m">\sum \lambda_i w_i = 0</span>, quindi tutti i <span class="m">\lambda_i = 0</span>; resta <span class="m">\sum \mu_j v_j = 0</span>, quindi tutti i <span class="m">\mu_j = 0</span>.</li>
+<li>(SSV1) <span class="m">0_W \in \mathrm{Im}(f)</span>.</li>
+<li>(SSV2) Se <span class="m">w_1 = f(v_1)</span> e <span class="m">w_2 = f(v_2)</span>, allora <span class="m">w_1 + w_2 = f(v_1) + f(v_2) = f(v_1 + v_2) \in \mathrm{Im}(f)</span>.</li>
+<li>(SSV3) Se <span class="m">w = f(v)</span>, allora <span class="m">\lambda w = \lambda f(v) = f(\lambda v) \in \mathrm{Im}(f)</span>. <span class="m">\square</span></li>
 </ul>
-<p>Dunque <span class="m">\dim V = p + q</span>.</p>
+<p><strong>Osservazione 20.12.</strong> Più in generale, l&#39;immagine <span class="m">f(U)</span> di <strong>qualsiasi</strong> sottospazio <span class="m">U \subseteq V</span> è un sottospazio di <span class="m">W</span> (stessa dimostrazione, con <span class="m">v_1, v_2, v \in U</span>).</p>
+<p><strong>Definizione 20.13.</strong> Se <span class="m">V</span> è finitamente generato, il <strong>rango</strong> di <span class="m">f</span> è la dimensione della sua immagine:
+<span class="m d">\mathrm{rank}(f) := \dim(\mathrm{Im}(f)).</span></p>
+<p><strong>Osservazione 20.14 (generatori dell&#39;immagine).</strong> Se <span class="m">\{v_1, \dots, v_m\}</span> è una base di <span class="m">V</span>, allora
+<span class="m d">\mathrm{Im}(f) = \mathrm{Span}(f(v_1), \dots, f(v_m)).</span>
+Infatti ogni <span class="m">w \in \mathrm{Im}(f)</span> è <span class="m">w = f(v)</span> con <span class="m">v = \sum\lambda_i v_i</span>, quindi <span class="m">w = \sum\lambda_i f(v_i)</span> è combinazione delle <span class="m">f(v_i)</span>; viceversa ogni combinazione <span class="m">\sum\lambda_i f(v_i) = f(\sum\lambda_i v_i)</span> è un&#39;immagine. In particolare per <span class="m">f_A: \mathbb{K}^m \to \mathbb{K}^n</span>, usando la base canonica, <span class="m">f_A(e_j) = A\,e_j = A^j</span> (la <span class="m">j</span>-esima colonna), quindi
+<span class="m d">\mathrm{Im}(f_A) = \mathrm{Span}(A^1, \dots, A^m) \quad\text{(lo Span delle colonne di } A\text{)}, \qquad \mathrm{rank}(f_A) = \mathrm{rank}(A).</span></p>
+<p>Attenzione: le immagini <span class="m">f(v_1), \dots, f(v_m)</span> <strong>generano</strong> l&#39;immagine ma possono essere dipendenti; per avere una base dell&#39;immagine bisogna estrarne un sottoinsieme indipendente (per esempio le colonne di <span class="m">A</span> che contengono i pivot dopo la riduzione a scalini).</p>
 <div class="callout esempio">
 
-<p>Per <span class="m">f_A</span> con <span class="m">A = \begin{pmatrix} 1 &amp; 1 &amp; -3 \\ 1 &amp; -1 &amp; 1 \end{pmatrix}</span>: <span class="m">\dim\mathrm{Ker} = 1</span>, <span class="m">\dim\mathrm{Im} = 2</span>, e <span class="m">1 + 2 = 3 = \dim\mathbb{R}^3</span>. Per la proiezione: <span class="m">(n-1) + 1 = n</span>.</p>
+<p><strong>Esempio 20.15.</strong></p>
+<ol>
+<li>Funzione nulla: <span class="m">\mathrm{Im}(f) = \{0_W\}</span>.</li>
+<li>Identità: <span class="m">\mathrm{Im}(\mathrm{id}_V) = V</span>.</li>
+<li>Proiezione: <span class="m">\mathrm{Im}(\mathrm{proj}_i) = \mathbb{K}</span>, perché ogni <span class="m">x \in \mathbb{K}</span> è <span class="m">\mathrm{proj}_i(x\,e_i)</span>.</li>
+<li><span class="m">A = \begin{pmatrix} 1 &amp; 1 &amp; -3 \\ 1 &amp; -1 &amp; 1 \end{pmatrix}</span>: scrivendo <span class="m">f_A(X) = x_1\begin{pmatrix} 1 \\ 1 \end{pmatrix} + x_2\begin{pmatrix} 1 \\ -1 \end{pmatrix} + x_3\begin{pmatrix} -3 \\ 1 \end{pmatrix}</span> si vede che
+<span class="m d">\mathrm{Im}(f_A) = \mathrm{Span}\left(\begin{pmatrix} 1 \\ 1 \end{pmatrix}, \begin{pmatrix} 1 \\ -1 \end{pmatrix}, \begin{pmatrix} -3 \\ 1 \end{pmatrix}\right) = \mathbb{R}^2,</span>
+perché le prime due colonne sono già indipendenti (<span class="m">\det\begin{pmatrix} 1 &amp; 1 \\ 1 &amp; -1 \end{pmatrix} = -2 \neq 0</span>) e quindi generano <span class="m">\mathbb{R}^2</span>. Rango <span class="m">2</span>.</li>
+</ol>
 </div>
 
-<p><strong>Corollario 20.21.</strong> Siano <span class="m">V</span> e <span class="m">W</span> finitamente generati.</p>
+<div class="callout esempio">
+
+<p><strong>Rango da una legge.</strong> <span class="m">f: \mathbb{R}^2 \ni {}^t(x_1\ x_2) \mapsto {}^t(x_1 + x_2,\ 0,\ 3x_1 + 3x_2) \in \mathbb{R}^3</span> ha matrice <span class="m">\begin{pmatrix} 1 &amp; 1 \\ 0 &amp; 0 \\ 3 &amp; 3 \end{pmatrix}</span>: le due colonne sono uguali, quindi <span class="m">\mathrm{Im}(f) = \mathrm{Span}({}^t(1\ 0\ 3))</span> e <span class="m">\mathrm{rank}(f) = 1</span>.</p>
+</div>
+
+<p><strong>Proposizione 20.16.</strong> Sia <span class="m">V</span> finitamente generato. <span class="m">f: V \to W</span> è <strong>surgettiva</strong> se e solo se <span class="m">W</span> è finitamente generato e <span class="m">\mathrm{rank}(f) = \dim(W)</span>.</p>
+<p><em>Dimostrazione.</em> (<span class="m">\Rightarrow</span>) Se <span class="m">\mathrm{Im}(f) = W</span>, allora <span class="m">W</span> è generato dalle immagini dei vettori di una base di <span class="m">V</span>, quindi è finitamente generato, e <span class="m">\mathrm{rank}(f) = \dim\mathrm{Im}(f) = \dim W</span>. (<span class="m">\Leftarrow</span>) <span class="m">\mathrm{Im}(f)</span> è un sottospazio di <span class="m">W</span> con la stessa dimensione di <span class="m">W</span>; un sottospazio della stessa dimensione (finita) coincide con tutto lo spazio, quindi <span class="m">\mathrm{Im}(f) = W</span>. <span class="m">\square</span></p>
+<div class="callout esempio">
+
+<p><strong>Esempio 20.17.</strong> Funzione nulla: non surgettiva salvo <span class="m">W = \{0\}</span>. Identità: sempre surgettiva. Proiezione: surgettiva (<span class="m">\dim\mathrm{Im} = 1 = \dim\mathbb{K}</span>). <span class="m">f_A</span> dell&#39;esempio: surgettiva (<span class="m">\dim\mathrm{Im} = 2 = \dim\mathbb{R}^2</span>).</p>
+</div>
+
+<h2>Teorema fondamentale dell&#39;algebra lineare</h2>
+<p><strong>Teorema 20.18 (Teorema fondamentale dell&#39;algebra lineare, o &quot;teorema della dimensione&quot;, o &quot;nullità più rango&quot;).</strong> Sia <span class="m">f: V \to W</span> lineare con <span class="m">V</span> finitamente generato. Allora
+<span class="m d">\dim(\mathrm{Ker}(f)) + \dim(\mathrm{Im}(f)) = \dim(V).</span></p>
+<p>Intuizione: dei <span class="m">\dim V</span> &quot;gradi di libertà&quot; del dominio, una parte viene &quot;persa&quot; (schiacciata a zero, è il nucleo) e la parte restante &quot;sopravvive&quot; e riempie l&#39;immagine. Nota che <strong><span class="m">W</span> non compare</strong>: conta solo la dimensione del dominio.</p>
+<p><em>Dimostrazione.</em> <span class="m">\mathrm{Ker}(f)</span> è un sottospazio di <span class="m">V</span>, quindi finitamente generato: sia <span class="m">p = \dim\mathrm{Ker}(f)</span> e <span class="m">\mathcal{B}_{Ker} = \{v_1, \dots, v_p\}</span> una sua base. Anche <span class="m">\mathrm{Im}(f)</span> è finitamente generato (Osservazione 20.14): sia <span class="m">q = \dim\mathrm{Im}(f)</span> e <span class="m">\mathcal{B}_{Im} = \{w_1, \dots, w_q\}</span> una sua base. Ogni <span class="m">w_i</span> sta nell&#39;immagine, quindi esiste <span class="m">u_i \in V</span> con <span class="m">f(u_i) = w_i</span>. Dimostriamo che
+<span class="m d">\{v_1, \dots, v_p, u_1, \dots, u_q\}</span>
+è una base di <span class="m">V</span>: avrà <span class="m">p + q</span> elementi, quindi <span class="m">\dim V = p + q</span>.</p>
+<p><em>Generano <span class="m">V</span>.</em> Sia <span class="m">v \in V</span>. Poiché <span class="m">f(v) \in \mathrm{Im}(f)</span>, si scrive <span class="m">f(v) = \lambda_1 w_1 + \dots + \lambda_q w_q</span>. Usando <span class="m">w_i = f(u_i)</span> e la linearità:
+<span class="m d">0_W = f(v) - \lambda_1 f(u_1) - \dots - \lambda_q f(u_q) = f(v - \lambda_1 u_1 - \dots - \lambda_q u_q),</span>
+quindi <span class="m">v - \lambda_1 u_1 - \dots - \lambda_q u_q \in \mathrm{Ker}(f)</span> e si scrive come combinazione della base del nucleo: <span class="m">v - \sum\lambda_i u_i = \mu_1 v_1 + \dots + \mu_p v_p</span>. Portando a destra:
+<span class="m d">v = \mu_1 v_1 + \dots + \mu_p v_p + \lambda_1 u_1 + \dots + \lambda_q u_q.</span></p>
+<p><em>Sono linearmente indipendenti.</em> Sia
+<span class="m d">\mu_1 v_1 + \dots + \mu_p v_p + \lambda_1 u_1 + \dots + \lambda_q u_q = 0_V. \tag{20.1}</span>
+Applicando <span class="m">f</span> e usando la linearità: <span class="m">\sum\mu_j f(v_j) + \sum\lambda_i f(u_i) = 0_W</span>. Ma <span class="m">f(v_j) = 0_W</span> (i <span class="m">v_j</span> sono nel nucleo) e <span class="m">f(u_i) = w_i</span>, quindi resta <span class="m">\lambda_1 w_1 + \dots + \lambda_q w_q = 0_W</span>. I <span class="m">w_i</span> sono indipendenti (base dell&#39;immagine), quindi <span class="m">\lambda_1 = \dots = \lambda_q = 0</span>. Sostituendo in (20.1) resta <span class="m">\mu_1 v_1 + \dots + \mu_p v_p = 0_V</span>, e per l&#39;indipendenza dei <span class="m">v_j</span> anche <span class="m">\mu_1 = \dots = \mu_p = 0</span>. <span class="m">\square</span></p>
+<p><strong>Osservazione 20.19.</strong> Con il rango: <span class="m">\dim(\mathrm{Ker}(f)) + \mathrm{rank}(f) = \dim(V)</span>. Per <span class="m">f_A</span> con <span class="m">A \in \mathbb{K}^{n,m}</span>: <span class="m">\dim\mathrm{Ker}(f_A) = m - \mathrm{rank}(A)</span>, che è lo stesso conteggio delle variabili libere di un sistema omogeneo (teorema di Rouché-Capelli).</p>
+<div class="callout esempio">
+
+<p><strong>Esempio 20.20.</strong></p>
 <ol>
-<li>Se <span class="m">f</span> è <strong>iniettiva</strong>, <span class="m">\dim V \leq \dim W</span> (perché <span class="m">\dim V = \dim\mathrm{Im} f \leq \dim W</span>).</li>
-<li>Se <span class="m">f</span> è <strong>surgettiva</strong>, <span class="m">\dim V \geq \dim W</span> (perché <span class="m">\dim V = \dim\mathrm{Ker} f + \dim W</span>).</li>
-<li>Se <span class="m">f</span> è <strong>bigettiva</strong>, <span class="m">\dim V = \dim W</span>.</li>
+<li>Funzione nulla: <span class="m">\dim V + 0 = \dim V</span>.</li>
+<li>Identità: <span class="m">0 + \dim V = \dim V</span>.</li>
+<li>Proiezione <span class="m">\mathrm{proj}_i: \mathbb{K}^n \to \mathbb{K}</span>: nucleo <span class="m">\{x_i = 0\}</span> di dimensione <span class="m">n - 1</span>, immagine <span class="m">\mathbb{K}</span> di dimensione <span class="m">1</span>: <span class="m">(n - 1) + 1 = n</span>.</li>
+<li><span class="m">f_A</span> con <span class="m">A = \begin{pmatrix} 1 &amp; 1 &amp; -3 \\ 1 &amp; -1 &amp; 1 \end{pmatrix}</span>: <span class="m">\dim\mathrm{Ker} = 1</span>, <span class="m">\dim\mathrm{Im} = 2</span>, <span class="m">1 + 2 = 3 = \dim\mathbb{R}^3</span>.</li>
 </ol>
-<p><strong>Corollario 20.22.</strong> Se <span class="m">\dim V = \dim W</span>, sono equivalenti: <span class="m">f</span> iniettiva, <span class="m">f</span> surgettiva, <span class="m">f</span> bigettiva.</p>
-<div class="callout sintesi">
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Uso tipico del teorema.</strong> Se <span class="m">f: V \to W</span> è lineare con <span class="m">\dim V = 5</span>:</p>
+<table>
+<thead>
+<tr>
+<th><span class="m">\dim\mathrm{Im}(f)</span></th>
+<th><span class="m">\dim\mathrm{Ker}(f) = 5 - \dim\mathrm{Im}(f)</span></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>4</td>
+</tr>
+<tr>
+<td>2</td>
+<td>3</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2</td>
+</tr>
+<tr>
+<td>4</td>
+<td>1</td>
+</tr>
+<tr>
+<td>5</td>
+<td>0 (<span class="m">f</span> iniettiva)</td>
+</tr>
+</tbody></table>
+<p>Viceversa, se <span class="m">\dim V = 7</span> e <span class="m">\dim\mathrm{Ker}(f) = 3</span>, allora <span class="m">\dim\mathrm{Im}(f) = 7 - 3 = 4</span>. La dimensione di <span class="m">W</span> non serve (serve solo a dire che <span class="m">\dim\mathrm{Im} \leq \dim W</span>).</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Esercizio 20.4.2 (nucleo e immagine con Gauss).</strong> <span class="m">A = \begin{pmatrix} 1 &amp; 2 &amp; 4 \\ 0 &amp; 3 &amp; 3 \\ -2 &amp; 1 &amp; -3 \end{pmatrix}</span>, <span class="m">f_A: \mathbb{R}^3 \to \mathbb{R}^3</span>.
+<span class="m d">\begin{pmatrix} 1 &amp; 2 &amp; 4 \\ 0 &amp; 3 &amp; 3 \\ -2 &amp; 1 &amp; -3 \end{pmatrix} \xrightarrow{R_3 + 2R_1} \begin{pmatrix} 1 &amp; 2 &amp; 4 \\ 0 &amp; 3 &amp; 3 \\ 0 &amp; 5 &amp; 5 \end{pmatrix} \xrightarrow{R_3 - \frac53 R_2} \begin{pmatrix} 1 &amp; 2 &amp; 4 \\ 0 &amp; 3 &amp; 3 \\ 0 &amp; 0 &amp; 0 \end{pmatrix}.</span>
+Rango <span class="m">2</span> (pivot nelle colonne 1 e 2). <em>Nucleo:</em> <span class="m">3x_2 + 3x_3 = 0 \Rightarrow x_2 = -x_3</span>; <span class="m">x_1 = -2x_2 - 4x_3 = 2x_3 - 4x_3 = -2x_3</span>. Con <span class="m">x_3 = -1</span>: base <span class="m">\{{}^t(2\ 1\ -1)\}</span>, <span class="m">\dim\mathrm{Ker} = 1</span>. <em>Immagine:</em> le colonne della matrice <strong>originale</strong> corrispondenti ai pivot, <span class="m">\{{}^t(1\ 0\ -2), {}^t(2\ 3\ 1)\}</span>, <span class="m">\dim\mathrm{Im} = 2</span>. Controllo con il teorema: <span class="m">1 + 2 = 3</span>. ✓ <span class="m">f_A</span> non è né iniettiva né surgettiva.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Esercizi 20.1 e 20.2.</strong></p>
+<ul>
+<li>Inclusione <span class="m">\mathrm{incl}: W \to V</span> di un sottospazio: <span class="m">\mathrm{incl}(w) = w = 0</span> solo per <span class="m">w = 0</span>, quindi <span class="m">\mathrm{Ker} = \{0\}</span>; i vettori raggiunti sono esattamente quelli di <span class="m">W</span>, quindi <span class="m">\mathrm{Im} = W</span>. Se <span class="m">W</span> è finitamente generato: <span class="m">0 + \dim W = \dim W</span>.</li>
+<li><span class="m">f: \mathbb{K}_{\leq d}[x] \ni p(x) \mapsto x\,p(x) \in \mathbb{K}_{\leq d+1}[x]</span>: <span class="m">x\,p(x) = 0</span> solo se <span class="m">p = 0</span>, quindi <span class="m">\mathrm{Ker} = \{0\}</span>; un polinomio di grado <span class="m">\leq d+1</span> è della forma <span class="m">x\,p(x)</span> se e solo se è divisibile per <span class="m">x</span> (termine noto nullo), quindi <span class="m">\mathrm{Im} = \mathrm{Span}(x, x^2, \dots, x^{d+1})</span>, di dimensione <span class="m">d + 1</span>. Teorema: <span class="m">0 + (d + 1) = d + 1 = \dim\mathbb{K}_{\leq d}[x]</span>. ✓ (È iniettiva ma non surgettiva: il polinomio <span class="m">1</span> non è raggiunto.)</li>
+</ul>
+</div>
+
+<h3>Conseguenze: iniettività, surgettività e dimensioni</h3>
+<p><strong>Corollario 20.21.</strong> Siano <span class="m">V</span>, <span class="m">W</span> finitamente generati e <span class="m">f: V \to W</span> lineare.</p>
+<ol>
+<li>Se <span class="m">f</span> è <strong>iniettiva</strong>, allora <span class="m">\dim V \leq \dim W</span>.</li>
+<li>Se <span class="m">f</span> è <strong>surgettiva</strong>, allora <span class="m">\dim V \geq \dim W</span>.</li>
+<li>Se <span class="m">f</span> è <strong>bigettiva</strong>, allora <span class="m">\dim V = \dim W</span>.</li>
+</ol>
+<p><em>Dimostrazione.</em></p>
+<ol>
+<li>Iniettiva <span class="m">\Rightarrow</span> <span class="m">\mathrm{Ker}(f) = \{0\}</span>, <span class="m">\dim\mathrm{Ker} = 0</span>; dal teorema <span class="m">\dim V = \dim\mathrm{Im}(f) \leq \dim W</span> (l&#39;immagine è un sottospazio di <span class="m">W</span>).</li>
+<li>Surgettiva <span class="m">\Rightarrow</span> <span class="m">\dim\mathrm{Im} = \dim W</span>; dal teorema <span class="m">\dim V = \dim\mathrm{Ker}(f) + \dim W \geq \dim W</span>, perché <span class="m">\dim\mathrm{Ker} \geq 0</span>.</li>
+<li>Bigettiva = iniettiva e surgettiva: valgono entrambe le disuguaglianze, quindi l&#39;uguaglianza. <span class="m">\square</span></li>
+</ol>
+<p>In forma &quot;contronominale&quot;, molto utile: <strong>non esistono applicazioni lineari iniettive da uno spazio più grande a uno più piccolo</strong>, né surgettive da uno più piccolo a uno più grande. Per esempio nessuna <span class="m">f: \mathbb{R}^3 \to \mathbb{R}^2</span> è iniettiva, nessuna <span class="m">f: \mathbb{R}^2 \to \mathbb{R}^3</span> è surgettiva.</p>
+<p><strong>Corollario 20.22.</strong> Se <span class="m">\dim V = \dim W</span> (finita), per <span class="m">f: V \to W</span> lineare sono <strong>equivalenti</strong>: <span class="m">f</span> iniettiva, <span class="m">f</span> surgettiva, <span class="m">f</span> bigettiva.</p>
+<p><em>Dimostrazione.</em> <em>Iniettiva <span class="m">\Rightarrow</span> surgettiva:</em> <span class="m">\dim\mathrm{Ker} = 0</span>, quindi <span class="m">\dim\mathrm{Im} = \dim V = \dim W</span> e <span class="m">\mathrm{Im}(f) = W</span>. <em>Surgettiva <span class="m">\Rightarrow</span> iniettiva:</em> <span class="m">\dim\mathrm{Ker} = \dim V - \dim\mathrm{Im} = \dim V - \dim W = 0</span>, quindi <span class="m">\mathrm{Ker} = \{0\}</span>. Le equivalenze con &quot;bigettiva&quot; seguono subito (bigettiva = iniettiva e surgettiva). <span class="m">\square</span></p>
+<p>Per gli endomorfismi (<span class="m">V = W</span>) basta quindi verificare <strong>una</strong> delle due proprietà: per esempio calcolare il nucleo.</p>
+<div class="callout esempio">
+
+<p><strong>Esercizio 20.3.</strong> Per quali <span class="m">n, d \geq 1</span> esiste <span class="m">f: \mathbb{R}^n \to \mathbb{R}_{\leq d}[x]</span> lineare iniettiva, surgettiva, bigettiva? Si ha <span class="m">\dim\mathbb{R}_{\leq d}[x] = d + 1</span>. Iniettiva: serve <span class="m">n \leq d + 1</span>, e allora basta <span class="m">{}^t(a_1 \dots a_n) \mapsto a_1 + a_2x + \dots + a_nx^{n-1}</span>. Surgettiva: serve <span class="m">n \geq d + 1</span>, e basta <span class="m">{}^t(a_1 \dots a_n) \mapsto a_1 + a_2x + \dots + a_{d+1}x^d</span> (le altre coordinate si ignorano). Bigettiva: <span class="m">n = d + 1</span>.</p>
+</div>
+
+<div class="callout attenzione">
 
 <ul>
-<li><span class="m">\mathrm{Ker} f \subseteq V</span> e <span class="m">\mathrm{Im} f \subseteq W</span> sono sottospazi; <span class="m">f</span> iniettiva <span class="m">\iff \mathrm{Ker} f = \{0\}</span>.</li>
-<li><span class="m">\mathrm{Im} f</span> è generata dalle immagini di una base (per <span class="m">f_A</span>: dalle colonne di <span class="m">A</span>); <span class="m">\mathrm{rank} f = \dim\mathrm{Im} f</span>.</li>
-<li><span class="m">\dim\mathrm{Ker} f + \dim\mathrm{Im} f = \dim V</span>.</li>
-<li>Tra spazi della stessa dimensione: iniettiva <span class="m">\iff</span> surgettiva <span class="m">\iff</span> bigettiva.</li>
+<li>Il teorema richiede solo <span class="m">V</span> finitamente generato: si sottrae dalla dimensione del <strong>dominio</strong>, non del codominio.</li>
+<li>Non confondere <span class="m">\dim\mathrm{Ker}</span> con <span class="m">\dim\mathrm{Im}</span>: il nucleo sta nel dominio, l&#39;immagine nel codominio.</li>
+<li>Il nucleo di <span class="m">f_A</span> si trova risolvendo <span class="m">AX = 0</span> (righe); l&#39;immagine con lo Span delle <strong>colonne</strong> di <span class="m">A</span>. Per la base dell&#39;immagine si prendono le colonne della matrice <strong>originale</strong> nelle posizioni dei pivot, non le colonne della matrice ridotta.</li>
+<li>Il Corollario 20.22 vale solo se <span class="m">\dim V = \dim W</span>.</li>
 </ul>
 </div>
 
 <div class="callout esame">
 
-<p>Le chiuse chiedono <span class="m">\dim\mathrm{Ker} f</span> conoscendo <span class="m">\dim V = 5</span> e <span class="m">\dim\mathrm{Im} f</span>: basta <span class="m">\dim\mathrm{Ker} f = \dim V - \dim\mathrm{Im} f</span>. Le aperte chiedono l&#39;enunciato del Teorema fondamentale con le conseguenze, e la definizione di nucleo, immagine e rango.</p>
+<p><strong>Aperte.</strong> &quot;Enunciare il Teorema fondamentale dell&#39;algebra lineare e descrivere alcune conseguenze&quot;: enunciato preciso (ipotesi: <span class="m">f</span> lineare, <span class="m">V</span> finitamente generato; tesi: <span class="m">\dim\mathrm{Ker} + \dim\mathrm{Im} = \dim V</span>, cioè <span class="m">\dim\mathrm{Ker} + \mathrm{rank} = \dim V</span>), idea della dimostrazione (base del nucleo + controimmagini di una base dell&#39;immagine), un esempio, e i Corollari 20.21 e 20.22. &quot;Parlare del nucleo, dell&#39;immagine e del rango&quot;: definizioni, sono sottospazi (di <span class="m">V</span> e di <span class="m">W</span>), iniettiva <span class="m">\iff \mathrm{Ker} = \{0\}</span>, controimmagini come traslati del nucleo, <span class="m">\mathrm{Im}</span> generata dalle immagini di una base (per <span class="m">f_A</span> dalle colonne), rango, surgettiva <span class="m">\iff \mathrm{rank} = \dim W</span>.</p>
+<p><strong>Chiuse.</strong> Dati <span class="m">\dim V</span> e <span class="m">\dim\mathrm{Im}(f)</span>, <span class="m">\dim\mathrm{Ker}(f) = \dim V - \dim\mathrm{Im}(f)</span> (per esempio <span class="m">5 - 3 = 2</span>); dati <span class="m">\dim V</span> e <span class="m">\dim\mathrm{Ker}</span>, <span class="m">\dim\mathrm{Im} = \dim V - \dim\mathrm{Ker}</span>. Il sistema che descrive il nucleo è quello di <strong>tutte</strong> le componenti uguali a zero. <span class="m">0_W \in \mathrm{Ker}(f)</span> è l&#39;affermazione falsa.</p>
+</div>
+
+<div class="callout sintesi">
+
+<ul>
+<li><span class="m">\mathrm{Ker}(f) = \{v \in V : f(v) = 0_W\}</span>, sottospazio del dominio; contiene sempre <span class="m">0_V</span>.</li>
+<li><span class="m">f</span> iniettiva <span class="m">\iff \mathrm{Ker}(f) = \{0_V\}</span>.</li>
+<li><span class="m">\mathrm{Preim}_f(w) = \bar v + \mathrm{Ker}(f)</span> se non vuota; per <span class="m">w \neq 0</span> non è un sottospazio.</li>
+<li><span class="m">\mathrm{Im}(f)</span> sottospazio del codominio, generato dalle immagini di una base (per <span class="m">f_A</span>: dalle colonne di <span class="m">A</span>); <span class="m">\mathrm{rank}(f) = \dim\mathrm{Im}(f)</span>.</li>
+<li><span class="m">f</span> surgettiva <span class="m">\iff \mathrm{rank}(f) = \dim W</span>.</li>
+<li><strong>Teorema fondamentale:</strong> <span class="m">\dim\mathrm{Ker}(f) + \dim\mathrm{Im}(f) = \dim V</span>.</li>
+<li>Iniettiva <span class="m">\Rightarrow \dim V \leq \dim W</span>; surgettiva <span class="m">\Rightarrow \dim V \geq \dim W</span>; bigettiva <span class="m">\Rightarrow</span> uguali.</li>
+<li>Se <span class="m">\dim V = \dim W</span>: iniettiva <span class="m">\iff</span> surgettiva <span class="m">\iff</span> bigettiva.</li>
+</ul>
 </div>

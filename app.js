@@ -1,6 +1,6 @@
 // eCampus Quiz — app a pagina singola, senza dipendenze (KaTeX solo per le formule).
 import { gradeOpen, CRITERIA } from "./grade.js";
-import { migrate, mergeStats, rebuildQ, mergeNotes } from "./sync.js";
+import { migrate, mergeStats, rebuildQ, mergeNotes, mergeSettings } from "./sync.js";
 import * as cloud from "./cloud.js";
 import { mountNotes, HL_COLORS, INK_COLORS, INK_WIDTHS } from "./notes.js";
 const EXAM = { closed: 24, open: 2, openMax: 3, pass: 18 };
@@ -49,6 +49,7 @@ const I = {
   chev: ico('<path d="m9 6 6 6-6 6"/>'),
   down: ico('<path d="m6 9 6 6 6-6"/>'),
   left: ico('<path d="m15 6-6 6 6 6"/>'),
+  panel: ico('<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16"/>'),
   grid: ico('<rect x="4" y="4" width="6" height="6" rx="1.5"/><rect x="14" y="4" width="6" height="6" rx="1.5"/><rect x="4" y="14" width="6" height="6" rx="1.5"/><rect x="14" y="14" width="6" height="6" rx="1.5"/>'),
   plus: ico('<path d="M12 5v14M5 12h14"/>'),
   flag: ico('<path d="M5 21V4h11l-1.5 4L16 12H5"/>'),
@@ -72,12 +73,22 @@ const settings = Object.assign({ theme: "auto", timer: 60, extraInPractice: true
 // impostazioni per materia: { [id]: valore }
 for (const k of ["onlyPan", "pan", "examDate", "examBooked"]) if (typeof settings[k] !== "object" || !settings[k]) settings[k] = {};
 delete settings.onlyPaniere;
+if (typeof settings.smt !== "object" || !settings.smt) settings.smt = {};
 const saveSettings = () => { store.set("ecq:settings", settings); applyTheme(); };
+// impostazioni per materia: ogni valore ha la sua data di modifica (smt["examDate:fisica"]), così tra i dispositivi
+// vince l'ultima modifica, anche quando è una cancellazione (data tolta dopo l'esito)
+const SYNCED = ["examDate", "pan", "examBooked"];
+function setSubj(k, subj, v) {
+  if (v === undefined) delete settings[k][subj]; else settings[k][subj] = v;
+  settings.smt[`${k}:${subj}`] = Date.now();
+  saveSettings();
+}
 function applyTheme() {
   if (settings.theme === "auto") delete document.documentElement.dataset.theme;
   else document.documentElement.dataset.theme = settings.theme;
 }
 applyTheme();
+document.body.classList.toggle("navhidden", !!store.get("ecq:navhidden", false));
 
 let subjects = [];
 let S = null; // materia corrente (dati completi)
@@ -290,7 +301,7 @@ function outcomeForm({ subj, date, rid, prompt }) {
     ${prompt ? `<div class="grid g2" style="margin-top:10px"><button class="btn ghost" data-act="outskip">Non l'ho sostenuto</button><button class="btn ghost" data-act="fsclose">Più tardi</button></div>`
       : rid ? `<button class="btn danger block" data-act="outdel" style="margin-top:10px">Elimina</button>` : ""}</div>`;
 }
-const clearExamDate = (subj) => { settings.examDate[subj] = undefined; settings.examBooked[subj] = undefined; saveSettings(); };
+const clearExamDate = (subj) => { setSubj("examDate", subj, undefined); setSubj("examBooked", subj, undefined); };
 function saveOutcome(el, res) {
   const f = el.closest(".outform"), v = (n) => f.querySelector(`[name=${n}]`).value;
   const subj = v("subj"), date = v("date"), g = v("grade");
@@ -333,7 +344,8 @@ function renderShell(route) {
     <a class="side-link ${top === "scheda" ? "on" : ""}" href="#/scheda">${I.doc}Scheda corso</a>
     <a class="side-link ${top === "impostazioni" ? "on" : ""}" href="#/impostazioni">${I.gear}Impostazioni</a>`;
   const titles = { "": "Home", studio: "Studio", esame: "Esame", teoria: "Teoria", altro: "Altro", preferiti: "Preferiti", errori: "Ripasso errori", scheda: "Scheda corso", impostazioni: "Impostazioni", risultati: "Risultati", cerca: "Cerca", appunti: "Appunti", esiti: "Esiti esami" };
-  $("#topbar").innerHTML = `<h1>${titles[top] ?? ""}</h1>${chip}`;
+  const hidden = document.body.classList.contains("navhidden");
+  $("#topbar").innerHTML = `<button class="icon-btn navtoggle" data-act="navtoggle" aria-pressed="${!hidden}" aria-label="${hidden ? "Mostra" : "Nascondi"} il menu laterale" title="${hidden ? "Mostra" : "Nascondi"} il menu">${I.panel}</button><h1>${titles[top] ?? ""}</h1>${chip}`;
 }
 
 // ---------- viste
@@ -648,6 +660,7 @@ async function theoryLesson(n, anchor) {
     ${L.genTheory ? `<span class="badge warn" title="Da verificare con le dispense">Riassunto generato</span>` : ""}
     <span style="flex:1"></span>
     <button class="btn secondary sm" data-act="annot" aria-pressed="false">${I.pen}Annota</button></div>
+  ${slideBtns(L)}
   ${annotBar()}
   <article class="card prose annotable" id="lesson" data-n="${n}">${html}</article>
   <div class="theory-foot">
@@ -761,8 +774,10 @@ views.errori = () => {
     ${qList(qs, "Nessun errore da ripassare.")}`;
 };
 
+const ago = (t) => { const d = new Date(t), today = localDay(), day = localDay(t), hm = d.toLocaleTimeString("it-IT", { hour: "2-digit", minute: "2-digit" });
+  return day === today ? `oggi alle ${hm}` : day === localDay(Date.now() - 864e5) ? `ieri alle ${hm}` : `il ${fmtDate(t)}`; };
 views.impostazioni = () => {
-  const last = store.get("ecq:lastBackup", 0);
+  const last = store.get("ecq:lastBackup", 0), lastSync = store.get("ecq:lastSync", 0), syncOk = lastSync && !syncErr;
   return `
   <div class="list">
     <div class="toggle-row"><b>Aspetto</b><div class="seg">${[["auto", "Auto"], ["light", "Chiaro"], ["dark", "Scuro"]].map(([k, t]) => `<button data-theme="${k}" class="${settings.theme === k ? "on" : ""}">${t}</button>`).join("")}</div></div>
@@ -786,16 +801,21 @@ views.impostazioni = () => {
   </div>
   <div class="section-h" style="margin-top:22px"><h2>Backup</h2></div>
   <div class="list">
-    <button class="row" data-act="export"><span class="lnum">${I.save}</span><div class="grow"><div class="t">Salva backup</div><div class="s">Un file con statistiche, esami, preferiti e appunti di tutte le materie${last ? ` · ultimo: ${fmtDate(last)}` : ""}</div></div></button>
+    <div class="row"><span class="lnum" style="${syncOk ? "background:var(--ok-soft);color:var(--ok)" : "background:var(--ko-soft);color:var(--ko)"}">${syncOk ? "✓" : "!"}</span><div class="grow"><div class="t">Online (account)</div>
+      <div class="s">${lastSync ? `Ultima sincronizzazione ${ago(lastSync)}` : "Mai sincronizzato"}${!syncOk && syncMsg ? ` · ${esc(syncMsg)}` : ""}</div></div>
+      <button class="btn secondary sm" data-act="syncnow">${I.redo}Ora</button></div>
+    <button class="row" data-act="export"><span class="lnum" style="${last && Date.now() - last < 7 * 864e5 ? "background:var(--ok-soft);color:var(--ok)" : "background:var(--warn-soft);color:var(--warn)"}">${I.save}</span><div class="grow"><div class="t">Su file (locale)</div><div class="s">${last ? `Ultimo backup ${ago(last)}` : "Mai salvato"} · tocca per salvarne uno nuovo (statistiche, esami, preferiti e appunti di tutte le materie)</div></div></button>
     <label class="row" style="cursor:pointer"><span class="lnum">${I.redo}</span><div class="grow"><div class="t">Carica backup</div><div class="s">Unisce i dati del file a quelli di questo dispositivo, senza doppioni</div></div>
       <input type="file" accept=".json,application/json" data-import hidden></label>
   </div>
-  <p class="muted small" style="margin:10px 4px">Per avere gli stessi dati su iPad e iPhone: dopo aver studiato su un dispositivo salva il backup (per esempio in iCloud Drive) e caricalo sull'altro. Ogni risposta ed esame ha un codice unico: caricare lo stesso file più volte non duplica niente.</p>
+  <p class="muted small" style="margin:10px 4px">Con l'account i dati si sincronizzano da soli tra i tuoi dispositivi (all'apertura, pochi secondi dopo ogni modifica e quando torni nell'app). Il backup su file è una copia di sicurezza in più: conviene salvarlo ogni tanto in iCloud Drive.</p>
+  <div class="section-h" style="margin-top:22px"><h2>Aggiornamenti</h2></div>
+  <div class="list">${updateRows()}</div>
   <div class="section list">
     <button class="row" data-act="addsubj"><span class="lnum">${I.plus}</span><div class="grow"><div class="t">Aggiungi una materia</div><div class="s">Come caricare un nuovo paniere</div></div></button>
     <button class="row" data-act="reset"><span class="lnum" style="background:var(--ko-soft);color:var(--ko)">${I.redo}</span><div class="grow"><div class="t" style="color:var(--ko)">Azzera statistiche di ${esc(S.short || S.name)}</div><div class="s">Simulazioni, risposte e preferiti di questa materia (gli esiti degli esami veri restano)</div></div></button>
   </div>
-  <p class="muted small" style="margin:18px 4px">I dati sono salvati solo su questo dispositivo. ${subjects.length} materie · ${S.questions.length} domande in ${esc(S.short)}.</p>`;
+  <p class="muted small" style="margin:18px 4px">I dati sono su questo dispositivo e, con l'account, nel cloud. ${subjects.length} materie · ${S.questions.length} domande in ${esc(S.short)}.</p>`;
 };
 
 // ---------- ricerca in domande e teoria
@@ -1013,12 +1033,14 @@ views.risultati = (id) => {
 // ---------- router
 let timerInt = null;
 async function route() {
+  if (!S) return; // cambio di link durante l'avvio: ci pensa start() a disegnare
   const parts = location.hash.replace(/^#\/?/, "").split("/").map(decodeURIComponent);
   let [name, ...args] = parts;
   if (name === "teoria" && args[0] && args[0] !== S.id && subjects.some((s) => s.id === args[0])) await loadSubject(args[0]);
   if (name === "teoria") args = args.slice(0);
   const view = views[name] ?? views[""];
   if (name !== "quiz") document.body.classList.remove("runner");
+  if (name !== "teoria" && $("#pdfpane")) closeSlide();
   renderShell(name in views ? name : "");
   const html = await view(...args);
   notesCtl?.destroy(); notesCtl = null;
@@ -1053,8 +1075,8 @@ function openSheet(html, id = "sheet") {
 }
 let sheetCtl = null; // appunti montati sulla teoria nel pannello
 function closeSheet() {
-  if (!$("#sheet2").hidden) { $("#sheet2").hidden = true; return; }
-  $("#sheet").hidden = true; $("#sheet").classList.remove("wide");
+  if (!$("#sheet2").hidden) { pdfJob++; $("#sheet2").hidden = true; $("#sheet2").classList.remove("wide", "pdf-sheet"); return; }
+  $("#sheet").hidden = true; $("#sheet").classList.remove("wide"); $("#sheet2").classList.remove("wide");
   if (sheetCtl) { sheetCtl.destroy(); if (notesCtl === sheetCtl) notesCtl = null; sheetCtl = null; }
 }
 for (const id of ["sheet", "sheet2"]) $("#" + id).addEventListener("click", (e) => { if (e.target.id === id) closeSheet(); });
@@ -1091,7 +1113,7 @@ document.addEventListener("click", async (e) => {
         <button class="btn block" data-act="closesheet">Ho capito</button>`);
       break;
     case "closesheet": closeSheet(); break;
-    case "booked": settings.examBooked[S.id] = true; saveSettings(); $("#fs").hidden = true; toast("Perfetto, non te lo ricordo più"); break;
+    case "booked": setSubj("examBooked", S.id, true); $("#fs").hidden = true; toast("Perfetto, non te lo ricordo più"); break;
     case "fsclose": $("#fs").hidden = true; outcomePrompt(); break;
     case "outsave": saveOutcome(el, el.dataset.res); break;
     case "outskip": { const subj = el.closest(".outform").querySelector("[name=subj]").value; clearExamDate(subj); toast("Imposta la data del prossimo appello quando la sai"); closeOutcome(el); break; }
@@ -1152,6 +1174,18 @@ document.addEventListener("click", async (e) => {
       saveSess();
       const y = window.scrollY; await route(); window.scrollTo(0, y); break;
     }
+    case "slide": openSlide(el.dataset.k, el.dataset.t); break;
+    case "navtoggle": { // menu laterale nascosto o visibile (schermo largo), ricordato su questo dispositivo
+      const h = document.body.classList.toggle("navhidden"); store.set("ecq:navhidden", h);
+      el.setAttribute("aria-pressed", !h); el.setAttribute("aria-label", `${h ? "Mostra" : "Nascondi"} il menu laterale`); el.title = `${h ? "Mostra" : "Nascondi"} il menu`; break;
+    }
+    case "pdfclose": closeSlide(); break;
+    case "pdfzoom": {
+      const z = Math.min(2.5, Math.max(1, pdfZoom() + 0.25 * +el.dataset.z)); store.set("ecq:pdfzoom", z);
+      el.closest(".pdf-pane, .panel").querySelector(".pdf-pages").style.setProperty("--z", z); break;
+    }
+    case "checkupd": toast("Controllo…"); await refreshUpdate(true); if (!ver.next) toast("Hai già l'ultima versione"); break;
+    case "doupd": if (!swReg?.waiting) return refreshUpdate(true); updating = true; route(); swReg.waiting.postMessage("update"); break;
     case "theory": {
       const cq = sess && S.byId[sess.ids[sess.i]];
       if (cq && !sess.done[cq.id]) { (sess.thy ||= {})[cq.id] = 1; saveSess(); } // teoria consultata prima di rispondere: risposta "con aiuti"
@@ -1268,8 +1302,9 @@ document.addEventListener("click", async (e) => {
 document.addEventListener("change", async (e) => {
   const d = e.target.dataset;
   if (d.set) { settings[d.set] = e.target.checked; saveSettings(); route(); }
-  if (d.setsubj) { settings[d.setsubj][S.id] = e.target.checked; saveSettings(); route(); }
-  if (d.date !== undefined) { settings.examDate[S.id] = e.target.value || undefined; saveSettings(); } // ponytail: niente route(): su iOS ridisegnare chiude il selettore appena aperto
+  if (d.setsubj) { setSubj(d.setsubj, S.id, e.target.checked); route(); }
+  if (d.pdfsel !== undefined) { const o = e.target.selectedOptions[0]; openSlide(o.value, o.textContent, [...e.target.options].map((x) => ({ k: x.value, t: x.textContent }))); }
+  if (d.date !== undefined) { setSubj("examDate", S.id, e.target.value || undefined); } // ponytail: niente route(): su iOS ridisegnare chiude il selettore appena aperto
   if (d.theorysel !== undefined) openTheory(+e.target.value);
   if (d.import !== undefined && e.target.files[0]) importBackup(e.target.files[0]);
 });
@@ -1283,6 +1318,84 @@ document.addEventListener("input", (e) => {
 });
 
 // ---------- teoria consultabile durante esercitazioni ed esame con teoria (il timer continua)
+// dispense in PDF della lezione (da Firebase, solo con l'account): pdf.js le disegna pagina per pagina come immagini,
+// perché su iPad un PDF in un iframe mostra solo la prima pagina
+const slideBtns = (L) => (L.sl?.length && cloud.current() ? `<div class="slide-btns">${L.sl.map((x) =>
+  `<button class="btn secondary sm" data-act="slide" data-k="${x.k}" data-t="${esc(x.t)}">${I.doc}${esc(x.t)}</button>`).join("")}</div>` : "");
+// Schermo largo (iPad, Mac): la dispensa si apre in un pannello a destra e la teoria resta a sinistra, ognuna con il suo
+// scorrimento; il divisorio si trascina. Telefono: pannello a tutto schermo sopra la teoria.
+const SPLIT_MIN = 760;
+let pdfJob = 0;
+async function renderPdf(box, key, zoom = 1) {
+  const job = ++pdfJob;
+  box.innerHTML = `<p class="muted small pdf-msg">Carico la dispensa…</p>`;
+  try {
+    const [blob, pdfjs] = await Promise.all([cloud.slide(S.id, key), import("./vendor/pdfjs/pdf.min.mjs")]);
+    pdfjs.GlobalWorkerOptions.workerSrc = "vendor/pdfjs/pdf.worker.min.mjs";
+    const pdf = await pdfjs.getDocument({ data: new Uint8Array(await blob.arrayBuffer()) }).promise;
+    if (job !== pdfJob) return pdf.destroy();
+    box.innerHTML = "";
+    // risoluzione per lo zoom massimo, così ingrandire non sfoca
+    const w = Math.min(Math.max(box.clientWidth, 600) * Math.min(devicePixelRatio || 1, 2) * 1.5, 2400);
+    for (let i = 1; i <= pdf.numPages && job === pdfJob && box.isConnected; i++) {
+      const page = await pdf.getPage(i), vp0 = page.getViewport({ scale: 1 }), vp = page.getViewport({ scale: w / vp0.width });
+      const c = document.createElement("canvas"); c.width = vp.width; c.height = vp.height;
+      await page.render({ canvasContext: c.getContext("2d"), viewport: vp }).promise;
+      // immagini JPEG invece di tante canvas: il browser libera la memoria delle pagine fuori schermo
+      const img = new Image(); img.alt = `Pagina ${i} di ${pdf.numPages}`; img.src = URL.createObjectURL(await new Promise((r) => c.toBlob(r, "image/jpeg", 0.85)));
+      box.append(img); c.width = 0;
+    }
+    pdf.destroy();
+  } catch (e) { if (job === pdfJob) box.innerHTML = `<p class="small pdf-msg" style="color:var(--ko)">${esc(e.friendly ? e.message : "Impossibile aprire la dispensa")}</p>`; }
+}
+const pdfZoom = () => +store.get("ecq:pdfzoom", 1);
+const pdfBar = (key, title, list) => `<div class="pdf-bar">
+  ${list?.length > 1 ? `<select data-pdfsel aria-label="Dispensa">${list.map((x) => `<option value="${x.k}" ${x.k === key ? "selected" : ""}>${esc(x.t)}</option>`).join("")}</select>` : `<b class="grow">${esc(title)}</b>`}
+  <button class="icon-btn" data-act="pdfzoom" data-z="-1" aria-label="Rimpicciolisci">−</button>
+  <button class="icon-btn" data-act="pdfzoom" data-z="1" aria-label="Ingrandisci">+</button>
+  <button class="icon-btn" data-act="pdfclose" aria-label="Chiudi la dispensa">${I.x}</button></div>`;
+function openSlide(key, title, list) {
+  const L = S.lessons.find((l) => l.n === +($("#lesson")?.dataset.n));
+  list ||= L?.sl;
+  const inSheet = !$("#sheet").hidden; // teoria aperta da una domanda: la dispensa va sopra, a tutto schermo
+  if (innerWidth >= SPLIT_MIN && !inSheet) {
+    let pane = $("#pdfpane");
+    if (!pane) {
+      pane = document.createElement("aside"); pane.id = "pdfpane"; pane.className = "pdf-pane";
+      pane.setAttribute("aria-label", "Dispensa");
+      document.body.append(pane);
+    }
+    pane.innerHTML = `<div class="pdf-grip" title="Trascina per cambiare la larghezza"></div>${pdfBar(key, title, list)}<div class="pdf-pages"></div>`;
+    document.body.classList.add("split");
+    document.documentElement.style.setProperty("--pdfw", `${store.get("ecq:pdfw", 50)}vw`);
+    gripDrag(pane.querySelector(".pdf-grip"));
+    const box = pane.querySelector(".pdf-pages");
+    box.style.setProperty("--z", pdfZoom());
+    return renderPdf(box, key);
+  }
+  openSheet(`${pdfBar(key, title, list)}<div class="pdf-pages" style="--z:${pdfZoom()}"></div>`, "sheet2");
+  const sh = $("#sheet2");
+  sh.classList.add("wide", "pdf-sheet");
+  renderPdf($(".pdf-pages", sh), key);
+}
+function closeSlide() {
+  pdfJob++;
+  $("#pdfpane")?.remove();
+  document.body.classList.remove("split");
+  if ($("#sheet2").classList.contains("pdf-sheet")) { $("#sheet2").classList.remove("pdf-sheet"); closeSheet(); }
+}
+// divisorio: trascinando cambia la larghezza della dispensa (tra 30% e 70% dello schermo), ricordata
+function gripDrag(g) {
+  g.addEventListener("pointerdown", (e) => {
+    e.preventDefault(); g.setPointerCapture(e.pointerId);
+    const move = (ev) => {
+      const pct = Math.min(70, Math.max(30, ((innerWidth - ev.clientX) / innerWidth) * 100));
+      document.documentElement.style.setProperty("--pdfw", `${pct}vw`); store.set("ecq:pdfw", Math.round(pct));
+    };
+    g.addEventListener("pointermove", move);
+    g.addEventListener("pointerup", () => g.removeEventListener("pointermove", move), { once: true });
+  });
+}
 async function openTheory(n) {
   const withT = S.lessons.filter((l) => l.theory);
   const L = withT.find((l) => l.n === n) || withT[0];
@@ -1292,7 +1405,7 @@ async function openTheory(n) {
     <button class="btn secondary sm" data-act="annot" aria-pressed="false">${I.pen}Annota</button>
     <button class="icon-btn" data-act="closesheet" aria-label="Chiudi">${I.x}</button></div>
     ${annotBar()}
-    ${L.genTheory ? `<span class="badge warn">Riassunto generato</span>` : ""}<article class="prose" id="lesson" data-n="${L.n}" style="margin-top:8px">${html}</article>`);
+    ${slideBtns(L)}${L.genTheory ? `<span class="badge warn">Riassunto generato</span>` : ""}<article class="prose" id="lesson" data-n="${L.n}" style="margin-top:8px">${html}</article>`);
   const sh = $("#sheet");
   sh.classList.add("wide");
   sh.querySelector(".panel").scrollTop = 0;
@@ -1307,7 +1420,7 @@ async function openTheory(n) {
 }
 
 // ---------- backup e sincronizzazione: un solo formato (tutte le materie); caricare unisce (sync.js), non sovrascrive
-const buildBackup = () => ({ app: "ecampus-quiz", v: 2, d: Date.now(), settings: { examDate: settings.examDate, pan: settings.pan, examBooked: settings.examBooked },
+const buildBackup = () => ({ app: "ecampus-quiz", v: 2, d: Date.now(), settings: { examDate: settings.examDate, pan: settings.pan, examBooked: settings.examBooked, smt: settings.smt },
   stats: Object.fromEntries(subjects.map((s) => [s.id, stats(s.id)])),
   notes: Object.fromEntries(subjects.map((s) => [s.id, getNotes(s.id)])) });
 function applyBackup(data) {
@@ -1321,7 +1434,7 @@ function applyBackup(data) {
     const { notes, added } = mergeNotes(getNotes(id), inc);
     saveNotes(notes, id); notesN += added;
   }
-  for (const k of ["examDate", "pan", "examBooked"]) settings[k] = { ...(data.settings?.[k] || {}), ...settings[k] };
+  mergeSettings(settings, data.settings || {}, SYNCED);
   store.set("ecq:settings", settings);
   return { answers, exams, notesN };
 }
@@ -1347,21 +1460,27 @@ async function importBackup(file) {
 }
 
 // ---------- account (Firebase): ogni utente ha i suoi dati, uniti tra i dispositivi
-let syncing = false, syncTimer, syncMsg = "";
+let syncing = false, syncTimer, syncMsg = "", syncErr = false;
 function syncSoon() { if (syncing || !cloud.current()) return; clearTimeout(syncTimer); syncTimer = setTimeout(() => syncNow(), 4000); }
 async function syncNow(quiet = true) {
   if (syncing || !cloud.current()) return;
   syncing = true;
   try {
     const remote = await cloud.pull();
-    const got = remote ? applyBackup(remote) : { answers: 0, exams: 0, notesN: 0 };
+    const snap = () => JSON.stringify({ ...buildBackup(), d: 0 });
+    const before = snap();
+    if (remote) applyBackup(remote);
+    const changed = snap() !== before; // anche modifiche (esito, data d'esame), non solo dati nuovi
     await cloud.push(buildBackup());
+    cloud.putPassed(subjects.filter((s) => realOf(s.id).some((r) => r.res === "ok")).map((s) => s.id)).catch(() => {});
     syncMsg = `Sincronizzato ${fmtDate(Date.now())}`; store.set("ecq:lastSync", Date.now());
+    syncErr = false;
     if (!quiet) toast(syncMsg);
     // nuovi dati arrivati da un altro dispositivo: ridisegna, ma non nel mezzo di una domanda
-    if ((got.answers || got.exams || got.notesN) && !location.hash.startsWith("#/quiz") && $("#sheet").hidden) route();
-  } catch (e) { syncMsg = e.message; if (!quiet) toast(e.message); }
+    if (changed && !location.hash.startsWith("#/quiz") && $("#sheet").hidden && $("#fs").hidden) route();
+  } catch (e) { syncMsg = e.message; syncErr = true; if (!quiet) toast(e.message); }
   syncing = false;
+  if (location.hash === "#/impostazioni" && $("#sheet").hidden) route(); // stato del backup sempre aggiornato
 }
 document.addEventListener("visibilitychange", () => { if (!document.hidden) syncNow(); });
 window.addEventListener("online", () => syncNow());
@@ -1424,6 +1543,31 @@ function accountSheet() {
 window.addEventListener("scroll", () => $("#topbar").classList.toggle("scrolled", scrollY > 4), { passive: true });
 window.addEventListener("hashchange", route);
 
+// ---------- aggiornamenti: il service worker nuovo resta in attesa; in Impostazioni si vedono le novità e si preme "Aggiorna"
+let swReg = null, news = null, updating = false;
+const verOf = (k) => +(k.match(/^ecq-v(\d+)$/) || [])[1] || 0;
+async function versions() { // in uso = cache più vecchia, disponibile = più nuova (esistono entrambe finché l'aggiornamento aspetta)
+  const vs = (await caches.keys().catch(() => [])).map(verOf).filter(Boolean).sort((a, b) => a - b);
+  return { cur: vs[0] || 0, next: swReg?.waiting ? vs[vs.length - 1] : 0 };
+}
+let ver = { cur: 0, next: 0 };
+async function refreshUpdate(check) {
+  if (!swReg) return;
+  if (check) await swReg.update().catch(() => {});
+  ver = await versions();
+  if (ver.next) news = await fetch("news.json", { cache: "no-store" }).then((r) => r.json()).catch(() => news);
+  if (location.hash === "#/impostazioni" && $("#sheet").hidden) route();
+}
+function updateRows() {
+  if (!swReg) return `<div class="row"><span class="lnum">${I.redo}</span><div class="grow"><div class="t">Aggiornamenti automatici non disponibili</div><div class="s">Servono l'app installata e la connessione https</div></div></div>`;
+  if (!ver.next) return `<div class="row"><span class="lnum" style="background:var(--ok-soft);color:var(--ok)">✓</span><div class="grow"><div class="t">Versione ${ver.cur || "—"}</div><div class="s">È l'ultima disponibile</div></div>
+    <button class="btn secondary sm" data-act="checkupd">Controlla</button></div>`;
+  const items = (news || []).filter((n) => n.v > ver.cur).flatMap((n) => n.t);
+  return `<div class="row" style="display:block"><div class="t"><b>Nuova versione ${ver.next}</b> <span class="muted small">(ora hai la ${ver.cur})</span></div>
+    ${items.length ? `<ul class="news">${items.map((t) => `<li>${esc(t)}</li>`).join("")}</ul>` : `<p class="muted small">Miglioramenti e correzioni.</p>`}
+    <button class="btn block" data-act="doupd" ${updating ? "disabled" : ""}>${I.redo}${updating ? "Aggiorno…" : "Aggiorna ora"}</button></div>`;
+}
+
 // ---------- avvio
 async function start() {
   subjects = await fetch("data/subjects.json", { cache: "no-cache" }).then((r) => r.json());
@@ -1433,9 +1577,13 @@ async function start() {
   route();
   if (!outcomePrompt()) bookingAlert();
   syncNow();
-  syncNow();
   if ("serviceWorker" in navigator && location.protocol === "https:") {
-    await navigator.serviceWorker.register("sw.js");
+    swReg = await navigator.serviceWorker.register("sw.js");
+    swReg.addEventListener("updatefound", () => swReg.installing?.addEventListener("statechange", (e) => {
+      if (e.target.state === "installed" && navigator.serviceWorker.controller) { toast("Aggiornamento disponibile: Impostazioni → Aggiorna"); refreshUpdate(); }
+    }));
+    navigator.serviceWorker.addEventListener("controllerchange", () => { if (updating) location.reload(); });
+    refreshUpdate(true);
     // uso offline: scarica in background tutte le materie e la teoria (il service worker le mette in cache)
     setTimeout(async () => {
       for (const s of subjects) {

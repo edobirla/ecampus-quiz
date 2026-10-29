@@ -1,45 +1,87 @@
 <h1>Lezione 71 — Energia del campo magnetico</h1>
+<h2>Di cosa parla questa lezione</h2>
+<p>Per far crescere la corrente in un induttore il generatore deve compiere lavoro contro la f.e.m. autoindotta. Questo lavoro non va perso: quando la corrente cala, l&#39;energia viene restituita (è ciò che mantiene la corrente nell&#39;apertura del circuito RL). Ma <strong>dove</strong> si trova questa energia mentre la corrente scorre?</p>
+<p>La risposta, analoga a quella trovata per il condensatore e il campo elettrico, è: <strong>nel campo magnetico</strong>, cioè nello spazio in cui il campo esiste. In questa lezione:</p>
+<ul>
+<li>si ricava l&#39;energia di un&#39;induttanza, <span class="m">U = \tfrac12 LI^2</span>;</li>
+<li>si passa alla <strong>densità di energia magnetica</strong> <span class="m">u_B = B^2/(2\mu_0)</span>, valida per qualunque campo;</li>
+<li>si confronta con il campo elettrico e si vede che cosa succede in un&#39;onda elettromagnetica.</li>
+</ul>
 <h2>L&#39;energia sta nel campo</h2>
-<p>Accendere una corrente in un&#39;induttanza costa lavoro. Quel lavoro non si perde: resta immagazzinato. Dove? Nel <strong>campo magnetico</strong>, cioè nello spazio in cui il campo esiste. Qualunque regione con un campo magnetico contiene energia.</p>
+<p>Accendere una corrente in un circuito con induttanza costa lavoro. Se poi la corrente viene spenta (chiudendo il circuito su una resistenza), il circuito restituisce esattamente quell&#39;energia, sotto forma di calore nella resistenza. Nel frattempo, mentre la corrente è costante, l&#39;energia è rimasta <strong>immagazzinata</strong>. Non sta nelle cariche (che si muovono con la stessa velocità di deriva di prima) né nel filo: sta nel <strong>campo magnetico</strong> creato dalla corrente. Qualunque regione dello spazio in cui c&#39;è un campo magnetico contiene energia.</p>
 <h2>Energia di un&#39;induttanza</h2>
-<p>Il ragionamento, a passi:</p>
+<h3>Ricavo passo per passo</h3>
 <ol>
-<li>Mentre la corrente cresce, l&#39;induttanza oppone la f.e.m. <span class="m">L\,di/dt</span>.</li>
-<li>Il generatore spende la potenza <span class="m">P = L\,i\,\dfrac{di}{dt}</span> per vincerla.</li>
-<li>In un tempo <span class="m">dt</span> il lavoro è <span class="m">dW = L\,i\,di</span>.</li>
-<li>Sommando da <span class="m">0</span> a <span class="m">I</span>:
-<span class="m d">U = \frac12 L I^2</span>
-dove <span class="m">U</span> = energia (J), <span class="m">L</span> = induttanza (H), <span class="m">I</span> = corrente (A).</li>
+<li>Mentre la corrente cresce, l&#39;induttore produce la f.e.m. autoindotta <span class="m">\mathcal E_L = -L\,\dfrac{di}{dt}</span>, che si oppone alla crescita.</li>
+<li>Per vincerla il generatore deve fornire, oltre a quella dissipata nella resistenza, la potenza
+<span class="m d">P = |\mathcal E_L|\,i = L\,i\,\frac{di}{dt}</span></li>
+<li>Nel tempo <span class="m">dt</span> il lavoro corrispondente è
+<span class="m d">dW = P\,dt = L\,i\,\frac{di}{dt}\,dt = L\,i\,di</span></li>
+<li>Sommo tutti i contributi mentre la corrente sale da <span class="m">0</span> al valore finale <span class="m">I</span>:
+<span class="m d">U = \int_0^I L\,i\,di = L\left[\frac{i^2}{2}\right]_0^I = \frac12\,L\,I^2</span></li>
 </ol>
-<p>L&#39;energia cresce con il <strong>quadrato</strong> della corrente: raddoppi la corrente, l&#39;energia quadruplica.</p>
+<p><span class="m d">U = \frac12\,L\,I^2</span>
+dove <span class="m">U</span> = energia immagazzinata (J), <span class="m">L</span> = induttanza (H), <span class="m">I</span> = corrente (A).</p>
+<p><strong>Osservazioni.</strong></p>
+<ul>
+<li>L&#39;energia dipende dal <strong>quadrato</strong> della corrente: raddoppiando la corrente l&#39;energia <strong>quadruplica</strong>.</li>
+<li>Non dipende da <strong>come</strong> la corrente ha raggiunto il valore <span class="m">I</span> (velocemente o lentamente): è una funzione di stato.</li>
+<li>È l&#39;analoga dell&#39;energia cinetica <span class="m">\tfrac12 mv^2</span>: <span class="m">L</span> fa da &quot;massa&quot; (inerzia) e <span class="m">I</span> da &quot;velocità&quot;.</li>
+</ul>
+<h3>Verifica con la scarica del circuito RL</h3>
+<p>All&#39;apertura del circuito RL la corrente cala come <span class="m">i = I_0 e^{-t/\tau}</span>, con <span class="m">\tau = L/R</span>. L&#39;energia dissipata in tutta la scarica nella resistenza è
+<span class="m d">W_R = \int_0^\infty R\,i^2\,dt = R\,I_0^2\int_0^\infty e^{-2t/\tau}\,dt = R\,I_0^2\,\frac{\tau}{2} = R\,I_0^2\,\frac{L}{2R} = \frac12\,L\,I_0^2</span>
+È esattamente l&#39;energia che era immagazzinata nell&#39;induttore: i conti tornano.</p>
 <div class="callout esempio">
 
-<p>Induttanza di 2 H con 5 A: <span class="m">U = \tfrac12 \cdot 2 \cdot 5^2 = 25\,\mathrm{J}</span>. Con 10 A diventa 100 J, cioè quattro volte.</p>
+<p>Induttanza di 2 H con 5 A: <span class="m">U = \tfrac12 \cdot 2 \cdot 5^2 = 25\,\mathrm J</span>. Con 10 A: <span class="m">U = \tfrac12 \cdot 2 \cdot 100 = 100\,\mathrm J</span>, cioè quattro volte tanto.</p>
+<p>Circuito RL con <span class="m">L = 10\,\mathrm H</span> e corrente di regime 3 A: <span class="m">U = \tfrac12 \cdot 10 \cdot 9 = 45\,\mathrm J</span>.</p>
 </div>
 
 <h2>Densità di energia magnetica</h2>
-<p>Per un solenoide lungo:</p>
+<h3>Ricavo con il solenoide</h3>
+<p>Per capire come l&#39;energia è distribuita nello spazio uso un caso semplice: un lungo solenoide, dove il campo è uniforme all&#39;interno e nullo all&#39;esterno.</p>
 <ol>
-<li><span class="m">L = \mu_0 n^2 S l</span> e <span class="m">B = \mu_0 n I</span>, quindi <span class="m">I = B/(\mu_0 n)</span>.</li>
-<li><span class="m">U = \tfrac12 \mu_0 n^2 S l \cdot \dfrac{B^2}{\mu_0^2 n^2} = \dfrac{B^2}{2\mu_0}\,S l</span>.</li>
-<li><span class="m">Sl</span> è il volume interno, dove sta il campo.</li>
+<li>Induttanza del solenoide (lezione 70): <span class="m">L = \mu_0 n^2 S l</span>.</li>
+<li>Campo interno: <span class="m">B = \mu_0 n I</span>, da cui <span class="m">I = \dfrac{B}{\mu_0 n}</span>.</li>
+<li>Sostituisco nell&#39;energia:
+<span class="m d">U = \frac12\,L\,I^2 = \frac12\,\mu_0 n^2 S l\,\frac{B^2}{\mu_0^2 n^2} = \frac{B^2}{2\mu_0}\,S\,l</span></li>
+<li><span class="m">Sl</span> è il <strong>volume interno</strong> del solenoide, cioè proprio il volume in cui c&#39;è il campo.</li>
 </ol>
-<p>Dividendo per il volume si ottiene la <strong>densità di energia</strong>:
-<span class="m d">u_B = \frac{B^2}{2\mu_0}</span>
+<p>L&#39;energia è quindi uguale a una quantità che dipende solo dal campo, moltiplicata per il volume occupato dal campo. Dividendo per il volume si ottiene la <strong>densità di energia magnetica</strong>:
+<span class="m d">u_B = \frac{U}{V} = \frac{B^2}{2\mu_0}</span>
 dove:</p>
 <ul>
 <li><span class="m">u_B</span> = energia per unità di volume (J/m³);</li>
-<li><span class="m">B</span> = campo magnetico (T);</li>
+<li><span class="m">B</span> = modulo del campo magnetico in quel punto (T);</li>
 <li><span class="m">\mu_0 = 4\pi \cdot 10^{-7}\,\mathrm{T\,m/A}</span>.</li>
 </ul>
-<p>Il risultato vale per qualunque campo magnetico, non solo nel solenoide. L&#39;energia totale si ottiene sommando <span class="m">u_B</span> su tutto il volume dove c&#39;è campo. In un solenoide l&#39;energia sta <strong>dentro</strong>, dove c&#39;è il campo, non nel filo.</p>
-<p>In un materiale con permeabilità <span class="m">\mu_r</span>: <span class="m">u_B = \dfrac{B^2}{2\mu_0\mu_r}</span>.</p>
+<h3>Validità generale</h3>
+<p>Anche se l&#39;abbiamo ricavata per il solenoide, la formula vale <strong>per qualunque campo magnetico</strong>, in ogni punto. Se il campo non è uniforme, l&#39;energia totale si ottiene sommando la densità su tutto il volume in cui c&#39;è campo:
+<span class="m d">U = \int_V \frac{B^2}{2\mu_0}\,dV</span>
+In un solenoide l&#39;energia sta <strong>dentro</strong>, dove c&#39;è il campo, non nel filo. In un materiale lineare di permeabilità relativa <span class="m">\mu_r</span>:
+<span class="m d">u_B = \frac{B^2}{2\mu_0\mu_r} = \frac12\,B\,H</span></p>
 <div class="callout esempio">
 
-<p>Un campo di 1 T contiene <span class="m">u_B = \dfrac{1}{2 \cdot 4\pi \cdot 10^{-7}} \approx 4 \cdot 10^5\,\mathrm{J/m^3}</span>. È molta energia: per questo i grandi elettromagneti vanno spenti con cautela.</p>
+<p><strong>Quanta energia in 1 T?</strong>
+<span class="m d">u_B = \frac{1^2}{2 \cdot 4\pi \cdot 10^{-7}} = \frac{1}{2{,}513 \cdot 10^{-6}} \approx 4 \cdot 10^5\,\mathrm{J/m^3}</span>
+In un litro (<span class="m">10^{-3}\,\mathrm{m^3}</span>) ci sono circa 400 J. I grandi elettromagneti (per esempio quelli delle macchine per risonanza magnetica, da 1,5–3 T e con volumi di metri cubi) contengono milioni di joule e vanno spenti con grande cautela.</p>
+<p>Il campo magnetico terrestre (<span class="m">B \approx 5 \cdot 10^{-5}\,\mathrm T</span>) ha invece <span class="m">u_B = \dfrac{(5 \cdot 10^{-5})^2}{2{,}513 \cdot 10^{-6}} \approx 10^{-3}\,\mathrm{J/m^3}</span>.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Energia nel solenoide del paniere.</strong> Solenoide lungo 10 cm, 600 spire, 20 A, <span class="m">B \approx 0{,}151\,\mathrm T</span>; supponiamo sezione <span class="m">S = 2\,\mathrm{cm^2} = 2 \cdot 10^{-4}\,\mathrm{m^2}</span>.</p>
+<ol>
+<li>Densità: <span class="m">u_B = \dfrac{0{,}151^2}{2{,}513 \cdot 10^{-6}} \approx \dfrac{0{,}0228}{2{,}513 \cdot 10^{-6}} \approx 9{,}07 \cdot 10^3\,\mathrm{J/m^3}</span>.</li>
+<li>Volume: <span class="m">Sl = 2 \cdot 10^{-4} \cdot 0{,}1 = 2 \cdot 10^{-5}\,\mathrm{m^3}</span>.</li>
+<li>Energia: <span class="m">U \approx 9{,}07 \cdot 10^3 \cdot 2 \cdot 10^{-5} \approx 0{,}18\,\mathrm J</span>.</li>
+<li>Controllo con l&#39;induttanza: <span class="m">L = \mu_0 N^2 S/l = 4\pi \cdot 10^{-7} \cdot 3{,}6 \cdot 10^5 \cdot 2 \cdot 10^{-4}/0{,}1 \approx 9{,}05 \cdot 10^{-4}\,\mathrm H</span>; <span class="m">\tfrac12 LI^2 = \tfrac12 \cdot 9{,}05 \cdot 10^{-4} \cdot 400 \approx 0{,}18\,\mathrm J</span>. Coincide.</li>
+</ol>
 </div>
 
 <h2>Confronto con il campo elettrico</h2>
+<p>Per il campo elettrico si era trovato, partendo dal condensatore, <span class="m">U = \tfrac12 CV^2</span> e la densità <span class="m">u_E = \tfrac12\varepsilon_0 E^2</span>. Le due situazioni sono perfettamente parallele.</p>
 <table>
 <thead>
 <tr>
@@ -49,36 +91,70 @@ dove:</p>
 </tr>
 </thead>
 <tbody><tr>
-<td>Componente</td>
+<td>Componente che immagazzina energia</td>
 <td>condensatore</td>
-<td>induttanza</td>
+<td>induttore</td>
 </tr>
 <tr>
-<td>Energia</td>
-<td><span class="m">\tfrac12 CV^2</span></td>
-<td><span class="m">\tfrac12 LI^2</span></td>
+<td>Grandezza caratteristica</td>
+<td>capacità <span class="m">C</span> (F)</td>
+<td>induttanza <span class="m">L</span> (H)</td>
+</tr>
+<tr>
+<td>Energia del componente</td>
+<td><span class="m">U = \tfrac12 CV^2 = \tfrac12 Q^2/C</span></td>
+<td><span class="m">U = \tfrac12 LI^2</span></td>
+</tr>
+<tr>
+<td>Lavoro fatto contro</td>
+<td>la d.d.p. tra le armature mentre si carica</td>
+<td>la f.e.m. autoindotta mentre la corrente cresce</td>
 </tr>
 <tr>
 <td>Densità di energia</td>
 <td><span class="m">u_E = \tfrac12\varepsilon_0 E^2</span></td>
 <td><span class="m">u_B = \dfrac{B^2}{2\mu_0}</span></td>
 </tr>
+<tr>
+<td>Dove sta l&#39;energia</td>
+<td>tra le armature</td>
+<td>dentro il solenoide</td>
+</tr>
 </tbody></table>
-<p>Dove ci sono entrambi i campi, la densità totale è <span class="m">u = \tfrac12\varepsilon_0 E^2 + \dfrac{B^2}{2\mu_0}</span>.</p>
-<p>In un&#39;<strong>onda elettromagnetica</strong> nel vuoto vale <span class="m">E = cB</span> e <span class="m">c^2 = 1/(\mu_0\varepsilon_0)</span>. Sostituendo:
-<span class="m d">\tfrac12\varepsilon_0 E^2 = \tfrac12\varepsilon_0 c^2 B^2 = \frac{B^2}{2\mu_0}</span>
-Le due densità sono <strong>uguali</strong>: l&#39;energia si divide a metà tra campo elettrico e magnetico.</p>
+<p>Dove ci sono entrambi i campi, le densità si sommano:
+<span class="m d">u = \frac12\,\varepsilon_0 E^2 + \frac{B^2}{2\mu_0}</span></p>
+<h2>Energia in un&#39;onda elettromagnetica</h2>
+<p>In un&#39;onda elettromagnetica nel vuoto (lezione 72) i campi elettrico e magnetico sono legati da <span class="m">E = cB</span>, con <span class="m">c^2 = \dfrac{1}{\mu_0\varepsilon_0}</span>. Confronto le due densità:
+<span class="m d">u_E = \frac12\,\varepsilon_0 E^2 = \frac12\,\varepsilon_0 c^2 B^2 = \frac12\,\varepsilon_0\,\frac{1}{\mu_0\varepsilon_0}\,B^2 = \frac{B^2}{2\mu_0} = u_B</span>
+Le due densità sono <strong>uguali</strong>: l&#39;energia dell&#39;onda si divide esattamente a metà tra campo elettrico e campo magnetico. La densità totale è <span class="m">u = \varepsilon_0 E^2 = B^2/\mu_0</span>.</p>
+<p>L&#39;energia dei campi può quindi <strong>viaggiare nello spazio</strong> anche senza fili né cariche: è l&#39;energia che la luce del Sole porta sulla Terra. Il flusso di energia per unità di tempo e di superficie è il vettore di Poynting <span class="m">\vec S = \dfrac{1}{\mu_0}\vec E \times \vec B</span> (W/m²).</p>
+<div class="callout attenzione">
+
+<ul>
+<li>Raddoppiare la corrente (o il campo) <strong>quadruplica</strong> l&#39;energia: dipendenza quadratica.</li>
+<li>L&#39;energia magnetica sta nel <strong>campo</strong>, non nel filo né nelle cariche.</li>
+<li><span class="m">u_B = B^2/(2\mu_0)</span> ha <span class="m">\mu_0</span> al <strong>denominatore</strong>, mentre <span class="m">u_E = \tfrac12\varepsilon_0 E^2</span> ha <span class="m">\varepsilon_0</span> al numeratore.</li>
+</ul>
+</div>
+
 <div class="callout esame">
 
-<p>Domanda aperta tipica: &quot;aspetti energetici del campo magnetico&quot;. Ricava <span class="m">U = \tfrac12 LI^2</span> dal lavoro contro la f.e.m. autoindotta, poi passa alla densità <span class="m">u_B = B^2/(2\mu_0)</span> con il solenoide, e confrontala con <span class="m">u_E</span>.</p>
+<p>Domanda aperta tipica: &quot;Si espongano gli aspetti energetici legati alla presenza di un campo magnetico in una regione di spazio&quot;. Struttura della risposta:</p>
+<ol>
+<li>accendere una corrente in un induttore richiede lavoro contro la f.e.m. autoindotta: <span class="m">dW = Li\,di</span>, quindi <span class="m">U = \tfrac12 LI^2</span> (con il bilancio <span class="m">\mathcal E i = Ri^2 + Li\,di/dt</span>);</li>
+<li>l&#39;energia è immagazzinata nel campo magnetico: con il solenoide (<span class="m">L = \mu_0 n^2 Sl</span>, <span class="m">B = \mu_0 n I</span>) si ottiene <span class="m">U = \frac{B^2}{2\mu_0}Sl</span> e quindi la densità <span class="m">u_B = B^2/(2\mu_0)</span>, valida per ogni campo;</li>
+<li>l&#39;energia viene restituita quando la corrente cala (apertura del circuito RL, calore <span class="m">\tfrac12 LI^2</span> nella resistenza);</li>
+<li>confronto con il campo elettrico (<span class="m">\tfrac12 CV^2</span>, <span class="m">u_E = \tfrac12\varepsilon_0E^2</span>) e uguaglianza <span class="m">u_E = u_B</span> nelle onde elettromagnetiche.</li>
+</ol>
 </div>
 
 <div class="callout sintesi">
 
 <ul>
-<li>L&#39;energia magnetica è immagazzinata nel campo, nello spazio dove il campo esiste.</li>
-<li>Induttanza: <span class="m">U = \tfrac12 LI^2</span>; raddoppiando la corrente l&#39;energia quadruplica.</li>
-<li>Densità: <span class="m">u_B = B^2/(2\mu_0)</span> (J/m³), analoga di <span class="m">u_E = \tfrac12\varepsilon_0 E^2</span>.</li>
+<li>L&#39;energia magnetica è immagazzinata nel campo, nello spazio in cui il campo esiste.</li>
+<li>Induttanza: <span class="m">U = \tfrac12 LI^2</span> (lavoro contro la f.e.m. autoindotta, <span class="m">\int_0^I Li\,di</span>); restituita come calore nella scarica RL.</li>
+<li>Densità: <span class="m">u_B = B^2/(2\mu_0)</span> (J/m³), in un materiale <span class="m">B^2/(2\mu_0\mu_r)</span>; energia totale <span class="m">\int u_B\,dV</span>.</li>
+<li>Analogia: <span class="m">\tfrac12 CV^2 \leftrightarrow \tfrac12 LI^2</span>, <span class="m">u_E = \tfrac12\varepsilon_0E^2 \leftrightarrow u_B = B^2/(2\mu_0)</span>.</li>
 <li>In un&#39;onda elettromagnetica nel vuoto <span class="m">u_E = u_B</span>.</li>
 </ul>
 </div>

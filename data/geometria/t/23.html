@@ -1,59 +1,201 @@
 <h1>Lezione 23 — Cambiamenti di base</h1>
-<p>Si vede come cambiano le coordinate di un vettore e le matrici associate quando cambia la base, e si definisce il determinante di un endomorfismo.</p>
-<h2>Matrice di cambiamento di base</h2>
-<p>Siano <span class="m">\mathcal{B} = \{v_1, \dots, v_n\}</span> e <span class="m">\mathcal{B}' = \{v'_1, \dots, v'_n\}</span> basi di <span class="m">V</span> e <span class="m">v = \lambda_1 v_1 + \dots + \lambda_n v_n</span>. Scrivendo ogni <span class="m">v_i = a^i_1 v'_1 + \dots + a^i_n v'_n</span> e sostituendo si ottengono le coordinate rispetto a <span class="m">\mathcal{B}'</span>:
-<span class="m d">\lambda'_j = \sum_{i=1}^n \lambda_i a^i_j, \qquad \begin{pmatrix} \lambda'_1 \\ \vdots \\ \lambda'_n \end{pmatrix} = \begin{pmatrix} a^1_1 &amp; \cdots &amp; a^n_1 \\ \vdots &amp; &amp; \vdots \\ a^1_n &amp; \cdots &amp; a^n_n \end{pmatrix}\begin{pmatrix} \lambda_1 \\ \vdots \\ \lambda_n \end{pmatrix}.</span>
-La matrice ha per <strong>colonne le coordinate dei vettori di <span class="m">\mathcal{B}</span> rispetto a <span class="m">\mathcal{B}'</span></strong>: è la matrice associata a <span class="m">\mathrm{id}_V</span> con <span class="m">\mathcal{B}</span> nel dominio e <span class="m">\mathcal{B}'</span> nel codominio (Osservazione 23.1).</p>
-<p><strong>Definizione 23.2.</strong> <span class="m">[\mathrm{id}]^{\mathcal{B}}_{\mathcal{B}'}</span> è la <strong>matrice di cambiamento di base da <span class="m">\mathcal{B}</span> a <span class="m">\mathcal{B}'</span></strong>, e (Osservazione 23.3)
-<span class="m d">[v]_{\mathcal{B}'} = [\mathrm{id}]^{\mathcal{B}}_{\mathcal{B}'}\cdot[v]_{\mathcal{B}}.</span></p>
+<p>Uno stesso vettore ha coordinate diverse rispetto a basi diverse (come uno stesso punto del piano ha coordinate diverse in due sistemi di riferimento). In questa lezione vediamo <strong>come si passa dalle coordinate in una base a quelle in un&#39;altra</strong> (con una matrice, la matrice di cambiamento di base), <strong>come cambia la matrice associata a un&#39;applicazione lineare</strong> quando si cambiano le basi, e definiamo il <strong>determinante di un endomorfismo</strong>, che non dipende dalla base.</p>
+<h2>Come cambiano le coordinate</h2>
+<p>Siano <span class="m">\mathcal{B} = \{v_1, \dots, v_n\}</span> e <span class="m">\mathcal{B}' = \{v'_1, \dots, v'_n\}</span> due basi di uno spazio <span class="m">V</span> finitamente generato, e sia <span class="m">v \in V</span> con coordinate <span class="m">\lambda_1, \dots, \lambda_n</span> rispetto a <span class="m">\mathcal{B}</span> e <span class="m">\lambda'_1, \dots, \lambda'_n</span> rispetto a <span class="m">\mathcal{B}'</span>. Vogliamo ottenere le <span class="m">\lambda'_j</span> dalle <span class="m">\lambda_i</span>.</p>
+<p><em>Passo 1.</em> <span class="m">v = \lambda_1 v_1 + \dots + \lambda_n v_n</span>.</p>
+<p><em>Passo 2.</em> Scriviamo ogni vettore della vecchia base nella nuova: <span class="m">v_i = a^i_1 v'_1 + a^i_2 v'_2 + \dots + a^i_n v'_n</span> (i numeri <span class="m">a^i_1, \dots, a^i_n</span> sono le coordinate di <span class="m">v_i</span> rispetto a <span class="m">\mathcal{B}'</span>).</p>
+<p><em>Passo 3.</em> Sostituiamo e raccogliamo i coefficienti di ciascun <span class="m">v'_j</span>:
+<span class="m d">v = \sum_{i=1}^n \lambda_i\big(a^i_1 v'_1 + \dots + a^i_n v'_n\big) = \Big(\sum_{i=1}^n \lambda_i a^i_1\Big)v'_1 + \dots + \Big(\sum_{i=1}^n \lambda_i a^i_n\Big)v'_n.</span></p>
+<p><em>Passo 4.</em> Per l&#39;unicità delle coordinate:
+<span class="m d">\lambda'_j = \sum_{i=1}^n \lambda_i a^i_j \quad (j = 1, \dots, n), \qquad\text{cioè}\qquad \begin{pmatrix} \lambda'_1 \\ \vdots \\ \lambda'_n \end{pmatrix} = \begin{pmatrix} a^1_1 &amp; a^2_1 &amp; \cdots &amp; a^n_1 \\ \vdots &amp; \vdots &amp; &amp; \vdots \\ a^1_n &amp; a^2_n &amp; \cdots &amp; a^n_n \end{pmatrix}\begin{pmatrix} \lambda_1 \\ \vdots \\ \lambda_n \end{pmatrix}.</span></p>
+<p>La colonna <span class="m">i</span> della matrice contiene <span class="m">a^i_1, \dots, a^i_n</span>: le <strong>coordinate di <span class="m">v_i</span> (vecchia base) rispetto a <span class="m">\mathcal{B}'</span> (nuova base)</strong>.</p>
+<p><strong>Osservazione 23.1.</strong> È esattamente l&#39;Algoritmo 22.6 applicato all&#39;<strong>identità</strong> <span class="m">\mathrm{id}_V</span> con <span class="m">\mathcal{B}</span> nel dominio e <span class="m">\mathcal{B}'</span> nel codominio: colonna <span class="m">i</span> = <span class="m">[\mathrm{id}(v_i)]_{\mathcal{B}'} = [v_i]_{\mathcal{B}'}</span>. Quindi la matrice è <span class="m">[\mathrm{id}_V]^{\mathcal{B}}_{\mathcal{B}'}</span>.</p>
+<p><strong>Definizione 23.2.</strong> La matrice <span class="m">[\mathrm{id}]^{\mathcal{B}}_{\mathcal{B}'}</span> si chiama <strong>matrice di cambiamento di base da <span class="m">\mathcal{B}</span> a <span class="m">\mathcal{B}'</span></strong>.</p>
+<p><strong>Osservazione 23.3.</strong> È la formula dell&#39;Osservazione 22.3 con <span class="m">f = \mathrm{id}</span>:
+<span class="m d">[v]_{\mathcal{B}'} = [\mathrm{id}]^{\mathcal{B}}_{\mathcal{B}'}\cdot[v]_{\mathcal{B}}.</span>
+&quot;Da <span class="m">\mathcal{B}</span> a <span class="m">\mathcal{B}'</span>&quot; significa: prende le coordinate in <span class="m">\mathcal{B}</span> e restituisce quelle in <span class="m">\mathcal{B}'</span>.</p>
 <div class="callout esempio">
 
-<p><span class="m">\mathcal{B} = \{{}^t(1\ 2), {}^t(-1\ -4)\}</span>, <span class="m">\mathcal{B}' = \{{}^t(1\ 1), {}^t(2\ 3)\}</span>. Si ha <span class="m">{}^t(1\ 2) = -1\cdot{}^t(1\ 1) + 1\cdot{}^t(2\ 3)</span> e <span class="m">{}^t(-1\ -4) = 5\cdot{}^t(1\ 1) - 3\cdot{}^t(2\ 3)</span>, quindi
-<span class="m d">[\mathrm{id}]^{\mathcal{B}}_{\mathcal{B}'} = \begin{pmatrix} -1 &amp; 5 \\ 1 &amp; -3 \end{pmatrix}.</span>
-Per <span class="m">X = {}^t(1\ 0)</span>: <span class="m">[X]_{\mathcal{B}} = {}^t(2\ 1)</span> e <span class="m">[X]_{\mathcal{B}'} = \begin{pmatrix} -1 &amp; 5 \\ 1 &amp; -3 \end{pmatrix}\begin{pmatrix} 2 \\ 1 \end{pmatrix} = \begin{pmatrix} 3 \\ -1 \end{pmatrix}</span>.</p>
+<p><strong>Esempio 23.4.</strong> <span class="m">\mathcal{B} = \{{}^t(1\ 2), {}^t(-1\ -4)\}</span> e <span class="m">\mathcal{B}' = \{{}^t(1\ 1), {}^t(2\ 3)\}</span> basi di <span class="m">\mathbb{R}^2</span>.</p>
+<p><em>Colonna 1: coordinate di <span class="m">{}^t(1\ 2)</span> in <span class="m">\mathcal{B}'</span>.</em> <span class="m">a\,{}^t(1\ 1) + b\,{}^t(2\ 3) = {}^t(1\ 2)</span>: <span class="m">a + 2b = 1</span>, <span class="m">a + 3b = 2</span>. Sottraendo: <span class="m">b = 1</span>, poi <span class="m">a = -1</span>. Colonna <span class="m">{}^t(-1\ 1)</span>.</p>
+<p><em>Colonna 2: coordinate di <span class="m">{}^t(-1\ -4)</span> in <span class="m">\mathcal{B}'</span>.</em> <span class="m">a + 2b = -1</span>, <span class="m">a + 3b = -4</span>: <span class="m">b = -3</span>, <span class="m">a = -1 + 6 = 5</span>. Colonna <span class="m">{}^t(5\ -3)</span>.
+<span class="m d">[\mathrm{id}]^{\mathcal{B}}_{\mathcal{B}'} = \begin{pmatrix} -1 &amp; 5 \\ 1 &amp; -3 \end{pmatrix}.</span></p>
+<p><em>Uso.</em> Sia <span class="m">X = {}^t(1\ 0)</span>. Le sue coordinate in <span class="m">\mathcal{B}</span>: <span class="m">a\,{}^t(1\ 2) + b\,{}^t(-1\ -4) = {}^t(1\ 0)</span>, cioè <span class="m">a - b = 1</span>, <span class="m">2a - 4b = 0</span>; dalla seconda <span class="m">a = 2b</span>, quindi <span class="m">b = 1</span>, <span class="m">a = 2</span>: <span class="m">[X]_{\mathcal{B}} = {}^t(2\ 1)</span>. Allora
+<span class="m d">[X]_{\mathcal{B}'} = \begin{pmatrix} -1 &amp; 5 \\ 1 &amp; -3 \end{pmatrix}\begin{pmatrix} 2 \\ 1 \end{pmatrix} = \begin{pmatrix} -2 + 5 \\ 2 - 3 \end{pmatrix} = \begin{pmatrix} 3 \\ -1 \end{pmatrix}.</span>
+Controllo: <span class="m">3\,{}^t(1\ 1) - 1\,{}^t(2\ 3) = {}^t(1\ 0)</span>. ✓</p>
 </div>
 
-<p><strong>Casi particolari in <span class="m">\mathbb{K}^n</span>.</strong></p>
-<ul>
-<li><strong>Osservazione 23.5.</strong> <span class="m">[\mathrm{id}]^{\mathcal{B}}_{\mathcal{E}_n}</span> ha come colonne i vettori della base <span class="m">\mathcal{B}</span>.</li>
-<li><strong>Osservazione 23.6.</strong> <span class="m">[\mathrm{id}]^{\mathcal{B}'}_{\mathcal{B}} = \big([\mathrm{id}]^{\mathcal{B}}_{\mathcal{B}'}\big)^{-1}</span> (perché <span class="m">\mathrm{id}^{-1} = \mathrm{id}</span>).</li>
-<li><strong>Osservazione 23.7.</strong> <span class="m">[\mathrm{id}]^{\mathcal{E}_n}_{\mathcal{B}} = \big([\mathrm{id}]^{\mathcal{B}}_{\mathcal{E}_n}\big)^{-1}</span>.</li>
-<li><strong>Osservazione 23.8.</strong> Ogni <span class="m">B \in \mathbb{K}^{n,n}</span> con <span class="m">\det B \neq 0</span> è una matrice di cambiamento di base: le sue colonne formano una base <span class="m">\mathcal{B}</span> e <span class="m">B = [\mathrm{id}]^{\mathcal{B}}_{\mathcal{E}_n}</span>.</li>
+<h2>Casi particolari in <span class="m">\mathbb{K}^n</span></h2>
+<p><strong>Osservazione 23.5 (verso la base canonica).</strong> Se <span class="m">V = \mathbb{K}^n</span> e <span class="m">\mathcal{B} = \{X^{(1)}, \dots, X^{(n)}\}</span>, la matrice <span class="m">[\mathrm{id}]^{\mathcal{B}}_{\mathcal{E}_n}</span> ha <strong>come colonne i vettori della base <span class="m">\mathcal{B}</span></strong>, perché le coordinate di un vettore colonna rispetto alla base canonica sono le sue componenti. Non c&#39;è nulla da calcolare.</p>
+<p><strong>Osservazione 23.6 (cambiamento inverso).</strong> <span class="m">[\mathrm{id}]^{\mathcal{B}'}_{\mathcal{B}} = \big([\mathrm{id}]^{\mathcal{B}}_{\mathcal{B}'}\big)^{-1}</span>. Infatti <span class="m">\mathrm{id}^{-1} = \mathrm{id}</span> e per la Proposizione 22.13 <span class="m">[\mathrm{id}]^{\mathcal{B}'}_{\mathcal{B}} = [\mathrm{id}^{-1}]^{\mathcal{B}'}_{\mathcal{B}} = ([\mathrm{id}]^{\mathcal{B}}_{\mathcal{B}'})^{-1}</span>. In particolare ogni matrice di cambiamento di base è <strong>invertibile</strong>.</p>
+<p><strong>Osservazione 23.7 (dalla base canonica).</strong> <span class="m">[\mathrm{id}]^{\mathcal{E}_n}_{\mathcal{B}} = \big([\mathrm{id}]^{\mathcal{B}}_{\mathcal{E}_n}\big)^{-1}</span>: si mettono i vettori di <span class="m">\mathcal{B}</span> in colonna e si inverte la matrice.</p>
+<p><strong>Osservazione 23.8.</strong> Ogni <span class="m">B \in \mathbb{K}^{n,n}</span> con <span class="m">\det B \neq 0</span> è una matrice di cambiamento di base: le sue colonne <span class="m">B^1, \dots, B^n</span> sono <span class="m">n</span> vettori indipendenti di <span class="m">\mathbb{K}^n</span>, quindi una base <span class="m">\mathcal{B}</span>, e <span class="m">B = [\mathrm{id}]^{\mathcal{B}}_{\mathcal{E}_n}</span>.</p>
+<p><strong>Composizione di cambiamenti.</strong> Poiché <span class="m">\mathrm{id}\circ\mathrm{id} = \mathrm{id}</span>, la Proposizione 22.12 dà
+<span class="m d">[\mathrm{id}]^{\mathcal{B}}_{\mathcal{B}''} = [\mathrm{id}]^{\mathcal{B}'}_{\mathcal{B}''}\cdot[\mathrm{id}]^{\mathcal{B}}_{\mathcal{B}'}.</span>
+In particolare, per due basi qualsiasi di <span class="m">\mathbb{K}^n</span>, passando per la base canonica:
+<span class="m d">[\mathrm{id}]^{\mathcal{B}}_{\mathcal{B}'} = [\mathrm{id}]^{\mathcal{E}_n}_{\mathcal{B}'}\cdot[\mathrm{id}]^{\mathcal{B}}_{\mathcal{E}_n} = \big([\mathrm{id}]^{\mathcal{B}'}_{\mathcal{E}_n}\big)^{-1}\cdot[\mathrm{id}]^{\mathcal{B}}_{\mathcal{E}_n},</span>
+cioè &quot;(inversa della matrice con i vettori di <span class="m">\mathcal{B}'</span> in colonna) per (matrice con i vettori di <span class="m">\mathcal{B}</span> in colonna)&quot;.</p>
+<div class="callout esempio">
+
+<p><strong>Verso la base canonica.</strong> Per <span class="m">\mathcal{B} = \{{}^t(1\ 0\ 2), {}^t(3\ 0\ 5), {}^t(2\ 1\ 2)\}</span>:
+<span class="m d">[\mathrm{id}]^{\mathcal{B}}_{\mathcal{E}_3} = \begin{pmatrix} 1 &amp; 3 &amp; 2 \\ 0 &amp; 0 &amp; 1 \\ 2 &amp; 5 &amp; 2 \end{pmatrix}</span>
+(i vettori <strong>in colonna</strong>; scriverli in riga darebbe la trasposta, che è sbagliata).</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Tra due basi non canoniche con la formula.</strong> <span class="m">\mathcal{B} = \{{}^t(2\ 3), {}^t(4\ -2)\}</span>, <span class="m">\mathcal{B}' = \{{}^t(2\ -1), {}^t(0\ 1)\}</span>.</p>
+<p><em>Metodo diretto.</em> <span class="m">{}^t(2\ 3) = a\,{}^t(2\ -1) + b\,{}^t(0\ 1)</span>: <span class="m">2a = 2 \Rightarrow a = 1</span>, <span class="m">-a + b = 3 \Rightarrow b = 4</span>. <span class="m">{}^t(4\ -2)</span>: <span class="m">2a = 4 \Rightarrow a = 2</span>, <span class="m">-2 + b = -2 \Rightarrow b = 0</span>. Quindi
+<span class="m d">[\mathrm{id}]^{\mathcal{B}}_{\mathcal{B}'} = \begin{pmatrix} 1 &amp; 2 \\ 4 &amp; 0 \end{pmatrix}.</span>
+<em>Con la formula.</em> <span class="m">[\mathrm{id}]^{\mathcal{B}'}_{\mathcal{E}_2} = \begin{pmatrix} 2 &amp; 0 \\ -1 &amp; 1 \end{pmatrix}</span>, di determinante <span class="m">2</span> e inversa <span class="m">\frac12\begin{pmatrix} 1 &amp; 0 \\ 1 &amp; 2 \end{pmatrix}</span>; quindi
+<span class="m d">\frac12\begin{pmatrix} 1 &amp; 0 \\ 1 &amp; 2 \end{pmatrix}\begin{pmatrix} 2 &amp; 4 \\ 3 &amp; -2 \end{pmatrix} = \frac12\begin{pmatrix} 2 &amp; 4 \\ 8 &amp; 0 \end{pmatrix} = \begin{pmatrix} 1 &amp; 2 \\ 4 &amp; 0 \end{pmatrix}. \ ✓</span></p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Esercizio 23.3.1.</strong> <span class="m">\mathcal{B} = \{{}^t(3\ 2), {}^t(1\ 2)\}</span>, <span class="m">\mathcal{B}' = \{{}^t(-1\ 1), {}^t(4\ 2)\}</span>. Con la formula: <span class="m">M' = \begin{pmatrix} -1 &amp; 4 \\ 1 &amp; 2 \end{pmatrix}</span> ha <span class="m">\det = -2 - 4 = -6</span> e <span class="m">M'^{-1} = -\frac16\begin{pmatrix} 2 &amp; -4 \\ -1 &amp; -1 \end{pmatrix}</span>. Allora
+<span class="m d">[\mathrm{id}]^{\mathcal{B}}_{\mathcal{B}'} = -\frac16\begin{pmatrix} 2 &amp; -4 \\ -1 &amp; -1 \end{pmatrix}\begin{pmatrix} 3 &amp; 1 \\ 2 &amp; 2 \end{pmatrix} = -\frac16\begin{pmatrix} 6 - 8 &amp; 2 - 8 \\ -3 - 2 &amp; -1 - 2 \end{pmatrix} = -\frac16\begin{pmatrix} -2 &amp; -6 \\ -5 &amp; -3 \end{pmatrix} = \begin{pmatrix} \frac13 &amp; 1 \\ \frac56 &amp; \frac12 \end{pmatrix}.</span>
+Controllo della prima colonna: <span class="m">\frac13\,{}^t(-1\ 1) + \frac56\,{}^t(4\ 2) = {}^t(-\frac13 + \frac{10}{3},\ \frac13 + \frac53) = {}^t(3\ 2)</span>. ✓</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Esercizio 23.1 (composizione di cambiamenti).</strong> Date <span class="m">[\mathrm{id}]^{\mathcal{B}}_{\mathcal{B}'} = \begin{pmatrix} 1 &amp; 2 &amp; -1 \\ 2 &amp; 3 &amp; 1 \\ 3 &amp; -1 &amp; 4 \end{pmatrix}</span> e <span class="m">[\mathrm{id}]^{\mathcal{B}'}_{\mathcal{B}''} = \begin{pmatrix} 1 &amp; 3 &amp; 1 \\ 2 &amp; -3 &amp; 5 \\ 2 &amp; -3 &amp; 1 \end{pmatrix}</span>:
+<span class="m d">[\mathrm{id}]^{\mathcal{B}}_{\mathcal{B}''} = [\mathrm{id}]^{\mathcal{B}'}_{\mathcal{B}''}\cdot[\mathrm{id}]^{\mathcal{B}}_{\mathcal{B}'} = \begin{pmatrix} 1 &amp; 3 &amp; 1 \\ 2 &amp; -3 &amp; 5 \\ 2 &amp; -3 &amp; 1 \end{pmatrix}\begin{pmatrix} 1 &amp; 2 &amp; -1 \\ 2 &amp; 3 &amp; 1 \\ 3 &amp; -1 &amp; 4 \end{pmatrix} = \begin{pmatrix} 10 &amp; 10 &amp; 6 \\ 11 &amp; -10 &amp; 15 \\ -1 &amp; -6 &amp; -1 \end{pmatrix}.</span>
+Per esempio l&#39;entrata <span class="m">(1,1)</span>: <span class="m">1\cdot 1 + 3\cdot 2 + 1\cdot 3 = 10</span>; l&#39;entrata <span class="m">(2,2)</span>: <span class="m">2\cdot 2 - 3\cdot 3 + 5\cdot(-1) = 4 - 9 - 5 = -10</span>. Prima si passa da <span class="m">\mathcal{B}</span> a <span class="m">\mathcal{B}'</span> (matrice a destra), poi da <span class="m">\mathcal{B}'</span> a <span class="m">\mathcal{B}''</span>.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Esercizio 23.4.</strong> <span class="m">[\mathrm{id}]^{\mathcal{B}}_{\mathcal{B}'} = \begin{pmatrix} 1 &amp; -1 &amp; 3 \\ 4 &amp; -1 &amp; 1 \\ -1 &amp; 0 &amp; 1 \end{pmatrix}</span> e <span class="m">[v]_{\mathcal{B}} = {}^t(2\ 1\ -1)</span>.</p>
+<ol>
+<li><span class="m">[v]_{\mathcal{B}'} = \begin{pmatrix} 1 &amp; -1 &amp; 3 \\ 4 &amp; -1 &amp; 1 \\ -1 &amp; 0 &amp; 1 \end{pmatrix}\begin{pmatrix} 2 \\ 1 \\ -1 \end{pmatrix} = \begin{pmatrix} 2 - 1 - 3 \\ 8 - 1 - 1 \\ -2 + 0 - 1 \end{pmatrix} = \begin{pmatrix} -2 \\ 6 \\ -3 \end{pmatrix}</span>.</li>
+<li><span class="m">[\mathrm{id}]^{\mathcal{B}'}_{\mathcal{B}}</span> è l&#39;inversa di <span class="m">N = \begin{pmatrix} 1 &amp; -1 &amp; 3 \\ 4 &amp; -1 &amp; 1 \\ -1 &amp; 0 &amp; 1 \end{pmatrix}</span> (Osservazione 23.6). La calcoliamo con i cofattori (Teorema 18.4).<ul>
+<li><em>Determinante</em>, sviluppando lungo la terza riga (che ha uno zero): <span class="m">\det N = (-1)\cdot(-1)^{3+1}\det\begin{pmatrix} -1 &amp; 3 \\ -1 &amp; 1 \end{pmatrix} + 1\cdot(-1)^{3+3}\det\begin{pmatrix} 1 &amp; -1 \\ 4 &amp; -1 \end{pmatrix} = -1\cdot(-1 + 3) + (-1 + 4) = -2 + 3 = 1</span>.</li>
+<li><em>Cofattori:</em> <span class="m">\mathrm{cof}(1,1) = +\det\begin{pmatrix} -1 &amp; 1 \\ 0 &amp; 1 \end{pmatrix} = -1</span>; <span class="m">\mathrm{cof}(1,2) = -\det\begin{pmatrix} 4 &amp; 1 \\ -1 &amp; 1 \end{pmatrix} = -(4 + 1) = -5</span>; <span class="m">\mathrm{cof}(1,3) = +\det\begin{pmatrix} 4 &amp; -1 \\ -1 &amp; 0 \end{pmatrix} = 0 - 1 = -1</span>; <span class="m">\mathrm{cof}(2,1) = -\det\begin{pmatrix} -1 &amp; 3 \\ 0 &amp; 1 \end{pmatrix} = -(-1) = 1</span>; <span class="m">\mathrm{cof}(2,2) = +\det\begin{pmatrix} 1 &amp; 3 \\ -1 &amp; 1 \end{pmatrix} = 1 + 3 = 4</span>; <span class="m">\mathrm{cof}(2,3) = -\det\begin{pmatrix} 1 &amp; -1 \\ -1 &amp; 0 \end{pmatrix} = -(0 - 1) = 1</span>; <span class="m">\mathrm{cof}(3,1) = +\det\begin{pmatrix} -1 &amp; 3 \\ -1 &amp; 1 \end{pmatrix} = 2</span>; <span class="m">\mathrm{cof}(3,2) = -\det\begin{pmatrix} 1 &amp; 3 \\ 4 &amp; 1 \end{pmatrix} = -(1 - 12) = 11</span>; <span class="m">\mathrm{cof}(3,3) = +\det\begin{pmatrix} 1 &amp; -1 \\ 4 &amp; -1 \end{pmatrix} = 3</span>.</li>
+<li><em>Trasposta divisa per <span class="m">\det N = 1</span>:</em>
+<span class="m d">\mathrm{Cof}(N) = \begin{pmatrix} -1 &amp; -5 &amp; -1 \\ 1 &amp; 4 &amp; 1 \\ 2 &amp; 11 &amp; 3 \end{pmatrix}, \qquad [\mathrm{id}]^{\mathcal{B}'}_{\mathcal{B}} = N^{-1} = \frac11\,{}^t\mathrm{Cof}(N) = \begin{pmatrix} -1 &amp; 1 &amp; 2 \\ -5 &amp; 4 &amp; 11 \\ -1 &amp; 1 &amp; 3 \end{pmatrix}.</span></li>
 </ul>
+</li>
+<li>Controllo: <span class="m">\begin{pmatrix} -1 &amp; 1 &amp; 2 \\ -5 &amp; 4 &amp; 11 \\ -1 &amp; 1 &amp; 3 \end{pmatrix}\begin{pmatrix} -2 \\ 6 \\ -3 \end{pmatrix} = \begin{pmatrix} 2 + 6 - 6 \\ 10 + 24 - 33 \\ 2 + 6 - 9 \end{pmatrix} = \begin{pmatrix} 2 \\ 1 \\ -1 \end{pmatrix} = [v]_{\mathcal{B}}</span>. ✓</li>
+</ol>
+</div>
+
 <div class="callout attenzione">
 
-<p>Occhio alla direzione: &quot;da <span class="m">\mathcal{B}</span> a <span class="m">\mathcal{B}'</span>&quot; vuol dire <span class="m">\mathcal{B}</span> in alto (dominio) e <span class="m">\mathcal{B}'</span> in basso. La matrice del cambiamento opposto è l&#39;<strong>inversa</strong>, non la trasposta. Per due basi <span class="m">\mathcal{B}, \mathcal{B}'</span> di <span class="m">\mathbb{K}^n</span> si può calcolare <span class="m">[\mathrm{id}]^{\mathcal{B}}_{\mathcal{B}'} = \big([\mathrm{id}]^{\mathcal{B}'}_{\mathcal{E}_n}\big)^{-1}[\mathrm{id}]^{\mathcal{B}}_{\mathcal{E}_n}</span>.</p>
+<p><strong>La direzione.</strong> &quot;Da <span class="m">\mathcal{B}</span> a <span class="m">\mathcal{B}'</span>&quot; = <span class="m">[\mathrm{id}]^{\mathcal{B}}_{\mathcal{B}'}</span>: <span class="m">\mathcal{B}</span> in alto (dominio), <span class="m">\mathcal{B}'</span> in basso; nelle <strong>colonne</strong> ci sono le coordinate dei vettori di <span class="m">\mathcal{B}</span> espresse in <span class="m">\mathcal{B}'</span>. La matrice del cambiamento opposto è l&#39;<strong>inversa</strong>, non la trasposta. Verso la base canonica basta mettere i vettori in colonna; dalla base canonica serve l&#39;inversa.</p>
 </div>
 
-<p>Per composizione di identità: <span class="m">[\mathrm{id}]^{\mathcal{B}}_{\mathcal{B}''} = [\mathrm{id}]^{\mathcal{B}'}_{\mathcal{B}''}\cdot[\mathrm{id}]^{\mathcal{B}}_{\mathcal{B}'}</span>.</p>
 <h2>Matrici associate e cambi di base</h2>
 <p><strong>Proposizione 23.9.</strong> Sia <span class="m">f: V \to W</span> lineare, con basi <span class="m">\mathcal{B}_V, \mathcal{B}'_V</span> di <span class="m">V</span> e <span class="m">\mathcal{B}_W, \mathcal{B}'_W</span> di <span class="m">W</span>. Allora
 <span class="m d">[f]^{\mathcal{B}'_V}_{\mathcal{B}'_W} = [\mathrm{id}]^{\mathcal{B}_W}_{\mathcal{B}'_W}\cdot[f]^{\mathcal{B}_V}_{\mathcal{B}_W}\cdot[\mathrm{id}]^{\mathcal{B}'_V}_{\mathcal{B}_V}.</span></p>
-<p>(Si legge da destra: si passa dalle coordinate in <span class="m">\mathcal{B}'_V</span> a quelle in <span class="m">\mathcal{B}_V</span>, si applica <span class="m">f</span>, si passa da <span class="m">\mathcal{B}_W</span> a <span class="m">\mathcal{B}'_W</span>.)</p>
-<p><strong>Corollario 23.10.</strong> Per un endomorfismo <span class="m">f: V \to V</span>:
-<span class="m d">[f]^{\mathcal{B}'_V}_{\mathcal{B}'_V} = \big([\mathrm{id}]^{\mathcal{B}'_V}_{\mathcal{B}_V}\big)^{-1}\cdot[f]^{\mathcal{B}_V}_{\mathcal{B}_V}\cdot[\mathrm{id}]^{\mathcal{B}'_V}_{\mathcal{B}_V}.</span></p>
-<p><strong>Teorema 23.11.</strong> Tutte le matrici associate a un endomorfismo di uno spazio finitamente generato sono <strong>simili</strong>.</p>
-<p><strong>Corollario 23.12.</strong> Hanno quindi tutte lo <strong>stesso determinante</strong>.</p>
-<h2>Determinante di un endomorfismo</h2>
-<p><strong>Definizione 23.13.</strong> Sia <span class="m">f: V \to V</span> un endomorfismo e <span class="m">\mathcal{B}</span> una base di <span class="m">V</span>. Il <strong>determinante di <span class="m">f</span></strong> è <span class="m">\det(f) := \det\big([f]^{\mathcal{B}}_{\mathcal{B}}\big)</span>. Non dipende dalla base scelta (Corollario 23.12).</p>
+<p><em>Perché (si legge da destra a sinistra, come una composizione).</em> <span class="m">f = \mathrm{id}_W\circ f\circ\mathrm{id}_V</span>; applicando la Proposizione 22.12 con le basi <span class="m">\mathcal{B}'_V \to \mathcal{B}_V \to \mathcal{B}_W \to \mathcal{B}'_W</span>:</p>
+<ol>
+<li><span class="m">[\mathrm{id}]^{\mathcal{B}'_V}_{\mathcal{B}_V}</span> trasforma le coordinate nella nuova base <span class="m">\mathcal{B}'_V</span> in coordinate nella vecchia base <span class="m">\mathcal{B}_V</span>;</li>
+<li><span class="m">[f]^{\mathcal{B}_V}_{\mathcal{B}_W}</span> applica <span class="m">f</span> in coordinate vecchie;</li>
+<li><span class="m">[\mathrm{id}]^{\mathcal{B}_W}_{\mathcal{B}'_W}</span> porta il risultato dalle coordinate in <span class="m">\mathcal{B}_W</span> a quelle in <span class="m">\mathcal{B}'_W</span>.</li>
+</ol>
+<p>Regola mnemonica: in ogni prodotto la base in basso di una matrice coincide con quella in alto della matrice alla sua sinistra.</p>
 <div class="callout esempio">
 
-<p><span class="m">f: \mathbb{R}_{\leq 2}[x] \ni p(x) \mapsto p(1)x^2 + p(0)x + p(2)</span>, con <span class="m">\mathcal{B} = \{x^2, x, 1\}</span>: <span class="m">f(x^2) = x^2 + 4</span>, <span class="m">f(x) = x^2 + 2</span>, <span class="m">f(1) = x^2 + x + 1</span>, quindi
-<span class="m d">\det(f) = \det\begin{pmatrix} 1 &amp; 1 &amp; 1 \\ 0 &amp; 0 &amp; 1 \\ 4 &amp; 2 &amp; 1 \end{pmatrix} = 2.</span></p>
+<p><strong>Cambio di basi per una matrice associata (con il trabocchetto dell&#39;inversa).</strong> Sono date <span class="m">[\mathrm{id}]^{\mathcal{B}_V}_{\mathcal{B}'_V} = \begin{pmatrix} 1 &amp; 1 \\ 1 &amp; 0 \end{pmatrix}</span>, <span class="m">[\mathrm{id}]^{\mathcal{B}_W}_{\mathcal{B}'_W} = \begin{pmatrix} 2 &amp; 1 &amp; 0 \\ 0 &amp; 1 &amp; 1 \\ -1 &amp; 1 &amp; 1 \end{pmatrix}</span> e <span class="m">[f]^{\mathcal{B}_V}_{\mathcal{B}_W} = \begin{pmatrix} 0 &amp; 1 \\ 2 &amp; 1 \\ -2 &amp; 3 \end{pmatrix}</span>; si vuole <span class="m">[f]^{\mathcal{B}'_V}_{\mathcal{B}'_W}</span>.</p>
+<p>Nella formula serve <span class="m">[\mathrm{id}]^{\mathcal{B}'_V}_{\mathcal{B}_V}</span>, cioè il cambiamento <strong>da</strong> <span class="m">\mathcal{B}'_V</span> <strong>a</strong> <span class="m">\mathcal{B}_V</span>, che è l&#39;<strong>inversa</strong> di quello dato: <span class="m">\begin{pmatrix} 1 &amp; 1 \\ 1 &amp; 0 \end{pmatrix}^{-1} = \frac{1}{-1}\begin{pmatrix} 0 &amp; -1 \\ -1 &amp; 1 \end{pmatrix} = \begin{pmatrix} 0 &amp; 1 \\ 1 &amp; -1 \end{pmatrix}</span>.</p>
+<p><em>Primo prodotto.</em>
+<span class="m d">\begin{pmatrix} 2 &amp; 1 &amp; 0 \\ 0 &amp; 1 &amp; 1 \\ -1 &amp; 1 &amp; 1 \end{pmatrix}\begin{pmatrix} 0 &amp; 1 \\ 2 &amp; 1 \\ -2 &amp; 3 \end{pmatrix} = \begin{pmatrix} 0 + 2 + 0 &amp; 2 + 1 + 0 \\ 0 + 2 - 2 &amp; 0 + 1 + 3 \\ 0 + 2 - 2 &amp; -1 + 1 + 3 \end{pmatrix} = \begin{pmatrix} 2 &amp; 3 \\ 0 &amp; 4 \\ 0 &amp; 3 \end{pmatrix}.</span>
+<em>Secondo prodotto.</em>
+<span class="m d">\begin{pmatrix} 2 &amp; 3 \\ 0 &amp; 4 \\ 0 &amp; 3 \end{pmatrix}\begin{pmatrix} 0 &amp; 1 \\ 1 &amp; -1 \end{pmatrix} = \begin{pmatrix} 3 &amp; -1 \\ 4 &amp; -4 \\ 3 &amp; -3 \end{pmatrix} = [f]^{\mathcal{B}'_V}_{\mathcal{B}'_W}.</span>
+Usando per errore la matrice data senza invertirla si otterrebbe <span class="m">\begin{pmatrix} 5 &amp; 2 \\ 4 &amp; 0 \\ 3 &amp; 0 \end{pmatrix}</span>, che è sbagliata.</p>
 </div>
 
-<p><strong>Proposizione 23.16.</strong> Un endomorfismo di uno spazio finitamente generato è <strong>invertibile se e solo se <span class="m">\det(f) \neq 0</span></strong>.</p>
-<div class="callout sintesi">
+<p><strong>Corollario 23.10 (endomorfismi).</strong> Per <span class="m">f: V \to V</span> e due basi <span class="m">\mathcal{B}_V, \mathcal{B}'_V</span> di <span class="m">V</span>, posto <span class="m">P = [\mathrm{id}]^{\mathcal{B}'_V}_{\mathcal{B}_V}</span> (colonne = coordinate dei vettori della nuova base nella vecchia):
+<span class="m d">[f]^{\mathcal{B}'_V}_{\mathcal{B}'_V} = P^{-1}\cdot[f]^{\mathcal{B}_V}_{\mathcal{B}_V}\cdot P.</span>
+(Si ottiene dalla Proposizione 23.9 con <span class="m">W = V</span>, <span class="m">\mathcal{B}_W = \mathcal{B}_V</span>, <span class="m">\mathcal{B}'_W = \mathcal{B}'_V</span>, e <span class="m">[\mathrm{id}]^{\mathcal{B}_V}_{\mathcal{B}'_V} = P^{-1}</span> per l&#39;Osservazione 23.6.)</p>
+<p>Caso più frequente: <span class="m">f = f_A</span> endomorfismo di <span class="m">\mathbb{K}^n</span>, vecchia base canonica, nuova base <span class="m">\mathcal{B}</span>. Allora <span class="m">P</span> ha per colonne i vettori di <span class="m">\mathcal{B}</span> e
+<span class="m d">[f_A]^{\mathcal{B}}_{\mathcal{B}} = P^{-1}AP.</span></p>
+<div class="callout esempio">
+
+<p><strong>Esercizio 23.5.</strong> <span class="m">A = \begin{pmatrix} 1 &amp; -1 &amp; 0 \\ 1 &amp; -2 &amp; -1 \\ 1 &amp; 0 &amp; 1 \end{pmatrix}</span>, <span class="m">\mathcal{B} = \{{}^t(1\ 3\ -1), {}^t(0\ 1\ 3), {}^t(1\ 4\ 1)\}</span>, <span class="m">P = [\mathrm{id}]^{\mathcal{B}}_{\mathcal{E}_3} = \begin{pmatrix} 1 &amp; 0 &amp; 1 \\ 3 &amp; 1 &amp; 4 \\ -1 &amp; 3 &amp; 1 \end{pmatrix}</span> (i vettori di <span class="m">\mathcal{B}</span> in colonna). Per il Corollario 23.10, <span class="m">[f_A]^{\mathcal{B}}_{\mathcal{B}} = P^{-1}AP</span>.</p>
+<p><em>Passo 1: <span class="m">P^{-1}</span> con i cofattori.</em> Determinante lungo la prima riga: <span class="m">\det P = 1\cdot\det\begin{pmatrix} 1 &amp; 4 \\ 3 &amp; 1 \end{pmatrix} - 0 + 1\cdot\det\begin{pmatrix} 3 &amp; 1 \\ -1 &amp; 3 \end{pmatrix} = (1 - 12) + (9 + 1) = -11 + 10 = -1</span>. Cofattori:</p>
+<ul>
+<li>riga 1: <span class="m">+\det\begin{pmatrix} 1 &amp; 4 \\ 3 &amp; 1 \end{pmatrix} = -11</span>, <span class="m">\ -\det\begin{pmatrix} 3 &amp; 4 \\ -1 &amp; 1 \end{pmatrix} = -(3 + 4) = -7</span>, <span class="m">\ +\det\begin{pmatrix} 3 &amp; 1 \\ -1 &amp; 3 \end{pmatrix} = 10</span>;</li>
+<li>riga 2: <span class="m">-\det\begin{pmatrix} 0 &amp; 1 \\ 3 &amp; 1 \end{pmatrix} = -(0 - 3) = 3</span>, <span class="m">\ +\det\begin{pmatrix} 1 &amp; 1 \\ -1 &amp; 1 \end{pmatrix} = 2</span>, <span class="m">\ -\det\begin{pmatrix} 1 &amp; 0 \\ -1 &amp; 3 \end{pmatrix} = -3</span>;</li>
+<li>riga 3: <span class="m">+\det\begin{pmatrix} 0 &amp; 1 \\ 1 &amp; 4 \end{pmatrix} = -1</span>, <span class="m">\ -\det\begin{pmatrix} 1 &amp; 1 \\ 3 &amp; 4 \end{pmatrix} = -(4 - 3) = -1</span>, <span class="m">\ +\det\begin{pmatrix} 1 &amp; 0 \\ 3 &amp; 1 \end{pmatrix} = 1</span>.
+<span class="m d">\mathrm{Cof}(P) = \begin{pmatrix} -11 &amp; -7 &amp; 10 \\ 3 &amp; 2 &amp; -3 \\ -1 &amp; -1 &amp; 1 \end{pmatrix}, \qquad P^{-1} = \frac{1}{-1}\,{}^t\mathrm{Cof}(P) = -\begin{pmatrix} -11 &amp; 3 &amp; -1 \\ -7 &amp; 2 &amp; -1 \\ 10 &amp; -3 &amp; 1 \end{pmatrix} = \begin{pmatrix} 11 &amp; -3 &amp; 1 \\ 7 &amp; -2 &amp; 1 \\ -10 &amp; 3 &amp; -1 \end{pmatrix}.</span></li>
+</ul>
+<p><em>Passo 2: <span class="m">AP</span></em>, righe di <span class="m">A</span> per colonne di <span class="m">P</span> (le colonne di <span class="m">P</span> sono <span class="m">{}^t(1\ 3\ -1)</span>, <span class="m">{}^t(0\ 1\ 3)</span>, <span class="m">{}^t(1\ 4\ 1)</span>):</p>
+<ul>
+<li>riga <span class="m">(1\ -1\ 0)</span>: <span class="m">1 - 3 + 0 = -2</span>; <span class="m">\ 0 - 1 + 0 = -1</span>; <span class="m">\ 1 - 4 + 0 = -3</span>;</li>
+<li>riga <span class="m">(1\ -2\ -1)</span>: <span class="m">1 - 6 + 1 = -4</span>; <span class="m">\ 0 - 2 - 3 = -5</span>; <span class="m">\ 1 - 8 - 1 = -8</span>;</li>
+<li>riga <span class="m">(1\ 0\ 1)</span>: <span class="m">1 + 0 - 1 = 0</span>; <span class="m">\ 0 + 0 + 3 = 3</span>; <span class="m">\ 1 + 0 + 1 = 2</span>.
+<span class="m d">AP = \begin{pmatrix} -2 &amp; -1 &amp; -3 \\ -4 &amp; -5 &amp; -8 \\ 0 &amp; 3 &amp; 2 \end{pmatrix}.</span></li>
+</ul>
+<p><em>Passo 3: <span class="m">P^{-1}(AP)</span></em>, righe di <span class="m">P^{-1}</span> per colonne di <span class="m">AP</span> (<span class="m">{}^t(-2\ -4\ 0)</span>, <span class="m">{}^t(-1\ -5\ 3)</span>, <span class="m">{}^t(-3\ -8\ 2)</span>):</p>
+<ul>
+<li>riga <span class="m">(11\ -3\ 1)</span>: <span class="m">-22 + 12 + 0 = -10</span>; <span class="m">\ -11 + 15 + 3 = 7</span>; <span class="m">\ -33 + 24 + 2 = -7</span>;</li>
+<li>riga <span class="m">(7\ -2\ 1)</span>: <span class="m">-14 + 8 + 0 = -6</span>; <span class="m">\ -7 + 10 + 3 = 6</span>; <span class="m">\ -21 + 16 + 2 = -3</span>;</li>
+<li>riga <span class="m">(-10\ 3\ -1)</span>: <span class="m">20 - 12 - 0 = 8</span>; <span class="m">\ 10 - 15 - 3 = -8</span>; <span class="m">\ 30 - 24 - 2 = 4</span>.
+<span class="m d">[f_A]^{\mathcal{B}}_{\mathcal{B}} = \begin{pmatrix} -10 &amp; 7 &amp; -7 \\ -6 &amp; 6 &amp; -3 \\ 8 &amp; -8 &amp; 4 \end{pmatrix}.</span>
+(Controllo con l&#39;algoritmo per colonne: la prima colonna dice che <span class="m">A\,{}^t(1\ 3\ -1) = {}^t(-2\ -4\ 0)</span> deve valere <span class="m">-10\,{}^t(1\ 3\ -1) - 6\,{}^t(0\ 1\ 3) + 8\,{}^t(1\ 4\ 1) = {}^t(-2\ \ -30 - 6 + 32\ \ 10 - 18 + 8) = {}^t(-2\ -4\ 0)</span>. ✓)
+<em>Determinante con la base canonica:</em> lungo la prima riga, <span class="m">\det A = 1\cdot\det\begin{pmatrix} -2 &amp; -1 \\ 0 &amp; 1 \end{pmatrix} - (-1)\det\begin{pmatrix} 1 &amp; -1 \\ 1 &amp; 1 \end{pmatrix} + 0 = 1\cdot(-2) + 1\cdot 2 = 0</span>. Anche il determinante della matrice rispetto a <span class="m">\mathcal{B}</span> è <span class="m">0</span> (la terza riga è <span class="m">-\frac43</span> per la seconda: <span class="m">-\frac43\cdot(-6\ \ 6\ \ -3) = (8\ \ -8\ \ 4)</span>, e righe proporzionali danno determinante nullo). Come previsto, il determinante non dipende dalla base; poiché è nullo, <span class="m">f_A</span> <strong>non</strong> è un isomorfismo.</li>
+</ul>
+</div>
+
+<p><strong>Teorema 23.11.</strong> Tutte le matrici associate a un endomorfismo di uno spazio finitamente generato (ciascuna rispetto a una sola base, nel dominio e nel codominio) sono <strong>simili</strong> (coniugate): per il Corollario 23.10 due di esse differiscono per <span class="m">P^{-1}(\cdot)P</span>.</p>
+<p><strong>Corollario 23.12.</strong> Hanno quindi tutte lo <strong>stesso determinante</strong> (Corollario 18.6: matrici coniugate hanno lo stesso determinante).</p>
+<h2>Determinante di un endomorfismo</h2>
+<p><strong>Definizione 23.13.</strong> Sia <span class="m">f: V \to V</span> un endomorfismo di uno spazio finitamente generato e <span class="m">\mathcal{B}</span> una base di <span class="m">V</span>. Il <strong>determinante di <span class="m">f</span></strong> è
+<span class="m d">\det(f) := \det\big([f]^{\mathcal{B}}_{\mathcal{B}}\big).</span></p>
+<p><strong>Osservazione 23.14.</strong> Nel nome non compare la base perché, per il Corollario 23.12, il risultato <strong>non dipende dalla base scelta</strong>: conviene sempre scegliere la base più comoda (per <span class="m">f_A</span> su <span class="m">\mathbb{K}^n</span> la canonica, e allora <span class="m">\det(f_A) = \det A</span>).</p>
+<p>Attenzione: serve <strong>la stessa base</strong> in dominio e codominio. Con due basi diverse la matrice cambia &quot;in modo non simile&quot; e il suo determinante può cambiare (per esempio <span class="m">[\mathrm{id}]^{\mathcal{B}}_{\mathcal{B}'}</span> in genere non ha determinante <span class="m">1</span>, mentre <span class="m">\det(\mathrm{id}) = 1</span>). E il determinante si definisce solo per endomorfismi (matrici quadrate).</p>
+<div class="callout esempio">
+
+<p><strong>Esempio 23.15.</strong> <span class="m">f: \mathbb{R}_{\leq 2}[x] \ni p(x) \mapsto p(1)x^2 + p(0)x + p(2) \in \mathbb{R}_{\leq 2}[x]</span>, con <span class="m">\mathcal{B} = \{x^2, x, 1\}</span>.</p>
+<ul>
+<li><span class="m">p = x^2</span>: <span class="m">p(1) = 1</span>, <span class="m">p(0) = 0</span>, <span class="m">p(2) = 4</span>, quindi <span class="m">f(x^2) = x^2 + 4</span>, coordinate <span class="m">{}^t(1\ 0\ 4)</span>.</li>
+<li><span class="m">p = x</span>: <span class="m">p(1) = 1</span>, <span class="m">p(0) = 0</span>, <span class="m">p(2) = 2</span>, quindi <span class="m">f(x) = x^2 + 2</span>, coordinate <span class="m">{}^t(1\ 0\ 2)</span>.</li>
+<li><span class="m">p = 1</span>: <span class="m">p(1) = p(0) = p(2) = 1</span>, quindi <span class="m">f(1) = x^2 + x + 1</span>, coordinate <span class="m">{}^t(1\ 1\ 1)</span>.
+<span class="m d">\det(f) = \det\begin{pmatrix} 1 &amp; 1 &amp; 1 \\ 0 &amp; 0 &amp; 1 \\ 4 &amp; 2 &amp; 1 \end{pmatrix}.</span>
+Sviluppando lungo la seconda riga (un solo elemento non nullo, in posizione <span class="m">(2,3)</span>): <span class="m">1\cdot(-1)^{2+3}\det\begin{pmatrix} 1 &amp; 1 \\ 4 &amp; 2 \end{pmatrix} = -(2 - 4) = 2</span>. Quindi <span class="m">\det(f) = 2 \neq 0</span> e <span class="m">f</span> è invertibile.</li>
+</ul>
+</div>
+
+<p><strong>Proposizione 23.16.</strong> Un endomorfismo di uno spazio finitamente generato è <strong>invertibile se e solo se <span class="m">\det(f) \neq 0</span></strong>. (Motivo: <span class="m">f</span> è invertibile se e solo se lo è la sua matrice <span class="m">[f]^{\mathcal{B}}_{\mathcal{B}}</span>, per la Proposizione 22.13 e il Teorema 22.10, e una matrice è invertibile se e solo se il suo determinante è non nullo.)</p>
+<div class="callout esempio">
+
+<p><strong>Esercizio 23.2.</strong> <span class="m">V = \{X \in \mathbb{R}^4 \mid x_1 - x_2 + 2x_3 + x_4 = 0,\ 2x_1 - 2x_2 + 4x_3 - x_4 = 0\}</span> e <span class="m">f: V \ni X \mapsto {}^t(2x_2 - 2x_1,\ x_1 + x_2,\ 2x_1 - x_2 + x_3,\ x_4)</span>.</p>
+<ol>
+<li><em>Base di <span class="m">V</span>.</em> Sottraendo dalla seconda equazione il doppio della prima: <span class="m">-3x_4 = 0</span>, quindi <span class="m">x_4 = 0</span> e <span class="m">x_1 = x_2 - 2x_3</span>. Con <span class="m">x_2, x_3</span> liberi: <span class="m">\mathcal{B} = \{{}^t(1\ 1\ 0\ 0), {}^t(-2\ 0\ 1\ 0)\}</span>, <span class="m">\dim V = 2</span>.
+<em><span class="m">f</span> è ben definita</em> (cioè <span class="m">f(V) \subseteq V</span>): <span class="m">f\,{}^t(1\ 1\ 0\ 0) = {}^t(0\ 2\ 1\ 0)</span>, che soddisfa <span class="m">0 - 2 + 2 + 0 = 0</span> e <span class="m">0 - 4 + 4 - 0 = 0</span>; <span class="m">f\,{}^t(-2\ 0\ 1\ 0) = {}^t(4\ -2\ -3\ 0)</span>, che soddisfa <span class="m">4 + 2 - 6 + 0 = 0</span> e <span class="m">8 + 4 - 12 - 0 = 0</span>. Per linearità ogni immagine sta in <span class="m">V</span>.</li>
+<li>È un endomorfismo: dominio e codominio coincidono (<span class="m">V</span>).</li>
+<li><em>Matrice e determinante.</em> Coordinate in <span class="m">\mathcal{B}</span> di un vettore <span class="m">{}^t(y_1\ y_2\ y_3\ 0) \in V</span>: <span class="m">a\,{}^t(1\ 1\ 0\ 0) + b\,{}^t(-2\ 0\ 1\ 0)</span> ha seconda componente <span class="m">a</span> e terza <span class="m">b</span>, quindi <span class="m">a = y_2</span>, <span class="m">b = y_3</span>. Allora <span class="m">[{}^t(0\ 2\ 1\ 0)]_{\mathcal{B}} = {}^t(2\ 1)</span> e <span class="m">[{}^t(4\ -2\ -3\ 0)]_{\mathcal{B}} = {}^t(-2\ -3)</span>:
+<span class="m d">[f]^{\mathcal{B}}_{\mathcal{B}} = \begin{pmatrix} 2 &amp; -2 \\ 1 &amp; -3 \end{pmatrix}, \qquad \det(f) = -6 + 2 = -4.</span></li>
+<li><span class="m">\det(f) \neq 0</span>: <span class="m">f</span> è invertibile.</li>
+</ol>
+</div>
+
+<div class="callout attenzione">
 
 <ul>
-<li><span class="m">[\mathrm{id}]^{\mathcal{B}}_{\mathcal{B}'}</span>: colonne = coordinate dei vettori di <span class="m">\mathcal{B}</span> rispetto a <span class="m">\mathcal{B}'</span>; <span class="m">[v]_{\mathcal{B}'} = [\mathrm{id}]^{\mathcal{B}}_{\mathcal{B}'}[v]_{\mathcal{B}}</span>.</li>
-<li>Verso la base canonica: colonne = vettori della base; il cambiamento opposto è l&#39;inversa.</li>
-<li><span class="m">[f]^{\mathcal{B}'_V}_{\mathcal{B}'_W} = [\mathrm{id}]^{\mathcal{B}_W}_{\mathcal{B}'_W}[f]^{\mathcal{B}_V}_{\mathcal{B}_W}[\mathrm{id}]^{\mathcal{B}'_V}_{\mathcal{B}_V}</span>.</li>
-<li>Le matrici di un endomorfismo sono simili; <span class="m">\det(f)</span> è ben definito e <span class="m">f</span> invertibile <span class="m">\iff \det(f) \neq 0</span>.</li>
+<li>Nella Proposizione 23.9 la matrice a destra è il cambiamento <strong>dalla nuova alla vecchia</strong> base del dominio: se il testo dà quello dalla vecchia alla nuova, va <strong>invertito</strong>.</li>
+<li>Il determinante di un endomorfismo si calcola con <strong>la stessa base</strong> in partenza e in arrivo.</li>
+<li><span class="m">\det(f) \neq 0 \Rightarrow f</span> invertibile e <span class="m">\det(f) = 0 \Rightarrow f</span> non invertibile: le affermazioni &quot;se <span class="m">\det(f) = 0</span>, <span class="m">f</span> è invertibile&quot; e &quot;se <span class="m">\det(f) \neq 0</span>, <span class="m">f</span> non è invertibile&quot; sono false.</li>
 </ul>
 </div>
 
 <div class="callout esame">
 
-<p>L&#39;aperta chiede di parlare dei cambiamenti di base. Nei quiz: matrice di cambiamento verso la base canonica o tra due basi, cambio di basi per una matrice associata (attenzione a quale matrice va invertita), criterio <span class="m">\det(f) \neq 0</span>.</p>
+<p><strong>Aperta.</strong> &quot;Parlare dei cambiamenti di base&quot;: il calcolo che porta a <span class="m">\lambda'_j = \sum_i \lambda_i a^i_j</span>, la definizione <span class="m">[\mathrm{id}]^{\mathcal{B}}_{\mathcal{B}'}</span> (colonne = coordinate dei vettori di <span class="m">\mathcal{B}</span> rispetto a <span class="m">\mathcal{B}'</span>), la formula <span class="m">[v]_{\mathcal{B}'} = [\mathrm{id}]^{\mathcal{B}}_{\mathcal{B}'}[v]_{\mathcal{B}}</span>, i casi in <span class="m">\mathbb{K}^n</span> (verso la canonica: i vettori in colonna; il cambiamento inverso è la matrice inversa; ogni matrice con <span class="m">\det \neq 0</span> è un cambiamento di base), la composizione, la Proposizione 23.9 e il Corollario 23.10 (<span class="m">P^{-1}AP</span>), la similitudine delle matrici di un endomorfismo e il determinante di un endomorfismo con il criterio di invertibilità. Un esempio numerico <span class="m">2\times 2</span> completa la risposta.</p>
+<p><strong>Esercizi tipici.</strong> Matrice di cambiamento verso la base canonica o tra due basi; coordinate in una nuova base; matrice associata dopo un cambio di basi (quale matrice va invertita); vero/falso su <span class="m">\det(f)</span> e invertibilità.</p>
+</div>
+
+<div class="callout sintesi">
+
+<ul>
+<li><span class="m">[\mathrm{id}]^{\mathcal{B}}_{\mathcal{B}'}</span> = matrice di cambiamento da <span class="m">\mathcal{B}</span> a <span class="m">\mathcal{B}'</span>: colonna <span class="m">i</span> = <span class="m">[v_i]_{\mathcal{B}'}</span>; <span class="m">[v]_{\mathcal{B}'} = [\mathrm{id}]^{\mathcal{B}}_{\mathcal{B}'}[v]_{\mathcal{B}}</span>.</li>
+<li>In <span class="m">\mathbb{K}^n</span>: <span class="m">[\mathrm{id}]^{\mathcal{B}}_{\mathcal{E}_n}</span> = vettori di <span class="m">\mathcal{B}</span> in colonna; <span class="m">[\mathrm{id}]^{\mathcal{B}'}_{\mathcal{B}} = ([\mathrm{id}]^{\mathcal{B}}_{\mathcal{B}'})^{-1}</span>; <span class="m">[\mathrm{id}]^{\mathcal{B}}_{\mathcal{B}'} = ([\mathrm{id}]^{\mathcal{B}'}_{\mathcal{E}})^{-1}[\mathrm{id}]^{\mathcal{B}}_{\mathcal{E}}</span>.</li>
+<li>Ogni matrice invertibile è una matrice di cambiamento di base.</li>
+<li><span class="m">[f]^{\mathcal{B}'_V}_{\mathcal{B}'_W} = [\mathrm{id}]^{\mathcal{B}_W}_{\mathcal{B}'_W}[f]^{\mathcal{B}_V}_{\mathcal{B}_W}[\mathrm{id}]^{\mathcal{B}'_V}_{\mathcal{B}_V}</span>; per endomorfismi <span class="m">[f]' = P^{-1}[f]P</span>.</li>
+<li>Le matrici di un endomorfismo sono simili, quindi hanno lo stesso determinante: <span class="m">\det(f)</span> è ben definito.</li>
+<li><span class="m">f</span> endomorfismo invertibile <span class="m">\iff \det(f) \neq 0</span>.</li>
+</ul>
 </div>

@@ -1,36 +1,72 @@
 <h1>Lezione 47 — Potenziale elettrico</h1>
-<h2>Il lavoro della forza elettrica non dipende dal percorso</h2>
-<p>Una carica <span class="m">q</span> si sposta da A a B nel campo di una carica <span class="m">Q</span>. Il lavoro della forza elettrica dipende solo dai punti A e B, non dalla strada.
-Quindi la forza elettrostatica è <strong>conservativa</strong>. Su un percorso chiuso il lavoro è zero.</p>
-<p>Per questo si può definire un&#39;energia potenziale <span class="m">U</span>:</p>
+<p>Il campo elettrico è un vettore: per descriverlo servono tre numeri in ogni punto. In questa lezione si introduce una grandezza <strong>scalare</strong>, il <strong>potenziale elettrico</strong>, che contiene la stessa informazione ed è molto più comoda da calcolare e da usare nei bilanci di energia. Il percorso è lo stesso fatto in meccanica con la gravità:</p>
+<ol>
+<li>si calcola il lavoro della forza elettrica e si scopre che non dipende dal percorso: la forza è <strong>conservativa</strong>;</li>
+<li>si definisce l&#39;<strong>energia potenziale</strong> elettrostatica;</li>
+<li>dividendo per la carica si ottiene il <strong>potenziale</strong>, che dipende solo dal campo;</li>
+<li>si vede come si calcola il potenziale (carica puntiforme, più cariche, distribuzioni continue), come si ricava il campo dal potenziale e come si conserva l&#39;energia.</li>
+</ol>
+<h2>Il lavoro della forza elettrica</h2>
+<p>Una carica <span class="m">q</span> si muove nel campo di una carica fissa <span class="m">Q</span> (posta nell&#39;origine). In uno spostamento infinitesimo <span class="m">d\vec s</span> la forza elettrica <span class="m">q\vec E</span> compie il lavoro
+<span class="m d">dL = q\vec E \cdot d\vec s = qE\,ds\cos\theta = qE\,dr</span>
+L&#39;ultimo passaggio: il campo di <span class="m">Q</span> è radiale, e la proiezione dello spostamento sulla direzione radiale, <span class="m">ds\cos\theta</span>, è proprio la variazione <span class="m">dr</span> della distanza da <span class="m">Q</span>.</p>
+<p>Sostituendo <span class="m">E = \dfrac{1}{4\pi\varepsilon_0}\dfrac{Q}{r^2}</span> e integrando da un punto A (distanza <span class="m">r_A</span>) a un punto B (distanza <span class="m">r_B</span>):
+<span class="m d">L_{AB} = \int_{r_A}^{r_B}\frac{qQ}{4\pi\varepsilon_0}\,\frac{dr}{r^2} = \frac{qQ}{4\pi\varepsilon_0}\left[-\frac1r\right]_{r_A}^{r_B} = \frac{qQ}{4\pi\varepsilon_0}\left(\frac{1}{r_A} - \frac{1}{r_B}\right)</span></p>
+<p>Il lavoro dipende <strong>solo dalle distanze iniziale e finale</strong>, non dal percorso seguito. Quindi la forza elettrostatica (e il campo elettrostatico) è <strong>conservativa</strong>; lungo un percorso chiuso il lavoro è zero: <span class="m">\oint \vec E \cdot d\vec s = 0</span>. Per il principio di sovrapposizione il risultato vale per qualunque sistema di cariche fisse, discrete o continue.</p>
+<h2>Energia potenziale elettrostatica</h2>
+<p>Come per tutte le forze conservative (si pensi alla gravità) esiste una funzione delle coordinate, l&#39;<strong>energia potenziale</strong> <span class="m">U</span>, tale che</p>
 <p><span class="m d">L_{AB} = U(A) - U(B) = -\Delta U</span></p>
 <p>dove:</p>
 <ul>
 <li><span class="m">L_{AB}</span> = lavoro della forza elettrica da A a B (J);</li>
 <li><span class="m">U</span> = energia potenziale elettrostatica (J).</li>
 </ul>
-<p>Per due cariche puntiformi, con <span class="m">U = 0</span> all&#39;infinito:</p>
-<p><span class="m d">U = \frac{1}{4\pi\varepsilon_0}\,\frac{Qq}{r}</span></p>
-<p>dove <span class="m">r</span> è la distanza tra le cariche (m). <span class="m">U</span> è positiva per cariche dello stesso segno, negativa per segni opposti.</p>
-<h2>Il potenziale: energia per unità di carica</h2>
-<p>L&#39;energia potenziale raddoppia se raddoppi la carica <span class="m">q</span>. Dividendo per <span class="m">q</span> si ottiene una grandezza che dipende solo dal campo: il <strong>potenziale</strong>.</p>
+<p>Il lavoro del campo è l&#39;<strong>opposto della variazione</strong> di energia potenziale: se il campo compie lavoro positivo, l&#39;energia potenziale diminuisce.</p>
+<p>Si sceglie <span class="m">U = 0</span> quando la carica è <strong>all&#39;infinito</strong>. Confrontando con il lavoro calcolato sopra (con <span class="m">r_B \to \infty</span>), l&#39;energia potenziale di <span class="m">q</span> a distanza <span class="m">r</span> da <span class="m">Q</span> è:</p>
+<p><span class="m d">U(r) = \frac{1}{4\pi\varepsilon_0}\,\frac{Qq}{r}</span></p>
+<p>dove:</p>
+<ul>
+<li><span class="m">Q, q</span> = le due cariche, con il loro segno (C);</li>
+<li><span class="m">r</span> = distanza tra le cariche (m).</li>
+</ul>
+<p><span class="m">U &gt; 0</span> per cariche dello stesso segno (per avvicinarle bisogna fare lavoro contro la repulsione); <span class="m">U &lt; 0</span> per segni opposti (sistema <strong>legato</strong>: per separarle bisogna fornire energia).</p>
+<p>Se le sorgenti sono più cariche fisse <span class="m">Q_i</span>, a distanze <span class="m">r_i</span> da <span class="m">q</span>:
+<span class="m d">U = \frac{q}{4\pi\varepsilon_0}\sum_i \frac{Q_i}{r_i}</span></p>
+<h2>Il potenziale elettrico</h2>
+<p>L&#39;energia potenziale dipende dalla carica <span class="m">q</span> che si mette nel campo: una carica doppia, nella stessa posizione, ha energia potenziale doppia. Dividendo per <span class="m">q</span> si ottiene una grandezza che dipende <strong>solo dal campo</strong> (cioè dalle sorgenti) e dal punto: il <strong>potenziale elettrostatico</strong>.</p>
 <p><span class="m d">V = \frac{U}{q}</span></p>
 <p>dove:</p>
 <ul>
-<li><span class="m">V</span> = potenziale elettrico, in volt: <span class="m">1\,\mathrm V = 1\,\mathrm{J/C}</span>;</li>
-<li><span class="m">U</span> = energia potenziale della carica <span class="m">q</span> (J).</li>
+<li><span class="m">V</span> = potenziale elettrico nel punto, in <strong>volt</strong> (V);</li>
+<li><span class="m">U</span> = energia potenziale della carica <span class="m">q</span> in quel punto (J);</li>
+<li><span class="m">q</span> = carica (C).</li>
 </ul>
-<p>Il potenziale è uno <strong>scalare</strong>: ha un valore in ogni punto, senza direzione. Il campo invece è un vettore. Il potenziale può essere positivo o negativo.</p>
-<p>La differenza di potenziale tra due punti è il lavoro del campo per unità di carica:</p>
+<p>Viceversa, una carica <span class="m">q</span> in un punto a potenziale <span class="m">V</span> ha energia potenziale <span class="m">U = qV</span>.</p>
+<p><strong>Differenza di potenziale.</strong> Dividendo <span class="m">L_{AB} = U(A) - U(B)</span> per <span class="m">q</span> e ricordando <span class="m">L_{AB} = q\int_A^B \vec E \cdot d\vec s</span>:</p>
 <p><span class="m d">V_A - V_B = \int_A^B \vec E \cdot d\vec s</span></p>
+<p>La differenza di potenziale tra A e B è il <strong>lavoro compiuto dal campo per unità di carica</strong> per portare una carica da A a B.</p>
+<p>Proprietà:</p>
+<ul>
+<li>il potenziale è uno <strong>scalare</strong>: un numero in ogni punto, senza direzione né verso (il campo invece è un vettore);</li>
+<li>può essere positivo, negativo o nullo;</li>
+<li>è definito <strong>a meno di una costante</strong>: conta solo la differenza di potenziale; per fissarlo si sceglie un punto dove <span class="m">V = 0</span> (di solito l&#39;infinito, nei circuiti la &quot;terra&quot;).</li>
+</ul>
+<h2>Il volt e l&#39;elettronvolt</h2>
+<p>Dalla definizione, il potenziale ha le dimensioni di un&#39;energia divisa per una carica:</p>
+<p><span class="m d">1\,\mathrm V = 1\,\frac{\mathrm J}{\mathrm C}</span></p>
+<p>Con il volt si esprime anche il campo. Partendo da N/C e moltiplicando e dividendo per metro:</p>
+<p><span class="m d">[E] = \frac{\mathrm N}{\mathrm C} = \frac{\mathrm N\,\mathrm m}{\mathrm C\,\mathrm m} = \frac{\mathrm J}{\mathrm C\,\mathrm m} = \frac{\mathrm V}{\mathrm m}</span></p>
+<p>L&#39;<strong>elettronvolt</strong> (eV) è un&#39;unità di energia comoda per le particelle: è il lavoro per spostare una carica elementare <span class="m">e</span> tra due punti con differenza di potenziale di 1 V:</p>
+<p><span class="m d">1\,\mathrm{eV} = 1{,}60 \cdot 10^{-19}\,\mathrm C \cdot 1\,\frac{\mathrm J}{\mathrm C} = 1{,}60 \cdot 10^{-19}\,\mathrm J</span></p>
 <h2>Potenziale di una carica puntiforme</h2>
-<p>Con <span class="m">V = 0</span> all&#39;infinito:</p>
+<p>Con <span class="m">V = 0</span> all&#39;infinito, dividendo <span class="m">U</span> per <span class="m">q</span>:</p>
 <p><span class="m d">V(r) = \frac{1}{4\pi\varepsilon_0}\,\frac{Q}{r}</span></p>
 <p>dove:</p>
 <ul>
-<li><span class="m">Q</span> = carica sorgente (C); <span class="m">r</span> = distanza dalla carica (m).</li>
+<li><span class="m">Q</span> = carica sorgente (C), con il segno;</li>
+<li><span class="m">r</span> = distanza dalla carica (m).</li>
 </ul>
-<p>Il potenziale cala come <span class="m">1/r</span>. Il campo cala come <span class="m">1/r^2</span>.</p>
+<p>Il potenziale è positivo attorno a una carica positiva, negativo attorno a una negativa, e <strong>diminuisce in modulo come l&#39;inverso della distanza</strong> (<span class="m">1/r</span>). Il campo invece va come <span class="m">1/r^2</span>.</p>
 <table>
 <thead>
 <tr>
@@ -54,58 +90,160 @@ Quindi la forza elettrostatica è <strong>conservativa</strong>. Su un percorso 
 <td><span class="m">V/3</span></td>
 <td><span class="m">E/9</span></td>
 </tr>
+<tr>
+<td><span class="m">r/2</span></td>
+<td><span class="m">2V</span></td>
+<td><span class="m">4E</span></td>
+</tr>
 </tbody></table>
-<p>Con più cariche i potenziali si sommano come <strong>numeri</strong> (non come vettori):</p>
+<div class="callout esempio">
+
+<p><strong>Potenziale e campo a confronto.</strong> Carica <span class="m">Q = 1</span> nC.</p>
+<ul>
+<li>A 1 m: <span class="m">V = \dfrac{9 \cdot 10^9 \cdot 10^{-9}}{1} = 9</span> V; <span class="m">E = \dfrac{9 \cdot 10^9 \cdot 10^{-9}}{1^2} = 9</span> V/m.</li>
+<li>A 2 m: <span class="m">V = 4{,}5</span> V (metà); <span class="m">E = 9/4 = 2{,}25</span> V/m (un quarto).</li>
+</ul>
+</div>
+
+<h2>Potenziale di un sistema di cariche</h2>
+<p>Per più cariche <span class="m">Q_i</span> si usa la sovrapposizione. La differenza di potenziale tra A e B è:
+<span class="m d">V_A - V_B = \int_A^B \Big(\sum_i \vec E_i\Big) \cdot d\vec s = \sum_i \int_A^B \vec E_i \cdot d\vec s = \sum_i \frac{Q_i}{4\pi\varepsilon_0 r_{A,i}} - \sum_i \frac{Q_i}{4\pi\varepsilon_0 r_{B,i}}</span>
+quindi il potenziale in un punto P a distanze <span class="m">r_i</span> dalle cariche è:</p>
 <p><span class="m d">V(P) = \frac{1}{4\pi\varepsilon_0}\sum_i \frac{Q_i}{r_i}</span></p>
-<p>Per una distribuzione continua la somma diventa un integrale. In ogni caso <span class="m">U = qV</span>.</p>
+<p>I potenziali si sommano come <strong>numeri, con il loro segno</strong> (non come vettori): è il grande vantaggio rispetto al campo.</p>
+<p>Per una distribuzione continua con densità <span class="m">\rho(x', y', z')</span>:</p>
+<p><span class="m d">V(x, y, z) = \frac{1}{4\pi\varepsilon_0}\int_\tau \frac{\rho(x', y', z')\,d\tau'}{\sqrt{(x - x')^2 + (y - y')^2 + (z - z')^2}}</span></p>
+<p>dove il denominatore è la distanza tra il pezzetto di carica in <span class="m">(x', y', z')</span> e il punto in cui si calcola il potenziale. In ogni caso l&#39;energia potenziale di una carica <span class="m">q</span> è <span class="m">U = qV</span>.</p>
 <div class="callout esempio">
 
-<p>Carica <span class="m">Q = 1\,\mathrm{nC}</span>. A 1 m: <span class="m">V = 9 \cdot 10^9 \cdot 10^{-9}/1 = 9</span> V. A 2 m: <span class="m">V = 4{,}5</span> V (metà). Il campo invece passa da 9 V/m a 2,25 V/m (un quarto).</p>
+<p><strong>Quadrato di cariche (esercizio della dispensa).</strong> Quattro cariche ai vertici di un quadrato di lato <span class="m">d = 1{,}3</span> m: <span class="m">q_1 = +12</span> nC, <span class="m">q_2 = -24</span> nC, <span class="m">q_3 = +31</span> nC, <span class="m">q_4 = +17</span> nC. Potenziale nel centro P.</p>
+<ol>
+<li>Tutte le cariche distano da P mezza diagonale: <span class="m">r = d\sqrt2/2 = d/\sqrt2 = 1{,}3/1{,}414 \approx 0{,}919</span> m.</li>
+<li>Somma algebrica (stessa distanza, quindi si sommano le cariche): <span class="m">q_1 + q_2 + q_3 + q_4 = (12 - 24 + 31 + 17)</span> nC <span class="m">= 36</span> nC.</li>
+<li><span class="m">V = \dfrac{8{,}99 \cdot 10^9 \cdot 36 \cdot 10^{-9}}{0{,}919} = \dfrac{323{,}6}{0{,}919} \approx 352</span> V.</li>
+</ol>
+<p>Nota: il campo nel centro, invece, richiederebbe una somma vettoriale.</p>
 </div>
 
-<h2>Campo e potenziale</h2>
-<p>Il campo punta sempre verso i potenziali che <strong>diminuiscono</strong>. È il gradiente del potenziale cambiato di segno:</p>
-<p><span class="m d">\vec E = -\nabla V \qquad \text{in una dimensione: } E_x = -\frac{dV}{dx}</span></p>
-<p>dove:</p>
+<div class="callout esempio">
+
+<p><strong>Triangolo isoscele.</strong> Tre cariche ai vertici di un triangolo isoscele con base 2,00 cm e lati uguali 4,00 cm; supponiamo <span class="m">+q</span> al vertice e <span class="m">-q</span> ai due estremi della base, con <span class="m">q = 7{,}00\,\mu\mathrm C</span>. Potenziale e campo nel punto medio P della base.</p>
+<ol>
+<li>Distanze da P: le cariche della base distano 1,00 cm; il vertice dista l&#39;altezza <span class="m">h = \sqrt{4^2 - 1^2} = \sqrt{15} \approx 3{,}87</span> cm.</li>
+<li>Potenziale (somma algebrica):
+<span class="m d">V = kq\left(\frac{1}{h} - \frac{2}{0{,}01}\right) = 8{,}99 \cdot 10^9 \cdot 7 \cdot 10^{-6}\,(25{,}8 - 200) \approx -1{,}10 \cdot 10^7\,\mathrm V</span></li>
+<li>Campo: le due cariche della base sono uguali e alla stessa distanza da P, da parti opposte: i loro campi sono uguali e opposti e <strong>si annullano</strong>. Resta solo il campo della carica al vertice: <span class="m">E = \dfrac{kq}{h^2} = \dfrac{6{,}29 \cdot 10^4}{(0{,}0387)^2} \approx 4{,}2 \cdot 10^7</span> N/C, diretto dal vertice verso la base.</li>
+</ol>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Anello carico (esercizio della dispensa).</strong> Carica <span class="m">q</span> distribuita uniformemente su un anello di raggio <span class="m">R</span>. Potenziale in un punto dell&#39;asse a distanza <span class="m">x</span> dal centro.</p>
+<ol>
+<li>Densità lineare <span class="m">\lambda = q/(2\pi R)</span>; un tratto <span class="m">dl</span> ha carica <span class="m">\lambda\,dl</span>.</li>
+<li>Tutti i tratti distano da P la stessa quantità <span class="m">r = \sqrt{R^2 + x^2}</span>:
+<span class="m d">V = \frac{1}{4\pi\varepsilon_0}\,\frac{\lambda}{r}\oint dl = \frac{1}{4\pi\varepsilon_0}\,\frac{\lambda\,2\pi R}{r} = \frac{1}{4\pi\varepsilon_0}\,\frac{q}{\sqrt{R^2 + x^2}}</span></li>
+<li>Il potenziale è massimo nel centro e decresce allontanandosi. Per <span class="m">x \gg R</span>: <span class="m">V \approx q/(4\pi\varepsilon_0 x)</span>, come una carica puntiforme nel centro.</li>
+<li>Campo dal potenziale (vedi sotto, <span class="m">E_x = -\partial V/\partial x</span>):
+<span class="m d">E_x = -\frac{q}{4\pi\varepsilon_0}\,\frac{\partial}{\partial x}(R^2 + x^2)^{-1/2} = \frac{1}{4\pi\varepsilon_0}\,\frac{qx}{(R^2 + x^2)^{3/2}}, \qquad E_y = E_z = 0</span>
+Lo stesso risultato della lezione 44, trovato senza scomporre vettori.</li>
+</ol>
+</div>
+
+<h2>Dal potenziale al campo</h2>
+<p>Il potenziale si ottiene dal campo con un integrale; il campo si ottiene dal potenziale con una <strong>derivata</strong>. Per uno spostamento infinitesimo <span class="m">d\vec s</span>:</p>
 <ul>
-<li><span class="m">\nabla V</span> = gradiente di <span class="m">V</span> (V/m), vettore che punta dove <span class="m">V</span> cresce più in fretta.</li>
+<li>dalla definizione di differenza di potenziale: <span class="m">dV = V(x + dx, y + dy, z + dz) - V(x, y, z) = -\vec E \cdot d\vec s = -E_x dx - E_y dy - E_z dz</span>;</li>
+<li>dal calcolo differenziale: <span class="m">dV = \dfrac{\partial V}{\partial x}dx + \dfrac{\partial V}{\partial y}dy + \dfrac{\partial V}{\partial z}dz</span>.</li>
 </ul>
-<p>Conseguenze:</p>
+<p>Confrontando i coefficienti di <span class="m">dx</span>, <span class="m">dy</span>, <span class="m">dz</span>:</p>
+<p><span class="m d">\vec E = -\nabla V, \qquad E_x = -\frac{\partial V}{\partial x},\ E_y = -\frac{\partial V}{\partial y},\ E_z = -\frac{\partial V}{\partial z}</span></p>
+<p>dove <span class="m">\nabla V</span> è il gradiente del potenziale (V/m). Conseguenze:</p>
 <ul>
-<li>Una carica positiva lasciata libera va verso potenziali più bassi. Una negativa verso potenziali più alti.</li>
-<li>Le <strong>superfici equipotenziali</strong> (<span class="m">V</span> costante) sono sempre perpendicolari alle linee di campo.</li>
-<li>Il campo si può misurare in V/m: <span class="m">\mathrm{N/C} = \mathrm{N\,m/(C\,m)} = \mathrm{J/(C\,m)} = \mathrm{V/m}</span>.</li>
+<li>il campo punta nel verso in cui il potenziale <strong>diminuisce</strong> più rapidamente;</li>
+<li>una carica <strong>positiva</strong> lasciata libera va verso potenziali <strong>più bassi</strong>; una <strong>negativa</strong> verso potenziali <strong>più alti</strong>;</li>
+<li>poiché <span class="m">\vec E</span> è un gradiente, la sua circuitazione è nulla e <span class="m">\nabla \times \vec E = 0</span>: il campo elettrostatico è <strong>irrotazionale</strong> (per il teorema di Stokes questo equivale a <span class="m">\oint \vec E \cdot d\vec s = 0</span>);</li>
+<li>sostituendo <span class="m">\vec E = -\nabla V</span> nella prima equazione di Maxwell si ottiene l&#39;<strong>equazione di Poisson</strong> <span class="m">\nabla^2 V = -\rho/\varepsilon_0</span>, che in assenza di cariche diventa l&#39;equazione di Laplace <span class="m">\nabla^2 V = 0</span>.</li>
 </ul>
-<p><strong>Campo uniforme</strong> <span class="m">E</span> lungo <span class="m">z</span>: <span class="m">V = -Ez + \text{costante}</span>. Il potenziale scende in modo lineare nel verso del campo, come l&#39;energia potenziale gravitazionale con la quota.</p>
+<p><strong>Superfici equipotenziali.</strong> Sono le superfici dove <span class="m">V</span> è costante. Spostandosi lungo di esse <span class="m">dV = 0 = -\vec E \cdot d\vec s</span>: il campo è <strong>perpendicolare</strong> alle superfici equipotenziali in ogni punto. Per una carica puntiforme sono sfere concentriche; per un campo uniforme sono piani perpendicolari al campo. Spostare una carica lungo un&#39;equipotenziale non richiede lavoro.</p>
+<p><strong>Campo uniforme.</strong> Con <span class="m">\vec E = E\,\hat k</span> costante lungo <span class="m">z</span>:
+<span class="m d">V(A) - V(B) = E\int_A^B dz = E(z_B - z_A) \quad\Rightarrow\quad V = -Ez + \text{costante}</span>
+Il potenziale scende linearmente nel verso del campo, come l&#39;energia potenziale gravitazionale cresce linearmente con la quota. Tra due piastre a distanza <span class="m">d</span> con differenza di potenziale <span class="m">\Delta V</span>: <span class="m">E = \Delta V/d</span>.</p>
 <div class="callout esempio">
 
-<p>Tra due superfici parallele il potenziale è <span class="m">V = ax^2</span>, con <span class="m">a = 1200\,\mathrm{V/m^2}</span>. Campo: <span class="m">E_x = -dV/dx = -2ax</span>. A <span class="m">x = 2</span> cm: <span class="m">|E| = 2 \cdot 1200 \cdot 0{,}02 = 48</span> V/m, verso le <span class="m">x</span> negative.</p>
+<p><strong>Campo da un potenziale quadratico.</strong> Tra due superfici parallele perpendicolari all&#39;asse <span class="m">x</span> il potenziale è <span class="m">V = ax^2</span>, con <span class="m">a = 1200\,\mathrm{V/m^2}</span> e <span class="m">x</span> distanza dalla prima superficie. Campo in <span class="m">x = 2</span> cm.</p>
+<ol>
+<li><span class="m">E_x = -\dfrac{dV}{dx} = -2ax</span>.</li>
+<li><span class="m">E_x = -2 \cdot 1200 \cdot 0{,}02 = -48</span> V/m.</li>
+<li>Modulo 48 V/m, diretto verso le <span class="m">x</span> <strong>negative</strong>, cioè verso la prima superficie.</li>
+</ol>
 </div>
 
-<h2>Conservazione dell&#39;energia e elettronvolt</h2>
-<p>Se agisce solo il campo elettrico, l&#39;energia totale si conserva:</p>
-<p><span class="m d">\frac12 mv^2 + qV = \text{costante}</span></p>
-<p>dove <span class="m">m</span> = massa (kg), <span class="m">v</span> = velocità (m/s), <span class="m">qV</span> = energia potenziale (J).</p>
-<p>L&#39;<strong>elettronvolt</strong> è l&#39;energia che un elettrone guadagna attraversando 1 V:</p>
-<p><span class="m d">1\,\mathrm{eV} = 1{,}60 \cdot 10^{-19}\,\mathrm J</span></p>
 <div class="callout esempio">
 
-<p>Un elettrone, partito da fermo, attraversa una differenza di potenziale di 100 V. Guadagna 100 eV <span class="m">= 1{,}6 \cdot 10^{-17}</span> J di energia cinetica.</p>
+<p><strong>Forza da un potenziale lineare.</strong> Una carica <span class="m">q = -1</span> C si muove in un piano dove <span class="m">V = ax + by</span>, con <span class="m">a = -2500</span> V/m e <span class="m">b = 1000</span> V/m.</p>
+<ol>
+<li><span class="m">\vec E = -\nabla V = -a\,\hat i - b\,\hat j = 2500\,\hat i - 1000\,\hat j</span> V/m: campo <strong>uniforme</strong>.</li>
+<li>Modulo: <span class="m">E = \sqrt{2500^2 + 1000^2} \approx 2700</span> V/m; il campo punta verso le <span class="m">x</span> positive e le <span class="m">y</span> negative (circa 21,8° sotto l&#39;asse <span class="m">x</span>).</li>
+<li>Forza: <span class="m">\vec F = q\vec E</span>, modulo <span class="m">|q|E \approx 2700</span> N, verso <strong>opposto</strong> al campo perché la carica è negativa.</li>
+</ol>
 </div>
 
-<p>Per una carica in orbita circolare attorno a una carica opposta (come l&#39;elettrone nell&#39;atomo di Bohr), l&#39;energia totale è negativa: <span class="m">E_T = -\dfrac12\,\dfrac{|Qq|}{4\pi\varepsilon_0 r}</span>. Il sistema è legato.</p>
+<h2>Conservazione dell&#39;energia</h2>
+<p>Una particella di massa <span class="m">m</span> e carica <span class="m">q</span> si muove sotto l&#39;azione del solo campo elettrostatico. Per il teorema dell&#39;energia cinetica il lavoro è la variazione di energia cinetica; per la conservatività è l&#39;opposto della variazione di energia potenziale. Uguagliando:</p>
+<p><span class="m d">L_{AB} = \tfrac12 mv_B^2 - \tfrac12 mv_A^2 = -\Delta U = qV(A) - qV(B)</span></p>
+<p>e quindi in ogni punto della traiettoria si conserva</p>
+<p><span class="m d">E_{TOT} = E_C + E_P = \tfrac12 mv^2 + qV = \text{costante}</span></p>
+<p>dove <span class="m">m</span> = massa (kg), <span class="m">v</span> = velocità (m/s), <span class="m">qV</span> = energia potenziale (J). In campo uniforme lungo <span class="m">z</span> diventa <span class="m">\tfrac12 mv^2 - qEz = </span> costante.</p>
+<div class="callout esempio">
+
+<p><strong>Elettrone accelerato.</strong> Un elettrone parte da fermo e attraversa una differenza di potenziale di 100 V (va verso il potenziale più alto, perché è negativo).</p>
+<ol>
+<li><span class="m">\Delta U = q\Delta V = (-e)(+100\,\mathrm V) = -100</span> eV: l&#39;energia potenziale diminuisce.</li>
+<li>L&#39;energia cinetica aumenta di 100 eV <span class="m">= 100 \cdot 1{,}6 \cdot 10^{-19} = 1{,}6 \cdot 10^{-17}</span> J.</li>
+</ol>
+</div>
+
+<p><strong>Carica in orbita attorno a una carica fissa.</strong> Per una carica <span class="m">q</span> attorno a una carica fissa <span class="m">Q</span>:
+<span class="m d">E_T = \tfrac12 mv^2 + \frac{1}{4\pi\varepsilon_0}\,\frac{Qq}{r} = \text{costante}</span>
+Se le cariche sono opposte e il moto è <strong>circolare uniforme</strong>, la forza di attrazione fa da forza centripeta:
+<span class="m d">\frac{mv^2}{r} = \frac{1}{4\pi\varepsilon_0}\,\frac{|Qq|}{r^2} \quad\Rightarrow\quad \frac12 mv^2 = \frac12\,\frac{1}{4\pi\varepsilon_0}\,\frac{|Qq|}{r}</span>
+L&#39;energia cinetica è metà del modulo dell&#39;energia potenziale, quindi l&#39;energia totale è:
+<span class="m d">E_T = \frac12\,\frac{|Qq|}{4\pi\varepsilon_0 r} - \frac{|Qq|}{4\pi\varepsilon_0 r} = -\frac12\,\frac{1}{4\pi\varepsilon_0}\,\frac{|Qq|}{r}</span>
+Negativa: il sistema è <strong>legato</strong>. È la base del modello di Bohr dell&#39;atomo di idrogeno: protone sorgente, elettrone in orbita, cariche <span class="m">\pm e</span>. L&#39;energia di legame (quella da fornire per portare l&#39;elettrone all&#39;infinito) per un&#39;orbita di raggio <span class="m">r_i</span> è <span class="m">E_i = -\dfrac12\,\dfrac{e^2}{4\pi\varepsilon_0 r_i}</span>.</p>
+<div class="callout esempio">
+
+<p><strong>Atomo di idrogeno.</strong> Raggio dell&#39;orbita fondamentale <span class="m">r = 0{,}529 \cdot 10^{-10}</span> m.
+<span class="m d">E = -\frac12\,\frac{8{,}99 \cdot 10^9 \cdot (1{,}602 \cdot 10^{-19})^2}{0{,}529 \cdot 10^{-10}} = -\frac12\,\frac{2{,}31 \cdot 10^{-28}}{0{,}529 \cdot 10^{-10}} \approx -2{,}18 \cdot 10^{-18}\,\mathrm J</span>
+Dividendo per <span class="m">1{,}6 \cdot 10^{-19}</span> J/eV: <span class="m">E \approx -13{,}6</span> eV, l&#39;energia di ionizzazione dell&#39;idrogeno.</p>
+</div>
+
 <div class="callout attenzione">
 
-<p>Nelle domande vero/falso del paniere le risposte compaiono come 1 (vero) e 0 (falso). &quot;Il potenziale, come il campo, è un vettore&quot; è falso (0): il potenziale è uno scalare.</p>
+<ul>
+<li>Il potenziale è uno <strong>scalare</strong>, il campo un <strong>vettore</strong>: &quot;il potenziale, come il campo, è un vettore&quot; è <strong>falso</strong>. Nelle domande vero/falso del paniere le risposte compaiono come 1 (vero) e 0 (falso).</li>
+<li>Potenziale di una carica puntiforme: <span class="m">\propto 1/r</span>; campo: <span class="m">\propto 1/r^2</span>. Non scambiarli.</li>
+<li>I potenziali di più cariche si sommano <strong>con il segno</strong>, senza direzioni; i campi vettorialmente.</li>
+<li>Potenziale nullo in un punto non vuol dire campo nullo (al centro di un dipolo <span class="m">V = 0</span> ma <span class="m">E \neq 0</span>), e viceversa (al centro di due cariche positive uguali <span class="m">E = 0</span> ma <span class="m">V \neq 0</span>).</li>
+<li><span class="m">L_{AB} = -\Delta U</span>: il lavoro del campo è l&#39;<strong>opposto</strong> della variazione di energia potenziale.</li>
+</ul>
+</div>
+
+<div class="callout esame">
+
+<p>Le domande chiuse chiedono se il potenziale è un vettore (no: è uno scalare, risposta &quot;0&quot;) e come varia il potenziale attorno a una carica puntiforme (diminuisce come l&#39;inverso della distanza). Per le aperte sul potenziale: lavoro della forza elettrica indipendente dal percorso → forza conservativa → <span class="m">L_{AB} = -\Delta U</span> → <span class="m">U = kQq/r</span> → <span class="m">V = U/q</span> in volt, <span class="m">V_A - V_B = \int_A^B \vec E \cdot d\vec s</span>, <span class="m">V = kQ/r</span>, sovrapposizione scalare, <span class="m">\vec E = -\nabla V</span>, equipotenziali perpendicolari al campo, conservazione <span class="m">\tfrac12 mv^2 + qV</span> = costante, elettronvolt.</p>
 </div>
 
 <div class="callout sintesi">
 
 <ul>
-<li>La forza elettrostatica è conservativa: <span class="m">L_{AB} = -\Delta U</span>.</li>
-<li>Potenziale: <span class="m">V = U/q</span>, scalare, in volt (<span class="m">1\,\mathrm V = 1\,\mathrm{J/C}</span>).</li>
-<li>Carica puntiforme: <span class="m">V = \dfrac{1}{4\pi\varepsilon_0}\dfrac{Q}{r}</span>, va come <span class="m">1/r</span> (il campo come <span class="m">1/r^2</span>).</li>
-<li><span class="m">\vec E = -\nabla V</span>: il campo punta verso i potenziali decrescenti ed è perpendicolare alle equipotenziali.</li>
-<li>Energia conservata: <span class="m">\tfrac12 mv^2 + qV = </span> costante; <span class="m">1\,\mathrm{eV} = 1{,}6 \cdot 10^{-19}</span> J.</li>
+<li>Il lavoro della forza elettrica dipende solo dagli estremi: la forza è conservativa, <span class="m">\oint \vec E \cdot d\vec s = 0</span>.</li>
+<li><span class="m">L_{AB} = U(A) - U(B) = -\Delta U</span>; due cariche: <span class="m">U = \dfrac{1}{4\pi\varepsilon_0}\dfrac{Qq}{r}</span> (<span class="m">U = 0</span> all&#39;infinito).</li>
+<li>Potenziale <span class="m">V = U/q</span>, scalare, in volt (<span class="m">1\,\mathrm V = 1\,\mathrm{J/C}</span>); <span class="m">V_A - V_B = \int_A^B \vec E \cdot d\vec s</span>.</li>
+<li>Carica puntiforme: <span class="m">V = \dfrac{1}{4\pi\varepsilon_0}\dfrac{Q}{r} \propto 1/r</span> (campo <span class="m">\propto 1/r^2</span>).</li>
+<li>Più cariche: <span class="m">V = \dfrac{1}{4\pi\varepsilon_0}\sum_i Q_i/r_i</span> (somma algebrica); continue: integrale.</li>
+<li><span class="m">\vec E = -\nabla V</span>: campo verso i potenziali decrescenti, perpendicolare alle equipotenziali; campo uniforme: <span class="m">V = -Ez + </span> cost.</li>
+<li>N/C = V/m; <span class="m">1\,\mathrm{eV} = 1{,}60 \cdot 10^{-19}</span> J.</li>
+<li>Energia: <span class="m">\tfrac12 mv^2 + qV</span> = costante; orbita circolare: <span class="m">E_T = -\tfrac12\,|Qq|/(4\pi\varepsilon_0 r)</span> (idrogeno: −13,6 eV).</li>
 </ul>
 </div>

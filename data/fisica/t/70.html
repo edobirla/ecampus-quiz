@@ -1,70 +1,219 @@
 <h1>Lezione 70 — Autoinduzione e circuito RL</h1>
-<h2>Autoinduzione</h2>
-<p>Una corrente in un circuito crea un campo magnetico. Quel campo attraversa il circuito stesso. Il flusso concatenato è proporzionale alla corrente:
+<h2>Di cosa parla questa lezione</h2>
+<p>Finora il flusso variabile che induce una f.e.m. in un circuito era prodotto da qualcosa di esterno (un magnete, un&#39;altra bobina). Ma ogni circuito percorso da corrente produce <strong>il proprio</strong> campo magnetico, che attraversa il circuito stesso. Se la corrente cambia, cambia anche questo flusso, e nel circuito si induce una f.e.m. che si oppone alla variazione: è l&#39;<strong>autoinduzione</strong>.</p>
+<p>In questa lezione:</p>
+<ul>
+<li>il coefficiente di autoinduzione (induttanza) e la f.e.m. autoindotta;</li>
+<li>l&#39;induttanza di un solenoide;</li>
+<li>il <strong>circuito RL</strong>: andamento della corrente alla chiusura e all&#39;apertura, con la costante di tempo <span class="m">\tau = L/R</span>;</li>
+<li>la verifica con l&#39;analisi dimensionale che <span class="m">L/R</span> è un tempo;</li>
+<li>l&#39;energia immagazzinata in un&#39;induttanza.</li>
+</ul>
+<h2>Autoinduzione e induttanza</h2>
+<p>Un circuito percorso dalla corrente <span class="m">i</span> produce un campo magnetico proporzionale a <span class="m">i</span> (legge di Laplace). Quindi anche il flusso di questo campo concatenato con il circuito stesso è proporzionale a <span class="m">i</span>:
 <span class="m d">\Phi = L\,i</span>
 dove:</p>
 <ul>
-<li><span class="m">\Phi</span> = flusso concatenato con il circuito (Wb);</li>
-<li><span class="m">i</span> = corrente (A);</li>
-<li><span class="m">L</span> = <strong>induttanza</strong> o coefficiente di autoinduzione, in henry (H).</li>
+<li><span class="m">\Phi</span> = flusso autoconcatenato (Wb);</li>
+<li><span class="m">i</span> = corrente nel circuito (A);</li>
+<li><span class="m">L</span> = <strong>coefficiente di autoinduzione</strong> o <strong>induttanza</strong> del circuito, in <strong>henry</strong> (H).</li>
 </ul>
-<p><span class="m">1\,\mathrm{H} = 1\,\mathrm{Wb/A} = 1\,\mathrm{V\,s/A} = 1\,\Omega\,\mathrm{s}</span>.</p>
-<p>Se la corrente cambia, cambia il flusso. Nasce una <strong>f.e.m. autoindotta</strong>:
-<span class="m d">\mathcal E_L = -L\frac{di}{dt}</span>
-dove <span class="m">di/dt</span> è la rapidità di variazione della corrente (A/s). Il segno meno è Lenz: l&#39;induttanza si <strong>oppone alle variazioni</strong> di corrente. Fa da &quot;inerzia&quot; per la corrente.</p>
+<p>Unità: <span class="m">1\,\mathrm H = 1\,\dfrac{\mathrm{Wb}}{\mathrm A} = 1\,\dfrac{\mathrm{V\,s}}{\mathrm A} = 1\,\Omega\cdot\mathrm s</span>.</p>
+<p><span class="m">L</span> dipende <strong>solo dalla geometria</strong> del circuito (forma, dimensioni, numero di spire) e dal materiale in cui è immerso; <strong>non</strong> dipende dalla corrente (tranne con nuclei ferromagnetici, dove <span class="m">\mu_r</span> non è costante). Un componente progettato per avere un&#39;induttanza significativa (tipicamente una bobina) si chiama <strong>induttore</strong> e si indica con <span class="m">L</span> negli schemi.</p>
+<p><strong>F.e.m. autoindotta.</strong> Se la corrente varia, varia il flusso, e per la legge di Faraday:
+<span class="m d">\mathcal E_L = -\frac{d\Phi}{dt} = -L\,\frac{di}{dt}</span>
+dove <span class="m">di/dt</span> è la rapidità di variazione della corrente (A/s).</p>
+<p>Il segno meno è la legge di Lenz: la f.e.m. autoindotta <strong>si oppone alle variazioni della corrente</strong>.</p>
+<ul>
+<li>Se la corrente <strong>cresce</strong>, la f.e.m. autoindotta agisce contro il generatore e ne rallenta la crescita.</li>
+<li>Se la corrente <strong>cala</strong>, la f.e.m. autoindotta agisce nel verso della corrente e tende a mantenerla.</li>
+<li>Se la corrente è <strong>costante</strong>, la f.e.m. autoindotta è <strong>nulla</strong>: l&#39;induttore si comporta come un semplice filo.</li>
+</ul>
+<p>L&#39;induttanza fa da <strong>&quot;inerzia&quot; della corrente</strong>, come la massa è l&#39;inerzia della velocità: non impedisce alla corrente di esistere, ma le impedisce di cambiare di colpo.</p>
 <h2>Induttanza di un solenoide</h2>
-<p>Un solenoide lungo <span class="m">l</span>, con <span class="m">N</span> spire di sezione <span class="m">S</span> (<span class="m">n = N/l</span>), ha <span class="m">B = \mu_0 n i</span>. Il flusso totale è <span class="m">N \cdot BS</span>. Risultato:
-<span class="m d">L = \mu_0\,n^2\,S\,l = \mu_0\frac{N^2 S}{l}</span>
-dove <span class="m">S</span> è in m² e <span class="m">l</span> in m. <span class="m">L</span> cresce con il <strong>quadrato</strong> del numero di spire. Dipende solo dalla geometria e dal nucleo (con un nucleo, moltiplica per <span class="m">\mu_r</span>). <strong>Non dipende dalla corrente.</strong></p>
-<h2>Circuito RL: chiusura</h2>
-<p>Un generatore <span class="m">\mathcal E</span>, una resistenza <span class="m">R</span> e un&#39;induttanza <span class="m">L</span> sono in serie. All&#39;istante <span class="m">t = 0</span> si chiude l&#39;interruttore.</p>
-<p>Come si trova la corrente, a passi:</p>
+<p>Un solenoide lungo <span class="m">l</span>, con <span class="m">N</span> spire di sezione <span class="m">S</span> (<span class="m">n = N/l</span> spire per metro), percorso dalla corrente <span class="m">i</span>.</p>
 <ol>
-<li>Legge delle maglie: <span class="m">\mathcal E - L\dfrac{di}{dt} = Ri</span>.</li>
-<li>Separa le variabili: <span class="m">\dfrac{di}{\mathcal E/R - i} = \dfrac{R}{L}\,dt</span>.</li>
-<li>Integra da <span class="m">i = 0</span> (a <span class="m">t = 0</span>) a <span class="m">i</span> (al tempo <span class="m">t</span>):
-<span class="m d">i(t) = \frac{\mathcal E}{R}\left(1 - e^{-t/\tau}\right) \qquad \tau = \frac{L}{R}</span>
+<li>Campo interno (lezione 64): <span class="m">B = \mu_0 n i</span>.</li>
+<li>Flusso attraverso una spira: <span class="m">B S = \mu_0 n i S</span>.</li>
+<li>Flusso concatenato con tutte le <span class="m">N</span> spire: <span class="m">\Phi = N\,\mu_0 n i S = \mu_0 n\,(n l)\,i\,S = \mu_0 n^2 S l\;i</span>.</li>
+<li>Confrontando con <span class="m">\Phi = L i</span>:
+<span class="m d">L = \mu_0\,n^2\,S\,l = \mu_0\,\frac{N^2 S}{l}</span>
+dove <span class="m">S</span> è la sezione (m²) e <span class="m">l</span> la lunghezza (m). <span class="m">Sl</span> è il volume interno del solenoide.</li>
+</ol>
+<ul>
+<li><span class="m">L</span> cresce con il <strong>quadrato</strong> del numero di spire (le spire sono di più <strong>e</strong> ciascuna produce più campo).</li>
+<li>Con un nucleo di permeabilità relativa <span class="m">\mu_r</span>: <span class="m">L = \mu_0\mu_r n^2 S l</span>.</li>
+<li>Non dipende dalla corrente.</li>
+</ul>
+<div class="callout esempio">
+
+<p>Solenoide di 1000 spire, lungo 50 cm, sezione <span class="m">10\,\mathrm{cm^2} = 10^{-3}\,\mathrm{m^2}</span>, in aria:
+<span class="m d">L = \frac{4\pi \cdot 10^{-7} \cdot 1000^2 \cdot 10^{-3}}{0{,}5} = \frac{1{,}257 \cdot 10^{-3}}{0{,}5} \approx 2{,}5 \cdot 10^{-3}\,\mathrm H = 2{,}5\,\mathrm{mH}</span>
+Con il doppio delle spire (stessa lunghezza) l&#39;induttanza quadruplica: 10 mH. Se la corrente varia di 100 A/s, la f.e.m. autoindotta del primo solenoide è <span class="m">|\mathcal E_L| = 2{,}5 \cdot 10^{-3} \cdot 100 = 0{,}25\,\mathrm V</span>.</p>
+</div>
+
+<h2>Il circuito RL: chiusura del circuito</h2>
+<h3>Il circuito</h3>
+<p>Un generatore di f.e.m. costante <span class="m">\mathcal E</span>, una resistenza <span class="m">R</span> e un induttore di induttanza <span class="m">L</span> (resistenza propria trascurabile, o inclusa in <span class="m">R</span>) sono collegati <strong>in serie</strong> con un interruttore. All&#39;istante <span class="m">t = 0</span> l&#39;interruttore viene chiuso; prima la corrente era nulla.</p>
+<h3>Equazione del circuito</h3>
+<p>Percorrendo la maglia, la somma delle f.e.m. è uguale alla caduta di tensione sulla resistenza. Le f.e.m. sono quella del generatore e quella autoindotta:
+<span class="m d">\mathcal E - L\,\frac{di}{dt} = R\,i</span></p>
+<h3>Soluzione passo per passo</h3>
+<ol>
+<li><strong>Isolo la derivata</strong>: <span class="m">L\dfrac{di}{dt} = \mathcal E - Ri</span>, cioè <span class="m">\dfrac{di}{dt} = \dfrac{R}{L}\left(\dfrac{\mathcal E}{R} - i\right)</span>.</li>
+<li><strong>Separo le variabili</strong> (tutto ciò che contiene <span class="m">i</span> a sinistra, <span class="m">t</span> a destra):
+<span class="m d">\frac{di}{\dfrac{\mathcal E}{R} - i} = \frac{R}{L}\,dt</span></li>
+<li><strong>Integro</strong> da <span class="m">t = 0</span> (dove <span class="m">i = 0</span>) a un istante <span class="m">t</span> (dove la corrente vale <span class="m">i</span>):
+<span class="m d">\int_0^i \frac{di'}{\dfrac{\mathcal E}{R} - i'} = \int_0^t \frac{R}{L}\,dt' \quad\Rightarrow\quad -\ln\left(\frac{\mathcal E}{R} - i\right) + \ln\frac{\mathcal E}{R} = \frac{R}{L}\,t</span></li>
+<li><strong>Riordino</strong>: <span class="m">\ln\dfrac{\mathcal E/R - i}{\mathcal E/R} = -\dfrac{R}{L}\,t</span>, quindi <span class="m">\dfrac{\mathcal E/R - i}{\mathcal E/R} = e^{-Rt/L}</span>.</li>
+<li><strong>Ricavo <span class="m">i</span></strong>:
+<span class="m d">i(t) = \frac{\mathcal E}{R}\left(1 - e^{-t/\tau}\right) \qquad\qquad \tau = \frac{L}{R}</span>
 dove:</li>
 </ol>
 <ul>
-<li><span class="m">i(t)</span> = corrente al tempo <span class="m">t</span> (A);</li>
-<li><span class="m">\mathcal E/R</span> = corrente di regime (A);</li>
-<li><span class="m">\tau</span> = <strong>costante di tempo</strong> (s).</li>
+<li><span class="m">i(t)</span> = corrente all&#39;istante <span class="m">t</span> (A);</li>
+<li><span class="m">\mathcal E/R</span> = corrente di regime, il valore finale (A);</li>
+<li><span class="m">\tau = L/R</span> = <strong>costante di tempo</strong> del circuito (s).</li>
 </ul>
-<p>La corrente <strong>non</strong> salta subito al valore finale. Cresce in modo esponenziale fino a <span class="m">\mathcal E/R</span>. Dopo un tempo <span class="m">\tau</span> è al 63% del valore finale. Dopo circa <span class="m">5\tau</span> è praticamente a regime. A regime <span class="m">di/dt = 0</span>: l&#39;induttanza si comporta come un filo.</p>
-<h2>Circuito RL: apertura</h2>
-<p>Si toglie il generatore e si chiude il circuito su <span class="m">R</span>. La corrente parte da <span class="m">I_0</span> e cala:
-<span class="m d">i(t) = I_0\,e^{-t/\tau}</span>
-L&#39;induttanza tiene viva la corrente per un po&#39;. Se interrompi di colpo un circuito induttivo, <span class="m">di/dt</span> è enorme e può saltare una scintilla.</p>
+<p>Verifica: a <span class="m">t = 0</span>, <span class="m">e^0 = 1</span> e <span class="m">i = 0</span>; per <span class="m">t \to \infty</span>, <span class="m">e^{-\infty} = 0</span> e <span class="m">i \to \mathcal E/R</span>.</p>
+<h3>Come si comporta la corrente</h3>
+<ul>
+<li><strong>All&#39;istante iniziale</strong> la corrente è zero e cresce con la pendenza massima <span class="m">\left.\dfrac{di}{dt}\right|_0 = \dfrac{\mathcal E}{L}</span>: tutta la f.e.m. del generatore è &quot;contrastata&quot; dall&#39;induttore, che si comporta come un <strong>circuito aperto</strong>.</li>
+<li>La corrente <strong>non salta</strong> al valore finale (come farebbe senza induttore) ma <strong>cresce in modo esponenziale</strong>, sempre più lentamente.</li>
+<li><strong>A regime</strong> <span class="m">di/dt = 0</span>, la f.e.m. autoindotta è nulla, l&#39;induttore si comporta come un <strong>filo</strong> e la corrente è quella di Ohm, <span class="m">\mathcal E/R</span>.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Tempo</th>
+<th><span class="m">1 - e^{-t/\tau}</span></th>
+<th>Corrente (frazione del valore finale)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><span class="m">0</span></td>
+<td>0</td>
+<td>0%</td>
+</tr>
+<tr>
+<td><span class="m">\tau</span></td>
+<td><span class="m">1 - e^{-1} \approx 0{,}632</span></td>
+<td>63%</td>
+</tr>
+<tr>
+<td><span class="m">2\tau</span></td>
+<td><span class="m">\approx 0{,}865</span></td>
+<td>86%</td>
+</tr>
+<tr>
+<td><span class="m">3\tau</span></td>
+<td><span class="m">\approx 0{,}950</span></td>
+<td>95%</td>
+</tr>
+<tr>
+<td><span class="m">5\tau</span></td>
+<td><span class="m">\approx 0{,}993</span></td>
+<td>&gt; 99% (praticamente a regime)</td>
+</tr>
+</tbody></table>
+<p>La costante di tempo <span class="m">\tau</span> è il tempo dopo il quale la corrente ha raggiunto il 63% del valore finale. Più grande è <span class="m">L</span> (più &quot;inerzia&quot;) o più piccola è <span class="m">R</span>, più lento è il transitorio.</p>
+<p><strong>Tensioni sui componenti.</strong></p>
+<ul>
+<li>Sulla resistenza: <span class="m">V_R = Ri = \mathcal E(1 - e^{-t/\tau})</span>, che cresce da 0 a <span class="m">\mathcal E</span>.</li>
+<li>Sull&#39;induttore: <span class="m">V_L = L\dfrac{di}{dt} = \mathcal E\,e^{-t/\tau}</span>, che cala da <span class="m">\mathcal E</span> a 0.</li>
+<li>In ogni istante <span class="m">V_R + V_L = \mathcal E</span>.</li>
+</ul>
+<h2>Il circuito RL: apertura (scarica)</h2>
+<p>Una volta raggiunta la corrente di regime <span class="m">I_0 = \mathcal E/R</span>, si toglie il generatore e, nello stesso istante, si chiude il circuito sulla sola resistenza (con un deviatore). Ora l&#39;equazione della maglia è:
+<span class="m d">-L\,\frac{di}{dt} = R\,i</span></p>
+<ol>
+<li>Separo: <span class="m">\dfrac{di}{i} = -\dfrac{R}{L}\,dt</span>.</li>
+<li>Integro da <span class="m">t = 0</span> (<span class="m">i = I_0</span>) a <span class="m">t</span>: <span class="m">\ln\dfrac{i}{I_0} = -\dfrac{R}{L}\,t</span>.</li>
+<li>Risultato:
+<span class="m d">i(t) = I_0\,e^{-t/\tau} \qquad \tau = \frac{L}{R}</span></li>
+</ol>
+<p>La corrente non si annulla di colpo: l&#39;induttore la <strong>tiene in vita</strong> e la fa decrescere esponenzialmente, con la stessa costante di tempo. Dopo un tempo <span class="m">\tau</span> è scesa al 37% del valore iniziale. L&#39;energia che la mantiene è quella immagazzinata nel campo magnetico dell&#39;induttore.</p>
+<p>Se invece si <strong>interrompe bruscamente</strong> il circuito (aprendo un interruttore senza un percorso alternativo), <span class="m">di/dt</span> diventa enorme e quindi anche la f.e.m. autoindotta <span class="m">L\,di/dt</span>: tra i contatti dell&#39;interruttore si forma una <strong>scintilla</strong> (extracorrente di apertura). È il principio delle bobine di accensione delle automobili.</p>
 <div class="callout esempio">
 
-<p><span class="m">L = 0{,}5\,\mathrm{H}</span>, <span class="m">R = 100\,\Omega</span>: <span class="m">\tau = 0{,}5/100 = 5 \cdot 10^{-3}\,\mathrm{s} = 5\,\mathrm{ms}</span>.</p>
+<p><strong>Circuito RL completo.</strong> <span class="m">\mathcal E = 12\,\mathrm V</span>, <span class="m">R = 6\,\Omega</span>, <span class="m">L = 0{,}3\,\mathrm H</span>.</p>
+<ol>
+<li>Costante di tempo: <span class="m">\tau = L/R = 0{,}3/6 = 0{,}05\,\mathrm s = 50\,\mathrm{ms}</span>.</li>
+<li>Corrente di regime: <span class="m">I_0 = 12/6 = 2\,\mathrm A</span>.</li>
+<li>Pendenza iniziale: <span class="m">\mathcal E/L = 12/0{,}3 = 40\,\mathrm{A/s}</span>.</li>
+<li>Dopo <span class="m">t = \tau = 50\,\mathrm{ms}</span>: <span class="m">i = 2(1 - e^{-1}) \approx 2 \cdot 0{,}632 = 1{,}26\,\mathrm A</span>.</li>
+<li>Dopo <span class="m">t = 0{,}1\,\mathrm s = 2\tau</span>: <span class="m">i = 2(1 - e^{-2}) \approx 1{,}73\,\mathrm A</span>.</li>
+<li>Energia a regime: <span class="m">U = \tfrac12 L I_0^2 = \tfrac12 \cdot 0{,}3 \cdot 4 = 0{,}6\,\mathrm J</span>.</li>
+<li>All&#39;apertura (chiudendo su <span class="m">R</span>), dopo 50 ms la corrente è <span class="m">2e^{-1} \approx 0{,}74\,\mathrm A</span>.</li>
+</ol>
 </div>
 
-<h2>L/R è un tempo: analisi dimensionale</h2>
-<p>A passi:</p>
-<ol>
-<li>Da <span class="m">\mathcal E_L = -L\,di/dt</span>: <span class="m">[L] = \dfrac{\mathrm{V}}{\mathrm{A/s}} = \dfrac{\mathrm{V\,s}}{\mathrm{A}}</span>.</li>
-<li>Dalla legge di Ohm: <span class="m">[R] = \dfrac{\mathrm{V}}{\mathrm{A}}</span>.</li>
-<li>Rapporto: <span class="m">\left[\dfrac{L}{R}\right] = \dfrac{\mathrm{V\,s/A}}{\mathrm{V/A}} = \mathrm{s}</span>.</li>
-</ol>
-<p>Controllo: l&#39;esponente <span class="m">t/\tau</span> deve essere un numero puro. Lo è solo se <span class="m">\tau</span> è un tempo.</p>
-<h2>Energia nell&#39;induttanza</h2>
-<p>Per far crescere la corrente, il generatore lavora contro la f.e.m. autoindotta. Questo lavoro resta immagazzinato nel campo magnetico:
-<span class="m d">U = \frac12 L I^2</span>
-dove <span class="m">U</span> è in J, <span class="m">L</span> in H, <span class="m">I</span> in A.</p>
 <div class="callout esempio">
 
-<p>Circuito RL con <span class="m">L = 10\,\mathrm{H}</span> e corrente di regime 3 A: <span class="m">U = \tfrac12 \cdot 10 \cdot 3^2 = 45\,\mathrm{J}</span>.</p>
+<p><span class="m">L = 0{,}5\,\mathrm H</span>, <span class="m">R = 100\,\Omega</span>: <span class="m">\tau = 0{,}5/100 = 5 \cdot 10^{-3}\,\mathrm s = 5\,\mathrm{ms}</span>. Dopo circa <span class="m">5\tau = 25\,\mathrm{ms}</span> la corrente è praticamente a regime.</p>
+</div>
+
+<h2>Analisi dimensionale: <span class="m">L/R</span> è un tempo</h2>
+<p>Si vuole verificare che il rapporto <span class="m">L/R</span> ha le dimensioni di un tempo.</p>
+<p><strong>Metodo 1 (dalle leggi del circuito), passo per passo.</strong></p>
+<ol>
+<li>Dalla f.e.m. autoindotta <span class="m">\mathcal E_L = -L\,\dfrac{di}{dt}</span>: <span class="m">L = \dfrac{\mathcal E_L}{di/dt}</span>, quindi
+<span class="m d">[L] = \frac{\mathrm V}{\mathrm{A/s}} = \frac{\mathrm{V\,s}}{\mathrm A}</span></li>
+<li>Dalla legge di Ohm <span class="m">V = Ri</span>: <span class="m">R = V/i</span>, quindi
+<span class="m d">[R] = \frac{\mathrm V}{\mathrm A}</span></li>
+<li>Rapporto:
+<span class="m d">\left[\frac{L}{R}\right] = \frac{\mathrm{V\,s/A}}{\mathrm{V/A}} = \mathrm{s}</span></li>
+</ol>
+<p><strong>Metodo 2 (dalle unità fondamentali).</strong> <span class="m">1\,\mathrm H = 1\,\mathrm{Wb/A} = 1\,\mathrm{T\,m^2/A}</span>; con <span class="m">1\,\mathrm T = 1\,\mathrm{kg/(A\,s^2)}</span> si ha <span class="m">[L] = \mathrm{kg\,m^2\,s^{-2}\,A^{-2}}</span>. Per la resistenza, <span class="m">1\,\Omega = 1\,\mathrm{V/A} = 1\,\mathrm{W/A^2} = \mathrm{kg\,m^2\,s^{-3}\,A^{-2}}</span>. Il rapporto è <span class="m">\mathrm{s^{-2}}/\mathrm{s^{-3}} = \mathrm s</span>.</p>
+<p><strong>Metodo 3 (coerenza della soluzione).</strong> Nella soluzione <span class="m">i(t) = \frac{\mathcal E}{R}(1 - e^{-tR/L})</span> l&#39;esponente di un&#39;esponenziale deve essere un <strong>numero puro</strong>. <span class="m">tR/L</span> è adimensionale solo se <span class="m">L/R</span> si misura in secondi.</p>
+<p>Fisicamente, <span class="m">\tau = L/R</span> è il <strong>tempo caratteristico</strong> del transitorio: è il tempo che la corrente impiegherebbe a raggiungere il valore di regime se continuasse a crescere con la pendenza iniziale <span class="m">\mathcal E/L</span> (infatti <span class="m">\frac{\mathcal E/R}{\mathcal E/L} = L/R</span>).</p>
+<h2>Energia immagazzinata nell&#39;induttanza</h2>
+<h3>Bilancio energetico</h3>
+<p>Moltiplico l&#39;equazione del circuito <span class="m">\mathcal E = Ri + L\,di/dt</span> per la corrente <span class="m">i</span>:
+<span class="m d">\mathcal E\,i = R\,i^2 + L\,i\,\frac{di}{dt}</span></p>
+<ul>
+<li><span class="m">\mathcal E i</span> = potenza erogata dal generatore;</li>
+<li><span class="m">R i^2</span> = potenza dissipata in calore nella resistenza (effetto Joule);</li>
+<li><span class="m">L i\,di/dt</span> = potenza spesa per far crescere la corrente contro la f.e.m. autoindotta: non si perde, ma si <strong>accumula</strong> nell&#39;induttore.</li>
+</ul>
+<h3>Energia</h3>
+<p>Sommo (integro) la potenza accumulata mentre la corrente cresce da <span class="m">0</span> a <span class="m">I</span>:
+<span class="m d">U = \int L\,i\,\frac{di}{dt}\,dt = \int_0^I L\,i\,di = \frac12\,L\,I^2</span>
+dove <span class="m">U</span> è in J, <span class="m">L</span> in H, <span class="m">I</span> in A.</p>
+<p>Questa energia è immagazzinata nel <strong>campo magnetico</strong> dell&#39;induttore (lezione 71) e viene restituita quando la corrente cala: è proprio l&#39;energia che mantiene la corrente durante l&#39;apertura del circuito RL.</p>
+<div class="callout esempio">
+
+<p><strong>Paniere.</strong> In un circuito RL con <span class="m">L = 10\,\mathrm H</span> circola a regime una corrente di 3 A. Energia immagazzinata:
+<span class="m d">U = \tfrac12 \cdot 10 \cdot 3^2 = \tfrac12 \cdot 10 \cdot 9 = 45\,\mathrm J</span>
+Errori tipici: dimenticare il fattore <span class="m">\tfrac12</span> (90 J) o non elevare al quadrato la corrente (<span class="m">LI = 30</span>).</p>
+</div>
+
+<div class="callout attenzione">
+
+<ul>
+<li>All&#39;istante della chiusura la corrente è <strong>zero</strong> (non <span class="m">\mathcal E/R</span>): l&#39;induttore si comporta come un circuito aperto; a regime come un filo.</li>
+<li><span class="m">\tau = L/R</span>, non <span class="m">R/L</span> né <span class="m">RL</span> (che non sono tempi). Non confondere con il circuito RC, dove <span class="m">\tau = RC</span>.</li>
+<li>L&#39;induttanza non dipende dalla corrente: dipende da geometria e materiale.</li>
+</ul>
+</div>
+
+<div class="callout esame">
+
+<p>Domande aperte:</p>
+<ul>
+<li><strong>&quot;Si descriva un semplice circuito RL e se ne studi l&#39;andamento temporale della corrente&quot;</strong>: disegna a parole il circuito (generatore, resistenza, induttanza in serie, interruttore), scrivi <span class="m">\mathcal E - L\,di/dt = Ri</span>, risolvi separando le variabili, scrivi <span class="m">i(t) = \frac{\mathcal E}{R}(1 - e^{-t/\tau})</span> con <span class="m">\tau = L/R</span>, commenta (parte da zero, 63% dopo <span class="m">\tau</span>, regime <span class="m">\mathcal E/R</span> dopo circa <span class="m">5\tau</span>, induttore come circuito aperto all&#39;inizio e filo a regime) e aggiungi l&#39;apertura <span class="m">i = I_0e^{-t/\tau}</span>.</li>
+<li><strong>&quot;Si verifichi tramite analisi dimensionale che L/R è un tempo&quot;</strong>: <span class="m">[L] = \mathrm{V\,s/A}</span> da <span class="m">\mathcal E_L = -L\,di/dt</span>, <span class="m">[R] = \mathrm{V/A}</span> da Ohm, rapporto in secondi; aggiungi l&#39;osservazione che l&#39;esponente <span class="m">t/\tau</span> deve essere adimensionale.</li>
+</ul>
+<p>Domanda chiusa: energia nell&#39;induttanza, <span class="m">U = \tfrac12 LI^2</span>.</p>
 </div>
 
 <div class="callout sintesi">
 
 <ul>
-<li><span class="m">\Phi = Li</span>, <span class="m">\mathcal E_L = -L\,di/dt</span>; henry: <span class="m">1\,\mathrm{H} = 1\,\mathrm{V\,s/A}</span>.</li>
-<li>Solenoide: <span class="m">L = \mu_0 n^2 S l</span>, cresce con il quadrato delle spire, non dipende dalla corrente.</li>
-<li>Chiusura RL: <span class="m">i = (\mathcal E/R)(1 - e^{-t/\tau})</span>; apertura: <span class="m">i = I_0 e^{-t/\tau}</span>.</li>
-<li><span class="m">\tau = L/R</span>, in secondi.</li>
+<li>Autoinduzione: <span class="m">\Phi = Li</span>, <span class="m">\mathcal E_L = -L\,di/dt</span>; henry: <span class="m">1\,\mathrm H = 1\,\mathrm{Wb/A} = 1\,\mathrm{V\,s/A} = 1\,\Omega\,\mathrm s</span>; l&#39;induttanza si oppone alle variazioni di corrente.</li>
+<li>Solenoide: <span class="m">L = \mu_0 n^2 S l = \mu_0 N^2 S/l</span> (per <span class="m">\mu_r</span> con nucleo); cresce con il quadrato delle spire.</li>
+<li>Chiusura RL: <span class="m">i = \frac{\mathcal E}{R}(1 - e^{-t/\tau})</span>; apertura: <span class="m">i = I_0 e^{-t/\tau}</span>; <span class="m">\tau = L/R</span> in secondi; 63% dopo <span class="m">\tau</span>.</li>
+<li>Bilancio: <span class="m">\mathcal E i = Ri^2 + L i\,di/dt</span>.</li>
 <li>Energia: <span class="m">U = \tfrac12 LI^2</span>.</li>
 </ul>
 </div>

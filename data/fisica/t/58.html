@@ -1,82 +1,196 @@
 <h1>Lezione 58 — Circuiti e leggi di Kirchhoff</h1>
-<h2>Il linguaggio delle reti</h2>
-<p>Un <strong>circuito</strong> è fatto di elementi (resistori, generatori) collegati da fili. I fili si considerano senza resistenza: tutti i punti di un filo hanno lo stesso potenziale.</p>
+<p>Con la legge di Ohm, la resistenza equivalente e il generatore reale sappiamo risolvere circuiti con una sola maglia. Molti circuiti però hanno più generatori e più percorsi che non si riducono a serie e parallelo. In questa lezione introduciamo il linguaggio delle <strong>reti elettriche</strong> (nodi, rami, maglie) e le due <strong>leggi di Kirchhoff</strong>, che permettono di scrivere un sistema di equazioni lineari e trovare tutte le correnti di qualunque rete di resistori e generatori. Vediamo poi il <strong>teorema di Thevenin</strong>, il <strong>ponte di Wheatstone</strong> e come gli strumenti di misura (amperometro e voltmetro) disturbano il circuito che misurano.</p>
+<h2>Circuiti elettrici e modello a parametri concentrati</h2>
+<p>Un sistema di dispositivi elettrici collegati tra loro da conduttori si chiama <strong>circuito elettrico</strong>. Lo si descrive con un <strong>modello a parametri concentrati</strong>:</p>
 <ul>
-<li><strong>Nodo</strong>: punto dove si uniscono almeno tre conduttori.</li>
-<li><strong>Ramo</strong>: tratto tra due nodi. Può contenere generatori (ramo attivo) o solo resistori (ramo passivo). In ogni ramo scorre una sola corrente.</li>
-<li><strong>Maglia</strong>: percorso chiuso fatto di più rami.</li>
+<li>ogni elemento (resistore, generatore, condensatore) è rappresentato dal suo simbolo ed è ben localizzato;</li>
+<li>gli elementi sono collegati da fili di <strong>resistenza trascurabile</strong>, che quindi sono <strong>equipotenziali</strong>: due punti collegati da un filo senza elementi hanno lo stesso potenziale e sono attraversati dalla stessa corrente, e nello studio del circuito si possono considerare come un unico punto.</li>
 </ul>
-<h2>Prima legge: legge dei nodi</h2>
-<p>In regime stazionario la carica non si accumula in un nodo. Quindi quanta corrente entra, tanta ne esce. È la <strong>conservazione della carica</strong>.</p>
-<p><span class="m d">\sum_k I_k = 0</span></p>
-<p>dove <span class="m">I_k</span> = correnti del nodo (A), prese positive se entrano e negative se escono.</p>
+<p>Un elemento è caratterizzato, dal punto di vista elettrico, quando si conosce il legame che impone tra la <strong>corrente</strong> che lo attraversa e la <strong>differenza di potenziale</strong> ai suoi capi: per un resistore <span class="m">V = Ri</span>, per un generatore ideale <span class="m">V = \mathcal E</span>, per un condensatore <span class="m">V = q/C</span>.</p>
+<h2>Reti elettriche: nodi, rami, maglie</h2>
+<p>I circuiti più complessi formano <strong>reti elettriche</strong>. I loro elementi sono:</p>
+<ul>
+<li><strong>nodo</strong>: un punto in cui convergono <strong>almeno tre</strong> conduttori;</li>
+<li><strong>ramo</strong>: il tratto di circuito che collega due nodi. Può contenere componenti <strong>attivi</strong> (generatori) o solo <strong>passivi</strong> (resistori). In ogni ramo scorre <strong>una sola corrente</strong>, la stessa in tutti i suoi elementi (sono in serie);</li>
+<li><strong>maglia</strong>: un percorso <strong>chiuso</strong> formato da più rami.</li>
+</ul>
+<p>Per esempio, una rete con due nodi A e B collegati da tre rami (uno con un generatore, uno con un resistore, uno con un altro resistore e un generatore) ha tre maglie possibili: quella formata dai rami 1 e 2, quella formata dai rami 2 e 3 e quella esterna formata dai rami 1 e 3. Ridisegnare la rete spostando i punti di collegamento lungo i fili non cambia nulla: conta solo come sono collegati gli elementi.</p>
+<h2>Prima legge di Kirchhoff: legge dei nodi</h2>
+<p><strong>Da dove viene.</strong> In regime stazionario la densità di corrente è <strong>solenoidale</strong>: il suo flusso attraverso qualunque superficie chiusa è nullo (conservazione della carica, lezione 55). Per un singolo conduttore questo significa che la corrente è la stessa in ogni sezione. Per un nodo in cui arrivano più conduttori, prendiamo una superficie chiusa che racchiude il nodo: le correnti che entrano danno un contributo negativo al flusso uscente, quelle che escono un contributo positivo, e la somma deve essere zero. La carica non può accumularsi nel nodo.</p>
+<p><strong>Enunciato.</strong> In condizioni di corrente stazionaria, la <strong>somma algebrica delle correnti che confluiscono in un nodo è nulla</strong>, prendendo con un segno le correnti entranti e con il segno opposto quelle uscenti:</p>
+<p><span class="m d">\sum_k i_k = 0</span></p>
+<p>dove <span class="m">i_k</span> = correnti dei conduttori che arrivano al nodo (A), con segno + se entranti e − se uscenti (o viceversa, purché coerentemente). Detto in altro modo: <strong>la somma delle correnti entranti è uguale alla somma delle correnti uscenti</strong>. È l&#39;espressione della <strong>conservazione della carica</strong>.</p>
 <div class="callout esempio">
 
-<p>In un nodo entrano 3 A e 2 A. Escono due correnti, una da 4 A. L&#39;altra vale <span class="m">3 + 2 - 4 = 1\,\mathrm{A}</span>.</p>
+<p>In un nodo entrano correnti di 3 A e 2 A ed escono due correnti, una delle quali vale 4 A. Legge dei nodi: <span class="m">3 + 2 - 4 - i = 0</span>, quindi l&#39;altra corrente uscente vale <span class="m">i = 1\,\mathrm A</span>.</p>
 </div>
 
-<h2>Seconda legge: legge delle maglie</h2>
-<p>Il campo elettrostatico è conservativo. Se fai un giro chiuso e torni al punto di partenza, torni allo stesso potenziale. Quindi lungo una maglia le f.e.m. bilanciano le cadute di tensione sui resistori.</p>
-<p><span class="m d">\sum_k \mathcal E_k = \sum_k R_k\,I_k</span></p>
+<h2>Seconda legge di Kirchhoff: legge delle maglie</h2>
+<p><strong>Da dove viene.</strong> Dalla <strong>conservatività del campo elettrostatico</strong>: il suo integrale di linea lungo un circuito chiuso è nullo. Se suddivido una maglia nei suoi tratti, la somma delle differenze di potenziale ai capi di tutti i tratti è zero:</p>
+<p><span class="m d">\oint \vec E_s \cdot d\vec l = \sum_i \Delta V_i = 0</span></p>
+<p>In parole: partendo da un punto e facendo il giro della maglia si torna allo stesso potenziale, quindi le &quot;salite&quot; e le &quot;discese&quot; di potenziale si compensano. Nei generatori il potenziale <strong>sale</strong> di <span class="m">\mathcal E</span> (passando dal polo − al polo +); nei resistori <strong>scende</strong> di <span class="m">R\,i</span> (nel verso della corrente). Uguagliando salite e discese:</p>
+<p><span class="m d">\sum_i \mathcal E_i = \sum_k R_k\,i_k</span></p>
 <p>dove:</p>
 <ul>
-<li><span class="m">\mathcal E_k</span> = f.e.m. dei generatori della maglia (V)</li>
-<li><span class="m">R_k</span> = resistenze dei rami della maglia (Ω)</li>
-<li><span class="m">I_k</span> = corrente che scorre in ciascun ramo (A)</li>
+<li><span class="m">\mathcal E_i</span> = f.e.m. dei generatori presenti nei rami della maglia (V)</li>
+<li><span class="m">R_k</span> = resistenze dei rami della maglia (Ω), comprese le eventuali resistenze interne</li>
+<li><span class="m">i_k</span> = corrente che scorre in ciascun ramo (A)</li>
 </ul>
-<p>Regole di segno, dopo aver scelto un verso di percorrenza della maglia:</p>
+<p><strong>Enunciato.</strong> Fissato arbitrariamente un <strong>verso di percorrenza</strong> della maglia, la <strong>somma algebrica delle f.e.m.</strong> presenti nei rami della maglia è uguale alla <strong>somma algebrica dei prodotti <span class="m">R_k i_k</span></strong> (cioè delle d.d.p. ai capi dei resistori).</p>
+<p><strong>Convenzioni di segno:</strong></p>
 <ul>
-<li>una f.e.m. è <strong>positiva</strong> se la attraversi dal polo − al polo +;</li>
-<li>un termine <span class="m">R I</span> è <strong>positivo</strong> se la corrente del ramo ha il verso di percorrenza.</li>
+<li>una f.e.m. è <strong>positiva</strong> se il verso di percorrenza attraversa il generatore passando dal polo <strong>negativo</strong> al polo <strong>positivo</strong>; negativa nel caso opposto;</li>
+<li>un termine <span class="m">R_k i_k</span> è <strong>positivo</strong> se la corrente del ramo è <strong>concorde</strong> con il verso di percorrenza scelto; negativo se è discorde.</li>
 </ul>
-<h2>Come si risolve una rete</h2>
-<p>Una rete ha <span class="m">n</span> nodi e <span class="m">m</span> rami. Le incognite sono le <span class="m">m</span> correnti di ramo.</p>
+<h2>Come si risolve una rete lineare</h2>
+<p>Le leggi di Kirchhoff trasformano una rete di generatori e resistori ohmici in un <strong>sistema lineare</strong> di equazioni con incognite le correnti. Un metodo classico (detto <strong>metodo delle maglie</strong> nella dispensa):</p>
 <ol>
-<li>Scegli a piacere un verso per ogni corrente.</li>
-<li>Scrivi <span class="m">n - 1</span> equazioni ai nodi (l&#39;ultima non è indipendente).</li>
-<li>Scrivi <span class="m">m - (n - 1)</span> equazioni alle maglie. Ogni nuova maglia deve contenere almeno un ramo non ancora usato.</li>
-<li>Risolvi il sistema lineare.</li>
-<li>Se una corrente esce <strong>negativa</strong>, scorre nel verso opposto a quello scelto. Non è un errore.</li>
+<li>Conta nodi e rami: <span class="m">N</span> nodi e <span class="m">L</span> rami. Le incognite sono le <span class="m">L</span> correnti di ramo.</li>
+<li>Scegli <strong>a piacere</strong> un verso per la corrente di ogni ramo.</li>
+<li>Scrivi la legge dei nodi per <span class="m">N - 1</span> nodi: danno <span class="m">N - 1</span> equazioni <strong>indipendenti</strong> (l&#39;equazione dell&#39;ultimo nodo è conseguenza delle altre).</li>
+<li>Mancano <span class="m">M = L - (N - 1)</span> equazioni. Scrivile con la legge delle maglie su <span class="m">M</span> maglie <strong>indipendenti</strong>: per essere sicuro che lo siano, ogni nuova maglia deve contenere almeno un ramo che non compare nelle maglie già usate.</li>
+<li>Risolvi il sistema di <span class="m">L</span> equazioni in <span class="m">L</span> incognite.</li>
+<li>Se una corrente risulta <strong>negativa</strong>, scorre nel verso opposto a quello scelto: non è un errore.</li>
 </ol>
+<p>È una linea guida: a seconda del problema conviene cercare le relazioni che semplificano di più il calcolo (per esempio ridurre prima serie e paralleli, o usare direttamente le &quot;correnti di maglia&quot;, una per maglia, che soddisfano già la legge dei nodi).</p>
 <div class="callout esempio">
 
-<p>Rete con 3 nodi e 5 rami: <span class="m">3 - 1 = 2</span> equazioni ai nodi e <span class="m">5 - 3 + 1 = 3</span> equazioni alle maglie. In totale 5 equazioni per 5 correnti.</p>
+<p><strong>Contare le equazioni.</strong> Una rete con 3 nodi e 5 rami ha 5 correnti incognite. Equazioni ai nodi: <span class="m">3 - 1 = 2</span>. Equazioni alle maglie: <span class="m">5 - 3 + 1 = 3</span>. Totale 5 equazioni per 5 incognite.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Due generatori e un ramo centrale.</strong> (esercizio della dispensa) La rete ha tre rami tra due nodi: a sinistra il generatore <span class="m">\mathcal E_1 = 10\,\mathrm V</span> con la resistenza <span class="m">R_1</span> sul tratto superiore, al centro la resistenza <span class="m">R_3</span>, a destra il generatore <span class="m">\mathcal E_2 = 5\,\mathrm V</span> con la resistenza <span class="m">R_2</span> sul tratto superiore. Generatori ideali, tutte le resistenze uguali a <span class="m">R = 4\,\Omega</span>. Trova le correnti in <span class="m">R_2</span> e <span class="m">R_3</span>.</p>
+<ol>
+<li>Uso due correnti di maglia: <span class="m">i_1</span> nella maglia di sinistra (<span class="m">\mathcal E_1</span>, <span class="m">R_1</span>, <span class="m">R_3</span>) e <span class="m">i_2</span> in quella di destra (<span class="m">\mathcal E_2</span>, <span class="m">R_2</span>, <span class="m">R_3</span>), orientate in modo che entrambe attraversino <span class="m">R_3</span> nello stesso verso. In <span class="m">R_3</span> passa quindi <span class="m">i_1 + i_2</span>.</li>
+<li>Maglia sinistra: <span class="m">\mathcal E_1 = (R_1 + R_3)\,i_1 + R_3\,i_2</span>, cioè <span class="m">10 = 8\,i_1 + 4\,i_2</span>.</li>
+<li>Maglia destra: <span class="m">\mathcal E_2 = R_3\,i_1 + (R_2 + R_3)\,i_2</span>, cioè <span class="m">5 = 4\,i_1 + 8\,i_2</span>.</li>
+<li>Moltiplico la seconda per 2: <span class="m">10 = 8\,i_1 + 16\,i_2</span>. Sottraggo la prima: <span class="m">0 = 12\,i_2</span>, quindi <span class="m">i_2 = 0</span>.</li>
+<li>Dalla prima: <span class="m">i_1 = 10/8 = 1{,}25\,\mathrm A</span>. In forma generale: <span class="m">i_1 = \dfrac{2\mathcal E_1 - \mathcal E_2}{3R}</span>, <span class="m">i_2 = \dfrac{2\mathcal E_2 - \mathcal E_1}{3R}</span>.</li>
+<li>Risultati: in <span class="m">R_2</span> (che porta solo <span class="m">i_2</span>) <strong>non circola corrente</strong>; in <span class="m">R_3</span> circola <span class="m">i_1 + i_2 = 1{,}25\,\mathrm A</span>.</li>
+</ol>
+<p>Interpretazione: la tensione su <span class="m">R_3</span> è <span class="m">4 \cdot 1{,}25 = 5\,\mathrm V</span>, proprio uguale a <span class="m">\mathcal E_2</span>; il ramo di destra ha quindi d.d.p. nulla ai capi di <span class="m">R_2</span> e non vi passa corrente.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Tre generatori.</strong> (esercizio della dispensa) Rete a due maglie con i nodi A (in alto) e B (in basso). Ramo centrale tra A e B: la resistenza <span class="m">R_2 = 2\,\Omega</span> in serie con il generatore <span class="m">\mathcal E_2 = 4\,\mathrm V</span>. Ramo di sinistra: generatore <span class="m">\mathcal E_1 = 2\,\mathrm V</span> con due resistenze <span class="m">R_1 = 1\,\Omega</span> (una sopra e una sotto). Ramo di destra: generatore <span class="m">\mathcal E_3 = 4\,\mathrm V</span> con due resistenze <span class="m">R_1</span>. Generatori ideali.</p>
+<ol>
+<li>Correnti di maglia <span class="m">i_1</span> (sinistra) e <span class="m">i_2</span> (destra), con i versi della figura. Le equazioni delle maglie sono:
+<span class="m d">\mathcal E_1 - \mathcal E_2 = (2R_1 + R_2)\,i_1 + R_2\,i_2 \qquad \mathcal E_3 - \mathcal E_2 = R_2\,i_1 + (R_2 + 2R_1)\,i_2</span></li>
+<li>Numeri: <span class="m">-2 = 4\,i_1 + 2\,i_2</span> e <span class="m">0 = 2\,i_1 + 4\,i_2</span>.</li>
+<li>Dalla seconda: <span class="m">i_1 = -2\,i_2</span>. Sostituisco nella prima: <span class="m">-2 = -8\,i_2 + 2\,i_2 = -6\,i_2</span>, quindi <span class="m">i_2 = 0{,}33\,\mathrm A</span> e <span class="m">i_1 = -0{,}67\,\mathrm A</span>.</li>
+<li><span class="m">i_1</span> è negativa: in <span class="m">\mathcal E_1</span> la corrente (0,67 A) scorre in verso opposto a quello scelto, cioè dall&#39;anodo al catodo <strong>dentro</strong> il generatore (il generatore viene &quot;caricato&quot;). In <span class="m">\mathcal E_3</span> e in <span class="m">\mathcal E_2</span> la corrente scorre dal catodo all&#39;anodo (0,33 A in <span class="m">\mathcal E_3</span>).</li>
+<li>Tensione tra i nodi, lungo il ramo centrale: <span class="m">V_A - V_B = R_2\,(i_1 + i_2) + \mathcal E_2 = 2 \cdot (-0{,}33) + 4 \approx 3{,}33\,\mathrm V</span>.</li>
+</ol>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Resistenza vista dal generatore.</strong> (esercizio della dispensa) Rete &quot;a scala&quot;: il generatore <span class="m">E = 10\,\mathrm V</span> alimenta <span class="m">R_1 = 3\,\Omega</span> in serie; poi <span class="m">R_2 = 4\,\Omega</span> verso il ritorno; poi <span class="m">R_3 = 2\,\Omega</span> in serie, poi <span class="m">R_4 = 6\,\Omega</span> verso il ritorno; infine <span class="m">R_5 = 1\,\Omega</span> in serie e <span class="m">R_6 = 2\,\Omega</span> che chiude verso il ritorno. Trova <span class="m">R_{eq}</span> e la corrente erogata.</p>
+<ol>
+<li>Parto dal fondo: <span class="m">R_5</span> e <span class="m">R_6</span> sono in serie (<span class="m">3\,\Omega</span>), e questa serie è in parallelo con <span class="m">R_4</span>: <span class="m">R' = \dfrac{3 \cdot 6}{3 + 6} = 2\,\Omega</span>.</li>
+<li><span class="m">R'</span> in serie con <span class="m">R_3</span>: <span class="m">2 + 2 = 4\,\Omega</span>; in parallelo con <span class="m">R_2 = 4\,\Omega</span>: <span class="m">\dfrac{4 \cdot 4}{8} = 2\,\Omega</span>.</li>
+<li>In serie con <span class="m">R_1</span>: <span class="m">R_{eq} = 2 + 3 = 5\,\Omega</span>.</li>
+<li>Corrente erogata: <span class="m">I = E/R_{eq} = 10/5 = 2\,\mathrm A</span>.</li>
+</ol>
 </div>
 
 <div class="callout attenzione">
 
-<p>Non scambiare le due leggi. Nodi = conservazione della <strong>carica</strong> (correnti). Maglie = conservazione dell&#39;<strong>energia</strong>, cioè campo elettrostatico conservativo (tensioni).</p>
+<ul>
+<li>Non confondere le due leggi. <strong>Nodi</strong> → correnti → conservazione della <strong>carica</strong> (densità di corrente solenoidale). <strong>Maglie</strong> → tensioni → campo elettrostatico <strong>conservativo</strong> (conservazione dell&#39;energia).</li>
+<li>I versi delle correnti si scelgono a piacere <strong>prima</strong> di scrivere le equazioni, e poi vanno rispettati in tutte.</li>
+<li>Le equazioni ai nodi indipendenti sono <span class="m">N - 1</span>, non <span class="m">N</span>.</li>
+<li>Una f.e.m. si conta positiva quando si attraversa il generatore dal − al +, <strong>indipendentemente</strong> dal verso della corrente in quel ramo.</li>
+</ul>
 </div>
 
 <h2>Teorema di Thevenin</h2>
-<p>Una rete di resistori e generatori, vista da due suoi punti A e B, si comporta come <strong>un solo generatore</strong> con una resistenza interna.</p>
+<p>Come un insieme di resistori si può sostituire con una resistenza equivalente, così una rete lineare relativamente complessa, purché fatta di resistori lineari e generatori di f.e.m., si può sostituire con un <strong>circuito equivalente</strong> semplice.</p>
+<p><strong>Enunciato.</strong> Data una rete comunque complessa di resistenze e generatori e due suoi punti A e B, dal punto di vista di un circuito esterno (rete &quot;utenza&quot;) collegato tra A e B, la rete equivale a <strong>un unico generatore</strong> con:</p>
 <ul>
-<li>La f.e.m. equivalente è la tensione tra A e B a vuoto, cioè senza carico.</li>
-<li>La resistenza equivalente è quella misurata tra A e B dopo aver sostituito ogni generatore con la sua resistenza interna.</li>
+<li>f.e.m. <span class="m">\mathcal E_{Th}</span> uguale alla <strong>d.d.p. che si misura tra A e B quando la rete utenza non è collegata</strong> (tensione a vuoto);</li>
+<li>resistenza interna <span class="m">r_{Th}</span> uguale alla <strong>resistenza che si misura tra A e B quando ogni generatore è sostituito da un resistore pari alla sua resistenza interna</strong> (per un generatore ideale, da un filo).</li>
 </ul>
-<h2>Ponte di Wheatstone</h2>
-<p>Quattro resistori <span class="m">R_1, R_2, R_3, R_4</span> formano due rami affiancati, collegati al centro da un quinto resistore <span class="m">R_0</span>. Nel resistore centrale non passa corrente se:</p>
+<div class="callout esempio">
+
+<p><strong>Thevenin di un partitore.</strong> Un generatore ideale da 12 V alimenta <span class="m">R_1 = 4\,\Omega</span> e <span class="m">R_2 = 12\,\Omega</span> in serie. A e B sono i capi di <span class="m">R_2</span>, e lì si collega un carico <span class="m">R_L = 6\,\Omega</span>.</p>
+<ol>
+<li>Tensione a vuoto (senza carico): <span class="m">i = 12/16 = 0{,}75\,\mathrm A</span>, <span class="m">\mathcal E_{Th} = R_2\,i = 12 \cdot 0{,}75 = 9\,\mathrm V</span>.</li>
+<li>Resistenza vista da A e B con il generatore sostituito da un filo: <span class="m">R_1</span> e <span class="m">R_2</span> risultano in parallelo, <span class="m">r_{Th} = \dfrac{4 \cdot 12}{16} = 3\,\Omega</span>.</li>
+<li>Corrente nel carico: <span class="m">i_L = \dfrac{\mathcal E_{Th}}{r_{Th} + R_L} = \dfrac{9}{3 + 6} = 1\,\mathrm A</span>.</li>
+<li>Verifica diretta: <span class="m">R_2 \parallel R_L = \dfrac{12 \cdot 6}{18} = 4\,\Omega</span>; totale <span class="m">4 + 4 = 8\,\Omega</span>; corrente nel generatore <span class="m">12/8 = 1{,}5\,\mathrm A</span>; tensione tra A e B <span class="m">1{,}5 \cdot 4 = 6\,\mathrm V</span>; corrente nel carico <span class="m">6/6 = 1\,\mathrm A</span>. Stesso risultato.</li>
+</ol>
+</div>
+
+<h2>Il ponte di Wheatstone</h2>
+<p>Quattro resistori formano due rami affiancati collegati allo stesso generatore <span class="m">\mathcal E</span>: nel ramo di sinistra <span class="m">R_1</span> (sopra) e <span class="m">R_3</span> (sotto), nel ramo di destra <span class="m">R_2</span> (sopra) e <span class="m">R_4</span> (sotto). Un quinto resistore <span class="m">R_0</span> collega i punti di mezzo dei due rami. Il ponte si dice <strong>bilanciato</strong> quando in <span class="m">R_0</span> non passa corrente.</p>
+<p><strong>Dimostrazione semplice.</strong> In <span class="m">R_0</span> non passa corrente se i due punti di mezzo hanno lo stesso potenziale. In quel caso ogni ramo è una semplice serie:</p>
+<ul>
+<li>a sinistra la caduta su <span class="m">R_1</span> è <span class="m">\mathcal E\,\dfrac{R_1}{R_1 + R_3}</span>;</li>
+<li>a destra la caduta su <span class="m">R_2</span> è <span class="m">\mathcal E\,\dfrac{R_2}{R_2 + R_4}</span>.</li>
+</ul>
+<p>Le due cadute devono essere uguali: <span class="m">\dfrac{R_1}{R_1 + R_3} = \dfrac{R_2}{R_2 + R_4}</span>. Moltiplico in croce: <span class="m">R_1R_2 + R_1R_4 = R_1R_2 + R_2R_3</span>, cioè</p>
 <p><span class="m d">R_1 R_4 = R_2 R_3</span></p>
-<p>In questo caso il ponte si dice <strong>bilanciato</strong>. Si usa per misurare una resistenza incognita.</p>
+<p><strong>Dimostrazione della dispensa con Kirchhoff.</strong> Con tre correnti di maglia (<span class="m">i</span> nella maglia del generatore, <span class="m">i_1</span> nella maglia superiore con <span class="m">R_1</span>, <span class="m">R_2</span>, <span class="m">R_0</span>, <span class="m">i_2</span> in quella inferiore con <span class="m">R_3</span>, <span class="m">R_4</span>, <span class="m">R_0</span>) si scrive un sistema di tre equazioni. Risolvendolo con il determinante <span class="m">D</span> dei coefficienti, la corrente in <span class="m">R_0</span> risulta</p>
+<p><span class="m d">i_0 = i_1 - i_2 = \frac{\mathcal E}{D}\,(R_1 R_4 - R_2 R_3)</span></p>
+<p>che si annulla proprio quando <span class="m">R_1R_4 = R_2R_3</span>.</p>
+<p><strong>Uso.</strong> Il ponte serve a <strong>misurare una resistenza incognita</strong>: se per esempio <span class="m">R_4</span> è incognita, si regolano le altre finché in <span class="m">R_0</span> (spesso un galvanometro) non passa corrente, e allora <span class="m">R_4 = R_2R_3/R_1</span>.</p>
 <h2>Strumenti di misura</h2>
-<p>Ogni strumento modifica un po&#39; il circuito che misura.</p>
+<p>Per misurare una grandezza elettrica bisogna collegare uno strumento al circuito, e questo <strong>altera</strong> un po&#39; il circuito e quindi la grandezza misurata.</p>
+<p><strong>Amperometro (misura di corrente).</strong> Si inserisce <strong>in serie</strong> nel ramo di cui si vuole la corrente, così è attraversato dalla stessa corrente. Lo strumento (un galvanometro) ha una sua resistenza interna <span class="m">r_G</span>. In un circuito con un generatore ideale e una resistenza <span class="m">R</span>:</p>
 <ul>
-<li><strong>Amperometro</strong>: misura la corrente. Va <strong>in serie</strong>. Deve avere resistenza interna <strong>molto piccola</strong>, altrimenti riduce la corrente.</li>
-<li><strong>Voltmetro</strong>: misura la tensione. Va <strong>in parallelo</strong>. Deve avere resistenza interna <strong>molto grande</strong>, altrimenti &quot;ruba&quot; corrente al tratto misurato.</li>
+<li>corrente vera, senza strumento: <span class="m">i = \mathcal E/R</span>;</li>
+<li>corrente misurata: <span class="m">i_m = \dfrac{\mathcal E}{R + r_G} &lt; i</span>.</li>
 </ul>
+<p>La misura è sempre un po&#39; più bassa del vero. Un buon amperometro deve avere <strong>resistenza interna molto piccola</strong> (<span class="m">r_G \ll R</span>).</p>
+<p><strong>Voltmetro (misura di tensione).</strong> Si usa un galvanometro con in serie una resistenza tarata <span class="m">R_0</span>: dalla corrente <span class="m">i_m</span> che lo attraversa si risale alla tensione, <span class="m">\Delta V_m = (R_0 + r_G)\,i_m</span>. Si collega <strong>in parallelo</strong> ai due punti di cui si vuole la d.d.p. Se il tratto da misurare ha resistenza <span class="m">R</span> ed è attraversato dalla corrente <span class="m">i</span>, con il voltmetro in parallelo la resistenza del tratto diventa <span class="m">\dfrac{R\,(R_0 + r_G)}{R + R_0 + r_G}</span> e la tensione misurata è</p>
+<p><span class="m d">\Delta V_m = R\,i\,\frac{R_0 + r_G}{R + R_0 + r_G} = \frac{R\,i}{1 + R/(R_0 + r_G)} &lt; R\,i</span></p>
+<p>Anche qui la misura è un po&#39; più bassa del vero, e si avvicina al valore vero tanto più quanto vale <span class="m">R \ll R_0 + r_G</span>. Un buon voltmetro deve avere <strong>resistenza interna molto grande</strong>, così &quot;ruba&quot; pochissima corrente al tratto misurato.</p>
+<table>
+<thead>
+<tr>
+<th>Strumento</th>
+<th>Misura</th>
+<th>Collegamento</th>
+<th>Resistenza interna ideale</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Amperometro</td>
+<td>corrente</td>
+<td>in serie</td>
+<td>molto piccola (→ 0)</td>
+</tr>
+<tr>
+<td>Voltmetro</td>
+<td>d.d.p.</td>
+<td>in parallelo</td>
+<td>molto grande (→ ∞)</td>
+</tr>
+</tbody></table>
 <div class="callout esame">
 
-<p>Nelle aperte chiedono di enunciare le due leggi di Kirchhoff. Per ciascuna: enunciato, formula, da quale principio deriva (carica per i nodi, campo conservativo per le maglie) e le convenzioni di segno.</p>
+<p><strong>Aperte</strong> (&quot;enunciare le leggi di Kirchhoff per i circuiti lineari&quot;, &quot;esporre le leggi dei circuiti elettrici&quot;). Traccia:</p>
+<ol>
+<li>Definire rete, nodo (almeno tre conduttori), ramo (una sola corrente), maglia (percorso chiuso).</li>
+<li>Prima legge (nodi): in regime stazionario <span class="m">\sum_k i_k = 0</span>, con segni opposti per correnti entranti e uscenti; deriva dalla conservazione della carica (flusso di <span class="m">\vec j</span> nullo su una superficie chiusa attorno al nodo).</li>
+<li>Seconda legge (maglie): fissato un verso di percorrenza, <span class="m">\sum \mathcal E_i = \sum R_k i_k</span>; f.e.m. positiva se attraversata da − a +, termine <span class="m">Ri</span> positivo se la corrente è concorde al verso; deriva da <span class="m">\oint \vec E_s \cdot d\vec l = 0</span> (campo elettrostatico conservativo).</li>
+<li>Uso: con <span class="m">N</span> nodi e <span class="m">L</span> rami si scrivono <span class="m">N - 1</span> equazioni ai nodi e <span class="m">L - N + 1</span> alle maglie indipendenti; una corrente negativa ha verso opposto a quello scelto.</li>
+<li>Per &quot;le leggi dei circuiti&quot; aggiungere la legge di Ohm <span class="m">V = Ri</span>, serie e parallelo, ed eventualmente Thevenin.</li>
+</ol>
 </div>
 
 <div class="callout sintesi">
 
 <ul>
-<li>Nodo, ramo, maglia: gli elementi di una rete.</li>
-<li>Legge dei nodi: <span class="m">\sum I = 0</span>, conservazione della carica.</li>
-<li>Legge delle maglie: <span class="m">\sum \mathcal E = \sum RI</span>, dal campo elettrostatico conservativo.</li>
-<li>Con <span class="m">n</span> nodi e <span class="m">m</span> rami: <span class="m">n - 1</span> equazioni ai nodi e <span class="m">m - n + 1</span> alle maglie.</li>
-<li>Corrente negativa = verso reale opposto a quello scelto.</li>
-<li>Amperometro in serie (r piccola), voltmetro in parallelo (r grande).</li>
+<li>Modello a parametri concentrati: fili senza resistenza ed equipotenziali; nodo (≥ 3 conduttori), ramo (una corrente), maglia (percorso chiuso).</li>
+<li>Legge dei nodi: <span class="m">\sum i_k = 0</span>, dalla conservazione della carica.</li>
+<li>Legge delle maglie: <span class="m">\sum \mathcal E = \sum R i</span>, dal campo elettrostatico conservativo; segni rispetto al verso di percorrenza.</li>
+<li><span class="m">N</span> nodi, <span class="m">L</span> rami: <span class="m">N - 1</span> equazioni ai nodi e <span class="m">L - N + 1</span> alle maglie; corrente negativa = verso opposto.</li>
+<li>Thevenin: rete tra A e B = generatore con f.e.m. a vuoto e resistenza vista con i generatori sostituiti dalle loro resistenze interne.</li>
+<li>Ponte di Wheatstone bilanciato se <span class="m">R_1R_4 = R_2R_3</span>.</li>
+<li>Amperometro in serie, <span class="m">r</span> piccola; voltmetro in parallelo, <span class="m">r</span> grande; entrambi danno misure un po&#39; più basse del vero.</li>
 </ul>
 </div>

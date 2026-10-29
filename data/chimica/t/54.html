@@ -1,140 +1,259 @@
 <h1 id="lez-54">Lezione 54 — Diagrammi di stato, parte 1: curve di raffreddamento delle sostanze pure</h1>
 <h2 id="lez-54-perche">Perché questa lezione esiste</h2>
-<p>Sapere a che temperatura un metallo solidifica, e quanto tempo ci vuole, è alla
-base di tutta la metallurgia: dalla colata dell&#39;acciaio in un impianto
-siderurgico alla saldatura. Questa lezione riprende il concetto di calore
-latente e transizione di fase a temperatura costante già visto in <a href="#/teoria/chimica/29/lez-29">Lezione
-29</a> e lo applica alla solidificazione, introducendo il caso più ricco —
-il ferro — che ha <strong>più transizioni di fase da solido a solido</strong>.</p>
-<h2 id="lez-54-curva-raffreddamento">Curva di raffreddamento di una sostanza pura</h2>
-<p>Una massa <span class="m">m</span> di sostanza pura, liquida a temperatura <span class="m">T_1</span>, viene raffreddata
-sottraendo calore a velocità costante <span class="m">Q^*</span> (negativa, perché è calore ceduto).
-La curva temperatura-tempo ha tre tratti:</p>
+<p>Sapere a che temperatura un metallo solidifica, e quanto tempo ci vuole, è alla base di tutta la metallurgia: dalla
+colata dell&#39;acciaio in un impianto siderurgico alla saldatura. Questa lezione (dispensa &quot;Diagrammi di stato — Parte
+1&quot;) apre il blocco sui <strong>diagrammi di stato liquido–solido</strong> (Lezioni 54–57), che serviranno per le leghe metalliche e
+in particolare per acciai e ghise (Lezioni 58–60).</p>
+<p>Riprende il concetto di calore latente e di transizione di fase a temperatura costante già visto in <a href="#/teoria/chimica/29/lez-29">Lezione
+29</a> e lo applica:</p>
 <ol>
-<li><strong>Raffreddamento del liquido</strong>: <span class="m">T</span> scende linearmente nel tempo (se il
-calore specifico <span class="m">c_{P,L}</span> è costante), con pendenza negativa proporzionale
-a <span class="m">Q^*</span>.</li>
-<li><strong>Solidificazione</strong>: raggiunta la temperatura di fusione <span class="m">T_2</span>, la
-temperatura <strong>resta costante</strong>. Come già visto per i passaggi di stato in
-<a href="#/teoria/chimica/29/lez-29">Lezione 29</a>, durante una transizione di fase tutto il calore
-sottratto va a cambiare la fase, non la temperatura. La durata di questo
-tratto è:
-<span class="m d">\Delta t = \frac{m\,\lambda_{sol}}{|Q^*|}</span></li>
-<li><strong>Raffreddamento del solido</strong>: terminata la solidificazione, <span class="m">T</span> riprende a
-scendere linearmente (con <span class="m">c_{P,S}</span>, in generale diverso da <span class="m">c_{P,L}</span>) fino
-al valore finale <span class="m">T_4</span>.</li>
+<li>alla <strong>curva di raffreddamento</strong> di una sostanza pura (temperatura in funzione del tempo);</li>
+<li>al caso del <strong>ferro puro</strong>, che oltre alla solidificazione ha più <strong>transizioni di fase da solido a solido</strong>;</li>
+<li>a due esercizi di bilancio energetico (tempo di fusione con potenza costante, tempo di solidificazione per
+irraggiamento).</li>
 </ol>
+<p>La dispensa allega anche una tabella di proprietà fisiche dei metalli (densità, calore specifico, conducibilità,
+temperatura di fusione…), utile come fonte di dati per gli esercizi.</p>
+<h2 id="lez-54-curva-raffreddamento">Curva di raffreddamento di una sostanza pura</h2>
+<p><strong>Situazione.</strong> Una massa <span class="m">m</span> di sostanza pura si trova <strong>liquida</strong> alla temperatura <span class="m">T_1</span>. La si raffredda
+sottraendo calore a <strong>velocità costante</strong> <span class="m">Q^*</span> (una potenza, in W = J/s o kcal/s). Per convenzione <span class="m">Q^* &lt; 0</span>, perché
+è calore <strong>ceduto</strong> dal liquido all&#39;ambiente.</p>
+<p>La <strong>curva di raffreddamento</strong> è il grafico della temperatura <span class="m">T</span> in funzione del tempo <span class="m">t</span>. Ha tre tratti.</p>
+<p><strong>1. Raffreddamento del liquido</strong> (da <span class="m">T_1</span> a <span class="m">T_2</span>). Il calore sottratto abbassa la temperatura del liquido. In un
+tempo <span class="m">dt</span> si sottrae il calore <span class="m">Q^*\,dt</span>, che produce una variazione di temperatura <span class="m">dT</span> secondo
+<span class="m">m\,c_{P,L}\,dT = Q^*\,dt</span>, quindi
+<span class="m d">\frac{dT}{dt} = \frac{Q^*}{m\,c_{P,L}}</span>
+dove <span class="m">c_{P,L}</span> è il calore specifico del liquido (J kg⁻¹ K⁻¹). Se <span class="m">c_{P,L}</span> è <strong>costante con la temperatura</strong>, la
+pendenza è costante e la curva è una <strong>retta</strong>; la pendenza è <strong>negativa</strong> perché <span class="m">Q^* &lt; 0</span>. Più è grande <span class="m">|Q^*|</span>
+(raffreddamento più energico), più la retta è ripida.</p>
+<p><strong>2. Solidificazione</strong> (a <span class="m">T_2</span>, temperatura di solidificazione = di fusione). Raggiunta <span class="m">T_2</span> inizia il passaggio di
+stato. Come visto nella <a href="#/teoria/chimica/29/lez-29">Lezione 29</a>, durante una transizione di fase <strong>la temperatura resta costante</strong>: tutto
+il calore sottratto serve a trasformare liquido in solido (calore latente), non ad abbassare la temperatura. Sulla
+curva compare un <strong>tratto orizzontale</strong>. Il calore totale da sottrarre è <span class="m">m\,\lambda_{sol}</span> (<span class="m">\lambda_{sol}</span> = calore
+latente di solidificazione, J/kg o kcal/kg, uguale in valore a quello di fusione); sottraendolo alla velocità
+costante <span class="m">|Q^*|</span>, la durata del tratto è:
+<span class="m d">\Delta t = \frac{m\,\lambda_{sol}}{|Q^*|}</span>
+La durata del gradino è quindi <strong>proporzionale alla massa</strong> e <strong>inversamente proporzionale alla velocità di
+raffreddamento</strong>.</p>
+<p><strong>3. Raffreddamento del solido</strong> (da <span class="m">T_2</span> al valore finale <span class="m">T_4</span>). Terminato il passaggio di stato, l&#39;ulteriore
+sottrazione di calore raffredda il solido. La temperatura scende di nuovo <strong>linearmente</strong> (se il calore specifico
+del solido <span class="m">c_{P,S}</span> è costante), con pendenza <span class="m">Q^*/(m\,c_{P,S})</span>, in generale <strong>diversa</strong> da quella del liquido
+perché <span class="m">c_{P,S} \neq c_{P,L}</span>.</p>
+<table>
+<thead>
+<tr>
+<th>Tratto</th>
+<th>Cosa succede</th>
+<th>Forma della curva</th>
+<th>Grandezza che conta</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>liquido</td>
+<td>il liquido si raffredda</td>
+<td>retta in discesa</td>
+<td><span class="m">c_{P,L}</span></td>
+</tr>
+<tr>
+<td>solidificazione</td>
+<td>coesistono liquido e solido</td>
+<td><strong>orizzontale</strong> a <span class="m">T_2</span></td>
+<td><span class="m">\lambda_{sol}</span>, durata <span class="m">m\lambda/|Q^*|</span></td>
+</tr>
+<tr>
+<td>solido</td>
+<td>il solido si raffredda</td>
+<td>retta in discesa</td>
+<td><span class="m">c_{P,S}</span></td>
+</tr>
+</tbody></table>
 <div class="callout attenzione">
 
-<p>Il tratto orizzontale della curva <strong>non è un&#39;ipotesi aggiuntiva</strong>: è una
-conseguenza diretta del fatto che durante una transizione di fase a pressione
-costante il calore scambiato è tutto calore latente. È lo stesso principio già
-usato per il gesso (<a href="#/teoria/chimica/51/lez-51-decomposizione">Lezione 51</a>) e per il calcare
-(<a href="#/teoria/chimica/50/lez-50-decomposizione">Lezione 50</a>): finché coesistono due fasi in equilibrio,
-la temperatura è bloccata.</p>
+<p>Il tratto orizzontale della curva <strong>non è un&#39;ipotesi aggiuntiva</strong>: è una conseguenza diretta del fatto che durante una
+transizione di fase a pressione costante il calore scambiato è tutto calore latente. Per una sostanza pura (un
+componente) con due fasi in equilibrio, la regola delle fasi (<a href="#/teoria/chimica/36/lez-36-regola-fasi">Lezione 36</a>) a pressione fissata
+dà varianza <span class="m">V = C - F + 1 = 1 - 2 + 1 = 0</span>: la temperatura non può cambiare finché coesistono le due fasi. È lo
+stesso principio già usato per il gesso (<a href="#/teoria/chimica/51/lez-51-decomposizione">Lezione 51</a>) e per il calcare (<a href="#/teoria/chimica/50/lez-50-decomposizione">Lezione
+50</a>). Le curve di raffreddamento servono proprio a questo: dai &quot;gradini&quot; si leggono le
+temperature delle transizioni, ed è così che si costruiscono sperimentalmente i diagrammi di stato.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Pendenza del tratto liquido</strong> (esempio di applicazione, non della dispensa). 10 kg di alluminio liquido
+(<span class="m">c_{P,L} \approx 0.26</span> kcal kg⁻¹ °C⁻¹) cedono 1 kW = 0.239 kcal/s:
+<span class="m d">\frac{dT}{dt} = \frac{-0.239\ \mathrm{kcal/s}}{10\ \mathrm{kg}\times0.26\ \mathrm{kcal\,kg^{-1}\,°C^{-1}}} = -0.092\ \mathrm{°C/s}</span>
+cioè circa 5.5 °C al minuto. Raddoppiando la massa la pendenza si dimezza.</p>
 </div>
 
 <h2 id="lez-54-ferro">Il caso del ferro puro: più transizioni in cascata</h2>
-<p>Il ferro è un esempio particolarmente ricco perché, oltre alla solidificazione,
-presenta <strong>transizioni solido-solido</strong>. Raffreddando ferro liquido:</p>
+<p>Il ferro è un esempio particolarmente ricco perché, oltre alla solidificazione, presenta <strong>transizioni solido-solido</strong>:
+il solido cambia il modo in cui gli atomi sono impacchettati (o le sue proprietà magnetiche) a temperature precise.
+Ognuna di queste transizioni produce un nuovo <strong>gradino orizzontale</strong> sulla curva di raffreddamento, esattamente come
+la solidificazione. Raffreddando ferro liquido:</p>
 <ul>
-<li><strong>1539 °C</strong>: solidificazione. Si forma <strong>ferro δ</strong>, struttura cubica a corpo
-centrato (CCC).</li>
-<li><strong>1394 °C</strong>: il ferro δ (CCC) si trasforma in <strong>ferro γ</strong>, struttura cubica a
-facce centrate (CFC). Transizione tra due fasi solide, ma è comunque una
-transizione di fase a tutti gli effetti: la temperatura resta costante finché
-dura.</li>
-<li><strong>910 °C</strong>: il ferro γ si trasforma in <strong>ferro β</strong> (di nuovo CCC),
-paramagnetico.</li>
-<li><strong>770 °C</strong>: il ferro β si trasforma in <strong>ferro α</strong>. Stessa struttura CCC del
-ferro β (nessun cambio di reticolo), ma cambia il comportamento magnetico: da
-paramagnetico a <strong>ferromagnetico</strong>.</li>
+<li>Sopra <strong>1539 °C</strong> il ferro è liquido.</li>
+<li><strong>1539 °C</strong>: solidificazione, a temperatura costante. Si forma <strong>ferro δ</strong>, atomi impacchettati in una struttura
+<strong>cubica a corpo centrato (CCC)</strong>: un atomo a ogni vertice del cubo e uno al centro.</li>
+<li><strong>1394 °C</strong> (circa 1400 °C): nuova transizione di fase, che coinvolge però <strong>due fasi solide</strong>: il ferro δ (CCC) si
+trasforma in <strong>ferro γ</strong>, struttura <strong>cubica a facce centrate (CFC)</strong>: un atomo a ogni vertice e uno al centro di
+ogni faccia. Anche qui la temperatura resta costante finché dura la trasformazione; al termine può di nuovo
+diminuire.</li>
+<li><strong>910 °C</strong>: il ferro γ (CFC) si trasforma in <strong>ferro β</strong>, di nuovo <strong>CCC</strong>, con comportamento <strong>paramagnetico</strong>.</li>
+<li><strong>770 °C</strong>: ultima transizione: il ferro β si trasforma in <strong>ferro α</strong>, <strong>mantenendo la stessa struttura CCC</strong> ma
+acquisendo un comportamento <strong>ferromagnetico</strong>.</li>
 </ul>
+<table>
+<thead>
+<tr>
+<th>Temperatura</th>
+<th>Transizione</th>
+<th>Struttura prima → dopo</th>
+<th>Cosa cambia</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1539 °C</td>
+<td>liquido → Fe δ</td>
+<td>— → CCC</td>
+<td>solidificazione</td>
+</tr>
+<tr>
+<td>1394 °C</td>
+<td>Fe δ → Fe γ</td>
+<td>CCC → CFC</td>
+<td>reticolo cristallino</td>
+</tr>
+<tr>
+<td>910 °C</td>
+<td>Fe γ → Fe β</td>
+<td>CFC → CCC</td>
+<td>reticolo cristallino</td>
+</tr>
+<tr>
+<td>770 °C</td>
+<td>Fe β → Fe α</td>
+<td>CCC → CCC</td>
+<td>solo il magnetismo (para → ferro)</td>
+</tr>
+</tbody></table>
+<p>La curva di raffreddamento del ferro puro ha quindi <strong>quattro tratti orizzontali</strong> (1539, 1394, 910, 770 °C) separati
+da tratti in discesa.</p>
+<p><strong>Paramagnetico e ferromagnetico.</strong> Un materiale <strong>paramagnetico</strong> si magnetizza debolmente solo in presenza di un
+campo esterno e perde la magnetizzazione quando il campo è tolto. Un materiale <strong>ferromagnetico</strong> (come il ferro a
+temperatura ambiente) ha i momenti magnetici atomici allineati spontaneamente in regioni estese: è fortemente attratto
+dai magneti e può diventare un magnete permanente.</p>
 <div class="callout attenzione">
 
-<p><strong>La temperatura di Curie.</strong> 770 °C è la temperatura di Curie del ferro: la
-soglia sotto la quale il materiale diventa ferromagnetico. È una transizione di
-fase anche se <strong>non cambia la struttura cristallina</strong> (resta CCC in entrambi i
-casi) — la fase termodinamica non è definita solo dalla geometria del reticolo,
-ma da qualunque proprietà che cambi in modo discontinuo, incluso l&#39;ordinamento
-magnetico. Un punto facile da sbagliare in una domanda aperta: &quot;cambio di fase&quot;
-non implica sempre &quot;cambio di struttura cristallina&quot;.</p>
+<p><strong>La temperatura di Curie.</strong> Si chiama <strong>temperatura di Curie</strong> la temperatura <strong>al di sotto della quale</strong> un
+materiale ha comportamento ferromagnetico: per il ferro è <strong>770 °C</strong>. Il passaggio da ferro β paramagnetico a ferro α
+ferromagnetico è una <strong>transizione di fase</strong> anche se <strong>non cambia la struttura cristallina</strong> (resta CCC) — la fase
+termodinamica non è definita solo dalla geometria del reticolo, ma da qualunque proprietà che cambi a una
+temperatura precisa, incluso l&#39;ordinamento magnetico. Errori tipici: pensare che &quot;cambio di fase&quot; implichi sempre
+&quot;cambio di struttura cristallina&quot;; attribuire il cambio CCC→CFC alla transizione β→α (è la δ→γ); confondere l&#39;ordine
+(scendendo: δ, γ, β, α — l&#39;alfabeto greco all&#39;indietro).</p>
 </div>
 
-<p>Questa sequenza (δ → γ → β → α, quattro fasi solide distinte più il liquido) è
-il motivo per cui il diagramma di stato del ferro puro, da solo, è già
-interessante: le leghe ferro-carbonio delle Lezioni 58–59 erediteranno questa
-struttura a più fasi.</p>
+<p>Questa sequenza (δ → γ → β → α, quattro fasi solide distinte più il liquido) è il motivo per cui il diagramma di stato
+del ferro puro è già interessante da solo: le leghe ferro-carbonio delle Lezioni 58–59 erediteranno questa struttura
+a più fasi (il ferro γ CFC, per esempio, è quello che scioglie molto carbonio).</p>
 <div class="callout esempio">
 
-<p><strong>Tempo di fusione di un blocco di alluminio.</strong> 10 kg di alluminio solido, già
-alla temperatura di fusione (660 °C), riceve una potenza di 1 kW. Calore latente
-di fusione: <span class="m">\lambda_{fus}=64.6\ \mathrm{kcal/kg}</span>.</p>
-<p>Tutta la potenza fornita va a fondere il materiale (temperatura costante durante
-la fusione):
-<span class="m d">Q_{fus}=m\lambda_{fus} = |Q^*|\,\Delta t \quad\Rightarrow\quad
-\Delta t = \frac{m\lambda_{fus}}{|Q^*|}</span></p>
-<p>Convertendo <span class="m">1\ \mathrm{kW}=1\ \mathrm{kJ/s}=0.239\ \mathrm{kcal/s}</span>:
-<span class="m d">\Delta t = \frac{10\ \mathrm{kg}\times64.6\ \mathrm{kcal/kg}}{0.239\ \mathrm{kcal/s}}
-\approx2073\ \mathrm s \approx 0.58\ \mathrm h\ (34\ \mathrm{min}\ 33\ \mathrm s)</span></p>
+<p><strong>Tempo di fusione di un blocco di alluminio</strong> (sessione 1 della dispensa). Un blocco di alluminio di 10 kg, ancora
+solido, è appena sotto la sua temperatura di fusione (660 °C). La temperatura arriva a 660 °C e il materiale comincia
+a fondere. Quanto tempo serve per fonderlo tutto se la potenza fornita è 1 kW? Calore latente di fusione:
+<span class="m">\lambda_{fus}=64.6\ \mathrm{kcal/kg}</span>.</p>
+<p><strong>Passo 1 — bilancio.</strong> Durante la fusione la temperatura è costante: tutta l&#39;energia fornita va a fondere il
+materiale. Se <span class="m">\Delta t</span> è il tempo per la fusione completa:
+<span class="m d">Q_{fus}=m\lambda_{fus} = Q^*\,\Delta t \quad\Rightarrow\quad \Delta t = \frac{m\lambda_{fus}}{Q^*}</span></p>
+<p><strong>Passo 2 — calore totale.</strong> <span class="m">m\lambda_{fus} = 10\ \mathrm{kg}\times64.6\ \mathrm{kcal/kg} = 646\ \mathrm{kcal}</span>.</p>
+<p><strong>Passo 3 — unità coerenti.</strong> <span class="m">1\ \mathrm{kW}=1\ \mathrm{kJ/s}</span> e <span class="m">1\ \mathrm{kJ} = 0.239\ \mathrm{kcal}</span>, quindi
+<span class="m">1\ \mathrm{kW} = 0.239\ \mathrm{kcal/s}</span>.</p>
+<p><strong>Passo 4 — tempo.</strong>
+<span class="m d">\Delta t = \frac{646\ \mathrm{kcal}}{0.239\ \mathrm{kcal/s}} = 2703\ \mathrm s \approx 0.75\ \mathrm h\ (45\ \mathrm{min}\ 3\ \mathrm s)</span>
+Controprova in unità SI: <span class="m">646\times4.187 = 2705</span> kJ; <span class="m">2705\ \mathrm{kJ} / 1\ \mathrm{kJ/s} = 2705</span> s.</p>
+<p><em>Nota sulla dispensa</em>: la dispensa riporta 2073 s (0.58 h, 34 min 33 s), ma è un errore di calcolo (cifre invertite):
+<span class="m">646/0.239 = 2703</span> s. Il metodo è identico.</p>
 </div>
 
 <div class="callout esempio">
 
-<p><strong>Solidificazione di una barra d&#39;acciaio per irraggiamento.</strong> Una barra
-cilindrica (<span class="m">D=50\ \mathrm{cm}</span>, <span class="m">L=5\ \mathrm m</span>) di acciaio liquido a
-<span class="m">1536\,^\circ\mathrm C</span> (<span class="m">T=1809\ \mathrm K</span>) perde calore solo per
-irraggiamento, secondo la legge di <strong>Stefan-Boltzmann</strong> <span class="m">I=\sigma T^4</span>
-(<span class="m">\sigma=5.67\times10^{-8}\ \mathrm{W\,m^{-2}\,K^{-4}}</span>). Calore latente di
-fusione del ferro <span class="m">\lambda=65\ \mathrm{kcal/kg}</span>, densità <span class="m">\rho=7.87\
-\mathrm{kg/dm^3}</span>. Quanto tempo serve perché il fronte solido raggiunga metà del
-diametro iniziale?</p>
-<p><strong>Passo 1 — bilancio energetico.</strong> Si trascura l&#39;irraggiamento dalle basi del
-cilindro (area laterale <span class="m">7.854\ \mathrm{m^2}\gg</span> area di base <span class="m">0.1964\
-\mathrm{m^2}</span>), riducendo il problema a scambio radiale unidimensionale.
-L&#39;energia irraggiata dalla superficie laterale in un tempo <span class="m">\Delta t</span> eguaglia
-il calore di solidificazione della corona circolare tra diametro <span class="m">D</span> (esterno,
-fisso) e <span class="m">d</span> (fronte solido, che avanza):</p>
-<p><span class="m d">(\pi D L)\,\sigma T^4\,\Delta t = \frac{\pi}{4}(D^2-d^2)\,L\,\rho\,\lambda</span></p>
-<p><strong>Passo 2 — isolare <span class="m">\Delta t</span></strong> e imporre <span class="m">d=D/2</span>:
-<span class="m d">\Delta t = \frac{\rho\lambda(D^2-d^2)}{4\,\sigma T^4\,D} = \frac{3\rho\lambda D}{16\,\sigma T^4}</span></p>
-<p><strong>Passo 3 — numeri</strong> (convertendo <span class="m">\lambda</span> in J/kg: <span class="m">65\times10^3\times4.187</span>):
-<span class="m d">\Delta t = \frac{3\times0.5\ \mathrm m\times7.87\times10^3\ \mathrm{kg/m^3}
-\times65\times10^3\times4.187\ \mathrm{J/kg}}{16\times5.67\times10^{-8}\
-\mathrm{W\,m^{-2}\,K^{-4}}\times(1809\ \mathrm K)^4} \approx330.7\ \mathrm s</span></p>
-<p>Poco più di 5 minuti perché il fronte di solidificazione raggiunga metà
-diametro — un tempo sorprendentemente breve, che spiega perché in siderurgia il
-raffreddamento per irraggiamento non è trascurabile nella progettazione dei
-tempi di colata.</p>
+<p><strong>Tempo di solidificazione di un blocco di rame.</strong> 5 kg di rame alla temperatura di fusione cedono 800 W;
+<span class="m">\lambda = 49.0</span> kcal/kg. <span class="m">800\ \mathrm W = 0.8\times0.239 = 0.1912</span> kcal/s; <span class="m">Q = 5\times49.0 = 245</span> kcal;
+<span class="m">\Delta t = 245/0.1912 \approx 1281\ \mathrm s \approx 21.4</span> min.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Solidificazione di una barra d&#39;acciaio per irraggiamento</strong> (sessione 2 della dispensa). L&#39;acciaio prodotto in un
+impianto siderurgico è colato in barre cilindriche di diametro <span class="m">D=50\ \mathrm{cm}</span> e lunghezza <span class="m">L=5\ \mathrm m</span>. Il
+liquido è a <span class="m">1536\,^\circ\mathrm C</span> (<span class="m">T=1536+273=1809\ \mathrm K</span>) e a quella temperatura cede energia
+all&#39;ambiente essenzialmente per <strong>irraggiamento</strong>. La potenza emessa per unità di superficie è data dalla legge di
+<strong>Stefan-Boltzmann</strong>:
+<span class="m d">I=\sigma T^4,\qquad \sigma=5.67\times10^{-8}\ \mathrm{W\,m^{-2}\,K^{-4}}</span>
+(<span class="m">I</span> in W/m², <span class="m">T</span> temperatura assoluta in kelvin). Quanto tempo impiega la barra a solidificare per <strong>metà del
+proprio diametro</strong>, supponendo che parte solida e parte liquida siano entrambe a 1536 °C? Calore latente di fusione
+del ferro <span class="m">\lambda=65\ \mathrm{kcal/kg}</span>, densità <span class="m">\rho=7.87\ \mathrm{kg/dm^3} = 7870\ \mathrm{kg/m^3}</span>.</p>
+<p>Immagine: il cilindro solidifica dall&#39;esterno verso l&#39;interno; un guscio solido (corona circolare) circonda un nucleo
+ancora liquido di diametro <span class="m">d</span> che si restringe nel tempo. Si vuole il tempo perché <span class="m">d</span> passi da <span class="m">D</span> = 50 cm a
+<span class="m">D/2</span> = 25 cm.</p>
+<p><strong>Passo 1 — semplificazione geometrica.</strong> Si trascura l&#39;irraggiamento dalle due basi:
+<span class="m d">A_{base} = \frac{\pi D^2}{4} = \frac{\pi\,(0.5)^2}{4} = 0.1964\ \mathrm{m^2} \qquad A_{laterale} = \pi D L = \pi\times0.5\times5 = 7.854\ \mathrm{m^2}</span>
+Le due basi insieme sono il 5% della superficie laterale. Lo scambio di calore si può quindi trattare come
+<strong>unidimensionale in direzione radiale</strong>.</p>
+<p><strong>Passo 2 — bilancio energetico.</strong> Energia irraggiata dalla superficie laterale nel tempo <span class="m">\Delta t</span> = calore
+rilasciato dalla solidificazione della massa contenuta nella corona circolare tra <span class="m">D</span> e <span class="m">d</span>:
+<span class="m d">\underbrace{(\pi D L)\,\sigma T^4\,\Delta t}_{\text{energia irraggiata}} = \underbrace{\frac{\pi}{4}(D^2-d^2)\,L\,\rho\,\lambda}_{\text{calore di solidificazione}}</span>
+A sinistra: potenza per unità di superficie × superficie × tempo. A destra: volume della corona
+<span class="m">\frac{\pi}{4}(D^2-d^2)L</span> × densità = massa solidificata, × calore latente. La superficie che irraggia resta quella
+esterna (fissa, diametro <span class="m">D</span>), perché anche il solido è a 1536 °C.</p>
+<p><strong>Passo 3 — isolare <span class="m">\Delta t</span>.</strong> Si semplificano <span class="m">\pi</span> e <span class="m">L</span>:
+<span class="m d">\Delta t = \frac{\rho\lambda(D^2-d^2)}{4\,\sigma T^4\,D}</span></p>
+<p><strong>Passo 4 — imporre <span class="m">d=D/2</span>.</strong> <span class="m">D^2 - D^2/4 = \tfrac34 D^2</span>, quindi
+<span class="m d">\Delta t = \frac{\rho\lambda\,\tfrac34 D^2}{4\,\sigma T^4\,D} = \frac{3\rho\lambda D}{16\,\sigma T^4}</span></p>
+<p><strong>Passo 5 — numeri</strong> (tutto in SI: <span class="m">\lambda = 65\ \mathrm{kcal/kg} = 65\times10^3\times4.187 = 2.72\times10^5\ \mathrm{J/kg}</span>):</p>
+<ul>
+<li>numeratore: <span class="m">3\times0.5\times7870\times2.72\times10^5 = 3.213\times10^9</span> (J/m²);</li>
+<li><span class="m">T^4 = 1809^4 = 1.071\times10^{13}\ \mathrm{K^4}</span>, quindi <span class="m">\sigma T^4 = 6.07\times10^5\ \mathrm{W/m^2}</span>;</li>
+<li>denominatore: <span class="m">16\times6.07\times10^5 = 9.715\times10^6</span> (W/m²);
+<span class="m d">\Delta t = \frac{3.213\times10^9}{9.715\times10^6} \approx 330.7\ \mathrm s</span></li>
+</ul>
+<p>Poco più di 5 minuti perché il fronte di solidificazione raggiunga metà diametro: a quelle temperature
+l&#39;irraggiamento (<span class="m">\propto T^4</span>) è enorme (oltre 600 kW per metro quadrato), per questo non è trascurabile nella
+progettazione dei tempi di colata.</p>
 </div>
 
 <div class="callout attenzione">
 
-<p>In questo esercizio l&#39;incognita compare sia dentro <span class="m">(D^2-d^2)</span> sia come vincolo
-<span class="m">d=D/2</span>: la sostituzione va fatta <strong>dopo</strong> aver isolato <span class="m">\Delta t</span>
-algebricamente, non prima — altrimenti si perde la struttura dell&#39;equazione e
-diventa facile sbagliare segno nel maneggiare l&#39;esponente 4 di Stefan-Boltzmann.</p>
+<p>In questo esercizio conviene isolare <span class="m">\Delta t</span> <strong>in forma letterale</strong> e sostituire <span class="m">d=D/2</span> e i numeri solo alla
+fine: si evitano errori con l&#39;esponente 4. Errori tipici: usare la temperatura in °C invece che in kelvin nella legge
+di Stefan-Boltzmann (sbagliatissimo: <span class="m">T^4</span> esige la temperatura assoluta); dimenticare di convertire kcal in J e
+kg/dm³ in kg/m³; usare la superficie del fronte (diametro <span class="m">d</span>) invece di quella esterna che irraggia.</p>
+</div>
+
+<div class="callout esame">
+
+<p><strong>Come cade all&#39;esame.</strong> Il paniere non contiene domande su questa lezione; gli esercizi extra chiedono:</p>
+<ul>
+<li>perché la curva ha un tratto orizzontale (transizione di fase: il calore sottratto è tutto latente, T costante);</li>
+<li>la formula del tempo di solidificazione <span class="m">\Delta t = m\lambda/|Q^*|</span> e il suo uso con potenza data (attenzione alla
+conversione kW → kcal/s);</li>
+<li>la sequenza delle fasi del ferro puro con temperature e strutture;</li>
+<li>la transizione β→α a 770 °C (temperatura di Curie): cambia il magnetismo, non la struttura.</li>
+</ul>
+<p><strong>Allenati qui:</strong> Extra 115 · Extra 116 · Extra 189 ·
+Extra 190 · Extra 191 · Extra 192</p>
 </div>
 
 <div class="callout sintesi">
 
 <ul>
-<li>Curva di raffreddamento di una sostanza pura: liquido (lineare) → solidificazione
-(temperatura costante, <span class="m">\Delta t=m\lambda/|Q^*|</span>) → solido (lineare).</li>
-<li>Il ferro puro ha 4 fasi solide in sequenza (δ CCC → γ CFC → β CCC → α CCC),
-con la transizione β→α (770 °C, temperatura di Curie) che cambia solo il
-comportamento magnetico, non la struttura cristallina.</li>
-<li>Il bilancio energetico per calcolare tempi di fusione/solidificazione segue
-sempre lo stesso schema: energia fornita/rimossa = massa × calore latente.</li>
+<li>Curva di raffreddamento di una sostanza pura: liquido (retta, pendenza <span class="m">Q^*/mc_{P,L}</span>) → solidificazione
+(orizzontale, <span class="m">\Delta t=m\lambda/|Q^*|</span>) → solido (retta, pendenza <span class="m">Q^*/mc_{P,S}</span>).</li>
+<li>Durante una transizione di fase T resta costante: i gradini della curva danno le temperature di transizione.</li>
+<li>Ferro puro: liquido →(1539 °C) δ CCC →(1394 °C) γ CFC →(910 °C) β CCC paramagnetico →(770 °C) α CCC
+ferromagnetico. 770 °C = temperatura di Curie: transizione di fase senza cambio di reticolo.</li>
+<li>Bilancio energetico: energia fornita/sottratta = massa × calore latente; con irraggiamento
+<span class="m">\pi D L\,\sigma T^4\,\Delta t = \tfrac{\pi}{4}(D^2-d^2)L\rho\lambda</span>, T in kelvin.</li>
 </ul>
-</div>
-
-<div class="callout esame">
-
-<p><strong>Come cade all&#39;esame.</strong> Aspettati esercizi di bilancio energetico simili a
-quelli sopra (potenza costante o legge di Stefan-Boltzmann), e domande aperte
-sulla sequenza delle fasi del ferro puro — in particolare sulla distinzione tra
-transizione di fase con e senza cambio di struttura cristallina.</p>
-<p><strong>Allenati qui:</strong> Extra 115 · Extra 116 · Extra 189 ·
-Extra 190 · Extra 191 · Extra 192</p>
 </div>

@@ -1,66 +1,113 @@
-<h1>Lezione 08 — Moto circolare uniforme</h1>
+<h1>Lezione 08 — Moto circolare uniforme e moti curvilinei</h1>
+<p>Questa lezione approfondisce il <strong>moto circolare</strong>, introdotto alla fine della lezione 7. Si definiscono con precisione periodo, frequenza e velocità angolare, si distingue la velocità angolare dalla velocità periferica, si ricava l&#39;accelerazione centripeta anche con le coordinate cartesiane e la si estende a qualsiasi traiettoria curva tramite il <strong>raggio di curvatura</strong>. Si vede poi il <strong>moto circolare vario</strong> (accelerazione angolare) e la <strong>notazione vettoriale</strong> (<span class="m">\vec v = \vec\omega\times\vec r</span>). Chiude il ripasso della cinematica (dispensa 08). I <strong>moti relativi</strong>, che la dispensa 07 tratta subito dopo, sono l&#39;argomento della lezione successiva.</p>
 <h2>Il moto circolare uniforme</h2>
-<p>Un punto gira su una circonferenza di raggio <span class="m">R</span> con velocità di modulo costante.</p>
+<p>Un punto si muove su una <strong>circonferenza</strong> di raggio <span class="m">R</span> con velocità di <strong>modulo costante</strong>.</p>
 <ul>
 <li>Il <strong>modulo</strong> della velocità non cambia.</li>
-<li>La <strong>direzione</strong> della velocità cambia sempre: è tangente alla circonferenza.</li>
-<li>Quindi c&#39;è un&#39;accelerazione, diretta <strong>verso il centro</strong>.</li>
+<li>La <strong>direzione</strong> della velocità cambia di continuo: è sempre <strong>tangente</strong> alla circonferenza.</li>
+<li>Quindi c&#39;è un&#39;accelerazione, ed è solo <strong>centripeta</strong> (diretta verso il centro), perché la componente tangenziale (che cambierebbe il modulo) è nulla.</li>
 </ul>
+<p>È anche un moto <strong>periodico</strong>: il punto ripassa per la stessa posizione a intervalli regolari.</p>
+<h3>Legge oraria in coordinate polari</h3>
+<p>Conviene descrivere il moto in coordinate polari con l&#39;origine nel centro: la distanza <span class="m">r = R</span> è fissa e cambia solo l&#39;angolo <span class="m">\theta(t)</span>.</p>
+<p>Lungo la traiettoria la velocità scalare <span class="m">v</span> è costante, quindi l&#39;<strong>ascissa curvilinea</strong> segue la legge del moto uniforme:
+<span class="m d">s(t) = s_0 + v\,t</span>
+L&#39;arco e l&#39;angolo (in radianti) sono legati da <span class="m">s = R\,\theta</span>; per spostamenti piccolissimi <span class="m">ds = v\,dt = R\,d\theta</span>. Dividendo per <span class="m">R</span>:
+<span class="m d">\theta(t) = \theta_0 + \omega\,t \qquad \text{con} \qquad \omega = \frac{d\theta}{dt} = \frac{v}{R}</span>
+dove <span class="m">\theta_0</span> è l&#39;angolo all&#39;istante <span class="m">t = 0</span>. La legge oraria dell&#39;angolo è <strong>lineare</strong>, proprio come quella della posizione nel moto rettilineo uniforme: <span class="m">\omega</span> fa la parte della velocità.</p>
 <h2>Periodo, frequenza, pulsazione</h2>
 <ul>
-<li><strong>Periodo</strong> <span class="m">T</span>: il tempo per fare un giro. Unità SI: secondo.</li>
-<li><strong>Frequenza</strong> <span class="m">f = 1/T</span>: i giri fatti in un secondo. Unità: hertz, <span class="m">\mathrm{Hz} = \mathrm{s^{-1}}</span>.</li>
-<li><strong>Velocità angolare</strong> (o <strong>pulsazione</strong>) <span class="m">\omega</span>: l&#39;angolo spazzato al secondo, in rad/s.</li>
+<li><strong>Periodo</strong> <span class="m">T</span>: il <strong>tempo impiegato a fare un giro completo</strong>. Unità SI: <strong>secondo</strong> (s).</li>
+<li><strong>Frequenza</strong> <span class="m">f</span> (indicata anche con <span class="m">\nu</span>): il <strong>numero di giri compiuti in un secondo</strong>. È l&#39;inverso del periodo:
+<span class="m d">f = \frac{1}{T}</span>
+Unità: <strong>hertz</strong>, <span class="m">1\,\mathrm{Hz} = 1\,\mathrm{s^{-1}}</span> (un giro al secondo).</li>
+<li><strong>Velocità angolare</strong> (o <strong>pulsazione</strong>) <span class="m">\omega</span>: l&#39;<strong>angolo spazzato in un secondo</strong>, in <strong>rad/s</strong>. In un periodo il raggio spazza un giro, cioè <span class="m">2\pi</span> radianti, quindi
+<span class="m d">\omega = \frac{2\pi}{T} = 2\pi f \qquad T = \frac{1}{f} = \frac{2\pi}{\omega}</span></li>
 </ul>
-<p><span class="m d">\omega = \frac{2\pi}{T} = 2\pi f</span>
-dove <span class="m">2\pi</span> è l&#39;angolo di un giro in radianti.</p>
-<p>La legge oraria dell&#39;angolo è lineare, come nel moto rettilineo uniforme:
-<span class="m d">\theta(t) = \theta_0 + \omega\,t</span>
-dove <span class="m">\theta_0</span> è l&#39;angolo a <span class="m">t = 0</span>.</p>
+<p>Periodo breve ⇔ frequenza alta ⇔ velocità angolare grande.</p>
 <div class="callout esempio">
 
+<p><strong>Le lancette di un orologio.</strong></p>
 <ul>
-<li>Lancette: secondi <span class="m">T = 60\,\mathrm s</span>; minuti <span class="m">T = 3600\,\mathrm s</span>; ore <span class="m">T = 43\,200\,\mathrm s</span>. Periodo più breve = frequenza più alta: vince la lancetta dei secondi.</li>
-<li>Disco a 45 giri/min: <span class="m">f = 45/60 = 0{,}75\,\mathrm{Hz}</span>, <span class="m">T = 1/0{,}75 \approx 1{,}3\,\mathrm s</span>.</li>
+<li>Secondi: un giro in <span class="m">T = 60\,\mathrm s</span> ⇒ <span class="m">f = 1/60 \approx 0{,}0167\,\mathrm{Hz}</span>, <span class="m">\omega = 2\pi/60 \approx 0{,}105\,\mathrm{rad/s}</span>.</li>
+<li>Minuti: <span class="m">T = 60\,\mathrm{min} = 3600\,\mathrm s</span> ⇒ <span class="m">f \approx 2{,}8\cdot 10^{-4}\,\mathrm{Hz}</span>.</li>
+<li>Ore: un giro del quadrante in <span class="m">12\,\mathrm h = 43\,200\,\mathrm s</span> ⇒ <span class="m">f \approx 2{,}3\cdot 10^{-5}\,\mathrm{Hz}</span>.</li>
 </ul>
+<p>Il periodo più breve è quello della lancetta dei secondi, che quindi gira con la <strong>frequenza maggiore</strong>.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Disco a 45 giri al minuto.</strong> In un secondo fa <span class="m">45/60 = 0{,}75</span> giri: <span class="m">f = 0{,}75\,\mathrm{Hz}</span>. Periodo:
+<span class="m d">T = \frac{1}{0{,}75} \approx 1{,}33\,\mathrm s \approx 1{,}3\,\mathrm s</span>
+(oppure: <span class="m">60\,\mathrm s / 45\ \text{giri} = 1{,}33\,\mathrm s</span> a giro).</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>La Terra che ruota su se stessa</strong> (dalla dispensa). Un giro (<span class="m">2\pi</span>) in un giorno, <span class="m">T = 24\,\mathrm h = 86\,400\,\mathrm s</span>:
+<span class="m d">\omega = \frac{2\pi}{86\,400} \approx 7{,}27\cdot 10^{-5}\,\mathrm{rad/s}</span></p>
 </div>
 
 <h2>Velocità angolare e velocità periferica</h2>
-<p>Sono due cose diverse.</p>
+<p>Sono <strong>due grandezze diverse</strong>, da non confondere.</p>
 <ul>
-<li><strong>Velocità angolare</strong> <span class="m">\omega</span> (rad/s): quanto angolo si spazza al secondo. È uguale per tutti i punti di un corpo rigido che ruota.</li>
-<li><strong>Velocità periferica</strong> (o tangenziale) <span class="m">v</span> (m/s): quanta strada fa il punto al secondo lungo la circonferenza. Cresce con la distanza dal centro.</li>
+<li><strong>Velocità angolare</strong> <span class="m">\omega</span> (rad/s): <strong>quanto angolo</strong> spazza il raggio in un secondo. In un corpo rigido che ruota (un disco, una ruota, una lancetta) è <strong>la stessa per tutti i punti</strong>: in un giro tutti spazzano <span class="m">2\pi</span> nello stesso tempo.</li>
+<li><strong>Velocità periferica</strong> (o tangenziale, o lineare) <span class="m">v</span> (m/s): <strong>quanta strada</strong> fa il punto in un secondo lungo la circonferenza. È un vettore <strong>tangente</strong> alla traiettoria. <strong>Cresce con la distanza dal centro</strong>.</li>
 </ul>
-<p>Il legame:
-<span class="m d">v = \omega\,R = \frac{2\pi R}{T} = 2\pi R f</span>
+<p>Il legame si ricava pensando a un giro: il punto percorre la circonferenza <span class="m">2\pi R</span> nel tempo <span class="m">T</span>, quindi
+<span class="m d">v = \frac{2\pi R}{T} = 2\pi R f = \omega\,R</span>
 dove:</p>
 <ul>
 <li><span class="m">v</span> = velocità periferica (m/s);</li>
-<li><span class="m">R</span> = raggio (m);</li>
-<li><span class="m">\omega</span> = velocità angolare (rad/s).</li>
+<li><span class="m">R</span> = raggio, cioè distanza del punto dal centro di rotazione (m);</li>
+<li><span class="m">\omega</span> = velocità angolare (rad/s); <span class="m">T</span> = periodo (s); <span class="m">f</span> = frequenza (Hz).</li>
 </ul>
-<p>Perché: in un giro il punto fa <span class="m">2\pi R</span> in un tempo <span class="m">T</span>.</p>
+<p>A parità di <span class="m">\omega</span>, i punti più lontani dall&#39;asse sono più veloci: sulla lancetta di un orologio la punta è più veloce dei punti vicino al perno; su una giostra chi sta al bordo va più veloce di chi sta al centro, anche se fanno un giro nello stesso tempo.</p>
 <div class="callout esempio">
 
+<p><strong>Ruota panoramica</strong>, raggio <span class="m">R = 50\,\mathrm m</span>, un giro in <span class="m">T = 60\,\mathrm s</span>:
+<span class="m d">v = \frac{2\pi R}{T} = \frac{2\pi\cdot 50}{60} = \frac{314{,}2}{60} \approx 5{,}24\,\mathrm{m/s}</span></p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Velocità da <span class="m">\omega</span> e raggio.</strong></p>
 <ul>
-<li>Ruota panoramica, <span class="m">R = 50\,\mathrm m</span>, <span class="m">T = 60\,\mathrm s</span>: <span class="m">v = 2\pi\cdot 50/60 \approx 5{,}24\,\mathrm{m/s}</span>.</li>
-<li>Asta di 1,02 m che ruota a 12 rad/s attorno a un estremo: l&#39;altro estremo va a <span class="m">12\cdot 1{,}02 = 12{,}24\,\mathrm{m/s}</span>.</li>
-<li>Lancetta dei secondi lunga 4 cm: <span class="m">\omega \approx 0{,}105\,\mathrm{rad/s}</span>, <span class="m">v = 0{,}105\cdot 0{,}04 \approx 0{,}0042\,\mathrm{m/s}</span>.</li>
-<li><span class="m">\omega = 0{,}66\,\mathrm{rad/s}</span>, <span class="m">R = 30\,\mathrm m</span>: <span class="m">v \approx 20\,\mathrm{m/s}</span>. Al contrario <span class="m">\omega = 20/30 \approx 0{,}66\,\mathrm{rad/s}</span>.</li>
-<li><span class="m">R = 6\,\mathrm m</span>, un giro in 8 s: <span class="m">v = 2\pi\cdot 6/8 \approx 4{,}71\,\mathrm{m/s}</span>.</li>
-<li><span class="m">f = 10\,\mathrm{Hz}</span>, <span class="m">R = 0{,}4\,\mathrm m</span>: <span class="m">v = 2\pi\cdot 0{,}4\cdot 10 \approx 25{,}1\,\mathrm{m/s}</span>.</li>
-<li>Valvola di una ruota di diametro 50 cm a 12,56 m/s. Circonferenza <span class="m">\pi\cdot 0{,}5 \approx 1{,}57\,\mathrm m</span>. Un giro dura <span class="m">1{,}57/12{,}56 = 0{,}125\,\mathrm s</span>.</li>
+<li>Asta lunga <span class="m">102\,\mathrm{cm} = 1{,}02\,\mathrm m</span> che ruota attorno a un estremo a <span class="m">12\,\mathrm{rad/s}</span>: l&#39;altro estremo è a distanza <span class="m">1{,}02\,\mathrm m</span> dall&#39;asse, quindi <span class="m">v = \omega R = 12\cdot 1{,}02 = 12{,}24\,\mathrm{m/s}</span>. (Attenzione a convertire i centimetri in metri.)</li>
+<li>Lancetta dei secondi lunga <span class="m">4\,\mathrm{cm} = 0{,}04\,\mathrm m</span>: <span class="m">\omega = 2\pi/60 \approx 0{,}105\,\mathrm{rad/s}</span>, <span class="m">v = 0{,}105\cdot 0{,}04 \approx 0{,}0042\,\mathrm{m/s}</span> (4,2 mm al secondo).</li>
+<li><span class="m">\omega = 0{,}66\,\mathrm{rad/s}</span> su un raggio di <span class="m">30\,\mathrm m</span>: <span class="m">v = 0{,}66\cdot 30 = 19{,}8 \approx 20\,\mathrm{m/s}</span>.</li>
+<li>Al contrario, <span class="m">v = 20\,\mathrm{m/s}</span> su <span class="m">R = 30\,\mathrm m</span>: <span class="m">\omega = v/R = 20/30 \approx 0{,}66\,\mathrm{rad/s}</span> (0,667).</li>
 </ul>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Velocità da periodo o frequenza.</strong></p>
+<ul>
+<li>Circonferenza di raggio <span class="m">6\,\mathrm m</span> percorsa in <span class="m">8\,\mathrm s</span>: <span class="m">v = 2\pi\cdot 6/8 = 37{,}7/8 \approx 4{,}71\,\mathrm{m/s}</span>.</li>
+<li>Frequenza <span class="m">10\,\mathrm{Hz}</span> su raggio <span class="m">40\,\mathrm{cm} = 0{,}4\,\mathrm m</span>: <span class="m">v = 2\pi R f = 2\pi\cdot 0{,}4\cdot 10 \approx 25{,}1\,\mathrm{m/s}</span>.</li>
+</ul>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>La valvola della bicicletta.</strong> La valvola gira a <span class="m">12{,}56\,\mathrm{m/s}</span> su una ruota di <strong>diametro</strong> <span class="m">50\,\mathrm{cm}</span> (raggio <span class="m">0{,}25\,\mathrm m</span>). Quanto dura un giro?</p>
+<ol>
+<li>Circonferenza: <span class="m">2\pi R = \pi d = \pi\cdot 0{,}5 \approx 1{,}57\,\mathrm m</span>.</li>
+<li>Periodo: <span class="m">T = \dfrac{2\pi R}{v} = \dfrac{1{,}57}{12{,}56} = 0{,}125\,\mathrm s</span>.</li>
+</ol>
+<p>(Errore frequente: usare il diametro come raggio e ottenere il doppio.)</p>
 </div>
 
 <div class="callout attenzione">
 
-<p>Non confondere le unità: <span class="m">\omega</span> in rad/s, <span class="m">v</span> in m/s, <span class="m">f</span> in Hz, <span class="m">T</span> in s. Un&#39;opzione come &quot;0,105 m/s&quot; per la velocità angolare è sbagliata per l&#39;unità.</p>
+<p>Non confondere le unità: <span class="m">\omega</span> in <strong>rad/s</strong>, <span class="m">v</span> in <strong>m/s</strong>, <span class="m">f</span> in <strong>Hz</strong>, <span class="m">T</span> in <strong>s</strong>. Un valore come &quot;0,105 m/s&quot; per la velocità angolare della lancetta è sbagliato per l&#39;unità, anche se il numero è giusto. E l&#39;unità SI del periodo è il <strong>secondo</strong> (non l&#39;hertz, che è della frequenza).</p>
 </div>
 
 <h2>Accelerazione centripeta</h2>
-<p>Nel moto circolare uniforme l&#39;unica accelerazione è quella <strong>centripeta</strong>. È sempre diretta <strong>verso il centro</strong>, perpendicolare alla velocità. Cambia la direzione della velocità, non il suo modulo.</p>
-<p><span class="m d">a_c = \frac{v^2}{R} = \omega^2 R = \omega\,v</span>
+<p>Nel moto circolare uniforme il modulo della velocità è costante, quindi l&#39;unica componente dell&#39;accelerazione è quella <strong>centripeta</strong>: diretta normalmente alla traiettoria, cioè <strong>verso il centro</strong>, <strong>perpendicolare alla velocità</strong>. Cambia la direzione della velocità, non il suo modulo.
+<span class="m d">a_c = \frac{v^2}{R} = \omega^2 R = \omega\,v</span>
 dove:</p>
 <ul>
 <li><span class="m">a_c</span> = accelerazione centripeta (m/s²);</li>
@@ -68,66 +115,204 @@ dove:</p>
 <li><span class="m">R</span> = raggio (m);</li>
 <li><span class="m">\omega</span> = velocità angolare (rad/s).</li>
 </ul>
-<p>Il modulo è costante, la direzione ruota con il punto.</p>
+<p>Le tre forme sono equivalenti: basta sostituire <span class="m">v = \omega R</span> (per esempio <span class="m">v^2/R = \omega^2R^2/R = \omega^2R</span>). Il <strong>modulo è costante</strong>, la <strong>direzione ruota</strong> con il punto.</p>
+<h3>Derivazione in coordinate cartesiane</h3>
+<p>Con il centro nell&#39;origine e <span class="m">\theta = \omega t + \theta_0</span>, la posizione è
+<span class="m d">x(t) = R\cos(\omega t + \theta_0) \qquad y(t) = R\sin(\omega t + \theta_0)</span>
+Derivando una volta (regola della catena, la derivata di <span class="m">\omega t + \theta_0</span> è <span class="m">\omega</span>):
+<span class="m d">v_x = -\omega R\sin(\omega t + \theta_0) \qquad v_y = \omega R\cos(\omega t + \theta_0)</span>
+Il modulo è <span class="m">\sqrt{\omega^2R^2(\sin^2 + \cos^2)} = \omega R</span>, come atteso, e la velocità è perpendicolare al raggio (il loro prodotto scalare <span class="m">x v_x + y v_y</span> vale zero). Derivando ancora:
+<span class="m d">a_x = -\omega^2 R\cos(\omega t + \theta_0) = -\omega^2 x \qquad a_y = -\omega^2 R\sin(\omega t + \theta_0) = -\omega^2 y</span>
+cioè, in forma vettoriale,
+<span class="m d">\vec a = -\omega^2\,\vec r</span>
+Il segno meno dice che l&#39;accelerazione è <strong>opposta al vettore posizione</strong>, quindi diretta <strong>verso il centro</strong>; il modulo è <span class="m">\omega^2 R</span>. È la conferma della formula ottenuta geometricamente nella lezione 7.</p>
+<p>(Nota: la proiezione del moto circolare uniforme su un asse, <span class="m">x(t) = R\cos(\omega t + \theta_0)</span>, è un moto avanti e indietro con <span class="m">a_x = -\omega^2 x</span>: è il <strong>moto armonico</strong>, studiato più avanti nel corso.)</p>
 <div class="callout esempio">
 
+<p><strong>Calcoli di accelerazione centripeta.</strong></p>
 <ul>
-<li><span class="m">v = 10\,\mathrm{m/s}</span>, <span class="m">R = 50\,\mathrm m</span>: <span class="m">a_c = 100/50 = 2\,\mathrm{m/s^2}</span>.</li>
-<li>Ruota panoramica: <span class="m">a_c = 5{,}24^2/50 \approx 0{,}55\,\mathrm{m/s^2}</span>.</li>
-<li>La Luna (<span class="m">T = 27{,}3</span> giorni <span class="m">= 2{,}36\cdot 10^6\,\mathrm s</span>, <span class="m">r = 3{,}82\cdot 10^8\,\mathrm m</span>): <span class="m">a = r(2\pi/T)^2 \approx 2{,}7\cdot 10^{-3}\,\mathrm{m/s^2}</span>.</li>
+<li><span class="m">v = 10\,\mathrm{m/s}</span> su <span class="m">R = 50\,\mathrm m</span>: <span class="m">a_c = 100/50 = 2\,\mathrm{m/s^2}</span>.</li>
+<li>Ruota panoramica (<span class="m">v = 5{,}24\,\mathrm{m/s}</span>, <span class="m">R = 50\,\mathrm m</span>): <span class="m">a_c = 5{,}24^2/50 = 27{,}4/50 \approx 0{,}55\,\mathrm{m/s^2}</span>. Oppure <span class="m">\omega = 2\pi/60 = 0{,}105\,\mathrm{rad/s}</span> e <span class="m">a_c = \omega^2R = 0{,}01097\cdot 50 \approx 0{,}55\,\mathrm{m/s^2}</span>.</li>
 </ul>
 </div>
 
-<p><strong>La forza che serve.</strong> Per tenere un corpo di massa <span class="m">m</span> in moto circolare serve una forza verso il centro (tensione di un cavo, attrito, gravità). Per la seconda legge di Newton:
-<span class="m d">F_c = m\,a_c = \frac{m\,v^2}{R}</span>
-dove <span class="m">m</span> = massa (kg) e <span class="m">F_c</span> = forza centripeta (N).</p>
 <div class="callout esempio">
 
-<p>Massa di 1 kg su un cerchio di 2 m a 10 m/s, trattenuta da un cavo: <span class="m">F = 1\cdot 100/2 = 50\,\mathrm N</span>.</p>
+<p><strong>L&#39;accelerazione della Luna</strong> (dalla dispensa). La Luna fa un giro attorno alla Terra in <span class="m">27{,}3</span> giorni su un&#39;orbita circa circolare di raggio <span class="m">r = 3{,}82\cdot 10^5\,\mathrm{km}</span>.</p>
+<ol>
+<li>Periodo in secondi: <span class="m">T = 27{,}3\cdot 86\,400 \approx 2{,}36\cdot 10^6\,\mathrm s</span>.</li>
+<li>Raggio in metri: <span class="m">r = 3{,}82\cdot 10^8\,\mathrm m</span>.</li>
+<li><span class="m">\omega = 2\pi/T = 6{,}283/2{,}36\cdot 10^6 \approx 2{,}66\cdot 10^{-6}\,\mathrm{rad/s}</span>.</li>
+<li><span class="m">a = \omega^2 r = r\left(\dfrac{2\pi}{T}\right)^2 = 3{,}82\cdot 10^8\cdot 7{,}08\cdot 10^{-12} \approx 2{,}7\cdot 10^{-3}\,\mathrm{m/s^2}</span>.</li>
+</ol>
+<p>È circa <span class="m">1/3600</span> di <span class="m">g</span>: la gravità terrestre, a quella distanza (60 raggi terrestri), è indebolita di <span class="m">60^2</span> volte.</p>
+</div>
+
+<h3>La forza che serve</h3>
+<p>Per la seconda legge di Newton (<span class="m">\vec F = m\vec a</span>), per tenere un corpo di massa <span class="m">m</span> su una circonferenza serve una <strong>forza risultante diretta verso il centro</strong> (forza centripeta):
+<span class="m d">F_c = m\,a_c = \frac{m\,v^2}{R} = m\,\omega^2 R</span>
+dove <span class="m">m</span> = massa (kg) e <span class="m">F_c</span> in newton. Questa forza è fornita da qualcosa di concreto: la tensione di un filo o di un cavo, l&#39;attrito delle gomme in curva, la gravità per la Luna e i pianeti. Se la forza sparisce, il corpo prosegue in linea retta lungo la tangente.</p>
+<div class="callout esempio">
+
+<p>Una massa di <span class="m">1\,\mathrm{kg}</span> percorre una circonferenza di raggio <span class="m">2\,\mathrm m</span> a <span class="m">10\,\mathrm{m/s}</span>, trattenuta da un cavo. La tensione del cavo (la forza esercitata su di esso) è
+<span class="m d">F = \frac{m\,v^2}{R} = \frac{1\cdot 10^2}{2} = 50\,\mathrm N</span></p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>La palla da baseball dopo la battuta.</strong> Dopo che la palla ha lasciato la mazza, trascurando l&#39;aria, l&#39;unica forza che agisce è il <strong>peso</strong>: <span class="m">a = F/m = mg/m = g</span>. L&#39;accelerazione <strong>non dipende</strong> dalla forza impressa dal battitore: quella forza agisce solo durante il contatto e determina la velocità iniziale (quindi gittata e altezza), poi cessa.</p>
 </div>
 
 <h2>Accelerazione tangenziale e centripeta nei moti curvi</h2>
-<p>In un moto curvo qualsiasi l&#39;accelerazione ha due componenti:</p>
+<p>Un tratto piccolissimo di una traiettoria curva qualsiasi si può approssimare con un arco di circonferenza: quella che meglio si adatta alla curva in quel punto, detta <strong>cerchio osculatore</strong>. Il suo raggio è il <strong>raggio di curvatura</strong> <span class="m">R</span> della traiettoria in quel punto (piccolo dove la curva è stretta, infinito in un tratto rettilineo); il suo centro è il <strong>centro di curvatura</strong>. Allora l&#39;espressione dell&#39;accelerazione centripeta vale per <strong>qualsiasi moto curvo</strong>, con <span class="m">R</span> = raggio di curvatura locale.</p>
+<p>In un moto curvilineo qualunque l&#39;accelerazione ha due componenti (lezione 5):</p>
 <ul>
-<li><strong>tangenziale</strong> <span class="m">a_t = \dfrac{dv}{dt}</span>: lungo la velocità. Cambia il <strong>modulo</strong> della velocità. È zero se il modulo è costante.</li>
-<li><strong>centripeta</strong> (normale) <span class="m">a_n = \dfrac{v^2}{R}</span>: perpendicolare alla velocità, verso il centro di curvatura. Cambia la <strong>direzione</strong>. <span class="m">R</span> è il <strong>raggio di curvatura</strong>: il raggio del cerchio che meglio si adatta alla traiettoria in quel punto.</li>
+<li><strong>tangenziale</strong> <span class="m">a_t = \dfrac{dv}{dt}</span>: diretta lungo la tangente (parallela o antiparallela alla velocità); descrive la variazione del <strong>modulo</strong> della velocità; è nulla se e solo se il punto si muove con velocità costante in modulo;</li>
+<li><strong>centripeta</strong> (o normale) <span class="m">a_n = \dfrac{v^2}{R}</span>: perpendicolare alla velocità, diretta verso il <strong>centro di curvatura</strong>; descrive la variazione della <strong>direzione</strong> della velocità; è nulla solo nei tratti rettilinei.</li>
 </ul>
-<p>L&#39;accelerazione totale ha modulo <span class="m">a = \sqrt{a_t^2 + a_n^2}</span>.</p>
+<p>L&#39;accelerazione totale è <span class="m">\vec a = \vec a_t + \vec a_n</span>, con modulo
+<span class="m d">a = \sqrt{a_t^2 + a_n^2}</span>
+Casi limite: nel <strong>moto circolare uniforme</strong> c&#39;è solo <span class="m">a_n</span>; nel <strong>moto rettilineo vario</strong> c&#39;è solo <span class="m">a_t</span>; nel moto rettilineo uniforme nessuna delle due.</p>
+<p>Formula inversa utile: noti <span class="m">v</span> e <span class="m">a_n</span> in un punto, il raggio di curvatura è <span class="m">R = v^2/a_n</span>.</p>
 <div class="callout esempio">
 
-<p>Un proiettile nel punto più alto ha velocità orizzontale <span class="m">v_x</span> e accelerazione <span class="m">g</span> verticale. Lì <span class="m">g</span> è tutta normale, quindi <span class="m">R = v_x^2/g</span>. Con <span class="m">v_0 = 2\,\mathrm{m/s}</span> a 45°: <span class="m">R = (2\cos 45°)^2/9{,}8 \approx 0{,}2\,\mathrm m</span>.</p>
+<p><strong>Raggio di curvatura nel punto più alto</strong> (esercizio della dispensa 08). Un proiettile è lanciato dall&#39;origine a <span class="m">v_0 = 2\,\mathrm{m/s}</span>, a <span class="m">45°</span> con l&#39;asse <span class="m">x</span>. In quale punto l&#39;accelerazione normale è massima, e quanto vale lì il raggio di curvatura?</p>
+<ol>
+<li>L&#39;accelerazione totale è sempre <span class="m">\vec g</span>, verticale. La sua componente normale è massima quando la normale alla traiettoria è parallela a <span class="m">\vec g</span>, cioè quando la velocità è orizzontale: nel <strong>punto di massima quota</strong> <span class="m">P</span>. Lì tutta <span class="m">g</span> è normale: <span class="m">a_n = g</span> (e <span class="m">a_t = 0</span>).</li>
+<li>In <span class="m">P</span> la componente verticale della velocità è nulla, quindi <span class="m">v = v_x = v_0\cos\theta = 2\cos 45° = 2\cdot 0{,}707 \approx 1{,}41\,\mathrm{m/s}</span>.</li>
+<li><span class="m d">R = \frac{v^2}{a_n} = \frac{(v_0\cos\theta)^2}{g} = \frac{4\cdot\frac12}{9{,}8} = \frac{2}{9{,}8} \approx 0{,}2\,\mathrm m</span>
+Controllo dimensionale: <span class="m">\dfrac{(\mathrm{m/s})^2}{\mathrm{m/s^2}} = \dfrac{\mathrm{m^2/s^2}}{\mathrm{m/s^2}} = \mathrm m</span>.</li>
+</ol>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Raggio di curvatura dopo 2 s</strong> (esercizio della dispensa 08). Un proiettile è sparato orizzontalmente a <span class="m">v_0 = 30\,\mathrm{m/s}</span>. Qual è il raggio di curvatura della traiettoria <span class="m">2\,\mathrm s</span> dopo il lancio?</p>
+<ol>
+<li>Velocità dopo 2 s: <span class="m">v_x = 30\,\mathrm{m/s}</span>, <span class="m">v_y = g\,t = 9{,}8\cdot 2 = 19{,}6\,\mathrm{m/s}</span> (verso il basso). Modulo <span class="m">v = \sqrt{900 + 384} = \sqrt{1284} \approx 35{,}8\,\mathrm{m/s}</span>.</li>
+<li>Componente normale di <span class="m">\vec g</span>: <span class="m">\vec g</span> è verticale e forma con la normale alla traiettoria lo stesso angolo che la velocità forma con l&#39;orizzontale. Quindi <span class="m">a_n = g\cos\beta = g\,\dfrac{v_x}{v} = 9{,}8\cdot\dfrac{30}{35{,}8} \approx 8{,}2\,\mathrm{m/s^2}</span>.</li>
+<li><span class="m d">R = \frac{v^2}{a_n} = \frac{v^3}{g\,v_x} = \frac{1284\cdot 35{,}8}{9{,}8\cdot 30} \approx \frac{46\,000}{294} \approx 157\,\mathrm m</span></li>
+</ol>
+<p>All&#39;istante del lancio (<span class="m">v = v_x</span>, <span class="m">a_n = g</span>) il raggio sarebbe <span class="m">30^2/9{,}8 \approx 92\,\mathrm m</span>: la parabola si &quot;apre&quot; man mano che il corpo scende. La componente tangenziale di <span class="m">g</span>, <span class="m">g\,v_y/v \approx 5{,}4\,\mathrm{m/s^2}</span>, fa crescere il modulo della velocità.</p>
 </div>
 
 <h2>Moto circolare vario</h2>
-<p>Se <span class="m">\omega</span> cambia nel tempo, si definisce l&#39;<strong>accelerazione angolare</strong>:
-<span class="m d">\alpha = \frac{d\omega}{dt} \qquad a_t = \alpha R</span>
-dove <span class="m">\alpha</span> si misura in rad/s².</p>
-<p>Con <span class="m">\alpha</span> costante valgono formule uguali a quelle del moto rettilineo:
-<span class="m d">\omega = \omega_0 + \alpha t \qquad \theta = \theta_0 + \omega_0 t + \tfrac12\alpha t^2</span>
-Anche <span class="m">a_c = \omega^2 R</span> diventa variabile.</p>
+<p>Se il modulo della velocità cambia, c&#39;è anche l&#39;<strong>accelerazione tangenziale</strong> <span class="m">a_T = dv/dt</span>. Ad essa è legata l&#39;<strong>accelerazione angolare</strong>, che misura quanto rapidamente cambia la velocità angolare:
+<span class="m d">\alpha = \frac{d\omega}{dt} = \frac{d^2\theta}{dt^2} \qquad a_T = \frac{dv}{dt} = \frac{d(\omega R)}{dt} = \alpha\,R</span>
+dove <span class="m">\alpha</span> si misura in <strong>rad/s²</strong>.</p>
+<p>Nota la legge oraria dell&#39;angolo <span class="m">\theta(t)</span>, il moto circolare si tratta <strong>con le stesse relazioni del moto rettilineo</strong>, con <span class="m">\theta</span> al posto di <span class="m">x</span>, <span class="m">\omega</span> al posto di <span class="m">v</span> e <span class="m">\alpha</span> al posto di <span class="m">a</span>. Con <span class="m">\alpha</span> <strong>costante</strong>:
+<span class="m d">\omega(t) = \omega_0 + \alpha\,t \qquad \theta(t) = \theta_0 + \omega_0\,t + \tfrac12\,\alpha\,t^2 \qquad \omega^2 = \omega_0^2 + 2\alpha\,(\theta - \theta_0)</span>
+In questo caso anche l&#39;accelerazione centripeta è variabile: <span class="m">a_c = \omega^2R = (\omega_0 + \alpha t)^2R</span>.</p>
+<table>
+<thead>
+<tr>
+<th>Moto rettilineo</th>
+<th>Moto circolare</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>posizione <span class="m">x</span> (m)</td>
+<td>angolo <span class="m">\theta</span> (rad); arco <span class="m">s = R\theta</span></td>
+</tr>
+<tr>
+<td>velocità <span class="m">v</span> (m/s)</td>
+<td>velocità angolare <span class="m">\omega</span> (rad/s); <span class="m">v = \omega R</span></td>
+</tr>
+<tr>
+<td>accelerazione <span class="m">a</span> (m/s²)</td>
+<td>accelerazione angolare <span class="m">\alpha</span> (rad/s²); <span class="m">a_T = \alpha R</span></td>
+</tr>
+<tr>
+<td><span class="m">v = v_0 + at</span></td>
+<td><span class="m">\omega = \omega_0 + \alpha t</span></td>
+</tr>
+<tr>
+<td><span class="m">x = x_0 + v_0t + \tfrac12at^2</span></td>
+<td><span class="m">\theta = \theta_0 + \omega_0t + \tfrac12\alpha t^2</span></td>
+</tr>
+</tbody></table>
 <div class="callout esempio">
 
-<p>Disco a 2,1 rad/s che rallenta con <span class="m">\alpha = 0{,}45\,\mathrm{rad/s^2}</span>: si ferma dopo <span class="m">2{,}1/0{,}45 \approx 4{,}7\,\mathrm s</span>.</p>
+<p><strong>Disco che si ferma.</strong> Un disco ruota a <span class="m">2{,}1\,\mathrm{rad/s}</span> e decelera uniformemente con accelerazione angolare <span class="m">0{,}45\,\mathrm{rad/s^2}</span>. Si ferma quando <span class="m">\omega = 0</span>:
+<span class="m d">0 = \omega_0 - \alpha t \;\Rightarrow\; t = \frac{\omega_0}{\alpha} = \frac{2{,}1}{0{,}45} \approx 4{,}7\,\mathrm s</span>
+Angolo spazzato nel frattempo: <span class="m">\omega_0^2/(2\alpha) = 4{,}41/0{,}9 = 4{,}9\,\mathrm{rad}</span>, meno di un giro.</p>
 </div>
 
-<h2>Notazione vettoriale</h2>
-<p>La velocità angolare si può trattare come un vettore <span class="m">\vec\omega</span>. È perpendicolare al piano del moto. Il verso è quello da cui il moto si vede antiorario. Allora:
-<span class="m d">\vec v = \vec\omega \times \vec r</span></p>
+<div class="callout esempio">
+
+<p><strong>Un giro in due tempi</strong> (esercizio della dispensa). Un punto parte da fermo su una circonferenza di raggio <span class="m">R = 1{,}8\,\mathrm m</span> con accelerazione angolare <span class="m">\alpha_1 = 2{,}39\,\mathrm{rad/s^2}</span>. Dopo mezzo giro il moto diventa uniformemente decelerato e il punto si ferma dopo un altro mezzo giro. Trovare (a) l&#39;accelerazione angolare <span class="m">\alpha_2</span> del secondo mezzo giro, (b) il tempo totale, (c) l&#39;accelerazione centripeta se lo stesso giro fosse fatto di moto uniforme nello stesso tempo.</p>
+<p><strong>Primo mezzo giro</strong> (angolo <span class="m">\pi</span>, partenza da fermo): <span class="m">\pi = \tfrac12\alpha_1 t_0^2</span>, quindi
+<span class="m d">t_0 = \sqrt{\frac{2\pi}{\alpha_1}} = \sqrt{\frac{6{,}283}{2{,}39}} = \sqrt{2{,}63} \approx 1{,}62\,\mathrm s \qquad \omega_0 = \alpha_1 t_0 \approx 3{,}87\,\mathrm{rad/s}</span>
+<strong>Secondo mezzo giro</strong> (rimettendo a zero il tempo): parte da <span class="m">\omega_0</span> e arriva a <span class="m">\omega = 0</span> dopo un angolo <span class="m">\pi</span>. Da <span class="m">\omega^2 = \omega_0^2 + 2\alpha_2\pi</span> con <span class="m">\omega = 0</span>: <span class="m">\alpha_2 = -\dfrac{\omega_0^2}{2\pi}</span>. Ma <span class="m">\omega_0^2 = 2\alpha_1\pi</span> (dal primo tratto), quindi
+<span class="m d">\text{(a)}\quad \alpha_2 = -\alpha_1 = -2{,}39\,\mathrm{rad/s^2}</span>
+Il secondo tratto è il primo &quot;al contrario&quot; e dura lo stesso tempo <span class="m">t_0</span>.
+<span class="m d">\text{(b)}\quad t_{tot} = 2\,t_0 = 2\sqrt{\frac{2\pi}{\alpha_1}} \approx 3{,}24\,\mathrm s</span>
+<strong>(c)</strong> Con moto uniforme, un giro (<span class="m">2\pi</span>) in <span class="m">3{,}24\,\mathrm s</span>: <span class="m">\omega = 2\pi/3{,}24 = \pi/t_0 \approx 1{,}94\,\mathrm{rad/s}</span> e
+<span class="m d">a_c = \omega^2 R = 1{,}94^2\cdot 1{,}8 \approx 3{,}76\cdot 1{,}8 \approx 6{,}76\,\mathrm{m/s^2}</span></p>
+</div>
+
+<h2>Notazione vettoriale nel moto circolare</h2>
+<p>Alcune grandezze del moto circolare si possono scrivere come vettori.</p>
+<p><strong>Vettore velocità angolare</strong> <span class="m">\vec\omega</span>:</p>
+<ul>
+<li>modulo <span class="m">\omega = d\theta/dt</span>;</li>
+<li>direzione <strong>perpendicolare al piano</strong> del moto (lungo l&#39;asse di rotazione);</li>
+<li>verso tale che, guardando dalla punta del vettore (applicato al centro), il moto si veda <strong>antiorario</strong> (equivale alla regola della mano destra: le dita seguono il moto, il pollice dà <span class="m">\vec\omega</span>).</li>
+</ul>
+<p>Con <span class="m">\vec r</span> vettore posizione dal centro, vale la relazione
+<span class="m d">\vec v = \vec\omega\times\vec r</span>
+Infatti <span class="m">\vec\omega\perp\vec r</span>, quindi <span class="m">|\vec\omega\times\vec r| = \omega r\sin 90° = \omega R</span>, e il prodotto vettoriale è perpendicolare sia all&#39;asse sia al raggio: è proprio la direzione tangente.</p>
+<p><strong>Vettore accelerazione angolare</strong> <span class="m">\vec\alpha = d\vec\omega/dt</span>: ha la stessa direzione di <span class="m">\vec\omega</span> (l&#39;asse resta fisso), verso concorde se <span class="m">\omega</span> aumenta e opposto se diminuisce, modulo <span class="m">d\omega/dt</span>.</p>
+<p><strong>Accelerazione lineare.</strong> Derivando <span class="m">\vec v = \vec\omega\times\vec r</span> con la regola del prodotto (rispettando l&#39;ordine):
+<span class="m d">\vec a = \frac{d\vec\omega}{dt}\times\vec r + \vec\omega\times\frac{d\vec r}{dt} = \vec\alpha\times\vec r + \vec\omega\times\vec v</span></p>
+<ul>
+<li>il primo termine <span class="m">\vec\alpha\times\vec r</span> è l&#39;<strong>accelerazione tangenziale</strong>, di modulo <span class="m">\alpha R</span>;</li>
+<li>il secondo <span class="m">\vec\omega\times\vec v</span> è l&#39;<strong>accelerazione centripeta</strong>, di modulo <span class="m">\omega\,v = \omega^2R</span>, diretta verso il centro.</li>
+</ul>
+<p>Nel moto circolare uniforme <span class="m">\vec\omega</span> è costante, <span class="m">\vec\alpha = \vec 0</span>, e resta solo il termine centripeto, come ci si aspetta.</p>
+<h2>Ripasso della cinematica (dispensa 08)</h2>
+<ul>
+<li>La cinematica descrive il moto senza occuparsi delle cause.</li>
+<li>Un sistema è un punto materiale quando le sue dimensioni sono piccole rispetto alla precisione con cui interessa la posizione.</li>
+<li>La posizione si definisce solo rispetto a un sistema di riferimento; la legge oraria è nota quando è nota <span class="m">\vec r(t)</span>.</li>
+<li>La velocità media è <span class="m">\Delta\vec r/\Delta t</span>; al limite <span class="m">\Delta t\to 0</span> diventa la velocità istantanea, sempre tangente alla traiettoria.</li>
+<li>L&#39;accelerazione è la derivata della velocità; rispetto alla traiettoria ha una componente tangenziale (modulo <span class="m">dv/dt</span>, nulla se e solo se il modulo della velocità è costante) e una normale, centripeta, diretta verso il centro del cerchio che meglio si adatta alla traiettoria.</li>
+<li>Velocità e accelerazione sono grandezze derivate: <span class="m">[v] = [L\,T^{-1}]</span> in m/s; <span class="m">[a] = [L\,T^{-2}]</span> in m/s².</li>
+</ul>
 <h2>Un cenno alle onde</h2>
-<p>In una corda percorsa da onde armoniche, la distanza tra due creste consecutive, vista in una foto istantanea, è la <strong>lunghezza d&#39;onda</strong> <span class="m">\lambda</span> (m). Il periodo invece è un tempo, l&#39;ampiezza è l&#39;altezza della cresta.</p>
+<p>Una domanda della lezione riguarda le onde, trattate più avanti nel corso. In una <strong>fotografia istantanea</strong> di una corda percorsa da onde armoniche, la distanza tra due <strong>creste (picchi) consecutive</strong> è la <strong>lunghezza d&#39;onda</strong> <span class="m">\lambda</span>, in metri. Non va confusa con il <strong>periodo</strong> (un tempo, la durata di un&#39;oscillazione completa in un punto), con la <strong>frequenza</strong> (oscillazioni al secondo) né con l&#39;<strong>ampiezza</strong> (l&#39;altezza della cresta rispetto alla posizione di riposo).</p>
+<div class="callout attenzione">
+
+<ul>
+<li>Nel moto circolare uniforme cambia la <strong>direzione</strong> della velocità, non il modulo; l&#39;accelerazione è <strong>sempre diretta verso il centro</strong>, mai nel verso del moto né verso l&#39;esterno.</li>
+<li>La velocità angolare è uguale per tutti i punti di un corpo che ruota; la velocità periferica no.</li>
+<li>Diametro ≠ raggio; centimetri da convertire in metri.</li>
+<li>Nel moto circolare vario <span class="m">\alpha</span> si misura in rad/s² (una domanda la indica, per errore di stampa, in rad/s).</li>
+</ul>
+</div>
+
 <div class="callout esame">
 
-<p>Aperte frequenti: cos&#39;è l&#39;accelerazione centripeta; cos&#39;è la velocità angolare; differenza tra velocità angolare e periferica; accelerazione tangenziale e centripeta in un moto curvo; periodo, frequenza e pulsazione nel moto circolare uniforme.</p>
+<p>Chiuse: accelerazione della palla dopo la battuta (solo gravità, non dipende dalla forza del battitore); ruota panoramica (velocità tangenziale <span class="m">2\pi R/T</span>, accelerazione centripeta <span class="m">v^2/R</span>); velocità dell&#39;estremo di un&#39;asta e della punta di una lancetta (<span class="m">v = \omega R</span>); unità del periodo (secondo); tensione di un cavo (<span class="m">mv^2/R</span>); accelerazione centripeta da <span class="m">v</span> e <span class="m">R</span>; conversioni tra <span class="m">v</span> e <span class="m">\omega</span>; tempo di arresto di un disco (<span class="m">\omega_0/\alpha</span>); velocità da raggio e periodo o frequenza; cosa cambia nel moto circolare uniforme (la direzione); periodo della ruota dalla velocità della valvola; lancetta con frequenza maggiore (secondi); direzione dell&#39;accelerazione (verso il centro); lunghezza d&#39;onda come distanza tra due creste; periodo di un disco a 45 giri/min.</p>
+<p>Aperte:</p>
+<ul>
+<li><strong>Accelerazione centripeta</strong>: dovuta al cambio di direzione della velocità; perpendicolare alla velocità, verso il centro (di curvatura); <span class="m">a_c = v^2/R = \omega^2R</span>, in m/s²; presente anche nel moto uniforme; serve una forza centripeta <span class="m">mv^2/R</span> (tensione, attrito, gravità).</li>
+<li><strong>Velocità angolare</strong>: <span class="m">\omega = d\theta/dt</span>, angolo spazzato nell&#39;unità di tempo, in rad/s; nel moto uniforme <span class="m">\omega = 2\pi/T = 2\pi f</span>; <span class="m">v = \omega R</span>; vettore lungo l&#39;asse con la mano destra, <span class="m">\vec v = \vec\omega\times\vec r</span>.</li>
+<li><strong>Accelerazione centripeta e tangenziale in un moto curvilineo</strong>: <span class="m">a_t = dv/dt</span>, tangente, cambia il modulo, nulla se il modulo è costante; <span class="m">a_n = v^2/R</span>, perpendicolare, verso il centro di curvatura, cambia la direzione, nulla nei tratti rettilinei; <span class="m">R</span> = raggio di curvatura (cerchio osculatore); <span class="m">a = \sqrt{a_t^2 + a_n^2}</span>.</li>
+<li><strong>Velocità angolare e velocità periferica</strong>: angolo al secondo (rad/s), uguale per tutti i punti di un corpo rigido; arco al secondo (m/s), tangente, cresce con il raggio; <span class="m">v = \omega R</span>; esempio della lancetta o della giostra.</li>
+<li><strong>Parametri del moto circolare uniforme</strong>: periodo <span class="m">T</span> (s, tempo di un giro), frequenza <span class="m">f = 1/T</span> (Hz, giri al secondo), pulsazione <span class="m">\omega = 2\pi/T = 2\pi f</span> (rad/s); <span class="m">\theta = \theta_0 + \omega t</span>; <span class="m">v = 2\pi R/T = \omega R</span>; <span class="m">a_c = v^2/R = \omega^2R</span>.</li>
+</ul>
 </div>
 
 <div class="callout sintesi">
 
 <ul>
+<li>Moto circolare uniforme: <span class="m">s = s_0 + vt</span>, <span class="m">\theta = \theta_0 + \omega t</span>, <span class="m">\omega = v/R</span>.</li>
 <li><span class="m">T</span> in s, <span class="m">f = 1/T</span> in Hz, <span class="m">\omega = 2\pi/T = 2\pi f</span> in rad/s.</li>
-<li><span class="m">v = \omega R = 2\pi R/T</span>: la velocità periferica cresce con il raggio, <span class="m">\omega</span> no.</li>
-<li>Nel moto circolare uniforme cambia solo la direzione di <span class="m">\vec v</span>.</li>
-<li><span class="m">a_c = v^2/R = \omega^2R</span>, sempre verso il centro; forza necessaria <span class="m">F = mv^2/R</span>.</li>
-<li>Moti curvi: <span class="m">a_t = dv/dt</span> (modulo), <span class="m">a_n = v^2/R</span> (direzione).</li>
-<li>Moto vario: <span class="m">\alpha = d\omega/dt</span> in rad/s², <span class="m">a_t = \alpha R</span>.</li>
+<li><span class="m">v = \omega R = 2\pi R/T = 2\pi Rf</span>: la velocità periferica cresce con il raggio, <span class="m">\omega</span> è uguale per tutti i punti.</li>
+<li>Cambia solo la direzione di <span class="m">\vec v</span>: <span class="m">a_c = v^2/R = \omega^2R = \omega v</span>, sempre verso il centro; <span class="m">\vec a = -\omega^2\vec r</span>. Forza necessaria <span class="m">F = mv^2/R</span>.</li>
+<li>Moti curvi: <span class="m">a_t = dv/dt</span> (modulo), <span class="m">a_n = v^2/R</span> con <span class="m">R</span> raggio di curvatura (direzione); <span class="m">a = \sqrt{a_t^2 + a_n^2}</span>; <span class="m">R = v^2/a_n</span>.</li>
+<li>Moto vario: <span class="m">\alpha = d\omega/dt</span> (rad/s²), <span class="m">a_T = \alpha R</span>; con <span class="m">\alpha</span> costante <span class="m">\omega = \omega_0 + \alpha t</span>, <span class="m">\theta = \theta_0 + \omega_0t + \tfrac12\alpha t^2</span>.</li>
+<li>Vettoriale: <span class="m">\vec v = \vec\omega\times\vec r</span>; <span class="m">\vec a = \vec\alpha\times\vec r + \vec\omega\times\vec v</span>.</li>
 </ul>
 </div>

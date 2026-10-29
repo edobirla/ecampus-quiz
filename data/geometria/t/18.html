@@ -1,72 +1,208 @@
 <h1>Lezione 18 — Inversione di matrici</h1>
-<p>In questa lezione si collega l&#39;invertibilità di una matrice al determinante e si danno due modi per calcolare l&#39;inversa. <span class="m">A = (a_{ij})</span> è una matrice quadrata di ordine <span class="m">n</span> su un campo <span class="m">\mathbb{K}</span>.</p>
+<p>Nella Lezione 14 abbiamo definito le matrici invertibili: una matrice quadrata <span class="m">A</span> di ordine <span class="m">n</span> è <strong>invertibile</strong> se esiste una matrice <span class="m">A^{-1}</span> tale che <span class="m">A\cdot A^{-1} = A^{-1}\cdot A = I_n</span>. In quella lezione però non avevamo un modo comodo per capire <em>se</em> una matrice è invertibile né per <em>calcolare</em> l&#39;inversa. In questa lezione colleghiamo l&#39;invertibilità al <strong>determinante</strong> (Lezioni 15–17) e diamo <strong>due metodi di calcolo</strong> dell&#39;inversa:</p>
+<ol>
+<li>la <strong>formula esplicita</strong> con la matrice dei cofattori (comoda per matrici <span class="m">2\times 2</span>, per matrici con molti zeri e per calcolare <strong>una sola entrata</strong> dell&#39;inversa);</li>
+<li>il <strong>metodo di eliminazione di Gauss-Jordan</strong> applicato alla matrice <span class="m">(A \mid I_n)</span> (più efficiente per matrici grandi).</li>
+</ol>
+<p>In tutta la lezione <span class="m">A = (a_{ij})</span> è una matrice quadrata di ordine <span class="m">n</span> su un campo <span class="m">\mathbb{K}</span> (per esempio <span class="m">\mathbb{R}</span> o <span class="m">\mathbb{C}</span>).</p>
+<h2>Richiamo: minori e complementi algebrici</h2>
+<p>Data <span class="m">A</span> di ordine <span class="m">n \geq 2</span>, per ogni coppia di indici <span class="m">(i,j)</span>:</p>
+<ul>
+<li><span class="m">A_{ij}</span> è la <strong>sottomatrice</strong> di ordine <span class="m">n-1</span> che si ottiene da <span class="m">A</span> <strong>cancellando la riga <span class="m">i</span> e la colonna <span class="m">j</span></strong>;</li>
+<li>il <strong>complemento algebrico</strong> (o <strong>cofattore</strong>) di posto <span class="m">(i,j)</span> è il numero
+<span class="m d">\mathrm{cof}_A(i,j) = (-1)^{i+j}\det(A_{ij}).</span></li>
+</ul>
+<p>Il segno <span class="m">(-1)^{i+j}</span> vale <span class="m">+1</span> se <span class="m">i+j</span> è pari e <span class="m">-1</span> se <span class="m">i+j</span> è dispari: si dispone &quot;a scacchiera&quot; partendo da <span class="m">+</span> nell&#39;angolo in alto a sinistra:
+<span class="m d">\begin{pmatrix} + &amp; - &amp; + &amp; \cdots \\ - &amp; + &amp; - &amp; \cdots \\ + &amp; - &amp; + &amp; \cdots \\ \vdots &amp; &amp; &amp; \ddots \end{pmatrix}</span></p>
+<p>I cofattori sono gli stessi numeri che compaiono nello <strong>sviluppo di Laplace</strong> del determinante: per esempio lungo la prima riga <span class="m">\det A = a_{11}\mathrm{cof}_A(1,1) + a_{12}\mathrm{cof}_A(1,2) + \dots + a_{1n}\mathrm{cof}_A(1,n)</span>.</p>
 <h2>Matrice dei cofattori</h2>
-<p><strong>Definizione 18.1.</strong> Se <span class="m">A</span> è <span class="m">n \times n</span> con <span class="m">n \geq 2</span>, la matrice
-<span class="m d">\mathrm{Cof}(A) := \big(\mathrm{cof}_A(i,j)\big)_{i,j=1,\dots,n}</span>
-è la <strong>matrice dei complementi algebrici</strong> (o <strong>dei cofattori</strong>) di <span class="m">A</span>. Ricorda: <span class="m">\mathrm{cof}_A(i,j) = (-1)^{i+j}\det(A_{ij})</span>, dove <span class="m">A_{ij}</span> è la sottomatrice ottenuta togliendo la riga <span class="m">i</span> e la colonna <span class="m">j</span> (Definizione 16.14).</p>
-<p>Se la matrice è scritta esplicitamente si omettono le parentesi, come per il determinante: <span class="m">\mathrm{Cof}\begin{pmatrix} \dots \end{pmatrix}</span> si scrive senza la doppia coppia di parentesi.</p>
+<p><strong>Definizione 18.1.</strong> Se <span class="m">A</span> è una matrice quadrata <span class="m">n \times n</span> con <span class="m">n \geq 2</span>, la matrice
+<span class="m d">\mathrm{Cof}(A) := \big(\mathrm{cof}_A(i,j)\big)_{i,j=1,\dots,n} = \begin{pmatrix} \mathrm{cof}_A(1,1) &amp; \mathrm{cof}_A(1,2) &amp; \cdots &amp; \mathrm{cof}_A(1,n) \\ \mathrm{cof}_A(2,1) &amp; \mathrm{cof}_A(2,2) &amp; \cdots &amp; \mathrm{cof}_A(2,n) \\ \vdots &amp; \vdots &amp; &amp; \vdots \\ \mathrm{cof}_A(n,1) &amp; \mathrm{cof}_A(n,2) &amp; \cdots &amp; \mathrm{cof}_A(n,n) \end{pmatrix}</span>
+è detta <strong>matrice dei complementi algebrici</strong> o <strong>matrice dei cofattori</strong> di <span class="m">A</span>. In parole: nella posizione <span class="m">(i,j)</span> si mette il cofattore <span class="m">(i,j)</span> di <span class="m">A</span>, cioè il determinante della sottomatrice senza riga <span class="m">i</span> e colonna <span class="m">j</span>, con il segno della scacchiera.</p>
+<p><strong>Notazione 18.2.</strong> Come per il determinante, se la matrice è scritta esplicitamente non si scrivono due coppie di parentesi: si scrive <span class="m">\mathrm{Cof}\begin{pmatrix} a_{11} &amp; a_{12} \\ a_{21} &amp; a_{22}\end{pmatrix}</span> invece di <span class="m">\mathrm{Cof}\left(\begin{pmatrix} \dots \end{pmatrix}\right)</span>.</p>
 <div class="callout esempio">
 
-<p>Per <span class="m">A = \begin{pmatrix} 0 &amp; 3 &amp; 1 \\ 1 &amp; 5 &amp; -1 \\ -1 &amp; -2 &amp; 0 \end{pmatrix}</span>, calcolando i nove cofattori (per esempio <span class="m">\mathrm{cof}_A(1,1) = (-1)^{2}\det\begin{pmatrix} 5 &amp; -1 \\ -2 &amp; 0 \end{pmatrix} = -2</span>, <span class="m">\mathrm{cof}_A(1,2) = (-1)^{3}\det\begin{pmatrix} 1 &amp; -1 \\ -1 &amp; 0 \end{pmatrix} = 1</span>):
+<p><strong>Esempio 18.3 (tutti i nove cofattori).</strong> Sia
+<span class="m d">A = \begin{pmatrix} 0 &amp; 3 &amp; 1 \\ 1 &amp; 5 &amp; -1 \\ -1 &amp; -2 &amp; 0 \end{pmatrix}.</span>
+Per ogni posizione cancelliamo riga e colonna corrispondenti e calcoliamo il determinante <span class="m">2\times 2</span> con la regola <span class="m">\det\begin{pmatrix} a &amp; b \\ c &amp; d\end{pmatrix} = ad - bc</span>:</p>
+<ul>
+<li><span class="m">\mathrm{cof}_A(1,1) = (-1)^{2}\det\begin{pmatrix} 5 &amp; -1 \\ -2 &amp; 0 \end{pmatrix} = +(5\cdot 0 - (-1)(-2)) = 0 - 2 = -2</span>;</li>
+<li><span class="m">\mathrm{cof}_A(1,2) = (-1)^{3}\det\begin{pmatrix} 1 &amp; -1 \\ -1 &amp; 0 \end{pmatrix} = -(0 - 1) = 1</span>;</li>
+<li><span class="m">\mathrm{cof}_A(1,3) = (-1)^{4}\det\begin{pmatrix} 1 &amp; 5 \\ -1 &amp; -2 \end{pmatrix} = +(-2 + 5) = 3</span>;</li>
+<li><span class="m">\mathrm{cof}_A(2,1) = (-1)^{3}\det\begin{pmatrix} 3 &amp; 1 \\ -2 &amp; 0 \end{pmatrix} = -(0 + 2) = -2</span>;</li>
+<li><span class="m">\mathrm{cof}_A(2,2) = (-1)^{4}\det\begin{pmatrix} 0 &amp; 1 \\ -1 &amp; 0 \end{pmatrix} = +(0 + 1) = 1</span>;</li>
+<li><span class="m">\mathrm{cof}_A(2,3) = (-1)^{5}\det\begin{pmatrix} 0 &amp; 3 \\ -1 &amp; -2 \end{pmatrix} = -(0 + 3) = -3</span>;</li>
+<li><span class="m">\mathrm{cof}_A(3,1) = (-1)^{4}\det\begin{pmatrix} 3 &amp; 1 \\ 5 &amp; -1 \end{pmatrix} = +(-3 - 5) = -8</span>;</li>
+<li><span class="m">\mathrm{cof}_A(3,2) = (-1)^{5}\det\begin{pmatrix} 0 &amp; 1 \\ 1 &amp; -1 \end{pmatrix} = -(0 - 1) = 1</span>;</li>
+<li><span class="m">\mathrm{cof}_A(3,3) = (-1)^{6}\det\begin{pmatrix} 0 &amp; 3 \\ 1 &amp; 5 \end{pmatrix} = +(0 - 3) = -3</span>.</li>
+</ul>
+<p>Quindi
 <span class="m d">\mathrm{Cof}(A) = \begin{pmatrix} -2 &amp; 1 &amp; 3 \\ -2 &amp; 1 &amp; -3 \\ -8 &amp; 1 &amp; -3 \end{pmatrix}.</span></p>
 </div>
 
 <h2>Invertibilità e formula esplicita dell&#39;inversa</h2>
-<p><strong>Teorema 18.4.</strong> Una matrice <span class="m">A \in \mathbb{K}^{n,n}</span> è invertibile <strong>se e solo se</strong> <span class="m">\det_n(A) \neq 0</span>. L&#39;inversa ha determinante <span class="m">\det_n(A^{-1}) = \dfrac{1}{\det_n(A)}</span>.</p>
+<p><strong>Teorema 18.4.</strong> Una matrice <span class="m">A \in \mathbb{K}^{n,n}</span> è invertibile <strong>se e solo se</strong> <span class="m">\det_n(A) \neq 0</span>. In tal caso l&#39;inversa ha determinante
+<span class="m d">\det_n(A^{-1}) = \frac{1}{\det_n(A)}.</span></p>
 <ul>
-<li>Se <span class="m">n = 1</span>, l&#39;inversa di <span class="m">A = (a_{11})</span> è <span class="m">A^{-1} = \left(\frac{1}{a_{11}}\right)</span>.</li>
-<li>Se <span class="m">n \geq 2</span>, l&#39;inversa è la <strong>trasposta della matrice dei cofattori</strong> moltiplicata per <span class="m">\frac{1}{\det_n(A)}</span>:
-<span class="m d">A^{-1} = \frac{1}{\det_n(A)}\,{}^t\big(\mathrm{Cof}(A)\big), \qquad (A^{-1})_i^j = \frac{\mathrm{cof}_A(j,i)}{\det_n(A)}.</span></li>
+<li>Se <span class="m">n = 1</span>, l&#39;inversa di <span class="m">A = (a_{11})</span> è <span class="m">A^{-1} = \left(\dfrac{1}{a_{11}}\right)</span>.</li>
+<li>Se <span class="m">n \geq 2</span>, l&#39;inversa di <span class="m">A</span> è la <strong>trasposta della matrice dei complementi algebrici</strong> moltiplicata per <span class="m">\dfrac{1}{\det_n(A)}</span>:
+<span class="m d">A^{-1} = \frac{1}{\det_n(A)}\cdot{}^t\big(\mathrm{Cof}(A)\big) = \frac{1}{\det_n(A)}\begin{pmatrix} \mathrm{cof}_A(1,1) &amp; \mathrm{cof}_A(2,1) &amp; \cdots &amp; \mathrm{cof}_A(n,1) \\ \mathrm{cof}_A(1,2) &amp; \mathrm{cof}_A(2,2) &amp; \cdots &amp; \mathrm{cof}_A(n,2) \\ \vdots &amp; \vdots &amp; &amp; \vdots \\ \mathrm{cof}_A(1,n) &amp; \mathrm{cof}_A(2,n) &amp; \cdots &amp; \mathrm{cof}_A(n,n) \end{pmatrix},</span>
+cioè, entrata per entrata,
+<span class="m d">(A^{-1})_i^j = \frac{\mathrm{cof}_A(j,i)}{\det_n(A)}.</span></li>
 </ul>
-<p>(La dimostrazione non viene data perché lunga.)</p>
+<p>La dimostrazione non viene data nella dispensa perché lunga. Possiamo però capire <strong>perché</strong> il determinante c&#39;entra:</p>
+<ul>
+<li><em>Se <span class="m">A</span> è invertibile allora <span class="m">\det A \neq 0</span></em>: dal Teorema di Binet, <span class="m">\det(A)\cdot\det(A^{-1}) = \det(A\cdot A^{-1}) = \det(I_n) = 1</span>. Un prodotto di due numeri che vale <span class="m">1</span> non può avere un fattore nullo, quindi <span class="m">\det A \neq 0</span>; e dividendo si ottiene subito <span class="m">\det(A^{-1}) = 1/\det(A)</span>.</li>
+<li><em>Se <span class="m">\det A \neq 0</span> allora <span class="m">A</span> è invertibile</em>: la formula con i cofattori fornisce esplicitamente la matrice inversa (si può dividere per <span class="m">\det A</span> proprio perché non è zero). L&#39;idea è che il prodotto di <span class="m">A</span> per <span class="m">{}^t\mathrm{Cof}(A)</span> ha sulla diagonale gli sviluppi di Laplace di <span class="m">\det A</span> (quindi <span class="m">\det A</span>) e fuori dalla diagonale gli sviluppi di determinanti di matrici con due righe uguali (quindi <span class="m">0</span>): <span class="m">A\cdot{}^t\mathrm{Cof}(A) = \det(A)\, I_n</span>.</li>
+</ul>
+<p>Interpretazione: il determinante misura (Lezione 15) di quanto la matrice &quot;dilata i volumi&quot;; se è <span class="m">0</span> la matrice &quot;schiaccia&quot; lo spazio in una dimensione più bassa, e un&#39;operazione che schiaccia non si può disfare.</p>
 <div class="callout attenzione">
 
-<p>Nella notazione del corso l&#39;indice <strong>in basso</strong> è la riga e quello <strong>in alto</strong> la colonna: <span class="m">(A^{-1})^j_i</span> è l&#39;entrata di riga <span class="m">i</span> e colonna <span class="m">j</span>, e usa il cofattore con gli indici <strong>scambiati</strong>, <span class="m">\mathrm{cof}_A(j,i)</span>. Per questo nella formula compare la trasposta.</p>
+<p><strong>Gli indici si scambiano.</strong> Nella notazione del corso l&#39;indice <strong>in basso</strong> è la riga e quello <strong>in alto</strong> la colonna: <span class="m">(A^{-1})^j_i</span> è l&#39;entrata di riga <span class="m">i</span> e colonna <span class="m">j</span>, e si calcola con il cofattore di posto <strong><span class="m">(j,i)</span></strong>, non <span class="m">(i,j)</span>. È per questo che nella formula compare la <strong>trasposta</strong> di <span class="m">\mathrm{Cof}(A)</span>. Dimenticare la trasposta è l&#39;errore più frequente: si ottiene una matrice che in generale <strong>non</strong> è l&#39;inversa.</p>
+</div>
+
+<h3>Caso <span class="m">2\times 2</span>: la formula da ricordare</h3>
+<p>Per <span class="m">A = \begin{pmatrix} a &amp; b \\ c &amp; d \end{pmatrix}</span> i cofattori sono <span class="m">\mathrm{cof}(1,1) = d</span>, <span class="m">\mathrm{cof}(1,2) = -c</span>, <span class="m">\mathrm{cof}(2,1) = -b</span>, <span class="m">\mathrm{cof}(2,2) = a</span> (ogni sottomatrice è <span class="m">1\times 1</span>, il cui determinante è l&#39;unica entrata). Quindi <span class="m">\mathrm{Cof}(A) = \begin{pmatrix} d &amp; -c \\ -b &amp; a \end{pmatrix}</span> e, trasponendo,
+<span class="m d">A^{-1} = \frac{1}{ad - bc}\begin{pmatrix} d &amp; -b \\ -c &amp; a \end{pmatrix} \qquad (ad - bc \neq 0).</span>
+Regola pratica: si <strong>scambiano</strong> le entrate della diagonale principale, si <strong>cambia segno</strong> a quelle dell&#39;altra diagonale, si divide per il determinante.</p>
+<div class="callout esempio">
+
+<p><strong>Esercizio 18.2.1.</strong> <span class="m">A = \begin{pmatrix} 1 &amp; 3 \\ -1 &amp; -2 \end{pmatrix}</span>. Si ha <span class="m">\det A = 1\cdot(-2) - 3\cdot(-1) = -2 + 3 = 1 \neq 0</span>, quindi <span class="m">A</span> è invertibile e
+<span class="m d">A^{-1} = \frac11\begin{pmatrix} -2 &amp; -3 \\ 1 &amp; 1 \end{pmatrix} = \begin{pmatrix} -2 &amp; -3 \\ 1 &amp; 1 \end{pmatrix}.</span>
+Verifica: <span class="m">A\cdot A^{-1} = \begin{pmatrix} 1\cdot(-2) + 3\cdot 1 &amp; 1\cdot(-3) + 3\cdot 1 \\ -1\cdot(-2) - 2\cdot 1 &amp; -1\cdot(-3) - 2\cdot 1 \end{pmatrix} = \begin{pmatrix} 1 &amp; 0 \\ 0 &amp; 1 \end{pmatrix}</span>.</p>
 </div>
 
 <div class="callout esempio">
 
-<p>La matrice <span class="m">A</span> dell&#39;esempio precedente ha <span class="m">\det(A) = 6</span>, quindi è invertibile e
-<span class="m d">A^{-1} = \frac16\,{}^t\begin{pmatrix} -2 &amp; 1 &amp; 3 \\ -2 &amp; 1 &amp; -3 \\ -8 &amp; 1 &amp; -3 \end{pmatrix} = \frac16\begin{pmatrix} -2 &amp; -2 &amp; -8 \\ 1 &amp; 1 &amp; 1 \\ 3 &amp; -3 &amp; -3 \end{pmatrix} = \begin{pmatrix} -\frac13 &amp; -\frac13 &amp; -\frac43 \\ \frac16 &amp; \frac16 &amp; \frac16 \\ \frac12 &amp; -\frac12 &amp; -\frac12 \end{pmatrix}.</span></p>
+<p><strong>Esempio 18.5 (inversa con i cofattori, <span class="m">3\times 3</span>).</strong> Riprendiamo <span class="m">A = \begin{pmatrix} 0 &amp; 3 &amp; 1 \\ 1 &amp; 5 &amp; -1 \\ -1 &amp; -2 &amp; 0 \end{pmatrix}</span>.</p>
+<p><em>Passo 1: determinante.</em> Sviluppando lungo la prima riga e usando i cofattori già calcolati:
+<span class="m d">\det A = 0\cdot(-2) + 3\cdot 1 + 1\cdot 3 = 6 \neq 0,</span>
+quindi <span class="m">A</span> è invertibile.</p>
+<p><em>Passo 2: trasposta della matrice dei cofattori.</em> Le righe di <span class="m">\mathrm{Cof}(A)</span> diventano colonne:
+<span class="m d">{}^t\mathrm{Cof}(A) = {}^t\begin{pmatrix} -2 &amp; 1 &amp; 3 \\ -2 &amp; 1 &amp; -3 \\ -8 &amp; 1 &amp; -3 \end{pmatrix} = \begin{pmatrix} -2 &amp; -2 &amp; -8 \\ 1 &amp; 1 &amp; 1 \\ 3 &amp; -3 &amp; -3 \end{pmatrix}.</span></p>
+<p><em>Passo 3: divisione per il determinante.</em>
+<span class="m d">A^{-1} = \frac16\begin{pmatrix} -2 &amp; -2 &amp; -8 \\ 1 &amp; 1 &amp; 1 \\ 3 &amp; -3 &amp; -3 \end{pmatrix} = \begin{pmatrix} -\frac13 &amp; -\frac13 &amp; -\frac43 \\[2pt] \frac16 &amp; \frac16 &amp; \frac16 \\[2pt] \frac12 &amp; -\frac12 &amp; -\frac12 \end{pmatrix}.</span></p>
+<p><em>Verifica (consigliata all&#39;esame).</em> Prima riga di <span class="m">A</span> per prima colonna di <span class="m">A^{-1}</span>: <span class="m">0\cdot(-\frac13) + 3\cdot\frac16 + 1\cdot\frac12 = \frac12 + \frac12 = 1</span>; prima riga di <span class="m">A</span> per seconda colonna: <span class="m">0 + 3\cdot\frac16 + 1\cdot(-\frac12) = 0</span>. Proseguendo si ottiene <span class="m">I_3</span>.</p>
 </div>
 
+<h3>Calcolare una sola entrata dell&#39;inversa</h3>
+<p>Spesso non serve tutta l&#39;inversa ma una sola entrata: la formula <span class="m">(A^{-1})^j_i = \mathrm{cof}_A(j,i)/\det A</span> permette di calcolarla con <strong>un solo cofattore</strong>.</p>
+<div class="callout esempio">
+
+<p>Sia <span class="m">A = \begin{pmatrix} 1 &amp; -1 &amp; 3 &amp; 2 \\ 0 &amp; 2 &amp; 0 &amp; -2 \\ 0 &amp; 0 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 3 \end{pmatrix}</span> e cerchiamo <span class="m">(A^{-1})^4_2</span>, cioè l&#39;entrata di <strong>riga 2, colonna 4</strong> dell&#39;inversa.</p>
+<ul>
+<li><span class="m">A</span> è triangolare superiore, quindi <span class="m">\det A = 1\cdot 2\cdot 1\cdot 3 = 6</span>.</li>
+<li>Serve il cofattore con indici scambiati, <span class="m">\mathrm{cof}_A(4,2)</span>: si cancellano la riga 4 e la colonna 2:
+<span class="m d">\mathrm{cof}_A(4,2) = (-1)^{4+2}\det\begin{pmatrix} 1 &amp; 3 &amp; 2 \\ 0 &amp; 0 &amp; -2 \\ 0 &amp; 1 &amp; 0 \end{pmatrix}.</span>
+Sviluppando lungo la prima colonna: <span class="m">1\cdot\det\begin{pmatrix} 0 &amp; -2 \\ 1 &amp; 0 \end{pmatrix} = 0 - (-2) = 2</span>. Quindi <span class="m">\mathrm{cof}_A(4,2) = 2</span>.</li>
+<li><span class="m">(A^{-1})^4_2 = \dfrac{2}{6} = \dfrac13</span>.</li>
+</ul>
+<p>Se per errore si usasse <span class="m">\mathrm{cof}_A(2,4)</span> si otterrebbe un&#39;altra entrata (quella di riga 4 e colonna 2).</p>
+</div>
+
+<h3>Determinante di matrici coniugate</h3>
+<p>Due matrici quadrate <span class="m">A</span> e <span class="m">B</span> sono <strong>coniugate</strong> (o <strong>simili</strong>) se esiste una matrice invertibile <span class="m">C</span> tale che <span class="m">B = C^{-1}AC</span>.</p>
 <p><strong>Corollario 18.6.</strong> Matrici coniugate hanno lo stesso determinante.</p>
-<p><em>Dimostrazione.</em> Se <span class="m">B = C^{-1}AC</span> con <span class="m">C</span> invertibile, per il Teorema di Binet <span class="m">\det(B) = \det(C^{-1})\det(A)\det(C) = \frac{1}{\det C}\det(A)\det(C) = \det(A)</span>.</p>
+<p><em>Dimostrazione.</em> Sia <span class="m">B = C^{-1}\cdot A\cdot C</span> con <span class="m">C</span> invertibile.</p>
+<ol>
+<li>Per il Teorema di Binet (il determinante di un prodotto è il prodotto dei determinanti): <span class="m">\det(B) = \det(C^{-1})\cdot\det(A)\cdot\det(C)</span>.</li>
+<li>Per il Teorema 18.4: <span class="m">\det(C^{-1}) = \dfrac{1}{\det(C)}</span>.</li>
+<li>Sostituendo: <span class="m">\det(B) = \dfrac{1}{\det(C)}\cdot\det(A)\cdot\det(C) = \det(A)</span>, perché i determinanti sono numeri e si possono semplificare (il prodotto di numeri è commutativo, anche se il prodotto di matrici non lo è). <span class="m">\square</span></li>
+</ol>
+<p>Quindi, per esempio, <span class="m">\det(C^{-1}AC) = \det(A)</span> qualunque sia la matrice invertibile <span class="m">C</span>.</p>
 <h2>Inversione con il metodo di Gauss-Jordan</h2>
-<p><strong>Algoritmo 18.7.</strong> Sia <span class="m">A</span> quadrata di ordine <span class="m">n</span>. Si considera la matrice <span class="m">(A \mid I_n) \in \mathbb{K}^{n,2n}</span>, che ha <span class="m">A</span> nelle prime <span class="m">n</span> colonne e <span class="m">I_n</span> nelle ultime <span class="m">n</span>. Si applica il <strong>metodo di eliminazione di Gauss-Jordan</strong>, ottenendo una matrice a scalini <span class="m">(B \mid C)</span>.</p>
+<p>Il metodo di Gauss-Jordan (Lezioni sulle operazioni elementari e sul metodo di eliminazione) porta una matrice in forma <strong>a scalini ridotta</strong>: ogni pivot vale <span class="m">1</span> e nella colonna di ogni pivot tutte le altre entrate sono <span class="m">0</span>. Le operazioni ammesse sono le operazioni elementari di riga:</p>
 <ul>
-<li>Se <span class="m">B = I_n</span>, allora <span class="m">A</span> è invertibile e <span class="m">A^{-1} = C</span>.</li>
-<li>Altrimenti <span class="m">A</span> non è invertibile.</li>
+<li>scambiare due righe;</li>
+<li>moltiplicare una riga per uno scalare <strong>non nullo</strong>;</li>
+<li>sommare a una riga un multiplo di un&#39;altra riga.</li>
 </ul>
+<p><strong>Algoritmo 18.7 (inversione con Gauss-Jordan).</strong> Sia <span class="m">A</span> quadrata di ordine <span class="m">n</span>.</p>
+<ol>
+<li>Si costruisce la matrice <span class="m">(A \mid I_n) \in \mathbb{K}^{n,2n}</span>, che ha <span class="m">A</span> nelle prime <span class="m">n</span> colonne e la matrice identità <span class="m">I_n</span> nelle ultime <span class="m">n</span>.</li>
+<li>Si applica il metodo di eliminazione di Gauss-Jordan a <strong>tutta</strong> la matrice <span class="m">(A \mid I_n)</span>, ottenendo una matrice a scalini ridotta <span class="m">(B \mid C)</span>.</li>
+<li>Se <span class="m">B = I_n</span>, allora <span class="m">A</span> è invertibile e <span class="m">A^{-1} = C</span> (la parte destra).</li>
+<li>Altrimenti (<span class="m">B \neq I_n</span>) <span class="m">A</span> non è invertibile.</li>
+</ol>
+<p>La dispensa non dimostra che l&#39;algoritmo funziona. L&#39;idea: ogni operazione elementare di riga equivale a moltiplicare <strong>a sinistra</strong> per una matrice invertibile <span class="m">E</span>. Se la successione di operazioni <span class="m">E_k\cdots E_1</span> porta <span class="m">A</span> in <span class="m">I_n</span>, allora <span class="m">E_k\cdots E_1\cdot A = I_n</span>, cioè <span class="m">E_k\cdots E_1 = A^{-1}</span>; e le stesse operazioni applicate a <span class="m">I_n</span> producono <span class="m">E_k\cdots E_1\cdot I_n = A^{-1}</span>. Per questo la parte destra &quot;registra&quot; l&#39;inversa.</p>
 <div class="callout esempio">
 
-<p>Per la stessa <span class="m">A</span> si parte da
-<span class="m d">\left(\begin{array}{ccc|ccc} 0 &amp; 3 &amp; 1 &amp; 1 &amp; 0 &amp; 0 \\ 1 &amp; 5 &amp; -1 &amp; 0 &amp; 1 &amp; 0 \\ -1 &amp; -2 &amp; 0 &amp; 0 &amp; 0 &amp; 1 \end{array}\right)</span>
-e con Gauss-Jordan si arriva a <span class="m">(I_3 \mid C)</span> con <span class="m">C</span> uguale all&#39;inversa trovata con i cofattori.</p>
+<p><strong>Esempio 18.8 (Gauss-Jordan scritto riga per riga).</strong> Stessa <span class="m">A = \begin{pmatrix} 0 &amp; 3 &amp; 1 \\ 1 &amp; 5 &amp; -1 \\ -1 &amp; -2 &amp; 0 \end{pmatrix}</span>. Si parte da
+<span class="m d">\left(\begin{array}{ccc|ccc} 0 &amp; 3 &amp; 1 &amp; 1 &amp; 0 &amp; 0 \\ 1 &amp; 5 &amp; -1 &amp; 0 &amp; 1 &amp; 0 \\ -1 &amp; -2 &amp; 0 &amp; 0 &amp; 0 &amp; 1 \end{array}\right).</span></p>
+<p><em>1. <span class="m">R_1 \leftrightarrow R_2</span></em> (serve un pivot non nullo in posizione <span class="m">(1,1)</span>):
+<span class="m d">\left(\begin{array}{ccc|ccc} 1 &amp; 5 &amp; -1 &amp; 0 &amp; 1 &amp; 0 \\ 0 &amp; 3 &amp; 1 &amp; 1 &amp; 0 &amp; 0 \\ -1 &amp; -2 &amp; 0 &amp; 0 &amp; 0 &amp; 1 \end{array}\right).</span></p>
+<p><em>2. <span class="m">R_3 \to R_3 + R_1</span></em> (azzera sotto il primo pivot):
+<span class="m d">\left(\begin{array}{ccc|ccc} 1 &amp; 5 &amp; -1 &amp; 0 &amp; 1 &amp; 0 \\ 0 &amp; 3 &amp; 1 &amp; 1 &amp; 0 &amp; 0 \\ 0 &amp; 3 &amp; -1 &amp; 0 &amp; 1 &amp; 1 \end{array}\right).</span></p>
+<p><em>3. <span class="m">R_3 \to R_3 - R_2</span></em> (azzera sotto il secondo pivot):
+<span class="m d">\left(\begin{array}{ccc|ccc} 1 &amp; 5 &amp; -1 &amp; 0 &amp; 1 &amp; 0 \\ 0 &amp; 3 &amp; 1 &amp; 1 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; -2 &amp; -1 &amp; 1 &amp; 1 \end{array}\right).</span>
+Ora la parte sinistra è a scalini con 3 pivot: <span class="m">A</span> è invertibile.</p>
+<p><em>4. <span class="m">R_2 \to \frac13 R_2</span>, <span class="m">R_3 \to -\frac12 R_3</span></em> (pivot uguali a 1):
+<span class="m d">\left(\begin{array}{ccc|ccc} 1 &amp; 5 &amp; -1 &amp; 0 &amp; 1 &amp; 0 \\ 0 &amp; 1 &amp; \frac13 &amp; \frac13 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 1 &amp; \frac12 &amp; -\frac12 &amp; -\frac12 \end{array}\right).</span></p>
+<p><em>5. <span class="m">R_2 \to R_2 - \frac13 R_3</span>, <span class="m">R_1 \to R_1 + R_3</span></em> (azzera sopra il terzo pivot). Per <span class="m">R_2</span>: <span class="m">\frac13 - \frac16 = \frac16</span>, <span class="m">0 + \frac16 = \frac16</span>, <span class="m">0 + \frac16 = \frac16</span>. Per <span class="m">R_1</span>: <span class="m">0 + \frac12</span>, <span class="m">1 - \frac12</span>, <span class="m">0 - \frac12</span>:
+<span class="m d">\left(\begin{array}{ccc|ccc} 1 &amp; 5 &amp; 0 &amp; \frac12 &amp; \frac12 &amp; -\frac12 \\ 0 &amp; 1 &amp; 0 &amp; \frac16 &amp; \frac16 &amp; \frac16 \\ 0 &amp; 0 &amp; 1 &amp; \frac12 &amp; -\frac12 &amp; -\frac12 \end{array}\right).</span></p>
+<p><em>6. <span class="m">R_1 \to R_1 - 5R_2</span></em> (azzera sopra il secondo pivot): <span class="m">\frac12 - \frac56 = -\frac13</span>, <span class="m">\frac12 - \frac56 = -\frac13</span>, <span class="m">-\frac12 - \frac56 = -\frac43</span>:
+<span class="m d">\left(\begin{array}{ccc|ccc} 1 &amp; 0 &amp; 0 &amp; -\frac13 &amp; -\frac13 &amp; -\frac43 \\ 0 &amp; 1 &amp; 0 &amp; \frac16 &amp; \frac16 &amp; \frac16 \\ 0 &amp; 0 &amp; 1 &amp; \frac12 &amp; -\frac12 &amp; -\frac12 \end{array}\right).</span></p>
+<p>A sinistra c&#39;è <span class="m">I_3</span>, quindi a destra c&#39;è <span class="m">A^{-1}</span>: è la stessa matrice trovata con i cofattori.</p>
 </div>
 
-<p><strong>Osservazione 18.9 (arresto anticipato).</strong> Se a un certo punto, nelle prime <span class="m">n</span> colonne, un pivot è a destra del precedente di più di una entrata, oppure il primo pivot non è in <span class="m">(1,1)</span>, oppure c&#39;è <strong>almeno una riga nulla</strong>, allora <span class="m">A</span> non è invertibile ed è inutile continuare: ripetendo le stesse operazioni sulla sola <span class="m">A</span> si otterrebbe una matrice a scalini con meno di <span class="m">n</span> pivot.</p>
+<p><strong>Osservazione 18.9 (arresto anticipato).</strong> Se a un certo punto del metodo, guardando <strong>solo le prime <span class="m">n</span> colonne</strong>,</p>
+<ul>
+<li>un pivot è a destra del pivot precedente di <strong>più di una</strong> entrata, oppure</li>
+<li>il primo pivot <strong>non</strong> è in posizione <span class="m">(1,1)</span>, oppure</li>
+<li>c&#39;è <strong>almeno una riga nulla</strong>,</li>
+</ul>
+<p>allora <span class="m">A</span> non è invertibile ed è inutile continuare. Infatti ripetendo le stesse operazioni sulla sola <span class="m">A</span> si otterrebbe una matrice a scalini con meno di <span class="m">n</span> pivot, quindi con una riga nulla, e dunque con determinante <span class="m">0</span> (le operazioni elementari cambiano il determinante solo per un fattore non nullo).</p>
+<div class="callout esempio">
+
+<p><strong>Matrice non invertibile.</strong> <span class="m">A = \begin{pmatrix} 1 &amp; 2 &amp; 2 \\ 2 &amp; 5 &amp; 3 \\ 3 &amp; 7 &amp; 5 \end{pmatrix}</span>:
+<span class="m d">\left(\begin{array}{ccc|ccc} 1 &amp; 2 &amp; 2 &amp; 1 &amp; 0 &amp; 0 \\ 2 &amp; 5 &amp; 3 &amp; 0 &amp; 1 &amp; 0 \\ 3 &amp; 7 &amp; 5 &amp; 0 &amp; 0 &amp; 1 \end{array}\right) \xrightarrow[R_3 - 3R_1]{R_2 - 2R_1} \left(\begin{array}{ccc|ccc} 1 &amp; 2 &amp; 2 &amp; 1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; -1 &amp; -2 &amp; 1 &amp; 0 \\ 0 &amp; 1 &amp; -1 &amp; -3 &amp; 0 &amp; 1 \end{array}\right) \xrightarrow{R_3 - R_2} \left(\begin{array}{ccc|ccc} 1 &amp; 2 &amp; 2 &amp; 1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; -1 &amp; -2 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; -1 &amp; -1 &amp; 1 \end{array}\right).</span>
+Nelle prime tre colonne la terza riga è nulla: ci si <strong>ferma</strong>, <span class="m">A</span> non è invertibile (infatti <span class="m">\det A = 0</span>). Conta la riga nulla <strong>a sinistra</strong>: la parte destra non è nulla, e non deve esserlo. Un passaggio intermedio in cui le prime colonne non hanno ancora righe nulle (per esempio dopo la sola <span class="m">R_2 - 2R_1</span>) non basta per concludere.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Esercizio 18.3.2 (inversa con Gauss-Jordan).</strong> <span class="m">A = \begin{pmatrix} 2 &amp; 0 &amp; -1 \\ 1 &amp; 0 &amp; 2 \\ 1 &amp; 1 &amp; -1 \end{pmatrix}</span>.</p>
+<p><span class="m d">\left(\begin{array}{ccc|ccc} 2 &amp; 0 &amp; -1 &amp; 1 &amp; 0 &amp; 0 \\ 1 &amp; 0 &amp; 2 &amp; 0 &amp; 1 &amp; 0 \\ 1 &amp; 1 &amp; -1 &amp; 0 &amp; 0 &amp; 1 \end{array}\right) \xrightarrow{R_1 \leftrightarrow R_2} \left(\begin{array}{ccc|ccc} 1 &amp; 0 &amp; 2 &amp; 0 &amp; 1 &amp; 0 \\ 2 &amp; 0 &amp; -1 &amp; 1 &amp; 0 &amp; 0 \\ 1 &amp; 1 &amp; -1 &amp; 0 &amp; 0 &amp; 1 \end{array}\right) \xrightarrow[R_3 - R_1]{R_2 - 2R_1} \left(\begin{array}{ccc|ccc} 1 &amp; 0 &amp; 2 &amp; 0 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; -5 &amp; 1 &amp; -2 &amp; 0 \\ 0 &amp; 1 &amp; -3 &amp; 0 &amp; -1 &amp; 1 \end{array}\right).</span>
+La seconda riga ha il pivot nella colonna 3, ma la terza lo ha nella colonna 2: si scambiano (lo scambio è lecito; non è un caso di arresto, perché nessuna riga è nulla):
+<span class="m d">\xrightarrow{R_2 \leftrightarrow R_3} \left(\begin{array}{ccc|ccc} 1 &amp; 0 &amp; 2 &amp; 0 &amp; 1 &amp; 0 \\ 0 &amp; 1 &amp; -3 &amp; 0 &amp; -1 &amp; 1 \\ 0 &amp; 0 &amp; -5 &amp; 1 &amp; -2 &amp; 0 \end{array}\right) \xrightarrow{-\frac15 R_3} \left(\begin{array}{ccc|ccc} 1 &amp; 0 &amp; 2 &amp; 0 &amp; 1 &amp; 0 \\ 0 &amp; 1 &amp; -3 &amp; 0 &amp; -1 &amp; 1 \\ 0 &amp; 0 &amp; 1 &amp; -\frac15 &amp; \frac25 &amp; 0 \end{array}\right).</span>
+Infine <span class="m">R_2 \to R_2 + 3R_3</span> e <span class="m">R_1 \to R_1 - 2R_3</span>:
+<span class="m d">\left(\begin{array}{ccc|ccc} 1 &amp; 0 &amp; 0 &amp; \frac25 &amp; \frac15 &amp; 0 \\ 0 &amp; 1 &amp; 0 &amp; -\frac35 &amp; \frac15 &amp; 1 \\ 0 &amp; 0 &amp; 1 &amp; -\frac15 &amp; \frac25 &amp; 0 \end{array}\right), \qquad A^{-1} = \begin{pmatrix} \frac25 &amp; \frac15 &amp; 0 \\ -\frac35 &amp; \frac15 &amp; 1 \\ -\frac15 &amp; \frac25 &amp; 0 \end{pmatrix}.</span>
+(Controllo: <span class="m">\det A = -5</span>, coerente con il pivot <span class="m">-5</span> incontrato e con lo scambio di righe.)</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Esercizio 18.1 (risolto in due modi).</strong> <span class="m">A = \begin{pmatrix} 0 &amp; 0 &amp; 0 &amp; 1 \\ 0 &amp; 0 &amp; 1 &amp; 0 \\ 0 &amp; 1 &amp; 0 &amp; 0 \\ 1 &amp; 0 &amp; 0 &amp; 0 \end{pmatrix}</span> (gli 1 sull&#39;antidiagonale).</p>
+<p><em>Con i cofattori.</em> <span class="m">\det A = 1</span>. Ogni cofattore è il determinante di una matrice <span class="m">3\times 3</span> di zeri e uni: è non nullo solo quando la riga e la colonna cancellate passano per lo stesso 1 dell&#39;antidiagonale, cioè per <span class="m">(i,j) = (1,4), (2,3), (3,2), (4,1)</span>, e in quei casi vale <span class="m">1</span> (per esempio <span class="m">\mathrm{cof}_A(1,4) = (-1)^5\det\begin{pmatrix} 0 &amp; 0 &amp; 1 \\ 0 &amp; 1 &amp; 0 \\ 1 &amp; 0 &amp; 0 \end{pmatrix} = -(-1) = 1</span>). Quindi <span class="m">\mathrm{Cof}(A) = A</span>, <span class="m">{}^t\mathrm{Cof}(A) = A</span> (è simmetrica) e <span class="m">A^{-1} = A</span>.</p>
+<p><em>Con Gauss-Jordan.</em> Basta scambiare <span class="m">R_1 \leftrightarrow R_4</span> e <span class="m">R_2 \leftrightarrow R_3</span> in <span class="m">(A \mid I_4)</span>: a sinistra si ottiene <span class="m">I_4</span> e a destra le righe di <span class="m">I_4</span> in ordine inverso, cioè di nuovo <span class="m">A</span>.</p>
+<p>Geometricamente <span class="m">A</span> inverte l&#39;ordine delle coordinate; facendolo due volte si torna al punto di partenza, quindi <span class="m">A\cdot A = I_4</span>.</p>
+</div>
+
 <div class="callout attenzione">
 
-<p>Ogni operazione elementare va applicata all&#39;<strong>intera riga</strong> di <span class="m">(A \mid I_n)</span>, anche alla parte destra.</p>
-</div>
-
-<div class="callout esempio">
-
-<p><span class="m">A = \begin{pmatrix} 0 &amp; 0 &amp; 0 &amp; 1 \\ 0 &amp; 0 &amp; 1 &amp; 0 \\ 0 &amp; 1 &amp; 0 &amp; 0 \\ 1 &amp; 0 &amp; 0 &amp; 0 \end{pmatrix}</span> ha <span class="m">\det A = 1</span>; con entrambi i metodi si trova <span class="m">A^{-1} = A</span>.</p>
-</div>
-
-<div class="callout sintesi">
-
 <ul>
-<li><span class="m">A</span> invertibile <span class="m">\iff \det A \neq 0</span>, e <span class="m">\det(A^{-1}) = 1/\det A</span>.</li>
-<li><span class="m">A^{-1} = \frac{1}{\det A}\,{}^t\mathrm{Cof}(A)</span>, cioè <span class="m">(A^{-1})^j_i = \mathrm{cof}_A(j,i)/\det A</span>.</li>
-<li>Gauss-Jordan su <span class="m">(A \mid I_n)</span>: se a sinistra si arriva a <span class="m">I_n</span>, a destra c&#39;è <span class="m">A^{-1}</span>; una riga nulla a sinistra significa che <span class="m">A</span> non è invertibile.</li>
-<li>Matrici coniugate hanno lo stesso determinante.</li>
+<li>Ogni operazione elementare va applicata all&#39;<strong>intera riga</strong> di <span class="m">(A \mid I_n)</span>, anche alla parte destra: se la si applica solo a sinistra il risultato a destra è sbagliato.</li>
+<li>Si usano solo operazioni <strong>di riga</strong> (mai di colonna).</li>
+<li>Moltiplicare una riga per <span class="m">0</span> non è un&#39;operazione elementare.</li>
+<li>Se <span class="m">\det A = 0</span> la formula con i cofattori non si può usare (si dividerebbe per zero): la matrice semplicemente non ha inversa.</li>
+<li>Una matrice non quadrata non è mai invertibile.</li>
 </ul>
 </div>
 
 <div class="callout esame">
 
-<p>Le domande aperte chiedono di descrivere l&#39;inversione con Gauss-Jordan e la formula esplicita con i cofattori. Nei quiz: calcolo di un cofattore, di un&#39;entrata dell&#39;inversa (attenzione agli indici), <span class="m">\det(C^{-1}AC)</span>, e riconoscere quando Gauss-Jordan si può fermare.</p>
+<p><strong>Aperte.</strong> &quot;Descrivere come utilizzare il metodo di Gauss-Jordan per il calcolo dell&#39;inversa&quot;: si scrive l&#39;Algoritmo 18.7 (matrice <span class="m">(A\mid I_n)</span>, Gauss-Jordan su tutta la matrice, se a sinistra si ottiene <span class="m">I_n</span> allora a destra c&#39;è <span class="m">A^{-1}</span>, altrimenti <span class="m">A</span> non è invertibile), si aggiunge l&#39;Osservazione 18.9 sull&#39;arresto anticipato e un piccolo esempio. &quot;Descrivere la formula esplicita dell&#39;inversa&quot;: definizione di cofattore e di <span class="m">\mathrm{Cof}(A)</span>, Teorema 18.4 (<span class="m">A</span> invertibile <span class="m">\iff \det A \neq 0</span>, <span class="m">\det A^{-1} = 1/\det A</span>, <span class="m">A^{-1} = \frac{1}{\det A}{}^t\mathrm{Cof}(A)</span>, <span class="m">(A^{-1})^j_i = \mathrm{cof}_A(j,i)/\det A</span>), il caso <span class="m">2\times 2</span> e il Corollario 18.6.</p>
+<p><strong>Esercizi tipici.</strong> Calcolare un cofattore (attenzione al segno <span class="m">(-1)^{i+j}</span>); un&#39;entrata dell&#39;inversa (indici scambiati); <span class="m">\det(C^{-1}AC) = \det A</span>; riconoscere a quale passo Gauss-Jordan si può fermare (una riga nulla nelle prime <span class="m">n</span> colonne).</p>
+</div>
+
+<div class="callout sintesi">
+
+<ul>
+<li><span class="m">\mathrm{cof}_A(i,j) = (-1)^{i+j}\det A_{ij}</span>; <span class="m">\mathrm{Cof}(A)</span> = matrice dei cofattori.</li>
+<li><span class="m">A</span> invertibile <span class="m">\iff \det A \neq 0</span>; <span class="m">\det(A^{-1}) = 1/\det A</span>.</li>
+<li><span class="m">A^{-1} = \frac{1}{\det A}\,{}^t\mathrm{Cof}(A)</span>, cioè <span class="m">(A^{-1})^j_i = \mathrm{cof}_A(j,i)/\det A</span> (indici scambiati).</li>
+<li><span class="m">2\times 2</span>: <span class="m">\begin{pmatrix} a &amp; b \\ c &amp; d\end{pmatrix}^{-1} = \frac{1}{ad-bc}\begin{pmatrix} d &amp; -b \\ -c &amp; a\end{pmatrix}</span>.</li>
+<li>Gauss-Jordan su <span class="m">(A \mid I_n)</span>: se a sinistra si arriva a <span class="m">I_n</span>, a destra c&#39;è <span class="m">A^{-1}</span>; una riga nulla (o un pivot &quot;saltato&quot;) a sinistra <span class="m">\Rightarrow</span> <span class="m">A</span> non invertibile.</li>
+<li>Matrici coniugate hanno lo stesso determinante: <span class="m">\det(C^{-1}AC) = \det A</span>.</li>
+</ul>
 </div>

@@ -1,70 +1,288 @@
 <h1>Lezione 11 — Matrici</h1>
-<p>Le matrici generalizzano i vettori colonna e saranno fondamentali in tutto il seguito.</p>
-<h2>Definizioni</h2>
+<p>Le matrici sono tabelle di numeri disposte in righe e colonne. Si possono pensare come una <strong>generalizzazione dei vettori colonna</strong>: un vettore colonna è una matrice con una sola colonna. Saranno lo strumento principale di tutto il resto del corso: con le matrici si scrivono e si risolvono i sistemi lineari, si calcolano ranghi e determinanti, si rappresentano le applicazioni lineari. In questa lezione si fissano il linguaggio (righe, colonne, entrate), i tipi particolari di matrici (a scalini, quadrate, simmetriche, triangolari, diagonali, identità), la trasposizione e le sottomatrici.</p>
+<h2>Definizione e notazioni</h2>
 <p><strong>Definizione 11.1.</strong> Una <em>matrice</em> con <span class="m">n</span> righe e <span class="m">m</span> colonne su un insieme <span class="m">I</span> è una tabella</p>
-<p><span class="m d">\begin{pmatrix}a_{11}&amp;a_{12}&amp;\cdots&amp;a_{1m}\\a_{21}&amp;a_{22}&amp;\cdots&amp;a_{2m}\\\vdots&amp;\vdots&amp;&amp;\vdots\\a_{n1}&amp;a_{n2}&amp;\cdots&amp;a_{nm}\end{pmatrix}</span></p>
-<p>con tutti gli <span class="m">a_{ij}\in I</span>. Si dice <span class="m">n\times m</span> (o <em>di dimensione</em> <span class="m">n\times m</span>, si legge &quot;<span class="m">n</span> per <span class="m">m</span>&quot;); l&#39;insieme delle matrici <span class="m">n\times m</span> su <span class="m">I</span> è <span class="m">I^{n,m}</span>.</p>
+<p><span class="m d">\begin{pmatrix}a_{11}&amp;a_{12}&amp;\cdots&amp;a_{1m}\\a_{21}&amp;a_{22}&amp;\cdots&amp;a_{2m}\\\vdots&amp;\vdots&amp;\ddots&amp;\vdots\\a_{n1}&amp;a_{n2}&amp;\cdots&amp;a_{nm}\end{pmatrix}</span></p>
+<p>in cui tutti gli elementi <span class="m">a_{ij}</span> (<span class="m">i=1,\dots,n</span>, <span class="m">j=1,\dots,m</span>) appartengono a <span class="m">I</span>. Una matrice con <span class="m">n</span> righe e <span class="m">m</span> colonne si dice <span class="m">n\times m</span> (o <em>di dimensione</em> <span class="m">n\times m</span>); fissati <span class="m">n,m\in\mathbb{N}\setminus\{0\}</span>, l&#39;insieme di tutte le matrici <span class="m">n\times m</span> su <span class="m">I</span> si indica con <span class="m">I^{n,m}</span>.</p>
+<p>Come si leggono gli indici:</p>
 <ul>
-<li>Le righe (primo indice <span class="m">i</span>) si contano dall&#39;alto in basso, le colonne (secondo indice <span class="m">j</span>) da sinistra a destra.</li>
-<li>Il <em>posto</em> o <em>entrata</em> <span class="m">(i,j)</span> è la posizione sulla riga <span class="m">i</span> e colonna <span class="m">j</span>, cioè quella di <span class="m">a_{ij}</span>. La matrice si scrive anche <span class="m">(a_{ij})_{i=1,\dots,n;\ j=1,\dots,m}</span>.</li>
+<li>in <span class="m">a_{ij}</span> il <strong>primo indice <span class="m">i</span> è la riga</strong>, il <strong>secondo <span class="m">j</span> è la colonna</strong>;</li>
+<li>le righe si contano <strong>dall&#39;alto in basso</strong>, le colonne <strong>da sinistra a destra</strong>;</li>
+<li>la riga <span class="m">i</span>-esima è formata dagli elementi <span class="m">a_{i1},a_{i2},\dots,a_{im}</span>; la colonna <span class="m">j</span>-esima da <span class="m">a_{1j},a_{2j},\dots,a_{nj}</span>;</li>
+<li>il <em>posto</em> o <em>entrata</em> <span class="m">(i,j)</span> è la posizione sulla riga <span class="m">i</span> e sulla colonna <span class="m">j</span>, cioè quella di <span class="m">a_{ij}</span>; &quot;entrata <span class="m">(i,j)</span>&quot; indica anche l&#39;elemento <span class="m">a_{ij}</span> stesso;</li>
+<li>la matrice si scrive in forma compatta <span class="m">(a_{ij})_{i=1,\dots,n;\ j=1,\dots,m}</span>;</li>
+<li>&quot;<span class="m">n\times m</span>&quot; si legge &quot;<span class="m">n</span> per <span class="m">m</span>&quot; (<span class="m">3\times2</span> = &quot;tre per due&quot;); <span class="m">a_{23}</span> si legge &quot;a due tre&quot;.</li>
 </ul>
 <div class="callout esempio">
 
-<p><span class="m">\begin{pmatrix}2&amp;-1&amp;0\\-4&amp;3&amp;5\end{pmatrix}\in\mathbb{R}^{2,3}</span>: due righe, tre colonne; ad esempio l&#39;entrata <span class="m">(2,1)</span> è <span class="m">-4</span>.</p>
+<p><strong>Esempio 11.2.</strong></p>
+<ol>
+<li><span class="m">A=\begin{pmatrix}2&amp;-1&amp;0\\-4&amp;3&amp;5\end{pmatrix}</span> è una matrice reale <span class="m">2\times3</span>, cioè <span class="m">A\in\mathbb{R}^{2,3}</span>. Righe: <span class="m">(2\ -1\ 0)</span> e <span class="m">(-4\ 3\ 5)</span>; colonne: <span class="m">{}^t(2\ -4)</span>, <span class="m">{}^t(-1\ 3)</span>, <span class="m">{}^t(0\ 5)</span>. Le entrate sono:</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Posto</th>
+<th><span class="m">(1,1)</span></th>
+<th><span class="m">(1,2)</span></th>
+<th><span class="m">(1,3)</span></th>
+<th><span class="m">(2,1)</span></th>
+<th><span class="m">(2,2)</span></th>
+<th><span class="m">(2,3)</span></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Elemento</td>
+<td><span class="m">2</span></td>
+<td><span class="m">-1</span></td>
+<td><span class="m">0</span></td>
+<td><span class="m">-4</span></td>
+<td><span class="m">3</span></td>
+<td><span class="m">5</span></td>
+</tr>
+</tbody></table>
+<ol start="2">
+<li><span class="m">\begin{pmatrix}1&amp;3\\3&amp;2\\0&amp;0\\0&amp;\sqrt3\end{pmatrix}</span> è <span class="m">4\times2</span>, quindi sta in <span class="m">\mathbb{R}^{4,2}</span>; si può pensare anche come matrice su <span class="m">\mathbb{C}</span> (ogni reale è complesso), ma non su <span class="m">\mathbb{Z}</span>, perché <span class="m">\sqrt3\notin\mathbb{Z}</span>.</li>
+<li>Le entrate non devono essere per forza numeri: con <span class="m">I=\{\heartsuit,\diamondsuit,\clubsuit,\spadesuit\}</span> la tabella <span class="m">\begin{pmatrix}\heartsuit&amp;\clubsuit\\\diamondsuit&amp;\clubsuit\\\spadesuit&amp;\diamondsuit\end{pmatrix}</span> è una matrice di <span class="m">I^{3,2}</span>.</li>
+<li>(Sessione di studio) <span class="m">A=\begin{pmatrix}1&amp;-1&amp;\sqrt2&amp;0\\0&amp;2&amp;\frac12&amp;1\\-3&amp;1&amp;-1&amp;3\\3&amp;2&amp;0&amp;4\\0&amp;1&amp;5&amp;0\end{pmatrix}</span> è <span class="m">5\times4</span>; <span class="m">A\in\mathbb{R}^{5,4}</span> ma <span class="m">A\notin\mathbb{Q}^{5,4}</span> (per <span class="m">\sqrt2</span>). Entrate: <span class="m">a_{23}=\frac12</span>, <span class="m">a_{14}=0</span>, <span class="m">a_{41}=3</span>, <span class="m">a_{52}=1</span>. Quinta riga <span class="m">(0\ 1\ 5\ 0)</span>, terza colonna <span class="m">{}^t(\sqrt2\ \ \frac12\ \ -1\ \ 0\ \ 5)</span>.</li>
+</ol>
 </div>
 
-<p>D&#39;ora in poi <span class="m">I</span> è un campo <span class="m">\mathbb{K}</span>. Una matrice su <span class="m">\mathbb{R}</span> è <em>reale</em>, su <span class="m">\mathbb{C}</span> è <em>complessa</em> (se non indicato: reale se tutte le entrate sono reali, complessa se almeno una non lo è).</p>
 <ul>
-<li><strong>Definizione 11.6.</strong> La <em>matrice nulla</em> <span class="m">0_{n,m}</span> (o <span class="m">0</span>) ha tutte le entrate nulle.</li>
-<li><strong>Notazione 11.7.</strong> Le matrici si indicano con lettere maiuscole; l&#39;elemento al posto <span class="m">(i,j)</span> di <span class="m">A</span> si indica anche con <span class="m">A^j_i</span>.</li>
-<li><strong>Osservazione 11.8.</strong> Altri testi scrivono <span class="m">M_{n,m}(\mathbb{K})</span>, <span class="m">M_{n\times m}(\mathbb{K})</span>, …</li>
-<li><strong>Definizione 11.10.</strong> Una matrice <span class="m">n\times n</span> è <em>quadrata</em> e <span class="m">n</span> è il suo <strong>ordine</strong>.</li>
-<li><strong>Definizione 11.11.</strong> Una matrice <span class="m">n\times1</span> è una <em>matrice colonna</em>, una <span class="m">1\times m</span> è una <em>matrice riga</em>. Le matrici colonna sono i vettori colonna: <span class="m">\mathbb{K}^{n,1}=\mathbb{K}^n</span>.</li>
+<li><strong>Osservazione 11.3.</strong> In generale <span class="m">I</span> può essere <span class="m">\mathbb{N}</span>, <span class="m">\mathbb{Z}</span>, uno spazio di polinomi o un insieme qualsiasi; nel corso sarà quasi sempre un <strong>campo <span class="m">\mathbb{K}</span></strong>, e d&#39;ora in poi supponiamo <span class="m">I=\mathbb{K}</span>.</li>
+<li><strong>Definizione 11.4.</strong> Una matrice su <span class="m">\mathbb{R}</span> si dice <em>reale</em>, una su <span class="m">\mathbb{C}</span> <em>complessa</em>.</li>
+<li><strong>Notazione 11.5.</strong> Se il campo non è indicato, la matrice è <em>reale</em> se tutte le entrate sono reali, <em>complessa</em> se almeno un&#39;entrata non è reale.</li>
+<li><strong>Definizione 11.6.</strong> La <em>matrice nulla</em> <span class="m">0_{n,m}</span> (o semplicemente <span class="m">0</span>) è la matrice <span class="m">n\times m</span> con tutti gli elementi uguali a <span class="m">0</span>.</li>
+<li><strong>Notazione 11.7.</strong> Le matrici si indicano con lettere maiuscole <span class="m">A,B,C,\dots</span>; l&#39;elemento al posto <span class="m">(i,j)</span> di <span class="m">A</span> si indica anche con <span class="m">A^j_i</span> (indice di riga in basso, di colonna in alto).</li>
+<li><strong>Osservazione 11.8.</strong> Altri testi indicano <span class="m">\mathbb{K}^{n,m}</span> con <span class="m">M^{n,m}_{\mathbb{K}}</span>, <span class="m">M_{n,m}(\mathbb{K})</span>, <span class="m">M_{n\times m}(\mathbb{K})</span> o simili.</li>
+<li><strong>Osservazione 11.9.</strong> Una matrice <span class="m">1\times1</span>, <span class="m">A=(a_{11})</span>, è praticamente un elemento di <span class="m">\mathbb{K}</span>; si usa comunque una lettera diversa (maiuscola per la matrice, minuscola per l&#39;elemento).</li>
 </ul>
+<p><strong>Definizione 11.10.</strong> Una matrice <span class="m">n\times n</span> (stesso numero di righe e di colonne) si dice <em>quadrata</em>, e <span class="m">n</span> è il suo <strong>ordine</strong>. Ad esempio <span class="m">\begin{pmatrix}1&amp;3&amp;-1\\1&amp;0&amp;0\\-2&amp;1&amp;-5\end{pmatrix}</span> è quadrata di ordine <span class="m">3</span> (non <span class="m">9</span>: l&#39;ordine è il numero di righe, non il numero di entrate).</p>
+<p><strong>Definizione 11.11.</strong> Una matrice <span class="m">n\times1</span> (una sola colonna) è una <em>matrice colonna</em>; una matrice <span class="m">1\times m</span> (una sola riga) è una <em>matrice riga</em>:
+<span class="m d">\begin{pmatrix}a_{11}\\a_{21}\\\vdots\\a_{n1}\end{pmatrix}\qquad\text{e}\qquad\begin{pmatrix}a_{11}&amp;a_{12}&amp;\cdots&amp;a_{1m}\end{pmatrix}.</span></p>
+<p><strong>Osservazione 11.12.</strong> Le matrici colonna sono esattamente i vettori colonna di <span class="m">\mathbb{K}^n</span>: <span class="m">\mathbb{K}^{n,1}=\mathbb{K}^n</span>.</p>
 <h2>Matrici a scalini</h2>
-<p><strong>Definizione 11.13.</strong> Una matrice è <em>a scalini</em> se in ogni riga il primo elemento non nullo è <strong>a destra</strong> del primo elemento non nullo della riga precedente, e tutte le righe nulle sono <strong>in fondo</strong>. Il primo elemento non nullo di ogni riga non nulla è il <strong>pivot</strong>.</p>
-<ul>
-<li>La matrice nulla è a scalini.</li>
-<li>In una matrice a scalini solo le ultime righe possono essere nulle; le prime colonne possono essere nulle.</li>
-</ul>
+<p><strong>Definizione 11.13.</strong> Una matrice è <em>a scalini</em> se:</p>
+<ol>
+<li>in ogni riga il primo elemento non nullo è <strong>strettamente a destra</strong> del primo elemento non nullo della riga precedente;</li>
+<li>tutte le righe nulle sono <strong>in fondo</strong> alla matrice.</li>
+</ol>
+<p>Il primo elemento non nullo di ogni riga non nulla si chiama <strong>pivot</strong> della riga.</p>
+<p>Il nome viene dalla forma: i pivot scendono come i gradini di una scala, spostandosi di almeno una colonna verso destra a ogni riga.</p>
+<p><strong>Osservazione 11.14.</strong> La matrice nulla è a scalini: non ci sono elementi non nulli, quindi resta solo la condizione &quot;le righe nulle sono in fondo&quot;, che è vera perché tutte le righe sono nulle. Una matrice a scalini non nulla ha la forma</p>
+<p><span class="m d">\begin{pmatrix}0\cdots0&amp;a_{1j_1}&amp;\ast\cdots\ast&amp;\ast&amp;\ast\cdots\ast&amp;\ast\\0\cdots0&amp;0&amp;0\cdots0&amp;a_{2j_2}&amp;\ast\cdots\ast&amp;\ast\\\vdots&amp;&amp;&amp;&amp;\ddots&amp;\\0\cdots0&amp;0&amp;0\cdots0&amp;0&amp;\cdots&amp;a_{kj_k}\cdots\\0\cdots0&amp;0&amp;0\cdots0&amp;0&amp;\cdots0&amp;0\end{pmatrix}</span></p>
+<p>dove i pivot <span class="m">a_{1j_1},\dots,a_{kj_k}</span> sono non nulli e <span class="m">j_1&lt;j_2&lt;\dots&lt;j_k</span>, gli asterischi sono elementi qualsiasi, le prime colonne nulle e le ultime righe nulle possono mancare. <strong>Solo le ultime righe possono essere nulle</strong> (le prime colonne invece possono essere nulle).</p>
 <div class="callout esempio">
 
-<p>Sono a scalini: <span class="m">\begin{pmatrix}0&amp;-1&amp;2&amp;4\\0&amp;0&amp;0&amp;4\\0&amp;0&amp;0&amp;0\end{pmatrix}</span>, <span class="m">\begin{pmatrix}2&amp;-1&amp;0&amp;4\\0&amp;3&amp;-2&amp;4\end{pmatrix}</span>, <span class="m">\begin{pmatrix}1&amp;0\\0&amp;1\end{pmatrix}</span>.</p>
-<p>Non sono a scalini: <span class="m">\begin{pmatrix}0&amp;-1&amp;2&amp;4\\0&amp;3&amp;0&amp;4\\0&amp;0&amp;0&amp;0\end{pmatrix}</span> (il pivot <span class="m">3</span> della seconda riga non è a destra del pivot <span class="m">-1</span> della prima), <span class="m">\begin{pmatrix}0&amp;0\\0&amp;1\end{pmatrix}</span> (la riga nulla è sopra una riga non nulla).</p>
+<p><strong>Esempio 11.15.</strong></p>
+<p>Sono a scalini (pivot: <span class="m">-1</span> e <span class="m">4</span>; <span class="m">2</span> e <span class="m">3</span>; <span class="m">1</span> e <span class="m">1</span>):
+<span class="m d">\begin{pmatrix}0&amp;-1&amp;2&amp;4\\0&amp;0&amp;0&amp;4\\0&amp;0&amp;0&amp;0\end{pmatrix},\qquad\begin{pmatrix}2&amp;-1&amp;0&amp;4\\0&amp;3&amp;-2&amp;4\end{pmatrix},\qquad\begin{pmatrix}1&amp;0\\0&amp;1\end{pmatrix}.</span></p>
+<p>Non sono a scalini:</p>
+<ul>
+<li><span class="m">\begin{pmatrix}0&amp;-1&amp;2&amp;4\\0&amp;3&amp;0&amp;4\\0&amp;0&amp;0&amp;0\end{pmatrix}</span>: il primo elemento non nullo della seconda riga, <span class="m">3</span> al posto <span class="m">(2,2)</span>, <strong>non è a destra</strong> di <span class="m">-1</span> al posto <span class="m">(1,2)</span> (è nella stessa colonna);</li>
+<li><span class="m">\begin{pmatrix}0&amp;-1&amp;0&amp;4\\2&amp;3&amp;-2&amp;4\end{pmatrix}</span>: il pivot <span class="m">2</span> della seconda riga è addirittura a sinistra di quello della prima;</li>
+<li><span class="m">\begin{pmatrix}0&amp;0\\0&amp;1\end{pmatrix}</span>: la prima riga è nulla ed è <strong>sopra</strong> una riga non nulla.</li>
+</ul>
+<p>Altri casi (quiz della dispensa): <span class="m">\begin{pmatrix}1&amp;0&amp;2\\0&amp;-1&amp;2\\0&amp;0&amp;0\end{pmatrix}</span> è a scalini; <span class="m">\begin{pmatrix}2&amp;-3&amp;1\\0&amp;0&amp;0\\0&amp;0&amp;1\end{pmatrix}</span> no (riga nulla in mezzo); <span class="m">\begin{pmatrix}0&amp;-3&amp;1\\1&amp;0&amp;0\end{pmatrix}</span> no.</p>
 </div>
 
 <h2>Trasposizione</h2>
-<p><strong>Definizione 11.16.</strong> La <em>trasposta</em> di <span class="m">A\in\mathbb{K}^{n,m}</span> è la matrice <span class="m">{}^tA\in\mathbb{K}^{m,n}</span> ottenuta <strong>scambiando le righe con le colonne</strong>: la riga <span class="m">i</span> di <span class="m">{}^tA</span> è la colonna <span class="m">i</span> di <span class="m">A</span>.</p>
-<p><span class="m d">{}^t\begin{pmatrix}1&amp;2&amp;3\\4&amp;5&amp;6\end{pmatrix}=\begin{pmatrix}1&amp;4\\2&amp;5\\3&amp;6\end{pmatrix}</span></p>
-<ul>
-<li>La trasposta di una matrice quadrata è quadrata, ma può essere diversa da <span class="m">A</span>.</li>
-<li>La trasposta di una matrice colonna è una matrice riga e viceversa (da qui la notazione <span class="m">{}^t(x_1\ \cdots\ x_n)</span> per i vettori colonna).</li>
-<li><span class="m">{}^t({}^tA)=A</span>: la trasposizione è una funzione bigettiva <span class="m">\mathbb{K}^{n,m}\to\mathbb{K}^{m,n}</span>, inversa di sé stessa.</li>
-</ul>
-<h2>Matrici quadrate</h2>
-<p><strong>Definizione 11.20.</strong> La <em>diagonale principale</em> di una matrice quadrata è formata dalle entrate <span class="m">(i,i)</span>.</p>
-<p><strong>Definizione 11.21.</strong> Una matrice quadrata <span class="m">A</span> è:</p>
-<ol>
-<li><em>simmetrica</em> se <span class="m">{}^tA=A</span>, cioè <span class="m">a_{ij}=a_{ji}</span>;</li>
-<li><em>triangolare superiore</em> se <span class="m">a_{ij}=0</span> per <span class="m">i&gt;j</span> (zeri sotto la diagonale);</li>
-<li><em>triangolare inferiore</em> se <span class="m">a_{ij}=0</span> per <span class="m">i&lt;j</span> (zeri sopra la diagonale);</li>
-<li><em>diagonale</em> se <span class="m">a_{ij}=0</span> per <span class="m">i\neq j</span>, indicata con <span class="m">\mathrm{Diag}(a_{11},\dots,a_{nn})</span>;</li>
-<li><em>identità</em> (o identica, o unità) se <span class="m">a_{ii}=1</span> e <span class="m">a_{ij}=0</span> per <span class="m">i\neq j</span>, indicata con <span class="m">I_n</span> o <span class="m">I</span>.</li>
-</ol>
-<p><strong>Osservazione 11.23.</strong> Una matrice quadrata a scalini è triangolare superiore. Il viceversa è falso: <span class="m">\begin{pmatrix}0&amp;0\\0&amp;1\end{pmatrix}</span> è triangolare superiore ma non a scalini.</p>
-<h2>Sottomatrici</h2>
-<p><strong>Definizione 11.24.</strong> Fissate alcune righe e alcune colonne di <span class="m">A</span> (almeno una di ciascuna), la <em>sottomatrice</em> corrispondente è la matrice ottenuta da <span class="m">A</span> <strong>rimuovendo</strong> le righe e le colonne non fissate (gli elementi restano nell&#39;ordine originale).</p>
-<ul>
-<li>Con tutte le righe e solo la colonna <span class="m">j</span> si ottiene la colonna <span class="m">A^j</span>; con tutte le colonne e solo la riga <span class="m">i</span> si ottiene la riga <span class="m">A_i</span>; con riga <span class="m">i</span> e colonna <span class="m">j</span> si ottiene <span class="m">(a_{ij})=A^j_i</span>.</li>
-<li><span class="m">A</span> stessa è una sua sottomatrice.</li>
-</ul>
+<p><strong>Definizione 11.16.</strong> La <em>trasposta</em> di <span class="m">A=(a_{ij})\in\mathbb{K}^{n,m}</span> è la matrice <span class="m">m\times n</span> ottenuta da <span class="m">A</span> <strong>scambiando le righe con le colonne</strong>: la riga <span class="m">i</span> della trasposta è la colonna <span class="m">i</span> di <span class="m">A</span>. Si indica con <span class="m">{}^tA</span>:</p>
+<p><span class="m d">{}^t\begin{pmatrix}a_{11}&amp;a_{12}&amp;\cdots&amp;a_{1m}\\\vdots&amp;&amp;&amp;\vdots\\a_{n1}&amp;a_{n2}&amp;\cdots&amp;a_{nm}\end{pmatrix}=\begin{pmatrix}a_{11}&amp;a_{21}&amp;\cdots&amp;a_{n1}\\\vdots&amp;&amp;&amp;\vdots\\a_{1m}&amp;a_{2m}&amp;\cdots&amp;a_{nm}\end{pmatrix},</span></p>
+<p>cioè l&#39;entrata <span class="m">(i,j)</span> di <span class="m">{}^tA</span> è <span class="m">a_{ji}</span>.</p>
 <div class="callout esempio">
 
-<p>Da <span class="m">\begin{pmatrix}0&amp;1&amp;2&amp;3\\4&amp;5&amp;6&amp;7\\8&amp;9&amp;10&amp;11\end{pmatrix}</span>: righe <span class="m">1,3</span> e colonne <span class="m">2,4</span> danno <span class="m">\begin{pmatrix}1&amp;3\\9&amp;11\end{pmatrix}</span> (quadrata); righe <span class="m">1,2</span> e colonne <span class="m">1,2,3</span> danno <span class="m">\begin{pmatrix}0&amp;1&amp;2\\4&amp;5&amp;6\end{pmatrix}</span> (non quadrata); righe <span class="m">1,2,3</span> e colonne <span class="m">1,3,4</span> danno <span class="m">\begin{pmatrix}0&amp;2&amp;3\\4&amp;6&amp;7\\8&amp;10&amp;11\end{pmatrix}</span>.</p>
+<p><strong>Esempio 11.17.</strong> <span class="m">{}^t\begin{pmatrix}1&amp;2&amp;3\\4&amp;5&amp;6\end{pmatrix}=\begin{pmatrix}1&amp;4\\2&amp;5\\3&amp;6\end{pmatrix}</span>: la prima riga <span class="m">(1\ 2\ 3)</span> diventa la prima colonna, la seconda riga <span class="m">(4\ 5\ 6)</span> la seconda colonna. Da <span class="m">2\times3</span> si passa a <span class="m">3\times2</span>.</p>
+<p>(Sessione di studio) <span class="m">{}^t\begin{pmatrix}3&amp;-1&amp;0&amp;-2\\1&amp;3&amp;-1&amp;1\\0&amp;2&amp;4&amp;2\end{pmatrix}=\begin{pmatrix}3&amp;1&amp;0\\-1&amp;3&amp;2\\0&amp;-1&amp;4\\-2&amp;1&amp;2\end{pmatrix}</span>.</p>
 </div>
 
-<p><strong>Notazione 11.28 (matrici a blocchi).</strong> Se <span class="m">A\in\mathbb{K}^{n,m}</span> e <span class="m">B\in\mathbb{K}^{n,h}</span>, <span class="m">(A\ B)\in\mathbb{K}^{n,m+h}</span> è la matrice ottenuta affiancando <span class="m">A</span> e <span class="m">B</span>. Analogamente <span class="m">\begin{pmatrix}A&amp;B\\C&amp;D\end{pmatrix}</span> mette <span class="m">(C\ D)</span> sotto <span class="m">(A\ B)</span>; i blocchi <span class="m">1\times1</span> si scrivono con la loro unica entrata.</p>
+<p><strong>Osservazione 11.18.</strong></p>
+<ol>
+<li>La trasposta di una matrice quadrata <span class="m">n\times n</span> è ancora quadrata, ma <strong>può essere diversa</strong> da <span class="m">A</span> (ad esempio <span class="m">{}^t\begin{pmatrix}1&amp;2\\0&amp;1\end{pmatrix}=\begin{pmatrix}1&amp;0\\2&amp;1\end{pmatrix}</span>).</li>
+<li>La trasposta di una matrice colonna <span class="m">n\times1</span> è una matrice riga <span class="m">1\times n</span> e viceversa. Questo spiega la notazione <span class="m">{}^t(x_1\ x_2\ \cdots\ x_n)</span> per i vettori colonna: si scrive il vettore in riga (più comodo da stampare) e lo si traspone.</li>
+<li><span class="m">{}^t({}^tA)=A</span>: trasponendo due volte si torna alla matrice di partenza.</li>
+</ol>
+<p><strong>Osservazione 11.19.</strong> La trasposizione definisce una funzione <strong>bigettiva</strong> <span class="m">\mathbb{K}^{n,m}\ni A\mapsto{}^tA\in\mathbb{K}^{m,n}</span>, la cui inversa è ancora la trasposizione (<span class="m">A\to{}^tA\to{}^t({}^tA)=A</span>). Se <span class="m">n=m</span> dominio e codominio coincidono.</p>
+<h2>Matrici quadrate particolari</h2>
+<p><strong>Definizione 11.20.</strong> La <em>diagonale principale</em> di una matrice quadrata <span class="m">A=(a_{ij})\in\mathbb{K}^{n,n}</span> è formata dalle entrate <span class="m">(i,i)</span>, cioè <span class="m">a_{11},a_{22},\dots,a_{nn}</span> (da in alto a sinistra a in basso a destra).</p>
+<p><strong>Definizione 11.21.</strong> Una matrice quadrata <span class="m">A=(a_{ij})</span> si dice:</p>
+<ol>
+<li><em>simmetrica</em> se <span class="m">{}^tA=A</span>, cioè <span class="m">a_{ij}=a_{ji}</span> per ogni <span class="m">i,j</span>;</li>
+<li><em>triangolare superiore</em> se <span class="m">a_{ij}=0</span> per ogni <span class="m">i&gt;j</span>;</li>
+<li><em>triangolare inferiore</em> se <span class="m">a_{ij}=0</span> per ogni <span class="m">i&lt;j</span>;</li>
+<li><em>diagonale</em> se <span class="m">a_{ij}=0</span> per ogni <span class="m">i\neq j</span>; si indica con <span class="m">\mathrm{Diag}(a_{11},a_{22},\dots,a_{nn})</span>;</li>
+<li><em>identità</em> (o <em>identica</em>, o <em>unità</em>) se <span class="m">a_{ij}=1</span> per <span class="m">i=j</span> e <span class="m">a_{ij}=0</span> per <span class="m">i\neq j</span>; si indica con <span class="m">I_n</span> o semplicemente <span class="m">I</span>.</li>
+</ol>
+<p><strong>Osservazione 11.22 (come appaiono).</strong></p>
+<table>
+<thead>
+<tr>
+<th>Tipo</th>
+<th>Forma</th>
+<th>Significato grafico</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>simmetrica</td>
+<td><span class="m">\begin{pmatrix}a_{11}&amp;a_{12}&amp;a_{13}\\a_{12}&amp;a_{22}&amp;a_{23}\\a_{13}&amp;a_{23}&amp;a_{33}\end{pmatrix}</span></td>
+<td>simmetrica rispetto alla diagonale principale</td>
+</tr>
+<tr>
+<td>triangolare superiore</td>
+<td><span class="m">\begin{pmatrix}a_{11}&amp;a_{12}&amp;a_{13}\\0&amp;a_{22}&amp;a_{23}\\0&amp;0&amp;a_{33}\end{pmatrix}</span></td>
+<td>zeri <strong>sotto</strong> la diagonale</td>
+</tr>
+<tr>
+<td>triangolare inferiore</td>
+<td><span class="m">\begin{pmatrix}a_{11}&amp;0&amp;0\\a_{21}&amp;a_{22}&amp;0\\a_{31}&amp;a_{32}&amp;a_{33}\end{pmatrix}</span></td>
+<td>zeri <strong>sopra</strong> la diagonale</td>
+</tr>
+<tr>
+<td>diagonale</td>
+<td><span class="m">\begin{pmatrix}a_{11}&amp;0&amp;0\\0&amp;a_{22}&amp;0\\0&amp;0&amp;a_{33}\end{pmatrix}</span></td>
+<td>zeri <strong>fuori</strong> dalla diagonale</td>
+</tr>
+<tr>
+<td>identità</td>
+<td><span class="m">\begin{pmatrix}1&amp;0&amp;0\\0&amp;1&amp;0\\0&amp;0&amp;1\end{pmatrix}=\mathrm{Diag}(1,1,1)</span></td>
+<td><span class="m">1</span> sulla diagonale, <span class="m">0</span> altrove</td>
+</tr>
+</tbody></table>
+<p>Nota: la condizione per &quot;triangolare superiore&quot; è sugli elementi <strong>sotto</strong> la diagonale (<span class="m">i&gt;j</span>: riga più in basso della colonna), che devono essere nulli. Gli elementi sulla diagonale possono essere qualsiasi, anche nulli. Una matrice diagonale è sia triangolare superiore sia inferiore, ed è simmetrica.</p>
+<p><strong>Osservazione 11.23.</strong> Una matrice <strong>quadrata a scalini è triangolare superiore</strong>: a ogni riga il pivot si sposta di almeno un posto a destra, quindi nella riga <span class="m">i</span> il primo elemento non nullo non può stare a sinistra di <span class="m">a_{ii}</span>, e tutto ciò che è sotto la diagonale è nullo. Il <strong>viceversa è falso</strong>: <span class="m">\begin{pmatrix}0&amp;0\\0&amp;1\end{pmatrix}</span> è triangolare superiore (l&#39;unico elemento sotto la diagonale è <span class="m">0</span>) ma non è a scalini (riga nulla sopra una non nulla).</p>
+<div class="callout esempio">
+
+<p><strong>Esempio (classificazione, sessione di studio).</strong></p>
+<table>
+<thead>
+<tr>
+<th>Matrice</th>
+<th>Proprietà</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><span class="m">(0\ 0\ 0)</span></td>
+<td>nulla, riga, a scalini</td>
+</tr>
+<tr>
+<td><span class="m">\begin{pmatrix}1&amp;-2&amp;0\\0&amp;2&amp;0\\0&amp;0&amp;0\end{pmatrix}</span></td>
+<td>a scalini, quadrata, triangolare superiore</td>
+</tr>
+<tr>
+<td><span class="m">\begin{pmatrix}1&amp;0\\0&amp;1\end{pmatrix}</span></td>
+<td>a scalini, quadrata, simmetrica, triangolare superiore e inferiore, diagonale, identità</td>
+</tr>
+<tr>
+<td><span class="m">\begin{pmatrix}3&amp;-1&amp;4\\-1&amp;0&amp;2\\4&amp;2&amp;5\end{pmatrix}</span></td>
+<td>quadrata, simmetrica (<span class="m">a_{12}=a_{21}=-1</span>, <span class="m">a_{13}=a_{31}=4</span>, <span class="m">a_{23}=a_{32}=2</span>)</td>
+</tr>
+<tr>
+<td><span class="m">\mathrm{Diag}(3,0,2,-1)</span></td>
+<td>quadrata, simmetrica, triangolare superiore e inferiore, diagonale (non a scalini: la seconda riga è nulla ma non è in fondo)</td>
+</tr>
+</tbody></table>
+</div>
+
+<h2>Sottomatrici</h2>
+<p><strong>Definizione 11.24.</strong> Sia <span class="m">A\in\mathbb{K}^{n,m}</span>. Fissate alcune righe e alcune colonne di <span class="m">A</span> (almeno una riga e almeno una colonna), la <em>sottomatrice</em> corrispondente è la matrice ottenuta da <span class="m">A</span> <strong>rimuovendo le righe e le colonne non fissate</strong>. Gli elementi rimasti restano <strong>nell&#39;ordine</strong> in cui erano: si prendono esattamente gli elementi che stanno all&#39;<strong>incrocio</strong> delle righe e delle colonne scelte.</p>
+<p>Casi particolari:</p>
+<ul>
+<li>tutte le righe e solo la colonna <span class="m">j</span>: si ottiene la <strong>colonna <span class="m">j</span>-esima</strong> di <span class="m">A</span>, indicata con <span class="m">A^j</span>;</li>
+<li>tutte le colonne e solo la riga <span class="m">i</span>: si ottiene la <strong>riga <span class="m">i</span>-esima</strong>, indicata con <span class="m">A_i</span>;</li>
+<li>la riga <span class="m">i</span> e la colonna <span class="m">j</span>: si ottiene la matrice <span class="m">1\times1</span> <span class="m">(a_{ij})</span>, indicata ancora con <span class="m">A^j_i</span> (stesso simbolo dell&#39;elemento: <strong>Osservazione 11.25</strong>, non crea confusione).</li>
+</ul>
+<p><strong>Osservazione 11.26.</strong> <span class="m">A</span> stessa è una sua sottomatrice (tutte le righe e tutte le colonne).</p>
+<div class="callout esempio">
+
+<p><strong>Esempio 11.27.</strong> Sottomatrici di <span class="m">A=\begin{pmatrix}0&amp;1&amp;2&amp;3\\4&amp;5&amp;6&amp;7\\8&amp;9&amp;10&amp;11\end{pmatrix}</span>:</p>
+<table>
+<thead>
+<tr>
+<th>Righe</th>
+<th>Colonne</th>
+<th>Sottomatrice</th>
+<th>Quadrata?</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><span class="m">3</span></td>
+<td><span class="m">2</span></td>
+<td><span class="m">(9)</span></td>
+<td>sì</td>
+</tr>
+<tr>
+<td><span class="m">2</span></td>
+<td><span class="m">1,2,3,4</span></td>
+<td><span class="m">(4\ 5\ 6\ 7)</span></td>
+<td>no</td>
+</tr>
+<tr>
+<td><span class="m">1,3</span></td>
+<td><span class="m">2,4</span></td>
+<td><span class="m">\begin{pmatrix}1&amp;3\\9&amp;11\end{pmatrix}</span></td>
+<td>sì</td>
+</tr>
+<tr>
+<td><span class="m">1,2</span></td>
+<td><span class="m">1,2,3</span></td>
+<td><span class="m">\begin{pmatrix}0&amp;1&amp;2\\4&amp;5&amp;6\end{pmatrix}</span></td>
+<td>no</td>
+</tr>
+<tr>
+<td><span class="m">1,2,3</span></td>
+<td><span class="m">1,3,4</span></td>
+<td><span class="m">\begin{pmatrix}0&amp;2&amp;3\\4&amp;6&amp;7\\8&amp;10&amp;11\end{pmatrix}</span></td>
+<td>sì</td>
+</tr>
+</tbody></table>
+<p>Ad esempio con righe <span class="m">1,3</span> e colonne <span class="m">2,4</span>: dalla riga 1 <span class="m">(0\ 1\ 2\ 3)</span> si prendono le entrate di colonna 2 e 4, cioè <span class="m">1</span> e <span class="m">3</span>; dalla riga 3 <span class="m">(8\ 9\ 10\ 11)</span> le entrate di colonna 2 e 4, cioè <span class="m">9</span> e <span class="m">11</span>.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Come si riconosce una sottomatrice <span class="m">2\times2</span>.</strong> Una matrice <span class="m">\begin{pmatrix}p&amp;q\\r&amp;s\end{pmatrix}</span> è sottomatrice di <span class="m">A</span> se e solo se esistono due righe <span class="m">i_1&lt;i_2</span> e due colonne <span class="m">j_1&lt;j_2</span> di <span class="m">A</span> con
+<span class="m d">a_{i_1j_1}=p,\quad a_{i_1j_2}=q,\quad a_{i_2j_1}=r,\quad a_{i_2j_2}=s.</span>
+In pratica: si cerca una riga che contenga <span class="m">p</span> e <span class="m">q</span> (con <span class="m">p</span> a sinistra di <span class="m">q</span>), si annotano le loro colonne, e si cerca <strong>più in basso</strong> una riga che in <strong>quelle stesse colonne</strong> abbia <span class="m">r</span> e <span class="m">s</span>.</p>
+<p>Con <span class="m">A=\begin{pmatrix}-3&amp;1&amp;0&amp;2\\7&amp;1&amp;-6&amp;1\\7&amp;-1&amp;3&amp;2\end{pmatrix}</span>: la matrice <span class="m">\begin{pmatrix}7&amp;-6\\7&amp;3\end{pmatrix}</span> è una sottomatrice (righe <span class="m">2,3</span>, colonne <span class="m">1,3</span>); invece <span class="m">\begin{pmatrix}7&amp;1\\7&amp;3\end{pmatrix}</span> no: nella riga 2 il <span class="m">7</span> è in colonna 1 e gli <span class="m">1</span> sono in colonna 2 o 4, ma la riga 3 in colonna 2 ha <span class="m">-1</span> e in colonna 4 ha <span class="m">2</span>, mai <span class="m">3</span>.</p>
+<p>(Sessione di studio, con parametro) In <span class="m">A_k=\begin{pmatrix}-2&amp;1&amp;3&amp;0\\2k&amp;2&amp;-1&amp;2\\-1&amp;0&amp;2&amp;3k\end{pmatrix}</span> si vuole la sottomatrice <span class="m">I_2=\begin{pmatrix}1&amp;0\\0&amp;1\end{pmatrix}</span>. Le righe che possono contenere un <span class="m">1</span> e uno <span class="m">0</span> sono la prima e la terza; le colonne adatte la seconda e la quarta. La sottomatrice di righe <span class="m">1,3</span> e colonne <span class="m">2,4</span> è <span class="m">\begin{pmatrix}1&amp;0\\0&amp;3k\end{pmatrix}</span>, che è <span class="m">I_2</span> per <span class="m">3k=1</span>, cioè <span class="m">k=\frac13</span>.</p>
+<p>(Conteggio) Una matrice <span class="m">n\times m</span> ha <span class="m">(2^n-1)(2^m-1)</span> sottomatrici: si sceglie un sottoinsieme non vuoto di righe (<span class="m">2^n-1</span> modi) e uno di colonne (<span class="m">2^m-1</span> modi). Una <span class="m">2\times3</span> ne ha <span class="m">3\cdot7=21</span>.</p>
+</div>
+
+<h3>Matrici a blocchi</h3>
+<p><strong>Notazione 11.28.</strong> Se <span class="m">A\in\mathbb{K}^{n,m}</span> e <span class="m">B\in\mathbb{K}^{n,h}</span> (stesso numero di righe), <span class="m">(A\ B)\in\mathbb{K}^{n,m+h}</span> è la matrice ottenuta <strong>affiancando</strong> <span class="m">A</span> e <span class="m">B</span>: la colonna <span class="m">j</span> è la colonna <span class="m">j</span> di <span class="m">A</span> se <span class="m">j\le m</span>, la colonna <span class="m">j-m</span> di <span class="m">B</span> se <span class="m">j&gt;m</span>. Se inoltre <span class="m">C\in\mathbb{K}^{k,m}</span> e <span class="m">D\in\mathbb{K}^{k,h}</span>, <span class="m">\begin{pmatrix}A&amp;B\\C&amp;D\end{pmatrix}\in\mathbb{K}^{n+k,m+h}</span> è la matrice ottenuta mettendo <span class="m">(C\ D)</span> <strong>sotto</strong> <span class="m">(A\ B)</span>. I blocchi <span class="m">1\times1</span> si scrivono direttamente con la loro unica entrata.</p>
+<div class="callout esempio">
+
+<p><strong>Esempio 11.29.</strong></p>
+<ol>
+<li><span class="m">A=\begin{pmatrix}-1&amp;1\\3&amp;0\end{pmatrix}</span>, <span class="m">B=\begin{pmatrix}1&amp;2&amp;3\\0&amp;0&amp;-4\end{pmatrix}</span>: <span class="m">(A\ B)=\begin{pmatrix}-1&amp;1&amp;1&amp;2&amp;3\\3&amp;0&amp;0&amp;0&amp;-4\end{pmatrix}</span> e <span class="m">(B\ A)=\begin{pmatrix}1&amp;2&amp;3&amp;-1&amp;1\\0&amp;0&amp;-4&amp;3&amp;0\end{pmatrix}</span> (l&#39;ordine dei blocchi conta).</li>
+<li><span class="m">A=\begin{pmatrix}1&amp;-1&amp;2\\2&amp;0&amp;-4\end{pmatrix}</span>, <span class="m">B=\begin{pmatrix}3\\-2\end{pmatrix}</span>, <span class="m">C=(1\ -1\ -2)</span>, <span class="m">D=(5)</span>: <span class="m">\begin{pmatrix}A&amp;B\\C&amp;D\end{pmatrix}=\begin{pmatrix}1&amp;-1&amp;2&amp;3\\2&amp;0&amp;-4&amp;-2\\1&amp;-1&amp;-2&amp;5\end{pmatrix}</span>, scritta anche <span class="m">\begin{pmatrix}A&amp;B\\C&amp;5\end{pmatrix}</span>.</li>
+</ol>
+</div>
+
+<div class="callout attenzione">
+
+<ul>
+<li><span class="m">n\times m</span>: prima le <strong>righe</strong>, poi le <strong>colonne</strong>. <span class="m">a_{ij}</span>: prima la riga, poi la colonna.</li>
+<li>In una sottomatrice gli elementi devono stare all&#39;<strong>incrocio</strong> delle righe e colonne scelte: non basta che compaiano &quot;da qualche parte&quot; nella matrice, e non si possono riordinare. Controlla anche i <strong>segni</strong> (<span class="m">5</span> non è <span class="m">-5</span>).</li>
+<li>Una matrice con una riga nulla <strong>in mezzo</strong> non è a scalini; un pivot nella stessa colonna di quello sopra non è &quot;a destra&quot;.</li>
+<li>Triangolare superiore non implica a scalini.</li>
+<li>L&#39;ordine di una matrice quadrata è il numero di righe (o di colonne), non il numero di entrate.</li>
+</ul>
+</div>
+
 <div class="callout esame">
 
-<p>Il paniere chiede di riconoscere una sottomatrice <span class="m">2\times2</span> di una <span class="m">3\times4</span>: gli elementi di ogni riga della sottomatrice devono stare nelle stesse due colonne per entrambe le righe scelte. Nelle sessioni di studio: ordine di una matrice quadrata, matrici a scalini, trasposta.</p>
+<p>Il paniere chiede di <strong>riconoscere una sottomatrice <span class="m">2\times2</span> di una matrice <span class="m">3\times4</span></strong>: per ogni candidata cerca una riga che contenga i due elementi in alto, nello stesso ordine, segna le loro colonne, e controlla che una riga più in basso abbia, <strong>in quelle stesse colonne</strong>, i due elementi in basso. Spesso le candidate sbagliate contengono un elemento che non compare affatto nella matrice, o compare con il segno opposto, o nella colonna sbagliata.</p>
+<p>Nelle sessioni di studio: ordine di una matrice quadrata, riconoscere le matrici a scalini, calcolare la trasposta, classificare matrici (simmetrica, triangolare, diagonale, identità).</p>
+</div>
+
+<div class="callout sintesi">
+
+<ul>
+<li><span class="m">A\in\mathbb{K}^{n,m}</span>: <span class="m">n</span> righe, <span class="m">m</span> colonne; <span class="m">a_{ij}=A^j_i</span> sta in riga <span class="m">i</span> e colonna <span class="m">j</span>; <span class="m">\mathbb{K}^{n,1}=\mathbb{K}^n</span>.</li>
+<li>A scalini: ogni pivot strettamente a destra del precedente, righe nulle in fondo; la matrice nulla è a scalini.</li>
+<li>Trasposta <span class="m">{}^tA\in\mathbb{K}^{m,n}</span>: righe <span class="m">\leftrightarrow</span> colonne, <span class="m">({}^tA)_{ij}=a_{ji}</span>, <span class="m">{}^t({}^tA)=A</span>.</li>
+<li>Quadrate: diagonale principale; simmetrica (<span class="m">{}^tA=A</span>), triangolare superiore/inferiore, diagonale, identità <span class="m">I_n</span>; quadrata a scalini <span class="m">\Rightarrow</span> triangolare superiore (non viceversa).</li>
+<li>Sottomatrice: si tengono righe e colonne scelte, elementi agli incroci nell&#39;ordine originale; <span class="m">A^j</span> colonna, <span class="m">A_i</span> riga; matrici a blocchi <span class="m">(A\ B)</span>, <span class="m">\begin{pmatrix}A&amp;B\\C&amp;D\end{pmatrix}</span>.</li>
+</ul>
 </div>

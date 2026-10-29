@@ -1,85 +1,212 @@
-<h1>Lezione 43 — Legge di Coulomb, campo e dipolo elettrico</h1>
-<h2>Richiamo: Coulomb e campo</h2>
-<p>La forza tra due cariche puntiformi va con l&#39;inverso del quadrato della distanza:</p>
+<h1>Lezione 43 — Costante dielettrica, campo e dipolo elettrico</h1>
+<p>Questa lezione riprende la legge di Coulomb e il campo (lezioni 41-42) e li applica al sistema di cariche più semplice dopo la carica singola: il <strong>dipolo elettrico</strong>, cioè due cariche uguali e opposte vicine tra loro. Il dipolo è importantissimo perché molte molecole (per esempio l&#39;acqua) si comportano come dipoli, e perché la materia isolante in un campo elettrico si &quot;polarizza&quot; formando tanti piccoli dipoli. Vedremo:</p>
+<ul>
+<li>l&#39;unità di misura della costante dielettrica del vuoto;</li>
+<li>la definizione di dipolo e di momento di dipolo;</li>
+<li>il campo del dipolo, sull&#39;asse perpendicolare e sull&#39;asse del dipolo, e il suo andamento <span class="m">1/r^3</span>;</li>
+<li>il potenziale del dipolo e il campo in coordinate polari;</li>
+<li>che cosa succede a un dipolo immerso in un campo esterno uniforme: forza, momento torcente, energia, equilibrio.</li>
+</ul>
+<h2>Richiamo: Coulomb e la costante dielettrica del vuoto</h2>
+<p>La forza tra due cariche puntiformi nel vuoto è</p>
 <p><span class="m d">F = \frac{1}{4\pi\varepsilon_0}\,\frac{|q_1q_2|}{r^2}</span></p>
 <p>dove:</p>
 <ul>
-<li><span class="m">F</span> = forza (N); <span class="m">q_1, q_2</span> = cariche (C); <span class="m">r</span> = distanza (m);</li>
+<li><span class="m">F</span> = modulo della forza (N);</li>
+<li><span class="m">q_1, q_2</span> = cariche (C);</li>
+<li><span class="m">r</span> = distanza (m);</li>
 <li><span class="m">\varepsilon_0</span> = costante dielettrica del vuoto.</li>
 </ul>
-<p><strong>Unità di <span class="m">\varepsilon_0</span>.</strong> Si ricava dalla formula: <span class="m">\varepsilon_0 = \dfrac{q^2}{4\pi F r^2}</span>. Quindi si misura in <span class="m">\mathrm{C^2/(N\,m^2)}</span>. Vale <span class="m">8{,}85 \cdot 10^{-12}\,\mathrm{C^2/(N\,m^2)}</span>.</p>
+<p><strong>Unità di misura di <span class="m">\varepsilon_0</span>.</strong> Si ricava &quot;girando&quot; la formula:</p>
+<ol>
+<li>isolo <span class="m">\varepsilon_0</span>: <span class="m">\varepsilon_0 = \dfrac{|q_1q_2|}{4\pi F r^2}</span>;</li>
+<li><span class="m">4\pi</span> è un numero puro; le unità sono quindi <span class="m">\dfrac{\mathrm C \cdot \mathrm C}{\mathrm N \cdot \mathrm m^2}</span>;</li>
+<li>risultato: <span class="m">[\varepsilon_0] = \mathrm{C^2/(N\,m^2)}</span>, e il valore è <span class="m">\varepsilon_0 = 8{,}854 \cdot 10^{-12}\,\mathrm{C^2/(N\,m^2)}</span>.</li>
+</ol>
+<p>Di conseguenza <span class="m">k = 1/(4\pi\varepsilon_0)</span> si misura in <span class="m">\mathrm{N\,m^2/C^2}</span> (l&#39;inverso). Vedremo con i condensatori che <span class="m">\mathrm{C^2/(N\,m^2)}</span> equivale a farad su metro (F/m).</p>
 <div class="callout esempio">
 
-<p>Due palline distano 20 cm. Le sposti e la forza quadruplica. Poiché <span class="m">F \propto 1/r^2</span>, la distanza si è dimezzata: ora distano 10 cm.</p>
+<p><strong>Distanza dalla forza.</strong> Due palline cariche distano 20 cm. Le si sposta e la forza <strong>quadruplica</strong>. Quanto distano ora?</p>
+<ol>
+<li><span class="m">F \propto 1/r^2</span>, quindi <span class="m">\dfrac{F'}{F} = \dfrac{r^2}{r'^2}</span>.</li>
+<li><span class="m">4 = \dfrac{r^2}{r'^2} \Rightarrow \dfrac{r}{r'} = 2 \Rightarrow r' = r/2</span>.</li>
+<li><span class="m">r' = 20/2 = 10</span> cm. (Errore tipico: dividere per 4, come se la forza andasse con <span class="m">1/r</span>.)</li>
+</ol>
 </div>
 
-<p>Il campo <span class="m">\vec E = \vec F/q</span> non dipende dalla carica di prova <span class="m">q</span>: né dal suo valore, né dal suo segno. Il segno di <span class="m">q</span> cambia solo il verso della <strong>forza</strong>, non il campo.</p>
+<p><strong>Il campo non dipende dalla carica di prova.</strong> Per scoprire se in una regione c&#39;è un campo si mette una carica <span class="m">q</span> e si guarda se subisce una forza. Ma il vettore <span class="m">\vec E = \vec F/q</span> non dipende <strong>né dal valore né dal segno</strong> di <span class="m">q</span>: se <span class="m">q</span> raddoppia raddoppia anche <span class="m">\vec F</span>; se <span class="m">q</span> cambia segno si inverte <span class="m">\vec F</span>, ma il rapporto resta lo stesso. Il segno di <span class="m">q</span> decide solo il verso della <strong>forza</strong>.</p>
 <h2>Il dipolo elettrico</h2>
-<p>Un dipolo è una coppia di cariche uguali e opposte, <span class="m">+q</span> e <span class="m">-q</span>, a distanza fissa <span class="m">d</span>.
-Molte molecole (per esempio l&#39;acqua) si comportano come dipoli.</p>
-<p>Il dipolo si descrive con il <strong>momento di dipolo</strong>:</p>
+<p><strong>Definizione.</strong> Un <strong>dipolo elettrico</strong> è un sistema di due cariche <strong>uguali in modulo e di segno opposto</strong>, <span class="m">+q</span> e <span class="m">-q</span>, tenute <strong>ferme a distanza fissa</strong> <span class="m">d</span> l&#39;una dall&#39;altra.</p>
+<p>Il dipolo è descritto da un solo vettore, il <strong>momento di dipolo elettrico</strong>:</p>
 <p><span class="m d">\vec p = q\,\vec d</span></p>
 <p>dove:</p>
 <ul>
 <li><span class="m">\vec p</span> = momento di dipolo (C·m);</li>
-<li><span class="m">q</span> = modulo di una delle due cariche (C);</li>
-<li><span class="m">\vec d</span> = vettore che va dalla carica <strong>negativa</strong> alla <strong>positiva</strong> (m).</li>
+<li><span class="m">q</span> = modulo di <strong>una</strong> delle due cariche (C), non la somma;</li>
+<li><span class="m">\vec d</span> = vettore che va dalla carica <strong>negativa</strong> alla carica <strong>positiva</strong> (m); il suo modulo è la distanza <span class="m">d</span>.</li>
 </ul>
-<h2>Campo generato dal dipolo</h2>
-<p>Il campo del dipolo è la somma dei campi delle due cariche.</p>
-<p><strong>Sull&#39;asse perpendicolare</strong> (punto a distanza <span class="m">y</span> dal centro, cariche a distanza <span class="m">a</span> dal centro, <span class="m">d = 2a</span>):</p>
+<p>Quindi <span class="m">p = qd</span>, e <span class="m">\vec p</span> punta da <span class="m">-q</span> verso <span class="m">+q</span>.</p>
+<p>Nel sistema di riferimento della dispensa l&#39;asse <span class="m">z</span> è lungo la congiungente delle cariche, orientato da <span class="m">-q</span> a <span class="m">+q</span>, con l&#39;origine nel punto medio; le cariche stanno a <span class="m">\pm a</span> dall&#39;origine, con <span class="m">d = 2a</span>.</p>
+<h2>Campo del dipolo sull&#39;asse perpendicolare</h2>
+<p>Prendiamo un punto P sull&#39;asse perpendicolare al dipolo passante per il centro, a distanza <span class="m">y</span> dal centro. (Nella dispensa l&#39;asse perpendicolare è chiamato <span class="m">x</span> o <span class="m">y</span>: il risultato è lo stesso.)</p>
+<p><strong>Ragionamento geometrico.</strong></p>
 <ol>
-<li>Le due cariche sono alla stessa distanza dal punto, quindi i due campi hanno lo stesso modulo.</li>
-<li>Le componenti lungo <span class="m">y</span> si annullano. Restano le componenti parallele al dipolo, che si sommano.</li>
-<li>Il campo risultante è parallelo al dipolo e punta verso la carica negativa (opposto a <span class="m">\vec p</span>):</li>
+<li>P è <strong>equidistante</strong> dalle due cariche: entrambe distano <span class="m">r = \sqrt{y^2 + a^2}</span>.</li>
+<li>Le cariche hanno lo stesso modulo, quindi i due campi hanno lo <strong>stesso modulo</strong>:
+<span class="m d">E_+ = E_- = \frac{1}{4\pi\varepsilon_0}\,\frac{q}{y^2 + a^2}</span></li>
+<li><span class="m">\vec E_+</span> è diretto lungo la congiungente <span class="m">+q \to</span> P, <strong>uscente</strong> da <span class="m">+q</span>; <span class="m">\vec E_-</span> è diretto lungo la congiungente P <span class="m">\to -q</span>, <strong>verso</strong> <span class="m">-q</span>.</li>
+<li>Scomponiamo ciascun campo in una componente lungo l&#39;asse perpendicolare (lungo <span class="m">y</span>) e una parallela al dipolo. Le componenti lungo <span class="m">y</span> sono uguali e <strong>opposte</strong> (una si allontana dal dipolo, l&#39;altra si avvicina): si <strong>annullano</strong>. Le componenti parallele al dipolo sono uguali e <strong>concordi</strong>, entrambe dirette <strong>dalla carica positiva verso la negativa</strong>: si <strong>sommano</strong>.</li>
 </ol>
-<p><span class="m d">E = \frac{1}{4\pi\varepsilon_0}\,\frac{p}{(y^2 + a^2)^{3/2}} \;\xrightarrow{\;y \gg a\;}\; \frac{1}{4\pi\varepsilon_0}\,\frac{p}{y^3}</span></p>
-<p><strong>Sull&#39;asse del dipolo</strong>, lontano (<span class="m">z \gg d</span>), il campo ha il verso di <span class="m">\vec p</span> e vale il doppio:</p>
-<p><span class="m d">E \approx \frac{1}{4\pi\varepsilon_0}\,\frac{2p}{z^3}</span></p>
+<p><strong>Calcolo.</strong> Sia <span class="m">\alpha</span> l&#39;angolo tra ciascun campo e la direzione del dipolo. Dal triangolo formato da P, centro e carica: <span class="m">\cos\alpha = \dfrac{a}{\sqrt{y^2 + a^2}}</span>. Allora:</p>
+<p><span class="m d">E = 2E_+\cos\alpha = 2\,\frac{1}{4\pi\varepsilon_0}\,\frac{q}{y^2 + a^2}\,\frac{a}{\sqrt{y^2 + a^2}} = \frac{1}{4\pi\varepsilon_0}\,\frac{2aq}{(y^2 + a^2)^{3/2}}</span></p>
+<p>e siccome <span class="m">2aq = qd = p</span>:</p>
+<p><span class="m d">\vec E = -\frac{1}{4\pi\varepsilon_0}\,\frac{\vec p}{(y^2 + a^2)^{3/2}}</span></p>
 <p>dove:</p>
 <ul>
-<li><span class="m">p = qd</span> = momento di dipolo (C·m);</li>
-<li><span class="m">y, z</span> = distanza dal centro del dipolo (m).</li>
+<li><span class="m">\vec p</span> = momento di dipolo (C·m);</li>
+<li><span class="m">y</span> = distanza di P dal centro del dipolo (m);</li>
+<li><span class="m">a = d/2</span> = metà della distanza tra le cariche (m).</li>
 </ul>
-<p>Lontano, il campo del dipolo cala come <span class="m">1/r^3</span>. Scende più in fretta del campo di una carica singola (<span class="m">1/r^2</span>): i campi delle due cariche opposte quasi si annullano.
-Le linee di campo escono da <span class="m">+q</span>, si curvano a lobi ed entrano in <span class="m">-q</span>.</p>
-<h2>Dipolo in un campo uniforme</h2>
-<p>In un campo uniforme <span class="m">\vec E</span> le due cariche subiscono forze uguali e opposte: <span class="m">+q\vec E</span> e <span class="m">-q\vec E</span>.</p>
+<p>Il segno meno dice che sull&#39;asse perpendicolare il campo è <strong>antiparallelo</strong> a <span class="m">\vec p</span>: punta verso la carica negativa.</p>
+<p><strong>Lontano dal dipolo</strong> (<span class="m">y \gg a</span>) si trascura <span class="m">a^2</span> rispetto a <span class="m">y^2</span>: <span class="m">(y^2 + a^2)^{3/2} \approx y^3</span>, e</p>
+<p><span class="m d">E \approx \frac{1}{4\pi\varepsilon_0}\,\frac{p}{y^3}</span></p>
+<h2>Campo del dipolo sul suo asse</h2>
+<p>Ora P sta sull&#39;asse del dipolo (asse <span class="m">z</span>), dalla parte della carica positiva, a distanza <span class="m">z</span> dal centro (<span class="m">z &gt; a</span>).</p>
+<ol>
+<li>Distanza da <span class="m">+q</span>: <span class="m">z - a</span>; distanza da <span class="m">-q</span>: <span class="m">z + a</span>.</li>
+<li><span class="m">\vec E_+</span> punta lontano da <span class="m">+q</span>, cioè lungo <span class="m">+z</span>; <span class="m">\vec E_-</span> punta verso <span class="m">-q</span>, cioè lungo <span class="m">-z</span>. <span class="m">+q</span> è più vicina, quindi vince.</li>
+<li>Componente <span class="m">z</span> totale:
+<span class="m d">E_z = \frac{q}{4\pi\varepsilon_0}\left[\frac{1}{(z - a)^2} - \frac{1}{(z + a)^2}\right] = \frac{q}{4\pi\varepsilon_0}\,\frac{(z + a)^2 - (z - a)^2}{(z^2 - a^2)^2} = \frac{q}{4\pi\varepsilon_0}\,\frac{4az}{(z^2 - a^2)^2}</span></li>
+<li>Con <span class="m">2aq = p</span>: <span class="m">E_z = \dfrac{1}{4\pi\varepsilon_0}\,\dfrac{2pz}{(z^2 - a^2)^2}</span>. Lontano (<span class="m">z \gg a</span>):
+<span class="m d">E \approx \frac{1}{4\pi\varepsilon_0}\,\frac{2p}{z^3}</span></li>
+</ol>
+<p>Sull&#39;asse il campo è <strong>parallelo e concorde</strong> a <span class="m">\vec p</span> e, a parità di distanza, vale <strong>il doppio</strong> che sull&#39;asse perpendicolare.</p>
+<h2>Perché il campo del dipolo cala come <span class="m">1/r^3</span></h2>
+<p>Una carica singola dà un campo che va come <span class="m">1/r^2</span>. Il dipolo, a grande distanza, va come <span class="m">1/r^3</span>: scende <strong>più in fretta</strong>. Il motivo: da lontano le due cariche opposte sembrano quasi sovrapposte, la carica totale è zero, e i loro campi <strong>quasi si annullano</strong>. Resta solo un piccolo campo dovuto alla differenza di distanza, proporzionale a <span class="m">d/r</span> volte il campo di una carica: <span class="m">(1/r^2) \cdot (d/r) \propto 1/r^3</span>.</p>
+<h2>Potenziale e campo del dipolo in coordinate polari</h2>
+<p>(Approfondimento della dispensa sul potenziale, che si definisce nella lezione 47: <span class="m">V = \dfrac{1}{4\pi\varepsilon_0}\dfrac{Q}{r}</span> per una carica, e i potenziali si sommano come numeri.)</p>
+<p>Dipolo lungo <span class="m">z</span>, <span class="m">+q</span> in <span class="m">z = d/2</span>, <span class="m">-q</span> in <span class="m">z = -d/2</span>. Punto P a distanza <span class="m">r</span> dal centro, con <span class="m">\theta</span> l&#39;angolo tra la direzione di P e l&#39;asse <span class="m">z</span>; <span class="m">r_+</span> e <span class="m">r_-</span> le distanze di P dalle due cariche.</p>
+<ol>
+<li>Sovrapposizione:
+<span class="m d">V = \frac{1}{4\pi\varepsilon_0}\left(\frac{q}{r_+} - \frac{q}{r_-}\right) = \frac{1}{4\pi\varepsilon_0}\,\frac{q(r_- - r_+)}{r_-r_+}</span></li>
+<li>Lontano (<span class="m">r \gg d</span>) i raggi verso le due cariche sono quasi paralleli: <span class="m">r_- - r_+ \approx d\cos\theta</span> e <span class="m">r_-r_+ \approx r^2</span>.</li>
+<li>Quindi:
+<span class="m d">V = \frac{1}{4\pi\varepsilon_0}\,\frac{qd\cos\theta}{r^2} = \frac{1}{4\pi\varepsilon_0}\,\frac{\vec p \cdot \vec r}{r^3} = \frac{1}{4\pi\varepsilon_0}\,\frac{p\cos\theta}{r^2}</span></li>
+</ol>
+<p>Il campo si ottiene come <span class="m">\vec E = -\nabla V</span> in coordinate polari:</p>
+<p><span class="m d">E_r = -\frac{\partial V}{\partial r} = \frac{1}{4\pi\varepsilon_0}\,\frac{2p\cos\theta}{r^3}, \qquad E_\theta = -\frac1r\frac{\partial V}{\partial \theta} = \frac{1}{4\pi\varepsilon_0}\,\frac{p\sin\theta}{r^3}, \qquad E_\phi = 0</span></p>
+<p>Controllo dei casi già visti:</p>
 <ul>
-<li><strong>Forza totale nulla</strong>: il dipolo non trasla.</li>
-<li><strong>Momento torcente non nullo</strong>: le due forze non stanno sulla stessa retta e fanno ruotare il dipolo.</li>
+<li>sull&#39;asse (<span class="m">\theta = 0</span>): <span class="m">E_r = 2p/(4\pi\varepsilon_0 r^3)</span>, <span class="m">E_\theta = 0</span> → il campo sull&#39;asse;</li>
+<li>sull&#39;asse perpendicolare (<span class="m">\theta = \pi/2</span>): <span class="m">E_r = 0</span>, <span class="m">E_\theta = p/(4\pi\varepsilon_0 r^3)</span> diretto nel verso di <span class="m">\hat u_\theta</span>, che lì è opposto a <span class="m">\hat z</span> → <span class="m">\vec E = -\dfrac{1}{4\pi\varepsilon_0}\dfrac{\vec p}{r^3}</span>, come trovato prima.</li>
 </ul>
+<p>Il potenziale del dipolo va come <span class="m">1/r^2</span>, il campo come <span class="m">1/r^3</span> (una potenza in più rispetto alla carica singola in entrambi i casi).</p>
+<h2>Linee di campo del dipolo</h2>
+<p>Le linee escono da <span class="m">+q</span>, si allargano a <strong>lobi</strong> e rientrano in <span class="m">-q</span>. Sull&#39;asse del dipolo, all&#39;esterno delle cariche, sono parallele a <span class="m">\vec p</span>; sull&#39;asse perpendicolare, al centro, sono <strong>antiparallele</strong> a <span class="m">\vec p</span> (vanno da + a − per la via più breve). Una superficie chiusa che racchiude tutto il dipolo è attraversata da tante linee uscenti quante entranti.</p>
+<h2>Dipolo in un campo esterno uniforme</h2>
+<p>Immergiamo un dipolo rigido in un campo elettrico <strong>uniforme</strong> <span class="m">\vec E</span> (stesso modulo, direzione e verso ovunque), con <span class="m">\vec p</span> che forma un angolo <span class="m">\theta</span> con <span class="m">\vec E</span>.</p>
+<p><strong>Forza totale nulla.</strong> Sulle due cariche agiscono <span class="m">\vec F_+ = +q\vec E</span> e <span class="m">\vec F_- = -q\vec E</span>: forze uguali e opposte. La risultante è zero, quindi il <strong>centro di massa non accelera</strong>: il dipolo non trasla.</p>
+<p><strong>Momento torcente non nullo.</strong> Le due forze sono parallele ma, in generale, <strong>non stanno sulla stessa retta</strong>: formano una <strong>coppia</strong>. Calcolo del momento rispetto al centro del dipolo:</p>
+<ol>
+<li>ogni carica è a distanza <span class="m">d/2</span> dal centro; il braccio di ciascuna forza è <span class="m">(d/2)\sin\theta</span>;</li>
+<li>le due forze fanno ruotare il dipolo nello stesso verso, quindi i momenti si sommano:
+<span class="m d">M = F\,\frac d2\sin\theta + F\,\frac d2\sin\theta = Fd\sin\theta = qEd\sin\theta</span></li>
+<li>con <span class="m">p = qd</span>: <span class="m">M = pE\sin\theta</span>. In forma vettoriale:</li>
+</ol>
 <p><span class="m d">\vec M = \vec p \times \vec E, \qquad M = pE\sin\theta</span></p>
 <p>dove:</p>
 <ul>
 <li><span class="m">\vec M</span> = momento torcente (N·m);</li>
-<li><span class="m">\theta</span> = angolo tra <span class="m">\vec p</span> e <span class="m">\vec E</span>.</li>
+<li><span class="m">\vec p</span> = momento di dipolo (C·m);</li>
+<li><span class="m">\vec E</span> = campo esterno (N/C);</li>
+<li><span class="m">\theta</span> = angolo tra <span class="m">\vec p</span> ed <span class="m">\vec E</span>.</li>
 </ul>
-<p>Il momento tende ad allineare <span class="m">\vec p</span> al campo. L&#39;energia potenziale del dipolo è:</p>
-<p><span class="m d">U = -\vec p \cdot \vec E = -pE\cos\theta</span></p>
-<p>dove <span class="m">U</span> è in J.</p>
-<ul>
-<li><span class="m">\theta = 0</span> (<span class="m">\vec p</span> parallelo e concorde a <span class="m">\vec E</span>): <span class="m">U</span> minima, <strong>equilibrio stabile</strong>.</li>
-<li><span class="m">\theta = 180°</span> (<span class="m">\vec p</span> opposto a <span class="m">\vec E</span>): <span class="m">U</span> massima, <strong>equilibrio instabile</strong>.</li>
-</ul>
+<p>Il momento tende a <strong>ruotare <span class="m">\vec p</span> fino ad allinearlo</strong> al campo. È massimo per <span class="m">\theta = 90°</span> e nullo per <span class="m">\theta = 0°</span> e <span class="m">\theta = 180°</span>.</p>
+<p><strong>Energia potenziale del dipolo.</strong> Per ruotare il dipolo di <span class="m">d\theta</span> contro il momento del campo bisogna fare il lavoro <span class="m">dW = M\,d\theta = pE\sin\theta\,d\theta</span>, che si accumula come energia potenziale. Integrando (e scegliendo <span class="m">U = 0</span> a <span class="m">\theta = 90°</span>):</p>
+<p><span class="m d">U(\theta) = \int_{90°}^{\theta} pE\sin\theta'\,d\theta' = -pE\cos\theta = -\vec p \cdot \vec E</span></p>
+<p>dove <span class="m">U</span> è in joule (J).</p>
+<table>
+<thead>
+<tr>
+<th>Orientazione</th>
+<th><span class="m">\theta</span></th>
+<th>Momento</th>
+<th>Energia <span class="m">U</span></th>
+<th>Equilibrio</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><span class="m">\vec p</span> parallelo e concorde a <span class="m">\vec E</span></td>
+<td><span class="m">0°</span></td>
+<td>0</td>
+<td><span class="m">-pE</span> (minima)</td>
+<td><strong>stabile</strong></td>
+</tr>
+<tr>
+<td><span class="m">\vec p</span> perpendicolare a <span class="m">\vec E</span></td>
+<td><span class="m">90°</span></td>
+<td><span class="m">pE</span> (massimo)</td>
+<td>0</td>
+<td>nessuno</td>
+</tr>
+<tr>
+<td><span class="m">\vec p</span> opposto a <span class="m">\vec E</span></td>
+<td><span class="m">180°</span></td>
+<td>0</td>
+<td><span class="m">+pE</span> (massima)</td>
+<td><strong>instabile</strong></td>
+</tr>
+</tbody></table>
+<p>Nella posizione stabile, se si ruota un poco il dipolo, il momento lo riporta indietro (e il dipolo oscilla attorno a <span class="m">\theta = 0</span>). Nella posizione instabile, un piccolo spostamento fa nascere un momento che lo allontana ancora.</p>
+<p><strong>Campo non uniforme.</strong> Se il campo cambia da punto a punto, le forze sulle due cariche non sono più uguali: oltre al momento c&#39;è una <strong>forza netta</strong>, che (per un dipolo allineato) tira il dipolo verso la zona dove il campo è <strong>più intenso</strong>. È il motivo per cui un pettine carico attira pezzetti di carta neutri: il campo li polarizza e poi li attira.</p>
 <div class="callout esempio">
 
-<p>Dipolo con <span class="m">p = 2 \cdot 10^{-9}\,\mathrm{C\,m}</span> in un campo di <span class="m">10^4\,\mathrm{N/C}</span>, a 90° dal campo. Momento: <span class="m">M = pE = 2 \cdot 10^{-5}\,\mathrm{N\,m}</span>. Il dipolo ruota per allinearsi al campo.</p>
+<p><strong>Momento su un dipolo.</strong> Dipolo con <span class="m">p = 2 \cdot 10^{-9}\,\mathrm{C\,m}</span> in un campo uniforme <span class="m">E = 10^4\,\mathrm{N/C}</span>, perpendicolare al campo.</p>
+<ol>
+<li><span class="m">M = pE\sin 90° = 2 \cdot 10^{-9} \cdot 10^4 \cdot 1 = 2 \cdot 10^{-5}\,\mathrm{N\,m}</span>.</li>
+<li>Lavoro del campo per portarlo in posizione stabile: <span class="m">\Delta U = U(0°) - U(90°) = -pE - 0 = -2 \cdot 10^{-5}</span> J; il campo compie un lavoro di <span class="m">2 \cdot 10^{-5}</span> J.</li>
+<li>Forza totale: zero (campo uniforme).</li>
+</ol>
 </div>
 
-<p>In un campo <strong>non uniforme</strong> le due forze non sono più uguali: oltre a ruotare, il dipolo viene tirato verso la zona dove il campo è più intenso.</p>
+<div class="callout esempio">
+
+<p><strong>Campo di un dipolo sull&#39;asse perpendicolare (esercizio della dispensa).</strong> Cariche <span class="m">+q</span> e <span class="m">-q</span> a distanza <span class="m">2a</span>; punto P sull&#39;asse perpendicolare a distanza <span class="m">y</span>.</p>
+<ol>
+<li><span class="m">E_1 = E_2 = \dfrac{kq}{y^2 + a^2}</span> (cariche alla stessa distanza da P).</li>
+<li>Le componenti lungo <span class="m">y</span> sono uguali e opposte: si annullano.</li>
+<li>Le componenti parallele al dipolo valgono ciascuna <span class="m">E_1\cos\alpha</span> con <span class="m">\cos\alpha = a/\sqrt{y^2 + a^2}</span>, e si sommano: <span class="m">E = \dfrac{2kqa}{(y^2 + a^2)^{3/2}}</span>.</li>
+<li>Per <span class="m">y \gg a</span>: <span class="m">E \approx \dfrac{2kqa}{y^3} = \dfrac{kp}{y^3}</span>.</li>
+</ol>
+<p>Numeri: <span class="m">q = 1\,\mathrm{nC}</span>, <span class="m">2a = 2</span> mm, <span class="m">y = 10</span> cm. <span class="m">p = 10^{-9} \cdot 2 \cdot 10^{-3} = 2 \cdot 10^{-12}\,\mathrm{C\,m}</span>; <span class="m">E \approx 9 \cdot 10^9 \cdot 2 \cdot 10^{-12}/10^{-3} = 18\,\mathrm{N/C}</span>. Una sola carica da 1 nC a 10 cm darebbe <span class="m">900</span> N/C: il dipolo, da lontano, è molto più debole.</p>
+</div>
+
+<div class="callout attenzione">
+
+<ul>
+<li><span class="m">\vec p</span> va dalla carica <strong>negativa</strong> alla <strong>positiva</strong> (non il contrario) e si usa il modulo di <strong>una</strong> carica: <span class="m">p = qd</span>, non <span class="m">2qd</span>.</li>
+<li>In campo uniforme la forza sul dipolo è <strong>zero</strong>, ma il momento no: il dipolo ruota senza traslare.</li>
+<li>Equilibrio <strong>stabile</strong> quando <span class="m">\vec p</span> è concorde con <span class="m">\vec E</span> (<span class="m">U</span> minima), <strong>instabile</strong> quando è opposto.</li>
+<li>Sull&#39;asse perpendicolare il campo è <strong>opposto</strong> a <span class="m">\vec p</span>; sull&#39;asse è <strong>concorde</strong> e doppio.</li>
+</ul>
+</div>
+
 <div class="callout esame">
 
-<p>Nelle domande aperte chiedono: definizione di dipolo e di <span class="m">\vec p</span> (verso da − a +), campo sull&#39;asse perpendicolare e andamento <span class="m">1/r^3</span>, forza nulla e momento <span class="m">\vec p \times \vec E</span> in campo uniforme, equilibrio stabile per <span class="m">\vec p</span> concorde a <span class="m">\vec E</span>.</p>
+<p>Domande chiuse: unità di <span class="m">\varepsilon_0</span> (<span class="m">\mathrm{C^2/(N\,m^2)}</span>), distanza che si dimezza se la forza quadruplica, campo indipendente da valore e segno della carica di prova.</p>
+<p>Aperta <strong>&quot;Si definiscano il dipolo elettrico e il momento di dipolo e si discuta il campo generato&quot;</strong>: definizione (due cariche <span class="m">\pm q</span> a distanza fissa <span class="m">d</span>), <span class="m">\vec p = q\vec d</span> da − a +, unità C·m; derivazione del campo sull&#39;asse perpendicolare con la simmetria (componenti trasversali che si annullano, <span class="m">E = kp/(y^2 + a^2)^{3/2}</span>, antiparallelo a <span class="m">\vec p</span>), limite lontano <span class="m">kp/y^3</span>, sull&#39;asse <span class="m">2kp/z^3</span>; andamento <span class="m">1/r^3</span> più rapido di <span class="m">1/r^2</span> perché i campi delle due cariche si compensano; linee a lobi da + a −.</p>
+<p>Aperta <strong>&quot;Si discuta l&#39;interazione di un dipolo con un campo uniforme&quot;</strong>: forze <span class="m">\pm q\vec E</span>, risultante nulla (niente traslazione), coppia con momento <span class="m">M = qEd\sin\theta = pE\sin\theta</span>, <span class="m">\vec M = \vec p \times \vec E</span> che allinea il dipolo al campo; energia <span class="m">U = -\vec p \cdot \vec E</span>; equilibrio stabile a <span class="m">\theta = 0</span>, instabile a <span class="m">\theta = 180°</span>; in campo non uniforme anche una forza netta verso il campo più intenso.</p>
 </div>
 
 <div class="callout sintesi">
 
 <ul>
-<li><span class="m">\varepsilon_0</span> si misura in <span class="m">\mathrm{C^2/(N\,m^2)}</span>.</li>
+<li><span class="m">[\varepsilon_0] = \mathrm{C^2/(N\,m^2)}</span>, <span class="m">\varepsilon_0 = 8{,}854 \cdot 10^{-12}</span>.</li>
+<li>Forza <span class="m">\propto 1/r^2</span>: forza ×4 ⇔ distanza ÷2.</li>
 <li>Il campo non dipende né dal valore né dal segno della carica di prova.</li>
-<li>Dipolo: <span class="m">+q</span> e <span class="m">-q</span> a distanza <span class="m">d</span>; <span class="m">\vec p = q\vec d</span>, da − a +.</li>
-<li>Campo del dipolo lontano: <span class="m">\propto p/r^3</span>.</li>
-<li>In campo uniforme: forza nulla, momento <span class="m">\vec M = \vec p \times \vec E</span>, energia <span class="m">U = -\vec p \cdot \vec E</span>; stabile per <span class="m">\theta = 0</span>.</li>
+<li>Dipolo: <span class="m">\pm q</span> a distanza fissa <span class="m">d</span>; <span class="m">\vec p = q\vec d</span> da − a +, in C·m.</li>
+<li>Asse perpendicolare: <span class="m">E = \dfrac{1}{4\pi\varepsilon_0}\dfrac{p}{(y^2 + a^2)^{3/2}} \to \dfrac{p}{4\pi\varepsilon_0 y^3}</span>, opposto a <span class="m">\vec p</span>. Asse: <span class="m">E \approx \dfrac{2p}{4\pi\varepsilon_0 z^3}</span>, concorde.</li>
+<li>Potenziale del dipolo <span class="m">V = \dfrac{p\cos\theta}{4\pi\varepsilon_0 r^2}</span>; campo <span class="m">\propto 1/r^3</span>.</li>
+<li>In campo uniforme: forza nulla, <span class="m">\vec M = \vec p \times \vec E</span>, <span class="m">U = -\vec p \cdot \vec E</span>; stabile per <span class="m">\theta = 0</span>, instabile per <span class="m">\theta = 180°</span>.</li>
 </ul>
 </div>

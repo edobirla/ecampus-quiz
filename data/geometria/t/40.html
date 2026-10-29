@@ -1,41 +1,151 @@
 <h1>Lezione 40 — Trasformazioni proiettive</h1>
-<p>Le trasformazioni proiettive generalizzano le affinità agli spazi proiettivi.</p>
+<h2>Introduzione</h2>
+<p>Nelle lezioni sulle applicazioni affini abbiamo visto le <strong>affinità</strong> di <span class="m">\mathbb{R}^n</span>: applicazioni del tipo <span class="m">X\mapsto MX+c</span> con <span class="m">M</span> invertibile, rappresentate da una matrice <span class="m">(n+1)\times(n+1)</span> con ultima riga <span class="m">(0\ \dots\ 0\ 1)</span>. In questa lezione si generalizza questa nozione agli spazi proiettivi: le <strong>trasformazioni proiettive</strong> sono le &quot;affinità&quot; di <span class="m">\mathbb{P}^n(\mathbb{R})</span>. Sono lo strumento con cui, nella Lezione 43, si dirà che due coniche sono &quot;uguali dal punto di vista proiettivo&quot;.</p>
 <h2>Definizione</h2>
-<p><strong>Definizione 40.1.</strong> Sia <span class="m">A\in\mathbb{R}^{n+1,n+1}</span> una matrice <strong>invertibile</strong> (<span class="m">n\geqslant1</span>). L&#39;applicazione
+<p><strong>Definizione 40.1.</strong> Sia <span class="m">\mathbb{P}^n(\mathbb{R})</span> lo spazio proiettivo <span class="m">n</span>-dimensionale (<span class="m">n\geqslant1</span>) e sia <span class="m">A\in\mathbb{R}^{n+1,n+1}</span> una matrice <strong>invertibile</strong>. L&#39;applicazione
 <span class="m d">\varphi:\mathbb{P}^n(\mathbb{R})\ni[v]\longmapsto[A\cdot v]\in\mathbb{P}^n(\mathbb{R})</span>
-è detta <strong>trasformazione proiettiva</strong>; la matrice <span class="m">A</span> si indica con <span class="m">[\varphi]_p</span>.</p>
-<p><strong>Osservazione 40.2.</strong> <span class="m">[\varphi]_p</span> non è univocamente determinata: <strong>ogni multiplo non nullo</strong> rappresenta la stessa <span class="m">\varphi</span>, perché <span class="m">[k[\varphi]_p v]=[k([\varphi]_p v)]=[[\varphi]_p v]</span>.</p>
-<p><strong>Proposizione 40.3.</strong> Con <span class="m">A</span> invertibile la trasformazione è <strong>ben definita</strong> (non dipende dal rappresentante di <span class="m">[v]</span>, e <span class="m">Av\neq0</span>).</p>
+è detta <strong>trasformazione proiettiva</strong>. La matrice <span class="m">A</span> si indica con <span class="m">[\varphi]_p</span>.</p>
+<p>In parole: per calcolare l&#39;immagine di un punto si prende <strong>un</strong> suo rappresentante <span class="m">v</span> (una colonna di <span class="m">n+1</span> numeri), lo si moltiplica per la matrice e si prende la classe del risultato.</p>
+<p><strong>Come riconoscere una trasformazione proiettiva scritta per componenti.</strong> Ogni componente dell&#39;immagine deve essere:</p>
+<ol>
+<li><strong>lineare omogenea</strong> nelle coordinate <span class="m">X,Y,\dots,T</span>: nessun termine noto (come &quot;<span class="m">+1</span>&quot;) e nessuna potenza (come <span class="m">T^2</span>), perché altrimenti non si tratta di un prodotto matrice per vettore e cambiando rappresentante si cambierebbe punto immagine;</li>
+<li>la matrice dei coefficienti deve essere <strong>quadrata</strong> <span class="m">(n+1)\times(n+1)</span> e <strong>invertibile</strong> (<span class="m">\det\neq0</span>).</li>
+</ol>
 <div class="callout esempio">
 
-<p><span class="m">\varphi\begin{bmatrix}X\\Y\\T\end{bmatrix}=\begin{bmatrix}X+T\\X-Y+2T\\3X+3Y-T\end{bmatrix}</span> è una trasformazione proiettiva di <span class="m">\mathbb{P}^2(\mathbb{R})</span> perché <span class="m">[\varphi]_p=\begin{pmatrix}1&amp;0&amp;1\\1&amp;-1&amp;2\\3&amp;3&amp;-1\end{pmatrix}</span> è invertibile; la rappresenta anche <span class="m">\begin{pmatrix}-1&amp;0&amp;-1\\-1&amp;1&amp;-2\\-3&amp;-3&amp;1\end{pmatrix}</span>.</p>
+<p><strong>Quali di queste sono trasformazioni proiettive di <span class="m">\mathbb{P}^1(\mathbb{R})</span>?</strong></p>
+<ul>
+<li><span class="m">[X\ T]\mapsto[X-2T^2\ \ -X+2T]</span>: no, compare <span class="m">T^2</span> (non lineare).</li>
+<li><span class="m">[X\ T]\mapsto[X-T\ \ T-X]</span>: matrice <span class="m">\begin{pmatrix}1&amp;-1\\-1&amp;1\end{pmatrix}</span> con <span class="m">\det=1-1=0</span>: no, non invertibile (per esempio <span class="m">[1\ 1]</span> andrebbe nella coppia nulla, che non è un punto).</li>
+<li><span class="m">[X\ T]\mapsto[3X-2T\ \ X+2T]</span>: matrice <span class="m">\begin{pmatrix}3&amp;-2\\1&amp;2\end{pmatrix}</span> con <span class="m">\det=6+2=8\neq0</span>: <strong>sì</strong>.</li>
+<li><span class="m">[X\ T]\mapsto[3X-2T+1\ \ X+2T]</span>: no, il termine noto <span class="m">+1</span> rende la componente non omogenea.</li>
+</ul>
+</div>
+
+<p><strong>Osservazione 40.2.</strong> <span class="m">[\varphi]_p</span> <strong>non è univocamente determinata</strong>: ogni multiplo non nullo <span class="m">k[\varphi]_p</span> (<span class="m">k\neq0</span>) rappresenta la stessa <span class="m">\varphi</span>. Infatti
+<span class="m d">\big[(k[\varphi]_p)\,v\big]=\big[k\,([\varphi]_p v)\big]=\big[[\varphi]_p v\big],</span>
+perché <span class="m">k([\varphi]_pv)</span> e <span class="m">[\varphi]_pv</span> sono proporzionali, quindi sono lo stesso punto.</p>
+<p><strong>Proposizione 40.3.</strong> Se <span class="m">A</span> è invertibile, <span class="m">\varphi([v])=[Av]</span> è <strong>ben definita</strong>. La dispensa non dà la dimostrazione (&quot;non è difficile&quot;); ecco i due controlli da fare:</p>
+<ol>
+<li><strong>Non dipende dal rappresentante</strong>: se <span class="m">[v]=[w]</span>, cioè <span class="m">w=\lambda v</span> con <span class="m">\lambda\neq0</span>, allora <span class="m">Aw=A(\lambda v)=\lambda(Av)</span>, quindi <span class="m">[Aw]=[Av]</span>.</li>
+<li><strong>L&#39;immagine è un punto</strong>: <span class="m">v\neq0</span> e <span class="m">A</span> invertibile implicano <span class="m">Av\neq0</span> (se fosse <span class="m">Av=0</span>, moltiplicando per <span class="m">A^{-1}</span> si avrebbe <span class="m">v=0</span>). Quindi <span class="m">[Av]</span> ha senso. È qui che serve l&#39;invertibilità.</li>
+</ol>
+<div class="callout esempio">
+
+<p><strong>Esempio 40.4.</strong>
+<span class="m d">\varphi\begin{bmatrix}X\\Y\\T\end{bmatrix}=\left[\begin{pmatrix}1&amp;0&amp;1\\1&amp;-1&amp;2\\3&amp;3&amp;-1\end{pmatrix}\begin{pmatrix}X\\Y\\T\end{pmatrix}\right]=\begin{bmatrix}X+T\\X-Y+2T\\3X+3Y-T\end{bmatrix}</span>
+è una trasformazione proiettiva di <span class="m">\mathbb{P}^2(\mathbb{R})</span>: la matrice è invertibile. Infatti, sviluppando lungo la prima riga,
+<span class="m d">\det\begin{pmatrix}1&amp;0&amp;1\\1&amp;-1&amp;2\\3&amp;3&amp;-1\end{pmatrix}=1\cdot\big((-1)(-1)-2\cdot3\big)-0+1\cdot\big(1\cdot3-(-1)\cdot3\big)=(1-6)+(3+3)=1\neq0.</span>
+Moltiplicando per <span class="m">-1</span>:
+<span class="m d">\varphi\begin{bmatrix}X\\Y\\T\end{bmatrix}=\begin{bmatrix}-X-T\\-X+Y-2T\\-3X-3Y+T\end{bmatrix}=\begin{bmatrix}X+T\\X-Y+2T\\3X+3Y-T\end{bmatrix},</span>
+quindi anche <span class="m">\begin{pmatrix}-1&amp;0&amp;-1\\-1&amp;1&amp;-2\\-3&amp;-3&amp;1\end{pmatrix}</span> è una <span class="m">[\varphi]_p</span>.</p>
+<p>Immagine di un punto: <span class="m">\varphi[1\ 0\ 1]=[1+1\ \ 1-0+2\ \ 3+0-1]=[2\ 3\ 2]</span>, cioè il punto <span class="m">{}^t(1\ 0)</span> di <span class="m">\mathbb{R}^2</span> va nel punto <span class="m">{}^t\!\left(1\ \frac32\right)</span>.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Riconoscere le matrici che rappresentano una trasformazione.</strong> Per <span class="m">\varphi[X\ Y\ T]=[X-T\ \ X+Y\ \ X-Y+2T]</span> la matrice &quot;naturale&quot; è <span class="m">\begin{pmatrix}1&amp;0&amp;-1\\1&amp;1&amp;0\\1&amp;-1&amp;2\end{pmatrix}</span> (righe = coefficienti di <span class="m">X,Y,T</span> in ogni componente). La rappresentano anche il suo opposto <span class="m">\begin{pmatrix}-1&amp;0&amp;1\\-1&amp;-1&amp;0\\-1&amp;1&amp;-2\end{pmatrix}</span> e il suo doppio <span class="m">\begin{pmatrix}2&amp;0&amp;-2\\2&amp;2&amp;0\\2&amp;-2&amp;4\end{pmatrix}</span>. <strong>Non</strong> la rappresenta una matrice come <span class="m">\begin{pmatrix}1&amp;0&amp;1\\1&amp;1&amp;0\\1&amp;1&amp;2\end{pmatrix}</span>, che ha alcune entrate con segno cambiato ma non tutte: non è un multiplo. Il test: deve esistere un <strong>unico</strong> <span class="m">k\neq0</span> che moltiplica <strong>tutte</strong> le entrate.</p>
 </div>
 
 <h2>Inversa</h2>
-<p><strong>Proposizione 40.5.</strong> Ogni trasformazione proiettiva è invertibile e <span class="m">[\varphi^{-1}]_p=[\varphi]_p^{-1}</span> (sempre a meno di multipli).</p>
+<p><strong>Proposizione 40.5.</strong> Ogni trasformazione proiettiva <span class="m">\varphi</span> è <strong>invertibile</strong>, e
+<span class="m d">[\varphi^{-1}]_p=[\varphi]_p^{-1}</span>
+(sempre a meno di multipli non nulli). Idea: <span class="m">\psi([v])=[A^{-1}v]</span> è ancora una trasformazione proiettiva (perché <span class="m">A^{-1}</span> è invertibile) e <span class="m">\psi(\varphi([v]))=[A^{-1}Av]=[v]</span>, <span class="m">\varphi(\psi([v]))=[AA^{-1}v]=[v]</span>.</p>
 <div class="callout esempio">
 
-<p>L&#39;inversa della trasformazione dell&#39;esempio precedente ha matrice <span class="m">\begin{pmatrix}-5&amp;3&amp;1\\7&amp;-4&amp;-1\\6&amp;-3&amp;-1\end{pmatrix}</span>, cioè <span class="m">\varphi^{-1}[X\ Y\ T]=[-5X+3Y+T\ \ 7X-4Y-T\ \ 6X-3Y-T]</span>.</p>
+<p><strong>Esempio 40.6 – inversa con Gauss–Jordan.</strong> Calcoliamo l&#39;inversa di <span class="m">A=\begin{pmatrix}1&amp;0&amp;1\\1&amp;-1&amp;2\\3&amp;3&amp;-1\end{pmatrix}</span> riducendo <span class="m">(A\mid I)</span>:
+<span class="m d">\left(\begin{array}{ccc|ccc}1&amp;0&amp;1&amp;1&amp;0&amp;0\\1&amp;-1&amp;2&amp;0&amp;1&amp;0\\3&amp;3&amp;-1&amp;0&amp;0&amp;1\end{array}\right)</span></p>
+<ol>
+<li><span class="m">R_2\leftarrow R_2-R_1</span>, <span class="m">R_3\leftarrow R_3-3R_1</span>:
+<span class="m d">\left(\begin{array}{ccc|ccc}1&amp;0&amp;1&amp;1&amp;0&amp;0\\0&amp;-1&amp;1&amp;-1&amp;1&amp;0\\0&amp;3&amp;-4&amp;-3&amp;0&amp;1\end{array}\right)</span></li>
+<li><span class="m">R_3\leftarrow R_3+3R_2</span>:
+<span class="m d">\left(\begin{array}{ccc|ccc}1&amp;0&amp;1&amp;1&amp;0&amp;0\\0&amp;-1&amp;1&amp;-1&amp;1&amp;0\\0&amp;0&amp;-1&amp;-6&amp;3&amp;1\end{array}\right)</span></li>
+<li><span class="m">R_3\leftarrow-R_3</span>: <span class="m">\ (0\ 0\ 1\mid 6\ \ -3\ \ -1)</span>.</li>
+<li><span class="m">R_2\leftarrow R_2-R_3</span>: <span class="m">(0\ \ -1\ \ 0\mid-7\ \ 4\ \ 1)</span>, poi <span class="m">R_2\leftarrow-R_2</span>: <span class="m">(0\ 1\ 0\mid 7\ \ -4\ \ -1)</span>.</li>
+<li><span class="m">R_1\leftarrow R_1-R_3</span>: <span class="m">(1\ 0\ 0\mid-5\ \ 3\ \ 1)</span>.</li>
+</ol>
+<p><span class="m d">A^{-1}=\begin{pmatrix}-5&amp;3&amp;1\\7&amp;-4&amp;-1\\6&amp;-3&amp;-1\end{pmatrix},\qquad\varphi^{-1}\begin{bmatrix}X\\Y\\T\end{bmatrix}=\begin{bmatrix}-5X+3Y+T\\7X-4Y-T\\6X-3Y-T\end{bmatrix}.</span>
+Controllo: <span class="m">\varphi^{-1}[2\ 3\ 2]=[-10+9+2\ \ 14-12-2\ \ 12-9-2]=[1\ 0\ 1]</span>, il punto di partenza dell&#39;esempio precedente.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Inversa <span class="m">2\times2</span> (e uso dei multipli).</strong> Per una <span class="m">2\times2</span> vale <span class="m">\begin{pmatrix}a&amp;b\\c&amp;d\end{pmatrix}^{-1}=\frac1{ad-bc}\begin{pmatrix}d&amp;-b\\-c&amp;a\end{pmatrix}</span>. In proiettivo il fattore <span class="m">\frac1{ad-bc}</span> si può <strong>omettere</strong>: basta scambiare le entrate diagonali e cambiare segno alle altre.</p>
+<ul>
+<li><strong>Esercizio 40.3:</strong> <span class="m">\varphi[X\ T]=[X+T\ \ X+2T]</span>, <span class="m">[\varphi]_p=\begin{pmatrix}1&amp;1\\1&amp;2\end{pmatrix}</span>, <span class="m">\det=1</span>, quindi <span class="m">[\varphi^{-1}]_p=\begin{pmatrix}2&amp;-1\\-1&amp;1\end{pmatrix}</span>.</li>
+<li><span class="m">[\varphi]_p=\begin{pmatrix}2&amp;5\\1&amp;2\end{pmatrix}</span>: <span class="m">\det=4-5=-1</span>, <span class="m">[\varphi]_p^{-1}=-\begin{pmatrix}2&amp;-5\\-1&amp;2\end{pmatrix}=\begin{pmatrix}-2&amp;5\\1&amp;-2\end{pmatrix}</span>, e come matrice proiettiva va bene anche <span class="m">\begin{pmatrix}2&amp;-5\\-1&amp;2\end{pmatrix}</span> (è il multiplo per <span class="m">-1</span>).</li>
+</ul>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Esercizio 40.1.</strong> Per quali <span class="m">k</span> la funzione <span class="m">[X\ T]\mapsto[X-2T\ \ kX+4T]</span> è una trasformazione proiettiva di <span class="m">\mathbb{P}^1(\mathbb{R})</span>? Le componenti sono lineari omogenee; la matrice è <span class="m">\begin{pmatrix}1&amp;-2\\k&amp;4\end{pmatrix}</span> con <span class="m">\det=1\cdot4-(-2)k=4+2k</span>. Serve <span class="m">4+2k\neq0</span>, cioè <span class="m">k\neq-2</span>.</p>
 </div>
 
 <h2>Affinità e trasformazioni proiettive</h2>
-<p><strong>Osservazione 40.7.</strong> Ogni affinità <span class="m">\varphi</span> di <span class="m">\mathbb{R}^n</span> si <strong>estende</strong> a una trasformazione proiettiva di <span class="m">\mathbb{P}^n(\mathbb{R})</span>, e come <span class="m">[\varphi]_p</span> si può prendere la matrice <span class="m">(n+1)\times(n+1)</span> che rappresenta <span class="m">\varphi</span> come applicazione affine (parte lineare, colonna della traslazione, ultima riga <span class="m">(0\ \dots\ 0\ 1)</span>). L&#39;estensione manda i punti all&#39;infinito nei punti all&#39;infinito (bigettivamente). Viceversa, una trasformazione proiettiva è l&#39;estensione di un&#39;affinità <strong>se e solo se</strong> manda l&#39;insieme dei punti all&#39;infinito in sé.</p>
+<p><strong>Osservazione 40.7.</strong> Ogni <strong>affinità</strong> <span class="m">\varphi</span> di <span class="m">\mathbb{R}^n</span> si <strong>estende</strong> a una trasformazione proiettiva di <span class="m">\mathbb{P}^n(\mathbb{R})</span>, e come <span class="m">[\varphi]_p</span> si può prendere <strong>la stessa matrice</strong> <span class="m">(n+1)\times(n+1)</span> che rappresenta <span class="m">\varphi</span> come applicazione affine. L&#39;estensione manda l&#39;insieme dei punti all&#39;infinito nell&#39;insieme dei punti all&#39;infinito, in modo bigettivo. Viceversa, una trasformazione proiettiva è l&#39;estensione di un&#39;affinità <strong>se e solo se</strong> manda l&#39;insieme dei punti all&#39;infinito in sé.</p>
+<p><strong>Perché.</strong> Sia <span class="m">\varphi(X)=MX+c</span> con <span class="m">M</span> invertibile <span class="m">n\times n</span> e <span class="m">c\in\mathbb{R}^n</span>. La sua matrice è
+<span class="m d">\widetilde A=\begin{pmatrix}M&amp;c\\0\ \cdots\ 0&amp;1\end{pmatrix}.</span></p>
+<ul>
+<li><strong>Sui punti di <span class="m">\mathbb{R}^n</span></strong>: <span class="m">\widetilde A\begin{pmatrix}X\\1\end{pmatrix}=\begin{pmatrix}MX+c\\1\end{pmatrix}</span>, cioè il punto <span class="m">[X\ 1]</span> va in <span class="m">[\varphi(X)\ 1]</span>: la trasformazione proiettiva fa esattamente quello che faceva l&#39;affinità.</li>
+<li><strong>È invertibile</strong>: sviluppando lungo l&#39;ultima riga, <span class="m">\det\widetilde A=\det M\neq0</span>.</li>
+<li><strong>Sui punti all&#39;infinito</strong>: <span class="m">\widetilde A\begin{pmatrix}v\\0\end{pmatrix}=\begin{pmatrix}Mv\\0\end{pmatrix}</span>: un punto all&#39;infinito (una direzione <span class="m">v</span>) va nel punto all&#39;infinito della direzione <span class="m">Mv</span>. Le affinità mandano rette parallele in rette parallele, e questo è il motivo.</li>
+<li><strong>Il viceversa</strong>: se una trasformazione proiettiva manda ogni punto con ultima coordinata nulla in un punto con ultima coordinata nulla, l&#39;ultima riga della sua matrice deve essere del tipo <span class="m">(0\ \cdots\ 0\ a)</span> con <span class="m">a\neq0</span>; dividendo la matrice per <span class="m">a</span> si ottiene la forma <span class="m">\widetilde A</span> di un&#39;affinità.</li>
+</ul>
+<p>Una trasformazione proiettiva che non è un&#39;affinità può invece portare un punto all&#39;infinito in un punto &quot;vero&quot; e viceversa: in proiettivo la retta all&#39;infinito non ha nulla di speciale.</p>
 <div class="callout esempio">
 
-<p>Esercizio 40.2: l&#39;affinità <span class="m">\varphi(x,y,z)=(x+y+z-1,\ y-2,\ x-3z)</span> di <span class="m">\mathbb{R}^3</span> si estende alla trasformazione con matrice <span class="m">\begin{pmatrix}1&amp;1&amp;1&amp;-1\\0&amp;1&amp;0&amp;-2\\1&amp;0&amp;-3&amp;0\\0&amp;0&amp;0&amp;1\end{pmatrix}</span>.</p>
+<p><strong>Esercizio 40.2.</strong> Estendere l&#39;affinità <span class="m">\varphi(x,y,z)=(x+y+z-1,\ y-2,\ x-3z)</span> di <span class="m">\mathbb{R}^3</span>. Le righe della matrice sono, nell&#39;ordine, i coefficienti di <span class="m">x,y,z</span> e il termine noto di ogni componente, più la riga <span class="m">(0\ 0\ 0\ 1)</span>:</p>
+<ul>
+<li>prima componente <span class="m">x+y+z-1</span>: <span class="m">(1\ 1\ 1\ \ -1)</span>;</li>
+<li>seconda <span class="m">y-2</span>: <span class="m">(0\ 1\ 0\ \ -2)</span> (manca <span class="m">x</span>, manca <span class="m">z</span>);</li>
+<li>terza <span class="m">x-3z</span>: <span class="m">(1\ 0\ -3\ \ 0)</span> (manca <span class="m">y</span>, nessun termine noto).</li>
+</ul>
+<p><span class="m d">[\varphi]_p=\begin{pmatrix}1&amp;1&amp;1&amp;-1\\0&amp;1&amp;0&amp;-2\\1&amp;0&amp;-3&amp;0\\0&amp;0&amp;0&amp;1\end{pmatrix}.</span></p>
 </div>
 
 <div class="callout esempio">
 
-<p>Esercizio 40.1: <span class="m">\begin{bmatrix}X\\T\end{bmatrix}\mapsto\begin{bmatrix}X-2T\\kX+4T\end{bmatrix}</span> ha matrice <span class="m">\begin{pmatrix}1&amp;-2\\k&amp;4\end{pmatrix}</span> con determinante <span class="m">4+2k</span>: è una trasformazione proiettiva per <span class="m">k\neq-2</span>. Esercizio 40.3: l&#39;inversa di <span class="m">\begin{bmatrix}X+T\\X+2T\end{bmatrix}</span> ha <span class="m">[\varphi^{-1}]_p=\begin{pmatrix}2&amp;-1\\-1&amp;1\end{pmatrix}</span>.</p>
+<p><strong>Affinità di <span class="m">\mathbb{R}^2</span> e suoi multipli.</strong> <span class="m">\theta(x,y)=(x-2y+2,\ 2x-y-1)</span>. Parte lineare <span class="m">\begin{pmatrix}1&amp;-2\\2&amp;-1\end{pmatrix}</span>, traslazione <span class="m">{}^t(2\ -1)</span>:
+<span class="m d">[\theta]_p=\begin{pmatrix}1&amp;-2&amp;2\\2&amp;-1&amp;-1\\0&amp;0&amp;1\end{pmatrix}\quad\text{e anche}\quad 2\begin{pmatrix}1&amp;-2&amp;2\\2&amp;-1&amp;-1\\0&amp;0&amp;1\end{pmatrix}=\begin{pmatrix}2&amp;-4&amp;4\\4&amp;-2&amp;-2\\0&amp;0&amp;2\end{pmatrix}.</span>
+Va moltiplicata <strong>tutta</strong> la matrice, ultima riga compresa (che diventa <span class="m">(0\ 0\ 2)</span>). Una matrice <span class="m">2\times3</span> non è mai una <span class="m">[\theta]_p</span>: non è quadrata.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Dalla matrice proiettiva all&#39;affinità.</strong> Quale affinità si estende alla trasformazione con <span class="m">[\varphi]_p=\begin{pmatrix}3&amp;-1&amp;2\\2&amp;-4&amp;3\\0&amp;0&amp;2\end{pmatrix}</span>?</p>
+<ol>
+<li>È <span class="m">3\times3</span>, quindi agisce su <span class="m">\mathbb{P}^2(\mathbb{R})</span>: l&#39;affinità è di <span class="m">\mathbb{R}^2</span> (non di <span class="m">\mathbb{R}^3</span>).</li>
+<li>L&#39;ultima riga è <span class="m">(0\ 0\ 2)</span>: divido <strong>tutta</strong> la matrice per <span class="m">2</span> per renderla <span class="m">(0\ 0\ 1)</span>:
+<span class="m d">\begin{pmatrix}\frac32&amp;-\frac12&amp;1\\1&amp;-2&amp;\frac32\\0&amp;0&amp;1\end{pmatrix}.</span></li>
+<li>Leggo: <span class="m">\varphi(x,y)=\left(\frac32x-\frac12y+1,\ \ x-2y+\frac32\right)</span>.</li>
+</ol>
+<p>L&#39;errore tipico è leggere la matrice senza dividere: <span class="m">(3x-y+2,\ 2x-4y+3)</span> è un&#39;altra affinità.</p>
 </div>
 
 <div class="callout attenzione">
 
-<p>Per leggere l&#39;affinità da una matrice proiettiva bisogna prima rendere l&#39;ultima riga uguale a <span class="m">(0\ \dots\ 0\ 1)</span>, dividendo tutta la matrice: per esempio <span class="m">\begin{pmatrix}3&amp;-1&amp;2\\2&amp;-4&amp;3\\0&amp;0&amp;2\end{pmatrix}</span> va divisa per 2 e dà <span class="m">(x,y)\mapsto\left(\frac32x-\frac12y+1,\ x-2y+\frac32\right)</span>.</p>
+<ul>
+<li><span class="m">[\varphi]_p</span> è definita <strong>a meno di multipli non nulli</strong>: nelle domande la risposta giusta è spesso un multiplo (per <span class="m">2</span>, per <span class="m">-1</span>) della matrice &quot;naturale&quot;.</li>
+<li>Un multiplo moltiplica <strong>tutte</strong> le entrate: se cambia segno solo qualche entrata, è un&#39;altra trasformazione.</li>
+<li>La matrice deve essere <strong>quadrata</strong> <span class="m">(n+1)\times(n+1)</span> e <strong>invertibile</strong>: nell&#39;estensione di un&#39;affinità di <span class="m">\mathbb{R}^2</span> serve la riga <span class="m">(0\ 0\ 1)</span> (o un suo multiplo).</li>
+<li>Le componenti devono essere lineari <strong>omogenee</strong>: nessun termine noto, nessuna potenza.</li>
+<li>Per leggere l&#39;affinità da una matrice proiettiva bisogna prima rendere l&#39;ultima riga <span class="m">(0\ \cdots\ 0\ 1)</span>.</li>
+<li>Attenzione ai segni del termine noto: <span class="m">2x-y-1</span> dà <span class="m">-1</span> nell&#39;ultima colonna, <span class="m">2x-y+1</span> dà <span class="m">+1</span>.</li>
+</ul>
 </div>
 
 <div class="callout esame">
 
-<p>Paniere: data un&#39;affinità di <span class="m">\mathbb{R}^2</span>, riconoscere <span class="m">[\theta]_p</span> tra matrici che sono multipli (per esempio per 2) della matrice <span class="m">3\times3</span> dell&#39;affinità, scartando quelle non quadrate o con segni sbagliati. Quiz: riconoscere una trasformazione proiettiva (lineare omogenea e invertibile), matrici che la rappresentano (multipli), inversa, affinità che si estende a una data matrice.</p>
+<p>Le chiuse del paniere danno un&#39;affinità di <span class="m">\mathbb{R}^2</span>, <span class="m">\theta(x,y)=(\dots,\dots)</span>, e chiedono <span class="m">[\theta]_p</span> tra matrici che sono multipli (di solito per 2) della matrice dell&#39;affinità: si scrive la matrice <span class="m">3\times3</span> (coefficienti di <span class="m">x</span>, di <span class="m">y</span>, termine noto, poi <span class="m">(0\ 0\ 1)</span>), la si moltiplica per il fattore delle opzioni, si scartano le <span class="m">2\times3</span> e quelle con un segno sbagliato nel termine noto. Nei quiz: riconoscere una trasformazione proiettiva, le matrici che la rappresentano, l&#39;inversa, l&#39;affinità che si estende a una matrice data.</p>
+</div>
+
+<div class="callout sintesi">
+
+<ul>
+<li>Trasformazione proiettiva: <span class="m">\varphi([v])=[Av]</span> con <span class="m">A</span> <span class="m">(n+1)\times(n+1)</span> invertibile; <span class="m">[\varphi]_p=A</span> a meno di multipli non nulli.</li>
+<li>Ben definita: <span class="m">A(\lambda v)=\lambda Av</span> e <span class="m">Av\neq0</span>.</li>
+<li>Inversa: <span class="m">[\varphi^{-1}]_p=[\varphi]_p^{-1}</span> (a meno di multipli).</li>
+<li>Ogni affinità si estende con la sua matrice <span class="m">\begin{pmatrix}M&amp;c\\0&amp;1\end{pmatrix}</span>; le estensioni di affinità sono esattamente le trasformazioni che mandano i punti all&#39;infinito in punti all&#39;infinito.</li>
+</ul>
 </div>

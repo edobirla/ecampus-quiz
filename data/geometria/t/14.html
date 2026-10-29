@@ -1,52 +1,220 @@
 <h1>Lezione 14 — Matrici invertibili</h1>
-<p>In questa lezione si considerano solo matrici quadrate: l&#39;inversione è definita solo per (alcune) matrici quadrate.</p>
-<h2>Matrici invertibili</h2>
-<p><strong>Definizione 14.1.</strong> Una matrice quadrata <span class="m">A</span> di dimensione <span class="m">n\times n</span> è <strong>invertibile</strong> se esiste una matrice <span class="m">A^{-1}</span> tale che <span class="m d">A\cdot A^{-1}=A^{-1}\cdot A=I_n.</span> La matrice <span class="m">A^{-1}</span>, quando esiste, è detta <strong>inversa</strong> di <span class="m">A</span>.</p>
-<p><strong>Osservazione 14.2.</strong> L&#39;inversa di una matrice, se esiste, è unica.</p>
+<p>Nelle lezioni precedenti abbiamo imparato a sommare e moltiplicare le matrici (prodotto righe per colonne). Fra i numeri, quasi ogni numero ha un <strong>inverso</strong> rispetto al prodotto: <span class="m">2\cdot\frac12=1</span>. Questa lezione si chiede quando lo stesso accade per le matrici: quando esiste una matrice che, moltiplicata per <span class="m">A</span>, dà la matrice identità <span class="m">I_n</span> (che per le matrici fa la parte del numero <span class="m">1</span>). Le matrici che hanno un&#39;inversa si chiamano <strong>invertibili</strong> e saranno fondamentali in tutto il resto del corso: servono per risolvere i sistemi lineari, per cambiare base, per diagonalizzare. Alla fine della lezione si introduce il <strong>coniugio</strong> (matrici simili), che useremo molto più avanti per la diagonalizzazione.</p>
+<p>In questa lezione si considerano <strong>solo matrici quadrate</strong>: l&#39;inversione è definita solo per (alcune) matrici quadrate. Il motivo è che deve valere sia <span class="m">A\cdot A^{-1}=I_n</span> sia <span class="m">A^{-1}\cdot A=I_n</span> con la stessa identità, e questo è possibile solo se <span class="m">A</span> ha tante righe quante colonne.</p>
+<h2>Richiamo: il prodotto righe per colonne</h2>
+<p>Poiché tutto si basa sul prodotto, ricordiamolo. Se <span class="m">A=(a_{ij})</span> è <span class="m">n\times m</span> e <span class="m">B=(b_{jk})</span> è <span class="m">m\times p</span> (il numero di <strong>colonne</strong> di <span class="m">A</span> deve essere uguale al numero di <strong>righe</strong> di <span class="m">B</span>), il prodotto <span class="m">A\cdot B</span> è la matrice <span class="m">n\times p</span> la cui entrata <span class="m">(i,k)</span> è il prodotto della <span class="m">i</span>-esima riga di <span class="m">A</span> per la <span class="m">k</span>-esima colonna di <span class="m">B</span>:
+<span class="m d">(A\cdot B)_{ik}=a_{i1}b_{1k}+a_{i2}b_{2k}+\cdots+a_{im}b_{mk}=\sum_{j=1}^{m}a_{ij}b_{jk}.</span></p>
+<p>Proprietà da ricordare:</p>
+<ul>
+<li>è <strong>associativo</strong>: <span class="m">(AB)C=A(BC)</span>;</li>
+<li>è <strong>distributivo</strong> rispetto alla somma: <span class="m">A(B+C)=AB+AC</span>, <span class="m">(A+B)C=AC+BC</span>;</li>
+<li><span class="m">I_n</span> è l&#39;elemento neutro: <span class="m">A\cdot I_n=I_n\cdot A=A</span> per ogni <span class="m">A\in\mathbb K^{n,n}</span>;</li>
+<li><strong>non è commutativo</strong>: in generale <span class="m">AB\neq BA</span> (anche quando entrambi i prodotti esistono).</li>
+</ul>
 <div class="callout esempio">
 
-<ul>
-<li><span class="m">I_n</span> è invertibile per ogni <span class="m">n</span>, con inversa <span class="m">I_n</span> stessa: <span class="m">I_n\cdot I_n=I_n</span>.</li>
-<li><span class="m">0_{n,n}</span> non è invertibile: il prodotto di <span class="m">0_{n,n}</span> per qualsiasi matrice <span class="m">n\times n</span> è <span class="m">0_{n,n}\neq I_n</span>.</li>
-</ul>
+<p><span class="m">\begin{pmatrix}1&amp;1\\0&amp;1\end{pmatrix}\begin{pmatrix}1&amp;3\\1&amp;2\end{pmatrix}=\begin{pmatrix}1\cdot1+1\cdot1&amp;1\cdot3+1\cdot2\\0\cdot1+1\cdot1&amp;0\cdot3+1\cdot2\end{pmatrix}=\begin{pmatrix}2&amp;5\\1&amp;2\end{pmatrix}</span>, mentre <span class="m">\begin{pmatrix}1&amp;3\\1&amp;2\end{pmatrix}\begin{pmatrix}1&amp;1\\0&amp;1\end{pmatrix}=\begin{pmatrix}1&amp;1+3\\1&amp;1+2\end{pmatrix}=\begin{pmatrix}1&amp;4\\1&amp;3\end{pmatrix}</span>: i due prodotti sono diversi.</p>
 </div>
 
-<p><strong>Potenze.</strong> Se <span class="m">A</span> è invertibile valgono <span class="m">A^1A^{-1}=A^0=I_n</span>, <span class="m">A^nA^m=A^{n+m}</span> e <span class="m">(A^n)^m=A^{nm}</span> per ogni <span class="m">n,m\in\mathbb{Z}</span>; se <span class="m">A</span> non è invertibile, le ultime due valgono solo per <span class="m">n,m\in\mathbb{N}</span>.</p>
-<p><strong>Osservazione 14.5.</strong> Se <span class="m">A</span> e <span class="m">B</span> sono matrici quadrate dello stesso ordine (invertibili), <span class="m d">(AB)^{-1}=B^{-1}A^{-1}.</span></p>
-<h2>Come si calcola l&#39;inversa</h2>
-<p><strong>Osservazione 14.6.</strong> Per ora l&#39;unico modo è risolvere il sistema nell&#39;incognita matriciale <span class="m">X=(x_{ij})</span> <span class="m d">\begin{cases}A\cdot X=I_n\\X\cdot A=I_n\end{cases}</span> Facendo i due prodotti righe per colonne si ottiene un sistema lineare di <span class="m">2n^2</span> equazioni nelle <span class="m">n^2</span> incognite <span class="m">x_{ij}</span>.</p>
-<ul>
-<li>Se il sistema ha una soluzione <span class="m">X</span>, essa è <span class="m">A^{-1}</span>.</li>
-<li>Se non ha soluzioni, <span class="m">A</span> non è invertibile.</li>
-<li>Non può avere più di una soluzione, perché l&#39;inversa è unica.</li>
-</ul>
+<h2>Matrici invertibili</h2>
+<p><strong>Definizione 14.1.</strong> Una matrice quadrata <span class="m">A</span> di dimensione <span class="m">n\times n</span> è <strong>invertibile</strong> se esiste una matrice, indicata con <span class="m">A^{-1}</span>, tale che
+<span class="m d">A\cdot A^{-1}=A^{-1}\cdot A=I_n.</span>
+La matrice <span class="m">A^{-1}</span>, quando esiste, è detta <strong>inversa</strong> di <span class="m">A</span>.</p>
+<p>Si richiedono <strong>entrambe</strong> le uguaglianze perché il prodotto non è commutativo: a priori una matrice potrebbe funzionare da un lato e non dall&#39;altro (per le matrici quadrate in realtà una delle due implica l&#39;altra, ma la definizione le chiede tutte e due).</p>
+<p><strong>Osservazione 14.2.</strong> L&#39;inversa di una matrice, se esiste, è <strong>unica</strong>.</p>
+<p><em>Perché.</em> Supponiamo che <span class="m">B</span> e <span class="m">B'</span> siano entrambe inverse di <span class="m">A</span>. Allora, usando che <span class="m">I_n</span> è neutro e l&#39;associatività,
+<span class="m d">B=B\cdot I_n=B\cdot(A\cdot B')=(B\cdot A)\cdot B'=I_n\cdot B'=B'.</span>
+Quindi è lecito parlare de **l&#39;**inversa e usare il simbolo <span class="m">A^{-1}</span>.</p>
 <div class="callout esempio">
 
-<p><strong>Inversa di <span class="m">\begin{pmatrix}2&amp;1\\3&amp;2\end{pmatrix}</span>.</strong> Il sistema <span class="m">A\cdot X=I_2</span>, <span class="m">X\cdot A=I_2</span> dà 8 equazioni: <span class="m">2x_{11}+x_{21}=1</span>, <span class="m">2x_{12}+x_{22}=0</span>, <span class="m">3x_{11}+2x_{21}=0</span>, <span class="m">3x_{12}+2x_{22}=1</span>, <span class="m">2x_{11}+3x_{12}=1</span>, <span class="m">x_{11}+2x_{12}=0</span>, <span class="m">2x_{21}+3x_{22}=0</span>, <span class="m">x_{21}+2x_{22}=1</span>. L&#39;unica soluzione è <span class="m">(x_{11},x_{12},x_{21},x_{22})=(2,-1,-3,2)</span>, quindi <span class="m d">\begin{pmatrix}2&amp;1\\3&amp;2\end{pmatrix}^{-1}=\begin{pmatrix}2&amp;-1\\-3&amp;2\end{pmatrix}.</span></p>
+<p><strong>Esempio 14.3.</strong></p>
+<ol>
+<li><span class="m">I_n</span> è invertibile per ogni <span class="m">n</span>, e la sua inversa è <span class="m">I_n</span> stessa: <span class="m">I_n\cdot I_n=I_n</span>.</li>
+<li><span class="m">0_{n,n}</span> non è invertibile per nessun <span class="m">n</span>: il prodotto di <span class="m">0_{n,n}</span> con qualsiasi matrice <span class="m">n\times n</span> è <span class="m">0_{n,n}</span>, che è diversa da <span class="m">I_n</span>.</li>
+<li>Una matrice diagonale <span class="m">\operatorname{Diag}(d_1,\dots,d_n)</span> con tutti i <span class="m">d_i\neq0</span> è invertibile, con inversa <span class="m">\operatorname{Diag}\left(\frac1{d_1},\dots,\frac1{d_n}\right)</span>: il prodotto di due diagonali si fa entrata per entrata sulla diagonale, e <span class="m">d_i\cdot\frac1{d_i}=1</span>.</li>
+</ol>
 </div>
 
 <div class="callout attenzione">
 
-<p>Per le matrici <span class="m">2\times2</span> (vedi Lezione 15) il sistema si risolve una volta per tutte: se <span class="m">ad-bc\neq0</span>, <span class="m d">\begin{pmatrix}a&amp;b\\c&amp;d\end{pmatrix}^{-1}=\frac{1}{ad-bc}\begin{pmatrix}d&amp;-b\\-c&amp;a\end{pmatrix}.</span> Si scambiano gli elementi della diagonale, si cambia segno agli altri due e si divide per il determinante. Controlla sempre il risultato con il prodotto <span class="m">A\cdot A^{-1}</span>: scambiare di posto <span class="m">-b</span> e <span class="m">-c</span> dà la trasposta, che in generale è sbagliata.</p>
+<p>A differenza dei numeri, <strong>non basta che <span class="m">A\neq0</span></strong> perché <span class="m">A</span> sia invertibile. Per esempio <span class="m">\begin{pmatrix}2&amp;1\\4&amp;2\end{pmatrix}</span> non è nulla ma non è invertibile (lo vediamo sotto): ha la seconda riga doppia della prima. Il criterio giusto (Lezione 15 e 18) è: <span class="m">A</span> è invertibile se e solo se <span class="m">\det A\neq0</span>.</p>
+</div>
+
+<h3>Potenze di una matrice invertibile</h3>
+<p>Per una matrice quadrata <span class="m">A</span> le potenze con esponente naturale sono <span class="m">A^0=I_n</span>, <span class="m">A^1=A</span>, <span class="m">A^2=A\cdot A</span>, …, <span class="m">A^k=A\cdots A</span> (<span class="m">k</span> volte). Se <span class="m">A</span> è invertibile si possono definire anche le potenze negative: <span class="m">A^{-k}:=(A^{-1})^k</span>.</p>
+<p><strong>Osservazione 14.4.</strong> La definizione è coerente con le notazioni delle potenze:</p>
+<ul>
+<li>se <span class="m">A</span> è invertibile valgono
+<span class="m d">A^1A^{-1}=A^0=I_n,\qquad A^nA^m=A^{n+m},\qquad (A^n)^m=A^{nm}</span>
+per <strong>ogni</strong> <span class="m">n,m\in\mathbb Z</span> (interi, anche negativi);</li>
+<li>se <span class="m">A</span> non è invertibile, <span class="m">A^nA^m=A^{n+m}</span> e <span class="m">(A^n)^m=A^{nm}</span> valgono <strong>solo</strong> per <span class="m">n,m\in\mathbb N</span>, perché le potenze negative non esistono.</li>
+</ul>
+<h3>Inversa di un prodotto</h3>
+<p><strong>Osservazione 14.5.</strong> Se <span class="m">A</span> e <span class="m">B</span> sono matrici quadrate dello stesso ordine, entrambe invertibili, anche <span class="m">AB</span> è invertibile e
+<span class="m d">(AB)^{-1}=B^{-1}A^{-1}.</span></p>
+<p><em>Perché.</em> Basta verificare che <span class="m">B^{-1}A^{-1}</span> soddisfa la definizione, usando l&#39;associatività:
+<span class="m d">(AB)(B^{-1}A^{-1})=A(BB^{-1})A^{-1}=A\,I_n\,A^{-1}=AA^{-1}=I_n,</span>
+<span class="m d">(B^{-1}A^{-1})(AB)=B^{-1}(A^{-1}A)B=B^{-1}I_nB=B^{-1}B=I_n.</span>
+L&#39;ordine si <strong>inverte</strong>: è come vestirsi (prima la camicia, poi la giacca) e svestirsi (prima la giacca, poi la camicia).</p>
+<div class="callout esempio">
+
+<p><strong>Esercizio 14.4 della dispensa.</strong> <span class="m">A=\begin{pmatrix}1&amp;1\\0&amp;1\end{pmatrix}</span>, <span class="m">B=\begin{pmatrix}1&amp;3\\1&amp;2\end{pmatrix}</span>.</p>
+<ol>
+<li><span class="m">AB=\begin{pmatrix}2&amp;5\\1&amp;2\end{pmatrix}</span> (calcolato sopra).</li>
+<li><span class="m">A^{-1}=\begin{pmatrix}1&amp;-1\\0&amp;1\end{pmatrix}</span>: infatti <span class="m">\begin{pmatrix}1&amp;1\\0&amp;1\end{pmatrix}\begin{pmatrix}1&amp;-1\\0&amp;1\end{pmatrix}=\begin{pmatrix}1&amp;-1+1\\0&amp;1\end{pmatrix}=I_2</span> e <span class="m">\begin{pmatrix}1&amp;-1\\0&amp;1\end{pmatrix}\begin{pmatrix}1&amp;1\\0&amp;1\end{pmatrix}=\begin{pmatrix}1&amp;1-1\\0&amp;1\end{pmatrix}=I_2</span>.</li>
+<li><span class="m">B^{-1}=\begin{pmatrix}-2&amp;3\\1&amp;-1\end{pmatrix}</span>: <span class="m">\begin{pmatrix}1&amp;3\\1&amp;2\end{pmatrix}\begin{pmatrix}-2&amp;3\\1&amp;-1\end{pmatrix}=\begin{pmatrix}-2+3&amp;3-3\\-2+2&amp;3-2\end{pmatrix}=I_2</span> (e analogamente nell&#39;altro ordine).</li>
+<li><span class="m">(AB)^{-1}=\begin{pmatrix}-2&amp;5\\1&amp;-2\end{pmatrix}</span>: <span class="m">\begin{pmatrix}2&amp;5\\1&amp;2\end{pmatrix}\begin{pmatrix}-2&amp;5\\1&amp;-2\end{pmatrix}=\begin{pmatrix}-4+5&amp;10-10\\-2+2&amp;5-4\end{pmatrix}=I_2</span>.</li>
+<li><span class="m">B^{-1}A^{-1}=\begin{pmatrix}-2&amp;3\\1&amp;-1\end{pmatrix}\begin{pmatrix}1&amp;-1\\0&amp;1\end{pmatrix}=\begin{pmatrix}-2&amp;2+3\\1&amp;-1-1\end{pmatrix}=\begin{pmatrix}-2&amp;5\\1&amp;-2\end{pmatrix}</span>: coincide con <span class="m">(AB)^{-1}</span>, come previsto.</li>
+</ol>
+<p>Se invece si calcola <span class="m">A^{-1}B^{-1}=\begin{pmatrix}1&amp;-1\\0&amp;1\end{pmatrix}\begin{pmatrix}-2&amp;3\\1&amp;-1\end{pmatrix}=\begin{pmatrix}-3&amp;4\\1&amp;-1\end{pmatrix}</span> si ottiene un&#39;altra matrice: l&#39;ordine conta.</p>
+</div>
+
+<h2>Come si calcola l&#39;inversa: il sistema <span class="m">AX=I_n</span>, <span class="m">XA=I_n</span></h2>
+<p><strong>Osservazione 14.6.</strong> Per ora l&#39;unico modo per calcolare l&#39;inversa di <span class="m">A=(a_{ij})</span> è risolvere il sistema nell&#39;incognita matriciale <span class="m">X=(x_{ij})</span>
+<span class="m d">\begin{cases}A\cdot X=I_n\\X\cdot A=I_n\end{cases}\tag{14.1}</span>
+Facendo i due prodotti righe per colonne, ogni entrata del prodotto deve essere uguale all&#39;entrata corrispondente di <span class="m">I_n</span> (<span class="m">1</span> sulla diagonale, <span class="m">0</span> fuori). Per esempio l&#39;entrata <span class="m">(1,1)</span> di <span class="m">AX</span> dà l&#39;equazione
+<span class="m d">a_{11}x_{11}+a_{12}x_{21}+\cdots+a_{1n}x_{n1}=1,</span>
+l&#39;entrata <span class="m">(1,2)</span> dà <span class="m">a_{11}x_{12}+a_{12}x_{22}+\cdots+a_{1n}x_{n2}=0</span>, e così via. Si ottiene un <strong>sistema lineare di <span class="m">2n^2</span> equazioni</strong> (<span class="m">n^2</span> da <span class="m">AX=I_n</span> e <span class="m">n^2</span> da <span class="m">XA=I_n</span>) nelle <strong><span class="m">n^2</span> incognite</strong> <span class="m">x_{ij}</span>, con <span class="m">i,j=1,\dots,n</span>.</p>
+<ul>
+<li>Se il sistema ha una soluzione <span class="m">X</span>, essa è l&#39;inversa <span class="m">A^{-1}</span>.</li>
+<li>Se il sistema non ha soluzioni, <span class="m">A</span> non è invertibile.</li>
+<li>Il sistema <strong>non può avere più di una soluzione</strong>: altrimenti <span class="m">A</span> avrebbe più di un&#39;inversa, contro l&#39;Osservazione 14.2.</li>
+</ul>
+<div class="callout esempio">
+
+<p><strong>Esercizio 14.1 — inversa di <span class="m">\begin{pmatrix}2&amp;1\\3&amp;2\end{pmatrix}</span>.</strong> Scriviamo
+<span class="m d">\begin{pmatrix}2&amp;1\\3&amp;2\end{pmatrix}\begin{pmatrix}x_{11}&amp;x_{12}\\x_{21}&amp;x_{22}\end{pmatrix}=\begin{pmatrix}2x_{11}+x_{21}&amp;2x_{12}+x_{22}\\3x_{11}+2x_{21}&amp;3x_{12}+2x_{22}\end{pmatrix}=\begin{pmatrix}1&amp;0\\0&amp;1\end{pmatrix},</span>
+<span class="m d">\begin{pmatrix}x_{11}&amp;x_{12}\\x_{21}&amp;x_{22}\end{pmatrix}\begin{pmatrix}2&amp;1\\3&amp;2\end{pmatrix}=\begin{pmatrix}2x_{11}+3x_{12}&amp;x_{11}+2x_{12}\\2x_{21}+3x_{22}&amp;x_{21}+2x_{22}\end{pmatrix}=\begin{pmatrix}1&amp;0\\0&amp;1\end{pmatrix}.</span>
+Uguagliando entrata per entrata otteniamo le 8 equazioni
+<span class="m d">\begin{cases}2x_{11}+x_{21}=1\\2x_{12}+x_{22}=0\\3x_{11}+2x_{21}=0\\3x_{12}+2x_{22}=1\\2x_{11}+3x_{12}=1\\x_{11}+2x_{12}=0\\2x_{21}+3x_{22}=0\\x_{21}+2x_{22}=1\end{cases}</span>
+Risolviamo. Dalla prima <span class="m">x_{21}=1-2x_{11}</span>; sostituendo nella terza: <span class="m">3x_{11}+2-4x_{11}=0</span>, cioè <span class="m">x_{11}=2</span>, quindi <span class="m">x_{21}=1-4=-3</span>. Dalla seconda <span class="m">x_{22}=-2x_{12}</span>; sostituendo nella quarta: <span class="m">3x_{12}-4x_{12}=1</span>, cioè <span class="m">x_{12}=-1</span>, quindi <span class="m">x_{22}=2</span>. Controlliamo le altre quattro: <span class="m">2\cdot2+3(-1)=1</span> ✓, <span class="m">2+2(-1)=0</span> ✓, <span class="m">2(-3)+3\cdot2=0</span> ✓, <span class="m">-3+2\cdot2=1</span> ✓. L&#39;unica soluzione è <span class="m">(x_{11},x_{12},x_{21},x_{22})=(2,-1,-3,2)</span>, quindi
+<span class="m d">\begin{pmatrix}2&amp;1\\3&amp;2\end{pmatrix}^{-1}=\begin{pmatrix}2&amp;-1\\-3&amp;2\end{pmatrix}.</span></p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Una matrice non invertibile: <span class="m">\begin{pmatrix}2&amp;1\\4&amp;2\end{pmatrix}</span></strong> (vale sia per matrici reali sia complesse). Le equazioni che vengono dall&#39;entrata <span class="m">(1,1)</span> e <span class="m">(2,1)</span> di <span class="m">AX=I_2</span> sono
+<span class="m d">2x_{11}+x_{21}=1,\qquad 4x_{11}+2x_{21}=0.</span>
+Moltiplicando la prima per <span class="m">2</span> si ottiene <span class="m">4x_{11}+2x_{21}=2</span>, che contraddice la seconda (<span class="m">=0</span>). Il sistema non ha soluzioni: la matrice <strong>non è invertibile</strong>, né sui reali né sui complessi. Il motivo profondo è che la seconda riga è il doppio della prima (il determinante <span class="m">2\cdot2-1\cdot4=0</span>).</p>
+</div>
+
+<h3>La formula per le matrici <span class="m">2\times2</span></h3>
+<p>Ripetendo il conto con lettere al posto dei numeri (lo si fa in dettaglio nella Lezione 15) si trova una formula valida una volta per tutte: <span class="m">\begin{pmatrix}a&amp;b\\c&amp;d\end{pmatrix}</span> è invertibile <strong>se e solo se</strong> <span class="m">ad-bc\neq0</span>, e in tal caso
+<span class="m d">\begin{pmatrix}a&amp;b\\c&amp;d\end{pmatrix}^{-1}=\frac{1}{ad-bc}\begin{pmatrix}d&amp;-b\\-c&amp;a\end{pmatrix}.</span>
+Ricetta in tre mosse: <strong>scambia</strong> i due elementi della diagonale principale (<span class="m">a\leftrightarrow d</span>), <strong>cambia segno</strong> agli altri due (<span class="m">b\to-b</span>, <span class="m">c\to-c</span>, lasciandoli al loro posto), <strong>dividi</strong> tutto per <span class="m">ad-bc</span>.</p>
+<p><em>Verifica:</em> <span class="m">\begin{pmatrix}a&amp;b\\c&amp;d\end{pmatrix}\begin{pmatrix}d&amp;-b\\-c&amp;a\end{pmatrix}=\begin{pmatrix}ad-bc&amp;-ab+ba\\cd-dc&amp;-cb+da\end{pmatrix}=(ad-bc)I_2</span>, quindi dividendo per <span class="m">ad-bc</span> si ottiene <span class="m">I_2</span>.</p>
+<div class="callout esempio">
+
+<p><strong>Le inverse del paniere (entrate <span class="m">0,\pm1</span>).</strong> <span class="m">A=\begin{pmatrix}1&amp;-1\\1&amp;0\end{pmatrix}</span>: <span class="m">a=1</span>, <span class="m">b=-1</span>, <span class="m">c=1</span>, <span class="m">d=0</span>.</p>
+<ul>
+<li><span class="m">ad-bc=1\cdot0-(-1)\cdot1=0+1=1\neq0</span>: invertibile.</li>
+<li>Scambio la diagonale: <span class="m">1</span> e <span class="m">0</span> diventano <span class="m">0</span> e <span class="m">1</span>. Cambio segno agli altri: <span class="m">-b=1</span>, <span class="m">-c=-1</span>. Ottengo <span class="m">\begin{pmatrix}0&amp;1\\-1&amp;1\end{pmatrix}</span>, e dividendo per <span class="m">1</span> resta così.</li>
+<li>Verifica: <span class="m">\begin{pmatrix}1&amp;-1\\1&amp;0\end{pmatrix}\begin{pmatrix}0&amp;1\\-1&amp;1\end{pmatrix}=\begin{pmatrix}0+1&amp;1-1\\0+0&amp;1+0\end{pmatrix}=I_2</span> ✓.</li>
+</ul>
+<p><span class="m">A=\begin{pmatrix}1&amp;1\\1&amp;0\end{pmatrix}</span>: <span class="m">ad-bc=0-1=-1</span>. La matrice <span class="m">\begin{pmatrix}d&amp;-b\\-c&amp;a\end{pmatrix}=\begin{pmatrix}0&amp;-1\\-1&amp;1\end{pmatrix}</span> va <strong>divisa per <span class="m">-1</span></strong>, cioè cambiata tutta di segno: <span class="m">A^{-1}=\begin{pmatrix}0&amp;1\\1&amp;-1\end{pmatrix}</span>. Verifica: <span class="m">\begin{pmatrix}1&amp;1\\1&amp;0\end{pmatrix}\begin{pmatrix}0&amp;1\\1&amp;-1\end{pmatrix}=\begin{pmatrix}1&amp;0\\0&amp;1\end{pmatrix}</span> ✓.</p>
+<p><strong>Con un determinante diverso da <span class="m">\pm1</span></strong> (Domanda 14.1 della dispensa): <span class="m">\begin{pmatrix}1&amp;2\\-1&amp;3\end{pmatrix}</span> ha <span class="m">ad-bc=3+2=5</span>, quindi
+<span class="m d">\begin{pmatrix}1&amp;2\\-1&amp;3\end{pmatrix}^{-1}=\frac15\begin{pmatrix}3&amp;-2\\1&amp;1\end{pmatrix}=\begin{pmatrix}\frac35&amp;-\frac25\\\frac15&amp;\frac15\end{pmatrix}.</span></p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Un&#39;inversa <span class="m">3\times3</span> (Domanda 14.2 della dispensa).</strong> L&#39;inversa di <span class="m">A=\begin{pmatrix}1&amp;2&amp;0\\0&amp;1&amp;-1\\0&amp;0&amp;-1\end{pmatrix}</span> è <span class="m">X=\begin{pmatrix}1&amp;-2&amp;2\\0&amp;1&amp;-1\\0&amp;0&amp;-1\end{pmatrix}</span>. Quando le opzioni sono date, non serve risolvere il sistema di 18 equazioni: basta <strong>verificare</strong> il prodotto riga per riga:</p>
+<ul>
+<li>riga 1 di <span class="m">AX</span>: <span class="m">(1\cdot1,\ 1\cdot(-2)+2\cdot1,\ 1\cdot2+2\cdot(-1))=(1,0,0)</span>;</li>
+<li>riga 2: <span class="m">(0,\ 1,\ 1\cdot(-1)+(-1)(-1))=(0,1,0)</span>;</li>
+<li>riga 3: <span class="m">(0,0,(-1)(-1))=(0,0,1)</span>.</li>
+</ul>
+<p>Quindi <span class="m">AX=I_3</span> (e si verifica allo stesso modo <span class="m">XA=I_3</span>). L&#39;opzione quasi uguale con <span class="m">-2</span> al posto di <span class="m">2</span> nell&#39;angolo in alto a destra dà nella prima riga <span class="m">1\cdot(-2)+2\cdot(-1)=-4\neq0</span>: è sbagliata.</p>
+</div>
+
+<div class="callout attenzione">
+
+<ul>
+<li>Lo scambio riguarda <strong>solo la diagonale principale</strong>: <span class="m">-b</span> e <span class="m">-c</span> restano dove sono. Scambiare anche loro dà la <strong>trasposta</strong> dell&#39;inversa, che in generale è un&#39;altra matrice (ed è un&#39;opzione-trappola tipica).</li>
+<li>Se <span class="m">ad-bc=-1</span> bisogna cambiare il segno a <strong>tutte</strong> le entrate: dimenticarlo dà l&#39;opposto dell&#39;inversa.</li>
+<li>Controlla sempre il risultato con il prodotto <span class="m">A\cdot A^{-1}</span>: costa pochi secondi ed elimina ogni dubbio sui segni.</li>
+<li>Esercizio 14.5 della dispensa: <span class="m">\begin{pmatrix}1&amp;4\\1&amp;3\end{pmatrix}</span> <strong>non</strong> è l&#39;inversa di <span class="m">\begin{pmatrix}-3&amp;8\\1&amp;-2\end{pmatrix}</span>, perché il prodotto vale <span class="m">\begin{pmatrix}-3+4&amp;8-8\\-3+3&amp;8-6\end{pmatrix}=\begin{pmatrix}1&amp;0\\0&amp;2\end{pmatrix}\neq I_2</span>.</li>
+</ul>
 </div>
 
 <h2>Coniugio (matrici simili)</h2>
-<p><strong>Definizione 14.7.</strong> Due matrici <span class="m">A,B\in\mathbb{K}^{n,n}</span> sono <strong>coniugate</strong>, o <strong>simili</strong>, se esiste una matrice invertibile <span class="m">C\in\mathbb{K}^{n,n}</span> tale che <span class="m d">C^{-1}\cdot A\cdot C=B.</span> Si dice che <span class="m">B</span> è simile ad <span class="m">A</span> <strong>tramite</strong> <span class="m">C</span>.</p>
-<p><strong>Proposizione 14.8.</strong> Il coniugio è una relazione di equivalenza su <span class="m">\mathbb{K}^{n,n}</span>:</p>
-<ul>
-<li><strong>riflessiva:</strong> <span class="m">I_n^{-1}\cdot A\cdot I_n=A</span>;</li>
-<li><strong>simmetrica:</strong> se <span class="m">C^{-1}A_2C=A_1</span>, allora <span class="m">A_2=CA_1C^{-1}=(C')^{-1}A_1C'</span> con <span class="m">C'=C^{-1}</span>;</li>
-<li><strong>transitiva:</strong> se <span class="m">C^{-1}A_2C=A_1</span> e <span class="m">(C')^{-1}A_3C'=A_2</span>, allora <span class="m">A_1=(C'C)^{-1}A_3(C'C)</span> (si usano l&#39;associatività del prodotto e <span class="m">(C'C)^{-1}=C^{-1}(C')^{-1}</span>).</li>
-</ul>
-<p><strong>Definizione 14.9.</strong> Una matrice che ha una matrice simile diagonale è <strong>diagonalizzabile</strong>; una <span class="m">C</span> tale che <span class="m">C^{-1}AC</span> è diagonale è detta <strong>matrice diagonalizzante</strong> (si studieranno nella Lezione 29).</p>
-<p><strong>Osservazione 14.10 (potenze).</strong> Se <span class="m">C^{-1}AC=D=\operatorname{Diag}(d_1,\dots,d_n)</span>, allora <span class="m">A=CDC^{-1}</span> e <span class="m d">A^k=(CDC^{-1})(CDC^{-1})\cdots(CDC^{-1})=C\,D^k\,C^{-1},\qquad D^k=\operatorname{Diag}(d_1^k,\dots,d_n^k),</span> molto più veloce del calcolo diretto.</p>
+<p><strong>Definizione 14.7.</strong> Due matrici <span class="m">A,B\in\mathbb{K}^{n,n}</span> sono <strong>coniugate</strong>, o <strong>simili</strong>, se esiste una matrice <strong>invertibile</strong> <span class="m">C\in\mathbb{K}^{n,n}</span> tale che
+<span class="m d">C^{-1}\cdot A\cdot C=B.</span>
+Si dice che <span class="m">B</span> è coniugata (o simile) ad <span class="m">A</span> <strong>tramite</strong> <span class="m">C</span>.</p>
+<p><em>Intuizione.</em> Vedremo più avanti che una matrice rappresenta una trasformazione lineare in certe coordinate, e <span class="m">C</span> rappresenta un cambio di coordinate. Due matrici simili descrivono <strong>la stessa trasformazione vista in due sistemi di coordinate diversi</strong>: <span class="m">C</span> porta dalle nuove coordinate alle vecchie, <span class="m">A</span> agisce, <span class="m">C^{-1}</span> riporta alle nuove.</p>
+<p>Per calcolare la matrice simile ad <span class="m">A</span> tramite <span class="m">C</span> si procede così:</p>
+<ol>
+<li>si calcola <span class="m">C^{-1}</span> (per le <span class="m">2\times2</span> con la formula);</li>
+<li>si calcola <span class="m">A\cdot C</span>;</li>
+<li>si calcola <span class="m">C^{-1}\cdot(A\cdot C)</span>, <strong>in quest&#39;ordine</strong> (<span class="m">C^{-1}</span> a sinistra, <span class="m">C</span> a destra).</li>
+</ol>
 <div class="callout esempio">
 
-<p><strong>Matrice simile tramite <span class="m">C</span>.</strong> Con <span class="m">A=\begin{pmatrix}1&amp;1\\0&amp;1\end{pmatrix}</span> e <span class="m">C=\begin{pmatrix}0&amp;-2\\1&amp;0\end{pmatrix}</span>: <span class="m">C^{-1}=\begin{pmatrix}0&amp;1\\-\frac12&amp;0\end{pmatrix}</span>, <span class="m">AC=\begin{pmatrix}1&amp;-2\\1&amp;0\end{pmatrix}</span>, quindi <span class="m">C^{-1}AC=\begin{pmatrix}1&amp;0\\-\frac12&amp;1\end{pmatrix}</span>.</p>
-<p><strong>Potenza.</strong> <span class="m">M=\begin{pmatrix}-4&amp;-3\\6&amp;5\end{pmatrix}</span> è simile a <span class="m">D=\operatorname{Diag}(-1,2)</span> tramite <span class="m">P=\begin{pmatrix}2&amp;1\\1&amp;1\end{pmatrix}</span>, con <span class="m">P^{-1}=\begin{pmatrix}1&amp;-1\\-1&amp;2\end{pmatrix}</span>. Allora <span class="m">M^7=P\operatorname{Diag}(-1,128)P^{-1}=\begin{pmatrix}-130&amp;258\\-129&amp;257\end{pmatrix}</span>.</p>
+<p><strong>Matrice simile a <span class="m">A=\begin{pmatrix}1&amp;1\\0&amp;1\end{pmatrix}</span> tramite <span class="m">C=\begin{pmatrix}0&amp;-2\\1&amp;0\end{pmatrix}</span></strong> (Domanda 14.4 della dispensa).</p>
+<ol>
+<li><span class="m">\det C=0\cdot0-(-2)\cdot1=2</span>, quindi <span class="m">C^{-1}=\frac12\begin{pmatrix}0&amp;2\\-1&amp;0\end{pmatrix}=\begin{pmatrix}0&amp;1\\-\frac12&amp;0\end{pmatrix}</span>.</li>
+<li><span class="m">A\cdot C=\begin{pmatrix}1\cdot0+1\cdot1&amp;1\cdot(-2)+1\cdot0\\0\cdot0+1\cdot1&amp;0\cdot(-2)+1\cdot0\end{pmatrix}=\begin{pmatrix}1&amp;-2\\1&amp;0\end{pmatrix}</span>.</li>
+<li><span class="m">C^{-1}\cdot(AC)=\begin{pmatrix}0\cdot1+1\cdot1&amp;0\cdot(-2)+1\cdot0\\-\frac12\cdot1+0\cdot1&amp;-\frac12\cdot(-2)+0\cdot0\end{pmatrix}=\begin{pmatrix}1&amp;0\\-\frac12&amp;1\end{pmatrix}</span>.</li>
+</ol>
+<p>La matrice simile è <span class="m">\begin{pmatrix}1&amp;0\\-\frac12&amp;1\end{pmatrix}</span>. Se si sbaglia l&#39;ordine e si calcola <span class="m">C\,A\,C^{-1}</span> si ottiene un&#39;altra matrice: è l&#39;errore da evitare.</p>
+</div>
+
+<p><strong>Proposizione 14.8.</strong> Il coniugio è una <strong>relazione di equivalenza</strong> su <span class="m">\mathbb{K}^{n,n}</span>.</p>
+<p><em>Dimostrazione.</em> Si verificano le tre proprietà.</p>
+<ul>
+<li><strong>Riflessiva</strong> (<span class="m">A</span> è simile a sé stessa): <span class="m">I_n</span> è invertibile e <span class="m">(I_n)^{-1}\cdot A\cdot I_n=I_n\,A\,I_n=A</span>.</li>
+<li><strong>Simmetrica</strong> (se <span class="m">A_1</span> è simile ad <span class="m">A_2</span>, allora <span class="m">A_2</span> è simile ad <span class="m">A_1</span>): supponiamo <span class="m">C^{-1}A_2C=A_1</span>. Moltiplico a sinistra per <span class="m">C</span> e a destra per <span class="m">C^{-1}</span>: <span class="m">C\,C^{-1}A_2C\,C^{-1}=C\,A_1\,C^{-1}</span>, cioè <span class="m">A_2=C\,A_1\,C^{-1}</span>. Poiché <span class="m">C=(C^{-1})^{-1}</span>, questo si scrive <span class="m">A_2=(C')^{-1}A_1C'</span> con <span class="m">C'=C^{-1}</span>, che è invertibile.</li>
+<li><strong>Transitiva</strong> (se <span class="m">A_1</span> è simile ad <span class="m">A_2</span> e <span class="m">A_2</span> ad <span class="m">A_3</span>, allora <span class="m">A_1</span> è simile ad <span class="m">A_3</span>): supponiamo <span class="m">C^{-1}A_2C=A_1</span> e <span class="m">(C')^{-1}A_3C'=A_2</span>. Sostituendo la seconda nella prima:
+<span class="m d">A_1=C^{-1}\big((C')^{-1}A_3C'\big)C\overset{(A)}{=}\big(C^{-1}(C')^{-1}\big)A_3(C'C)\overset{(P)}{=}(C'C)^{-1}A_3(C'C),</span>
+dove in <span class="m">(A)</span> si usa l&#39;associatività del prodotto e in <span class="m">(P)</span> l&#39;Osservazione 14.5: <span class="m">(C'C)^{-1}=C^{-1}(C')^{-1}</span>. Quindi <span class="m">A_1</span> è simile ad <span class="m">A_3</span> tramite <span class="m">C''=C'C</span>.</li>
+</ul>
+<p><strong>Definizione 14.9.</strong> Una matrice <span class="m">A\in\mathbb K^{n,n}</span> che ha una matrice simile <strong>diagonale</strong> è detta <strong>diagonalizzabile</strong>. Una matrice <span class="m">C</span> tale che <span class="m">C^{-1}AC</span> è diagonale è detta <strong>matrice diagonalizzante</strong>. (Come trovarle sarà l&#39;oggetto della Lezione 29.)</p>
+<h3>Trovare una <span class="m">C</span> che rende simili due matrici date</h3>
+<p>Data l&#39;equazione <span class="m">C^{-1}AC=B</span> con <span class="m">A</span> e <span class="m">B</span> note, conviene <strong>moltiplicare a sinistra per <span class="m">C</span></strong>: si ottiene l&#39;equazione equivalente (per <span class="m">C</span> invertibile)
+<span class="m d">A\cdot C=C\cdot B,</span>
+che è <strong>lineare</strong> nelle entrate di <span class="m">C</span> (senza inverse). Si risolve il sistema e si sceglie una soluzione con <span class="m">C</span> invertibile.</p>
+<div class="callout esempio">
+
+<p><strong>Esercizio 14.2.</strong> Trovare <span class="m">C</span> con <span class="m">C^{-1}\begin{pmatrix}-1&amp;2\\3&amp;-1\end{pmatrix}C=\begin{pmatrix}5&amp;5\\-6&amp;-7\end{pmatrix}</span>.</p>
+<p>Con <span class="m">C=\begin{pmatrix}c_{11}&amp;c_{12}\\c_{21}&amp;c_{22}\end{pmatrix}</span>:
+<span class="m d">\begin{pmatrix}-1&amp;2\\3&amp;-1\end{pmatrix}C=\begin{pmatrix}-c_{11}+2c_{21}&amp;-c_{12}+2c_{22}\\3c_{11}-c_{21}&amp;3c_{12}-c_{22}\end{pmatrix},\qquad C\begin{pmatrix}5&amp;5\\-6&amp;-7\end{pmatrix}=\begin{pmatrix}5c_{11}-6c_{12}&amp;5c_{11}-7c_{12}\\5c_{21}-6c_{22}&amp;5c_{21}-7c_{22}\end{pmatrix}.</span>
+Uguagliando le entrate:
+<span class="m d">\begin{cases}-c_{11}+2c_{21}=5c_{11}-6c_{12}\\-c_{12}+2c_{22}=5c_{11}-7c_{12}\\3c_{11}-c_{21}=5c_{21}-6c_{22}\\3c_{12}-c_{22}=5c_{21}-7c_{22}\end{cases}</span>
+Dalla terza: <span class="m">3c_{11}=6c_{21}-6c_{22}</span>, cioè <span class="m">c_{11}=2c_{21}-2c_{22}</span>. Dalla quarta: <span class="m">3c_{12}=5c_{21}-6c_{22}</span>, cioè <span class="m">c_{12}=\frac53c_{21}-2c_{22}</span>. Ponendo <span class="m">c_{21}=\alpha</span>, <span class="m">c_{22}=\beta</span> le prime due equazioni risultano automaticamente soddisfatte (sostituendo: <span class="m">-6(2\alpha-2\beta)+6(\frac53\alpha-2\beta)+2\alpha=-12\alpha+12\beta+10\alpha-12\beta+2\alpha=0</span> ✓). Le soluzioni sono
+<span class="m d">C=\begin{pmatrix}2\alpha-2\beta&amp;\frac53\alpha-2\beta\\\alpha&amp;\beta\end{pmatrix},\qquad\alpha,\beta\in\mathbb R.</span>
+Scegliendo <span class="m">(\alpha,\beta)=(3,2)</span>: <span class="m">C=\begin{pmatrix}2&amp;1\\3&amp;2\end{pmatrix}</span>, che è invertibile (l&#39;inversa è quella dell&#39;Esercizio 14.1). Il controllo: <span class="m">C^{-1}AC=\begin{pmatrix}2&amp;-1\\-3&amp;2\end{pmatrix}\begin{pmatrix}-1&amp;2\\3&amp;-1\end{pmatrix}\begin{pmatrix}2&amp;1\\3&amp;2\end{pmatrix}=\begin{pmatrix}-5&amp;5\\9&amp;-8\end{pmatrix}\begin{pmatrix}2&amp;1\\3&amp;2\end{pmatrix}=\begin{pmatrix}5&amp;5\\-6&amp;-7\end{pmatrix}</span> ✓.</p>
+<p>Attenzione: non tutte le scelte vanno bene; per <span class="m">(\alpha,\beta)=(0,0)</span> si ottiene la matrice nulla, non invertibile.</p>
+<p><strong>Esercizio 14.7.</strong> <span class="m">C^{-1}\begin{pmatrix}2&amp;2\\0&amp;3\end{pmatrix}C=\begin{pmatrix}2&amp;0\\0&amp;3\end{pmatrix}</span>: l&#39;equazione <span class="m">AC=CB</span> dà <span class="m">c_{21}=0</span> e <span class="m">c_{12}=2c_{22}</span>, con <span class="m">c_{11}</span> libero; scegliendo <span class="m">c_{11}=c_{22}=1</span> si ottiene <span class="m">C=\begin{pmatrix}1&amp;2\\0&amp;1\end{pmatrix}</span>. Quindi <span class="m">\begin{pmatrix}2&amp;2\\0&amp;3\end{pmatrix}</span> è diagonalizzabile e <span class="m">C</span> è una matrice diagonalizzante.</p>
+</div>
+
+<h3>Potenze di una matrice diagonalizzabile</h3>
+<p><strong>Osservazione 14.10.</strong> Calcolare <span class="m">A^k</span> con <span class="m">k</span> grande facendo <span class="m">k-1</span> prodotti righe per colonne è lunghissimo. Se però <span class="m">A</span> è diagonalizzabile, con <span class="m">C^{-1}AC=D=\operatorname{Diag}(d_1,\dots,d_n)</span>, allora (moltiplicando a sinistra per <span class="m">C</span> e a destra per <span class="m">C^{-1}</span>) <span class="m">A=C\,D\,C^{-1}</span> e
+<span class="m d">A^k=\underbrace{(CDC^{-1})(CDC^{-1})\cdots(CDC^{-1})}_{k\text{ volte}}\overset{(A)}{=}C\,D\,\underbrace{(C^{-1}C)}_{I_n}D\,(C^{-1}C)\cdots D\,C^{-1}=C\,D^k\,C^{-1}:</span>
+per l&#39;associatività le coppie interne <span class="m">C^{-1}C</span> (sono <span class="m">k-1</span>) diventano <span class="m">I_n</span> e spariscono. Resta da calcolare <span class="m">D^k</span>, che è immediato perché per una diagonale basta elevare gli elementi della diagonale:
+<span class="m d">D^k=\operatorname{Diag}\big(d_1^k,d_2^k,\dots,d_n^k\big).</span></p>
+<div class="callout esempio">
+
+<p><strong>Esercizio 14.3 (con una correzione).</strong> Sia <span class="m">M=\begin{pmatrix}-4&amp;-3\\6&amp;5\end{pmatrix}</span>, <span class="m">D=\operatorname{Diag}(-1,2)</span>, <span class="m">P=\begin{pmatrix}2&amp;1\\1&amp;1\end{pmatrix}</span>, <span class="m">P^{-1}=\begin{pmatrix}1&amp;-1\\-1&amp;2\end{pmatrix}</span>.</p>
+<p>Prima di usare la formula controlliamo <strong>in che verso</strong> vale il coniugio: <span class="m">PM=\begin{pmatrix}-8+6&amp;-6+5\\-4+6&amp;-3+5\end{pmatrix}=\begin{pmatrix}-2&amp;-1\\2&amp;2\end{pmatrix}</span> e <span class="m">PMP^{-1}=\begin{pmatrix}-2+1&amp;2-2\\2-2&amp;-2+4\end{pmatrix}=\begin{pmatrix}-1&amp;0\\0&amp;2\end{pmatrix}=D</span>. Quindi la matrice diagonalizzante, nel senso della Definizione 14.9, è <span class="m">C=P^{-1}</span> (infatti <span class="m">C^{-1}MC=PMP^{-1}=D</span>), e <span class="m">M=C\,D\,C^{-1}=P^{-1}DP</span>. Allora
+<span class="m d">M^7=P^{-1}D^7P=\begin{pmatrix}1&amp;-1\\-1&amp;2\end{pmatrix}\begin{pmatrix}(-1)^7&amp;0\\0&amp;2^7\end{pmatrix}\begin{pmatrix}2&amp;1\\1&amp;1\end{pmatrix}=\begin{pmatrix}1&amp;-1\\-1&amp;2\end{pmatrix}\begin{pmatrix}-1&amp;0\\0&amp;128\end{pmatrix}\begin{pmatrix}2&amp;1\\1&amp;1\end{pmatrix}.</span>
+Primo prodotto: <span class="m">\begin{pmatrix}1&amp;-1\\-1&amp;2\end{pmatrix}\begin{pmatrix}-1&amp;0\\0&amp;128\end{pmatrix}=\begin{pmatrix}-1&amp;-128\\1&amp;256\end{pmatrix}</span> (moltiplicare a destra per una diagonale moltiplica le colonne). Secondo prodotto:
+<span class="m d">\begin{pmatrix}-1&amp;-128\\1&amp;256\end{pmatrix}\begin{pmatrix}2&amp;1\\1&amp;1\end{pmatrix}=\begin{pmatrix}-2-128&amp;-1-128\\2+256&amp;1+256\end{pmatrix}=\begin{pmatrix}-130&amp;-129\\258&amp;257\end{pmatrix}.</span>
+Nella dispensa il conto è fatto come <span class="m">P\,D^7P^{-1}</span> e dà <span class="m">\begin{pmatrix}-130&amp;258\\-129&amp;257\end{pmatrix}</span>, che è la <strong>trasposta</strong>: è la settima potenza di <span class="m">{}^tM=\begin{pmatrix}-4&amp;6\\-3&amp;5\end{pmatrix}</span>, per la quale sì vale <span class="m">P^{-1}\,{}^tM\,P=D</span>. Il metodo è lo stesso; la lezione è: <strong>verifica sempre in che ordine compaiono <span class="m">C</span> e <span class="m">C^{-1}</span></strong>.</p>
 </div>
 
 <div class="callout esame">
 
-<p>Il paniere chiede l&#39;inversa di matrici <span class="m">2\times2</span> con entrate <span class="m">0,\pm1</span> (le opzioni differiscono solo per i segni: verifica con il prodotto), se una matrice è invertibile, la matrice simile tramite una <span class="m">C</span> data (<span class="m">C^{-1}AC</span>) e, come domanda aperta, il prodotto righe per colonne e l&#39;inversa.</p>
+<p>Il paniere chiede l&#39;inversa di matrici <span class="m">2\times2</span> con entrate <span class="m">0,\pm1</span>: le quattro opzioni sono le stesse quattro matrici e differiscono solo per i segni, quindi applica la formula <span class="m">\frac1{ad-bc}\begin{pmatrix}d&amp;-b\\-c&amp;a\end{pmatrix}</span> e <strong>verifica con il prodotto</strong> <span class="m">A\cdot A^{-1}=I_2</span>. Possono chiedere se una matrice è invertibile (no se una riga è multipla dell&#39;altra, cioè <span class="m">ad-bc=0</span>) e la matrice simile tramite una <span class="m">C</span> data (<span class="m">C^{-1}AC</span>, in quest&#39;ordine).</p>
+<p><strong>Domanda aperta</strong> &quot;Parlare del prodotto righe per colonne tra matrici e dell&#39;inversa di una matrice&quot;: definisci il prodotto (condizione sulle dimensioni, formula <span class="m">\sum_j a_{ij}b_{jk}</span>), le proprietà (associativo, distributivo, <span class="m">I_n</span> neutro, non commutativo, con un esempio); poi la definizione di matrice invertibile (<span class="m">AA^{-1}=A^{-1}A=I_n</span>, solo quadrate), unicità dell&#39;inversa, <span class="m">(AB)^{-1}=B^{-1}A^{-1}</span>, il calcolo con il sistema <span class="m">AX=XA=I_n</span> (<span class="m">2n^2</span> equazioni in <span class="m">n^2</span> incognite), la formula <span class="m">2\times2</span>, un esempio svolto e il criterio <span class="m">\det A\neq0</span>.</p>
+</div>
+
+<div class="callout sintesi">
+
+<ul>
+<li><span class="m">A</span> quadrata è invertibile se esiste <span class="m">A^{-1}</span> con <span class="m">AA^{-1}=A^{-1}A=I_n</span>; l&#39;inversa è unica. <span class="m">I_n^{-1}=I_n</span>; <span class="m">0_{n,n}</span> non è invertibile.</li>
+<li><span class="m">(AB)^{-1}=B^{-1}A^{-1}</span> (ordine invertito). Potenze intere solo per invertibili.</li>
+<li>Calcolo: sistema <span class="m">AX=I_n</span>, <span class="m">XA=I_n</span>; per le <span class="m">2\times2</span>: <span class="m">\begin{pmatrix}a&amp;b\\c&amp;d\end{pmatrix}^{-1}=\frac1{ad-bc}\begin{pmatrix}d&amp;-b\\-c&amp;a\end{pmatrix}</span>, se <span class="m">ad-bc\neq0</span>.</li>
+<li><span class="m">A</span> e <span class="m">B</span> simili: <span class="m">C^{-1}AC=B</span> con <span class="m">C</span> invertibile; è una relazione di equivalenza. Per trovare <span class="m">C</span> si risolve <span class="m">AC=CB</span>.</li>
+<li>Diagonalizzabile: simile a una diagonale; allora <span class="m">A^k=CD^kC^{-1}</span> con <span class="m">D^k</span> = potenze della diagonale.</li>
+</ul>
 </div>
