@@ -1,46 +1,63 @@
-<h1>Lezione 32 — Dinamica dei fluidi: portata e Bernoulli</h1>
-<h2>Il fluido ideale in movimento</h2>
-<p>Il moto di un fluido reale è complicato. Si parte da un modello semplice, il fluido ideale. Ha quattro proprietà:</p>
+<h1>Lezione 32 — Dinamica dei fluidi: portata, continuità, Bernoulli</h1>
+<p>Dopo i fluidi in quiete, i fluidi <strong>in movimento</strong>. Descrivere il moto di un fluido reale (un torrente, una cascata, il vento) è molto difficile, quindi si parte da un modello semplificato, il <strong>fluido ideale</strong>. Per esso valgono due leggi fondamentali: l&#39;<strong>equazione di continuità</strong> (conservazione della massa, cioè della portata) e il <strong>teorema di Bernoulli</strong> (conservazione dell&#39;energia). Da queste seguono l&#39;effetto Venturi, la legge di Torricelli per l&#39;efflusso, la portanza delle ali, il tiro a effetto. Alla fine si torna ai fluidi reali: viscosità, Poiseuille, regime turbolento e numero di Reynolds.</p>
+<h2>Il modello di fluido ideale</h2>
+<p>Le ipotesi del fluido ideale (o perfetto):</p>
 <ul>
-<li><strong>incomprimibile</strong>: densità costante;</li>
-<li><strong>non viscoso</strong>: nessun attrito tra gli strati;</li>
-<li><strong>moto stazionario</strong>: in ogni punto la velocità non cambia nel tempo;</li>
-<li><strong>moto irrotazionale</strong>: niente vortici.</li>
+<li><strong>incomprimibile</strong>: densità uniforme e costante in ogni punto (come nella statica);</li>
+<li><strong>non viscoso</strong>: nessuna forza dissipativa tra volumi di fluido adiacenti che scorrono;</li>
+<li><strong>irrotazionale</strong>: niente vortici; una particella trasportata dal fluido trasla senza ruotare su se stessa;</li>
+<li><strong>moto stazionario</strong> (ipotesi aggiunta per Bernoulli): la velocità in ogni punto non cambia nel tempo.</li>
 </ul>
-<p>In moto stazionario il fluido scorre lungo <strong>linee di corrente</strong> che non si incrociano. Questo è il moto <strong>laminare</strong>: strati ordinati che non si mescolano. Un fascio di linee di corrente forma un tubo di flusso.</p>
+<h2>Due modi di descrivere il moto: Lagrange ed Eulero</h2>
+<ul>
+<li><strong>Schema lagrangiano</strong>: si segue ogni elementino di fluido lungo il suo cammino, descrivendone la posizione nel tempo <span class="m">\vec r_i(t)</span>, come per un sistema di punti materiali. In pratica è come seguire una goccia di colorante immessa nel fluido: nel caso ideale traccia una <strong>linea di corrente</strong>.</li>
+<li><strong>Schema euleriano</strong> (il più usato): si fissa l&#39;attenzione su un punto (o una sezione) dello spazio e si descrive il <strong>campo di velocità</strong> <span class="m">\vec v(x, y, z, t)</span> che ha il fluido mentre passa in ogni punto.</li>
+</ul>
+<h3>Moto stazionario, linee di corrente, tubi di flusso</h3>
+<p>Il moto è <strong>stazionario</strong> se il campo di velocità <strong>non dipende dal tempo</strong>: osservando un punto fisso, le diverse particelle che vi passano in istanti diversi hanno tutte la stessa velocità. Allora si possono tracciare le <strong>linee di corrente</strong> (o di flusso): linee tangenti in ogni punto alla velocità del fluido. Una particella che passa per un punto di una linea la segue per tutto il percorso: la sua traiettoria <strong>è</strong> la linea di corrente.</p>
+<p>In condizioni ideali e stazionarie <strong>le linee di corrente non si intersecano</strong>: se lo facessero, nel punto d&#39;incontro il fluido avrebbe due velocità diverse. Il moto procede quindi per strati contigui e indipendenti: è il <strong>moto laminare</strong>. Un fascio di linee di corrente adiacenti forma un <strong>tubo di flusso</strong>, una specie di condotto ideale le cui pareti non sono attraversate dal fluido.</p>
 <h2>Portata</h2>
-<p>La portata dice quanto volume di fluido passa in una sezione ogni secondo.</p>
+<p><strong>Definizione.</strong> La portata (volumica) è il <strong>rapporto tra il volume di fluido che attraversa una sezione del condotto in un intervallo di tempo e l&#39;intervallo stesso</strong>: il volume che passa ogni secondo.</p>
 <p><span class="m d">Q = \frac{V}{\Delta t} = S\,v</span>
 dove:</p>
 <ul>
-<li><span class="m">Q</span> = portata volumica (m³/s)</li>
+<li><span class="m">Q</span> = portata volumica (m³/s); dimensioni <span class="m">[L^3T^{-1}]</span></li>
 <li><span class="m">V</span> = volume che attraversa la sezione (m³)</li>
 <li><span class="m">\Delta t</span> = intervallo di tempo (s)</li>
 <li><span class="m">S</span> = area della sezione (m²)</li>
-<li><span class="m">v</span> = velocità del fluido (m/s)</li>
+<li><span class="m">v</span> = velocità del fluido, perpendicolare alla sezione (m/s)</li>
 </ul>
-<p>A parità di sezione, velocità doppia vuol dire portata doppia.</p>
+<p><strong>Perché <span class="m">Q = Sv</span>.</strong> In un tempo <span class="m">\Delta t</span> il fluido che attraversa la sezione avanza di <span class="m">v\,\Delta t</span>: il volume passato è un cilindro di base <span class="m">S</span> e altezza <span class="m">v\,\Delta t</span>, cioè <span class="m">V = S\,v\,\Delta t</span>. Dividendo per <span class="m">\Delta t</span>: <span class="m">Q = Sv</span>.</p>
+<p>Conseguenza diretta: in due tubi di <strong>uguale sezione</strong>, se in uno l&#39;acqua scorre a <strong>velocità doppia</strong>, la sua <strong>portata è doppia</strong>.</p>
+<p>Conversioni utili: <span class="m">1\ \mathrm{l/s} = 10^{-3}\ \mathrm{m^3/s} = 1000\ \mathrm{cm^3/s}</span>; quindi <span class="m">0{,}001\ \mathrm{m^3/s} = 1\ \mathrm{l/s} = 60\ \mathrm{l/min}</span>.</p>
 <div class="callout esempio">
 
 <ul>
-<li>Secchio da 30 l riempito in 1 minuto: <span class="m">Q = 30/60 = 0{,}5\,\mathrm{l/s} = 500\,\mathrm{cm^3/s}</span>.</li>
-<li><span class="m">0{,}001\,\mathrm{m^3/s} = 1\,\mathrm{l/s} = 60\,\mathrm{l/min}</span>.</li>
-<li>Rubinetto da 2 l/s, vasca da 1 m³ = 1000 l: <span class="m">t = 500\,\mathrm s</span>, circa 8 minuti.</li>
-<li>Rubinetto da 0,5 l/s, ugello da <span class="m">20\,\mathrm{mm^2}</span>: <span class="m">v = Q/S = 0{,}5 \cdot 10^{-3}/(20 \cdot 10^{-6}) = 25\,\mathrm{m/s}</span>.</li>
-<li>Aorta: <span class="m">r = 1\,\mathrm{cm}</span>, <span class="m">v = 0{,}3\,\mathrm{m/s}</span>. <span class="m">Q = \pi r^2 v = \pi \cdot 10^{-4} \cdot 0{,}3 \approx 9 \cdot 10^{-5}\,\mathrm{m^3/s}</span>.</li>
+<li><strong>Secchio da 30 litri</strong> riempito in 1 minuto: <span class="m">Q = 30\ \mathrm l / 60\ \mathrm s = 0{,}5\ \mathrm{l/s} = 500\ \mathrm{cm^3/s}</span>.</li>
+<li><strong>Vasca da 1 m³</strong> con un rubinetto da 2 l/s: <span class="m">t = V/Q = 1000\ \mathrm l / 2\ \mathrm{l/s} = 500\ \mathrm s \approx 8{,}3</span> minuti, cioè <strong>meno di dieci minuti</strong>.</li>
+<li><strong>Velocità all&#39;ugello.</strong> Portata 0,5 l/s da un ugello di <span class="m">20\ \mathrm{mm^2}</span>: <span class="m">v = \dfrac{Q}{S} = \dfrac{0{,}5 \cdot 10^{-3}}{20 \cdot 10^{-6}} = 25\ \mathrm{m/s}</span>.</li>
+<li><strong>Tubo da giardino.</strong> Tubo di diametro 2,0 cm che riempie un secchio da 20,0 l in un minuto. <span class="m">Q = 20 \cdot 10^{-3}/60 \approx 3{,}33 \cdot 10^{-4}\ \mathrm{m^3/s}</span>; <span class="m">S = \pi r^2 = \pi (0{,}01)^2 \approx 3{,}14 \cdot 10^{-4}\ \mathrm{m^2}</span>; <span class="m">v = Q/S \approx 1{,}06</span>, cioè <strong>circa 1 m/s</strong>. (Attenzione: il raggio è metà del diametro.)</li>
+<li><strong>Aorta.</strong> Raggio 1,0 cm, velocità del sangue 30 cm/s: <span class="m">Q = \pi r^2 v = \pi \cdot 10^{-4} \cdot 0{,}3 \approx 9 \cdot 10^{-5}\ \mathrm{m^3/s} = 0{,}00009\ \mathrm{m^3/s}</span> (circa 5 litri al minuto).</li>
 </ul>
 </div>
 
 <h2>Equazione di continuità</h2>
-<p>Il fluido è incomprimibile e non si accumula da nessuna parte. Quindi la portata è la stessa in ogni sezione del tubo.</p>
-<p><span class="m d">S_1 v_1 = S_2 v_2</span>
+<p>Consideriamo un tubo di flusso a sezione variabile, abbastanza sottile da poter considerare uniforme la velocità su ogni sezione. Due sezioni <span class="m">S_1</span> e <span class="m">S_2</span>, dove il fluido ha velocità <span class="m">v_1</span> e <span class="m">v_2</span>.</p>
+<p><strong>Derivazione.</strong></p>
+<ol>
+<li>In un tempo <span class="m">dt</span> attraversa <span class="m">S_1</span> la massa <span class="m">dm_1 = \rho\,S_1 v_1\,dt</span> e attraversa <span class="m">S_2</span> la massa <span class="m">dm_2 = \rho\,S_2 v_2\,dt</span>.</li>
+<li>Il moto è stazionario e il fluido è incomprimibile: tra le due sezioni non si accumula né si crea fluido, e dalle pareti del tubo di flusso non entra né esce niente. Quindi la massa che entra è uguale a quella che esce: <span class="m">dm_1 = dm_2</span>.</li>
+<li>Semplificando <span class="m">\rho</span> (costante) e <span class="m">dt</span>:</li>
+</ol>
+<p><span class="m d">S_1 v_1 = S_2 v_2 \qquad\Longleftrightarrow\qquad Q = S\,v = \text{costante}</span>
 dove:</p>
 <ul>
-<li><span class="m">S_1, S_2</span> = aree di due sezioni (m²)</li>
-<li><span class="m">v_1, v_2</span> = velocità del fluido in quelle sezioni (m/s)</li>
+<li><span class="m">S_1, S_2</span> = aree delle due sezioni (m²)</li>
+<li><span class="m">v_1, v_2</span> = velocità del fluido nelle due sezioni (m/s)</li>
 </ul>
-<p>Dove il tubo si stringe, il fluido accelera. Dove si allarga, rallenta.</p>
-<p>Attenzione al raggio: la sezione di un tubo circolare è <span class="m">S = \pi r^2</span>. Se il raggio cambia di un fattore <span class="m">k</span>, la sezione cambia di <span class="m">k^2</span>.</p>
+<p><strong>Significato.</strong> In un fluido ideale che scorre in un condotto la <strong>portata si conserva</strong> lungo il tubo di flusso. Velocità e sezione sono <strong>inversamente proporzionali</strong>: dove il tubo si <strong>stringe</strong> il fluido <strong>accelera</strong>, dove si <strong>allarga</strong> <strong>rallenta</strong>. Graficamente, nei restringimenti le linee di corrente si <strong>infittiscono</strong>.</p>
+<h3>Attenzione al raggio</h3>
+<p>Per un tubo circolare <span class="m">S = \pi r^2</span>: se il raggio (o il diametro) cambia di un fattore <span class="m">k</span>, la sezione cambia di <span class="m">k^2</span> e la velocità di <span class="m">1/k^2</span>.</p>
 <table>
 <thead>
 <tr>
@@ -52,104 +69,213 @@ dove:</p>
 <tbody><tr>
 <td>sezione dimezzata</td>
 <td><span class="m">\times\tfrac12</span></td>
-<td><span class="m">\times 2</span></td>
+<td><span class="m">\times 2</span> (raddoppia)</td>
 </tr>
 <tr>
-<td>sezione da 3 m² a 1 m²</td>
+<td>sezione da 3 m² a 1 m² (con <span class="m">v = 1\ \mathrm{m/s}</span>)</td>
 <td><span class="m">\times\tfrac13</span></td>
-<td><span class="m">\times 3</span></td>
+<td><span class="m">\times 3</span> (diventa 3 m/s)</td>
 </tr>
 <tr>
 <td>raggio dimezzato</td>
 <td><span class="m">\times\tfrac14</span></td>
-<td><span class="m">\times 4</span></td>
+<td><span class="m">\times 4</span> (<span class="m">v \to 4v</span>)</td>
 </tr>
 <tr>
 <td>raggio quadruplicato</td>
 <td><span class="m">\times 16</span></td>
-<td><span class="m">\times\tfrac1{16}</span></td>
+<td><span class="m">\times\tfrac1{16}</span> (<span class="m">v \to v/16</span>)</td>
+</tr>
+<tr>
+<td>condotto da 10 cm² diviso in 10 capillari da 1 cm²</td>
+<td>totale invariato</td>
+<td>invariata</td>
 </tr>
 </tbody></table>
 <div class="callout esempio">
 
-<p>Il getto d&#39;acqua che scende da un rubinetto si assottiglia. Cadendo l&#39;acqua accelera. La portata <span class="m">S v</span> deve restare la stessa, quindi la sezione del getto si riduce.</p>
+<p><strong>Il getto del rubinetto si assottiglia.</strong> L&#39;acqua che scende da un rubinetto accelera per gravità: la sua velocità aumenta cadendo. Poiché la <strong>portata si conserva</strong> (<span class="m">Sv</span> costante), la sezione del getto deve diminuire: il getto si restringe verso il basso.</p>
 </div>
 
 <h2>Teorema di Bernoulli</h2>
-<p>Bernoulli è la conservazione dell&#39;energia per un fluido ideale. Lungo una linea di corrente questa somma resta costante:</p>
+<p>È la legge più generale del moto di un fluido ideale in presenza di gravità. In sostanza è la <strong>conservazione dell&#39;energia</strong> applicata al fluido.</p>
+<p><strong>Enunciato.</strong> In un fluido ideale (incomprimibile, non viscoso) in <strong>moto stazionario</strong>, lungo un tubo di flusso (in ogni punto del condotto) resta costante la quantità</p>
 <p><span class="m d">p + \tfrac12\rho v^2 + \rho g h = \text{costante}</span>
 dove:</p>
 <ul>
-<li><span class="m">p</span> = pressione (Pa)</li>
+<li><span class="m">p</span> = pressione del fluido nel punto (Pa)</li>
 <li><span class="m">\rho</span> = densità del fluido (kg/m³)</li>
-<li><span class="m">v</span> = velocità del fluido (m/s)</li>
+<li><span class="m">v</span> = velocità del fluido nel punto (m/s)</li>
 <li><span class="m">g</span> = accelerazione di gravità (m/s²)</li>
-<li><span class="m">h</span> = quota del punto (m)</li>
+<li><span class="m">h</span> = quota del punto rispetto a un livello di riferimento (m)</li>
 </ul>
-<p>Ogni termine è un&#39;energia per unità di volume (J/m³ = Pa):</p>
+<p>Tra due sezioni 1 e 2: <span class="m">p_1 + \tfrac12\rho v_1^2 + \rho g h_1 = p_2 + \tfrac12\rho v_2^2 + \rho g h_2</span>.</p>
+<p>Ogni termine è un&#39;<strong>energia per unità di volume</strong> (J/m³, che è lo stesso che Pa):</p>
 <ul>
-<li><span class="m">p</span>: lavoro delle forze di pressione;</li>
-<li><span class="m">\tfrac12\rho v^2</span>: energia cinetica;</li>
-<li><span class="m">\rho g h</span>: energia potenziale.</li>
+<li><span class="m">p</span>: lavoro fatto dalle forze di pressione (energia &quot;di pressione&quot;);</li>
+<li><span class="m">\tfrac12\rho v^2</span>: energia cinetica per unità di volume (pressione dinamica);</li>
+<li><span class="m">\rho g h</span>: energia potenziale gravitazionale per unità di volume.</li>
 </ul>
-<p>Da dove viene, in tre passi:</p>
+<h3>Dimostrazione (teorema dell&#39;energia cinetica)</h3>
+<p>Seguiamo il fluido che all&#39;istante <span class="m">t</span> occupa il tratto di tubo compreso tra la sezione <span class="m">S_1</span> (a monte, quota <span class="m">h_1</span>, pressione <span class="m">p_1</span>, velocità <span class="m">v_1</span>) e la sezione <span class="m">S_2</span> (a valle, quota <span class="m">h_2</span>, <span class="m">p_2</span>, <span class="m">v_2</span>). Dopo un tempo <span class="m">dt</span> questo fluido si è spostato: la coda è avanzata di <span class="m">v_1 dt</span>, la testa di <span class="m">v_2 dt</span>.</p>
 <ol>
-<li>Considera un tratto di fluido nel tubo. In un tempo <span class="m">dt</span> si sposta un po&#39; in avanti.</li>
-<li>Le pressioni ai due estremi e la gravità compiono lavoro su di lui.</li>
-<li>Questo lavoro è uguale alla variazione di energia cinetica (teorema dell&#39;energia cinetica). Dividendo per il volume si ottiene la formula.</li>
+<li><strong>Volume spostato.</strong> Per la continuità, il volumetto che lascia la zona a monte, <span class="m">S_1 v_1 dt</span>, è uguale a quello che entra a valle, <span class="m">S_2 v_2 dt</span>: chiamiamolo <span class="m">dV</span> (massa <span class="m">dm = \rho\,dV</span>).</li>
+<li><strong>Lavoro delle forze di pressione.</strong> A monte il fluido che sta dietro spinge in avanti con forza <span class="m">p_1 S_1</span>, che compie lavoro <span class="m">p_1 S_1 v_1 dt = p_1\,dV</span>. A valle il fluido davanti si oppone con forza <span class="m">p_2 S_2</span>, che compie lavoro <span class="m">-p_2 S_2 v_2 dt = -p_2\,dV</span>. Totale: <span class="m">(p_1 - p_2)\,dV</span>.</li>
+<li><strong>Lavoro della gravità.</strong> La parte di fluido nel tratto centrale non cambia; l&#39;effetto netto è come se la massa <span class="m">dm</span> fosse stata portata dalla quota <span class="m">h_1</span> alla quota <span class="m">h_2</span>: <span class="m">W_g = -\rho\,dV\,g\,(h_2 - h_1)</span>.</li>
+<li><strong>Variazione di energia cinetica.</strong> Il moto è stazionario: il fluido nel tratto comune (tra le posizioni iniziale e finale) ha la stessa energia cinetica prima e dopo, e si elimina dalla differenza. Resta la differenza tra il volumetto finale a valle e quello iniziale a monte: <span class="m">\Delta K = \tfrac12\rho\,dV\,(v_2^2 - v_1^2)</span>.</li>
+<li><strong>Teorema dell&#39;energia cinetica</strong> (<span class="m">W_{tot} = \Delta K</span>), dove la viscosità è nulla e quindi non ci sono altri lavori:
+<span class="m d">(p_1 - p_2)\,dV - \rho g\,(h_2 - h_1)\,dV = \tfrac12\rho\,(v_2^2 - v_1^2)\,dV</span></li>
+<li>Divido per <span class="m">dV</span> e porto a sinistra i termini con l&#39;indice 1, a destra quelli con l&#39;indice 2:
+<span class="m d">p_1 + \tfrac12\rho v_1^2 + \rho g h_1 = p_2 + \tfrac12\rho v_2^2 + \rho g h_2</span>
+Valendo per due sezioni qualsiasi, la somma è costante lungo tutto il tubo. ∎</li>
 </ol>
-<p><strong>Ipotesi necessarie</strong>: fluido incomprimibile, non viscoso, moto stazionario e laminare. <strong>Non</strong> serve che il condotto sia orizzontale: il termine <span class="m">\rho g h</span> tiene conto della quota.</p>
-<h2>Casi notevoli di Bernoulli</h2>
-<p><strong>Condotto orizzontale</strong> (<span class="m">h</span> costante):
-<span class="m d">p + \tfrac12\rho v^2 = \text{cost}</span>
-Dove la velocità è maggiore, la pressione è minore. Nel restringimento di un tubo la velocità aumenta (continuità) e la pressione diminuisce (Bernoulli). È l&#39;<strong>effetto Venturi</strong>.</p>
-<p><strong>Fluido fermo</strong> (<span class="m">v = 0</span>):
-<span class="m d">p + \rho g h = \text{cost}</span>
-È la legge di Stevino: Stevino è Bernoulli nel caso statico.</p>
-<p><strong>Foro in un serbatoio (Torricelli).</strong> Un piccolo foro si trova a profondità <span class="m">h</span> sotto il pelo libero. Sopra e al foro c&#39;è la pressione atmosferica. La superficie scende lentissima. Bernoulli dà:
-<span class="m d">v = \sqrt{2 g h}</span>
-dove <span class="m">v</span> è la velocità di uscita (m/s) e <span class="m">h</span> la profondità del foro (m). È la stessa velocità di un sasso che cade da <span class="m">h</span>.</p>
+<h3>Ipotesi necessarie e non necessarie</h3>
+<p>Necessarie: fluido <strong>incomprimibile</strong>, <strong>non viscoso</strong> (altrimenti parte dell&#39;energia si dissipa), <strong>moto stazionario</strong> (e laminare, senza vortici). <strong>Non</strong> è necessario che il condotto sia <strong>orizzontale</strong>: il termine <span class="m">\rho g h</span> serve proprio a tener conto delle differenze di quota.</p>
+<h2>Casi notevoli del teorema di Bernoulli</h2>
+<h3>1. Condotto orizzontale: effetto Venturi</h3>
+<p>Se <span class="m">h</span> è costante il termine <span class="m">\rho g h</span> è uguale ovunque e si semplifica:
+<span class="m d">p + \tfrac12\rho v^2 = \text{costante}</span>
+<strong>Dove la velocità è maggiore, la pressione è minore; dove la velocità è minore, la pressione è maggiore.</strong></p>
+<p>Combinando con la continuità, in un condotto orizzontale a sezione variabile:</p>
+<ul>
+<li><strong>sezione piccola → velocità alta → pressione bassa</strong>;</li>
+<li><strong>sezione grande → velocità bassa → pressione alta</strong>.</li>
+</ul>
+<p>È l&#39;<strong>effetto Venturi</strong>. Il <strong>tubo di Venturi</strong> (un condotto con una strozzatura e due manometri) sfrutta questa differenza di pressione per misurare la velocità o la portata del fluido. Sullo stesso principio funzionano il vaporizzatore dei profumi e il vecchio carburatore.</p>
 <div class="callout esempio">
 
-<p>Foro a 30 cm sotto la superficie: <span class="m">v = \sqrt{2 \cdot 9{,}8 \cdot 0{,}30} \approx 2{,}4\,\mathrm{m/s}</span>.</p>
+<p><strong>Restringimento di un tubo.</strong> Acqua in un tubo orizzontale; nel tratto largo <span class="m">v_1 = 1\ \mathrm{m/s}</span>, <span class="m">p_1 = 2{,}0 \cdot 10^5\ \mathrm{Pa}</span>; il raggio si dimezza nel tratto stretto.</p>
+<ol>
+<li>Continuità: sezione <span class="m">\times\tfrac14</span>, quindi <span class="m">v_2 = 4\ \mathrm{m/s}</span>.</li>
+<li>Bernoulli orizzontale: <span class="m">p_2 = p_1 + \tfrac12\rho(v_1^2 - v_2^2) = 2{,}0 \cdot 10^5 + 500\,(1 - 16) = 2{,}0 \cdot 10^5 - 7500 = 1{,}925 \cdot 10^5\ \mathrm{Pa}</span>.</li>
+</ol>
+<p>Nel restringimento la velocità è <strong>aumentata</strong> e la pressione è <strong>diminuita</strong>.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Tubo che sbocca in atmosfera.</strong> Acqua in un tubo orizzontale; esce in atmosfera a destra con <span class="m">v_2 = 15\ \mathrm{m/s}</span>; diametro di ingresso 5,0 cm, di uscita 3,0 cm.
+(a) Portata: <span class="m">Q = \pi (0{,}015)^2 \cdot 15 \approx 1{,}06 \cdot 10^{-2}\ \mathrm{m^3/s}</span>; in 10 minuti (600 s) escono <span class="m">V \approx 6{,}4\ \mathrm{m^3}</span> (circa 6 m³).
+(b) Continuità: <span class="m">v_1 = v_2 \left(\dfrac{3{,}0}{5{,}0}\right)^2 = 15 \cdot 0{,}36 = 5{,}4\ \mathrm{m/s}</span>.
+(c) Bernoulli (orizzontale), con <span class="m">p_2 = p_{atm}</span>: <span class="m">p_1 = p_{atm} + \tfrac12\rho(v_2^2 - v_1^2) = 1{,}013 \cdot 10^5 + 500\,(225 - 29{,}2) \approx 1{,}013 \cdot 10^5 + 0{,}98 \cdot 10^5 \approx 2{,}0 \cdot 10^5\ \mathrm{Pa}</span>.</p>
+</div>
+
+<h3>2. Fluido fermo: la legge di Stevino</h3>
+<p>Se il fluido è in quiete, <span class="m">v = 0</span> ovunque e resta
+<span class="m d">p + \rho g h = \text{costante} \quad\Rightarrow\quad p_1 - p_2 = \rho g\,(h_2 - h_1)</span>
+che è la <strong>legge di Stevino</strong>: la pressione cresce scendendo, di <span class="m">\rho g</span> per ogni metro. Quindi <strong>Stevino è il caso statico di Bernoulli</strong>: equivale all&#39;equazione di Bernoulli con il termine cinetico nullo.</p>
+<h3>3. Efflusso da un foro: teorema di Torricelli</h3>
+<p>Un serbatoio aperto ha un piccolo foro laterale a profondità <span class="m">h</span> sotto il pelo libero.</p>
+<ol>
+<li>Punto 1 sulla superficie libera, punto 2 nel getto appena fuori dal foro. In entrambi c&#39;è la <strong>pressione atmosferica</strong>: <span class="m">p_1 = p_2 = p_{atm}</span>.</li>
+<li>Il foro è piccolo rispetto alla superficie del serbatoio: per la continuità il livello scende lentissimo, <span class="m">v_1 \approx 0</span>.</li>
+<li>Bernoulli: <span class="m">p_{atm} + 0 + \rho g h = p_{atm} + \tfrac12\rho v^2 + 0</span>, quindi</li>
+</ol>
+<p><span class="m d">v = \sqrt{2gh}</span>
+dove <span class="m">v</span> = velocità di uscita (m/s), <span class="m">h</span> = profondità del foro sotto la superficie libera (m). È la stessa velocità che avrebbe un sasso caduto da fermo dall&#39;altezza <span class="m">h</span>. Il getto esce perpendicolare alla parete, quindi orizzontale.</p>
+<div class="callout esempio">
+
+<p><strong>Foro a 30 cm.</strong> <span class="m">v = \sqrt{2 \cdot 9{,}8 \cdot 0{,}30} = \sqrt{5{,}88} \approx 2{,}4\ \mathrm{m/s}</span>.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Gittata del getto.</strong> Serbatoio pieno fino a <span class="m">H = 40\ \mathrm{cm}</span>; foro a profondità <span class="m">h = 10\ \mathrm{cm}</span>.
+(a) Il getto esce orizzontale con <span class="m">v = \sqrt{2gh}</span> e deve cadere di <span class="m">H - h</span>: tempo di caduta <span class="m">t = \sqrt{2(H - h)/g}</span>. Distanza: <span class="m">x = v\,t = \sqrt{2gh}\sqrt{\dfrac{2(H-h)}{g}} = 2\sqrt{h(H - h)} = 2\sqrt{10 \cdot 30} \approx 35\ \mathrm{cm}</span>.
+(b) Elevo al quadrato: <span class="m">x^2 = 4h(H - h)</span>, cioè <span class="m">4h^2 - 4Hh + x^2 = 0</span>. Le soluzioni sono <span class="m">h = 10\ \mathrm{cm}</span> e <span class="m">h = 30\ \mathrm{cm}</span>: un foro a 30 cm di profondità atterra nello stesso punto.
+(c) Gittata massima: derivo <span class="m">4h(H-h)</span> rispetto a <span class="m">h</span> e pongo zero: <span class="m">4H - 8h = 0</span>, <span class="m">h = H/2 = 20\ \mathrm{cm}</span>, con <span class="m">x_{max} = 2\sqrt{20 \cdot 20} = 40\ \mathrm{cm} = H</span>.</p>
 </div>
 
 <h2>Applicazioni</h2>
-<p><strong>Portanza dell&#39;ala.</strong> Il profilo dell&#39;ala fa scorrere l&#39;aria più veloce sopra che sotto. Per Bernoulli la pressione sopra è minore. La differenza di pressione spinge l&#39;ala verso l&#39;alto:
-<span class="m d">F = \Delta p\,S \approx \tfrac12\rho\left(v_{sopra}^2 - v_{sotto}^2\right) S</span>
-dove <span class="m">F</span> è la portanza (N), <span class="m">\Delta p</span> la differenza di pressione (Pa), <span class="m">S</span> l&#39;area dell&#39;ala (m²).</p>
-<p><strong>Tiro a effetto (effetto Magnus).</strong> Un pallone calciato ruota su se stesso. Da un lato la rotazione va nello stesso verso dell&#39;aria che scorre: lì l&#39;aria va più veloce. Dall&#39;altro lato va contro: l&#39;aria rallenta. Per Bernoulli il lato più veloce ha pressione minore. Il pallone viene spinto verso quel lato e la traiettoria curva.</p>
-<p><strong>Aneurisma.</strong> In un vaso sanguigno con pareti elastiche si forma un allargamento. La sezione aumenta, quindi il sangue rallenta (continuità). Per Bernoulli la pressione lì aumenta. La pressione maggiore allarga ancora di più la parete. Il problema peggiora da solo.</p>
-<h2>Fluidi reali e turbolenza</h2>
-<p>Nei fluidi reali c&#39;è la viscosità.</p>
+<h3>Portanza aerodinamica</h3>
+<p>La <strong>portanza</strong> è la forza verso l&#39;alto che l&#39;aria esercita sull&#39;ala di un aereo in moto (o di un uccello). Il fenomeno reale è complesso (coinvolge anche effetti dei fluidi reali), ma il principio vale già per un flusso laminare ideale e si stima con Bernoulli.</p>
+<ol>
+<li>Il <strong>profilo dell&#39;ala</strong> (curvo sopra, più piatto sotto, leggermente inclinato) è progettato in modo che l&#39;aria <strong>scorra più veloce sul bordo superiore</strong>: le linee di corrente si addensano sopra l&#39;ala. Se l&#39;aria arriva con velocità <span class="m">v</span>, sopra ha velocità <span class="m">v + \Delta v</span> e sotto <span class="m">v - \Delta v</span>.</li>
+<li>Bernoulli (dislivello trascurabile): dove la velocità è maggiore la pressione è minore. Quindi la pressione sopra l&#39;ala è <strong>minore</strong> di quella sotto.</li>
+<li>La differenza di pressione è
+<span class="m d">\Delta p = p_{sotto} - p_{sopra} = \tfrac12\rho\left[(v + \Delta v)^2 - (v - \Delta v)^2\right] = 2\rho\,v\,\Delta v</span></li>
+<li>Moltiplicata per l&#39;area dell&#39;ala dà la portanza:
+<span class="m d">F = \Delta p\,S = \tfrac12\rho\left(v_{sopra}^2 - v_{sotto}^2\right)S</span>
+dove <span class="m">F</span> = portanza (N), <span class="m">\rho</span> = densità dell&#39;aria (kg/m³), <span class="m">v_{sopra}, v_{sotto}</span> = velocità dell&#39;aria sopra e sotto l&#39;ala (m/s), <span class="m">S</span> = superficie dell&#39;ala (m²).</li>
+</ol>
+<p>La differenza di pressione tra le due facce dell&#39;ala è quindi una conseguenza del <strong>teorema di Bernoulli</strong>. La portanza cresce con la velocità: per questo l&#39;aereo deve prendere velocità sulla pista prima di staccarsi.</p>
+<div class="callout esempio">
+
+<p>Ala di 20 m²; aria (<span class="m">1{,}2\ \mathrm{kg/m^3}</span>) a 70 m/s sopra e 60 m/s sotto. <span class="m">\Delta p = \tfrac12 \cdot 1{,}2\,(4900 - 3600) = 780\ \mathrm{Pa}</span>; <span class="m">F = 780 \cdot 20 = 15\,600\ \mathrm N</span>, abbastanza per sostenere circa 1,6 tonnellate.</p>
+</div>
+
+<h3>Il tiro &quot;a effetto&quot; (effetto Magnus)</h3>
+<p>Un calciatore calcia il pallone non al centro ma di lato, così il pallone <strong>ruota su se stesso</strong> mentre avanza. Nel riferimento del pallone l&#39;aria gli scorre addosso all&#39;indietro; la superficie ruvida in rotazione trascina con sé uno strato d&#39;aria.</p>
 <ul>
-<li>La pressione cala lungo un tubo orizzontale a sezione costante (perdita di carico).</li>
-<li><strong>Legge di Poiseuille</strong> (moto laminare in un tubo di raggio <span class="m">R</span> e lunghezza <span class="m">L</span>):
-<span class="m d">Q = \frac{\pi R^4}{8\eta}\,\frac{\Delta p}{L}</span>
-dove <span class="m">Q</span> = portata (m³/s), <span class="m">\eta</span> = viscosità (Pa·s), <span class="m">\Delta p</span> = differenza di pressione ai capi (Pa), <span class="m">L</span> = lunghezza (m). La portata dipende da <span class="m">R^4</span>: un tubo appena più stretto porta molto meno.</li>
+<li>Sul lato in cui la superficie ruota <strong>nello stesso verso</strong> dell&#39;aria che scorre, l&#39;aria viene accelerata: velocità <strong>maggiore</strong>.</li>
+<li>Sul lato opposto la superficie va <strong>contro</strong> l&#39;aria: velocità <strong>minore</strong>.</li>
 </ul>
-<p><strong>Numero di Reynolds.</strong> È un numero puro che dice se il moto di un fluido reale è laminare o turbolento:
+<p>Per Bernoulli, sul lato dove l&#39;aria è più veloce la <strong>pressione è minore</strong>. La differenza di pressione spinge il pallone <strong>verso il lato a pressione minore</strong>, perpendicolarmente alla direzione del moto: la traiettoria <strong>curva</strong>. È la stessa idea della portanza; lo sfruttano anche il tennis (palla &quot;tagliata&quot;) e il golf.</p>
+<h3>Condotto con pareti elastiche: l&#39;aneurisma</h3>
+<p>In un vaso sanguigno le pareti non sono rigide. Se in un punto si forma un <strong>allargamento</strong> (aneurisma):</p>
+<ol>
+<li>la sezione aumenta, quindi per la continuità il sangue <strong>rallenta</strong>;</li>
+<li>per Bernoulli, dove la velocità cala la <strong>pressione aumenta</strong>;</li>
+<li>la pressione maggiore spinge sulle pareti elastiche e <strong>allarga ancora di più</strong> la sezione.</li>
+</ol>
+<p>La pressione nel vaso cambia in modo da <strong>peggiorare le cose</strong>: il fenomeno si autoalimenta e la parete rischia di rompersi.</p>
+<h2>Fluidi reali</h2>
+<p>Nei fluidi reali c&#39;è la viscosità (lezione 30) e le leggi del fluido ideale valgono solo in modo approssimato.</p>
+<ul>
+<li>In un tubo orizzontale di sezione costante la pressione <strong>cala</strong> lungo il tubo (perdita di carico), mentre per Bernoulli resterebbe costante: parte dell&#39;energia si dissipa in calore.</li>
+<li><strong>Legge di Poiseuille</strong> (moto laminare in un condotto di raggio <span class="m">R</span> e lunghezza <span class="m">L</span>):
+<span class="m d">Q = \frac{\pi R^4}{8\eta}\,\frac{\Delta p}{L}</span>
+dove <span class="m">Q</span> = portata (m³/s), <span class="m">\eta</span> = viscosità (Pa·s), <span class="m">\Delta p</span> = differenza di pressione ai capi (Pa). Il profilo delle velocità è parabolico e la portata dipende da <span class="m">R^4</span>.</li>
+</ul>
+<h3>Numero di Reynolds</h3>
+<p>Il <strong>numero di Reynolds</strong> è un numero puro, empirico, che dice se il moto di un fluido reale in un condotto è <strong>laminare</strong> o <strong>turbolento</strong>:
 <span class="m d">Re = \frac{\rho\,v\,R}{\eta}</span>
-dove <span class="m">\rho</span> = densità (kg/m³), <span class="m">v</span> = velocità media (m/s), <span class="m">R</span> = raggio del condotto (m), <span class="m">\eta</span> = viscosità (Pa·s). Con il raggio: laminare sotto circa 1000, turbolento oltre 2000–10 000. Con il diametro le soglie tipiche sono circa 2000 e 3000.</p>
-<p><strong>Regime turbolento.</strong> Il moto diventa caotico, con vortici. Molte leggi viste qui smettono di valere (Bernoulli, Poiseuille). Per mantenere il flusso serve una differenza di pressione che cresce con il quadrato della velocità.</p>
+dove:</p>
+<ul>
+<li><span class="m">\rho</span> = densità del fluido (kg/m³)</li>
+<li><span class="m">v</span> = velocità media del fluido (m/s)</li>
+<li><span class="m">R</span> = raggio del condotto (m)</li>
+<li><span class="m">\eta</span> = viscosità (Pa·s)</li>
+</ul>
+<p>Confronta gli effetti dell&#39;inerzia del fluido (numeratore: densità e velocità) con quelli della viscosità (denominatore), che tende a mantenere ordinati gli strati. Con il raggio: <strong>laminare per <span class="m">Re &lt; 1000</span></strong>, <strong>turbolento per <span class="m">Re &gt; 2000</span>–<span class="m">10\,000</span></strong>; in mezzo c&#39;è un&#39;ampia zona di transizione che dipende dal condotto e dal fluido. (Con il diametro, soglie tipiche circa 2000 e 3000.) Velocità alte, tubi larghi, fluidi densi e poco viscosi favoriscono la turbolenza.</p>
+<div class="callout esempio">
+
+<p>Acqua (<span class="m">\rho = 1000\ \mathrm{kg/m^3}</span>, <span class="m">\eta = 10^{-3}\ \mathrm{Pa\,s}</span>) a <span class="m">v = 0{,}1\ \mathrm{m/s}</span> in un tubo di raggio <span class="m">1\ \mathrm{cm}</span>: <span class="m">Re = \dfrac{1000 \cdot 0{,}1 \cdot 0{,}01}{10^{-3}} = 1000</span>, al limite del laminare. A 1 m/s, <span class="m">Re = 10\,000</span>: turbolento.</p>
+</div>
+
+<h3>Regime turbolento</h3>
+<p>Oltre la velocità critica il moto diventa <strong>vorticoso</strong>, caotico, con vortici che mescolano gli strati. In questo regime <strong>molte delle leggi della meccanica dei fluidi viste finora smettono di essere valide</strong>: Bernoulli (che richiede moto stazionario e laminare) e Poiseuille non valgono più. Per mantenere il flusso serve una differenza di pressione che cresce con il <strong>quadrato della velocità</strong>, e la resistenza su un oggetto diventa proporzionale a <span class="m">v^2</span>.</p>
 <div class="callout attenzione">
 
-<p>Errore tipico: pensare che dove il tubo è più stretto la pressione sia più alta. È il contrario: nel restringimento la velocità sale e la pressione scende.</p>
+<ul>
+<li>Errore tipico: pensare che dove il tubo è più stretto la pressione sia più alta. È il <strong>contrario</strong>: nel restringimento la velocità sale e la pressione scende.</li>
+<li>La velocità dipende dal <strong>quadrato</strong> del raggio: raggio dimezzato → velocità ×4, non ×2.</li>
+<li>Bernoulli <strong>non</strong> richiede un condotto orizzontale; richiede fluido ideale e moto stazionario.</li>
+<li>Alcune domande parlano di &quot;regime turbolento&quot; ma si aspettano lo stesso la risposta di Bernoulli (pressione più alta dove la velocità è minore): a rigore Bernoulli vale solo in regime laminare.</li>
+</ul>
 </div>
 
 <div class="callout esame">
 
-<p>Le aperte chiedono: definire la portata; Bernoulli con i casi notevoli (orizzontale, statico = Stevino, Torricelli) e un esempio (ala, Venturi); il condotto a sezione variabile (sezione piccola → velocità alta → pressione bassa); la portanza; il tiro a effetto; il numero di Reynolds.</p>
+<p>Le chiuse chiedono la definizione di portata, la portata in due tubi con velocità diverse, i calcoli con <span class="m">Q = V/\Delta t = Sv</span> (secchio, vasca, ugello, aorta, conversione in l/min), la continuità (sezione dimezzata, 3 m² → 1 m², raggio dimezzato o quadruplicato, getto che si assottiglia), il legame pressione-velocità (pressione più alta dove la velocità è minore), l&#39;ipotesi non necessaria per Bernoulli (condotto orizzontale), il profilo dell&#39;ala, l&#39;aneurisma, il regime turbolento. Le aperte:</p>
+<ul>
+<li><strong>Bernoulli</strong> con esempio o casi notevoli: enunciato, ipotesi, significato energetico dei tre termini, dimostrazione con il teorema dell&#39;energia cinetica; casi: orizzontale (Venturi), statico (Stevino), foro (Torricelli <span class="m">v = \sqrt{2gh}</span>); esempi: ala, tubo di Venturi.</li>
+<li><strong>Condotto a sezione variabile</strong>: continuità <span class="m">S_1v_1 = S_2v_2</span> + Bernoulli orizzontale: sezione piccola, velocità alta, pressione bassa.</li>
+<li><strong>Portata</strong>: definizione, <span class="m">Q = Sv</span>, unità m³/s.</li>
+<li><strong>Portanza</strong> e <strong>tiro a effetto</strong>: aria più veloce da un lato → pressione minore da quel lato → forza verso quel lato.</li>
+<li><strong>Numero di Reynolds</strong>: formula, significato, soglie laminare/turbolento.</li>
+</ul>
 </div>
 
 <div class="callout sintesi">
 
 <ul>
-<li>Portata <span class="m">Q = V/\Delta t = S v</span> (m³/s); <span class="m">1\,\mathrm{l/s} = 60\,\mathrm{l/min}</span>.</li>
-<li>Continuità: <span class="m">S_1 v_1 = S_2 v_2</span>; raggio dimezzato → velocità ×4.</li>
-<li>Bernoulli: <span class="m">p + \tfrac12\rho v^2 + \rho g h = \text{cost}</span>; vale per fluido ideale, anche in tubi non orizzontali.</li>
-<li>Tubo orizzontale: pressione più alta dove la velocità è più bassa.</li>
-<li>Casi notevoli: Stevino (<span class="m">v = 0</span>), Torricelli <span class="m">v = \sqrt{2gh}</span>, portanza, effetto Magnus.</li>
-<li>Fluidi reali: Poiseuille <span class="m">Q \propto R^4</span>; Reynolds distingue laminare e turbolento.</li>
+<li>Fluido ideale: incomprimibile, non viscoso, irrotazionale; moto stazionario → linee di corrente che non si incrociano (laminare).</li>
+<li>Portata <span class="m">Q = V/\Delta t = Sv</span> (m³/s); <span class="m">1\ \mathrm{l/s} = 10^{-3}\ \mathrm{m^3/s} = 60\ \mathrm{l/min}</span>.</li>
+<li>Continuità: <span class="m">S_1v_1 = S_2v_2</span>; sezione dimezzata → <span class="m">v \times 2</span>; raggio dimezzato → <span class="m">v \times 4</span>.</li>
+<li>Bernoulli: <span class="m">p + \tfrac12\rho v^2 + \rho gh = \text{cost}</span> (energia per unità di volume); vale anche in tubi non orizzontali.</li>
+<li>Tubo orizzontale: pressione più alta dove la velocità è più bassa (Venturi); <span class="m">v = 0</span> → Stevino; foro → Torricelli <span class="m">v = \sqrt{2gh}</span>.</li>
+<li>Applicazioni: portanza <span class="m">F = \tfrac12\rho(v_{sopra}^2 - v_{sotto}^2)S</span>, effetto Magnus, aneurisma che peggiora.</li>
+<li>Fluidi reali: Poiseuille <span class="m">Q \propto R^4</span>; Reynolds <span class="m">Re = \rho vR/\eta</span> (laminare &lt; 1000, turbolento &gt; 2000–10 000); in turbolenza Bernoulli e Poiseuille non valgono.</li>
 </ul>
 </div>

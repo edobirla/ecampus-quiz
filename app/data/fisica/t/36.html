@@ -1,35 +1,88 @@
 <h1>Lezione 36 — Primo principio della termodinamica</h1>
-<h2>Calore e lavoro sono energia</h2>
-<p>Joule scaldò dell&#39;acqua solo facendo girare delle palette con un peso che cadeva. Il lavoro meccanico diventava calore, sempre con lo stesso rapporto:</p>
-<p><span class="m d">1\,\mathrm{cal} = 4{,}186\,\mathrm J</span></p>
-<p>Quindi calore e lavoro sono due modi di scambiare <strong>energia</strong>. Si misurano con la stessa unità, il joule.</p>
-<h2>Energia interna</h2>
-<p>Ogni sistema possiede un&#39;<strong>energia interna</strong> <span class="m">U</span>. È la somma delle energie delle sue molecole: cinetica (moto disordinato) e potenziale (legami tra le molecole).</p>
-<p><span class="m">U</span> è una <strong>funzione di stato</strong>: dipende solo dallo stato del sistema, non da come ci è arrivato. Calore e lavoro invece <strong>non</strong> sono funzioni di stato: dipendono dal percorso seguito.</p>
-<div class="callout attenzione">
-
-<p>Funzioni di stato: energia interna, entropia, temperatura, energia potenziale gravitazionale, energia elastica di una molla ideale. <strong>Non</strong> sono funzioni di stato: calore e lavoro.</p>
-</div>
-
-<h2>L&#39;enunciato</h2>
-<p>Il primo principio è la <strong>conservazione dell&#39;energia</strong> estesa ai fenomeni termici. La variazione di energia interna di un sistema è uguale al calore assorbito meno il lavoro compiuto.</p>
+<h2>Introduzione</h2>
+<p>Il primo principio nasce da un&#39;osservazione: esiste un rapporto fisso tra il calore scambiato da un sistema e il lavoro che il sistema compie o subisce. Da qui si arriva a definire una nuova funzione di stato, l&#39;<strong>energia interna</strong>, e si estende il <strong>principio di conservazione dell&#39;energia</strong> oltre la meccanica, a tutti i fenomeni termici. In meccanica l&#39;energia &quot;persa&quot; per attrito sembrava sparire; con il primo principio scopriamo dove va a finire.</p>
+<h2>L&#39;equivalente meccanico della caloria</h2>
+<p>Prendiamo un sistema in equilibrio termico e isolato termicamente (non può scambiare calore). Se compiamo un lavoro su di esso, si porta in un nuovo stato di equilibrio con una temperatura diversa. Per esempio, strofinando un metallo (lavoro della forza d&#39;attrito) la sua temperatura sale. Lavoro meccanico e calore devono quindi essere legati.</p>
+<p>A metà Ottocento <strong>Joule</strong> fece una famosa serie di esperimenti. Nel più noto, un <strong>peso che cade</strong> fa girare delle <strong>palette</strong> immerse in un recipiente d&#39;acqua isolato termicamente. L&#39;attrito delle palette con l&#39;acqua scalda l&#39;acqua.</p>
+<ul>
+<li>Il <strong>lavoro</strong> fatto sull&#39;acqua si misura dalla diminuzione di energia potenziale del peso: <span class="m">L = mgh</span>.</li>
+<li>Il <strong>calore</strong> equivalente si misura dall&#39;aumento di temperatura dell&#39;acqua: <span class="m">Q = m_{acqua}\,c\,\Delta T</span> (in calorie).</li>
+</ul>
+<p>Il risultato era sempre lo stesso: in <strong>qualunque trasformazione ciclica</strong>, il rapporto tra il lavoro complessivo fatto sul sistema e il calore complessivo che bisogna togliergli per riportarlo allo stato iniziale (o viceversa) è una <strong>costante universale</strong>:</p>
+<p><span class="m d">\frac{L}{Q} = J = 4{,}186\,\mathrm{J/cal}</span></p>
+<p>cioè <span class="m">1\,\mathrm{cal} = 4{,}186\,\mathrm J</span> (il valore preciso è 4,1868 J/cal). Conseguenza fondamentale: <strong>calore e lavoro sono grandezze omogenee</strong>, due modi diversi di scambiare <strong>energia</strong>, e si misurano con la stessa unità, il joule.</p>
+<h2>Dal ciclo all&#39;energia interna</h2>
+<p>Misurando calore e lavoro in joule, il risultato di Joule per le trasformazioni cicliche si scrive:</p>
+<p><span class="m d">Q - L = 0 \quad\text{(in ogni ciclo)}</span></p>
+<p>In un ciclo il calore netto assorbito è uguale al lavoro netto compiuto.</p>
+<p>Ora il passaggio chiave. Prendiamo due stati A e B e tre trasformazioni diverse: <span class="m">a</span> e <span class="m">b</span> da A a B, e <span class="m">c</span> da B ad A. Formiamo due cicli:</p>
+<ul>
+<li>ciclo 1: da A a B lungo <span class="m">a</span>, ritorno lungo <span class="m">c</span>: <span class="m">(Q_a - L_a) + (Q_c - L_c) = 0</span>;</li>
+<li>ciclo 2: da A a B lungo <span class="m">b</span>, ritorno lungo <span class="m">c</span>: <span class="m">(Q_b - L_b) + (Q_c - L_c) = 0</span>.</li>
+</ul>
+<p>Sottraendo membro a membro, il ritorno <span class="m">c</span> si cancella:</p>
+<p><span class="m d">Q_a - L_a = Q_b - L_b</span></p>
+<p>Il calore e il lavoro, <strong>singolarmente</strong>, dipendono dalla trasformazione seguita; la loro <strong>differenza</strong> <span class="m">Q - L</span> invece è la stessa per qualunque trasformazione tra A e B. Dipende quindi solo dagli stati iniziale e finale: <span class="m">Q - L = f(A, B)</span>.</p>
+<p>Come in meccanica per l&#39;energia potenziale (il lavoro delle forze conservative non dipende dal percorso), una grandezza che dipende solo dagli estremi si può scrivere come differenza dei valori di una funzione di stato:</p>
+<p><span class="m d">Q - L = U(B) - U(A) = \Delta U</span></p>
+<p>La funzione <span class="m">U</span> ha le dimensioni di un&#39;energia e si chiama <strong>energia interna</strong> del sistema.</p>
+<h2>L&#39;energia interna</h2>
+<p>L&#39;<strong>energia interna</strong> <span class="m">U</span> è l&#39;energia posseduta dal sistema a livello microscopico: la somma delle energie <strong>cinetiche</strong> del moto disordinato delle molecole e delle energie <strong>potenziali</strong> dei legami tra loro. Non comprende l&#39;energia cinetica o potenziale del sistema <strong>nel suo insieme</strong> (un bicchiere d&#39;acqua su un aereo in volo ha la stessa energia interna che a terra).</p>
+<p><span class="m">U</span> è una <strong>funzione di stato</strong>: dipende solo dallo stato del sistema, non da come ci è arrivato. Calore e lavoro invece <strong>non</strong> sono funzioni di stato: non ha senso dire &quot;quanto calore contiene un corpo&quot;, ma solo quanto calore ha scambiato in una certa trasformazione.</p>
+<table>
+<thead>
+<tr>
+<th>Funzioni di stato</th>
+<th>Non funzioni di stato</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>energia interna, temperatura, pressione, volume, entropia</td>
+<td>calore</td>
+</tr>
+<tr>
+<td>energia potenziale gravitazionale, energia elastica di una molla ideale</td>
+<td>lavoro</td>
+</tr>
+</tbody></table>
+<h2>L&#39;enunciato del primo principio</h2>
+<p><strong>In una qualsiasi trasformazione tra due stati di equilibrio, la differenza tra il calore assorbito e il lavoro compiuto dal sistema è uguale alla variazione della sua energia interna.</strong></p>
 <p><span class="m d">\Delta U = Q - L</span></p>
 <p>dove:</p>
 <ul>
-<li><span class="m">\Delta U</span> = variazione di energia interna del sistema, in J</li>
+<li><span class="m">\Delta U = U_f - U_i</span> = variazione di energia interna del sistema, in J</li>
 <li><span class="m">Q</span> = calore scambiato, in J: <strong>positivo se il sistema lo assorbe</strong>, negativo se lo cede</li>
-<li><span class="m">L</span> = lavoro scambiato, in J: <strong>positivo se il sistema lo compie</strong> (espansione), negativo se lo subisce</li>
+<li><span class="m">L</span> = lavoro scambiato, in J: <strong>positivo se lo compie il sistema</strong> (espansione), negativo se lo subisce (compressione)</li>
 </ul>
-<p>Per un piccolo passo: <span class="m">dU = \delta Q - \delta L</span>.</p>
-<p>Perché ha senso: il calore che entra aumenta l&#39;energia del sistema; il lavoro fatto verso l&#39;esterno la diminuisce.</p>
+<p>Per un passo infinitesimo di una trasformazione quasi statica:</p>
+<p><span class="m d">dU = \delta Q - \delta L</span></p>
+<p>dove <span class="m">dU</span> è un differenziale esatto (variazione di una funzione di stato), mentre <span class="m">\delta Q</span> e <span class="m">\delta L</span> sono piccole quantità che dipendono dal percorso. Per un gas <span class="m">\delta L = p\,dV</span>, quindi <span class="m">dU = \delta Q - p\,dV</span>.</p>
+<p><strong>Perché i segni sono così</strong>: il calore che <strong>entra</strong> aumenta l&#39;energia del sistema (+Q); il lavoro che il sistema <strong>fa</strong> verso l&#39;esterno gli costa energia (−L). Se invece il lavoro è fatto sul sistema, <span class="m">L &lt; 0</span> e <span class="m">-L &gt; 0</span>: l&#39;energia aumenta.</p>
+<h3>È la conservazione dell&#39;energia</h3>
+<p>Il primo principio <strong>estende a tutti i sistemi il principio di conservazione dell&#39;energia</strong>. In meccanica l&#39;energia meccanica non si conservava quando agivano forze non conservative come l&#39;attrito. Ora sappiamo che quell&#39;energia non è sparita: è passata come <strong>calore</strong> o <strong>energia interna</strong> nei corpi coinvolti. Nei sistemi termodinamici, che di solito non hanno energia cinetica macroscopica né differenze rilevanti di energia potenziale, l&#39;energia è immagazzinata come energia interna e può essere rilasciata compiendo lavoro o cedendo calore, come in meccanica l&#39;energia potenziale si trasformava in cinetica o in lavoro.</p>
+<p>Il primo principio dice che <strong>non si può creare energia dal nulla</strong>: una macchina che produce lavoro in un ciclo senza assorbire calore (moto perpetuo di prima specie) è impossibile, perché in un ciclo <span class="m">L = Q</span>.</p>
 <div class="callout esempio">
 
-<p>Un gas aumenta la sua energia interna di 400 J. Una possibilità: assorbe 200 J di calore e riceve 200 J di lavoro. Allora <span class="m">Q = 200\,\mathrm J</span>, <span class="m">L = -200\,\mathrm J</span> e <span class="m">\Delta U = 200 - (-200) = 400\,\mathrm J</span>.</p>
+<p><strong>Lavoro sul sistema e calore estratto.</strong> Si compiono 200 J di lavoro <strong>su</strong> un sistema e gli si <strong>tolgono</strong> 70 cal di calore. Quanto valgono <span class="m">L</span>, <span class="m">Q</span>, <span class="m">\Delta U</span>?</p>
+<ul>
+<li>il lavoro è fatto sul sistema: <span class="m">L = -200\,\mathrm J</span>;</li>
+<li>il calore è ceduto dal sistema: <span class="m">Q = -70\,\mathrm{cal} = -70 \cdot 4{,}186 \approx -293\,\mathrm J</span>;</li>
+<li><span class="m">\Delta U = Q - L = -293 - (-200) = -93\,\mathrm J</span>.</li>
+</ul>
+<p>L&#39;energia interna diminuisce: esce più energia come calore di quanta ne entri come lavoro.</p>
 </div>
 
 <div class="callout esempio">
 
-<p>Si compiono 200 J di lavoro su un sistema (<span class="m">L = -200\,\mathrm J</span>) e gli si tolgono 70 cal (<span class="m">Q = -293\,\mathrm J</span>). Allora <span class="m">\Delta U = -293 + 200 = -93\,\mathrm J</span>.</p>
+<p><strong>Un aumento di energia interna di 400 J.</strong> Quali scambi sono compatibili? Serve <span class="m">Q - L = 400</span> J. Per esempio <span class="m">Q = 200</span> J (calore assorbito) e <span class="m">L = -200</span> J (lavoro ricevuto): <span class="m">200 - (-200) = 400</span> J. Combinazioni come <span class="m">Q = 200</span>, <span class="m">L = 200</span> danno invece <span class="m">\Delta U = 0</span>, e <span class="m">Q = -200</span>, <span class="m">L = -200</span> danno ancora zero. Si controlla sempre la formula con i segni.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Un ciclo a tre tratti.</strong> Un gas compie un ciclo A → B → C → A. Nel tratto AB assorbe <span class="m">Q_{AB} = 20{,}0</span> J; nel tratto BC non scambia calore; il lavoro totale del ciclo è 15,0 J. Quanto calore scambia nel tratto CA?</p>
+<p>Nel ciclo <span class="m">\Delta U = 0</span>, quindi <span class="m">Q_{tot} = L_{tot}</span>: <span class="m">Q_{AB} + Q_{BC} + Q_{CA} = 15{,}0</span> J. Con <span class="m">Q_{BC} = 0</span>:
+<span class="m d">Q_{CA} = 15{,}0 - 20{,}0 = -5{,}0\,\mathrm J</span>
+Nel tratto CA il sistema <strong>cede</strong> 5 J di calore.</p>
 </div>
 
 <h2>Casi particolari</h2>
@@ -39,60 +92,95 @@
 <th>Trasformazione</th>
 <th>Condizione</th>
 <th>Primo principio</th>
+<th>Significato</th>
 </tr>
 </thead>
 <tbody><tr>
 <td>Isocora</td>
-<td><span class="m">L = 0</span></td>
+<td><span class="m">\Delta V = 0 \Rightarrow L = 0</span></td>
 <td><span class="m">\Delta U = Q</span></td>
+<td>tutto il calore va in energia interna</td>
 </tr>
 <tr>
 <td>Isoterma (gas perfetto)</td>
-<td><span class="m">\Delta U = 0</span></td>
+<td><span class="m">T</span> costante <span class="m">\Rightarrow \Delta U = 0</span></td>
 <td><span class="m">Q = L</span></td>
+<td>tutto il calore diventa lavoro (o viceversa)</td>
 </tr>
 <tr>
 <td>Adiabatica</td>
 <td><span class="m">Q = 0</span></td>
 <td><span class="m">\Delta U = -L</span></td>
+<td>il lavoro si paga con l&#39;energia interna</td>
 </tr>
 <tr>
-<td>Ciclo</td>
-<td><span class="m">\Delta U = 0</span></td>
+<td>Ciclica</td>
+<td>stato finale = iniziale <span class="m">\Rightarrow \Delta U = 0</span></td>
 <td><span class="m">Q = L</span></td>
+<td>calore netto = lavoro netto</td>
 </tr>
 </tbody></table>
 <ul>
-<li><strong>Isoterma</strong>: un gas che si espande a temperatura costante compie lavoro positivo. Siccome <span class="m">\Delta U = 0</span>, deve <strong>assorbire</strong> calore (<span class="m">Q = L &gt; 0</span>). Non cede calore.</li>
-<li><strong>Adiabatica</strong>: in espansione il gas compie lavoro usando la propria energia interna, e si raffredda. In compressione il lavoro ricevuto va in energia interna, e il gas si scalda.</li>
-<li><strong>Ciclo</strong>: in un ciclo il calore netto assorbito è uguale al lavoro netto compiuto.</li>
+<li><strong>Isocora</strong>: il sistema non compie lavoro. Ogni variazione di energia interna viene da scambi di calore: a contatto con un corpo più caldo assorbe calore e <span class="m">\Delta U &gt; 0</span>; a contatto con un corpo più freddo cede calore e <span class="m">\Delta U &lt; 0</span>.</li>
+<li><strong>Isoterma</strong> di un gas perfetto: un gas che si <strong>espande</strong> a temperatura costante compie lavoro positivo; siccome <span class="m">\Delta U = 0</span>, deve <strong>assorbire</strong> calore in quantità uguale (<span class="m">Q = L &gt; 0</span>). È <strong>sbagliato</strong> dire che cede calore all&#39;ambiente. In compressione isoterma, invece, riceve lavoro e cede altrettanto calore.</li>
+<li><strong>Adiabatica</strong>: in <strong>espansione</strong> il gas compie lavoro positivo usando parte della propria energia interna, <span class="m">\Delta U = -L &lt; 0</span>: si <strong>raffredda</strong>. In <strong>compressione</strong> le forze esterne fanno lavoro sul gas, che lo immagazzina come energia interna: si <strong>scalda</strong> (l&#39;aria nella pompa della bicicletta).</li>
+<li><strong>Ciclo</strong>: il sistema passa per diversi stati ma torna a quello iniziale: <span class="m">\Delta U = 0</span> e il calore netto assorbito è uguale al lavoro netto compiuto.</li>
 </ul>
 <h2>Il calore non sempre alza la temperatura</h2>
-<p>Il calore assorbito aumenta l&#39;<strong>energia interna</strong>. Non sempre aumenta la temperatura. Durante un passaggio di stato, per esempio, il calore rompe i legami: cresce l&#39;energia potenziale delle molecole, la temperatura resta ferma.</p>
-<p>Per un <strong>gas perfetto</strong>, invece, <span class="m">U</span> dipende solo dalla temperatura. Se l&#39;energia interna di un gas aumenta, la sua temperatura è aumentata.</p>
-<h2>Quale espansione fa più lavoro</h2>
-<p>Un gas si espande fino al doppio del volume partendo dallo stesso stato. Il lavoro è l&#39;area sotto la curva nel piano <span class="m">p</span>-<span class="m">V</span>.</p>
+<p>Il calore assorbito (se il sistema non compie lavoro) aumenta l&#39;<strong>energia interna</strong>. Non è detto che aumenti la <strong>temperatura</strong>: durante un passaggio di stato il calore rompe i legami tra le molecole, cresce la loro energia potenziale, la temperatura resta ferma. Non aumenta nemmeno, necessariamente, l&#39;energia cinetica o potenziale del corpo <strong>come insieme</strong>: quelle sono energie meccaniche macroscopiche, diverse dall&#39;energia interna. Tra le affermazioni &quot;il calore fornito aumenta necessariamente la temperatura / l&#39;energia potenziale / l&#39;energia cinetica / l&#39;energia interna del corpo&quot;, quella corretta è <strong>l&#39;energia interna</strong> (a rigore, se il corpo compie anche lavoro, parte dell&#39;energia esce come lavoro).</p>
+<p>Per un <strong>gas perfetto</strong>, invece, l&#39;energia interna dipende solo dalla temperatura. Quindi se l&#39;energia interna di un gas perfetto aumenta (per esempio di 1000 J), la sua <strong>temperatura è aumentata</strong>, qualunque sia stata la trasformazione.</p>
+<h2>Quale espansione compie più lavoro</h2>
+<p>Un gas perfetto parte da uno stato <span class="m">(p_0, V_0)</span> e si espande fino al <strong>doppio del volume</strong>. Il lavoro è l&#39;area sotto la curva nel piano <span class="m">p</span>-<span class="m">V</span>, tra <span class="m">V_0</span> e <span class="m">2V_0</span>.</p>
 <ul>
-<li><strong>Isobara</strong>: la pressione resta al valore iniziale, il più alto. Area massima: <strong>lavoro massimo</strong>.</li>
-<li><strong>Isoterma</strong>: la pressione scende. Area minore.</li>
-<li><strong>Adiabatica</strong>: la pressione scende ancora di più. Area ancora minore.</li>
-<li><strong>Isocora</strong>: il volume non cambia. Lavoro nullo.</li>
+<li><strong>Isobara</strong>: la pressione resta al valore iniziale <span class="m">p_0</span>, il più alto possibile tra le curve che partono da quello stato verso destra: <span class="m">L = p_0V_0</span>. Area <strong>massima</strong>.</li>
+<li><strong>Isoterma</strong>: la pressione scende come <span class="m">1/V</span>: <span class="m">L = nRT\ln 2 = p_0V_0\ln 2 \approx 0{,}69\,p_0V_0</span>.</li>
+<li><strong>Adiabatica</strong>: la pressione scende ancora più in fretta (<span class="m">pV^\gamma</span> costante); per un gas monoatomico <span class="m">L = \dfrac{p_0V_0}{\gamma - 1}\left(1 - 2^{1-\gamma}\right) \approx 0{,}56\,p_0V_0</span>.</li>
+<li><strong>Isocora</strong>: non c&#39;è espansione, <span class="m">L = 0</span> (e quindi non può raddoppiare il volume).</li>
 </ul>
-<h2>Primo principio nei solidi e negli urti</h2>
-<p>In un solido il volume cambia pochissimo, quindi <span class="m">L \approx 0</span> e <span class="m">\Delta U = Q = mc\Delta T</span>.</p>
-<p>L&#39;energia meccanica &quot;persa&quot; per attrito non sparisce. Diventa energia interna. Un blocco di ferro di 1 kg cade da 20 m e rimbalza fino a 1 m: l&#39;energia dissipata <span class="m">mg(H - h) \approx 186\,\mathrm J</span> aumenta la sua energia interna.</p>
+<p>Quindi il lavoro maggiore lo compie l&#39;<strong>isobara</strong>.</p>
+<h2>Primo principio nei solidi</h2>
+<p>In un solido metallico la dilatazione termica cambia pochissimo il volume, quindi il lavoro è trascurabile (<span class="m">L \approx 0</span>) e l&#39;unico parametro che conta è la temperatura. Riscaldando il solido senza compiere lavoro:
+<span class="m d">\delta Q = dU \quad\Rightarrow\quad m\,c\,dT = dU \quad\Rightarrow\quad c = \frac{1}{m}\frac{dU}{dT}</span>
+Il calore specifico è quindi legato a come l&#39;energia interna cresce con la temperatura, e nei solidi dipende solo da <span class="m">T</span>. Se <span class="m">c</span> è costante, integrando: <span class="m">U(T) = m\,c\,T + \text{costante}</span>, e il primo principio diventa
+<span class="m d">Q = \Delta U = m\,c\,\Delta T</span>
+che è la legge della calorimetria della lezione 34.</p>
+<div class="callout esempio">
+
+<p><strong>Il blocco di ferro che rimbalza.</strong> Un blocco di ferro di 1 kg cade da fermo da <span class="m">H = 20</span> m e, dopo l&#39;urto con il suolo, risale fino a <span class="m">h = 1</span> m. Di quanto aumenta la sua energia interna, se assorbe praticamente tutta l&#39;energia meccanica dissipata?</p>
+<p>Tra lo stato iniziale (fermo a 20 m) e quello finale (fermo a 1 m) l&#39;energia meccanica è diminuita di
+<span class="m d">mg(H - h) = 1 \cdot 9{,}8 \cdot 19 \approx 186\,\mathrm J</span>
+È il lavoro (negativo) delle forze non conservative nell&#39;urto: <span class="m">L_{nc} = mg(h - H) \approx -186</span> J sul blocco. Senza scambi di calore con l&#39;esterno, <span class="m">\Delta U = -L = +186</span> J: l&#39;energia meccanica &quot;persa&quot; è diventata energia interna (il blocco si è scaldato un po&#39;). Con <span class="m">c_{ferro} \approx 450</span> J/(kg K) l&#39;aumento di temperatura è <span class="m">186/450 \approx 0{,}4</span> K.</p>
+</div>
+
+<div class="callout attenzione">
+
+<p>Gli errori più frequenti sul primo principio sono di <strong>segno</strong>. Prima di scrivere i numeri chiediti: il calore entra (+) o esce (−)? Il lavoro lo fa il sistema (+) o lo subisce (−)? Alcuni libri usano la convenzione opposta per il lavoro (<span class="m">\Delta U = Q + L</span>, con <span class="m">L</span> fatto <strong>sul</strong> sistema): in questo corso si usa <span class="m">\Delta U = Q - L</span> con <span class="m">L</span> fatto <strong>dal</strong> sistema.</p>
+</div>
+
 <div class="callout esame">
 
-<p>Domanda aperta: &quot;Esporre il primo principio della termodinamica&quot;. Punti da toccare: calore e lavoro sono energia (equivalente meccanico della caloria); energia interna come funzione di stato; <span class="m">\Delta U = Q - L</span> con le convenzioni di segno; è la conservazione dell&#39;energia; casi particolari (isocora, isoterma, adiabatica, ciclo).</p>
+<p>Domanda aperta: &quot;Esporre il primo principio della termodinamica&quot;. Punti da toccare, in ordine:</p>
+<ol>
+<li>esperimento di Joule ed equivalente meccanico della caloria (<span class="m">1\,\mathrm{cal} = 4{,}186\,\mathrm J</span>): calore e lavoro sono entrambi energia;</li>
+<li>in un ciclo <span class="m">Q = L</span>; confrontando due percorsi tra gli stessi stati si trova che <span class="m">Q - L</span> non dipende dal percorso;</li>
+<li>quindi esiste una funzione di stato, l&#39;energia interna <span class="m">U</span> (energia microscopica delle molecole);</li>
+<li>enunciato <span class="m">\Delta U = Q - L</span> (e <span class="m">dU = \delta Q - \delta L</span>) con le convenzioni di segno;</li>
+<li>è la conservazione dell&#39;energia estesa ai fenomeni termici; <span class="m">Q</span> e <span class="m">L</span> non sono funzioni di stato, <span class="m">U</span> sì;</li>
+<li>casi particolari: isocora <span class="m">\Delta U = Q</span>, isoterma del gas perfetto <span class="m">Q = L</span>, adiabatica <span class="m">\Delta U = -L</span>, ciclo <span class="m">Q = L</span>.</li>
+</ol>
+<p>Domande chiuse: dove va il calore fornito (energia interna); isoterma in espansione (assorbe calore, non lo cede); combinazione di <span class="m">Q</span> e <span class="m">L</span> per un dato <span class="m">\Delta U</span>; espansione con più lavoro (isobara); aumento di energia interna di un gas (temperatura aumentata); grandezza che non è funzione di stato (il calore).</p>
 </div>
 
 <div class="callout sintesi">
 
 <ul>
-<li><span class="m">\Delta U = Q - L</span>: <span class="m">Q &gt; 0</span> se assorbito, <span class="m">L &gt; 0</span> se compiuto dal sistema.</li>
+<li>Joule: <span class="m">1\,\mathrm{cal} = 4{,}186\,\mathrm J</span>; calore e lavoro sono energia.</li>
+<li>In un ciclo <span class="m">Q = L</span>; tra due stati <span class="m">Q - L</span> non dipende dal percorso: definisce l&#39;energia interna <span class="m">U</span>.</li>
+<li><span class="m">\Delta U = Q - L</span>, <span class="m">dU = \delta Q - \delta L</span>: <span class="m">Q &gt; 0</span> se assorbito, <span class="m">L &gt; 0</span> se compiuto dal sistema.</li>
 <li><span class="m">U</span> è funzione di stato; <span class="m">Q</span> e <span class="m">L</span> no.</li>
-<li>Isocora <span class="m">\Delta U = Q</span>; isoterma <span class="m">Q = L</span>; adiabatica <span class="m">\Delta U = -L</span>; ciclo <span class="m">Q = L</span>.</li>
-<li>Il calore aumenta l&#39;energia interna, non per forza la temperatura.</li>
-<li>Gas perfetto: più energia interna significa più temperatura.</li>
+<li>Isocora <span class="m">\Delta U = Q</span>; isoterma (gas perfetto) <span class="m">Q = L</span>; adiabatica <span class="m">\Delta U = -L</span>; ciclo <span class="m">Q = L</span>.</li>
+<li>Il calore aumenta l&#39;energia interna, non per forza la temperatura; per un gas perfetto più energia interna = più temperatura.</li>
+<li>Espansione fino al doppio del volume: lavoro isobara &gt; isoterma &gt; adiabatica &gt; isocora (zero).</li>
+<li>Solidi: <span class="m">L \approx 0</span>, <span class="m">Q = \Delta U = mc\Delta T</span>.</li>
 </ul>
 </div>

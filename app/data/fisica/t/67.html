@@ -1,72 +1,172 @@
-<h1>Lezione 67 — Induzione elettromagnetica: Faraday-Neumann-Lenz</h1>
-<h2>L&#39;idea</h2>
-<p>Un flusso magnetico che <strong>cambia nel tempo</strong> genera una f.e.m. in un circuito. Se il circuito è chiuso, circola una <strong>corrente indotta</strong>, anche senza pile.</p>
-<p>Esperimenti di Faraday:</p>
+<h1>Lezione 67 — Induzione elettromagnetica: legge di Faraday-Neumann-Lenz</h1>
+<h2>Di cosa parla questa lezione</h2>
+<p>Oersted aveva scoperto che una corrente produce un campo magnetico. Faraday (1831) si chiese se valesse anche il contrario: un campo magnetico può produrre una corrente? La risposta è sì, ma con una condizione fondamentale: <strong>il campo (più precisamente il flusso) deve cambiare nel tempo</strong>. È l&#39;<strong>induzione elettromagnetica</strong>, il fenomeno su cui si basano generatori elettrici, trasformatori, piastre a induzione e gran parte della tecnologia elettrica.</p>
+<p>In questa lezione:</p>
 <ul>
-<li>avvicini o allontani un magnete da una spira: l&#39;amperometro segna corrente;</li>
-<li>magnete e spira fermi: nessuna corrente, perché il flusso non cambia;</li>
-<li>accendi o spegni la corrente in una bobina vicina: nasce corrente nella spira;</li>
-<li>ruoti la spira in un campo fisso: nasce corrente.</li>
+<li>gli esperimenti di Faraday;</li>
+<li>la <strong>legge di Faraday-Neumann</strong> (<span class="m">\mathcal E = -d\Phi_B/dt</span>);</li>
+<li>la <strong>legge di Lenz</strong>, che spiega il segno meno, e il suo legame con la conservazione dell&#39;energia;</li>
+<li>un&#39;applicazione completa: l&#39;<strong>alternatore</strong>;</li>
+<li>la <strong>conservazione della carica</strong> espressa dall&#39;equazione di continuità.</li>
 </ul>
-<p>In tutti i casi la corrente c&#39;è solo mentre il flusso cambia.</p>
+<h2>Gli esperimenti di Faraday</h2>
+<p>Si collega una spira (o una bobina) a un amperometro sensibile (galvanometro), <strong>senza nessun generatore</strong> nel circuito.</p>
+<ol>
+<li><strong>Magnete in moto</strong>: avvicinando un magnete alla spira, l&#39;amperometro segna una corrente; allontanandolo, segna una corrente di verso opposto. Più veloce è il movimento, più intensa è la corrente.</li>
+<li><strong>Magnete fermo</strong>: se magnete e spira sono fermi, <strong>nessuna corrente</strong>, per quanto intenso sia il campo.</li>
+<li><strong>Spira in moto</strong>: muovendo la spira verso un magnete fermo si ottiene lo stesso effetto del punto 1: conta il moto relativo.</li>
+<li><strong>Due circuiti</strong>: accanto alla spira si mette una seconda bobina collegata a un generatore e a un interruttore. Quando si <strong>chiude</strong> l&#39;interruttore (la corrente nella bobina cresce) la spira è percorsa da un breve impulso di corrente; mentre la corrente nella bobina è costante, niente; quando si <strong>apre</strong> l&#39;interruttore, un impulso di verso opposto.</li>
+<li><strong>Spira che ruota</strong> in un campo fisso: nasce una corrente che cambia periodicamente verso.</li>
+<li><strong>Spira deformata</strong>: allargando o restringendo una spira flessibile in un campo fisso nasce una corrente.</li>
+</ol>
+<p><strong>Che cosa hanno in comune?</strong> In tutti i casi in cui compare la corrente, cambia il <strong>flusso del campo magnetico</strong> concatenato con la spira: cambia <span class="m">B</span> (casi 1, 3, 4), cambia l&#39;orientamento <span class="m">\theta</span> (caso 5), cambia l&#39;area <span class="m">S</span> (caso 6). Quando il flusso è costante (caso 2, o la bobina con corrente costante) la corrente non c&#39;è. La corrente esiste <strong>solo mentre il flusso cambia</strong>, e cresce con la rapidità della variazione.</p>
 <h2>Legge di Faraday-Neumann</h2>
-<p><span class="m d">\mathcal E = -\frac{d\Phi_B}{dt}</span>
+<p>La corrente indotta è dovuta a una <strong>forza elettromotrice indotta</strong> <span class="m">\mathcal E</span>, che agisce nel circuito come un generatore distribuito lungo il filo. La legge quantitativa è:
+<span class="m d">\mathcal E = -\frac{d\Phi_B}{dt}</span>
 dove:</p>
 <ul>
-<li><span class="m">\mathcal E</span> = f.e.m. indotta (V);</li>
-<li><span class="m">\Phi_B</span> = flusso magnetico concatenato con il circuito (Wb);</li>
-<li><span class="m">t</span> = tempo (s).</li>
+<li><span class="m">\mathcal E</span> = forza elettromotrice (f.e.m.) indotta nel circuito (V);</li>
+<li><span class="m">\Phi_B</span> = flusso del campo magnetico concatenato con il circuito (Wb);</li>
+<li><span class="m">t</span> = tempo (s);</li>
+<li><span class="m">d\Phi_B/dt</span> = rapidità di variazione del flusso (Wb/s = V).</li>
 </ul>
-<p>Per una bobina di <span class="m">N</span> spire: <span class="m">\mathcal E = -N\,d\Phi_B/dt</span>. Per variazioni finite si usa il valore medio <span class="m">|\mathcal E| = \Delta\Phi/\Delta t</span>.</p>
-<p>Se il circuito ha resistenza <span class="m">R</span>, la corrente indotta è:
-<span class="m d">i = \frac{\mathcal E}{R}</span></p>
-<p>Il flusso <span class="m">\Phi = BS\cos\theta</span> può cambiare in tre modi: cambia <span class="m">B</span>, cambia l&#39;area <span class="m">S</span>, cambia l&#39;angolo <span class="m">\theta</span>.</p>
-<div class="callout esempio">
-
-<p>Il flusso in una spira varia di 0,6 Wb in 0,2 s. La f.e.m. media è <span class="m">|\mathcal E| = 0{,}6/0{,}2 = 3\,\mathrm{V}</span>.</p>
-</div>
-
-<h2>Legge di Lenz</h2>
-<p>Il segno meno nella legge ha un significato preciso. La corrente indotta ha un verso tale da <strong>opporsi alla variazione di flusso</strong> che l&#39;ha prodotta.</p>
+<p><strong>La f.e.m. indotta è uguale all&#39;opposto della derivata nel tempo del flusso concatenato.</strong> Conta quanto <strong>rapidamente</strong> cambia il flusso, non quanto vale.</p>
+<p>Controllo delle unità: <span class="m">\mathrm{Wb/s} = \mathrm{T\,m^2/s}</span>; poiché <span class="m">1\,\mathrm T = 1\,\mathrm{N/(A\,m)}</span>, si ha <span class="m">\mathrm{T\,m^2/s} = \mathrm{N\,m/(A\,s)} = \mathrm{J/C} = \mathrm V</span>. Corretto.</p>
+<p><strong>Bobina di <span class="m">N</span> spire.</strong> Ogni spira dà la sua f.e.m. e le f.e.m. si sommano (le spire sono in serie):
+<span class="m d">\mathcal E = -N\,\frac{d\Phi_B}{dt}</span>
+dove qui <span class="m">\Phi_B</span> è il flusso attraverso una singola spira.</p>
+<p><strong>Variazioni finite.</strong> Se il flusso cambia di <span class="m">\Delta\Phi</span> in un intervallo <span class="m">\Delta t</span>, il <strong>valore medio</strong> della f.e.m. è
+<span class="m d">\mathcal E_{media} = -\frac{\Delta\Phi}{\Delta t} \qquad |\mathcal E_{media}| = \frac{|\Delta\Phi|}{\Delta t}</span></p>
+<p><strong>Corrente indotta.</strong> Se il circuito chiuso ha resistenza totale <span class="m">R</span>, per la legge di Ohm
+<span class="m d">i = \frac{\mathcal E}{R}</span>
+Se il circuito è aperto la f.e.m. c&#39;è lo stesso (si misura come tensione ai capi), ma la corrente no.</p>
+<h3>Carica che circola</h3>
+<p>Integrando la corrente nel tempo si ottiene una conseguenza utile:
+<span class="m d">q = \int i\,dt = \int \frac{1}{R}\left(-\frac{d\Phi}{dt}\right)dt = -\frac{\Delta\Phi}{R}</span>
+La carica totale che attraversa il circuito dipende solo dalla <strong>variazione totale</strong> del flusso e dalla resistenza, <strong>non</strong> da quanto velocemente è avvenuta. (Su questo principio funzionano i flussimetri.)</p>
+<h3>I tre modi di far variare il flusso</h3>
+<p>Poiché <span class="m">\Phi = BS\cos\theta</span>, la f.e.m. può nascere per variazione:</p>
 <ul>
-<li>Se il flusso aumenta, la corrente indotta crea un campo opposto a quello esterno.</li>
-<li>Se il flusso diminuisce, la corrente indotta crea un campo concorde, per &quot;sostenerlo&quot;.</li>
+<li>dell&#39;intensità del campo <span class="m">B</span> (campo variabile nel tempo, circuito fermo);</li>
+<li>dell&#39;area <span class="m">S</span> (circuito che si deforma, o che entra/esce da una regione di campo);</li>
+<li>dell&#39;angolo <span class="m">\theta</span> (circuito che ruota).</li>
 </ul>
 <div class="callout esempio">
 
-<p>Avvicini il polo nord di un magnete a una spira. Il flusso cresce. La spira presenta a sua volta un polo nord verso il magnete e lo <strong>respinge</strong>. Se allontani il magnete, la spira presenta un polo sud e lo <strong>attrae</strong>. In entrambi i casi la spira si oppone al movimento.</p>
+<p><strong>F.e.m. media.</strong> Il flusso in una spira varia di 0,6 Wb in 0,2 s.
+<span class="m d">|\mathcal E| = \frac{0{,}6}{0{,}2} = 3\,\mathrm V</span>
+Se la spira ha resistenza 1,5 Ω: <span class="m">i = 3/1{,}5 = 2\,\mathrm A</span>, e la carica circolata è <span class="m">q = 0{,}6/1{,}5 = 0{,}4\,\mathrm C</span> (che è anche <span class="m">2\,\mathrm A \cdot 0{,}2\,\mathrm s</span>).</p>
 </div>
 
-<p>Perché deve essere così: è la <strong>conservazione dell&#39;energia</strong>. Se la corrente indotta aiutasse la variazione, il magnete accelererebbe da solo e produrrebbe energia dal nulla. Invece devi fare lavoro per muovere il magnete. Quel lavoro diventa energia elettrica e poi calore.</p>
-<h2>Un esempio pratico: l&#39;alternatore</h2>
-<p>Una bobina di <span class="m">N</span> spire, area <span class="m">S</span>, ruota con velocità angolare <span class="m">\omega</span> in un campo uniforme <span class="m">B</span>. L&#39;angolo cambia nel tempo, <span class="m">\theta = \omega t</span>:
-<span class="m d">\Phi = NBS\cos\omega t \quad\Rightarrow\quad \mathcal E = NBS\omega\sin\omega t</span>
-dove <span class="m">\omega</span> è in rad/s. Si ottiene una f.e.m. <strong>alternata</strong>. È così che le centrali producono corrente.</p>
-<p>Altre applicazioni: trasformatori, piastre a induzione, freni elettromagnetici, pick-up delle chitarre elettriche.</p>
-<h2>Conservazione della carica (equazione di continuità)</h2>
-<p>La carica elettrica non si crea e non si distrugge. Se da un volume esce corrente, la carica al suo interno cala. In forma integrale:
-<span class="m d">\oint_S \vec J \cdot d\vec S = -\frac{dQ_{int}}{dt}</span>
-In forma locale è l&#39;<strong>equazione di continuità</strong>:
+<div class="callout esempio">
+
+<p><strong>Campo che cresce.</strong> Una bobina di 50 spire, ciascuna di area <span class="m">0{,}02\,\mathrm{m^2}</span>, è perpendicolare a un campo che cresce uniformemente da 0 a 0,5 T in 0,1 s. Resistenza della bobina 2 Ω.</p>
+<ol>
+<li>Flusso iniziale per spira: <span class="m">0</span>; finale: <span class="m">0{,}5 \cdot 0{,}02 = 0{,}01\,\mathrm{Wb}</span>.</li>
+<li>Rapidità: <span class="m">\dfrac{\Delta\Phi}{\Delta t} = \dfrac{0{,}01}{0{,}1} = 0{,}1\,\mathrm{Wb/s}</span>.</li>
+<li>F.e.m.: <span class="m">|\mathcal E| = N \cdot 0{,}1 = 50 \cdot 0{,}1 = 5\,\mathrm V</span>.</li>
+<li>Corrente: <span class="m">i = 5/2 = 2{,}5\,\mathrm A</span>, solo durante i 0,1 s in cui il campo cresce.</li>
+</ol>
+</div>
+
+<h2>Legge di Lenz: il segno meno</h2>
+<p>Il segno meno nella legge di Faraday-Neumann ha un significato fisico preciso, enunciato da Lenz:</p>
+<p><strong>La corrente indotta ha un verso tale da opporsi alla variazione di flusso che l&#39;ha generata.</strong></p>
+<p>In pratica la corrente indotta crea un proprio campo magnetico (il campo &quot;indotto&quot;) che:</p>
+<ul>
+<li>se il flusso <strong>aumenta</strong>, è <strong>opposto</strong> al campo esterno, così da ridurre l&#39;aumento;</li>
+<li>se il flusso <strong>diminuisce</strong>, è <strong>concorde</strong> al campo esterno, così da &quot;sostenerlo&quot; e ridurre la diminuzione.</li>
+</ul>
+<p>Attenzione: la corrente indotta non si oppone al <strong>campo</strong>, ma alla sua <strong>variazione</strong>.</p>
+<p><strong>Come si trova il verso della corrente, a passi.</strong></p>
+<ol>
+<li>Stabilisci il verso del campo esterno attraverso la spira.</li>
+<li>Stabilisci se il flusso aumenta o diminuisce.</li>
+<li>Decidi il verso del campo indotto: opposto se il flusso aumenta, concorde se diminuisce.</li>
+<li>Con la mano destra (pollice nel verso del campo indotto) le dita danno il verso della corrente nella spira.</li>
+</ol>
+<div class="callout esempio">
+
+<p><strong>Magnete che si avvicina e si allontana.</strong> Avvicini il polo nord di una calamita a una spira.</p>
+<ul>
+<li>Il campo del magnete esce dal polo nord ed entra nella spira; avvicinandosi, il flusso <strong>aumenta</strong>.</li>
+<li>La corrente indotta crea un campo opposto: la faccia della spira rivolta verso il magnete diventa a sua volta un <strong>polo nord</strong>.</li>
+<li>Due poli nord si respingono: la spira <strong>respinge</strong> il magnete, cioè si oppone all&#39;avvicinamento.</li>
+</ul>
+<p>Allontani il magnete: il flusso <strong>diminuisce</strong>, la corrente indotta si inverte, la faccia della spira verso il magnete diventa un <strong>polo sud</strong> e <strong>attrae</strong> il magnete, opponendosi all&#39;allontanamento. In entrambi i casi la spira si oppone al movimento che produce la variazione.</p>
+</div>
+
+<h3>Perché deve essere così: la conservazione dell&#39;energia</h3>
+<p>Supponi, per assurdo, che la corrente indotta <strong>favorisse</strong> la variazione di flusso. Avvicinando appena il magnete, la spira lo attrarrebbe; il magnete accelererebbe, il flusso crescerebbe più in fretta, la corrente aumenterebbe, l&#39;attrazione aumenterebbe... Il sistema produrrebbe energia cinetica ed energia elettrica (calore nella spira) dal nulla: sarebbe un moto perpetuo.</p>
+<p>Con la legge di Lenz succede il contrario: per muovere il magnete devi <strong>vincere una forza</strong> che si oppone e quindi <strong>compiere lavoro</strong>. Proprio quel lavoro meccanico si trasforma in energia elettrica della corrente indotta, che a sua volta si dissipa in calore nella resistenza (effetto Joule). La legge di Lenz è quindi una conseguenza della <strong>conservazione dell&#39;energia</strong>.</p>
+<h2>Esempio completo: l&#39;alternatore</h2>
+<p>Una bobina di <span class="m">N</span> spire, ciascuna di area <span class="m">S</span>, ruota con velocità angolare costante <span class="m">\omega</span> in un campo uniforme <span class="m">B</span>, attorno a un asse perpendicolare al campo. È il principio dei generatori delle centrali elettriche.</p>
+<p><strong>Ricavo passo per passo.</strong></p>
+<ol>
+<li>L&#39;angolo tra la normale alla bobina e il campo cresce uniformemente: <span class="m">\theta = \omega t</span> (se a <span class="m">t = 0</span> la normale è parallela al campo).</li>
+<li>Flusso concatenato: <span class="m">\Phi = N B S\cos(\omega t)</span>.</li>
+<li>Derivata: <span class="m">\dfrac{d\Phi}{dt} = -NBS\,\omega\sin(\omega t)</span>.</li>
+<li>F.e.m. indotta:
+<span class="m d">\mathcal E = -\frac{d\Phi}{dt} = N B S\,\omega\sin(\omega t) = \mathcal E_0\sin(\omega t) \qquad \mathcal E_0 = NBS\omega</span>
+dove <span class="m">\omega</span> è in rad/s (<span class="m">\omega = 2\pi f</span>, con <span class="m">f</span> frequenza in Hz).</li>
+</ol>
+<p>Si ottiene una f.e.m. <strong>alternata</strong> sinusoidale: cambia segno due volte per giro. È massima quando il piano della bobina è parallelo al campo (flusso nullo ma che varia più rapidamente) e nulla quando la bobina è perpendicolare al campo (flusso massimo ma momentaneamente stazionario).</p>
+<div class="callout esempio">
+
+<p>Bobina di 100 spire, area <span class="m">0{,}01\,\mathrm{m^2}</span>, campo 0,5 T, frequenza 50 Hz.</p>
+<ol>
+<li><span class="m">\omega = 2\pi \cdot 50 \approx 314\,\mathrm{rad/s}</span>.</li>
+<li><span class="m">\mathcal E_0 = 100 \cdot 0{,}5 \cdot 0{,}01 \cdot 314 = 157\,\mathrm V</span>.</li>
+<li><span class="m">\mathcal E(t) = 157\sin(314\,t)\ \mathrm V</span>.</li>
+</ol>
+</div>
+
+<p>Altre applicazioni dell&#39;induzione: <strong>trasformatori</strong> (lezione 68), <strong>piastre e forni a induzione</strong> e <strong>freni elettromagnetici</strong> (correnti parassite), <strong>pick-up</strong> delle chitarre elettriche (la corda magnetizzata vibra vicino a una bobina), lettori di carte magnetiche, microfoni dinamici, dinamo della bicicletta.</p>
+<h2>Conservazione della carica: l&#39;equazione di continuità</h2>
+<p>Accanto alle leggi dei campi, l&#39;elettromagnetismo si basa su un principio fondamentale: <strong>la carica elettrica si conserva</strong>. Non si crea né si distrugge: può solo spostarsi.</p>
+<p><strong>Forma integrale.</strong> Prendi una superficie chiusa <span class="m">S</span> che racchiude un volume <span class="m">V</span> con carica <span class="m">Q_{int}</span>. La corrente totale che esce dalla superficie è il flusso della densità di corrente, <span class="m">\oint_S \vec J \cdot d\vec S</span>. Se esce corrente, la carica dentro deve diminuire esattamente della stessa quantità:
+<span class="m d">\oint_S \vec J \cdot d\vec S = -\frac{dQ_{int}}{dt}</span></p>
+<p><strong>Forma locale, passo per passo.</strong></p>
+<ol>
+<li>Scrivo la carica interna con la densità di carica: <span class="m">Q_{int} = \int_V \rho\,dV</span>.</li>
+<li>Teorema della divergenza a sinistra: <span class="m">\oint_S \vec J \cdot d\vec S = \int_V \nabla \cdot \vec J\,dV</span>.</li>
+<li>Porto la derivata dentro l&#39;integrale (il volume è fisso): <span class="m">\dfrac{dQ_{int}}{dt} = \int_V \dfrac{\partial\rho}{\partial t}\,dV</span>.</li>
+<li>Ottengo <span class="m">\displaystyle\int_V\left(\nabla \cdot \vec J + \frac{\partial\rho}{\partial t}\right)dV = 0</span> per <strong>ogni</strong> volume, quindi:
 <span class="m d">\nabla \cdot \vec J = -\frac{\partial \rho}{\partial t}</span>
-dove:</p>
+dove:</li>
+</ol>
 <ul>
 <li><span class="m">\vec J</span> = densità di corrente (A/m²);</li>
 <li><span class="m">\rho</span> = densità di carica (C/m³);</li>
-<li><span class="m">Q_{int}</span> = carica dentro la superficie chiusa (C).</li>
+<li><span class="m">\nabla \cdot \vec J</span> = divergenza della densità di corrente, cioè quanta corrente &quot;esce&quot; da un punto per unità di volume (A/m³).</li>
 </ul>
-<p>Questa relazione esprime la conservazione della carica.</p>
+<p>È l&#39;<strong>equazione di continuità</strong>: esprime la conservazione della carica. Una relazione di conservazione deve contenere la <strong>derivata nel tempo</strong> della quantità conservata; le relazioni che legano <span class="m">\rho</span> a <span class="m">\vec E</span> o a <span class="m">\vec J</span> senza derivata temporale non esprimono la conservazione della carica.</p>
+<p><strong>Caso stazionario.</strong> Se le correnti sono stazionarie la carica in ogni punto non cambia: <span class="m">\partial\rho/\partial t = 0</span> e quindi <span class="m">\nabla \cdot \vec J = 0</span>. È la versione locale della <strong>legge dei nodi</strong> di Kirchhoff: la corrente che entra in un nodo è uguale a quella che esce.</p>
+<div class="callout attenzione">
+
+<ul>
+<li>La f.e.m. indotta dipende dalla <strong>rapidità</strong> di variazione del flusso, non dal valore del flusso: un campo enorme ma costante non induce niente.</li>
+<li>La corrente indotta si oppone alla <strong>variazione</strong> del flusso, non al campo.</li>
+<li>Nei conti con <span class="m">\Delta\Phi</span> attenzione ai segni: da <span class="m">-30</span> a <span class="m">+38\,\mathrm{Wb}</span> la variazione è <span class="m">68\,\mathrm{Wb}</span>.</li>
+</ul>
+</div>
+
 <div class="callout esame">
 
-<p>Domanda aperta tipica: enunciare Faraday-Neumann-Lenz con un esempio. Scrivi <span class="m">\mathcal E = -d\Phi/dt</span>, spiega il segno meno (Lenz, conservazione dell&#39;energia) e descrivi il magnete che si avvicina alla spira o l&#39;alternatore.</p>
+<ul>
+<li>Chiusa: quale relazione esprime la conservazione della carica: <span class="m">\nabla \cdot \vec J = -\partial\rho/\partial t</span> (l&#39;unica che lega la densità di corrente alla variazione nel tempo della densità di carica).</li>
+<li>Aperta: &quot;Si enuncino la legge di Faraday-Neumann e Lenz illustrando almeno un esempio&quot;. Scrivi <span class="m">\mathcal E = -d\Phi_B/dt</span> (con <span class="m">N</span> spire <span class="m">-N\,d\Phi/dt</span>), definisci il flusso e i tre modi di farlo variare, spiega il segno meno con la legge di Lenz e con la conservazione dell&#39;energia, e porta un esempio svolto: il magnete che si avvicina alla spira (verso della corrente e repulsione) oppure l&#39;alternatore (<span class="m">\mathcal E = NBS\omega\sin\omega t</span>).</li>
+</ul>
 </div>
 
 <div class="callout sintesi">
 
 <ul>
-<li>Flusso che varia nel tempo → f.e.m. indotta: <span class="m">\mathcal E = -d\Phi_B/dt</span> (con <span class="m">N</span> spire, <span class="m">-N\,d\Phi/dt</span>).</li>
-<li>Corrente indotta <span class="m">i = \mathcal E/R</span>; niente variazione di flusso, niente corrente.</li>
-<li>Lenz: la corrente indotta si oppone alla variazione di flusso (conservazione dell&#39;energia).</li>
+<li>Induzione: un flusso magnetico che <strong>varia nel tempo</strong> genera una f.e.m.; se il flusso è costante non c&#39;è corrente.</li>
+<li>Faraday-Neumann: <span class="m">\mathcal E = -d\Phi_B/dt</span>; con <span class="m">N</span> spire <span class="m">-N\,d\Phi/dt</span>; valore medio <span class="m">|\Delta\Phi|/\Delta t</span>.</li>
+<li>Corrente indotta <span class="m">i = \mathcal E/R</span>; carica circolata <span class="m">q = |\Delta\Phi|/R</span>.</li>
+<li>Lenz: la corrente indotta si oppone alla variazione di flusso; è la conservazione dell&#39;energia.</li>
 <li>Alternatore: <span class="m">\mathcal E = NBS\omega\sin\omega t</span>.</li>
-<li>Conservazione della carica: <span class="m">\nabla \cdot \vec J = -\partial\rho/\partial t</span>.</li>
+<li>Conservazione della carica: <span class="m">\oint \vec J \cdot d\vec S = -dQ/dt</span>, <span class="m">\nabla \cdot \vec J = -\partial\rho/\partial t</span>; stazionario: <span class="m">\nabla \cdot \vec J = 0</span> (nodi).</li>
 </ul>
 </div>

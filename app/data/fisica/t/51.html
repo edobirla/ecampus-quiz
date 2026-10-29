@@ -1,90 +1,213 @@
-<h1>Lezione 51 — Energia del condensatore e collegamenti serie/parallelo</h1>
-<h2>Energia immagazzinata</h2>
-<p>Per caricare un condensatore devi portare carica da un&#39;armatura all&#39;altra contro il campo. Questo lavoro resta immagazzinato come energia potenziale elettrostatica.</p>
-<p>Ragionamento in 3 passi:</p>
+<h1>Lezione 51 — Energia del condensatore, densità di energia e collegamenti</h1>
+<p>Caricare un condensatore costa lavoro: bisogna portare carica da un&#39;armatura all&#39;altra <strong>contro</strong> il campo che si va formando. Quel lavoro non va perso, resta immagazzinato come <strong>energia potenziale elettrostatica</strong> e si può riprendere scaricando il condensatore (è l&#39;energia del lampo di un flash). In questa lezione si calcola questa energia, si scopre che si può pensare <strong>distribuita nel campo</strong> con una densità <span class="m">\tfrac12\varepsilon_0E^2</span>, si calcolano la forza tra le armature e la <strong>pressione elettrostatica</strong>, e si riprendono i collegamenti in serie e parallelo con esercizi sull&#39;energia.</p>
+<h2>Energia elettrostatica di un condensatore</h2>
+<h3>Derivazione</h3>
+<p>Il processo di carica si immagina come il trasporto di tante cariche infinitesime <span class="m">dq</span> dall&#39;armatura che alla fine sarà negativa a quella che sarà positiva.</p>
 <ol>
-<li>Quando sulle armature c&#39;è già carica <span class="m">q</span>, la tensione è <span class="m">V' = q/C</span>.</li>
-<li>Spostare un&#39;altra carica <span class="m">dq</span> costa <span class="m">dL = V'\,dq = \frac{q}{C}dq</span>.</li>
-<li>Sommando da 0 a <span class="m">Q</span>: <span class="m">L = \int_0^Q \frac{q}{C}dq = \frac{Q^2}{2C}</span>.</li>
+<li><strong>Istante generico</strong>: sulle armature c&#39;è già la carica <span class="m">q</span> (e <span class="m">-q</span>), quindi tra di esse c&#39;è la d.d.p. <span class="m">V' = \frac{q}{C}</span>.</li>
+<li><strong>Lavoro per un&#39;altra carica <span class="m">dq</span></strong>: portarla da un&#39;armatura all&#39;altra contro il campo costa <span class="m">dL = V'\,dq = \frac{q}{C}\,dq</span> (lavoro esterno <span class="m">= </span> carica <span class="m">\times</span> d.d.p., lezione 48).</li>
+<li><strong>Lavoro totale</strong>: si somma da carica nulla fino alla carica finale <span class="m">Q</span>:</li>
 </ol>
+<p><span class="m d">L = \int_0^Q \frac{q}{C}\,dq = \frac1C\left[\frac{q^2}{2}\right]_0^Q = \frac{Q^2}{2C}</span></p>
+<p>Il lavoro è fatto contro una forza <strong>conservativa</strong>: dipende solo dallo stato finale (carica <span class="m">Q</span> e capacità <span class="m">C</span>), non da come si è caricato il condensatore. Resta quindi immagazzinato come energia potenziale elettrostatica <span class="m">U_e</span>. Usando <span class="m">Q = CV</span> si scrive in tre forme equivalenti:</p>
 <p><span class="m d">U_e = \frac{Q^2}{2C} = \frac12 CV^2 = \frac12 QV</span></p>
 <p>dove:</p>
 <ul>
-<li><span class="m">U_e</span> = energia elettrostatica (J)</li>
+<li><span class="m">U_e</span> = energia elettrostatica immagazzinata (J)</li>
 <li><span class="m">Q</span> = carica su un&#39;armatura (C)</li>
-<li><span class="m">V</span> = tensione tra le armature (V)</li>
+<li><span class="m">V</span> = d.d.p. tra le armature (V)</li>
 <li><span class="m">C</span> = capacità (F)</li>
 </ul>
-<p>Il fattore <span class="m">\tfrac12</span> c&#39;è perché la tensione cresce da 0 a <span class="m">V</span> durante la carica: in media vale <span class="m">V/2</span>.</p>
+<p>Passaggi tra le forme: <span class="m">\frac{Q^2}{2C} = \frac{(CV)^2}{2C} = \frac12CV^2</span>; e <span class="m">\frac12CV^2 = \frac12(CV)V = \frac12QV</span>.</p>
+<p><strong>Perché il fattore 1/2</strong>: durante la carica la d.d.p. cresce linearmente da 0 a <span class="m">V</span>; in media vale <span class="m">V/2</span>, quindi il lavoro è <span class="m">Q\cdot\frac V2</span>. Graficamente, è l&#39;area del triangolo sotto la retta <span class="m">V'(q) = q/C</span> tra 0 e <span class="m">Q</span>.</p>
+<p>Quale forma usare: a <strong>carica costante</strong> (condensatore isolato) conviene <span class="m">\frac{Q^2}{2C}</span>; a <strong>tensione costante</strong> (collegato a una pila) conviene <span class="m">\frac12CV^2</span>.</p>
 <div class="callout esempio">
 
-<p><span class="m">C = 3\,\mu\mathrm F</span> a <span class="m">10\,\mathrm V</span>: <span class="m">U = \tfrac12 \cdot 3 \cdot 10^{-6} \cdot 100 = 1{,}5 \cdot 10^{-4}\,\mathrm J</span>.</p>
+<p><strong>Energia accumulata.</strong> <span class="m">C = 3\,\mu\mathrm F</span> caricato a <span class="m">V = 10\,\mathrm V</span>:
+<span class="m">U = \frac12\cdot3\cdot10^{-6}\cdot10^2 = \frac12\cdot3\cdot10^{-4} = 1{,}5\cdot10^{-4}\,\mathrm J</span>.</p>
+<p>Carica: <span class="m">Q = CV = 30\,\mu\mathrm C</span>; controllo <span class="m">\frac12QV = \frac12\cdot30\cdot10^{-6}\cdot10 = 1{,}5\cdot10^{-4}\,\mathrm J</span>.</p>
 </div>
 
-<h2>Densità di energia</h2>
-<p>L&#39;energia si può pensare distribuita nel campo, dove il campo c&#39;è. Nel condensatore piano:</p>
-<p><span class="m d">U_e = \frac12 CV^2 = \frac12 \frac{\varepsilon_0 S}{d}(Ed)^2 = \frac12 \varepsilon_0 E^2 (Sd)</span></p>
-<p><span class="m">Sd</span> è il volume tra le armature. Quindi l&#39;energia per unità di volume è:</p>
-<p><span class="m d">u_e = \frac{U_e}{\text{volume}} = \frac12 \varepsilon_0 E^2</span></p>
+<h3>Conduttore isolato e sistemi di cariche</h3>
+<p>Allo stesso risultato si arriva per un <strong>conduttore isolato</strong> carico: il lavoro serve a portare la carica dall&#39;infinito fino alla superficie, e <span class="m">U = \frac{Q^2}{2C} = \frac12QV</span>. Un conduttore isolato si può vedere come un condensatore con la seconda armatura all&#39;infinito.</p>
+<p>Per un <strong>sistema di cariche puntiformi</strong> l&#39;energia potenziale è la somma dei lavori per portare ciascuna carica dall&#39;infinito (dove il potenziale è zero) alla posizione finale, nel potenziale creato da tutte le altre:</p>
+<p><span class="m d">U = \frac12\sum_i q_iV_i \qquad V_i = \sum_{j\ne i}\frac{1}{4\pi\varepsilon_0}\frac{q_j}{r_{ij}}</span></p>
+<p>dove:</p>
+<ul>
+<li><span class="m">q_i</span> = carica i-esima (C)</li>
+<li><span class="m">V_i</span> = potenziale nel punto della carica i dovuto a tutte le altre (V)</li>
+<li><span class="m">r_{ij}</span> = distanza tra le cariche i e j (m)</li>
+</ul>
+<p>Il fattore <span class="m">\frac12</span> c&#39;è perché la somma è simmetrica: la coppia (i, j) compare due volte (una con <span class="m">q_iV_i</span>, una con <span class="m">q_jV_j</span>) e senza il mezzo l&#39;energia di ogni coppia sarebbe contata due volte. Per distribuzioni continue le somme diventano integrali.</p>
+<p>Per i <strong>conduttori</strong> la carica sta in superficie e il potenziale è uniforme: <span class="m">U = \frac12\sum_k Q_kV_k</span>. Per un condensatore (due conduttori con <span class="m">+Q</span> a potenziale <span class="m">V_1</span> e <span class="m">-Q</span> a potenziale <span class="m">V_2</span>):</p>
+<p><span class="m d">U = \frac12QV_1 + \frac12(-Q)V_2 = \frac12Q(V_1 - V_2) = \frac12QV</span></p>
+<p>di nuovo la stessa espressione.</p>
+<div class="callout esempio">
+
+<p><strong>Energia di due cariche.</strong> <span class="m">q_1 = 2\,\mu\mathrm C</span> e <span class="m">q_2 = -3\,\mu\mathrm C</span> a 30 cm: <span class="m">U = \frac{1}{4\pi\varepsilon_0}\frac{q_1q_2}{r} = 8{,}99\cdot10^9\cdot\frac{(2\cdot10^{-6})(-3\cdot10^{-6})}{0{,}3} = 8{,}99\cdot10^9\cdot(-2\cdot10^{-11}) \approx -0{,}18\,\mathrm J</span>. Negativa: per separarle serve fornire 0,18 J.</p>
+</div>
+
+<h2>Densità di energia del campo elettrico</h2>
+<p>Dove si trova l&#39;energia? Si può pensare che sia <strong>associata al campo</strong>, distribuita nei punti dello spazio in cui il campo è attivo. Nel condensatore piano il campo è uniforme, quindi l&#39;energia sarà distribuita uniformemente nel volume tra le armature.</p>
+<p>Derivazione: si parte da <span class="m">U_e = \frac12CV^2</span> e si sostituiscono <span class="m">C = \frac{\varepsilon_0S}{d}</span> e <span class="m">V = Ed</span>:</p>
+<p><span class="m d">U_e = \frac12\cdot\frac{\varepsilon_0S}{d}\cdot(Ed)^2 = \frac12\cdot\frac{\varepsilon_0S}{d}\cdot E^2d^2 = \frac12\varepsilon_0E^2\,(S\,d)</span></p>
+<p>Il prodotto <span class="m">S\,d</span> è il <strong>volume</strong> <span class="m">\tau</span> dello spazio tra le armature, dove c&#39;è il campo. Dividendo l&#39;energia per il volume si ottiene la <strong>densità di energia elettrostatica</strong>:</p>
+<p><span class="m d">u_e = \frac{U_e}{\tau} = \frac12\varepsilon_0E^2</span></p>
 <p>dove:</p>
 <ul>
 <li><span class="m">u_e</span> = densità di energia (J/m³)</li>
-<li><span class="m">E</span> = campo elettrico nel punto (V/m)</li>
+<li><span class="m">E</span> = modulo del campo nel punto (V/m)</li>
+<li><span class="m">\tau = Sd</span> = volume tra le armature (m³)</li>
 </ul>
-<p>Questa formula non dipende dal condensatore. Vale in ogni punto dove c&#39;è un campo nel vuoto. L&#39;energia totale di un sistema è <span class="m">U_e = \int \tfrac12 \varepsilon_0 E^2\,dV</span> su tutto lo spazio dove il campo non è nullo. In un dielettrico si usa <span class="m">\varepsilon</span> al posto di <span class="m">\varepsilon_0</span>: <span class="m">u_e = \tfrac12 \varepsilon E^2</span>.</p>
+<p>Nella formula finale <strong>non compare nulla del condensatore</strong> (né S, né d, né Q): dipende solo dal campo nel punto. Si assume quindi che valga in <strong>qualunque</strong> regione di spazio vuoto dove c&#39;è un campo elettrico, anche non uniforme. L&#39;energia totale di una distribuzione di cariche si ottiene integrando su tutto lo spazio dove il campo è diverso da zero:</p>
+<p><span class="m d">U_e = \int_{\text{spazio}}\frac12\varepsilon_0E^2\,d\tau</span></p>
+<p>In un dielettrico si sostituisce <span class="m">\varepsilon_0</span> con <span class="m">\varepsilon = \varepsilon_r\varepsilon_0</span>: <span class="m">u_e = \frac12\varepsilon E^2</span> (lezione 52).</p>
 <div class="callout esempio">
 
-<p>Stesso condensatore della lezione 50 (<span class="m">E = 6 \cdot 10^5\,\mathrm{V/m}</span>): <span class="m">u_e = \tfrac12 \cdot 8{,}85 \cdot 10^{-12} \cdot (6 \cdot 10^5)^2 \approx 1{,}6\,\mathrm{J/m^3}</span>.</p>
+<p><strong>Stesso condensatore della lezione 50</strong> (<span class="m">S = 40\,\mathrm{cm^2}</span>, <span class="m">d = 1\,\mathrm{mm}</span>, <span class="m">V_0 = 600\,\mathrm V</span>, <span class="m">C = 35{,}4\,\mathrm{pF}</span>, <span class="m">E = 6\cdot10^5\,\mathrm{V/m}</span>).</p>
+<ul>
+<li>Energia: <span class="m">U = \frac12CV_0^2 = \frac12\cdot3{,}54\cdot10^{-11}\cdot3{,}6\cdot10^5 = 6{,}37\cdot10^{-6}\,\mathrm J \approx 6{,}4\,\mu\mathrm J</span>.</li>
+<li>Densità: <span class="m">u_e = \frac12\cdot8{,}85\cdot10^{-12}\cdot(6\cdot10^5)^2 = \frac12\cdot8{,}85\cdot10^{-12}\cdot3{,}6\cdot10^{11} \approx 1{,}59\,\mathrm{J/m^3}</span>.</li>
+<li>Controllo: volume <span class="m">\tau = 4\cdot10^{-3}\cdot10^{-3} = 4\cdot10^{-6}\,\mathrm{m^3}</span>; <span class="m">u_e\tau = 1{,}59\cdot4\cdot10^{-6} = 6{,}37\cdot10^{-6}\,\mathrm J</span>, uguale a <span class="m">U</span>.</li>
+</ul>
 </div>
 
-<h2>Forza tra le armature</h2>
-<p>Le armature di segno opposto si attraggono. La forza vale:</p>
-<p><span class="m d">F = \frac{Q^2}{2\varepsilon_0 S} = \frac{\sigma^2 S}{2\varepsilon_0}</span></p>
-<p>La forza per unità di superficie è la pressione elettrostatica, ed è uguale alla densità di energia:</p>
-<p><span class="m d">p_e = \frac{F}{S} = \frac{\sigma^2}{2\varepsilon_0} = \frac12 \varepsilon_0 E^2</span></p>
-<h2>Collegamenti: come trovare la capacità equivalente</h2>
-<p><strong>Parallelo</strong> (stessa tensione <span class="m">V</span>):</p>
+<div class="callout esempio">
+
+<p><strong>Sfera metallica</strong> (esercizio della dispensa 58). Sfera isolata di diametro 10 cm (<span class="m">R = 0{,}05\,\mathrm m</span>) a potenziale <span class="m">V_0 = 8000\,\mathrm V</span>. Densità di energia vicino alla superficie.</p>
 <ol>
-<li><span class="m">Q_1 = C_1 V</span>, <span class="m">Q_2 = C_2 V</span>.</li>
-<li>Carica totale <span class="m">Q = Q_1 + Q_2 = (C_1 + C_2)V</span>.</li>
-<li>Quindi <span class="m">C_{eq} = C_1 + C_2</span>: la somma delle capacità.</li>
+<li>Per la sfera <span class="m">V_0 = \frac{Q}{4\pi\varepsilon_0R}</span> ed <span class="m">E = \frac{Q}{4\pi\varepsilon_0R^2}</span> sulla superficie, quindi <span class="m">E = \frac{V_0}{R} = \frac{8000}{0{,}05} = 1{,}6\cdot10^5\,\mathrm{V/m}</span>, radiale.</li>
+<li><span class="m">u_e = \frac12\varepsilon_0E^2 = \frac12\cdot8{,}85\cdot10^{-12}\cdot2{,}56\cdot10^{10} \approx 0{,}11\,\mathrm{J/m^3}</span>.</li>
 </ol>
-<p><strong>Serie</strong> (stessa carica <span class="m">Q</span>):</p>
+</div>
+
+<h2>Bilancio energetico con il generatore</h2>
+<p>Se il condensatore resta collegato a un generatore che mantiene costante la d.d.p. <span class="m">V</span> e si avvicinano le armature, la capacità aumenta e il generatore fornisce altra carica <span class="m">dQ</span>. Bilancio:</p>
+<ul>
+<li>il generatore spende il lavoro <span class="m">dL_{gen} = V\,dQ</span> (sposta <span class="m">dQ</span> attraverso la d.d.p. <span class="m">V</span>);</li>
+<li>l&#39;energia del condensatore aumenta di <span class="m">dU = d\left(\tfrac12QV\right) = \tfrac12V\,dQ</span> (a <span class="m">V</span> costante);</li>
+<li>la differenza, <span class="m">V\,dQ - \tfrac12V\,dQ = \tfrac12V\,dQ</span>, è il <strong>lavoro meccanico</strong> compiuto dalla forza attrattiva tra le armature mentre si avvicinano.</li>
+</ul>
+<p>L&#39;energia fornita dal generatore va <strong>per metà</strong> nell&#39;energia elettrostatica e <strong>per metà</strong> nel lavoro di avvicinamento delle armature.</p>
+<h2>Forza tra le armature e pressione elettrostatica</h2>
+<p>Le armature hanno cariche opposte e si attraggono. La forza si ricava dall&#39;energia (principio dei lavori virtuali).</p>
+<p><strong>A carica costante</strong> (condensatore isolato): con armature a distanza <span class="m">x</span>, <span class="m">U = \frac{Q^2}{2C} = \frac{Q^2x}{2\varepsilon_0S}</span>. Il lavoro della forza del campo è l&#39;opposto della variazione di energia: <span class="m">F = -\frac{dU}{dx} = -\frac{Q^2}{2\varepsilon_0S}</span>. Il segno meno indica che la forza tende a <strong>ridurre</strong> x: è attrattiva. In modulo</p>
+<p><span class="m d">F = \frac{Q^2}{2\varepsilon_0S} = \frac{\sigma^2S}{2\varepsilon_0}</span></p>
+<p>dove:</p>
+<ul>
+<li><span class="m">F</span> = forza tra le armature (N)</li>
+<li><span class="m">Q</span> = carica (C); <span class="m">\sigma = Q/S</span> (C/m²)</li>
+<li><span class="m">S</span> = area delle armature (m²)</li>
+</ul>
+<p>Si può capire anche così: ogni armatura sente il campo dell&#39;altra, che vale <span class="m">\frac{\sigma}{2\varepsilon_0}</span> (metà del campo totale, perché il campo di una lastra non agisce su sé stessa); <span class="m">F = Q\cdot\frac{\sigma}{2\varepsilon_0} = \frac{\sigma^2S}{2\varepsilon_0}</span>.</p>
+<p><strong>A d.d.p. costante</strong> (collegato al generatore): <span class="m">U = \frac12CV^2 = \frac{\varepsilon_0SV^2}{2x}</span>; qui lavora anche il generatore, e la forza si ottiene con il segno <strong>opposto</strong> rispetto alla variazione dell&#39;energia elettrostatica: <span class="m">F = +\frac{dU}{dx} = -\frac{\varepsilon_0SV^2}{2x^2}</span>. In modulo <span class="m">F = \frac{\varepsilon_0SV^2}{2d^2} = \frac{\varepsilon_0E^2S}{2}</span>: lo stesso valore di prima (con <span class="m">E = V/d = \sigma/\varepsilon_0</span>).</p>
+<p><strong>Pressione elettrostatica</strong>: forza per unità di superficie tra le armature:</p>
+<p><span class="m d">p_e = \frac FS = \frac{\sigma^2}{2\varepsilon_0} = \frac12\varepsilon_0E^2</span></p>
+<p>dove:</p>
+<ul>
+<li><span class="m">p_e</span> = pressione elettrostatica (Pa = N/m²)</li>
+</ul>
+<p>Non contiene parametri del sistema (né d né S), quindi vale per qualunque distribuzione superficiale di carica e qualunque forma delle armature. È numericamente <strong>uguale alla densità di energia</strong> (J/m³ = N/m² = Pa).</p>
+<div class="callout esempio">
+
+<p><strong>Elettrometro a bilancia</strong> (esercizio della dispensa 58). Su un braccio di una bilancia è appesa un&#39;armatura di un condensatore piano, affacciata a una seconda armatura fissa; <span class="m">S = 400\,\mathrm{cm^2}</span>, <span class="m">d = 5\,\mathrm{mm}</span>. Con un generatore che mantiene la d.d.p. <span class="m">V</span>, per equilibrare serve una massa <span class="m">m = 20\,\mathrm g</span> sull&#39;altro piatto. Trovare <span class="m">V</span>.</p>
+<ol>
+<li>Equilibrio: forza elettrostatica = peso: <span class="m">\frac{\varepsilon_0SV^2}{2d^2} = mg</span>.</li>
+<li>Ricavo <span class="m">V</span>: <span class="m">V = d\sqrt{\frac{2mg}{\varepsilon_0S}}</span>.</li>
+<li>Numeri: <span class="m">S = 0{,}04\,\mathrm{m^2}</span>, <span class="m">d = 0{,}005\,\mathrm m</span>, <span class="m">m = 0{,}02\,\mathrm{kg}</span>: <span class="m">\frac{2\cdot0{,}02\cdot9{,}81}{8{,}85\cdot10^{-12}\cdot0{,}04} = \frac{0{,}392}{3{,}54\cdot10^{-13}} = 1{,}11\cdot10^{12}</span>, radice <span class="m">1{,}05\cdot10^6</span>.</li>
+<li><span class="m">V = 0{,}005\cdot1{,}05\cdot10^6 \approx 5{,}3\cdot10^3\,\mathrm V</span>.</li>
+</ol>
+<p>Misurando una forza si misura una tensione: per questo si chiama elettrometro.</p>
+</div>
+
+<h2>Collegamenti: come trovare la capacità equivalente</h2>
+<p><strong>Parallelo</strong> (stessa d.d.p. <span class="m">V</span> su tutti):</p>
+<ol>
+<li><span class="m">Q_1 = C_1V</span>, <span class="m">Q_2 = C_2V</span>.</li>
+<li><span class="m">Q = Q_1 + Q_2 = (C_1 + C_2)V</span>.</li>
+<li><span class="m">C_{eq} = Q/V = C_1 + C_2</span>: la <strong>somma</strong> delle capacità.</li>
+</ol>
+<p><strong>Serie</strong> (stessa carica <span class="m">Q</span> su tutti, per induzione):</p>
 <ol>
 <li><span class="m">V_1 = Q/C_1</span>, <span class="m">V_2 = Q/C_2</span>.</li>
-<li>Tensione totale <span class="m">V = V_1 + V_2 = Q\left(\frac{1}{C_1} + \frac{1}{C_2}\right)</span>.</li>
-<li>Quindi <span class="m">\frac{1}{C_{eq}} = \frac{1}{C_1} + \frac{1}{C_2}</span>: l&#39;inverso della somma degli inversi.</li>
+<li><span class="m">V = V_1 + V_2 = Q\left(\frac1{C_1} + \frac1{C_2}\right)</span>.</li>
+<li><span class="m">\frac1{C_{eq}} = \frac VQ = \frac1{C_1} + \frac1{C_2}</span>: l&#39;<strong>inverso della somma degli inversi</strong>.</li>
 </ol>
-<p>Per un circuito misto si riduce un pezzo alla volta, partendo dal gruppo più interno.</p>
+<p><strong>Circuiti misti</strong>: si riduce un gruppo alla volta, partendo da quello più interno (un parallelo dentro una serie, o viceversa), sostituendolo con il suo equivalente, finché resta un solo condensatore.</p>
+<p>L&#39;energia di un sistema è quella del condensatore equivalente: è il lavoro speso dal generatore per caricare l&#39;equivalente, ed è uguale alla somma delle energie dei singoli.</p>
 <div class="callout esempio">
 
-<p><span class="m">C_2 = 10\,\mu\mathrm F</span> e <span class="m">C_3 = 2\,\mu\mathrm F</span> in parallelo danno <span class="m">12\,\mu\mathrm F</span>. In serie con <span class="m">C_1 = 10\,\mu\mathrm F</span>: <span class="m">C_{eq} = \frac{10 \cdot 12}{10 + 12} \approx 5{,}45\,\mu\mathrm F</span>.</p>
+<p><strong>Circuito misto.</strong> <span class="m">C_1 = 10\,\mu\mathrm F</span> in serie con il parallelo di <span class="m">C_2 = 10\,\mu\mathrm F</span> e <span class="m">C_3 = 2\,\mu\mathrm F</span>.</p>
+<ol>
+<li>Parallelo interno: <span class="m">C_{23} = 10 + 2 = 12\,\mu\mathrm F</span>.</li>
+<li>Serie con <span class="m">C_1</span>: <span class="m">C_{eq} = \frac{10\cdot12}{10 + 12} = \frac{120}{22} \approx 5{,}45\,\mu\mathrm F</span>.</li>
+</ol>
 </div>
 
 <div class="callout esempio">
 
-<p>Due condensatori uguali <span class="m">C</span> in serie su una pila da 10 V immagazzinano 120 J. <span class="m">C_{eq} = C/2</span>, quindi <span class="m">U = \tfrac12 \cdot \tfrac C2 \cdot 10^2 = 25C = 120\,\mathrm J</span>. Risulta <span class="m">C = 4{,}8\,\mathrm F</span>.</p>
+<p><strong>Due condensatori uguali in serie su una pila.</strong> Due condensatori uguali <span class="m">C</span> in serie su una pila da 10 V immagazzinano in tutto 120 J. Quanto vale <span class="m">C</span>?</p>
+<ol>
+<li>Equivalente della serie di due uguali: <span class="m">C_{eq} = C/2</span>.</li>
+<li>Energia: <span class="m">U = \frac12C_{eq}V^2 = \frac12\cdot\frac C2\cdot100 = 25\,C</span>.</li>
+<li><span class="m">25\,C = 120\,\mathrm J \Rightarrow C = 4{,}8\,\mathrm F</span>.</li>
+</ol>
+<p>(Valore enorme, da supercondensatore: l&#39;esercizio è numerico.) Usare <span class="m">2C</span> (parallelo) darebbe 1,2 F: sbagliato.</p>
 </div>
 
+<div class="callout esempio">
+
+<p><strong>Parallelo carico a 100 V</strong> (esercizio della dispensa 61). <span class="m">4\,\mu\mathrm F</span> e <span class="m">8\,\mu\mathrm F</span> in parallelo a 100 V.</p>
+<ol>
+<li>Stessa tensione: <span class="m">Q_1 = 4\cdot10^{-6}\cdot100 = 400\,\mu\mathrm C</span>, <span class="m">Q_2 = 800\,\mu\mathrm C</span>.</li>
+<li><span class="m">C_{eq} = 12\,\mu\mathrm F</span>; <span class="m">U = \frac12\cdot12\cdot10^{-6}\cdot10^4 = 0{,}06\,\mathrm J</span>.</li>
+<li>Controllo: <span class="m">\frac12\cdot4\cdot10^{-6}\cdot10^4 + \frac12\cdot8\cdot10^{-6}\cdot10^4 = 0{,}02 + 0{,}04 = 0{,}06\,\mathrm J</span>.</li>
+</ol>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Serie in parallelo a un terzo</strong> (esercizio della dispensa 61, parti a e b). <span class="m">C_1 = 0{,}7\,\mu\mathrm F</span> in serie con <span class="m">C_2 = 0{,}3\,\mu\mathrm F</span>; la serie è in parallelo con <span class="m">C_3 = 0{,}4\,\mu\mathrm F</span>; tensione applicata <span class="m">V_0 = 24\,\mathrm V</span>.</p>
+<ol>
+<li>Serie: <span class="m">C_{12} = \frac{0{,}7\cdot0{,}3}{1{,}0} = 0{,}21\,\mu\mathrm F</span>. Totale: <span class="m">C = 0{,}21 + 0{,}4 = 0{,}61\,\mu\mathrm F</span>.</li>
+<li><span class="m">C_3</span> è direttamente ai capi del generatore: <span class="m">V_3 = 24\,\mathrm V</span>.</li>
+<li>La serie ha ai capi 24 V e carica comune <span class="m">q = C_{12}V_0 = 0{,}21\cdot24 = 5{,}04\,\mu\mathrm C</span>.</li>
+<li><span class="m">V_1 = q/C_1 = 5{,}04/0{,}7 = 7{,}2\,\mathrm V</span>; <span class="m">V_2 = 5{,}04/0{,}3 = 16{,}8\,\mathrm V</span> (somma 24 V). Il condensatore più piccolo prende la tensione più grande.</li>
+</ol>
+<p>Il seguito (dielettrico in <span class="m">C_2</span>) è nella lezione 52.</p>
+</div>
+
+<h2>Perché la serie per le alte tensioni</h2>
+<p>In serie la tensione totale si <strong>divide</strong> tra i condensatori. Con N condensatori uguali, ognuno ha ai capi <span class="m">V/N</span>. Così si può lavorare a tensioni più alte di quella che un singolo condensatore sopporta senza scarica (rigidità dielettrica, lezione 52), al prezzo di una capacità ridotta a <span class="m">C/N</span>.</p>
 <div class="callout attenzione">
 
-<p>Nel parallelo la capacità equivalente è la somma, non l&#39;inverso della somma degli inversi. L&#39;inverso vale per la serie.</p>
+<ul>
+<li><span class="m">U = \frac12QV</span>, non <span class="m">QV</span>: il fattore 1/2 viene dalla tensione che cresce durante la carica.</li>
+<li>Nel parallelo <span class="m">C_{eq}</span> è la <strong>somma</strong>; l&#39;inverso della somma degli inversi vale per la serie.</li>
+<li>La densità di energia <span class="m">\frac12\varepsilon_0E^2</span> vale ovunque ci sia campo, non solo nei condensatori.</li>
+<li>La forza tra le armature usa il campo di <strong>una sola</strong> armatura (<span class="m">\sigma/2\varepsilon_0</span>), per questo compare il 2 al denominatore.</li>
+</ul>
 </div>
 
-<h2>Perché si usa la serie per le alte tensioni</h2>
-<p>In serie la tensione totale si divide tra i condensatori. Con <span class="m">N</span> condensatori uguali, ognuno regge <span class="m">V/N</span>. Così nessuno supera la sua tensione massima.</p>
 <div class="callout esame">
 
-<p>Domande aperte: &quot;Cos&#39;è un condensatore?&quot;, &quot;Come si trovano le capacità equivalenti in serie e parallelo?&quot; (con i passaggi sopra), &quot;Densità di energia partendo dal condensatore piano&quot; (da <span class="m">\tfrac12 CV^2</span> a <span class="m">\tfrac12\varepsilon_0 E^2</span>).</p>
+<ul>
+<li><strong>&quot;Cosa è un condensatore?&quot;</strong> (aperta): due conduttori in induzione completa (armature), cariche <span class="m">\pm Q</span>, <span class="m">C = Q/\Delta V</span> dipende solo da geometria e mezzo; esempi piano (<span class="m">\varepsilon_0S/d</span>), sferico, cilindrico; immagazzina energia <span class="m">\frac12CV^2</span>.</li>
+<li><strong>&quot;Capacità equivalenti in serie e parallelo&quot;</strong> (aperta): i tre passi di ciascuna derivazione.</li>
+<li><strong>&quot;Densità di energia partendo dal condensatore piano&quot;</strong> (aperta): lavoro di carica <span class="m">\int_0^Q\frac qC dq = \frac{Q^2}{2C}</span>, poi <span class="m">\frac12CV^2</span> con <span class="m">C = \varepsilon_0S/d</span> e <span class="m">V = Ed</span> dà <span class="m">\frac12\varepsilon_0E^2\cdot Sd</span>, divisione per il volume: <span class="m">u_e = \frac12\varepsilon_0E^2</span>, valida in ogni punto con campo; energia totale = integrale di <span class="m">u_e</span>.</li>
+<li>Chiuse: energia <span class="m">\frac12QV</span>, energia con numeri (<span class="m">1{,}5\cdot10^{-4}\,\mathrm J</span>), parallelo = somma, circuito misto (5,45 µF), due uguali in serie con 120 J (4,8 F).</li>
+</ul>
 </div>
 
 <div class="callout sintesi">
 
 <ul>
-<li><span class="m">U_e = \frac{Q^2}{2C} = \tfrac12 CV^2 = \tfrac12 QV</span>.</li>
-<li>Densità di energia: <span class="m">u_e = \tfrac12 \varepsilon_0 E^2</span> (J/m³), valida ovunque ci sia campo.</li>
-<li>Parallelo: <span class="m">C_{eq} = C_1 + C_2</span> (stessa V).</li>
-<li>Serie: <span class="m">1/C_{eq} = 1/C_1 + 1/C_2</span> (stessa Q).</li>
-<li>Pressione tra le armature: <span class="m">p_e = \tfrac12 \varepsilon_0 E^2</span>.</li>
+<li>Lavoro di carica: <span class="m">dL = \frac qC dq</span>; <span class="m">U_e = \frac{Q^2}{2C} = \frac12CV^2 = \frac12QV</span>.</li>
+<li>Sistemi di cariche: <span class="m">U = \frac12\sum q_iV_i</span>; conduttori <span class="m">\frac12\sum Q_kV_k</span>.</li>
+<li>Densità di energia: <span class="m">u_e = \frac12\varepsilon_0E^2</span> (J/m³), in ogni punto con campo; <span class="m">U = \int u_e\,d\tau</span>.</li>
+<li>Con generatore a V costante: metà dell&#39;energia fornita va nel condensatore, metà in lavoro meccanico.</li>
+<li>Forza tra le armature: <span class="m">F = \frac{Q^2}{2\varepsilon_0S}</span>; pressione <span class="m">p_e = \frac{\sigma^2}{2\varepsilon_0} = \frac12\varepsilon_0E^2 = u_e</span>.</li>
+<li>Parallelo <span class="m">C_{eq} = \sum C_i</span> (stessa V); serie <span class="m">1/C_{eq} = \sum 1/C_i</span> (stessa Q); misti: dall&#39;interno.</li>
+<li>Serie per le alte tensioni: ognuno regge <span class="m">V/N</span>.</li>
 </ul>
 </div>

@@ -1,54 +1,178 @@
-<h1>Lezione 35 — Trasformazioni termodinamiche e gas perfetti</h1>
-<h2>Sistemi e variabili di stato</h2>
-<p>Un <strong>sistema termodinamico</strong> è una parte di mondo descritta da poche grandezze macroscopiche: pressione <span class="m">p</span>, volume <span class="m">V</span>, temperatura <span class="m">T</span>. Si chiamano <strong>variabili di stato</strong>. Tutto il resto è l&#39;<strong>ambiente</strong>.</p>
+<h1>Lezione 35 — Sistemi termodinamici, trasformazioni, lavoro e gas perfetti</h1>
+<h2>Introduzione</h2>
+<p>Nella lezione precedente abbiamo parlato di temperatura e calore. Ora costruiamo il &quot;linguaggio&quot; della termodinamica: che cos&#39;è un sistema, quando è in equilibrio, come lo si descrive con poche variabili, che cos&#39;è una trasformazione e come si calcola il lavoro che un gas compie espandendosi. Poi introduciamo il modello più usato, il <strong>gas perfetto</strong>, con la sua equazione di stato e le trasformazioni notevoli. Questi strumenti servono per enunciare il primo principio (lezione 36) e per studiare i gas (lezione 37) e le macchine termiche (lezioni 39 e 40).</p>
+<h2>Sistemi termodinamici</h2>
+<p>Un sistema <strong>macroscopico</strong> è un sistema osservabile con i nostri sensi. È fatto di un numero enorme di costituenti microscopici (molecole), ma spesso non serve seguirli uno per uno: basta descrivere il sistema con poche grandezze <strong>d&#39;insieme</strong>, come pressione, volume, densità e temperatura. Queste si chiamano <strong>variabili termodinamiche</strong> o <strong>parametri di stato</strong>. Un sistema descritto attraverso i suoi parametri di stato si chiama <strong>sistema termodinamico</strong>.</p>
+<p>Un sistema termodinamico può essere una parte di un sistema più grande o l&#39;unione di più sistemi. Tutto ciò con cui il sistema può interagire si chiama <strong>ambiente</strong>.</p>
+<h3>Aperti, chiusi, isolati</h3>
+<table>
+<thead>
+<tr>
+<th>Sistema</th>
+<th>Scambia materia?</th>
+<th>Scambia energia?</th>
+<th>Esempio</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>aperto</td>
+<td>sì</td>
+<td>sì</td>
+<td>pentola senza coperchio che bolle</td>
+</tr>
+<tr>
+<td>chiuso</td>
+<td>no</td>
+<td>sì</td>
+<td>gas in un cilindro con pistone</td>
+</tr>
+<tr>
+<td>isolato</td>
+<td>no</td>
+<td>no</td>
+<td>thermos ideale; l&#39;universo</td>
+</tr>
+</tbody></table>
+<p>I sistemi con cui un sistema non isolato scambia energia si chiamano <strong>sorgenti</strong> (o serbatoi). Se le sorgenti non scambiano energia con nient&#39;altro, il sistema insieme alle sue sorgenti forma un <strong>sistema isolato</strong>: questa idea tornerà nel secondo principio.</p>
+<h3>Equilibrio termodinamico</h3>
+<p>Lo stato di un sistema è noto quando sono noti i valori dei suoi parametri di stato. Se i parametri sono costanti nel tempo, lo stato è <strong>stazionario</strong>. Un sistema chiuso è in <strong>equilibrio termodinamico</strong> quando è contemporaneamente in:</p>
 <ul>
-<li>Sistema <strong>aperto</strong>: scambia materia ed energia.</li>
-<li>Sistema <strong>chiuso</strong>: scambia energia ma non materia.</li>
-<li>Sistema <strong>isolato</strong>: non scambia né materia né energia.</li>
+<li><strong>equilibrio meccanico</strong>: le forze dell&#39;ambiente sul sistema sono bilanciate da quelle del sistema sull&#39;ambiente (per un gas: la pressione interna equilibra quella esterna);</li>
+<li><strong>equilibrio termico</strong>: la temperatura è uniforme in tutto il sistema e uguale a quella dell&#39;ambiente;</li>
+<li><strong>equilibrio chimico</strong>: non avvengono reazioni che cambiano la composizione.</li>
 </ul>
-<p>Un sistema è in <strong>equilibrio</strong> quando le sue variabili di stato sono uniformi e costanti nel tempo.</p>
-<h2>L&#39;equazione di stato dei gas perfetti</h2>
-<p>Un gas perfetto (o ideale) è un gas rarefatto: molecole piccole e lontane, che non si attraggono. I gas reali si comportano così a bassa pressione.</p>
+<p>Un sistema lasciato isolato per un tempo sufficiente raggiunge l&#39;equilibrio termodinamico. L&#39;uniformità delle variabili si ottiene più facilmente se il sistema non è troppo esteso.</p>
+<h2>La mole e l&#39;equazione di stato dei gas perfetti</h2>
+<h3>La mole</h3>
+<p>Per i gas la quantità di sostanza si misura in <strong>moli</strong> (mol), una delle sette unità fondamentali SI. Una mole contiene tante unità elementari (molecole, atomi) quanti sono gli atomi in 12 g di carbonio-12, cioè il <strong>numero di Avogadro</strong>:
+<span class="m d">N_A = 6{,}022\cdot10^{23}\,\mathrm{mol^{-1}}</span>
+Un sistema con <span class="m">N</span> molecole contiene <span class="m">n = N/N_A</span> moli. La massa di una mole è il <strong>peso molecolare espresso in grammi</strong> (una mole di O₂, peso molecolare 32, ha massa 32 g), quindi <span class="m">n = m/M</span> con <span class="m">m</span> in grammi e <span class="m">M</span> in g/mol.</p>
+<p><strong>Legge di Avogadro</strong>: volumi uguali di gas diversi, alla stessa temperatura e pressione, contengono lo stesso numero di molecole. In particolare a 1 atm e 0 °C una mole di qualunque gas occupa il <strong>volume molare</strong> <span class="m">V_m = 22{,}414\,\mathrm L = 0{,}022414\,\mathrm{m^3}</span>.</p>
+<h3>L&#39;equazione di stato</h3>
+<p>Lo stato di equilibrio di un gas (di massa fissata) è completamente descritto da pressione, volume e temperatura. Sperimentalmente questi tre parametri <strong>non sono indipendenti</strong>: sono legati da una relazione fissa, l&#39;<strong>equazione di stato</strong>. I gas che la seguono si dicono <strong>gas perfetti</strong> (o ideali):</p>
 <p><span class="m d">pV = nRT</span></p>
 <p>dove:</p>
 <ul>
-<li><span class="m">p</span> = pressione, in Pa</li>
-<li><span class="m">V</span> = volume, in m³</li>
+<li><span class="m">p</span> = pressione, in Pa (<span class="m">1\,\mathrm{atm} = 1{,}013\cdot10^5\,\mathrm{Pa}</span>, <span class="m">1\,\mathrm{bar} = 10^5\,\mathrm{Pa}</span>)</li>
+<li><span class="m">V</span> = volume, in m³ (<span class="m">1\,\mathrm L = 10^{-3}\,\mathrm{m^3}</span>)</li>
 <li><span class="m">n</span> = numero di moli, in mol</li>
-<li><span class="m">R = 8{,}314\,\mathrm{J/(mol\,K)}</span> = costante dei gas</li>
+<li><span class="m">R = 8{,}314\,\mathrm{J/(mol\,K)}</span> = costante dei gas (<span class="m">= 0{,}0821\,\mathrm{L\,atm/(mol\,K)}</span>)</li>
 <li><span class="m">T</span> = temperatura assoluta, in K</li>
 </ul>
-<p>Per una quantità fissata di gas, le variabili indipendenti sono <strong>due</strong>. La terza si ricava dall&#39;equazione. Per questo basta il piano <span class="m">p</span>-<span class="m">V</span> (piano di Clapeyron) per disegnare ogni stato.</p>
+<p>In termini di numero di molecole: <span class="m">pV = Nk_BT</span>, con <span class="m">k_B = R/N_A</span>.</p>
+<p>Un gas reale si avvicina al gas perfetto quando è <strong>rarefatto</strong> (bassa pressione, bassa densità): le molecole sono piccole rispetto alla distanza tra loro e non si attraggono. Ad alta pressione, o vicino alla condensazione, servono correzioni (equazione di van der Waals, lezione 37).</p>
+<p><strong>Quante variabili sono indipendenti.</strong> Per una quantità fissata di gas perfetto (<span class="m">n</span> costante), su tre variabili <span class="m">p, V, T</span> ce n&#39;è un&#39;equazione: <strong>le variabili indipendenti sono al massimo due</strong>. La terza si ricava. Per questo ogni stato di equilibrio si rappresenta come un <strong>punto</strong> in un piano a due variabili; il più usato è il piano <span class="m">p</span>-<span class="m">V</span>, detto <strong>piano di Clapeyron</strong>.</p>
+<p>Per una quantità fissata di gas, <span class="m">pV/T = nR</span> è costante, quindi tra due stati:
+<span class="m d">\frac{p_1V_1}{T_1} = \frac{p_2V_2}{T_2}</span>
+Questa relazione permette di rispondere a molte domande senza conoscere <span class="m">n</span>.</p>
 <div class="callout attenzione">
 
-<p>Nelle formule dei gas la temperatura va <strong>sempre in kelvin</strong>. Da 27 °C a 127 °C la temperatura non quadruplica: passa da 300 K a 400 K.</p>
+<p>Nelle formule dei gas la temperatura va <strong>sempre in kelvin</strong>. Da 27 °C a 127 °C la temperatura assoluta non quadruplica: passa da 300 K a 400 K, cioè aumenta di un fattore 4/3. Se si usassero i gradi Celsius si otterrebbe il fattore sbagliato 127/27.</p>
 </div>
 
-<h2>Trasformazioni</h2>
-<p>Una <strong>trasformazione</strong> porta il sistema da uno stato a un altro.</p>
+<div class="callout esempio">
+
+<p><strong>Recipiente rigido scaldato.</strong> Un gas perfetto in un recipiente a pareti rigide (volume costante) passa da 27 °C a 127 °C. Con <span class="m">V</span> costante, <span class="m">p/T</span> è costante:
+<span class="m d">\frac{p_2}{p_1} = \frac{T_2}{T_1} = \frac{400}{300} = \frac43</span>
+La pressione aumenta di un fattore 4/3.</p>
+<p><strong>Pressione tripla e volume un terzo.</strong> Se dopo una trasformazione la pressione è tripla e il volume un terzo, il prodotto <span class="m">pV</span> è invariato, quindi <span class="m">T = pV/(nR)</span> è invariata: la temperatura finale è uguale a quella iniziale.</p>
+</div>
+
+<h2>Trasformazioni termodinamiche</h2>
+<p>Una <strong>trasformazione</strong> è il passaggio del sistema da uno stato a un altro, cioè la variazione nel tempo dei suoi parametri di stato. La termodinamica degli stati di equilibrio studia trasformazioni tra uno stato iniziale e uno finale <strong>di equilibrio</strong>. Siccome un sistema in equilibrio isolato resta nel suo stato, le trasformazioni sono sempre provocate da <strong>scambi di calore o di lavoro</strong> con l&#39;ambiente.</p>
+<p>Di solito si descrive una trasformazione solo con lo stato iniziale e quello finale, trascurando i complicati stati intermedi. Si distinguono:</p>
 <ul>
-<li><strong>Quasi statica</strong>: passa per tanti stati di equilibrio vicini. Si può disegnare come una curva.</li>
-<li><strong>Reversibile</strong>: si può ripercorrere all&#39;indietro e tornare esattamente allo stato iniziale, senza lasciare tracce. È un caso ideale: niente attriti, niente salti bruschi.</li>
-<li><strong>Irreversibile</strong>: tutte le trasformazioni reali. Esempio: un gas che si espande di colpo nel vuoto (espansione libera).</li>
-<li><strong>Ciclica</strong>: lo stato finale coincide con quello iniziale.</li>
+<li><strong>Quasi statica</strong>: il sistema passa dallo stato iniziale a quello finale attraverso una fitta successione di <strong>stati di equilibrio</strong> vicinissimi tra loro. È un caso limite ideale (la trasformazione è lentissima). Solo una trasformazione quasi statica si può disegnare come una <strong>curva</strong> nel piano <span class="m">p</span>-<span class="m">V</span>, perché in ogni istante <span class="m">p</span>, <span class="m">V</span>, <span class="m">T</span> sono definiti.</li>
+<li><strong>Reversibile</strong>: si possono ripercorrere <strong>a ritroso</strong> tutti i passaggi e tornare <strong>esattamente</strong> allo stato iniziale, sia del sistema sia dell&#39;ambiente, senza lasciare tracce. Per esserlo deve essere quasi statica e <strong>senza attriti</strong> o altri effetti dissipativi. È un&#39;idealizzazione.</li>
+<li><strong>Irreversibile</strong>: non è una successione di stati di equilibrio, oppure coinvolge forze non conservative (attriti) che dissipano energia. <strong>Tutte le trasformazioni reali</strong> sono più o meno irreversibili.</li>
+<li><strong>Ciclica</strong>: lo stato finale <strong>coincide</strong> con quello iniziale.</li>
+</ul>
+<h3>Trasformazioni spontanee</h3>
+<p>Un sistema lontano dall&#39;equilibrio, se viene isolato, si porta <strong>spontaneamente</strong> all&#39;equilibrio. Esempi:</p>
+<ul>
+<li>una sbarretta metallica tenuta con gli estremi a due temperature diverse ha un profilo di temperatura non uniforme; se la si isola, la temperatura si uniforma;</li>
+<li><strong>espansione libera</strong>: un gas in equilibrio occupa metà di un recipiente isolato, l&#39;altra metà è vuota. Si toglie il setto: il gas riempie tutto il volume <strong>senza scambiare calore né lavoro</strong> e raggiunge un nuovo equilibrio. Stato iniziale e finale sono di equilibrio, ma quelli intermedi no (il gas si precipita turbolento nel vuoto): la trasformazione <strong>non è reversibile</strong> e <strong>non si può disegnare</strong> come curva nel piano <span class="m">p</span>-<span class="m">V</span>.</li>
 </ul>
 <h2>Il lavoro di un gas</h2>
-<p>Quando un gas si espande spinge il pistone e compie lavoro.</p>
+<p>Consideriamo un gas in un cilindro chiuso da un pistone di area <span class="m">S</span>. Il gas spinge il pistone con la forza <span class="m">F = pS</span>. Se il pistone sale di un tratto piccolo <span class="m">dh</span> (trasformazione quasi statica), il gas compie il lavoro:</p>
+<p><span class="m d">\delta L = F\,dh = p\,S\,dh = p\,dV</span></p>
+<p>perché <span class="m">S\,dh</span> è proprio l&#39;aumento di volume <span class="m">dV</span>. La relazione vale qualunque sia la forma della superficie su cui il gas preme. Per una trasformazione finita da <span class="m">V_i</span> a <span class="m">V_f</span>, sommando tutti i piccoli lavori:</p>
 <p><span class="m d">L = \int_{V_i}^{V_f} p\,dV</span></p>
 <p>dove:</p>
 <ul>
 <li><span class="m">L</span> = lavoro compiuto dal gas, in J</li>
-<li><span class="m">p</span> = pressione del gas, in Pa</li>
+<li><span class="m">p</span> = pressione del gas (uguale a quella esterna, in ogni istante, perché la trasformazione è quasi statica), in Pa</li>
 <li><span class="m">dV</span> = piccola variazione di volume, in m³</li>
 </ul>
-<p>Convenzione: <span class="m">L &gt; 0</span> se il gas si <strong>espande</strong> (lavoro fatto dal gas sull&#39;ambiente). <span class="m">L &lt; 0</span> se il gas viene compresso.</p>
-<p>Nel piano <span class="m">p</span>-<span class="m">V</span> il lavoro è l&#39;<strong>area sotto la curva</strong>. Quindi dipende dal percorso, non solo dagli stati iniziale e finale. In un ciclo il lavoro è l&#39;area racchiusa dalla curva chiusa: positivo se il ciclo gira in senso orario.</p>
+<p><strong>Convenzione di segno</strong>: <span class="m">L &gt; 0</span> se il gas si <strong>espande</strong> (<span class="m">dV &gt; 0</span>): il gas compie lavoro sull&#39;ambiente. <span class="m">L &lt; 0</span> se il gas viene <strong>compresso</strong>: è l&#39;ambiente che compie lavoro sul gas.</p>
+<h3>Il lavoro come area nel piano <span class="m">p</span>-<span class="m">V</span></h3>
+<p>L&#39;integrale <span class="m">\int p\,dV</span> è, graficamente, l&#39;<strong>area compresa tra la curva della trasformazione e l&#39;asse dei volumi</strong>. Due trasformazioni diverse che collegano gli stessi stati A e B hanno in generale aree diverse sotto la curva: <strong>il lavoro dipende dal percorso</strong>, non solo dagli stati iniziale e finale. Per questo il piccolo lavoro si scrive <span class="m">\delta L</span> e non <span class="m">dL</span>: non è il differenziale di una funzione di stato (in linguaggio matematico, non è un differenziale esatto).</p>
+<p>In una <strong>trasformazione ciclica</strong> la curva è chiusa. Il lavoro totale è l&#39;<strong>area racchiusa</strong> dalla curva:</p>
+<ul>
+<li>se il ciclo è percorso in <strong>senso orario</strong>, l&#39;espansione avviene (in media) a pressione più alta della compressione: il lavoro netto è <strong>positivo</strong> (il gas produce lavoro, come in un motore);</li>
+<li>in <strong>senso antiorario</strong> il lavoro netto è negativo (il gas riceve lavoro, come in un frigorifero).</li>
+</ul>
+<p>Quindi in un ciclo <strong>il lavoro non è nullo</strong> (tranne il caso banale di area zero), anche se il gas torna allo stato iniziale.</p>
+<h3>Le trasformazioni notevoli nel piano <span class="m">p</span>-<span class="m">V</span></h3>
+<ul>
+<li><strong>Isocora</strong> (volume costante <span class="m">V_0</span>): segmento <strong>verticale</strong>. Il volume non cambia, <span class="m">dV = 0</span>: <strong>lavoro nullo</strong>.</li>
+<li><strong>Isobara</strong> (pressione costante <span class="m">p_0</span>): segmento <strong>orizzontale</strong> da <span class="m">V_1</span> a <span class="m">V_2</span>. Il lavoro è un rettangolo: <span class="m">L = p_0\,(V_2 - V_1) = p_0\,\Delta V</span>.</li>
+<li><strong>Isoterma</strong> (temperatura costante): la forma dipende dal sistema; per un gas perfetto <span class="m">pV = </span> costante, cioè un <strong>ramo di iperbole</strong>. Il lavoro (lezione 37) è <span class="m">L = nRT\ln(V_f/V_i)</span>.</li>
+<li><strong>Adiabatica</strong> (nessuno scambio di calore): per un gas perfetto <span class="m">pV^\gamma = </span> costante, una curva <strong>più ripida</strong> dell&#39;isoterma.</li>
+</ul>
 <div class="callout esempio">
 
-<p>Un palloncino che si gonfia perché il gas si scalda compie lavoro positivo sull&#39;aria. Se si sgonfia per raffreddamento, il lavoro del gas è negativo. Salire o scendere per la spinta di Archimede non è lavoro di espansione del gas.</p>
+<p><strong>Riempire un cilindro dalla bombola.</strong> Una bombola con 100 L di gas a 20 atm è collegata, tramite una valvola, a un cilindro di 2 L con il pistone appoggiato sul fondo. Si fa fluire lentamente il gas finché il pistone arriva in cima. Lavoro scambiato?</p>
+<p>Il gas solleva il pistone contro la <strong>pressione atmosferica</strong> esterna, aumentando il volume del cilindro di 2 L a pressione esterna costante:
+<span class="m d">L = p_{atm}\,\Delta V = 1{,}013\cdot10^5 \cdot 2\cdot10^{-3} \approx 203\,\mathrm J</span></p>
 </div>
 
-<h2>Le trasformazioni notevoli</h2>
+<div class="callout esempio">
+
+<p><strong>Gas raffreddato a pressione atmosferica.</strong> Un gas in un cilindro con pistone, a pressione atmosferica, occupa 10 L; raffreddandolo il pistone scende fino a 8 L. È un&#39;isobara con <span class="m">\Delta V = -2\,\mathrm L</span>:
+<span class="m d">L = p\,\Delta V = 1{,}013\cdot10^5 \cdot(-2\cdot10^{-3}) \approx -203\,\mathrm J</span>
+Il segno meno dice che è l&#39;atmosfera a compiere lavoro sul gas.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Palloncino con pressione che cresce con il volume.</strong> Un gas in un palloncino, scaldato lentamente, si espande con la pressione che segue la legge <span class="m">p = A\,V/B</span>, con <span class="m">A = 1{,}5</span> atm e <span class="m">B = V_0 = 20</span> L. Lavoro quando il volume raddoppia?
+<span class="m d">L = \int_{V_0}^{2V_0}\frac{A}{B}V\,dV = \frac{A}{B}\left[\frac{V^2}{2}\right]_{V_0}^{2V_0} = \frac{A}{B}\cdot\frac{4V_0^2 - V_0^2}{2} = \frac{A}{V_0}\cdot\frac{3V_0^2}{2} = \frac32 A V_0</span>
+<span class="m d">L = 1{,}5 \cdot 1{,}5\,\mathrm{atm}\cdot 20\,\mathrm L = 45\,\mathrm{L\,atm} = 45 \cdot 101{,}3\,\mathrm J \approx 4{,}56\,\mathrm{kJ}</span>
+(1 L atm = <span class="m">10^{-3}\,\mathrm{m^3}\cdot1{,}013\cdot10^5\,\mathrm{Pa} = 101{,}3</span> J.)</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Quando il palloncino compie lavoro positivo.</strong> Un gas chiuso in un palloncino compie lavoro <strong>positivo</strong> sull&#39;ambiente quando il palloncino <strong>si espande</strong>, per esempio perché il gas si scalda e aumenta di volume spingendo via l&#39;aria. Se il palloncino si sgonfia raffreddandosi, il lavoro del gas è negativo. Il palloncino che sale o scende per la spinta di Archimede, senza cambiare volume, non fa lavoro di espansione.</p>
+</div>
+
+<h2>Energia interna del gas perfetto</h2>
+<p>L&#39;<strong>energia interna</strong> <span class="m">U</span> di un sistema è la somma delle energie microscopiche delle sue molecole (cinetiche e potenziali di interazione). In un gas perfetto le molecole non interagiscono, quindi c&#39;è solo energia cinetica, che dipende solo dalla temperatura (teoria cinetica): <strong>l&#39;energia interna di un gas perfetto dipende solo dalla temperatura</strong>. Joule lo verificò con l&#39;espansione libera (lezione 37). Si ha:</p>
+<p><span class="m d">\Delta U = n\,C_V\,\Delta T</span></p>
+<p>dove:</p>
+<ul>
+<li><span class="m">\Delta U</span> = variazione di energia interna, in J</li>
+<li><span class="m">n</span> = moli</li>
+<li><span class="m">C_V</span> = calore molare a volume costante: <span class="m">\tfrac32R</span> per gas monoatomici, <span class="m">\tfrac52R</span> per biatomici, in <span class="m">\mathrm{J/(mol\,K)}</span></li>
+<li><span class="m">\Delta T</span> = variazione di temperatura, in K</li>
+</ul>
+<p>Questa formula vale per <strong>qualsiasi</strong> trasformazione del gas perfetto, perché <span class="m">U</span> dipende solo da <span class="m">T</span>. Conseguenze:</p>
+<ul>
+<li>se l&#39;energia interna di un gas perfetto aumenta, la temperatura <strong>aumenta in ogni caso</strong> (e viceversa);</li>
+<li>in un&#39;<strong>isoterma</strong> <span class="m">\Delta U = 0</span>, sia in espansione sia in compressione;</li>
+<li>se tra stato iniziale e finale il prodotto <span class="m">pV</span> non cambia (per esempio volume doppio e pressione dimezzata), la temperatura finale è uguale a quella iniziale e quindi <span class="m">\Delta U = 0</span>, qualunque sia il percorso seguito.</li>
+</ul>
+<div class="callout esempio">
+
+<p><strong>Espansione senza scambio di calore in un motore.</strong> In un motore a scoppio 0,25 mol di gas biatomico si espandono contro il pistone senza scambiare calore; la temperatura scende da 1150 K a 400 K. Lavoro compiuto?</p>
+<p>Nessuno scambio di calore: è un&#39;<strong>adiabatica</strong>, <span class="m">Q = 0</span>. Il primo principio (lezione 36) <span class="m">\Delta U = Q - L</span> dà <span class="m">L = -\Delta U</span>: il gas compie lavoro spendendo la propria energia interna.
+<span class="m d">\Delta U = nC_V\Delta T = 0{,}25 \cdot \tfrac52 \cdot 8{,}314 \cdot (400 - 1150) = 0{,}25 \cdot 20{,}785 \cdot (-750) \approx -3897\,\mathrm J</span>
+<span class="m d">L = -\Delta U \approx 3{,}9\,\mathrm{kJ}</span>
+(Il paniere arrotonda a 3,8 kJ.) Con <span class="m">C_V = \tfrac32R</span>, sbagliando il tipo di gas, si otterrebbe 2,3 kJ.</p>
+</div>
+
+<h2>Riepilogo delle trasformazioni notevoli</h2>
 <table>
 <thead>
 <tr>
@@ -56,6 +180,7 @@
 <th>Cosa resta costante</th>
 <th>Legge (gas perfetto)</th>
 <th>Lavoro del gas</th>
+<th>Nel piano <span class="m">p</span>-<span class="m">V</span></th>
 </tr>
 </thead>
 <tbody><tr>
@@ -63,68 +188,76 @@
 <td>volume <span class="m">V</span></td>
 <td><span class="m">p/T</span> = costante</td>
 <td><span class="m">L = 0</span></td>
+<td>segmento verticale</td>
 </tr>
 <tr>
 <td>Isobara</td>
 <td>pressione <span class="m">p</span></td>
 <td><span class="m">V/T</span> = costante</td>
 <td><span class="m">L = p\,\Delta V</span></td>
+<td>segmento orizzontale</td>
 </tr>
 <tr>
 <td>Isoterma</td>
 <td>temperatura <span class="m">T</span></td>
-<td><span class="m">pV</span> = costante (Boyle)</td>
+<td><span class="m">pV</span> = costante (legge di Boyle)</td>
 <td><span class="m">L = nRT\ln(V_f/V_i)</span></td>
+<td>ramo di iperbole</td>
 </tr>
 <tr>
 <td>Adiabatica</td>
 <td>nessuno scambio di calore (<span class="m">Q = 0</span>)</td>
 <td><span class="m">pV^\gamma</span> = costante</td>
 <td><span class="m">L = -\Delta U</span></td>
+<td>curva più ripida dell&#39;isoterma</td>
 </tr>
 </tbody></table>
 <ul>
-<li>Isocora: linea verticale nel piano <span class="m">p</span>-<span class="m">V</span>. Se il recipiente è rigido e il gas si scalda da 300 K a 400 K, la pressione cresce di un fattore 4/3.</li>
-<li>Isobara: linea orizzontale.</li>
-<li>Isoterma: un ramo di iperbole. Se il volume raddoppia, la pressione dimezza.</li>
-<li>Adiabatica: il sistema <strong>non scambia calore</strong>. Può però scambiare lavoro. È più ripida dell&#39;isoterma.</li>
+<li><strong>Isocora</strong>: in un recipiente rigido scaldato la pressione cresce in proporzione alla temperatura assoluta.</li>
+<li><strong>Isobara</strong>: il volume cresce in proporzione alla temperatura assoluta.</li>
+<li><strong>Isoterma</strong>: <span class="m">pV</span> costante, quindi se il volume <strong>raddoppia</strong> la pressione <strong>dimezza</strong>. Comprimendo un gas in modo isotermo la sua <strong>energia interna resta costante</strong>.</li>
+<li><strong>Adiabatica</strong>: la definizione corretta è che <strong>il sistema non scambia calore</strong> con l&#39;esterno: la sua energia non può variare tramite calore, ma può variare tramite lavoro. Non vuol dire che la temperatura resti costante (anzi, cambia).</li>
 </ul>
-<h2>Energia interna del gas perfetto</h2>
-<p>L&#39;<strong>energia interna</strong> <span class="m">U</span> è la somma delle energie delle molecole. In un gas perfetto è solo energia cinetica, quindi dipende <strong>solo dalla temperatura</strong>.</p>
-<p><span class="m d">\Delta U = n\,C_V\,\Delta T</span></p>
-<p>dove:</p>
+<h2>Cicli</h2>
+<p>In una trasformazione ciclica il sistema torna allo stato iniziale, quindi <strong>tutte le funzioni di stato</strong> tornano al valore iniziale: temperatura, pressione, volume, energia interna, entropia. In particolare <span class="m">\Delta U = 0</span> e <span class="m">T_{finale} = T_{iniziale}</span>.</p>
+<p>Il <strong>lavoro invece non è nullo</strong>: è l&#39;area racchiusa dal ciclo. Per il primo principio <span class="m">\Delta U = Q - L = 0</span>, quindi il <strong>calore netto assorbito è uguale al lavoro netto compiuto</strong>: <span class="m">Q = L</span>. Detto in altro modo, calore assorbito e lavoro <strong>ricevuto</strong> dal sistema hanno somma nulla.</p>
+<div class="callout attenzione">
+
+<p>L&#39;affermazione &quot;in un ciclo il lavoro è sempre nullo&quot; è <strong>falsa</strong>: si confonde &quot;variazione nulla delle funzioni di stato&quot; con &quot;lavoro nullo&quot;. Il lavoro non è una funzione di stato; in un ciclo è proprio ciò che una macchina termica produce.</p>
+</div>
+
+<h2>Cenni che anticipano le lezioni successive</h2>
+<p>Alcune domande di questa lezione toccano argomenti sviluppati più avanti:</p>
 <ul>
-<li><span class="m">\Delta U</span> = variazione di energia interna, in J</li>
-<li><span class="m">n</span> = moli</li>
-<li><span class="m">C_V</span> = calore molare a volume costante: <span class="m">\tfrac32R</span> (monoatomico), <span class="m">\tfrac52R</span> (biatomico), in <span class="m">\mathrm{J/(mol\,K)}</span></li>
-<li><span class="m">\Delta T</span> = variazione di temperatura, in K</li>
-</ul>
-<p>Questa formula vale per <strong>qualsiasi</strong> trasformazione. Conseguenze:</p>
-<ul>
-<li>se <span class="m">U</span> aumenta, la temperatura aumenta, sempre;</li>
-<li>in un&#39;isoterma <span class="m">\Delta U = 0</span>: il lavoro fatto sul gas esce come calore;</li>
-<li>se <span class="m">pV</span> finale è uguale a <span class="m">pV</span> iniziale (es. volume doppio e pressione metà), la temperatura è la stessa e <span class="m">\Delta U = 0</span>.</li>
+<li>l&#39;<strong>irraggiamento</strong> trasporta <strong>energia</strong> tramite onde elettromagnetiche (lezione 34), non materia;</li>
+<li>un ciclo reversibile di <strong>due isoterme e due adiabatiche</strong> è un <strong>ciclo di Carnot</strong> (lezione 40); il suo rendimento è <span class="m">\eta = 1 - T_F/T_C</span> con le temperature in kelvin;</li>
+<li>l&#39;<strong>entropia</strong> totale di sistema + ambiente non può diminuire (lezione 39).</li>
 </ul>
 <div class="callout esempio">
 
-<p>0,25 mol di gas biatomico si espandono senza scambiare calore e si raffreddano da 1150 K a 400 K. Il lavoro è <span class="m">L = -\Delta U = nC_V(T_i - T_f) = 0{,}25 \cdot \tfrac52 \cdot 8{,}314 \cdot 750 \approx 3{,}9\,\mathrm{kJ}</span>.</p>
+<p><strong>Rendimento di un ciclo di due adiabatiche e due isoterme</strong> a 15 °C e 200 °C. Converto in kelvin: <span class="m">T_F = 288{,}15</span> K, <span class="m">T_C = 473{,}15</span> K.
+<span class="m d">\eta = 1 - \frac{288{,}15}{473{,}15} = 1 - 0{,}609 \approx 0{,}39</span></p>
 </div>
 
-<h2>Cicli</h2>
-<p>In un ciclo il gas torna allo stato iniziale. Tutte le <strong>funzioni di stato</strong> (temperatura, energia interna, entropia) tornano al valore iniziale: <span class="m">\Delta U = 0</span>. Il <strong>lavoro invece non è nullo</strong>: è l&#39;area del ciclo. Per il primo principio il calore netto scambiato è uguale al lavoro netto.</p>
-<h2>Cenni collegati</h2>
-<ul>
-<li>L&#39;<strong>irraggiamento</strong> trasporta <strong>energia</strong> tramite onde elettromagnetiche.</li>
-<li>Un ciclo di due isoterme e due adiabatiche reversibili è un <strong>ciclo di Carnot</strong>. Il suo rendimento è <span class="m">\eta = 1 - T_F/T_C</span> (in kelvin). Tra 15 °C e 200 °C: <span class="m">\eta = 1 - 288/473 \approx 0{,}39</span>.</li>
-<li><strong>Entropia</strong>: l&#39;entropia totale (sistema + ambiente) non può diminuire. Se il sistema perde 8 J/K, l&#39;ambiente ne guadagna almeno 8 J/K.</li>
-</ul>
+<div class="callout esempio">
+
+<p><strong>Entropia del sistema e dell&#39;ambiente.</strong> In una trasformazione l&#39;entropia del sistema cambia di −8 J/K. Sistema + ambiente formano un sistema isolato, la cui entropia non può diminuire: <span class="m">\Delta S_{sist} + \Delta S_{amb} \ge 0</span>, quindi <span class="m">\Delta S_{amb} \ge +8\,\mathrm{J/K}</span>. L&#39;ambiente aumenta la sua entropia di <strong>8 J/K o più</strong> (esattamente 8 se la trasformazione è reversibile).</p>
+</div>
+
+<div class="callout esame">
+
+<p>Domande chiuse: quale affermazione sui cicli è falsa (il lavoro in un ciclo non è nullo); lavoro di un&#39;espansione adiabatica (<span class="m">L = -nC_V\Delta T</span>, attenzione a biatomico/monoatomico); isoterma con volume doppio (pressione metà); compressione isoterma (<span class="m">\Delta U = 0</span>); energia interna e temperatura del gas perfetto (crescono insieme); recipiente rigido scaldato (fattore <span class="m">T_2/T_1</span> in kelvin); definizione di adiabatica (nessuno scambio di calore); volume doppio e pressione metà (<span class="m">\Delta U = 0</span>); numero di variabili indipendenti (due); quando il palloncino compie lavoro positivo; rendimento di Carnot; entropia dell&#39;ambiente; irraggiamento.</p>
+</div>
+
 <div class="callout sintesi">
 
 <ul>
-<li><span class="m">pV = nRT</span>, con <span class="m">T</span> in kelvin; bastano due variabili di stato.</li>
-<li>Lavoro = area sotto la curva nel piano <span class="m">p</span>-<span class="m">V</span>; positivo in espansione.</li>
-<li>Isocora <span class="m">L = 0</span>; isobara <span class="m">L = p\Delta V</span>; isoterma <span class="m">\Delta U = 0</span>; adiabatica <span class="m">Q = 0</span>.</li>
-<li>Gas perfetto: <span class="m">\Delta U = nC_V\Delta T</span> in ogni trasformazione.</li>
-<li>Ciclo: <span class="m">\Delta U = 0</span> ma lavoro ≠ 0 (area racchiusa).</li>
+<li>Sistema aperto (materia + energia), chiuso (solo energia), isolato (niente). Equilibrio termodinamico = meccanico + termico + chimico.</li>
+<li>Mole: <span class="m">N_A = 6{,}022\cdot10^{23}</span>; <span class="m">n = m/M</span>; volume molare 22,4 L a 0 °C e 1 atm.</li>
+<li><span class="m">pV = nRT</span> con <span class="m">T</span> in kelvin; per <span class="m">n</span> fissato le variabili indipendenti sono due; <span class="m">p_1V_1/T_1 = p_2V_2/T_2</span>.</li>
+<li>Trasformazioni: quasi statiche (curve), reversibili (ideali), irreversibili (reali), cicliche; espansione libera irreversibile.</li>
+<li><span class="m">L = \int p\,dV</span> = area sotto la curva; positivo in espansione; dipende dal percorso. Ciclo: area racchiusa, positivo se orario.</li>
+<li>Isocora <span class="m">L = 0</span>; isobara <span class="m">L = p\Delta V</span>; isoterma <span class="m">pV</span> costante, <span class="m">\Delta U = 0</span>; adiabatica <span class="m">Q = 0</span>.</li>
+<li>Gas perfetto: <span class="m">\Delta U = nC_V\Delta T</span> in ogni trasformazione; in un ciclo <span class="m">\Delta U = 0</span> e <span class="m">Q = L</span>.</li>
 </ul>
 </div>

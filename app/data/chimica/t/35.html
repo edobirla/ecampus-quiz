@@ -1,10 +1,17 @@
-<h1 id="lez-35">Lezione 35 — Equilibri fisici: tensione di vapore ed equazione di Clausius-Clapeyron</h1>
+<h1 id="lez-35">Lezione 35 — Equilibri fisici, tensione di vapore e Clausius-Clapeyron</h1>
 <h2 id="lez-35-perche">Perché questa lezione esiste</h2>
 <p>Fin qui hai trattato l&#39;equilibrio come un fatto puramente chimico (reazioni). Ma
 esiste anche l&#39;equilibrio <strong>fisico</strong>: uno stesso composto che coesiste in due fasi,
 ad esempio acqua liquida e suo vapore in un recipiente chiuso. Capire quando e come
 questo equilibrio si sposta è la base per i diagrammi di stato (<a href="#/teoria/chimica/36/lez-36">prossima
 lezione</a>) e per le proprietà delle soluzioni (lezioni successive).</p>
+<p>Gli strumenti sono quelli appena costruiti: il criterio <span class="m">\Delta G=0</span> per l&#39;equilibrio
+(<a href="#/teoria/chimica/33/lez-33-derivazione">Lezione 33</a>) e la relazione <span class="m">\Delta G=\Delta H-T\Delta S</span>.
+Applicati al passaggio liquido → vapore, danno la legge che lega la tensione di vapore
+alla temperatura.</p>
+<p>La dispensa di questa lezione è costituita soprattutto dalle <strong>tabelle di tensione di
+vapore dell&#39;acqua</strong> (Perry&#39;s Chemical Engineers&#39; Handbook) e da due sessioni di
+esercizi (uso di Clausius-Clapeyron; massa di vapore in una stanza).</p>
 <h2 id="lez-35-tensione-vapore">Tensione di vapore: l&#39;equilibrio liquido-vapore</h2>
 <p>In un recipiente chiuso contenente un liquido, una parte delle molecole più
 energetiche sfugge in fase gas (evaporazione); allo stesso tempo alcune molecole di
@@ -13,19 +20,72 @@ condensazione: si stabilisce un equilibrio dinamico. La pressione parziale del v
 in queste condizioni si chiama <strong>tensione di vapore</strong>, <span class="m">P^\circ(T)</span>: dipende solo
 dalla sostanza e dalla temperatura, non dal volume del recipiente (finché resta
 liquido presente).</p>
+<p>Perché non dipende dal volume? Se si allarga il recipiente, la pressione del vapore
+cala per un attimo, la condensazione rallenta, evapora altro liquido finché la
+pressione torna a <span class="m">P^\circ(T)</span>. Se si restringe, condensa vapore. Finché c&#39;è liquido,
+la pressione del vapore torna sempre allo stesso valore. Se il liquido evapora tutto,
+il vapore si comporta come un gas qualunque e la sua pressione è minore di <span class="m">P^\circ</span>.</p>
 <p>La tensione di vapore <strong>aumenta</strong> con la temperatura, perché più molecole hanno
 energia sufficiente a sfuggire dal liquido. Le tabelle di riferimento (come quelle
 del Perry&#39;s Handbook riprodotte in questa lezione per l&#39;acqua) tabulano <span class="m">P^\circ(T)</span>
-sperimentalmente per molte sostanze.</p>
+sperimentalmente per molte sostanze. Alcuni valori per l&#39;acqua liquida (mmHg):</p>
+<table>
+<thead>
+<tr>
+<th><span class="m">T</span> (°C)</th>
+<th>0</th>
+<th>10</th>
+<th>20</th>
+<th>25</th>
+<th>30</th>
+<th>40</th>
+<th>50</th>
+<th>60</th>
+<th>80</th>
+<th>100</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><span class="m">P^\circ</span> (mmHg)</td>
+<td>4.58</td>
+<td>9.21</td>
+<td>17.54</td>
+<td>23.76</td>
+<td>31.82</td>
+<td>55.32</td>
+<td>92.51</td>
+<td>149.4</td>
+<td>355.1</td>
+<td>760.0</td>
+</tr>
+</tbody></table>
+<p>Si vede che la crescita non è lineare: fra 0 e 50 °C la tensione aumenta di circa
+88 mmHg, fra 50 e 100 °C di quasi 670 mmHg.</p>
+<p><strong>Ebollizione.</strong> Un liquido bolle quando la sua tensione di vapore uguaglia la
+pressione esterna: allora possono formarsi bolle di vapore all&#39;interno del liquido.
+La <strong>temperatura di ebollizione normale</strong> è quella a cui <span class="m">P^\circ=1\ \mathrm{atm}=760\ \mathrm{mmHg}</span>
+(100 °C per l&#39;acqua, come si legge in tabella). A pressione esterna minore (in
+montagna) l&#39;acqua bolle a temperatura più bassa.</p>
+<p><strong>Anche i solidi hanno una tensione di vapore</strong> (equilibrio solido-vapore, cioè di
+sublimazione). Le tabelle del Perry riportano sotto 0 °C sia la tensione di vapore
+del <strong>ghiaccio</strong> sia quella dell&#39;<strong>acqua liquida sottoraffreddata</strong>: per esempio a
+−5 °C il ghiaccio ha <span class="m">3.013\ \mathrm{mmHg}</span> e il liquido sottoraffreddato
+<span class="m">3.163\ \mathrm{mmHg}</span>, mentre a 0 °C i due valori coincidono (<span class="m">4.579\ \mathrm{mmHg}</span>).
+Sotto 0 °C il liquido ha tensione di vapore più alta: è la fase meno stabile (le sue
+molecole &quot;sfuggono&quot; di più), e tende a trasformarsi in ghiaccio. Dove le due curve si
+incontrano, solido e liquido sono in equilibrio: è il punto triplo
+(<a href="#/teoria/chimica/36/lez-36-triplo-critico">Lezione 36</a>).</p>
 <div class="callout esempio">
 
 <p><strong>Massa di vapore in una stanza satura di umidità.</strong> Una vasca da bagno lascia
 acqua a 40 °C in un locale <span class="m">4.0\,\mathrm m \times 3.0\,\mathrm m \times 3.0\,\mathrm m</span>
-con la porta chiusa. La tensione di vapore dell&#39;acqua a 40 °C è <span class="m">7.4\ \mathrm{kPa}</span>.
+con la porta chiusa. La tensione di vapore dell&#39;acqua a 40 °C è <span class="m">7.4\ \mathrm{kPa}</span>
+(dalla tabella: <span class="m">55.32\ \mathrm{mmHg}\times\frac{101.325\ \mathrm{kPa}}{760\ \mathrm{mmHg}}=7.38\ \mathrm{kPa}</span>).
 Se l&#39;aria è satura, la pressione parziale del vapore d&#39;acqua <strong>è</strong> la tensione di
-vapore: <span class="m">P_{H_2O}=P^\circ(T)=7.4\ \mathrm{kPa}=0.073\ \mathrm{atm}</span>.</p>
-<p><strong>Applica l&#39;equazione di stato dei gas ideali</strong> alla sola fase vapore, con
-<span class="m">V=36\,000\ \mathrm L</span> (volume della stanza):
+vapore: <span class="m">P_{H_2O}=P^\circ(T)=7.4\ \mathrm{kPa}=7.4/101.3=0.073\ \mathrm{atm}</span>.</p>
+<p><strong>Volume:</strong> <span class="m">4.0\times3.0\times3.0=36\ \mathrm{m^3}=36\,000\ \mathrm L</span>.</p>
+<p><strong>Applica l&#39;equazione di stato dei gas ideali</strong> alla sola fase vapore (il vapore
+occupa tutto il volume della stanza, insieme all&#39;aria):
 <span class="m d">n = \frac{P_{H_2O}\cdot V}{R\cdot T} = \frac{0.073\,\mathrm{atm}\times 36\,000\,
 \mathrm L}{0.08206\,\frac{\mathrm{atm\,L}}{\mathrm{mol\,K}}\times 313.15\,\mathrm K}
 \approx 102.3\ \mathrm{mol}</span></p>
@@ -35,13 +95,51 @@ vapore: <span class="m">P_{H_2O}=P^\circ(T)=7.4\ \mathrm{kPa}=0.073\ \mathrm{atm
 quanto conti l&#39;umidità relativa nella vita reale.</p>
 </div>
 
+<h2>Tensione di vapore ed energia libera di Gibbs</h2>
+<p>Perché la tensione di vapore ha proprio quel valore, e perché cresce con <span class="m">T</span>? Lo dice
+il criterio <span class="m">\Delta G=0</span>. Consideriamo l&#39;evaporazione di una mole di liquido:</p>
+<p><span class="m d">\chem{H_2O(l)}\rightleftharpoons\chem{H_2O(g)}</span></p>
+<p><strong>Passo 1 — <span class="m">\Delta G</span> standard.</strong> <span class="m">\Delta G^\circ_{vap}=\Delta H^\circ_{vap}-T\Delta S^\circ_{vap}</span>
+è la variazione di energia libera quando il vapore si forma alla pressione standard
+di 1 atm.</p>
+<p><strong>Passo 2 — il vapore a una pressione <span class="m">P</span> qualunque.</strong> Per un gas ideale a <span class="m">T</span>
+costante, <span class="m">\Delta S=-R\ln(P/P_{rif})</span> per mole (<a href="#/teoria/chimica/32/lez-32-gas-ideale">Lezione 32</a>) e
+<span class="m">\Delta H=0</span>, quindi portare il vapore da 1 atm a <span class="m">P</span> cambia <span class="m">G</span> di
+<span class="m">-T\Delta S=RT\ln(P/1\ \mathrm{atm})</span>. Quindi
+<span class="m d">\Delta G_{vap}(P)=\Delta G^\circ_{vap}+RT\ln P \qquad (P\ \text{in atm})</span></p>
+<p><strong>Passo 3 — equilibrio.</strong> Il liquido e il vapore sono in equilibrio quando
+<span class="m">\Delta G_{vap}=0</span>, e la pressione a cui questo accade è per definizione la tensione
+di vapore <span class="m">P^\circ</span>:
+<span class="m d">0=\Delta G^\circ_{vap}+RT\ln P^\circ \quad\Longrightarrow\quad \ln P^\circ=-\frac{\Delta G^\circ_{vap}}{RT}</span></p>
+<p>Se <span class="m">P&lt;P^\circ</span>, <span class="m">\Delta G_{vap}&lt;0</span>: il liquido evapora spontaneamente; se <span class="m">P&gt;P^\circ</span>,
+<span class="m">\Delta G_{vap}&gt;0</span>: il vapore condensa spontaneamente. È esattamente l&#39;equilibrio
+dinamico descritto sopra, visto con l&#39;energia libera.</p>
+<p><strong>Passo 4 — dipendenza da <span class="m">T</span>.</strong> Sostituendo <span class="m">\Delta G^\circ=\Delta H^\circ-T\Delta S^\circ</span>:</p>
+<div class="callout formula">
+
+<p><span class="m d">\ln P^\circ = -\frac{\Delta H^\circ_{vap}}{RT}+\frac{\Delta S^\circ_{vap}}{R}</span></p>
+<p><span class="m">P^\circ</span> in atm, <span class="m">\Delta H^\circ_{vap}</span> (J/mol, positiva), <span class="m">\Delta S^\circ_{vap}</span>
+(J mol⁻¹K⁻¹), <span class="m">R=8.314\ \mathrm{J\,mol^{-1}K^{-1}}</span>, <span class="m">T</span> in K. In un grafico di
+<span class="m">\ln P^\circ</span> contro <span class="m">1/T</span> è una <strong>retta</strong> di pendenza <span class="m">-\Delta H^\circ_{vap}/R</span>.</p>
+</div>
+
+<p>Poiché <span class="m">\Delta H_{vap}&gt;0</span>, al crescere di <span class="m">T</span> il termine <span class="m">-\Delta H/RT</span> diventa meno
+negativo e <span class="m">P^\circ</span> cresce, in modo <strong>esponenziale</strong>:
+<span class="m">P^\circ=e^{\Delta S/R}\,e^{-\Delta H/RT}</span>. Alla temperatura di ebollizione normale
+<span class="m">P^\circ=1\ \mathrm{atm}</span>, <span class="m">\ln P^\circ=0</span>, quindi <span class="m">\Delta G^\circ_{vap}=0</span> e
+<span class="m">T_{eb}=\Delta H^\circ_{vap}/\Delta S^\circ_{vap}</span>: è la <span class="m">T^*</span> di equilibrio della
+<a href="#/teoria/chimica/33/lez-33-dipendenza-T">Lezione 33</a>. Per l&#39;acqua
+<span class="m">\Delta S_{vap}=40\,700/373\approx109\ \mathrm{J\,mol^{-1}K^{-1}}</span>.</p>
 <h2 id="lez-35-clausius-clapeyron">L&#39;equazione di Clausius-Clapeyron</h2>
 <p>La tensione di vapore non cresce linearmente con <span class="m">T</span>, ma in modo <strong>esponenziale</strong>.
-La relazione che lega <span class="m">P^\circ</span> a <span class="m">T</span> è l&#39;equazione di Clausius-Clapeyron. La ricaverai
-in modo completo nella <a href="#/teoria/chimica/36/lez-36-slgas">prossima lezione</a> come caso particolare di una
-relazione più generale (l&#39;equazione di Clapeyron), valida per qualsiasi equilibrio
-tra due fasi; qui la prendi come strumento di calcolo, nella sua forma integrata tra
-due temperature <span class="m">T_1</span> e <span class="m">T_2</span>:</p>
+La relazione che lega <span class="m">P^\circ</span> a <span class="m">T</span> è l&#39;equazione di Clausius-Clapeyron. Si ricava
+anche come caso particolare di una relazione più generale (l&#39;equazione di Clapeyron),
+valida per qualsiasi equilibrio tra due fasi (<a href="#/teoria/chimica/36/lez-36-slgas">prossima lezione</a>); qui
+la ottieni subito dalla formula appena trovata.</p>
+<p><strong>Derivazione.</strong> Scrivo la formula a due temperature <span class="m">T_1</span> e <span class="m">T_2</span> (con
+<span class="m">\Delta H</span> e <span class="m">\Delta S</span> costanti) e sottraggo; il termine <span class="m">\Delta S/R</span> si cancella:
+<span class="m d">\ln P^\circ_2-\ln P^\circ_1 = -\frac{\Delta H^\circ_{vap}}{RT_2}+\frac{\Delta H^\circ_{vap}}{RT_1}</span></p>
+<p>che è la forma integrata tra due temperature:</p>
 <div class="callout formula">
 
 <p><span class="m d">\ln\left(\frac{P^\circ_2}{P^\circ_1}\right) \cong \frac{\Delta H^\circ_{vap}}{R}
@@ -50,9 +148,13 @@ due temperature <span class="m">T_1</span> e <span class="m">T_2</span>:</p>
 
 <p>dove <span class="m">\Delta H^\circ_{vap}</span> è l&#39;entalpia molare di vaporizzazione (assunta costante
 nell&#39;intervallo di temperatura considerato) e <span class="m">R=8.31\ \mathrm{J\,mol^{-1}K^{-1}}</span>.
-Conoscendo la tensione di vapore a due temperature, puoi ricavare <span class="m">\Delta H_{vap}</span>; o,
-viceversa, conoscendo <span class="m">\Delta H_{vap}</span> e <span class="m">P^\circ</span> a una temperatura, puoi predire
-<span class="m">P^\circ</span> a un&#39;altra.</p>
+Le pressioni compaiono solo come rapporto (qualunque unità, purché uguale); le
+temperature vanno in kelvin. Conoscendo la tensione di vapore a due temperature,
+puoi ricavare <span class="m">\Delta H_{vap}</span>; o, viceversa, conoscendo <span class="m">\Delta H_{vap}</span> e <span class="m">P^\circ</span>
+a una temperatura, puoi predire <span class="m">P^\circ</span> a un&#39;altra. La stessa formula vale per la
+sublimazione (solido-vapore) con <span class="m">\Delta H_{sub}</span> al posto di <span class="m">\Delta H_{vap}</span>.</p>
+<p>Ipotesi su cui si regge: vapore come gas ideale; volume del liquido trascurabile
+rispetto a quello del vapore; <span class="m">\Delta H_{vap}</span> costante.</p>
 <div class="callout esempio">
 
 <p><strong>Entalpia di evaporazione del benzene da dati sperimentali.</strong></p>
@@ -84,7 +186,9 @@ viceversa, conoscendo <span class="m">\Delta H_{vap}</span> e <span class="m">P^
 80.1 °C, cioè 280.75 K e 353.25 K) e applica direttamente la formula:
 <span class="m d">\ln\left(\frac{760}{40}\right) \cong \frac{\Delta H^\circ}{8.31\,\frac{\mathrm J}
 {\mathrm{mol\,K}}}\left(\frac{1}{280.75}-\frac{1}{353.25}\right) \quad
-\Longrightarrow\quad \Delta H^\circ \approx 33\,471\ \mathrm{J/mol}</span></p>
+\Longrightarrow\quad \Delta H^\circ \approx 33\,471\ \mathrm{J/mol}</span>
+Passaggi: <span class="m">\ln19=2.944</span>; <span class="m">1/280.75-1/353.25=0.0035619-0.0028309=7.31\times10^{-4}\ \mathrm{K^{-1}}</span>;
+<span class="m">\Delta H^\circ=2.944\times8.31/7.31\times10^{-4}\approx3.35\times10^4\ \mathrm{J/mol}</span>.</p>
 <p><strong>Metodo corretto — usa tutti i punti.</strong> Usare solo 2 punti su 4 scarta
 informazione ed è sensibile all&#39;errore sperimentale dei due punti scelti. Il modo
 più robusto è verificare che <strong>tutti</strong> i dati soddisfino Clausius-Clapeyron insieme:
@@ -100,12 +204,41 @@ che i 4 dati sono davvero coerenti con un&#39;unica retta (se non lo fossero, il
 rapido con soli 2 punti non se ne accorgerebbe).</p>
 </div>
 
+<div class="callout esempio">
+
+<p><strong><span class="m">\Delta H_{vap}</span> dell&#39;etanolo.</strong> <span class="m">P^\circ=100\ \mathrm{mmHg}</span> a 34.9 °C (308.05 K) e
+<span class="m">400\ \mathrm{mmHg}</span> a 63.5 °C (336.65 K).
+<span class="m">\ln(400/100)=\ln4=1.386</span>; <span class="m">1/308.05-1/336.65=2.758\times10^{-4}\ \mathrm{K^{-1}}</span>;
+<span class="m d">\Delta H_{vap}=\frac{1.386\times8.314}{2.758\times10^{-4}}\approx4.18\times10^4\ \mathrm{J/mol}=41.8\ \mathrm{kJ/mol}</span></p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Prevedere <span class="m">P^\circ</span> dell&#39;acqua a 60 °C.</strong> Noti <span class="m">P^\circ=760\ \mathrm{mmHg}</span> a 100 °C
+e <span class="m">\Delta H_{vap}=40.7\ \mathrm{kJ/mol}</span>:
+<span class="m d">\ln\frac{P^\circ_{60}}{760}=\frac{40\,700}{8.314}\left(\frac{1}{373.15}-\frac{1}{333.15}\right)=4895\times(-3.218\times10^{-4})=-1.575</span>
+<span class="m">P^\circ_{60}=760\times e^{-1.575}=760\times0.207\approx157\ \mathrm{mmHg}</span>. La tabella dà
+<span class="m">149.4\ \mathrm{mmHg}</span>: l&#39;accordo è buono, e lo scarto (circa 5%) viene dall&#39;ipotesi
+<span class="m">\Delta H_{vap}</span> costante (in realtà a 60 °C è un po&#39; più grande che a 100 °C).
+Con <span class="m">P^\circ</span> si può poi calcolare la massa di vapore in un recipiente chiuso con
+<span class="m">PV=nRT</span>, come nell&#39;esempio della stanza.</p>
+</div>
+
 <div class="callout attenzione">
 
 <p>Clausius-Clapeyron <strong>presuppone <span class="m">\Delta H_{vap}</span> costante</strong> nell&#39;intervallo di
 temperatura considerato — un&#39;approssimazione ragionevole su intervalli non troppo
 ampi, ma da tenere a mente: non è una legge esatta come l&#39;equazione di stato dei gas
 ideali, è un modello con un&#39;ipotesi semplificativa esplicita.</p>
+<p>Altri errori frequenti:</p>
+<ul>
+<li>temperature in °C invece che in K;</li>
+<li><span class="m">\Delta H</span> in kJ/mol con <span class="m">R</span> in J/(mol K): convertire;</li>
+<li>ordine sbagliato in <span class="m">(1/T_1-1/T_2)</span>: se <span class="m">T_2&gt;T_1</span> il termine è positivo e
+<span class="m">P^\circ_2&gt;P^\circ_1</span> (controllo di buon senso);</li>
+<li>pensare che la tensione di vapore dipenda dalla quantità di liquido o dal volume
+del recipiente: dipende solo da sostanza e temperatura.</li>
+</ul>
 </div>
 
 <div class="callout sintesi">
@@ -113,6 +246,9 @@ ideali, è un modello con un&#39;ipotesi semplificativa esplicita.</p>
 <ul>
 <li>La tensione di vapore <span class="m">P^\circ(T)</span> è la pressione parziale di equilibrio tra un
 liquido (o solido, per la sublimazione) e il suo vapore; dipende solo da <span class="m">T</span>.</li>
+<li>Ebollizione quando <span class="m">P^\circ=P_{est}</span>; ebollizione normale a <span class="m">P^\circ=1\ \mathrm{atm}</span>.</li>
+<li>Legame con Gibbs: <span class="m">\Delta G_{vap}=\Delta G^\circ_{vap}+RT\ln P</span>; all&#39;equilibrio
+<span class="m">\ln P^\circ=-\Delta G^\circ_{vap}/RT=-\Delta H_{vap}/RT+\Delta S_{vap}/R</span>.</li>
 <li>Cresce esponenzialmente con <span class="m">T</span>, secondo l&#39;equazione di Clausius-Clapeyron:
 <span class="m">\ln(P^\circ_2/P^\circ_1) = \frac{\Delta H_{vap}}{R}\left(\frac1{T_1}-\frac1{T_2}\right)</span>.</li>
 <li>Con più di due punti sperimentali, il metodo robusto per ricavare <span class="m">\Delta H_{vap}</span>
@@ -132,5 +268,12 @@ Clausius-Clapeyron con l&#39;equazione di stato dei gas ideali come nell&#39;ese
 stanza satura di vapore — riconosci quando ti serve la seconda equazione: succede
 ogni volta che ti chiedono una massa o un numero di moli di vapore, non solo una
 pressione.</p>
+<p>La domanda <strong>aperta</strong> (&quot;tensione di vapore e legame con la variazione di energia
+libera di Gibbs, equazione di Clausius-Clapeyron&quot;) va svolta così: definizione di
+tensione di vapore come equilibrio dinamico (dipende solo da <span class="m">T</span>) → <span class="m">\Delta G_{vap}</span>
+in funzione di <span class="m">P</span> e condizione <span class="m">\Delta G=0</span> ⇒ <span class="m">\ln P^\circ=-\Delta G^\circ/RT</span> →
+sostituzione di <span class="m">\Delta G^\circ=\Delta H^\circ-T\Delta S^\circ</span> → forma integrata fra
+<span class="m">T_1</span> e <span class="m">T_2</span> con le ipotesi (<span class="m">\Delta H</span> costante, vapore ideale) → un esempio
+numerico (benzene o acqua) e il significato dell&#39;ebollizione.</p>
 <p><strong>Allenati qui:</strong> Paniere Lez. 35 domanda 1 · Paniere Lez. 36 domanda 4 · Extra 74 · Extra 75</p>
 </div>

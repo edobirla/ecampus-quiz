@@ -1,0 +1,20 @@
+{
+  "rules": {
+    "users": {
+      "$uid": { ".read": "auth != null && auth.uid === $uid", ".write": "auth != null && auth.uid === $uid" }
+    },
+    "allowed": { ".read": "auth != null" },
+    "passed": {
+      ".read": "auth != null && root.child('allowed/' + auth.uid).exists()",
+      "$uid": { ".write": "auth != null && auth.uid === $uid && root.child('allowed/' + auth.uid).exists()" }
+    },
+    "slides": {
+      ".read": "auth != null && root.child('allowed/' + auth.uid).exists()",
+      ".write": "auth != null && root.child('allowed/' + auth.uid).val() === 'admin'"
+    },
+    "slidesSize": {
+      ".read": "auth != null && root.child('allowed/' + auth.uid).val() === 'admin'",
+      ".write": "auth != null && root.child('allowed/' + auth.uid).val() === 'admin'"
+    }
+  }
+}

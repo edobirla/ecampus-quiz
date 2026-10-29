@@ -1,55 +1,127 @@
-<h1>Lezione 50 — Condensatori e dielettrici</h1>
+<h1>Lezione 50 — Condensatori: capacità, collegamenti e moto di cariche nel campo</h1>
+<p>Il condensatore è il dispositivo che sfrutta l&#39;induzione completa (lezione 49) per <strong>accumulare carica ed energia</strong>. È uno dei componenti più diffusi nei circuiti: filtri, flash delle fotocamere, memorie, alimentatori. In questa lezione si definisce il condensatore, si calcola la capacità dei tre tipi principali (piano, sferico, cilindrico), si studiano i collegamenti in <strong>serie</strong> e in <strong>parallelo</strong> e si vede come il campo uniforme del condensatore piano devia una carica in moto (fino all&#39;esperimento di Millikan). Si anticipa anche l&#39;effetto di un dielettrico tra le armature, approfondito nella lezione 52.</p>
 <h2>Il condensatore</h2>
-<p>Un condensatore è un sistema di due conduttori (armature) in induzione completa. Tutte le linee di campo partono da un&#39;armatura e finiscono sull&#39;altra. Se un&#39;armatura ha carica <span class="m">+Q</span>, l&#39;altra ha <span class="m">-Q</span>.</p>
-<p>La capacità è:</p>
+<p><strong>Definizione</strong>: un condensatore è un sistema di <strong>due conduttori in condizioni di induzione completa</strong>: tutte le linee di campo che partono da uno terminano sull&#39;altro. I due conduttori si chiamano <strong>armature</strong>. Se su un&#39;armatura c&#39;è la carica <span class="m">+Q</span>, sull&#39;altra c&#39;è esattamente <span class="m">-Q</span> (per induzione completa).</p>
+<p>Tra le armature c&#39;è una d.d.p. <span class="m">\Delta V</span> proporzionale a <span class="m">Q</span> (raddoppiando la carica raddoppia il campo e quindi l&#39;integrale del campo). Il rapporto è la <strong>capacità del condensatore</strong>:</p>
 <p><span class="m d">C = \frac{Q}{\Delta V}</span></p>
 <p>dove:</p>
 <ul>
 <li><span class="m">C</span> = capacità (F)</li>
-<li><span class="m">Q</span> = carica su un&#39;armatura (C)</li>
-<li><span class="m">\Delta V</span> = differenza di potenziale tra le armature (V)</li>
+<li><span class="m">Q</span> = carica (in modulo) su <strong>una</strong> armatura (C); la carica totale del condensatore è zero</li>
+<li><span class="m">\Delta V</span> = d.d.p. tra le armature (V)</li>
 </ul>
-<p>Dipende solo dalla geometria e dal materiale tra le armature.</p>
+<p>La capacità dipende <strong>solo dalla geometria</strong> delle armature e dal <strong>mezzo</strong> tra di esse, non da <span class="m">Q</span> né da <span class="m">\Delta V</span>. Negli schemi elettrici il condensatore si disegna come due barrette parallele vicine.</p>
+<p>Tre geometrie tipiche (descritte nella dispensa):</p>
+<ul>
+<li>un conduttore dentro la cavità dell&#39;altro: se le superfici sono sfere concentriche è il <strong>condensatore sferico</strong>;</li>
+<li>un conduttore che si sviluppa lungo una linea, avvolto da un secondo conduttore come una guaina: se le superfici sono cilindri coassiali è il <strong>condensatore cilindrico</strong> (come un cavo coassiale);</li>
+<li>due lastre piane e parallele affacciate a distanza molto minore delle loro dimensioni: il <strong>condensatore piano</strong>, il più comune.</li>
+</ul>
 <h2>Condensatore piano</h2>
-<p>Due lastre parallele di area <span class="m">S</span>, a distanza <span class="m">d</span> piccola rispetto alle loro dimensioni. Tra le armature il campo è uniforme, perpendicolare, e va dalla positiva alla negativa.</p>
-<p><span class="m d">E = \frac{\sigma}{\varepsilon_0} = \frac{Q}{\varepsilon_0 S} \qquad \Delta V = Ed \qquad C_0 = \frac{\varepsilon_0 S}{d}</span></p>
+<p>Due lastre conduttrici di area <span class="m">S</span> a distanza <span class="m">d</span>, con <span class="m">d</span> molto piccola rispetto alle dimensioni delle lastre (si trascurano gli <strong>effetti di bordo</strong>). Le cariche <span class="m">\pm Q</span> si dispongono sulle facce affacciate con densità uniforme <span class="m">\sigma = Q/S</span>.</p>
+<h3>Il campo tra le armature</h3>
+<p>Si può ottenere in due modi.</p>
+<ol>
+<li><strong>Con il teorema di Coulomb</strong>: appena fuori dall&#39;armatura positiva il campo è perpendicolare e vale <span class="m">\sigma/\varepsilon_0</span>; poiché la geometria è la stessa in ogni punto tra le lastre, il campo è <strong>uniforme</strong>.</li>
+<li><strong>Sovrapponendo due piani carichi</strong> (esercizio della dispensa 52). Un piano infinito con densità <span class="m">\sigma</span> genera da ciascun lato un campo uniforme, perpendicolare, di modulo <span class="m">\frac{\sigma}{2\varepsilon_0}</span> (uscente se <span class="m">\sigma &gt; 0</span>, entrante se <span class="m">\sigma &lt; 0</span>). Con due piani paralleli:</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Regione</th>
+<th>Piani con <span class="m">+\sigma</span> e <span class="m">-\sigma</span></th>
+<th>Piani con cariche dello stesso segno <span class="m">\sigma</span></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Esterna (a sinistra o a destra)</td>
+<td>i due campi sono opposti: <span class="m">E = 0</span></td>
+<td>i due campi sono concordi: <span class="m">E = \sigma/\varepsilon_0</span></td>
+</tr>
+<tr>
+<td>Tra i piani</td>
+<td>i due campi sono concordi: <span class="m">E = \frac{\sigma}{2\varepsilon_0} + \frac{\sigma}{2\varepsilon_0} = \frac{\sigma}{\varepsilon_0}</span></td>
+<td>i due campi sono opposti: <span class="m">E = 0</span></td>
+</tr>
+</tbody></table>
+<p>Il condensatore piano è il caso con cariche opposte: campo <strong>solo tra le armature</strong>, uniforme, diretto dalla positiva alla negativa:</p>
+<p><span class="m d">E = \frac{\sigma}{\varepsilon_0} = \frac{Q}{\varepsilon_0 S}</span></p>
+<h3>La capacità</h3>
+<p>Nel campo uniforme la d.d.p. è campo per distanza:</p>
+<p><span class="m d">\Delta V = E\,d = \frac{Q\,d}{\varepsilon_0 S}</span></p>
+<p>e dalla definizione:</p>
+<p><span class="m d">C_0 = \frac{Q}{\Delta V} = \frac{Q}{\frac{Qd}{\varepsilon_0 S}} = \frac{\varepsilon_0 S}{d}</span></p>
 <p>dove:</p>
 <ul>
-<li><span class="m">\sigma = Q/S</span> = densità di carica sulle armature (C/m²)</li>
+<li><span class="m">C_0</span> = capacità con il vuoto (o, quasi uguale, l&#39;aria) tra le armature (F); il pedice 0 indica &quot;nel vuoto&quot;</li>
 <li><span class="m">S</span> = area di un&#39;armatura (m²)</li>
 <li><span class="m">d</span> = distanza tra le armature (m)</li>
-<li><span class="m">C_0</span> = capacità con il vuoto (o aria) tra le armature (F)</li>
+<li><span class="m">\varepsilon_0 = 8{,}85\cdot10^{-12}\,\mathrm{F/m}</span> (da qui l&#39;unità F/m di <span class="m">\varepsilon_0</span>)</li>
+<li><span class="m">\sigma = Q/S</span> = densità di carica sulle armature (C/m²)</li>
 </ul>
-<p>Passaggi: <span class="m">\Delta V = E\,d = \frac{Q d}{\varepsilon_0 S}</span>, quindi <span class="m">C = Q/\Delta V = \varepsilon_0 S/d</span>.</p>
-<p>La capacità cresce se aumenti l&#39;area o avvicini le armature. Diminuisce se le allontani.</p>
+<p>La carica <span class="m">Q</span> si semplifica: la capacità dipende solo da <span class="m">S</span> e <span class="m">d</span>.</p>
+<ul>
+<li><strong>Aumenta</strong> se si aumenta l&#39;area <span class="m">S</span> o si <strong>avvicinano</strong> le armature (d più piccola).</li>
+<li><strong>Diminuisce</strong> se si <strong>allontanano</strong> le armature o si riduce l&#39;area.</li>
+<li>Aumenta di un fattore <span class="m">\varepsilon_r</span> se si riempie lo spazio con un dielettrico (vedi sotto).</li>
+</ul>
 <div class="callout esempio">
 
-<p><span class="m">S = 40\,\mathrm{cm^2} = 4 \cdot 10^{-3}\,\mathrm{m^2}</span>, <span class="m">d = 1\,\mathrm{mm}</span>: <span class="m">C = \frac{8{,}85 \cdot 10^{-12} \cdot 4 \cdot 10^{-3}}{10^{-3}} \approx 35{,}4\,\mathrm{pF}</span>. Con 600 V: <span class="m">Q = CV \approx 21\,\mathrm{nC}</span>, <span class="m">E = V/d = 6 \cdot 10^5\,\mathrm{V/m}</span>.</p>
+<p><strong>Condensatore piano</strong> (esercizio della dispensa 58). <span class="m">S = 40\,\mathrm{cm^2}</span>, <span class="m">d = 1\,\mathrm{mm}</span>, caricato a <span class="m">V_0 = 600\,\mathrm V</span>.</p>
+<ol>
+<li>Conversioni: <span class="m">S = 40\cdot10^{-4}\,\mathrm{m^2} = 4\cdot10^{-3}\,\mathrm{m^2}</span>; <span class="m">d = 10^{-3}\,\mathrm m</span>.</li>
+<li>Capacità: <span class="m">C = \frac{8{,}85\cdot10^{-12}\cdot4\cdot10^{-3}}{10^{-3}} = 3{,}54\cdot10^{-11}\,\mathrm F = 35{,}4\,\mathrm{pF}</span>.</li>
+<li>Carica: <span class="m">Q = CV_0 = 3{,}54\cdot10^{-11}\cdot600 = 2{,}12\cdot10^{-8}\,\mathrm C \approx 21\,\mathrm{nC}</span>.</li>
+<li>Campo: <span class="m">E = V_0/d = 600/10^{-3} = 6\cdot10^5\,\mathrm{V/m}</span> (controllo: <span class="m">Q/(\varepsilon_0 S) = 2{,}12\cdot10^{-8}/(3{,}54\cdot10^{-14}) = 6\cdot10^5</span>, coerente).</li>
+</ol>
+<p>Energia e densità di energia dello stesso condensatore sono nella lezione 51.</p>
 </div>
 
-<h2>Altri condensatori</h2>
-<ul>
-<li><strong>Sferico</strong> (armature di raggi <span class="m">R_1 &lt; R_2</span>): <span class="m">C = 4\pi\varepsilon_0 \frac{R_1 R_2}{R_2 - R_1}</span>.</li>
-<li><strong>Cilindrico</strong> (raggi <span class="m">R_1 &lt; R_2</span>, altezza <span class="m">h</span>): <span class="m">C = \frac{2\pi\varepsilon_0 h}{\ln(R_2/R_1)}</span>.</li>
-</ul>
-<p>Se le armature sono molto vicine, entrambe le formule tornano quella del condensatore piano.</p>
-<h2>Carica in moto dentro un condensatore piano</h2>
-<p>Il campo uniforme agisce come la gravità. Una particella che entra parallela alle armature fa un moto parabolico:</p>
-<ul>
-<li>lungo le armature: velocità costante, <span class="m">x = v_0 t</span>;</li>
-<li>verso l&#39;armatura: accelerazione costante <span class="m">a = \frac{q}{m}E</span>, quindi <span class="m">y = \tfrac12 a t^2</span>.</li>
-</ul>
+<h2>Condensatore sferico</h2>
+<p>Due sfere conduttrici concentriche, interna di raggio <span class="m">R_1</span> con <span class="m">+Q</span>, esterna di raggio <span class="m">R_2 &gt; R_1</span> con <span class="m">-Q</span>.</p>
+<ol>
+<li>Tra le sfere (<span class="m">R_1 &lt; r &lt; R_2</span>), per Gauss su una sfera di raggio <span class="m">r</span>, la carica racchiusa è <span class="m">Q</span>: <span class="m">E = \frac{Q}{4\pi\varepsilon_0 r^2}</span>.</li>
+<li>d.d.p.: <span class="m">\Delta V = \int_{R_1}^{R_2}\frac{Q}{4\pi\varepsilon_0 r^2}dr = \frac{Q}{4\pi\varepsilon_0}\left(\frac1{R_1} - \frac1{R_2}\right) = \frac{Q}{4\pi\varepsilon_0}\frac{R_2 - R_1}{R_1R_2}</span>.</li>
+<li>Capacità:</li>
+</ol>
+<p><span class="m d">C = \frac{Q}{\Delta V} = 4\pi\varepsilon_0\frac{R_1R_2}{R_2 - R_1}</span></p>
+<p>Casi limite: se <span class="m">R_2 \to \infty</span> si ritrova la sfera isolata <span class="m">C = 4\pi\varepsilon_0 R_1</span>; se le sfere sono vicinissime (<span class="m">R_2 - R_1 = d \ll R</span>) <span class="m">C \approx \frac{4\pi\varepsilon_0 R^2}{d} = \frac{\varepsilon_0 S}{d}</span>, cioè il condensatore piano con <span class="m">S = 4\pi R^2</span>.</p>
+<h2>Condensatore cilindrico</h2>
+<p>Due cilindri coassiali di altezza <span class="m">h</span>, raggi <span class="m">R_1 &lt; R_2</span>, cariche <span class="m">\pm Q</span> (densità lineare <span class="m">\lambda = Q/h</span>).</p>
+<ol>
+<li>Tra i cilindri, per Gauss su un cilindro di raggio <span class="m">r</span> e altezza <span class="m">h</span> (flusso solo dalla superficie laterale): <span class="m">E\cdot2\pi rh = \frac{Q}{\varepsilon_0}</span>, quindi <span class="m">E = \frac{Q}{2\pi\varepsilon_0 h r}</span>.</li>
+<li>d.d.p.: <span class="m">\Delta V = \int_{R_1}^{R_2}\frac{Q}{2\pi\varepsilon_0 h}\frac{dr}{r} = \frac{Q}{2\pi\varepsilon_0 h}\ln\frac{R_2}{R_1}</span>.</li>
+<li>Capacità:</li>
+</ol>
+<p><span class="m d">C = \frac{2\pi\varepsilon_0 h}{\ln(R_2/R_1)}</span></p>
+<p>Se la distanza <span class="m">d = R_2 - R_1</span> è molto minore del raggio, si sviluppa il logaritmo al primo ordine: <span class="m">\ln\frac{R_2}{R_1} = \ln\left(1 + \frac{d}{R_1}\right) \approx \frac{d}{R_1}</span>, e <span class="m">C \approx \frac{2\pi\varepsilon_0 R_1 h}{d} = \frac{\varepsilon_0 S}{d}</span> con <span class="m">S = 2\pi R_1 h</span>: di nuovo il condensatore piano.</p>
 <div class="callout esempio">
 
-<p><span class="m">q/m = 2 \cdot 10^5\,\mathrm{C/kg}</span>, <span class="m">d = 50\,\mathrm{cm}</span>, <span class="m">\Delta V = 1\,\mathrm V</span>. Allora <span class="m">E = 1/0{,}5 = 2\,\mathrm{V/m}</span> e <span class="m">a = 2 \cdot 10^5 \cdot 2 = 4 \cdot 10^5\,\mathrm{m/s^2}</span>. Entrando a metà, deve percorrere 0,25 m: <span class="m">t = \sqrt{2 \cdot 0{,}25 / 4 \cdot 10^5} \approx 1{,}1\,\mathrm{ms}</span>. La velocità iniziale parallela non cambia questo tempo.</p>
+<p><strong>Bicchiere di pyrex</strong> (esercizio della dispensa 61). Due fogli di alluminio rivestono un bicchiere di pyrex (<span class="m">\varepsilon_r = 4{,}7</span>) alto <span class="m">h = 15\,\mathrm{cm}</span>, raggi 3,6 cm e 3,8 cm.</p>
+<p><span class="m">\ln(3{,}8/3{,}6) = \ln 1{,}0556 = 0{,}0541</span>. Nel vuoto: <span class="m">C_0 = \frac{2\pi\cdot8{,}85\cdot10^{-12}\cdot0{,}15}{0{,}0541} = \frac{8{,}34\cdot10^{-12}}{0{,}0541} \approx 1{,}54\cdot10^{-10}\,\mathrm F</span>. Con il pyrex: <span class="m">C = \varepsilon_r C_0 = 4{,}7\cdot1{,}54\cdot10^{-10} \approx 7{,}2\cdot10^{-10}\,\mathrm F = 0{,}72\,\mathrm{nF}</span>. (La tensione massima si calcola nella lezione 52.)</p>
 </div>
 
 <h2>Condensatori in parallelo</h2>
-<p>In parallelo le armature sono collegate a coppie. Tutti i condensatori hanno la stessa tensione. Le cariche si sommano.</p>
-<p><span class="m d">C_{eq} = C_1 + C_2 + \dots</span></p>
+<p><strong>Collegamento</strong>: le armature sono collegate <strong>a coppie</strong> da fili conduttori (tutte le &quot;sinistre&quot; insieme, tutte le &quot;destre&quot; insieme). Armature collegate da un conduttore sono equipotenziali, quindi <strong>tutti i condensatori hanno la stessa d.d.p.</strong> <span class="m">V</span>.</p>
+<p>Derivazione:</p>
+<ol>
+<li>Ciascuno accumula <span class="m">Q_i = C_i V</span>.</li>
+<li>La carica totale sulle armature collegate è <span class="m">Q = Q_1 + Q_2 + Q_3 + \dots = (C_1 + C_2 + C_3 + \dots)V</span>.</li>
+<li>Il condensatore equivalente, con la stessa <span class="m">V</span> e la stessa carica totale, ha <span class="m">C_{eq} = Q/V</span>:</li>
+</ol>
+<p><span class="m d">C_{eq} = C_1 + C_2 + C_3 + \dots</span></p>
+<p>Due condensatori in parallelo si comportano come un unico condensatore di capacità pari alla <strong>somma</strong> delle capacità. Intuizione: è come aumentare l&#39;area delle armature.</p>
 <h2>Condensatori in serie</h2>
-<p>In serie un solo conduttore collega un&#39;armatura del primo con una del secondo. Per induzione, tutti hanno la stessa carica. Le tensioni si sommano.</p>
-<p><span class="m d">\frac{1}{C_{eq}} = \frac{1}{C_1} + \frac{1}{C_2} + \dots \qquad \text{due soli: } C_{eq} = \frac{C_1 C_2}{C_1 + C_2}</span></p>
+<p><strong>Collegamento</strong>: un solo conduttore collega un&#39;armatura del primo con un&#39;armatura del secondo. Il sistema ha tre conduttori, a potenziali <span class="m">V_A</span>, <span class="m">V_B</span> (quello centrale, isolato) e <span class="m">V_C</span>.</p>
+<p>Perché la carica è la stessa: si carica l&#39;armatura di sinistra con <span class="m">+Q</span>; per induzione completa sull&#39;armatura opposta del primo condensatore compare <span class="m">-Q</span>. Il conduttore centrale era neutro ed è isolato: se su un suo estremo c&#39;è <span class="m">-Q</span>, sull&#39;altro estremo c&#39;è <span class="m">+Q</span>. Questa induce <span class="m">-Q</span> sull&#39;ultima armatura. Quindi <strong>tutti i condensatori in serie hanno la stessa carica</strong> <span class="m">Q</span>.</p>
+<p>Derivazione:</p>
+<ol>
+<li><span class="m">V_1 = V_A - V_B = Q/C_1</span>, <span class="m">V_2 = V_B - V_C = Q/C_2</span>, ...</li>
+<li>La d.d.p. totale è la somma: <span class="m">V = V_A - V_C = V_1 + V_2 + \dots = Q\left(\frac1{C_1} + \frac1{C_2} + \dots\right)</span>.</li>
+<li><span class="m">C_{eq} = Q/V</span>, quindi:</li>
+</ol>
+<p><span class="m d">\frac1{C_{eq}} = \frac1{C_1} + \frac1{C_2} + \frac1{C_3} + \dots \qquad\text{due soli: } C_{eq} = \frac{C_1C_2}{C_1 + C_2}</span></p>
+<p>Intuizione: in serie è come allontanare le armature (le distanze si sommano), quindi la capacità cala.</p>
 <table>
 <thead>
 <tr>
@@ -60,18 +132,18 @@
 </thead>
 <tbody><tr>
 <td>Uguale per tutti</td>
-<td>tensione <span class="m">V</span></td>
+<td>d.d.p. <span class="m">V</span></td>
 <td>carica <span class="m">Q</span></td>
 </tr>
 <tr>
 <td>Si somma</td>
 <td>carica</td>
-<td>tensione</td>
+<td>d.d.p.</td>
 </tr>
 <tr>
 <td><span class="m">C_{eq}</span></td>
-<td><span class="m">C_1 + C_2</span></td>
-<td><span class="m">\frac{C_1C_2}{C_1+C_2}</span></td>
+<td><span class="m">C_1 + C_2 + \dots</span></td>
+<td><span class="m">\left(\frac1{C_1} + \frac1{C_2} + \dots\right)^{-1}</span></td>
 </tr>
 <tr>
 <td>Due uguali <span class="m">C</span></td>
@@ -79,52 +151,142 @@
 <td><span class="m">C/2</span></td>
 </tr>
 <tr>
+<td><span class="m">N</span> uguali <span class="m">C</span></td>
+<td><span class="m">NC</span></td>
+<td><span class="m">C/N</span></td>
+</tr>
+<tr>
 <td>Rispetto ai singoli</td>
-<td>più grande del più grande</td>
-<td>più piccola della più piccola</td>
+<td>maggiore del più grande</td>
+<td>minore del più piccolo</td>
 </tr>
 </tbody></table>
 <div class="callout esempio">
 
-<p><span class="m">C_1 = 1{,}6\,\mu\mathrm F</span>, <span class="m">C_2 = 2{,}4\,\mu\mathrm F</span>. Parallelo: <span class="m">4\,\mu\mathrm F</span>. Serie: <span class="m">\frac{1{,}6 \cdot 2{,}4}{4} = 0{,}96\,\mu\mathrm F</span>.
-Due da <span class="m">10\,\mu\mathrm F</span>: parallelo <span class="m">20\,\mu\mathrm F</span>, serie <span class="m">5\,\mu\mathrm F</span>. Due da <span class="m">20\,\mu\mathrm F</span>: parallelo <span class="m">40\,\mu\mathrm F</span>, serie <span class="m">10\,\mu\mathrm F</span>.</p>
+<p><strong>Calcoli diretti.</strong></p>
+<ul>
+<li><span class="m">C_1 = 1{,}60\,\mu\mathrm F</span>, <span class="m">C_2 = 2{,}40\,\mu\mathrm F</span>. Parallelo: <span class="m">1{,}60 + 2{,}40 = 4{,}00\,\mu\mathrm F</span>. Serie: <span class="m">\frac{1{,}60\cdot2{,}40}{1{,}60 + 2{,}40} = \frac{3{,}84}{4{,}00} = 0{,}96\,\mu\mathrm F</span> (minore di 1,60, come deve).</li>
+<li>Due da <span class="m">10\,\mu\mathrm F</span>: parallelo <span class="m">20\,\mu\mathrm F</span>, serie <span class="m">\frac{10\cdot10}{20} = 5\,\mu\mathrm F</span>.</li>
+<li>Due da <span class="m">20\,\mu\mathrm F</span>: parallelo <span class="m">40\,\mu\mathrm F</span>, serie <span class="m">10\,\mu\mathrm F</span>.</li>
+</ul>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Tre condensatori in serie con tensioni assegnate</strong> (esercizio della dispensa 57). Ai capi della serie <span class="m">V_A - V_B = 100\,\mathrm V</span>, capacità equivalente <span class="m">C = 100\,\mathrm{pF}</span>. I potenziali dei due nodi intermedi, misurati rispetto a <span class="m">V_A</span>, sono più bassi di 50 V e di 70 V (cioè <span class="m">V_A - V_C = 50\,\mathrm V</span>, <span class="m">V_A - V_D = 70\,\mathrm V</span>). Trovare <span class="m">C_1</span>, <span class="m">C_2</span>, <span class="m">C_3</span>.</p>
+<ol>
+<li>Carica comune: <span class="m">Q = C\,(V_A - V_B) = 100\cdot10^{-12}\cdot100 = 10^{-8}\,\mathrm C = 10\,\mathrm{nC}</span>.</li>
+<li>Tensioni sui singoli: <span class="m">V_1 = 50\,\mathrm V</span>, <span class="m">V_2 = 70 - 50 = 20\,\mathrm V</span>, <span class="m">V_3 = 100 - 70 = 30\,\mathrm V</span> (somma 100 V).</li>
+<li>Capacità: <span class="m">C_1 = \frac{10\,\mathrm{nC}}{50\,\mathrm V} = 200\,\mathrm{pF}</span>, <span class="m">C_2 = \frac{10}{20} = 500\,\mathrm{pF}</span>, <span class="m">C_3 = \frac{10}{30} \approx 333\,\mathrm{pF}</span>.</li>
+<li>Verifica: <span class="m">\frac1{200} + \frac1{500} + \frac1{333} = 0{,}005 + 0{,}002 + 0{,}003 = 0{,}010\,\mathrm{pF^{-1}}</span>, cioè <span class="m">C_{eq} = 100\,\mathrm{pF}</span>.</li>
+</ol>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Condensatore che si scarica su altri due</strong> (esercizio della dispensa 57). Un generatore da <span class="m">V_0 = 12{,}0\,\mathrm V</span> carica <span class="m">C_1 = 4{,}0\,\mu\mathrm F</span>; poi l&#39;interruttore stacca il generatore e collega <span class="m">C_1</span> ai due condensatori scarichi <span class="m">C_2 = 6{,}0\,\mu\mathrm F</span> e <span class="m">C_3 = 3{,}0\,\mu\mathrm F</span>, che nello schema sono in serie tra loro e la serie è in parallelo a <span class="m">C_1</span>.</p>
+<ol>
+<li>Carica iniziale: <span class="m">Q_0 = C_1V_0 = 4\cdot12 = 48\,\mu\mathrm C</span>. Dopo il distacco del generatore la carica si <strong>conserva</strong>.</li>
+<li>Serie <span class="m">C_2</span>–<span class="m">C_3</span>: <span class="m">C_{23} = \frac{6\cdot3}{9} = 2{,}0\,\mu\mathrm F</span>.</li>
+<li><span class="m">C_1</span> e <span class="m">C_{23}</span> sono in parallelo: stessa tensione finale <span class="m">V = \frac{Q_0}{C_1 + C_{23}} = \frac{48}{6} = 8{,}0\,\mathrm V</span>.</li>
+<li>Cariche finali: <span class="m">Q_1 = 4\cdot8 = 32\,\mu\mathrm C</span>; <span class="m">Q_2 = Q_3 = C_{23}V = 16\,\mu\mathrm C</span> (in serie hanno la stessa carica). Controllo: <span class="m">32 + 16 = 48\,\mu\mathrm C</span>.</li>
+</ol>
 </div>
 
 <h2>Parallelo collegato a una batteria</h2>
-<p>La batteria fissa la tensione <span class="m">V</span> su ogni ramo. Se aggiungi un terzo condensatore in parallelo:</p>
+<p>Una batteria (pila) mantiene costante la d.d.p. ai suoi capi. Con condensatori in parallelo collegati alla batteria:</p>
 <ul>
-<li>la tensione su ciascuno non cambia (è quella della batteria);</li>
-<li>la carica di ciascuno (<span class="m">Q_i = C_i V</span>) non cambia;</li>
-<li>cambia solo la capacità equivalente (e la carica totale erogata).</li>
+<li>ogni condensatore ha la <strong>tensione della batteria</strong> <span class="m">V</span>;</li>
+<li>ognuno ha carica <span class="m">Q_i = C_iV</span> ed energia <span class="m">U_i = \tfrac12 C_iV^2</span>: se le capacità sono diverse, <strong>cariche ed energie sono diverse</strong>;</li>
+<li>il campo in ciascun condensatore piano è <span class="m">E_i = V/d_i</span>: è uguale solo se le distanze tra le armature sono uguali; con distanze diverse i campi sono <strong>diversi</strong>.</li>
 </ul>
-<p>Con due condensatori diversi in parallelo le tensioni sono uguali. Cariche ed energie sono diverse. I campi <span class="m">E = V/d</span> sono uguali solo se le distanze tra le armature sono uguali.</p>
-<h2>Dielettrico tra le armature</h2>
-<p>Riempi lo spazio tra le armature con un isolante. La capacità aumenta:</p>
-<p><span class="m d">C = \varepsilon_r C_0 = \varepsilon_r \varepsilon_0 \frac{S}{d} = \varepsilon \frac{S}{d}</span></p>
+<p>Se si aggiunge un <strong>terzo condensatore in parallelo</strong>:</p>
+<ul>
+<li>la tensione su ciascuno resta <span class="m">V</span> (la fissa la batteria);</li>
+<li>quindi la carica di ciascuno dei due già presenti (<span class="m">C_iV</span>) non cambia;</li>
+<li>cambia la <strong>capacità equivalente</strong> (aumenta di <span class="m">C_3</span>), e di conseguenza la carica totale fornita dalla batteria.</li>
+</ul>
+<h2>Dielettrico tra le armature (anticipo della lezione 52)</h2>
+<p>Se lo spazio tra le armature è riempito con un materiale isolante omogeneo, si osserva che, a parità di carica, la d.d.p. diminuisce: la capacità <strong>aumenta</strong> di un fattore <span class="m">\varepsilon_r</span>:</p>
+<p><span class="m d">C = \varepsilon_r C_0 = \varepsilon_r\varepsilon_0\frac{S}{d} = \varepsilon\frac{S}{d}</span></p>
 <p>dove:</p>
 <ul>
-<li><span class="m">\varepsilon_r</span> = costante dielettrica relativa (numero puro, <span class="m">\ge 1</span>; vuoto = 1, aria circa 1)</li>
-<li><span class="m">\varepsilon = \varepsilon_r \varepsilon_0</span> = costante dielettrica assoluta (F/m)</li>
+<li><span class="m">\varepsilon_r = C/C_0</span> = costante dielettrica relativa del materiale (numero puro, <span class="m">\ge 1</span>; vuoto 1, aria <span class="m">\approx 1{,}0006</span>, vetro 5–10, acqua circa 80)</li>
+<li><span class="m">\varepsilon = \varepsilon_r\varepsilon_0</span> = costante dielettrica assoluta (F/m)</li>
+<li><span class="m">C_0</span> = capacità con il vuoto (F)</li>
 </ul>
-<p>Perché: il dielettrico si polarizza e riduce il campo tra le armature. A parità di carica serve meno tensione, quindi <span class="m">C = Q/V</span> cresce.</p>
+<p>Il motivo (lezione 52): il dielettrico si polarizza, le cariche di polarizzazione sulle sue facce riducono il campo tra le armature, serve meno tensione per la stessa carica e <span class="m">C = Q/V</span> cresce.</p>
 <div class="callout attenzione">
 
-<p>Non è <span class="m">C = \varepsilon_r \varepsilon_0 C_0</span>: <span class="m">\varepsilon_0</span> è già dentro <span class="m">C_0</span>.</p>
+<p>La formula è <span class="m">C = \varepsilon_r C_0</span>, <strong>non</strong> <span class="m">\varepsilon_r\varepsilon_0 C_0</span>: <span class="m">\varepsilon_0</span> è già dentro <span class="m">C_0</span>.</p>
+</div>
+
+<h2>Carica in moto in un condensatore piano</h2>
+<p>Una carica <span class="m">q</span> di massa <span class="m">m</span> in un campo <span class="m">\vec E</span> subisce la forza <span class="m">\vec F = q\vec E</span>, quindi l&#39;accelerazione</p>
+<p><span class="m d">\vec a = \frac{q}{m}\vec E</span></p>
+<p>dove:</p>
+<ul>
+<li><span class="m">q/m</span> = rapporto carica/massa (C/kg)</li>
+<li><span class="m">\vec E</span> = campo (V/m); tra le armature è uniforme, <span class="m">E = \Delta V/d</span></li>
+</ul>
+<p>Il campo può quindi <strong>accelerare</strong> una carica (se la velocità è parallela al campo) o <strong>deflettere</strong> la sua traiettoria. Nel condensatore piano il campo è uniforme: la situazione è identica a quella di un corpo lanciato orizzontalmente nel campo di gravità (con <span class="m">\frac{q}{m}E</span> al posto di <span class="m">g</span>). Se la particella entra con velocità <span class="m">v_0</span> <strong>parallela</strong> alle armature:</p>
+<ul>
+<li>lungo le armature (x) nessuna forza: moto uniforme, <span class="m">x = v_0t</span>;</li>
+<li>perpendicolarmente (y) accelerazione costante: <span class="m">y = \tfrac12 at^2</span>, con <span class="m">a = \frac{q}{m}E</span>;</li>
+<li>la traiettoria è una <strong>parabola</strong>: <span class="m">y = \frac{a}{2v_0^2}x^2</span>.</li>
+</ul>
+<p>Il tempo per arrivare su un&#39;armatura dipende solo dal moto lungo y: la velocità parallela <span class="m">v_0</span> non lo cambia (decide solo <strong>dove</strong> arriva la particella, non <strong>quando</strong>).</p>
+<div class="callout esempio">
+
+<p><strong>Particella che urta l&#39;armatura.</strong> <span class="m">q/m = 2\cdot10^5\,\mathrm{C/kg}</span>, <span class="m">v_0 = 10^6\,\mathrm{m/s}</span> parallela alle armature, ingresso a metà tra le armature; <span class="m">d = 50\,\mathrm{cm}</span>, <span class="m">\Delta V = 1\,\mathrm V</span>. Dopo quanto urta l&#39;armatura negativa?</p>
+<ol>
+<li>Campo: <span class="m">E = \frac{\Delta V}{d} = \frac{1}{0{,}5} = 2\,\mathrm{V/m}</span>.</li>
+<li>Accelerazione trasversale: <span class="m">a = \frac{q}{m}E = 2\cdot10^5\cdot2 = 4\cdot10^5\,\mathrm{m/s^2}</span>.</li>
+<li>Partendo a metà, deve percorrere <span class="m">d/2 = 0{,}25\,\mathrm m</span> in direzione y, partendo con velocità trasversale nulla: <span class="m">0{,}25 = \tfrac12 at^2</span>.</li>
+<li><span class="m">t = \sqrt{\frac{2\cdot0{,}25}{4\cdot10^5}} = \sqrt{1{,}25\cdot10^{-6}} \approx 1{,}1\cdot10^{-3}\,\mathrm s = 1{,}1\,\mathrm{ms}</span>.</li>
+</ol>
+<p>Dividere una distanza per <span class="m">v_0</span> è l&#39;errore tipico: <span class="m">v_0</span> non c&#39;entra con il tempo di caduta (in questo tempo la particella percorre lungo x circa 1100 m, quindi le armature dovrebbero essere lunghissime: il problema è idealizzato).</p>
+</div>
+
+<h2>Esperienza di Millikan</h2>
+<p>Con l&#39;interazione tra cariche e campo, Millikan misurò per la prima volta la <strong>carica elementare</strong>.</p>
+<p><strong>Apparato</strong>: goccioline d&#39;olio nebulizzate si caricano per strofinio; alcune cadono attraverso un forellino tra due placche orizzontali parallele, che possono essere caricate per creare un campo uniforme verticale. Un microscopio osserva il moto delle gocce.</p>
+<p><strong>Senza campo</strong>: la goccia (raggio <span class="m">r</span>, densità <span class="m">\rho</span>, massa <span class="m">m = \frac43\pi r^3\rho</span>) cade sotto il peso, frenata dall&#39;attrito viscoso dell&#39;aria (legge di Stokes, <span class="m">F = 6\pi\eta rv</span>, con <span class="m">\eta</span> viscosità dell&#39;aria). Raggiunge subito una <strong>velocità limite</strong> costante, quando le forze si equilibrano:</p>
+<p><span class="m d">mg = 6\pi\eta r v_l \quad\Rightarrow\quad v_l = \frac{mg}{6\pi\eta r} = \frac{2\rho g r^2}{9\eta}</span></p>
+<p>Misurando <span class="m">v_l</span> si ricava il <strong>raggio</strong> della goccia: <span class="m">r = \sqrt{\frac{9\eta v_l}{2\rho g}}</span>, e quindi la sua massa.</p>
+<p><strong>Con il campo</strong>: per una goccia carica negativamente con il campo diretto verso il basso, la forza elettrica <span class="m">|q|E</span> è verso l&#39;alto. La nuova velocità di regime è</p>
+<p><span class="m d">v' = \frac{mg - |q|E}{6\pi\eta r} \quad\Rightarrow\quad |q| = \frac{6\pi\eta r\,(v_l - v')}{E}</span></p>
+<p>Regolando il campo si può rallentare, fermare o invertire il moto della goccia. Ripetendo moltissime misure su gocce diverse, Millikan trovò che le cariche (e le variazioni di velocità quando una goccia catturava o perdeva carica) erano sempre <strong>multipli interi</strong> di un valore elementare:</p>
+<p><span class="m d">q = n\,e \qquad e \approx 1{,}6\cdot10^{-19}\,\mathrm C</span></p>
+<p>La carica è <strong>quantizzata</strong>. Il valore di Millikan si discosta meno dell&#39;1% dalle misure moderne.</p>
+<div class="callout attenzione">
+
+<ul>
+<li>Parallelo: si sommano le capacità. Serie: si sommano gli <strong>inversi</strong>. Scambiarle è l&#39;errore più frequente.</li>
+<li>In serie è uguale la <strong>carica</strong>, in parallelo la <strong>tensione</strong>.</li>
+<li>Allontanando le armature la capacità <strong>diminuisce</strong> (<span class="m">C \propto 1/d</span>); aumentando l&#39;area aumenta.</li>
+<li>In un condensatore piano il tempo di arrivo sull&#39;armatura non dipende dalla velocità parallela alle armature.</li>
+</ul>
 </div>
 
 <div class="callout esame">
 
-<p>Domanda aperta: &quot;Definire il condensatore e la capacità; caso del condensatore piano&quot;. Scrivi: due conduttori in induzione completa, cariche <span class="m">\pm Q</span>, <span class="m">C = Q/\Delta V</span>; campo uniforme <span class="m">\sigma/\varepsilon_0</span>, <span class="m">\Delta V = Qd/(\varepsilon_0 S)</span>, quindi <span class="m">C = \varepsilon_0 S/d</span>; con dielettrico <span class="m">C = \varepsilon_r C_0</span>.</p>
+<ul>
+<li><strong>&quot;Si definiscano il condensatore e la capacità; caso del condensatore piano&quot;</strong> (aperta): due conduttori in induzione completa, cariche <span class="m">\pm Q</span>; <span class="m">C = Q/\Delta V</span>, dipende solo da geometria e mezzo; nel piano il campo è uniforme <span class="m">E = \sigma/\varepsilon_0 = Q/(\varepsilon_0 S)</span> (Coulomb o sovrapposizione di due piani), <span class="m">\Delta V = Ed = Qd/(\varepsilon_0 S)</span>, quindi <span class="m">C_0 = \varepsilon_0 S/d</span>; cresce con S, cala con d; con dielettrico <span class="m">C = \varepsilon_r C_0</span>.</li>
+<li>Chiuse: serie/parallelo con numeri (due uguali: <span class="m">2C</span> e <span class="m">C/2</span>), dielettrico che moltiplica per <span class="m">\varepsilon_r</span>, capacità che diminuisce allontanando le armature, terzo condensatore in parallelo (cambia solo la capacità equivalente), affermazione falsa sui campi in parallelo con distanze diverse, particella nel condensatore (tempo da <span class="m">d/2 = \tfrac12 at^2</span>), energia di due condensatori in serie (lezione 51).</li>
+</ul>
 </div>
 
 <div class="callout sintesi">
 
 <ul>
-<li>Condensatore: due armature con <span class="m">\pm Q</span>; <span class="m">C = Q/\Delta V</span>.</li>
-<li>Piano: <span class="m">C_0 = \varepsilon_0 S/d</span>; cresce con S, cala con d.</li>
-<li>Con dielettrico: <span class="m">C = \varepsilon_r C_0</span>.</li>
-<li>Parallelo: stessa V, <span class="m">C_{eq} = \sum C_i</span>.</li>
-<li>Serie: stessa Q, <span class="m">1/C_{eq} = \sum 1/C_i</span>.</li>
-<li>In campo uniforme una carica fa un moto parabolico con <span class="m">a = qE/m</span>.</li>
+<li>Condensatore: due conduttori in induzione completa, armature con <span class="m">\pm Q</span>; <span class="m">C = Q/\Delta V</span> (F).</li>
+<li>Piano: <span class="m">E = \sigma/\varepsilon_0</span> uniforme solo tra le armature; <span class="m">\Delta V = Ed</span>; <span class="m">C_0 = \varepsilon_0 S/d</span>.</li>
+<li>Sferico: <span class="m">C = 4\pi\varepsilon_0\frac{R_1R_2}{R_2 - R_1}</span>; cilindrico: <span class="m">C = \frac{2\pi\varepsilon_0 h}{\ln(R_2/R_1)}</span>; armature vicine → piano.</li>
+<li>Parallelo: stessa V, <span class="m">C_{eq} = \sum C_i</span>. Serie: stessa Q, <span class="m">1/C_{eq} = \sum 1/C_i</span>.</li>
+<li>Con la batteria la tensione è fissa: aggiungere un ramo in parallelo cambia solo <span class="m">C_{eq}</span> e la carica totale.</li>
+<li>Dielettrico: <span class="m">C = \varepsilon_r C_0</span>, <span class="m">\varepsilon = \varepsilon_r\varepsilon_0</span>.</li>
+<li>Carica nel condensatore: <span class="m">a = qE/m</span>, moto parabolico; tempo da <span class="m">y = \tfrac12at^2</span>.</li>
+<li>Millikan: velocità limite → raggio; con il campo → carica; <span class="m">q = ne</span>, <span class="m">e = 1{,}6\cdot10^{-19}\,\mathrm C</span>.</li>
 </ul>
 </div>

@@ -1,50 +1,181 @@
-<h1>Lezione 49 — Conduttori e capacità</h1>
-<h2>Conduttori e isolanti</h2>
-<p>In un conduttore alcune cariche (nei metalli, gli elettroni di conduzione) si muovono liberamente. Basta un campo debole per spostarle. In un isolante (dielettrico) gli elettroni sono legati ai loro atomi. Si possono solo spostare di poco: il materiale si polarizza ma non conduce.</p>
-<h2>Campo e carica in un conduttore in equilibrio</h2>
-<p>In equilibrio elettrostatico le cariche sono ferme. Quindi dentro il conduttore il campo è nullo: se non lo fosse, le cariche libere si muoverebbero.</p>
-<p>Conseguenze:</p>
+<h1>Lezione 49 — Conduttori, campo dal potenziale e capacità</h1>
+<p>La lezione 48 ha introdotto il potenziale come integrale del campo. Qui si fa il percorso inverso: <strong>dal potenziale si ricava il campo</strong> derivando (gradiente). Poi si applicano campo e potenziale ai <strong>conduttori</strong>, i materiali in cui le cariche si muovono liberamente: si scopre che in equilibrio il campo dentro è nullo, la carica sta in superficie, il conduttore è tutto allo stesso potenziale e appena fuori il campo vale <span class="m">\sigma/\varepsilon_0</span> (<strong>teorema di Coulomb</strong>). Infine si definisce la <strong>capacità</strong> di un conduttore, il rapporto costante tra carica e potenziale, che porta ai condensatori.</p>
+<h2>Campo dal potenziale: il gradiente</h2>
+<h3>Dalla relazione integrale a quella locale</h3>
+<p>Dalla lezione 48, per uno spostamento infinitesimo <span class="m">d\vec s = (dx, dy, dz)</span>:</p>
+<p><span class="m d">dV = -\vec E\cdot d\vec s = -(E_x\,dx + E_y\,dy + E_z\,dz)</span></p>
+<p>D&#39;altra parte, per una funzione di tre variabili il differenziale totale è</p>
+<p><span class="m d">dV = \frac{\partial V}{\partial x}dx + \frac{\partial V}{\partial y}dy + \frac{\partial V}{\partial z}dz = \nabla V\cdot d\vec s</span></p>
+<p>Le due espressioni devono essere uguali per ogni spostamento <span class="m">d\vec s</span>; confrontando i coefficienti di <span class="m">dx</span>, <span class="m">dy</span>, <span class="m">dz</span>:</p>
+<p><span class="m d">E_x = -\frac{\partial V}{\partial x} \qquad E_y = -\frac{\partial V}{\partial y} \qquad E_z = -\frac{\partial V}{\partial z}</span></p>
+<p>cioè in forma vettoriale</p>
+<p><span class="m d">\vec E = -\nabla V</span></p>
+<p>dove:</p>
 <ul>
-<li>Il teorema di Gauss su una superficie tutta interna dà flusso nullo. Quindi dentro non c&#39;è carica netta.</li>
-<li>La carica in eccesso sta tutta sulla superficie esterna, con densità <span class="m">\sigma = dq/dS</span> (C/m²).</li>
-<li>Il campo dentro una sfera conduttrice carica è <span class="m">0</span>, ovunque.</li>
+<li><span class="m">\nabla V = \left(\frac{\partial V}{\partial x}, \frac{\partial V}{\partial y}, \frac{\partial V}{\partial z}\right)</span> = gradiente del potenziale (V/m)</li>
+<li><span class="m">\frac{\partial V}{\partial x}</span> = derivata parziale: come varia V muovendosi solo lungo x, tenendo fisse y e z</li>
+<li><span class="m">\vec E</span> = campo elettrico (V/m)</li>
 </ul>
+<p>È il <strong>teorema del gradiente</strong> applicato al potenziale: il campo è l&#39;opposto del gradiente del potenziale. Ogni campo che si scrive come gradiente di una funzione scalare è conservativo, e viceversa. La relazione <span class="m">\vec E = -\nabla V</span> non dipende dal sistema di coordinate scelto (è una relazione tra vettori).</p>
+<h3>Significato</h3>
+<ul>
+<li>Il gradiente punta nella direzione in cui <span class="m">V</span> <strong>cresce più rapidamente</strong>; il suo modulo è quanto cresce per metro in quella direzione.</li>
+<li>Quindi il campo punta nella direzione in cui <span class="m">V</span> <strong>diminuisce più rapidamente</strong>, ed è tanto più intenso quanto più rapidamente <span class="m">V</span> cambia nello spazio.</li>
+<li>Il gradiente è perpendicolare alle superfici equipotenziali (lungo di esse <span class="m">V</span> non cambia): ritroviamo che il campo è <strong>ortogonale alle superfici equipotenziali</strong>, diretto nel verso di massima diminuzione del potenziale.</li>
+</ul>
+<p>Per un potenziale che dipende solo dalla distanza <span class="m">r</span> da un centro (simmetria sferica) il campo è radiale e <span class="m">E_r = -\frac{dV}{dr}</span>.</p>
+<div class="callout esempio">
+
+<p><strong>Controllo con la carica puntiforme.</strong> <span class="m">V(r) = \frac{Q}{4\pi\varepsilon_0 r}</span>. Derivo rispetto a <span class="m">r</span>: <span class="m">\frac{dV}{dr} = \frac{Q}{4\pi\varepsilon_0}\cdot\left(-\frac{1}{r^2}\right)</span>. Quindi <span class="m">E_r = -\frac{dV}{dr} = \frac{Q}{4\pi\varepsilon_0 r^2}</span>: è proprio il campo di Coulomb, uscente se <span class="m">Q &gt; 0</span>.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Potenziale <span class="m">V = ax^2</span></strong> (esercizio della dispensa). Tra due superfici parallele, perpendicolari all&#39;asse x, il potenziale è <span class="m">V = ax^2</span>, con x la distanza dalla prima superficie e <span class="m">a = 1200\,\mathrm{V/m^2}</span>. Campo in <span class="m">x = 2\,\mathrm{cm}</span>.</p>
+<ol>
+<li><span class="m">V</span> dipende solo da x, quindi <span class="m">E_y = E_z = 0</span>.</li>
+<li><span class="m">E_x = -\frac{dV}{dx} = -\frac{d}{dx}(ax^2) = -2ax</span>.</li>
+<li>In <span class="m">x = 0{,}02\,\mathrm m</span>: <span class="m">E_x = -2\cdot1200\cdot0{,}02 = -48\,\mathrm{V/m}</span>.</li>
+</ol>
+<p>Modulo 48 V/m, verso delle x negative, cioè verso la superficie posta nell&#39;origine (dove il potenziale è più basso). Il campo qui non è uniforme: cresce linearmente con x.</p>
+</div>
+
+<h2>Circuitazione nulla e teorema di Stokes</h2>
+<p>Per un campo conservativo il lavoro su un percorso chiuso è nullo. Per unità di carica, questo significa che la <strong>circuitazione</strong> del campo elettrostatico lungo qualunque linea chiusa <span class="m">\ell</span> è nulla:</p>
+<p><span class="m d">\oint_\ell \vec E\cdot d\vec s = 0</span></p>
+<p>Il <strong>teorema di Stokes</strong> dice che la circuitazione di un campo lungo una linea chiusa è uguale al flusso del suo <strong>rotore</strong> attraverso una qualunque superficie <span class="m">\Sigma</span> che ha quella linea come bordo:</p>
+<p><span class="m d">\oint_\ell \vec E\cdot d\vec s = \int_\Sigma (\nabla\times\vec E)\cdot\vec u_n\,d\Sigma</span></p>
+<p>Poiché il primo membro è zero per <strong>ogni</strong> linea chiusa, anche il flusso del rotore è zero per ogni superficie, e questo è possibile solo se il rotore è nullo in ogni punto:</p>
+<p><span class="m d">\nabla\times\vec E = 0</span></p>
+<p>dove:</p>
+<ul>
+<li><span class="m">\nabla\times\vec E</span> = rotore del campo (V/m²): misura la tendenza del campo a &quot;girare&quot; intorno a un punto</li>
+<li><span class="m">\vec u_n</span> = versore normale alla superficie <span class="m">\Sigma</span></li>
+</ul>
+<p>Il campo elettrostatico è <strong>irrotazionale</strong>. Questa è, insieme a <span class="m">\nabla\cdot\vec E = \rho/\varepsilon_0</span> (Gauss in forma locale), una delle due <strong>equazioni di Maxwell dell&#39;elettrostatica</strong>.</p>
+<h2>Equazione di Poisson ed equazione di Laplace</h2>
+<p>La forma locale del teorema di Gauss (prima equazione di Maxwell) è <span class="m">\nabla\cdot\vec E = \rho/\varepsilon_0</span>. Sostituendo <span class="m">\vec E = -\nabla V</span>:</p>
+<p><span class="m d">\nabla\cdot(-\nabla V) = \frac{\rho}{\varepsilon_0} \quad\Rightarrow\quad \nabla^2 V = \frac{\partial^2 V}{\partial x^2} + \frac{\partial^2 V}{\partial y^2} + \frac{\partial^2 V}{\partial z^2} = -\frac{\rho}{\varepsilon_0}</span></p>
+<p>dove:</p>
+<ul>
+<li><span class="m">\nabla^2</span> = operatore di Laplace (laplaciano): somma delle derivate seconde</li>
+<li><span class="m">\rho</span> = densità di carica di volume (C/m³)</li>
+</ul>
+<p>È l&#39;<strong>equazione di Poisson</strong>, l&#39;equazione fondamentale dell&#39;elettrostatica nel vuoto: lega il potenziale in una regione alla distribuzione di carica nella regione. Risolta con le opportune condizioni al contorno (per esempio il potenziale noto sui conduttori) dà il potenziale in modo <strong>unico</strong>, e da esso il campo con <span class="m">\vec E = -\nabla V</span>. Dove non ci sono cariche (<span class="m">\rho = 0</span>) diventa l&#39;<strong>equazione di Laplace</strong>:</p>
+<p><span class="m d">\nabla^2 V = 0</span></p>
+<h2>Conduttori e isolanti</h2>
+<ul>
+<li><strong>Conduttore</strong>: materiale in cui alcune cariche sono <strong>libere di muoversi</strong> in tutto il volume. Nei metalli sono gli elettroni di conduzione (circa uno o due per atomo), mentre gli ioni positivi restano fissi nel reticolo. Anche un campo molto debole basta a metterli in moto. Esempi: metalli, soluzioni saline, corpo umano, terreno umido.</li>
+<li><strong>Isolante</strong> (o <strong>dielettrico</strong>): gli elettroni sono legati ai propri atomi o molecole. Un campo può solo spostarli di pochissimo rispetto al nucleo (il materiale si <strong>polarizza</strong>, lezione 52), ma non li fa scorrere: non c&#39;è conduzione. Esempi: vetro, plastica, ceramica, aria secca, olio.</li>
+<li>La carica data a un isolante resta dove è stata messa; quella data a un conduttore si distribuisce subito su tutta la sua superficie.</li>
+<li>In mezzo ci sono i semiconduttori (silicio, germanio) e, a temperature molto basse, i superconduttori (lezione 54).</li>
+</ul>
+<h2>Campo e carica in un conduttore in equilibrio</h2>
+<p><strong>Equilibrio elettrostatico</strong> = le cariche sono ferme. In un conduttore questo implica:</p>
+<ol>
+<li><strong>Il campo all&#39;interno è nullo</strong>: <span class="m">\vec E = 0</span> in ogni punto interno. Infatti, se ci fosse un campo, le cariche libere subirebbero una forza <span class="m">q\vec E</span> e si muoverebbero, contro l&#39;ipotesi di equilibrio. Se si mette un conduttore in un campo esterno, le cariche si spostano (in tempi brevissimi) finché il campo che esse stesse producono annulla quello esterno all&#39;interno.</li>
+<li><strong>Non c&#39;è carica netta all&#39;interno</strong>: si prende una superficie chiusa qualsiasi, tutta interna al conduttore. Su di essa <span class="m">\vec E = 0</span>, quindi il flusso è zero; per il teorema di Gauss (<span class="m">\Phi = q_{int}/\varepsilon_0</span>) la carica racchiusa è zero. Siccome la superficie può essere piccola quanto si vuole e posta ovunque, la densità di carica interna è nulla.</li>
+<li><strong>La carica in eccesso sta sulla superficie esterna</strong>, distribuita con una densità superficiale</li>
+</ol>
+<p><span class="m d">\sigma = \frac{dq}{dS}</span></p>
+<p>dove:</p>
+<ul>
+<li><span class="m">\sigma</span> = densità superficiale di carica (C/m²), in generale diversa da punto a punto</li>
+<li><span class="m">dq</span> = carica sull&#39;elemento di superficie <span class="m">dS</span> (C); <span class="m">dS</span> in m²</li>
+</ul>
+<p>Per una sfera conduttrice di raggio <span class="m">R</span> e carica <span class="m">Q</span> la densità è uniforme: <span class="m">\sigma = \frac{Q}{4\pi R^2}</span>, e il campo <strong>dentro</strong> (in qualunque punto interno, centro compreso) è <strong>zero</strong>.</p>
 <h2>Il potenziale di un conduttore</h2>
-<p>Dentro il conduttore <span class="m">E = 0</span>. Quindi tra due punti qualsiasi A e B interni:</p>
-<p><span class="m d">V_A - V_B = \int_A^B \vec E \cdot d\vec s = 0</span></p>
-<p>Il potenziale è uguale in tutto il volume e sulla superficie. Il conduttore è un corpo equipotenziale. Per questo, appena fuori, il campo è perpendicolare alla superficie.</p>
-<p>Per una sfera conduttrice di raggio <span class="m">R</span> e carica <span class="m">Q</span>, il potenziale è quello di una carica puntiforme al centro, calcolato sulla superficie:</p>
+<p>Dentro il conduttore <span class="m">\vec E = 0</span>. Per due punti qualsiasi A e B interni (o sulla superficie):</p>
+<p><span class="m d">V_A - V_B = \int_A^B \vec E\cdot d\vec s = 0</span></p>
+<p>Quindi il potenziale è <strong>uguale in tutto il volume e sulla superficie</strong>: il conduttore è un <strong>volume equipotenziale</strong> e la sua superficie è una <strong>superficie equipotenziale</strong>. Poiché il campo è sempre perpendicolare alle superfici equipotenziali, <strong>appena fuori</strong> dal conduttore il campo è <strong>perpendicolare alla superficie</strong>.</p>
+<p>Per una sfera conduttrice di raggio <span class="m">R</span> e carica <span class="m">Q</span>: fuori dalla sfera campo e potenziale sono quelli di una carica puntiforme <span class="m">Q</span> posta al centro. Sulla superficie (<span class="m">r = R</span>) il potenziale vale <span class="m">\frac{Q}{4\pi\varepsilon_0 R}</span>, e dentro è lo stesso valore (costante):</p>
 <p><span class="m d">V = \frac{Q}{4\pi\varepsilon_0 R}</span></p>
 <p>dove:</p>
 <ul>
+<li><span class="m">V</span> = potenziale della sfera, con zero all&#39;infinito (V)</li>
 <li><span class="m">Q</span> = carica della sfera (C)</li>
 <li><span class="m">R</span> = raggio (m)</li>
-<li><span class="m">\varepsilon_0 = 8{,}85 \cdot 10^{-12}\,\mathrm{F/m}</span></li>
+<li><span class="m">\varepsilon_0 = 8{,}85\cdot10^{-12}\,\mathrm{F/m}</span></li>
 </ul>
+<table>
+<thead>
+<tr>
+<th>Zona</th>
+<th>Campo <span class="m">E</span></th>
+<th>Potenziale <span class="m">V</span></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><span class="m">r &lt; R</span> (dentro)</td>
+<td><span class="m">0</span></td>
+<td><span class="m">\frac{Q}{4\pi\varepsilon_0 R}</span> (costante)</td>
+</tr>
+<tr>
+<td><span class="m">r = R</span> (superficie, appena fuori)</td>
+<td><span class="m">\frac{Q}{4\pi\varepsilon_0 R^2} = \frac{\sigma}{\varepsilon_0}</span></td>
+<td><span class="m">\frac{Q}{4\pi\varepsilon_0 R}</span></td>
+</tr>
+<tr>
+<td><span class="m">r &gt; R</span> (fuori)</td>
+<td><span class="m">\frac{Q}{4\pi\varepsilon_0 r^2}</span></td>
+<td><span class="m">\frac{Q}{4\pi\varepsilon_0 r}</span></td>
+</tr>
+</tbody></table>
+<div class="callout attenzione">
+
+<p>Dentro un conduttore è nullo il <strong>campo</strong>, non il potenziale. Il potenziale dentro è costante e uguale a quello della superficie (in generale diverso da zero).</p>
+</div>
+
 <h2>Teorema di Coulomb</h2>
-<p>Appena fuori dalla superficie di un conduttore carico il campo è perpendicolare alla superficie e vale:</p>
+<p><strong>Enunciato</strong>: in un punto appena fuori dalla superficie di un conduttore carico in equilibrio, il campo elettrostatico è <strong>perpendicolare alla superficie</strong> e ha modulo</p>
 <p><span class="m d">E = \frac{\sigma}{\varepsilon_0}</span></p>
 <p>dove:</p>
 <ul>
-<li><span class="m">E</span> = modulo del campo appena fuori (V/m)</li>
+<li><span class="m">E</span> = modulo del campo appena fuori dalla superficie (V/m)</li>
 <li><span class="m">\sigma</span> = densità superficiale di carica in quel punto (C/m²)</li>
+<li><span class="m">\varepsilon_0</span> = costante dielettrica del vuoto (F/m)</li>
 </ul>
-<p>Dimostrazione in 3 passi:</p>
-<ol>
-<li>La componente tangente del campo si conserva attraversando la superficie (circuitazione nulla su un piccolo rettangolo a cavallo della superficie). Dentro è zero, quindi anche fuori è zero: il campo esterno è solo normale.</li>
-<li>Si prende come superficie gaussiana un piccolo cilindro con una base <span class="m">dS</span> fuori e una dentro. Il flusso passa solo dalla base esterna: <span class="m">\Phi = E\,dS</span>.</li>
-<li>La carica racchiusa è <span class="m">\sigma\,dS</span>. Gauss dà <span class="m">E\,dS = \sigma\,dS/\varepsilon_0</span>, cioè <span class="m">E = \sigma/\varepsilon_0</span>.</li>
-</ol>
-<p>In generale, attraverso una superficie carica la componente normale del campo salta di <span class="m">\sigma/\varepsilon_0</span>, quella tangente resta uguale.</p>
-<h2>Potere delle punte</h2>
-<p>Su un conduttore di forma qualsiasi la carica non è uniforme. Si concentra dove la superficie è più curva, cioè dove il raggio di curvatura è piccolo (punte, spigoli). Lì <span class="m">\sigma</span> e quindi il campo sono più intensi. È il principio del parafulmine.</p>
+<p>Il verso è uscente se <span class="m">\sigma &gt; 0</span>, entrante se <span class="m">\sigma &lt; 0</span>. In forma vettoriale <span class="m">\vec E = \frac{\sigma}{\varepsilon_0}\vec u_n</span>, con <span class="m">\vec u_n</span> normale uscente.</p>
+<h3>Dimostrazione</h3>
+<p><strong>Passo 1 — la componente tangente si conserva.</strong> Si calcola la circuitazione del campo su un piccolo rettangolo a cavallo della superficie: due lati lunghi <span class="m">dl</span> paralleli alla superficie, uno appena fuori (percorso in un verso) e uno appena dentro (percorso nel verso opposto), e due lati corti <span class="m">dn</span> perpendicolari alla superficie. Facendo tendere a zero i lati corti (infinitesimi di ordine superiore), il loro contributo sparisce. La circuitazione del campo elettrostatico è nulla, quindi</p>
+<p><span class="m d">E_{t,fuori}\,dl - E_{t,dentro}\,dl = 0 \quad\Rightarrow\quad E_{t,fuori} = E_{t,dentro}</span></p>
+<p>La componente tangenziale del campo è la stessa sui due lati della superficie. Dentro il conduttore il campo è nullo, quindi <span class="m">E_{t,dentro} = 0</span> e anche <strong>fuori la componente tangente è nulla</strong>: il campo appena fuori è solo <strong>normale</strong> alla superficie (lo stesso risultato visto con le equipotenziali).</p>
+<p><strong>Passo 2 — superficie gaussiana.</strong> Si prende un cilindretto infinitesimo con le basi di area <span class="m">dS</span> parallele alla superficie del conduttore: una base appena fuori, una appena dentro; l&#39;altezza tende a zero.</p>
+<ul>
+<li>Base interna: <span class="m">\vec E = 0</span>, flusso nullo.</li>
+<li>Superficie laterale: la sua area tende a zero (e comunque fuori il campo è normale, quindi parallelo alla parete laterale): flusso nullo.</li>
+<li>Base esterna: il campo è perpendicolare alla base, flusso <span class="m">E\,dS</span>.</li>
+</ul>
+<p>Flusso totale: <span class="m">\Phi = E\,dS</span>.</p>
+<p><strong>Passo 3 — teorema di Gauss.</strong> La carica dentro il cilindretto è quella sul pezzetto di superficie: <span class="m">dq = \sigma\,dS</span>. Gauss: <span class="m">\Phi = dq/\varepsilon_0</span>, quindi</p>
+<p><span class="m d">E\,dS = \frac{\sigma\,dS}{\varepsilon_0} \quad\Rightarrow\quad E = \frac{\sigma}{\varepsilon_0}</span></p>
+<h3>Validità generale</h3>
+<p>Lo stesso procedimento, applicato a una qualsiasi superficie di separazione con densità di carica <span class="m">\sigma</span> (non necessariamente un conduttore), mostra che attraversando una superficie carica:</p>
+<ul>
+<li>la <strong>componente tangente</strong> del campo è <strong>continua</strong> (si conserva);</li>
+<li>la <strong>componente normale</strong> ha un <strong>salto</strong> pari a <span class="m">\sigma/\varepsilon_0</span>: <span class="m">E_{n,2} - E_{n,1} = \sigma/\varepsilon_0</span>.</li>
+</ul>
+<p>Nel conduttore il campo interno è zero, quindi tutto il salto si vede fuori: <span class="m">E = \sigma/\varepsilon_0</span>.</p>
 <div class="callout attenzione">
 
-<p>&quot;Più densa dove il raggio di curvatura è minore&quot; e &quot;più densa dove la curvatura è maggiore&quot; dicono la stessa cosa.</p>
+<p>Per un piano isolante carico isolato (campo da entrambe le parti) il campo vale <span class="m">\sigma/(2\varepsilon_0)</span> da ciascun lato; per un conduttore vale <span class="m">\sigma/\varepsilon_0</span> solo all&#39;esterno, perché dentro è zero. Il salto è <span class="m">\sigma/\varepsilon_0</span> in entrambi i casi.</p>
 </div>
 
-<h2>Capacità di un conduttore</h2>
-<p>Se raddoppi la carica di un conduttore isolato, raddoppia anche il suo potenziale. Il rapporto resta costante e si chiama capacità.</p>
+<h2>Potere delle punte</h2>
+<p>Su un conduttore di forma qualsiasi la superficie è equipotenziale, ma la carica <strong>non</strong> si distribuisce in modo uniforme: si addensa dove la superficie è <strong>più curva</strong>, cioè dove il <strong>raggio di curvatura è più piccolo</strong> (punte, spigoli).</p>
+<p>Ragionamento con due sfere: due sfere conduttrici di raggi <span class="m">R_1 &gt; R_2</span>, lontane tra loro e collegate da un filo, sono allo stesso potenziale:</p>
+<p><span class="m d">\frac{Q_1}{4\pi\varepsilon_0 R_1} = \frac{Q_2}{4\pi\varepsilon_0 R_2} \quad\Rightarrow\quad \frac{Q_1}{R_1} = \frac{Q_2}{R_2}</span></p>
+<p>Le densità sono <span class="m">\sigma_i = \frac{Q_i}{4\pi R_i^2}</span>. Facendo il rapporto e usando <span class="m">Q_1/Q_2 = R_1/R_2</span>:</p>
+<p><span class="m d">\frac{\sigma_1}{\sigma_2} = \frac{Q_1}{Q_2}\cdot\frac{R_2^2}{R_1^2} = \frac{R_1}{R_2}\cdot\frac{R_2^2}{R_1^2} = \frac{R_2}{R_1}</span></p>
+<p>La densità è <strong>inversamente proporzionale al raggio</strong>: la sfera piccola ha la densità maggiore. Una punta si comporta come una sfera di raggio piccolissimo: lì <span class="m">\sigma</span> è grande e, per il teorema di Coulomb, anche il campo <span class="m">E = \sigma/\varepsilon_0</span> è molto intenso. Se supera la rigidità dielettrica dell&#39;aria (circa 3 MV/m, lezione 52) l&#39;aria si ionizza e la carica &quot;sfugge&quot; dalla punta (<strong>potere dispersivo delle punte</strong>). È il principio del <strong>parafulmine</strong>: la punta scarica gradualmente le nubi e offre una via preferenziale a terra.</p>
+<div class="callout attenzione">
+
+<p>&quot;Più densa dove il raggio di curvatura è <strong>minore</strong>&quot; e &quot;più densa dove la curvatura è <strong>maggiore</strong>&quot; dicono la stessa cosa (la curvatura è l&#39;inverso del raggio di curvatura). È sbagliato dire che la carica è più densa dove la superficie è più piatta.</p>
+</div>
+
+<h2>Capacità di un conduttore isolato</h2>
+<p>Si consideri un conduttore isolato con carica <span class="m">Q</span>. In equilibrio la carica è sulla superficie: <span class="m">Q = \int_S \sigma\,dS</span>. Il potenziale del conduttore è quello della sua superficie, che si calcola sommando i contributi di tutta la carica superficiale: <span class="m">V = \frac{1}{4\pi\varepsilon_0}\int_S \frac{\sigma\,dS}{r}</span>.</p>
+<p>Se si <strong>raddoppia</strong> la carica, la distribuzione mantiene la stessa forma (ogni <span class="m">\sigma</span> raddoppia), quindi anche <span class="m">V</span> raddoppia: entrambe le relazioni prendono lo stesso fattore moltiplicativo. Il <strong>rapporto</strong> tra carica e potenziale è quindi costante e si chiama <strong>capacità elettrica</strong>:</p>
 <p><span class="m d">C = \frac{Q}{V}</span></p>
 <p>dove:</p>
 <ul>
@@ -52,47 +183,100 @@
 <li><span class="m">Q</span> = carica del conduttore (C)</li>
 <li><span class="m">V</span> = potenziale del conduttore, con zero all&#39;infinito (V)</li>
 </ul>
-<p>La capacità dipende solo da forma, dimensioni e mezzo circostante. Per una sfera: <span class="m">C = 4\pi\varepsilon_0 R</span>.</p>
+<p>La capacità è una <strong>caratteristica intrinseca</strong> del conduttore: dipende solo da forma, dimensioni e mezzo in cui è immerso, <strong>non</strong> dalla carica né dal potenziale. Dice quanta carica serve per alzare il potenziale di 1 V: più grande è C, più carica il conduttore &quot;accoglie&quot; a parità di potenziale.</p>
+<p><strong>Sfera</strong> di raggio <span class="m">R</span>: <span class="m">V = \frac{Q}{4\pi\varepsilon_0 R}</span>, quindi</p>
+<p><span class="m d">C = \frac{Q}{V} = 4\pi\varepsilon_0 R</span></p>
+<p>La capacità cresce con le dimensioni.</p>
 <div class="callout esempio">
 
-<p>La Terra (<span class="m">R \approx 6{,}4 \cdot 10^6\,\mathrm m</span>) ha <span class="m">C = 4\pi \cdot 8{,}85 \cdot 10^{-12} \cdot 6{,}4 \cdot 10^6 \approx 7 \cdot 10^{-4}\,\mathrm F</span>. Il farad è un&#39;unità molto grande.</p>
+<p><strong>Capacità della Terra.</strong> Trattando la Terra come una sfera conduttrice con <span class="m">R \approx 6{,}4\cdot10^6\,\mathrm m</span>:
+<span class="m">C = 4\pi\cdot 8{,}85\cdot10^{-12}\cdot 6{,}4\cdot10^6 = 1{,}113\cdot10^{-10}\cdot 6{,}4\cdot10^6 \approx 7{,}1\cdot10^{-4}\,\mathrm F</span>.</p>
+<p>Nemmeno un millesimo di farad per un intero pianeta: il farad è un&#39;unità <strong>enorme</strong>; in pratica si usano <span class="m">\mu\mathrm F</span>, nF, pF.</p>
 </div>
 
-<h2>Induzione completa e gabbia di Faraday</h2>
-<p>Metti un conduttore carico <span class="m">+Q</span> dentro la cavità di un conduttore scarico. Sulla parete interna della cavità si forma <span class="m">-Q</span>, sulla superficie esterna <span class="m">+Q</span>. Tutte le linee di campo che partono dal conduttore interno finiscono sulla parete della cavità: è l&#39;induzione completa.</p>
-<p>Un conduttore cavo scherma il suo interno dai campi esterni: è la gabbia di Faraday. Basta anche una rete metallica.</p>
-<h2>Campo dal potenziale</h2>
-<p>Se conosci il potenziale in ogni punto, trovi il campo derivando:</p>
-<p><span class="m d">\vec E = -\nabla V \qquad E_x = -\frac{\partial V}{\partial x},\ E_y = -\frac{\partial V}{\partial y},\ E_z = -\frac{\partial V}{\partial z}</span></p>
-<p>dove:</p>
-<ul>
-<li><span class="m">\nabla V</span> = gradiente del potenziale (V/m), vettore che punta dove V cresce più in fretta</li>
-</ul>
-<p>Il campo punta dove il potenziale scende più rapidamente ed è perpendicolare alle superfici equipotenziali.</p>
 <div class="callout esempio">
 
-<p>Tra due superfici parallele <span class="m">V = ax^2</span> con <span class="m">a = 1200\,\mathrm{V/m^2}</span>. Allora <span class="m">E_x = -2ax</span>. In <span class="m">x = 0{,}02\,\mathrm m</span>: <span class="m">E = 48\,\mathrm{V/m}</span>, diretto verso le x negative.</p>
+<p><strong>Sfera da 10 cm.</strong> Una sfera di raggio 10 cm ha <span class="m">C = 4\pi\varepsilon_0\cdot 0{,}1 \approx 1{,}11\cdot10^{-11}\,\mathrm F = 11\,\mathrm{pF}</span>. Per portarla a 1000 V serve la carica <span class="m">Q = CV = 1{,}11\cdot10^{-8}\,\mathrm C</span>.</p>
 </div>
 
-<h2>Capacità equivalente: serie e parallelo (richiamo)</h2>
+<h2>Sistemi di conduttori</h2>
+<p>Se ci sono più conduttori abbastanza vicini da influenzarsi (induzione elettrostatica), il potenziale di ciascuno dipende dalle cariche di <strong>tutti</strong>.</p>
 <ul>
-<li><strong>Parallelo</strong>: stessa tensione su tutti; le cariche si sommano. <span class="m">C_{eq} = C_1 + C_2 + \dots</span></li>
-<li><strong>Serie</strong>: stessa carica su tutti; le tensioni si sommano. <span class="m">\frac{1}{C_{eq}} = \frac{1}{C_1} + \frac{1}{C_2} + \dots</span></li>
+<li>Se solo il conduttore 1 ha carica <span class="m">Q_1</span> (l&#39;altro è neutro): <span class="m">V_1 = a_{11}Q_1</span>, <span class="m">V_2 = a_{21}Q_1</span>.</li>
+<li>Se solo il 2 ha carica <span class="m">Q_2</span>: <span class="m">V_1 = a_{12}Q_2</span>, <span class="m">V_2 = a_{22}Q_2</span>.</li>
+<li>Se entrambi sono carichi, per <strong>sovrapposizione</strong> si sommano: <span class="m">V_1 = a_{11}Q_1 + a_{12}Q_2</span>, <span class="m">V_2 = a_{21}Q_1 + a_{22}Q_2</span>.</li>
 </ul>
-<p>Il dettaglio è nella lezione 51.</p>
+<p>Con N conduttori di geometria fissata:</p>
+<p><span class="m d">V_i = \sum_{j=1}^N a_{ij}Q_j</span></p>
+<p>I coefficienti <span class="m">a_{ij}</span> (coefficienti di potenziale) sono positivi e la loro matrice è <strong>simmetrica</strong> (<span class="m">a_{ij} = a_{ji}</span>). Il sistema ha soluzione unica e si può invertire:</p>
+<p><span class="m d">Q_i = \sum_{j=1}^N c_{ij}V_j</span></p>
+<ul>
+<li><span class="m">c_{ii}</span> = <strong>coefficienti di capacità</strong>, positivi;</li>
+<li><span class="m">c_{ij}</span> con <span class="m">i \ne j</span> = <strong>coefficienti di induzione</strong>, negativi (un conduttore a potenziale positivo induce carica negativa sugli altri tenuti a potenziale zero).</li>
+</ul>
+<p>Anche la matrice dei <span class="m">c_{ij}</span> è simmetrica. Il caso più importante è quello di due conduttori in induzione completa: il condensatore.</p>
+<h2>Induzione completa</h2>
+<p>Un conduttore cavo <strong>scarico</strong> <span class="m">C_1</span> contiene nella sua cavità un secondo conduttore <span class="m">C_2</span> con carica <span class="m">+Q</span>.</p>
+<ol>
+<li>Si prende una superficie gaussiana tutta dentro il metallo di <span class="m">C_1</span>, che circonda la cavità. Lì il campo è nullo, quindi il flusso è nullo e la carica racchiusa deve essere zero.</li>
+<li>La superficie racchiude <span class="m">+Q</span> (il conduttore interno), quindi sulla <strong>parete interna della cavità</strong> deve comparire <span class="m">-Q</span>.</li>
+<li><span class="m">C_1</span> era neutro: per la conservazione della carica, sulla sua <strong>superficie esterna</strong> compare <span class="m">+Q</span>.</li>
+</ol>
+<p>Tutte le linee di campo che partono da <span class="m">C_2</span> terminano sulla parete interna della cavità: nessuna &quot;si perde&quot;. Questa situazione si chiama <strong>induzione completa</strong>. Due conduttori in induzione completa formano un <strong>condensatore</strong> (lezione 50).</p>
+<h2>Gabbia di Faraday (schermo elettrostatico)</h2>
+<p>Il campo nella cavità dipende solo dalla carica interna e dalla geometria della cavità e del conduttore interno. Se all&#39;esterno si cambia qualcosa (si aggiunge carica sulla superficie esterna, si avvicina un corpo carico che induce cariche), la carica sulla superficie esterna di <span class="m">C_1</span> si ridistribuisce in modo da mantenere <strong>nullo il campo dentro il metallo</strong>, e quindi le condizioni della cavità non cambiano. Allo stesso modo, una cavità <strong>vuota</strong> dentro un conduttore ha campo nullo qualunque cosa succeda fuori.</p>
+<p>Il conduttore cavo è uno <strong>schermo elettrostatico</strong>: separa l&#39;interno dall&#39;esterno. Si chiama <strong>gabbia di Faraday</strong> perché non serve un guscio continuo: basta una rete metallica con maglie piccole rispetto alle dimensioni del problema. Applicazioni: auto e aerei colpiti da un fulmine, cavi schermati, gabbie per misure sensibili.</p>
+<h2>Capacità equivalente: serie e parallelo</h2>
+<p>(Domanda aperta della lezione; i condensatori sono trattati nella lezione 50.)</p>
+<p><strong>Parallelo</strong>: le armature sono collegate a coppie da fili conduttori; armature collegate sono equipotenziali, quindi tutti i condensatori hanno la <strong>stessa d.d.p.</strong> <span class="m">V</span>.</p>
+<ol>
+<li><span class="m">Q_1 = C_1 V</span>, <span class="m">Q_2 = C_2 V</span>, ...</li>
+<li>Carica totale accumulata: <span class="m">Q = Q_1 + Q_2 + \dots = (C_1 + C_2 + \dots)V</span>.</li>
+<li>Il sistema equivale a un solo condensatore con <span class="m">C_{eq} = \frac{Q}{V}</span>:</li>
+</ol>
+<p><span class="m d">C_{eq} = C_1 + C_2 + \dots</span></p>
+<p><strong>Serie</strong>: un solo conduttore collega un&#39;armatura del primo con una del secondo. Caricando con <span class="m">+Q</span> l&#39;armatura di sinistra, per induzione completa compare <span class="m">-Q</span> di fronte; il conduttore centrale è isolato e neutro, quindi all&#39;altro suo capo compare <span class="m">+Q</span>, che induce <span class="m">-Q</span> sull&#39;ultima armatura. Tutti i condensatori hanno la <strong>stessa carica</strong> <span class="m">Q</span>.</p>
+<ol>
+<li><span class="m">V_1 = Q/C_1</span>, <span class="m">V_2 = Q/C_2</span>, ...</li>
+<li>Le d.d.p. si sommano: <span class="m">V = V_1 + V_2 + \dots = Q\left(\frac1{C_1} + \frac1{C_2} + \dots\right)</span>.</li>
+<li><span class="m">C_{eq} = Q/V</span>, quindi</li>
+</ol>
+<p><span class="m d">\frac{1}{C_{eq}} = \frac{1}{C_1} + \frac{1}{C_2} + \dots \qquad \text{due soli: } C_{eq} = \frac{C_1C_2}{C_1 + C_2}</span></p>
+<p>In parallelo la capacità equivalente è <strong>maggiore</strong> della più grande; in serie è <strong>minore</strong> della più piccola.</p>
+<div class="callout attenzione">
+
+<ul>
+<li>Campo nullo dentro il conduttore <span class="m">\ne</span> potenziale nullo.</li>
+<li><span class="m">E = \sigma/\varepsilon_0</span> vale <strong>appena fuori</strong> da un conduttore; dentro <span class="m">E = 0</span>.</li>
+<li><span class="m">\vec E = -\nabla V</span>: il segno meno dice che il campo va verso i potenziali che scendono. Senza il segno meno si ottiene il verso sbagliato.</li>
+<li>La capacità non cambia se cambiano carica o potenziale: dipende solo dalla geometria e dal mezzo.</li>
+</ul>
+</div>
+
 <div class="callout esame">
 
-<p>Domande aperte frequenti: definire la capacità (<span class="m">C = Q/V</span>, farad); come varia il potenziale in un conduttore (costante); enunciare e dimostrare il teorema di Coulomb (<span class="m">E = \sigma/\varepsilon_0</span>, con il cilindretto); ricavare il campo dal potenziale (<span class="m">\vec E = -\nabla V</span>); differenza tra conduttori e isolanti.</p>
+<ul>
+<li><strong>Capacità di un conduttore</strong> (aperte &quot;Come viene definita la capacità&quot;, &quot;Definire la capacità&quot;): rapporto costante <span class="m">C = Q/V</span> tra carica e potenziale (zero all&#39;infinito) del conduttore isolato; costante perché raddoppiando Q raddoppia V; dipende da forma, dimensioni e mezzo; farad = C/V; sfera <span class="m">C = 4\pi\varepsilon_0 R</span>; il farad è grande.</li>
+<li><strong>Serie e parallelo</strong> (aperta): le due derivazioni sopra (stessa V e cariche che si sommano; stessa Q e tensioni che si sommano).</li>
+<li><strong>Campo dal potenziale</strong> (aperta): <span class="m">dV = -\vec E\cdot d\vec s</span> confrontato con il differenziale totale dà <span class="m">E_x = -\partial V/\partial x</span> ecc., <span class="m">\vec E = -\nabla V</span>; campo perpendicolare alle equipotenziali, verso la massima diminuzione di V; esempio <span class="m">V = ax^2</span>; si può citare <span class="m">\nabla^2 V = -\rho/\varepsilon_0</span>.</li>
+<li><strong>Teorema di Coulomb</strong> (aperta, enunciato e dimostrazione): i tre passi (circuitazione sul rettangolino → solo componente normale; cilindretto gaussiano; Gauss con carica <span class="m">\sigma\,dS</span>).</li>
+<li><strong>Conduttori e isolanti</strong> (aperta): cariche libere contro cariche legate; nel conduttore in equilibrio <span class="m">E = 0</span> dentro, carica in superficie; l&#39;isolante si polarizza.</li>
+<li><strong>Potenziale in un conduttore</strong> (aperta): costante in tutto il volume e sulla superficie, perché <span class="m">E = 0</span> dentro.</li>
+<li>Chiuse: campo dentro una sfera conduttrice <span class="m">= 0</span>; potenziale <span class="m">Q/(4\pi\varepsilon_0 R)</span>; carica più densa dove il raggio di curvatura è minore; definizione <span class="m">C = Q/V</span>.</li>
+</ul>
 </div>
 
 <div class="callout sintesi">
 
 <ul>
-<li>In equilibrio: <span class="m">E = 0</span> dentro un conduttore, carica solo in superficie.</li>
-<li>Il conduttore è equipotenziale; sfera: <span class="m">V = \frac{Q}{4\pi\varepsilon_0 R}</span>.</li>
-<li>Teorema di Coulomb: appena fuori <span class="m">E = \sigma/\varepsilon_0</span>, perpendicolare alla superficie.</li>
-<li>La carica si addensa dove il raggio di curvatura è minore (punte).</li>
-<li><span class="m">C = Q/V</span> (farad), costante; sfera <span class="m">C = 4\pi\varepsilon_0 R</span>.</li>
-<li><span class="m">\vec E = -\nabla V</span>.</li>
+<li><span class="m">\vec E = -\nabla V</span>: <span class="m">E_x = -\partial V/\partial x</span>, ecc.; il campo punta dove V scende più in fretta, perpendicolare alle equipotenziali.</li>
+<li><span class="m">\oint\vec E\cdot d\vec s = 0 \Leftrightarrow \nabla\times\vec E = 0</span> (Stokes). Poisson: <span class="m">\nabla^2 V = -\rho/\varepsilon_0</span>; Laplace: <span class="m">\nabla^2 V = 0</span>.</li>
+<li>Conduttore in equilibrio: <span class="m">E = 0</span> dentro, nessuna carica interna, carica in superficie (<span class="m">\sigma = dq/dS</span>).</li>
+<li>Conduttore equipotenziale; sfera: <span class="m">V = \frac{Q}{4\pi\varepsilon_0 R}</span> dentro e sulla superficie.</li>
+<li>Teorema di Coulomb: <span class="m">E = \sigma/\varepsilon_0</span> appena fuori, perpendicolare; componente tangente continua, normale salta di <span class="m">\sigma/\varepsilon_0</span>.</li>
+<li>Punte: <span class="m">\sigma \propto 1/R</span>, carica e campo più intensi dove il raggio di curvatura è minore.</li>
+<li><span class="m">C = Q/V</span> (F); sfera <span class="m">C = 4\pi\varepsilon_0 R</span>; sistemi di conduttori: <span class="m">Q_i = \sum c_{ij}V_j</span>.</li>
+<li>Induzione completa: <span class="m">-Q</span> sulla parete della cavità, <span class="m">+Q</span> fuori. Gabbia di Faraday: schermo.</li>
+<li>Parallelo: <span class="m">C_{eq} = \sum C_i</span>; serie: <span class="m">1/C_{eq} = \sum 1/C_i</span>.</li>
 </ul>
 </div>

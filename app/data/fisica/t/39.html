@@ -1,71 +1,150 @@
-<h1>Lezione 39 — Secondo principio della termodinamica</h1>
+<h1>Lezione 39 — Secondo principio della termodinamica ed entropia</h1>
 <h2>Perché serve un secondo principio</h2>
-<p>Il primo principio dice che l&#39;energia si conserva. Non dice in che <strong>verso</strong> vanno le trasformazioni. Eppure in natura certi processi avvengono solo in un verso.</p>
+<p>Il primo principio dice che l&#39;energia si conserva in ogni trasformazione. Le trasformazioni reversibili, ideali, si possono percorrere in un verso o nell&#39;altro senza violarlo. Ma quasi tutte le trasformazioni reali avvengono <strong>in un solo verso</strong> e non si ripercorrono mai da sole al contrario, anche se il contrario conserverebbe l&#39;energia:</p>
 <ul>
-<li>Due corpi a contatto raggiungono una temperatura comune. Non tornano mai da soli alle temperature iniziali.</li>
-<li>L&#39;attrito trasforma tutto il lavoro in calore. Il contrario non succede spontaneamente.</li>
+<li>due corpi a temperature diverse messi a contatto raggiungono una temperatura intermedia; non succede mai che, spontaneamente, uno torni caldo e l&#39;altro freddo;</li>
+<li>l&#39;attrito trasforma tutto il lavoro in calore; il calore non si ritrasforma mai spontaneamente in lavoro facendo ripartire il corpo;</li>
+<li>un gas si espande liberamente nel vuoto; non si raccoglie mai da solo in metà del recipiente.</li>
 </ul>
-<p>Il secondo principio stabilisce queste regole di direzione.</p>
-<h2>I due enunciati classici</h2>
-<p><strong>Kelvin-Planck</strong>: è impossibile una trasformazione il cui <strong>unico</strong> risultato sia assorbire calore da <strong>una sola</strong> sorgente e trasformarlo <strong>tutto</strong> in lavoro.</p>
-<p>Conseguenza: il calore si trasforma in lavoro <strong>solo in parte</strong>. Una macchina termica ha bisogno di almeno due sorgenti e deve cedere un po&#39; di calore a quella fredda. Il lavoro invece si trasforma interamente in calore senza problemi (attrito).</p>
-<p><strong>Clausius</strong>: è impossibile una trasformazione il cui <strong>unico</strong> risultato sia il passaggio di calore da un corpo <strong>più freddo</strong> a uno <strong>più caldo</strong>.</p>
-<p>Conseguenza: il calore non passa mai spontaneamente dal freddo al caldo. Il frigorifero lo fa, ma consuma lavoro: il passaggio non è l&#39;unico risultato.</p>
-<p>La parola chiave è &quot;unico&quot;. I due enunciati sono <strong>equivalenti</strong>: se uno fosse violato, lo sarebbe anche l&#39;altro.</p>
-<div class="callout attenzione">
-
-<p>Non viola il secondo principio: trasformare tutto il lavoro in calore; far passare calore dal caldo al freddo; comprimere un gas. Viola il secondo principio: una macchina ciclica che trasforma in lavoro <strong>tutto</strong> il calore di <strong>un&#39;unica</strong> sorgente.</p>
-</div>
-
-<h2>Entropia</h2>
-<p>L&#39;<strong>entropia</strong> <span class="m">S</span> è una funzione di stato. La sua variazione dipende solo dallo stato iniziale e finale. Si calcola lungo una trasformazione <strong>reversibile</strong> che collega i due stati.</p>
-<p><span class="m d">\Delta S = \int_A^B \frac{\delta Q_{rev}}{T}</span></p>
+<p>Il <strong>secondo principio</strong> dà una forma precisa a questi vincoli sperimentali sul <strong>verso</strong> delle trasformazioni. Si può enunciare in modi diversi ma equivalenti: con l&#39;<strong>entropia</strong> e con i due enunciati classici di <strong>Kelvin-Planck</strong> e di <strong>Clausius</strong>.</p>
+<h2>L&#39;entropia</h2>
+<p>La grandezza fondamentale del secondo principio è l&#39;<strong>entropia</strong> <span class="m">S</span>. È una <strong>funzione di stato</strong>, come l&#39;energia interna: passando da uno stato A a uno stato B, la sua variazione dipende solo dai due stati ed è la differenza tra il valore finale e quello iniziale. Si calcola lungo una trasformazione <strong>reversibile</strong> che collega A e B:</p>
+<p><span class="m d">\Delta S = S_B - S_A = \int_A^B \frac{\delta Q_{rev}}{T}</span></p>
 <p>dove:</p>
 <ul>
-<li><span class="m">\Delta S</span> = variazione di entropia, in J/K</li>
-<li><span class="m">\delta Q_{rev}</span> = piccolo calore scambiato lungo una trasformazione reversibile, in J</li>
-<li><span class="m">T</span> = temperatura assoluta alla quale si scambia il calore, in K</li>
+<li><span class="m">\Delta S</span> = variazione di entropia, in <strong>J/K</strong></li>
+<li><span class="m">\delta Q_{rev}</span> = piccolo calore scambiato lungo una trasformazione <strong>reversibile</strong>, in J (positivo se assorbito)</li>
+<li><span class="m">T</span> = temperatura assoluta alla quale si scambia quel calore, in K</li>
 </ul>
-<p>Nel caso <strong>isotermo</strong> <span class="m">T</span> è costante ed esce dall&#39;integrale:</p>
-<p><span class="m d">\Delta S = \frac{Q}{T}</span></p>
+<p>L&#39;unità segue direttamente dalla definizione: joule diviso kelvin.</p>
+<p><strong>Caso isotermo.</strong> Se <span class="m">T</span> è costante esce dall&#39;integrale e resta la somma dei calori:
+<span class="m d">\Delta S = \frac{Q}{T}</span>
+Il sistema che assorbe calore aumenta la sua entropia; quello che lo cede la diminuisce.</p>
+<p><strong>Trasformazioni adiabatiche reversibili</strong>: <span class="m">\delta Q = 0</span> in ogni tratto, quindi <span class="m">\Delta S = 0</span> (si chiamano anche isoentropiche).</p>
+<p><strong>Trasformazioni irreversibili</strong>: la formula non si applica lungo il percorso reale. Siccome <span class="m">S</span> è una funzione di stato, si sceglie <strong>una qualsiasi trasformazione reversibile</strong> con gli stessi stati iniziale e finale e si calcola lungo quella.</p>
 <div class="callout esempio">
 
-<p>Un gas si espande in modo isotermo a 35 °C compiendo 500 J di lavoro. Isoterma: <span class="m">\Delta U = 0</span>, quindi <span class="m">Q = L = 500\,\mathrm J</span>. Allora <span class="m">\Delta S = 500/308{,}15 \approx 1{,}62\,\mathrm{J/K}</span>. L&#39;unità è J/K, non N/K.</p>
+<p><strong>Espansione isoterma.</strong> Un gas si espande isotermicamente a 35,0 °C compiendo 500 J di lavoro. Variazione di entropia?</p>
+<ol>
+<li>Isoterma di un gas perfetto: <span class="m">\Delta U = 0</span>, quindi <span class="m">Q = L = 500</span> J (assorbito).</li>
+<li>Temperatura in kelvin: <span class="m">T = 35{,}0 + 273{,}15 = 308{,}15</span> K.</li>
+<li><span class="m">\Delta S = Q/T = 500/308{,}15 \approx 1{,}62\,\mathrm{J/K}</span>.</li>
+</ol>
+<p>Errori tipici: usare 35 °C invece dei kelvin (si otterrebbe 14,3); scrivere l&#39;unità N/K invece di J/K.</p>
 </div>
 
-<p>Per un gas perfetto che va da <span class="m">(T_i, V_i)</span> a <span class="m">(T_f, V_f)</span>:</p>
-<p><span class="m d">\Delta S = nC_V\ln\frac{T_f}{T_i} + nR\ln\frac{V_f}{V_i}</span></p>
-<p>dove <span class="m">n</span> = moli, <span class="m">C_V</span> = calore molare a volume costante, <span class="m">R</span> = costante dei gas.</p>
+<h3>Entropia di un gas perfetto</h3>
+<p>Per un passo infinitesimo reversibile, dal primo principio <span class="m">\delta Q = nC_V\,dT + p\,dV</span>. Divido per <span class="m">T</span> e uso <span class="m">p/T = nR/V</span>:
+<span class="m d">dS = \frac{\delta Q}{T} = nC_V\frac{dT}{T} + nR\frac{dV}{V}</span>
+Integro dallo stato iniziale a quello finale:
+<span class="m d">\Delta S = nC_V\ln\frac{T_f}{T_i} + nR\ln\frac{V_f}{V_i}</span>
+dove <span class="m">n</span> = moli, <span class="m">C_V</span> = calore molare a volume costante, <span class="m">R</span> = costante dei gas. Il risultato dipende <strong>solo</strong> dagli stati iniziale e finale: è la prova diretta che l&#39;entropia è una funzione di stato. Casi particolari: isoterma <span class="m">\Delta S = nR\ln(V_f/V_i)</span>; isocora <span class="m">\Delta S = nC_V\ln(T_f/T_i)</span>; isobara <span class="m">\Delta S = nC_p\ln(T_f/T_i)</span>.</p>
+<div class="callout esempio">
+
+<p><strong>Quante moli?</strong> Un gas ideale si espande in modo isotermo e reversibile a 320 K da 1,40 L a 3,20 L; la sua entropia aumenta di 20,0 J/K. Isoterma: resta solo il termine di volume,
+<span class="m d">n = \frac{\Delta S}{R\ln(V_f/V_i)} = \frac{20{,}0}{8{,}314\cdot\ln(3{,}20/1{,}40)} = \frac{20{,}0}{8{,}314\cdot0{,}827} \approx 2{,}91\,\mathrm{mol}</span></p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Espansione con legge esponenziale.</strong> Una mole di gas monoatomico a 5,00 kPa e 600 K si espande fino a 2,00 m³ con la pressione che segue <span class="m">p = p_i\,e^{-(V - V_i)/a}</span>, <span class="m">a = 1{,}00\,\mathrm{m^3}</span>.</p>
+<ol>
+<li>Volume iniziale: <span class="m">V_i = RT_i/p_i = 8{,}314\cdot600/5000 \approx 1{,}00\,\mathrm{m^3}</span>.</li>
+<li>Pressione finale: <span class="m">p_f = 5{,}00\,e^{-1} \approx 1{,}84\,\mathrm{kPa}</span>.</li>
+<li>Temperatura finale: <span class="m">T_f = p_fV_f/R = 1839\cdot2{,}00/8{,}314 \approx 442\,\mathrm K</span>.</li>
+<li>Lavoro: <span class="m">L = \int_{V_i}^{V_f}p_i e^{-(V-V_i)/a}dV = p_i\,a\,(1 - e^{-1}) = 5000\cdot1{,}00\cdot0{,}632 \approx 3{,}16\,\mathrm{kJ}</span>.</li>
+<li>Entropia (contano entrambi i termini): <span class="m">\Delta S = \tfrac32R\ln\dfrac{442{,}6}{600} + R\ln\dfrac{2{,}00}{1{,}00} \approx -3{,}80 + 5{,}76 \approx 1{,}96\,\mathrm{J/K}</span>.</li>
+</ol>
+</div>
+
 <h2>Il secondo principio con l&#39;entropia</h2>
-<p>In un <strong>sistema isolato</strong> l&#39;entropia non diminuisce mai.</p>
+<p><strong>Una trasformazione di un sistema isolato non fa mai diminuire la sua entropia</strong>: se la trasformazione è reversibile l&#39;entropia resta costante, se è irreversibile aumenta.</p>
 <p><span class="m d">\Delta S_{isolato} \ge 0</span></p>
 <ul>
 <li>trasformazione <strong>reversibile</strong>: <span class="m">\Delta S = 0</span>;</li>
 <li>trasformazione <strong>irreversibile</strong> (tutte quelle reali): <span class="m">\Delta S &gt; 0</span>.</li>
 </ul>
-<p>L&#39;entropia di un sistema <strong>non isolato</strong> può diminuire. Un gas che cede calore in un&#39;isoterma perde entropia. Ma la sorgente che riceve il calore ne guadagna almeno altrettanto. Il sistema isolato è &quot;gas + sorgente&quot;, e lì il totale non scende.</p>
+<p>La condizione di <strong>sistema isolato</strong> è essenziale. L&#39;entropia di un sistema <strong>non isolato</strong> può benissimo diminuire: un gas che cede calore in una compressione isoterma ha <span class="m">\Delta S = Q/T &lt; 0</span>. Non c&#39;è violazione, perché il gas scambia calore con una sorgente: il sistema isolato è <strong>gas + sorgente</strong>. La sorgente riceve quel calore e la sua entropia aumenta almeno altrettanto, e il totale non scende. L&#39;universo (sistema + ambiente) è isolato: <strong>l&#39;entropia dell&#39;universo non diminuisce mai</strong>.</p>
 <div class="callout esempio">
 
-<p>Un sistema perde 8 J/K di entropia. Allora l&#39;ambiente deve guadagnarne <strong>almeno</strong> 8 J/K: esattamente 8 se il processo è reversibile, di più se è irreversibile.</p>
+<p><strong>Sistema che perde entropia.</strong> Un sistema perde 8 J/K. Allora <span class="m">\Delta S_{amb} \ge +8</span> J/K: esattamente 8 se il processo è reversibile, di più se è irreversibile.</p>
 </div>
 
-<h2>Entropia e disordine</h2>
-<p>In termini microscopici l&#39;entropia misura quanti modi diversi hanno le molecole di realizzare lo stesso stato macroscopico (formula di Boltzmann):</p>
+<div class="callout esempio">
+
+<p><strong>Il calore che passa dal caldo al freddo aumenta l&#39;entropia.</strong> 1000 J passano da una sorgente a 400 K a una a 300 K. La calda perde <span class="m">1000/400 = 2{,}50</span> J/K, la fredda guadagna <span class="m">1000/300 \approx 3{,}33</span> J/K. Totale <span class="m">\approx +0{,}83</span> J/K <span class="m">&gt; 0</span>: il processo è spontaneo e irreversibile. Il passaggio inverso (dal freddo al caldo, da solo) darebbe <span class="m">-0{,}83</span> J/K: proibito.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Espansione libera.</strong> Una mole di gas perfetto raddoppia il volume espandendosi nel vuoto: <span class="m">Q = 0</span>, <span class="m">L = 0</span>, <span class="m">T</span> costante. Non c&#39;è calore scambiato, ma l&#39;entropia aumenta lo stesso: la calcolo lungo un&#39;isoterma reversibile con gli stessi stati, <span class="m">\Delta S = R\ln 2 \approx 5{,}76</span> J/K <span class="m">&gt; 0</span>. Il gas è isolato, quindi questo aumento conferma che il processo è irreversibile.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Entropia del gas e dell&#39;universo.</strong> 20 g di idrogeno (H₂, 2 g/mol, quindi <span class="m">n = 10</span> mol) a pressione atmosferica vengono scaldati a pressione costante da 30 °C a 40 °C tenendoli a contatto con un serbatoio a 50 °C.</p>
+<ol>
+<li>Lavoro: <span class="m">L = nR\Delta T = 10\cdot8{,}314\cdot10 \approx 831\,\mathrm J</span>.</li>
+<li>Energia interna: <span class="m">\Delta U = nC_V\Delta T = 10\cdot\tfrac52\cdot8{,}314\cdot10 \approx 2079\,\mathrm J</span>; calore <span class="m">Q = nC_p\Delta T \approx 2910\,\mathrm J</span>.</li>
+<li>Entropia del gas (isobara, calcolata come reversibile): <span class="m">\Delta S_{gas} = nC_p\ln\dfrac{313{,}15}{303{,}15} \approx 291\cdot0{,}0325 \approx +9{,}44\,\mathrm{J/K}</span>.</li>
+<li>Entropia del serbatoio (cede 2910 J a 323,15 K costanti): <span class="m">\Delta S_{serb} = -2910/323{,}15 \approx -9{,}00\,\mathrm{J/K}</span>.</li>
+<li>Universo: <span class="m">\Delta S \approx +0{,}44\,\mathrm{J/K} &gt; 0</span>: il riscaldamento con un serbatoio più caldo del gas è irreversibile.</li>
+</ol>
+</div>
+
+<h2>Gli enunciati classici</h2>
+<p>Storicamente il secondo principio nacque dallo studio delle <strong>macchine termiche</strong> e dei loro limiti di rendimento (lezione 40).</p>
+<p><strong>Enunciato di Kelvin-Planck</strong>: è impossibile realizzare una trasformazione il cui <strong>unico</strong> risultato sia assorbire calore da <strong>una sola</strong> sorgente e trasformarlo <strong>integralmente</strong> in lavoro.</p>
+<p>Conseguenza: <strong>la trasformazione del calore in lavoro è possibile solo in parte</strong>. Una macchina termica che lavora in ciclo ha bisogno di almeno <strong>due</strong> sorgenti e deve cedere una parte del calore a quella fredda: il suo rendimento è sempre minore di 1. Il contrario invece è possibile senza limiti: il lavoro si trasforma <strong>interamente</strong> in calore (attrito).</p>
+<p><strong>Enunciato di Clausius</strong>: è impossibile realizzare una trasformazione il cui <strong>unico</strong> risultato sia il passaggio di calore da un corpo a temperatura <strong>più bassa</strong> a uno a temperatura <strong>più alta</strong>.</p>
+<p>Conseguenza: il calore <strong>non passa mai spontaneamente</strong> dal corpo più freddo al più caldo. Il frigorifero lo fa, ma consumando lavoro: il passaggio di calore non è l&#39;unico risultato.</p>
+<p>La parola chiave dei due enunciati è <strong>&quot;unico&quot;</strong>. Le trasformazioni descritte sono possibili, ma solo insieme ad altri effetti:</p>
+<ul>
+<li>in un&#39;<strong>espansione isoterma</strong> un gas assorbe calore da una sola sorgente e lo trasforma tutto in lavoro; ma non è l&#39;unico risultato, perché il gas finisce in uno stato diverso (volume maggiore). Per tornare all&#39;inizio e ripetere il ciclo deve cedere calore a una sorgente più fredda;</li>
+<li>il <strong>frigorifero</strong> porta calore dal freddo al caldo, ma assorbe lavoro.</li>
+</ul>
+<p><strong>Equivalenza.</strong> I due enunciati sono equivalenti: se uno fosse falso lo sarebbe anche l&#39;altro. Per esempio, se esistesse una macchina che trasforma tutto il calore di una sorgente in lavoro (violando Kelvin), si potrebbe usare quel lavoro per far girare un frigorifero e il risultato netto sarebbe calore passato dal freddo al caldo senza altri effetti (violando Clausius). Nella lezione 40 si mostra che entrambi seguono dal teorema di Carnot e dalla legge dell&#39;entropia.</p>
+<div class="callout attenzione">
+
+<p><strong>Non</strong> violano il secondo principio: trasformare tutto il lavoro in calore; far passare calore dal caldo al freddo; comprimere un gas; un frigorifero che consuma lavoro; un&#39;espansione isoterma singola. <strong>Viola</strong> il secondo principio: una macchina <strong>ciclica</strong> che trasforma in lavoro <strong>tutto</strong> il calore preso da <strong>un&#39;unica</strong> sorgente, o un frigorifero che funziona senza lavoro.</p>
+</div>
+
+<h2>Entropia e disordine: l&#39;interpretazione statistica</h2>
+<p>Microscopicamente l&#39;entropia misura il <strong>disordine</strong>, cioè il numero di modi in cui le molecole possono realizzare lo stesso stato macroscopico.</p>
+<p>Un esempio quotidiano: un mazzo di carte nuovo, ordinato, mescolato tante volte non torna mai nell&#39;ordine iniziale. Non è vietato da nessuna legge: semplicemente la sequenza ordinata è <strong>una sola</strong>, mentre le sequenze &quot;disordinate&quot; sono un numero enorme. Il sistema evolve verso le configurazioni <strong>più probabili</strong>.</p>
+<p>Lo stesso per un gas. <span class="m">N</span> molecole possono stare ciascuna, con uguale probabilità, nella metà A o nella metà B di un recipiente. C&#39;è <strong>un solo</strong> modo di averle tutte in B; ci sono <span class="m">N</span> modi di averne una in A e le altre in B; il numero di modi cresce ancora man mano che la distribuzione si avvicina a metà e metà, che è la più probabile di tutte. Per questo un gas riempie tutto il recipiente e non si raccoglie mai in una metà.</p>
+<p>Chiamiamo <span class="m">W</span> il numero di configurazioni microscopiche (realizzazioni) che corrispondono a uno stato macroscopico. L&#39;entropia deve essere:</p>
+<ul>
+<li>una funzione <strong>crescente</strong> di <span class="m">W</span> (il sistema va verso gli stati più probabili e l&#39;entropia cresce);</li>
+<li><strong>additiva</strong>: per due sottosistemi <span class="m">S_{A+B} = S_A + S_B</span>, mentre i modi si <strong>moltiplicano</strong>: <span class="m">W_{A+B} = W_A\,W_B</span>.</li>
+</ul>
+<p>L&#39;unica funzione che trasforma prodotti in somme è il <strong>logaritmo</strong>. Si arriva alla formula di Boltzmann:</p>
 <p><span class="m d">S = k_B\ln W</span></p>
-<p>dove <span class="m">k_B</span> = costante di Boltzmann (<span class="m">1{,}38\cdot10^{-23}\,\mathrm{J/K}</span>) e <span class="m">W</span> = numero di configurazioni microscopiche possibili.</p>
-<p>Gli stati &quot;disordinati&quot; hanno moltissime configurazioni, quelli &quot;ordinati&quot; pochissime. Un mazzo di carte mescolato non torna mai in ordine da solo. Allo stesso modo un sistema isolato va verso lo stato più probabile, cioè a entropia massima.</p>
+<p>dove <span class="m">k_B = 1{,}38\cdot10^{-23}\,\mathrm{J/K}</span> è la costante di Boltzmann e <span class="m">W</span> il numero di configurazioni microscopiche possibili.</p>
+<p>L&#39;entropia misura quindi quante combinazioni microscopiche descrivono uno stato. I processi spontanei vanno verso le configurazioni più probabili, cioè verso il <strong>massimo dell&#39;entropia</strong>: è il secondo principio visto dal mondo delle molecole.</p>
 <div class="callout esame">
 
-<p>Domanda aperta: &quot;Esporre il secondo principio&quot;. Punti da toccare: verso delle trasformazioni; enunciati di Kelvin-Planck e Clausius (con la parola &quot;unico&quot;) e la loro equivalenza; entropia <span class="m">\Delta S = \int\delta Q_{rev}/T</span>; in un sistema isolato <span class="m">\Delta S \ge 0</span>; conseguenza: rendimento di una macchina termica sempre minore di 1.</p>
+<p>Domande chiuse: cosa è possibile solo in parte secondo il secondo principio (la trasformazione del calore in lavoro); cosa si deriva dal secondo principio (il calore non passa mai spontaneamente dal freddo al caldo); entropia di un&#39;espansione isoterma (<span class="m">\Delta S = Q/T = L/T</span>, temperatura in kelvin).</p>
+<p>Domanda aperta: &quot;Esporre il secondo principio della termodinamica&quot;. Punti da toccare:</p>
+<ol>
+<li>il primo principio non dice il verso delle trasformazioni; esempi di processi irreversibili;</li>
+<li>enunciato di Kelvin-Planck e conseguenza (il calore si converte in lavoro solo in parte, servono due sorgenti, rendimento minore di 1);</li>
+<li>enunciato di Clausius e conseguenza (frigorifero che consuma lavoro); la parola &quot;unico&quot;; equivalenza dei due enunciati;</li>
+<li>entropia: funzione di stato, <span class="m">\Delta S = \int\delta Q_{rev}/T</span> in J/K, isoterma <span class="m">Q/T</span>;</li>
+<li>formulazione: in un sistema isolato <span class="m">\Delta S \ge 0</span> (= 0 reversibile, &gt; 0 irreversibile); un sistema non isolato può diminuire la sua entropia;</li>
+<li>interpretazione statistica <span class="m">S = k_B\ln W</span> (disordine, stati più probabili); collegamento con Carnot: nessuna macchina supera <span class="m">1 - T_F/T_C</span>.</li>
+</ol>
 </div>
 
 <div class="callout sintesi">
 
 <ul>
-<li>Kelvin-Planck: il calore di un&#39;unica sorgente non diventa tutto lavoro; il calore si converte in lavoro solo in parte.</li>
-<li>Clausius: il calore non passa spontaneamente dal freddo al caldo.</li>
-<li>Entropia: funzione di stato, <span class="m">\Delta S = \int\delta Q_{rev}/T</span> (J/K); isoterma <span class="m">\Delta S = Q/T</span>.</li>
-<li>Sistema isolato: <span class="m">\Delta S = 0</span> se reversibile, <span class="m">\Delta S &gt; 0</span> se irreversibile.</li>
-<li><span class="m">S = k_B\ln W</span>: l&#39;entropia misura il disordine.</li>
+<li>Il secondo principio fissa il verso delle trasformazioni spontanee.</li>
+<li>Entropia: funzione di stato, <span class="m">\Delta S = \int\delta Q_{rev}/T</span> (J/K); isoterma <span class="m">\Delta S = Q/T</span>; adiabatica reversibile <span class="m">\Delta S = 0</span>.</li>
+<li>Gas perfetto: <span class="m">\Delta S = nC_V\ln(T_f/T_i) + nR\ln(V_f/V_i)</span>.</li>
+<li>Sistema isolato: <span class="m">\Delta S = 0</span> se reversibile, <span class="m">\Delta S &gt; 0</span> se irreversibile; mai negativa.</li>
+<li>Kelvin-Planck: il calore di un&#39;unica sorgente non diventa tutto lavoro (calore → lavoro solo in parte).</li>
+<li>Clausius: il calore non passa da solo dal freddo al caldo. Parola chiave &quot;unico&quot;; enunciati equivalenti.</li>
+<li><span class="m">S = k_B\ln W</span>: l&#39;entropia misura il disordine; i sistemi vanno verso gli stati più probabili.</li>
 </ul>
 </div>

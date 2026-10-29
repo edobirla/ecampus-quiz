@@ -1,69 +1,312 @@
 <h1>Lezione 13 — Operazioni sulle matrici</h1>
-<p>Si generalizzano a matrici le operazioni dei vettori colonna e si introduce una moltiplicazione nuova, il prodotto righe per colonne.</p>
+<p>Nella lezione precedente abbiamo trasformato le matrici con le operazioni elementari, che però non sono operazioni in senso stretto. Ora definiamo vere <strong>operazioni sulle matrici</strong>: l&#39;addizione e la moltiplicazione per uno scalare, che generalizzano quelle dei vettori colonna e rendono <span class="m">\mathbb{K}^{n,m}</span> uno <strong>spazio vettoriale</strong>, e una moltiplicazione nuova, il <strong>prodotto righe per colonne</strong>, che sui vettori colonna non esisteva e che ha proprietà diverse dal prodotto tra numeri (in particolare <strong>non è commutativo</strong>).</p>
 <h2>Addizione e moltiplicazione per scalare</h2>
-<p><strong>Definizione 13.1.</strong> Su <span class="m">\mathbb{K}^{n,m}</span>:</p>
-<p><span class="m d">(a_{ij})+(b_{ij}):=(a_{ij}+b_{ij}),\qquad \lambda\cdot(a_{ij}):=(\lambda a_{ij})\quad(\lambda\in\mathbb{K}).</span></p>
-<p>Si opera <strong>entrata per entrata</strong>, tra matrici della stessa dimensione.</p>
+<p><strong>Definizione 13.1.</strong> Su <span class="m">\mathbb{K}^{n,m}</span> si definiscono:</p>
+<ul>
+<li>l&#39;<strong>addizione</strong> di due matrici <span class="m">n\times m</span>:
+<span class="m d">(a_{ij})_{i=1,\dots,n;\ j=1,\dots,m}+(b_{ij})_{i=1,\dots,n;\ j=1,\dots,m}:=(a_{ij}+b_{ij})_{i=1,\dots,n;\ j=1,\dots,m};</span></li>
+<li>la <strong>moltiplicazione per scalare</strong> di una matrice per <span class="m">\lambda\in\mathbb{K}</span>:
+<span class="m d">\lambda\cdot(a_{ij})_{i=1,\dots,n;\ j=1,\dots,m}:=(\lambda a_{ij})_{i=1,\dots,n;\ j=1,\dots,m}.</span></li>
+</ul>
+<p>Entrambe si fanno <strong>entrata per entrata</strong>. L&#39;addizione si fa <strong>solo tra matrici della stessa dimensione</strong>, e il risultato ha la stessa dimensione.</p>
 <div class="callout esempio">
 
-<p><span class="m">\begin{pmatrix}3&amp;2&amp;-1\\0&amp;-3&amp;5\end{pmatrix}+\begin{pmatrix}0&amp;0&amp;-2\\-4&amp;6&amp;3\end{pmatrix}=\begin{pmatrix}3&amp;2&amp;-3\\-4&amp;3&amp;8\end{pmatrix}</span>, <span class="m">\qquad 3\cdot\begin{pmatrix}2&amp;0&amp;-1\\-3&amp;1&amp;3\end{pmatrix}=\begin{pmatrix}6&amp;0&amp;-3\\-9&amp;3&amp;9\end{pmatrix}</span>.</p>
+<p><strong>Esempio 13.2.</strong> In <span class="m">\mathbb{R}^{2,3}</span>:
+<span class="m d">\begin{pmatrix}3&amp;2&amp;-1\\0&amp;-3&amp;5\end{pmatrix}+\begin{pmatrix}0&amp;0&amp;-2\\-4&amp;6&amp;3\end{pmatrix}=\begin{pmatrix}3+0&amp;2+0&amp;-1+(-2)\\0+(-4)&amp;-3+6&amp;5+3\end{pmatrix}=\begin{pmatrix}3&amp;2&amp;-3\\-4&amp;3&amp;8\end{pmatrix},</span>
+<span class="m d">3\cdot\begin{pmatrix}2&amp;0&amp;-1\\-3&amp;1&amp;3\end{pmatrix}=\begin{pmatrix}3\cdot2&amp;3\cdot0&amp;3\cdot(-1)\\3\cdot(-3)&amp;3\cdot1&amp;3\cdot3\end{pmatrix}=\begin{pmatrix}6&amp;0&amp;-3\\-9&amp;3&amp;9\end{pmatrix}.</span></p>
 </div>
 
-<ul>
-<li><strong>Osservazione 13.3.</strong> L&#39;elemento neutro dell&#39;addizione è la matrice nulla <span class="m">0_{n,m}</span>.</li>
-<li><strong>Osservazione 13.4.</strong> L&#39;opposto di <span class="m">A</span> è <span class="m">-A=(-a_{ij})</span>.</li>
-<li><strong>Proposizione 13.5.</strong> <span class="m">\mathbb{K}^{n,m}</span> con queste operazioni è uno <strong>spazio vettoriale</strong> su <span class="m">\mathbb{K}</span>.</li>
-<li><strong>Osservazione 13.6.</strong> Si possono fare combinazioni lineari di matrici: <span class="m">\lambda_1A_1+\dots+\lambda_kA_k</span> ha al posto <span class="m">(i,j)</span> l&#39;elemento <span class="m">\lambda_1(A_1)^j_i+\dots+\lambda_k(A_k)^j_i</span>.</li>
-</ul>
+<p><strong>Osservazione 13.3.</strong> L&#39;<strong>elemento neutro</strong> dell&#39;addizione è la matrice nulla della dimensione adatta: per ogni <span class="m">A\in\mathbb{K}^{n,m}</span>, <span class="m">0_{n,m}+A=A+0_{n,m}=A</span> (ogni entrata viene sommata a <span class="m">0</span>).</p>
+<p><strong>Osservazione 13.4.</strong> L&#39;<strong>opposto</strong> di <span class="m">A</span> è <span class="m">-A:=(-a_{ij})</span>, della stessa dimensione: infatti <span class="m">(a_{ij})+(-a_{ij})=(a_{ij}-a_{ij})=(0)</span>, cioè <span class="m">A+(-A)=(-A)+A=0_{n,m}</span>.</p>
+<p><strong>Proposizione 13.5.</strong> <span class="m">\mathbb{K}^{n,m}</span> con l&#39;addizione <span class="m">+:\mathbb{K}^{n,m}\times\mathbb{K}^{n,m}\to\mathbb{K}^{n,m}</span> e la moltiplicazione per scalare <span class="m">\cdot:\mathbb{K}\times\mathbb{K}^{n,m}\to\mathbb{K}^{n,m}</span> è uno <strong>spazio vettoriale su <span class="m">\mathbb{K}</span></strong>.</p>
+<p>La dimostrazione è la stessa fatta per <span class="m">\mathbb{K}^n</span> (Proposizione 5.21): ogni proprietà richiesta (associatività e commutatività dell&#39;addizione, neutro, opposto, le proprietà distributive, <span class="m">1\cdot A=A</span>, <span class="m">(\lambda\mu)A=\lambda(\mu A)</span>) si verifica <strong>entrata per entrata</strong>, dove si riduce alla corrispondente proprietà del campo <span class="m">\mathbb{K}</span>. In fondo una matrice <span class="m">n\times m</span> è &quot;un vettore di <span class="m">nm</span> numeri disposto in una tabella&quot;.</p>
+<p><strong>Osservazione 13.6 (combinazioni lineari di matrici).</strong> Essendo <span class="m">\mathbb{K}^{n,m}</span> uno spazio vettoriale, si possono fare combinazioni lineari di matrici: la combinazione di <span class="m">A_1,\dots,A_k\in\mathbb{K}^{n,m}</span> con coefficienti <span class="m">\lambda_1,\dots,\lambda_k</span> è
+<span class="m d">\lambda_1A_1+\lambda_2A_2+\dots+\lambda_kA_k,</span>
+e al posto <span class="m">(i,j)</span> ha l&#39;elemento <span class="m">\lambda_1(A_1)^j_i+\lambda_2(A_2)^j_i+\dots+\lambda_k(A_k)^j_i</span>.</p>
 <div class="callout esempio">
 
-<p><span class="m">2\begin{pmatrix}2&amp;-1&amp;0\\1&amp;2&amp;1\end{pmatrix}+1\begin{pmatrix}3&amp;-2&amp;2\\0&amp;-1&amp;1\end{pmatrix}+(-1)\begin{pmatrix}6&amp;3&amp;-1\\1&amp;0&amp;-1\end{pmatrix}=\begin{pmatrix}1&amp;-7&amp;3\\1&amp;3&amp;4\end{pmatrix}</span>.</p>
+<p><strong>Esempio 13.7.</strong> Combinazione con coefficienti <span class="m">2,1,-1</span> di
+<span class="m d">A_1=\begin{pmatrix}2&amp;-1&amp;0\\1&amp;2&amp;1\end{pmatrix},\quad A_2=\begin{pmatrix}3&amp;-2&amp;2\\0&amp;-1&amp;1\end{pmatrix},\quad A_3=\begin{pmatrix}6&amp;3&amp;-1\\1&amp;0&amp;-1\end{pmatrix}.</span>
+Entrata per entrata:</p>
+<ul>
+<li><span class="m">(1,1)</span>: <span class="m">2\cdot2+1\cdot3+(-1)\cdot6=4+3-6=1</span>;</li>
+<li><span class="m">(1,2)</span>: <span class="m">2\cdot(-1)+1\cdot(-2)+(-1)\cdot3=-2-2-3=-7</span>;</li>
+<li><span class="m">(1,3)</span>: <span class="m">2\cdot0+1\cdot2+(-1)\cdot(-1)=0+2+1=3</span>;</li>
+<li><span class="m">(2,1)</span>: <span class="m">2\cdot1+1\cdot0+(-1)\cdot1=2+0-1=1</span>;</li>
+<li><span class="m">(2,2)</span>: <span class="m">2\cdot2+1\cdot(-1)+(-1)\cdot0=4-1+0=3</span>;</li>
+<li><span class="m">(2,3)</span>: <span class="m">2\cdot1+1\cdot1+(-1)\cdot(-1)=2+1+1=4</span>.</li>
+</ul>
+<p>Risultato: <span class="m">\begin{pmatrix}1&amp;-7&amp;3\\1&amp;3&amp;4\end{pmatrix}</span>.</p>
+<p>(Quiz della dispensa) Con coefficienti <span class="m">2,0,-3</span>: <span class="m">2\begin{pmatrix}1&amp;2\\-2&amp;0\\0&amp;3\end{pmatrix}+0\cdot\begin{pmatrix}2&amp;-9\\0&amp;7\\4&amp;5\end{pmatrix}-3\begin{pmatrix}3&amp;-1\\-4&amp;0\\1&amp;2\end{pmatrix}=\begin{pmatrix}2-9&amp;4+3\\-4+12&amp;0-0\\0-3&amp;6-6\end{pmatrix}=\begin{pmatrix}-7&amp;7\\8&amp;0\\-3&amp;0\end{pmatrix}</span>. La matrice con coefficiente <span class="m">0</span> non contribuisce.</p>
 </div>
 
-<p><strong>Definizione 13.8.</strong> La <em>base canonica</em> di <span class="m">\mathbb{K}^{n,m}</span> è <span class="m">\mathcal{E}_{n,m}:=\{E_{11},\dots,E_{1m},E_{21},\dots,E_{2m},\dots,E_{n1},\dots,E_{nm}\}</span>, dove <span class="m">E_{ij}</span> ha <span class="m">1</span> al posto <span class="m">(i,j)</span> e <span class="m">0</span> altrove.</p>
-<ul>
-<li><strong>Proposizione 13.10.</strong> <span class="m">\mathcal{E}_{n,m}</span> è una base: <span class="m">\sum\lambda_{ij}E_{ij}=(\lambda_{ij})</span> è nulla solo se tutti i <span class="m">\lambda_{ij}</span> sono nulli, e ogni matrice è <span class="m">(a_{ij})=\sum a_{ij}E_{ij}</span>.</li>
-<li><strong>Proposizione 13.11.</strong> <span class="m">\dim\mathbb{K}^{n,m}=n\cdot m</span>.</li>
-</ul>
-<h2>Prodotto righe per colonne</h2>
-<p><strong>Definizione 13.12.</strong> Se <span class="m">A=(a_{ij})\in\mathbb{K}^{n,k}</span> e <span class="m">B=(b_{ij})\in\mathbb{K}^{k,m}</span>, il <em>prodotto righe per colonne</em> <span class="m">A\cdot B</span> è la matrice <span class="m">n\times m</span> con</p>
-<p><span class="m d">c_{ij}=\sum_{p=1}^{k}a_{ip}b_{pj}=a_{i1}b_{1j}+a_{i2}b_{2j}+\dots+a_{ik}b_{kj}.</span></p>
-<p><strong>Osservazione 13.13.</strong> Il prodotto si può fare <strong>solo</strong> se il numero di colonne della prima matrice è uguale al numero di righe della seconda. Il risultato ha le righe della prima e le colonne della seconda: <span class="m">(n\times k)\cdot(k\times m)=n\times m</span>.</p>
+<h2>Base canonica e dimensione di <span class="m">\mathbb{K}^{n,m}</span></h2>
+<p><strong>Definizione 13.8.</strong> La <em>base canonica</em> di <span class="m">\mathbb{K}^{n,m}</span> è l&#39;insieme ordinato
+<span class="m d">\mathcal{E}_{n,m}:=\{E_{11},E_{12},\dots,E_{1m},E_{21},E_{22},\dots,E_{2m},\dots,E_{n1},E_{n2},\dots,E_{nm}\},</span>
+dove <span class="m">E_{ij}</span> è la matrice che ha <span class="m">1</span> al posto <span class="m">(i,j)</span> e <span class="m">0</span> in tutti gli altri posti. L&#39;ordine è &quot;per righe&quot;: prima tutte le matrici con l&#39;<span class="m">1</span> nella prima riga (da sinistra a destra), poi quelle con l&#39;<span class="m">1</span> nella seconda riga, e così via.</p>
 <div class="callout esempio">
 
-<p><span class="m">\begin{pmatrix}1&amp;0&amp;3&amp;2\\-1&amp;2&amp;4&amp;0\end{pmatrix}\cdot\begin{pmatrix}2&amp;-1&amp;3\\1&amp;0&amp;4\\-1&amp;-2&amp;0\\0&amp;5&amp;1\end{pmatrix}=\begin{pmatrix}-1&amp;3&amp;5\\-4&amp;-7&amp;5\end{pmatrix}</span>: ad esempio l&#39;entrata <span class="m">(1,1)</span> è <span class="m">1\cdot2+0\cdot1+3\cdot(-1)+2\cdot0=-1</span>.</p>
+<p>In <span class="m">\mathbb{K}^{2,2}</span>: <span class="m">E_{11}=\begin{pmatrix}1&amp;0\\0&amp;0\end{pmatrix}</span>, <span class="m">E_{12}=\begin{pmatrix}0&amp;1\\0&amp;0\end{pmatrix}</span>, <span class="m">E_{21}=\begin{pmatrix}0&amp;0\\1&amp;0\end{pmatrix}</span>, <span class="m">E_{22}=\begin{pmatrix}0&amp;0\\0&amp;1\end{pmatrix}</span>, e
+<span class="m d">\begin{pmatrix}a&amp;b\\c&amp;d\end{pmatrix}=aE_{11}+bE_{12}+cE_{21}+dE_{22}.</span></p>
 </div>
 
+<p><strong>Osservazione 13.9.</strong> La notazione è un po&#39; ambigua: <span class="m">E_{11}</span> indica sia <span class="m">\begin{pmatrix}1&amp;0\\0&amp;0\end{pmatrix}\in\mathbb{K}^{2,2}</span> sia <span class="m">\begin{pmatrix}1&amp;0&amp;0\\0&amp;0&amp;0\end{pmatrix}\in\mathbb{K}^{2,3}</span>; il contesto chiarisce.</p>
+<p><strong>Proposizione 13.10.</strong> <span class="m">\mathcal{E}_{n,m}</span> è effettivamente una base di <span class="m">\mathbb{K}^{n,m}</span>.</p>
+<p><em>Dimostrazione</em> (come per la Proposizione 9.9).</p>
 <ul>
-<li><strong>Osservazione 13.15.</strong> L&#39;entrata <span class="m">(i,j)</span> è il prodotto della riga <span class="m">A_i</span> per la colonna <span class="m">B^j</span>: si scorrono la riga e la colonna sommando i prodotti degli elementi corrispondenti.</li>
-<li><strong>Osservazione 13.16.</strong> <span class="m">\mathrm{Diag}(d_1,\dots,d_n)\cdot\mathrm{Diag}(d'_1,\dots,d'_n)=\mathrm{Diag}(d_1d'_1,\dots,d_nd'_n)</span>.</li>
-<li><strong>Osservazione 13.17.</strong> <span class="m">A\cdot{}^t(b_1\ \cdots\ b_k)</span> è la combinazione lineare delle colonne di <span class="m">A</span> con coefficienti <span class="m">b_1,\dots,b_k</span>. Ad esempio <span class="m">\begin{pmatrix}2&amp;-1&amp;3\\0&amp;-2&amp;4\end{pmatrix}\begin{pmatrix}1\\5\\3\end{pmatrix}=\begin{pmatrix}6\\2\end{pmatrix}=1\begin{pmatrix}2\\0\end{pmatrix}+5\begin{pmatrix}-1\\-2\end{pmatrix}+3\begin{pmatrix}3\\4\end{pmatrix}</span>.</li>
+<li><em>Indipendenza.</em> Se <span class="m">\sum_{i,j}\lambda_{ij}E_{ij}=0</span>, facendo la somma si ottiene la matrice che ha <span class="m">\lambda_{ij}</span> al posto <span class="m">(i,j)</span>: <span class="m">(\lambda_{ij})=0</span>, quindi tutti i <span class="m">\lambda_{ij}</span> sono nulli.</li>
+<li><em>Generazione.</em> Ogni matrice <span class="m">(a_{ij})</span> è la combinazione delle <span class="m">E_{ij}</span> con coefficienti <span class="m">a_{ij}</span>: <span class="m">(a_{ij})=\sum_{i,j}a_{ij}E_{ij}</span>. <span class="m">\square</span></li>
 </ul>
-<p><strong>Proposizione 13.20.</strong> Proprietà del prodotto righe per colonne:</p>
+<p>Come per <span class="m">\mathbb{K}^n</span>, <strong>le coordinate di una matrice rispetto alla base canonica sono le sue entrate</strong>, lette riga per riga.</p>
+<p><strong>Proposizione 13.11.</strong> <span class="m">\dim\mathbb{K}^{n,m}=n\cdot m</span>, perché la base canonica ha <span class="m">n\cdot m</span> elementi (uno per ogni posto della matrice).</p>
+<div class="callout esempio">
+
+<p><strong>Esempi (sessione di studio).</strong></p>
 <ol>
-<li><span class="m">0_{k,n}A=0_{k,m}</span> e <span class="m">A\,0_{m,h}=0_{n,h}</span>;</li>
-<li><span class="m">I_nA=AI_m=A</span> (elemento neutro a sinistra e a destra);</li>
-<li><span class="m">A(BC)=(AB)C</span> (associativa);</li>
-<li><span class="m">A(\lambda B+\mu C)=\lambda AB+\mu AC</span> (distributiva a destra);</li>
-<li><span class="m">(\lambda B+\mu C)A=\lambda BA+\mu CA</span> (distributiva a sinistra).</li>
+<li><span class="m">\dim\mathbb{K}^{2,3}=2\cdot3=6</span>; <span class="m">\dim\mathbb{K}^{n,1}=n</span> (sono i vettori colonna); <span class="m">\dim\mathbb{K}^{3,3}=9</span>.</li>
+<li><span class="m">W=\{A\in\mathbb{K}^{2,3}\mid A^1_1=0,\ A^3_2=0\}</span> (matrici con entrate <span class="m">(1,1)</span> e <span class="m">(2,3)</span> nulle). Ogni <span class="m">A\in W</span> è <span class="m">a_{12}E_{12}+a_{13}E_{13}+a_{21}E_{21}+a_{22}E_{22}</span>, e queste quattro matrici sono indipendenti (fanno parte della base canonica): <span class="m">\dim W=4</span>.</li>
+<li><strong>Una base di <span class="m">\mathbb{R}^{2,2}</span>.</strong> Le matrici <span class="m">M_1=\begin{pmatrix}2&amp;0\\1&amp;-1\end{pmatrix}</span>, <span class="m">M_2=\begin{pmatrix}0&amp;2\\0&amp;1\end{pmatrix}</span>, <span class="m">M_3=\begin{pmatrix}2&amp;1\\0&amp;0\end{pmatrix}</span>, <span class="m">M_4=\begin{pmatrix}-1&amp;0\\1&amp;0\end{pmatrix}</span> formano una base. Imponiamo <span class="m">aM_1+bM_2+cM_3+dM_4=0</span> entrata per entrata:
+<span class="m d">\begin{cases}(1,1):\ 2a+2c-d=0\\(1,2):\ 2b+c=0\\(2,1):\ a+d=0\\(2,2):\ -a+b=0\end{cases}</span>
+Dalla quarta <span class="m">b=a</span>; dalla terza <span class="m">d=-a</span>; dalla seconda <span class="m">c=-2b=-2a</span>; sostituendo nella prima: <span class="m">2a-4a+a=-a=0</span>, quindi <span class="m">a=0</span> e poi <span class="m">b=c=d=0</span>. Le quattro matrici sono indipendenti e sono <span class="m">4=\dim\mathbb{R}^{2,2}</span>: per il Corollario 10.20 sono una base.</li>
 </ol>
-<h2>Non commutatività</h2>
-<p><strong>Osservazione 13.21.</strong> Il prodotto righe per colonne <strong>non è commutativo</strong> in generale. Perché esistano sia <span class="m">AB</span> sia <span class="m">BA</span> serve <span class="m">A\in\mathbb{K}^{n,m}</span>, <span class="m">B\in\mathbb{K}^{m,n}</span>; perché abbiano la stessa dimensione serve <span class="m">n=m</span>. Anche tra matrici quadrate dello stesso ordine di solito <span class="m">AB\neq BA</span>; solo in <span class="m">\mathbb{K}^{1,1}</span> il prodotto è sempre commutativo. Commutano sempre con ogni matrice la matrice nulla e l&#39;identità.</p>
-<p><strong>Definizione 13.22.</strong> Due matrici quadrate dello stesso ordine <em>commutano</em> se <span class="m">AB=BA</span>.</p>
+</div>
+
+<h2>Prodotto righe per colonne</h2>
+<p><strong>Definizione 13.12.</strong> Siano <span class="m">A=(a_{ij})\in\mathbb{K}^{n,k}</span> e <span class="m">B=(b_{ij})\in\mathbb{K}^{k,m}</span>. Il <em>prodotto righe per colonne</em> di <span class="m">A</span> e <span class="m">B</span> è la matrice <span class="m">A\cdot B=(c_{ij})\in\mathbb{K}^{n,m}</span> con
+<span class="m d">c_{ij}=\sum_{p=1}^{k}a_{ip}b_{pj}=a_{i1}b_{1j}+a_{i2}b_{2j}+\dots+a_{ik}b_{kj}.</span></p>
+<p>Significato dei simboli: <span class="m">i</span> è l&#39;indice di riga del risultato (va da <span class="m">1</span> a <span class="m">n</span>, le righe di <span class="m">A</span>), <span class="m">j</span> l&#39;indice di colonna (da <span class="m">1</span> a <span class="m">m</span>, le colonne di <span class="m">B</span>), <span class="m">p</span> l&#39;indice &quot;interno&quot; che scorre insieme lungo la riga <span class="m">i</span> di <span class="m">A</span> e lungo la colonna <span class="m">j</span> di <span class="m">B</span>.</p>
+<p><strong>Osservazione 13.13.</strong> Il prodotto si può fare <strong>solo se il numero di colonne della prima matrice è uguale al numero di righe della seconda</strong>. Il risultato ha <strong>le righe della prima e le colonne della seconda</strong>:
+<span class="m d">(n\times k)\cdot(k\times m)=n\times m.</span>
+Il numero &quot;interno&quot; <span class="m">k</span>, che deve coincidere, sparisce.</p>
 <div class="callout esempio">
 
-<p><span class="m">A=\begin{pmatrix}2&amp;0\\0&amp;1\end{pmatrix}</span>, <span class="m">B=\begin{pmatrix}1&amp;1\\0&amp;1\end{pmatrix}</span>: <span class="m">AB=\begin{pmatrix}2&amp;2\\0&amp;1\end{pmatrix}\neq\begin{pmatrix}2&amp;1\\0&amp;1\end{pmatrix}=BA</span>.</p>
+<p><strong>Dimensioni del prodotto.</strong></p>
+<table>
+<thead>
+<tr>
+<th><span class="m">A</span></th>
+<th><span class="m">B</span></th>
+<th><span class="m">AB</span></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><span class="m">3\times3</span></td>
+<td><span class="m">3\times2</span></td>
+<td><span class="m">3\times2</span></td>
+</tr>
+<tr>
+<td><span class="m">4\times3</span></td>
+<td><span class="m">3\times3</span></td>
+<td><span class="m">4\times3</span></td>
+</tr>
+<tr>
+<td><span class="m">4\times2</span></td>
+<td><span class="m">2\times2</span></td>
+<td><span class="m">4\times2</span></td>
+</tr>
+<tr>
+<td><span class="m">3\times2</span></td>
+<td><span class="m">2\times3</span></td>
+<td><span class="m">3\times3</span></td>
+</tr>
+<tr>
+<td><span class="m">2\times3</span></td>
+<td><span class="m">3\times4</span></td>
+<td><span class="m">2\times4</span></td>
+</tr>
+<tr>
+<td><span class="m">2\times3</span></td>
+<td><span class="m">4\times2</span></td>
+<td>non si può fare (<span class="m">3\neq4</span>)</td>
+</tr>
+<tr>
+<td><span class="m">1\times3</span></td>
+<td><span class="m">3\times1</span></td>
+<td><span class="m">1\times1</span></td>
+</tr>
+<tr>
+<td><span class="m">3\times1</span></td>
+<td><span class="m">1\times3</span></td>
+<td><span class="m">3\times3</span></td>
+</tr>
+</tbody></table>
+<p>Moltiplicare a destra per una matrice quadrata <span class="m">k\times k</span> non cambia la dimensione: <span class="m">(n\times k)(k\times k)=n\times k</span>.</p>
+</div>
+
+<p><strong>Osservazione 13.15 (riga per colonna).</strong> L&#39;entrata <span class="m">(i,j)</span> di <span class="m">AB</span> è il prodotto della <strong>riga <span class="m">i</span> di <span class="m">A</span></strong> per la <strong>colonna <span class="m">j</span> di <span class="m">B</span></strong>: si scorrono contemporaneamente la riga (da sinistra a destra) e la colonna (dall&#39;alto in basso), si moltiplicano gli elementi corrispondenti e si sommano:
+<span class="m d">A_i\cdot B^j=\begin{pmatrix}a_{i1}&amp;a_{i2}&amp;\cdots&amp;a_{ik}\end{pmatrix}\begin{pmatrix}b_{1j}\\b_{2j}\\\vdots\\b_{kj}\end{pmatrix}=a_{i1}b_{1j}+a_{i2}b_{2j}+\dots+a_{ik}b_{kj}.</span>
+Scrivendo <span class="m">A</span> con le sue righe <span class="m">A_1,\dots,A_n</span> e <span class="m">B</span> con le sue colonne <span class="m">B^1,\dots,B^m</span>:
+<span class="m d">AB=\begin{pmatrix}A_1B^1&amp;A_1B^2&amp;\cdots&amp;A_1B^m\\A_2B^1&amp;A_2B^2&amp;\cdots&amp;A_2B^m\\\vdots&amp;&amp;&amp;\vdots\\A_nB^1&amp;A_nB^2&amp;\cdots&amp;A_nB^m\end{pmatrix}.</span>
+Per questo la condizione sulle dimensioni: la riga di <span class="m">A</span> (lunga <span class="m">k</span>) e la colonna di <span class="m">B</span> (lunga <span class="m">k</span>) devono avere la stessa lunghezza.</p>
+<div class="callout esempio">
+
+<p><strong>Esempio 13.14.</strong> <span class="m">A=\begin{pmatrix}1&amp;0&amp;3&amp;2\\-1&amp;2&amp;4&amp;0\end{pmatrix}</span> (<span class="m">2\times4</span>), <span class="m">B=\begin{pmatrix}2&amp;-1&amp;3\\1&amp;0&amp;4\\-1&amp;-2&amp;0\\0&amp;5&amp;1\end{pmatrix}</span> (<span class="m">4\times3</span>). Il prodotto esiste (<span class="m">4=4</span>) ed è <span class="m">2\times3</span>.</p>
+<ul>
+<li><span class="m">(1,1)</span>: riga <span class="m">(1\ 0\ 3\ 2)</span>, colonna <span class="m">{}^t(2\ 1\ -1\ 0)</span>: <span class="m">1\cdot2+0\cdot1+3\cdot(-1)+2\cdot0=-1</span>;</li>
+<li><span class="m">(1,2)</span>: colonna <span class="m">{}^t(-1\ 0\ -2\ 5)</span>: <span class="m">1\cdot(-1)+0\cdot0+3\cdot(-2)+2\cdot5=-1-6+10=3</span>;</li>
+<li><span class="m">(1,3)</span>: colonna <span class="m">{}^t(3\ 4\ 0\ 1)</span>: <span class="m">1\cdot3+0\cdot4+3\cdot0+2\cdot1=5</span>;</li>
+<li><span class="m">(2,1)</span>: riga <span class="m">(-1\ 2\ 4\ 0)</span>: <span class="m">(-1)\cdot2+2\cdot1+4\cdot(-1)+0\cdot0=-2+2-4=-4</span>;</li>
+<li><span class="m">(2,2)</span>: <span class="m">(-1)(-1)+2\cdot0+4\cdot(-2)+0\cdot5=1-8=-7</span>;</li>
+<li><span class="m">(2,3)</span>: <span class="m">(-1)\cdot3+2\cdot4+4\cdot0+0\cdot1=-3+8=5</span>.</li>
+</ul>
+<p><span class="m d">AB=\begin{pmatrix}-1&amp;3&amp;5\\-4&amp;-7&amp;5\end{pmatrix}.</span></p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Esempio (<span class="m">3\times2</span> per <span class="m">2\times2</span>, come nel paniere).</strong> <span class="m">A=\begin{pmatrix}2&amp;-1\\0&amp;3\\1&amp;1\end{pmatrix}</span>, <span class="m">B=\begin{pmatrix}1&amp;2\\-1&amp;0\end{pmatrix}</span>. Colonne di <span class="m">B</span>: <span class="m">B^1={}^t(1\ -1)</span>, <span class="m">B^2={}^t(2\ 0)</span>. Il prodotto è <span class="m">3\times2</span>.</p>
+<table>
+<thead>
+<tr>
+<th>Riga di <span class="m">A</span></th>
+<th>per <span class="m">B^1={}^t(1\ -1)</span></th>
+<th>per <span class="m">B^2={}^t(2\ 0)</span></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><span class="m">(2\ -1)</span></td>
+<td><span class="m">2\cdot1+(-1)(-1)=3</span></td>
+<td><span class="m">2\cdot2+(-1)\cdot0=4</span></td>
+</tr>
+<tr>
+<td><span class="m">(0\ 3)</span></td>
+<td><span class="m">0\cdot1+3\cdot(-1)=-3</span></td>
+<td><span class="m">0\cdot2+3\cdot0=0</span></td>
+</tr>
+<tr>
+<td><span class="m">(1\ 1)</span></td>
+<td><span class="m">1\cdot1+1\cdot(-1)=0</span></td>
+<td><span class="m">1\cdot2+1\cdot0=2</span></td>
+</tr>
+</tbody></table>
+<p><span class="m d">AB=\begin{pmatrix}3&amp;4\\-3&amp;0\\0&amp;2\end{pmatrix}.</span>
+Il prodotto <span class="m">BA</span> invece <strong>non esiste</strong>: <span class="m">B</span> è <span class="m">2\times2</span> e <span class="m">A</span> è <span class="m">3\times2</span>, e <span class="m">2\neq3</span>.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Esempio (quiz della dispensa).</strong> <span class="m">\begin{pmatrix}0&amp;-2&amp;1\\1&amp;-1&amp;3\end{pmatrix}\begin{pmatrix}3&amp;4&amp;1\\5&amp;2&amp;0\\1&amp;-2&amp;-1\end{pmatrix}</span>:</p>
+<ul>
+<li>riga 1 <span class="m">(0\ -2\ 1)</span>: <span class="m">0-10+1=-9</span>; <span class="m">0-4-2=-6</span>; <span class="m">0+0-1=-1</span>;</li>
+<li>riga 2 <span class="m">(1\ -1\ 3)</span>: <span class="m">3-5+3=1</span>; <span class="m">4-2-6=-4</span>; <span class="m">1+0-3=-2</span>.</li>
+</ul>
+<p>Risultato <span class="m">\begin{pmatrix}-9&amp;-6&amp;-1\\1&amp;-4&amp;-2\end{pmatrix}</span>.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Riga per colonna e colonna per riga (sessione di studio).</strong>
+<span class="m d">(2\ -1\ 0)\begin{pmatrix}3\\-2\\4\end{pmatrix}=(2\cdot3+(-1)(-2)+0\cdot4)=(8),\qquad\begin{pmatrix}3\\-2\\4\end{pmatrix}(2\ -1\ 0)=\begin{pmatrix}6&amp;-3&amp;0\\-4&amp;2&amp;0\\8&amp;-4&amp;0\end{pmatrix}.</span>
+Nel primo caso <span class="m">(1\times3)(3\times1)=1\times1</span>, nel secondo <span class="m">(3\times1)(1\times3)=3\times3</span>: cambiando l&#39;ordine cambia perfino la dimensione del risultato.</p>
+</div>
+
+<p><strong>Osservazione 13.16 (matrici diagonali).</strong> Il prodotto di due matrici diagonali dello stesso ordine è diagonale e si fa moltiplicando gli elementi della diagonale:
+<span class="m d">\mathrm{Diag}(d_1,\dots,d_n)\cdot\mathrm{Diag}(d'_1,\dots,d'_n)=\mathrm{Diag}(d_1d'_1,\dots,d_nd'_n).</span>
+Ad esempio <span class="m">\mathrm{Diag}(2,-1,3)\cdot\mathrm{Diag}(4,5,-2)=\mathrm{Diag}(8,-5,-6)</span>.</p>
+<p><strong>Osservazione 13.17 (matrice per vettore colonna).</strong> Se la seconda matrice è un vettore colonna (<span class="m">m=1</span>):
+<span class="m d">\begin{pmatrix}a_{11}&amp;\cdots&amp;a_{1k}\\\vdots&amp;&amp;\vdots\\a_{n1}&amp;\cdots&amp;a_{nk}\end{pmatrix}\begin{pmatrix}b_1\\\vdots\\b_k\end{pmatrix}=\begin{pmatrix}\sum_pa_{1p}b_p\\\vdots\\\sum_pa_{np}b_p\end{pmatrix}=\sum_{p=1}^kb_p\begin{pmatrix}a_{1p}\\\vdots\\a_{np}\end{pmatrix},</span>
+cioè <strong><span class="m">A\cdot{}^t(b_1\ \cdots\ b_k)</span> è la combinazione lineare delle colonne di <span class="m">A</span> con coefficienti <span class="m">b_1,\dots,b_k</span></strong> (il coefficiente <span class="m">b_p</span> moltiplica tutti gli elementi della colonna <span class="m">p</span>). Questo legame tra prodotto e combinazioni lineari sarà fondamentale per i sistemi lineari.</p>
+<div class="callout esempio">
+
+<p><strong>Esempio 13.18.</strong>
+<span class="m d">\begin{pmatrix}2&amp;-1&amp;3\\0&amp;-2&amp;4\end{pmatrix}\begin{pmatrix}1\\5\\3\end{pmatrix}=\begin{pmatrix}2-5+9\\0-10+12\end{pmatrix}=\begin{pmatrix}6\\2\end{pmatrix},\qquad 1\begin{pmatrix}2\\0\end{pmatrix}+5\begin{pmatrix}-1\\-2\end{pmatrix}+3\begin{pmatrix}3\\4\end{pmatrix}=\begin{pmatrix}2-5+9\\0-10+12\end{pmatrix}=\begin{pmatrix}6\\2\end{pmatrix}.</span></p>
+</div>
+
+<p><strong>Osservazione 13.19.</strong> Il prodotto righe per colonne è una funzione <span class="m">\mathbb{K}^{n,k}\times\mathbb{K}^{k,m}\ni(A,B)\mapsto AB\in\mathbb{K}^{n,m}</span>. Non è un&#39;operazione su un solo insieme (nel senso della Definizione 4.1), salvo per le matrici quadrate <span class="m">n\times n</span>.</p>
+<h3>Proprietà</h3>
+<p><strong>Proposizione 13.20.</strong> Il prodotto righe per colonne soddisfa (con dimensioni compatibili):</p>
+<ol>
+<li><span class="m">0_{k,n}\cdot A=0_{k,m}</span> e <span class="m">A\cdot0_{m,h}=0_{n,h}</span> per <span class="m">A\in\mathbb{K}^{n,m}</span> (la matrice nulla &quot;assorbe&quot;);</li>
+<li><span class="m">I_n\cdot A=A\cdot I_m=A</span> per <span class="m">A\in\mathbb{K}^{n,m}</span> (<strong>elemento neutro</strong> a sinistra e a destra; attenzione: a sinistra serve <span class="m">I_n</span>, a destra <span class="m">I_m</span>);</li>
+<li><span class="m">A\cdot(B\cdot C)=(A\cdot B)\cdot C</span> per <span class="m">A\in\mathbb{K}^{n,k}</span>, <span class="m">B\in\mathbb{K}^{k,h}</span>, <span class="m">C\in\mathbb{K}^{h,m}</span> (<strong>associativa</strong>);</li>
+<li><span class="m">A\cdot(\lambda B+\mu C)=\lambda(A\cdot B)+\mu(A\cdot C)</span> per <span class="m">A\in\mathbb{K}^{n,k}</span>, <span class="m">B,C\in\mathbb{K}^{k,m}</span>, <span class="m">\lambda,\mu\in\mathbb{K}</span> (<strong>distributiva a destra</strong>);</li>
+<li><span class="m">(\lambda B+\mu C)\cdot A=\lambda(B\cdot A)+\mu(C\cdot A)</span> per <span class="m">B,C\in\mathbb{K}^{n,k}</span>, <span class="m">A\in\mathbb{K}^{k,m}</span> (<strong>distributiva a sinistra</strong>).</li>
+</ol>
+<p>(La dispensa non dà la dimostrazione perché è lunga.) Perché <span class="m">I_n</span> è neutro: l&#39;entrata <span class="m">(i,j)</span> di <span class="m">I_nA</span> è <span class="m">\sum_p\delta_{ip}a_{pj}</span>, dove <span class="m">\delta_{ip}</span> vale <span class="m">1</span> se <span class="m">p=i</span> e <span class="m">0</span> altrimenti; l&#39;unico termine che resta è <span class="m">a_{ij}</span>.</p>
+<h2>Il prodotto non è commutativo</h2>
+<p><strong>Osservazione 13.21.</strong> Il prodotto righe per colonne <strong>non è commutativo</strong> in generale (anzi, quasi mai):</p>
+<ol>
+<li>perché esistano <span class="m">AB</span> con <span class="m">A\in\mathbb{K}^{n,m}</span> e <span class="m">B\in\mathbb{K}^{h,k}</span> serve <span class="m">m=h</span>; perché esista anche <span class="m">BA</span> serve <span class="m">k=n</span>. Quindi <span class="m">A\in\mathbb{K}^{n,m}</span> e <span class="m">B\in\mathbb{K}^{m,n}</span>;</li>
+<li>in tal caso <span class="m">AB</span> è <span class="m">n\times n</span> e <span class="m">BA</span> è <span class="m">m\times m</span>: per poterli confrontare serve <span class="m">n=m</span>. Quindi l&#39;uguaglianza ha senso <strong>solo per matrici quadrate dello stesso ordine</strong>;</li>
+<li>anche tra matrici quadrate dello stesso ordine in generale <span class="m">AB\neq BA</span>. L&#39;unico caso in cui il prodotto è <strong>sempre</strong> commutativo è <span class="m">n=1</span>: in <span class="m">\mathbb{K}^{1,1}</span>, <span class="m">(a_{11})(b_{11})=(a_{11}b_{11})=(b_{11}a_{11})=(b_{11})(a_{11})</span>;</li>
+<li>per <span class="m">n\ge2</span> alcune coppie commutano: la matrice nulla e l&#39;identità commutano con ogni matrice (<span class="m">0A=A0=0</span>, <span class="m">IA=AI=A</span>).</li>
+</ol>
+<p><strong>Definizione 13.22.</strong> Due matrici quadrate dello stesso ordine <span class="m">A</span> e <span class="m">B</span> <em>commutano</em> se <span class="m">AB=BA</span>.</p>
+<div class="callout esempio">
+
+<p><strong>Esempio 13.23.</strong> <span class="m">A=\begin{pmatrix}2&amp;0\\0&amp;1\end{pmatrix}</span>, <span class="m">B=\begin{pmatrix}1&amp;1\\0&amp;1\end{pmatrix}</span>.
+<span class="m d">AB=\begin{pmatrix}2\cdot1+0\cdot0&amp;2\cdot1+0\cdot1\\0\cdot1+1\cdot0&amp;0\cdot1+1\cdot1\end{pmatrix}=\begin{pmatrix}2&amp;2\\0&amp;1\end{pmatrix},\qquad BA=\begin{pmatrix}1\cdot2+1\cdot0&amp;1\cdot0+1\cdot1\\0\cdot2+1\cdot0&amp;0\cdot0+1\cdot1\end{pmatrix}=\begin{pmatrix}2&amp;1\\0&amp;1\end{pmatrix}.</span>
+<span class="m">AB\neq BA</span>: non commutano, pur essendo quadrate dello stesso ordine.</p>
+<p>(Quiz della dispensa) Con <span class="m">M=\begin{pmatrix}2&amp;0\\2&amp;-1\end{pmatrix}</span> e <span class="m">N=\begin{pmatrix}4&amp;0\\1&amp;1\end{pmatrix}</span>: <span class="m">MN=\begin{pmatrix}8&amp;0\\7&amp;-1\end{pmatrix}</span> e <span class="m">NM=\begin{pmatrix}8&amp;0\\4&amp;-1\end{pmatrix}</span>, non commutano; invece con <span class="m">N'=\begin{pmatrix}4&amp;0\\2&amp;1\end{pmatrix}</span> si ha <span class="m">MN'=N'M=\begin{pmatrix}8&amp;0\\6&amp;-1\end{pmatrix}</span>. Ovviamente <span class="m">M</span> commuta con <span class="m">I_2</span> e con sé stessa.</p>
 </div>
 
 <ul>
-<li><strong>Osservazione 13.24.</strong> Per <span class="m">n&gt;1</span>, <span class="m">\mathbb{K}^{n,n}</span> con addizione e prodotto righe per colonne <strong>non</strong> è un campo.</li>
-<li><strong>Notazioni 13.25–13.26.</strong> Si scrive <span class="m">AB</span> per <span class="m">A\cdot B</span>; il prodotto si esegue prima dell&#39;addizione.</li>
-<li><strong>Osservazione 13.27.</strong> Può essere <span class="m">AB=0</span> con <span class="m">A\neq0</span> e <span class="m">B\neq0</span>: ad esempio <span class="m">(1\ 1)\begin{pmatrix}1\\-1\end{pmatrix}=(0)</span>. Solo in <span class="m">\mathbb{K}^{1,1}</span> vale la legge di annullamento del prodotto.</li>
-<li><strong>Osservazione 13.29.</strong> <span class="m">{}^t(AB)={}^tB\,{}^tA</span>.</li>
-<li><strong>Notazione 13.30.</strong> Per <span class="m">A</span> quadrata, <span class="m">A^k=A\cdots A</span> (<span class="m">k</span> volte) e <span class="m">A^0:=I_n</span>.</li>
-<li><strong>Osservazione 13.31.</strong> In generale <span class="m">(AB)^k\neq A^kB^k</span>; vale l&#39;uguaglianza se <span class="m">A</span> e <span class="m">B</span> commutano.</li>
+<li><strong>Osservazione 13.24.</strong> <span class="m">\mathbb{K}^{n,n}</span> con addizione e prodotto righe per colonne, per <span class="m">n&gt;1</span>, <strong>non è un campo</strong> (manca la commutatività del prodotto, e non tutte le matrici non nulle hanno un inverso); per <span class="m">n=1</span>, <span class="m">\mathbb{K}^{1,1}</span> è essenzialmente <span class="m">\mathbb{K}</span>.</li>
+<li><strong>Notazione 13.25.</strong> Si scrive <span class="m">AB</span> invece di <span class="m">A\cdot B</span>.</li>
+<li><strong>Notazione 13.26.</strong> Il prodotto si esegue <strong>prima</strong> dell&#39;addizione: <span class="m">AB+CD</span> significa <span class="m">(AB)+(CD)</span>; se l&#39;addizione va fatta prima servono le parentesi, ad esempio <span class="m">A(B+CD)</span>.</li>
 </ul>
+<p><strong>Osservazione 13.27 (niente legge di annullamento del prodotto).</strong> Può essere <span class="m">AB=0</span> con <span class="m">A\neq0</span> e <span class="m">B\neq0</span>. Solo in <span class="m">\mathbb{K}^{1,1}</span> vale la legge di annullamento: se <span class="m">(a_{11})(b_{11})=(0)</span> allora <span class="m">a_{11}b_{11}=0</span> in <span class="m">\mathbb{K}</span>, quindi <span class="m">a_{11}=0</span> o <span class="m">b_{11}=0</span>.</p>
+<div class="callout esempio">
+
+<p><strong>Esempio 13.28.</strong> <span class="m">A=(1\ \ 1)</span>, <span class="m">B=\begin{pmatrix}1\\-1\end{pmatrix}</span>: <span class="m">AB=(1\cdot1+1\cdot(-1))=(0)</span>, ma nessuna delle due è nulla. Un esempio quadrato: <span class="m">\begin{pmatrix}1&amp;1\\1&amp;1\end{pmatrix}\begin{pmatrix}1&amp;-1\\-1&amp;1\end{pmatrix}=\begin{pmatrix}0&amp;0\\0&amp;0\end{pmatrix}</span>.</p>
+</div>
+
+<p><strong>Osservazione 13.29 (trasposta di un prodotto).</strong> <span class="m">{}^t(AB)={}^tB\,{}^tA</span>: <strong>si scambia l&#39;ordine</strong>. (Le dimensioni lo confermano: se <span class="m">A</span> è <span class="m">n\times k</span> e <span class="m">B</span> è <span class="m">k\times m</span>, <span class="m">{}^tB</span> è <span class="m">m\times k</span> e <span class="m">{}^tA</span> è <span class="m">k\times n</span>, quindi <span class="m">{}^tB\,{}^tA</span> esiste ed è <span class="m">m\times n</span> come <span class="m">{}^t(AB)</span>, mentre <span class="m">{}^tA\,{}^tB</span> in generale non esiste nemmeno.)</p>
+<div class="callout esempio">
+
+<p><span class="m">A=\begin{pmatrix}1&amp;2\\3&amp;4\end{pmatrix}</span>, <span class="m">B=\begin{pmatrix}0&amp;1\\1&amp;1\end{pmatrix}</span>: <span class="m">AB=\begin{pmatrix}2&amp;3\\4&amp;7\end{pmatrix}</span>, quindi <span class="m">{}^t(AB)=\begin{pmatrix}2&amp;4\\3&amp;7\end{pmatrix}</span>. Si ha <span class="m">{}^tB\,{}^tA=\begin{pmatrix}0&amp;1\\1&amp;1\end{pmatrix}\begin{pmatrix}1&amp;3\\2&amp;4\end{pmatrix}=\begin{pmatrix}2&amp;4\\3&amp;7\end{pmatrix}</span> ✓, mentre <span class="m">{}^tA\,{}^tB=\begin{pmatrix}1&amp;3\\2&amp;4\end{pmatrix}\begin{pmatrix}0&amp;1\\1&amp;1\end{pmatrix}=\begin{pmatrix}3&amp;4\\4&amp;6\end{pmatrix}</span>, diverso.</p>
+</div>
+
+<p><strong>Notazione 13.30 (potenze).</strong> Per <span class="m">A</span> quadrata <span class="m">n\times n</span>: <span class="m">A^k:=\underbrace{AA\cdots A}_{k\text{ volte}}</span> per <span class="m">k\ge1</span>, e per coerenza <span class="m">A^0:=I_n</span>. (Le potenze si definiscono solo per matrici quadrate: per moltiplicare <span class="m">A</span> per sé stessa servono tante colonne quante righe.)</p>
+<p><strong>Osservazione 13.31.</strong> Per <span class="m">A,B</span> quadrate dello stesso ordine, in generale <span class="m">(AB)^k\neq A^kB^k</span> per <span class="m">k\ge2</span>. L&#39;uguaglianza vale se <span class="m">A</span> e <span class="m">B</span> <strong>commutano</strong>: in quel caso
+<span class="m d">(AB)^k=(AB)(AB)\cdots(AB)=AA\cdots A\,BB\cdots B=A^kB^k,</span>
+dove si sono spostate tutte le <span class="m">A</span> a sinistra usando ripetutamente <span class="m">BA=AB</span> (e l&#39;associatività).</p>
+<div class="callout esempio">
+
+<p>Con <span class="m">A=\begin{pmatrix}2&amp;0\\0&amp;1\end{pmatrix}</span>, <span class="m">B=\begin{pmatrix}1&amp;1\\0&amp;1\end{pmatrix}</span> (che non commutano): <span class="m">(AB)^2=\begin{pmatrix}2&amp;2\\0&amp;1\end{pmatrix}^2=\begin{pmatrix}4&amp;4+2\\0&amp;1\end{pmatrix}=\begin{pmatrix}4&amp;6\\0&amp;1\end{pmatrix}</span>, mentre <span class="m">A^2B^2=\begin{pmatrix}4&amp;0\\0&amp;1\end{pmatrix}\begin{pmatrix}1&amp;2\\0&amp;1\end{pmatrix}=\begin{pmatrix}4&amp;8\\0&amp;1\end{pmatrix}</span>. Diversi.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Esempio (sessione di studio: potenze per induzione).</strong> <span class="m">A=\begin{pmatrix}1&amp;1\\0&amp;2\end{pmatrix}</span>. Calcoliamo le prime potenze:
+<span class="m d">A^0=\begin{pmatrix}1&amp;0\\0&amp;1\end{pmatrix},\ A^1=\begin{pmatrix}1&amp;1\\0&amp;2\end{pmatrix},\ A^2=\begin{pmatrix}1&amp;3\\0&amp;4\end{pmatrix},\ A^3=A^2A=\begin{pmatrix}1&amp;7\\0&amp;8\end{pmatrix},\ A^4=\begin{pmatrix}1&amp;15\\0&amp;16\end{pmatrix}.</span>
+Si ipotizza <span class="m">A^n=\begin{pmatrix}1&amp;2^n-1\\0&amp;2^n\end{pmatrix}</span> e lo si dimostra per induzione su <span class="m">n</span>.</p>
+<ul>
+<li><em>Caso base</em> <span class="m">n=0</span>: <span class="m">\begin{pmatrix}1&amp;2^0-1\\0&amp;2^0\end{pmatrix}=\begin{pmatrix}1&amp;0\\0&amp;1\end{pmatrix}=A^0</span> ✓.</li>
+<li><em>Passo induttivo.</em> Supponendo vera la formula per <span class="m">n</span>:
+<span class="m d">A^{n+1}=A\cdot A^n=\begin{pmatrix}1&amp;1\\0&amp;2\end{pmatrix}\begin{pmatrix}1&amp;2^n-1\\0&amp;2^n\end{pmatrix}=\begin{pmatrix}1\cdot1+1\cdot0&amp;1\cdot(2^n-1)+1\cdot2^n\\0\cdot1+2\cdot0&amp;0\cdot(2^n-1)+2\cdot2^n\end{pmatrix}=\begin{pmatrix}1&amp;2^{n+1}-1\\0&amp;2^{n+1}\end{pmatrix}.</span></li>
+</ul>
+</div>
+
+<div class="callout attenzione">
+
+<ul>
+<li>Addizione solo tra matrici <strong>della stessa dimensione</strong>; prodotto solo se <strong>colonne della prima = righe della seconda</strong>. Sono condizioni diverse: <span class="m">A\in\mathbb{K}^{2,3}</span> e <span class="m">B\in\mathbb{K}^{3,2}</span> si possono moltiplicare ma non sommare.</li>
+<li>Il prodotto righe per colonne <strong>non</strong> è il prodotto &quot;posto per posto&quot;: si usa la riga di <span class="m">A</span> e la <strong>colonna</strong> di <span class="m">B</span> (non la riga di <span class="m">B</span>).</li>
+<li><span class="m">AB</span> e <span class="m">BA</span> sono in generale diversi, possono avere dimensioni diverse o uno dei due può non esistere.</li>
+<li><span class="m">AB=0</span> non implica <span class="m">A=0</span> o <span class="m">B=0</span>; <span class="m">{}^t(AB)={}^tB\,{}^tA</span> (ordine scambiato); <span class="m">(AB)^k=A^kB^k</span> solo se <span class="m">A</span> e <span class="m">B</span> commutano.</li>
+<li>Nei calcoli, i segni: <span class="m">(-1)\cdot(-2)=+2</span>; controlla ogni entrata, perché le opzioni del paniere differiscono di un solo segno.</li>
+</ul>
+</div>
+
 <div class="callout esame">
 
-<p>Il paniere chiede prodotti <span class="m">(3\times2)\cdot(2\times2)</span> (le opzioni differiscono solo per segni nella seconda colonna) e la dimensione del prodotto di due matrici: righe della prima per colonne della seconda. Nelle sessioni di studio: combinazioni lineari di matrici, quando il prodotto non si può fare, matrici che non commutano. Aperta: lo spazio vettoriale <span class="m">\mathbb{K}^{n,m}</span> (operazioni, base canonica, dimensione <span class="m">n\cdot m</span>).</p>
+<p>Il paniere chiede:</p>
+<ul>
+<li><strong>prodotti <span class="m">(3\times2)\cdot(2\times2)</span></strong>: scrivi le due colonne di <span class="m">B</span>, poi per ogni riga di <span class="m">A</span> calcola i due prodotti riga per colonna. La prima colonna di <span class="m">AB</span> è spesso uguale in tutte le opzioni; le differenze stanno nella seconda colonna, dove contano i segni di <span class="m">b_{22}</span> e di <span class="m">a_{32}</span>;</li>
+<li><strong>la dimensione del prodotto</strong> <span class="m">AB</span>: righe di <span class="m">A</span> per colonne di <span class="m">B</span>, <span class="m">(n\times k)(k\times m)=n\times m</span> (ad esempio <span class="m">(3\times2)(2\times3)=3\times3</span>).</li>
+</ul>
+<p>Nelle sessioni di studio: combinazioni lineari di matrici, quando il prodotto non si può fare, quali matrici commutano.</p>
+<p>Domanda aperta: <em>lo spazio vettoriale <span class="m">\mathbb{K}^{n,m}</span></em>. Dai la definizione delle operazioni (13.1, entrata per entrata), neutro e opposto (13.3, 13.4), la Proposizione 13.5 (<span class="m">\mathbb{K}^{n,m}</span> è uno spazio vettoriale), le combinazioni lineari (13.6) con un esempio, la base canonica <span class="m">\mathcal{E}_{n,m}</span> con la dimostrazione che è una base (13.10) e <span class="m">\dim\mathbb{K}^{n,m}=nm</span> (13.11). Si può aggiungere che sulle matrici esiste anche il prodotto righe per colonne, che non è commutativo.</p>
+</div>
+
+<div class="callout sintesi">
+
+<ul>
+<li><span class="m">A+B=(a_{ij}+b_{ij})</span>, <span class="m">\lambda A=(\lambda a_{ij})</span>, entrata per entrata, stessa dimensione; neutro <span class="m">0_{n,m}</span>, opposto <span class="m">-A</span>.</li>
+<li><span class="m">\mathbb{K}^{n,m}</span> è uno spazio vettoriale; base canonica <span class="m">\{E_{ij}\}</span> (ordine per righe); <span class="m">\dim\mathbb{K}^{n,m}=nm</span>.</li>
+<li><span class="m">AB</span> con <span class="m">A\in\mathbb{K}^{n,k}</span>, <span class="m">B\in\mathbb{K}^{k,m}</span>: <span class="m">c_{ij}=\sum_pa_{ip}b_{pj}</span> (riga <span class="m">i</span> di <span class="m">A</span> per colonna <span class="m">j</span> di <span class="m">B</span>), <span class="m">AB\in\mathbb{K}^{n,m}</span>.</li>
+<li><span class="m">A\cdot{}^t(b_1\cdots b_k)</span> = combinazione delle colonne di <span class="m">A</span> con coefficienti <span class="m">b_p</span>; prodotto di diagonali = diagonale dei prodotti.</li>
+<li>Proprietà: <span class="m">0</span> assorbe, <span class="m">I</span> neutro, associativa, distributive. Non commutativa; <span class="m">AB=0</span> possibile con <span class="m">A,B\neq0</span>; <span class="m">{}^t(AB)={}^tB\,{}^tA</span>; <span class="m">A^0=I_n</span>; <span class="m">(AB)^k=A^kB^k</span> se <span class="m">AB=BA</span>.</li>
+</ul>
 </div>

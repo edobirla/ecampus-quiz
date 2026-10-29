@@ -1,56 +1,178 @@
 <h1>Lezione 25 — Esistenza e unicità delle soluzioni</h1>
-<h2>Teorema di Rouché-Capelli</h2>
+<p>Nella lezione 24 abbiamo visto che un sistema compatibile ha <span class="m">\infty^{n-\operatorname{rank}A}</span> soluzioni, ma non avevamo ancora un modo pratico per decidere <strong>se</strong> il sistema è compatibile. Questa lezione risponde con il <strong>Teorema di Rouché-Capelli</strong>, che riduce la compatibilità a un confronto tra due ranghi, e con il <strong>Teorema 25.6</strong>, che per i sistemi quadrati collega l&#39;unicità della soluzione al determinante. Servono il rango di una matrice, il Teorema di Kronecker (minori e orlati) e il determinante.</p>
+<h2>Il Teorema di Rouché-Capelli</h2>
 <p><strong>Teorema 25.1 (Rouché-Capelli).</strong> Un sistema di equazioni lineari <span class="m">A\cdot X=B</span> è compatibile <strong>se e solo se</strong> la matrice incompleta e la matrice completa hanno lo stesso rango:
-<span class="m d">\mathrm{rank}(A)=\mathrm{rank}(A\,|\,B).</span></p>
-<p><em>Dimostrazione.</em> Siano <span class="m">A^1,\dots,A^n</span> le colonne di <span class="m">A</span>. Si ha <span class="m">\mathrm{rank}(A)=\dim\mathrm{Span}(A^1,\dots,A^n)</span> e <span class="m">\mathrm{rank}(A\,|\,B)=\dim\mathrm{Span}(A^1,\dots,A^n,B)</span>, con <span class="m">\mathrm{Span}(A^1,\dots,A^n)\subseteq\mathrm{Span}(A^1,\dots,A^n,B)</span>.</p>
-<ul>
-<li>Se il sistema è compatibile e <span class="m">X</span> è una soluzione, <span class="m">x_1A^1+\dots+x_nA^n=B</span>, quindi <span class="m">B\in\mathrm{Span}(A^1,\dots,A^n)</span>: i due span coincidono e hanno la stessa dimensione.</li>
-<li>Viceversa, se i ranghi sono uguali, i due span (uno contenuto nell&#39;altro) hanno la stessa dimensione e quindi coincidono; dunque <span class="m">B</span> è combinazione lineare delle colonne, <span class="m">B=x_1A^1+\dots+x_nA^n</span>, e i coefficienti <span class="m">x_i</span> sono una soluzione.</li>
-</ul>
+<span class="m d">A\cdot X=B\ \text{compatibile}\iff\operatorname{rank}(A)=\operatorname{rank}(A\,|\,B).</span></p>
+<p><strong>L&#39;idea.</strong> Il rango di una matrice è la dimensione dello spazio generato dalle sue colonne. Aggiungere la colonna <span class="m">B</span> alle colonne di <span class="m">A</span> fa crescere lo spazio generato (e quindi il rango) <strong>solo se <span class="m">B</span> non sta già</strong> nello spazio generato dalle colonne di <span class="m">A</span>, cioè solo se <span class="m">B</span> non è combinazione lineare delle colonne, cioè (Osservazione 24.12) solo se il sistema non ha soluzioni.</p>
+<p><em>Dimostrazione.</em> Indichiamo con <span class="m">A^1,\dots,A^n</span> le colonne di <span class="m">A</span>. Per definizione di rango:
+<span class="m d">\operatorname{rank}(A)=\dim\operatorname{Span}(A^1,\dots,A^n),\qquad\operatorname{rank}(A\,|\,B)=\dim\operatorname{Span}(A^1,\dots,A^n,B),</span>
+e ovviamente <span class="m">\operatorname{Span}(A^1,\dots,A^n)\subseteq\operatorname{Span}(A^1,\dots,A^n,B)</span> (ogni combinazione delle sole colonne di <span class="m">A</span> è una combinazione di <span class="m">A^1,\dots,A^n,B</span> con coefficiente <span class="m">0</span> su <span class="m">B</span>).</p>
+<p>(<span class="m">\Rightarrow</span>) Supponiamo il sistema compatibile e sia <span class="m">X={}^t(x_1\ \cdots\ x_n)</span> una soluzione. Allora <span class="m">x_1A^1+\dots+x_nA^n=B</span>: il vettore <span class="m">B</span> è combinazione lineare delle colonne di <span class="m">A</span>, cioè <span class="m">B\in\operatorname{Span}(A^1,\dots,A^n)</span>. Aggiungere a un insieme di generatori un vettore che sta già nel loro span non cambia lo span: <span class="m">\operatorname{Span}(A^1,\dots,A^n)=\operatorname{Span}(A^1,\dots,A^n,B)</span>. Spazi uguali hanno la stessa dimensione, quindi <span class="m">\operatorname{rank}(A)=\operatorname{rank}(A\,|\,B)</span>.</p>
+<p>(<span class="m">\Leftarrow</span>) Supponiamo <span class="m">\operatorname{rank}(A)=\operatorname{rank}(A\,|\,B)</span>. Abbiamo due sottospazi, uno contenuto nell&#39;altro, con la stessa dimensione (finita): allora <strong>coincidono</strong>. Quindi <span class="m">B\in\operatorname{Span}(A^1,\dots,A^n,B)=\operatorname{Span}(A^1,\dots,A^n)</span>, cioè esistono scalari <span class="m">x_1,\dots,x_n</span> con <span class="m">B=x_1A^1+\dots+x_nA^n</span>. Questi coefficienti formano una soluzione del sistema, che è quindi compatibile. <span class="m">\blacksquare</span></p>
 <div class="callout sintesi">
 
-<p>Sono equivalenti: il sistema è compatibile; <span class="m">B\in\mathrm{Span}(A^1,\dots,A^n)</span>; <span class="m">B</span> è combinazione lineare delle colonne di <span class="m">A</span>; <span class="m">\mathrm{rank}(A)=\mathrm{rank}(A\,|\,B)</span>.</p>
+<p>Per un sistema <span class="m">A\cdot X=B</span> sono <strong>equivalenti</strong>:</p>
+<ol>
+<li>il sistema è compatibile;</li>
+<li><span class="m">B\in\operatorname{Span}(A^1,\dots,A^n)</span>;</li>
+<li><span class="m">B</span> è combinazione lineare delle colonne di <span class="m">A</span>;</li>
+<li><span class="m">B\in\operatorname{Im}(f_A)</span>;</li>
+<li><span class="m">\operatorname{rank}(A)=\operatorname{rank}(A\,|\,B)</span>.</li>
+</ol>
+</div>
+
+<h3>Osservazioni utili sui due ranghi</h3>
+<ul>
+<li>La completa contiene tutte le colonne di <span class="m">A</span>, quindi <span class="m">\operatorname{rank}(A\,|\,B)\geqslant\operatorname{rank}(A)</span>; aggiungendo una sola colonna il rango può crescere al massimo di 1. Quindi le <strong>sole due possibilità</strong> sono:
+<span class="m d">\operatorname{rank}(A\,|\,B)=\operatorname{rank}(A)\ \ (\text{compatibile})\qquad\text{oppure}\qquad\operatorname{rank}(A\,|\,B)=\operatorname{rank}(A)+1\ \ (\text{incompatibile}).</span></li>
+<li>Il rango non supera mai il numero di righe: se <span class="m">\operatorname{rank}(A)=m</span> (numero delle equazioni), anche la completa ha rango <span class="m">m</span> e il sistema è <strong>sicuramente compatibile</strong>.</li>
+<li>Un sistema omogeneo ha <span class="m">B=0</span>: la colonna nulla non aumenta il rango, e ritroviamo che è sempre compatibile.</li>
+<li>Per calcolare <span class="m">\operatorname{rank}(A\,|\,B)</span> conviene partire da un minore non nullo di <span class="m">A</span> di ordine <span class="m">r=\operatorname{rank}A</span> e, per il <strong>Teorema di Kronecker</strong>, controllare solo i suoi <strong>orlati nella completa che usano la colonna <span class="m">B</span></strong> (quelli che usano solo colonne di <span class="m">A</span> sono già nulli, perché <span class="m">\operatorname{rank}A=r</span>). Se sono tutti nulli, <span class="m">\operatorname{rank}(A\,|\,B)=r</span>; se uno non è nullo, è <span class="m">r+1</span>.</li>
+</ul>
+<div class="callout esempio">
+
+<p><strong>Esempi 25.2 e 25.3.</strong></p>
+<ul>
+<li><span class="m">\begin{cases}x_1+x_2=2\\4x_1+3x_2=-1\end{cases}</span>: <span class="m">\det\begin{pmatrix}1&amp;1\\4&amp;3\end{pmatrix}=3-4=-1\neq0</span>, quindi <span class="m">\operatorname{rank}A=2</span>; la completa <span class="m">\left(\begin{array}{cc|c}1&amp;1&amp;2\\4&amp;3&amp;-1\end{array}\right)</span> ha 2 righe, quindi rango al più 2, e contiene quel minore: rango 2. Ranghi uguali: <strong>compatibile</strong>.</li>
+<li><span class="m">\begin{cases}x_1+x_2=2\\3x_1+3x_2=-1\end{cases}</span>: <span class="m">\det\begin{pmatrix}1&amp;1\\3&amp;3\end{pmatrix}=3-3=0</span> e <span class="m">A\neq0</span>, quindi <span class="m">\operatorname{rank}A=1</span>. Nella completa <span class="m">\left(\begin{array}{cc|c}1&amp;1&amp;2\\3&amp;3&amp;-1\end{array}\right)</span> il minore delle colonne 1 e 3 vale <span class="m">\det\begin{pmatrix}1&amp;2\\3&amp;-1\end{pmatrix}=-1-6=-7\neq0</span>: rango 2. Ranghi diversi: <strong>incompatibile</strong>. (A occhio: triplicando la prima equazione si ottiene <span class="m">3x_1+3x_2=6</span>, in contrasto con <span class="m">=-1</span>.)</li>
+</ul>
 </div>
 
 <div class="callout esempio">
 
-<p><span class="m">\begin{cases}x_1+x_2=2\\4x_1+3x_2=-1\end{cases}</span>: i ranghi di <span class="m">\begin{pmatrix}1&amp;1\\4&amp;3\end{pmatrix}</span> e <span class="m">\left(\begin{array}{cc|c}1&amp;1&amp;2\\4&amp;3&amp;-1\end{array}\right)</span> sono entrambi 2: è compatibile.
-<span class="m">\begin{cases}x_1+x_2=2\\3x_1+3x_2=-1\end{cases}</span>: <span class="m">\mathrm{rank}\begin{pmatrix}1&amp;1\\3&amp;3\end{pmatrix}=1</span>, ma <span class="m">\mathrm{rank}\left(\begin{array}{cc|c}1&amp;1&amp;2\\3&amp;3&amp;-1\end{array}\right)=2</span>: non è compatibile.</p>
+<p><strong>Sistemi &quot;quasi uguali&quot; (tipo paniere).</strong> I sistemi che differiscono per un solo segno o termine noto hanno comportamenti diversi; conviene sempre controllare la <strong>proporzionalità delle righe, termine noto compreso</strong>.</p>
+<ul>
+<li><span class="m">\begin{cases}3x_1+2x_2=-1\\6x_1+4x_2=2\end{cases}</span>: righe di <span class="m">A</span> proporzionali (<span class="m">\det A=12-12=0</span>, <span class="m">r_i=1</span>); nella completa la seconda riga <span class="m">(6,4,2)</span> <strong>non</strong> è il doppio di <span class="m">(3,2,-1)</span> (sarebbe <span class="m">(6,4,-2)</span>), il minore <span class="m">\det\begin{pmatrix}3&amp;-1\\6&amp;2\end{pmatrix}=6+6=12\neq0</span>: <span class="m">r_c=2</span>. <strong>Nessuna soluzione.</strong></li>
+<li><span class="m">\begin{cases}3x_1+2x_2=-1\\6x_1+4x_2=-2\end{cases}</span>: ora <span class="m">(6,4,-2)=2\cdot(3,2,-1)</span>, tutti i minori di ordine 2 della completa sono nulli: <span class="m">r_i=r_c=1</span>, <strong><span class="m">\infty^{2-1}=\infty^1</span> soluzioni</strong>.</li>
+<li><span class="m">\begin{cases}3x_1+2x_2=-1\\6x_1-4x_2=-2\end{cases}</span>: <span class="m">\det A=-12-12=-24\neq0</span>, <span class="m">r_i=r_c=2</span>: <strong>una sola soluzione</strong>.</li>
+<li><span class="m">\begin{cases}x_1-x_2=1\\x_1-3x_2=-2\\x_1+3x_2=7\end{cases}</span>: tre equazioni, due incognite. <span class="m">\det\begin{pmatrix}1&amp;-1\\1&amp;-3\end{pmatrix}=-3+1=-2\neq0</span>, <span class="m">r_i=2</span>. La completa è <span class="m">3\times3</span>; sviluppando lungo la prima riga
+<span class="m d">\det\left(\begin{array}{cc|c}1&amp;-1&amp;1\\1&amp;-3&amp;-2\\1&amp;3&amp;7\end{array}\right)=1\cdot(-21+6)-(-1)\cdot(7+2)+1\cdot(3+3)=-15+9+6=0,</span>
+quindi <span class="m">r_c=2</span>: <strong>compatibile</strong> (una soluzione: <span class="m">x_2=\tfrac32</span>, <span class="m">x_1=\tfrac52</span>). Cambiando il termine noto <span class="m">7</span> in <span class="m">-7</span> il determinante diventa <span class="m">1\cdot(21+6)+1\cdot(-7+2)+6=27-5+6=28\neq0</span>, <span class="m">r_c=3</span>: <strong>incompatibile</strong>.</li>
+</ul>
 </div>
 
 <h2>Numero dei parametri</h2>
-<p><strong>Osservazione 25.4.</strong> Se il sistema (con <span class="m">m</span> equazioni e <span class="m">n</span> incognite) è compatibile e <span class="m">r</span> è il rango comune di incompleta e completa, le soluzioni si parametrizzano con <span class="m">n-r</span> parametri: il sistema ha <span class="m">\infty^{n-r}</span> soluzioni.</p>
-<div class="callout attenzione">
-
-<p>L&#39;esponente è <strong>numero di incognite meno rango</strong>, non il rango e non il numero di equazioni. Il rango della completa vale <span class="m">\mathrm{rank}(A)</span> oppure <span class="m">\mathrm{rank}(A)+1</span>: nel secondo caso il sistema è impossibile.</p>
-</div>
-
-<h2>Sistemi quadrati</h2>
-<p><strong>Teorema 25.6.</strong> Un sistema di <span class="m">n</span> equazioni lineari in <span class="m">n</span> incognite ha <strong>una e una sola soluzione</strong> se e solo se <span class="m">\det(A)\neq0</span>.</p>
-<p><em>Dimostrazione.</em> Se <span class="m">\det A\neq0</span>, <span class="m">A</span> è invertibile, quindi <span class="m">f_A</span> è invertibile e la controimmagine di <span class="m">B</span> è formata da un solo vettore. Viceversa, se <span class="m">\det A=0</span> allora (Kronecker) <span class="m">\mathrm{rank}(A)&lt;n</span>; se il sistema fosse compatibile avrebbe <span class="m">\infty^{n-\mathrm{rank}(A)}</span> soluzioni con <span class="m">n-\mathrm{rank}(A)&gt;0</span>, cioè più di una: assurdo.</p>
+<p><strong>Osservazione 25.4.</strong> Se <span class="m">A\cdot X=B</span> (con <span class="m">m</span> equazioni e <span class="m">n</span> incognite) è compatibile e <span class="m">r</span> è il <strong>rango comune</strong> di incompleta e completa, le soluzioni si parametrizzano con <span class="m">n-r</span> parametri: il sistema ha
+<span class="m d">\infty^{n-r}\ \text{soluzioni}.</span>
+Infatti, per la Lezione 24, i parametri sono <span class="m">n-\operatorname{rank}(A)=n-r</span>.</p>
 <div class="callout esempio">
 
-<p><span class="m">\begin{cases}x_1+x_2=2\\4x_1+3x_2=-1\end{cases}</span> ha <span class="m">\det A=-1\neq0</span>: una sola soluzione. <span class="m">\begin{cases}x_1+x_2=2\\3x_1+3x_2=-1\end{cases}</span> ha <span class="m">\det A=0</span>: non ha esattamente una soluzione (qui non ne ha nessuna).</p>
+<ul>
+<li><span class="m">\begin{cases}x_1+x_2=2\\4x_1+3x_2=-1\end{cases}</span>: <span class="m">r=2</span>, <span class="m">n=2</span>, <span class="m">\infty^{0}</span> (Esempio 25.5).</li>
+<li>Sistema compatibile in <span class="m">x_1,x_2,x_3</span> con <span class="m">\operatorname{rank}A=3</span>: <span class="m">\infty^{3-3}=\infty^0</span>, una sola soluzione. Con <span class="m">\operatorname{rank}A=2</span>: <span class="m">\infty^{3-2}=\infty^1</span>.</li>
+<li><span class="m">\begin{cases}x_1-4x_2+3x_3+2x_4=2\\2x_1-8x_2+6x_3+4x_4=4\end{cases}</span> compatibile con <span class="m">\operatorname{rank}A=1</span>: <span class="m">n=4</span>, <span class="m">\infty^{4-1}=\infty^3</span> (resta l&#39;equazione <span class="m">x_1=2+4x_2-3x_3-2x_4</span> con tre incognite libere). Non <span class="m">\infty^{4-2}</span>: le equazioni sono 2 ma una è il doppio dell&#39;altra.</li>
+<li><span class="m">\begin{cases}x_1-4x_2+3x_3+2x_4=2\\x_1+2x_2+3x_3+2x_4=0\end{cases}</span> compatibile con <span class="m">\operatorname{rank}A=2</span>: <span class="m">\infty^{4-2}=\infty^2</span>.</li>
+</ul>
+</div>
+
+<div class="callout attenzione">
+
+<p>L&#39;esponente è <span class="m">n-r</span> con <span class="m">n</span> = <strong>numero di incognite</strong> e <span class="m">r</span> = rango. Gli errori tipici sono usare il rango come esponente, oppure sottrarre il numero di equazioni invece del rango. Un sistema con più equazioni che incognite <strong>non</strong> è per forza impossibile (decidono i ranghi), e un sistema con meno equazioni che incognite <strong>non</strong> è per forza compatibile.</p>
+</div>
+
+<h2>Sistemi quadrati: unicità e determinante</h2>
+<p><strong>Teorema 25.6.</strong> Un sistema di <span class="m">n</span> equazioni lineari in <span class="m">n</span> incognite <span class="m">A\cdot X=B</span> (<span class="m">A</span> quadrata <span class="m">n\times n</span>) ha <strong>una e una sola soluzione</strong> se e solo se <span class="m">\det(A)\neq0</span>.</p>
+<p><em>Dimostrazione.</em>
+(<span class="m">\Leftarrow</span>) Sia <span class="m">\det(A)\neq0</span>. Allora <span class="m">A</span> è invertibile, quindi l&#39;applicazione lineare <span class="m">f_A</span> è invertibile (biiettiva). L&#39;insieme delle soluzioni è la controimmagine di <span class="m">B</span> tramite <span class="m">f_A</span>; per una funzione biiettiva la controimmagine di un elemento è formata da <strong>un solo</strong> elemento, <span class="m">X=A^{-1}B</span>. Il sistema ha una e una sola soluzione.</p>
+<p>(<span class="m">\Rightarrow</span>) Supponiamo che il sistema abbia una e una sola soluzione e, per assurdo, che <span class="m">\det(A)=0</span>. Per il Teorema di Kronecker (una matrice quadrata ha rango massimo se e solo se il determinante non è nullo) <span class="m">\operatorname{rank}(A)&lt;n</span>. Il sistema, avendo una soluzione, è compatibile, quindi le soluzioni dipendono da <span class="m">k=n-\operatorname{rank}(A)</span> parametri; ma <span class="m">n&gt;\operatorname{rank}(A)</span> dà <span class="m">k\geqslant1</span>, cioè <strong>infinite</strong> soluzioni, contro l&#39;ipotesi che sia una sola. Assurdo; quindi <span class="m">\det(A)\neq0</span>. <span class="m">\blacksquare</span></p>
+<div class="callout esempio">
+
+<p><strong>Esempio 25.7.</strong></p>
+<ol>
+<li><span class="m">\begin{cases}x_1+x_2=2\\4x_1+3x_2=-1\end{cases}</span>: <span class="m">\det A=-1\neq0</span>, una e una sola soluzione.</li>
+<li><span class="m">\begin{cases}x_1+x_2=2\\3x_1+3x_2=-1\end{cases}</span>: <span class="m">\det A=0</span>, quindi <strong>non</strong> ha esattamente una soluzione; in questo caso non ne ha nessuna (ranghi 1 e 2).</li>
+</ol>
+<p><strong>Esercizio 25.4.</strong> <span class="m">\begin{cases}x_1-4x_2=-1\\2x_1+3x_2=4\end{cases}</span>: <span class="m">\det\begin{pmatrix}1&amp;-4\\2&amp;3\end{pmatrix}=3+8=11\neq0</span>, una sola soluzione. Per il sistema <span class="m">4\times4</span> <span class="m">\begin{cases}x_1+2x_2+x_3=1\\x_2-x_3+4x_4=-3\\2x_1+x_2+3x_4=0\\x_1-2x_3+7x_4=-2\end{cases}</span> il determinante della matrice dei coefficienti è <span class="m">0</span>, quindi <strong>non</strong> ha una e una sola soluzione.</p>
 </div>
 
 <div class="callout sintesi">
 
-<p>Con <span class="m">A</span> quadrata e <span class="m">\det A=0</span> le soluzioni possono non esistere oppure essere infinite: decide il confronto tra <span class="m">\mathrm{rank}(A)</span> e <span class="m">\mathrm{rank}(A\,|\,B)</span>.</p>
+<p>Per un sistema quadrato:</p>
+<ul>
+<li><span class="m">\det A\neq0</span> <span class="m">\Rightarrow</span> esattamente una soluzione, <strong>qualunque sia <span class="m">B</span></strong> (anche <span class="m">B=0</span>: l&#39;omogeneo ha solo la soluzione nulla);</li>
+<li><span class="m">\det A=0</span> <span class="m">\Rightarrow</span> le soluzioni <strong>possono non esistere oppure essere infinite</strong>, mai una sola: decide il confronto tra <span class="m">\operatorname{rank}(A)</span> e <span class="m">\operatorname{rank}(A\,|\,B)</span>.</li>
+</ul>
 </div>
 
-<h2>Sistemi con un parametro</h2>
-<p>Per studiare la compatibilità al variare di un parametro <span class="m">k</span>:</p>
+<h2>Sistemi con un parametro: procedura</h2>
+<p>Molti esercizi (e le domande aperte del paniere) chiedono per quali valori di un parametro <span class="m">k</span> il sistema ha soluzioni. La procedura per un sistema quadrato <span class="m">3\times3</span>:</p>
 <ol>
-<li>si calcola <span class="m">\det A</span> (se <span class="m">A</span> è quadrata) e si trovano i valori di <span class="m">k</span> che lo annullano;</li>
-<li>per gli altri valori <span class="m">\mathrm{rank}(A)=\mathrm{rank}(A\,|\,B)=n</span>: una sola soluzione;</li>
-<li>per ciascun valore critico si calcola <span class="m">\mathrm{rank}(A)</span> con un minore non nullo e si controllano i suoi <strong>orlati</strong> nella completa (Kronecker), in particolare quelli che usano la colonna <span class="m">B</span>.</li>
+<li><strong>Scrivi</strong> <span class="m">A</span> e <span class="m">(A\,|\,B)</span> con il parametro.</li>
+<li><strong>Calcola <span class="m">\det A</span></strong> in funzione di <span class="m">k</span> (Sarrus o Laplace) e <strong>fattorizzalo</strong>; trova i valori critici <span class="m">k_1,k_2,\dots</span> che lo annullano.</li>
+<li><strong>Per <span class="m">k</span> diverso dai valori critici</strong>: <span class="m">\det A\neq0</span>, quindi <span class="m">\operatorname{rank}A=3</span>; la completa è <span class="m">3\times4</span>, ha rango al più 3 e contiene il minore <span class="m">\det A</span>, quindi anche <span class="m">\operatorname{rank}(A\,|\,B)=3</span>. Compatibile con <strong>una sola soluzione</strong> (<span class="m">\infty^0</span>) per il Teorema 25.6.</li>
+<li><strong>Per ogni valore critico</strong>: sostituisci <span class="m">k</span>; trova un minore <span class="m">2\times2</span> non nullo di <span class="m">A</span> (allora <span class="m">\operatorname{rank}A=2</span>; se tutti i <span class="m">2\times2</span> sono nulli, <span class="m">\operatorname{rank}A=1</span>); calcola gli <strong>orlati</strong> di quel minore nella completa che usano la <strong>colonna <span class="m">B</span></strong>:<ul>
+<li>tutti nulli <span class="m">\Rightarrow\operatorname{rank}(A\,|\,B)=\operatorname{rank}A</span>: compatibile, <span class="m">\infty^{3-\operatorname{rank}A}</span> soluzioni;</li>
+<li>almeno uno non nullo <span class="m">\Rightarrow\operatorname{rank}(A\,|\,B)=\operatorname{rank}A+1</span>: <strong>incompatibile</strong>.</li>
+</ul>
+</li>
+<li><strong>Concludi</strong> con un elenco: per quali <span class="m">k</span> ci sono soluzioni e quante.</li>
 </ol>
 <div class="callout esempio">
 
-<p>Esercizio 25.1: <span class="m">\begin{cases}x-z+kt=1\\2x+ky+z=0\\2y+(k+1)z-4t=-k\end{cases}</span>. Si trova <span class="m">\mathrm{rank}(A)=2</span> per <span class="m">k=2</span> o <span class="m">k=-3</span>, <span class="m">3</span> altrimenti; <span class="m">\mathrm{rank}(A\,|\,B)=2</span> per <span class="m">k=2</span>, <span class="m">3</span> altrimenti. Il sistema è compatibile per <span class="m">k\neq-3</span>: <span class="m">\infty^{4-2}=\infty^2</span> soluzioni per <span class="m">k=2</span>, nessuna per <span class="m">k=-3</span>, <span class="m">\infty^{4-3}=\infty^1</span> altrimenti.</p>
+<p><strong>Sistema con un parametro (tipo domanda aperta).</strong> <span class="m">\begin{cases}2x+y+z=1\\x+kz=1\\3x+ky=1\end{cases}</span>.</p>
+<p><span class="m">A=\begin{pmatrix}2&amp;1&amp;1\\1&amp;0&amp;k\\3&amp;k&amp;0\end{pmatrix}</span>, <span class="m">(A\,|\,B)=\left(\begin{array}{ccc|c}2&amp;1&amp;1&amp;1\\1&amp;0&amp;k&amp;1\\3&amp;k&amp;0&amp;1\end{array}\right)</span>.</p>
+<p><strong>Determinante</strong> (Laplace lungo la prima riga):
+<span class="m d">\det A=2\,(0\cdot0-k\cdot k)-1\,(1\cdot0-k\cdot3)+1\,(1\cdot k-0\cdot3)=-2k^2+3k+k=-2k^2+4k=-2k(k-2).</span>
+Si annulla per <span class="m">k=0</span> e <span class="m">k=2</span>.</p>
+<p><strong><span class="m">k\neq0,2</span>:</strong> <span class="m">\operatorname{rank}A=\operatorname{rank}(A\,|\,B)=3</span>, una sola soluzione.</p>
+<p><strong><span class="m">k=0</span>:</strong> <span class="m">A=\begin{pmatrix}2&amp;1&amp;1\\1&amp;0&amp;0\\3&amp;0&amp;0\end{pmatrix}</span>. Il minore delle righe 1,2 e colonne 1,2 vale <span class="m">\det\begin{pmatrix}2&amp;1\\1&amp;0\end{pmatrix}=0-1=-1\neq0</span>: <span class="m">\operatorname{rank}A=2</span>. Orlato nella completa con la riga 3 e la colonna <span class="m">B</span>:
+<span class="m d">\det\begin{pmatrix}2&amp;1&amp;1\\1&amp;0&amp;1\\3&amp;0&amp;1\end{pmatrix}=2(0-0)-1(1-3)+1(0-0)=2\neq0,</span>
+quindi <span class="m">\operatorname{rank}(A\,|\,B)=3\neq2</span>: <strong>incompatibile</strong>.</p>
+<p><strong><span class="m">k=2</span>:</strong> <span class="m">A=\begin{pmatrix}2&amp;1&amp;1\\1&amp;0&amp;2\\3&amp;2&amp;0\end{pmatrix}</span>, stesso minore <span class="m">\det\begin{pmatrix}2&amp;1\\1&amp;0\end{pmatrix}=-1\neq0</span>: <span class="m">\operatorname{rank}A=2</span>. I suoi orlati nella completa sono <span class="m">\det A=0</span> (colonna 3) e quello con la colonna <span class="m">B</span>:
+<span class="m d">\det\begin{pmatrix}2&amp;1&amp;1\\1&amp;0&amp;1\\3&amp;2&amp;1\end{pmatrix}=2(0-2)-1(1-3)+1(2-0)=-4+2+2=0.</span>
+Tutti nulli: <span class="m">\operatorname{rank}(A\,|\,B)=2</span>, compatibile con <span class="m">\infty^{3-2}=\infty^1</span> soluzioni.</p>
+<p><strong>Conclusione:</strong> il sistema ha soluzioni per ogni <span class="m">k\neq0</span>: una sola per <span class="m">k\neq0,2</span>, <span class="m">\infty^1</span> per <span class="m">k=2</span>; nessuna per <span class="m">k=0</span>.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Esercizio 25.1 (dispensa), sistema <span class="m">3\times4</span>.</strong> <span class="m">\begin{cases}x-z+kt=1\\2x+ky+z=0\\2y+(k+1)z-4t=-k\end{cases}</span>, con
+<span class="m d">A=\begin{pmatrix}1&amp;0&amp;-1&amp;k\\2&amp;k&amp;1&amp;0\\0&amp;2&amp;k+1&amp;-4\end{pmatrix},\qquad(A\,|\,B)=\left(\begin{array}{cccc|c}1&amp;0&amp;-1&amp;k&amp;1\\2&amp;k&amp;1&amp;0&amp;0\\0&amp;2&amp;k+1&amp;-4&amp;-k\end{array}\right).</span>
+Qui <span class="m">A</span> non è quadrata: si usano i minori di ordine 3. Il minore delle colonne 1,2,3 vale
+<span class="m d">\det\begin{pmatrix}1&amp;0&amp;-1\\2&amp;k&amp;1\\0&amp;2&amp;k+1\end{pmatrix}=1\,(k(k+1)-2)-0+(-1)(4-0)=k^2+k-6=(k-2)(k+3).</span>
+Quindi per <span class="m">k\neq2,-3</span> <span class="m">\operatorname{rank}A=3=m</span> e il sistema è compatibile con <span class="m">\infty^{4-3}=\infty^1</span> soluzioni. Per <span class="m">k=2</span> e <span class="m">k=-3</span> si verifica che tutti i minori di ordine 3 di <span class="m">A</span> sono nulli, e <span class="m">\operatorname{rank}A=2</span> (per esempio <span class="m">\det\begin{pmatrix}1&amp;0\\2&amp;k\end{pmatrix}=k\neq0</span>). Nella completa, il minore delle colonne 1, 3 e <span class="m">B</span> vale <span class="m">\det\begin{pmatrix}1&amp;-1&amp;1\\2&amp;1&amp;0\\0&amp;k+1&amp;-k\end{pmatrix}=2-k</span>: per <span class="m">k=-3</span> vale <span class="m">5\neq0</span>, quindi <span class="m">\operatorname{rank}(A\,|\,B)=3</span> e il sistema è <strong>incompatibile</strong>; per <span class="m">k=2</span> tutti i minori di ordine 3 della completa sono nulli, <span class="m">\operatorname{rank}(A\,|\,B)=2</span>.</p>
+<p><strong>Risultato:</strong> compatibile per <span class="m">k\neq-3</span>; <span class="m">\infty^{4-2}=\infty^2</span> soluzioni per <span class="m">k=2</span>; nessuna per <span class="m">k=-3</span>; <span class="m">\infty^{4-3}=\infty^1</span> altrimenti.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Esercizio 25.3.</strong> <span class="m">\begin{cases}x_1+2x_2+3x_3=2\\2x_1-kx_2+4x_3=3\\x_1-3x_2+kx_3=k\end{cases}</span>, con
+<span class="m d">A=\begin{pmatrix}1&amp;2&amp;3\\2&amp;-k&amp;4\\1&amp;-3&amp;k\end{pmatrix},\qquad(A\,|\,B)=\left(\begin{array}{ccc|c}1&amp;2&amp;3&amp;2\\2&amp;-k&amp;4&amp;3\\1&amp;-3&amp;k&amp;k\end{array}\right).</span>
+<strong>Determinante</strong> (Laplace lungo la prima riga):
+<span class="m d">\det A=1\,\big((-k)k-4\cdot(-3)\big)-2\,\big(2k-4\cdot1\big)+3\,\big(2\cdot(-3)-(-k)\cdot1\big)=(-k^2+12)-(4k-8)+(3k-18)=-k^2-k+2.</span>
+Fattorizzando: <span class="m">-k^2-k+2=-(k^2+k-2)=-(k-1)(k+2)</span>. Valori critici <span class="m">k=1</span> e <span class="m">k=-2</span>.</p>
+<p><strong><span class="m">k\neq1,-2</span>:</strong> <span class="m">\operatorname{rank}A=\operatorname{rank}(A\,|\,B)=3</span>, una sola soluzione (<span class="m">\infty^{3-3}=\infty^0</span>).</p>
+<p><strong><span class="m">k=1</span>:</strong> <span class="m">A=\begin{pmatrix}1&amp;2&amp;3\\2&amp;-1&amp;4\\1&amp;-3&amp;1\end{pmatrix}</span>; il minore <span class="m">\det\begin{pmatrix}1&amp;2\\2&amp;-1\end{pmatrix}=-1-4=-5\neq0</span> dà <span class="m">\operatorname{rank}A=2</span>. Orlato con la terza riga e la colonna <span class="m">B</span>:
+<span class="m d">\det\begin{pmatrix}1&amp;2&amp;2\\2&amp;-1&amp;3\\1&amp;-3&amp;1\end{pmatrix}=1\,(-1+9)-2\,(2-3)+2\,(-6+1)=8+2-10=0.</span>
+Anche l&#39;altro orlato (<span class="m">\det A</span>) è nullo: <span class="m">\operatorname{rank}(A\,|\,B)=2</span>. Compatibile con <span class="m">\infty^{3-2}=\infty^1</span> soluzioni.</p>
+<p><strong><span class="m">k=-2</span>:</strong> <span class="m">A=\begin{pmatrix}1&amp;2&amp;3\\2&amp;2&amp;4\\1&amp;-3&amp;-2\end{pmatrix}</span>; il minore <span class="m">\det\begin{pmatrix}1&amp;2\\2&amp;2\end{pmatrix}=2-4=-2\neq0</span> dà <span class="m">\operatorname{rank}A=2</span>. Orlato con la colonna <span class="m">B</span> (che ora vale <span class="m">{}^t(2\ 3\ -2)</span>):
+<span class="m d">\det\begin{pmatrix}1&amp;2&amp;2\\2&amp;2&amp;3\\1&amp;-3&amp;-2\end{pmatrix}=1\,(-4+9)-2\,(-4-3)+2\,(-6-2)=5+14-16=3\neq0,</span>
+quindi <span class="m">\operatorname{rank}(A\,|\,B)=3\neq2</span>: <strong>incompatibile</strong>.</p>
+<p><strong>Risultato:</strong> compatibile per <span class="m">k\neq-2</span>; <span class="m">\infty^1</span> soluzioni per <span class="m">k=1</span>, nessuna per <span class="m">k=-2</span>, una sola altrimenti.</p>
+</div>
+
+<div class="callout attenzione">
+
+<ul>
+<li>Trovare <span class="m">\det A=0</span> per un valore di <span class="m">k</span> <strong>non</strong> dice che il sistema è impossibile: bisogna calcolare anche il rango della completa.</li>
+<li>Per il rango della completa servono gli orlati <strong>con la colonna dei termini noti</strong>: quelli fatti solo con colonne di <span class="m">A</span> sono già nulli.</li>
+<li>Il Teorema di Rouché-Capelli è un &quot;<strong>se e solo se</strong>&quot;: un enunciato con solo &quot;se&quot; o solo &quot;solo se&quot; è incompleto.</li>
+</ul>
 </div>
 
 <div class="callout esame">
 
-<p>Le chiuse chiedono <span class="m">r_i</span>, <span class="m">r_c</span> e se il sistema ha soluzione (sistemi che differiscono per un solo segno o termine noto!), oppure il numero di soluzioni <span class="m">\infty^{n-r}</span> noti <span class="m">n</span> e il rango. Le aperte chiedono l&#39;enunciato di Rouché-Capelli con le conseguenze e lo studio di sistemi <span class="m">3\times3</span> con un parametro <span class="m">k</span>: determinante, valori critici, ranghi per quei valori.</p>
+<p><strong>Chiuse:</strong> dato un sistema, scegliere i valori corretti di <span class="m">r_i=\operatorname{rank}A</span>, <span class="m">r_c=\operatorname{rank}(A\,|\,B)</span> e se ha soluzione. Le opzioni combinano ranghi e conclusioni: scarta subito quelle incoerenti con Rouché-Capelli (ranghi uguali ma &quot;non ha soluzione&quot;, ranghi diversi ma &quot;ha soluzione&quot;). I sistemi del paniere differiscono per un solo segno o termine noto: controlla la proporzionalità delle righe <strong>includendo il termine noto</strong>, oppure calcola i determinanti con attenzione ai segni. Altre chiuse chiedono il numero di soluzioni <span class="m">\infty^{n-r}</span> noti <span class="m">n</span> e il rango.</p>
+<p><strong>Aperte:</strong> (1) enunciare <strong>Rouché-Capelli</strong> (con &quot;se e solo se&quot;), con dimostrazione per span delle colonne, e descrivere le conseguenze: equivalenze della sintesi, <span class="m">\operatorname{rank}(A\,|\,B)\in\{r,r+1\}</span>, numero di soluzioni <span class="m">\infty^{n-r}</span>, omogeneo sempre compatibile, Teorema 25.6 per i sistemi quadrati. (2) Stabilire per quali <span class="m">k</span> un sistema <span class="m">3\times3</span> ha soluzioni: seguire la procedura in 5 passi sopra (determinante fattorizzato, caso generico, per ogni valore critico rango di <span class="m">A</span> con un minore <span class="m">2\times2</span> e orlati con la colonna <span class="m">B</span>, conclusione con il numero di soluzioni).</p>
+</div>
+
+<div class="callout sintesi">
+
+<ul>
+<li><strong>Rouché-Capelli:</strong> compatibile <span class="m">\iff\operatorname{rank}A=\operatorname{rank}(A\,|\,B)</span> <span class="m">\iff B\in\operatorname{Span}(\text{colonne di }A)</span>.</li>
+<li><span class="m">\operatorname{rank}(A\,|\,B)</span> vale <span class="m">\operatorname{rank}A</span> (compatibile) oppure <span class="m">\operatorname{rank}A+1</span> (incompatibile).</li>
+<li>Compatibile con rango <span class="m">r</span>: <span class="m">\infty^{n-r}</span> soluzioni.</li>
+<li>Quadrato: una e una sola soluzione <span class="m">\iff\det A\neq0</span>; se <span class="m">\det A=0</span>, nessuna o infinite.</li>
+<li>Con parametro: <span class="m">\det A</span> fattorizzato → valori critici → per ciascuno rango di <span class="m">A</span> e orlati con <span class="m">B</span>.</li>
+</ul>
 </div>

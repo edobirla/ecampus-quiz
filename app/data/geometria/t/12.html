@@ -1,71 +1,291 @@
 <h1>Lezione 12 — Operazioni elementari e metodo di eliminazione di Gauss</h1>
-<p>Con le operazioni elementari si trasforma una matrice in una matrice a scalini.</p>
-<h2>Operazioni elementari</h2>
-<p><strong>Definizione 12.1.</strong> Una <em>operazione elementare sulle righe</em> di <span class="m">A\in\mathbb{K}^{n,m}</span> è una delle modifiche:</p>
+<p>In questa lezione vediamo come trasformare una qualsiasi matrice in una <strong>matrice a scalini</strong> usando poche modifiche semplici delle righe, le <em>operazioni elementari</em>. Il procedimento si chiama <em>metodo di eliminazione di Gauss</em> e ha due varianti: <em>con normalizzazione</em> (tutti i pivot diventano <span class="m">1</span>) e <em>di Gauss-Jordan</em> (si annullano anche le entrate sopra i pivot). Sono lo strumento di calcolo fondamentale del corso: serviranno per risolvere sistemi lineari, calcolare ranghi, determinanti, inverse e basi.</p>
+<p>Le operazioni elementari non sono &quot;operazioni&quot; nel senso della Definizione 4.1 (funzioni <span class="m">X\times X\to X</span>): sono <strong>trasformazioni</strong> di una matrice, ma si chiamano comunque operazioni.</p>
+<h2>Operazioni elementari sulle righe</h2>
+<p><strong>Definizione 12.1.</strong> Una <em>operazione elementare sulle righe</em> di una matrice <span class="m">A\in\mathbb{K}^{n,m}</span> è una delle seguenti modifiche:</p>
 <ul>
-<li><strong>I)</strong> scambio di due righe: <span class="m">A\xrightarrow{R_I\ i\leftrightarrow j}B</span>;</li>
-<li><strong>II)</strong> moltiplicazione di una riga per <span class="m">\lambda\in\mathbb{K}\setminus\{0\}</span>: <span class="m">A\xrightarrow{R_{II}\ \lambda\cdot i}B</span>;</li>
-<li><strong>III)</strong> sostituzione di una riga con la somma della riga stessa e di un multiplo di un&#39;altra riga: <span class="m">A\xrightarrow{R_{III}\ i+\lambda\cdot j}B</span>, con <span class="m">\lambda\in\mathbb{K}</span>.</li>
+<li><strong>tipo I)</strong> <strong>scambio</strong> di due righe di <span class="m">A</span>;</li>
+<li><strong>tipo II)</strong> <strong>moltiplicazione</strong> di una riga di <span class="m">A</span> per uno scalare <span class="m">\lambda\in\mathbb{K}\setminus\{0\}</span> (<strong>non nullo</strong>);</li>
+<li><strong>tipo III)</strong> <strong>sostituzione</strong> di una riga di <span class="m">A</span> con la somma della riga stessa e di un multiplo (qualsiasi, <span class="m">\lambda\in\mathbb{K}</span>) di <strong>un&#39;altra</strong> riga.</li>
 </ul>
+<p><strong>Notazione 12.2.</strong> Se dall&#39;operazione su <span class="m">A</span> si ottiene <span class="m">B</span>, si scrive:</p>
+<table>
+<thead>
+<tr>
+<th>Tipo</th>
+<th>Scrittura</th>
+<th>Significato</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>I</td>
+<td><span class="m">A\xrightarrow{R_I\ i\leftrightarrow j}B</span></td>
+<td>si scambiano la riga <span class="m">i</span> e la riga <span class="m">j</span></td>
+</tr>
+<tr>
+<td>II</td>
+<td><span class="m">A\xrightarrow{R_{II}\ \lambda\cdot i}B</span></td>
+<td>la riga <span class="m">i</span> viene moltiplicata per <span class="m">\lambda\neq0</span></td>
+</tr>
+<tr>
+<td>III</td>
+<td><span class="m">A\xrightarrow{R_{III}\ i+\lambda\cdot j}B</span></td>
+<td>alla riga <span class="m">i</span> si somma la riga <span class="m">j</span> moltiplicata per <span class="m">\lambda</span> (cambia solo la riga <span class="m">i</span>)</td>
+</tr>
+</tbody></table>
 <div class="callout esempio">
 
-<p><span class="m">\begin{pmatrix}-1&amp;2\\1&amp;0\\3&amp;4\end{pmatrix}\xrightarrow{R_I\ 2\leftrightarrow3}\begin{pmatrix}-1&amp;2\\3&amp;4\\1&amp;0\end{pmatrix}</span>, <span class="m">\quad\begin{pmatrix}2&amp;3&amp;-5\\2&amp;-1&amp;0\end{pmatrix}\xrightarrow{R_{II}\ (-3)\cdot2}\begin{pmatrix}2&amp;3&amp;-5\\-6&amp;3&amp;0\end{pmatrix}</span>, <span class="m">\quad\begin{pmatrix}1&amp;-1&amp;0\\3&amp;4&amp;-5\\2&amp;5&amp;4\end{pmatrix}\xrightarrow{R_{III}\ 3+2\cdot1}\begin{pmatrix}1&amp;-1&amp;0\\3&amp;4&amp;-5\\4&amp;3&amp;4\end{pmatrix}</span>.</p>
-</div>
-
-<div class="callout attenzione">
-
-<p>Nel tipo II il fattore deve essere <strong>non nullo</strong>; nel tipo III il coefficiente <span class="m">\lambda</span> può essere qualsiasi, anche <span class="m">0</span> (in quel caso la matrice resta invariata).</p>
-</div>
-
-<ul>
-<li><strong>Osservazione 12.4.</strong> L&#39;inversa di un&#39;operazione elementare è ancora elementare: si riscambiano le righe, si moltiplica per <span class="m">\lambda^{-1}</span>, si aggiunge <span class="m">-\lambda</span> volte la riga.</li>
-<li><strong>Definizione 12.5.</strong> Analogamente si definiscono le <em>operazioni elementari sulle colonne</em>, indicate con <span class="m">C_I</span>, <span class="m">C_{II}</span>, <span class="m">C_{III}</span>.</li>
-<li><strong>Osservazione 12.8.</strong> Le operazioni sulle righe non cambiano il sottospazio generato dalle righe (e quindi la sua dimensione); quelle sulle colonne non cambiano lo Span delle colonne.</li>
-</ul>
-<h2>Metodo di eliminazione di Gauss</h2>
-<p><strong>Algoritmo 12.9.</strong> Sia <span class="m">A\in\mathbb{K}^{n,m}</span> e <span class="m">B(1):=A</span>. Si ripetono al più <span class="m">n-1</span> passi; all&#39;<span class="m">i</span>-esimo si lavora sulla sottomatrice <span class="m">B(i)</span>:</p>
+<p><strong>Esempio 12.3.</strong></p>
 <ol>
-<li>se <span class="m">B(i)</span> è nulla l&#39;algoritmo termina; altrimenti si cerca il <strong>minimo</strong> indice <span class="m">k</span> tale che la colonna <span class="m">k</span> di <span class="m">B(i)</span> non è nulla;</li>
-<li>se l&#39;entrata <span class="m">(1,k)</span> di <span class="m">B(i)</span> è <span class="m">0</span>, si cerca il <strong>minimo</strong> <span class="m">l</span> con entrata <span class="m">(l,k)</span> non nulla e si scambiano la prima riga e la riga <span class="m">l</span> (tipo I);</li>
-<li>per ogni riga <span class="m">j&gt;1</span> con <span class="m">B(i)^k_j\neq0</span> si somma alla riga <span class="m">j</span> la prima riga moltiplicata per <span class="m">-\dfrac{B(i)^k_j}{B(i)^k_1}</span> (tipo III), così l&#39;entrata <span class="m">(j,k)</span> diventa nulla;</li>
-<li>se <span class="m">i&lt;n-1</span> si fissa la prima riga e si passa alla sottomatrice <span class="m">B(i+1)</span> ottenuta togliendola; se <span class="m">i=n-1</span> si termina.</li>
+<li>Tipo I, scambio della seconda e della terza riga:
+<span class="m d">\begin{pmatrix}-1&amp;2\\1&amp;0\\3&amp;4\end{pmatrix}\xrightarrow{R_I\ 2\leftrightarrow3}\begin{pmatrix}-1&amp;2\\3&amp;4\\1&amp;0\end{pmatrix}.</span></li>
+<li>Tipo II, seconda riga moltiplicata per <span class="m">-3</span>: <span class="m">(2\ -1\ 0)\cdot(-3)=(-6\ 3\ 0)</span>,
+<span class="m d">\begin{pmatrix}2&amp;3&amp;-5\\2&amp;-1&amp;0\end{pmatrix}\xrightarrow{R_{II}\ (-3)\cdot2}\begin{pmatrix}2&amp;3&amp;-5\\-6&amp;3&amp;0\end{pmatrix}.</span></li>
+<li>Tipo III, alla terza riga si somma il doppio della prima: <span class="m">(2\ 5\ 4)+2\cdot(1\ -1\ 0)=(2+2\ \ 5-2\ \ 4+0)=(4\ 3\ 4)</span>,
+<span class="m d">\begin{pmatrix}1&amp;-1&amp;0\\3&amp;4&amp;-5\\2&amp;5&amp;4\end{pmatrix}\xrightarrow{R_{III}\ 3+2\cdot1}\begin{pmatrix}1&amp;-1&amp;0\\3&amp;4&amp;-5\\4&amp;3&amp;4\end{pmatrix}.</span></li>
 </ol>
-<p>Il risultato è la matrice ottenuta da <span class="m">A</span> con queste operazioni (righe fissate in ordine, eventuali righe mancanti nulle).</p>
-<div class="callout esempio">
-
-<p><span class="m d">\begin{pmatrix}0&amp;3&amp;-3&amp;1\\1&amp;1&amp;1&amp;2\\-1&amp;5&amp;-7&amp;2\end{pmatrix}\xrightarrow{R_I\ 1\leftrightarrow2}\begin{pmatrix}1&amp;1&amp;1&amp;2\\0&amp;3&amp;-3&amp;1\\-1&amp;5&amp;-7&amp;2\end{pmatrix}\xrightarrow{R_{III}\ 3+1\cdot1}\begin{pmatrix}1&amp;1&amp;1&amp;2\\0&amp;3&amp;-3&amp;1\\0&amp;6&amp;-6&amp;4\end{pmatrix}\xrightarrow{R_{III}\ 3+(-2)\cdot2}\begin{pmatrix}1&amp;1&amp;1&amp;2\\0&amp;3&amp;-3&amp;1\\0&amp;0&amp;0&amp;2\end{pmatrix}</span>
-Passo 1: prima colonna non nulla la 1, entrata <span class="m">(1,1)=0</span>, scambio con la riga 2, poi si annulla <span class="m">(3,1)</span> con coefficiente <span class="m">-\frac{-1}{1}=1</span>. Passo 2: sottomatrice delle righe 2–3, prima colonna non nulla la 2, coefficiente <span class="m">-\frac63=-2</span>.</p>
 </div>
 
+<p><strong>Osservazione 12.4 (le operazioni si possono invertire).</strong> L&#39;inversa di un&#39;operazione elementare sulle righe è ancora un&#39;operazione elementare sulle righe:</p>
 <ul>
-<li><strong>Proposizione 12.11.</strong> Il risultato è una matrice <strong>a scalini</strong>.</li>
-<li><strong>Osservazione 12.12.</strong> L&#39;elemento che al punto 2 diventa (o è già) non nullo è il pivot della riga <span class="m">i</span> del risultato.</li>
+<li>tipo I: se <span class="m">B</span> si ottiene da <span class="m">A</span> scambiando le righe <span class="m">i</span> e <span class="m">j</span>, anche <span class="m">A</span> si ottiene da <span class="m">B</span> scambiando le righe <span class="m">i</span> e <span class="m">j</span>;</li>
+<li>tipo II: se <span class="m">B</span> si ottiene moltiplicando la riga <span class="m">i</span> per <span class="m">\lambda\neq0</span>, <span class="m">A</span> si ottiene da <span class="m">B</span> moltiplicando la riga <span class="m">i</span> per <span class="m">\lambda^{-1}</span>, che esiste <strong>proprio perché <span class="m">\lambda\neq0</span></strong> (ecco perché il fattore <span class="m">0</span> è vietato: cancellerebbe la riga e non si potrebbe tornare indietro);</li>
+<li>tipo III: se <span class="m">B</span> si ottiene aggiungendo alla riga <span class="m">i</span> <span class="m">\lambda</span> volte la riga <span class="m">j</span>, <span class="m">A</span> si ottiene da <span class="m">B</span> aggiungendo alla riga <span class="m">i</span> <span class="m">-\lambda</span> volte la riga <span class="m">j</span> (la riga <span class="m">j</span> non è cambiata, quindi si può &quot;togliere&quot; quello che si era aggiunto).</li>
 </ul>
+<h2>Operazioni elementari sulle colonne</h2>
+<p><strong>Definizione 12.5.</strong> Allo stesso modo, una <em>operazione elementare sulle colonne</em> di <span class="m">A</span> è: I) lo scambio di due colonne; II) la moltiplicazione di una colonna per <span class="m">\lambda\neq0</span>; III) la sostituzione di una colonna con la somma della colonna stessa e di un multiplo di un&#39;altra colonna.</p>
+<p><strong>Notazione 12.6.</strong> Si scrive <span class="m">A\xrightarrow{C_I\ i\leftrightarrow j}B</span>, <span class="m">A\xrightarrow{C_{II}\ \lambda\cdot i}B</span>, <span class="m">A\xrightarrow{C_{III}\ i+\lambda\cdot j}B</span>.</p>
+<p><strong>Osservazione 12.7.</strong> Anche l&#39;inversa di un&#39;operazione elementare sulle colonne è un&#39;operazione elementare sulle colonne.</p>
+<div class="callout esempio">
+
+<p><strong>Esempio (sessione di studio).</strong> Sia <span class="m">A=\begin{pmatrix}2&amp;-1&amp;0\\3&amp;2&amp;1\\-5&amp;4&amp;3\\3&amp;0&amp;-2\end{pmatrix}</span>.</p>
+<ol>
+<li><span class="m">A\xrightarrow{R_I\ 3\leftrightarrow4}\begin{pmatrix}2&amp;-1&amp;0\\3&amp;2&amp;1\\3&amp;0&amp;-2\\-5&amp;4&amp;3\end{pmatrix}</span>.</li>
+<li><span class="m">A\xrightarrow{C_{II}\ 2\cdot3}\begin{pmatrix}2&amp;-1&amp;0\\3&amp;2&amp;2\\-5&amp;4&amp;6\\3&amp;0&amp;-4\end{pmatrix}</span> (la terza colonna <span class="m">{}^t(0\ 1\ 3\ -2)</span> raddoppia).</li>
+<li><span class="m">A\xrightarrow{C_{III}\ 2+(-1)\cdot1}\begin{pmatrix}2&amp;-3&amp;0\\3&amp;-1&amp;1\\-5&amp;9&amp;3\\3&amp;-3&amp;-2\end{pmatrix}</span>: la seconda colonna diventa <span class="m">{}^t(-1-2\ \ 2-3\ \ 4+5\ \ 0-3)={}^t(-3\ -1\ 9\ -3)</span>.</li>
+</ol>
+</div>
+
+<p><strong>Osservazione 12.8.</strong> Le operazioni elementari sulle righe (di qualunque tipo) <strong>non cambiano il sottospazio generato dalle righe</strong> della matrice, e quindi nemmeno la sua dimensione. Analogamente le operazioni sulle colonne non cambiano lo Span delle colonne. (Motivo: le nuove righe sono combinazioni lineari delle vecchie, quindi il nuovo Span è contenuto nel vecchio; ma l&#39;operazione è invertibile, quindi vale anche il contrario.)</p>
+<div class="callout esempio">
+
+<p><strong>Come si riconosce un&#39;operazione di tipo III.</strong> Si confronta la matrice nuova con la vecchia: deve essere cambiata <strong>una sola riga</strong> <span class="m">i</span>, e la differenza &quot;riga nuova <span class="m">-</span> riga vecchia&quot; deve essere un <strong>multiplo di un&#39;altra riga</strong> <span class="m">j</span> (della matrice di partenza). Se <span class="m">\lambda=0</span> la matrice non cambia: anche la matrice identica alla partenza è il risultato di un&#39;operazione di tipo III.</p>
+<p>Con <span class="m">A=\begin{pmatrix}1&amp;3&amp;-2&amp;4\\2&amp;-3&amp;0&amp;2\\-2&amp;-3&amp;0&amp;2\end{pmatrix}</span>:</p>
+<ul>
+<li>se la terza riga diventa <span class="m">(2\ -9\ 0\ 6)</span>: differenza <span class="m">(2\ -9\ 0\ 6)-(-2\ -3\ 0\ 2)=(4\ -6\ 0\ 4)=2\cdot(2\ -3\ 0\ 2)</span>, è l&#39;operazione <span class="m">R_{III}\ 3+2\cdot2</span>;</li>
+<li>se la seconda riga diventa <span class="m">(3\ 0\ -2\ 6)</span>: differenza <span class="m">(1\ 3\ -2\ 4)</span>, è <span class="m">R_{III}\ 2+1\cdot1</span>;</li>
+<li>se la terza riga diventa <span class="m">(2\ -9\ 0\ 4)</span>: differenza <span class="m">(4\ -6\ 0\ 2)</span>, che non è multiplo né della prima riga né della seconda (<span class="m">2\cdot(2\ -3\ 0\ 2)=(4\ -6\ 0\ 4)</span>, ultima entrata diversa): <strong>non</strong> è un&#39;operazione di tipo III.</li>
+</ul>
+</div>
+
+<h2>Metodo di eliminazione di Gauss</h2>
+<p>L&#39;idea: si sceglie la prima colonna non nulla, si porta in alto un elemento non nullo (il futuro pivot), e con operazioni di tipo III si annullano tutti gli elementi <strong>sotto</strong> di esso. Poi si &quot;congela&quot; la prima riga e si ripete sulla parte di matrice sotto. A ogni passo i pivot scendono di una riga e si spostano a destra: alla fine la matrice è a scalini.</p>
+<p><strong>Algoritmo 12.9 (metodo di eliminazione di Gauss).</strong> Sia <span class="m">A\in\mathbb{K}^{n,m}</span> e sia <span class="m">B(1):=A</span>. Si ripetono al più <span class="m">n-1</span> passi (uno per riga). All&#39;<span class="m">i</span>-esimo passo si lavora sulla sottomatrice <span class="m">B(i)</span> (formata dalle righe non ancora fissate):</p>
+<ol>
+<li>Se <span class="m">B(i)</span> è la <strong>matrice nulla</strong> <span class="m">0_{n-i+1,m}</span>, l&#39;algoritmo <strong>termina</strong>. Altrimenti si cerca il <strong>minimo</strong> indice <span class="m">k</span> tale che la colonna <span class="m">B(i)^k</span> <strong>non è tutta nulla</strong>.</li>
+<li>Se l&#39;elemento al posto <span class="m">(1,k)</span> di <span class="m">B(i)</span> è <span class="m">0</span>, si cerca il <strong>minimo</strong> indice <span class="m">l</span> tale che l&#39;elemento al posto <span class="m">(l,k)</span> non è nullo, e si <strong>scambia la prima riga con la riga <span class="m">l</span></strong> (operazione di tipo I). Ora <span class="m">B(i)^k_1\neq0</span>.</li>
+<li>Per ogni riga <span class="m">B(i)_j</span> con <span class="m">j&gt;1</span> e <span class="m">B(i)^k_j\neq0</span> si applica un&#39;operazione di tipo III: <strong>alla riga <span class="m">j</span> si somma la prima riga moltiplicata per</strong>
+<span class="m d">-\frac{B(i)^k_j}{B(i)^k_1}.</span>
+In questo modo l&#39;elemento <span class="m">B(i)^k_j</span> diventa nullo: <span class="m">B(i)^k_j+\left(-\frac{B(i)^k_j}{B(i)^k_1}\right)B(i)^k_1=0</span>.</li>
+<li>Se <span class="m">i&lt;n-1</span> si <strong>fissa la prima riga</strong> di <span class="m">B(i)</span>, si considera la sottomatrice <span class="m">B(i+1)</span> ottenuta togliendola e si passa al passo <span class="m">i+1</span>. Se <span class="m">i=n-1</span> l&#39;algoritmo termina.</li>
+</ol>
+<p>Il <strong>risultato</strong> è la matrice <span class="m">B\in\mathbb{K}^{n,m}</span> ottenuta da <span class="m">A</span> con le operazioni indicate: la riga <span class="m">i</span> di <span class="m">B</span> è la riga fissata al passo <span class="m">i</span>, e le ultime righe sono quelle dell&#39;ultima sottomatrice considerata. Se i passi fatti sono meno di <span class="m">n-1</span> (perché a un certo punto <span class="m">B(i)</span> era nulla), le righe mancanti sono nulle.</p>
+<p>Alcune osservazioni sul perché delle scelte:</p>
+<ul>
+<li>si cerca il <strong>minimo</strong> <span class="m">k</span> (la colonna più a sinistra) perché il pivot deve stare il più a sinistra possibile;</li>
+<li>si scambia con la <strong>prima</strong> riga utile (minimo <span class="m">l</span>) per rendere il metodo <strong>deterministico</strong>: tutti ottengono la stessa matrice;</li>
+<li>il metodo di Gauss &quot;puro&quot; usa solo operazioni di <strong>tipo I e III</strong>: <strong>non moltiplica mai una riga</strong> per uno scalare, quindi i pivot restano quelli che escono dai conti, anche negativi o frazionari.</li>
+</ul>
+<div class="callout esempio">
+
+<p><strong>Esempio 12.10.</strong> Applichiamo il metodo di Gauss ad <span class="m">A=\begin{pmatrix}0&amp;3&amp;-3&amp;1\\1&amp;1&amp;1&amp;2\\-1&amp;5&amp;-7&amp;2\end{pmatrix}\in\mathbb{R}^{3,4}</span>. Qui <span class="m">n=3</span>, quindi al più <span class="m">2</span> passi. <span class="m">B(1)=A</span>.</p>
+<p><strong>Passo 1.</strong></p>
+<ol>
+<li>La prima colonna non tutta nulla è la colonna <span class="m">1</span>: <span class="m">k=1</span>.</li>
+<li>L&#39;entrata <span class="m">(1,1)</span> è <span class="m">0</span>. La prima riga con entrata non nulla in colonna 1 è la riga <span class="m">2</span> (<span class="m">l=2</span>): scambiamo.
+<span class="m d">\begin{pmatrix}0&amp;3&amp;-3&amp;1\\1&amp;1&amp;1&amp;2\\-1&amp;5&amp;-7&amp;2\end{pmatrix}\xrightarrow{R_I\ 1\leftrightarrow2}\begin{pmatrix}1&amp;1&amp;1&amp;2\\0&amp;3&amp;-3&amp;1\\-1&amp;5&amp;-7&amp;2\end{pmatrix}</span></li>
+<li>L&#39;entrata <span class="m">(2,1)</span> è già <span class="m">0</span>. Per annullare <span class="m">(3,1)=-1</span> si somma alla riga 3 la riga 1 moltiplicata per <span class="m">-\frac{-1}{1}=1</span>: <span class="m">(-1\ 5\ -7\ 2)+(1\ 1\ 1\ 2)=(0\ 6\ -6\ 4)</span>.
+<span class="m d">\xrightarrow{R_{III}\ 3+1\cdot1}\begin{pmatrix}1&amp;1&amp;1&amp;2\\0&amp;3&amp;-3&amp;1\\0&amp;6&amp;-6&amp;4\end{pmatrix}</span></li>
+<li>Poiché <span class="m">1&lt;2</span>, si fissa la prima riga e si passa a <span class="m">B(2)=\begin{pmatrix}0&amp;3&amp;-3&amp;1\\0&amp;6&amp;-6&amp;4\end{pmatrix}</span>.</li>
+</ol>
+<p><strong>Passo 2.</strong></p>
+<ol>
+<li>In <span class="m">B(2)</span> la colonna 1 è nulla; la prima colonna non nulla è la <span class="m">2</span>: <span class="m">k=2</span>.</li>
+<li>L&#39;entrata <span class="m">(1,2)</span> di <span class="m">B(2)</span> è <span class="m">3\neq0</span>: nessuno scambio.</li>
+<li>Per annullare l&#39;entrata <span class="m">6</span> si somma alla seconda riga di <span class="m">B(2)</span> la prima moltiplicata per <span class="m">-\frac63=-2</span>: <span class="m">(0\ 6\ -6\ 4)-2(0\ 3\ -3\ 1)=(0\ 0\ 0\ 2)</span>. Nella matrice intera è la riga <span class="m">3</span> a cui si somma <span class="m">-2</span> volte la riga <span class="m">2</span>:
+<span class="m d">\xrightarrow{R_{III}\ 3+(-2)\cdot2}\begin{pmatrix}1&amp;1&amp;1&amp;2\\0&amp;3&amp;-3&amp;1\\0&amp;0&amp;0&amp;2\end{pmatrix}</span></li>
+<li>Poiché <span class="m">2=n-1</span>, l&#39;algoritmo termina.</li>
+</ol>
+<p>Risultato: <span class="m">B=\begin{pmatrix}1&amp;1&amp;1&amp;2\\0&amp;3&amp;-3&amp;1\\0&amp;0&amp;0&amp;2\end{pmatrix}</span>, a scalini, con pivot <span class="m">1</span>, <span class="m">3</span>, <span class="m">2</span> (nelle colonne <span class="m">1</span>, <span class="m">2</span>, <span class="m">4</span>).</p>
+</div>
+
+<p><strong>Proposizione 12.11.</strong> Il risultato del metodo di eliminazione di Gauss è una <strong>matrice a scalini</strong>.</p>
+<p><strong>Osservazione 12.12.</strong> L&#39;elemento <span class="m">B(i)^k_1</span> che al punto 2 del passo <span class="m">i</span> diventa (o è già) non nullo è il <strong>pivot della riga <span class="m">i</span></strong> del risultato.</p>
+<div class="callout esempio">
+
+<p><strong>Esempio (scambio al secondo passo).</strong> Gauss su <span class="m">A=\begin{pmatrix}1&amp;1&amp;2\\2&amp;2&amp;1\\3&amp;4&amp;0\end{pmatrix}</span>.</p>
+<p><strong>Passo 1.</strong> <span class="m">k=1</span>, l&#39;entrata <span class="m">(1,1)=1\neq0</span>. Si annullano le entrate sotto:</p>
+<ul>
+<li>riga 2: coefficiente <span class="m">-\frac21=-2</span>, <span class="m">(2\ 2\ 1)-2(1\ 1\ 2)=(0\ 0\ -3)</span>;</li>
+<li>riga 3: coefficiente <span class="m">-\frac31=-3</span>, <span class="m">(3\ 4\ 0)-3(1\ 1\ 2)=(0\ 1\ -6)</span>.</li>
+</ul>
+<p><span class="m d">\begin{pmatrix}1&amp;1&amp;2\\2&amp;2&amp;1\\3&amp;4&amp;0\end{pmatrix}\xrightarrow{R_{III}\ 2+(-2)\cdot1}\begin{pmatrix}1&amp;1&amp;2\\0&amp;0&amp;-3\\3&amp;4&amp;0\end{pmatrix}\xrightarrow{R_{III}\ 3+(-3)\cdot1}\begin{pmatrix}1&amp;1&amp;2\\0&amp;0&amp;-3\\0&amp;1&amp;-6\end{pmatrix}</span></p>
+<p><strong>Passo 2.</strong> <span class="m">B(2)=\begin{pmatrix}0&amp;0&amp;-3\\0&amp;1&amp;-6\end{pmatrix}</span>: la colonna 1 è nulla, la prima colonna non nulla è la <span class="m">2</span> (<span class="m">k=2</span>). L&#39;entrata <span class="m">(1,2)</span> di <span class="m">B(2)</span> è <span class="m">0</span> (il pivot &quot;è sparito&quot;), la prima riga con entrata non nulla in colonna 2 è la seconda di <span class="m">B(2)</span>, cioè la riga <span class="m">3</span> della matrice: si scambia.
+<span class="m d">\xrightarrow{R_I\ 2\leftrightarrow3}\begin{pmatrix}1&amp;1&amp;2\\0&amp;1&amp;-6\\0&amp;0&amp;-3\end{pmatrix}</span>
+Sotto il pivot <span class="m">1</span> c&#39;è già <span class="m">0</span>; poiché <span class="m">2=n-1</span>, si termina. Risultato: <span class="m">\begin{pmatrix}1&amp;1&amp;2\\0&amp;1&amp;-6\\0&amp;0&amp;-3\end{pmatrix}</span>.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Esempio (sessione di studio, matrice <span class="m">4\times2</span>).</strong> Gauss su <span class="m">\begin{pmatrix}0&amp;1\\0&amp;3\\-2&amp;4\\1&amp;0\end{pmatrix}</span>.</p>
+<ul>
+<li>Passo 1: <span class="m">k=1</span>; l&#39;entrata <span class="m">(1,1)</span> è <span class="m">0</span>, la prima riga con entrata non nulla in colonna 1 è la <span class="m">3</span>: <span class="m">R_I\ 1\leftrightarrow3</span> dà <span class="m">\begin{pmatrix}-2&amp;4\\0&amp;3\\0&amp;1\\1&amp;0\end{pmatrix}</span>. Righe 2 e 3 hanno già <span class="m">0</span>; per la riga 4 il coefficiente è <span class="m">-\frac{1}{-2}=\frac12</span>: <span class="m">(1\ 0)+\frac12(-2\ 4)=(0\ 2)</span>. Matrice: <span class="m">\begin{pmatrix}-2&amp;4\\0&amp;3\\0&amp;1\\0&amp;2\end{pmatrix}</span>.</li>
+<li>Passo 2: <span class="m">B(2)=\begin{pmatrix}0&amp;3\\0&amp;1\\0&amp;2\end{pmatrix}</span>, <span class="m">k=2</span>, pivot <span class="m">3</span>. Riga 3: coefficiente <span class="m">-\frac13</span>, <span class="m">(0\ 1)-\frac13(0\ 3)=(0\ 0)</span>. Riga 4: coefficiente <span class="m">-\frac23</span>, <span class="m">(0\ 2)-\frac23(0\ 3)=(0\ 0)</span>.</li>
+<li>Passo 3: <span class="m">B(3)=\begin{pmatrix}0&amp;0\\0&amp;0\end{pmatrix}</span> è nulla: l&#39;algoritmo termina.</li>
+</ul>
+<p>Risultato: <span class="m">\begin{pmatrix}-2&amp;4\\0&amp;3\\0&amp;0\\0&amp;0\end{pmatrix}</span>.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Qual è la prossima operazione?</strong> Dopo il primo passo di Gauss si ha <span class="m">\begin{pmatrix}2&amp;0&amp;-1&amp;3\\0&amp;0&amp;0&amp;4\\0&amp;-1&amp;1&amp;-3\end{pmatrix}</span>. Si lavora su <span class="m">B(2)=\begin{pmatrix}0&amp;0&amp;0&amp;4\\0&amp;-1&amp;1&amp;-3\end{pmatrix}</span>: la prima colonna non nulla è la <span class="m">2</span>, e in alto c&#39;è <span class="m">0</span>. La prossima operazione è quindi lo <strong>scambio</strong> <span class="m">R_I\ 2\leftrightarrow3</span>, che dà <span class="m">\begin{pmatrix}2&amp;0&amp;-1&amp;3\\0&amp;-1&amp;1&amp;-3\\0&amp;0&amp;0&amp;4\end{pmatrix}</span> (già a scalini). Non si usano operazioni sulle colonne né moltiplicazioni di righe.</p>
+</div>
+
+<h2>Metodo di Gauss con normalizzazione</h2>
+<p>Variante in cui tutti i pivot diventano <span class="m">1</span>.</p>
+<p><strong>Algoritmo 12.13 (Gauss con normalizzazione).</strong> Sia <span class="m">A\in\mathbb{K}^{n,m}</span>. Si applica il metodo di Gauss e si ottiene la matrice a scalini <span class="m">B</span>. Poi, <strong>per ogni riga non nulla</strong>, si applica un&#39;operazione di tipo II con fattore <span class="m">\frac1p</span>, dove <span class="m">p</span> è il pivot di quella riga: il pivot diventa <span class="m">1</span>. Il risultato è la matrice <span class="m">C</span> così ottenuta.</p>
+<div class="callout esempio">
+
+<p><strong>Esempio 12.14.</strong> Da <span class="m">B=\begin{pmatrix}1&amp;1&amp;1&amp;2\\0&amp;3&amp;-3&amp;1\\0&amp;0&amp;0&amp;2\end{pmatrix}</span> (Esempio 12.10). Il primo pivot è già <span class="m">1</span>.</p>
+<ul>
+<li>Seconda riga per <span class="m">\frac13</span>: <span class="m">(0\ 3\ -3\ 1)\cdot\frac13=(0\ 1\ -1\ \frac13)</span>.</li>
+<li>Terza riga per <span class="m">\frac12</span>: <span class="m">(0\ 0\ 0\ 2)\cdot\frac12=(0\ 0\ 0\ 1)</span>.</li>
+</ul>
+<p><span class="m d">\begin{pmatrix}1&amp;1&amp;1&amp;2\\0&amp;3&amp;-3&amp;1\\0&amp;0&amp;0&amp;2\end{pmatrix}\xrightarrow{R_{II}\ \frac13\cdot2}\begin{pmatrix}1&amp;1&amp;1&amp;2\\0&amp;1&amp;-1&amp;\frac13\\0&amp;0&amp;0&amp;2\end{pmatrix}\xrightarrow{R_{II}\ \frac12\cdot3}\begin{pmatrix}1&amp;1&amp;1&amp;2\\0&amp;1&amp;-1&amp;\frac13\\0&amp;0&amp;0&amp;1\end{pmatrix}=C.</span></p>
+</div>
+
+<p><strong>Osservazione 12.15.</strong> Le normalizzazioni non vanno fatte per forza tutte alla fine: si possono fare <strong>subito dopo il punto 2</strong> di ogni passo, dividendo la prima riga di <span class="m">B(i)</span> per il suo pivot. Così i conti del punto 3 diventano più semplici (si divide per <span class="m">1</span>) e il risultato finale è lo stesso.</p>
+<div class="callout esempio">
+
+<p><strong>Esempio (sessione di studio, normalizzando durante).</strong> <span class="m">A=\begin{pmatrix}-2&amp;-6&amp;-2\\-3&amp;-8&amp;-3\\1&amp;5&amp;3\end{pmatrix}</span>.</p>
+<ul>
+<li>Passo 1: pivot <span class="m">-2</span>; normalizzo subito, <span class="m">R_{II}\ (-\frac12)\cdot1</span>: <span class="m">(1\ 3\ 1)</span>. Poi riga 2: <span class="m">(-3\ -8\ -3)+3(1\ 3\ 1)=(0\ 1\ 0)</span> (<span class="m">R_{III}\ 2+3\cdot1</span>); riga 3: <span class="m">(1\ 5\ 3)-(1\ 3\ 1)=(0\ 2\ 2)</span> (<span class="m">R_{III}\ 3+(-1)\cdot1</span>).</li>
+<li>Passo 2: pivot <span class="m">1</span> (già normalizzato). Riga 3: <span class="m">(0\ 2\ 2)-2(0\ 1\ 0)=(0\ 0\ 2)</span> (<span class="m">R_{III}\ 3+(-2)\cdot2</span>).</li>
+<li>Normalizzazione dell&#39;ultima riga: <span class="m">R_{II}\ \frac12\cdot3</span> dà <span class="m">(0\ 0\ 1)</span>.</li>
+</ul>
+<p><span class="m d">\begin{pmatrix}-2&amp;-6&amp;-2\\-3&amp;-8&amp;-3\\1&amp;5&amp;3\end{pmatrix}\longrightarrow\begin{pmatrix}1&amp;3&amp;1\\0&amp;1&amp;0\\0&amp;0&amp;1\end{pmatrix}.</span></p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Prossima operazione nella normalizzazione.</strong> Se Gauss ha dato <span class="m">\begin{pmatrix}1&amp;2&amp;0&amp;3\\0&amp;4&amp;-8&amp;2\end{pmatrix}</span>, il primo pivot è già <span class="m">1</span> e la prossima operazione è <span class="m">R_{II}\ \frac14\cdot2</span>, che dà <span class="m">\begin{pmatrix}1&amp;2&amp;0&amp;3\\0&amp;1&amp;-2&amp;\frac12\end{pmatrix}</span>. (Non si scambiano righe, non si opera sulle colonne, e annullare l&#39;entrata sopra il pivot appartiene al metodo di Gauss-Jordan, non a questo.)</p>
+</div>
+
+<h2>Metodo di Gauss-Jordan</h2>
+<p>Proseguendo, si annullano anche le entrate <strong>sopra</strong> i pivot.</p>
+<p><strong>Algoritmo 12.16 (Gauss-Jordan).</strong> Sia <span class="m">A\in\mathbb{K}^{n,m}</span>. Si applica Gauss con normalizzazione e si ottiene la matrice a scalini <span class="m">C</span> con tutti i pivot uguali a <span class="m">1</span> (e le righe nulle in basso). Poi si fa un passo per ogni riga non nulla, dalla seconda in giù: al passo <span class="m">i</span>, sia <span class="m">(i,k)</span> il posto del pivot della riga <span class="m">i</span>; per ogni <span class="m">j</span> con <span class="m">0&lt;j&lt;i</span>, se l&#39;elemento <span class="m">x</span> al posto <span class="m">(j,k)</span> è diverso da <span class="m">0</span>, si applica l&#39;operazione di tipo III che <strong>somma alla riga <span class="m">j</span> la riga <span class="m">i</span> moltiplicata per <span class="m">-x</span></strong>. Così l&#39;entrata <span class="m">(j,k)</span> diventa <span class="m">x+(-x)\cdot1=0</span>. Il risultato è la matrice <span class="m">D</span> ottenuta.</p>
+<p>Il motivo per cui l&#39;operazione non rovina il lavoro già fatto: la riga <span class="m">i</span> ha zeri in tutte le colonne a sinistra del suo pivot, quindi sommandone un multiplo alla riga <span class="m">j</span> non cambiano le entrate della riga <span class="m">j</span> nelle colonne dei pivot precedenti.</p>
+<div class="callout esempio">
+
+<p><strong>Esempio 12.17.</strong> Da <span class="m">C=\begin{pmatrix}1&amp;1&amp;1&amp;2\\0&amp;1&amp;-1&amp;\frac13\\0&amp;0&amp;0&amp;1\end{pmatrix}</span> (Esempio 12.14).</p>
+<p><strong>Riga 2</strong> (pivot in colonna 2): sopra c&#39;è <span class="m">x=1</span> al posto <span class="m">(1,2)</span>. Sommo alla riga 1 la riga 2 per <span class="m">-1</span>: <span class="m">(1\ 1\ 1\ 2)-(0\ 1\ -1\ \frac13)=(1\ 0\ 2\ \frac53)</span>.
+<span class="m d">\xrightarrow{R_{III}\ 1+(-1)\cdot2}\begin{pmatrix}1&amp;0&amp;2&amp;\frac53\\0&amp;1&amp;-1&amp;\frac13\\0&amp;0&amp;0&amp;1\end{pmatrix}</span>
+<strong>Riga 3</strong> (pivot in colonna 4): sopra ci sono <span class="m">\frac53</span> al posto <span class="m">(1,4)</span> e <span class="m">\frac13</span> al posto <span class="m">(2,4)</span>.
+<span class="m d">\xrightarrow{R_{III}\ 1+(-\frac53)\cdot3}\begin{pmatrix}1&amp;0&amp;2&amp;0\\0&amp;1&amp;-1&amp;\frac13\\0&amp;0&amp;0&amp;1\end{pmatrix}\xrightarrow{R_{III}\ 2+(-\frac13)\cdot3}\begin{pmatrix}1&amp;0&amp;2&amp;0\\0&amp;1&amp;-1&amp;0\\0&amp;0&amp;0&amp;1\end{pmatrix}=D.</span></p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Esempio (matrice <span class="m">2\times4</span>, come nel paniere).</strong> Gauss-Jordan su <span class="m">A=\begin{pmatrix}3&amp;6&amp;3&amp;-3\\2&amp;4&amp;4&amp;2\end{pmatrix}</span>.</p>
+<ol>
+<li><strong>Gauss.</strong> Pivot <span class="m">3</span> al posto <span class="m">(1,1)</span>. Alla riga 2 si somma la riga 1 per <span class="m">-\frac23</span>:
+<span class="m d">(2\ \ 4\ \ 4\ \ 2)-\tfrac23(3\ \ 6\ \ 3\ \ -3)=(2-2\ \ \ 4-4\ \ \ 4-2\ \ \ 2+2)=(0\ \ 0\ \ 2\ \ 4).</span>
+Si ottiene <span class="m">\begin{pmatrix}3&amp;6&amp;3&amp;-3\\0&amp;0&amp;2&amp;4\end{pmatrix}</span>: il secondo pivot è in colonna <span class="m">3</span> (la colonna 2 si è annullata insieme alla 1).</li>
+<li><strong>Normalizzazione.</strong> <span class="m">R_{II}\ \frac13\cdot1</span>: <span class="m">(1\ 2\ 1\ -1)</span>; <span class="m">R_{II}\ \frac12\cdot2</span>: <span class="m">(0\ 0\ 1\ 2)</span>. Matrice <span class="m">\begin{pmatrix}1&amp;2&amp;1&amp;-1\\0&amp;0&amp;1&amp;2\end{pmatrix}</span>.</li>
+<li><strong>Sopra i pivot.</strong> Il pivot della riga 2 è in colonna 3, sopra c&#39;è <span class="m">1</span>: <span class="m">R_{III}\ 1+(-1)\cdot2</span>, <span class="m">(1\ 2\ 1\ -1)-(0\ 0\ 1\ 2)=(1\ 2\ 0\ -3)</span>.</li>
+</ol>
+<p>Risultato: <span class="m">\begin{pmatrix}1&amp;2&amp;0&amp;-3\\0&amp;0&amp;1&amp;2\end{pmatrix}</span>. Nota: l&#39;entrata <span class="m">2</span> al posto <span class="m">(1,2)</span> <strong>resta</strong>, perché la colonna 2 non contiene un pivot.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Esempio (si arriva all&#39;identità).</strong> Proseguendo l&#39;esempio normalizzato <span class="m">\begin{pmatrix}1&amp;3&amp;1\\0&amp;1&amp;0\\0&amp;0&amp;1\end{pmatrix}</span>:</p>
+<ul>
+<li>riga 2 (pivot in colonna 2): sopra c&#39;è <span class="m">3</span>, <span class="m">R_{III}\ 1+(-3)\cdot2</span> dà <span class="m">(1\ 0\ 1)</span>;</li>
+<li>riga 3 (pivot in colonna 3): sopra ci sono <span class="m">1</span> (riga 1) e <span class="m">0</span> (riga 2): <span class="m">R_{III}\ 1+(-1)\cdot3</span> dà <span class="m">(1\ 0\ 0)</span>.</li>
+</ul>
+<p>Risultato <span class="m">I_3</span>. Analogamente, se durante Gauss-Jordan si è arrivati a <span class="m">\begin{pmatrix}1&amp;0&amp;4\\0&amp;1&amp;-2\\0&amp;0&amp;1\end{pmatrix}</span>, restano le operazioni <span class="m">R_{III}\ 1+(-4)\cdot3</span> e <span class="m">R_{III}\ 2+2\cdot3</span>, che portano a <span class="m">I_3</span>.</p>
+</div>
+
+<p><strong>Osservazione 12.18.</strong> Per una matrice quadrata <span class="m">A\in\mathbb{K}^{n,n}</span>, con Gauss-Jordan si ottengono <strong><span class="m">n</span> pivot</strong> (cioè nessuna riga nulla) <strong>se e solo se il risultato è la matrice identità <span class="m">I_n</span></strong>. (Con <span class="m">n</span> pivot in una matrice quadrata a scalini i pivot stanno tutti sulla diagonale; normalizzati valgono <span class="m">1</span> e Gauss-Jordan annulla tutto quello che c&#39;è sopra.)</p>
+<p><strong>Osservazione 12.19.</strong> In generale, per <span class="m">A\in\mathbb{K}^{n,m}</span>, si ottengono <strong><span class="m">r</span> pivot</strong> (cioè <span class="m">r</span> righe non nulle) se e solo se la sottomatrice del risultato formata dalle righe e dalle colonne che contengono pivot è <span class="m">I_r</span>.</p>
+<div class="callout esempio">
+
+<p><strong>Esempio 12.20.</strong> Il risultato <span class="m">D=\begin{pmatrix}1&amp;0&amp;2&amp;0\\0&amp;1&amp;-1&amp;0\\0&amp;0&amp;0&amp;1\end{pmatrix}</span> ha <span class="m">3</span> pivot nelle colonne <span class="m">1,2,4</span>: la sottomatrice delle righe <span class="m">1,2,3</span> e colonne <span class="m">1,2,4</span> è <span class="m">\begin{pmatrix}1&amp;0&amp;0\\0&amp;1&amp;0\\0&amp;0&amp;1\end{pmatrix}=I_3</span>.</p>
+</div>
+
+<h2>Riepilogo dei tre metodi</h2>
+<table>
+<thead>
+<tr>
+<th>Metodo</th>
+<th>Operazioni usate</th>
+<th>Risultato</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Gauss</td>
+<td>tipo I e III</td>
+<td>a scalini, pivot qualsiasi (non nulli)</td>
+</tr>
+<tr>
+<td>Gauss con normalizzazione</td>
+<td>Gauss + tipo II (riga diviso pivot)</td>
+<td>a scalini, pivot <span class="m">=1</span></td>
+</tr>
+<tr>
+<td>Gauss-Jordan</td>
+<td>normalizzazione + tipo III verso l&#39;alto</td>
+<td>a scalini, pivot <span class="m">=1</span>, zeri sopra e sotto ogni pivot</td>
+</tr>
+</tbody></table>
+<p><strong>Procedura per le domande d&#39;esame su Gauss (<span class="m">3\times3</span>):</strong></p>
+<ol>
+<li>Trova la prima colonna non nulla; se in alto c&#39;è <span class="m">0</span>, scambia la prima riga con la <strong>prima</strong> riga che ha un elemento non nullo in quella colonna.</li>
+<li>Per ogni riga sotto con elemento <span class="m">b\neq0</span> in quella colonna, somma la prima riga per <span class="m">-\frac{b}{p}</span> (<span class="m">p</span> = pivot). Scrivi ogni riga nuova entrata per entrata.</li>
+<li>Ripeti sulle righe 2–3 (colonna successiva); se in alto c&#39;è <span class="m">0</span> e sotto no, <strong>scambia</strong>.</li>
+<li>Non moltiplicare mai una riga: il segno dei pivot resta quello che esce.</li>
+</ol>
+<p><strong>Per Gauss-Jordan (<span class="m">2\times4</span>):</strong> Gauss (una sola operazione sotto il primo pivot), poi dividi ogni riga per il suo pivot, poi annulla l&#39;elemento sopra il secondo pivot.</p>
 <div class="callout attenzione">
 
-<p>Il metodo di Gauss &quot;puro&quot; non moltiplica mai le righe: i pivot restano quelli che escono dai conti (anche negativi). Se dopo un passo l&#39;entrata in alto della colonna del pivot è <span class="m">0</span>, serve uno scambio di righe.</p>
-</div>
-
-<h2>Gauss con normalizzazione</h2>
-<p><strong>Algoritmo 12.13.</strong> Si applica il metodo di Gauss ottenendo la matrice a scalini <span class="m">B</span>; poi ogni riga non nulla si moltiplica per <span class="m">\frac1p</span> (tipo II), dove <span class="m">p</span> è il suo pivot. Tutti i pivot diventano <span class="m">1</span>.</p>
-<div class="callout esempio">
-
-<p><span class="m">\begin{pmatrix}1&amp;1&amp;1&amp;2\\0&amp;3&amp;-3&amp;1\\0&amp;0&amp;0&amp;2\end{pmatrix}\xrightarrow{R_{II}\ \frac13\cdot2}\begin{pmatrix}1&amp;1&amp;1&amp;2\\0&amp;1&amp;-1&amp;\frac13\\0&amp;0&amp;0&amp;2\end{pmatrix}\xrightarrow{R_{II}\ \frac12\cdot3}\begin{pmatrix}1&amp;1&amp;1&amp;2\\0&amp;1&amp;-1&amp;\frac13\\0&amp;0&amp;0&amp;1\end{pmatrix}</span>.</p>
-</div>
-
-<p><strong>Osservazione 12.15.</strong> Le normalizzazioni si possono fare anche subito dopo il punto 2 di ogni passo.</p>
-<h2>Gauss-Jordan</h2>
-<p><strong>Algoritmo 12.16.</strong> Si applica Gauss con normalizzazione (pivot uguali a <span class="m">1</span>, righe nulle in basso). Poi, per ogni riga non nulla <span class="m">i</span> con pivot al posto <span class="m">(i,k)</span>, per ogni <span class="m">j&lt;i</span> con entrata <span class="m">x\neq0</span> al posto <span class="m">(j,k)</span> si somma alla riga <span class="m">j</span> la riga <span class="m">i</span> moltiplicata per <span class="m">-x</span> (tipo III). Si annullano così le entrate <strong>sopra</strong> i pivot.</p>
-<div class="callout esempio">
-
-<p><span class="m">\begin{pmatrix}1&amp;1&amp;1&amp;2\\0&amp;1&amp;-1&amp;\frac13\\0&amp;0&amp;0&amp;1\end{pmatrix}\xrightarrow{R_{III}\ 1+(-1)\cdot2}\begin{pmatrix}1&amp;0&amp;2&amp;\frac53\\0&amp;1&amp;-1&amp;\frac13\\0&amp;0&amp;0&amp;1\end{pmatrix}\xrightarrow{R_{III}\ 1+(-\frac53)\cdot3}\begin{pmatrix}1&amp;0&amp;2&amp;0\\0&amp;1&amp;-1&amp;\frac13\\0&amp;0&amp;0&amp;1\end{pmatrix}\xrightarrow{R_{III}\ 2+(-\frac13)\cdot3}\begin{pmatrix}1&amp;0&amp;2&amp;0\\0&amp;1&amp;-1&amp;0\\0&amp;0&amp;0&amp;1\end{pmatrix}</span>.</p>
-</div>
-
 <ul>
-<li><strong>Osservazione 12.18.</strong> Per una matrice quadrata <span class="m">A\in\mathbb{K}^{n,n}</span> si ottengono <span class="m">n</span> pivot se e solo se il risultato di Gauss-Jordan è <span class="m">I_n</span>.</li>
-<li><strong>Osservazione 12.19.</strong> In generale si ottengono <span class="m">r</span> pivot se e solo se la sottomatrice del risultato formata dalle righe e colonne dei pivot è <span class="m">I_r</span>.</li>
+<li>Nel tipo II il fattore deve essere <strong>non nullo</strong>; nel tipo III il coefficiente può essere qualsiasi, anche <span class="m">0</span> (in quel caso la matrice non cambia), ma la riga sommata deve essere un&#39;<strong>altra</strong> riga.</li>
+<li>Nel tipo III cambia <strong>solo</strong> la riga <span class="m">i</span> (quella prima del &quot;+&quot;); la riga <span class="m">j</span> resta com&#39;è.</li>
+<li>Gauss &quot;puro&quot; non normalizza: non rendere positivo un pivot negativo e non dividere per il pivot. I pivot del risultato possono essere negativi.</li>
+<li>Se dopo un passo l&#39;entrata in alto della colonna del pivot è <span class="m">0</span> ma sotto c&#39;è un elemento non nullo, serve uno <strong>scambio</strong> di righe, con la prima riga utile.</li>
+<li>Attenzione ai segni: <span class="m">-b/p</span> con <span class="m">b</span> e <span class="m">p</span> negativi; ad esempio <span class="m">-\frac{-1}{-1}=-1</span>. Dopo ogni operazione ricontrolla che l&#39;entrata da annullare sia davvero diventata <span class="m">0</span>.</li>
+<li>In Gauss-Jordan si annullano le entrate sopra i <strong>pivot</strong>, non tutte le entrate sopra la diagonale: in una colonna senza pivot gli elementi restano.</li>
 </ul>
+</div>
+
 <div class="callout esame">
 
-<p>Il paniere chiede il risultato di Gauss su matrici <span class="m">3\times3</span> (attenzione allo scambio di righe quando un pivot &quot;sparisce&quot; e ai segni: niente normalizzazione) e di Gauss-Jordan su matrici <span class="m">2\times4</span> (Gauss, poi pivot a <span class="m">1</span>, poi zero sopra il secondo pivot). Nelle sessioni di studio: riconoscere un&#39;operazione di tipo III e la prossima operazione di ciascun metodo. Aperta: operazioni elementari e uno dei tre metodi.</p>
+<p>Il paniere chiede:</p>
+<ul>
+<li>il <strong>risultato del metodo di Gauss</strong> su matrici <span class="m">3\times3</span>: spesso l&#39;entrata <span class="m">(1,1)</span> è <span class="m">0</span> (serve lo scambio con la prima riga utile) o dopo il primo passo il pivot della seconda riga si annulla (serve uno scambio al secondo passo). Le risposte sbagliate differiscono per il <strong>segno</strong> dell&#39;ultimo pivot o per un pivot &quot;reso positivo&quot;: niente normalizzazione;</li>
+<li>il <strong>risultato di Gauss-Jordan</strong> su matrici <span class="m">2\times4</span>: Gauss, poi pivot a <span class="m">1</span>, poi zero sopra il secondo pivot; le risposte sbagliate differiscono per i segni nell&#39;ultima colonna o nella seconda.</li>
+</ul>
+<p>Nelle sessioni di studio: riconoscere un&#39;operazione di tipo III, applicare operazioni sulle righe e sulle colonne, dire qual è la <strong>prossima operazione</strong> di ciascun metodo.</p>
+<p>Domanda aperta: <em>operazioni elementari e uno dei metodi</em>. Dai la Definizione 12.1 (tre tipi, con <span class="m">\lambda\neq0</span> nel tipo II) e la notazione, l&#39;invertibilità (Oss. 12.4), le operazioni sulle colonne, l&#39;Osservazione 12.8, poi descrivi un metodo (Algoritmo 12.9 con i quattro punti di ogni passo, oppure 12.13 o 12.16), la Proposizione 12.11 e un esempio svolto.</p>
+</div>
+
+<div class="callout sintesi">
+
+<ul>
+<li>Operazioni elementari sulle righe: I scambio <span class="m">R_I\ i\leftrightarrow j</span>; II riga per <span class="m">\lambda\neq0</span> <span class="m">R_{II}\ \lambda\cdot i</span>; III riga <span class="m">i</span> + <span class="m">\lambda\cdot</span> riga <span class="m">j</span> <span class="m">R_{III}\ i+\lambda\cdot j</span>. Sono invertibili; analoghe sulle colonne (<span class="m">C_I,C_{II},C_{III}</span>); non cambiano lo Span delle righe (o delle colonne).</li>
+<li>Gauss: prima colonna non nulla, scambio se in alto c&#39;è <span class="m">0</span>, annullamento sotto il pivot con coefficiente <span class="m">-b/p</span>, si fissa la riga e si ripete; risultato a scalini.</li>
+<li>Normalizzazione: ogni riga non nulla diviso il suo pivot. Gauss-Jordan: poi si annullano le entrate sopra ogni pivot.</li>
+<li>Quadrata <span class="m">n\times n</span>: <span class="m">n</span> pivot <span class="m">\iff</span> Gauss-Jordan dà <span class="m">I_n</span>; in generale <span class="m">r</span> pivot <span class="m">\iff</span> righe/colonne dei pivot formano <span class="m">I_r</span>.</li>
+</ul>
 </div>

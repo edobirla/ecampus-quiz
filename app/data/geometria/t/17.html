@@ -1,79 +1,200 @@
 <h1>Lezione 17 — Rango di una matrice</h1>
-<p>Si studia la (in)dipendenza lineare delle righe e delle colonne usando i determinanti delle sottomatrici quadrate.</p>
+<p>Nelle lezioni sugli spazi vettoriali abbiamo studiato la dipendenza e l&#39;indipendenza lineare dei vettori, e la dimensione dei sottospazi generati. In questa lezione si collega tutto questo alle matrici: mettendo dei vettori come <strong>colonne</strong> (o righe) di una matrice, la loro (in)dipendenza si legge dai <strong>determinanti</strong>. Per una matrice quadrata basta un determinante; per una matrice qualsiasi si introduce il <strong>rango</strong>, che si calcola con i determinanti delle sottomatrici quadrate (i <strong>minori</strong>, Teorema di Kronecker) oppure con il metodo di Gauss. Il rango sarà lo strumento principale per studiare i sistemi lineari (Teorema di Rouché-Capelli).</p>
 <h2>Determinante e (in)dipendenza lineare</h2>
-<p><strong>Teorema 17.1.</strong> Sia <span class="m">A</span> una matrice quadrata. Sono equivalenti:</p>
-<ul>
+<p><strong>Teorema 17.1.</strong> Sia <span class="m">A</span> una matrice quadrata di ordine <span class="m">n</span>. I seguenti fatti sono <strong>equivalenti</strong>:</p>
+<ol>
 <li>le colonne di <span class="m">A</span> sono linearmente indipendenti;</li>
 <li>le righe di <span class="m">A</span> sono linearmente indipendenti;</li>
 <li><span class="m">\det(A)\neq0</span>.</li>
+</ol>
+<p><em>Intuizione geometrica.</em> Nel piano, due vettori sono dipendenti quando stanno sulla stessa retta: il parallelogramma che generano è schiacciato e ha area <span class="m">0</span>, cioè determinante <span class="m">0</span>. Nello spazio, tre vettori dipendenti stanno su un piano: volume <span class="m">0</span>.</p>
+<p><em>Dimostrazione.</em> <strong>Righe indipendenti <span class="m">\Leftrightarrow\det A\neq0</span>.</strong> Se <span class="m">A</span> è la matrice nulla, <span class="m">\det A=0</span> e le righe (nulle) sono dipendenti: l&#39;equivalenza vale. Supponiamo <span class="m">A</span> non nulla e procediamo con una catena di equivalenze.</p>
+<ul>
+<li>Applicando il metodo di Gauss si ottiene una matrice a scalini <span class="m">B</span>. Per l&#39;Osservazione 16.12, <span class="m">\det A\neq0</span> se e solo se <span class="m">B</span> ha <span class="m">n</span> pivot (non ha righe nulle).</li>
+<li>Proseguendo con Gauss-Jordan (pivot uguali a <span class="m">1</span> e zeri anche sopra i pivot) si ottiene una matrice <span class="m">C</span>. Una matrice quadrata a scalini con <span class="m">n</span> pivot ridotta così diventa l&#39;identità; quindi <span class="m">B</span> ha <span class="m">n</span> pivot se e solo se <span class="m">C=I_n</span>.</li>
+<li>Sia <span class="m">W\subseteq\mathbb K^{1,n}</span> il sottospazio generato dalle righe di <span class="m">C</span>. Se <span class="m">C=I_n</span> le righe sono la base canonica e <span class="m">\dim W=n</span>; se <span class="m">C\neq I_n</span> ha almeno una riga nulla, quindi <span class="m">W</span> ha <span class="m">n</span> generatori dipendenti e <span class="m">\dim W&lt;n</span>. Quindi <span class="m">C=I_n</span> se e solo se <span class="m">\dim W=n</span>.</li>
+<li>Le operazioni elementari sulle righe (di qualsiasi tipo) <strong>non cambiano il sottospazio generato dalle righe</strong>; quindi <span class="m">W</span> è generato anche dalle <span class="m">n</span> righe di <span class="m">A</span>. Ma <span class="m">n</span> vettori che generano uno spazio di dimensione <span class="m">n</span> sono indipendenti se e solo se <span class="m">\dim W=n</span>.</li>
 </ul>
-<p><em>Idea della dimostrazione.</em> Se <span class="m">A</span> è nulla è ovvio. Altrimenti con Gauss si ottiene una matrice a scalini <span class="m">B</span>: <span class="m">\det A\neq0</span> se e solo se <span class="m">B</span> ha <span class="m">n</span> pivot. Proseguendo con Gauss-Jordan si ottiene <span class="m">C</span>, che è <span class="m">I_n</span> se e solo se <span class="m">B</span> ha <span class="m">n</span> pivot. Il sottospazio <span class="m">W\subseteq\mathbb{K}^{1,n}</span> generato dalle righe di <span class="m">C</span> ha dimensione <span class="m">n</span> se e solo se <span class="m">C=I_n</span>. Le operazioni elementari non cambiano il sottospazio generato dalle righe, quindi <span class="m">W</span> è generato anche dalle righe di <span class="m">A</span>, che sono indipendenti se e solo se <span class="m">\dim W=n</span>. Per le colonne si usa <span class="m">{}^tA</span> e <span class="m">\det({}^tA)=\det A</span>.</p>
+<p>Mettendo insieme: <span class="m">\det A\neq0\Leftrightarrow n</span> pivot <span class="m">\Leftrightarrow C=I_n\Leftrightarrow\dim W=n\Leftrightarrow</span> righe di <span class="m">A</span> indipendenti.</p>
+<p><strong>Colonne indipendenti <span class="m">\Leftrightarrow\det A\neq0</span>.</strong> Le colonne di <span class="m">A</span> sono le righe di <span class="m">{}^tA</span>; per quanto appena visto sono indipendenti se e solo se <span class="m">\det({}^tA)\neq0</span>, e <span class="m">\det({}^tA)=\det A</span> (Proposizione 16.1).</p>
+<p><strong>Righe <span class="m">\Leftrightarrow</span> colonne.</strong> Entrambe le condizioni sono equivalenti a <span class="m">\det A\neq0</span>, quindi sono equivalenti tra loro. <span class="m">\square</span></p>
+<div class="callout esempio">
+
+<p>Le colonne <span class="m">{}^t(1\ 2\ 0)</span>, <span class="m">{}^t(0\ 1\ 1)</span>, <span class="m">{}^t(2\ 0\ 1)</span> sono indipendenti? <span class="m">\det\begin{pmatrix}1&amp;0&amp;2\\2&amp;1&amp;0\\0&amp;1&amp;1\end{pmatrix}</span>, Sarrus: <span class="m">(1+0+4)-(0+0+0)=5\neq0</span>: sì, e quindi sono indipendenti anche le righe <span class="m">(1,0,2)</span>, <span class="m">(2,1,0)</span>, <span class="m">(0,1,1)</span>.</p>
+</div>
+
 <div class="callout attenzione">
 
-<p>Righe (o colonne) indipendenti danno <span class="m">\det A\neq0</span>, <strong>non</strong> <span class="m">\det A=1</span>: ad esempio <span class="m">2I_2</span> ha determinante <span class="m">4</span>.</p>
+<ul>
+<li>Righe (o colonne) indipendenti danno <span class="m">\det A\neq0</span>, <strong>non</strong> <span class="m">\det A=1</span>: per esempio <span class="m">2I_2</span> ha righe indipendenti e determinante <span class="m">4</span>. È questa l&#39;implicazione falsa nella Domanda 17.1 della dispensa.</li>
+<li>Le altre implicazioni sono vere in entrambi i versi, comprese le contronominali: <span class="m">\det A=0\Rightarrow</span> righe dipendenti e colonne dipendenti.</li>
+<li>Il teorema vale <strong>solo per matrici quadrate</strong>: per le altre serve il rango.</li>
+</ul>
 </div>
 
 <h2>Rango</h2>
-<p>Sia <span class="m">A</span> una matrice <span class="m">n\times m</span> su <span class="m">\mathbb{K}</span>.</p>
-<p><strong>Definizione 17.2.</strong> Il <strong>rango</strong> di <span class="m">A</span>, <span class="m">\operatorname{rank}(A)</span> (anche <span class="m">\operatorname{rk}</span>, <span class="m">\operatorname{rg}</span>), è il <strong>massimo numero di colonne linearmente indipendenti</strong> di <span class="m">A</span>.</p>
+<p>Sia <span class="m">A</span> una matrice <span class="m">n\times m</span> su <span class="m">\mathbb{K}</span> (non necessariamente quadrata).</p>
+<p><strong>Definizione 17.2.</strong> Il <strong>rango</strong> di <span class="m">A</span>, indicato con <span class="m">\operatorname{rank}(A)</span> (in altri testi <span class="m">\operatorname{rk}(A)</span>, <span class="m">\operatorname{rg}(A)</span>), è il <strong>massimo numero di colonne linearmente indipendenti</strong> di <span class="m">A</span>. Se la matrice è scritta esplicitamente si scrive <span class="m">\operatorname{rank}\begin{pmatrix}\cdots\end{pmatrix}</span> senza altre parentesi.</p>
+<p><strong>Osservazione 17.5.</strong></p>
 <ul>
-<li><strong>Oss. 17.5:</strong> <span class="m">\operatorname{rank}(A)=0</span> se e solo se <span class="m">A=0_{n,m}</span>; <span class="m">\operatorname{rank}(I_n)=n</span>.</li>
-<li><strong>Prop. 17.7:</strong> <span class="m">\operatorname{rank}(A)</span> è la dimensione del sottospazio di <span class="m">\mathbb{K}^n</span> generato dalle colonne di <span class="m">A</span>.</li>
-<li><strong>Oss. 17.8:</strong> <span class="m">\operatorname{rank}(A)\le n</span> e <span class="m">\operatorname{rank}(A)\le m</span>.</li>
+<li><span class="m">\operatorname{rank}(A)=0</span> se e solo se <span class="m">A=0_{n,m}</span>: tutte le colonne sono nulle se e solo se non c&#39;è nessuna colonna indipendente.</li>
+<li><span class="m">\operatorname{rank}(I_n)=n</span>: le colonne di <span class="m">I_n</span> sono la base canonica di <span class="m">\mathbb K^n</span>, indipendenti.</li>
 </ul>
 <div class="callout esempio">
 
-<p><span class="m">\begin{pmatrix}3&amp;0&amp;2&amp;4\\6&amp;0&amp;4&amp;8\\-3&amp;0&amp;-2&amp;-4\end{pmatrix}</span> ha rango <span class="m">1</span>: tutte le colonne sono multiple della prima <span class="m">{}^t(3\ 6\ -3)</span>, che è non nulla.</p>
+<p><strong>Esempio 17.6.</strong> <span class="m">A=\begin{pmatrix}3&amp;0&amp;2&amp;4\\6&amp;0&amp;4&amp;8\\-3&amp;0&amp;-2&amp;-4\end{pmatrix}</span> ha rango <span class="m">1</span>:</p>
+<ul>
+<li>tutte le colonne sono multiple della prima <span class="m">{}^t(3\ 6\ -3)</span> (la seconda è <span class="m">0</span> volte, la terza <span class="m">\frac23</span>, la quarta <span class="m">\frac43</span>), quindi due colonne qualsiasi sono dipendenti;</li>
+<li>la prima colonna da sola è indipendente, perché non nulla.</li>
+</ul>
 </div>
 
+<p><strong>Proposizione 17.7.</strong> <span class="m">\operatorname{rank}(A)</span> è la <strong>dimensione del sottospazio di <span class="m">\mathbb{K}^n</span> generato dalle colonne</strong> di <span class="m">A</span>.</p>
+<p><em>Dimostrazione.</em> Sia <span class="m">W</span> il sottospazio generato dalle colonne e sia <span class="m">r=\operatorname{rank}(A)</span>. Prendiamo <span class="m">r</span> colonne indipendenti. Per la definizione di rango, aggiungendo a esse qualsiasi altra colonna si ottengono <span class="m">r+1</span> colonne dipendenti; quindi la colonna aggiunta è combinazione lineare delle <span class="m">r</span> scelte. Allora tutte le colonne di <span class="m">A</span> stanno nello Span delle <span class="m">r</span> colonne, che quindi generano <span class="m">W</span>; essendo anche indipendenti, sono una base di <span class="m">W</span>, e <span class="m">\dim W=r</span>.</p>
+<p><strong>Osservazione 17.8.</strong> <span class="m">W\subseteq\mathbb K^n</span> ha dimensione al più <span class="m">n</span>, e le colonne sono <span class="m">m</span>: quindi
+<span class="m d">\operatorname{rank}(A)\le n\quad\text{e}\quad\operatorname{rank}(A)\le m,\qquad\text{cioè}\quad\operatorname{rank}(A)\le\min(n,m).</span>
+Una <span class="m">2\times3</span> ha rango al più <span class="m">2</span>; una <span class="m">3\times4</span> al più <span class="m">3</span>.</p>
+<p><strong>Conseguenza pratica.</strong> La dimensione di uno Span di vettori di <span class="m">\mathbb K^n</span> è il rango della matrice che li ha come colonne.</p>
 <h2>Minori e Teorema di Kronecker</h2>
-<p><strong>Definizione 17.9.</strong> Un <strong>minore</strong> di ordine <span class="m">k</span> di <span class="m">A</span> è il determinante di una sottomatrice quadrata di ordine <span class="m">k</span> di <span class="m">A</span> (scelte <span class="m">k</span> righe e <span class="m">k</span> colonne). Aggiungendo alla sottomatrice <span class="m">B</span> un&#39;altra riga e un&#39;altra colonna si ottiene una sottomatrice di ordine <span class="m">k+1</span> il cui determinante è un <strong>orlato</strong> di <span class="m">\det_k(B)</span>.</p>
+<p><strong>Definizione 17.9.</strong> Un <strong>minore di ordine <span class="m">k</span></strong> di <span class="m">A</span> è il determinante di una sottomatrice quadrata di ordine <span class="m">k</span> di <span class="m">A</span>, ottenuta scegliendo <span class="m">k</span> righe e <span class="m">k</span> colonne (e tenendo le entrate dove si incrociano, <strong>nell&#39;ordine in cui stanno</strong> in <span class="m">A</span>). Se <span class="m">\det_k(B)</span> è un minore, aggiungendo alla sottomatrice <span class="m">B</span> <strong>un&#39;altra riga e un&#39;altra colonna</strong> di <span class="m">A</span> si ottiene una sottomatrice di ordine <span class="m">k+1</span> il cui determinante si chiama <strong>orlato</strong> di <span class="m">\det_k(B)</span>.</p>
+<p>A rigore il minore è un numero di <span class="m">\mathbb K</span>, ma spesso ci interessa anche la sottomatrice di cui è il determinante.</p>
 <div class="callout esempio">
 
-<p>In <span class="m">\begin{pmatrix}0&amp;1&amp;1\\3&amp;-1&amp;-1\\-1&amp;5&amp;9\\0&amp;0&amp;1\end{pmatrix}</span>: <span class="m">\det_1(5)=5</span> (riga 3, colonna 2); <span class="m">\det_2\begin{pmatrix}1&amp;1\\5&amp;9\end{pmatrix}=4</span> (righe 1, 3 e colonne 2, 3) è un suo orlato; <span class="m">\det_3\begin{pmatrix}0&amp;1&amp;1\\-1&amp;5&amp;9\\0&amp;0&amp;1\end{pmatrix}=1</span> (righe 1, 3, 4) è un orlato di quest&#39;ultimo.</p>
+<p><strong>Esempio 17.10.</strong> <span class="m">A=\begin{pmatrix}0&amp;1&amp;1\\3&amp;-1&amp;-1\\-1&amp;5&amp;9\\0&amp;0&amp;1\end{pmatrix}</span> (<span class="m">4\times3</span>).</p>
+<ul>
+<li>Il minore di ordine 1 di riga 3 e colonna 2: <span class="m">\det_1(5)=5</span>.</li>
+<li>Il minore di ordine 2 di righe 1, 3 e colonne 2, 3: <span class="m">\det\begin{pmatrix}1&amp;1\\5&amp;9\end{pmatrix}=9-5=4</span>. È un <strong>orlato</strong> di <span class="m">\det_1(5)</span>: contiene la riga 3 e la colonna 2 di quello, più la riga 1 e la colonna 3.</li>
+<li>Il minore di ordine 3 di righe 1, 3, 4 e tutte le colonne: <span class="m">\det\begin{pmatrix}0&amp;1&amp;1\\-1&amp;5&amp;9\\0&amp;0&amp;1\end{pmatrix}</span>. Sviluppo lungo la terza riga <span class="m">(0,0,1)</span>: <span class="m">1\cdot(+1)\det\begin{pmatrix}0&amp;1\\-1&amp;5\end{pmatrix}=0+1=1</span>. È un orlato del precedente (aggiunge riga 4 e colonna 1).</li>
+</ul>
 </div>
 
-<p><strong>Lemma 17.11.</strong> Se <span class="m">A</span> ha un minore non nullo di ordine <span class="m">r</span>, allora <span class="m">\operatorname{rank}(A)\ge r</span>.</p>
-<p><strong>Teorema 17.12 (Kronecker).</strong> Se <span class="m">A</span> non è nulla, il rango di <span class="m">A</span> è l&#39;ordine <span class="m">r</span> di un minore <span class="m">\det_r(B)</span> tale che</p>
+<div class="callout attenzione">
+
+<p>Una sottomatrice si forma prendendo righe e colonne <strong>intere</strong> della matrice: per ogni riga scelta si prendono le entrate di tutte e sole le colonne scelte. Un &quot;minore&quot; che mescola entrate di righe diverse, o che riordina le colonne in modo da non corrispondere a nessuna scelta di righe e colonne, non è un minore. Per riconoscerlo: individua quali righe e quali colonne usa e controlla entrata per entrata. Inoltre una matrice <span class="m">3\times4</span> non ha minori di ordine <span class="m">4</span>.</p>
+</div>
+
+<p><strong>Lemma 17.11.</strong> Se <span class="m">A</span> ha un minore <strong>non nullo</strong> di ordine <span class="m">r</span>, allora <span class="m">\operatorname{rank}(A)\ge r</span>.</p>
+<p><em>Idea.</em> Se il minore delle colonne <span class="m">j_1,\dots,j_r</span> (ristrette a certe righe) è non nullo, per il Teorema 17.1 quelle colonne ristrette sono indipendenti; a maggior ragione sono indipendenti le colonne intere <span class="m">j_1,\dots,j_r</span> di <span class="m">A</span> (una combinazione nulla delle colonne intere lo sarebbe anche delle ristrette). Quindi ci sono almeno <span class="m">r</span> colonne indipendenti.</p>
+<p><strong>Teorema 17.12 (Kronecker).</strong> Se <span class="m">A</span> non è nulla, il rango di <span class="m">A</span> coincide con l&#39;ordine <span class="m">r</span> di un minore <span class="m">\det_r(B)</span> tale che</p>
 <ul>
 <li><span class="m">\det_r(B)\neq0</span>, e</li>
 <li><span class="m">\det_{r+1}(C)=0</span> per <strong>ogni</strong> orlato <span class="m">\det_{r+1}(C)</span> di <span class="m">\det_r(B)</span>.</li>
 </ul>
-<p><strong>Algoritmo 17.14.</strong> Passo 1: se <span class="m">A</span> è nulla il rango è <span class="m">0</span>; altrimenti si prende un&#39;entrata non nulla (minore di ordine 1), quindi <span class="m">\operatorname{rank}\ge1</span>. Passo <span class="m">i</span>: si controllano gli orlati del minore trovato al passo precedente; se sono tutti nulli il rango è <span class="m">i-1</span>; appena se ne trova uno non nullo, <span class="m">\operatorname{rank}\ge i</span> e si prosegue orlando quello. L&#39;algoritmo termina al più quando <span class="m">i-1=\min(n,m)</span>.</p>
-<p><strong>Corollario 17.17.</strong> Il rango di una matrice non nulla è il massimo ordine di un minore non nullo (si può anche procedere al contrario, dai minori di ordine massimo).</p>
-<p><strong>Corollario 17.19.</strong> <span class="m">\operatorname{rank}({}^tA)=\operatorname{rank}(A)</span>.</p>
-<p><strong>Proposizione 17.20.</strong> Il rango è anche il massimo numero di <strong>righe</strong> linearmente indipendenti, e la dimensione del sottospazio di <span class="m">\mathbb{K}^{1,m}</span> generato dalle righe.</p>
+<p>(Senza dimostrazione.) Il vantaggio è enorme: non serve controllare <strong>tutti</strong> i minori di ordine <span class="m">r+1</span>, ma solo gli <strong>orlati</strong> di un minore non nullo fissato.</p>
+<div class="callout esempio">
+
+<p><strong>Esempio 17.13.</strong> Per <span class="m">A=\begin{pmatrix}3&amp;0&amp;2&amp;4\\6&amp;0&amp;4&amp;8\\-3&amp;0&amp;-2&amp;-4\end{pmatrix}</span>: il minore <span class="m">\det_1(3)=3\neq0</span> (riga 1, colonna 1). I suoi orlati si ottengono aggiungendo una riga tra la 2 e la 3 e una colonna tra la 2, 3, 4:
+<span class="m d">\det\begin{pmatrix}3&amp;0\\6&amp;0\end{pmatrix}=0,\ \det\begin{pmatrix}3&amp;2\\6&amp;4\end{pmatrix}=12-12=0,\ \det\begin{pmatrix}3&amp;4\\6&amp;8\end{pmatrix}=24-24=0,</span>
+<span class="m d">\det\begin{pmatrix}3&amp;0\\-3&amp;0\end{pmatrix}=0,\ \det\begin{pmatrix}3&amp;2\\-3&amp;-2\end{pmatrix}=-6+6=0,\ \det\begin{pmatrix}3&amp;4\\-3&amp;-4\end{pmatrix}=-12+12=0.</span>
+Tutti nulli: rango <span class="m">1</span>.</p>
+</div>
+
+<p><strong>Algoritmo 17.14 (rango con gli orlati).</strong> Sia <span class="m">A</span> una matrice <span class="m">n\times m</span>.</p>
+<ol>
+<li><strong>Passo 1.</strong> Se <span class="m">A</span> è nulla, <span class="m">\operatorname{rank}A=0</span> e si termina. Altrimenti si sceglie un&#39;entrata non nulla: è un minore <span class="m">\det_1(B_1)\neq0</span>, quindi <span class="m">\operatorname{rank}A\ge1</span>.</li>
+<li><strong>Passo <span class="m">i\ge2</span>.</strong> Si calcolano gli orlati (di ordine <span class="m">i</span>) del minore <span class="m">\det_{i-1}(B_{i-1})</span> trovato al passo precedente.<ul>
+<li>Se <strong>sono tutti nulli</strong>, <span class="m">\operatorname{rank}A=i-1</span> e si termina (Kronecker).</li>
+<li><strong>Appena</strong> se ne trova uno non nullo <span class="m">\det_i(B_i)</span>, si ha <span class="m">\operatorname{rank}A\ge i</span> e si passa al passo <span class="m">i+1</span> orlando questo.</li>
+</ul>
+</li>
+<li>L&#39;algoritmo termina al più quando il minore non si può più orlare, cioè quando <span class="m">i-1=\min(n,m)</span>.</li>
+</ol>
+<p><strong>Osservazione 17.15.</strong> Bisogna controllare <strong>tutti</strong> gli orlati solo quando sono tutti nulli (cioè all&#39;ultimo passo); appena se ne trova uno non nullo si va avanti.</p>
+<p><strong>Osservazione 17.16.</strong> Per ogni <span class="m">j</span> con <span class="m">1\le j\le\operatorname{rank}A</span> esiste un minore non nullo di ordine <span class="m">j</span>.</p>
+<p><strong>Corollario 17.17.</strong> Se <span class="m">A</span> non è nulla, il <strong>rango è il massimo ordine di un minore non nullo</strong> di <span class="m">A</span>. <em>Dimostrazione:</em> un minore non nullo di ordine massimo <span class="m">r</span> ha ovviamente tutti gli orlati (di ordine <span class="m">r+1</span>) nulli, quindi per Kronecker <span class="m">\operatorname{rank}A=r</span>.</p>
+<p><strong>Osservazione 17.18.</strong> Si può quindi procedere anche <strong>al contrario</strong>: si parte dai minori di ordine massimo <span class="m">\min(n,m)</span> e, se sono tutti nulli, si scende di ordine. In generale è più lungo, ma è comodo quando si trova subito un minore non nullo di ordine massimo (allora il rango è il massimo possibile).</p>
+<p><strong>Corollario 17.19.</strong> <span class="m">\operatorname{rank}({}^tA)=\operatorname{rank}(A)</span>. <em>Dimostrazione:</em> se <span class="m">A=0</span> anche <span class="m">{}^tA=0</span>. Altrimenti, se <span class="m">\det_r(B)\neq0</span> ha tutti gli orlati nulli, allora <span class="m">\det_r({}^tB)=\det_r(B)\neq0</span> è un minore di <span class="m">{}^tA</span>, e i suoi orlati sono i trasposti degli orlati di <span class="m">\det_r(B)</span>, quindi hanno lo stesso determinante, nullo. Per Kronecker <span class="m">\operatorname{rank}({}^tA)=r</span>.</p>
+<p><strong>Proposizione 17.20.</strong> Il rango è anche il <strong>massimo numero di righe linearmente indipendenti</strong> di <span class="m">A</span>, e la dimensione del sottospazio di <span class="m">\mathbb{K}^{1,m}</span> generato dalle righe. <em>Dimostrazione:</em> le righe di <span class="m">A</span> sono le colonne di <span class="m">{}^tA</span>, e <span class="m">\operatorname{rank}A=\operatorname{rank}{}^tA</span>. Per l&#39;Esempio 17.6: le righe <span class="m">(6,0,4,8)</span> e <span class="m">(-3,0,-2,-4)</span> sono multiple di <span class="m">(3,0,2,4)</span>, quindi anche il massimo numero di righe indipendenti è <span class="m">1</span>.</p>
+<p><strong>Rango riga = rango colonna:</strong> è un fatto non ovvio (una <span class="m">3\times7</span> ha al più 3 righe indipendenti, quindi anche al più 3 colonne indipendenti tra le 7).</p>
 <div class="callout attenzione">
 
-<p>Per concludere che il rango è esattamente <span class="m">r</span> servono <strong>tutti</strong> gli orlati nulli: se si conosce un minore non nullo di ordine <span class="m">3</span> e un solo orlato nullo, si può dedurre solo <span class="m">\operatorname{rank}(A)\ge3</span>.</p>
+<p>Per concludere che il rango è <strong>esattamente</strong> <span class="m">r</span> servono <strong>tutti</strong> gli orlati nulli. Se di una matrice <span class="m">5\times4</span> si conosce un minore non nullo di ordine <span class="m">3</span> e <strong>un solo</strong> orlato nullo, si può dedurre solo <span class="m">\operatorname{rank}(A)\ge3</span> (Lemma 17.11): gli altri orlati potrebbero essere non nulli e il rango potrebbe essere <span class="m">4</span>.</p>
 </div>
 
 <div class="callout esempio">
 
-<p><strong>Con Kronecker.</strong> <span class="m">A=\begin{pmatrix}1&amp;0&amp;2&amp;3\\2&amp;3&amp;1&amp;1\\0&amp;0&amp;0&amp;-3\\5&amp;6&amp;4&amp;5\end{pmatrix}</span>: <span class="m">\det_1(1)\neq0</span>; l&#39;orlato <span class="m">\det\begin{pmatrix}1&amp;0\\2&amp;3\end{pmatrix}=3\neq0</span>; l&#39;orlato <span class="m">\det\begin{pmatrix}1&amp;0&amp;3\\2&amp;3&amp;1\\0&amp;0&amp;-3\end{pmatrix}=-9\neq0</span>; l&#39;unico orlato di ordine 4 è <span class="m">\det A=0</span>. Quindi <span class="m">\operatorname{rank}(A)=3</span>.</p>
-<p><strong>Con un parametro.</strong> <span class="m">\begin{pmatrix}1&amp;0&amp;0\\1&amp;k&amp;1\\2&amp;2&amp;2k\end{pmatrix}</span>: il minore <span class="m">\det\begin{pmatrix}1&amp;0\\1&amp;1\end{pmatrix}=1</span> dà rango <span class="m">\ge2</span>; l&#39;unico orlato è il determinante <span class="m">2k^2-2</span>, nullo per <span class="m">k=\pm1</span>. Rango <span class="m">2</span> per <span class="m">k=\pm1</span>, <span class="m">3</span> altrimenti.</p>
+<p><strong>Esercizio 17.1 — con Kronecker.</strong> <span class="m">A=\begin{pmatrix}1&amp;0&amp;2&amp;3\\2&amp;3&amp;1&amp;1\\0&amp;0&amp;0&amp;-3\\5&amp;6&amp;4&amp;5\end{pmatrix}</span>.</p>
+<ol>
+<li><span class="m">A\neq0</span>; <span class="m">\det_1(1)=1\neq0</span> (entrata <span class="m">(1,1)</span>): rango <span class="m">\ge1</span>.</li>
+<li>Orlato con riga 2 e colonna 2: <span class="m">\det\begin{pmatrix}1&amp;0\\2&amp;3\end{pmatrix}=3\neq0</span>: rango <span class="m">\ge2</span>.</li>
+<li>Orlati di ordine 3 (righe 1, 2 più un&#39;altra; colonne 1, 2 più un&#39;altra). Con riga 3 e colonna 3: <span class="m">\det\begin{pmatrix}1&amp;0&amp;2\\2&amp;3&amp;1\\0&amp;0&amp;0\end{pmatrix}=0</span> (riga nulla): proseguo. Con riga 3 e colonna 4: <span class="m">\det\begin{pmatrix}1&amp;0&amp;3\\2&amp;3&amp;1\\0&amp;0&amp;-3\end{pmatrix}</span>; sviluppo lungo la terza riga: <span class="m">(-3)(+1)\det\begin{pmatrix}1&amp;0\\2&amp;3\end{pmatrix}=-3\cdot3=-9\neq0</span>: rango <span class="m">\ge3</span>.</li>
+<li>L&#39;unico orlato di ordine 4 è <span class="m">\det A</span>. Si osserva che <span class="m">R_4=R_1+2R_2</span>: <span class="m">(1+4,\ 0+6,\ 2+2,\ 3+2)=(5,6,4,5)</span> ✓, quindi <span class="m">\det A=0</span>.</li>
+</ol>
+<p>Rango <span class="m">=3</span>.</p>
+<p><strong>Con un parametro (Domanda 17.4 della dispensa).</strong> <span class="m">\begin{pmatrix}1&amp;0&amp;0\\1&amp;k&amp;1\\2&amp;2&amp;2k\end{pmatrix}</span>: il minore <span class="m">\det\begin{pmatrix}1&amp;0\\1&amp;1\end{pmatrix}</span> (righe 1, 2; colonne 1, 3) vale <span class="m">1\neq0</span>, quindi rango <span class="m">\ge2</span> per ogni <span class="m">k</span>. L&#39;unico orlato è il determinante della matrice, che sviluppato lungo la prima riga è <span class="m">1\cdot\det\begin{pmatrix}k&amp;1\\2&amp;2k\end{pmatrix}=2k^2-2=2(k-1)(k+1)</span>. Si annulla per <span class="m">k=\pm1</span>: rango <span class="m">2</span> per <span class="m">k=\pm1</span>, rango <span class="m">3</span> altrimenti.</p>
 </div>
 
-<h2>Calcolo del rango con Gauss</h2>
-<p><strong>Osservazione 17.22.</strong> Le operazioni elementari sulle righe (e sulle colonne), di qualsiasi tipo, non cambiano il rango, perché non cambiano il sottospazio generato dalle righe.</p>
-<p><strong>Osservazione 17.23.</strong> Il rango di una matrice a scalini è il <strong>numero dei pivot</strong>: ha <span class="m">r</span> righe non nulle (rango <span class="m">\le r</span>) e la sottomatrice delle righe e colonne con i pivot è triangolare con determinante non nullo (rango <span class="m">\ge r</span>).</p>
-<p><strong>Osservazione 17.24.</strong> Quindi per calcolare il rango si riduce <span class="m">A</span> a scalini con Gauss (o Gauss-Jordan) e si contano i pivot.</p>
 <div class="callout esempio">
 
-<p><span class="m">\begin{pmatrix}2&amp;-1&amp;0&amp;2\\1&amp;1&amp;1&amp;3\\0&amp;-3&amp;-2&amp;-4\end{pmatrix}</span>: la terza riga è <span class="m">R_1-2R_2</span>, quindi con Gauss diventa nulla e restano due pivot: rango <span class="m">2</span>. Cambiando un solo segno (<span class="m">2</span> al posto di <span class="m">-2</span> nella terza riga) il minore delle prime tre colonne vale <span class="m">12\neq0</span> e il rango diventa <span class="m">3</span>.</p>
-<p><strong>Dimensione di uno Span.</strong> <span class="m">\dim\operatorname{Span}\big({}^t(1\ 3\ -1),{}^t(2\ 1\ 0),{}^t(4\ 7\ -2),{}^t(-1\ 2\ -1)\big)=\operatorname{rank}</span> della matrice che li ha come colonne <span class="m">=2</span>.</p>
+<p><strong>Esercizio 17.4 — ranghi con parametro.</strong></p>
+<ol>
+<li><span class="m">A_a=\begin{pmatrix}2&amp;1&amp;0\\1&amp;-1&amp;a\\0&amp;a-1&amp;-4\\3&amp;0&amp;3\end{pmatrix}</span> (<span class="m">4\times3</span>, rango <span class="m">\le3</span>). Il minore <span class="m">\det\begin{pmatrix}2&amp;1\\1&amp;-1\end{pmatrix}=-2-1=-3\neq0</span>: rango <span class="m">\ge2</span> sempre. Orlato con la riga 3 e la colonna 3: <span class="m">\det\begin{pmatrix}2&amp;1&amp;0\\1&amp;-1&amp;a\\0&amp;a-1&amp;-4\end{pmatrix}=2\big(4-a(a-1)\big)-1\cdot(-4-0)=-2a^2+2a+12=-2(a-3)(a+2)</span>, nullo per <span class="m">a=3</span> e <span class="m">a=-2</span>.<ul>
+<li><span class="m">a\neq-2,3</span>: rango <span class="m">3</span>.</li>
+<li><span class="m">a=-2</span>: l&#39;altro orlato (riga 4, colonna 3) è <span class="m">\det\begin{pmatrix}2&amp;1&amp;0\\1&amp;-1&amp;-2\\3&amp;0&amp;3\end{pmatrix}=2(-3-0)-1(3+6)=-15\neq0</span>: rango <span class="m">3</span>.</li>
+<li><span class="m">a=3</span>: l&#39;altro orlato è <span class="m">\det\begin{pmatrix}2&amp;1&amp;0\\1&amp;-1&amp;3\\3&amp;0&amp;3\end{pmatrix}=2(-3)-1(3-9)=0</span>; tutti gli orlati sono nulli: rango <span class="m">2</span>.</li>
+</ul>
+</li>
+<li><span class="m">B_a=\begin{pmatrix}1&amp;0&amp;1&amp;2\\-1&amp;1&amp;2&amp;a\\0&amp;1&amp;a&amp;5\\2&amp;-1&amp;-1&amp;-1\end{pmatrix}</span>: l&#39;unico minore di ordine 4 è <span class="m">\det B_a=a^2-6a+9=(a-3)^2</span>, nullo solo per <span class="m">a=3</span>. Per <span class="m">a\neq3</span> il rango è <span class="m">4</span>. Per <span class="m">a=3</span> la terza riga è <span class="m">R_1+R_2=(0,1,3,5)</span> e la quarta è <span class="m">R_1-R_2=(2,-1,-1,-1)</span>, mentre <span class="m">R_1</span> e <span class="m">R_2</span> non sono proporzionali: il massimo numero di righe indipendenti è <span class="m">2</span>, rango <span class="m">2</span>.</li>
+</ol>
+</div>
+
+<h2>Calcolo del rango con il metodo di Gauss</h2>
+<p><strong>Osservazione 17.22.</strong> Le operazioni elementari sulle righe, <strong>di qualsiasi tipo</strong> (anche il tipo II), <strong>non cambiano il rango</strong>: non cambiano il sottospazio generato dalle righe, quindi nemmeno la sua dimensione. Lo stesso vale per le operazioni sulle colonne. (Per il rango, a differenza del determinante, non serve contare scambi né fattori.)</p>
+<p><strong>Osservazione 17.23.</strong> Il rango di una matrice <strong>a scalini</strong> è il <strong>numero dei pivot</strong>. Se i pivot sono <span class="m">r</span>:</p>
+<ul>
+<li>le righe non nulle sono <span class="m">r</span>, quindi al più <span class="m">r</span> righe indipendenti: rango <span class="m">\le r</span>;</li>
+<li>la sottomatrice formata dalle righe e dalle colonne che contengono i pivot è triangolare superiore con i pivot (non nulli) sulla diagonale, quindi ha determinante non nullo: rango <span class="m">\ge r</span> (Lemma 17.11).</li>
+</ul>
+<p><strong>Osservazione 17.24 — Algoritmo.</strong> Per calcolare il rango di <span class="m">A</span>:</p>
+<ol>
+<li>riduci <span class="m">A</span> a scalini con Gauss (o con normalizzazione, o con Gauss-Jordan), usando liberamente operazioni di qualsiasi tipo sulle righe (o sulle colonne);</li>
+<li>conta i pivot: sono il rango.</li>
+</ol>
+<div class="callout esempio">
+
+<p><strong>Esercizio 17.2.</strong> <span class="m">A=\begin{pmatrix}1&amp;0&amp;2&amp;3&amp;3\\0&amp;1&amp;1&amp;0&amp;1\\1&amp;0&amp;2&amp;5&amp;4\\0&amp;2&amp;2&amp;-2&amp;1\end{pmatrix}</span>.</p>
+<ul>
+<li><span class="m">R_3\to R_3-R_1</span>: <span class="m">(0,0,0,2,1)</span>.</li>
+<li><span class="m">R_4\to R_4-2R_2</span>: <span class="m">(0,0,0,-2,-1)</span>.</li>
+<li><span class="m">R_4\to R_4+R_3</span>: <span class="m">(0,0,0,0,0)</span>.</li>
+</ul>
+<p>Risultato: <span class="m">\begin{pmatrix}1&amp;0&amp;2&amp;3&amp;3\\0&amp;1&amp;1&amp;0&amp;1\\0&amp;0&amp;0&amp;2&amp;1\\0&amp;0&amp;0&amp;0&amp;0\end{pmatrix}</span>, con pivot in colonna 1, 2, 4: tre pivot, rango <span class="m">3</span>.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Le matrici &quot;gemelle&quot; del paniere.</strong></p>
+<p><span class="m">A=\begin{pmatrix}2&amp;-1&amp;0&amp;2\\1&amp;1&amp;1&amp;3\\0&amp;-3&amp;-2&amp;-4\end{pmatrix}</span>. Cerco se la terza riga è combinazione delle prime due, <span class="m">R_3=\alpha R_1+\beta R_2</span>: dalla prima colonna <span class="m">2\alpha+\beta=0</span>, cioè <span class="m">\beta=-2\alpha</span>; dalla seconda <span class="m">-\alpha+\beta=-3</span>, cioè <span class="m">-3\alpha=-3</span>, <span class="m">\alpha=1</span>, <span class="m">\beta=-2</span>. Controllo terza colonna: <span class="m">0\cdot1+1\cdot(-2)=-2</span> ✓; quarta: <span class="m">2\cdot1+3\cdot(-2)=-4</span> ✓. Quindi <span class="m">R_3=R_1-2R_2</span>; le prime due righe non sono proporzionali (<span class="m">\det\begin{pmatrix}2&amp;-1\\1&amp;1\end{pmatrix}=3\neq0</span>): rango <span class="m">2</span>. Con Gauss: <span class="m">R_2\to R_2-\frac12R_1=(0,\frac32,1,2)</span>, poi <span class="m">R_3\to R_3+2R_2=(0,0,0,0)</span>: due pivot.</p>
+<p>Cambiando <strong>un solo segno</strong> il rango cambia:</p>
+<ul>
+<li><span class="m">\begin{pmatrix}2&amp;-1&amp;0&amp;2\\1&amp;1&amp;1&amp;3\\0&amp;-3&amp;2&amp;-4\end{pmatrix}</span>: il minore delle prime tre colonne, sviluppato lungo la prima riga, è <span class="m">2\det\begin{pmatrix}1&amp;1\\-3&amp;2\end{pmatrix}-(-1)\det\begin{pmatrix}1&amp;1\\0&amp;2\end{pmatrix}=2\cdot5+2=12\neq0</span>: rango <span class="m">3</span>.</li>
+<li><span class="m">\begin{pmatrix}2&amp;-1&amp;0&amp;2\\-1&amp;1&amp;1&amp;3\\0&amp;-3&amp;-2&amp;-4\end{pmatrix}</span>: minore delle prime tre colonne <span class="m">=4\neq0</span>: rango <span class="m">3</span>.</li>
+</ul>
+<p>Matrici <span class="m">2\times3</span>: <span class="m">\begin{pmatrix}1&amp;2&amp;-1\\2&amp;4&amp;-2\end{pmatrix}</span> ha la seconda riga doppia della prima, rango <span class="m">1</span>; <span class="m">\begin{pmatrix}1&amp;2&amp;-1\\2&amp;4&amp;-4\end{pmatrix}</span> ha le prime due colonne proporzionali ma il minore delle colonne 1 e 3 è <span class="m">\det\begin{pmatrix}1&amp;-1\\2&amp;-4\end{pmatrix}=-4+2=-2\neq0</span>: rango <span class="m">2</span>.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Dimensione di uno Span (Esercizio 17.3).</strong> <span class="m">\dim\operatorname{Span}\big({}^t(1\ 3\ -1),{}^t(2\ 1\ 0),{}^t(4\ 7\ -2),{}^t(-1\ 2\ -1)\big)=\operatorname{rank}\begin{pmatrix}1&amp;2&amp;4&amp;-1\\3&amp;1&amp;7&amp;2\\-1&amp;0&amp;-2&amp;-1\end{pmatrix}</span>. Con Kronecker: <span class="m">\det\begin{pmatrix}1&amp;2\\3&amp;1\end{pmatrix}=1-6=-5\neq0</span>; i suoi due orlati (riga 3 con colonna 3, riga 3 con colonna 4) sono <span class="m">\det\begin{pmatrix}1&amp;2&amp;4\\3&amp;1&amp;7\\-1&amp;0&amp;-2\end{pmatrix}=0</span> e <span class="m">\det\begin{pmatrix}1&amp;2&amp;-1\\3&amp;1&amp;2\\-1&amp;0&amp;-1\end{pmatrix}=0</span>. Rango <span class="m">2</span>, quindi la dimensione è <span class="m">2</span> (infatti <span class="m">{}^t(4\ 7\ -2)=2\,{}^t(1\ 3\ -1)+{}^t(2\ 1\ 0)</span>).</p>
+</div>
+
+<div class="callout esame">
+
+<p>Il paniere chiede ranghi di matrici <span class="m">2\times3</span> e <span class="m">3\times4</span> &quot;gemelle&quot; che differiscono per un segno: controlla se una riga è combinazione lineare delle altre (o fai Gauss e conta i pivot), oppure cerca un minore non nullo di ordine massimo. Il rango non supera mai <span class="m">\min(n,m)</span> e vale <span class="m">0</span> solo per la matrice nulla. Possono chiedere quale &quot;minore&quot; non è un minore di una matrice data, cosa si deduce da un minore non nullo e un solo orlato nullo (solo <span class="m">\operatorname{rank}\ge r</span>), e ranghi con parametro.</p>
+<p><strong>Aperte.</strong></p>
+<ul>
+<li><em>Relazione tra determinante e (in)dipendenza lineare:</em> enuncia il Teorema 17.1 (per <span class="m">A</span> quadrata: colonne indipendenti <span class="m">\Leftrightarrow</span> righe indipendenti <span class="m">\Leftrightarrow\det A\neq0</span>) e la dimostrazione con Gauss, Gauss-Jordan, la dimensione dello spazio generato dalle righe e la trasposta; intuizione geometrica (area/volume nullo); esempio.</li>
+<li><em>Rango con un teorema:</em> definizione (massimo numero di colonne indipendenti), <span class="m">\operatorname{rank}\le\min(n,m)</span>, dimensione dello spazio delle colonne, definizione di minore e di orlato, enunciato del Teorema di Kronecker con l&#39;algoritmo degli orlati, corollari (massimo ordine di un minore non nullo, <span class="m">\operatorname{rank}{}^tA=\operatorname{rank}A</span>, rango per righe), calcolo con Gauss, un esempio.</li>
+</ul>
 </div>
 
 <div class="callout sintesi">
 
 <ul>
 <li>Matrice quadrata: righe indipendenti <span class="m">\Leftrightarrow</span> colonne indipendenti <span class="m">\Leftrightarrow\det\neq0</span>.</li>
-<li>Rango = massimo numero di colonne (o righe) indipendenti = massimo ordine di un minore non nullo = numero dei pivot dopo Gauss.</li>
-<li><span class="m">\operatorname{rank}(A)\le\min(n,m)</span>; <span class="m">\operatorname{rank}({}^tA)=\operatorname{rank}(A)</span>.</li>
+<li>Rango = massimo numero di colonne (o righe) indipendenti = dimensione dello spazio delle colonne (o righe) = massimo ordine di un minore non nullo = numero dei pivot dopo Gauss.</li>
+<li><span class="m">\operatorname{rank}(A)\le\min(n,m)</span>; <span class="m">\operatorname{rank}A=0\iff A=0</span>; <span class="m">\operatorname{rank}({}^tA)=\operatorname{rank}(A)</span>.</li>
+<li>Kronecker: un minore non nullo di ordine <span class="m">r</span> con <strong>tutti</strong> gli orlati nulli <span class="m">\Rightarrow</span> rango <span class="m">r</span>. Un minore non nullo di ordine <span class="m">r</span> da solo dà <span class="m">\operatorname{rank}\ge r</span>.</li>
+<li>Le operazioni elementari di ogni tipo non cambiano il rango.</li>
 </ul>
-</div>
-
-<div class="callout esame">
-
-<p>Il paniere chiede ranghi di matrici <span class="m">2\times3</span> e <span class="m">3\times4</span> &quot;gemelle&quot; che differiscono per un segno (controlla se una riga è combinazione delle altre o trova un minore non nullo di ordine massimo), quale non è un minore, cosa si deduce da un orlato nullo, e ranghi con parametro. Aperte: relazione tra determinante e (in)dipendenza lineare; rango con un teorema (Kronecker).</p>
 </div>

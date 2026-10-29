@@ -8,6 +8,8 @@ const ROOT = path.resolve(import.meta.dirname, "..");
 const OUT = path.join(ROOT, "app/data");
 const SUBJECTS = JSON.parse(fs.readFileSync(path.join(import.meta.dirname, "subjects.json"), "utf8"));
 const readJSON = (p, d) => (fs.existsSync(p) ? JSON.parse(fs.readFileSync(p, "utf8")) : d);
+// chiave Firebase di un PDF delle dispense (slides/<materia>/<chiave>): la stessa in slides.mjs
+export const slideKey = (f) => f.replace(/\.pdf$/i, "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 const esc = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
 // ---------- Markdown (dialetto pandoc usato nei riassunti) -> HTML; la matematica resta TeX per KaTeX lato client
@@ -246,10 +248,25 @@ function buildSubject(S) {
         const num = parseInt(part);
         const fromNotes = /^\d+ dispense/.test(part); // riscritta dalle dispense della prof: niente "riassunto generato"
         const md = part.slice(part.indexOf("\n") + 1);
-        const title = (md.match(/^# Lezione \d+ — (.+)$/m) || [])[1] || `Lezione ${num}`;
+        const title = (md.match(/^# Lezione \d+ — (.+?)(?:\s*\{#[^}]*\})?\s*$/m) || [])[1] || `Lezione ${num}`;
         theory[num] = { title, md, generated: !fromNotes };
         for (const a of md.matchAll(/\{#([^}]+)\}/g)) anchorLesson[a[1]] = num;
       }
+  // dispense collegate: riga "SLIDES: 50, 51" nella teoria (nomi dei PDF in slidesDir), altrimenti il PDF con il numero della lezione
+  const sdir = S.slidesDir && path.join(ROOT, S.slidesDir);
+  const pdfs = sdir && fs.existsSync(sdir) ? fs.readdirSync(sdir).filter((f) => /\.pdf$/i.test(f)) : [];
+  const slides = {};
+  for (const [n, t] of Object.entries(theory)) {
+    const m = t.md.match(/^SLIDES:(.*)$/m);
+    t.md = t.md.replace(/^SLIDES:.*\n?/gm, "");
+    const names = m ? m[1].split(",").map((x) => x.trim()).filter(Boolean) : [String(n).padStart(2, "0")];
+    slides[n] = names.flatMap((x) => {
+      const f = pdfs.find((p) => slideKey(p) === slideKey(x));
+      if (!f) { if (m && pdfs.length) console.warn(`${S.id} L${n}: PDF "${x}" non trovato in ${S.slidesDir}`); return []; }
+      const b = f.replace(/\.pdf$/i, "");
+      return [{ k: slideKey(f), t: /^\d+$/.test(b) ? `Dispensa ${+b}` : b.charAt(0).toUpperCase() + b.slice(1) }];
+    });
+  }
   const linkFor = (a) => (anchorLesson[a] !== undefined ? `#/teoria/${S.id}/${anchorLesson[a]}/${a}` : null);
 
   // paniere -> lezione di teoria (mappa esplicita, poi maggioranza per lezione di paniere, poi stesso numero)
@@ -352,7 +369,7 @@ function buildSubject(S) {
     if (t) fs.writeFileSync(path.join(dir, "t", `${n}.html`), mdToHtml(t.md, linkFor));
     const lq = final.filter((q) => q.l === n);
     return {
-      n, title, theory: !!t, genTheory: !!t?.generated,
+      n, title, theory: !!t, genTheory: !!t?.generated, ...(slides[n]?.length ? { sl: slides[n] } : {}),
       q: { paniere: lq.filter((q) => q.src === "paniere").length, other: lq.filter((q) => q.src !== "paniere").length },
     };
   });
@@ -373,5 +390,7 @@ function buildSubject(S) {
     nq: final.length, v: Date.now() };
 }
 
-const index = SUBJECTS.map(buildSubject);
-fs.writeFileSync(path.join(OUT, "subjects.json"), JSON.stringify(index));
+if (process.argv[1] === import.meta.filename) { // importato da slides.mjs: niente build
+  const index = SUBJECTS.map(buildSubject);
+  fs.writeFileSync(path.join(OUT, "subjects.json"), JSON.stringify(index));
+}

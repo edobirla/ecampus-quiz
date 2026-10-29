@@ -1,21 +1,46 @@
-<h1>Lezione 18 — Lavoro e potenza</h1>
+<h1>Lezione 18 — Lavoro, energia cinetica e potenza</h1>
+<h2>Di cosa parla questa lezione</h2>
+<p>Questa lezione consolida il concetto di <strong>lavoro</strong> (definizione, segno, esempi concreti di lavoro positivo, negativo e nullo), riprende il <strong>teorema dell&#39;energia cinetica</strong> precisandone l&#39;ambito di validità e introduce una grandezza nuova, la <strong>potenza</strong>, che misura <strong>quanto in fretta</strong> si compie un lavoro. Si chiude con molti esercizi svolti delle dispense: ascensori, casse trascinate, piani inclinati, slitte, automobili.</p>
 <h2>Il lavoro: definizione</h2>
-<p>Una forza compie lavoro quando il suo punto di applicazione si sposta e la forza ha una componente lungo lo spostamento. Il lavoro lo compie sempre una <strong>forza</strong>, non un corpo o una persona.</p>
-<p><span class="m d">L = F\,s\cos\theta</span></p>
+<p>Una forza compie lavoro quando il suo <strong>punto di applicazione si sposta</strong> e la forza ha una <strong>componente lungo lo spostamento</strong>. Per una forza costante e uno spostamento rettilineo:</p>
+<p><span class="m d">L = \vec F \cdot \vec s = F\,s\cos\theta</span></p>
 <p>dove:</p>
 <ul>
 <li><span class="m">L</span> = lavoro (J)</li>
 <li><span class="m">F</span> = modulo della forza (N)</li>
-<li><span class="m">s</span> = spostamento (m)</li>
-<li><span class="m">\theta</span> = angolo tra forza e spostamento</li>
+<li><span class="m">s</span> = modulo dello spostamento del punto di applicazione (m)</li>
+<li><span class="m">\theta</span> = angolo tra il vettore forza e il vettore spostamento</li>
 </ul>
-<p>Se la forza è variabile si usa l&#39;integrale: <span class="m">L = \int_{x_1}^{x_2} F(x)\,dx</span>, cioè l&#39;area sotto il grafico di <span class="m">F(x)</span>.</p>
+<p>Nel caso generale (forza variabile, traiettoria curva) si sommano i lavori elementari <span class="m">dL = \vec F \cdot d\vec s</span>:</p>
+<p><span class="m d">L_{AB} = \int_A^B \vec F \cdot d\vec s \qquad\text{in una dimensione:}\qquad L = \int_{x_1}^{x_2} F(x)\,dx</span></p>
+<p>cioè l&#39;<strong>area sotto il grafico</strong> di <span class="m">F(x)</span> tra <span class="m">x_1</span> e <span class="m">x_2</span> (lezione 17).</p>
+<p>Tre condizioni perché ci sia lavoro, tutte necessarie:</p>
+<ol>
+<li>deve esserci una <strong>forza</strong>;</li>
+<li>il punto di applicazione deve <strong>spostarsi</strong>;</li>
+<li>la forza deve avere una <strong>componente lungo lo spostamento</strong> (non deve essere perpendicolare).</li>
+</ol>
+<p>Spingere con forza contro un muro che non si muove non produce lavoro, per quanto si fatichi: lo spostamento è nullo. (La fatica muscolare è dovuta a processi interni al corpo, non al lavoro meccanico sul muro.)</p>
+<h3>Il lavoro lo compie una forza</h3>
+<p>In fisica il lavoro è sempre compiuto da una <strong>forza</strong>, non da un oggetto o da una persona. Se spingo un carrello con la mano, è la <strong>forza esercitata dalla mia mano</strong> che compie lavoro sul carrello. Il peso del carrello non compie lavoro (è perpendicolare allo spostamento orizzontale) e il carrello non compie lavoro su sé stesso.</p>
 <div class="callout esempio">
 
-<p>Una forza di <span class="m">100\,\mathrm N</span> sposta un oggetto di <span class="m">2\,\mathrm m</span> nella sua direzione: <span class="m">L = 100 \cdot 2 = 200\,\mathrm J</span>.</p>
+<p><strong>Forza parallela allo spostamento.</strong> Una forza di <span class="m">100\,\mathrm N</span> sposta un oggetto di <span class="m">2\,\mathrm m</span> nella sua stessa direzione e verso: <span class="m">\theta = 0</span>, <span class="m">\cos\theta = 1</span>, <span class="m">L = 100 \cdot 2 = 200\,\mathrm J</span>.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Forza variabile.</strong> Su un oggetto che si muove lungo l&#39;asse <span class="m">x</span> agisce la forza <span class="m">F(x) = 4x + 4</span> (N, con <span class="m">x</span> in m). Lavoro tra <span class="m">x_1 = 1\,\mathrm m</span> e <span class="m">x_2 = 5\,\mathrm m</span>:</p>
+<ol>
+<li><span class="m">L = \displaystyle\int_1^5 (4x + 4)\,dx = \big[2x^2 + 4x\big]_1^5</span>.</li>
+<li>In <span class="m">x = 5</span>: <span class="m">2 \cdot 25 + 20 = 70</span>. In <span class="m">x = 1</span>: <span class="m">2 + 4 = 6</span>.</li>
+<li><span class="m">L = 70 - 6 = 64\,\mathrm J</span>.</li>
+</ol>
+<p>Controllo grafico: sotto la retta <span class="m">F = 4x + 4</span> tra <span class="m">x = 1</span> (<span class="m">F = 8\,\mathrm N</span>) e <span class="m">x = 5</span> (<span class="m">F = 24\,\mathrm N</span>) c&#39;è un trapezio di area <span class="m">\dfrac{(8 + 24)}{2}\cdot 4 = 64\,\mathrm J</span>.</p>
 </div>
 
 <h2>Lavoro positivo, negativo e nullo</h2>
+<p>Il segno del lavoro dipende dall&#39;angolo tra forza e spostamento:</p>
 <table>
 <thead>
 <tr>
@@ -26,109 +51,271 @@
 </tr>
 </thead>
 <tbody><tr>
-<td>Positivo (motore)</td>
+<td><strong>Positivo</strong> (motore)</td>
 <td><span class="m">\theta &lt; 90°</span></td>
-<td>la forza favorisce il moto</td>
-<td>peso di un corpo che scende; calamita che attira uno spillo; mano che spinge un carrello</td>
+<td>la forza favorisce il moto: componente concorde con lo spostamento</td>
+<td>peso di un corpo che scende; calamita che attira uno spillo caduto a terra (lo spillo si muove verso la calamita); mano che spinge o tira un carrello inizialmente fermo; motore di un&#39;auto che accelera</td>
 </tr>
 <tr>
-<td>Negativo (resistente)</td>
-<td><span class="m">\theta &gt; 90°</span></td>
+<td><strong>Negativo</strong> (resistente)</td>
+<td><span class="m">90° &lt; \theta \le 180°</span></td>
 <td>la forza si oppone allo spostamento</td>
-<td>peso di un corpo che sale; attrito; giocatore che ferma la palla</td>
+<td>peso di un corpo che sale; attrito radente; giocatore che ferma una palla lanciata (la mano spinge contro il moto della palla); freni dell&#39;auto</td>
 </tr>
 <tr>
-<td>Nullo</td>
-<td><span class="m">\theta = 90°</span> o spostamento nullo</td>
+<td><strong>Nullo</strong></td>
+<td><span class="m">\theta = 90°</span>, oppure spostamento nullo</td>
 <td>nessun contributo al moto</td>
-<td>peso di una valigia su un nastro orizzontale; forza centripeta; mattoni che reggono un mattone fermo</td>
+<td>peso di una valigia su un nastro trasportatore orizzontale; forza centripeta nel moto circolare; tensione del filo del pendolo; mattoni che sorreggono il mattone in cima a una colonna (nessuno spostamento); reazione di un piano liscio</td>
 </tr>
 </tbody></table>
+<p>Un <strong>lavoro negativo</strong> significa quindi che la forza applicata <strong>si oppone allo spostamento</strong> (ha una componente di verso opposto). Non significa che la forza sia variabile, costante o parallela.</p>
 <div class="callout esempio">
 
-<p>Un aereo trascina uno striscione con <span class="m">1000\,\mathrm N</span> a <span class="m">300\,\mathrm{km/h}</span> per 30 minuti. Percorre <span class="m">150\,\mathrm{km}</span>. <span class="m">L = 1000 \cdot 1{,}5 \cdot 10^5 = 1{,}5 \cdot 10^8\,\mathrm J</span>, positivo.</p>
+<p><strong>Aereo che traina uno striscione.</strong> Un aereo vola a velocità costante di <span class="m">300\,\mathrm{km/h}</span> trascinando uno striscione con una forza di <span class="m">1000\,\mathrm N</span> diretta come il moto. Lavoro compiuto in 30 minuti:</p>
+<ol>
+<li>Spazio percorso: <span class="m">s = v\,t = 300\,\mathrm{km/h} \cdot 0{,}5\,\mathrm h = 150\,\mathrm{km} = 1{,}5 \cdot 10^5\,\mathrm m</span>.</li>
+<li><span class="m">L = F\,s = 1000 \cdot 1{,}5 \cdot 10^5 = 1{,}5 \cdot 10^8\,\mathrm J</span>.</li>
+<li>Il segno è <strong>positivo</strong>: la forza sullo striscione è nello stesso verso dello spostamento. (Lo striscione si muove a velocità costante perché la resistenza dell&#39;aria compie un lavoro uguale e negativo.)</li>
+</ol>
 </div>
 
-<h2>Lavoro contro la gravità</h2>
-<p>Per sollevare un peso <span class="m">P = mg</span> di un&#39;altezza <span class="m">h</span> serve un lavoro <span class="m">L = mgh</span>. Dipende solo dal dislivello. Il percorso e il tempo non contano.</p>
+<h2>Il lavoro contro la gravità</h2>
+<p>Per sollevare un corpo di peso <span class="m">P = mg</span> di un&#39;altezza <span class="m">h</span> (a velocità costante, o comunque partendo e arrivando da fermo) bisogna compiere un lavoro:</p>
+<p><span class="m d">L = mgh = P\,h</span></p>
+<p>dove <span class="m">m</span> = massa (kg), <span class="m">g = 9{,}8\,\mathrm{m/s^2}</span>, <span class="m">h</span> = dislivello (m), <span class="m">P</span> = peso (N).</p>
+<p>Il lavoro del peso è invece <span class="m">-mgh</span> (negativo, perché il corpo sale). Come visto nella lezione 17, questo lavoro dipende <strong>solo dal dislivello</strong>: il percorso seguito e il tempo impiegato <strong>non contano</strong>.</p>
 <div class="callout esempio">
 
+<p><strong>Calcoli tipici.</strong></p>
 <ul>
-<li>Peso di <span class="m">2550\,\mathrm N</span> sollevato di <span class="m">2\,\mathrm m</span>: <span class="m">L = 5100\,\mathrm J</span>.</li>
-<li>Una gru compie <span class="m">90\,\mathrm{kJ}</span> su <span class="m">500\,\mathrm{kg}</span>: <span class="m">h = L/(mg) = 90\,000/4900 \approx 18{,}4\,\mathrm m</span>.</li>
-<li>Due alpinisti dello stesso peso, uno per i tornanti e uno in linea retta: stesso lavoro contro la gravità.</li>
+<li>Peso di <span class="m">2550\,\mathrm N</span> sollevato di <span class="m">2\,\mathrm m</span>: <span class="m">L = 2550 \cdot 2 = 5100\,\mathrm J</span> (in joule, non in watt).</li>
+<li>Una gru compie <span class="m">90\,\mathrm{kJ}</span> per sollevare <span class="m">500\,\mathrm{kg}</span>: <span class="m">h = L/(mg) = 90\,000/(500 \cdot 9{,}8) = 90\,000/4900 \approx 18{,}4\,\mathrm m</span>.</li>
+<li>Due alpinisti dello stesso peso scalano la stessa montagna, uno lungo i tornanti e uno in linea retta: compiono <strong>lo stesso lavoro</strong> contro la gravità, <span class="m">mgh</span>. Chi segue i tornanti percorre più strada ma su una pendenza minore; chi va dritto fa più fatica per unità di tempo (potenza maggiore), ma il lavoro contro la gravità è identico.</li>
 </ul>
 </div>
 
-<p>Se un carico scende o sale <strong>a velocità costante</strong>, la risultante è nulla. La forza della gru è uguale al peso: <span class="m">300\,\mathrm{kg}</span> richiedono <span class="m">F = 300 \cdot 9{,}8 = 2940\,\mathrm N</span>.</p>
-<p>L&#39;energia potenziale del peso rispetto al pavimento è <span class="m">U = mgh</span>. Esempio: <span class="m">5\,\mathrm{kg}</span> a <span class="m">20\,\mathrm{cm}</span> hanno <span class="m">U = 9{,}8\,\mathrm J</span>.</p>
-<h2>Teorema dell&#39;energia cinetica</h2>
-<p>Il lavoro totale di tutte le forze su un punto materiale è uguale alla variazione della sua energia cinetica.</p>
-<p><span class="m d">L_{tot} = \tfrac12 mv_f^2 - \tfrac12 mv_i^2</span></p>
+<h3>Carichi a velocità costante</h3>
+<p>Se un carico sale o scende <strong>a velocità costante</strong>, l&#39;accelerazione è nulla, quindi la risultante è nulla: la forza della gru (o del motore, o della fune) è <strong>uguale in modulo al peso</strong>, qualunque sia il verso del moto.</p>
+<div class="callout esempio">
+
+<p><strong>Gru che fa scendere una sbarra.</strong> Una gru fa scendere a terra una sbarra di <span class="m">300\,\mathrm{kg}</span> a velocità costante. La forza applicata dalla gru è uguale al peso: <span class="m">F = 300 \cdot 9{,}8 = 2940\,\mathrm N</span>, verso l&#39;alto. Il lavoro della gru è negativo (forza verso l&#39;alto, spostamento verso il basso), quello del peso positivo, e la somma è zero.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Ascensore a velocità costante (esercizio della dispensa).</strong> Il motore di un ascensore solleva a velocità costante la cabina con quattro persone, massa totale <span class="m">m = 450\,\mathrm{kg}</span>, per un dislivello <span class="m">h = 45\,\mathrm m</span>.</p>
+<ol>
+<li>Velocità costante ⇒ risultante nulla ⇒ la forza del motore è uguale e opposta al peso: <span class="m">F = mg = 450 \cdot 9{,}8 = 4410\,\mathrm N</span>, verso l&#39;alto.</li>
+<li>Lavoro del motore: forza e spostamento paralleli e concordi, <span class="m">L_m = F\,h = 4410 \cdot 45 \approx 1{,}98 \cdot 10^5\,\mathrm J</span>.</li>
+<li>Lavoro del peso: angolo di <span class="m">180°</span> con lo spostamento, <span class="m">L_p = -mgh \approx -1{,}98 \cdot 10^5\,\mathrm J</span>.</li>
+<li>Lavoro totale nullo, come deve essere: la forza totale è nulla e l&#39;energia cinetica non cambia.</li>
+</ol>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Energia potenziale di una massa sollevata.</strong> Una massa di <span class="m">5{,}0\,\mathrm{kg}</span> sollevata a <span class="m">20\,\mathrm{cm}</span> dal pavimento ha, rispetto al pavimento, energia potenziale <span class="m">U = mgh = 5{,}0 \cdot 9{,}8 \cdot 0{,}20 = 9{,}8\,\mathrm J</span>. È il lavoro che è stato fatto per sollevarla (lezione 20).</p>
+</div>
+
+<h2>Il teorema dell&#39;energia cinetica</h2>
+<p>Ricordiamo (lezione 17) che l&#39;<strong>energia cinetica</strong> di un punto materiale è l&#39;energia legata al suo moto:</p>
+<p><span class="m d">K = \tfrac12 mv^2</span></p>
+<p>e che vale il <strong>teorema dell&#39;energia cinetica</strong>:</p>
+<blockquote>
+<p>Il lavoro totale compiuto da tutte le forze agenti su un punto materiale (cioè il lavoro della risultante) tra due posizioni è uguale alla variazione della sua energia cinetica.</p>
+</blockquote>
+<p><span class="m d">L_{tot} = \tfrac12 mv_f^2 - \tfrac12 mv_i^2 = \Delta K</span></p>
 <p>dove:</p>
 <ul>
-<li><span class="m">L_{tot}</span> = lavoro della risultante (J)</li>
+<li><span class="m">L_{tot}</span> = lavoro della risultante, cioè somma dei lavori di tutte le forze (J)</li>
 <li><span class="m">m</span> = massa (kg)</li>
-<li><span class="m">v_i, v_f</span> = velocità iniziale e finale (m/s)</li>
+<li><span class="m">v_i</span>, <span class="m">v_f</span> = velocità iniziale e finale (m/s)</li>
 </ul>
-<p><strong>Ambito di validità</strong>: vale per un punto materiale e per qualsiasi tipo di forza, conservativa o no, costante o variabile. Bisogna però mettere il lavoro di tutte le forze, attrito compreso. Vale in un riferimento inerziale.</p>
-<p>L&#39;energia cinetica <span class="m">E_k = \tfrac12 mv^2</span> è l&#39;energia legata al moto. Il lavoro è il modo per cambiarla: lavoro positivo la aumenta, negativo la diminuisce.</p>
+<h3>Ambito di validità</h3>
+<ul>
+<li>Vale per un <strong>punto materiale</strong> (per un sistema di punti bisogna includere anche il lavoro delle forze interne).</li>
+<li>Vale per <strong>qualsiasi tipo di forza</strong>: costante o variabile, conservativa (peso, molla) o non conservativa (attrito, resistenza dell&#39;aria). Questo lo distingue dalla conservazione dell&#39;energia meccanica, che vale solo con forze conservative.</li>
+<li>Bisogna però mettere il lavoro di <strong>tutte</strong> le forze, attrito compreso; le forze perpendicolari allo spostamento contribuiscono con zero.</li>
+<li>Vale in un <strong>riferimento inerziale</strong>, perché si ricava dal secondo principio <span class="m">\vec F = m\vec a</span>. (In un riferimento non inerziale bisognerebbe aggiungere il lavoro delle forze apparenti.)</li>
+</ul>
+<h3>Il rapporto tra energia cinetica e lavoro</h3>
+<p>L&#39;energia cinetica è una <strong>proprietà</strong> del corpo (dipende dal suo stato di moto); il lavoro è il <strong>modo per cambiarla</strong>, cioè un trasferimento di energia dall&#39;esterno:</p>
+<ul>
+<li>lavoro totale <strong>positivo</strong> ⇒ energia cinetica che <strong>aumenta</strong> (il corpo accelera);</li>
+<li>lavoro totale <strong>negativo</strong> ⇒ energia cinetica che <strong>diminuisce</strong> (il corpo rallenta);</li>
+<li>lavoro totale <strong>nullo</strong> ⇒ modulo della velocità costante (come nel moto circolare uniforme).</li>
+</ul>
+<p>Viceversa, l&#39;energia cinetica di un corpo in moto è uguale al lavoro che si deve compiere per portarlo da fermo a quella velocità, ed è anche il lavoro che il corpo può compiere <strong>fermandosi</strong> (per esempio deformando un ostacolo o scaldandolo).</p>
 <div class="callout esempio">
 
+<p><strong>Calcoli di energia cinetica e lavoro.</strong></p>
 <ul>
-<li>Moto di <span class="m">100\,\mathrm{kg}</span> a <span class="m">72\,\mathrm{km/h} = 20\,\mathrm{m/s}</span>: <span class="m">E_k = \tfrac12 \cdot 100 \cdot 400 = 2{,}0 \cdot 10^4\,\mathrm J</span>.</li>
-<li>Auto di <span class="m">1000\,\mathrm{kg}</span> portata da ferma a <span class="m">30\,\mathrm{m/s}</span>: <span class="m">L = \tfrac12 \cdot 1000 \cdot 900 = 450\,\mathrm{kJ}</span>.</li>
-<li>Auto di <span class="m">1600\,\mathrm{kg}</span> da <span class="m">80</span> a <span class="m">100\,\mathrm{km/h}</span> (<span class="m">22{,}2 \to 27{,}8\,\mathrm{m/s}</span>): <span class="m">L \approx 2{,}22 \cdot 10^5\,\mathrm J</span>.</li>
-<li>Palla di <span class="m">0{,}2\,\mathrm{kg}</span> lanciata a <span class="m">20\,\mathrm{m/s}</span>: la forza di lancio compie <span class="m">\tfrac12 \cdot 0{,}2 \cdot 400 = 40\,\mathrm J</span>.</li>
+<li>Moto di <span class="m">100\,\mathrm{kg}</span> a <span class="m">72\,\mathrm{km/h}</span>. Conversione: <span class="m">72/3{,}6 = 20\,\mathrm{m/s}</span>. <span class="m">K = \tfrac12 \cdot 100 \cdot 20^2 = 50 \cdot 400 = 2{,}0 \cdot 10^4\,\mathrm J</span>.</li>
+<li>Auto di <span class="m">1000\,\mathrm{kg}</span> che viaggia a velocità costante di <span class="m">30\,\mathrm{m/s}</span>: il lavoro che il motore ha dovuto compiere (al netto degli attriti) per portarla da ferma a quella velocità è <span class="m">L = \tfrac12 \cdot 1000 \cdot 900 = 4{,}5 \cdot 10^5\,\mathrm J = 450\,\mathrm{kJ}</span>.</li>
+<li>Auto di <span class="m">1600\,\mathrm{kg}</span> da <span class="m">80</span> a <span class="m">100\,\mathrm{km/h}</span>: <span class="m">v_i = 80/3{,}6 = 22{,}2\,\mathrm{m/s}</span>, <span class="m">v_f = 100/3{,}6 = 27{,}8\,\mathrm{m/s}</span>. <span class="m">L = \tfrac12 \cdot 1600 \cdot (27{,}8^2 - 22{,}2^2) = 800 \cdot (771{,}6 - 493{,}8) = 800 \cdot 277{,}8 \approx 2{,}22 \cdot 10^5\,\mathrm J</span>.</li>
+<li>Palla di <span class="m">0{,}2\,\mathrm{kg}</span> lanciata verso l&#39;alto a <span class="m">v_0 = 20\,\mathrm{m/s}</span>: la forza della mano, nella fase di lancio, le ha dato l&#39;energia cinetica <span class="m">\tfrac12 \cdot 0{,}2 \cdot 400 = 40\,\mathrm J</span>. Questo è il lavoro della forza impressa, ed è l&#39;energia che poi permette alla palla di salire fino all&#39;altezza massima.</li>
 </ul>
 </div>
 
 <div class="callout esempio">
 
-<p>Un proiettile di <span class="m">3\,\mathrm g</span> a <span class="m">400\,\mathrm{m/s}</span> si ferma in un albero. Tutta l&#39;energia cinetica diventa calore: <span class="m">\tfrac12 \cdot 0{,}003 \cdot 400^2 = 240\,\mathrm J</span>.</p>
+<p><strong>Proiettile nell&#39;albero.</strong> Un proiettile di <span class="m">3{,}0\,\mathrm g</span> a <span class="m">400\,\mathrm{m/s}</span> viene fermato da un albero.</p>
+<ol>
+<li><span class="m">K = \tfrac12 \cdot 0{,}003 \cdot 400^2 = 0{,}0015 \cdot 160\,000 = 240\,\mathrm J</span>.</li>
+<li>La forza dell&#39;albero compie lavoro <span class="m">-240\,\mathrm J</span>; l&#39;energia cinetica non sparisce ma si trasforma soprattutto in calore (e in deformazione del legno e del proiettile): circa <span class="m">240\,\mathrm J</span> di calore ceduti all&#39;albero. È un&#39;energia, quindi in joule, non in watt.</li>
+</ol>
 </div>
 
 <h2>La potenza</h2>
-<p>La potenza dice quanto in fretta si compie un lavoro. Stesso lavoro in meno tempo = potenza maggiore.</p>
-<p><span class="m d">P_{media} = \frac{L}{\Delta t} \qquad P = \frac{dL}{dt} = \vec F \cdot \vec v</span></p>
+<p>Due macchine possono compiere lo stesso lavoro in tempi molto diversi: una gru sollevando un carico in un minuto, un operaio portando su lo stesso carico a pezzi in un&#39;ora. La grandezza che misura la <strong>rapidità</strong> con cui si compie lavoro è la <strong>potenza</strong>.</p>
+<h3>Potenza istantanea</h3>
+<p>Consideriamo un sistema fisico che esercita una forza su un punto materiale in movimento, compiendo lavoro. Si definisce <strong>potenza istantanea</strong> il rapporto tra il lavoro elementare <span class="m">dL</span> compiuto in un intervallo di tempo infinitesimo <span class="m">dt</span> e l&#39;intervallo stesso:</p>
+<p><span class="m d">W = P = \frac{dL}{dt}</span></p>
+<p>Essendo il rapporto tra due scalari, la potenza è una grandezza <strong>scalare</strong>. Nelle dispense è indicata con <span class="m">W</span>; spesso si usa anche <span class="m">P</span>.</p>
+<p><strong>Unità di misura</strong>: il <strong>watt</strong> (W), <span class="m">\;1\,\mathrm W = 1\,\mathrm J/1\,\mathrm s</span>. Dimensioni <span class="m">[ML^2T^{-3}]</span>. Multipli usati: kilowatt (<span class="m">1\,\mathrm{kW} = 10^3\,\mathrm W</span>), megawatt. Una vecchia unità pratica è il cavallo vapore (<span class="m">1\,\mathrm{CV} \approx 735\,\mathrm W</span>).</p>
+<h3>Potenza media</h3>
+<p>Si definisce <strong>potenza media</strong> il rapporto tra il lavoro compiuto in un tempo <strong>finito</strong> lungo un tratto di traiettoria e l&#39;intervallo di tempo complessivamente impiegato:</p>
+<p><span class="m d">W^* = P_{media} = \frac{L}{\Delta t}</span></p>
 <p>dove:</p>
 <ul>
-<li><span class="m">P</span> = potenza (W); nelle dispense è indicata anche con <span class="m">W</span></li>
 <li><span class="m">L</span> = lavoro compiuto (J)</li>
 <li><span class="m">\Delta t</span> = tempo complessivamente impiegato (s)</li>
-<li><span class="m">\vec F</span> = forza applicata (N)</li>
-<li><span class="m">\vec v</span> = velocità del punto (m/s)</li>
 </ul>
-<p>Unità: il watt, <span class="m">1\,\mathrm W = 1\,\mathrm{J/s}</span>. Il kilowattora (<span class="m">\mathrm{kWh}</span>) è invece un&#39;unità di <strong>energia</strong>: <span class="m">1\,\mathrm{kWh} = 3{,}6 \cdot 10^6\,\mathrm J</span>.</p>
-<p>Da <span class="m">L = P\,\Delta t</span>: due motori di potenza diversa possono compiere lo stesso lavoro, se impiegano tempi diversi.</p>
-<p>Per sollevare un carico a velocità costante: <span class="m">P = mgv</span>.</p>
+<p>La potenza caratterizza dunque la <strong>rapidità</strong> con cui un sistema è capace di compiere lavoro: a parità di lavoro, <strong>minore è il tempo impiegato, maggiore è la potenza</strong>.</p>
+<h3>La potenza come forza per velocità</h3>
+<p>Troviamo un modo alternativo di scrivere la potenza istantanea. Il lavoro elementare è <span class="m">dL = \vec F \cdot d\vec s</span>; dividendo per <span class="m">dt</span> e ricordando che <span class="m">d\vec s/dt = \vec v</span>:</p>
+<p><span class="m d">W = \frac{dL}{dt} = \vec F \cdot \frac{d\vec s}{dt} = \vec F \cdot \vec v = F\,v\cos\theta</span></p>
+<p>dove:</p>
+<ul>
+<li><span class="m">\vec F</span> = forza applicata al punto (N)</li>
+<li><span class="m">\vec v</span> = velocità del punto in quell&#39;istante (m/s)</li>
+<li><span class="m">\theta</span> = angolo tra forza e velocità</li>
+</ul>
+<p>La potenza è la <strong>forza applicata in un certo istante moltiplicata (scalarmente) per la velocità del punto</strong>. Caso importante: per sollevare un carico di massa <span class="m">m</span> a <strong>velocità costante</strong> <span class="m">v</span>, la forza è uguale al peso e la potenza è:</p>
+<p><span class="m d">P = m\,g\,v</span></p>
+<h3>Lavoro = potenza × tempo</h3>
+<p>Invertendo la definizione, <span class="m">L = P\,\Delta t</span>. Ne seguono due fatti:</p>
+<ul>
+<li><strong>due motori di potenza diversa possono compiere lo stesso lavoro</strong>, purché impieghino <strong>tempi diversi</strong> (il meno potente impiega più tempo). Con lo stesso tempo, invece, compirebbero lavori diversi;</li>
+<li>il <strong>kilowattora</strong> (kWh), che compare nelle bollette, è un&#39;unità di <strong>energia</strong>, non di potenza: è il lavoro compiuto in un&#39;ora da una potenza di <span class="m">1\,\mathrm{kW}</span>, cioè <span class="m">1\,\mathrm{kWh} = 1000\,\mathrm W \cdot 3600\,\mathrm s = 3{,}6 \cdot 10^6\,\mathrm J</span>.</li>
+</ul>
 <div class="callout esempio">
 
+<p><strong>Ascensore.</strong> Un ascensore di <span class="m">1000\,\mathrm{kg}</span> sale dal suolo a <span class="m">50\,\mathrm m</span> in <span class="m">20\,\mathrm s</span> (attriti trascurabili).</p>
+<ol>
+<li>Lavoro contro la gravità: <span class="m">L = mgh = 1000 \cdot 9{,}8 \cdot 50 = 4{,}9 \cdot 10^5\,\mathrm J</span>.</li>
+<li>Potenza media: <span class="m">P = L/\Delta t = 4{,}9 \cdot 10^5/20 = 2{,}45 \cdot 10^4\,\mathrm W = 24{,}5\,\mathrm{kW}</span>.</li>
+</ol>
+<p>Il risultato è una potenza: in watt (kW), non in joule (kJ).</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Argano.</strong> Un argano solleva in verticale un sacco di cemento di <span class="m">50\,\mathrm{kg}</span> alla velocità costante di <span class="m">3\,\mathrm{m/s}</span>. <span class="m">P = mgv = 50 \cdot 9{,}8 \cdot 3 = 1470\,\mathrm W \approx 1{,}5\,\mathrm{kW}</span>.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Tempo necessario.</strong> Con una potenza di <span class="m">280\,\mathrm W</span>, quanto tempo serve per fornire un lavoro di <span class="m">1500\,\mathrm J</span>? <span class="m">\Delta t = L/P = 1500/280 \approx 5{,}4\,\mathrm s</span>. (Controllo dell&#39;ordine di grandezza: <span class="m">280\,\mathrm J</span> al secondo, per arrivare a <span class="m">1500\,\mathrm J</span> servono poco più di 5 secondi.)</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Ascensore e montacarichi.</strong> Un ascensore impiega <span class="m">30\,\mathrm s</span> per salire sei piani; un montacarichi impiega <span class="m">10\,\mathrm s</span> per salire un piano, con lo stesso carico. Il lavoro per salire un piano è lo stesso, <span class="m">L_1</span>.</p>
+<ol>
+<li>Ascensore: <span class="m">P_a = 6L_1/30 = L_1/5</span> (0,2 piani al secondo).</li>
+<li>Montacarichi: <span class="m">P_m = L_1/10</span> (0,1 piani al secondo).</li>
+<li><span class="m">P_a/P_m = (1/5)/(1/10) = 2</span>: la potenza dell&#39;ascensore è <strong>doppia</strong> di quella del montacarichi.</li>
+</ol>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Potenza in un moto accelerato (esercizio della dispensa).</strong> Un oggetto di <span class="m">2{,}0\,\mathrm{kg}</span> accelera uniformemente da fermo a <span class="m">10\,\mathrm{m/s}</span> in <span class="m">3{,}0\,\mathrm s</span>. (a) Lavoro compiuto? Potenza (b) alla fine e (c) a metà dell&#39;intervallo?</p>
+<p>(a) Teorema dell&#39;energia cinetica: <span class="m">L = \tfrac12 \cdot 2{,}0 \cdot 10^2 - 0 = 100\,\mathrm J</span>.</p>
+<p>Accelerazione costante: <span class="m">a = v_{fin}/t_{fin} = 10/3{,}0 \approx 3{,}3\,\mathrm{m/s^2}</span>; forza costante <span class="m">F = ma \approx 6{,}7\,\mathrm N</span>.</p>
+<p>(b) <span class="m">W_{fin} = F\,v_{fin} = 6{,}7 \cdot 10 \approx 67\,\mathrm W</span>.</p>
+<p>(c) A metà intervallo (<span class="m">t = 1{,}5\,\mathrm s</span>) la velocità è <span class="m">v = at = 5\,\mathrm{m/s}</span>: <span class="m">W = 6{,}7 \cdot 5 \approx 33\,\mathrm W</span>.</p>
+<p>La potenza non è costante: con forza costante cresce con la velocità. La potenza media è <span class="m">100/3 \approx 33\,\mathrm W</span>.</p>
+</div>
+
+<h2>Esercizi svolti sul calcolo del lavoro (dalle dispense)</h2>
+<div class="callout esempio">
+
+<p><strong>Cassa trascinata con una fune inclinata.</strong> Una cassa di <span class="m">m = 75\,\mathrm{kg}</span> è spostata di <span class="m">s = 4{,}0\,\mathrm m</span> su un pavimento orizzontale con un filo che forma un angolo <span class="m">\alpha = 35°</span> con l&#39;orizzontale; la tensione è <span class="m">T = 520\,\mathrm N</span> e il coefficiente di attrito dinamico è <span class="m">\mu_d = 0{,}72</span>. Trovare (1) il lavoro della tensione e dell&#39;attrito; (2) quanto deve valere la tensione perché la cassa si muova di moto uniforme.</p>
+<p>Forze: peso <span class="m">mg</span>, tensione <span class="m">T</span>, reazione del piano con componente perpendicolare <span class="m">N</span> e componente orizzontale (attrito <span class="m">F_d</span>).</p>
+<p>(1) La tensione forma l&#39;angolo <span class="m">\alpha</span> con lo spostamento: <span class="m">L_T = T\,s\cos\alpha = 520 \cdot 4{,}0 \cdot 0{,}819 \approx 1{,}70 \cdot 10^3\,\mathrm J</span>.</p>
+<p>Non c&#39;è moto verticale, quindi le componenti verticali si bilanciano: <span class="m">N + T\sin\alpha = mg</span>, da cui <span class="m">N = 75 \cdot 9{,}8 - 520 \cdot 0{,}574 = 735 - 298 = 437\,\mathrm N</span>. (La fune tirando un po&#39; verso l&#39;alto &quot;alleggerisce&quot; la cassa.)</p>
+<p>Attrito: <span class="m">F_d = \mu_d N = 0{,}72 \cdot 437 \approx 315\,\mathrm N</span>, opposto allo spostamento: <span class="m">L_a = -F_d\,s = -315 \cdot 4{,}0 \approx -1{,}26 \cdot 10^3\,\mathrm J</span>.</p>
+<p>(2) Moto uniforme ⇒ risultante nulla. Peso e <span class="m">N</span> sono perpendicolari allo spostamento (lavoro nullo); serve che la somma dei lavori di tensione e attrito sia nulla, cioè <span class="m">T\cos\alpha = \mu_d(mg - T\sin\alpha)</span>. Risolvendo per <span class="m">T</span>:
+<span class="m d">T = \frac{\mu_d\,mg}{\cos\alpha + \mu_d\sin\alpha} = \frac{0{,}72 \cdot 735}{0{,}819 + 0{,}72 \cdot 0{,}574} = \frac{529}{1{,}232} \approx 430\,\mathrm N</span></p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Piano inclinato senza attrito.</strong> Un corpo di <span class="m">m = 18\,\mathrm{kg}</span> scende da fermo lungo un piano inclinato liscio di altezza <span class="m">h = 2{,}5\,\mathrm m</span>. Trovare (1) il lavoro del peso fino in fondo e (2) la velocità finale.</p>
+<p>(1) Lo spostamento ha modulo <span class="m">\ell</span> (lunghezza del piano); il peso forma con esso l&#39;angolo <span class="m">90° - \alpha</span>, dove <span class="m">\alpha</span> è l&#39;inclinazione. <span class="m">L = mg\,\ell\cos(90° - \alpha) = mg\,\ell\sin\alpha = mgh</span>, usando <span class="m">h = \ell\sin\alpha</span>. Quindi <span class="m">L = 18 \cdot 9{,}8 \cdot 2{,}5 = 441\,\mathrm J</span>.</p>
+<p>(2) L&#39;unica altra forza è la reazione del piano che, senza attrito, è perpendicolare allo spostamento: lavoro nullo. Per il teorema dell&#39;energia cinetica: <span class="m">\tfrac12 mv^2 = 441\,\mathrm J</span>, quindi <span class="m">v = \sqrt{2gh} = \sqrt{49} = 7{,}0\,\mathrm{m/s}</span>. L&#39;inclinazione non conta, conta solo l&#39;altezza.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Piano inclinato con attrito.</strong> Stesso corpo (<span class="m">18\,\mathrm{kg}</span>, <span class="m">h = 2{,}5\,\mathrm m</span>), piano lungo <span class="m">\ell = 7{,}5\,\mathrm m</span>; parte da fermo e arriva in fondo a <span class="m">v = 5{,}0\,\mathrm{m/s}</span>. Trovare la forza di attrito dinamico.</p>
+<p>Lavorano il peso (<span class="m">+mgh</span>) e l&#39;attrito (<span class="m">-F_d\,\ell</span>, forza costante opposta allo spostamento). Teorema dell&#39;energia cinetica:
+<span class="m d">mgh - F_d\,\ell = \tfrac12 mv^2 \qquad\Rightarrow\qquad F_d = \frac{mgh - \tfrac12 mv^2}{\ell} = \frac{441 - 225}{7{,}5} = \frac{216}{7{,}5} \approx 28{,}8\,\mathrm N</span></p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Bambino che traina una slitta.</strong> Un bambino traina una slitta su un piano orizzontale con una forza <span class="m">F = 50\,\mathrm N</span> inclinata di <span class="m">\alpha = 35°</span>; la slitta si muove a velocità costante <span class="m">v = 0{,}75\,\mathrm{m/s}</span>. Trovare (1) il lavoro delle forze in <span class="m">t = 12\,\mathrm s</span> e (2) la potenza della forza <span class="m">F</span>.</p>
+<p>(1) Spostamento: <span class="m">s = vt = 0{,}75 \cdot 12 = 9{,}0\,\mathrm m</span>. Agiscono quattro forze: peso e reazione <span class="m">N</span> (perpendicolari allo spostamento, lavoro nullo), la forza del bambino e l&#39;attrito.</p>
 <ul>
-<li>Ascensore di <span class="m">1000\,\mathrm{kg}</span> che sale di <span class="m">50\,\mathrm m</span> in <span class="m">20\,\mathrm s</span>: <span class="m">P = mgh/t = 1000 \cdot 9{,}8 \cdot 50/20 = 24{,}5\,\mathrm{kW}</span>.</li>
-<li>Argano che solleva <span class="m">50\,\mathrm{kg}</span> a <span class="m">3\,\mathrm{m/s}</span>: <span class="m">P = 50 \cdot 9{,}8 \cdot 3 \approx 1{,}5\,\mathrm{kW}</span>.</li>
-<li><span class="m">1500\,\mathrm J</span> con <span class="m">280\,\mathrm W</span>: <span class="m">t = 1500/280 \approx 5{,}4\,\mathrm s</span>.</li>
-<li>Ascensore: 6 piani in <span class="m">30\,\mathrm s</span> (0,2 piani/s). Montacarichi, stesso carico: 1 piano in <span class="m">10\,\mathrm s</span> (0,1 piani/s). L&#39;ascensore ha potenza doppia.</li>
+<li><span class="m">L_F = F\,s\cos\alpha = 50 \cdot 9{,}0 \cdot 0{,}819 \approx 369\,\mathrm J</span>.</li>
+<li>Velocità costante ⇒ risultante nulla ⇒ l&#39;attrito è uguale e opposto alla componente orizzontale di <span class="m">F</span>: <span class="m">F_a = F\cos\alpha</span>, quindi <span class="m">L_a = -F\cos\alpha\,s \approx -369\,\mathrm J</span>.</li>
 </ul>
+<p>Più semplicemente: velocità costante ⇒ energia cinetica costante ⇒ lavoro totale nullo ⇒ il lavoro dell&#39;attrito è uguale e opposto a quello di <span class="m">F</span>.</p>
+<p>(2) <span class="m">P = F\,v\cos\alpha = 50 \cdot 0{,}75 \cdot 0{,}819 \approx 30{,}7\,\mathrm W</span> (oppure <span class="m">369\,\mathrm J/12\,\mathrm s</span>).</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Automobile che accelera.</strong> Un&#39;auto di <span class="m">m = 720\,\mathrm{kg}</span>, sotto una forza costante, passa da <span class="m">v_1 = 3{,}5\,\mathrm{m/s}</span> a <span class="m">v_2 = 12\,\mathrm{m/s}</span> in <span class="m">s = 30\,\mathrm m</span>. Trovare (1) forza e lavoro del motore e (2) la potenza media.</p>
+<p>(1) Teorema dell&#39;energia cinetica: <span class="m">L = \tfrac12 \cdot 720 \cdot (12^2 - 3{,}5^2) = 360 \cdot (144 - 12{,}25) = 360 \cdot 131{,}75 \approx 4{,}74 \cdot 10^4\,\mathrm J</span>. Forza costante: <span class="m">L = F\,s</span>, quindi <span class="m">F = 47\,430/30 \approx 1{,}58 \cdot 10^3\,\mathrm N</span>.</p>
+<p>(2) Forza costante ⇒ moto uniformemente accelerato, in cui <span class="m">s = \dfrac{v_1 + v_2}{2}\,t</span>. Quindi <span class="m">t = \dfrac{2s}{v_1 + v_2} = \dfrac{60}{15{,}5} \approx 3{,}87\,\mathrm s</span> e <span class="m">P = L/t = 47\,430/3{,}87 \approx 1{,}2 \cdot 10^4\,\mathrm W = 12\,\mathrm{kW}</span>.</p>
 </div>
 
 <div class="callout attenzione">
 
-<p>Non confondere le unità: lavoro ed energia in joule (J, kJ), potenza in watt (W, kW). Nei quiz le opzioni con l&#39;unità sbagliata sono quasi sempre trappole.</p>
+<p>Errori tipici:</p>
+<ul>
+<li>confondere le unità: lavoro ed energia in <strong>joule</strong> (J, kJ), potenza in <strong>watt</strong> (W, kW), forza in <strong>newton</strong>. Nei quiz le opzioni con l&#39;unità sbagliata sono quasi sempre trappole;</li>
+<li>dire che &quot;la mano&quot; o &quot;il carrello&quot; compie lavoro: il lavoro è compiuto da una <strong>forza</strong>;</li>
+<li>pensare che il lavoro contro la gravità dipenda dal percorso o dal tempo: dipende solo dal dislivello. Il tempo cambia la <strong>potenza</strong>, non il lavoro;</li>
+<li>definire la potenza come lavoro diviso spostamento (quella è una forza) o come lavoro &quot;nell&#39;unità di tempo&quot; senza specificare: è il lavoro diviso il <strong>tempo impiegato</strong>;</li>
+<li>dimenticare di convertire km/h in m/s (si divide per 3,6) prima di calcolare l&#39;energia cinetica.</li>
+</ul>
 </div>
 
 <div class="callout esame">
 
-<p>Nelle aperte chiedono: definire il lavoro con esempi di lavoro positivo, negativo e nullo; definire la potenza con un esempio; enunciare il teorema dell&#39;energia cinetica con il suo ambito di validità; spiegare il legame tra energia cinetica e lavoro.</p>
+<p>Le domande aperte del paniere su questa lezione chiedono:</p>
+<ul>
+<li><strong>definire il lavoro di una forza</strong> e fare esempi di lavoro positivo, negativo e nullo: <span class="m">dL = \vec F \cdot d\vec s</span>, <span class="m">L = \int \vec F \cdot d\vec s</span>, per forza costante <span class="m">L = Fs\cos\theta</span>, unità joule; la tabella dei segni con esempi concreti (peso che scende / sale, valigia sul nastro, forza centripeta, attrito);</li>
+<li><strong>definire la potenza e fare un esempio</strong>: potenza istantanea <span class="m">dL/dt = \vec F \cdot \vec v</span>, media <span class="m">L/\Delta t</span>, unità watt; esempio dell&#39;ascensore o dell&#39;argano (<span class="m">P = mgv</span>); differenza tra kW e kWh;</li>
+<li><strong>enunciare il teorema dell&#39;energia cinetica precisando l&#39;ambito di validità</strong>: <span class="m">L_{tot} = \Delta K</span>; punto materiale, riferimento inerziale, qualsiasi forza purché si conti il lavoro di tutte;</li>
+<li><strong>cos&#39;è l&#39;energia cinetica e che rapporti ha con il lavoro</strong>: <span class="m">K = \tfrac12 mv^2</span>, energia del moto; il lavoro totale ne è la variazione; è il lavoro necessario per portare il corpo da fermo a velocità <span class="m">v</span>.</li>
+</ul>
 </div>
 
 <div class="callout sintesi">
 
 <ul>
-<li><span class="m">L = Fs\cos\theta</span>; positivo se <span class="m">\theta &lt; 90°</span>, negativo se <span class="m">\theta &gt; 90°</span>, nullo se <span class="m">\theta = 90°</span>.</li>
-<li>Contro la gravità: <span class="m">L = mgh</span>, indipendente dal percorso.</li>
-<li><span class="m">L_{tot} = \Delta E_k</span> per qualsiasi forza, contando tutte le forze.</li>
-<li>Potenza: <span class="m">P = L/\Delta t = Fv</span>, in watt.</li>
-<li>Stesso lavoro con potenze diverse → tempi diversi.</li>
+<li>Lavoro: <span class="m">L = Fs\cos\theta</span> (J); in generale <span class="m">L = \int\vec F \cdot d\vec s</span>, area sotto <span class="m">F(x)</span>.</li>
+<li>Positivo se <span class="m">\theta &lt; 90°</span>, negativo se <span class="m">\theta &gt; 90°</span>, nullo se <span class="m">\theta = 90°</span> o se non c&#39;è spostamento. Lo compie una forza.</li>
+<li>Contro la gravità: <span class="m">L = mgh</span>, indipendente da percorso e tempo; a velocità costante la forza è uguale al peso.</li>
+<li>Teorema dell&#39;energia cinetica: <span class="m">L_{tot} = \Delta K</span>, per qualsiasi forza, contando tutte le forze; punto materiale in un riferimento inerziale.</li>
+<li>Potenza: <span class="m">P = dL/dt = \vec F \cdot \vec v</span> (W); media <span class="m">P = L/\Delta t</span>; sollevamento a velocità costante <span class="m">P = mgv</span>.</li>
+<li>Stesso lavoro con potenze diverse → tempi diversi; <span class="m">1\,\mathrm{kWh} = 3{,}6 \cdot 10^6\,\mathrm J</span> è un&#39;energia.</li>
 </ul>
 </div>

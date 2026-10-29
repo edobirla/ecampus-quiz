@@ -1,19 +1,48 @@
 <h1>Lezione 46 — Superfici algebriche</h1>
-<p>Le superfici algebriche sono la generalizzazione naturale dei piani: si ottengono aumentando il grado dei polinomi che le definiscono. Si lavora nello spazio euclideo <span class="m">V^3_E</span> con un riferimento cartesiano <span class="m">(O;x,y,z)</span> fissato, identificando i vettori con le colonne delle loro coordinate.</p>
+<p>Le superfici algebriche sono la generalizzazione naturale dei piani: un piano è l&#39;insieme delle soluzioni di un&#39;equazione polinomiale di grado 1 in <span class="m">x</span>, <span class="m">y</span>, <span class="m">z</span>; aumentando il grado del polinomio si ottengono sfere, coni, cilindri e superfici più complicate. È lo stesso passaggio fatto nel piano da rette a curve algebriche (e a coniche): molte nozioni (grado, punti singolari, tangenti, coordinate omogenee, punti all&#39;infinito) si trasportano quasi parola per parola.</p>
+<p>La lezione ha quattro parti:</p>
+<ol>
+<li>le <strong>sfere</strong> (equazione, centro e raggio, posizione di un piano rispetto a una sfera);</li>
+<li><strong>coni e cilindri</strong> e le <strong>sezioni coniche</strong>;</li>
+<li>la definizione generale di <strong>superficie algebrica</strong>, i <strong>punti singolari</strong> e il <strong>piano tangente</strong>;</li>
+<li>l&#39;estensione allo <strong>spazio proiettivo</strong> (equazione omogenea, punti all&#39;infinito, singolarità in coordinate omogenee).</li>
+</ol>
+<p>Si lavora nello spazio euclideo <span class="m">V^3_E</span> con un riferimento cartesiano <span class="m">(O;x,y,z)</span> fissato, identificando i vettori con le colonne delle loro coordinate.</p>
 <h2>Sfere</h2>
-<p><strong>Definizione 46.1.</strong> Una <em>sfera</em> con centro <span class="m">C</span> e raggio <span class="m">r&gt;0</span> è l&#39;insieme dei punti che hanno distanza <span class="m">r</span> da <span class="m">C</span>.</p>
-<p>La condizione <span class="m">\lVert {}^t(x\ y\ z)-{}^t(x_C\ y_C\ z_C)\rVert=r</span> ha entrambi i membri non negativi, quindi si può elevare al quadrato:
+<p><strong>Definizione 46.1.</strong> Una <strong>sfera</strong> con <strong>centro</strong> <span class="m">C</span> e <strong>raggio</strong> <span class="m">r&gt;0</span> è l&#39;insieme dei punti dello spazio che hanno distanza <span class="m">r</span> da <span class="m">C</span>.</p>
+<p><strong>Osservazione 46.2 (equazione della sfera).</strong> Sia <span class="m">C={}^t(x_C\ y_C\ z_C)</span>. Un punto <span class="m">{}^t(x\ y\ z)</span> sta sulla sfera se e solo se
+<span class="m d">\left\lVert\begin{pmatrix}x\\y\\z\end{pmatrix}-\begin{pmatrix}x_C\\y_C\\z_C\end{pmatrix}\right\rVert=r.</span>
+Entrambi i membri sono <strong>non negativi</strong> (una norma e un raggio), quindi elevarli al quadrato dà un&#39;uguaglianza equivalente (non si aggiungono soluzioni). La norma al quadrato è la somma dei quadrati delle componenti:
 <span class="m d">(x-x_C)^2+(y-y_C)^2+(z-z_C)^2=r^2.</span>
-Sviluppando: <span class="m">x^2+y^2+z^2-2x_Cx-2y_Cy-2z_Cz+x_C^2+y_C^2+z_C^2-r^2=0</span>. Quindi l&#39;equazione
-<span class="m d">x^2+y^2+z^2+\alpha x+\beta y+\gamma z+\delta=0</span>
-rappresenta una sfera, con centro <span class="m">C={}^t\!\left(-\frac{\alpha}{2}\ \ -\frac{\beta}{2}\ \ -\frac{\gamma}{2}\right)</span> e raggio <span class="m">r=\sqrt{\left(\frac{\alpha}{2}\right)^2+\left(\frac{\beta}{2}\right)^2+\left(\frac{\gamma}{2}\right)^2-\delta}</span>, se e solo se <span class="m">\left(\frac{\alpha}{2}\right)^2+\left(\frac{\beta}{2}\right)^2+\left(\frac{\gamma}{2}\right)^2-\delta&gt;0</span>.</p>
-<p><strong>Definizione 46.3.</strong> Un piano rispetto a una sfera è</p>
+Svolgendo i quadrati:
+<span class="m d">x^2+y^2+z^2-2x_Cx-2y_Cy-2z_Cz+x_C^2+y_C^2+z_C^2-r^2=0.</span>
+Viceversa, data un&#39;equazione della forma
+<span class="m d">x^2+y^2+z^2+\alpha x+\beta y+\gamma z+\delta=0,</span>
+confrontando i coefficienti (<span class="m">\alpha=-2x_C</span>, ecc.) si vede che essa rappresenta una sfera con
+<span class="m d">C=\begin{pmatrix}-\frac\alpha2\\-\frac\beta2\\-\frac\gamma2\end{pmatrix},\qquad r=\sqrt{\left(\frac\alpha2\right)^2+\left(\frac\beta2\right)^2+\left(\frac\gamma2\right)^2-\delta},</span>
+<strong>se e solo se</strong> il radicando è positivo: <span class="m">\left(\frac\alpha2\right)^2+\left(\frac\beta2\right)^2+\left(\frac\gamma2\right)^2-\delta&gt;0</span>. Se il radicando è <span class="m">0</span> l&#39;equazione ha un solo punto reale (il &quot;centro&quot;), se è negativo non ha punti reali.</p>
+<p>Caratteristiche per riconoscere una sfera: i coefficienti di <span class="m">x^2</span>, <span class="m">y^2</span>, <span class="m">z^2</span> sono <strong>uguali</strong> (dopo aver eventualmente diviso per il coefficiente comune), <strong>non ci sono termini misti</strong> <span class="m">xy</span>, <span class="m">xz</span>, <span class="m">yz</span>, e il radicando è positivo.</p>
+<div class="callout esempio">
+
+<p><strong>Dal centro e raggio all&#39;equazione.</strong> Sfera di centro <span class="m">{}^t(3\ -1\ 2)</span> e raggio <span class="m">4</span>:
+<span class="m d">(x-3)^2+(y+1)^2+(z-2)^2=16.</span>
+Attenzione ai segni: la coordinata <span class="m">-1</span> dà <span class="m">(y-(-1))^2=(y+1)^2</span>. Svolgendo: <span class="m">x^2-6x+9+y^2+2y+1+z^2-4z+4-16=0</span>, cioè
+<span class="m d">x^2+y^2+z^2-6x+2y-4z-2=0.</span></p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Dall&#39;equazione al centro e raggio.</strong> <span class="m">x^2+y^2+z^2-4x+6y-2z+5=0</span>: <span class="m">\alpha=-4</span>, <span class="m">\beta=6</span>, <span class="m">\gamma=-2</span>, <span class="m">\delta=5</span>. Centro <span class="m">{}^t(2\ -3\ 1)</span>; radicando <span class="m">4+9+1-5=9&gt;0</span>, raggio <span class="m">3</span>.</p>
+<p><span class="m">x^2+y^2+z^2+2x+10=0</span>: centro <span class="m">{}^t(-1\ 0\ 0)</span>, radicando <span class="m">1+0+0-10=-9&lt;0</span>: <strong>non</strong> è una sfera (nessun punto reale).</p>
+</div>
+
+<p><strong>Definizione 46.3.</strong> Un piano, rispetto a una sfera, si dice</p>
 <ul>
-<li><em>secante</em> se la interseca in una circonferenza,</li>
-<li><em>tangente</em> se la interseca in un punto,</li>
-<li><em>esterno</em> se non la interseca.</li>
+<li><strong>secante</strong> se interseca la sfera in una circonferenza,</li>
+<li><strong>tangente</strong> se interseca la sfera in un solo punto,</li>
+<li><strong>esterno</strong> se non interseca la sfera.</li>
 </ul>
-<p><strong>Osservazione 46.4.</strong> La posizione dipende da <span class="m">\operatorname{dist}(C,\alpha)</span>:</p>
+<p><strong>Osservazione 46.4.</strong> La posizione si decide confrontando la distanza del centro dal piano con il raggio:</p>
 <table>
 <thead>
 <tr>
@@ -34,65 +63,183 @@ rappresenta una sfera, con centro <span class="m">C={}^t\!\left(-\frac{\alpha}{2
 <td>esterno</td>
 </tr>
 </tbody></table>
+<p>Intuizione: il punto del piano più vicino al centro è la proiezione ortogonale <span class="m">H</span> di <span class="m">C</span> sul piano, a distanza <span class="m">d=\operatorname{dist}(C,\alpha)</span>. Se <span class="m">d&gt;r</span> anche <span class="m">H</span> è fuori dalla sfera, e quindi tutto il piano; se <span class="m">d=r</span> il piano tocca la sfera solo in <span class="m">H</span>; se <span class="m">d&lt;r</span> il piano taglia la sfera in una circonferenza di centro <span class="m">H</span> e raggio <span class="m">\sqrt{r^2-d^2}</span> (teorema di Pitagora nel triangolo <span class="m">C</span>, <span class="m">H</span>, punto della circonferenza).</p>
+<p>Ricordiamo la <strong>distanza punto–piano</strong>: per <span class="m">\alpha: ax+by+cz+d=0</span> e <span class="m">P={}^t(x_P\ y_P\ z_P)</span>,
+<span class="m d">\operatorname{dist}(P,\alpha)=\frac{\lvert ax_P+by_P+cz_P+d\rvert}{\sqrt{a^2+b^2+c^2}}.</span></p>
+<p>Conseguenza molto usata: la sfera di centro <span class="m">C</span> <strong>tangente</strong> a un piano <span class="m">\alpha</span> ha raggio <span class="m">r=\operatorname{dist}(C,\alpha)</span>.</p>
 <div class="callout esempio">
 
-<p><strong>Piani ortogonali a una retta e tangenti a una sfera.</strong> Retta <span class="m">x=1+2t,\ y=3-2t,\ z=2+t</span>; sfera <span class="m">x^2+y^2+z^2+2x-6z+6=0</span>.
-Un piano ortogonale alla retta ha come vettore normale il vettore direttore <span class="m">{}^t(2\ -2\ 1)</span>: <span class="m">\alpha_d: 2x-2y+z+d=0</span>.
-Centro <span class="m">C={}^t(-1\ 0\ 3)</span>, raggio <span class="m">r=\sqrt{1+9-6}=2</span>. Imponendo <span class="m">\operatorname{dist}(C,\alpha_d)=\frac{\lvert -2+3+d\rvert}{3}=\frac{\lvert 1+d\rvert}{3}=2</span> si trova <span class="m">d=5</span> o <span class="m">d=-7</span>: i piani sono <span class="m">2x-2y+z+5=0</span> e <span class="m">2x-2y+z-7=0</span>.</p>
+<p><strong>Sfera di centro dato tangente a un piano.</strong> Centro <span class="m">C={}^t(1\ 2\ -1)</span>, piano <span class="m">\alpha: x+2y-2z+3=0</span>.</p>
+<p><span class="m">\operatorname{dist}(C,\alpha)=\frac{\lvert 1+4+2+3\rvert}{\sqrt{1+4+4}}=\frac{10}{3}</span>, quindi <span class="m">r=\frac{10}3</span> e <span class="m">r^2=\frac{100}9</span>:
+<span class="m d">(x-1)^2+(y-2)^2+(z+1)^2=\frac{100}{9}.</span>
+Nel numeratore si sostituiscono le coordinate del <strong>centro</strong> nell&#39;equazione del piano, con il suo termine noto (qui <span class="m">+3</span>). Nell&#39;equazione della sfera compare <span class="m">r^2</span>, non <span class="m">r</span>.</p>
 </div>
 
-<h2>Coni e cilindri</h2>
-<p><strong>Definizione 46.5.</strong> Un <em>cono</em> è l&#39;insieme dei punti per cui esiste un riferimento cartesiano <span class="m">(O;x,y,z)</span> rispetto al quale sono le soluzioni di
-<span class="m d">ax^2+by^2-z^2=0,\qquad a,b&gt;0.</span>
-<span class="m">O</span> è il <em>vertice</em>, l&#39;asse <span class="m">z</span> è l&#39;<em>asse</em> del cono. Il cono è <em>circolare</em> se <span class="m">a=b</span>: si ottiene ruotando attorno all&#39;asse <span class="m">z</span> una retta (diversa dall&#39;asse) passante per il vertice; tali rette sono le <em>generatrici</em>.</p>
-<p><strong>Definizione 46.8.</strong> Un <em>cilindro</em> è l&#39;insieme dei punti per cui esiste un riferimento rispetto al quale sono le soluzioni di <span class="m">p(x,y)=0</span>, dove <span class="m">p(x,y)=0</span> è una conica non degenere <span class="m">\mathcal C</span> del piano <span class="m">xy</span>, detta <em>base</em>. È <em>circolare</em> se la base è una circonferenza: <span class="m">x^2+y^2-r^2=0</span>, <span class="m">r&gt;0</span> (asse = asse <span class="m">z</span>). Si ottiene ruotando una retta parallela all&#39;asse <span class="m">z</span> intorno all&#39;asse <span class="m">z</span> (generatrici).</p>
-<p><strong>Sezioni coniche.</strong> Le curve ottenute intersecando un cono circolare con un piano si chiamano <em>sezioni coniche</em>. Tutte le sezioni coniche sono coniche, ma non viceversa: coniche vuote e coppie di rette parallele non si ottengono da un cono, ma si ottengono intersecando un cilindro circolare con un piano (<em>sezioni cilindriche</em>). Anche le sezioni cilindriche sono coniche, ma non tutte le coniche lo sono.</p>
-<h2>Superfici algebriche</h2>
-<p><strong>Definizione 46.13.</strong> Una <em>superficie algebrica di grado <span class="m">d</span></em> è un polinomio <span class="m">p(x,y,z)\in\mathbb{R}[x,y,z]</span> con <span class="m">\deg(p)=d&gt;0</span>. Per abuso di notazione si chiama così anche l&#39;insieme dei punti con <span class="m">p(x,y,z)=0</span> (l&#39;<em>equazione</em> della superficie).</p>
-<p>Il grado è il massimo dei gradi dei monomi, e il grado di un monomio è la somma degli esponenti (es. <span class="m">x^3y^2</span> ha grado <span class="m">5</span>).</p>
 <div class="callout esempio">
 
+<p><strong>Esercizio 46.1 — piani ortogonali a una retta e tangenti a una sfera.</strong> Retta <span class="m">x=1+2t</span>, <span class="m">y=3-2t</span>, <span class="m">z=2+t</span>; sfera <span class="m">x^2+y^2+z^2+2x-6z+6=0</span>.</p>
 <ol>
-<li><span class="m">ax+by+cz+d=0</span> con <span class="m">(a,b,c)\neq(0,0,0)</span> è un piano: superficie di grado 1.</li>
-<li>Sfere, coni e cilindri sono superfici algebriche di grado 2.</li>
-<li><span class="m">x^3-2y^2+yz=0</span> ha grado 3.</li>
-<li><span class="m">x^2+y^2+z^2=0</span> ha grado 2, ma contiene solo l&#39;origine.</li>
-<li><span class="m">(x-y+z+2)(x+3y-2z-4)=0</span> ha grado 2 ed è l&#39;unione di due piani.</li>
+<li>Un piano ortogonale alla retta ha come vettore normale il vettore direttore della retta, <span class="m">{}^t(2\ -2\ 1)</span> (i coefficienti di <span class="m">t</span>): <span class="m">\alpha_d: 2x-2y+z+d=0</span>, <span class="m">d\in\mathbb R</span>.</li>
+<li>Sfera: <span class="m">\alpha=2</span>, <span class="m">\beta=0</span>, <span class="m">\gamma=-6</span>, <span class="m">\delta=6</span>; centro <span class="m">C={}^t(-1\ 0\ 3)</span>, raggio <span class="m">r=\sqrt{1+0+9-6}=2</span>.</li>
+<li>Tangenza: <span class="m">\operatorname{dist}(C,\alpha_d)=\frac{\lvert 2(-1)-2\cdot0+3+d\rvert}{\sqrt{4+4+1}}=\frac{\lvert1+d\rvert}3=2</span>, cioè <span class="m">\lvert1+d\rvert=6</span>: <span class="m">1+d=6</span> (<span class="m">d=5</span>) oppure <span class="m">1+d=-6</span> (<span class="m">d=-7</span>).</li>
+<li>Piani: <span class="m">2x-2y+z+5=0</span> e <span class="m">2x-2y+z-7=0</span>.</li>
 </ol>
 </div>
 
-<p><strong>Osservazione 46.16.</strong> Il polinomio non è determinato dall&#39;insieme dei punti: <span class="m">k\cdot p</span> (con <span class="m">k\neq0</span>) e <span class="m">p^n</span> (con <span class="m">n\geq1</span>) definiscono gli stessi punti ma sono superfici diverse. Di solito non si distinguono le due nozioni, salvo quando serve.</p>
-<p>Di norma si considerano solo le soluzioni reali; considerando anche le terne di <span class="m">\mathbb{C}^3</span> (<em>complessificazione</em>) si parla di <em>punti complessi</em> di <span class="m">S</span>, e di <em>punti reali</em> se le tre coordinate sono reali.</p>
-<h2>Punti singolari e piano tangente</h2>
-<p>Intersecando <span class="m">S</span> con un piano <span class="m">\alpha</span> per <span class="m">P\in S</span> si ottiene una curva algebrica <span class="m">\mathcal C_\alpha</span> di <span class="m">\alpha</span> (oppure tutto <span class="m">\alpha</span>, se <span class="m">\alpha\subseteq S</span>). La retta tangente a <span class="m">\mathcal C_\alpha</span> in <span class="m">P</span>, se esiste, è una <em>retta tangente ad <span class="m">S</span> in <span class="m">P</span></em>; se l&#39;unione delle rette tangenti è un piano, è il <em>piano tangente ad <span class="m">S</span> in <span class="m">P</span></em>.</p>
-<p><strong>Definizione 46.21.</strong> <span class="m">P\in S</span> è <em>singolare</em> se
-<span class="m d">\frac{\partial p}{\partial x}(P)=\frac{\partial p}{\partial y}(P)=\frac{\partial p}{\partial z}(P)=0.</span></p>
-<p><strong>Proposizione 46.23.</strong> Se <span class="m">P</span> non è singolare esiste esattamente un piano tangente ad <span class="m">S</span> in <span class="m">P</span>:
-<span class="m d">\frac{\partial p}{\partial x}(P)(x-x_P)+\frac{\partial p}{\partial y}(P)(y-y_P)+\frac{\partial p}{\partial z}(P)(z-z_P)=0.</span></p>
 <div class="callout esempio">
 
-<p><span class="m">S: x^3-2y^2+yz=0</span>. Derivate: <span class="m">p_x=3x^2</span>, <span class="m">p_y=-4y+z</span>, <span class="m">p_z=y</span>. Il sistema <span class="m">3x^2=0,\ -4y+z=0,\ y=0</span> ha solo la soluzione <span class="m">(0,0,0)</span>: l&#39;origine è l&#39;unico punto singolare.
-In <span class="m">{}^t(1\ 1\ 1)</span> (non singolare) le derivate valgono <span class="m">3,-3,1</span>: piano tangente <span class="m">3(x-1)-3(y-1)+(z-1)=0</span>, cioè <span class="m">3x-3y+z-1=0</span>.</p>
+<p><strong>Esercizio 46.2 (dispensa) — retta in forma implicita.</strong> Piani ortogonali alla retta <span class="m">\begin{cases}x-y+1=0\\x-2z-3=0\end{cases}</span> e tangenti alla sfera <span class="m">x^2+y^2+z^2-2x-4y-4=0</span>.</p>
+<ol>
+<li>Direzione della retta: prodotto vettoriale dei vettori normali dei due piani, <span class="m">{}^t(1\ -1\ 0)\times{}^t(1\ 0\ -2)={}^t\big((-1)(-2)-0\cdot0,\ 0\cdot1-1\cdot(-2),\ 1\cdot0-(-1)\cdot1\big)={}^t(2\ 2\ 1)</span>. Piani: <span class="m">2x+2y+z+d=0</span>.</li>
+<li>Centro <span class="m">{}^t(1\ 2\ 0)</span>, raggio <span class="m">\sqrt{1+4+0+4}=3</span>.</li>
+<li><span class="m">\frac{\lvert2+4+0+d\rvert}{3}=3</span>, <span class="m">\lvert6+d\rvert=9</span>: <span class="m">d=3</span> oppure <span class="m">d=-15</span>. Piani <span class="m">2x+2y+z+3=0</span> e <span class="m">2x+2y+z-15=0</span>.</li>
+</ol>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Esercizio 46.3 (dispensa) — posizione piano–sfera.</strong> Piano <span class="m">x-y+z+4=0</span>, sfera di centro <span class="m">{}^t(1\ -2\ 2)</span> e raggio <span class="m">3</span>. <span class="m">\operatorname{dist}=\frac{\lvert1+2+2+4\rvert}{\sqrt3}=\frac9{\sqrt3}=3\sqrt3\approx5{,}2&gt;3</span>: il piano è <strong>esterno</strong>.</p>
+</div>
+
+<h2>Coni e cilindri</h2>
+<p><strong>Definizione 46.5.</strong> Un <strong>cono</strong> è l&#39;insieme dei punti per cui esiste un riferimento cartesiano <span class="m">(O;x,y,z)</span> rispetto al quale essi sono le soluzioni di
+<span class="m d">ax^2+by^2-z^2=0,\qquad a,b&gt;0.</span>
+Il punto <span class="m">O</span> di quel riferimento è il <strong>vertice</strong> del cono, l&#39;asse <span class="m">z</span> è l&#39;<strong>asse</strong> del cono. Il cono è <strong>circolare</strong> se <span class="m">a=b</span>: <span class="m">ax^2+ay^2-z^2=0</span>.</p>
+<p>Le sezioni con i piani <span class="m">z=k</span> sono le ellissi <span class="m">ax^2+by^2=k^2</span>, che si allargano allontanandosi dal vertice (per <span class="m">k=0</span> si riducono al vertice); per un cono circolare sono circonferenze di raggio <span class="m">\frac{\lvert k\rvert}{\sqrt a}</span>.</p>
+<p><strong>Osservazione 46.6.</strong> Un cono circolare si ottiene ruotando intorno all&#39;asse <span class="m">z</span> una retta (diversa dall&#39;asse <span class="m">z</span>) che passa per il vertice. <strong>Definizione 46.7.</strong> Ogni retta di questo tipo si chiama <strong>generatrice</strong> del cono. Per esempio, per <span class="m">x^2+y^2-z^2=0</span> la retta <span class="m">y=0</span>, <span class="m">z=x</span> del piano <span class="m">xz</span> ruotata intorno all&#39;asse <span class="m">z</span> descrive tutto il cono.</p>
+<p><strong>Definizione 46.8.</strong> Un <strong>cilindro</strong> è l&#39;insieme dei punti per cui esiste un riferimento rispetto al quale sono le soluzioni di
+<span class="m d">p(x,y)=0,</span>
+dove <span class="m">p(x,y)=0</span> è una <strong>conica non degenere</strong> <span class="m">\mathcal C</span> del piano <span class="m">xy</span>, detta <strong>base</strong> del cilindro. Nell&#39;equazione <strong>manca <span class="m">z</span></strong>: se un punto <span class="m">{}^t(x\ y\ 0)</span> sta sulla base, ci stanno anche tutti i punti <span class="m">{}^t(x\ y\ z)</span> della retta verticale sopra di esso. Il cilindro è l&#39;unione delle rette parallele all&#39;asse <span class="m">z</span> che passano per i punti della conica di base (cilindro ellittico, iperbolico o parabolico secondo la base).</p>
+<p>Il cilindro è <strong>circolare</strong> se la base è una circonferenza, cioè se esiste un riferimento in cui l&#39;equazione è
+<span class="m d">x^2+y^2-r^2=0,\qquad r&gt;0;</span>
+l&#39;asse <span class="m">z</span> è l&#39;<strong>asse</strong> del cilindro circolare. <strong>Osservazione 46.9 e Definizione 46.10.</strong> Un cilindro circolare si ottiene ruotando una retta parallela all&#39;asse <span class="m">z</span> intorno all&#39;asse <span class="m">z</span>; tali rette sono le <strong>generatrici</strong> del cilindro.</p>
+<p><strong>Definizione 46.11.</strong> Le curve ottenute intersecando un <strong>cono circolare</strong> con un piano si chiamano <strong>sezioni coniche</strong>.</p>
+<p><strong>Osservazione 46.12.</strong> Tutte le sezioni coniche sono coniche (intersecando una superficie di grado 2 con un piano si ottiene una curva di grado 2 nel piano). Il viceversa <strong>non</strong> vale:</p>
+<ul>
+<li>con un piano che non passa per il vertice si ottengono ellissi (circonferenze se il piano è perpendicolare all&#39;asse), parabole (piano parallelo a una generatrice) e iperboli (piano che taglia entrambe le falde);</li>
+<li>con un piano per il vertice si ottengono il solo vertice, una coppia di rette incidenti (due generatrici) o una retta doppia (piano tangente al cono);</li>
+<li><strong>non</strong> si ottengono le coniche vuote (ellissi immaginarie) né le <strong>coppie di rette parallele</strong>.</li>
+</ul>
+<p>Queste ultime si ottengono invece intersecando un <strong>cilindro circolare</strong> con un piano (per esempio un piano parallelo all&#39;asse taglia il cilindro in due generatrici parallele, oppure in nessun punto se è lontano dall&#39;asse): sono le <strong>sezioni cilindriche</strong>. Anche le sezioni cilindriche sono coniche, ma non tutte le coniche lo sono (per esempio un&#39;iperbole non è una sezione cilindrica).</p>
+<h2>Superfici algebriche</h2>
+<p><strong>Definizione 46.13.</strong> Una <strong>superficie algebrica di grado <span class="m">d</span></strong> è un polinomio <span class="m">p(x,y,z)\in\mathbb R[x,y,z]</span> con <span class="m">\deg(p)=d&gt;0</span>.</p>
+<p><strong>Notazione 46.14.</strong> Con un abuso di notazione si chiama superficie algebrica di grado <span class="m">d</span> anche l&#39;<strong>insieme dei punti</strong> che soddisfano <span class="m">p(x,y,z)=0</span>; questa è l&#39;<strong>equazione</strong> della superficie.</p>
+<p>Il <strong>grado</strong> di un polinomio è il massimo dei gradi dei suoi monomi, e il grado di un monomio è la <strong>somma</strong> degli esponenti di tutte le variabili: <span class="m">x^3y^2</span> ha grado <span class="m">3+2=5</span>, <span class="m">xyz</span> ha grado <span class="m">3</span>, <span class="m">4x^4</span> ha grado <span class="m">4</span>. Quindi <span class="m">x^2y^2z-3x^4+y=0</span> ha grado <span class="m">5</span> (il monomio <span class="m">x^2y^2z</span> ha grado <span class="m">2+2+1</span>), non <span class="m">4</span>.</p>
+<div class="callout esempio">
+
+<p><strong>Esempio 46.15.</strong></p>
+<ol>
+<li><span class="m">ax+by+cz+d=0</span> con <span class="m">(a,b,c)\neq(0,0,0)</span> è un piano: superficie algebrica di grado 1.</li>
+<li>Sfere, coni e cilindri sono superfici algebriche di grado 2.</li>
+<li><span class="m">x^3-2y^2+yz=0</span> ha grado 3 (il monomio di grado massimo è <span class="m">x^3</span>).</li>
+<li><span class="m">x^2+y^2+z^2=0</span> ha grado 2, ma contiene <strong>un solo punto</strong> reale, l&#39;origine.</li>
+<li><span class="m">(x-y+z+2)(x+3y-2z-4)=0</span> ha grado 2 ed è l&#39;<strong>unione di due piani</strong>.</li>
+</ol>
+</div>
+
+<p><strong>Osservazione 46.16.</strong> Come per le curve, il polinomio <strong>non</strong> è determinato dall&#39;insieme dei punti: <span class="m">k\cdot p(x,y,z)</span> con <span class="m">k\in\mathbb R\setminus\{0\}</span> e <span class="m">\big(p(x,y,z)\big)^n</span> con <span class="m">n\in\mathbb N\setminus\{0\}</span> definiscono lo stesso insieme di punti. Le superfici definite da questi polinomi sono però <strong>diverse</strong> (per esempio <span class="m">p^2</span> ha grado doppio): per questo la Notazione 46.14 è un abuso. Nella pratica non si distinguono le due nozioni, salvo quando serve sottolinearlo.</p>
+<p><strong>Osservazione 46.17 e Notazione 46.18.</strong> Di norma si considerano solo le soluzioni <strong>reali</strong>. Occasionalmente si considerano anche le terne di <span class="m">\mathbb C^3</span> che soddisfano l&#39;equazione: sono i <strong>punti complessi</strong> di <span class="m">S</span>, e l&#39;operazione di considerarli si chiama <strong>complessificazione</strong>. Un punto complesso con tutte e tre le coordinate reali si dice <strong>punto reale</strong>. (Per esempio <span class="m">x^2+y^2+z^2+1=0</span> non ha punti reali ma ha punti complessi, come <span class="m">{}^t(i\ 0\ 0)</span>.)</p>
+<h2>Punti singolari e piano tangente</h2>
+<p><strong>Osservazione 46.19.</strong> Sia <span class="m">P\in S</span> e <span class="m">\alpha</span> un piano per <span class="m">P</span>. L&#39;intersezione <span class="m">S\cap\alpha</span> è una curva algebrica <span class="m">\mathcal C_\alpha</span> del piano <span class="m">\alpha</span> che contiene <span class="m">P</span>, oppure tutto <span class="m">\alpha</span> (se <span class="m">\alpha\subseteq S</span>). Nel primo caso si può considerare la retta tangente <span class="m">r_\alpha</span> a <span class="m">\mathcal C_\alpha</span> in <span class="m">P</span>, se esiste.</p>
+<p><strong>Definizione 46.20.</strong> Se la retta tangente <span class="m">r_\alpha</span> a <span class="m">\mathcal C_\alpha=S\cap\alpha</span> in <span class="m">P</span> esiste, essa è una <strong>retta tangente a <span class="m">S</span> in <span class="m">P</span></strong>. Se l&#39;<strong>unione</strong> delle rette tangenti a <span class="m">S</span> in <span class="m">P</span> (al variare di <span class="m">\alpha</span>) è un piano, quel piano è il <strong>piano tangente</strong> a <span class="m">S</span> in <span class="m">P</span>.</p>
+<p>Intuizione: tagliando la superficie con tutti i piani per <span class="m">P</span> si ottengono tante curve; le loro tangenti in <span class="m">P</span>, in un punto &quot;liscio&quot;, stanno tutte su uno stesso piano, che &quot;appoggia&quot; sulla superficie.</p>
+<p><strong>Definizione 46.21.</strong> Un punto <span class="m">P={}^t(x_P\ y_P\ z_P)</span> di <span class="m">S: p(x,y,z)=0</span> è <strong>singolare</strong> se le tre derivate parziali di <span class="m">p</span> si annullano in <span class="m">P</span>:
+<span class="m d">\frac{\partial p}{\partial x}(x_P,y_P,z_P)=\frac{\partial p}{\partial y}(x_P,y_P,z_P)=\frac{\partial p}{\partial z}(x_P,y_P,z_P)=0.</span>
+Per trovare <strong>tutti</strong> i punti singolari si risolve il sistema formato dall&#39;equazione della superficie e dalle tre derivate uguagliate a zero (il punto deve anche <strong>stare</strong> su <span class="m">S</span>).</p>
+<div class="callout esempio">
+
+<p><strong>Esempio 46.22.</strong> <span class="m">S: x^3-2y^2+yz=0</span>. Derivate parziali (si deriva rispetto a una variabile tenendo costanti le altre):
+<span class="m d">\frac{\partial p}{\partial x}=3x^2,\qquad \frac{\partial p}{\partial y}=-4y+z,\qquad\frac{\partial p}{\partial z}=y.</span>
+In <span class="m">O={}^t(0\ 0\ 0)</span> valgono <span class="m">0</span>, <span class="m">0</span>, <span class="m">0</span>: <span class="m">O</span> (che sta su <span class="m">S</span>) è <strong>singolare</strong>. È l&#39;unico: il sistema <span class="m">3x^2=0</span>, <span class="m">-4y+z=0</span>, <span class="m">y=0</span> dà <span class="m">x=0</span>, <span class="m">y=0</span>, poi <span class="m">z=4y=0</span>.</p>
+</div>
+
+<p><strong>Proposizione 46.23.</strong> Se <span class="m">P</span> è un punto <strong>non singolare</strong> di <span class="m">S: p(x,y,z)=0</span>, esiste esattamente un piano tangente a <span class="m">S</span> in <span class="m">P</span>, con forma implicita
+<span class="m d">\frac{\partial p}{\partial x}(P)\,(x-x_P)+\frac{\partial p}{\partial y}(P)\,(y-y_P)+\frac{\partial p}{\partial z}(P)\,(z-z_P)=0.</span>
+(Dimostrazione non data: usa idee non sviluppate nel corso.) In altre parole, il <strong>vettore normale</strong> al piano tangente è il <strong>gradiente</strong> <span class="m">\big(\frac{\partial p}{\partial x},\frac{\partial p}{\partial y},\frac{\partial p}{\partial z}\big)</span> calcolato in <span class="m">P</span>; nei punti singolari il gradiente è nullo e la formula non definisce nessun piano.</p>
+<div class="callout esempio">
+
+<p><strong>Esempio 46.24.</strong> Piano tangente a <span class="m">x^3-2y^2+yz=0</span> in <span class="m">{}^t(1\ 1\ 1)</span>.</p>
+<p>Il punto sta su <span class="m">S</span>: <span class="m">1-2+1=0</span> ✓. Derivate in <span class="m">(1,1,1)</span>: <span class="m">3\cdot1^2=3</span>, <span class="m">-4+1=-3</span>, <span class="m">1</span>: non tutte nulle, il punto non è singolare. Piano tangente:
+<span class="m d">3(x-1)-3(y-1)+(z-1)=0\ \Longrightarrow\ 3x-3y+z-1=0.</span></p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Sfera: il piano tangente è perpendicolare al raggio.</strong> <span class="m">S: x^2+y^2+z^2-9=0</span> (centro <span class="m">O</span>, raggio 3), punto <span class="m">P={}^t(1\ 2\ 2)</span> (<span class="m">1+4+4-9=0</span> ✓). Derivate: <span class="m">2x</span>, <span class="m">2y</span>, <span class="m">2z</span>, in <span class="m">P</span>: <span class="m">2</span>, <span class="m">4</span>, <span class="m">4</span>. Piano tangente: <span class="m">2(x-1)+4(y-2)+4(z-2)=0</span>, cioè <span class="m">x+2y+2z-9=0</span>. Il vettore normale <span class="m">{}^t(1\ 2\ 2)</span> è parallelo al raggio <span class="m">\overrightarrow{OP}</span>, come ci si aspetta. La sfera non ha punti singolari: le derivate sono nulle solo in <span class="m">O</span>, che non sta sulla sfera.</p>
 </div>
 
 <h2>Superfici nello spazio proiettivo</h2>
-<p><strong>Definizione 46.25.</strong> Se <span class="m">S</span> ha equazione <span class="m">p(x,y,z)=0</span> e grado <span class="m">d</span>, l&#39;equazione <span class="m">T^d\,p\!\left(\frac XT,\frac YT,\frac ZT\right)=0</span> è l&#39;<em>equazione omogenea</em> di <span class="m">S</span> (<em>omogeneizzazione</em>). I punti aggiunti con <span class="m">T=0</span> sono i <em>punti all&#39;infinito</em> (o <em>impropri</em>) di <span class="m">S</span>.</p>
+<p>Come per le curve, si estendono le superfici allo spazio proiettivo <span class="m">\mathbb P^3(\mathbb R)</span>, con coordinate omogenee <span class="m">{}^t(X\ Y\ Z\ T)</span>: il punto <span class="m">{}^t(x\ y\ z)</span> corrisponde a <span class="m">{}^t(x\ y\ z\ 1)</span> e i punti con <span class="m">T=0</span> sono i punti all&#39;infinito (le direzioni).</p>
+<p><strong>Definizione 46.25.</strong> Se <span class="m">S</span> ha equazione <span class="m">p(x,y,z)=0</span> e grado <span class="m">d</span>, l&#39;equazione
+<span class="m d">T^d\,p\!\left(\frac XT,\frac YT,\frac ZT\right)=0</span>
+è l&#39;<strong>equazione omogenea</strong> di <span class="m">S</span>; il passaggio da <span class="m">p(x,y,z)</span> a questa equazione si chiama <strong>omogeneizzazione</strong>. I punti aggiunti (quelli con <span class="m">T=0</span>) sono i <strong>punti all&#39;infinito</strong> o <strong>punti impropri</strong> di <span class="m">S</span>.</p>
+<p>In pratica: si sostituisce <span class="m">x\to X</span>, <span class="m">y\to Y</span>, <span class="m">z\to Z</span> e si moltiplica ogni monomio per la potenza di <span class="m">T</span> che lo porta al grado <span class="m">d</span>. Per trovare i punti all&#39;infinito si pone <span class="m">T=0</span> nell&#39;equazione omogenea: resta la sola <strong>parte di grado massimo</strong> del polinomio.</p>
 <div class="callout esempio">
 
-<p><span class="m">x^3-2y^2+yz=0</span> diventa <span class="m">X^3-2Y^2T+YZT=0</span>. Con <span class="m">T=0</span> resta <span class="m">X^3=0</span>: i punti all&#39;infinito formano la retta proiettiva <span class="m">X=0,\ T=0</span>.</p>
+<p><strong>Esempio 46.26.</strong> <span class="m">S: x^3-2y^2+yz=0</span>, grado 3. Omogeneizzazione: <span class="m">x^3\to X^3</span> (già di grado 3), <span class="m">-2y^2\to-2Y^2T</span>, <span class="m">yz\to YZT</span>:
+<span class="m d">X^3-2Y^2T+YZT=0.</span>
+Punti all&#39;infinito: <span class="m">\begin{cases}X^3-2Y^2T+YZT=0\\T=0\end{cases}</span> equivale a <span class="m">\begin{cases}X^3=0\\T=0\end{cases}</span>, cioè <span class="m">\begin{cases}X=0\\T=0\end{cases}</span>: una <strong>retta proiettiva all&#39;infinito</strong> (formata dai punti <span class="m">{}^t(0\ Y\ Z\ 0)</span>).</p>
 </div>
 
-<p><strong>Definizione 46.27.</strong> Un punto <span class="m">P</span> di <span class="m">S</span> con equazione omogenea <span class="m">p(X,Y,Z,T)=0</span> è <em>singolare</em> se si annullano le quattro derivate parziali <span class="m">\frac{\partial p}{\partial X},\frac{\partial p}{\partial Y},\frac{\partial p}{\partial Z},\frac{\partial p}{\partial T}</span> in <span class="m">P</span>.</p>
-<p><strong>Proposizione 46.28.</strong> I punti singolari secondo la definizione affine sono esattamente i punti singolari secondo la definizione proiettiva che non sono all&#39;infinito.</p>
-<p><strong>Corollario 46.29.</strong> Il piano tangente in un punto non singolare <span class="m">P</span> ha forma implicita omogenea
-<span class="m d">\frac{\partial p}{\partial X}(P)\,X+\frac{\partial p}{\partial Y}(P)\,Y+\frac{\partial p}{\partial Z}(P)\,Z+\frac{\partial p}{\partial T}(P)\,T=0.</span></p>
-<p><strong>Proposizione 46.30.</strong> Punti singolari e piani tangenti non dipendono dal riferimento cartesiano scelto.</p>
+<div class="callout esempio">
+
+<p><strong>Riconoscere un punto all&#39;infinito.</strong> <span class="m">S: x^2y+z^3-2x+1=0</span> (grado 3), omogenea <span class="m">X^2Y+Z^3-2XT^2+T^3=0</span>. Con <span class="m">T=0</span> resta <span class="m">X^2Y+Z^3=0</span>.</p>
+<ul>
+<li><span class="m">{}^t(1\ -1\ 1\ 0)</span>: <span class="m">1\cdot(-1)+1=0</span> ✓ ed è all&#39;infinito (<span class="m">T=0</span>): è un punto all&#39;infinito di <span class="m">S</span>.</li>
+<li><span class="m">{}^t(1\ 1\ 1\ 0)</span>: <span class="m">1+1=2\neq0</span>: non sta su <span class="m">S</span>.</li>
+<li><span class="m">{}^t(1\ -1\ 1\ 1)</span>: ha <span class="m">T=1\neq0</span>, quindi <strong>non è all&#39;infinito</strong> (è il punto <span class="m">{}^t(1\ -1\ 1)</span> dello spazio euclideo), qualunque cosa valga l&#39;equazione.</li>
+</ul>
+</div>
+
+<p><strong>Definizione 46.27.</strong> Un punto <span class="m">P={}^t(X_P\ Y_P\ Z_P\ T_P)</span> di <span class="m">S</span>, con equazione omogenea <span class="m">p(X,Y,Z,T)=0</span>, è <strong>singolare</strong> se si annullano in <span class="m">P</span> le <strong>quattro</strong> derivate parziali:
+<span class="m d">\frac{\partial p}{\partial X}(P)=\frac{\partial p}{\partial Y}(P)=\frac{\partial p}{\partial Z}(P)=\frac{\partial p}{\partial T}(P)=0.</span>
+(Per un polinomio omogeneo di grado <span class="m">d</span> vale l&#39;identità di Eulero <span class="m">X\frac{\partial p}{\partial X}+Y\frac{\partial p}{\partial Y}+Z\frac{\partial p}{\partial Z}+T\frac{\partial p}{\partial T}=d\cdot p</span>: se le quattro derivate si annullano in <span class="m">P</span>, automaticamente <span class="m">p(P)=0</span>, cioè <span class="m">P</span> sta su <span class="m">S</span>.)</p>
+<p><strong>Proposizione 46.28.</strong> I punti singolari di <span class="m">S</span> secondo la Definizione 46.21 (affine) sono <strong>esattamente</strong> i punti singolari secondo la Definizione 46.27 (proiettiva) che <strong>non</strong> sono all&#39;infinito. La definizione proiettiva in più trova gli eventuali punti singolari all&#39;infinito.</p>
+<p><strong>Corollario 46.29.</strong> Il piano tangente a <span class="m">S</span> (equazione omogenea <span class="m">p=0</span>) in un punto non singolare <span class="m">P</span> ha forma implicita omogenea
+<span class="m d">\frac{\partial p}{\partial X}(P)\,X+\frac{\partial p}{\partial Y}(P)\,Y+\frac{\partial p}{\partial Z}(P)\,Z+\frac{\partial p}{\partial T}(P)\,T=0.</span>
+Qui non serve scrivere <span class="m">(X-X_P)</span>: per l&#39;identità di Eulero il piano passa automaticamente per <span class="m">P</span>.</p>
+<p><strong>Proposizione 46.30.</strong> Punti singolari e piani tangenti <strong>non dipendono</strong> dal riferimento cartesiano scelto (sono proprietà geometriche della superficie, non delle coordinate).</p>
+<div class="callout esempio">
+
+<p><strong>Esercizio 46.4 (dispensa).</strong> <span class="m">S: 2x^2y-2xz+y=0</span>.</p>
+<ol>
+<li><strong>Equazione omogenea.</strong> Grado 3 (monomio <span class="m">x^2y</span>). <span class="m">2x^2y\to2X^2Y</span>, <span class="m">-2xz\to-2XZT</span>, <span class="m">y\to YT^2</span>: <span class="m">\;2X^2Y-2XZT+YT^2=0</span>.</li>
+<li><strong>Punti singolari.</strong> Derivate:
+<span class="m d">\frac{\partial p}{\partial X}=4XY-2ZT,\quad\frac{\partial p}{\partial Y}=2X^2+T^2,\quad\frac{\partial p}{\partial Z}=-2XT,\quad\frac{\partial p}{\partial T}=-2XZ+2YT.</span>
+Da <span class="m">2X^2+T^2=0</span> (somma di due quantità <span class="m">\ge0</span> con coefficienti positivi) segue <span class="m">X=0</span> e <span class="m">T=0</span>. Allora le altre tre derivate valgono <span class="m">0-0=0</span>, <span class="m">0</span>, <span class="m">0+0=0</span> per qualunque <span class="m">Y</span>, <span class="m">Z</span>. I punti singolari sono tutti quelli della <strong>retta all&#39;infinito</strong> <span class="m">X=0</span>, <span class="m">T=0</span>; nessun punto singolare al finito (coerente con la Proposizione 46.28: nel sistema affine <span class="m">4xy-2z=0</span>, <span class="m">2x^2+1=0</span>, <span class="m">-2x=0</span> la seconda equazione non ha soluzioni reali).</li>
+<li><strong>Piano tangente</strong> in <span class="m">P={}^t(0\ 0\ 1\ 1)</span> (cioè <span class="m">{}^t(0\ 0\ 1)</span>). <span class="m">P\in S</span>: <span class="m">0-0+0=0</span> ✓. Derivate in <span class="m">P</span>: <span class="m">0-2=-2</span>, <span class="m">0+1=1</span>, <span class="m">0</span>, <span class="m">0+0=0</span>. Piano: <span class="m">-2X+Y=0</span>. (Con la formula affine: <span class="m">-2(x-0)+1\cdot(y-0)+0=0</span>, stesso piano.)</li>
+</ol>
+</div>
+
 <div class="callout attenzione">
 
-<p>Un punto <span class="m">{}^t(X\ Y\ Z\ T)</span> con <span class="m">T\neq0</span> è un punto al finito, anche se soddisfa l&#39;equazione: è all&#39;infinito solo se <span class="m">T=0</span>. Per i punti singolari non basta che il punto stia sulla superficie: devono annullarsi <strong>tutte</strong> le derivate parziali.</p>
+<ul>
+<li>Un punto <span class="m">{}^t(X\ Y\ Z\ T)</span> con <span class="m">T\neq0</span> è un punto <strong>al finito</strong>: è all&#39;infinito solo se <span class="m">T=0</span>. E un punto all&#39;infinito di <span class="m">S</span> deve anche <strong>soddisfare</strong> l&#39;equazione con <span class="m">T=0</span>.</li>
+<li>Per i punti singolari non basta che il punto stia sulla superficie: devono annullarsi <strong>tutte</strong> le derivate parziali (tre in coordinate affini, quattro in coordinate omogenee). Basta una derivata non nulla perché il punto non sia singolare.</li>
+<li>Il grado si legge <strong>dopo</strong> aver svolto i prodotti, ed è il grado massimo dei monomi contando <strong>tutte</strong> le variabili (<span class="m">x^3y^2</span> ha grado 5, non 3).</li>
+<li>Nell&#39;equazione della sfera compare <span class="m">r^2</span>; e la sfera di centro <span class="m">C</span> tangente a <span class="m">\alpha</span> ha centro <span class="m">C</span>, non il vettore normale del piano.</li>
+</ul>
 </div>
 
 <div class="callout esame">
 
-<p>Il paniere chiede: equazione della sfera dato centro e raggio (attenzione ai segni e a <span class="m">r^2</span>), sfera di centro dato tangente a un piano (<span class="m">r=\operatorname{dist}(C,\alpha)</span>), posizione piano–sfera, grado di una superficie, punti all&#39;infinito, punti singolari. Domanda aperta: &quot;Parlare delle superfici algebriche&quot;.</p>
+<p>Il paniere chiede:</p>
+<ul>
+<li><strong>equazione della sfera dato centro e raggio</strong>: <span class="m">(x-x_C)^2+(y-y_C)^2+(z-z_C)^2=r^2</span> (attenzione ai segni delle coordinate e a <span class="m">r^2</span>);</li>
+<li><strong>sfera di centro dato tangente a un piano</strong>: <span class="m">r=\operatorname{dist}(C,\alpha)</span> con la formula punto–piano, poi <span class="m">r^2</span>;</li>
+<li>negli extra: posizione piano–sfera (confronto <span class="m">\operatorname{dist}(C,\alpha)</span> con <span class="m">r</span>), grado di una superficie, punti all&#39;infinito (porre <span class="m">T=0</span> nell&#39;equazione omogenea), punti singolari (annullare tutte le derivate).</li>
+</ul>
+<p>Domanda aperta: &quot;Parlare delle superfici algebriche&quot;: definizione 46.13 e abuso di notazione, grado, esempi (piani, sfere, coni, cilindri, coppie di piani), polinomio non determinato dall&#39;insieme (<span class="m">kp</span>, <span class="m">p^n</span>), punti complessi e reali, rette e piano tangente, punti singolari (definizione con le derivate, Proposizione 46.23 con la formula del piano tangente), equazione omogenea e punti all&#39;infinito, singolarità in coordinate omogenee e Proposizione 46.28; si possono citare sfere (equazione, posizione dei piani), coni, cilindri e sezioni coniche.</p>
+</div>
+
+<div class="callout sintesi">
+
+<ul>
+<li>Sfera: <span class="m">(x-x_C)^2+(y-y_C)^2+(z-z_C)^2=r^2</span>; <span class="m">x^2+y^2+z^2+\alpha x+\beta y+\gamma z+\delta=0</span> è una sfera di centro <span class="m">{}^t(-\frac\alpha2\ -\frac\beta2\ -\frac\gamma2)</span> se <span class="m">\frac{\alpha^2+\beta^2+\gamma^2}4-\delta&gt;0</span>.</li>
+<li>Piano e sfera: <span class="m">\operatorname{dist}(C,\alpha)&lt;r</span> secante, <span class="m">=r</span> tangente, <span class="m">&gt;r</span> esterno.</li>
+<li>Cono <span class="m">ax^2+by^2-z^2=0</span> (vertice, asse, generatrici); cilindro <span class="m">p(x,y)=0</span> con base conica non degenere; sezioni coniche (non danno coniche vuote né rette parallele) e sezioni cilindriche.</li>
+<li>Superficie algebrica di grado <span class="m">d</span> = polinomio di grado <span class="m">d</span> (e, per abuso, i suoi zeri).</li>
+<li>Punto singolare: tutte le derivate parziali nulle. Piano tangente in un punto non singolare: <span class="m">\sum\frac{\partial p}{\partial x_i}(P)(x_i-x_{i,P})=0</span>, o in omogenee <span class="m">\sum\frac{\partial p}{\partial X_i}(P)X_i=0</span>.</li>
+<li>Equazione omogenea <span class="m">T^dp(\frac XT,\frac YT,\frac ZT)=0</span>; punti all&#39;infinito con <span class="m">T=0</span>.</li>
+</ul>
 </div>

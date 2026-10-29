@@ -1,106 +1,210 @@
-<h1>Lezione 07 — Moto del proiettile e moto circolare</h1>
-<h2>L&#39;idea: due moti indipendenti</h2>
-<p>Un proiettile è un corpo lanciato con una velocità che ha una parte orizzontale. Senza attrito dell&#39;aria agisce solo la gravità, che è verticale. Quindi il moto si divide in due moti indipendenti:</p>
+<h1>Lezione 07 — Moto nel piano: il proiettile e l&#39;introduzione al moto circolare</h1>
+<p>Passiamo dal moto su una retta al <strong>moto in un piano</strong>. L&#39;idea chiave è che un moto piano si può scomporre in <strong>due moti rettilinei indipendenti</strong> lungo gli assi <span class="m">x</span> e <span class="m">y</span>, ciascuno descritto con le formule della lezione 6. L&#39;esempio più importante è il <strong>moto del proiettile</strong>: un corpo lanciato che si muove solo sotto l&#39;azione della gravità. Nella seconda parte si introduce il <strong>moto circolare</strong> e si spiega perché, anche quando la velocità è costante in modulo, c&#39;è un&#39;accelerazione (diretta verso il centro).</p>
+<h2>Il moto in un piano</h2>
+<p>Nel piano la posizione si può dare in coordinate cartesiane, <span class="m">\vec r(t) = [x(t),\ y(t)]</span>, oppure polari, <span class="m">\vec r(t) = [r(t),\ \theta(t)]</span>, legate da <span class="m">x = r\cos\theta</span>, <span class="m">y = r\sin\theta</span> (lezione 5).</p>
+<p>In coordinate cartesiane basta estendere a due dimensioni quanto visto per il moto rettilineo. In ogni istante:
+<span class="m d">\vec v = v_x\,\hat i + v_y\,\hat j \qquad v_x = \frac{dx}{dt},\quad v_y = \frac{dy}{dt}</span>
+<span class="m d">\vec a = a_x\,\hat i + a_y\,\hat j \qquad a_x = \frac{dv_x}{dt} = \frac{d^2x}{dt^2},\quad a_y = \frac{dv_y}{dt} = \frac{d^2y}{dt^2}</span>
+Le equazioni per <span class="m">x</span> e per <span class="m">y</span> sono <strong>separate</strong>: ciò che succede lungo <span class="m">x</span> dipende solo da <span class="m">a_x</span>, ciò che succede lungo <span class="m">y</span> solo da <span class="m">a_y</span>. Il <strong>tempo</strong> è l&#39;unica cosa che i due moti hanno in comune. Questo è il <strong>principio di indipendenza dei moti</strong> (Galileo).</p>
+<h2>Il moto del proiettile</h2>
+<h3>Che cos&#39;è un proiettile</h3>
+<p>Si chiama <strong>proiettile</strong> qualsiasi corpo lanciato con una velocità che ha una <strong>componente orizzontale</strong> (un pallone calciato, un sasso lanciato, una palla di cannone). Il suo moto fu spiegato da <strong>Galileo</strong>. Lo studiamo con queste ipotesi:</p>
 <ul>
-<li><strong>orizzontale (x)</strong>: nessuna accelerazione. Moto <strong>uniforme</strong>, <span class="m">v_x</span> costante.</li>
-<li><strong>verticale (y)</strong>: accelerazione <span class="m">g</span> verso il basso. Moto <strong>uniformemente accelerato</strong>.</li>
+<li>il corpo è <strong>puntiforme</strong>;</li>
+<li>non c&#39;è <strong>resistenza dell&#39;aria</strong>;</li>
+<li>l&#39;unica accelerazione è quella di <strong>gravità</strong>, costante, verticale verso il basso, di modulo <span class="m">g = 9{,}8\,\mathrm{m/s^2}</span>.</li>
 </ul>
-<p>L&#39;accelerazione è sempre <span class="m">g</span>, verso il basso, in ogni punto. Anche nel punto più alto. Non dipende dalla massa né da quanto forte è stato il lancio.</p>
+<h3>Due moti indipendenti</h3>
+<p>Poiché l&#39;accelerazione è solo verticale:</p>
+<ul>
+<li>lungo l&#39;<strong>asse orizzontale</strong> <span class="m">x</span>: <span class="m">a_x = 0</span>. Moto <strong>rettilineo uniforme</strong>, legge <span class="m">s = s_0 + v\,t</span>; la componente <span class="m">v_x</span> della velocità <strong>resta costante</strong> per tutto il volo;</li>
+<li>lungo l&#39;<strong>asse verticale</strong> <span class="m">y</span>: <span class="m">a_y = -g</span> (con <span class="m">y</span> verso l&#39;alto). Moto <strong>uniformemente accelerato</strong>, legge <span class="m">s = s_0 + v_0t + \tfrac12at^2</span>; cambia solo <span class="m">v_y</span>.</li>
+</ul>
+<p>L&#39;accelerazione è <strong>sempre la stessa</strong>, <span class="m">\vec g</span>, diretta verso il basso, in <strong>ogni punto</strong> della traiettoria, compreso il punto più alto. Non dipende dalla massa del corpo né da quanto forte è stato lanciato: la forza del lancio agisce solo durante il contatto e determina la velocità iniziale, poi cessa.</p>
 <p>La traiettoria è una <strong>parabola</strong>.</p>
 <h2>Lancio orizzontale da un&#39;altezza</h2>
-<p>Un corpo parte da quota <span class="m">h</span> con velocità orizzontale <span class="m">v_0</span>. Si prende l&#39;origine nel punto di lancio e l&#39;asse y verso il basso:
+<p>È il caso studiato nella dispensa: il proiettile viene sparato <strong>orizzontalmente</strong> con velocità <span class="m">v_0</span> da un&#39;altezza <span class="m">h</span>.</p>
+<h3>Leggi orarie</h3>
+<p>Si mette l&#39;origine nel punto di lancio, l&#39;asse <span class="m">x</span> orizzontale nel verso del lancio e (per comodità) l&#39;asse <span class="m">y</span> <strong>verso il basso</strong>, così <span class="m">y</span> misura di quanto il corpo è sceso. Le velocità iniziali sono <span class="m">v_{0x} = v_0</span> e <span class="m">v_{0y} = 0</span>:
 <span class="m d">x = v_0\,t \qquad y = \tfrac12\,g\,t^2</span>
 dove:</p>
 <ul>
-<li><span class="m">x</span> = distanza orizzontale (m);</li>
-<li><span class="m">y</span> = quanto è sceso (m);</li>
+<li><span class="m">x</span> = distanza orizzontale dal punto di lancio (m);</li>
+<li><span class="m">y</span> = quanto il corpo è sceso sotto la quota di lancio (m);</li>
 <li><span class="m">v_0</span> = velocità di lancio orizzontale (m/s);</li>
-<li><span class="m">g = 9{,}8\,\mathrm{m/s^2}</span>.</li>
+<li><span class="m">g = 9{,}8\,\mathrm{m/s^2}</span>; <span class="m">t</span> = tempo dal lancio (s).</li>
 </ul>
-<p><strong>Traiettoria.</strong> Da <span class="m">t = x/v_0</span> si ottiene <span class="m">y = \dfrac{g}{2v_0^2}\,x^2</span>: una parabola.</p>
-<p><strong>Tempo di volo.</strong> Si pone <span class="m">y = h</span>:
+<h3>Equazione della traiettoria</h3>
+<p>Si elimina il tempo. Dalla prima equazione <span class="m">t = x/v_0</span>; sostituendo nella seconda:
+<span class="m d">y = \frac12\,g\left(\frac{x}{v_0}\right)^2 = \frac{g}{2v_0^2}\,x^2</span>
+È l&#39;equazione di una <strong>parabola</strong> (<span class="m">y = k\,x^2</span> con <span class="m">k = g/(2v_0^2)</span>) con il vertice nel punto di lancio. Con l&#39;asse <span class="m">y</span> verso l&#39;alto e l&#39;origine a terra si scrive <span class="m">y = h - \dfrac{g}{2v_0^2}x^2</span>. Più <span class="m">v_0</span> è grande, più la parabola è &quot;aperta&quot;.</p>
+<h3>Tempo di volo</h3>
+<p>Il corpo tocca terra quando è sceso di <span class="m">h</span>: si pone <span class="m">y = h</span> nella seconda equazione, <span class="m">h = \tfrac12 g t^2</span>, e si ricava
 <span class="m d">t_v = \sqrt{\frac{2h}{g}}</span>
-Dipende <strong>solo dall&#39;altezza</strong>, non da <span class="m">v_0</span>. È lo stesso tempo di un corpo lasciato cadere da fermo.</p>
-<p><strong>Gittata</strong> (distanza orizzontale raggiunta):
-<span class="m d">x_G = v_0\,\sqrt{\frac{2h}{g}}</span>
-A parità di altezza è proporzionale alla velocità di lancio.</p>
-<p><strong>Velocità all&#39;impatto.</strong> <span class="m">v_x = v_0</span> resta costante; <span class="m">v_y = gt_v = \sqrt{2gh}</span>. Il modulo è <span class="m">v = \sqrt{v_x^2 + v_y^2}</span>.</p>
+Il tempo di volo <strong>non dipende dalla velocità di lancio</strong>, ma <strong>solo dall&#39;altezza</strong> <span class="m">h</span> (e da <span class="m">g</span>). È <strong>lo stesso tempo di caduta</strong> di un corpo lasciato libero di cadere verticalmente dalla stessa altezza: in verticale i due corpi partono entrambi con <span class="m">v_y = 0</span> e hanno la stessa accelerazione.</p>
+<h3>Gittata</h3>
+<p>La <strong>gittata</strong> è la distanza orizzontale percorsa fino all&#39;impatto. Si sostituisce il tempo di volo nella prima equazione:
+<span class="m d">x_G = v_0\,t_v = v_0\,\sqrt{\frac{2h}{g}}</span>
+A parità di altezza la gittata è <strong>direttamente proporzionale alla velocità di lancio</strong>: velocità doppia, gittata doppia.</p>
+<h3>Velocità all&#39;impatto</h3>
+<p>La componente orizzontale resta <span class="m">v_x = v_0</span> per tutto il volo. Quella verticale cresce come in una caduta libera: <span class="m">v_y = g\,t</span>; all&#39;impatto <span class="m">v_y = g\,t_v = g\sqrt{2h/g} = \sqrt{2gh}</span>. Con Pitagora:
+<span class="m d">v = \sqrt{v_x^2 + v_y^2} = \sqrt{v_0^2 + 2gh}</span>
+L&#39;angolo <span class="m">\beta</span> della velocità d&#39;impatto sotto l&#39;orizzontale è dato da <span class="m">\tan\beta = \dfrac{v_y}{v_x} = \dfrac{\sqrt{2gh}}{v_0}</span>.</p>
 <div class="callout esempio">
 
-<ul>
-<li>Torre di 25 m, <span class="m">v_0 = 200\,\mathrm{m/s}</span>: <span class="m">t_v = \sqrt{50/9{,}8} \approx 2{,}26\,\mathrm s</span>.</li>
-<li>Torre di 40 m, <span class="m">v_0 = 150\,\mathrm{m/s}</span>: <span class="m">t_v \approx 2{,}86\,\mathrm s</span>, gittata <span class="m">\approx 150\cdot 2{,}86 \approx 428\,\mathrm m</span>.</li>
-<li>Sasso lanciato in orizzontale da 20 m, arriva a 45° dalla verticale. All&#39;impatto <span class="m">v_y = \sqrt{2\cdot 9{,}8\cdot 20} \approx 19{,}8\,\mathrm{m/s}</span>. A 45° vale <span class="m">v_x = v_y</span>, quindi <span class="m">v_0 = 19{,}8\,\mathrm{m/s}</span>.</li>
-</ul>
+<p><strong>Proiettile dalla torre (esercizio della dispensa).</strong> Un proiettile è sparato orizzontalmente dall&#39;alto di una torre di <span class="m">25\,\mathrm m</span> a <span class="m">200\,\mathrm{m/s}</span>. Calcolare tempo di caduta, gittata e velocità all&#39;impatto (la dispensa usa <span class="m">g = 9{,}81\,\mathrm{m/s^2}</span>).</p>
+<p>Dati: <span class="m">h = 25\,\mathrm m</span>, <span class="m">v_0 = 200\,\mathrm{m/s}</span>.</p>
+<ol>
+<li>Tempo di volo: <span class="m">t_v = \sqrt{\dfrac{2\cdot 25}{9{,}81}} = \sqrt{5{,}10} \approx 2{,}26\,\mathrm s</span>.</li>
+<li>Gittata: <span class="m">x_G = v_0\,t_v = 200\cdot 2{,}26 \approx 452\,\mathrm m</span>.</li>
+<li>Velocità verticale all&#39;impatto: <span class="m">v_y = g\,t_v = 9{,}81\cdot 2{,}26 \approx 22{,}1\,\mathrm{m/s}</span> (oppure <span class="m">\sqrt{2\cdot 9{,}81\cdot 25} = \sqrt{490{,}5} \approx 22{,}1</span>).</li>
+<li>Velocità totale: <span class="m">v = \sqrt{200^2 + 22{,}1^2} = \sqrt{40\,000 + 490} \approx 201\,\mathrm{m/s}</span>.</li>
+</ol>
+<p>Il tempo di caduta (2,26 s) sarebbe identico anche con <span class="m">v_0 = 10\,\mathrm{m/s}</span>.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Gittata da una torre di 40 m.</strong> <span class="m">v_0 = 150\,\mathrm{m/s}</span>, <span class="m">h = 40\,\mathrm m</span>:
+<span class="m d">t_v = \sqrt{\frac{2\cdot 40}{9{,}8}} = \sqrt{8{,}16} \approx 2{,}86\,\mathrm s \qquad x_G = 150\cdot 2{,}857 \approx 428\,\mathrm m</span></p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Velocità di lancio dall&#39;angolo d&#39;impatto.</strong> Una pietra lanciata orizzontalmente da un&#39;altura di <span class="m">20\,\mathrm m</span> sopra il mare entra in acqua con velocità inclinata di <span class="m">45°</span> rispetto alla verticale. Con che velocità è stata lanciata?</p>
+<ol>
+<li>All&#39;impatto <span class="m">v_y = \sqrt{2gh} = \sqrt{2\cdot 9{,}8\cdot 20} = \sqrt{392} \approx 19{,}8\,\mathrm{m/s}</span>.</li>
+<li>A <span class="m">45°</span> (dalla verticale, quindi anche dall&#39;orizzontale) le due componenti sono uguali: <span class="m">v_x = v_y</span>.</li>
+<li>Ma <span class="m">v_x</span> è costante ed è la velocità di lancio: <span class="m">v_0 = 19{,}8\,\mathrm{m/s}</span>.</li>
+</ol>
 </div>
 
 <div class="callout attenzione">
 
-<p>Un proiettile sparato in orizzontale e un sasso lasciato cadere dalla stessa altezza, nello stesso istante, toccano terra <strong>insieme</strong>. In verticale partono entrambi con <span class="m">v_y = 0</span> e hanno la stessa <span class="m">g</span>.</p>
+<p><strong>Il proiettile e la pietra.</strong> Un fucile spara orizzontalmente un proiettile; nello stesso istante una pesante pietra viene lasciata cadere dalla stessa altezza. <strong>Toccano terra insieme</strong>: in verticale entrambi partono con <span class="m">v_y = 0</span> e hanno la stessa accelerazione <span class="m">g</span>; la grande velocità orizzontale del proiettile non cambia il suo moto verticale, e la massa non conta.</p>
 </div>
 
 <h2>Lancio obliquo</h2>
-<p>Un corpo parte da terra con velocità <span class="m">v_0</span> inclinata di <span class="m">\theta</span> sull&#39;orizzontale. Le componenti iniziali sono:
+<p>Ora il corpo parte da terra (origine, <span class="m">y</span> verso l&#39;alto) con velocità <span class="m">v_0</span> inclinata di un angolo <span class="m">\theta</span> sull&#39;orizzontale.</p>
+<h3>Componenti e leggi orarie</h3>
+<p>Le componenti iniziali della velocità si ricavano con la trigonometria:
 <span class="m d">v_{0x} = v_0\cos\theta \qquad v_{0y} = v_0\sin\theta</span>
-Nel tempo:
-<span class="m d">v_x = v_0\cos\theta \ (\text{costante}) \qquad v_y = v_0\sin\theta - g\,t</span></p>
-<p>Risultati principali:</p>
+Lungo <span class="m">x</span> il moto è uniforme, lungo <span class="m">y</span> uniformemente accelerato con <span class="m">a_y = -g</span>:
+<span class="m d">v_x = v_0\cos\theta\ \ (\text{costante}) \qquad v_y = v_0\sin\theta - g\,t</span>
+<span class="m d">x = v_0\cos\theta\;t \qquad y = v_0\sin\theta\;t - \tfrac12\,g\,t^2</span></p>
+<p><strong>Traiettoria.</strong> Da <span class="m">t = x/(v_0\cos\theta)</span>, sostituendo:
+<span class="m d">y = x\tan\theta - \frac{g}{2v_0^2\cos^2\theta}\,x^2</span>
+una parabola con la concavità verso il basso.</p>
+<h3>Punto più alto</h3>
+<p>Nel punto più alto la velocità è <strong>orizzontale</strong>: <span class="m">v_y = 0</span> (mentre <span class="m">v_x = v_0\cos\theta</span> non è zero).</p>
 <ul>
-<li><strong>tempo per arrivare in cima</strong>: <span class="m">t_{max} = \dfrac{v_0\sin\theta}{g}</span> (in cima <span class="m">v_y = 0</span>);</li>
-<li><strong>altezza massima</strong>: <span class="m">h_{max} = \dfrac{(v_0\sin\theta)^2}{2g}</span>;</li>
-<li><strong>tempo di volo</strong> (ritorno alla stessa quota): <span class="m">2\,t_{max}</span>;</li>
-<li><strong>gittata</strong>:
-<span class="m d">G = \frac{v_0^2\,\sin(2\theta)}{g}</span>
-dove <span class="m">v_0</span> = velocità di lancio (m/s), <span class="m">\theta</span> = angolo di lancio, <span class="m">g = 9{,}8\,\mathrm{m/s^2}</span>.</li>
+<li><strong>Tempo di salita</strong>: <span class="m">0 = v_0\sin\theta - g\,t_{max} \Rightarrow t_{max} = \dfrac{v_0\sin\theta}{g}</span>.</li>
+<li><strong>Altezza massima</strong>: si sostituisce <span class="m">t_{max}</span> in <span class="m">y(t)</span>:
+<span class="m d">h_{max} = v_0\sin\theta\cdot\frac{v_0\sin\theta}{g} - \frac12 g\frac{(v_0\sin\theta)^2}{g^2} = \frac{(v_0\sin\theta)^2}{g} - \frac{(v_0\sin\theta)^2}{2g} = \frac{(v_0\sin\theta)^2}{2g}</span>
+(è la stessa formula del lancio verticale, con la sola componente verticale <span class="m">v_0\sin\theta</span>).</li>
 </ul>
-<p>La gittata dipende solo da <strong>velocità e angolo</strong> di lancio, non dalla massa. È massima a <span class="m">\theta = 45°</span>.</p>
+<h3>Tempo di volo e gittata</h3>
+<p>Il corpo torna alla quota di partenza quando <span class="m">y = 0</span>:
+<span class="m d">t\left(v_0\sin\theta - \tfrac12 g t\right) = 0 \;\Rightarrow\; t = 0 \ \text{(partenza)} \quad \text{oppure} \quad t_v = \frac{2v_0\sin\theta}{g} = 2\,t_{max}</span>
+Il moto è simmetrico: sale e scende nello stesso tempo.</p>
+<p>La <strong>gittata</strong> è la distanza orizzontale percorsa tra il punto di lancio e il punto in cui il proiettile torna <strong>alla stessa quota</strong>:
+<span class="m d">G = v_{0x}\,t_v = v_0\cos\theta\cdot\frac{2v_0\sin\theta}{g} = \frac{v_0^2\,(2\sin\theta\cos\theta)}{g} = \frac{v_0^2\,\sin(2\theta)}{g}</span>
+(si è usata la formula di duplicazione <span class="m">2\sin\theta\cos\theta = \sin 2\theta</span>), dove <span class="m">v_0</span> = velocità di lancio (m/s), <span class="m">\theta</span> = angolo di lancio, <span class="m">g = 9{,}8\,\mathrm{m/s^2}</span>.</p>
+<p>Conseguenze:</p>
+<ul>
+<li>la gittata dipende <strong>solo dalla velocità di lancio e dall&#39;angolo</strong> (e da <span class="m">g</span>), <strong>non dalla massa</strong>;</li>
+<li>è <strong>massima per <span class="m">\theta = 45°</span></strong>, perché lì <span class="m">\sin 2\theta = \sin 90° = 1</span>: <span class="m">G_{max} = v_0^2/g</span>;</li>
+<li>angoli <strong>complementari</strong> (<span class="m">30°</span> e <span class="m">60°</span>, <span class="m">20°</span> e <span class="m">70°</span>) danno la <strong>stessa gittata</strong>, perché <span class="m">\sin(2\theta) = \sin(180° - 2\theta)</span>; quello più alto sale di più e resta in aria più a lungo.</li>
+</ul>
 <div class="callout esempio">
 
-<ul>
-<li>Pallone a 20 m/s, 30°: <span class="m">v_{0y} = 20\sin 30° = 10\,\mathrm{m/s}</span>. Arriva in cima dopo <span class="m">10/9{,}8 \approx 1{,}0\,\mathrm s</span>.</li>
-<li>Proiettile a 30 m/s, 60°: <span class="m">v_x = 30\cos 60° = 15\,\mathrm{m/s}</span>, dopo 1,6 s come in ogni altro istante.</li>
-<li>In un istante <span class="m">v_x = 30\,\mathrm{m/s}</span>, <span class="m">v_y = 40\,\mathrm{m/s}</span>. Dopo 1,8 s: <span class="m">v_x = 30</span>, <span class="m">v_y = 40 - 9{,}8\cdot 1{,}8 \approx 22{,}4\,\mathrm{m/s}</span>. Modulo <span class="m">\sqrt{30^2 + 22{,}4^2} \approx 37\,\mathrm{m/s}</span>.</li>
-</ul>
+<p><strong>Pallone calciato</strong> a <span class="m">20\,\mathrm{m/s}</span> con angolo di <span class="m">30°</span>.</p>
+<ol>
+<li><span class="m">v_{0y} = 20\sin 30° = 20\cdot 0{,}5 = 10\,\mathrm{m/s}</span>; <span class="m">v_{0x} = 20\cos 30° \approx 17{,}3\,\mathrm{m/s}</span>.</li>
+<li>Tempo per raggiungere l&#39;altezza massima: <span class="m">t_{max} = 10/9{,}8 \approx 1{,}0\,\mathrm s</span>.</li>
+<li>Altezza massima: <span class="m">h_{max} = 10^2/(2\cdot 9{,}8) \approx 5{,}1\,\mathrm m</span>.</li>
+<li>Gittata: <span class="m">G = 20^2\sin 60°/9{,}8 = 400\cdot 0{,}866/9{,}8 \approx 35{,}3\,\mathrm m</span> (controllo: <span class="m">v_{0x}\cdot 2t_{max} = 17{,}3\cdot 2{,}04 \approx 35{,}3</span>).</li>
+</ol>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Velocità orizzontale in un istante qualsiasi.</strong> Proiettile lanciato a <span class="m">30\,\mathrm{m/s}</span> a <span class="m">60°</span> sul suolo. Dopo <span class="m">1{,}6\,\mathrm s</span> la velocità orizzontale è ancora quella iniziale:
+<span class="m d">v_x = 30\cos 60° = 30\cdot 0{,}5 = 15\,\mathrm{m/s}</span>
+Il tempo è un dato inutile per <span class="m">v_x</span>: cambierebbe solo <span class="m">v_y = 30\sin 60° - 9{,}8\cdot 1{,}6 \approx 26 - 15{,}7 = 10{,}3\,\mathrm{m/s}</span>.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Modulo della velocità dopo un certo tempo.</strong> In un istante il proiettile ha <span class="m">v_x = 30\,\mathrm{m/s}</span> e <span class="m">v_y = 40\,\mathrm{m/s}</span> (verso l&#39;alto). Dopo <span class="m">1{,}8\,\mathrm s</span>:</p>
+<ol>
+<li><span class="m">v_x = 30\,\mathrm{m/s}</span> (non cambia);</li>
+<li><span class="m">v_y = 40 - 9{,}8\cdot 1{,}8 = 40 - 17{,}6 = 22{,}4\,\mathrm{m/s}</span>;</li>
+<li><span class="m">v = \sqrt{30^2 + 22{,}4^2} = \sqrt{900 + 500} \approx 37\,\mathrm{m/s}</span>.</li>
+</ol>
+<p>(All&#39;inizio il modulo era <span class="m">\sqrt{900 + 1600} = 50\,\mathrm{m/s}</span>: il proiettile sta salendo e rallenta.)</p>
 </div>
 
 <div class="callout attenzione">
 
-<p>Nel moto del proiettile la gravità cambia solo <span class="m">v_y</span>. La componente <span class="m">v_x</span> resta costante. Il proiettile non &quot;comincia a cadere quando finisce la spinta&quot;: cade fin dall&#39;inizio.</p>
+<ul>
+<li>La gravità cambia <strong>solo</strong> <span class="m">v_y</span>; <span class="m">v_x</span> resta costante per tutto il volo.</li>
+<li>Il proiettile <strong>non</strong> &quot;comincia a cadere quando finisce la spinta&quot;: cade fin dall&#39;inizio, perché <span class="m">g</span> agisce dal primo istante.</li>
+<li>Nel punto più alto la velocità <strong>non è zero</strong> (resta <span class="m">v_x</span>), ma l&#39;accelerazione è <span class="m">g</span> verso il basso.</li>
+<li>La formula <span class="m">G = v_0^2\sin 2\theta/g</span> vale solo per ritorno <strong>alla stessa quota</strong>; per il lancio orizzontale da un&#39;altezza si usa <span class="m">v_0\sqrt{2h/g}</span>.</li>
+</ul>
 </div>
 
-<h2>Moto circolare: perché c&#39;è accelerazione</h2>
-<p>Nel moto circolare la traiettoria è una circonferenza. Se il modulo della velocità è costante, il moto è <strong>circolare uniforme</strong>.</p>
-<p>Anche così c&#39;è un&#39;accelerazione. Il motivo: la velocità è un vettore. Nel moto circolare la sua <strong>direzione cambia</strong> di continuo, perché resta sempre tangente alla circonferenza. Una velocità che cambia direzione è una velocità che cambia, quindi c&#39;è accelerazione.</p>
-<p>Questa accelerazione punta <strong>verso il centro</strong> e si chiama <strong>centripeta</strong>:
+<h2>Il moto circolare: perché c&#39;è un&#39;accelerazione</h2>
+<p>Il <strong>moto circolare</strong> è un moto piano in cui la traiettoria è una <strong>circonferenza</strong>. Se il <strong>modulo</strong> della velocità è costante il moto è <strong>circolare uniforme</strong>; altrimenti è <strong>circolare vario</strong>. Conviene descriverlo in coordinate polari: il raggio <span class="m">r = R</span> è fisso e il moto dipende solo dall&#39;angolo <span class="m">\theta(t)</span>.</p>
+<h3>La velocità cambia direzione</h3>
+<p>Nel moto circolare uniforme il modulo <span class="m">v</span> della velocità è costante, ma la velocità è un <strong>vettore</strong>, ed è sempre <strong>tangente</strong> alla circonferenza. Man mano che il punto gira, la tangente ruota: la <strong>direzione della velocità cambia continuamente</strong>. Una velocità che cambia direzione è una velocità che cambia; e l&#39;accelerazione è proprio la variazione del vettore velocità nel tempo. Quindi <strong>c&#39;è un&#39;accelerazione anche se il modulo della velocità non cambia</strong>.</p>
+<h3>Quanto vale e dove punta (derivazione geometrica)</h3>
+<p>Siano <span class="m">\vec v_1</span> e <span class="m">\vec v_2</span> le velocità in due istanti separati da <span class="m">\Delta t</span>. Hanno lo stesso modulo <span class="m">v</span> e formano tra loro lo stesso angolo <span class="m">\Delta\theta</span> di cui ha ruotato il raggio (perché ciascuna è perpendicolare al suo raggio). Mettendole con la coda nello stesso punto, <span class="m">\vec v_1</span>, <span class="m">\vec v_2</span> e <span class="m">\Delta\vec v = \vec v_2 - \vec v_1</span> formano un triangolo isoscele con angolo al vertice <span class="m">\Delta\theta</span>:
+<span class="m d">|\Delta\vec v| = 2v\sin\frac{\Delta\theta}{2} \approx v\,\Delta\theta \quad\text{per } \Delta\theta \text{ piccolo}</span>
+In un tempo <span class="m">\Delta t</span> il punto percorre l&#39;arco <span class="m">v\,\Delta t = R\,\Delta\theta</span>, quindi <span class="m">\Delta\theta = v\Delta t/R</span>. Allora
+<span class="m d">\frac{|\Delta\vec v|}{\Delta t} \approx \frac{v\,\Delta\theta}{\Delta t} = \frac{v}{\Delta t}\cdot\frac{v\,\Delta t}{R} = \frac{v^2}{R}</span>
+Al limite <span class="m">\Delta t \to 0</span>, <span class="m">\Delta\vec v</span> diventa <strong>perpendicolare</strong> alla velocità e punta <strong>verso il centro</strong> della circonferenza. Questa accelerazione si chiama <strong>centripeta</strong>:
 <span class="m d">a_c = \frac{v^2}{R} = \omega^2 R</span>
 dove:</p>
 <ul>
-<li><span class="m">v</span> = velocità (m/s);</li>
-<li><span class="m">R</span> = raggio (m);</li>
-<li><span class="m">\omega</span> = velocità angolare (rad/s).</li>
+<li><span class="m">a_c</span> = accelerazione centripeta (m/s²);</li>
+<li><span class="m">v</span> = modulo della velocità (m/s);</li>
+<li><span class="m">R</span> = raggio della circonferenza (m);</li>
+<li><span class="m">\omega</span> = velocità angolare (rad/s), con <span class="m">v = \omega R</span>.</li>
 </ul>
-<p>Se anche il modulo della velocità cambia (moto circolare vario), si aggiunge un&#39;accelerazione <strong>tangenziale</strong> <span class="m">a_t = dv/dt</span>.</p>
+<p>Il suo <strong>modulo è costante</strong>, la sua <strong>direzione ruota</strong> con il punto (punta sempre al centro). Per mantenere un corpo in moto circolare serve quindi una <strong>forza</strong> diretta verso il centro (tensione di un filo, attrito delle gomme in curva, gravità per i pianeti), di modulo <span class="m">F = m\,v^2/R</span>.</p>
+<p>Se anche il modulo della velocità cambia (moto circolare vario) si aggiunge un&#39;accelerazione <strong>tangenziale</strong> <span class="m">a_t = dv/dt</span>, lungo la velocità.</p>
 <h2>Velocità angolare</h2>
-<p>La velocità angolare dice quanto angolo si spazza al secondo:
-<span class="m d">\omega = \frac{d\theta}{dt} = \frac{2\pi}{T} = 2\pi f \qquad v = \omega R</span>
-dove <span class="m">\theta</span> = angolo (rad), <span class="m">T</span> = periodo (s), <span class="m">f</span> = frequenza (Hz). Si misura in rad/s ed è detta anche pulsazione.</p>
+<p>La <strong>velocità angolare</strong> dice quanto angolo spazza il raggio vettore in un secondo:
+<span class="m d">\omega = \frac{d\theta}{dt}</span>
+Si misura in <strong>rad/s</strong> ed è detta anche <strong>pulsazione</strong>. Nel moto circolare uniforme è costante e, poiché in un periodo <span class="m">T</span> si spazza un giro (<span class="m">2\pi</span> rad):
+<span class="m d">\omega = \frac{2\pi}{T} = 2\pi f \qquad v = \omega\,R</span>
+con <span class="m">T</span> = periodo (s) e <span class="m">f</span> = frequenza (Hz). (Approfondimento nella lezione 8.)</p>
 <div class="callout esempio">
 
-<p>Centrifuga a 60 000 giri/min <span class="m">= 1000</span> giri/s. <span class="m">\omega = 2\pi\cdot 1000 \approx 6283\,\mathrm{rad/s}</span>.</p>
+<p><strong>Centrifuga.</strong> Il rotore compie <span class="m">60\,000</span> giri al minuto. In un secondo: <span class="m">60\,000/60 = 1000</span> giri, quindi <span class="m">f = 1000\,\mathrm{Hz}</span>.
+<span class="m d">\omega = 2\pi f = 2\pi\cdot 1000 \approx 6283\,\mathrm{rad/s}</span></p>
 </div>
 
 <div class="callout esame">
 
-<p>Aperte frequenti: cos&#39;è la gittata e come si calcola; discutere il lancio orizzontale (due moti, parabola, tempo di volo, gittata); spiegare perché nel moto circolare uniforme c&#39;è accelerazione.</p>
+<p>Chiuse: accelerazione nel punto più alto (verso il basso, è <span class="m">g</span>); modulo della velocità dopo un tempo (aggiornare solo <span class="m">v_y</span>, poi Pitagora); tempo per l&#39;altezza massima (<span class="m">v_0\sin\theta/g</span>); velocità orizzontale in un istante qualsiasi (<span class="m">v_0\cos\theta</span>, costante); velocità di lancio dall&#39;angolo di impatto; tempo di caduta da una torre (<span class="m">\sqrt{2h/g}</span>, indipendente da <span class="m">v_0</span>); gittata dalla torre (<span class="m">v_0\sqrt{2h/g}</span>); proiettile e pietra arrivano insieme; traiettoria parabolica; la componente <span class="m">x</span> della velocità resta costante; la gittata dipende da angolo e velocità di lancio; velocità angolare di una centrifuga in giri al minuto.</p>
+<p>Aperte:</p>
+<ul>
+<li><strong>Gittata</strong>: distanza orizzontale tra lancio e ritorno alla stessa quota; scomposizione <span class="m">v_{0x} = v_0\cos\theta</span>, <span class="m">v_{0y} = v_0\sin\theta</span>; tempo di volo <span class="m">2v_0\sin\theta/g</span>; <span class="m">G = v_0^2\sin 2\theta/g</span>; massima a <span class="m">45°</span>, uguale per angoli complementari, indipendente dalla massa.</li>
+<li><strong>Proiettile lanciato orizzontalmente</strong>: moto uniforme in <span class="m">x</span> (<span class="m">x = v_0t</span>) e uniformemente accelerato in <span class="m">y</span> (<span class="m">y = \tfrac12gt^2</span>); traiettoria parabolica <span class="m">y = gx^2/(2v_0^2)</span>; tempo di caduta <span class="m">\sqrt{2h/g}</span> (solo dall&#39;altezza, come in caduta libera); gittata <span class="m">v_0\sqrt{2h/g}</span>; velocità d&#39;impatto <span class="m">\sqrt{v_0^2 + 2gh}</span>.</li>
+<li><strong>Perché nel moto circolare uniforme c&#39;è accelerazione</strong>: la velocità è un vettore tangente, la sua direzione cambia; l&#39;accelerazione è centripeta, perpendicolare alla velocità, verso il centro, <span class="m">a_c = v^2/R = \omega^2R</span>, modulo costante; serve una forza centripeta <span class="m">mv^2/R</span>.</li>
+</ul>
 </div>
 
 <div class="callout sintesi">
 
 <ul>
-<li>Proiettile = moto uniforme in x + uniformemente accelerato in y; traiettoria parabolica.</li>
-<li>Accelerazione sempre <span class="m">g</span> verso il basso, anche in cima; <span class="m">v_x</span> costante.</li>
-<li>Lancio orizzontale: <span class="m">t_v = \sqrt{2h/g}</span> (solo dall&#39;altezza), gittata <span class="m">v_0\sqrt{2h/g}</span>.</li>
-<li>Lancio obliquo: <span class="m">t_{max} = v_0\sin\theta/g</span>, <span class="m">G = v_0^2\sin 2\theta/g</span>; non dipende dalla massa.</li>
-<li>Moto circolare uniforme: la direzione di <span class="m">\vec v</span> cambia → <span class="m">a_c = v^2/R</span> verso il centro.</li>
+<li>Moto piano = due moti indipendenti lungo <span class="m">x</span> e <span class="m">y</span>, legati solo dal tempo.</li>
+<li>Proiettile: <span class="m">a_x = 0</span> (uniforme, <span class="m">v_x</span> costante), <span class="m">a_y = -g</span> (uniformemente accelerato); traiettoria parabolica; accelerazione sempre <span class="m">g</span> verso il basso, anche in cima; non dipende dalla massa.</li>
+<li>Lancio orizzontale da <span class="m">h</span>: <span class="m">x = v_0t</span>, <span class="m">y = \tfrac12gt^2</span>, <span class="m">y = gx^2/(2v_0^2)</span>; <span class="m">t_v = \sqrt{2h/g}</span> (solo dall&#39;altezza); <span class="m">x_G = v_0\sqrt{2h/g}</span>; <span class="m">v_{imp} = \sqrt{v_0^2 + 2gh}</span>.</li>
+<li>Lancio obliquo: <span class="m">t_{max} = v_0\sin\theta/g</span>, <span class="m">h_{max} = (v_0\sin\theta)^2/(2g)</span>, <span class="m">t_v = 2t_{max}</span>, <span class="m">G = v_0^2\sin 2\theta/g</span> (massima a 45°).</li>
+<li>Moto circolare uniforme: cambia la direzione di <span class="m">\vec v</span> ⇒ <span class="m">a_c = v^2/R = \omega^2R</span> verso il centro; <span class="m">\omega = d\theta/dt = 2\pi/T = 2\pi f</span>; <span class="m">v = \omega R</span>.</li>
 </ul>
 </div>

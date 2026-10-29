@@ -1,61 +1,155 @@
-<h1>Lezione 65 — Flusso del campo magnetico</h1>
-<h2>Che cos&#39;è il flusso magnetico</h2>
-<p>Il flusso magnetico misura quanto campo attraversa una superficie. Per una superficie piana in un campo uniforme:
-<span class="m d">\Phi_B = \vec B \cdot \vec S = BS\cos\theta</span>
+<h1>Lezione 65 — Flusso del campo magnetico e teorema di Gauss per il magnetismo</h1>
+<h2>Di cosa parla questa lezione</h2>
+<p>Il <strong>flusso</strong> di un campo vettoriale attraverso una superficie è già stato incontrato con il campo elettrico (teorema di Gauss). Qui si definisce il <strong>flusso del campo magnetico</strong>, la grandezza che sarà protagonista dell&#39;induzione elettromagnetica: la legge di Faraday dice infatti che una corrente nasce in un circuito ogni volta che cambia il flusso magnetico che lo attraversa.</p>
+<p>In questa lezione:</p>
+<ul>
+<li>si definisce il flusso magnetico, la sua unità (il weber) e il suo segno;</li>
+<li>si vede in quali modi può cambiare;</li>
+<li>si enuncia e si spiega il <strong>teorema di Gauss per il magnetismo</strong> (<span class="m">\oint \vec B \cdot d\vec S = 0</span>), che esprime l&#39;inesistenza dei monopoli magnetici;</li>
+<li>si introduce il <strong>flusso concatenato</strong> con un circuito.</li>
+</ul>
+<h2>Definizione di flusso magnetico</h2>
+<h3>Superficie piana in un campo uniforme</h3>
+<p>Prendi una superficie piana di area <span class="m">S</span> in un campo magnetico uniforme <span class="m">\vec B</span>. Alla superficie si associa il <strong>vettore superficie</strong> <span class="m">\vec S = S\,\hat u_n</span>: modulo uguale all&#39;area, direzione perpendicolare alla superficie, verso scelto per convenzione (per una superficie delimitata da un circuito, il verso dato dalla mano destra rispetto al verso di percorrenza del circuito).</p>
+<p>Il <strong>flusso magnetico</strong> è il prodotto scalare tra campo e vettore superficie:
+<span class="m d">\Phi_B = \vec B \cdot \vec S = B\,S\cos\theta</span>
 dove:</p>
 <ul>
-<li><span class="m">\Phi_B</span> = flusso magnetico, in weber (<span class="m">1\,\mathrm{Wb} = 1\,\mathrm{T\,m^2}</span>);</li>
+<li><span class="m">\Phi_B</span> = flusso magnetico, in <strong>weber</strong> (Wb): <span class="m">1\,\mathrm{Wb} = 1\,\mathrm{T \cdot m^2}</span>;</li>
 <li><span class="m">B</span> = modulo del campo (T);</li>
 <li><span class="m">S</span> = area della superficie (m²);</li>
-<li><span class="m">\theta</span> = angolo tra il campo e la normale alla superficie.</li>
+<li><span class="m">\theta</span> = angolo tra il campo e la <strong>normale</strong> alla superficie.</li>
 </ul>
-<p>Per una superficie qualsiasi o un campo non uniforme si somma su tutti i pezzetti:
-<span class="m d">\Phi_B = \int_S \vec B \cdot d\vec S</span></p>
+<p><strong>Significato intuitivo.</strong> Il flusso misura &quot;quanto campo attraversa la superficie&quot;. Se si disegnano le linee di campo con una densità proporzionale a <span class="m">B</span>, il flusso è proporzionale al <strong>numero di linee che attraversano la superficie</strong>. Conta solo la componente del campo perpendicolare alla superficie, <span class="m">B\cos\theta</span>: la componente parallela &quot;scivola&quot; lungo la superficie senza attraversarla.</p>
+<p>Casi particolari:</p>
 <ul>
-<li>Campo perpendicolare alla superficie (<span class="m">\theta = 0</span>): flusso massimo, <span class="m">\Phi = BS</span>.</li>
-<li>Campo parallelo alla superficie (<span class="m">\theta = 90°</span>): flusso <strong>nullo</strong>.</li>
-<li><span class="m">\theta &gt; 90°</span>: flusso negativo.</li>
+<li>campo <strong>perpendicolare</strong> alla superficie (parallelo alla normale, <span class="m">\theta = 0</span>): flusso <strong>massimo</strong>, <span class="m">\Phi = BS</span>;</li>
+<li>campo <strong>parallelo</strong> alla superficie (<span class="m">\theta = 90°</span>): flusso <strong>nullo</strong>, nessuna linea la attraversa;</li>
+<li><span class="m">90° &lt; \theta \le 180°</span>: flusso <strong>negativo</strong>, il campo attraversa la superficie nel verso opposto alla normale.</li>
 </ul>
+<h3>Caso generale</h3>
+<p>Se la superficie è curva o il campo non è uniforme, si divide la superficie in pezzetti infinitesimi <span class="m">d\vec S = dS\,\hat u_n</span>, su ciascuno dei quali il campo è praticamente costante, e si sommano i contributi:
+<span class="m d">\Phi_B = \int_S \vec B \cdot d\vec S</span></p>
 <div class="callout esempio">
 
-<p>Una spira di 0,2 m² è attraversata perpendicolarmente da un campo di 0,5 T: <span class="m">\Phi = 0{,}5 \cdot 0{,}2 \cdot \cos 0° = 0{,}1\,\mathrm{Wb}</span>. Se la ruoti finché è parallela al campo, <span class="m">\cos 90° = 0</span> e il flusso diventa zero.</p>
-</div>
-
-<h2>Come si fa cambiare il flusso</h2>
-<p>Dalla formula <span class="m">\Phi = BS\cos\theta</span>, il flusso cambia se cambia:</p>
+<p><strong>Spira che ruota.</strong> Una spira di area <span class="m">0{,}2\,\mathrm{m^2}</span> è in un campo uniforme di 0,5 T.</p>
 <ul>
-<li>l&#39;<strong>intensità</strong> del campo <span class="m">B</span>;</li>
-<li>l&#39;<strong>area</strong> <span class="m">S</span> della superficie;</li>
-<li>l&#39;<strong>orientamento</strong> <span class="m">\theta</span> della superficie rispetto alle linee di campo.</li>
+<li>Campo perpendicolare alla spira (<span class="m">\theta = 0</span>): <span class="m">\Phi = 0{,}5 \cdot 0{,}2 \cdot \cos 0 = 0{,}1\,\mathrm{Wb}</span>.</li>
+<li>Ruotata di 60° (<span class="m">\theta = 60°</span>): <span class="m">\Phi = 0{,}1 \cdot \cos 60° = 0{,}05\,\mathrm{Wb}</span>.</li>
+<li>Ruotata finché è parallela al campo (<span class="m">\theta = 90°</span>): <span class="m">\Phi = 0</span>.</li>
+<li>Ruotata di mezzo giro (<span class="m">\theta = 180°</span>): <span class="m">\Phi = -0{,}1\,\mathrm{Wb}</span>.</li>
 </ul>
-<div class="callout attenzione">
-
-<p>La rapidità non c&#39;entra con il fatto che il flusso cambi. Una variazione lenta o veloce del campo cambia comunque il flusso. La rapidità conta solo per quanto è grande la f.e.m. indotta (lezione su Faraday).</p>
+<p>Nel mezzo giro il flusso passa da <span class="m">+0{,}1</span> a <span class="m">-0{,}1\,\mathrm{Wb}</span>: la variazione è <span class="m">\Delta\Phi = -0{,}2\,\mathrm{Wb}</span>, non zero.</p>
 </div>
 
-<h2>Teorema di Gauss per il magnetismo</h2>
-<p>Il flusso di <span class="m">\vec B</span> attraverso <strong>qualsiasi superficie chiusa</strong> è sempre zero:
-<span class="m d">\oint_S \vec B \cdot d\vec S = 0</span></p>
-<p>Perché: le linee del campo magnetico sono sempre chiuse. Ogni linea che entra in una superficie chiusa prima o poi ne esce. Quindi il flusso entrante e quello uscente si compensano.</p>
-<p>Significato fisico: <strong>non esistono monopoli magnetici</strong>. Non si può isolare un polo nord da solo. Se spezzi una calamita, ottieni due calamite, ognuna con nord e sud.</p>
-<p>Confronto con il campo elettrico: il flusso di <span class="m">\vec E</span> attraverso una superficie chiusa vale <span class="m">Q/\varepsilon_0</span>. Non è zero, perché esistono cariche isolate da cui le linee partono.</p>
-<p>In forma locale: <span class="m">\nabla \cdot \vec B = 0</span>. Il campo magnetico non ha sorgenti puntiformi.</p>
+<div class="callout esempio">
+
+<p><strong>Flusso dentro un solenoide.</strong> Nel solenoide della lezione 64 (<span class="m">B = 0{,}151\,\mathrm T</span>) le spire hanno raggio 2 cm. Il flusso attraverso una spira (campo uniforme e perpendicolare alla sezione) è
+<span class="m d">\Phi = B\,\pi r^2 = 0{,}151 \cdot \pi \cdot (0{,}02)^2 = 0{,}151 \cdot 1{,}257 \cdot 10^{-3} \approx 1{,}9 \cdot 10^{-4}\,\mathrm{Wb}</span></p>
+</div>
+
+<h2>In quali modi può cambiare il flusso</h2>
+<p>Dalla formula <span class="m">\Phi = BS\cos\theta</span>, il flusso attraverso una superficie cambia se cambia almeno uno dei tre fattori:</p>
+<ol>
+<li>l&#39;<strong>intensità del campo</strong> <span class="m">B</span> (per esempio avvicinando o allontanando un magnete, o variando la corrente che produce il campo);</li>
+<li>l&#39;<strong>area</strong> <span class="m">S</span> della superficie immersa nel campo (per esempio una spira deformabile, o una spira che entra o esce da una regione con campo);</li>
+<li>l&#39;<strong>orientamento</strong> <span class="m">\theta</span> della superficie rispetto alle linee di campo (per esempio una spira che ruota).</li>
+</ol>
+<p>Basta che cambi uno qualsiasi di questi fattori: non servono tutti insieme.</p>
 <div class="callout attenzione">
 
-<p>Il flusso è nullo per superfici <strong>chiuse</strong>. Attraverso una superficie <strong>aperta</strong> (per esempio quella di una spira) il flusso in genere non è zero.</p>
+<p>La <strong>rapidità</strong> della variazione non decide <strong>se</strong> il flusso cambia: un campo che varia lentamente fa cambiare il flusso esattamente come uno che varia velocemente. La rapidità conta invece per <strong>quanto è grande</strong> la forza elettromotrice indotta (legge di Faraday, lezione 67: <span class="m">\mathcal E = -d\Phi/dt</span>). Una risposta del tipo &quot;il flusso cambia solo variando il campo lentamente&quot; o &quot;solo velocemente&quot; è sbagliata, così come &quot;solo variando l&#39;orientamento&quot;.</p>
+</div>
+
+<h2>Teorema di Gauss per il campo magnetico</h2>
+<h3>Enunciato</h3>
+<p><strong>Il flusso del campo magnetico attraverso una qualsiasi superficie chiusa è sempre uguale a zero:</strong>
+<span class="m d">\oint_S \vec B \cdot d\vec S = 0</span>
+dove <span class="m">S</span> è una superficie <strong>chiusa</strong> (una superficie che racchiude un volume, come una sfera o un cubo), con la normale orientata verso l&#39;esterno.</p>
+<h3>Perché è vero</h3>
+<ol>
+<li>Le linee del campo magnetico sono <strong>sempre chiuse</strong>: non partono e non finiscono in nessun punto (lo si è visto per il filo, con linee circolari, e per la spira, con linee che passano dentro la spira e si richiudono fuori). Anche per un magnete a barra le linee escono dal polo nord, rientrano dal polo sud e proseguono <strong>dentro</strong> il magnete fino al polo nord, chiudendosi.</li>
+<li>Una linea chiusa che entra in una superficie chiusa deve per forza uscirne (altrimenti dovrebbe finire dentro).</li>
+<li>Ogni linea entrante dà un contributo negativo al flusso, ogni linea uscente un contributo positivo uguale: si compensano esattamente.</li>
+<li>Il flusso totale è quindi zero, qualunque sia la superficie chiusa e qualunque cosa contenga (anche un magnete intero).</li>
+</ol>
+<h3>Significato fisico: non esistono monopoli magnetici</h3>
+<p>Per il campo elettrico il teorema di Gauss dice <span class="m">\oint \vec E \cdot d\vec S = Q_{int}/\varepsilon_0</span>: il flusso è diverso da zero quando la superficie racchiude una carica netta, perché le linee del campo elettrico <strong>partono</strong> dalle cariche positive e <strong>finiscono</strong> su quelle negative. Le cariche sono &quot;sorgenti&quot; e &quot;pozzi&quot; del campo.</p>
+<p>Per il campo magnetico il flusso è <strong>sempre nullo</strong>: significa che <strong>non esistono sorgenti puntiformi del campo magnetico</strong>, cioè <strong>monopoli magnetici</strong> (un polo nord o un polo sud isolato). Se spezzi una calamita in due non ottieni un polo nord e un polo sud separati, ma due calamite più piccole, ognuna con il suo nord e il suo sud. Continuando a dividerla, fino agli atomi, si trovano sempre dipoli. Qualunque superficie chiusa che racchiude un magnete racchiude un nord e un sud insieme, con flusso netto nullo.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Campo elettrico</th>
+<th>Campo magnetico</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Teorema di Gauss</td>
+<td><span class="m">\oint \vec E \cdot d\vec S = Q_{int}/\varepsilon_0</span></td>
+<td><span class="m">\oint \vec B \cdot d\vec S = 0</span></td>
+</tr>
+<tr>
+<td>Sorgenti puntiformi</td>
+<td>sì (cariche)</td>
+<td>no (niente monopoli)</td>
+</tr>
+<tr>
+<td>Linee di campo</td>
+<td>aperte, da + a −</td>
+<td>sempre chiuse</td>
+</tr>
+<tr>
+<td>Forma locale</td>
+<td><span class="m">\nabla \cdot \vec E = \rho/\varepsilon_0</span></td>
+<td><span class="m">\nabla \cdot \vec B = 0</span></td>
+</tr>
+</tbody></table>
+<h3>Forma locale</h3>
+<p>Con il <strong>teorema della divergenza</strong> il flusso attraverso una superficie chiusa è l&#39;integrale della divergenza sul volume racchiuso: <span class="m">\oint_S \vec B \cdot d\vec S = \int_V \nabla \cdot \vec B\,dV</span>. Poiché è zero per <strong>ogni</strong> volume, deve essere zero la funzione integranda:
+<span class="m d">\nabla \cdot \vec B = 0</span>
+Il campo magnetico è un campo <strong>solenoidale</strong> (a divergenza nulla): in nessun punto &quot;nasce&quot; o &quot;muore&quot;.</p>
+<div class="callout attenzione">
+
+<p>Il teorema riguarda le superfici <strong>chiuse</strong>. Attraverso una superficie <strong>aperta</strong> (per esempio il disco delimitato da una spira) il flusso in generale <strong>non</strong> è zero: se lo fosse, non esisterebbe l&#39;induzione elettromagnetica. Frasi come &quot;il flusso attraverso una superficie qualsiasi è zero&quot; o &quot;attraverso una qualsiasi superficie aperta è zero&quot; sono sbagliate. È sbagliato anche dire che il flusso è &quot;proporzionale al numero di magneti contenuti&quot;: ogni magnete contiene un nord e un sud e dà flusso netto nullo.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Cubo in un campo uniforme.</strong> Un cubo di lato 10 cm è in un campo uniforme di 0,3 T parallelo a uno spigolo.</p>
+<ul>
+<li>Faccia da cui il campo entra: <span class="m">\Phi = -0{,}3 \cdot 0{,}01 = -3 \cdot 10^{-3}\,\mathrm{Wb}</span> (campo opposto alla normale uscente).</li>
+<li>Faccia opposta, da cui esce: <span class="m">\Phi = +3 \cdot 10^{-3}\,\mathrm{Wb}</span>.</li>
+<li>Quattro facce laterali: campo parallelo alle facce, flusso nullo.</li>
+<li>Totale: <span class="m">-3 \cdot 10^{-3} + 3 \cdot 10^{-3} + 0 = 0</span>, come vuole il teorema.</li>
+</ul>
 </div>
 
 <h2>Flusso concatenato con un circuito</h2>
-<p>Il flusso attraverso una superficie che ha come bordo un circuito si chiama <strong>flusso concatenato</strong> con il circuito. Grazie a Gauss, non importa quale superficie scegli: basta che abbia lo stesso bordo. Due superfici con lo stesso bordo formano insieme una superficie chiusa, dove il flusso totale è zero.</p>
-<p>Per una bobina di <span class="m">N</span> spire uguali il flusso concatenato è <span class="m">N</span> volte quello di una spira: <span class="m">\Phi = NBS\cos\theta</span>.</p>
-<p>Le variazioni del flusso concatenato generano correnti indotte nel circuito (legge di Faraday-Neumann-Lenz).</p>
+<p>Un circuito chiuso (una spira) è una linea chiusa. Si chiama <strong>flusso concatenato</strong> con il circuito il flusso di <span class="m">\vec B</span> attraverso una qualsiasi superficie che ha il circuito come contorno.</p>
+<p><strong>Perché non importa quale superficie si sceglie.</strong> Prendi due superfici diverse <span class="m">S_1</span> e <span class="m">S_2</span> con lo stesso contorno (per esempio il disco piatto della spira e una &quot;bolla&quot; a calotta appoggiata sulla spira). Insieme formano una superficie chiusa. Per il teorema di Gauss magnetico il flusso totale uscente è zero, quindi il flusso che entra da una è uguale a quello che esce dall&#39;altra: orientando entrambe le normali allo stesso modo rispetto al circuito, <span class="m">\Phi(S_1) = \Phi(S_2)</span>. Il flusso concatenato dipende quindi <strong>solo dal circuito</strong>, ed è una grandezza ben definita.</p>
+<div class="callout esempio">
+
+<p>Una semisfera di raggio <span class="m">R = 5\,\mathrm{cm}</span> è appoggiata su un anello, in un campo uniforme di 0,2 T perpendicolare al piano dell&#39;anello. Invece di integrare sulla superficie curva, si usa il disco piano con lo stesso bordo:
+<span class="m d">\Phi = B\,\pi R^2 = 0{,}2 \cdot \pi \cdot 0{,}0025 \approx 1{,}57 \cdot 10^{-3}\,\mathrm{Wb}</span></p>
+</div>
+
+<p><strong>Bobina di <span class="m">N</span> spire.</strong> Se il circuito è una bobina di <span class="m">N</span> spire uguali, la superficie che ha come contorno l&#39;intero avvolgimento è attraversata dal campo <span class="m">N</span> volte (una per spira). Il flusso concatenato è <span class="m">N</span> volte quello di una spira:
+<span class="m d">\Phi = N\,B\,S\cos\theta</span></p>
+<p>Le <strong>variazioni</strong> del flusso concatenato generano correnti nel circuito: è l&#39;induzione elettromagnetica, descritta dalla legge di Faraday-Neumann-Lenz (lezione 67).</p>
+<div class="callout esame">
+
+<p>Le domande chiedono in quali casi cambia il flusso (variando l&#39;intensità del campo, l&#39;area o l&#39;orientamento; non conta se lentamente o velocemente) e che cosa afferma il teorema di Gauss per il magnetismo (flusso nullo attraverso <strong>qualsiasi superficie chiusa</strong>, assenza di monopoli). Ricorda di distinguere superfici chiuse e aperte.</p>
+</div>
+
 <div class="callout sintesi">
 
 <ul>
-<li><span class="m">\Phi_B = BS\cos\theta</span>, in weber (T·m²).</li>
-<li>Il flusso cambia se cambiano intensità del campo, area o orientamento.</li>
-<li>Superficie parallela al campo: flusso nullo.</li>
-<li>Gauss magnetico: <span class="m">\oint \vec B \cdot d\vec S = 0</span> per ogni superficie chiusa.</li>
-<li>Significato: non esistono monopoli magnetici; le linee di <span class="m">\vec B</span> sono chiuse.</li>
+<li>Flusso: <span class="m">\Phi_B = \vec B \cdot \vec S = BS\cos\theta</span>, in generale <span class="m">\int_S \vec B \cdot d\vec S</span>; unità weber, <span class="m">1\,\mathrm{Wb} = 1\,\mathrm{T\,m^2}</span>.</li>
+<li>Massimo con campo perpendicolare alla superficie, nullo con campo parallelo, negativo oltre 90°.</li>
+<li>Il flusso cambia se cambiano <span class="m">B</span>, <span class="m">S</span> o <span class="m">\theta</span> (la rapidità conta solo per la f.e.m.).</li>
+<li>Gauss magnetico: <span class="m">\oint \vec B \cdot d\vec S = 0</span> per ogni superficie chiusa; forma locale <span class="m">\nabla \cdot \vec B = 0</span>.</li>
+<li>Significato: linee di <span class="m">\vec B</span> sempre chiuse, nessun monopolo magnetico.</li>
+<li>Flusso concatenato: non dipende dalla superficie scelta; con <span class="m">N</span> spire <span class="m">\Phi = NBS\cos\theta</span>.</li>
 </ul>
 </div>

@@ -1,134 +1,338 @@
-<h1>Lezione 52 — Dielettrici (polarizzazione, rigidità dielettrica)</h1>
-<h2>Cosa sono i dielettrici</h2>
-<p>I dielettrici sono materiali isolanti: aria, vetro, plastica, olio. Gli elettroni sono legati agli atomi e non scorrono. In un campo elettrico però le cariche si spostano di poco e il materiale si polarizza.</p>
-<h2>Due modi di polarizzarsi</h2>
-<ul>
-<li><strong>Per deformazione</strong>: in un atomo il campo spinge gli elettroni da una parte e il nucleo dall&#39;altra. Nasce un piccolo dipolo indotto, diretto come il campo.</li>
-<li><strong>Per orientamento</strong>: alcune molecole (come l&#39;acqua) sono già dipoli. Senza campo sono orientate a caso e la media è zero. Il campo le fa ruotare e le allinea in parte.</li>
-</ul>
-<p>In entrambi i casi il materiale acquista un momento di dipolo medio nella direzione del campo.</p>
-<h2>Il vettore polarizzazione</h2>
-<p>La polarizzazione è il momento di dipolo per unità di volume:</p>
-<p><span class="m d">\vec P = \frac{\Delta \vec p}{\Delta V} = n\langle \vec p \rangle</span></p>
+<h1>Lezione 52 — Dielettrici: capacità, polarizzazione, induzione elettrica e rigidità dielettrica</h1>
+<p>Finora i campi sono stati studiati nel vuoto, con i conduttori. In pratica tra le armature di un condensatore c&#39;è quasi sempre un <strong>isolante</strong> (aria, plastica, ceramica, olio). Questi materiali si chiamano <strong>dielettrici</strong> e modificano il campo: la capacità aumenta, il campo e la tensione diminuiscono. In questa lezione si parte dall&#39;osservazione sperimentale sul condensatore, poi si spiega il fenomeno a livello microscopico con la <strong>polarizzazione</strong>, si introducono le <strong>cariche di polarizzazione</strong>, il vettore <strong>polarizzazione</strong> <span class="m">\vec P</span> e il vettore <strong>induzione elettrica</strong> <span class="m">\vec D</span>, e si conclude con la <strong>rigidità dielettrica</strong>, il campo massimo che un isolante sopporta.</p>
+<p>Ipotesi di tutta la lezione: dielettrici <strong>omogenei</strong> (stesse proprietà in ogni punto) e <strong>isotropi</strong> (nessuna direzione privilegiata).</p>
+<h2>I dielettrici</h2>
+<p>Un <strong>dielettrico</strong> è un materiale isolante, solido, liquido o gassoso: aria, vetro, plastica, ceramica, carta, olio, acqua distillata. Gli elettroni sono legati agli atomi e non possono scorrere; il materiale è localmente neutro. Però in un campo le cariche positive e negative si spostano di pochissimo in versi opposti: il materiale si <strong>polarizza</strong>.</p>
+<h2>Capacità in presenza di un dielettrico (fatto sperimentale)</h2>
+<p>Un condensatore piano nel vuoto ha capacità <span class="m">C_0 = \frac{\varepsilon_0S}{d}</span> (il pedice 0 indica il vuoto). Caricato con <span class="m">Q</span>, ha d.d.p. <span class="m">V_0 = Q/C_0</span>.</p>
+<p>Esperimento: si lascia invariata la geometria e la <strong>carica</strong> (condensatore isolato) e si riempie lo spazio tra le armature con un dielettrico omogeneo e neutro. Si misura una nuova d.d.p. <span class="m">V &lt; V_0</span>. Poiché <span class="m">C = Q/V</span> con Q uguale e V minore, la capacità è <strong>aumentata</strong>. Si definisce:</p>
+<p><span class="m d">\varepsilon_r = \frac{C}{C_0}</span></p>
 <p>dove:</p>
 <ul>
-<li><span class="m">\vec P</span> = polarizzazione (C/m²)</li>
-<li><span class="m">n</span> = numero di molecole per unità di volume (1/m³)</li>
-<li><span class="m">\langle \vec p \rangle</span> = momento di dipolo medio di una molecola (C·m)</li>
+<li><span class="m">\varepsilon_r</span> = <strong>costante dielettrica relativa</strong> del mezzo (numero puro, <span class="m">\ge 1</span>; vuoto 1, aria <span class="m">\approx 1</span>)</li>
+<li><span class="m">C</span> = capacità con il dielettrico (F)</li>
+<li><span class="m">C_0</span> = capacità nel vuoto (F)</li>
 </ul>
-<p>Nei dielettrici lineari e isotropi <span class="m">\vec P</span> è proporzionale al campo:</p>
-<p><span class="m d">\vec P = \varepsilon_0(\varepsilon_r - 1)\vec E = \varepsilon_0 \chi \vec E</span></p>
+<p>La capacità con il dielettrico è quindi</p>
+<p><span class="m d">C = \varepsilon_rC_0 = \varepsilon_r\varepsilon_0\frac Sd = \varepsilon\frac Sd</span></p>
 <p>dove:</p>
 <ul>
-<li><span class="m">\chi = \varepsilon_r - 1</span> = suscettività elettrica (numero puro)</li>
-<li><span class="m">\varepsilon_r</span> = costante dielettrica relativa</li>
-<li><span class="m">\vec E</span> = campo nel dielettrico (V/m)</li>
+<li><span class="m">\varepsilon = \varepsilon_0\varepsilon_r</span> = <strong>costante dielettrica assoluta</strong> del mezzo (F/m)</li>
 </ul>
-<h2>Cariche di polarizzazione</h2>
-<p>Dentro il dielettrico uniformemente polarizzato le cariche dei dipoli vicini si compensano. Restano scoperte solo sulle facce. Sulla faccia vicina all&#39;armatura positiva compare carica negativa, e viceversa.</p>
-<p><span class="m d">\sigma_p = \vec P \cdot \vec u_n = P\cos\theta</span></p>
-<p>dove:</p>
-<ul>
-<li><span class="m">\sigma_p</span> = densità superficiale delle cariche di polarizzazione (C/m²)</li>
-<li><span class="m">\vec u_n</span> = versore normale uscente dalla superficie</li>
-</ul>
-<p>Se la polarizzazione non è uniforme compare anche una carica di volume <span class="m">\rho_p = -\nabla \cdot \vec P</span>. La carica di polarizzazione totale è sempre zero: il dielettrico resta neutro.</p>
-<h2>Effetto del dielettrico in un condensatore carico</h2>
-<p>Le cariche di polarizzazione stanno di fronte alle cariche libere delle armature, con segno opposto. Ne annullano una parte. Il campo interno quindi si riduce:</p>
-<p><span class="m d">E = \frac{E_0}{\varepsilon_r} = \frac{\sigma_0 - \sigma_p}{\varepsilon_0} \qquad \sigma_p = \frac{\varepsilon_r - 1}{\varepsilon_r}\sigma_0</span></p>
+<p>La formula è quella del vuoto con <span class="m">\varepsilon</span> al posto di <span class="m">\varepsilon_0</span>. Vale per ogni geometria (sferico, cilindrico...) se il dielettrico riempie tutto lo spazio. A parità di carica: <span class="m">V = V_0/\varepsilon_r</span>.</p>
+<table>
+<thead>
+<tr>
+<th>Materiale</th>
+<th><span class="m">\varepsilon_r</span> indicativo</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Vuoto</td>
+<td>1 (esatto)</td>
+</tr>
+<tr>
+<td>Aria</td>
+<td>1,0006</td>
+</tr>
+<tr>
+<td>Carta, plastiche</td>
+<td>2–4</td>
+</tr>
+<tr>
+<td>Vetro, pyrex</td>
+<td>4–10</td>
+</tr>
+<tr>
+<td>Acqua</td>
+<td>circa 80</td>
+</tr>
+</tbody></table>
+<h2>Campo in presenza del dielettrico</h2>
+<p>Il campo nel condensatore resta uniforme (dielettrico omogeneo) ed è legato alla d.d.p. da <span class="m">E = V/d</span>. A carica costante <span class="m">V = V_0/\varepsilon_r</span>, quindi:</p>
+<p><span class="m d">E = \frac Vd = \frac{V_0}{\varepsilon_rd} = \frac{E_0}{\varepsilon_r} = \frac{\sigma_0}{\varepsilon_0\varepsilon_r} = \frac{\sigma_0}{\varepsilon}</span></p>
 <p>dove:</p>
 <ul>
 <li><span class="m">E_0 = \sigma_0/\varepsilon_0</span> = campo senza dielettrico (V/m)</li>
-<li><span class="m">\sigma_0</span> = densità di carica libera sulle armature (C/m²)</li>
+<li><span class="m">\sigma_0 = Q/S</span> = densità di carica <strong>libera</strong> sulle armature (C/m²)</li>
 </ul>
-<p>Cosa succede, caso per caso:</p>
+<p>Di nuovo la formula del vuoto con <span class="m">\varepsilon</span> al posto di <span class="m">\varepsilon_0</span>.</p>
+<h3>L&#39;&quot;escamotage&quot; che rivela le cariche di polarizzazione</h3>
+<p>Si riscrive il campo in modo da farlo sembrare un campo nel vuoto:</p>
+<p><span class="m d">E = \frac{\sigma_0}{\varepsilon_0\varepsilon_r} = \frac{1}{\varepsilon_0}\left(\sigma_0 - \sigma_0 + \frac{\sigma_0}{\varepsilon_r}\right) = \frac{\sigma_0 - \sigma_p}{\varepsilon_0} \qquad\text{con}\quad \sigma_p = \frac{\varepsilon_r - 1}{\varepsilon_r}\sigma_0</span></p>
+<p>Il campo è uguale a quello che si avrebbe <strong>nel vuoto</strong> con una densità di carica ridotta, come se accanto a ciascuna armatura ci fosse uno strato di carica di <strong>segno opposto</strong> con densità <span class="m">\sigma_p</span>. Queste sono le <strong>cariche di polarizzazione</strong> che compaiono sulle facce del dielettrico (spiegate più sotto). Poiché <span class="m">\varepsilon_r \ge 1</span>, <span class="m">0 \le \sigma_p &lt; \sigma_0</span>: riducono il campo ma non lo annullano (al contrario di un conduttore, che lo annulla del tutto).</p>
+<h2>Energia elettrostatica nei dielettrici</h2>
+<p>Ripetendo il calcolo della lezione 51 con il dielettrico che riempie tutto lo spazio:</p>
+<p><span class="m d">U = \frac{Q^2}{2C} = \frac{Q^2}{2\varepsilon_rC_0} = \frac{U_0}{\varepsilon_r} \qquad u_e = \frac U{Sd} = \frac12\varepsilon E^2 = \frac12\varepsilon_r\varepsilon_0E^2</span></p>
+<p>dove:</p>
+<ul>
+<li><span class="m">U_0 = Q^2/(2C_0)</span> = energia nel vuoto con la stessa carica (J)</li>
+<li><span class="m">u_e</span> = densità di energia nel dielettrico (J/m³)</li>
+</ul>
+<p>A <strong>carica costante</strong> l&#39;energia immagazzinata <strong>diminuisce</strong> inserendo il dielettrico: <span class="m">U - U_0 = \frac{Q^2}{2C_0}\left(\frac1{\varepsilon_r} - 1\right) &lt; 0</span>. Con il campo ridotto a <span class="m">E_0/\varepsilon_r</span>, anche <span class="m">u_e = \frac12\varepsilon_r\varepsilon_0\frac{E_0^2}{\varepsilon_r^2} = \frac{u_{e0}}{\varepsilon_r}</span> diminuisce.</p>
+<p>Conseguenza meccanica: il sistema tende allo stato di energia minore, quindi un dielettrico avvicinato a un condensatore carico isolato viene <strong>risucchiato</strong> dentro.</p>
+<h3>Condensatore isolato o collegato a una pila</h3>
 <table>
 <thead>
 <tr>
 <th>Grandezza</th>
-<th>Condensatore isolato (<span class="m">Q</span> fisso)</th>
+<th>Isolato (<span class="m">Q</span> fisso)</th>
 <th>Collegato a una pila (<span class="m">V</span> fisso)</th>
 </tr>
 </thead>
 <tbody><tr>
 <td>Capacità</td>
-<td><span class="m">\varepsilon_r C_0</span></td>
-<td><span class="m">\varepsilon_r C_0</span></td>
+<td><span class="m">\varepsilon_rC_0</span></td>
+<td><span class="m">\varepsilon_rC_0</span></td>
 </tr>
 <tr>
 <td>Carica</td>
-<td>uguale</td>
-<td><span class="m">\varepsilon_r Q_0</span></td>
+<td>uguale <span class="m">Q_0</span></td>
+<td><span class="m">\varepsilon_rQ_0</span> (la pila ne fornisce altra)</td>
 </tr>
 <tr>
 <td>Tensione</td>
 <td><span class="m">V_0/\varepsilon_r</span></td>
-<td>uguale</td>
+<td>uguale <span class="m">V_0</span></td>
 </tr>
 <tr>
 <td>Campo</td>
 <td><span class="m">E_0/\varepsilon_r</span></td>
-<td>uguale</td>
+<td>uguale <span class="m">E_0 = V_0/d</span></td>
 </tr>
 <tr>
 <td>Energia</td>
 <td><span class="m">U_0/\varepsilon_r</span> (diminuisce)</td>
-<td><span class="m">\varepsilon_r U_0</span> (aumenta)</td>
+<td><span class="m">\varepsilon_rU_0</span> (aumenta)</td>
 </tr>
 </tbody></table>
-<p>Poiché <span class="m">\varepsilon_r \ge 1</span>, il dielettrico non riduce mai la capacità.</p>
+<p>Poiché <span class="m">\varepsilon_r \ge 1</span>, un dielettrico non riduce mai la capacità.</p>
 <div class="callout esempio">
 
-<p>Condensatore isolato, inserisci un dielettrico con <span class="m">\varepsilon_r = 4</span>. La capacità quadruplica. La carica resta uguale. Quindi <span class="m">V = Q/C</span> diventa un quarto.</p>
+<p><strong>Condensatore isolato con <span class="m">\varepsilon_r = 4</span>.</strong> La capacità quadruplica; la carica resta la stessa (il condensatore è isolato); la tensione <span class="m">V = Q/C</span> diventa un quarto; anche il campo diventa un quarto; l&#39;energia <span class="m">Q^2/2C</span> diventa un quarto.</p>
 </div>
 
-<p>Un dielettrico viene risucchiato dentro un condensatore isolato: l&#39;energia scende entrando (<span class="m">U = Q^2/2C</span> e C cresce). Il sistema tende all&#39;energia minima.</p>
-<h2>Il vettore induzione elettrica</h2>
-<p>Il teorema di Gauss nel dielettrico deve contare anche le cariche di polarizzazione. Per evitarlo si definisce:</p>
-<p><span class="m d">\vec D = \varepsilon_0 \vec E + \vec P</span></p>
+<div class="callout esempio">
+
+<p><strong>Due condensatori in parallelo, dielettrico in uno</strong> (esercizio della dispensa 59). <span class="m">C_1 = 2\,\mu\mathrm F</span> e <span class="m">C_2 = 4\,\mu\mathrm F</span> nel vuoto, in parallelo e isolati, con carica totale <span class="m">Q = 4\,\mu\mathrm C</span>. Si riempie <span class="m">C_2</span> con un dielettrico <span class="m">\varepsilon_r = 2{,}5</span>.</p>
+<ol>
+<li>Prima: <span class="m">V = \frac{Q}{C_1 + C_2} = \frac46 = 0{,}667\,\mathrm V</span>.</li>
+<li>Dopo: <span class="m">C_2' = 2{,}5\cdot4 = 10\,\mu\mathrm F</span>. La carica totale si conserva e la d.d.p. è comune: <span class="m">V' = \frac{Q}{C_1 + C_2'} = \frac{4}{12} = 0{,}333\,\mathrm V</span>.</li>
+<li>Cariche finali: <span class="m">Q_1 = C_1V' = 0{,}667\,\mu\mathrm C</span>, <span class="m">Q_2 = C_2'V' = 3{,}33\,\mu\mathrm C</span> (somma 4 µC). La carica migra verso il condensatore con il dielettrico.</li>
+<li>Energia a carica costante: <span class="m">U_i = \frac{Q^2}{2\cdot6\,\mu\mathrm F} = \frac{16\cdot10^{-12}}{12\cdot10^{-6}} = 1{,}33\,\mu\mathrm J</span>; <span class="m">U_f = \frac{16\cdot10^{-12}}{24\cdot10^{-6}} = 0{,}667\,\mu\mathrm J</span>; <span class="m">\Delta U = -0{,}667\,\mu\mathrm J</span> (diminuisce).</li>
+</ol>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Lastra di dielettrico più sottile delle armature</strong> (esercizio della dispensa 59). Condensatore piano (area S, distanza d, carica Q); si inserisce una lastra di spessore <span class="m">s &lt; d</span>, costante <span class="m">\varepsilon_r</span>, area uguale alle armature.</p>
+<ol>
+<li>Le facce della lastra polarizzata si comportano come armature sottilissime: il sistema equivale a <strong>condensatori in serie</strong>: uno di vuoto di spessore totale <span class="m">d - s</span> (i due strati vuoti, ovunque si trovi la lastra) e uno di dielettrico di spessore <span class="m">s</span>.</li>
+<li><span class="m">\frac1C = \frac{d - s}{\varepsilon_0S} + \frac{s}{\varepsilon_r\varepsilon_0S}</span>, quindi <span class="m">C = \frac{\varepsilon_0S}{d - s + s/\varepsilon_r}</span>.</li>
+<li>Prima: <span class="m">C_0 = \frac{\varepsilon_0S}d</span>. Energie a carica costante: <span class="m">U_0 = \frac{Q^2d}{2\varepsilon_0S}</span>, <span class="m">U = \frac{Q^2(d - s + s/\varepsilon_r)}{2\varepsilon_0S}</span>.</li>
+<li><span class="m">\Delta U = U - U_0 = \frac{Q^2}{2\varepsilon_0S}\left(-s + \frac s{\varepsilon_r}\right) = -\frac{Q^2s(\varepsilon_r - 1)}{2\varepsilon_0S\varepsilon_r} &lt; 0</span> perché <span class="m">\varepsilon_r &gt; 1</span>.</li>
+</ol>
+<p>L&#39;energia diminuisce: la lastra viene risucchiata, e il risultato non dipende dalla posizione della lastra tra le armature. Con <span class="m">s = d</span> si ritrova <span class="m">C = \varepsilon_rC_0</span>.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Condensatore riempito in parte, in larghezza</strong> (esercizio della dispensa 59). Armature rettangolari <span class="m">a\times b</span> a distanza d; una lastra di dielettrico <span class="m">\varepsilon_r</span> riempie tutto lo spessore ma solo per un tratto <span class="m">x</span> del lato <span class="m">a</span>. Che frazione della carica totale <span class="m">Q</span> sta sulla parte di armatura a contatto con il dielettrico?</p>
+<ol>
+<li>Equivale a <strong>due condensatori in parallelo</strong> (stessa d.d.p. tra le armature): <span class="m">C_x = \frac{\varepsilon_r\varepsilon_0bx}{d}</span> e <span class="m">C_v = \frac{\varepsilon_0b(a - x)}{d}</span>.</li>
+<li>Stessa <span class="m">\Delta V</span>: <span class="m">\frac{Q_x}{C_x} = \frac{Q - Q_x}{C_v}</span>, quindi <span class="m">Q_x = Q\frac{C_x}{C_x + C_v}</span>.</li>
+<li><span class="m">Q_x = Q\,\frac{\varepsilon_rx}{\varepsilon_rx + a - x}</span>.</li>
+</ol>
+<p>La parte con il dielettrico accoglie più carica per unità di area (di un fattore <span class="m">\varepsilon_r</span>), mentre il campo <span class="m">\Delta V/d</span> è lo stesso nelle due zone.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Forza sulla lastra parzialmente inserita</strong> (esercizio della dispensa 61). Armature quadrate di lato L, distanza d, carica Q; una lastra <span class="m">\varepsilon_r</span> che riempie lo spessore è inserita per un tratto x.</p>
+<ol>
+<li>Parallelo come sopra: <span class="m">C(x) = \frac{\varepsilon_0L}{d}\left[(L - x) + \varepsilon_rx\right] = \frac{\varepsilon_0L}{d}\left[L + (\varepsilon_r - 1)x\right]</span>.</li>
+<li>Energia a carica costante: <span class="m">U = \frac{Q^2}{2C(x)}</span>, che diminuisce al crescere di x.</li>
+<li>Forza: <span class="m">F = -\frac{dU}{dx} = \frac{Q^2}{2C^2}\frac{dC}{dx} = \frac{Q^2}{2C^2}\cdot\frac{\varepsilon_0L(\varepsilon_r - 1)}{d} &gt; 0</span>.</li>
+</ol>
+<p>La forza è nel verso delle x crescenti: la lastra viene <strong>risucchiata</strong> dentro, fino a riempire il condensatore (energia minima).</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Lamina metallica tra le armature</strong> (esercizio della dispensa 59). Armature quadrate di lato l, distanza d, caricate a tensione V e poi isolate (Q costante). Si inserisce parallela alle armature una lamina <strong>metallica</strong> di spessore h.</p>
+<ol>
+<li>Prima: <span class="m">C = \frac{\varepsilon_0l^2}{d}</span>, <span class="m">Q = CV = \frac{\varepsilon_0l^2V}{d}</span>, <span class="m">U = \frac12CV^2 = \frac{\varepsilon_0l^2V^2}{2d}</span>.</li>
+<li>Dentro il metallo il campo è nullo: il sistema è una serie di due condensatori di spessori <span class="m">x</span> e <span class="m">d - h - x</span>, cioè <span class="m">\frac1{C'} = \frac{x + d - h - x}{\varepsilon_0l^2}</span>, <span class="m">C' = \frac{\varepsilon_0l^2}{d - h}</span> (non dipende dalla posizione x).</li>
+<li><span class="m">U' = \frac{Q^2}{2C'} = \frac{\varepsilon_0^2l^4V^2}{d^2}\cdot\frac{d - h}{2\varepsilon_0l^2} = \frac{\varepsilon_0l^2V^2(d - h)}{2d^2}</span>.</li>
+<li>Lavoro delle forze del campo: <span class="m">W = U - U' = \frac{\varepsilon_0l^2V^2}{2d^2}\left[d - (d - h)\right] = \frac{\varepsilon_0l^2V^2h}{2d^2} &gt; 0</span>: è il campo a fare lavoro, la lamina viene risucchiata. (Con la convenzione <span class="m">W = U' - U</span> il lavoro risulterebbe negativo, cioè fatto dal sistema.)</li>
+<li>Nuova tensione: <span class="m">V' = \frac Q{C'} = V\frac{d - h}{d} &lt; V</span>.</li>
+</ol>
+<p>Una lamina metallica si comporta come un dielettrico con <span class="m">\varepsilon_r \to \infty</span> nel suo spessore.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Dielettrico in un condensatore di un circuito misto</strong> (seguito della lezione 51, dispensa 61). <span class="m">C_1 = 0{,}7\,\mu\mathrm F</span> in serie con <span class="m">C_2 = 0{,}3\,\mu\mathrm F</span>, il tutto in parallelo con <span class="m">C_3 = 0{,}4\,\mu\mathrm F</span>, a 24 V costanti. Si riempie <span class="m">C_2</span> con un dielettrico <span class="m">\varepsilon_r</span>: <span class="m">C_2' = 0{,}3\,\varepsilon_r\,\mu\mathrm F</span>.</p>
+<ul>
+<li><span class="m">C_3</span> ha sempre 24 V: <span class="m">q_3' = 0{,}4\cdot24 = 9{,}6\,\mu\mathrm C</span> (non cambia).</li>
+<li>La serie ha carica comune <span class="m">q' = \frac{C_1C_2'}{C_1 + C_2'}\cdot24</span>; poi <span class="m">V_1' = q'/C_1</span> e <span class="m">V_2' = q'/C_2' = 24\frac{C_1}{C_1 + C_2'}</span>.</li>
+<li>Aumentando <span class="m">C_2</span>, la tensione si sposta su <span class="m">C_1</span> e la carica della serie cresce. Per esempio con <span class="m">\varepsilon_r = 2</span>: <span class="m">C_2' = 0{,}6</span>, <span class="m">q' = \frac{0{,}42}{1{,}3}\cdot24 = 7{,}75\,\mu\mathrm C</span>, <span class="m">V_1' = 11{,}1\,\mathrm V</span>, <span class="m">V_2' = 12{,}9\,\mathrm V</span>.</li>
+</ul>
+</div>
+
+<h2>Struttura microscopica: due modi di polarizzarsi</h2>
+<p>Nei dielettrici gli elettroni sono legati ai nuclei e distribuiti simmetricamente intorno ad essi: localmente il materiale è neutro. Applicando un campo esterno succede una di due cose.</p>
+<ul>
+<li><strong>Polarizzazione per deformazione</strong> (molecole non polari, per esempio gas nobili, <span class="m">\mathrm{N_2}</span>, <span class="m">\mathrm{O_2}</span>): senza campo il baricentro della nuvola elettronica coincide con il nucleo. Il campo spinge gli elettroni in verso <strong>opposto</strong> al campo e il nucleo nel verso del campo; i baricentri si separano di una piccola distanza <span class="m">x</span> e l&#39;atomo acquista un <strong>momento di dipolo indotto</strong> <span class="m">p = Zex</span> (<span class="m">Z</span> numero atomico, <span class="m">e</span> carica elementare), diretto come il campo.</li>
+<li><strong>Polarizzazione per orientamento</strong> (molecole polari, per esempio l&#39;acqua): le molecole hanno già un momento di dipolo <strong>permanente</strong> per l&#39;asimmetria delle cariche. Senza campo l&#39;agitazione termica e l&#39;assenza di direzioni privilegiate li orientano a caso: il momento medio è zero. Il campo esercita su ogni dipolo un momento torcente (<span class="m">\vec M = \vec p\times\vec E</span>, lezione 53) che tende ad allinearlo <strong>al</strong> campo; l&#39;agitazione termica si oppone, e all&#39;equilibrio resta un momento di dipolo medio non nullo nella direzione del campo.</li>
+</ul>
+<p>In entrambi i casi il materiale acquista un momento di dipolo medio nella direzione del campo.</p>
+<h2>Il vettore polarizzazione</h2>
+<p>La <strong>polarizzazione</strong> (vettore di polarizzazione del dielettrico, o polarizzazione elettrica) è il momento di dipolo <strong>per unità di volume</strong>:</p>
+<p><span class="m d">\vec P = \frac{\Delta\vec p}{\Delta\tau} = n\langle\vec p\rangle</span></p>
 <p>dove:</p>
 <ul>
-<li><span class="m">\vec D</span> = induzione elettrica o spostamento elettrico (C/m²)</li>
+<li><span class="m">\vec P</span> = polarizzazione (C/m², perché C·m diviso m³)</li>
+<li><span class="m">\Delta\vec p</span> = momento di dipolo totale contenuto nel volumetto <span class="m">\Delta\tau</span> (C·m)</li>
+<li><span class="m">n</span> = numero di atomi o molecole per unità di volume (m⁻³)</li>
+<li><span class="m">\langle\vec p\rangle</span> = momento di dipolo medio di un atomo o molecola (C·m)</li>
 </ul>
-<p>Il suo flusso dipende solo dalle cariche libere:</p>
-<p><span class="m d">\oint_S \vec D \cdot \vec u_n\,dS = q_{libera} \qquad \nabla \cdot \vec D = \rho_{libera}</span></p>
-<p>Nei mezzi lineari e isotropi: <span class="m">\vec D = \varepsilon_0 \vec E + \varepsilon_0(\varepsilon_r - 1)\vec E = \varepsilon \vec E</span>.</p>
-<p>Vicino a un conduttore carico: <span class="m">D = \sigma</span> (densità di carica libera), perpendicolare alla superficie. Al passaggio tra due dielettrici senza cariche libere si conservano la componente normale di <span class="m">\vec D</span> e quella tangente di <span class="m">\vec E</span>.</p>
-<h2>Equazioni dell&#39;elettrostatica nei dielettrici</h2>
-<p><span class="m d">\nabla \cdot \vec D = \rho \qquad \nabla \times \vec E = 0</span></p>
-<p>Il campo resta conservativo anche nei dielettrici: esiste il potenziale (<span class="m">\vec E = -\nabla V</span>). In un dielettrico omogeneo che riempie tutto lo spazio, a parità di cariche libere: <span class="m">D = D_0</span>, <span class="m">E = E_0/\varepsilon_r</span>, <span class="m">V = V_0/\varepsilon_r</span>.</p>
+<p>Nella maggior parte dei casi (dielettrici amorfi e isotropi, detti <strong>lineari</strong>) <span class="m">\vec P</span> è proporzionale al campo nel dielettrico:</p>
+<p><span class="m d">\vec P = \varepsilon_0\chi\,\vec E = \varepsilon_0(\varepsilon_r - 1)\vec E</span></p>
+<p>dove:</p>
+<ul>
+<li><span class="m">\chi</span> = <strong>suscettività elettrica</strong> del dielettrico (numero puro, <span class="m">\ge 0</span>)</li>
+<li><span class="m">\varepsilon_r = 1 + \chi</span></li>
+<li><span class="m">\vec E</span> = campo <strong>nel</strong> dielettrico (V/m)</li>
+</ul>
+<p>Il legame <span class="m">\chi = \varepsilon_r - 1</span> si verifica con il condensatore: la carica di polarizzazione sulla faccia è <span class="m">\sigma_p = P</span> (vedi sotto) e vale <span class="m">\frac{\varepsilon_r - 1}{\varepsilon_r}\sigma_0</span>; poiché <span class="m">E = \frac{\sigma_0}{\varepsilon_0\varepsilon_r}</span>, si ha <span class="m">\sigma_p = (\varepsilon_r - 1)\varepsilon_0E</span>, cioè <span class="m">P = \varepsilon_0(\varepsilon_r - 1)E</span>.</p>
+<h2>Cariche di polarizzazione</h2>
+<h3>Polarizzazione uniforme</h3>
+<p>Si divide una lastra uniformemente polarizzata (dentro un condensatore piano) in tanti prismi, di base <span class="m">dS_0</span> e altezza <span class="m">dh</span> pari alla distanza media tra le cariche dei dipoli indotti. Ogni prisma ha momento di dipolo</p>
+<p><span class="m d">dp = P\,dS_0\,dh</span></p>
+<p>equivalente a quello di due cariche opposte <span class="m">\pm dq</span> con <span class="m">dq = P\,dS_0</span> a distanza <span class="m">dh</span>. Mettendo i prismi uno dopo l&#39;altro lungo il campo, la carica positiva di uno è a contatto con la negativa del successivo: <strong>si compensano</strong> all&#39;interno. Restano scoperte solo le cariche sulle due facce estreme: una carica <strong>negativa</strong> sulla faccia adiacente all&#39;armatura <strong>positiva</strong> e una positiva sulla faccia adiacente all&#39;armatura negativa, con densità</p>
+<p><span class="m d">\sigma_p = \frac{dq}{dS_0} = P</span></p>
+<p>Per un dielettrico di forma qualsiasi con polarizzazione uniforme, la densità superficiale delle cariche di polarizzazione è la <strong>componente di <span class="m">\vec P</span> normale alla superficie</strong>:</p>
+<p><span class="m d">\sigma_p = \vec P\cdot\vec u_n = P\cos\theta</span></p>
+<p>dove:</p>
+<ul>
+<li><span class="m">\sigma_p</span> = densità superficiale di carica di polarizzazione (C/m²)</li>
+<li><span class="m">\vec u_n</span> = versore normale <strong>uscente</strong> dalla superficie del dielettrico</li>
+<li><span class="m">\theta</span> = angolo tra <span class="m">\vec P</span> e la normale</li>
+</ul>
+<p>Queste cariche spiegano l&#39;&quot;escamotage&quot; visto sopra: <span class="m">E = \frac{\sigma_0 - \sigma_p}{\varepsilon_0}</span>, il campo nel dielettrico è prodotto da cariche libere e cariche di polarizzazione insieme.</p>
+<h3>Polarizzazione non uniforme</h3>
+<p>Se <span class="m">\vec P</span> cambia da punto a punto, le cariche dei dipoli vicini non si compensano più del tutto: oltre alla carica superficiale compare una <strong>densità di carica di polarizzazione di volume</strong>:</p>
+<p><span class="m d">\rho_p = -\nabla\cdot\vec P</span></p>
+<p>dove:</p>
+<ul>
+<li><span class="m">\rho_p</span> = densità di volume delle cariche di polarizzazione (C/m³)</li>
+<li><span class="m">\nabla\cdot\vec P</span> = divergenza di <span class="m">\vec P</span></li>
+</ul>
+<p>In ogni caso la carica di polarizzazione <strong>totale</strong> è zero (il dielettrico era neutro e resta neutro: le cariche si spostano, non si creano):</p>
+<p><span class="m d">\oint_S\vec P\cdot\vec u_n\,dS + \int_\tau(-\nabla\cdot\vec P)\,d\tau = 0</span></p>
+<p>che è proprio il teorema della divergenza applicato a <span class="m">\vec P</span>.</p>
+<h2>Il campo nel dielettrico è conservativo</h2>
+<p>Anche a livello microscopico l&#39;interazione dominante tra le cariche è quella elettrica, quindi il campo prodotto da cariche ferme resta <strong>conservativo</strong> anche in presenza di dielettrici:</p>
+<p><span class="m d">\oint\vec E\cdot d\vec s = 0 \qquad \nabla\times\vec E = 0 \qquad \vec E = -\nabla V</span></p>
+<p>Esiste quindi ancora il potenziale.</p>
+<h2>Il vettore induzione elettrica</h2>
+<p>Il teorema di Gauss resta valido, ma deve contare <strong>tutte</strong> le cariche, libere e di polarizzazione:</p>
+<p><span class="m d">\oint_S\vec E\cdot\vec u_n\,dS = \frac{q_{lib} + q_p}{\varepsilon_0} \qquad \nabla\cdot\vec E = \frac{\rho + \rho_p}{\varepsilon_0}</span></p>
+<p>Le cariche di polarizzazione però non si conoscono a priori (dipendono dal campo che si sta cercando). Si sostituisce <span class="m">\rho_p = -\nabla\cdot\vec P</span>:</p>
+<p><span class="m d">\varepsilon_0\nabla\cdot\vec E = \rho - \nabla\cdot\vec P \quad\Rightarrow\quad \nabla\cdot(\varepsilon_0\vec E + \vec P) = \rho</span></p>
+<p>Si definisce quindi il vettore <strong>induzione elettrica</strong> (anche induzione dielettrica o spostamento elettrico):</p>
+<p><span class="m d">\vec D = \varepsilon_0\vec E + \vec P</span></p>
+<p>dove:</p>
+<ul>
+<li><span class="m">\vec D</span> = induzione elettrica (C/m², come <span class="m">\vec P</span> e come una densità superficiale di carica)</li>
+</ul>
+<p>e il teorema di Gauss per <span class="m">\vec D</span> diventa:</p>
+<p><span class="m d">\oint_S\vec D\cdot\vec u_n\,dS = q_{lib} \qquad \nabla\cdot\vec D = \rho_{lib}</span></p>
+<p><strong>Il flusso dell&#39;induzione elettrica attraverso una superficie chiusa dipende solo dalle cariche libere</strong> racchiuse, che ci siano o no cariche di polarizzazione. Nella pratica la carica libera si conosce o si misura: si calcola <span class="m">\vec D</span> con Gauss, poi <span class="m">\vec E</span> e <span class="m">\vec P</span>.</p>
+<p><strong>Mezzi lineari e isotropi</strong>: sostituendo <span class="m">\vec P = \varepsilon_0(\varepsilon_r - 1)\vec E</span>:</p>
+<p><span class="m d">\vec D = \varepsilon_0\vec E + \varepsilon_0(\varepsilon_r - 1)\vec E = \varepsilon_0\varepsilon_r\vec E = \varepsilon\vec E</span></p>
+<p>L&#39;induzione è direttamente proporzionale al campo, con costante la costante dielettrica assoluta.</p>
+<h3>Teorema di Coulomb per <span class="m">\vec D</span></h3>
+<p>Ripetendo la dimostrazione con il cilindretto (lezione 49) ma usando <span class="m">\vec D</span>: vicino alla superficie di un conduttore carico immerso in un dielettrico,</p>
+<p><span class="m d">\vec D = \sigma\,\vec u_n</span></p>
+<p>perpendicolare alla superficie, uscente, con modulo pari alla <strong>densità di carica libera</strong> <span class="m">\sigma</span>. Il campo è quindi <span class="m">E = \frac{\sigma}{\varepsilon}</span>.</p>
+<h3>Interfaccia tra due dielettrici</h3>
+<p>Sulla superficie di separazione tra due mezzi diversi, in assenza di cariche libere:</p>
+<ul>
+<li>dalla conservatività di <span class="m">\vec E</span> (circuitazione su un rettangolino a cavallo, come nella lezione 49): <strong>la componente tangenziale di <span class="m">\vec E</span> si conserva</strong>, <span class="m">E_{t1} = E_{t2}</span>;</li>
+<li>dal teorema di Gauss per <span class="m">\vec D</span> su un cilindretto con basi parallele all&#39;interfaccia e altezza infinitesima (nessuna carica libera dentro): <strong>la componente normale di <span class="m">\vec D</span> si conserva</strong>, <span class="m">D_{n1} = D_{n2}</span>.</li>
+</ul>
+<p>Poiché <span class="m">D = \varepsilon E</span>, la componente normale di <span class="m">\vec E</span> invece salta: <span class="m">\varepsilon_1E_{n1} = \varepsilon_2E_{n2}</span>. Le linee di campo si &quot;rifrangono&quot; passando da un mezzo all&#39;altro.</p>
+<h2>Equazioni di Maxwell dell&#39;elettrostatica nei dielettrici</h2>
+<p>In presenza di dielettrici le equazioni più generali sono:</p>
+<p><span class="m d">\nabla\cdot\vec D = \rho \qquad \nabla\times\vec E = 0</span></p>
+<p>con <span class="m">\rho</span> densità di carica libera. Se un <strong>unico</strong> mezzo lineare e isotropo riempie <strong>tutto</strong> lo spazio, <span class="m">\vec D = \varepsilon\vec E</span> e le equazioni diventano quelle del vuoto con <span class="m">\varepsilon</span> al posto di <span class="m">\varepsilon_0</span>: <span class="m">\nabla\cdot\vec E = \rho/\varepsilon</span>, <span class="m">\nabla\times\vec E = 0</span>. A parità di cariche libere, le grandezze nel dielettrico sono legate a quelle nel vuoto (pedice 0) da:</p>
+<p><span class="m d">D = D_0 \qquad E = \frac{E_0}{\varepsilon_r} \qquad V = \frac{V_0}{\varepsilon_r}</span></p>
+<p>Questo generalizza quanto osservato sperimentalmente nei condensatori. Per esempio una carica puntiforme immersa in un dielettrico infinito genera <span class="m">E = \frac{Q}{4\pi\varepsilon r^2}</span>: la forza di Coulomb tra due cariche in un mezzo si riduce di <span class="m">\varepsilon_r</span> (in acqua di circa 80 volte, per questo i sali si sciolgono).</p>
 <h2>Rigidità dielettrica</h2>
-<p>Se aumenti la tensione, il campo nell&#39;isolante cresce. Oltre un valore limite le cariche vengono strappate e scocca una scarica: l&#39;isolante si &quot;perfora&quot;. Il campo massimo sopportabile si chiama rigidità dielettrica.</p>
+<p>Aumentando progressivamente la d.d.p. ai capi di un condensatore con un isolante, il campo nell&#39;isolante cresce. Oltre un valore limite la forza sulle cariche del materiale è così intensa da strapparle e accelerarle: si innesca una <strong>scarica elettrica</strong> (scintilla, arco) che danneggia il materiale e ne distrugge le proprietà isolanti (si dice che il dielettrico si &quot;perfora&quot;).</p>
+<p><strong>Rigidità dielettrica</strong> = il <strong>massimo valore del campo</strong> che un mezzo può sopportare prima che avvenga la scarica:</p>
 <p><span class="m d">E_{max} = \text{rigidità dielettrica} \qquad V_{max} = E_{max}\,d</span></p>
 <p>dove:</p>
 <ul>
-<li><span class="m">E_{max}</span> = rigidità (V/m, spesso kV/mm o MV/m)</li>
+<li><span class="m">E_{max}</span> = rigidità dielettrica (V/m; spesso in kV/mm o MV/m)</li>
+<li><span class="m">V_{max}</span> = tensione massima applicabile a un condensatore piano (V)</li>
 <li><span class="m">d</span> = spessore dell&#39;isolante (m)</li>
 </ul>
-<p>L&#39;aria ha <span class="m">\varepsilon_r \approx 1</span> e rigidità circa <span class="m">3\,\mathrm{MV/m} = 3 \cdot 10^6\,\mathrm{V/m}</span>. Dipende dal materiale, dalla sua purezza e dallo stato delle superfici.</p>
+<p>Dipende dal <strong>materiale</strong>, dalla sua <strong>purezza</strong>, e dallo stato di <strong>pulizia e rugosità</strong> delle superfici. L&#39;aria, con <span class="m">\varepsilon_r \approx 1</span>, ha rigidità circa <span class="m">3\,\mathrm{MV/m} = 3\cdot10^6\,\mathrm{V/m} = 3\,\mathrm{kV/mm}</span>.</p>
+<p>Siccome quasi tutti i condensatori hanno un dielettrico (almeno l&#39;aria), quando servono tensioni elevate si usa la configurazione <strong>in serie</strong>: la d.d.p. totale si divide tra i condensatori e nessuno arriva al campo di scarica.</p>
 <div class="callout esempio">
 
-<p>Condensatori da <span class="m">2\,\mu\mathrm F</span> con <span class="m">d = 1\,\mathrm{mm}</span> e rigidità <span class="m">200\,\mathrm{kV/m}</span> reggono ognuno <span class="m">200\,\mathrm{kV/m} \cdot 10^{-3}\,\mathrm m = 200\,\mathrm V</span>. Per lavorare a 1000 V se ne mettono 5 in serie: ognuno regge 200 V e <span class="m">C_{eq} = 2/5 = 0{,}4\,\mu\mathrm F</span>.</p>
+<p><strong>Batteria di condensatori per 1000 V</strong> (esercizio della dispensa 60). Condensatori da <span class="m">C = 2\,\mu\mathrm F</span>, <span class="m">d = 1\,\mathrm{mm}</span>, rigidità 200 kV/m. Servono (a) <span class="m">0{,}4\,\mu\mathrm F</span> e (b) <span class="m">1{,}2\,\mu\mathrm F</span>, a <span class="m">V_0 = 1000\,\mathrm V</span>.</p>
+<ol>
+<li>Tensione massima di uno: <span class="m">V_m = E_{max}d = 2\cdot10^5\cdot10^{-3} = 200\,\mathrm V</span>.</li>
+<li>Con N uguali in serie: capacità <span class="m">C/N</span>, tensione su ciascuno <span class="m">V_0/N</span>. Serve <span class="m">V_0/N \le 200</span>, cioè <span class="m">N \ge 5</span>.</li>
+<li>(a) 5 in serie: <span class="m">C_1 = 2/5 = 0{,}4\,\mu\mathrm F</span>, reggono <span class="m">5\cdot200 = 1000\,\mathrm V</span>.</li>
+<li>(b) Tre serie da 5 messe in parallelo: ogni ramo regge 1000 V, capacità <span class="m">C_2 = 3\cdot0{,}4 = 1{,}2\,\mu\mathrm F</span> (15 condensatori in tutto).</li>
+</ol>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Tensione massima del bicchiere di pyrex</strong> (esercizio della dispensa 61; capacità calcolata nella lezione 50: <span class="m">C \approx 0{,}72\,\mathrm{nF}</span>). Rigidità del pyrex <span class="m">14\,\mathrm{kV/mm} = 1{,}4\cdot10^7\,\mathrm{V/m}</span>; raggi 3,6 e 3,8 cm.</p>
+<ol>
+<li>Nel cilindrico il campo è radiale e vale <span class="m">E(r) = \frac{V}{r\ln(R_2/R_1)}</span> (da <span class="m">E = \frac{\lambda}{2\pi\varepsilon r}</span> e <span class="m">V = \frac{\lambda}{2\pi\varepsilon}\ln\frac{R_2}{R_1}</span>): è massimo sull&#39;armatura interna, <span class="m">r = R_1</span>.</li>
+<li>Imponendo <span class="m">E(R_1) = E_{max}</span>: <span class="m">V_{max} = E_{max}R_1\ln\frac{R_2}{R_1} = 1{,}4\cdot10^7\cdot0{,}036\cdot0{,}0541 \approx 2{,}7\cdot10^4\,\mathrm V = 27\,\mathrm{kV}</span>.</li>
+</ol>
+<p>(Con il vetro sottile si ottiene quasi lo stesso con il piano: <span class="m">E_{max}\cdot2\,\mathrm{mm} = 28\,\mathrm{kV}</span>.)</p>
 </div>
 
 <div class="callout attenzione">
 
-<p>La rigidità dielettrica è un campo massimo. Non è una carica massima e non è il rapporto tra capacità (<span class="m">\varepsilon_r</span>).</p>
+<ul>
+<li>La rigidità dielettrica è un <strong>campo</strong> massimo (V/m), non una carica massima né il rapporto <span class="m">\varepsilon_r</span> tra capacità.</li>
+<li><span class="m">\varepsilon_r</span> moltiplica la capacità, <strong>divide</strong> campo e tensione solo se il condensatore è <strong>isolato</strong>; se è collegato alla pila la tensione resta quella della pila.</li>
+<li>Le cariche di polarizzazione sulla faccia vicina all&#39;armatura positiva sono <strong>negative</strong>.</li>
+<li><span class="m">\vec D</span> conta solo le cariche libere, <span class="m">\vec E</span> tutte le cariche.</li>
+</ul>
 </div>
 
 <div class="callout esame">
 
-<p>Domande aperte: effetto del dielettrico in un condensatore carico (capacità <span class="m">\times\varepsilon_r</span>, campo e tensione <span class="m">/\varepsilon_r</span> se isolato, cariche di polarizzazione sulle facce); definizione di <span class="m">\vec P</span> e di <span class="m">\vec D</span> (con <span class="m">\vec P = \varepsilon_0\chi\vec E</span> e <span class="m">\vec D = \varepsilon\vec E</span>).</p>
+<ul>
+<li><strong>&quot;Effetto dell&#39;inserimento di un dielettrico in un condensatore carico&quot;</strong> (aperta): sperimentalmente, a Q costante, V scende a <span class="m">V_0/\varepsilon_r</span>; quindi <span class="m">C = \varepsilon_rC_0</span> (<span class="m">\varepsilon_r = C/C_0</span>, <span class="m">\varepsilon = \varepsilon_0\varepsilon_r</span>); campo <span class="m">E = E_0/\varepsilon_r = (\sigma_0 - \sigma_p)/\varepsilon_0</span> con <span class="m">\sigma_p = \frac{\varepsilon_r - 1}{\varepsilon_r}\sigma_0</span>; spiegazione con la polarizzazione (deformazione o orientamento) e le cariche di polarizzazione sulle facce; energia <span class="m">U_0/\varepsilon_r</span>, il dielettrico è risucchiato; a V costante invece Q ed energia crescono di <span class="m">\varepsilon_r</span>; rigidità dielettrica come limite.</li>
+<li><strong>&quot;Polarizzazione e vettore induzione elettrica&quot;</strong> (aperta): <span class="m">\vec P = n\langle\vec p\rangle</span> momento di dipolo per unità di volume; lineare <span class="m">\vec P = \varepsilon_0\chi\vec E</span>, <span class="m">\chi = \varepsilon_r - 1</span>; <span class="m">\sigma_p = \vec P\cdot\vec u_n</span>, <span class="m">\rho_p = -\nabla\cdot\vec P</span>; Gauss con le cariche di polarizzazione porta a <span class="m">\vec D = \varepsilon_0\vec E + \vec P</span>, <span class="m">\nabla\cdot\vec D = \rho_{lib}</span>, flusso di D = carica libera; mezzi lineari <span class="m">\vec D = \varepsilon\vec E</span>.</li>
+<li>Chiusa: rigidità dielettrica = massimo valore del campo prima della scarica.</li>
+</ul>
 </div>
 
 <div class="callout sintesi">
 
 <ul>
-<li>Polarizzazione: <span class="m">\vec P</span> = momento di dipolo per unità di volume (C/m²); lineare: <span class="m">\vec P = \varepsilon_0(\varepsilon_r - 1)\vec E</span>.</li>
-<li>Cariche di polarizzazione sulle facce: <span class="m">\sigma_p = \vec P \cdot \vec u_n</span>.</li>
-<li>Nel condensatore: <span class="m">C = \varepsilon_r C_0</span>; se isolato <span class="m">E = E_0/\varepsilon_r</span> e <span class="m">V = V_0/\varepsilon_r</span>.</li>
-<li><span class="m">\varepsilon_r \ge 1</span> sempre (vuoto = 1).</li>
-<li>Induzione: <span class="m">\vec D = \varepsilon_0\vec E + \vec P = \varepsilon\vec E</span>; il suo flusso conta solo le cariche libere.</li>
-<li>Rigidità dielettrica = campo massimo prima della scarica; aria circa 3 MV/m.</li>
+<li><span class="m">\varepsilon_r = C/C_0 \ge 1</span>; <span class="m">C = \varepsilon_rC_0 = \varepsilon S/d</span>, <span class="m">\varepsilon = \varepsilon_0\varepsilon_r</span>.</li>
+<li>Isolato: <span class="m">V = V_0/\varepsilon_r</span>, <span class="m">E = E_0/\varepsilon_r = (\sigma_0 - \sigma_p)/\varepsilon_0</span>, <span class="m">\sigma_p = \frac{\varepsilon_r - 1}{\varepsilon_r}\sigma_0</span>, <span class="m">U = U_0/\varepsilon_r</span> (dielettrico risucchiato). A V fisso: <span class="m">Q</span> e <span class="m">U</span> <span class="m">\times\varepsilon_r</span>.</li>
+<li>Densità di energia nel dielettrico: <span class="m">u_e = \frac12\varepsilon E^2</span>.</li>
+<li>Polarizzazione per deformazione (dipoli indotti) o per orientamento (dipoli permanenti).</li>
+<li><span class="m">\vec P = n\langle\vec p\rangle</span> (C/m²); lineare <span class="m">\vec P = \varepsilon_0(\varepsilon_r - 1)\vec E = \varepsilon_0\chi\vec E</span>.</li>
+<li><span class="m">\sigma_p = \vec P\cdot\vec u_n</span>; <span class="m">\rho_p = -\nabla\cdot\vec P</span>; carica di polarizzazione totale nulla.</li>
+<li><span class="m">\vec D = \varepsilon_0\vec E + \vec P = \varepsilon\vec E</span>; <span class="m">\oint\vec D\cdot\vec u_n\,dS = q_{lib}</span>; vicino a un conduttore <span class="m">D = \sigma</span>.</li>
+<li>Interfaccia: si conservano <span class="m">E_t</span> e <span class="m">D_n</span>. Maxwell: <span class="m">\nabla\cdot\vec D = \rho</span>, <span class="m">\nabla\times\vec E = 0</span>; mezzo unico: <span class="m">E = E_0/\varepsilon_r</span>, <span class="m">V = V_0/\varepsilon_r</span>, <span class="m">D = D_0</span>.</li>
+<li>Rigidità dielettrica = campo massimo prima della scarica; aria circa 3 MV/m; <span class="m">V_{max} = E_{max}d</span>; per alte tensioni condensatori in serie.</li>
 </ul>
 </div>

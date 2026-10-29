@@ -479,3 +479,36 @@ canvas.ink.on { pointer-events: auto; cursor: crosshair; }
 .fld { display: block; text-align: left; font-size: 14px; font-weight: 600; color: var(--text-2); margin-bottom: 12px; }
 .fld .date { display: block; width: 100%; margin-top: 6px; }
 .chart .avg { fill: none; stroke: var(--warn); stroke-width: 2; stroke-dasharray: 5 4; }
+.slide-btns { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 10px; }
+.slide-btns .btn { max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+/* dispense: pannello affiancato alla teoria (schermo largo) o a tutto schermo (telefono) */
+.pdf-pages { overflow-x: auto; }
+.pdf-pages img { display: block; width: calc(100% * var(--z, 1)); max-width: none; height: auto; margin: 0 auto 10px; border-radius: 6px; border: 1px solid var(--border); background: #fff; }
+.pdf-msg { padding: 16px 4px; }
+.pdf-bar { display: flex; align-items: center; gap: 6px; min-width: 0; }
+.pdf-bar b { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.pdf-bar select { flex: 1; min-width: 0; font: inherit; font-weight: 600; padding: 8px 10px; border-radius: 10px; border: 1px solid var(--border); background: var(--surface-2); color: var(--text); }
+.pdf-bar .icon-btn { font-size: 20px; font-weight: 700; }
+.pdf-sheet .pdf-bar { position: sticky; top: 0; z-index: 1; padding: 0 0 10px; background: var(--surface); }
+.pdf-pane {
+  position: fixed; top: 0; right: 0; bottom: 0; width: var(--pdfw, 50vw); z-index: 40; display: flex; flex-direction: column;
+  background: var(--surface); border-left: 1px solid var(--border); padding: var(--sat) var(--sar) 0 0;
+}
+.pdf-pane .pdf-bar { padding: 10px 12px; border-bottom: 1px solid var(--border); }
+.pdf-pane .pdf-pages { flex: 1; overflow: auto; padding: 12px 12px calc(12px + var(--sab)); overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
+.pdf-grip { position: absolute; left: -8px; top: 0; bottom: 0; width: 16px; cursor: col-resize; touch-action: none; z-index: 1; }
+.pdf-grip::after { content: ""; position: absolute; left: 6px; top: 50%; width: 4px; height: 48px; margin-top: -24px; border-radius: 4px; background: var(--text-3); opacity: .5; }
+body.split #app { display: block; margin-right: var(--pdfw, 50vw); }
+body.split .sidebar, body.split .tabbar { display: none; }
+body.split #view { padding-left: 24px; padding-right: 24px; padding-bottom: 48px; }
+body.split .topbar { padding-left: 24px; padding-right: 24px; }
+.news { margin: 8px 0 12px; padding-left: 20px; font-size: 14px; color: var(--text-2); }
+.news li { margin: 4px 0; }
+/* menu laterale nascondibile (solo schermo largo, dove c'è) */
+.navtoggle { display: none; margin-left: -6px; }
+@media (min-width: 900px) {
+  .navtoggle { display: inline-flex; }
+  body.navhidden #app { grid-template-columns: 1fr; }
+  body.navhidden .sidebar { display: none; }
+}
+body.split .navtoggle, body.runner .navtoggle { display: none; }

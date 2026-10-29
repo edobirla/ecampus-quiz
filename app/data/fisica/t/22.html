@@ -1,110 +1,260 @@
-<h1>Lezione 22 — Sistemi di punti e centro di massa</h1>
-<h2>Sistema di punti</h2>
-<p>Un sistema è un insieme di punti materiali che studi insieme. Su ogni punto agiscono due tipi di forze:</p>
+<h1>Lezione 22 — Sistemi di punti materiali e centro di massa</h1>
+<h2>Di che cosa parla questa lezione</h2>
+<p>Finora abbiamo studiato un solo punto materiale e le forze che l&#39;ambiente esercita su di esso. Gli oggetti reali però sono fatti di molte parti: due palle che si urtano, una barca con una persona sopra, un corpo umano, una nube di gas. Questa lezione introduce i <strong>sistemi di punti materiali</strong>: insiemi di punti che studiamo insieme, distinguendo le forze che i punti si scambiano tra loro da quelle che arrivano dall&#39;esterno.</p>
+<p>Il risultato centrale è che esiste un punto speciale, il <strong>centro di massa</strong>, che si muove come se tutta la massa del sistema fosse concentrata lì e su di esso agissero solo le forze esterne. Vedremo poi il <strong>riferimento del centro di massa</strong>, il <strong>teorema di Koenig</strong> per l&#39;energia cinetica, il <strong>problema dei due corpi</strong> con la massa ridotta e il legame tra energia cinetica e quantità di moto. Tutto questo prepara gli urti (lezione 24) e il corpo rigido (lezioni 27-28).</p>
+<h2>Sistema di punti materiali</h2>
+<h3>Forze interne e forze esterne</h3>
+<p>Un <strong>sistema di punti materiali</strong> è un insieme di <span class="m">N</span> punti, ciascuno con la sua massa <span class="m">m_i</span> e posizione <span class="m">\vec r_i</span> (<span class="m">i = 1, \dots, N</span>). Su ogni punto agiscono due tipi di forze:</p>
 <ul>
-<li><strong>forze interne</strong>: quelle che i punti del sistema si scambiano tra loro;</li>
-<li><strong>forze esterne</strong>: quelle che arrivano da fuori.</li>
+<li><strong>forze interne</strong>: quelle esercitate dagli altri punti del sistema. Indichiamo con <span class="m">\vec F_{ij}</span> la forza che il punto <span class="m">j</span> esercita sul punto <span class="m">i</span>;</li>
+<li><strong>forze esterne</strong>: quelle dovute a corpi che non fanno parte del sistema (peso, reazioni dei vincoli, attriti con l&#39;ambiente). Indichiamo con <span class="m">\vec R_i^{(e)}</span> la loro risultante sul punto <span class="m">i</span>.</li>
 </ul>
-<p>Per il terzo principio, sommate su tutto il sistema, le forze interne si annullano.</p>
+<p>L&#39;equazione del moto del punto <span class="m">i</span> è quindi:</p>
+<p><span class="m d">m_i\vec a_i = \sum_{j\neq i}\vec F_{ij} + \vec R_i^{(e)}</span></p>
+<p>dove <span class="m">m_i</span> è in <span class="m">\mathrm{kg}</span>, <span class="m">\vec a_i</span> in <span class="m">\mathrm{m/s^2}</span>, le forze in <span class="m">\mathrm N</span>.</p>
+<h3>Le forze interne si annullano a coppie</h3>
+<p>Per il terzo principio <span class="m">\vec F_{ij} = -\vec F_{ji}</span>: la forza di <span class="m">j</span> su <span class="m">i</span> è uguale e opposta a quella di <span class="m">i</span> su <span class="m">j</span>. Quando sommiamo le forze su <strong>tutti</strong> i punti del sistema, ogni coppia contribuisce con <span class="m">\vec F_{ij} + \vec F_{ji} = 0</span>. Quindi:</p>
+<p><span class="m d">\sum_i\sum_{j\neq i}\vec F_{ij} = 0</span></p>
+<p>La somma di tutte le forze interne è sempre zero. Attenzione: questo non vuol dire che le forze interne non abbiano effetto. Muovono i singoli punti (una persona che cammina su una barca si sposta davvero), ma non cambiano il moto d&#39;insieme.</p>
 <h2>Centro di massa</h2>
-<p>Il centro di massa è la <strong>media pesata delle posizioni</strong>, con le masse come pesi.</p>
+<h3>Definizione</h3>
+<p>In un sistema di riferimento in cui il punto <span class="m">i</span> ha posizione <span class="m">\vec r_i</span>, il <strong>centro di massa</strong> è il punto di coordinate:</p>
 <p><span class="m d">\vec r_{cm} = \frac{\sum_i m_i\vec r_i}{\sum_i m_i} = \frac{\sum_i m_i\vec r_i}{M}</span></p>
+<p>cioè, componente per componente:</p>
+<p><span class="m d">x_{cm} = \frac{\sum_i m_i x_i}{M} \qquad y_{cm} = \frac{\sum_i m_i y_i}{M} \qquad z_{cm} = \frac{\sum_i m_i z_i}{M}</span></p>
 <p>dove:</p>
 <ul>
 <li><span class="m">\vec r_{cm}</span> = posizione del centro di massa, in <span class="m">\mathrm m</span>;</li>
-<li><span class="m">m_i</span> = massa del punto <span class="m">i</span>, in <span class="m">\mathrm{kg}</span>;</li>
-<li><span class="m">\vec r_i</span> = posizione del punto <span class="m">i</span>, in <span class="m">\mathrm m</span>;</li>
-<li><span class="m">M</span> = massa totale, in <span class="m">\mathrm{kg}</span>.</li>
+<li><span class="m">m_i</span>, <span class="m">\vec r_i</span> = massa (in <span class="m">\mathrm{kg}</span>) e posizione (in <span class="m">\mathrm m</span>) del punto <span class="m">i</span>;</li>
+<li><span class="m">M = \sum_i m_i</span> = massa totale del sistema, in <span class="m">\mathrm{kg}</span>.</li>
 </ul>
-<p>Per due punti il centro di massa sta sulla congiungente, <strong>più vicino alla massa maggiore</strong>:</p>
-<p><span class="m d">m_A\,d_A = m_B\,d_B</span></p>
-<p>dove <span class="m">d_A</span> e <span class="m">d_B</span> sono le distanze del centro di massa da A e da B, in <span class="m">\mathrm m</span>.</p>
+<p>È la <strong>media pesata</strong> delle posizioni, con le masse come pesi: i punti più pesanti &quot;contano di più&quot; e tirano il centro di massa verso di sé. Il centro di massa non deve per forza coincidere con un punto materiale: per un anello è nel centro vuoto.</p>
+<p>La dispensa nota una proprietà importante: la <strong>posizione</strong> del centro di massa cambia da un riferimento all&#39;altro (se sposto l&#39;origine, cambiano tutte le coordinate), ma la <strong>posizione dei punti rispetto al centro di massa</strong> non cambia. Il centro di massa è un punto &quot;fisico&quot; del sistema, non un artificio legato agli assi.</p>
+<h3>Due punti materiali</h3>
+<p>Mettiamo il punto A nell&#39;origine e il punto B sull&#39;asse <span class="m">x</span> a distanza <span class="m">d</span>. Allora:</p>
+<p><span class="m d">x_{cm} = \frac{m_A\cdot 0 + m_B\,d}{m_A + m_B} = \frac{m_B}{m_A + m_B}\,d</span></p>
+<p>Il centro di massa sta <strong>sulla congiungente</strong> dei due punti. La sua distanza da A è <span class="m">d_A = \frac{m_B}{m_A + m_B}d</span> e la sua distanza da B è <span class="m">d_B = d - d_A = \frac{m_A}{m_A + m_B}d</span>. Facendo il rapporto:</p>
+<p><span class="m d">\frac{d_A}{d_B} = \frac{m_B}{m_A} \quad\Longleftrightarrow\quad m_A\,d_A = m_B\,d_B</span></p>
+<p>Le distanze sono <strong>inversamente proporzionali</strong> alle masse: il centro di massa è <strong>più vicino alla massa maggiore</strong>. Con masse uguali è nel punto medio.</p>
 <div class="callout esempio">
 
-<p>B ha massa doppia di A. Allora <span class="m">d_A = 2\,d_B</span>. La distanza totale è <span class="m">3\,d_B</span>. Il centro di massa sta a un terzo della distanza da B (e a due terzi da A).</p>
+<p><strong>B ha massa doppia di A.</strong> Con <span class="m">m_B = 2m_A</span>: <span class="m">x_{cm} = \dfrac{2m_A}{3m_A}\,d = \dfrac23 d</span>. Il centro di massa è a <span class="m">\tfrac23 d</span> da A, cioè a <span class="m">\tfrac13 d</span> da <strong>B</strong>: sta a un terzo della distanza totale dal punto più pesante. Controllo: <span class="m">m_A\cdot\tfrac23 d = 2m_A\cdot\tfrac13 d</span>. ✓</p>
 </div>
 
-<p>In un campo di gravità uniforme il centro di massa coincide con il <strong>baricentro</strong>, il punto dove si applica il peso.</p>
-<p>Due casi reali:</p>
+<h3>Centro di massa e baricentro</h3>
+<p>Il <strong>baricentro</strong> è il punto in cui si può considerare applicato tutto il peso del sistema (lo vedremo in dettaglio nella lezione 27). In un campo di gravità <strong>uniforme</strong> (stesso <span class="m">\vec g</span> in tutti i punti, come vicino alla superficie terrestre per oggetti non enormi) il baricentro <strong>coincide</strong> con il centro di massa. Per questo nel linguaggio comune i due termini si usano come sinonimi.</p>
+<h3>Due casi reali chiesti nel paniere</h3>
 <ul>
-<li><strong>Atmosfera</strong>: l&#39;aria è molto più densa in basso. Quasi tutta la massa sta nei primi chilometri. Quindi la quota del centro di massa è vicina alla superficie terrestre.</li>
-<li><strong>Corpo umano</strong>: camminando il baricentro sale e scende di pochi centimetri. Correndo c&#39;è una fase di volo e l&#39;escursione è maggiore. La variazione è minima nella camminata.</li>
+<li><strong>Il centro di massa dell&#39;atmosfera.</strong> L&#39;aria è molto più densa in basso: la densità si dimezza circa ogni 5-6 km di quota e la metà della massa dell&#39;atmosfera sta sotto i 5-6 km. Anche se l&#39;atmosfera si estende per centinaia di chilometri, quasi tutta la sua massa è nei primi chilometri. La quota media pesata con la massa, cioè la quota del centro di massa, è quindi <strong>in prossimità della superficie terrestre</strong>, non a metà dell&#39;atmosfera e nemmeno a decine di chilometri.</li>
+<li><strong>Il baricentro del corpo umano.</strong> Nella postura eretta sta circa all&#39;altezza del bacino. Durante la <strong>camminata</strong> c&#39;è sempre almeno un piede a terra e le gambe restano quasi tese: il baricentro sale e scende solo di pochi centimetri a ogni passo. Nella <strong>corsa</strong> c&#39;è una fase di volo, in cui nessun piede tocca terra, e il baricentro compie oscillazioni verticali molto più ampie. La variazione di quota del baricentro è quindi <strong>minima nella camminata</strong>.</li>
 </ul>
-<h2>Quantità di moto ed energia del sistema</h2>
-<p>La quantità di moto totale è la somma delle quantità di moto dei punti. È uguale a quella di un punto con tutta la massa che si muove come il centro di massa.</p>
-<p><span class="m d">\vec P = \sum_i m_i\vec v_i = M\vec v_{cm} \qquad \vec v_{cm} = \frac{\sum_i m_i\vec v_i}{M}</span></p>
-<p>dove <span class="m">\vec v_{cm}</span> è la velocità del centro di massa, in <span class="m">\mathrm{m/s}</span>.</p>
+<h2>Grandezze globali del sistema</h2>
+<p>Alcune grandezze del sistema si definiscono sommando i contributi dei singoli punti.</p>
+<h3>Quantità di moto totale</h3>
+<p><span class="m d">\vec P = \sum_i\vec p_i = \sum_i m_i\vec v_i</span></p>
+<p>Deriviamo rispetto al tempo la definizione del centro di massa, <span class="m">M\vec r_{cm} = \sum_i m_i\vec r_i</span> (le masse sono costanti):</p>
+<p><span class="m d">M\frac{d\vec r_{cm}}{dt} = \sum_i m_i\frac{d\vec r_i}{dt} \quad\Rightarrow\quad M\vec v_{cm} = \sum_i m_i\vec v_i = \vec P</span></p>
+<p>Quindi:</p>
+<p><span class="m d">\vec P = M\vec v_{cm} \qquad \vec v_{cm} = \frac{\sum_i m_i\vec v_i}{M}</span></p>
+<p>La quantità di moto totale è quella di un unico punto di massa <span class="m">M</span> che si muove con la velocità del centro di massa. La velocità del centro di massa è la media delle velocità pesata con le masse (e le velocità vanno sommate con il loro segno, o come vettori).</p>
+<h3>Energia cinetica totale</h3>
+<p><span class="m d">K_{tot} = \sum_i\tfrac12 m_i v_i^2</span></p>
+<p>A differenza della quantità di moto, l&#39;energia cinetica totale <strong>non</strong> è in generale uguale a <span class="m">\tfrac12 Mv_{cm}^2</span>: c&#39;è anche l&#39;energia del moto dei punti attorno al centro di massa (teorema di Koenig, più avanti).</p>
 <div class="callout esempio">
 
-<p>A: <span class="m">6\,\mathrm{kg}</span> a <span class="m">3\,\mathrm{m/s}</span>. B: <span class="m">2\,\mathrm{kg}</span> a <span class="m">9\,\mathrm{m/s}</span> in verso opposto. <span class="m">v_{cm} = (6 \cdot 3 - 2 \cdot 9)/8 = 0</span>. Il centro di massa è fermo.</p>
+<p><strong>Centro di massa fermo.</strong> A, di <span class="m">6\,\mathrm{kg}</span>, va a <span class="m">3\,\mathrm{m/s}</span>; B, di <span class="m">2\,\mathrm{kg}</span>, va a <span class="m">9\,\mathrm{m/s}</span> in verso opposto. Positivo il verso di A:</p>
+<p><span class="m d">v_{cm} = \frac{6\cdot 3 + 2\cdot(-9)}{6 + 2} = \frac{18 - 18}{8} = 0</span></p>
+<p>Le due quantità di moto sono uguali e opposte (<span class="m">18\,\mathrm{kg\cdot m/s}</span> ciascuna): la quantità di moto totale è zero e il centro di massa è <strong>fermo</strong>. Errore tipico: fare la media semplice delle velocità, <span class="m">(3 - 9)/2 = -3</span>, senza pesarle con le masse.</p>
 </div>
 
 <h2>Teorema del moto del centro di massa</h2>
-<p>Il centro di massa si muove come un punto con tutta la massa del sistema, spinto solo dalle forze esterne.</p>
-<p><span class="m d">M\,\vec a_{cm} = \vec R^{(e)} \qquad \frac{d\vec P}{dt} = \vec R^{(e)}</span></p>
-<p>dove:</p>
+<h3>Derivazione</h3>
+<p>Deriviamo ancora una volta: <span class="m">M\vec a_{cm} = \sum_i m_i\vec a_i</span>. Sostituisco l&#39;equazione del moto di ogni punto:</p>
+<p><span class="m d">M\vec a_{cm} = \sum_i\Big(\sum_{j\neq i}\vec F_{ij} + \vec R_i^{(e)}\Big) = \underbrace{\sum_i\sum_{j\neq i}\vec F_{ij}}_{=\,0\ \text{(terzo principio)}} + \sum_i\vec R_i^{(e)}</span></p>
+<p>Chiamando <span class="m">\vec R^{(e)} = \sum_i\vec R_i^{(e)}</span> la risultante delle sole forze esterne:</p>
+<p><span class="m d">M\vec a_{cm} = \vec R^{(e)} \qquad\Longleftrightarrow\qquad \frac{d\vec P}{dt} = \vec R^{(e)}</span></p>
+<p>dove <span class="m">\vec a_{cm}</span> è l&#39;accelerazione del centro di massa (<span class="m">\mathrm{m/s^2}</span>) e <span class="m">\vec R^{(e)}</span> la risultante delle forze esterne (<span class="m">\mathrm N</span>).</p>
+<h3>Enunciato</h3>
+<p><strong>Teorema del moto del centro di massa</strong>: la variazione della quantità di moto totale di un sistema è dovuta solo alla risultante delle forze <strong>esterne</strong>; il centro di massa si muove come un punto materiale che ha la massa totale del sistema e su cui agisce la risultante delle forze esterne.</p>
+<p>Conseguenze:</p>
 <ul>
-<li><span class="m">\vec a_{cm}</span> = accelerazione del centro di massa, in <span class="m">\mathrm{m/s^2}</span>;</li>
-<li><span class="m">\vec R^{(e)}</span> = risultante delle sole forze esterne, in <span class="m">\mathrm N</span>.</li>
+<li>Le forze interne muovono i singoli pezzi, ma <strong>non</strong> il centro di massa. Una granata che esplode in volo: i frammenti vanno in tutte le direzioni, ma il centro di massa continua sulla stessa parabola (finché nessun frammento tocca terra).</li>
+<li>Se <span class="m">\vec R^{(e)} = 0</span> (sistema isolato), <span class="m">\vec P</span> è costante e il centro di massa si muove di moto <strong>rettilineo uniforme</strong> o resta fermo: è la conservazione della quantità di moto vista dal centro di massa.</li>
+<li>Vale componente per componente: se le forze esterne orizzontali sono nulle, la coordinata orizzontale del centro di massa si muove a velocità costante.</li>
 </ul>
-<p>Le forze interne muovono i singoli pezzi, ma non il centro di massa. Se <span class="m">\vec R^{(e)} = 0</span>, il centro di massa si muove a velocità costante (o resta fermo).</p>
 <div class="callout esempio">
 
-<p>Barca di <span class="m">150\,\mathrm{kg}</span>, lunga <span class="m">5\,\mathrm m</span>, ferma vicino al molo. Un uomo di <span class="m">75\,\mathrm{kg}</span> cammina da un&#39;estremità all&#39;altra. In orizzontale non ci sono forze esterne: il centro di massa resta fermo. La barca si sposta di <span class="m">mL/(M + m) = 75 \cdot 5/225 \approx 1{,}67\,\mathrm m</span>.</p>
+<p><strong>Macchina di Atwood (dalla dispensa).</strong> Due blocchi <span class="m">m_1 = 2\,\mathrm{kg}</span> e <span class="m">m_2 = 1\,\mathrm{kg}</span> sono appesi ai capi di un filo che passa su una puleggia fissa al soffitto, tenuti fermi alla stessa altezza e poi lasciati. Come si muove il centro di massa?</p>
+<p>Non ci sono forze esterne orizzontali: il centro di massa si muove in verticale. Dalla macchina di Atwood sappiamo che il blocco più pesante scende con accelerazione</p>
+<p><span class="m d">a = \frac{m_1 - m_2}{m_1 + m_2}\,g = \frac{1}{3}\cdot 9{,}8 \approx 3{,}27\,\mathrm{m/s^2}</span></p>
+<p>e il più leggero sale con la stessa accelerazione. Asse verso l&#39;alto: <span class="m">a_1 = -a</span>, <span class="m">a_2 = +a</span>.</p>
+<p><span class="m d">a_{cm} = \frac{m_1a_1 + m_2a_2}{m_1 + m_2} = \frac{(m_2 - m_1)\,a}{m_1 + m_2} = -\frac{(m_1 - m_2)^2}{(m_1 + m_2)^2}\,g = -\frac{1}{9}\cdot 9{,}8 \approx -1{,}1\,\mathrm{m/s^2}</span></p>
+<p>Il centro di massa accelera <strong>verso il basso</strong> a circa <span class="m">1{,}1\,\mathrm{m/s^2}</span>.</p>
+<p>Verifica con il teorema del moto del centro di massa. Forze esterne sul sistema dei due blocchi: i due pesi verso il basso e le due tensioni del filo, che tirano verso l&#39;alto (il filo è attaccato alla puleggia, esterna). La tensione della macchina di Atwood è <span class="m">T = \dfrac{2m_1m_2}{m_1 + m_2}g = \dfrac{2\cdot 2\cdot 1}{3}\cdot 9{,}8 \approx 13{,}07\,\mathrm N</span>. Allora:</p>
+<p><span class="m d">a_{cm} = \frac{2T - (m_1 + m_2)g}{m_1 + m_2} = \frac{26{,}13 - 29{,}4}{3} \approx -1{,}1\,\mathrm{m/s^2}</span></p>
+<p>Stesso risultato.</p>
 </div>
 
-<h2>Riferimento del centro di massa</h2>
-<p>È un riferimento con l&#39;origine nel centro di massa e gli assi paralleli a quelli di partenza. In questo riferimento la <strong>quantità di moto totale è zero</strong>, perché il centro di massa è sempre fermo lì.</p>
-<p>È inerziale solo se le forze esterne sono nulle.</p>
-<h2>Teorema di Koenig</h2>
-<p>L&#39;energia cinetica di un sistema si divide in due parti: il moto del centro di massa più il moto dei punti attorno al centro di massa.</p>
-<p><span class="m d">K = \tfrac12 M v_{cm}^2 + K'</span></p>
-<p>dove:</p>
-<ul>
-<li><span class="m">K</span> = energia cinetica totale nel riferimento inerziale, in <span class="m">\mathrm J</span>;</li>
-<li><span class="m">\tfrac12 M v_{cm}^2</span> = energia di un punto di massa <span class="m">M</span> che si muove come il centro di massa, in <span class="m">\mathrm J</span>;</li>
-<li><span class="m">K'</span> = energia cinetica dei punti misurata nel riferimento del centro di massa, in <span class="m">\mathrm J</span>.</li>
-</ul>
-<p>Dimostrazione in 3 passi:</p>
-<ol>
-<li>Scrivi ogni velocità come <span class="m">\vec v_i = \vec v_i' + \vec v_{cm}</span>.</li>
-<li>Sviluppi <span class="m">K = \sum \tfrac12 m_i(\vec v_i' + \vec v_{cm})^2</span>: escono <span class="m">K'</span>, <span class="m">\tfrac12 M v_{cm}^2</span> e un termine misto <span class="m">\vec v_{cm}\cdot\sum m_i\vec v_i'</span>.</li>
-<li>Il termine misto è zero, perché <span class="m">\sum m_i\vec v_i' = 0</span> nel riferimento del centro di massa.</li>
-</ol>
-<p>Per un corpo rigido che rotola, <span class="m">K' = \tfrac12 I_{cm}\omega^2</span> (energia di rotazione).</p>
 <div class="callout esempio">
 
-<p>Blocchi di <span class="m">1\,\mathrm{kg}</span> a <span class="m">1\,\mathrm{m/s}</span> e <span class="m">2\,\mathrm{kg}</span> a <span class="m">2\,\mathrm{m/s}</span>, stesso verso. <span class="m">v_{cm} = (1 + 4)/3 \approx 1{,}67\,\mathrm{m/s}</span>. Nel riferimento del centro di massa: <span class="m">P' = 0</span> e <span class="m">K' \approx 0{,}33\,\mathrm J</span>.</p>
+<p><strong>Uomo che cammina su una barca (dalla dispensa).</strong> Una barca di massa <span class="m">M = 150\,\mathrm{kg}</span> e lunghezza <span class="m">L = 5\,\mathrm m</span> è ferma, non ancorata, con l&#39;estremità A a contatto con il molo. Un uomo di <span class="m">m = 75\,\mathrm{kg}</span> sta all&#39;estremità opposta B e cammina fino ad A. Trascurando l&#39;attrito dell&#39;acqua, di quanto si stacca A dal molo?</p>
+<ol>
+<li>Riferimento solidale al molo, origine nel punto di contatto iniziale, asse verso la barca. La massa della barca si considera concentrata nel suo punto medio.</li>
+<li>Centro di massa iniziale (uomo in B, cioè a <span class="m">x = L</span>):
+<span class="m d">x_{cm,0} = \frac{M\frac L2 + mL}{M + m}</span></li>
+<li>Non ci sono forze esterne orizzontali e tutto parte da fermo: il centro di massa <strong>resta fermo</strong>.</li>
+<li>Alla fine l&#39;estremità A si è spostata in <span class="m">x_A</span> (incognita) e l&#39;uomo è proprio lì; il centro della barca è in <span class="m">x_A + \frac L2</span>:
+<span class="m d">x_{cm,1} = \frac{M\left(x_A + \frac L2\right) + m\,x_A}{M + m}</span></li>
+<li>Impongo <span class="m">x_{cm,1} = x_{cm,0}</span> e semplifico il denominatore e il termine <span class="m">M\frac L2</span>:
+<span class="m d">(M + m)\,x_A = mL \quad\Rightarrow\quad x_A = \frac{mL}{M + m} = \frac{75\cdot 5}{225} \approx 1{,}67\,\mathrm m</span></li>
+</ol>
+<p>La barca arretra di <span class="m">1{,}67\,\mathrm m</span> mentre l&#39;uomo avanza: l&#39;uomo si sposta rispetto al molo di <span class="m">5 - 1{,}67 = 3{,}33\,\mathrm m</span>, e infatti <span class="m">75\cdot 3{,}33 = 150\cdot 1{,}67</span>.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Il gatto e le due slitte (dalla dispensa).</strong> Due slitte identiche di massa <span class="m">M = 22{,}7\,\mathrm{kg}</span> sono ferme e allineate sul ghiaccio senza attrito. Un gatto di <span class="m">m = 3{,}63\,\mathrm{kg}</span> salta dalla slitta 1 alla slitta 2 e subito dopo torna sulla 1. Ogni salto avviene a <span class="m">v_C = 3{,}05\,\mathrm{m/s}</span> rispetto al ghiaccio. Velocità finali delle slitte? (Positivo il verso del primo salto.)</p>
+<p><strong>Primo salto.</strong></p>
+<ul>
+<li>Gatto + slitta 1, tutto fermo prima: <span class="m">0 = m v_C + M v_{S1,1} \Rightarrow v_{S1,1} = -\dfrac{m v_C}{M}</span>.</li>
+<li>Gatto + slitta 2 (il gatto atterra e resta sopra): <span class="m">m v_C = (m + M)\,v_{S2,1}</span>.</li>
+</ul>
+<p><strong>Secondo salto</strong> (verso la slitta 1, quindi con velocità <span class="m">-v_C</span>).</p>
+<ul>
+<li>Gatto + slitta 2: prima <span class="m">(m + M)v_{S2,1} = m v_C</span>; dopo il gatto ha <span class="m">-v_C</span> e la slitta <span class="m">v_{S2,2}</span>:
+<span class="m d">m v_C = -m v_C + M v_{S2,2} \Rightarrow v_{S2,2} = \frac{2mv_C}{M} = \frac{2\cdot 3{,}63\cdot 3{,}05}{22{,}7} \approx 0{,}975\,\mathrm{m/s}</span></li>
+<li>Gatto + slitta 1 (il gatto atterra e resta sopra): prima <span class="m">-mv_C + Mv_{S1,1} = -mv_C - mv_C</span>; dopo <span class="m">(m + M)v_{S1,2}</span>:
+<span class="m d">v_{S1,2} = -\frac{2mv_C}{m + M} = -\frac{2\cdot 3{,}63\cdot 3{,}05}{26{,}33} \approx -0{,}841\,\mathrm{m/s}</span></li>
+</ul>
+<p>Controllo: la quantità di moto totale finale è <span class="m">(m + M)(-0{,}841) + M(0{,}975) \approx -22{,}1 + 22{,}1 = 0</span>, come all&#39;inizio.</p>
+</div>
+
+<h2>Il riferimento del centro di massa</h2>
+<h3>Definizione</h3>
+<p>Sia <span class="m">R(Oxyz)</span> un riferimento inerziale in cui il centro di massa occupa nel tempo la posizione <span class="m">C(t)</span>. Il <strong>riferimento del centro di massa</strong> <span class="m">R_{cm}(Cx'y'z')</span> ha:</p>
+<ul>
+<li>l&#39;<strong>origine nel centro di massa</strong> <span class="m">C</span>;</li>
+<li>gli <strong>assi paralleli</strong> a quelli di <span class="m">R</span> (non ruota).</li>
+</ul>
+<p>È quindi legato a <span class="m">R</span> da una pura traslazione. <strong>Non è in generale inerziale</strong>: lo è solo se il centro di massa si muove a velocità costante, cioè se la risultante delle forze esterne è nulla.</p>
+<h3>Relazioni tra i due riferimenti</h3>
+<p>Indicando con l&#39;apice le grandezze misurate nel riferimento del centro di massa:</p>
+<p><span class="m d">\vec r_i = \vec r_i\,' + \vec r_{cm} \qquad \vec v_i = \vec v_i\,' + \vec v_{cm}</span></p>
+<p>(la seconda segue dalla prima derivando, perché non c&#39;è rotazione relativa).</p>
+<h3>La quantità di moto totale è nulla</h3>
+<p><span class="m d">\vec P\,' = \sum_i m_i\vec v_i\,' = \sum_i m_i(\vec v_i - \vec v_{cm}) = \sum_i m_i\vec v_i - M\vec v_{cm} = \vec P - \vec P = 0</span></p>
+<p>Nel riferimento del centro di massa la quantità di moto totale è <strong>sempre zero</strong>. È intuitivo: la quantità di moto totale è quella di un punto posto nel centro di massa, e in questo riferimento il centro di massa è per costruzione sempre fermo. Allo stesso modo <span class="m">\sum_i m_i\vec r_i\,' = 0</span> (il centro di massa è nell&#39;origine).</p>
+<h2>Teorema di Koenig</h2>
+<h3>Dimostrazione</h3>
+<p>Calcoliamo l&#39;energia cinetica nel riferimento inerziale scrivendo ogni velocità come <span class="m">\vec v_i = \vec v_i\,' + \vec v_{cm}</span>:</p>
+<p><span class="m d">K = \sum_i\tfrac12 m_i v_i^2 = \sum_i\tfrac12 m_i(\vec v_i\,' + \vec v_{cm})\cdot(\vec v_i\,' + \vec v_{cm})</span></p>
+<p>Sviluppo il prodotto scalare (<span class="m">(\vec a + \vec b)^2 = a^2 + b^2 + 2\vec a\cdot\vec b</span>):</p>
+<p><span class="m d">K = \sum_i\tfrac12 m_iv_i'^2 + \tfrac12\Big(\sum_i m_i\Big)v_{cm}^2 + \vec v_{cm}\cdot\sum_i m_i\vec v_i\,'</span></p>
+<p>L&#39;ultimo termine contiene <span class="m">\sum_i m_i\vec v_i\,' = \vec P\,' = 0</span>: è nullo. Restano:</p>
+<p><span class="m d">K = K' + \tfrac12 Mv_{cm}^2</span></p>
+<p>dove:</p>
+<ul>
+<li><span class="m">K</span> = energia cinetica del sistema nel riferimento inerziale, in <span class="m">\mathrm J</span>;</li>
+<li><span class="m">K' = \sum_i\tfrac12 m_iv_i'^2</span> = energia cinetica dei punti misurata nel riferimento del centro di massa, in <span class="m">\mathrm J</span>;</li>
+<li><span class="m">\tfrac12 Mv_{cm}^2</span> = energia cinetica di un punto di massa <span class="m">M</span> che si muove con il centro di massa, in <span class="m">\mathrm J</span>.</li>
+</ul>
+<h3>Enunciato</h3>
+<p><strong>Teorema di Koenig</strong>: l&#39;energia cinetica di un sistema di punti in un riferimento inerziale è la somma dell&#39;energia cinetica che il sistema avrebbe se tutta la massa fosse concentrata nel centro di massa e si muovesse con esso, più l&#39;energia cinetica dei punti nel loro moto <strong>relativo</strong> al centro di massa.</p>
+<p>Significato: il moto di un sistema si separa in &quot;moto d&#39;insieme&quot; (traslazione del centro di massa) e &quot;moto interno&quot; (rispetto al centro di massa). Per un corpo rigido che ruota e trasla, come una ruota che rotola, il moto interno è una rotazione e <span class="m">K' = \tfrac12 I_{cm}\omega^2</span> (lezioni 28-29): <span class="m">K = \tfrac12 Mv_{cm}^2 + \tfrac12 I_{cm}\omega^2</span>.</p>
+<p>Conseguenza: <span class="m">K \geq \tfrac12 Mv_{cm}^2</span>. L&#39;energia cinetica minima compatibile con una data quantità di moto totale è quella in cui tutti i punti si muovono insieme (<span class="m">K' = 0</span>). Per questo negli urti completamente anelastici (lezione 24) si perde tutta e sola <span class="m">K'</span>.</p>
+<div class="callout esempio">
+
+<p><strong>Due blocchi visti dal centro di massa (dalla dispensa).</strong> <span class="m">m_1 = 1\,\mathrm{kg}</span> a <span class="m">v_1 = 1\,\mathrm{m/s}</span> e <span class="m">m_2 = 2\,\mathrm{kg}</span> a <span class="m">v_2 = 2\,\mathrm{m/s}</span>, stesso verso, su un piano senza attrito.</p>
+<ol>
+<li>Velocità del centro di massa: <span class="m">v_{cm} = \dfrac{1\cdot 1 + 2\cdot 2}{3} = \dfrac53 \approx 1{,}67\,\mathrm{m/s}</span> (costante: nessuna forza esterna).</li>
+<li>Nel riferimento del centro di massa la quantità di moto totale è <strong>zero</strong> per definizione.</li>
+<li>Velocità relative: <span class="m">v_1' = 1 - 1{,}67 = -0{,}67\,\mathrm{m/s}</span>, <span class="m">v_2' = 2 - 1{,}67 = +0{,}33\,\mathrm{m/s}</span>. Controllo: <span class="m">1\cdot(-0{,}67) + 2\cdot 0{,}33 = 0</span>. ✓</li>
+<li><span class="m">K' = \tfrac12\cdot 1\cdot 0{,}444 + \tfrac12\cdot 2\cdot 0{,}111 = 0{,}222 + 0{,}111 \approx 0{,}33\,\mathrm J</span>.</li>
+</ol>
+<p>Verifica di Koenig: <span class="m">K = \tfrac12\cdot 1\cdot 1 + \tfrac12\cdot 2\cdot 4 = 4{,}5\,\mathrm J</span>; <span class="m">\tfrac12 Mv_{cm}^2 = \tfrac12\cdot 3\cdot 2{,}78 = 4{,}17\,\mathrm J</span>; e <span class="m">4{,}17 + 0{,}33 = 4{,}5\,\mathrm J</span>. ✓</p>
 </div>
 
 <h2>Energia cinetica e quantità di moto a confronto</h2>
-<p>Le due grandezze sono legate da:</p>
-<p><span class="m d">K = \frac{p^2}{2m} \qquad p = \sqrt{2mK}</span></p>
-<p>dove <span class="m">K</span> è in <span class="m">\mathrm J</span>, <span class="m">p</span> in <span class="m">\mathrm{kg\cdot m/s}</span>, <span class="m">m</span> in <span class="m">\mathrm{kg}</span>.</p>
+<p>Per un singolo corpo, eliminando la velocità tra <span class="m">p = mv</span> e <span class="m">K = \tfrac12 mv^2</span>: da <span class="m">v = p/m</span>,</p>
+<p><span class="m d">K = \tfrac12 m\left(\frac pm\right)^2 = \frac{p^2}{2m} \qquad\Longleftrightarrow\qquad p = \sqrt{2mK}</span></p>
+<p>dove <span class="m">K</span> è in <span class="m">\mathrm J</span>, <span class="m">p</span> in <span class="m">\mathrm{kg\cdot m/s}</span>, <span class="m">m</span> in <span class="m">\mathrm{kg}</span>. Due casi frequenti nelle domande:</p>
 <ul>
-<li><strong>Stessa <span class="m">p</span></strong>: ha più energia cinetica il corpo <strong>più leggero</strong> (con <span class="m">m</span> al denominatore).</li>
-<li><strong>Stessa <span class="m">K</span></strong>: <span class="m">p</span> cresce come <span class="m">\sqrt m</span>. Con massa 9 volte maggiore, <span class="m">p</span> è <span class="m">\sqrt9 = 3</span> volte maggiore.</li>
+<li><strong>Stessa quantità di moto</strong>: <span class="m">K = p^2/2m</span> con <span class="m">m</span> al denominatore, quindi ha <strong>più energia cinetica il corpo più leggero</strong> (che è anche il più veloce, perché <span class="m">v = p/m</span>).</li>
+<li><strong>Stessa energia cinetica</strong>: <span class="m">p = \sqrt{2mK}</span> cresce come <span class="m">\sqrt m</span>. Se A ha massa 9 volte quella di B, <span class="m">p_A/p_B = \sqrt 9 = 3</span>: la quantità di moto di A è <strong>tre volte</strong> quella di B (non nove).</li>
 </ul>
 <div class="callout esempio">
 
-<p>Palla da baseball di <span class="m">0{,}2\,\mathrm{kg}</span> a <span class="m">150\,\mathrm{km/h} = 41{,}7\,\mathrm{m/s}</span>, rimandata indietro con la stessa velocità. <span class="m">\Delta p = 0{,}2 \cdot 2 \cdot 41{,}7 \approx 16{,}7\,\mathrm{kg\cdot m/s}</span>. Con contatto di <span class="m">0{,}1\,\mathrm s</span>: <span class="m">\bar F = 16{,}7/0{,}1 \approx 167\,\mathrm N</span>.</p>
+<p><strong>Forza media su una palla da baseball.</strong> Una palla di <span class="m">200\,\mathrm g</span> arriva a <span class="m">150\,\mathrm{km/h}</span>, viene colpita dalla mazza e torna indietro con la stessa velocità; il contatto dura <span class="m">0{,}100\,\mathrm s</span>.</p>
+<ol>
+<li>Conversioni: <span class="m">150\,\mathrm{km/h} = 150/3{,}6 \approx 41{,}7\,\mathrm{m/s}</span>; <span class="m">200\,\mathrm g = 0{,}2\,\mathrm{kg}</span>.</li>
+<li><span class="m">v_i = +41{,}7</span>, <span class="m">v_f = -41{,}7\,\mathrm{m/s}</span>: <span class="m">|\Delta p| = 0{,}2\cdot 2\cdot 41{,}7 \approx 16{,}7\,\mathrm{kg\cdot m/s}</span>.</li>
+<li><span class="m">F_m = |\Delta p|/\Delta t = 16{,}7/0{,}100 \approx 167\,\mathrm N</span>.</li>
+</ol>
+<p>Senza convertire i km/h si otterrebbe <span class="m">600\,\mathrm N</span>; pensando che &quot;la velocità è la stessa quindi non cambia nulla&quot; si otterrebbe <span class="m">0\,\mathrm N</span>: entrambi errori.</p>
 </div>
 
 <h2>Sistema di due punti e massa ridotta</h2>
-<p>Due corpi che interagiscono solo tra loro si possono trattare così: uno è fermo e l&#39;altro si muove con una massa &quot;equivalente&quot;, la <strong>massa ridotta</strong>.</p>
-<p><span class="m d">\mu = \frac{m_1 m_2}{m_1 + m_2}</span></p>
+<h3>Il problema dei due corpi</h3>
+<p>È il caso più semplice: due corpi che <strong>non subiscono forze esterne</strong> e interagiscono solo tra loro, con forze uguali e opposte (Terra e Luna, due atomi di una molecola, due stelle doppie). Poiché le forze esterne sono nulle, il riferimento del centro di massa è <strong>inerziale</strong> e conviene studiare il moto lì.</p>
+<p>Con l&#39;origine nel centro di massa, <span class="m">\sum m_i\vec r_i = 0</span> diventa:</p>
+<p><span class="m d">m_1\vec r_1 = -m_2\vec r_2</span></p>
+<p>I due corpi stanno sempre da parti opposte del centro di massa, a distanze inversamente proporzionali alle masse.</p>
+<h3>Derivazione della massa ridotta</h3>
+<p>Per simmetria le forze sono <strong>centrali</strong>: dirette lungo la congiungente e dipendenti solo dalla distanza. Sia <span class="m">\vec F</span> la forza su 1 dovuta a 2; per il terzo principio quella su 2 è <span class="m">-\vec F</span>:</p>
+<p><span class="m d">m_1\frac{d^2\vec r_1}{dt^2} = \vec F \qquad m_2\frac{d^2\vec r_2}{dt^2} = -\vec F</span></p>
+<p>Introduco la posizione <strong>relativa</strong> <span class="m">\vec r = \vec r_1 - \vec r_2</span> (posizione di 1 vista da 2). Divido ciascuna equazione per la sua massa e sottraggo:</p>
+<p><span class="m d">\frac{d^2\vec r}{dt^2} = \frac{\vec F}{m_1} + \frac{\vec F}{m_2} = \vec F\left(\frac{1}{m_1} + \frac{1}{m_2}\right) = \vec F\,\frac{m_1 + m_2}{m_1m_2}</span></p>
+<p>Definendo la <strong>massa ridotta</strong></p>
+<p><span class="m d">\mu = \frac{m_1m_2}{m_1 + m_2}</span></p>
+<p>si ottiene:</p>
+<p><span class="m d">\mu\,\frac{d^2\vec r}{dt^2} = \vec F</span></p>
 <p>dove <span class="m">\mu</span>, <span class="m">m_1</span>, <span class="m">m_2</span> sono in <span class="m">\mathrm{kg}</span>.</p>
-<h2>Il braccio come leva</h2>
-<p>Il braccio che regge un peso è una <strong>leva di terzo genere</strong>. Il fulcro è il gomito. Il bicipite tira vicino al gomito (braccio corto). Il peso sta nella mano, lontano (braccio lungo).</p>
-<p>Per l&#39;equilibrio dei momenti, il muscolo deve fare una forza <strong>molto più grande</strong> del peso. In cambio la mano compie spostamenti ampi e veloci con piccoli accorciamenti del muscolo.</p>
+<h3>Significato</h3>
+<p>Due corpi che si muovono solo per effetto della loro interazione reciproca si possono studiare come se <strong>uno fosse fermo</strong> e l&#39;altro si muovesse attorno a lui con una massa &quot;equivalente&quot; pari alla massa ridotta. Il problema a due corpi diventa un problema a un corpo.</p>
+<ul>
+<li><span class="m">\mu</span> è sempre <strong>minore</strong> della massa più piccola.</li>
+<li>Se una massa è molto più grande (<span class="m">m_2 \gg m_1</span>), <span class="m">\mu \approx m_1</span>: il corpo grande è praticamente fermo (il Sole per un pianeta, il nucleo per l&#39;elettrone).</li>
+<li>Con masse uguali <span class="m">\mu = m/2</span>.</li>
+</ul>
+<h2>Il braccio umano come leva</h2>
+<p>Questo argomento non è nella dispensa ma è chiesto in una domanda aperta. Si basa sulle leve e sui momenti delle forze (lezione 23).</p>
+<p>Una <strong>leva</strong> è un&#39;asta rigida che può ruotare attorno a un punto fisso, il <strong>fulcro</strong>; su di essa agiscono la <strong>potenza</strong> (la forza motrice) e la <strong>resistenza</strong> (il carico). È in equilibrio quando i momenti rispetto al fulcro si bilanciano: <span class="m">P\,b_P = R\,b_R</span>.</p>
+<p>Nel braccio che regge un peso con il gomito piegato:</p>
+<ul>
+<li>il <strong>fulcro</strong> è il <strong>gomito</strong> (l&#39;articolazione);</li>
+<li>la <strong>potenza</strong> è la forza del <strong>bicipite</strong>, che si inserisce sull&#39;avambraccio a pochi centimetri dal gomito;</li>
+<li>la <strong>resistenza</strong> è il <strong>peso nella mano</strong> (più il peso dell&#39;avambraccio), a 30-35 cm dal gomito.</li>
+</ul>
+<p>La potenza sta <strong>tra</strong> il fulcro e la resistenza: è una <strong>leva di terzo genere</strong>. Il braccio della potenza è molto più corto di quello della resistenza, quindi la leva è <strong>svantaggiosa</strong>: il muscolo deve esercitare una forza molto più grande del peso sollevato. In cambio la leva è vantaggiosa in <strong>velocità e ampiezza</strong>: un piccolo accorciamento del muscolo produce un grande spostamento della mano, rapido. Inoltre il gomito (fulcro) subisce una forza notevole, pari circa alla differenza tra la forza muscolare e il peso.</p>
+<div class="callout esempio">
+
+<p>Il bicipite si inserisce a <span class="m">4\,\mathrm{cm}</span> dal gomito e la mano regge <span class="m">5\,\mathrm{kg}</span> a <span class="m">35\,\mathrm{cm}</span> dal gomito (avambraccio orizzontale, peso dell&#39;avambraccio trascurato). Equilibrio dei momenti rispetto al gomito:</p>
+<p><span class="m d">F_{muscolo}\cdot 0{,}04 = 5\cdot 9{,}8\cdot 0{,}35 \Rightarrow F_{muscolo} = \frac{17{,}15}{0{,}04} \approx 429\,\mathrm N</span></p>
+<p>Il muscolo esercita una forza quasi 9 volte il peso sollevato (<span class="m">49\,\mathrm N</span>). La reazione del gomito, dall&#39;equilibrio delle forze verticali, vale circa <span class="m">429 - 49 = 380\,\mathrm N</span> verso il basso.</p>
+</div>
+
+<div class="callout esame">
+
+<p>Le domande aperte di questa lezione:</p>
+<ul>
+<li><strong>Cos&#39;è il centro di massa?</strong> Definizione <span class="m">\vec r_{cm} = \sum m_i\vec r_i/M</span> (media pesata delle posizioni), caso di due punti (<span class="m">m_Ad_A = m_Bd_B</span>, più vicino alla massa maggiore), <span class="m">\vec P = M\vec v_{cm}</span>, teorema del moto del centro di massa <span class="m">M\vec a_{cm} = \vec R^{(e)}</span> (le forze interne non lo muovono), coincidenza con il baricentro in gravità uniforme, esempio della barca o della granata.</li>
+<li><strong>Il braccio umano come leva</strong>: fulcro nel gomito, potenza (bicipite) tra fulcro e resistenza (peso nella mano): leva di terzo genere, svantaggiosa in forza (<span class="m">b_P &lt; b_R</span>, il muscolo fa una forza molto maggiore del peso), vantaggiosa in velocità e ampiezza di movimento; un esempio numerico.</li>
+<li><strong>Teorema di Koenig</strong>: riferimento del centro di massa, <span class="m">\vec v_i = \vec v_i\,' + \vec v_{cm}</span>, sviluppo di <span class="m">K</span>, termine misto nullo perché <span class="m">\vec P\,' = 0</span>, enunciato <span class="m">K = K' + \tfrac12 Mv_{cm}^2</span>, esempio del corpo che rotola.</li>
+</ul>
+<p>Nelle chiuse: posizione del centro di massa di due punti, velocità del centro di massa con i segni, confronti tra <span class="m">K</span> e <span class="m">p</span> con <span class="m">K = p^2/2m</span>, baricentro dell&#39;atmosfera e del corpo umano.</p>
+</div>
+
 <div class="callout sintesi">
 
 <ul>
-<li><span class="m">\vec r_{cm} = \sum m_i\vec r_i/M</span>: media pesata, più vicino alla massa maggiore.</li>
-<li><span class="m">\vec P = M\vec v_{cm}</span> e <span class="m">M\vec a_{cm} = \vec R^{(e)}</span>: le forze interne non muovono il centro di massa.</li>
-<li>Nel riferimento del centro di massa <span class="m">\vec P' = 0</span>.</li>
-<li>Koenig: <span class="m">K = \tfrac12 M v_{cm}^2 + K'</span>.</li>
-<li><span class="m">K = p^2/2m</span>: a pari <span class="m">p</span> ha più <span class="m">K</span> il più leggero; a pari <span class="m">K</span>, <span class="m">p \propto \sqrt m</span>.</li>
-<li>Braccio umano: leva di terzo genere, svantaggiosa in forza.</li>
+<li>Sistema di punti: <span class="m">m_i\vec a_i = \sum_j\vec F_{ij} + \vec R_i^{(e)}</span>; le forze interne sommate danno zero (terzo principio).</li>
+<li>Centro di massa: <span class="m">\vec r_{cm} = \sum m_i\vec r_i/M</span>; per due punti <span class="m">m_Ad_A = m_Bd_B</span>, più vicino alla massa maggiore.</li>
+<li><span class="m">\vec P = M\vec v_{cm}</span>; <span class="m">M\vec a_{cm} = \vec R^{(e)}</span> (<span class="m">d\vec P/dt = \vec R^{(e)}</span>): le forze interne non muovono il centro di massa.</li>
+<li>Riferimento del centro di massa: origine in C, assi paralleli; <span class="m">\vec P\,' = 0</span>; inerziale solo se <span class="m">\vec R^{(e)} = 0</span>.</li>
+<li>Koenig: <span class="m">K = K' + \tfrac12 Mv_{cm}^2</span>.</li>
+<li><span class="m">K = p^2/2m</span>: a pari <span class="m">p</span> più energia il più leggero; a pari <span class="m">K</span>, <span class="m">p \propto\sqrt m</span>.</li>
+<li>Due corpi isolati: <span class="m">\mu\,\ddot{\vec r} = \vec F</span> con <span class="m">\mu = m_1m_2/(m_1 + m_2)</span>.</li>
+<li>Baricentro umano: oscillazione minima nella camminata; centro di massa dell&#39;atmosfera vicino alla superficie.</li>
+<li>Braccio: leva di terzo genere, svantaggiosa in forza.</li>
 </ul>
 </div>

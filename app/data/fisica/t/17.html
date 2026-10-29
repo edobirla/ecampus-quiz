@@ -1,124 +1,337 @@
 <h1>Lezione 17 — Lavoro ed energia cinetica</h1>
-<h2>Che cos&#39;è l&#39;energia</h2>
-<p>L&#39;energia è una grandezza scalare legata allo stato di un corpo: al suo moto o alla sua posizione. Si conserva: si trasforma da una forma all&#39;altra o passa da un corpo all&#39;altro. Il lavoro è uno dei modi con cui un corpo scambia energia.</p>
+<h2>Di cosa parla questa lezione</h2>
+<p>Finora abbiamo studiato il moto con le leggi di Newton: forze → accelerazione → velocità e posizione. Esiste un secondo modo di affrontare i problemi di meccanica, spesso molto più rapido: il <strong>bilancio dell&#39;energia</strong>. Questa lezione introduce i due concetti di base:</p>
 <ul>
-<li><strong>Energia cinetica</strong>: l&#39;energia che un corpo ha perché si muove.</li>
-<li><strong>Energia potenziale</strong>: l&#39;energia che ha per la sua posizione.</li>
-<li><strong>Energia meccanica</strong>: la somma delle due.</li>
+<li>il <strong>lavoro</strong> compiuto da una forza, cioè il modo in cui una forza trasferisce energia a un corpo;</li>
+<li>l&#39;<strong>energia cinetica</strong>, l&#39;energia che un corpo possiede perché si muove;</li>
 </ul>
-<h2>Il lavoro di una forza</h2>
-<p>Il lavoro misura quanto una forza contribuisce allo spostamento. Conta solo la componente della forza lungo lo spostamento.</p>
-<p>Per una forza costante e uno spostamento rettilineo:</p>
-<p><span class="m d">L = \vec F \cdot \vec s = F\,s\cos\theta</span></p>
+<p>e il legame tra i due, il <strong>teorema dell&#39;energia cinetica</strong> (o delle forze vive). Poi calcoliamo il lavoro di alcune forze importanti: peso, tensione del pendolo, forza elastica, attrito. Le lezioni 18–20 completano il discorso con potenza, forze conservative, energia potenziale e conservazione dell&#39;energia.</p>
+<h2>L&#39;energia</h2>
+<p>L&#39;energia è una delle grandezze fisiche più importanti, anche nella vita quotidiana e nella società, ma è difficile darne una definizione che non sia <strong>operativa</strong> (cioè che non dica semplicemente come si misura). In meccanica:</p>
+<ul>
+<li>l&#39;energia è una <strong>proprietà di un corpo associata al suo stato</strong> in un certo istante: al suo stato di moto (velocità) o semplicemente alla sua posizione. &quot;Stato&quot; ha qui il significato del linguaggio comune: la condizione in cui si trova il corpo;</li>
+<li>è una grandezza <strong>scalare</strong> (un numero con unità, senza direzione);</li>
+<li>uno dei principi fondamentali della fisica è la sua <strong>conservazione</strong>: l&#39;energia non si crea e non si distrugge, ma <strong>si trasforma</strong> da una forma all&#39;altra o <strong>viene trasferita</strong> da un sistema a un altro nelle interazioni;</li>
+<li>i processi con cui un sistema scambia energia con l&#39;ambiente sono vari; uno dei principali è il <strong>lavoro</strong> (un altro, visto in termodinamica, è il calore).</li>
+</ul>
+<p>L&#39;energia esiste in molte forme, ciascuna con la propria espressione:</p>
+<table>
+<thead>
+<tr>
+<th>Forma di energia</th>
+<th>Legata a</th>
+<th>Esempio</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Cinetica</td>
+<td>moto (velocità)</td>
+<td>auto in corsa, <span class="m">\tfrac12 mv^2</span></td>
+</tr>
+<tr>
+<td>Potenziale gravitazionale</td>
+<td>posizione (quota)</td>
+<td>acqua in un bacino in quota, <span class="m">mgh</span></td>
+</tr>
+<tr>
+<td>Potenziale elastica</td>
+<td>deformazione</td>
+<td>molla compressa, <span class="m">\tfrac12 kx^2</span></td>
+</tr>
+<tr>
+<td>Termica (interna)</td>
+<td>agitazione delle molecole</td>
+<td>corpo caldo</td>
+</tr>
+<tr>
+<td>Chimica</td>
+<td>legami tra atomi</td>
+<td>combustibile, cibo, batteria</td>
+</tr>
+<tr>
+<td>Elettrica</td>
+<td>cariche e correnti</td>
+<td>rete elettrica</td>
+</tr>
+<tr>
+<td>Radiante</td>
+<td>onde elettromagnetiche</td>
+<td>luce del Sole</td>
+</tr>
+<tr>
+<td>Nucleare</td>
+<td>legami nel nucleo</td>
+<td>centrale nucleare</td>
+</tr>
+</tbody></table>
+<p>La somma di energia cinetica ed energia potenziale si chiama <strong>energia meccanica</strong>.</p>
+<h2>Il lavoro elementare</h2>
+<p>Consideriamo un punto materiale che si muove lungo una traiettoria qualsiasi, soggetto a una forza <span class="m">\vec F</span>. Si chiama <strong>lavoro elementare</strong> compiuto dalla forza durante uno spostamento infinitesimo <span class="m">d\vec s</span> lungo la traiettoria il prodotto scalare:</p>
+<p><span class="m d">dL = \vec F \cdot d\vec s = |\vec F|\,|d\vec s|\cos\theta</span></p>
 <p>dove:</p>
 <ul>
-<li><span class="m">L</span> = lavoro (J)</li>
-<li><span class="m">F</span> = modulo della forza (N)</li>
-<li><span class="m">s</span> = modulo dello spostamento (m)</li>
-<li><span class="m">\theta</span> = angolo tra forza e spostamento</li>
+<li><span class="m">dL</span> = lavoro elementare (J)</li>
+<li><span class="m">\vec F</span> = forza applicata al punto (N)</li>
+<li><span class="m">d\vec s</span> = spostamento infinitesimo, tangente alla traiettoria (m)</li>
+<li><span class="m">\theta</span> = angolo compreso tra il vettore forza e il vettore spostamento</li>
 </ul>
-<p>Il lavoro è uno scalare. Si misura in joule: <span class="m">1\,\mathrm J = 1\,\mathrm{N\cdot m} = 1\,\mathrm{kg\,m^2/s^2}</span>.</p>
-<p>Il segno dipende dall&#39;angolo:</p>
+<p>Dalla definizione:</p>
 <ul>
-<li><span class="m">\theta &lt; 90°</span>: lavoro positivo (la forza aiuta il moto).</li>
-<li><span class="m">\theta = 90°</span>: lavoro nullo.</li>
-<li><span class="m">\theta &gt; 90°</span>: lavoro negativo (la forza frena il moto).</li>
+<li>il lavoro è una grandezza <strong>scalare</strong> (è un prodotto scalare);</li>
+<li>le sue dimensioni sono <span class="m">[M L^2 T^{-2}]</span> (forza per lunghezza: <span class="m">[MLT^{-2}]\cdot[L]</span>);</li>
+<li>l&#39;unità SI è il <strong>joule</strong> (J): <span class="m">\;1\,\mathrm J = 1\,\mathrm N \cdot 1\,\mathrm m = 1\,\mathrm{kg\,m^2/s^2}</span>. Un joule è il lavoro di una forza di <span class="m">1\,\mathrm N</span> il cui punto di applicazione si sposta di <span class="m">1\,\mathrm m</span> nella direzione della forza.</li>
 </ul>
-<p>In generale, su una traiettoria curva e con forza variabile, si somma il lavoro di ogni tratto piccolissimo <span class="m">d\vec s</span>:</p>
+<h3>Conta solo la componente tangente</h3>
+<p>Poiché <span class="m">F\cos\theta</span> è la componente della forza lungo lo spostamento, è come se <strong>soltanto la componente della forza tangente alla traiettoria compisse lavoro</strong>. La componente perpendicolare cambia la direzione del moto ma non contribuisce al lavoro. Di conseguenza il segno del lavoro dipende dall&#39;angolo:</p>
+<table>
+<thead>
+<tr>
+<th>Angolo tra <span class="m">\vec F</span> e <span class="m">d\vec s</span></th>
+<th><span class="m">\cos\theta</span></th>
+<th>Lavoro</th>
+<th>Effetto</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>acuto, <span class="m">0 \le \theta &lt; 90°</span></td>
+<td><span class="m">&gt; 0</span></td>
+<td>positivo (<strong>motore</strong>)</td>
+<td>la forza favorisce il moto</td>
+</tr>
+<tr>
+<td>retto, <span class="m">\theta = 90°</span></td>
+<td><span class="m">0</span></td>
+<td><strong>nullo</strong></td>
+<td>la forza non contribuisce</td>
+</tr>
+<tr>
+<td>ottuso, <span class="m">90° &lt; \theta \le 180°</span></td>
+<td><span class="m">&lt; 0</span></td>
+<td>negativo (<strong>resistente</strong>)</td>
+<td>la forza si oppone al moto</td>
+</tr>
+</tbody></table>
+<h2>Il lavoro lungo una traiettoria</h2>
+<p>Se il punto va dalla posizione A alla posizione B lungo la sua traiettoria, il lavoro totale è la <strong>somma dei lavori elementari</strong> su ciascun tratto infinitesimo. Al limite in cui i tratti <span class="m">ds</span> tendono a zero la somma diventa un integrale:</p>
 <p><span class="m d">L_{AB} = \int_A^B \vec F \cdot d\vec s</span></p>
-<p>Graficamente, in una dimensione, il lavoro è l&#39;area sotto la curva <span class="m">F(x)</span> tra la posizione iniziale e quella finale.</p>
-<p>Se agiscono più forze, il lavoro della risultante è la somma dei lavori delle singole forze.</p>
-<h2>Perché la forza centripeta non fa lavoro</h2>
-<p>Nel moto circolare la forza centripeta punta sempre verso il centro. La velocità invece è sempre tangente alla circonferenza. Forza e spostamento sono perpendicolari, quindi <span class="m">L = F\,s\cos 90° = 0</span>.</p>
-<p>Per lo stesso motivo la tensione del filo di un pendolo non compie lavoro.</p>
+<p>È un <strong>integrale di linea</strong>, calcolato lungo la traiettoria da A a B, della forma differenziale <span class="m">\vec F \cdot d\vec s</span>. In generale il risultato dipende dalla traiettoria seguita: vedremo che per alcune forze (le conservative) non è così.</p>
+<h3>Forza costante e spostamento rettilineo</h3>
+<p>Se la forza è costante (in modulo, direzione e verso) e lo spostamento <span class="m">\vec s</span> è rettilineo, l&#39;integrale si riduce a un prodotto:</p>
+<p><span class="m d">L = \vec F \cdot \vec s = F\,s\cos\theta = F_s\,s</span></p>
+<p>dove <span class="m">F_s = F\cos\theta</span> è la componente della forza lungo lo spostamento (N) e <span class="m">s</span> il modulo dello spostamento (m). In un grafico che riporta la componente <span class="m">F_s</span> in funzione della posizione, il lavoro è l&#39;<strong>area del rettangolo</strong> di base <span class="m">s</span> e altezza <span class="m">F_s</span>.</p>
+<h3>Forza variabile: l&#39;area sotto la curva</h3>
+<p>Se la forza (lungo l&#39;asse <span class="m">x</span>) varia con la posizione, <span class="m">F(x)</span>, il lavoro tra <span class="m">x_i</span> e <span class="m">x_f</span> è l&#39;<strong>area della regione di piano sottesa alla curva</strong> <span class="m">F(x)</span> tra le due posizioni:</p>
+<p><span class="m d">L = \int_{x_i}^{x_f} F(x)\,dx</span></p>
+<p>Il perché: si divide l&#39;intervallo <span class="m">x_f - x_i</span> in tanti intervallini <span class="m">\Delta x</span> così piccoli che in ciascuno la forza si possa considerare costante. In ciascun intervallino il lavoro è l&#39;area di un rettangolino, <span class="m">F\,\Delta x</span>. Il lavoro totale è la somma di questi lavori. Più intervallini si prendono, più la somma approssima l&#39;area esatta: al limite diventa l&#39;integrale. Le aree sotto l&#39;asse <span class="m">x</span> (forza negativa) contano con il segno meno.</p>
 <div class="callout esempio">
 
-<p>Altalena nel punto più basso. L&#39;accelerazione centripeta punta verso il centro della traiettoria, cioè verso l&#39;alto, verso il punto di sospensione.</p>
+<p><strong>Forza esponenziale (esercizio della dispensa).</strong> Una forza lungo l&#39;asse <span class="m">x</span> ha intensità <span class="m">F(x) = 10\,e^{-x/2{,}0}\,\mathrm N</span>. Trovare il lavoro mentre l&#39;oggetto va da <span class="m">x = 0</span> a <span class="m">x = 2{,}0\,\mathrm m</span>.</p>
+<ol>
+<li><span class="m">L = \displaystyle\int_0^{2} 10\,e^{-x/2}\,dx</span>.</li>
+<li>Una primitiva di <span class="m">e^{-x/2}</span> è <span class="m">-2\,e^{-x/2}</span> (derivando: <span class="m">-2 \cdot (-\tfrac12)e^{-x/2} = e^{-x/2}</span>).</li>
+<li><span class="m">L = 10\,\big[-2\,e^{-x/2}\big]_0^2 = 10\,(-2e^{-1} + 2e^{0}) = 20\,(1 - e^{-1})</span>.</li>
+<li><span class="m">e^{-1} \approx 0{,}368</span>, quindi <span class="m">L = 20 \cdot 0{,}632 \approx 12{,}6\,\mathrm J</span>.</li>
+</ol>
+</div>
+
+<h3>Il lavoro di più forze</h3>
+<p>Se sul punto agiscono più forze <span class="m">\vec F_1, \vec F_2, \ldots, \vec F_N</span> con risultante <span class="m">\vec R = \sum\vec F_i</span>, per la proprietà distributiva del prodotto scalare e la linearità dell&#39;integrale:</p>
+<p><span class="m d">L_R = \int_A^B \vec R \cdot d\vec s = \int_A^B \vec F_1 \cdot d\vec s + \ldots + \int_A^B \vec F_N \cdot d\vec s = L_1 + L_2 + \ldots + L_N</span></p>
+<p>Il <strong>lavoro della risultante è uguale alla somma dei lavori delle singole forze</strong>.</p>
+<h3>Il calcolo del lavoro in generale</h3>
+<p>Nel caso più generale la forza ha componenti che dipendono dalla posizione: <span class="m">\vec F = (F_x(x,y,z),\,F_y(x,y,z),\,F_z(x,y,z))</span>. Si parla allora di <strong>campo di forze</strong>; ci limitiamo a campi <strong>stazionari</strong>, che non cambiano nel tempo. Scrivendo <span class="m">d\vec s = (dx, dy, dz)</span>:</p>
+<p><span class="m d">L_{AB} = \int_A^B (F_x\,dx + F_y\,dy + F_z\,dz)</span></p>
+<p>Per calcolarlo si descrive la traiettoria in funzione di un <strong>unico parametro</strong> <span class="m">p</span> (per esempio un angolo o il tempo): <span class="m">x = x(p)</span>, <span class="m">y = y(p)</span>, <span class="m">z = z(p)</span>, con <span class="m">p</span> che va da <span class="m">p_A</span> a <span class="m">p_B</span>. Allora <span class="m">dx = \dfrac{dx}{dp}\,dp</span> e così via, e l&#39;integrale diventa un integrale ordinario in una variabile:</p>
+<p><span class="m d">L_{AB} = \int_{p_A}^{p_B}\left(F_x\frac{dx}{dp} + F_y\frac{dy}{dp} + F_z\frac{dz}{dp}\right)dp</span></p>
+<h2>Perché la forza centripeta non compie lavoro</h2>
+<p>Nel moto circolare (uniforme o no) la forza centripeta punta sempre verso il centro della circonferenza, mentre la velocità, e quindi lo spostamento elementare <span class="m">d\vec s</span>, è sempre <strong>tangente</strong> alla circonferenza. Forza e spostamento sono <strong>perpendicolari in ogni istante</strong>, quindi <span class="m">dL = F\,ds\cos 90° = 0</span> in ogni tratto, e il lavoro è nullo su qualsiasi arco, non solo su un giro completo.</p>
+<p>Conseguenza: la forza centripeta cambia la <strong>direzione</strong> della velocità ma non il suo <strong>modulo</strong>; e infatti, come vedremo con il teorema dell&#39;energia cinetica, se il lavoro è nullo l&#39;energia cinetica (e quindi il modulo della velocità) non cambia. Per lo stesso motivo <strong>la tensione del filo di un pendolo non compie lavoro</strong>: è sempre diretta lungo il filo, perpendicolare all&#39;arco percorso.</p>
+<div class="callout esempio">
+
+<p><strong>L&#39;altalena nel punto più basso.</strong> Una bambina si dondola sull&#39;altalena, che percorre un arco di circonferenza centrato nel punto di sospensione. Nel punto più basso l&#39;accelerazione centripeta punta verso il centro della traiettoria, cioè <strong>verso l&#39;alto</strong>, verso il punto a cui sono fissate le catene. È fornita dalla differenza tra la tensione delle catene (verso l&#39;alto) e il peso (verso il basso): <span class="m">\tau - mg = mv^2/l</span>.</p>
 </div>
 
 <h2>L&#39;energia cinetica</h2>
-<p>Partendo da <span class="m">F = ma</span> e <span class="m">v = ds/dt</span>, il lavoro elementare diventa <span class="m">dL = m\,v\,dv</span>. Sommando da <span class="m">v_A</span> a <span class="m">v_B</span> compare la grandezza <span class="m">\tfrac12 mv^2</span>.</p>
-<p><span class="m d">E_k = \tfrac12 mv^2</span></p>
+<p>Riprendiamo il lavoro elementare della <strong>risultante</strong> <span class="m">\vec R</span> ed esplicitiamo i termini cinematici, usando il secondo principio (<span class="m">\vec R = m\vec a = m\,d\vec v/dt</span>) e la definizione di velocità (<span class="m">\vec v = d\vec s/dt</span>, cioè <span class="m">d\vec s = \vec v\,dt</span>):</p>
+<ol>
+<li><span class="m">dL = \vec R \cdot d\vec s = m\,\dfrac{d\vec v}{dt}\cdot\vec v\,dt = m\,\vec v \cdot d\vec v</span>.</li>
+<li>Poiché <span class="m">\vec v \cdot \vec v = v^2</span>, differenziando: <span class="m">d(v^2) = 2\,\vec v \cdot d\vec v</span>, cioè <span class="m">\vec v \cdot d\vec v = v\,dv</span>. Quindi <span class="m">dL = m\,v\,dv = d\!\left(\tfrac12 mv^2\right)</span>.</li>
+<li>Integrando da A (velocità <span class="m">v_A</span>) a B (velocità <span class="m">v_B</span>):</li>
+</ol>
+<p><span class="m d">L_{AB} = \int_{v_A}^{v_B} m\,v\,dv = \tfrac12 mv_B^2 - \tfrac12 mv_A^2</span></p>
+<p>Compare naturalmente la grandezza <span class="m">\tfrac12 mv^2</span>, che si definisce <strong>energia cinetica</strong> del punto materiale:</p>
+<p><span class="m d">K = E_k = \tfrac12 m v^2</span></p>
 <p>dove:</p>
 <ul>
-<li><span class="m">E_k</span> = energia cinetica (J)</li>
+<li><span class="m">K</span> (o <span class="m">E_k</span>) = energia cinetica (J)</li>
 <li><span class="m">m</span> = massa (kg)</li>
 <li><span class="m">v</span> = modulo della velocità (m/s)</li>
 </ul>
-<p>L&#39;energia cinetica cresce con il <strong>quadrato</strong> della velocità. La quantità di moto <span class="m">p = mv</span> cresce invece in modo lineare. Il legame è <span class="m">E_k = p^2/(2m)</span>. Se la velocità raddoppia, <span class="m">p</span> raddoppia ma <span class="m">E_k</span> quadruplica.</p>
-<h2>Teorema dell&#39;energia cinetica (delle forze vive)</h2>
-<p>Il lavoro della <strong>risultante</strong> di tutte le forze su un punto materiale è uguale alla variazione della sua energia cinetica.</p>
-<p><span class="m d">L_{AB} = E_{k,B} - E_{k,A} = \tfrac12 mv_B^2 - \tfrac12 mv_A^2</span></p>
+<p>Ha le stesse dimensioni del lavoro e si misura in joule. È sempre <strong>positiva o nulla</strong> (nulla solo se il corpo è fermo) e non dipende dalla direzione della velocità, solo dal suo modulo.</p>
+<h3>Energia cinetica e quantità di moto</h3>
+<p>La quantità di moto è <span class="m">p = mv</span>. Poiché <span class="m">v = p/m</span>:</p>
+<p><span class="m d">K = \frac{p^2}{2m}</span></p>
+<p>L&#39;energia cinetica cresce con il <strong>quadrato</strong> della velocità, la quantità di moto in modo <strong>lineare</strong>. Se la velocità raddoppia, <span class="m">p</span> raddoppia ma <span class="m">K</span> quadruplica; se triplica, <span class="m">p</span> triplica e <span class="m">K</span> diventa nove volte tanto. In termini di variazioni relative, <span class="m">\Delta K/K \approx 2\,\Delta v/v</span> mentre <span class="m">\Delta p/p = \Delta v/v</span>: quando la velocità aumenta, l&#39;energia cinetica aumenta (in proporzione) <strong>più</strong> della quantità di moto. Nessuna delle due si &quot;conserva&quot; se la velocità cambia.</p>
+<h2>Il teorema dell&#39;energia cinetica (delle forze vive)</h2>
+<p>La relazione trovata sopra si chiama <strong>teorema dell&#39;energia cinetica</strong> o <strong>teorema delle forze vive</strong> (&quot;forza viva&quot; era il vecchio nome di <span class="m">mv^2</span>):</p>
+<blockquote>
+<p>Quando un punto materiale si muove lungo una traiettoria dal punto A al punto B, il lavoro compiuto dalla <strong>risultante</strong> delle forze agenti su di esso è uguale alla <strong>variazione della sua energia cinetica</strong>, cioè alla differenza tra l&#39;energia cinetica finale (in B) e quella iniziale (in A).</p>
+</blockquote>
+<p><span class="m d">L_{AB} = K_B - K_A = \tfrac12 mv_B^2 - \tfrac12 mv_A^2 = \Delta K</span></p>
 <p>dove:</p>
 <ul>
-<li><span class="m">L_{AB}</span> = lavoro totale di tutte le forze tra A e B (J)</li>
-<li><span class="m">v_A, v_B</span> = velocità iniziale e finale (m/s)</li>
+<li><span class="m">L_{AB}</span> = lavoro totale, cioè della risultante = somma dei lavori di tutte le forze, tra A e B (J)</li>
+<li><span class="m">v_A</span>, <span class="m">v_B</span> = moduli delle velocità iniziale e finale (m/s)</li>
 </ul>
-<p>Vale per qualsiasi forza: costante o variabile, conservativa o no. Deve però essere il lavoro di <strong>tutte</strong> le forze.</p>
-<p>Verifica semplice (forza costante <span class="m">F</span>, partenza da fermo, tratto rettilineo <span class="m">l</span>):</p>
+<p>Osservazioni importanti:</p>
+<ul>
+<li>vale per <strong>qualsiasi forza</strong>: costante o variabile, conservativa o no (attrito compreso), perché nella dimostrazione abbiamo usato solo il secondo principio;</li>
+<li>il lavoro da usare è quello di <strong>tutte</strong> le forze (della risultante), non di una sola;</li>
+<li>vale per un <strong>punto materiale</strong> in un <strong>riferimento inerziale</strong> (dove vale <span class="m">\vec F = m\vec a</span>);</li>
+<li>lavoro totale <strong>positivo</strong> ⇒ l&#39;energia cinetica aumenta (il corpo accelera); <strong>negativo</strong> ⇒ diminuisce (il corpo rallenta); <strong>nullo</strong> ⇒ il modulo della velocità non cambia.</li>
+</ul>
+<h3>Energia come proprietà, lavoro come trasferimento</h3>
+<p>Notiamo la differenza di linguaggio: si parla di energia cinetica <strong>posseduta</strong> dal punto, come sua <strong>proprietà intrinseca</strong> legata al suo moto; si parla invece di lavoro <strong>compiuto</strong> (o scambiato) <strong>dal</strong> o <strong>sul</strong> punto. Il lavoro è un <strong>processo di trasferimento</strong> di energia: il teorema dice che l&#39;energia cinetica del corpo cambia esattamente della quantità di energia che le forze gli trasferiscono.</p>
+<h3>Verifica del teorema in un caso semplice</h3>
+<p>Verifichiamo il teorema con le leggi della dinamica (dalla dispensa). Una forza <span class="m">F</span> costante in modulo, direzione e verso è applicata a un punto di massa <span class="m">m</span>, fermo nell&#39;origine all&#39;istante iniziale, e lo accelera lungo un tratto rettilineo di lunghezza <span class="m">l</span>.</p>
 <ol>
-<li>Moto uniformemente accelerato: <span class="m">v^2 = 2al</span>.</li>
-<li>Moltiplico per <span class="m">\tfrac12 m</span>: <span class="m">\tfrac12 mv^2 = mal = Fl</span>.</li>
-<li><span class="m">Fl</span> è il lavoro; <span class="m">\tfrac12 mv^2</span> è l&#39;energia cinetica finale.</li>
+<li>La forza è costante, quindi l&#39;accelerazione <span class="m">a = F/m</span> è costante: moto uniformemente accelerato. Dalla cinematica, partendo da fermo: <span class="m">v^2 = 2\,a\,l</span>.</li>
+<li>Moltiplico entrambi i membri per <span class="m">\tfrac12 m</span>: <span class="m">\tfrac12 mv^2 = m\,a\,l</span>.</li>
+<li>Ricordando che <span class="m">F = ma</span>: <span class="m">\tfrac12 mv^2 = F\,l</span>.</li>
+<li>Il primo membro è l&#39;energia cinetica finale (quella iniziale è nulla, perché parte da fermo); il secondo membro <span class="m">F\,l</span> è proprio il lavoro della forza, essendo il moto rettilineo con forza parallela allo spostamento. Il teorema è verificato.</li>
 </ol>
-<p>Intuizione: l&#39;energia cinetica è una proprietà del corpo. Il lavoro è energia trasferita al corpo.</p>
 <div class="callout esempio">
 
-<ul>
-<li>Da <span class="m">4</span> a <span class="m">8\,\mathrm{m/s}</span> con <span class="m">m = 5\,\mathrm{kg}</span>: <span class="m">L = \tfrac12 \cdot 5 \cdot (64 - 16) = 120\,\mathrm J</span>.</li>
-<li>Carrello di <span class="m">2\,\mathrm{kg}</span> tirato con <span class="m">50\,\mathrm N</span> per <span class="m">10\,\mathrm m</span>, senza attrito, da fermo: <span class="m">E_k = Fs = 500\,\mathrm J</span>.</li>
-</ul>
+<p><strong>Variare la velocità.</strong> Lavoro necessario per portare un corpo di <span class="m">m = 5\,\mathrm{kg}</span> da <span class="m">4\,\mathrm{m/s}</span> a <span class="m">8\,\mathrm{m/s}</span>:</p>
+<ol>
+<li><span class="m">K_A = \tfrac12 \cdot 5 \cdot 16 = 40\,\mathrm J</span>; <span class="m">K_B = \tfrac12 \cdot 5 \cdot 64 = 160\,\mathrm J</span>.</li>
+<li><span class="m">L = 160 - 40 = 120\,\mathrm J</span>.</li>
+</ol>
+<p>Attenzione: non si può fare <span class="m">\tfrac12 m(\Delta v)^2 = \tfrac12 \cdot 5 \cdot 16 = 40\,\mathrm J</span>, perché <span class="m">v_B^2 - v_A^2 \ne (v_B - v_A)^2</span>.</p>
 </div>
 
-<h2>Lavoro della forza peso</h2>
-<p>Il peso è costante e verticale. Il lavoro dipende solo dal dislivello, non dal percorso.</p>
-<p><span class="m d">L_{peso} = mg\,(y_A - y_B)</span></p>
-<p>dove:</p>
-<ul>
-<li><span class="m">y_A, y_B</span> = quote iniziale e finale (m)</li>
-<li><span class="m">g = 9{,}8\,\mathrm{m/s^2}</span></li>
-</ul>
-<p>Se il corpo scende il lavoro del peso è positivo. Se sale è negativo. Per sollevare un corpo di <span class="m">h</span> a velocità costante serve un lavoro <span class="m">mgh</span>.</p>
 <div class="callout esempio">
 
-<p>Libro di <span class="m">2\,\mathrm{kg}</span> dal pavimento a un tavolo di <span class="m">90\,\mathrm{cm}</span>: <span class="m">L = 2 \cdot 9{,}8 \cdot 0{,}9 \approx 17{,}6\,\mathrm J</span>.</p>
+<p><strong>Carrello trainato.</strong> Un carrello di <span class="m">2\,\mathrm{kg}</span>, fermo, è trainato per <span class="m">10\,\mathrm m</span> su un binario rettilineo senza attrito da una forza costante di <span class="m">50\,\mathrm N</span> parallela al binario.</p>
+<ol>
+<li>Lavoro della forza: <span class="m">L = 50 \cdot 10 = 500\,\mathrm J</span>. Peso e reazione del binario sono perpendicolari allo spostamento: lavoro nullo.</li>
+<li>Teorema: <span class="m">K_{fin} - 0 = 500\,\mathrm J</span>. L&#39;energia cinetica finale è <span class="m">500\,\mathrm J</span> (un&#39;energia: in joule).</li>
+<li>Velocità finale: <span class="m">v = \sqrt{2 \cdot 500/2} \approx 22{,}4\,\mathrm{m/s}</span>.</li>
+</ol>
 </div>
 
-<h2>Pendolo e molla: due lavori notevoli</h2>
-<p><strong>Pendolo.</strong> Dall&#39;angolo <span class="m">\theta_0</span> al punto più basso il peso compie <span class="m">L = mgl(1 - \cos\theta_0)</span>. Per il teorema delle forze vive:</p>
-<p><span class="m d">v_{max} = \sqrt{2gl(1 - \cos\theta_0)}</span></p>
-<p>dove <span class="m">l</span> = lunghezza del filo (m), <span class="m">\theta_0</span> = angolo iniziale con la verticale.</p>
-<p><strong>Molla.</strong> Da <span class="m">x_A</span> a <span class="m">x_B</span> la forza elastica compie:</p>
-<p><span class="m d">L_{AB} = -\tfrac12 k\,(x_B^2 - x_A^2)</span></p>
-<p>dove <span class="m">k</span> = costante elastica (N/m). È positivo se il corpo si avvicina alla posizione di riposo.</p>
-<h2>Lavoro dell&#39;attrito</h2>
-<p>L&#39;attrito radente è sempre opposto allo spostamento. Il suo lavoro è sempre negativo: <span class="m">L = -F_a\,s</span>, con <span class="m">s</span> lunghezza del percorso effettivo. Dipende quindi dal percorso, non solo da partenza e arrivo.</p>
-<h2>Il pallonetto: attenzione al punto più alto</h2>
-<p>Nel punto più alto di una traiettoria parabolica (senza aria):</p>
+<h2>Il lavoro della forza peso</h2>
+<p>Calcoliamo il lavoro del peso per un corpo che va da un punto A a un punto B lungo una traiettoria <strong>qualsiasi</strong> in un piano verticale. Prendiamo l&#39;asse <span class="m">y</span> verticale verso l&#39;alto.</p>
+<ol>
+<li>La forza è costante in modulo, direzione e verso: <span class="m">\vec F = (0,\,-mg)</span>.</li>
+<li>Lo spostamento elementare è <span class="m">d\vec s = (dx,\,dy)</span>. Nel prodotto scalare l&#39;unico termine non nullo è quello verticale: <span class="m">dL = \vec F \cdot d\vec s = -mg\,dy</span>.</li>
+<li>Integrando da <span class="m">y_A</span> a <span class="m">y_B</span>:</li>
+</ol>
+<p><span class="m d">L_{peso} = \int_{y_A}^{y_B}(-mg)\,dy = -mg\,(y_B - y_A) = mg\,(y_A - y_B)</span></p>
+<p>dove <span class="m">y_A</span>, <span class="m">y_B</span> = quote iniziale e finale (m), <span class="m">g = 9{,}8\,\mathrm{m/s^2}</span>.</p>
+<p>Conseguenze:</p>
 <ul>
-<li>la componente verticale della velocità è nulla;</li>
-<li>la componente orizzontale resta uguale;</li>
-<li>l&#39;accelerazione è <span class="m">g</span>, verso il basso;</li>
-<li>è passata metà del tempo di volo.</li>
+<li>il lavoro del peso dipende <strong>solo dalle quote iniziale e finale</strong>, non dalla traiettoria percorsa: è così perché la forza ha direzione fissa e modulo costante;</li>
+<li>se il punto finale è <strong>più in basso</strong> (<span class="m">y_B &lt; y_A</span>) lo spostamento ha una componente concorde con il peso: lavoro <strong>positivo</strong>;</li>
+<li>se il corpo <strong>sale</strong> il lavoro del peso è <strong>negativo</strong>: <span class="m">L = -mg\,\Delta h</span>;</li>
+<li>per sollevare un corpo di <span class="m">h</span> <strong>a velocità costante</strong> bisogna applicare una forza uguale e opposta al peso, che compie il lavoro <span class="m">+mgh</span>.</li>
 </ul>
-<p>Quindi solo <strong>una parte</strong> dell&#39;energia cinetica è diventata potenziale.</p>
+<div class="callout esempio">
+
+<p><strong>Libro sul tavolo.</strong> Un libro di <span class="m">2\,\mathrm{kg}</span> va dal pavimento a un tavolo alto <span class="m">90\,\mathrm{cm}</span>. Il lavoro minimo da compiere (sollevandolo lentamente) è uguale e opposto a quello del peso:
+<span class="m">L = mgh = 2 \cdot 9{,}8 \cdot 0{,}90 \approx 17{,}6\,\mathrm J</span>. Il lavoro del peso è <span class="m">-17{,}6\,\mathrm J</span>.</p>
+</div>
+
+<h2>Il lavoro nel pendolo semplice</h2>
+<p>Nel pendolo agiscono il peso e la tensione del filo. La tensione è diretta in ogni istante perpendicolarmente allo spostamento, quindi <strong>non compie lavoro</strong>: resta solo il peso, e il caso si riduce al precedente.</p>
+<p>Facciamo comunque il calcolo con la traiettoria parametrica, usando come unico parametro l&#39;angolo <span class="m">\theta</span> con la verticale. Origine nel punto di sospensione, <span class="m">y</span> verso l&#39;alto: la posizione è <span class="m">x = l\sin\theta</span>, <span class="m">y = -l\cos\theta</span>.</p>
+<ol>
+<li><span class="m">dy = \dfrac{dy}{d\theta}\,d\theta = l\sin\theta\,d\theta</span>.</li>
+<li><span class="m">dL = -mg\,dy = -mg\,l\sin\theta\,d\theta</span>.</li>
+<li>Dalla posizione iniziale <span class="m">\theta_0</span> al punto più basso <span class="m">\theta = 0</span>:</li>
+</ol>
+<p><span class="m d">L = \int_{\theta_0}^{0} -mgl\sin\theta\,d\theta = mgl\,\big[\cos\theta\big]_{\theta_0}^{0} = mgl\,(1 - \cos\theta_0)</span></p>
+<p>Verifica con il caso generale: <span class="m">y_A = -l\cos\theta_0</span>, <span class="m">y_B = -l</span>, quindi <span class="m">mg(y_A - y_B) = mg(-l\cos\theta_0 + l) = mgl(1 - \cos\theta_0)</span>. Coincide. Infatti <span class="m">l(1 - \cos\theta_0)</span> è proprio il <strong>dislivello</strong> tra la posizione di partenza e il punto più basso.</p>
+<h3>La velocità massima del pendolo</h3>
+<p>Dal punto più alto, dove il pendolo è fermo, al punto più basso, dove la velocità è massima, il teorema delle forze vive dà:</p>
+<p><span class="m d">\tfrac12 mv_{max}^2 - 0 = mgl\,(1 - \cos\theta_0) \qquad\Rightarrow\qquad v_{max} = \sqrt{2gl\,(1 - \cos\theta_0)}</span></p>
+<p>Questa relazione ha <strong>validità generale</strong>, per qualunque ampiezza. Per piccoli angoli si usa lo sviluppo in serie di Taylor del coseno, <span class="m">\cos\theta_0 \approx 1 - \theta_0^2/2</span>, quindi <span class="m">1 - \cos\theta_0 \approx \theta_0^2/2</span> e:</p>
+<p><span class="m d">v_{max} \approx \sqrt{gl\,\theta_0^2} = \theta_0\sqrt{gl} = \omega\,l\,\theta_0 \qquad \text{con } \omega = \sqrt{g/l}</span></p>
+<p>che è esattamente il risultato trovato con le equazioni del moto armonico del pendolo (lezione 15): due metodi diversi danno lo stesso risultato.</p>
+<div class="callout esempio">
+
+<p>Pendolo con filo di <span class="m">1\,\mathrm m</span> lasciato da fermo a <span class="m">60°</span>: <span class="m">1 - \cos 60° = 0{,}5</span>, quindi <span class="m">v_{max} = \sqrt{2 \cdot 9{,}8 \cdot 1 \cdot 0{,}5} = \sqrt{9{,}8} \approx 3{,}1\,\mathrm{m/s}</span>.</p>
+</div>
+
+<h2>Il lavoro della forza elastica</h2>
+<p>Calcoliamo il lavoro della forza elastica di una molla su una massa che passa dalla posizione <span class="m">x_A</span> alla posizione <span class="m">x_B</span> lungo l&#39;asse della molla (asse <span class="m">x</span> con origine nella posizione di riposo). La forza non è costante, ma il problema è unidimensionale, quindi l&#39;integrale è semplice:</p>
+<p><span class="m d">L_{AB} = \int_{x_A}^{x_B}(-kx)\,dx = -k\left[\frac{x^2}{2}\right]_{x_A}^{x_B} = -\tfrac12 k\,(x_B^2 - x_A^2) = \tfrac12 kx_A^2 - \tfrac12 kx_B^2</span></p>
+<p>dove <span class="m">k</span> = costante elastica (N/m), <span class="m">x_A</span>, <span class="m">x_B</span> = deformazioni iniziale e finale (m).</p>
+<ul>
+<li>Il lavoro è <strong>positivo</strong> se <span class="m">|x_A| &gt; |x_B|</span>, cioè se lo spostamento <strong>avvicina</strong> la massa alla posizione di riposo (la molla &quot;si scarica&quot; spingendo il corpo).</li>
+<li>È <strong>negativo</strong> se la massa si allontana dalla posizione di riposo (la molla si carica).</li>
+<li>Anche qui il lavoro dipende <strong>solo dalle posizioni iniziale e finale</strong>.</li>
+<li>Graficamente: è l&#39;area (con segno) del trapezio sotto la retta <span class="m">F = -kx</span>.</li>
+</ul>
+<div class="callout esempio">
+
+<p>Molla con <span class="m">k = 200\,\mathrm{N/m}</span>. Il corpo passa da una compressione di <span class="m">10\,\mathrm{cm}</span> alla posizione di riposo: <span class="m">L = \tfrac12 \cdot 200 \cdot 0{,}01 - 0 = 1\,\mathrm J</span> (positivo). Se passa dalla posizione di riposo a un allungamento di <span class="m">10\,\mathrm{cm}</span>: <span class="m">L = 0 - 1 = -1\,\mathrm J</span>.</p>
+</div>
+
+<h2>Il lavoro della forza di attrito</h2>
+<p>Calcoliamo infine il lavoro dell&#39;attrito radente dinamico su un corpo che striscia su un piano, lungo una curva qualsiasi tra A e B. La forza di attrito ha modulo costante <span class="m">F_a = \mu_d N</span> ed è sempre <strong>tangente</strong> alla traiettoria e <strong>opposta</strong> allo spostamento (<span class="m">\theta = 180°</span>, <span class="m">\cos\theta = -1</span>):</p>
+<p><span class="m d">L_{attr} = \int_A^B \vec F_a \cdot d\vec s = -F_a\int_A^B ds = -F_a\,\ell_{AB}</span></p>
+<p>dove <span class="m">\ell_{AB}</span> = lunghezza effettiva della traiettoria lungo la curva (m).</p>
+<p>In questo caso:</p>
+<ul>
+<li>il lavoro è <strong>sempre negativo</strong>;</li>
+<li>dipende dalla <strong>traiettoria percorsa</strong> (dalla sua lunghezza), e non soltanto dalle posizioni iniziale e finale come nei casi precedenti: un percorso più lungo dissipa di più;</li>
+<li>l&#39;attrito porta quindi <strong>sempre a una diminuzione dell&#39;energia cinetica</strong>, e quindi della velocità.</li>
+</ul>
+<h2>Il pallonetto: che cosa succede nel punto più alto</h2>
+<p>Un pallone è calciato a pallonetto (moto parabolico, resistenza dell&#39;aria trascurabile). Nel punto più alto della traiettoria:</p>
+<ul>
+<li>la <strong>componente verticale</strong> della velocità è nulla (il pallone smette di salire e comincia a scendere);</li>
+<li>la <strong>componente orizzontale</strong> è uguale a quella iniziale (nessuna forza orizzontale): la velocità non è nulla;</li>
+<li>l&#39;accelerazione è sempre <span class="m">g</span>, verso il basso;</li>
+<li>il pallone è in aria da <strong>metà</strong> del tempo totale di volo (la traiettoria è simmetrica, se atterra alla stessa quota da cui è partito).</li>
+</ul>
+<p>Quindi l&#39;energia cinetica nel punto più alto <strong>non è zero</strong>: vale <span class="m">\tfrac12 mv_x^2</span>. Solo la parte di energia cinetica legata alla componente verticale, <span class="m">\tfrac12 mv_{y0}^2</span>, si è trasformata in energia potenziale.</p>
 <div class="callout attenzione">
 
-<p>Errore tipico: dire che nel punto più alto tutta l&#39;energia cinetica è diventata potenziale. Vale solo per un lancio perfettamente verticale.</p>
+<p>Errori tipici:</p>
+<ul>
+<li>dire che nel punto più alto di un pallonetto <strong>tutta</strong> l&#39;energia cinetica è diventata potenziale: vale solo per un lancio perfettamente verticale;</li>
+<li>usare nel teorema delle forze vive il lavoro di una sola forza invece di quello di tutte le forze;</li>
+<li>calcolare <span class="m">\tfrac12 m(v_B - v_A)^2</span> invece di <span class="m">\tfrac12 m(v_B^2 - v_A^2)</span>;</li>
+<li>pensare che la forza centripeta non lavori &quot;perché il corpo torna al punto di partenza&quot; o &quot;perché il moto è orizzontale&quot;: il motivo è che è <strong>perpendicolare alla velocità in ogni istante</strong>;</li>
+<li>esprimere lavoro ed energia in newton o in watt: si misurano in joule.</li>
+</ul>
 </div>
 
 <div class="callout esame">
 
-<p>Nelle aperte chiedono di esporre il teorema delle forze vive: enunciato, formula e che il lavoro è quello della risultante.</p>
+<p>La domanda aperta del paniere su questa lezione chiede di <strong>esporre il teorema delle forze vive</strong>. Una risposta completa:</p>
+<ol>
+<li>definizione di lavoro elementare <span class="m">dL = \vec F \cdot d\vec s</span> e di lavoro <span class="m">L_{AB} = \int_A^B \vec F \cdot d\vec s</span>;</li>
+<li>derivazione: <span class="m">dL = m\,\vec a \cdot d\vec s = m\,\vec v \cdot d\vec v = d(\tfrac12 mv^2)</span>, quindi <span class="m">L_{AB} = \tfrac12 mv_B^2 - \tfrac12 mv_A^2</span>;</li>
+<li>enunciato: il lavoro della <strong>risultante</strong> di tutte le forze è uguale alla variazione dell&#39;energia cinetica;</li>
+<li>validità: qualsiasi forza (anche non conservativa), punto materiale, riferimento inerziale;</li>
+<li>un esempio (verifica con forza costante: <span class="m">Fl = \tfrac12 mv^2</span>).</li>
+</ol>
+<p>Nelle chiuse: calcoli di <span class="m">\Delta K</span>, lavoro del peso <span class="m">mgh</span>, perché la forza centripeta non lavora, direzione dell&#39;accelerazione centripeta nell&#39;altalena, confronto tra crescita di <span class="m">K</span> e di <span class="m">p</span>, punto più alto del pallonetto.</p>
 </div>
 
 <div class="callout sintesi">
 
 <ul>
-<li><span class="m">L = Fs\cos\theta</span> (J); in generale <span class="m">L = \int \vec F \cdot d\vec s</span>.</li>
-<li>Forza perpendicolare allo spostamento (centripeta, tensione del pendolo): lavoro nullo.</li>
-<li><span class="m">E_k = \tfrac12 mv^2 = p^2/2m</span>: cresce col quadrato di <span class="m">v</span>.</li>
-<li>Teorema delle forze vive: <span class="m">L_{tot} = \Delta E_k</span>, per qualsiasi forza.</li>
-<li>Peso: <span class="m">L = mg\,\Delta h</span>, indipendente dal percorso; attrito: sempre negativo.</li>
+<li>Lavoro elementare <span class="m">dL = \vec F \cdot d\vec s = F\,ds\cos\theta</span>; lavoro <span class="m">L_{AB} = \int_A^B \vec F \cdot d\vec s</span> (J).</li>
+<li>Forza costante: <span class="m">L = Fs\cos\theta</span>; forza variabile: area sotto <span class="m">F(x)</span>.</li>
+<li>Positivo se <span class="m">\theta &lt; 90°</span>, nullo se <span class="m">\theta = 90°</span>, negativo se <span class="m">\theta &gt; 90°</span>; il lavoro della risultante è la somma dei lavori.</li>
+<li>Forza perpendicolare alla velocità (centripeta, tensione del pendolo): lavoro nullo.</li>
+<li><span class="m">K = \tfrac12 mv^2 = p^2/2m</span>: cresce col quadrato di <span class="m">v</span>.</li>
+<li>Teorema delle forze vive: <span class="m">L_{tot} = K_B - K_A</span>, per qualsiasi forza, contando tutte le forze.</li>
+<li>Peso: <span class="m">L = mg(y_A - y_B)</span>; pendolo: <span class="m">L = mgl(1 - \cos\theta_0)</span>, <span class="m">v_{max} = \sqrt{2gl(1 - \cos\theta_0)}</span>.</li>
+<li>Molla: <span class="m">L = \tfrac12 k(x_A^2 - x_B^2)</span>; attrito: <span class="m">L = -F_a\,\ell</span>, sempre negativo e dipendente dal percorso.</li>
 </ul>
 </div>

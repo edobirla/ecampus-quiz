@@ -1,105 +1,213 @@
-<h1>Lezione 44 — Moto di cariche nel campo elettrico</h1>
-<h2>Forza e accelerazione</h2>
-<p>Il campo agisce su una carica con una forza. La forza è determinata solo dal campo nel punto e dalla carica:</p>
-<p><span class="m d">\vec F = q\,\vec E \qquad \vec a = \frac{q\,\vec E}{m}</span></p>
+<h1>Lezione 44 — Moto di cariche nel campo elettrico e campi di distribuzioni continue</h1>
+<p>Finora il campo è servito a descrivere <em>dove</em> e <em>quanto</em> agisce la forza elettrica. Ora guardiamo l&#39;effetto del campo sulle cariche: come si muovono, come si accelerano o si deviano, come si conserva l&#39;energia. Poi calcoliamo il campo di due distribuzioni continue importanti (anello e disco), arriviamo al piano infinito e ai due piani paralleli, che danno il campo uniforme usato per accelerare le cariche. Chiude la lezione l&#39;<strong>esperimento di Millikan</strong>, che ha misurato la carica elementare.</p>
+<h2>Equazione del moto di una carica in un campo</h2>
+<p>Una particella di massa <span class="m">m</span> e carica <span class="m">q</span> si muove in una regione in cui c&#39;è un campo <span class="m">\vec E</span>, e tutte le altre forze (anche il peso, per elettroni e ioni) sono trascurabili. Dalla definizione di campo, la forza su di essa è <span class="m">\vec F = q\vec E</span>, e il secondo principio della dinamica dà:</p>
+<p><span class="m d">m\,\frac{d^2\vec r}{dt^2} = q\,\vec E \qquad\Rightarrow\qquad \vec a = \frac{q}{m}\,\vec E</span></p>
 <p>dove:</p>
 <ul>
-<li><span class="m">\vec F</span> = forza (N); <span class="m">q</span> = carica (C, con il suo segno);</li>
-<li><span class="m">\vec E</span> = campo elettrico (N/C);</li>
+<li><span class="m">\vec F</span> = forza elettrica (N);</li>
+<li><span class="m">q</span> = carica, con il suo segno (C);</li>
+<li><span class="m">\vec E</span> = campo nel punto in cui si trova la carica (N/C);</li>
 <li><span class="m">\vec a</span> = accelerazione (m/s²); <span class="m">m</span> = massa (kg).</li>
 </ul>
-<p>L&#39;accelerazione è costante <strong>solo se il campo è uniforme</strong>. Se il campo cambia da punto a punto, cambia anche l&#39;accelerazione.</p>
-<p>In un campo uniforme il moto è come quello di un sasso nel campo di gravità:</p>
+<p>Osservazioni importanti:</p>
 <ul>
-<li>carica ferma o con velocità parallela al campo: moto rettilineo uniformemente accelerato;</li>
-<li>velocità perpendicolare al campo: traiettoria parabolica (la carica viene deviata).</li>
+<li>la forza (e quindi l&#39;accelerazione) è determinata dal <strong>vettore campo</strong> nel punto in cui si trova la carica: non dal potenziale, non dalla &quot;somma di campo e potenziale&quot;;</li>
+<li>se <span class="m">q &gt; 0</span> l&#39;accelerazione ha il verso del campo, se <span class="m">q &lt; 0</span> verso opposto;</li>
+<li>l&#39;accelerazione è <strong>costante solo se il campo è uniforme</strong>. Se il campo cambia da punto a punto, mentre la carica si muove cambia anche <span class="m">\vec a</span>;</li>
+<li>il rapporto <span class="m">q/m</span> (carica specifica) decide il moto: un elettrone (<span class="m">e/m \approx 1{,}76 \cdot 10^{11}</span> C/kg) accelera moltissimo anche in campi deboli.</li>
 </ul>
-<p>Così si accelerano o si deviano elettroni e ioni (per esempio nei vecchi tubi catodici).</p>
-<div class="callout attenzione">
+<h2>Moto in un campo uniforme</h2>
+<p>Con <span class="m">\vec E</span> uniforme l&#39;accelerazione è costante, e il moto è identico a quello di un corpo nel campo di gravità, con <span class="m">\vec g</span> sostituito da <span class="m">q\vec E/m</span>.</p>
+<p><strong>Velocità iniziale parallela al campo (o carica ferma).</strong> Moto <strong>rettilineo uniformemente accelerato</strong> (o decelerato, a seconda del segno della carica e del verso della velocità), con <span class="m">a = qE/m</span>:</p>
+<p><span class="m d">v(t) = v_0 + at, \qquad x(t) = x_0 + v_0t + \tfrac12 at^2, \qquad v^2 = v_0^2 + 2a(x - x_0)</span></p>
+<p>È il principio degli acceleratori lineari: una carica ferma tra due piastre viene spinta verso la piastra opposta.</p>
+<p><strong>Velocità iniziale perpendicolare al campo.</strong> La carica entra con velocità <span class="m">v</span> lungo <span class="m">x</span>, il campo è lungo <span class="m">y</span>. Lungo <span class="m">x</span> non c&#39;è forza (moto uniforme), lungo <span class="m">y</span> c&#39;è un&#39;accelerazione costante <span class="m">a = qE/m</span> (moto uniformemente accelerato da fermo):</p>
+<p><span class="m d">x = vt, \qquad y = \frac12\,\frac{qE}{m}\,t^2</span></p>
+<p>Elimino il tempo, <span class="m">t = x/v</span>:</p>
+<p><span class="m d">y = \frac{qE}{2mv^2}\,x^2</span></p>
+<p>La traiettoria è una <strong>parabola</strong>, come per un proiettile lanciato orizzontalmente. Così si <strong>deflettono</strong> fasci di elettroni (oscilloscopi e vecchi televisori a tubo catodico).</p>
+<div class="callout esempio">
 
-<p>La forza è determinata dal <strong>campo</strong>, non dal potenziale. Due punti con lo stesso potenziale possono avere campi diversi.</p>
+<p><strong>Elettrone in campo uniforme (esercizio della dispensa).</strong> Un elettrone si muove in un piano con un campo uniforme <span class="m">E = 120</span> N/C lungo <span class="m">+y</span>. All&#39;inizio <span class="m">v_x = 1{,}5 \cdot 10^5</span> m/s e <span class="m">v_y = 3{,}0 \cdot 10^5</span> m/s. Trovare (a) l&#39;accelerazione e (b) la velocità quando l&#39;elettrone si è spostato di 2,0 cm lungo <span class="m">x</span>.</p>
+<p>(a) Il campo è lungo <span class="m">y</span>, quindi c&#39;è accelerazione solo lungo <span class="m">y</span>:
+<span class="m d">a_y = \frac{qE}{m} = -\frac{eE}{m} = -\frac{1{,}60 \cdot 10^{-19} \cdot 120}{9{,}11 \cdot 10^{-31}} \approx -2{,}1 \cdot 10^{13}\,\mathrm{m/s^2}</span>
+Il segno meno: l&#39;elettrone è negativo, l&#39;accelerazione è opposta al campo.</p>
+<p>(b) Lungo <span class="m">x</span> il moto è uniforme: il tempo per percorrere 2,0 cm è
+<span class="m d">t = \frac{\Delta x}{v_x} = \frac{0{,}020}{1{,}5 \cdot 10^5} \approx 1{,}33 \cdot 10^{-7}\,\mathrm s</span>
+Lungo <span class="m">y</span>:
+<span class="m d">v_y(t) = v_{y0} + a_yt = 3{,}0 \cdot 10^5 - 2{,}1 \cdot 10^{13} \cdot 1{,}33 \cdot 10^{-7} = 3{,}0 \cdot 10^5 - 2{,}8 \cdot 10^6 \approx -2{,}5 \cdot 10^6\,\mathrm{m/s}</span>
+La componente <span class="m">x</span> resta <span class="m">1{,}5 \cdot 10^5</span> m/s. (Nella dispensa il risultato è scritto <span class="m">-2{,}8 \cdot 10^6</span> m/s, che è solo il termine <span class="m">a_yt</span>: sommando la velocità iniziale si ottiene <span class="m">-2{,}5 \cdot 10^6</span> m/s.)</p>
 </div>
 
-<h2>Energia: si conserva</h2>
-<p>La forza elettrostatica è conservativa. Se agisce solo il campo elettrico, l&#39;energia totale resta costante:</p>
-<p><span class="m d">\frac12 mv^2 + qV = \text{costante}</span></p>
+<h2>L&#39;energia si conserva</h2>
+<p>La forza elettrostatica è <strong>conservativa</strong> (lo dimostreremo nella lezione 47): il suo lavoro dipende solo dal punto iniziale e da quello finale, ed esiste un&#39;energia potenziale <span class="m">U = qV</span>, dove <span class="m">V</span> è il potenziale elettrico. Se sulla carica agisce solo il campo elettrico, dal teorema dell&#39;energia cinetica:</p>
+<p><span class="m d">L_{AB} = \tfrac12 mv_B^2 - \tfrac12 mv_A^2 = -\Delta U = qV(A) - qV(B)</span></p>
+<p>e riordinando si trova che in ogni punto della traiettoria si conserva</p>
+<p><span class="m d">E_{tot} = \tfrac12 mv^2 + qV = \text{costante}</span></p>
 <p>dove:</p>
 <ul>
 <li><span class="m">v</span> = velocità (m/s);</li>
-<li><span class="m">V</span> = potenziale elettrico nel punto (V).</li>
+<li><span class="m">V</span> = potenziale elettrico nel punto (V = J/C);</li>
+<li><span class="m">qV</span> = energia potenziale elettrostatica (J).</li>
 </ul>
-<p>La variazione di energia potenziale è <span class="m">\Delta U = q\,\Delta V</span>. In un campo uniforme lungo <span class="m">x</span> vale <span class="m">\Delta U = -qE\,\Delta x</span>.</p>
+<p><strong>Campo uniforme.</strong> Se <span class="m">\vec E = E\,\hat k</span> è uniforme lungo <span class="m">z</span>, la differenza di potenziale è <span class="m">V(A) - V(B) = E(z_B - z_A)</span>, cioè <span class="m">V = -Ez + \text{cost}</span>, e la conservazione diventa</p>
+<p><span class="m d">\tfrac12 mv^2 - qEz = \text{costante}</span></p>
+<p>È la stessa forma dell&#39;energia meccanica vicino alla superficie terrestre (<span class="m">\tfrac12 mv^2 + mgh</span>), dove l&#39;energia potenziale varia <strong>linearmente con la quota</strong>. In una dimensione, lungo il campo: <span class="m">\Delta U = -qE\,\Delta x</span>.</p>
 <div class="callout esempio">
 
-<p>Carica <span class="m">Q = 0{,}1</span> C lasciata ferma nell&#39;origine, in un campo uniforme <span class="m">E = 75</span> N/C lungo <span class="m">x</span>. Arriva a <span class="m">x = 2</span> m.
-<span class="m">\Delta U = -qE\Delta x = -0{,}1 \cdot 75 \cdot 2 = -15\,\mathrm J</span>.
-La carica positiva va nel verso del campo: perde energia potenziale e guadagna 15 J di energia cinetica.</p>
+<p><strong>Variazione di energia potenziale in campo uniforme.</strong> Una carica <span class="m">Q = 0{,}1</span> C parte da ferma nell&#39;origine, in un campo uniforme <span class="m">E = 75</span> N/C diretto lungo <span class="m">+x</span>. Di quanto varia la sua energia potenziale quando arriva in <span class="m">x = 2</span> m?</p>
+<ol>
+<li><span class="m">\Delta U = -qE\,\Delta x = -0{,}1 \cdot 75 \cdot 2 = -15</span> J.</li>
+<li>Interpretazione: una carica positiva lasciata libera si muove nel verso del campo; il campo compie lavoro positivo <span class="m">L = qE\Delta x = 15</span> J, l&#39;energia potenziale <strong>diminuisce</strong> di 15 J e l&#39;energia cinetica aumenta di 15 J.</li>
+<li>Velocità finale (se la massa fosse, per esempio, 1 kg): <span class="m">v = \sqrt{2 \cdot 15/1} \approx 5{,}5</span> m/s.</li>
+</ol>
 </div>
 
-<h2>Velocità di fuga elettrica</h2>
-<p>Un elettrone sulla superficie di una sfera positiva è attratto dalla sfera. Per allontanarsi all&#39;infinito serve energia cinetica sufficiente.
-Condizione di fuga: energia cinetica iniziale = lavoro per portarlo all&#39;infinito.</p>
-<p><span class="m d">\frac12 mv^2 = \frac{1}{4\pi\varepsilon_0}\,\frac{Q\,e}{r_0} \;\Rightarrow\; v = \sqrt{\frac{2kQe}{m\,r_0}}</span></p>
+<div class="callout esempio">
+
+<p><strong>Elettrone accelerato da una differenza di potenziale.</strong> Un elettrone parte da fermo e attraversa una differenza di potenziale di 100 V.</p>
+<ol>
+<li>Energia guadagnata: <span class="m">|q|\Delta V = 1{,}6 \cdot 10^{-19} \cdot 100 = 1{,}6 \cdot 10^{-17}</span> J = 100 eV.</li>
+<li>Velocità: <span class="m">v = \sqrt{2E_c/m} = \sqrt{2 \cdot 1{,}6 \cdot 10^{-17}/9{,}11 \cdot 10^{-31}} = \sqrt{3{,}51 \cdot 10^{13}} \approx 5{,}9 \cdot 10^6</span> m/s.</li>
+</ol>
+</div>
+
+<h2>Velocità di fuga di un elettrone da una sfera carica</h2>
+<p>Un elettrone si trova sulla superficie di una sfera di raggio <span class="m">r_0</span> con carica positiva <span class="m">Q</span> distribuita uniformemente. La sfera lo attira. Con quale velocità minima deve partire per allontanarsi <strong>all&#39;infinito</strong>?</p>
+<ol>
+<li>Fuori dalla sfera il campo e il potenziale sono quelli di una carica puntiforme <span class="m">Q</span> al centro: <span class="m">V(r) = \dfrac{1}{4\pi\varepsilon_0}\dfrac{Q}{r}</span>.</li>
+<li>Energia potenziale dell&#39;elettrone (carica <span class="m">-e</span>) sulla superficie: <span class="m">U_0 = -\dfrac{1}{4\pi\varepsilon_0}\dfrac{Qe}{r_0}</span> (negativa: sistema legato). All&#39;infinito <span class="m">U = 0</span>.</li>
+<li>Conservazione dell&#39;energia, con velocità nulla all&#39;infinito (condizione minima):
+<span class="m d">\frac12 mv^2 - \frac{1}{4\pi\varepsilon_0}\frac{Qe}{r_0} = 0 \quad\Rightarrow\quad \frac12 mv^2 = \frac{1}{4\pi\varepsilon_0}\frac{Qe}{r_0}</span></li>
+<li>Risolvo:
+<span class="m d">v_{fuga} = \sqrt{\frac{2kQe}{m\,r_0}}</span></li>
+</ol>
 <p>dove:</p>
 <ul>
-<li><span class="m">Q</span> = carica della sfera (C); <span class="m">r_0</span> = raggio della sfera (m);</li>
+<li><span class="m">Q</span> = carica della sfera (C); <span class="m">r_0</span> = raggio (m);</li>
 <li><span class="m">e = 1{,}6 \cdot 10^{-19}</span> C, <span class="m">m = 9{,}11 \cdot 10^{-31}</span> kg = carica e massa dell&#39;elettrone;</li>
 <li><span class="m">k = 8{,}99 \cdot 10^9\,\mathrm{N\,m^2/C^2}</span>.</li>
 </ul>
+<p>È lo stesso ragionamento della velocità di fuga da un pianeta, con l&#39;energia potenziale elettrica al posto di quella gravitazionale.</p>
 <div class="callout esempio">
 
-<p><span class="m">Q = 1{,}6 \cdot 10^{-15}</span> C, <span class="m">r_0 = 1</span> cm:
-<span class="m">v = \sqrt{\dfrac{2 \cdot 8{,}99 \cdot 10^9 \cdot 1{,}6 \cdot 10^{-15} \cdot 1{,}6 \cdot 10^{-19}}{9{,}11 \cdot 10^{-31} \cdot 0{,}01}} \approx 2{,}25 \cdot 10^4\,\mathrm{m/s}</span>.</p>
+<p><strong>Numeri.</strong> <span class="m">Q = 1{,}6 \cdot 10^{-15}</span> C, <span class="m">r_0 = 1</span> cm <span class="m">= 0{,}01</span> m.</p>
+<ol>
+<li>Numeratore: <span class="m">2 \cdot 8{,}99 \cdot 10^9 \cdot 1{,}6 \cdot 10^{-15} \cdot 1{,}6 \cdot 10^{-19} = 4{,}60 \cdot 10^{-24}</span>.</li>
+<li>Denominatore: <span class="m">9{,}11 \cdot 10^{-31} \cdot 0{,}01 = 9{,}11 \cdot 10^{-33}</span>.</li>
+<li>Rapporto: <span class="m">5{,}05 \cdot 10^8\,\mathrm{m^2/s^2}</span>; radice: <span class="m">v \approx 2{,}25 \cdot 10^4</span> m/s.</li>
+</ol>
 </div>
 
-<h2>Campi utili: anello, disco, piani</h2>
-<p>Per le distribuzioni continue si divide la carica in pezzetti <span class="m">dq</span> e si sommano (integrano) i loro campi.</p>
-<p><strong>Anello</strong> di raggio <span class="m">a</span> e carica <span class="m">Q</span>, sull&#39;asse a distanza <span class="m">x</span> dal centro. Le componenti trasversali si annullano a coppie:</p>
+<h2>Campo di un anello carico sul suo asse</h2>
+<p>Un anello sottile di raggio <span class="m">a</span> ha carica positiva <span class="m">Q</span> distribuita uniformemente (densità lineare <span class="m">\lambda = Q/(2\pi a)</span>). Calcoliamo il campo in un punto P sull&#39;asse, a distanza <span class="m">x</span> dal centro.</p>
+<p>Metodo (vale per tutte le distribuzioni continue):</p>
+<ol>
+<li>si divide l&#39;anello in pezzetti di carica <span class="m">dq</span>, ciascuno puntiforme;</li>
+<li>si scrive il campo <span class="m">d\vec E</span> di un pezzetto;</li>
+<li>si sommano (integrano) i contributi, usando la simmetria.</li>
+</ol>
+<p><strong>Passo 1-2.</strong> Ogni pezzetto dista da P <span class="m">r = \sqrt{x^2 + a^2}</span> e dà un campo di modulo
+<span class="m d">dE = \frac{1}{4\pi\varepsilon_0}\,\frac{dq}{x^2 + a^2}</span>
+diretto lungo la congiungente pezzetto-P. Lo scompongo in una componente lungo l&#39;asse (<span class="m">x</span>) e una perpendicolare.</p>
+<p><strong>Passo 3: simmetria.</strong> Il pezzetto diametralmente opposto dà una componente perpendicolare uguale e <strong>opposta</strong>: tutte le componenti perpendicolari si annullano a coppie. Resta solo la componente lungo l&#39;asse, <span class="m">dE_x = dE\cos\alpha</span>, con <span class="m">\cos\alpha = \dfrac{x}{\sqrt{x^2 + a^2}}</span>:
+<span class="m d">dE_x = \frac{1}{4\pi\varepsilon_0}\,\frac{x\,dq}{(x^2 + a^2)^{3/2}}</span></p>
+<p><strong>Integrazione.</strong> <span class="m">x</span> e <span class="m">a</span> sono uguali per tutti i pezzetti, quindi escono dall&#39;integrale e <span class="m">\int dq = Q</span>:</p>
 <p><span class="m d">E = \frac{1}{4\pi\varepsilon_0}\,\frac{Qx}{(x^2 + a^2)^{3/2}}</span></p>
-<p><strong>Disco</strong> di raggio <span class="m">R</span> con densità <span class="m">\sigma</span>, sull&#39;asse a distanza <span class="m">z</span>. Si somma il campo di tanti anelli:</p>
-<p><span class="m d">E = \frac{\sigma}{2\varepsilon_0}\left(1 - \frac{z}{\sqrt{z^2 + R^2}}\right)</span></p>
 <p>dove:</p>
 <ul>
-<li><span class="m">\sigma</span> = carica per unità di superficie (C/m²);</li>
-<li><span class="m">z</span> = distanza dal centro del disco lungo l&#39;asse (m); <span class="m">R</span> = raggio (m).</li>
+<li><span class="m">Q</span> = carica dell&#39;anello (C); <span class="m">a</span> = raggio (m); <span class="m">x</span> = distanza dal centro lungo l&#39;asse (m).</li>
 </ul>
-<p>Molto vicino al disco (<span class="m">z \ll R</span>) il disco sembra un piano infinito: <span class="m">E \to \sigma/(2\varepsilon_0)</span>.</p>
+<p>Controlli: al centro (<span class="m">x = 0</span>) <span class="m">E = 0</span> (i contributi si annullano tutti); lontano (<span class="m">x \gg a</span>) <span class="m">E \approx kQ/x^2</span>, come una carica puntiforme.</p>
+<h2>Campo di un disco carico sul suo asse</h2>
+<p>Un disco di raggio <span class="m">R</span> ha densità di carica superficiale uniforme <span class="m">\sigma</span> (positiva). Campo in P sull&#39;asse, a distanza <span class="m">x</span> dal centro.</p>
+<ol>
+<li>Divido il disco in <strong>anelli concentrici</strong> di raggio <span class="m">r</span> e spessore <span class="m">dr</span>. L&#39;area di un anello è <span class="m">2\pi r\,dr</span>, quindi la sua carica è
+<span class="m d">dq = \sigma\,2\pi r\,dr</span></li>
+<li>Ogni anello dà sull&#39;asse il campo calcolato prima (con <span class="m">a \to r</span>, <span class="m">Q \to dq</span>), tutti diretti lungo l&#39;asse:
+<span class="m d">dE = \frac{1}{4\pi\varepsilon_0}\,\frac{x\,\sigma\,2\pi r\,dr}{(x^2 + r^2)^{3/2}} = \frac{\sigma x}{2\varepsilon_0}\,\frac{r\,dr}{(x^2 + r^2)^{3/2}}</span></li>
+<li>Integro da <span class="m">r = 0</span> a <span class="m">r = R</span>. Una primitiva di <span class="m">\dfrac{r}{(x^2 + r^2)^{3/2}}</span> è <span class="m">-\dfrac{1}{\sqrt{x^2 + r^2}}</span> (lo si verifica derivando):
+<span class="m d">\int_0^R \frac{r\,dr}{(x^2 + r^2)^{3/2}} = \left[-\frac{1}{\sqrt{x^2 + r^2}}\right]_0^R = \frac1x - \frac{1}{\sqrt{x^2 + R^2}}</span></li>
+<li>Moltiplico per <span class="m">\sigma x/(2\varepsilon_0)</span>:</li>
+</ol>
+<p><span class="m d">E = \frac{\sigma}{2\varepsilon_0}\left(1 - \frac{x}{\sqrt{x^2 + R^2}}\right)</span></p>
+<p>dove:</p>
+<ul>
+<li><span class="m">\sigma</span> = densità superficiale di carica (C/m²);</li>
+<li><span class="m">x</span> = distanza dal centro lungo l&#39;asse (m); <span class="m">R</span> = raggio del disco (m).</li>
+</ul>
+<p>Lo stesso risultato si ottiene (lezione 47) calcolando prima il potenziale del disco e poi derivando.</p>
+<p><strong>Limite del piano infinito.</strong> Se il disco è enorme rispetto alla distanza (<span class="m">R \gg x</span>, oppure punto molto vicino al disco), il termine <span class="m">x/\sqrt{x^2 + R^2} \to 0</span> e</p>
+<p><span class="m d">E \to \frac{\sigma}{2\varepsilon_0}</span></p>
+<p>il campo di un <strong>piano infinito</strong>: non dipende dalla distanza. Lo ritroveremo con il teorema di Gauss.</p>
 <div class="callout esempio">
 
-<p>Disco con <span class="m">\sigma = 4 \cdot 10^{-6}\,\mathrm{C/m^2}</span>: <span class="m">\sigma/(2\varepsilon_0) \approx 2{,}26 \cdot 10^5</span> N/C. Accelerazione di un elettrone <span class="m">a = eE/m</span>:</p>
+<p><strong>Elettrone sull&#39;asse di un disco carico.</strong> <span class="m">\sigma = 4{,}0 \cdot 10^{-6}\,\mathrm{C/m^2}</span>. Accelerazione iniziale di un elettrone a distanza <span class="m">R</span>, <span class="m">R/100</span>, <span class="m">R/1000</span> dal centro.</p>
+<ol>
+<li>Campo del piano: <span class="m">\dfrac{\sigma}{2\varepsilon_0} = \dfrac{4{,}0 \cdot 10^{-6}}{2 \cdot 8{,}85 \cdot 10^{-12}} \approx 2{,}26 \cdot 10^5</span> N/C.</li>
+<li>Accelerazione massima: <span class="m">a_0 = \dfrac{eE}{m} = \dfrac{1{,}6 \cdot 10^{-19} \cdot 2{,}26 \cdot 10^5}{9{,}11 \cdot 10^{-31}} \approx 3{,}97 \cdot 10^{16}\,\mathrm{m/s^2}</span>.</li>
+<li>Fattore <span class="m">1 - x/\sqrt{x^2 + R^2}</span>:<ul>
+<li><span class="m">x = R</span>: <span class="m">1 - 1/\sqrt2 \approx 0{,}293</span> → <span class="m">a \approx 1{,}16 \cdot 10^{16}\,\mathrm{m/s^2}</span>;</li>
+<li><span class="m">x = R/100</span>: <span class="m">1 - 0{,}01/\sqrt{1{,}0001} \approx 0{,}990</span> → <span class="m">a \approx 3{,}93 \cdot 10^{16}\,\mathrm{m/s^2}</span>;</li>
+<li><span class="m">x = R/1000</span>: <span class="m">\approx 0{,}999</span> → <span class="m">a \approx 3{,}97 \cdot 10^{16}\,\mathrm{m/s^2}</span>.</li>
+</ul>
+</li>
+</ol>
+<p>Più ci si avvicina al disco, più il campo tende a quello del piano infinito.</p>
+</div>
+
+<h2>Due piani paralleli infiniti</h2>
+<p>Ogni piano infinito con densità <span class="m">\sigma</span> dà un campo uniforme di modulo <span class="m">\sigma/(2\varepsilon_0)</span>, <strong>perpendicolare</strong> al piano, uscente se <span class="m">\sigma &gt; 0</span> ed entrante se <span class="m">\sigma &lt; 0</span>. Con due piani paralleli si sommano i due campi nelle tre regioni (fuori a sinistra, tra i piani, fuori a destra).</p>
+<p><strong>Cariche opposte (<span class="m">+\sigma</span> e <span class="m">-\sigma</span>).</strong></p>
 <ul>
-<li>a <span class="m">z = R</span>: fattore <span class="m">1 - 1/\sqrt2 \approx 0{,}29</span>, <span class="m">a \approx 1{,}16 \cdot 10^{16}\,\mathrm{m/s^2}</span>;</li>
-<li>a <span class="m">z = R/100</span>: <span class="m">a \approx 3{,}93 \cdot 10^{16}\,\mathrm{m/s^2}</span>;</li>
-<li>a <span class="m">z = R/1000</span>: <span class="m">a \approx 3{,}97 \cdot 10^{16}\,\mathrm{m/s^2}</span> (quasi il valore del piano infinito).</li>
+<li>Tra i piani: il campo del piano positivo punta via da esso, quello del negativo punta verso di esso → stesso verso, si sommano:
+<span class="m d">E = \frac{\sigma}{2\varepsilon_0} + \frac{\sigma}{2\varepsilon_0} = \frac{\sigma}{\varepsilon_0}</span></li>
+<li>Fuori: i due campi hanno versi opposti e si annullano: <span class="m">E = 0</span>.</li>
+</ul>
+<p><strong>Cariche uguali (stesso segno).</strong></p>
+<ul>
+<li>Tra i piani: i due campi sono opposti, <span class="m">E = 0</span>.</li>
+<li>Fuori: concordi, <span class="m">E = \sigma/\varepsilon_0</span>.</li>
+</ul>
+<p>Due piastre con cariche opposte producono quindi un campo <strong>uniforme</strong> e confinato tra le piastre: è il dispositivo classico per accelerare o deviare cariche (ed è il condensatore piano).</p>
+<h2>L&#39;esperimento di Millikan</h2>
+<p>R.A. Millikan misurò per la prima volta la carica elementare sfruttando l&#39;interazione tra cariche e campo.</p>
+<p><strong>Apparato.</strong> Nella parte alta di un contenitore si spruzzano goccioline d&#39;olio, che nel processo si <strong>caricano</strong>. Alcune cadono attraverso un forellino nella zona inferiore, tra due <strong>piastre metalliche orizzontali</strong> cariche (+ e −) che creano un <strong>campo uniforme verticale</strong>. Il moto delle gocce si osserva con un microscopio.</p>
+<p><strong>1. Senza campo.</strong> La goccia (raggio <span class="m">r</span>, densità <span class="m">\rho</span>, massa <span class="m">m = \tfrac43\pi r^3\rho</span>) cade per gravità ed è frenata dalla resistenza viscosa dell&#39;aria (legge di Stokes, <span class="m">F_v = 6\pi\eta r v</span>, con <span class="m">\eta</span> viscosità dell&#39;aria). Raggiunge presto una <strong>velocità limite</strong> in cui peso e attrito si bilanciano:
+<span class="m d">mg = 6\pi\eta r v_0 \quad\Rightarrow\quad v_0 = \frac{mg}{6\pi\eta r} = \frac{2\rho g r^2}{9\eta}</span>
+Misurando <span class="m">v_0</span> si ricava il <strong>raggio</strong> della goccia, e quindi la sua massa.</p>
+<p><strong>2. Con il campo.</strong> Se la goccia ha carica <span class="m">q</span> e il campo è diretto in modo che la forza elettrica <span class="m">qE</span> sia verso l&#39;alto, a regime:
+<span class="m d">mg - qE = 6\pi\eta r v_1 \quad\Rightarrow\quad v_1 = \frac{mg - qE}{6\pi\eta r}</span>
+Variando intensità e verso del campo si può accelerare la goccia, fermarla (<span class="m">qE = mg</span>) o invertirne il moto. Dalle due velocità: <span class="m">q = \dfrac{6\pi\eta r(v_0 - v_1)}{E}</span>.</p>
+<p><strong>3. Risultato.</strong> Ripetendo le misure su molte gocce (e sulla stessa goccia dopo che aveva catturato altre cariche), Millikan osservò che le velocità cambiavano sempre <strong>a salti discreti</strong>: le cariche misurate erano sempre <strong>multipli interi</strong> di uno stesso valore, <span class="m">q = ne</span>. Ottenne <span class="m">e \approx 1{,}6 \cdot 10^{-19}</span> C con un errore inferiore all&#39;1% rispetto ai valori moderni, e la stessa legge con sostanze diverse. L&#39;esperimento ha dimostrato che la <strong>carica è quantizzata</strong>.</p>
+<div class="callout attenzione">
+
+<ul>
+<li>La forza su una carica è determinata dal <strong>campo</strong> nel punto, non dal potenziale: due punti allo stesso potenziale possono avere campi diversi.</li>
+<li>&quot;L&#39;accelerazione è costante&quot; è vero <strong>solo in campo uniforme</strong>.</li>
+<li>Per una carica negativa l&#39;accelerazione è <strong>opposta</strong> al campo.</li>
+<li>Piano infinito isolante: <span class="m">\sigma/(2\varepsilon_0)</span>; tra due piani con cariche opposte: <span class="m">\sigma/\varepsilon_0</span>. Non confonderli.</li>
 </ul>
 </div>
 
-<p><strong>Due piani paralleli</strong> infiniti, ognuno con campo <span class="m">\sigma/(2\varepsilon_0)</span>:</p>
-<ul>
-<li>cariche opposte (<span class="m">+\sigma</span>, <span class="m">-\sigma</span>): campo <span class="m">\sigma/\varepsilon_0</span> tra i piani, zero fuori;</li>
-<li>cariche uguali: zero tra i piani, <span class="m">\sigma/\varepsilon_0</span> fuori.</li>
-</ul>
-<p>Tra due piastre con cariche opposte il campo è uniforme: è il modo classico per accelerare cariche.</p>
-<h2>L&#39;esperimento di Millikan</h2>
-<p>Millikan misurò la carica elementare con goccioline d&#39;olio cariche tra due piastre orizzontali.</p>
-<ol>
-<li>Senza campo, la goccia cade e raggiunge una velocità limite per l&#39;attrito dell&#39;aria. Da questa si ricava il raggio della goccia.</li>
-<li>Con il campo, la forza elettrica <span class="m">qE</span> rallenta, ferma o inverte il moto della goccia.</li>
-<li>Le cariche misurate erano sempre multipli interi di uno stesso valore: <span class="m">e \approx 1{,}6 \cdot 10^{-19}</span> C.</li>
-</ol>
-<p>L&#39;esperimento ha dimostrato che la carica è quantizzata.</p>
 <div class="callout esame">
 
-<p>Nelle aperte chiedono di definire il campo (<span class="m">\vec E = \vec F/q_0</span>), il campo della carica puntiforme (<span class="m">E = kQ/r^2</span>, radiale) e l&#39;interazione carica-campo (<span class="m">\vec F = q\vec E</span>, accelerazione, energia che si conserva).</p>
+<p>Domande chiuse: velocità di fuga di un elettrone da una sfera carica (<span class="m">\tfrac12 mv^2 = kQe/r_0</span>), accelerazione costante solo se il campo è uniforme, forza determinata dal vettore campo, accelerazione di un elettrone sull&#39;asse di un disco a tre distanze, <span class="m">\Delta U = -qE\Delta x</span> in campo uniforme.</p>
+<p>Aperta <strong>&quot;Si discuta l&#39;interazione tra una carica e un campo elettrico&quot;</strong>: <span class="m">\vec F = q\vec E</span> (verso secondo il segno di <span class="m">q</span>), equazione del moto <span class="m">m\ddot{\vec r} = q\vec E</span>, <span class="m">\vec a = q\vec E/m</span>; in campo uniforme moto rettilineo uniformemente accelerato (velocità parallela) o parabolico (velocità perpendicolare, <span class="m">y = qEx^2/(2mv^2)</span>); conservazione dell&#39;energia <span class="m">\tfrac12 mv^2 + qV</span> = cost; esempio di applicazione (acceleratori, deflessione, Millikan); eventualmente il dipolo (forza nulla, momento <span class="m">\vec p \times \vec E</span>).</p>
+<p>Aperte <strong>&quot;Come viene definito il campo elettrico? Si discuta il campo di una carica puntiforme&quot;</strong> e <strong>&quot;Definire il campo elettrico&quot;</strong>: <span class="m">\vec E = \lim_{q_0\to 0}\vec F/q_0</span>, vettore, N/C = V/m, carica di prova piccola che non disturba le sorgenti, indipendente da <span class="m">q_0</span>; carica puntiforme <span class="m">\vec E = \dfrac{1}{4\pi\varepsilon_0}\dfrac{Q}{r^2}\hat u_r</span> ricavato da Coulomb dividendo per <span class="m">q_0</span>, radiale, uscente se <span class="m">Q &gt; 0</span>, entrante se <span class="m">Q &lt; 0</span>, <span class="m">\propto 1/r^2</span>; sovrapposizione; linee di campo; <span class="m">\vec F = q\vec E</span>.</p>
 </div>
 
 <div class="callout sintesi">
 
 <ul>
-<li><span class="m">\vec F = q\vec E</span>, <span class="m">\vec a = q\vec E/m</span>: accelerazione costante solo in campo uniforme.</li>
-<li>Energia conservata: <span class="m">\tfrac12 mv^2 + qV = </span> costante; in campo uniforme <span class="m">\Delta U = -qE\Delta x</span>.</li>
-<li>Velocità di fuga: <span class="m">\tfrac12 mv^2 = kQe/r_0</span>.</li>
-<li>Disco sull&#39;asse: <span class="m">E = \dfrac{\sigma}{2\varepsilon_0}\left(1 - \dfrac{z}{\sqrt{z^2+R^2}}\right)</span>; vicino al disco tende a <span class="m">\sigma/2\varepsilon_0</span>.</li>
-<li>Millikan: la carica è sempre multipla di <span class="m">e</span>.</li>
+<li><span class="m">m\ddot{\vec r} = q\vec E</span>, <span class="m">\vec a = q\vec E/m</span>: costante solo in campo uniforme; opposta al campo se <span class="m">q &lt; 0</span>.</li>
+<li>Campo uniforme: rettilineo uniformemente accelerato (v ∥ E) o parabola <span class="m">y = \dfrac{qE}{2mv^2}x^2</span> (v ⊥ E).</li>
+<li>Energia: <span class="m">\tfrac12 mv^2 + qV</span> = costante; in campo uniforme <span class="m">\Delta U = -qE\Delta x</span>.</li>
+<li>Velocità di fuga da una sfera carica: <span class="m">v = \sqrt{2kQe/(m r_0)}</span>.</li>
+<li>Anello sull&#39;asse: <span class="m">E = \dfrac{1}{4\pi\varepsilon_0}\dfrac{Qx}{(x^2 + a^2)^{3/2}}</span>.</li>
+<li>Disco sull&#39;asse: <span class="m">E = \dfrac{\sigma}{2\varepsilon_0}\left(1 - \dfrac{x}{\sqrt{x^2 + R^2}}\right) \to \dfrac{\sigma}{2\varepsilon_0}</span> (piano infinito).</li>
+<li>Due piani opposti: <span class="m">\sigma/\varepsilon_0</span> dentro, 0 fuori; uguali: 0 dentro, <span class="m">\sigma/\varepsilon_0</span> fuori.</li>
+<li>Millikan: velocità limite delle gocce → cariche sempre multiple di <span class="m">e</span>.</li>
 </ul>
 </div>

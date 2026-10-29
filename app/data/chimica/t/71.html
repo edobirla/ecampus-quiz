@@ -1,29 +1,91 @@
 <h1 id="lez-71">Lezione 71 — Esercizi di riepilogo: combustione di miscele e durezza delle acque</h1>
 <h2 id="lez-71-perche">Perché questa lezione esiste</h2>
 <p>Questa lezione non introduce teoria nuova: raccoglie esercizi di riepilogo <strong>svolti dal docente</strong> su due
-temi distanti del programma — combustione di miscele di combustibili liquidi e calcolo delle durezze
-dell&#39;acqua — utili proprio perché mostrano il metodo applicato a dati numerici concreti, con la stessa
-attenzione al dettaglio che serve in sede d&#39;esame. Le soluzioni riportate qui sono quelle del corso, non
-scritte da Claude.</p>
+temi distanti del programma — la <strong>combustione di miscele</strong> di combustibili (<a href="#/teoria/chimica/68/lez-68">Lezione 68</a>) e il calcolo
+delle <strong>durezze dell&#39;acqua</strong> e delle quantità di calce e soda per addolcirla (<a href="#/teoria/chimica/49/lez-49">Lezione 49</a>) — utili
+proprio perché mostrano il metodo applicato a dati numerici concreti, con la stessa attenzione al dettaglio che
+serve in sede d&#39;esame. La dispensa ha tre parti: un esercizio di combustione (lezione), due esercizi sulle acque
+(Sessioni 1 e 2) e tre esercizi <strong>non svolti</strong> (Sessione 3), che qui sono risolti passo per passo.</p>
+<p>Il filo comune è un metodo: <strong>scomporre</strong> il problema in contributi indipendenti (un combustibile alla volta, uno
+ione alla volta), <strong>ricavare per primo</strong> quello che si ottiene senza incognite, poi procedere per <strong>somma o
+sottrazione</strong>.</p>
 <h2 id="lez-71-miscela-combustibile">Combustione di una miscela di isomeri (isoottano/n-eptano)</h2>
+<p>I due componenti sono i riferimenti della scala del numero di ottano (<a href="#/teoria/chimica/70/lez-70-benzine">Lezione 70</a>):</p>
+<ul>
+<li><strong>n-eptano</strong>, <span class="m">\chem{C_7H_{16}}</span> (100.21 g/mol): &quot;n&quot; sta per <strong>normal</strong>, la molecola a catena lineare, per
+distinguerla dagli altri isomeri (stessa formula molecolare, struttura diversa);</li>
+<li><strong>isoottano</strong>, <span class="m">\chem{C_8H_{18}}</span> (114.26 g/mol): 2,2,4-trimetilpentano, una catena di 5 C con tre metili.</li>
+</ul>
 <div class="callout esempio">
 
 <p><strong>Testo.</strong> Una miscela combustibile liquida è formata da isoottano (<span class="m">\chem{C_8H_{18}}</span>) e n-eptano
 (<span class="m">\chem{C_7H_{16}}</span>) al 40% in peso di n-eptano. Calcolare la composizione dei fumi di combustione
 nell&#39;ipotesi di un eccesso d&#39;aria del 20%.</p>
-<p><strong>Reazioni.</strong>
-<span class="m d">\chem{C_8H_{18}} + \tfrac{25}{2}\chem{O_2} \rightarrow 8\,\chem{CO_2} + 9\,\chem{H_2O}</span>
-<span class="m d">\chem{C_7H_{16}} + 11\,\chem{O_2} \rightarrow 7\,\chem{CO_2} + 8\,\chem{H_2O}</span></p>
-<p><strong>Passo 1 — moli per kg di miscela.</strong> 400 g di n-eptano (<span class="m">M=100.21\ \mathrm{g/mol}</span>):
-<span class="m">400/100.21=3.992\ \mathrm{mol}</span>; 600 g di isoottano (<span class="m">M=114.26\ \mathrm{g/mol}</span>):
-<span class="m">600/114.26=5.251\ \mathrm{mol}</span>.</p>
-<p><strong>Passo 2 — ossigeno richiesto.</strong> Isoottano: <span class="m">12.5\times5.251=65.64\ \mathrm{mol}\ \mathrm{O_2}</span>.
-n-Eptano: <span class="m">11\times3.992=43.91\ \mathrm{mol}\ \mathrm{O_2}</span>. Totale: <span class="m">109.55\ \mathrm{mol}</span>, cioè
+<p><strong>Reazioni</strong> (bilanciamento: C → <span class="m">\chem{CO_2}</span>, H → metà delle moli di H in acqua, poi l&#39;ossigeno):
+<span class="m d">\chem{C_8H_{18}} + \tfrac{25}{2}\chem{O_2} \rightarrow 8\,\chem{CO_2} + 9\,\chem{H_2O} \qquad (8\cdot2+9 = 25\ \text{atomi O})</span>
+<span class="m d">\chem{C_7H_{16}} + 11\,\chem{O_2} \rightarrow 7\,\chem{CO_2} + 8\,\chem{H_2O} \qquad (7\cdot2+8 = 22\ \text{atomi O})</span></p>
+<p><strong>Passo 1 — moli per kg di miscela.</strong> Base 1 kg: 400 g di n-eptano, <span class="m">400/100.21=3.992\ \mathrm{mol}</span>; 600 g di
+isoottano, <span class="m">600/114.26=5.251\ \mathrm{mol}</span>. (Il 40% è <strong>in peso</strong>: si divide la massa per la massa molare;
+sarebbe un errore usare 0.4 come frazione molare.)</p>
+<p><strong>Passo 2 — ossigeno teorico.</strong> Isoottano: <span class="m">12.5\times5.251=65.64\ \mathrm{mol}</span>. n-Eptano:
+<span class="m">11\times3.992=43.91\ \mathrm{mol}</span>. Totale: <span class="m">109.55\ \mathrm{mol}</span>, cioè
 <span class="m">V_{O_2,teor}=109.55\times22.4=2454\ \mathrm L=2.454\ \mathrm{Nm^3}</span>.</p>
-<p><strong>Passo 3 — fumi.</strong> <span class="m">V_{CO_2}=0.941+0.626=1.567\ \mathrm{Nm^3}</span>;
-<span class="m">V_{H_2O}=1.059+0.715=1.774\ \mathrm{Nm^3}</span>; ossigeno in eccesso
-<span class="m">=2.454\times0.2=0.491\ \mathrm{Nm^3}</span>; azoto <span class="m">=11.08\ \mathrm{Nm^3}</span> (aria totale
-<span class="m">2.454\times1.2\times4.8</span>, di cui il 79% è <span class="m">\mathrm{N_2}</span>).</p>
+<p><strong>Passo 3 — prodotti di combustione</strong> (ogni componente separatamente, poi somma):</p>
+<table>
+<thead>
+<tr>
+<th align="left"></th>
+<th align="left">da isoottano (5.251 mol)</th>
+<th align="left">da n-eptano (3.992 mol)</th>
+<th align="right">totale (Nm³)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><span class="m">\chem{CO_2}</span></td>
+<td align="left"><span class="m">8\times5.251 = 42.01</span> mol → 0.941</td>
+<td align="left"><span class="m">7\times3.992 = 27.94</span> mol → 0.626</td>
+<td align="right"><strong>1.567</strong></td>
+</tr>
+<tr>
+<td align="left"><span class="m">\chem{H_2O}</span></td>
+<td align="left"><span class="m">9\times5.251 = 47.26</span> mol → 1.059</td>
+<td align="left"><span class="m">8\times3.992 = 31.94</span> mol → 0.715</td>
+<td align="right"><strong>1.774</strong></td>
+</tr>
+</tbody></table>
+<p><strong>Passo 4 — ossigeno in eccesso e azoto.</strong> Con il 20% di eccesso l&#39;ossigeno alimentato è <span class="m">2.454\times1.2 =
+2.945</span> Nm³; quello che non reagisce è <span class="m">2.454\times0.2 = 0.491\ \mathrm{Nm^3}</span>. L&#39;azoto entra con tutto
+l&#39;ossigeno alimentato: <span class="m">2.945\times\tfrac{79}{21} = 11.08\ \mathrm{Nm^3}</span>.</p>
+<p><strong>Passo 5 — composizione dei fumi</strong> (totale <span class="m">1.567+1.774+0.491+11.08 = 14.91</span> Nm³ per kg di miscela):</p>
+<table>
+<thead>
+<tr>
+<th align="left">Componente</th>
+<th align="right">Nm³/kg</th>
+<th align="right">% in volume (fumi umidi)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><span class="m">\chem{CO_2}</span></td>
+<td align="right">1.567</td>
+<td align="right">10.5</td>
+</tr>
+<tr>
+<td align="left"><span class="m">\chem{H_2O}</span></td>
+<td align="right">1.774</td>
+<td align="right">11.9</td>
+</tr>
+<tr>
+<td align="left"><span class="m">\chem{O_2}</span></td>
+<td align="right">0.491</td>
+<td align="right">3.3</td>
+</tr>
+<tr>
+<td align="left"><span class="m">\chem{N_2}</span></td>
+<td align="right">11.08</td>
+<td align="right">74.3</td>
+</tr>
+</tbody></table>
 </div>
 
 <div class="callout attenzione">
@@ -31,71 +93,160 @@ n-Eptano: <span class="m">11\times3.992=43.91\ \mathrm{mol}\ \mathrm{O_2}</span>
 <p>Nota il pattern: ogni volta che si mescolano <strong>due combustibili diversi</strong>, i volumi (o le moli) di
 <span class="m">\mathrm O_2</span> richiesto, <span class="m">\mathrm{CO_2}</span> prodotta e <span class="m">\mathrm{H_2O}</span> prodotta <strong>si sommano</strong> dai due
 contributi separati — non si può trattare la miscela come un unico &quot;combustibile medio&quot; senza prima
-scomporla nei suoi componenti stechiometrici.</p>
+scomporla nei suoi componenti stechiometrici. Per una miscela di <strong>gas</strong> il procedimento è lo stesso, ma le
+quantità di ciascun componente si leggono direttamente dalle <strong>frazioni in volume</strong> (Avogadro): in 1 Nm³ di
+miscela al 70% di metano ci sono 0.7 Nm³ di metano.</p>
 </div>
 
-<h2 id="lez-71-durezza-acque">Durezza dell&#39;acqua: due esercizi risolti</h2>
-<p>Richiamo delle formule di <a href="#/teoria/chimica/49/lez-49">Lezione 49</a> che legano quantità di calce e soda (in <span class="m">\mathrm{g/m^3}</span>)
-alle durezze (in gradi francesi, °f) e alla CO₂ disciolta (in ppm):</p>
+<h2 id="lez-71-formule-acque">Richiamo: le formule dell&#39;addolcimento con calce e soda</h2>
+<p>Le durezze si esprimono in <strong>gradi francesi</strong>: <span class="m">1\ ^\circ\mathrm f = 10\ \mathrm{mg\ CaCO_3/L} = 10\
+\mathrm{g\ CaCO_3/m^3}</span>, cioè <span class="m">10^{-4}</span> mol/L di ione che dà durezza. Si distinguono:</p>
+<ul>
+<li><strong>durezza calcica</strong> <span class="m">D_{Ca}</span> e <strong>magnesiaca</strong> <span class="m">D_{Mg}</span> (secondo lo ione); <span class="m">D_{TOT} = D_{Ca} + D_{Mg}</span>;</li>
+<li><strong>durezza temporanea</strong> <span class="m">D_{Temp}</span>, dovuta ai <strong>bicarbonati</strong> di Ca e Mg: <strong>scompare per ebollizione</strong>
+(il bicarbonato si decompone e precipita il carbonato); <strong>permanente</strong> <span class="m">D_{Perm}</span>, dovuta agli altri sali
+(solfati, cloruri): resta dopo ebollizione. <span class="m">D_{TOT} = D_{Temp} + D_{Perm}</span>.</li>
+</ul>
+<p>Ognuna si può a sua volta dividere: <span class="m">D_{Ca} = D_{Ca}^{Temp} + D_{Ca}^{Perm}</span>, <span class="m">D_{Mg} = D_{Mg}^{Temp} +
+D_{Mg}^{Perm}</span>, <span class="m">D_{Temp} = D_{Ca}^{Temp} + D_{Mg}^{Temp}</span>, <span class="m">D_{Perm} = D_{Ca}^{Perm} + D_{Mg}^{Perm}</span>.</p>
+<p>Le relazioni ricavate in <a href="#/teoria/chimica/49/lez-49">Lezione 49</a> legano le quantità di calce e soda (in <span class="m">\mathrm{g/m^3}</span>) alle
+durezze (in °f) e alla <span class="m">\chem{CO_2}</span> disciolta (in ppm = g/m³):</p>
 <div class="callout formula">
 
-<p><span class="m d">m_{\chem{Ca(OH)_2}} = (D_{Temp}+D_{Mg})\times7.4 + p_{CO_2}\times1.68</span>
-<span class="m d">m_{\chem{Na_2CO_3}} = (D_{Ca}^{Perm}+D_{Mg}^{Perm})\times10.6 = D_{Perm}\times10.6</span></p>
+<p><span class="m d">m_{\chem{Ca(OH)_2}} = (D_{Temp}+D_{Mg})\times7.4 + p_{CO_2}\times1.68 \qquad (1)</span>
+<span class="m d">m_{\chem{Na_2CO_3}} = (D_{Ca}^{Perm}+D_{Mg}^{Perm})\times10.6 = D_{Perm}\times10.6 \qquad (2)</span></p>
 </div>
 
+<p>Da dove vengono i numeri:</p>
+<ul>
+<li>1 °f = 10 g/m³ di <span class="m">\chem{CaCO_3}</span> = <span class="m">10/100 = 0.1</span> mol/m³. Una mole di calce per mole di durezza: <span class="m">0.1\times74 =
+  7.4</span> g di <span class="m">\chem{Ca(OH)_2}</span> per °f. Una mole di soda per mole di durezza permanente: <span class="m">0.1\times106 = 10.6</span> g di
+<span class="m">\chem{Na_2CO_3}</span> per °f.</li>
+<li>1 ppm di <span class="m">\chem{CO_2}</span> = 1 g/m³ = <span class="m">1/44</span> mol/m³, che consuma altrettante moli di calce
+(<span class="m">\chem{CO_2 + Ca(OH)_2 \rightarrow CaCO_3 + H_2O}</span>): <span class="m">74/44 = 1.68</span> g.</li>
+<li><strong>Perché nella (1) compare <span class="m">D_{Temp}+D_{Mg}</span></strong>: la calce toglie la durezza temporanea, e per il magnesio serve
+calce <strong>in più</strong> per precipitarlo come <span class="m">\chem{Mg(OH)_2}</span> (meno solubile del carbonato). Così la durezza
+magnesiaca temporanea viene contata <strong>due volte</strong> (una in <span class="m">D_{Temp}</span>, una in <span class="m">D_{Mg}</span>): il bicarbonato di
+magnesio richiede 2 moli di calce, <span class="m">\chem{Mg(HCO_3)_2 + 2Ca(OH)_2 \rightarrow Mg(OH)_2 + 2CaCO_3 + 2H_2O}</span>.</li>
+<li>La soda serve solo per la durezza <strong>permanente</strong> (calcica e magnesiaca).</li>
+</ul>
+<p>Dopo <strong>ebollizione</strong> scompaiono la durezza temporanea e la <span class="m">\chem{CO_2}</span>: nella (1) resta solo <span class="m">D_{Mg}^{Perm}\times7.4</span>
+(il magnesio permanente richiede comunque calce), mentre la soda (2) non cambia.</p>
+<h2 id="lez-71-durezza-acque">Durezza dell&#39;acqua: due esercizi risolti</h2>
 <div class="callout esempio">
 
-<p><strong>Testo 1.</strong> Un&#39;acqua è completamente dolcificabile con 265 g/m³ di soda e 292.6 g/m³ di calce. La
+<p><strong>Testo 1</strong> (Sessione 1). Un&#39;acqua è completamente dolcificabile con 265 g/m³ di soda e 292.6 g/m³ di calce. La
 stessa acqua, dopo ebollizione, si dolcifica con 265 g/m³ di soda e 37 g/m³ di calce. Sapendo che
-<span class="m">D_{Mg}^{Temp}=D_{Mg}^{Perm}</span> e che la <span class="m">\mathrm{CO_2}</span> disciolta è 20 ppm, calcolare tutte le durezze.</p>
-<p><strong>Dopo ebollizione</strong> (la durezza temporanea e la CO₂ scompaiono): dalla formula della calce,
-<span class="m">D_{Mg}^{Perm}=37/7.4=5\ ^\circ\mathrm f</span>. Dalla formula della soda,
-<span class="m">D_{Ca}^{Perm}=265/10.6-5=20\ ^\circ\mathrm f</span>, quindi <span class="m">D_{Perm}=20+5=25\ ^\circ\mathrm f</span>.</p>
-<p><strong>Acqua non trattata</strong>, sapendo <span class="m">D_{Mg}^{Temp}=D_{Mg}^{Perm}=5\ ^\circ\mathrm f</span> (quindi
-<span class="m">3D_{Mg}^{Perm}</span> compare nella formula della calce, contando sia <span class="m">D_{Ca}^{Temp}</span> sia i due contributi
-magnesiaci): si ricava <span class="m">D_{Ca}^{Temp}=20\ ^\circ\mathrm f</span>.</p>
-<p><strong>Risultato:</strong> <span class="m">D_{Ca}=40\ ^\circ\mathrm f</span>, <span class="m">D_{Mg}=10\ ^\circ\mathrm f</span>, <span class="m">D_{Temp}=25\ ^\circ\mathrm f</span>,
-<span class="m">D_{Perm}=25\ ^\circ\mathrm f</span>, <span class="m">D_{TOT}=50\ ^\circ\mathrm f</span>.</p>
+<span class="m">D_{Mg}^{Temp}=D_{Mg}^{Perm}</span> e che la <span class="m">\mathrm{CO_2}</span> disciolta è 20 ppm, calcolare <span class="m">D_{Mg}</span>, <span class="m">D_{Ca}</span>,
+<span class="m">D_{Perm}</span>, <span class="m">D_{Temp}</span>, <span class="m">D_{TOT}</span>.</p>
+<p><strong>Passo 1 — acqua bollita</strong> (la durezza temporanea e la <span class="m">\chem{CO_2}</span> sono scomparse). Nella (1) resta solo il
+magnesio permanente:
+<span class="m d">D_{Mg}^{Perm} = \frac{37}{7.4} = 5\ ^\circ\mathrm f</span></p>
+<p><strong>Passo 2 — soda</strong> (uguale prima e dopo l&#39;ebollizione, perché riguarda solo la permanente):
+<span class="m d">D_{Ca}^{Perm} = \frac{m_{\chem{Na_2CO_3}}}{10.6} - D_{Mg}^{Perm} = \frac{265}{10.6} - 5 = 25 - 5 = 20\ ^\circ\mathrm f \qquad D_{Perm} = 20+5 = 25\ ^\circ\mathrm f</span></p>
+<p><strong>Passo 3 — acqua non trattata.</strong> Scrivo la (1) separando i contributi:
+<span class="m d">m_{\chem{Ca(OH)_2}} = \left(D_{Ca}^{Temp} + D_{Mg}^{Temp} + D_{Mg}^{Temp} + D_{Mg}^{Perm}\right)\times7.4 + p_{CO_2}\times1.68</span>
+Con <span class="m">D_{Mg}^{Temp}=D_{Mg}^{Perm}</span> i tre termini magnesiaci diventano <span class="m">3D_{Mg}^{Perm}</span>:
+<span class="m d">m_{\chem{Ca(OH)_2}} = \left(D_{Ca}^{Temp} + 3D_{Mg}^{Perm}\right)\times7.4 + p_{CO_2}\times1.68</span>
+<span class="m d">D_{Ca}^{Temp} = \frac{m_{\chem{Ca(OH)_2}} - 1.68\,p_{CO_2}}{7.4} - 3D_{Mg}^{Perm} = \frac{292.6 - 1.68\times20}{7.4} - 3\times5 = \frac{259.0}{7.4} - 15 = 35 - 15 = 20\ ^\circ\mathrm f</span></p>
+<p><strong>Risultato:</strong> <span class="m">D_{Ca}=20+20=40\ ^\circ\mathrm f</span>, <span class="m">D_{Mg}=5+5=10\ ^\circ\mathrm f</span>,
+<span class="m">D_{Temp}=20+5=25\ ^\circ\mathrm f</span>, <span class="m">D_{Perm}=25\ ^\circ\mathrm f</span>, <span class="m">D_{TOT}=50\ ^\circ\mathrm f</span>
+(controllo: <span class="m">40+10 = 25+25 = 50</span> ✓).</p>
 </div>
 
 <div class="callout esempio">
 
-<p><strong>Testo 2.</strong> Un&#39;acqua ha <span class="m">[\chem{Ca^{2+}}]=4\times10^{-3}\ \mathrm M</span>, <span class="m">[\chem{Mg^{2+}}]=2.5\times10^{-3}\
-\mathrm M</span>, <span class="m">[\chem{HCO_3^-}]=11\times10^{-3}\ \mathrm M</span>, <span class="m">[\chem{CO_2}]=10\ \mathrm{ppm}</span>. Calcolare
-tutte le durezze e le quantità di calce e soda per dolcificare <span class="m">1\ \mathrm{m^3}</span>.</p>
-<p><strong>Durezza calcica e magnesiaca</strong> (massa molare <span class="m">\mathrm{CaCO_3}=100.09\ \mathrm{g/mol}</span>, il riferimento
-convenzionale per esprimere le durezze):
-<span class="m d">D_{Ca} = (4\times10^{-3}\ \mathrm{mol/L})(100.09\ \mathrm{g/mol}) = 0.4\ \mathrm{g/L} = 40\ ^\circ\mathrm f</span>
-<span class="m d">D_{Mg} = (2.5\times10^{-3})(100.09) = 0.25\ \mathrm{g/L} = 25\ ^\circ\mathrm f</span>
-<span class="m d">D_{TOT} = 40+25 = 65\ ^\circ\mathrm f</span></p>
-<p><strong>Durezza temporanea</strong>, dal bicarbonato (2 mol <span class="m">\mathrm{HCO_3^-}</span> equivalgono a 1 mol
-<span class="m">\mathrm{CO_3^{2-}}</span> tramite <span class="m">2\,\mathrm{HCO_3^-}\rightleftharpoons\mathrm{CO_3^{2-}}+\mathrm{H_2O}+\mathrm{CO_2}</span>):
-<span class="m d">D_{Temp} = \tfrac12(11\times10^{-3})(100.09) = 0.55\ \mathrm{g/L} = 55\ ^\circ\mathrm f</span>
-<span class="m d">D_{Perm} = D_{TOT}-D_{Temp} = 10\ ^\circ\mathrm f</span></p>
-<p><strong>Calce e soda</strong>, applicando le formule con <span class="m">D_{Mg}=25\ ^\circ\mathrm f</span> (tutto magnesio è permanente,
-non essendoci indicazione contraria) e <span class="m">p_{CO_2}=10\ \mathrm{ppm}</span>:
-<span class="m d">m_{Ca(OH)_2} = (55+25)\times7.4 + 10\times1.68 = 608.8\ \mathrm{g/m^3}</span>
+<p><strong>Testo 2</strong> (Sessione 2). Un&#39;acqua ha <span class="m">[\chem{Ca^{2+}}]=4\times10^{-3}\ \mathrm M</span>,
+<span class="m">[\chem{Mg^{2+}}]=2.5\times10^{-3}\ \mathrm M</span>, <span class="m">[\chem{HCO_3^-}]=11\times10^{-3}\ \mathrm M</span>,
+<span class="m">[\chem{CO_2}]=10\ \mathrm{ppm}</span>. Calcolare tutte le durezze e le quantità di calce e soda per dolcificare
+<span class="m">1\ \mathrm{m^3}</span>.</p>
+<p><strong>Durezza calcica e magnesiaca.</strong> Ogni mole di ione si conta come una mole di <span class="m">\chem{CaCO_3}</span> (massa molare
+100.09 g/mol, il riferimento convenzionale), poi 1 °f = 0.01 g/L:
+<span class="m d">D_{Ca} = (4\times10^{-3}\ \mathrm{mol/L})(100.09\ \mathrm{g/mol}) = 0.40\ \mathrm{g/L} = \frac{0.40}{0.01} = 40\ ^\circ\mathrm f</span>
+<span class="m d">D_{Mg} = (2.5\times10^{-3})(100.09) = 0.25\ \mathrm{g/L} = 25\ ^\circ\mathrm f \qquad D_{TOT} = 40+25 = 65\ ^\circ\mathrm f</span></p>
+<p><strong>Durezza temporanea.</strong> Si elimina con <span class="m">2\,\mathrm{HCO_3^-}\rightarrow\mathrm{CO_3^{2-}}+\mathrm{H_2O}+\mathrm{CO_2}</span>:
+<strong>2 moli di bicarbonato equivalgono a 1 mole di carbonato</strong> (e quindi a 1 mole di durezza):
+<span class="m d">D_{Temp} = \tfrac12(11\times10^{-3})(100.09) = 0.55\ \mathrm{g/L} = 55\ ^\circ\mathrm f \qquad D_{Perm} = D_{TOT}-D_{Temp} = 10\ ^\circ\mathrm f</span></p>
+<p>Come si ripartiscono: la temporanea (55 °f) supera la durezza calcica (40 °f), quindi tutto il calcio è
+temporaneo e la temporanea comprende anche 15 °f di magnesio; i 10 °f permanenti sono tutti magnesiaci
+(<span class="m">D_{Mg}^{Temp}=15</span>, <span class="m">D_{Mg}^{Perm}=10</span>). Per le formule basta comunque <span class="m">D_{Mg}</span> totale.</p>
+<p><strong>Calce e soda:</strong>
+<span class="m d">m_{Ca(OH)_2} = (55+25)\times7.4 + 10\times1.68 = 592 + 16.8 = 608.8\ \mathrm{g/m^3}</span>
 <span class="m d">m_{Na_2CO_3} = 10\times10.6 = 106\ \mathrm{g/m^3}</span></p>
 </div>
 
 <div class="callout attenzione">
 
-<p>Nell&#39;esercizio 2 la durezza temporanea <strong>coincide</strong> con quella dovuta al bicarbonato: quando il testo
-non distingue esplicitamente durezza calcica e magnesiaca temporanea/permanente, verifica sempre se
-tutta la <span class="m">D_{Mg}</span> o tutta la <span class="m">D_{Ca}</span> va considerata permanente o temporanea in base a quali sali sono
-effettivamente presenti (bicarbonati = temporanea, altri sali = permanente).</p>
+<p>Nell&#39;esercizio 2 la durezza temporanea si calcola <strong>dal bicarbonato</strong> (metà delle sue moli), non dagli ioni
+<span class="m">\chem{Ca^{2+}}</span>: errore tipico è dimenticare il fattore <span class="m">\tfrac12</span> (si otterrebbe 110 °f, più della durezza
+totale, cosa impossibile). Quando il testo non distingue esplicitamente durezza calcica e magnesiaca
+temporanea/permanente, ricavala dal confronto tra i numeri (bicarbonati = temporanea, attribuita prima al calcio;
+altri sali = permanente). E nella formula della calce va usata la <span class="m">D_{Mg}</span> <strong>totale</strong>, non solo la permanente.</p>
+</div>
+
+<h2 id="lez-71-non-svolti">Esercizi non svolti della dispensa, risolti</h2>
+<div class="callout esempio">
+
+<p><strong>Esercizio 1 — miscela propano/butano dai fumi.</strong> Fumi: <span class="m">\chem{CO_2}</span> 10.76%, <span class="m">\chem{H_2O}</span> 13.75%,
+<span class="m">\chem{O_2}</span> 1.76%, <span class="m">\chem{N_2}</span> 73.73%. Calcolare composizione della miscela, eccesso d&#39;aria e <span class="m">Q_i</span>, con
+<span class="m">Q_s(\chem{C_3H_8}) = 24\,389.9</span> e <span class="m">Q_s(\chem{C_4H_{10}}) = 29\,607.6</span> kcal/Nm³.</p>
+<p>Reazioni: <span class="m">\chem{C_3H_8 + 5O_2 \rightarrow 3CO_2 + 4H_2O}</span>; <span class="m">\chem{C_4H_{10} + \tfrac{13}{2}O_2 \rightarrow 4CO_2
++ 5H_2O}</span>. Base 100 mol di fumi; <span class="m">a</span> = propano, <span class="m">b</span> = butano.</p>
+<ol>
+<li>Carbonio: <span class="m">3a + 4b = 10.76</span>. Idrogeno (acqua): <span class="m">4a + 5b = 13.75</span>.</li>
+<li>Dalla prima <span class="m">a = (10.76-4b)/3</span>; sostituendo: <span class="m">\tfrac43(10.76-4b) + 5b = 13.75</span> → <span class="m">14.35 - 5.33b + 5b = 13.75</span>
+→ <span class="m">b = 1.79</span>, <span class="m">a = (10.76 - 7.16)/3 = 1.20</span>.</li>
+<li>Composizione: propano <span class="m">1.20/2.99 = 40\%</span>, butano <span class="m">60\%</span>.</li>
+<li>Ossigeno consumato: <span class="m">5(1.20) + 6.5(1.79) = 6.00 + 11.64 = 17.64</span>; ossigeno libero 1.76 → eccesso
+<span class="m">= 1.76/17.64 = 10\%</span> (controllo con l&#39;azoto: <span class="m">73.73/3.8 = 19.40 = 17.64+1.76</span> ✓).</li>
+<li><span class="m">Q_s</span> della miscela: <span class="m">0.4\times24\,389.9 + 0.6\times29\,607.6 = 9756 + 17\,765 = 27\,521</span> kcal/Nm³.</li>
+<li>Acqua per Nm³ di miscela: <span class="m">0.4\times4 + 0.6\times5 = 4.6</span> Nm³ <span class="m">= 4.6\times44.64\times18 = 3696</span> g <span class="m">= 3.70</span> kg;
+<span class="m">Q_i = 27\,521 - 3.70\times584 = 27\,521 - 2158 = 25\,363</span> kcal/Nm³.</li>
+</ol>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Esercizio 3 — durezze da calce e soda.</strong> Per dolcificare un&#39;acqua servono 579.2 g/m³ di calce e 439.9 g/m³ di
+soda; <span class="m">D_{Ca}^{Temp} = 21</span> °f; la soda per la sola durezza calcica permanente è 227.9 g/m³; <span class="m">\chem{CO_2}</span> = 10 ppm.</p>
+<ol>
+<li><span class="m">D_{Ca}^{Perm} = 227.9/10.6 = 21.5</span> °f; <span class="m">D_{Perm} = 439.9/10.6 = 41.5</span> °f → <span class="m">D_{Mg}^{Perm} = 41.5 - 21.5 = 20</span> °f.</li>
+<li>Calce: <span class="m">(D_{Temp} + D_{Mg})\times7.4 + 10\times1.68 = 579.2</span> → <span class="m">D_{Temp} + D_{Mg} = 562.4/7.4 = 76.0</span>.</li>
+<li><span class="m">D_{Temp} = 21 + D_{Mg}^{Temp}</span>, <span class="m">D_{Mg} = D_{Mg}^{Temp} + 20</span> → <span class="m">41 + 2D_{Mg}^{Temp} = 76</span> →
+<span class="m">D_{Mg}^{Temp} = 17.5</span> °f.</li>
+<li>Risultato: <span class="m">D_{Ca} = 21+21.5 = 42.5</span> °f; <span class="m">D_{Mg} = 17.5+20 = 37.5</span> °f; <span class="m">D_{Temp} = 21+17.5 = 38.5</span> °f;
+<span class="m">D_{Perm} = 41.5</span> °f; <span class="m">D_{TOT} = 80</span> °f (controllo <span class="m">42.5+37.5 = 38.5+41.5</span> ✓).</li>
+</ol>
+</div>
+
+<div class="callout attenzione">
+
+<p><strong>Esercizio 2 non svolto (Ca²⁺ 240 ppm, Mg²⁺ 48.6 ppm, HCO₃⁻ 1098 ppm, CO₂ 10 ppm): attenzione ai ppm di
+ioni.</strong> I ppm (mg/L) si convertono in moli con la massa dello <strong>ione</strong>, non del carbonato: Ca <span class="m">240/40.08 =
+5.99\times10^{-3}</span> M → 60 °f; Mg <span class="m">48.6/24.31 = 2.0\times10^{-3}</span> M → 20 °f; <span class="m">D_{TOT} = 80</span> °f. Il bicarbonato,
+<span class="m">1098/61.02 = 18.0\times10^{-3}</span> M, darebbe <span class="m">\tfrac12\times18.0\times10^{-3}\times100.09 \to 90</span> °f, <strong>più</strong> della
+durezza totale: vuol dire che c&#39;è bicarbonato in eccesso rispetto a Ca e Mg (legato ad altri cationi, per esempio
+sodio), e la durezza temporanea <strong>non può superare la totale</strong>: <span class="m">D_{Temp} = 80</span> °f, <span class="m">D_{Perm} = 0</span>. Quindi soda
+nulla e calce <span class="m">(80+20)\times7.4 + 10\times1.68 = 756.8</span> g/m³ (a rigore il bicarbonato in eccesso consuma altra
+calce; l&#39;esercizio va letto con le formule del corso).</p>
 </div>
 
 <div class="callout sintesi">
 
 <ul>
 <li>Con miscele di combustibili, i contributi di <span class="m">\mathrm{O_2}</span>/fumi dei singoli componenti si sommano
-dopo aver calcolato separatamente le moli di ciascuno per unità di massa/volume di miscela.</li>
-<li>Le formule di <a href="#/teoria/chimica/49/lez-49">Lezione 49</a> legano g/m³ di calce e soda alle durezze in °f; risolverle in
-ordine (prima l&#39;informazione più diretta, poi le altre per sottrazione) evita di impostare sistemi
-inutilmente complicati.</li>
+dopo aver calcolato separatamente le moli di ciascuno per unità di massa (liquidi: % in peso / massa molare)
+o di volume (gas: frazioni in volume) di miscela. L&#39;azoto si calcola dall&#39;ossigeno <strong>alimentato</strong> (con
+l&#39;eccesso), <span class="m">\times 79/21</span>.</li>
+<li>Esercizi inversi sui fumi: bilanci di C e H danno la composizione della miscela, l&#39;ossigeno libero dà
+l&#39;eccesso.</li>
+<li>Le formule di <a href="#/teoria/chimica/49/lez-49">Lezione 49</a> legano g/m³ di calce e soda alle durezze in °f:
+calce <span class="m">=(D_{Temp}+D_{Mg})\cdot7.4+1.68\,p_{CO_2}</span>, soda <span class="m">=D_{Perm}\cdot10.6</span>; il magnesio temporaneo conta due
+volte. Dopo ebollizione resta calce <span class="m">=D_{Mg}^{Perm}\cdot7.4</span>. Risolverle in ordine (prima l&#39;informazione più
+diretta, poi le altre per sottrazione) evita sistemi inutilmente complicati.</li>
 <li><span class="m">1\ ^\circ\mathrm f</span> corrisponde a <span class="m">10\ \mathrm{mg\ CaCO_3/L}</span>: la conversione da concentrazione
-molare a gradi francesi passa sempre per la massa molare di <span class="m">\mathrm{CaCO_3}</span> (100.09 g/mol).</li>
+molare a gradi francesi passa sempre per la massa molare di <span class="m">\mathrm{CaCO_3}</span> (100.09 g/mol); per la temporanea
+si usa metà delle moli di bicarbonato.</li>
 </ul>
 </div>
 
@@ -103,8 +254,11 @@ molare a gradi francesi passa sempre per la massa molare di <span class="m">\mat
 
 <p><strong>Come cade all&#39;esame.</strong> Gli esercizi di riepilogo come questi combinano stechiometria di combustione o
 chimica delle acque con un&#39;attenzione particolare alla lettura del testo (percentuali in peso vs
-volume, quale durezza è temporanea vs permanente). Il metodo vincente è sempre lo stesso: isolare prima
-l&#39;informazione ricavabile senza incognite, poi procedere per sottrazione verso le grandezze richieste.</p>
+volume, quale durezza è temporanea vs permanente, acqua bollita o no). Il metodo vincente è sempre lo stesso:
+isolare prima l&#39;informazione ricavabile senza incognite, poi procedere per sottrazione verso le grandezze
+richieste. Domande teoriche collegate: la durezza temporanea (bicarbonati, scompare all&#39;ebollizione) contro la
+permanente, quanto vale un grado francese, come si calcola l&#39;ossigeno teorico di una miscela di combustibili, e il
+principio comune al calcolo di <span class="m">Q_i</span> e della temperatura adiabatica (<span class="m">\Delta H</span> funzione di stato, legge di Hess).</p>
 <p><strong>Allenati qui:</strong> Extra 151 · Extra 152 ·
 Extra 250 · Extra 251 · Extra 252 ·
 Extra 253</p>

@@ -1,92 +1,177 @@
 <h1>Lezione 57 — Generatori e forza elettromotrice</h1>
-<h2>A cosa serve un generatore</h2>
-<p>Una corrente in un circuito dissipa energia, per esempio per effetto Joule. Senza qualcosa che rifornisca energia, le cariche si fermano e la tensione si annulla. Il <strong>generatore</strong> mantiene la differenza di potenziale tra i suoi due morsetti. Ha un polo positivo (anodo) e un polo negativo (catodo). Nel simbolo il tratto lungo è il polo positivo.</p>
-<h2>Campo elettromotore</h2>
-<p>Il campo elettrostatico è conservativo: su un giro chiuso il suo lavoro è zero. Da solo non può mantenere una corrente che dissipa energia. Dentro il generatore agisce quindi un altro campo, <strong>non conservativo</strong>, detto <strong>campo elettromotore</strong> <span class="m">\vec E_m</span>. Ha origine chimica (pile), luminosa (celle fotovoltaiche) o altra.</p>
-<p>Il campo elettromotore spinge le cariche positive verso il polo positivo. Lo fa contro il campo elettrostatico dei morsetti, che ha verso opposto.</p>
+<p>Abbiamo visto che una corrente in un conduttore dissipa energia (effetto Joule). Allora chi fornisce questa energia in modo continuo? Senza un rifornimento le cariche si fermerebbero e la differenza di potenziale si annullerebbe. In questa lezione introduciamo i <strong>generatori</strong>, i dispositivi che mantengono la corrente in un circuito. Capiamo perché serve un campo <strong>non conservativo</strong> (il campo elettromotore), definiamo la <strong>forza elettromotrice</strong>, costruiamo il <strong>circuito equivalente</strong> di un generatore reale (generatore ideale più resistenza interna) e facciamo il bilancio energetico, fino al teorema del massimo trasferimento di potenza.</p>
+<h2>I generatori</h2>
+<p>Se tra due punti di un conduttore c&#39;è una differenza di potenziale, nel conduttore passa una corrente: un moto (equivalente) di cariche positive dal punto a potenziale maggiore a quello a potenziale minore. Ma così le cariche si ridistribuiscono e la differenza di potenziale tende ad annullarsi. Per <strong>mantenerla</strong>, nonostante il flusso di cariche, serve un dispositivo chiamato <strong>generatore elettrico</strong> (generatore di forza elettromotrice, o di tensione).</p>
+<p>Un generatore ha sempre due elettrodi conduttori, i <strong>morsetti</strong> (o poli):</p>
+<ul>
+<li>il polo <strong>positivo</strong>, dove si accumulano cariche positive, detto <strong>anodo</strong>;</li>
+<li>il polo <strong>negativo</strong>, dove si accumulano cariche negative, detto <strong>catodo</strong>.</li>
+</ul>
+<p>Collegando i morsetti a uno o più elementi, detti <strong>carichi</strong> (resistivi, capacitivi o, come vedremo più avanti nel corso, induttivi), il generatore alimenta un circuito.</p>
+<p><strong>Simbolo.</strong> Nei circuiti il generatore si disegna con due tratti paralleli di lunghezza diversa: il tratto <strong>più lungo</strong> è il polo <strong>positivo</strong>, quello più corto il polo negativo.</p>
+<p>Poiché una corrente che scorre in un circuito è sempre accompagnata da dissipazione o da lavoro svolto, il ruolo del generatore è <strong>rifornire in continuazione l&#39;energia</strong> necessaria.</p>
+<h2>Il campo elettromotore</h2>
+<p>Le cariche accumulate sui morsetti producono nel circuito il campo elettrostatico che mantiene le cariche in moto. Però nel circuito ci sono processi (come l&#39;effetto Joule) che tolgono energia alle cariche e la trasformano in altre forme. Perché il moto continui in modo stazionario, il lavoro fatto sui portatori di carica lungo un giro completo del circuito deve essere <strong>diverso da zero</strong>:</p>
+<p><span class="m d">\oint \vec E \cdot d\vec l \neq 0</span></p>
+<p>dove <span class="m">\vec E</span> = campo <strong>totale</strong> che agisce sulle cariche lungo il circuito (V/m) e l&#39;integrale è fatto su tutto il circuito chiuso. Il campo totale quindi <strong>non può essere conservativo</strong>.</p>
+<p>Il campo elettrostatico <span class="m">\vec E_s</span> però è sempre conservativo: su un giro chiuso il suo lavoro è nullo (<span class="m">\oint \vec E_s \cdot d\vec l = 0</span>). Da solo non può mantenere una corrente che dissipa energia. Dentro il generatore deve quindi agire un altro campo, <strong>non conservativo</strong>, che si sovrappone al campo elettrostatico dei morsetti: il <strong>campo elettromotore</strong> <span class="m">\vec E_m</span>. È dovuto a processi di natura diversa: chimica (pile), luminosa (celle fotovoltaiche), meccanica o magnetica (dinamo, come vedremo).</p>
+<p>In un generatore localizzato:</p>
+<ul>
+<li>il campo elettromotore <strong>separa le cariche</strong>: spinge le positive verso il polo positivo e le negative verso il polo negativo;</li>
+<li>così facendo compie lavoro <strong>contro</strong> il campo elettrostatico, che si oppone a questo accumulo: dentro il generatore <strong>i due campi hanno verso opposto</strong>.</li>
+</ul>
+<p>Un&#39;immagine utile: il generatore è come una pompa che riporta in alto l&#39;acqua. Nel circuito esterno le cariche &quot;scendono&quot; di potenziale (e cedono energia); dentro il generatore il campo elettromotore le &quot;risale&quot;, spendendo energia chimica, luminosa o meccanica.</p>
 <h2>Forza elettromotrice</h2>
-<p>La <strong>forza elettromotrice</strong> (f.e.m.) è il lavoro che il generatore compie su ogni coulomb di carica positiva, portandolo dal polo negativo al polo positivo.</p>
-<p><span class="m d">\mathcal E = \int_{-}^{+} \vec E_m \cdot d\vec l = \oint \vec E \cdot d\vec l</span></p>
+<p><strong>Definizione.</strong> La <strong>forza elettromotrice</strong> (f.e.m.) di un generatore è l&#39;integrale di linea del campo elettromotore lungo un cammino interno al generatore, dal morsetto negativo a quello positivo:</p>
+<p><span class="m d">\mathcal E = \int_{-}^{+} \vec E_m \cdot d\vec l</span></p>
 <p>dove:</p>
 <ul>
-<li><span class="m">\mathcal E</span> = forza elettromotrice (V, cioè J/C)</li>
-<li><span class="m">\vec E_m</span> = campo elettromotore (V/m)</li>
-<li><span class="m">\vec E</span> = campo totale lungo il circuito (V/m); il contributo elettrostatico sul giro chiuso è nullo</li>
-</ul>
-<p>Nonostante il nome, la f.e.m. <strong>non è una forza</strong>. È un lavoro per unità di carica e si misura in volt.</p>
-<p>A <strong>circuito aperto</strong> non passa corrente. Le cariche si accumulano sui morsetti finché il campo elettrostatico bilancia quello elettromotore. In queste condizioni la f.e.m. è uguale alla tensione tra i morsetti.</p>
-<h2>Generatore reale: resistenza interna</h2>
-<p>Se colleghi un carico, la tensione ai morsetti scende. Scende tanto più quanto più corrente eroghi. Si descrive il generatore reale come un <strong>generatore ideale</strong> di f.e.m. <span class="m">\mathcal E</span> <strong>in serie</strong> con una <strong>resistenza interna</strong> <span class="m">r</span>.</p>
-<p><span class="m d">V = \mathcal E - r\,I</span></p>
-<p>dove:</p>
-<ul>
-<li><span class="m">V</span> = tensione ai morsetti (V)</li>
 <li><span class="m">\mathcal E</span> = forza elettromotrice (V)</li>
-<li><span class="m">r</span> = resistenza interna (Ω)</li>
-<li><span class="m">I</span> = corrente erogata (A)</li>
+<li><span class="m">\vec E_m</span> = campo elettromotore (V/m)</li>
+<li><span class="m">d\vec l</span> = tratto infinitesimo del cammino interno (m)</li>
 </ul>
-<p>Con un carico esterno <span class="m">R</span> la corrente è:</p>
-<p><span class="m d">I = \frac{\mathcal E}{R + r}</span></p>
-<p>dove <span class="m">R</span> = resistenza del carico (Ω).</p>
+<p><strong>Significato:</strong> la f.e.m. è il <strong>lavoro</strong> che il campo elettromotore compie per portare l&#39;<strong>unità di carica positiva</strong> dal polo negativo a quello positivo. Essendo un lavoro per unità di carica, si misura in <strong>volt</strong> (<span class="m">1\,\mathrm V = 1\,\mathrm{J/C}</span>). Nonostante il nome, <strong>non è una forza</strong>.</p>
+<p><strong>A circuito aperto.</strong> Prendiamo il generatore isolato, con i morsetti non collegati a nulla (<strong>circuito aperto</strong>). Il campo elettromotore accumula cariche sui morsetti finché il campo elettrostatico che esse producono diventa abbastanza intenso da <strong>bilanciarlo</strong>. All&#39;equilibrio, dentro il generatore, <span class="m">\vec E_m = -\vec E_s</span> e le cariche non si muovono più. Allora:</p>
+<p><span class="m d">\mathcal E = \int_{-}^{+} \vec E_m \cdot d\vec l = -\int_{-}^{+} \vec E_s \cdot d\vec l = V_+ - V_-</span></p>
+<p>Nell&#39;ultimo passaggio ho usato la relazione tra potenziale e campo elettrostatico conservativo: <span class="m">-\int_A^B \vec E_s \cdot d\vec l = V_B - V_A</span>. Quindi <strong>a circuito aperto la f.e.m. coincide con la differenza di potenziale tra i poli</strong> del generatore.</p>
+<p><strong>Definizione generale.</strong> Se il campo elettromotore non è localizzato in un generatore ma è distribuito lungo tutto il circuito (casi che vedremo con l&#39;induzione elettromagnetica), si definisce</p>
+<p><span class="m d">\mathcal E = \oint \vec E_m \cdot d\vec l</span></p>
+<p>che si riduce alla definizione precedente se <span class="m">\vec E_m</span> è diverso da zero solo nel generatore. Infine, poiché il campo elettrostatico ha circuitazione nulla, si può usare il campo <strong>totale</strong> <span class="m">\vec E = \vec E_s + \vec E_m</span>:</p>
+<p><span class="m d">\mathcal E = \oint \vec E \cdot d\vec l</span></p>
+<p>La f.e.m. è la <strong>circuitazione del campo elettrico totale</strong> lungo il circuito: il contributo elettrostatico si annulla e resta solo quello del campo elettromotore.</p>
+<h2>Generatore reale: la resistenza interna</h2>
+<p>Quando il generatore viene collegato a un circuito e inizia a erogare corrente, la differenza di potenziale ai suoi morsetti <strong>diminuisce</strong> rispetto al valore a circuito aperto, e diminuisce tanto più quanto più corrente eroga. Per correnti molto alte la diminuzione può diventare non lineare, ma nei casi normali è <strong>proporzionale alla corrente</strong>:</p>
+<p><span class="m d">V_A - V_B = \mathcal E - r\,i</span></p>
+<p>dove:</p>
 <ul>
-<li>Circuito aperto (<span class="m">I = 0</span>): <span class="m">V = \mathcal E</span>.</li>
-<li>Circuito chiuso: <span class="m">V &lt; \mathcal E</span>, per la caduta <span class="m">rI</span> dentro il generatore.</li>
-<li>Generatore <strong>ideale</strong>: <span class="m">r = 0</span>, quindi <span class="m">V = \mathcal E</span> sempre. Negli esercizi è sottinteso se non si dice nulla.</li>
+<li><p><span class="m">V_A - V_B</span> = tensione ai morsetti del generatore (V)</p>
+</li>
+<li><p><span class="m">\mathcal E</span> = forza elettromotrice, cioè la tensione a vuoto (V)</p>
+</li>
+<li><p><span class="m">r</span> = <strong>resistenza interna</strong> del generatore (Ω)</p>
+</li>
+<li><p><span class="m">i</span> = corrente erogata (A)</p>
+</li>
+<li><p><strong>Circuito aperto</strong> (<span class="m">i = 0</span>): <span class="m">V_A - V_B = \mathcal E</span>.</p>
+</li>
+<li><p><strong>Circuito chiuso</strong>: la tensione ai morsetti cala linearmente con la corrente.</p>
+</li>
+</ul>
+<p>Questa relazione equivale a pensare che dentro il generatore, tra la &quot;sorgente&quot; e il punto di collegamento al circuito, ci sia una resistenza <span class="m">r</span> su cui la corrente produce la caduta di tensione <span class="m">r\,i</span>.</p>
+<p><strong>Circuito equivalente.</strong> Il generatore reale si schematizza come un <strong>generatore ideale</strong> di f.e.m. <span class="m">\mathcal E</span> (quella a vuoto) <strong>in serie</strong> con una <strong>resistenza interna</strong> <span class="m">r</span>. Collegato a un carico esterno <span class="m">R</span>, si ottiene un circuito con una sola maglia: generatore ideale, <span class="m">r</span> e <span class="m">R</span> in serie.</p>
+<p><strong>Corrente nel circuito.</strong> La tensione ai morsetti è anche la tensione ai capi del carico: <span class="m">\mathcal E - r\,i = R\,i</span>. Quindi:</p>
+<p><span class="m d">i = \frac{\mathcal E}{R + r}</span></p>
+<p>dove <span class="m">R</span> = resistenza del carico (Ω). È come se la f.e.m. alimentasse la serie di <span class="m">R</span> e <span class="m">r</span>.</p>
+<ul>
+<li>Se si collegano i morsetti con un filo senza resistenza (<strong>cortocircuito</strong>, <span class="m">R = 0</span>), la corrente è la massima possibile, <span class="m">i_{cc} = \mathcal E/r</span>, e la tensione ai morsetti è zero.</li>
+<li>Un <strong>generatore ideale</strong> ha <span class="m">r = 0</span>: la tensione ai morsetti è sempre <span class="m">\mathcal E</span>, qualunque sia la corrente. Negli esercizi, se non si dice nulla, il generatore si considera ideale.</li>
 </ul>
 <div class="callout esempio">
 
-<p>Pila da 9 V con <span class="m">r = 1\,\Omega</span> su un carico da 8 Ω: <span class="m">I = 9/(8+1) = 1\,\mathrm{A}</span>. Tensione ai morsetti: <span class="m">V = 9 - 1 \cdot 1 = 8\,\mathrm{V}</span>.</p>
+<p><strong>Pila con resistenza interna.</strong> Una pila da 9 V con <span class="m">r = 1\,\Omega</span> alimenta un carico da 8 Ω.</p>
+<ol>
+<li>Corrente: <span class="m">i = \dfrac{\mathcal E}{R + r} = \dfrac{9}{8 + 1} = 1\,\mathrm A</span>.</li>
+<li>Tensione ai morsetti: <span class="m">V = \mathcal E - r\,i = 9 - 1 \cdot 1 = 8\,\mathrm V</span>, che è proprio <span class="m">R\,i = 8 \cdot 1</span>.</li>
+<li>Se la pila fosse ideale la corrente sarebbe <span class="m">9/8 = 1{,}125\,\mathrm A</span>.</li>
+</ol>
 </div>
 
-<h2>Bilancio energetico del generatore</h2>
-<p>Il generatore fornisce potenza <span class="m">\mathcal E I</span>. Una parte si dissipa dentro di lui, una parte arriva al carico.</p>
-<p><span class="m d">\mathcal E\,I = R I^2 + r I^2</span></p>
-<p>dove:</p>
-<ul>
-<li><span class="m">\mathcal E I</span> = potenza erogata dal generatore (W)</li>
-<li><span class="m">R I^2</span> = potenza dissipata nel carico (W)</li>
-<li><span class="m">r I^2</span> = potenza persa nel generatore (W)</li>
-</ul>
-<p>Dividendo per <span class="m">I</span> si ritrova <span class="m">\mathcal E = RI + rI</span>, cioè <span class="m">V = \mathcal E - rI</span>. Il modello &quot;ideale + <span class="m">r</span> in serie&quot; torna anche con l&#39;energia.</p>
 <div class="callout esempio">
 
-<p>Pila da 2 V con <span class="m">r = 1\,\Omega</span> su un filo da 5 Ω, per 2 minuti. <span class="m">I = 2/6 \approx 0{,}33\,\mathrm{A}</span>.</p>
+<p><strong>Misurare f.e.m. e resistenza interna.</strong> (esercizio della dispensa) Una batteria collegata a <span class="m">R_1 = 500\,\Omega</span> dà ai capi della resistenza <span class="m">\Delta V_1 = 0{,}10\,\mathrm V</span>. Collegata a <span class="m">R_2 = 1000\,\Omega</span> dà <span class="m">\Delta V_2 = 0{,}15\,\mathrm V</span>. Trova <span class="m">r</span> e <span class="m">\mathcal E</span>.</p>
+<ol>
+<li>Le correnti nei due casi: <span class="m">i_1 = \Delta V_1/R_1 = 0{,}10/500 = 2 \cdot 10^{-4}\,\mathrm A</span>; <span class="m">i_2 = \Delta V_2/R_2 = 0{,}15/1000 = 1{,}5 \cdot 10^{-4}\,\mathrm A</span>.</li>
+<li>Per ogni caso vale <span class="m">\Delta V = \mathcal E - r\,i</span>. Sistema: <span class="m">0{,}10 = \mathcal E - r \cdot 2 \cdot 10^{-4}</span> e <span class="m">0{,}15 = \mathcal E - r \cdot 1{,}5 \cdot 10^{-4}</span>.</li>
+<li>Sottraggo la prima dalla seconda: <span class="m">0{,}05 = r\,(2 - 1{,}5) \cdot 10^{-4} = r \cdot 0{,}5 \cdot 10^{-4}</span>, quindi <span class="m">r = 1000\,\Omega</span>.</li>
+<li>Sostituisco: <span class="m">\mathcal E = 0{,}10 + 1000 \cdot 2 \cdot 10^{-4} = 0{,}10 + 0{,}20 = 0{,}30\,\mathrm V</span>.</li>
+</ol>
+<p>In forma generale la dispensa ottiene <span class="m">r = \dfrac{R_1R_2(\Delta V_2 - \Delta V_1)}{\Delta V_1 R_2 - \Delta V_2 R_1}</span>: con i numeri, <span class="m">\dfrac{500 \cdot 1000 \cdot 0{,}05}{0{,}1 \cdot 1000 - 0{,}15 \cdot 500} = \dfrac{25\,000}{25} = 1000\,\Omega</span>.</p>
+</div>
+
+<h2>Potenza del generatore e bilancio energetico</h2>
+<p><strong>Lavoro del generatore.</strong> Quando il generatore è attraversato dalla carica <span class="m">dq = i\,dt</span>, il campo elettromotore compie su di essa il lavoro <span class="m">dL = \mathcal E\,dq = \mathcal E\,i\,dt</span> (per definizione di f.e.m.). La potenza fornita alla corrente è quindi:</p>
+<p><span class="m d">P_g = \frac{dL}{dt} = \mathcal E\,i</span></p>
+<p><strong>Bilancio.</strong> Una volta collegato al circuito, il generatore ha anche una dissipazione interna. La potenza erogata si divide tra il carico e la resistenza interna:</p>
+<p><span class="m d">\mathcal E\,i = R\,i^2 + r\,i^2</span></p>
+<p>dove:</p>
 <ul>
-<li>Energia chimica convertita: <span class="m">\mathcal E I t = 2 \cdot 0{,}33 \cdot 120 \approx 80\,\mathrm{J}</span>.</li>
-<li>Calore nel filo: <span class="m">R I^2 t \approx 67\,\mathrm{J}</span>.</li>
-<li>Calore nella pila: <span class="m">r I^2 t \approx 13\,\mathrm{J}</span>.</li>
+<li><span class="m">\mathcal E\,i</span> = potenza erogata dal generatore, ottenuta a spese di energia chimica, luminosa, ecc. (W)</li>
+<li><span class="m">R\,i^2</span> = potenza dissipata nel carico per effetto Joule (W)</li>
+<li><span class="m">r\,i^2</span> = potenza dissipata dentro il generatore (W)</li>
 </ul>
+<p><strong>Coerenza del modello.</strong> Divido per <span class="m">i</span>: <span class="m">\mathcal E = R\,i + r\,i</span>, cioè <span class="m">R\,i = \mathcal E - r\,i</span>. È proprio la relazione <span class="m">V_A - V_B = \mathcal E - r\,i</span> trovata prima, se si interpreta la dissipazione interna come effetto Joule sulla resistenza interna. Il circuito equivalente &quot;generatore ideale + <span class="m">r</span> in serie&quot; descrive quindi correttamente anche l&#39;<strong>energetica</strong> del sistema.</p>
+<div class="callout esempio">
+
+<p><strong>Bilancio energetico in 2 minuti.</strong> (esercizio della dispensa) Un filo da 5 Ω è collegato a una pila con f.e.m. 2 V e resistenza interna 1 Ω. Dopo 2 minuti: quanta energia chimica è diventata elettrica? Quanta è diventata calore nel filo e quanta nella pila?</p>
+<ol>
+<li>Corrente: <span class="m">i = \dfrac{\mathcal E}{R + r} = \dfrac{2}{6} \approx 0{,}33\,\mathrm A</span>. Tempo: <span class="m">\Delta t = 120\,\mathrm s</span>.</li>
+<li>Energia chimica convertita: <span class="m">E_{ch} = \mathcal E\,i\,\Delta t = 2 \cdot \tfrac13 \cdot 120 = 80\,\mathrm J</span>.</li>
+<li>Calore nel filo: <span class="m">Q = R\,i^2\,\Delta t = 5 \cdot \tfrac19 \cdot 120 \approx 67\,\mathrm J</span>.</li>
+<li>Calore nella pila: <span class="m">Q_{int} = r\,i^2\,\Delta t = 1 \cdot \tfrac19 \cdot 120 \approx 13\,\mathrm J</span>.</li>
+<li>Controllo: <span class="m">67 + 13 = 80\,\mathrm J</span>. L&#39;energia si conserva.</li>
+</ol>
 </div>
 
 <h2>Massimo trasferimento di potenza</h2>
-<p>La potenza sul carico è <span class="m">P = R I^2 = \dfrac{\mathcal E^2 R}{(R + r)^2}</span>. Ponendo a zero la derivata rispetto a <span class="m">R</span> si trova il massimo:</p>
-<p><span class="m d">R = r \qquad \Rightarrow \qquad P_{max} = \frac{\mathcal E^2}{4r}</span></p>
-<p>dove <span class="m">P_{max}</span> = massima potenza sul carico (W).</p>
-<p>Perché: con <span class="m">R</span> piccola passa tanta corrente ma quasi tutta la potenza si perde in <span class="m">r</span>. Con <span class="m">R</span> grande passa poca corrente. Il compromesso migliore è <span class="m">R = r</span>.</p>
+<p>Un generatore reale è collegato a una resistenza variabile <span class="m">R</span>. Per quale <span class="m">R</span> la potenza dissipata sul carico è massima? (esercizio della dispensa)</p>
+<ol>
+<li>Corrente: <span class="m">i = \dfrac{\mathcal E}{R + r}</span>.</li>
+<li>Potenza sul carico: <span class="m">W = R\,i^2 = R\,\dfrac{\mathcal E^2}{(R + r)^2}</span>.</li>
+<li>Derivo rispetto a <span class="m">R</span> (regola del prodotto):
+<span class="m d">\frac{dW}{dR} = \frac{\mathcal E^2}{(R + r)^2} - 2R\,\frac{\mathcal E^2}{(R + r)^3} = \frac{\mathcal E^2\,(R + r - 2R)}{(R + r)^3} = \frac{\mathcal E^2\,(r - R)}{(R + r)^3}</span></li>
+<li>La derivata si annulla per <span class="m">R = r</span>; è positiva per <span class="m">R &lt; r</span> e negativa per <span class="m">R &gt; r</span>, quindi è un <strong>massimo</strong>.</li>
+<li>Sostituisco <span class="m">R = r</span>:</li>
+</ol>
+<p><span class="m d">W_{max} = r\,\frac{\mathcal E^2}{(2r)^2} = \frac{\mathcal E^2}{4r}</span></p>
+<p>dove <span class="m">W_{max}</span> = massima potenza trasferibile al carico (W).</p>
+<p><strong>Perché.</strong> Con <span class="m">R</span> molto piccola passa molta corrente, ma quasi tutta la potenza si perde dentro il generatore. Con <span class="m">R</span> molto grande la tensione è quasi tutta sul carico, ma passa pochissima corrente. Il compromesso migliore è il carico &quot;adattato&quot; <span class="m">R = r</span>. In quella condizione il generatore eroga <span class="m">\mathcal E\,i = \mathcal E^2/(2r)</span>: metà va al carico e metà si perde nel generatore (rendimento del 50%).</p>
 <h2>Riscaldare con la corrente</h2>
-<p>Il calore prodotto in un tempo <span class="m">t</span> da una resistenza è <span class="m">Q = R I^2 t</span>.</p>
+<p>Il calore prodotto in un tempo <span class="m">t</span> da una resistenza percorsa dalla corrente <span class="m">i</span> è <span class="m">Q = R\,i^2\,t</span>.</p>
 <div class="callout esempio">
 
-<p>2 A in una resistenza da 10 Ω per 2 minuti: <span class="m">Q = 10 \cdot 4 \cdot 120 = 4800\,\mathrm{J}</span>. Per scaldare di 1 °C un litro d&#39;acqua servono 4180 J. Quindi <strong>sì</strong>, il calore basta.</p>
+<p><strong>Basta per scaldare un litro d&#39;acqua di 1 °C?</strong> Per scaldare di 1 °C un litro d&#39;acqua servono 4180 J. Una corrente di 2 A passa in una resistenza da 10 Ω per 2 minuti.</p>
+<ol>
+<li><span class="m">Q = R\,i^2\,t = 10 \cdot 2^2 \cdot 120 = 10 \cdot 4 \cdot 120 = 4800\,\mathrm J</span>.</li>
+<li><span class="m">4800\,\mathrm J &gt; 4180\,\mathrm J</span>: <strong>sì</strong>, il calore prodotto basta (e avanza).</li>
+</ol>
 </div>
 
-<h2>Esempi di generatori</h2>
+<h2>Esempi di generatori: pile e celle fotovoltaiche</h2>
 <ul>
-<li><strong>Pila di Volta</strong>: elettrodi di rame e zinco in acido solforico. La f.e.m. nasce da energia chimica. Lo zinco diventa il polo negativo, il rame il positivo.</li>
-<li><strong>Cella fotovoltaica</strong>: semiconduttore al silicio che converte la luce solare in f.e.m.</li>
+<li><strong>Pile.</strong> La f.e.m. è prodotta a spese di <strong>energia chimica</strong>. Il prototipo è la <strong>pila di Volta</strong>: un elettrodo di <strong>rame</strong> e uno di <strong>zinco</strong> immersi in una soluzione di acido solforico in acqua. Gli ioni positivi e negativi migrano su elettrodi diversi a seconda dell&#39;affinità elettrochimica con i due metalli: sullo <strong>zinco</strong> si depositano cariche negative (è il <strong>catodo</strong>, polo negativo), sul <strong>rame</strong> si accumulano cariche positive (polo positivo).</li>
+<li><strong>Celle fotovoltaiche.</strong> Sfruttano le proprietà dei <strong>semiconduttori al silicio</strong> per produrre una f.e.m. a spese dell&#39;<strong>energia luminosa</strong> della radiazione solare. La conoscenza sempre più approfondita dei materiali le ha rese via via più efficienti.</li>
 </ul>
+<div class="callout attenzione">
+
+<ul>
+<li>La f.e.m. <strong>non è una forza</strong>: è un lavoro per unità di carica, in volt.</li>
+<li>La f.e.m. è uguale alla tensione ai morsetti <strong>solo a circuito aperto</strong> (o per un generatore ideale). Quando il generatore eroga corrente, la tensione ai morsetti è <strong>minore</strong>: <span class="m">\mathcal E - ri</span>.</li>
+<li>Nel circuito equivalente la resistenza interna è <strong>in serie</strong> con il generatore ideale, non in parallelo.</li>
+<li>La massima <strong>potenza</strong> al carico si ha per <span class="m">R = r</span>; la massima <strong>corrente</strong> si ha invece in cortocircuito (<span class="m">R = 0</span>).</li>
+</ul>
+</div>
+
 <div class="callout esame">
 
-<p>Aperta tipica: definire la f.e.m. (lavoro per unità di carica del campo elettromotore, in volt; a circuito aperto uguale alla tensione ai morsetti) e disegnare il circuito equivalente: generatore ideale <span class="m">\mathcal E</span> in serie con <span class="m">r</span>, collegato al carico <span class="m">R</span>, con <span class="m">V = \mathcal E - rI</span> e <span class="m">I = \mathcal E/(R + r)</span>.</p>
+<p><strong>Chiusa:</strong> calore <span class="m">Q = Ri^2t</span> prodotto da una corrente in una resistenza, confrontato con il calore richiesto.</p>
+<p><strong>Aperta</strong> (&quot;definire la f.e.m. e descrivere il circuito equivalente di un generatore reale collegato a un carico&quot;). Traccia:</p>
+<ol>
+<li>Una corrente stazionaria dissipa energia, quindi la circuitazione del campo totale deve essere non nulla; il campo elettrostatico è conservativo, perciò serve un campo elettromotore non conservativo, localizzato nel generatore, che porta le cariche positive al polo positivo contro il campo elettrostatico.</li>
+<li>Definizione: <span class="m">\mathcal E = \int_-^+ \vec E_m \cdot d\vec l = \oint \vec E \cdot d\vec l</span>, lavoro per unità di carica, in volt; a circuito aperto è uguale alla d.d.p. tra i poli.</li>
+<li>Circuito equivalente: generatore ideale <span class="m">\mathcal E</span> in serie con la resistenza interna <span class="m">r</span>, collegato al carico <span class="m">R</span>; <span class="m">V_A - V_B = \mathcal E - ri</span>, <span class="m">i = \mathcal E/(R + r)</span>.</li>
+<li>Bilancio: <span class="m">\mathcal E i = Ri^2 + ri^2</span>; (eventualmente) massimo trasferimento per <span class="m">R = r</span>, <span class="m">W_{max} = \mathcal E^2/4r</span>.</li>
+</ol>
 </div>
 
 <div class="callout sintesi">
 
 <ul>
-<li>La f.e.m. è lavoro per unità di carica, non una forza: si misura in volt.</li>
-<li>Serve un campo non conservativo (elettromotore) per mantenere la corrente.</li>
-<li>Generatore reale = ideale in serie con <span class="m">r</span>: <span class="m">V = \mathcal E - rI</span>, <span class="m">I = \mathcal E/(R + r)</span>.</li>
-<li>Bilancio: <span class="m">\mathcal E I = RI^2 + rI^2</span>.</li>
-<li>Massima potenza al carico per <span class="m">R = r</span>: <span class="m">P_{max} = \mathcal E^2/4r</span>.</li>
+<li>Il generatore mantiene la d.d.p. tra i morsetti (anodo +, catodo −) e rifornisce l&#39;energia dissipata nel circuito.</li>
+<li>Serve un campo non conservativo, il campo elettromotore, opposto al campo elettrostatico dentro il generatore.</li>
+<li>F.e.m.: <span class="m">\mathcal E = \int_-^+ \vec E_m \cdot d\vec l = \oint \vec E \cdot d\vec l</span>, in volt; a circuito aperto <span class="m">\mathcal E = V_+ - V_-</span>.</li>
+<li>Generatore reale = ideale in serie con <span class="m">r</span>: <span class="m">V = \mathcal E - ri</span>, <span class="m">i = \mathcal E/(R + r)</span>; cortocircuito <span class="m">i = \mathcal E/r</span>.</li>
+<li>Bilancio: <span class="m">\mathcal E i = Ri^2 + ri^2</span>.</li>
+<li>Massima potenza al carico per <span class="m">R = r</span>: <span class="m">W_{max} = \mathcal E^2/4r</span> (rendimento 50%).</li>
+<li>Pila di Volta (rame +, zinco −, energia chimica); cella fotovoltaica (silicio, energia luminosa).</li>
 </ul>
 </div>

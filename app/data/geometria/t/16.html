@@ -1,69 +1,200 @@
 <h1>Lezione 16 — Proprietà e calcolo del determinante</h1>
-<p>Si considerano solo matrici quadrate. Le proprietà sono enunciate senza dimostrazione.</p>
+<p>Con la sola definizione (somma su <span class="m">n!</span> permutazioni) il determinante di una <span class="m">4\times4</span> richiede <span class="m">24</span> addendi, di una <span class="m">5\times5</span> ben <span class="m">120</span>: impraticabile. In questa lezione si studiano le <strong>proprietà</strong> del determinante (in particolare come cambia con le operazioni elementari) e si ricavano due metodi di calcolo efficienti: il <strong>metodo di eliminazione di Gauss</strong> e lo <strong>sviluppo di Laplace</strong>. Alla fine si applicano i determinanti al calcolo di <strong>aree e volumi</strong> a partire dalle coordinate dei vertici.</p>
+<p>Tutte le matrici sono quadrate. Le proprietà sono enunciate <strong>senza dimostrazione</strong> (le dimostrazioni sono lunghe, anche se non difficili).</p>
 <h2>Proprietà del determinante</h2>
-<p><strong>Proposizione 16.1.</strong> <span class="m">\det({}^tA)=\det(A)</span>. Quindi tutto ciò che vale per le righe vale anche per le colonne.</p>
-<p><strong>Proposizioni 16.2–16.3 (linearità).</strong> Fissata la riga <span class="m">i</span> (o la colonna <span class="m">i</span>), con le altre righe <span class="m">A_1,\dots,A_n</span> fisse:
-<span class="m d">\det\begin{pmatrix}\vdots\\B+C\\\vdots\end{pmatrix}=\det\begin{pmatrix}\vdots\\B\\\vdots\end{pmatrix}+\det\begin{pmatrix}\vdots\\C\\\vdots\end{pmatrix},\qquad\det\begin{pmatrix}\vdots\\\lambda B\\\vdots\end{pmatrix}=\lambda\det\begin{pmatrix}\vdots\\B\\\vdots\end{pmatrix}.</span></p>
-<p><strong>Effetto delle operazioni elementari</strong> (sulle righe o sulle colonne):</p>
+<p><strong>Proposizione 16.1.</strong> Per ogni <span class="m">A\in\mathbb{K}^{n,n}</span>:
+<span class="m d">\det({}^tA)=\det(A).</span>
+Trasporre scambia righe e colonne, quindi <strong>tutto ciò che vale per le righe vale anche per le colonne</strong>. Per esempio <span class="m">\det\begin{pmatrix}1&amp;-2&amp;3\\-1&amp;2&amp;1\\0&amp;5&amp;-1\end{pmatrix}=\det\begin{pmatrix}1&amp;-1&amp;0\\-2&amp;2&amp;5\\3&amp;1&amp;-1\end{pmatrix}</span> (entrambi valgono <span class="m">-20</span>).</p>
+<p><strong>Proposizione 16.2 (linearità nelle righe).</strong> Fissata una riga <span class="m">i</span>, con le altre righe <span class="m">A_1,\dots,A_{i-1},A_{i+1},\dots,A_n</span> fisse, <span class="m">B,C\in\mathbb K^{1,n}</span> righe e <span class="m">\lambda\in\mathbb K</span>:
+<span class="m d">\det\begin{pmatrix}A_1\\\vdots\\B+C\\\vdots\\A_n\end{pmatrix}=\det\begin{pmatrix}A_1\\\vdots\\B\\\vdots\\A_n\end{pmatrix}+\det\begin{pmatrix}A_1\\\vdots\\C\\\vdots\\A_n\end{pmatrix},\qquad\det\begin{pmatrix}A_1\\\vdots\\\lambda B\\\vdots\\A_n\end{pmatrix}=\lambda\det\begin{pmatrix}A_1\\\vdots\\B\\\vdots\\A_n\end{pmatrix}.</span></p>
+<p><strong>Proposizione 16.3 (linearità nelle colonne).</strong> Lo stesso vale fissando una colonna: se la colonna <span class="m">i</span> è <span class="m">B+C</span>, il determinante è la somma dei due determinanti con colonna <span class="m">i</span> uguale a <span class="m">B</span> e a <span class="m">C</span>; se è <span class="m">\lambda B</span>, si porta fuori <span class="m">\lambda</span>.</p>
+<p>A parole: il determinante è <strong>lineare in ciascuna riga (e colonna) separatamente</strong>, quando le altre sono fisse. Attenzione: <strong>non</strong> è lineare nella matrice intera: <span class="m">\det(A+B)\neq\det A+\det B</span> in generale, e <span class="m">\det(\lambda A)=\lambda^n\det A</span> (si porta fuori <span class="m">\lambda</span> una volta per ogni riga).</p>
+<div class="callout esempio">
+
+<p><strong>Linearità in una riga.</strong> In <span class="m">\begin{pmatrix}-2&amp;0&amp;1\\-1&amp;-1&amp;4\\1&amp;4&amp;-1\end{pmatrix}</span> la seconda riga si scompone come <span class="m">(-1,-1,4)=(-1,0,0)+(0,-1,0)+(0,0,4)</span>, quindi
+<span class="m d">\det\begin{pmatrix}-2&amp;0&amp;1\\-1&amp;-1&amp;4\\1&amp;4&amp;-1\end{pmatrix}=\det\begin{pmatrix}-2&amp;0&amp;1\\-1&amp;0&amp;0\\1&amp;4&amp;-1\end{pmatrix}+\det\begin{pmatrix}-2&amp;0&amp;1\\0&amp;-1&amp;0\\1&amp;4&amp;-1\end{pmatrix}+\det\begin{pmatrix}-2&amp;0&amp;1\\0&amp;0&amp;4\\1&amp;4&amp;-1\end{pmatrix}</span>
+(Esercizio 16.3.4 della dispensa: si usa la Proposizione 16.2; portando fuori il <span class="m">-1</span> e il <span class="m">4</span> si ottiene la forma della dispensa, <span class="m">-\det(\dots)+\det(\dots)+\dots</span>).</p>
+</div>
+
+<h3>Effetto delle operazioni elementari</h3>
+<p>Ricordiamo le tre operazioni elementari (sulle righe o sulle colonne): <strong>tipo I</strong> scambiare due righe; <strong>tipo II</strong> moltiplicare una riga per <span class="m">\lambda\neq0</span>; <strong>tipo III</strong> sostituire una riga con sé stessa più un multiplo di un&#39;altra riga.</p>
 <ul>
-<li><strong>Prop. 16.4 — tipo I</strong> (scambio di due righe/colonne): il determinante <strong>cambia segno</strong>.</li>
-<li><strong>Prop. 16.5 — tipo II</strong> (moltiplicare una riga/colonna per <span class="m">\lambda\neq0</span>): il determinante viene <strong>moltiplicato per <span class="m">\lambda</span></strong>.</li>
-<li><strong>Prop. 16.6 — tipo III</strong> (sostituire una riga/colonna con la somma di sé stessa e di un multiplo di un&#39;altra): il determinante <strong>non cambia</strong>.</li>
+<li><strong>Proposizione 16.4 — tipo I.</strong> Scambiando due righe (o due colonne) il determinante <strong>cambia segno</strong>. Esempio: <span class="m">\det\begin{pmatrix}1&amp;2\\3&amp;4\end{pmatrix}=4-6=-2</span>, <span class="m">\det\begin{pmatrix}3&amp;4\\1&amp;2\end{pmatrix}=6-4=2</span>.</li>
+<li><strong>Proposizione 16.5 — tipo II.</strong> Moltiplicando una riga (o colonna) per <span class="m">\lambda\neq0</span> il determinante viene <strong>moltiplicato per <span class="m">\lambda</span></strong> (è la linearità della Prop. 16.2).</li>
+<li><strong>Proposizione 16.6 — tipo III.</strong> Sommando a una riga (o colonna) un multiplo di un&#39;altra, il determinante <strong>non cambia</strong>.</li>
 </ul>
-<p><strong>Corollario 16.7.</strong> Se una matrice ha due righe o due colonne uguali, il determinante è <span class="m">0</span>.</p>
-<p><strong>Teorema 16.8 (Binet).</strong> Per <span class="m">A,B\in\mathbb{K}^{n,n}</span>: <span class="m d">\det(A\cdot B)=\det(A)\cdot\det(B).</span></p>
-<p><strong>Osservazione 16.9.</strong> Anche se il prodotto righe per colonne non è commutativo, dal Teorema di Binet segue <span class="m">\det(AB)=\det(BA)</span>.</p>
+<p><em>Perché il tipo III non cambia il determinante.</em> Per linearità nella riga <span class="m">i</span>: <span class="m">\det(\dots,A_i+\mu A_j,\dots)=\det(\dots,A_i,\dots)+\mu\det(\dots,A_j,\dots,A_j,\dots)</span>, e il secondo determinante ha due righe uguali, quindi è <span class="m">0</span> (corollario seguente).</p>
+<p><strong>Corollario 16.7.</strong> Se una matrice ha <strong>due righe o due colonne uguali</strong>, il determinante è <span class="m">0</span>. <em>Motivo:</em> scambiando le due righe uguali la matrice non cambia, ma il determinante cambia segno: <span class="m">\det A=-\det A</span>, quindi <span class="m">\det A=0</span>. (Allo stesso modo, se una riga è multipla di un&#39;altra il determinante è <span class="m">0</span>.)</p>
+<h3>Teorema di Binet</h3>
+<p><strong>Teorema 16.8 (Binet).</strong> Per <span class="m">A,B\in\mathbb{K}^{n,n}</span>:
+<span class="m d">\det(A\cdot B)=\det(A)\cdot\det(B).</span></p>
+<p><strong>Osservazione 16.9.</strong> Anche se il prodotto righe per colonne non è commutativo (<span class="m">AB\neq BA</span> in generale), dal Teorema di Binet segue <span class="m">\det(AB)=\det A\det B=\det B\det A=\det(BA)</span>.</p>
+<div class="callout esempio">
+
+<p>Con <span class="m">A=\begin{pmatrix}1&amp;1\\0&amp;1\end{pmatrix}</span> (<span class="m">\det=1</span>) e <span class="m">B=\begin{pmatrix}1&amp;3\\1&amp;2\end{pmatrix}</span> (<span class="m">\det=2-3=-1</span>): <span class="m">AB=\begin{pmatrix}2&amp;5\\1&amp;2\end{pmatrix}</span> ha <span class="m">\det=4-5=-1=1\cdot(-1)</span> ✓, e <span class="m">BA=\begin{pmatrix}1&amp;4\\1&amp;3\end{pmatrix}</span> ha <span class="m">\det=3-4=-1</span>, lo stesso, pur essendo <span class="m">AB\neq BA</span>.</p>
+<p>Esercizio 16.3.2 della dispensa: <span class="m">\det\begin{pmatrix}3&amp;1\\7&amp;1\end{pmatrix}=\det\begin{pmatrix}1&amp;0\\2&amp;1\end{pmatrix}\det\begin{pmatrix}3&amp;1\\1&amp;-1\end{pmatrix}</span> perché <span class="m">\begin{pmatrix}1&amp;0\\2&amp;1\end{pmatrix}\begin{pmatrix}3&amp;1\\1&amp;-1\end{pmatrix}=\begin{pmatrix}3&amp;1\\7&amp;1\end{pmatrix}</span>: è il Teorema di Binet (<span class="m">-4=1\cdot(-4)</span>).</p>
+<p>Conseguenza: se <span class="m">A</span> è invertibile, <span class="m">\det(A)\det(A^{-1})=\det(AA^{-1})=\det I_n=1</span>, quindi <span class="m">\det A\neq0</span> e <span class="m">\det(A^{-1})=\frac1{\det A}</span>.</p>
+</div>
+
 <div class="callout attenzione">
 
-<p>Nel tipo III il multiplo non conta: sommare alla terza riga <span class="m">-5</span> volte la prima lascia il determinante invariato. È il tipo II (moltiplicare la riga stessa) che moltiplica il determinante.</p>
+<p>Nel <strong>tipo III</strong> il multiplo non conta: se una <span class="m">4\times4</span> ha determinante <span class="m">3</span> e sostituisco la terza riga con sé stessa più <span class="m">-5</span> volte la prima, il determinante resta <span class="m">3</span> (non <span class="m">-15</span> né <span class="m">15</span>). È il <strong>tipo II</strong> — moltiplicare la riga <strong>stessa</strong> per <span class="m">\lambda</span> — che moltiplica il determinante. Se invece si sostituisce una riga con un multiplo di sé stessa <strong>più</strong> un&#39;altra riga (<span class="m">R_i\to\lambda R_i+R_j</span>), il determinante viene moltiplicato per <span class="m">\lambda</span>.</p>
 </div>
 
 <div class="callout esempio">
 
-<p>Se <span class="m">A</span> si trasforma nell&#39;identità con 2 operazioni sulle colonne di tipo III, 3 operazioni sulle righe di tipo I e 1 operazione sulle righe di tipo II con fattore <span class="m">\frac12</span>, allora <span class="m">1=\det I=\frac12(-1)^3\det A</span>, quindi <span class="m">\det A=-2</span>.</p>
+<p><strong>Esercizio 16.2.</strong> <span class="m">A</span> si trasforma nell&#39;identità con 2 operazioni di tipo III sulle colonne, 3 di tipo I sulle righe e 1 di tipo II sulle righe con fattore <span class="m">\frac12</span>. Ogni operazione moltiplica il determinante per: <span class="m">1</span> (tipo III), <span class="m">-1</span> (tipo I), <span class="m">\frac12</span> (tipo II). Quindi
+<span class="m d">\det I=1=\frac12\cdot(-1)^3\cdot\det A=-\frac12\det A\quad\Longrightarrow\quad\det A=-2.</span></p>
 </div>
 
 <h2>Calcolo con il metodo di eliminazione di Gauss</h2>
-<p><strong>Osservazione 16.10.</strong> Si trasforma <span class="m">A</span> in una matrice a scalini <span class="m">B</span> usando solo operazioni sulle righe di tipo I e III. Se si sono fatti <span class="m">k</span> scambi, <span class="m d">\det(A)=(-1)^k\det(B),</span> e <span class="m">\det B</span> è il prodotto degli elementi diagonali, perché <span class="m">B</span> è triangolare.</p>
+<p><strong>Osservazione 16.10.</strong> Si trasforma <span class="m">A</span> in una matrice a scalini <span class="m">B</span> usando <strong>solo</strong> operazioni sulle righe di tipo I e III (niente tipo II, così il determinante cambia solo di segno). Il tipo III non cambia il determinante, ogni tipo I lo cambia di segno: se si sono fatti <span class="m">k</span> scambi,
+<span class="m d">\det(A)=(-1)^k\det(B).</span>
+Una matrice quadrata a scalini è <strong>triangolare superiore</strong>, quindi <span class="m">\det B</span> è il <strong>prodotto degli elementi diagonali</strong>.</p>
+<p><strong>Algoritmo (determinante con Gauss).</strong></p>
+<ol>
+<li>Se l&#39;entrata <span class="m">(1,1)</span> è <span class="m">0</span>, scambia la prima riga con una riga che ha entrata non nulla nella prima colonna (conta lo scambio).</li>
+<li>Con operazioni di tipo III (<span class="m">R_i\to R_i-\frac{a_{i1}}{a_{11}}R_1</span>) annulla tutte le entrate sotto il pivot.</li>
+<li>Ripeti sulla sottomatrice che si ottiene togliendo la prima riga e la prima colonna.</li>
+<li>Alla fine: <span class="m">\det A=(-1)^{\text{n. scambi}}\cdot</span> (prodotto della diagonale).</li>
+</ol>
 <div class="callout esempio">
 
-<p><span class="m d">\begin{pmatrix}0&amp;1&amp;2\\2&amp;-1&amp;3\\-2&amp;5&amp;2\end{pmatrix}\xrightarrow{1\leftrightarrow2}\begin{pmatrix}2&amp;-1&amp;3\\0&amp;1&amp;2\\-2&amp;5&amp;2\end{pmatrix}\xrightarrow{3+1\cdot1}\begin{pmatrix}2&amp;-1&amp;3\\0&amp;1&amp;2\\0&amp;4&amp;5\end{pmatrix}\xrightarrow{3+(-4)\cdot2}\begin{pmatrix}2&amp;-1&amp;3\\0&amp;1&amp;2\\0&amp;0&amp;-3\end{pmatrix}</span> Un solo scambio: <span class="m">\det=(-1)^1\cdot(2\cdot1\cdot(-3))=6</span>.</p>
+<p><strong>Esempio 16.11.</strong>
+<span class="m d">\begin{pmatrix}0&amp;1&amp;2\\2&amp;-1&amp;3\\-2&amp;5&amp;2\end{pmatrix}\xrightarrow{R_1\leftrightarrow R_2}\begin{pmatrix}2&amp;-1&amp;3\\0&amp;1&amp;2\\-2&amp;5&amp;2\end{pmatrix}\xrightarrow{R_3\to R_3+1\cdot R_1}\begin{pmatrix}2&amp;-1&amp;3\\0&amp;1&amp;2\\0&amp;4&amp;5\end{pmatrix}\xrightarrow{R_3\to R_3-4R_2}\begin{pmatrix}2&amp;-1&amp;3\\0&amp;1&amp;2\\0&amp;0&amp;-3\end{pmatrix}</span>
+Dettaglio: <span class="m">R_3+R_1=(-2+2,\ 5-1,\ 2+3)=(0,4,5)</span>; <span class="m">R_3-4R_2=(0,\ 4-4,\ 5-8)=(0,0,-3)</span>. Un solo scambio:
+<span class="m d">\det=(-1)^1\cdot\big(2\cdot1\cdot(-3)\big)=(-1)(-6)=6.</span></p>
+<p><strong>Esercizio 16.4.1.</strong> <span class="m">\begin{pmatrix}0&amp;2&amp;-3\\3&amp;-2&amp;1\\6&amp;-3&amp;0\end{pmatrix}\xrightarrow{R_1\leftrightarrow R_2}\begin{pmatrix}3&amp;-2&amp;1\\0&amp;2&amp;-3\\6&amp;-3&amp;0\end{pmatrix}\xrightarrow{R_3\to R_3-2R_1}\begin{pmatrix}3&amp;-2&amp;1\\0&amp;2&amp;-3\\0&amp;1&amp;-2\end{pmatrix}\xrightarrow{R_3\to R_3-\frac12R_2}\begin{pmatrix}3&amp;-2&amp;1\\0&amp;2&amp;-3\\0&amp;0&amp;-\frac12\end{pmatrix}</span></p>
+<p>(<span class="m">R_3-2R_1=(0,\ -3+4,\ 0-2)=(0,1,-2)</span>; <span class="m">R_3-\frac12R_2=(0,0,-2+\frac32)=(0,0,-\frac12)</span>.) Un solo scambio: <span class="m">\det=-\big(3\cdot2\cdot(-\frac12)\big)=-(-3)=3</span>.</p>
 </div>
 
-<p><strong>Osservazione 16.12.</strong> Se <span class="m">B</span> ha meno di <span class="m">n</span> pivot (una riga nulla, il primo pivot non in <span class="m">(1,1)</span>, o un pivot spostato di almeno due posti), sulla diagonale c&#39;è uno <span class="m">0</span> e <span class="m">\det A=0</span>; viceversa. Quindi <span class="m">\det A\neq0</span> se e solo se ci sono <span class="m">n</span> pivot, e in tal caso <span class="m">\det A</span> è, a meno del segno, il prodotto dei pivot.</p>
-<p><strong>Osservazione 16.13.</strong> Si possono usare anche le operazioni sulle colonne (di tipo I e III), o righe e colonne insieme, contando alla fine solo gli scambi.</p>
+<p><strong>Osservazione 16.12.</strong> Nella matrice a scalini <span class="m">B</span> ogni pivot è a destra del precedente. Se ci sono <strong>meno di <span class="m">n</span> pivot</strong> — cioè c&#39;è una riga nulla, oppure il primo pivot non è in <span class="m">(1,1)</span>, oppure un pivot è spostato a destra di almeno due posti rispetto al precedente — sulla diagonale compare uno <span class="m">0</span> e <span class="m">\det A=0</span>. Viceversa, se <span class="m">\det A=0</span> c&#39;è uno zero sulla diagonale, cioè meno di <span class="m">n</span> pivot. Quindi:
+<span class="m d">\det A\neq0\iff B\text{ ha }n\text{ pivot (nessuna riga nulla)},</span>
+e in tal caso <span class="m">\det A</span> è, a meno del segno, il <strong>prodotto dei pivot</strong>.</p>
+<p><strong>Osservazione 16.13.</strong> A volte conviene usare le operazioni sulle <strong>colonne</strong> (sempre di tipo I e III), oppure righe e colonne insieme: alla fine si contano solo gli scambi (tipo I), qualunque sia il loro tipo.</p>
 <h2>Sviluppo di Laplace</h2>
-<p><strong>Definizione 16.14.</strong> Sia <span class="m">n\ge2</span> e siano <span class="m">i,j</span> fissati. <span class="m">A_{(i,j)}</span> è la sottomatrice quadrata ottenuta <strong>rimuovendo la <span class="m">i</span>-esima riga e la <span class="m">j</span>-esima colonna</strong>. L&#39;elemento <span class="m d">\operatorname{cof}_A(i,j):=(-1)^{i+j}\det_{n-1}\big(A_{(i,j)}\big)</span> è il <strong>complemento algebrico</strong> di <span class="m">a_{ij}</span>, o <strong>cofattore</strong> <span class="m">(i,j)</span> di <span class="m">A</span>.</p>
+<p><strong>Definizione 16.14.</strong> Sia <span class="m">A\in\mathbb{K}^{n,n}</span> con <span class="m">n\ge2</span> e siano <span class="m">i,j</span> fissati. <span class="m">A_{(i,j)}</span> è la sottomatrice quadrata <span class="m">(n-1)\times(n-1)</span> ottenuta <strong>togliendo la <span class="m">i</span>-esima riga e la <span class="m">j</span>-esima colonna</strong>. L&#39;elemento
+<span class="m d">\operatorname{cof}_A(i,j):=(-1)^{i+j}\det_{n-1}\big(A_{(i,j)}\big)</span>
+è il <strong>complemento algebrico</strong> di <span class="m">a_{ij}</span>, o <strong>cofattore</strong> <span class="m">(i,j)</span> di <span class="m">A</span>.</p>
+<p>Il segno <span class="m">(-1)^{i+j}</span> vale <span class="m">+1</span> se <span class="m">i+j</span> è pari, <span class="m">-1</span> se è dispari; i segni formano una <strong>scacchiera</strong> che parte da <span class="m">+</span> in <span class="m">(1,1)</span>:
+<span class="m d">\begin{pmatrix}+&amp;-&amp;+&amp;-\\-&amp;+&amp;-&amp;+\\+&amp;-&amp;+&amp;-\\-&amp;+&amp;-&amp;+\end{pmatrix}</span></p>
 <div class="callout esempio">
 
-<p>Per <span class="m">A=\begin{pmatrix}1&amp;-1&amp;-3&amp;2\\0&amp;1&amp;2&amp;0\\-1&amp;1&amp;3&amp;4\\1&amp;0&amp;2&amp;1\end{pmatrix}</span>: <span class="m">\operatorname{cof}_A(3,2)=(-1)^{5}\det\begin{pmatrix}1&amp;-3&amp;2\\0&amp;2&amp;0\\1&amp;2&amp;1\end{pmatrix}=(-1)(-2)=2</span>.</p>
+<p><strong>Esempio 16.15.</strong> <span class="m">A=\begin{pmatrix}1&amp;-1&amp;-3&amp;2\\0&amp;1&amp;2&amp;0\\-1&amp;1&amp;3&amp;4\\1&amp;0&amp;2&amp;1\end{pmatrix}</span>. Per <span class="m">\operatorname{cof}_A(3,2)</span> tolgo la riga 3 e la colonna 2:
+<span class="m d">A_{(3,2)}=\begin{pmatrix}1&amp;-3&amp;2\\0&amp;2&amp;0\\1&amp;2&amp;1\end{pmatrix},\qquad\det A_{(3,2)}=2\cdot(+1)\det\begin{pmatrix}1&amp;2\\1&amp;1\end{pmatrix}=2(1-2)=-2</span>
+(sviluppando lungo la seconda riga, che ha un solo elemento non nullo, in posizione <span class="m">(2,2)</span> con segno <span class="m">+</span>). Quindi <span class="m">\operatorname{cof}_A(3,2)=(-1)^{3+2}(-2)=(-1)(-2)=2</span>.</p>
+<p><strong>Domanda 16.2 della dispensa.</strong> <span class="m">A=\begin{pmatrix}0&amp;-2&amp;1\\2&amp;1&amp;0\\1&amp;3&amp;1\end{pmatrix}</span>: <span class="m">\operatorname{cof}_A(2,3)=(-1)^{5}\det\begin{pmatrix}0&amp;-2\\1&amp;3\end{pmatrix}=-(0+2)=-2</span>.</p>
 </div>
 
-<p><strong>Teorema 16.16 (Laplace).</strong> Per <span class="m">A\in\mathbb{K}^{n,n}</span>, <span class="m">n\ge2</span>:</p>
+<p><strong>Teorema 16.16 (Laplace).</strong> Sia <span class="m">A\in\mathbb{K}^{n,n}</span>, <span class="m">n\ge2</span>.</p>
 <ul>
-<li><strong>lungo la riga <span class="m">k</span>:</strong> <span class="m d">\det_n(A)=\sum_{j=1}^{n}a_{kj}\operatorname{cof}_A(k,j);</span></li>
-<li><strong>lungo la colonna <span class="m">h</span>:</strong> <span class="m d">\det_n(A)=\sum_{i=1}^{n}a_{ih}\operatorname{cof}_A(i,h).</span></li>
+<li><strong>Sviluppo lungo la riga <span class="m">k</span>:</strong> il determinante è la somma dei prodotti delle entrate della riga <span class="m">k</span> per i rispettivi complementi algebrici:
+<span class="m d">\det_n(A)=\sum_{j=1}^{n}a_{kj}\operatorname{cof}_A(k,j)=\sum_{j=1}^{n}(-1)^{k+j}a_{kj}\det A_{(k,j)}.</span></li>
+<li><strong>Sviluppo lungo la colonna <span class="m">h</span>:</strong>
+<span class="m d">\det_n(A)=\sum_{i=1}^{n}a_{ih}\operatorname{cof}_A(i,h)=\sum_{i=1}^{n}(-1)^{i+h}a_{ih}\det A_{(i,h)}.</span></li>
 </ul>
-<p><strong>Osservazione 16.18.</strong> Laplace riduce un determinante di ordine <span class="m">n</span> a determinanti di ordine <span class="m">n-1</span>; applicandolo ripetutamente si calcola il determinante di qualsiasi ordine. Conviene scegliere la riga o la colonna con più zeri.</p>
+<p><strong>Osservazione 16.18.</strong> Laplace riduce un determinante di ordine <span class="m">n</span> a determinanti di ordine <span class="m">n-1</span>; applicandolo ripetutamente (fino all&#39;ordine <span class="m">3</span>, dove si usa Sarrus, o all&#39;ordine <span class="m">1</span>) si calcola il determinante di qualsiasi ordine. <strong>Conviene scegliere la riga o la colonna con più zeri</strong>: gli addendi con <span class="m">a_{kj}=0</span> spariscono e non serve calcolare quei minori.</p>
+<p><strong>Algoritmo (sviluppo di Laplace).</strong></p>
+<ol>
+<li>Scegli la riga (o colonna) con più zeri.</li>
+<li>Per ogni entrata non nulla <span class="m">a_{kj}</span> di quella riga: scrivi il segno <span class="m">(-1)^{k+j}</span> (scacchiera), cancella riga <span class="m">k</span> e colonna <span class="m">j</span>, calcola il determinante della sottomatrice rimasta.</li>
+<li>Somma i prodotti <span class="m">a_{kj}\cdot(-1)^{k+j}\cdot\det A_{(k,j)}</span>.</li>
+</ol>
+<div class="callout esempio">
+
+<p><strong>Esempio 16.19, completato.</strong> Per la stessa <span class="m">A</span> dell&#39;Esempio 16.15, lo sviluppo lungo la <strong>terza</strong> riga <span class="m">(-1,1,3,4)</span> richiede quattro minori <span class="m">3\times3</span>:
+<span class="m d">\det A=(-1)(+1)\det\begin{pmatrix}-1&amp;-3&amp;2\\1&amp;2&amp;0\\0&amp;2&amp;1\end{pmatrix}+1\cdot(-1)\det\begin{pmatrix}1&amp;-3&amp;2\\0&amp;2&amp;0\\1&amp;2&amp;1\end{pmatrix}+3\cdot(+1)\det\begin{pmatrix}1&amp;-1&amp;2\\0&amp;1&amp;0\\1&amp;0&amp;1\end{pmatrix}+4\cdot(-1)\det\begin{pmatrix}1&amp;-1&amp;-3\\0&amp;1&amp;2\\1&amp;0&amp;2\end{pmatrix}.</span>
+I quattro minori valgono <span class="m">5</span>, <span class="m">-2</span>, <span class="m">-1</span>, <span class="m">3</span>, quindi <span class="m">\det A=-5+2-3-12=-18</span>.</p>
+<p>È molto più comodo sviluppare lungo la <strong>seconda</strong> riga <span class="m">(0,1,2,0)</span>, che ha due zeri: restano due addendi.</p>
+<ul>
+<li><span class="m">a_{22}=1</span>, segno <span class="m">(-1)^{4}=+</span>, togliendo riga 2 e colonna 2: <span class="m">\det\begin{pmatrix}1&amp;-3&amp;2\\-1&amp;3&amp;4\\1&amp;2&amp;1\end{pmatrix}</span>. Sarrus: scendono <span class="m">1\cdot3\cdot1=3</span>, <span class="m">(-3)\cdot4\cdot1=-12</span>, <span class="m">2\cdot(-1)\cdot2=-4</span>; salgono <span class="m">2\cdot3\cdot1=6</span>, <span class="m">1\cdot4\cdot2=8</span>, <span class="m">1\cdot(-1)\cdot(-3)=3</span>. Valore <span class="m">(3-12-4)-(6+8+3)=-13-17=-30</span>.</li>
+<li><span class="m">a_{23}=2</span>, segno <span class="m">(-1)^{5}=-</span>, togliendo riga 2 e colonna 3: <span class="m">\det\begin{pmatrix}1&amp;-1&amp;2\\-1&amp;1&amp;4\\1&amp;0&amp;1\end{pmatrix}</span>. Sarrus: scendono <span class="m">1\cdot1\cdot1=1</span>, <span class="m">(-1)\cdot4\cdot1=-4</span>, <span class="m">2\cdot(-1)\cdot0=0</span>; salgono <span class="m">2\cdot1\cdot1=2</span>, <span class="m">1\cdot4\cdot0=0</span>, <span class="m">1\cdot(-1)\cdot(-1)=1</span>. Valore <span class="m">(1-4+0)-(2+0+1)=-6</span>.</li>
+</ul>
+<p><span class="m">\det A=1\cdot(+1)\cdot(-30)+2\cdot(-1)\cdot(-6)=-30+12=-18</span>: stesso risultato, con metà dei conti.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Esercizio 16.1 — sviluppo lungo la seconda colonna.</strong> <span class="m">A=\begin{pmatrix}1&amp;0&amp;-1&amp;2\\0&amp;-2&amp;-1&amp;1\\1&amp;-3&amp;0&amp;2\\2&amp;0&amp;4&amp;1\end{pmatrix}</span>. La seconda colonna è <span class="m">(0,-2,-3,0)</span>: contano solo <span class="m">a_{22}=-2</span> (segno <span class="m">+</span>) e <span class="m">a_{32}=-3</span> (segno <span class="m">(-1)^5=-</span>).
+<span class="m d">\det A=(-2)(+1)\det\begin{pmatrix}1&amp;-1&amp;2\\1&amp;0&amp;2\\2&amp;4&amp;1\end{pmatrix}+(-3)(-1)\det\begin{pmatrix}1&amp;-1&amp;2\\0&amp;-1&amp;1\\2&amp;4&amp;1\end{pmatrix}.</span>
+Primo minore (Sarrus): scendono <span class="m">0</span>, <span class="m">(-1)\cdot2\cdot2=-4</span>, <span class="m">2\cdot1\cdot4=8</span>; salgono <span class="m">2\cdot0\cdot2=0</span>, <span class="m">4\cdot2\cdot1=8</span>, <span class="m">1\cdot1\cdot(-1)=-1</span>: <span class="m">(0-4+8)-(0+8-1)=4-7=-3</span>.
+Secondo minore: scendono <span class="m">1\cdot(-1)\cdot1=-1</span>, <span class="m">(-1)\cdot1\cdot2=-2</span>, <span class="m">2\cdot0\cdot4=0</span>; salgono <span class="m">2\cdot(-1)\cdot2=-4</span>, <span class="m">4\cdot1\cdot1=4</span>, <span class="m">1\cdot0\cdot(-1)=0</span>: <span class="m">-3-0=-3</span>.
+<span class="m d">\det A=-2\cdot(-3)+3\cdot(-3)=6-9=-3.</span></p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Un <span class="m">4\times4</span> del paniere.</strong> <span class="m">A=\begin{pmatrix}2&amp;1&amp;0&amp;-1\\1&amp;0&amp;2&amp;0\\0&amp;-3&amp;-1&amp;1\\-1&amp;-1&amp;2&amp;3\end{pmatrix}</span>. La seconda riga <span class="m">(1,0,2,0)</span> ha due zeri: sviluppo lungo di essa. Segni della seconda riga: <span class="m">-,+,-,+</span>.
+<span class="m d">\det A=1\cdot(-1)^{2+1}\det A_{(2,1)}+2\cdot(-1)^{2+3}\det A_{(2,3)}=-\det A_{(2,1)}-2\det A_{(2,3)}.</span></p>
+<ul>
+<li><span class="m">A_{(2,1)}</span> (tolgo riga 2 e colonna 1) <span class="m">=\begin{pmatrix}1&amp;0&amp;-1\\-3&amp;-1&amp;1\\-1&amp;2&amp;3\end{pmatrix}</span>. Sarrus: scendono <span class="m">1\cdot(-1)\cdot3=-3</span>, <span class="m">0</span>, <span class="m">(-1)(-3)\cdot2=6</span>; salgono <span class="m">(-1)(-1)(-1)=-1</span>, <span class="m">2\cdot1\cdot1=2</span>, <span class="m">3\cdot(-3)\cdot0=0</span>. Valore <span class="m">(-3+6)-(-1+2)=3-1=2</span>.</li>
+<li><span class="m">A_{(2,3)}</span> (tolgo riga 2 e colonna 3) <span class="m">=\begin{pmatrix}2&amp;1&amp;-1\\0&amp;-3&amp;1\\-1&amp;-1&amp;3\end{pmatrix}</span>. Sarrus: scendono <span class="m">2(-3)3=-18</span>, <span class="m">1\cdot1\cdot(-1)=-1</span>, <span class="m">(-1)\cdot0\cdot(-1)=0</span>; salgono <span class="m">(-1)(-3)(-1)=-3</span>, <span class="m">(-1)\cdot1\cdot2=-2</span>, <span class="m">3\cdot0\cdot1=0</span>. Valore <span class="m">-19-(-5)=-14</span>.</li>
+</ul>
+<p><span class="m">\det A=-2-2\cdot(-14)=-2+28=26</span>. Le matrici &quot;gemelle&quot; del paniere, con qualche segno cambiato, danno <span class="m">38</span>, <span class="m">22</span>, <span class="m">42</span>: un solo segno sbagliato porta a un&#39;altra opzione.</p>
+</div>
+
 <div class="callout attenzione">
 
-<p>I segni <span class="m">(-1)^{i+j}</span> formano una scacchiera che parte da <span class="m">+</span> in <span class="m">(1,1)</span>: per la seconda riga sono <span class="m">-,+,-,\dots</span>. Nello sviluppo servono <strong>sia</strong> le entrate <span class="m">a_{kj}</span> <strong>sia</strong> i segni.</p>
+<ul>
+<li>Nello sviluppo servono <strong>sia</strong> le entrate <span class="m">a_{kj}</span> <strong>sia</strong> i segni <span class="m">(-1)^{k+j}</span>: per la seconda riga i segni sono <span class="m">-,+,-,+</span>, non <span class="m">+,-,+,-</span>. Quando <span class="m">a_{kj}</span> è negativo e il segno è <span class="m">-</span>, i due meno si annullano.</li>
+<li><strong>Domanda 16.3 della dispensa:</strong> lo sviluppo lungo la seconda riga <span class="m">(1,0,4)</span> di <span class="m">\begin{pmatrix}1&amp;-3&amp;-1\\1&amp;0&amp;4\\2&amp;0&amp;1\end{pmatrix}</span> è
+<span class="m d">-1\cdot\det\begin{pmatrix}-3&amp;-1\\0&amp;1\end{pmatrix}+0\cdot\det\begin{pmatrix}1&amp;-1\\2&amp;1\end{pmatrix}-4\cdot\det\begin{pmatrix}1&amp;-3\\2&amp;0\end{pmatrix}:</span>
+le entrate moltiplicate per i segni <span class="m">-,+,-</span>. Le scritture che dimenticano le entrate o i segni sono sbagliate.</li>
+<li>La sottomatrice si ottiene togliendo <strong>riga e colonna dell&#39;entrata</strong>: per <span class="m">a_{23}</span> si toglie la riga 2 e la colonna 3.</li>
+</ul>
 </div>
 
 <div class="callout esempio">
 
-<p>Sviluppo lungo la seconda colonna di <span class="m">A=\begin{pmatrix}1&amp;0&amp;-1&amp;2\\0&amp;-2&amp;-1&amp;1\\1&amp;-3&amp;0&amp;2\\2&amp;0&amp;4&amp;1\end{pmatrix}</span>: <span class="m d">\det A=(-2)(-1)^{4}\det\begin{pmatrix}1&amp;-1&amp;2\\1&amp;0&amp;2\\2&amp;4&amp;1\end{pmatrix}+(-3)(-1)^{5}\det\begin{pmatrix}1&amp;-1&amp;2\\0&amp;-1&amp;1\\2&amp;4&amp;1\end{pmatrix}=-2(-3)+3(-3)=-3.</span></p>
+<p><strong>Determinante con parametro (Esercizio 16.6).</strong> <span class="m">\det\begin{pmatrix}-1&amp;1&amp;3\\-1&amp;k-4&amp;1\\0&amp;2&amp;k\end{pmatrix}</span>, sviluppo lungo la prima colonna (ha uno zero):
+<span class="m d">(-1)\cdot(+1)\det\begin{pmatrix}k-4&amp;1\\2&amp;k\end{pmatrix}+(-1)\cdot(-1)\det\begin{pmatrix}1&amp;3\\2&amp;k\end{pmatrix}=-\big(k^2-4k-2\big)+(k-6)=-k^2+5k-4.</span>
+<span class="m">-k^2+5k-4=-(k-1)(k-4)</span> si annulla per <span class="m">k=1</span> e <span class="m">k=4</span>.</p>
 </div>
 
 <h2>Applicazione ad aree e volumi</h2>
-<p>Con tre punti <span class="m">P={}^t(p_1\ p_2)</span>, <span class="m">Q</span>, <span class="m">R</span> del piano, l&#39;area del parallelogramma con lati adiacenti <span class="m">PQ</span> e <span class="m">PR</span> è <span class="m d">\mathcal A=\left\lvert\det\begin{pmatrix}p_1&amp;q_1&amp;r_1\\p_2&amp;q_2&amp;r_2\\1&amp;1&amp;1\end{pmatrix}\right\rvert=\left\lvert\det\begin{pmatrix}q_1-p_1&amp;r_1-p_1\\q_2-p_2&amp;r_2-p_2\end{pmatrix}\right\rvert,</span> ottenuta con due operazioni di tipo III sulle colonne (sottrarre la prima colonna) e lo sviluppo di Laplace lungo la terza riga. L&#39;area del <strong>triangolo</strong> <span class="m">PQR</span> è metà di questa.</p>
-<p>Analogamente, il volume del parallelepipedo con lati <span class="m">PQ</span>, <span class="m">PR</span>, <span class="m">PS</span> nello spazio è il modulo del determinante <span class="m">4\times4</span> con colonne <span class="m">P,Q,R,S</span> e ultima riga di <span class="m">1</span>; in <span class="m">\mathbb{R}^n</span> si usa la matrice di ordine <span class="m">n+1</span>.</p>
+<p>Nella Lezione 15 l&#39;area del parallelogramma era data a partire da due <strong>vettori</strong> con origine in <span class="m">O</span>. Spesso invece si conoscono i <strong>vertici</strong>. Siano <span class="m">P=\begin{pmatrix}p_1\\p_2\end{pmatrix}</span>, <span class="m">Q=\begin{pmatrix}q_1\\q_2\end{pmatrix}</span>, <span class="m">R=\begin{pmatrix}r_1\\r_2\end{pmatrix}</span> tre punti del piano; i lati <span class="m">PQ</span> e <span class="m">PR</span> corrispondono ai vettori <span class="m">Q-P</span> e <span class="m">R-P</span>. L&#39;area del parallelogramma con lati adiacenti <span class="m">PQ</span> e <span class="m">PR</span> è
+<span class="m d">\mathcal A=\left\lvert\det\begin{pmatrix}p_1&amp;q_1&amp;r_1\\p_2&amp;q_2&amp;r_2\\1&amp;1&amp;1\end{pmatrix}\right\rvert=\left\lvert\det\begin{pmatrix}q_1-p_1&amp;r_1-p_1\\q_2-p_2&amp;r_2-p_2\end{pmatrix}\right\rvert.</span></p>
+<p><em>Dimostrazione dell&#39;uguaglianza.</em> Applico due operazioni di tipo III sulle colonne, che non cambiano il determinante: alla seconda colonna sottraggo la prima (<span class="m">C_2\to C_2-C_1</span>) e alla terza sottraggo la prima (<span class="m">C_3\to C_3-C_1</span>):
+<span class="m d">\det\begin{pmatrix}p_1&amp;q_1&amp;r_1\\p_2&amp;q_2&amp;r_2\\1&amp;1&amp;1\end{pmatrix}=\det\begin{pmatrix}p_1&amp;q_1-p_1&amp;r_1-p_1\\p_2&amp;q_2-p_2&amp;r_2-p_2\\1&amp;0&amp;0\end{pmatrix}.</span>
+Sviluppo lungo la terza riga <span class="m">(1,0,0)</span>: resta solo <span class="m">1\cdot(-1)^{3+1}\det\begin{pmatrix}q_1-p_1&amp;r_1-p_1\\q_2-p_2&amp;r_2-p_2\end{pmatrix}</span>, che in modulo è l&#39;area della Lezione 15.</p>
+<p>L&#39;area del <strong>triangolo</strong> <span class="m">PQR</span> è la <strong>metà</strong>:
+<span class="m d">\mathcal A_{PQR}=\frac12\left\lvert\det\begin{pmatrix}q_1-p_1&amp;r_1-p_1\\q_2-p_2&amp;r_2-p_2\end{pmatrix}\right\rvert.</span>
+Il risultato non dipende dall&#39;ordine dei vertici né dal vertice scelto come <span class="m">P</span>: cambia al più il segno del determinante.</p>
+<p><strong>Nello spazio e oltre.</strong> Con quattro punti <span class="m">P,Q,R,S</span> dello spazio, il volume del parallelepipedo con lati <span class="m">PQ</span>, <span class="m">PR</span>, <span class="m">PS</span> è il modulo del determinante <span class="m">4\times4</span> con colonne <span class="m">P,Q,R,S</span> e quarta riga di <span class="m">1</span>:
+<span class="m d">V=\left\lvert\det\begin{pmatrix}p_1&amp;q_1&amp;r_1&amp;s_1\\p_2&amp;q_2&amp;r_2&amp;s_2\\p_3&amp;q_3&amp;r_3&amp;s_3\\1&amp;1&amp;1&amp;1\end{pmatrix}\right\rvert.</span>
+In <span class="m">\mathbb R^n</span>, con <span class="m">n+1</span> punti <span class="m">P_0,\dots,P_n</span>, il volume dell&#39;iper-parallelepipedo di lati <span class="m">P_0P_1,\dots,P_0P_n</span> è il modulo del determinante di ordine <span class="m">n+1</span> ottenuto affiancando le colonne <span class="m">P_i</span> e mettendo <span class="m">1</span> in tutta l&#39;ultima riga.</p>
 <div class="callout esempio">
 
-<p>Triangolo di vertici <span class="m">P={}^t(-1\ 3)</span>, <span class="m">Q={}^t(2\ 1)</span>, <span class="m">R={}^t(2\ 0)</span>: <span class="m">Q-P={}^t(3\ -2)</span>, <span class="m">R-P={}^t(3\ -3)</span>, <span class="m">\det\begin{pmatrix}3&amp;3\\-2&amp;-3\end{pmatrix}=-3</span>, area <span class="m">=\frac12\lvert-3\rvert=\frac32</span>.</p>
+<p><strong>Triangolo di vertici <span class="m">P={}^t(-1\ 3)</span>, <span class="m">Q={}^t(2\ 1)</span>, <span class="m">R={}^t(2\ 0)</span>.</strong></p>
+<ol>
+<li><span class="m">Q-P={}^t(2+1\ \ 1-3)={}^t(3\ -2)</span>, <span class="m">R-P={}^t(2+1\ \ 0-3)={}^t(3\ -3)</span>.</li>
+<li><span class="m">\det\begin{pmatrix}3&amp;3\\-2&amp;-3\end{pmatrix}=3\cdot(-3)-3\cdot(-2)=-9+6=-3</span>.</li>
+<li>Area del parallelogramma <span class="m">=3</span>; area del triangolo <span class="m">=\frac12\lvert-3\rvert=\frac32</span>.</li>
+</ol>
+<p>Con gli stessi vertici in un altro ordine, <span class="m">P={}^t(2\ 1)</span>, <span class="m">Q={}^t(-1\ 3)</span>, <span class="m">R={}^t(2\ 0)</span>: <span class="m">Q-P={}^t(-3\ 2)</span>, <span class="m">R-P={}^t(0\ -1)</span>, <span class="m">\det\begin{pmatrix}-3&amp;0\\2&amp;-1\end{pmatrix}=3</span>, area ancora <span class="m">\frac32</span>.</p>
+<p>Triangolo <span class="m">{}^t(2\ 1)</span>, <span class="m">{}^t(-1\ 3)</span>, <span class="m">{}^t(1\ 0)</span>: <span class="m">Q-P={}^t(-3\ 2)</span>, <span class="m">R-P={}^t(-1\ -1)</span>, <span class="m">\det\begin{pmatrix}-3&amp;-1\\2&amp;-1\end{pmatrix}=3+2=5</span>, area <span class="m">\frac52</span>.</p>
+<p><strong>Esercizio 16.7 con la matrice <span class="m">3\times3</span>.</strong> <span class="m">P={}^t(2\ -1)</span>, <span class="m">Q={}^t(0\ 1)</span>, <span class="m">R={}^t(3\ 1)</span>: <span class="m">\det\begin{pmatrix}2&amp;0&amp;3\\-1&amp;1&amp;1\\1&amp;1&amp;1\end{pmatrix}</span>, Sarrus: scendono <span class="m">2\cdot1\cdot1=2</span>, <span class="m">0</span>, <span class="m">3\cdot(-1)\cdot1=-3</span>; salgono <span class="m">3\cdot1\cdot1=3</span>, <span class="m">1\cdot1\cdot2=2</span>, <span class="m">1\cdot(-1)\cdot0=0</span>. Valore <span class="m">-1-5=-6</span>. Area del triangolo <span class="m">=\frac12\cdot6=3</span>.</p>
 </div>
 
 <div class="callout esame">
 
-<p>Il paniere chiede determinanti <span class="m">4\times4</span> (conviene Laplace lungo la riga con due zeri, poi Sarrus sui minori <span class="m">3\times3</span>), aree di triangoli (modulo e metà: tra le opzioni ci sono il valore negativo e l&#39;area del parallelogramma), cofattori, l&#39;effetto delle operazioni elementari. Aperte: sviluppo di Laplace, Gauss per il determinante, proprietà del determinante.</p>
+<p>Il paniere chiede determinanti <span class="m">4\times4</span> (sviluppo di Laplace lungo la riga con due zeri, poi Sarrus sui minori <span class="m">3\times3</span>; le opzioni sono i determinanti delle matrici &quot;gemelle&quot;, quindi un segno sbagliato porta a una risposta presente), aree di triangoli dati i vertici (modulo e metà: tra le opzioni ci sono il valore negativo e l&#39;area del parallelogramma), cofattori ed effetto delle operazioni elementari.</p>
+<p><strong>Aperte.</strong></p>
+<ul>
+<li><em>Sviluppo di Laplace:</em> definizione di <span class="m">A_{(i,j)}</span> e del cofattore <span class="m">(-1)^{i+j}\det A_{(i,j)}</span>, enunciato del teorema lungo una riga e lungo una colonna, riduzione dall&#39;ordine <span class="m">n</span> all&#39;ordine <span class="m">n-1</span> e uso ripetuto, scelta della riga con più zeri, un esempio.</li>
+<li><em>Gauss per il determinante:</em> solo operazioni di tipo I e III; il tipo III non cambia il determinante, il tipo I cambia segno; <span class="m">\det A=(-1)^k\det B</span> con <span class="m">B</span> a scalini triangolare; <span class="m">\det A\neq0</span> se e solo se ci sono <span class="m">n</span> pivot; un esempio.</li>
+<li><em>Proprietà del determinante:</em> <span class="m">\det{}^tA=\det A</span>, linearità in righe/colonne, effetto delle tre operazioni elementari, due righe uguali <span class="m">\Rightarrow0</span>, Binet <span class="m">\det(AB)=\det A\det B</span> e <span class="m">\det(AB)=\det(BA)</span>, riga nulla <span class="m">\Rightarrow0</span>, triangolare <span class="m">\Rightarrow</span> prodotto della diagonale.</li>
+</ul>
+</div>
+
+<div class="callout sintesi">
+
+<ul>
+<li><span class="m">\det{}^tA=\det A</span>; il determinante è lineare in ogni riga e colonna separatamente.</li>
+<li>Tipo I: cambia segno; tipo II (<span class="m">\lambda</span>): moltiplica per <span class="m">\lambda</span>; tipo III: non cambia. Due righe uguali (o proporzionali) <span class="m">\Rightarrow\det=0</span>.</li>
+<li>Binet: <span class="m">\det(AB)=\det A\det B</span>, quindi <span class="m">\det(AB)=\det(BA)</span> e <span class="m">\det(A^{-1})=1/\det A</span>.</li>
+<li>Gauss: <span class="m">\det A=(-1)^{\#\text{scambi}}\cdot</span> prodotto della diagonale della forma a scalini; <span class="m">\det A\neq0\iff n</span> pivot.</li>
+<li>Laplace: <span class="m">\det A=\sum_j a_{kj}(-1)^{k+j}\det A_{(k,j)}</span> (o lungo una colonna); scegli la riga con più zeri.</li>
+<li>Area di <span class="m">PQR=\frac12\lvert\det(Q-P\ \ R-P)\rvert</span>.</li>
+</ul>
 </div>

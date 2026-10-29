@@ -77,3 +77,23 @@ export function mergeNotes(local, incoming) {
     }
   return { notes: out, added };
 }
+
+// impostazioni per materia (data d'esame, ecc.): per ogni valore vince la modifica più recente (smt["k:materia"]),
+// anche se è una cancellazione. Valori senza data (versioni vecchie): il locale resta, il remoto riempie solo i vuoti.
+export function mergeSettings(local, remote, keys) {
+  const rt = remote.smt || {};
+  local.smt ||= {};
+  for (const k of keys) {
+    local[k] ||= {};
+    const subjs = new Set([...Object.keys(remote[k] || {}), ...Object.keys(local[k]),
+      ...Object.keys(rt).filter((x) => x.startsWith(k + ":")).map((x) => x.slice(k.length + 1))]);
+    for (const subj of subjs) {
+      const key = `${k}:${subj}`, tl = local.smt[key] || 0, tr = rt[key] || 0, v = remote[k]?.[subj];
+      if (tr > tl || (!tl && !tr && local[k][subj] === undefined)) {
+        if (v === undefined || v === null) delete local[k][subj]; else local[k][subj] = v;
+        if (tr) local.smt[key] = tr;
+      }
+    }
+  }
+  return local;
+}

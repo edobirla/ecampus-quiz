@@ -1,62 +1,241 @@
 <h1>Lezione 8 — Dipendenza e indipendenza lineare</h1>
-<p>Lo scopo è capire se tutti i vettori che generano un sottospazio sono necessari, e se un vettore è il risultato di un&#39;unica combinazione lineare di altri vettori.</p>
+<p>Nella Lezione 7 abbiamo visto che il sottospazio generato da <span class="m">\mathbf v_1,\dots,\mathbf v_n</span> è l&#39;insieme dei risultati delle loro combinazioni lineari (Oss. 7.12-3), e nella Lezione 6 che un vettore può essere il risultato di più combinazioni diverse (Es. 6.4). Lo scopo di questa lezione è capire:</p>
+<ul>
+<li>se <strong>tutti</strong> i vettori che generano un sottospazio sono <strong>necessari</strong> oppure qualcuno è superfluo;</li>
+<li>se un vettore dello Span è il risultato di <strong>un&#39;unica</strong> combinazione lineare dei generatori.</li>
+</ul>
+<p>Le due domande hanno la stessa risposta, e la chiave è il modo in cui si può ottenere il <strong>vettore nullo</strong>. Questi concetti porteranno a basi, dimensione e coordinate (Lezione 9).</p>
+<h2>Il vettore nullo come test</h2>
+<p>Il vettore nullo è <strong>sempre</strong> il risultato della combinazione con tutti i coefficienti nulli: <span class="m">0\mathbf v_1+\dots+0\mathbf v_n=\mathbf 0</span>. Il fatto che lo si possa ottenere <strong>anche</strong> con altre combinazioni è una caratteristica importante dei vettori.</p>
+<div class="callout esempio">
+
+<p><strong>Esempio 8.1.</strong> <span class="m">\mathbf 0_2</span> si scrive in un solo modo come combinazione di <span class="m">{}^t(2\ 3)</span> e <span class="m">{}^t(1\ 1)</span>:
+<span class="m d">a\begin{pmatrix}2\\3\end{pmatrix}+b\begin{pmatrix}1\\1\end{pmatrix}=\begin{pmatrix}0\\0\end{pmatrix}\iff\begin{cases}2a+b=0\\3a+b=0\end{cases}</span>
+Sottraendo la prima dalla seconda: <span class="m">a=0</span>; poi <span class="m">b=-2a=0</span>. L&#39;unica soluzione è <span class="m">(a,b)=(0,0)</span>.</p>
+<p>Invece con <span class="m">{}^t(2\ 3)</span>, <span class="m">{}^t(-1\ 0)</span>, <span class="m">{}^t(1\ 1)</span> l&#39;Esempio 6.4 ha mostrato una combinazione con coefficienti <span class="m">1,-1,-3</span> che dà <span class="m">\mathbf 0_2</span>.</p>
+</div>
+
 <h2>Definizioni</h2>
-<p>Il vettore nullo è sempre il risultato della combinazione con tutti i coefficienti nulli; può essere o no il risultato di altre combinazioni. Ad esempio (Es. 8.1) <span class="m">a\,{}^t(2\ 3)+b\,{}^t(1\ 1)=\mathbf 0_2</span> ha solo la soluzione <span class="m">(a,b)=(0,0)</span>.</p>
 <p><strong>Definizione 8.2.</strong> Siano <span class="m">\mathbf v_1,\dots,\mathbf v_n</span> vettori di uno spazio vettoriale <span class="m">V</span> su <span class="m">K</span>.</p>
 <ul>
-<li>Sono <strong>linearmente indipendenti</strong> se <span class="m">\mathbf 0</span> è il risultato di una sola combinazione lineare di essi (quella con coefficienti tutti nulli): per <span class="m">\lambda_1,\dots,\lambda_n</span> non tutti nulli, <span class="m">\lambda_1\mathbf v_1+\dots+\lambda_n\mathbf v_n\ne\mathbf 0</span>.</li>
-<li>Sono <strong>linearmente dipendenti</strong> se esistono <span class="m">\lambda_1,\dots,\lambda_n</span> <strong>non tutti nulli</strong> con <span class="m">\lambda_1\mathbf v_1+\dots+\lambda_n\mathbf v_n=\mathbf 0</span>.</li>
+<li><span class="m">\mathbf v_1,\dots,\mathbf v_n</span> sono <strong>linearmente indipendenti</strong> se il vettore nullo è il risultato di <strong>una sola</strong> combinazione lineare di essi, quella con tutti i coefficienti nulli. Equivalentemente: comunque si scelgano <span class="m">\lambda_1,\dots,\lambda_n\in K</span> <strong>non tutti nulli</strong>, <span class="m">\lambda_1\mathbf v_1+\dots+\lambda_n\mathbf v_n\ne\mathbf 0</span>. In forma di implicazione:
+<span class="m d">\lambda_1\mathbf v_1+\dots+\lambda_n\mathbf v_n=\mathbf 0\ \Longrightarrow\ \lambda_1=\dots=\lambda_n=0 .</span></li>
+<li><span class="m">\mathbf v_1,\dots,\mathbf v_n</span> sono <strong>linearmente dipendenti</strong> se il vettore nullo è il risultato di una combinazione lineare con coefficienti <strong>non tutti nulli</strong>, cioè se esistono <span class="m">\lambda_1,\dots,\lambda_n\in K</span> non tutti nulli con
+<span class="m d">\lambda_1\mathbf v_1+\dots+\lambda_n\mathbf v_n=\mathbf 0 .</span></li>
 </ul>
-<p><strong>Osservazione 8.3.</strong> Le due nozioni sono complementari (vale sempre esattamente una delle due); zero vettori sono indipendenti; la proprietà non dipende dall&#39;ordine.</p>
-<p><strong>Osservazione 8.4.</strong> Per dimostrare l&#39;indipendenza si prende una combinazione generica uguale a <span class="m">\mathbf 0</span> e si dimostra che i coefficienti sono tutti nulli; per la dipendenza basta trovare coefficienti non tutti nulli.</p>
-<div class="callout esempio">
-
-<ul>
-<li><span class="m">{}^t(2\ 3)</span> e <span class="m">{}^t(1\ 1)</span> sono indipendenti.</li>
-<li><span class="m">{}^t(2\ 3)</span>, <span class="m">{}^t(-1\ 0)</span>, <span class="m">{}^t(1\ 1)</span> sono dipendenti: <span class="m">1\cdot{}^t(2\ 3)-1\cdot{}^t(-1\ 0)-3\cdot{}^t(1\ 1)=\mathbf 0</span>.</li>
-<li>I polinomi <span class="m">1,x,x^2,\dots,x^m</span> sono indipendenti.</li>
-</ul>
-</div>
-
-<p><strong>Osservazione 8.6.</strong> Un solo vettore <span class="m">\mathbf v_1</span> è indipendente se e solo se <span class="m">\mathbf v_1\ne\mathbf 0</span> (se <span class="m">\mathbf v_1=\mathbf 0</span>, <span class="m">1\cdot\mathbf v_1=\mathbf 0</span>; se <span class="m">\mathbf v_1\ne\mathbf 0</span>, per (SV9) <span class="m">\lambda\mathbf v_1=\mathbf 0</span> implica <span class="m">\lambda=0</span>).</p>
-<h2>Dipendenza e combinazioni degli altri vettori</h2>
-<p><strong>Proposizione 8.7.</strong> <span class="m">\mathbf v_1,\dots,\mathbf v_n</span> sono linearmente dipendenti se e solo se <strong>uno di essi è il risultato di una combinazione lineare degli altri</strong>.</p>
-<p><em>Dimostrazione (caso <span class="m">n\ge2</span>).</em> Se <span class="m">\lambda_1\mathbf v_1+\dots+\lambda_n\mathbf v_n=\mathbf 0</span> con <span class="m">\lambda_i\ne0</span>, allora
-<span class="m d">\mathbf v_i=\sum_{j\ne i}\left(-\frac{\lambda_j}{\lambda_i}\right)\mathbf v_j.</span>
-Viceversa, se <span class="m">\mathbf v_i=\sum_{j\ne i}\lambda_j\mathbf v_j</span>, allora <span class="m">\sum_{j\ne i}\lambda_j\mathbf v_j-1\cdot\mathbf v_i=\mathbf 0</span>, con il coefficiente <span class="m">-1\ne0</span>.</p>
-<p><strong>Osservazione 8.8.</strong> Per <span class="m">n=2</span>: <strong>due vettori sono linearmente dipendenti se e solo se uno di essi è multiplo dell&#39;altro.</strong></p>
+<p>Una combinazione con coefficienti non tutti nulli e risultato <span class="m">\mathbf 0</span> si chiama <strong>relazione di dipendenza</strong> tra i vettori.</p>
+<p><strong>Osservazione 8.3.</strong></p>
+<ol>
+<li>Le due definizioni sono <strong>complementari</strong>: dati dei vettori, sono sempre o indipendenti o dipendenti, e le due possibilità si escludono a vicenda.</li>
+<li><strong>Zero vettori</strong> sono linearmente indipendenti: danno una sola combinazione, che vale <span class="m">\mathbf 0</span>.</li>
+<li>Essere indipendenti o dipendenti <strong>non dipende dall&#39;ordine</strong> dei vettori.</li>
+</ol>
 <div class="callout attenzione">
 
-<p>Per due vettori basta confrontare i rapporti tra coordinate corrispondenti: devono essere tutti uguali, <strong>segni compresi</strong>. In <span class="m">\mathbb C^n</span> il fattore può essere complesso: <span class="m">{}^t(1-2i\ \ 1)</span> e <span class="m">{}^t(5\ \ 1+2i)</span> sono dipendenti perché <span class="m">(1+2i)(1-2i)=5</span>. Con tre o più vettori invece non basta controllare le coppie: uno può essere combinazione degli altri due senza essere multiplo di nessuno.</p>
+<p>&quot;Non tutti nulli&quot; significa &quot;<strong>almeno uno</strong> non nullo&quot;, non &quot;tutti non nulli&quot;: <span class="m">1\cdot\mathbf v_1+0\cdot\mathbf v_2=\mathbf 0</span> è già una relazione di dipendenza (e significa <span class="m">\mathbf v_1=\mathbf 0</span>).</p>
 </div>
 
-<p><strong>Osservazione 8.9.</strong> Aggiungendo vettori qualsiasi a vettori dipendenti si ottengono ancora vettori dipendenti (si aggiungono coefficienti <span class="m">0</span>). Equivalentemente, togliendo vettori a vettori indipendenti si ottengono vettori indipendenti.</p>
-<p><strong>Osservazione 8.10.</strong> Se uno dei vettori è <span class="m">\mathbf 0</span>, i vettori sono dipendenti.</p>
-<p><strong>Osservazione 8.11.</strong> Il viceversa dell&#39;Oss. 8.9 è falso: aggiungendo vettori a vettori indipendenti si può ottenere dipendenza (e togliendone a vettori dipendenti si può ottenere indipendenza).</p>
-<h2>Indipendenza e unicità delle combinazioni</h2>
-<p><strong>Proposizione 8.12.</strong> <span class="m">\mathbf v_1,\dots,\mathbf v_n</span> sono linearmente indipendenti se e solo se <strong>ogni vettore di <span class="m">\mathrm{Span}(\mathbf v_1,\dots,\mathbf v_n)</span> è il risultato di una sola combinazione lineare</strong> di essi.</p>
-<p><em>Dimostrazione.</em> Se ogni vettore dello Span si scrive in un solo modo, in particolare <span class="m">\mathbf 0</span>: i vettori sono indipendenti. Viceversa, se fosse <span class="m">\lambda_1\mathbf v_1+\dots+\lambda_n\mathbf v_n=\mu_1\mathbf v_1+\dots+\mu_n\mathbf v_n</span> con le due combinazioni distinte, allora <span class="m">(\lambda_1-\mu_1)\mathbf v_1+\dots+(\lambda_n-\mu_n)\mathbf v_n=\mathbf 0</span> con almeno un <span class="m">\lambda_i-\mu_i\ne0</span>, contro l&#39;indipendenza.</p>
+<p><strong>Osservazione 8.4 (come si dimostra).</strong></p>
+<ul>
+<li>Per dimostrare l&#39;<strong>indipendenza</strong> si prende una combinazione <strong>generica</strong> con risultato <span class="m">\mathbf 0</span> (coefficienti incogniti) e si dimostra che <strong>tutti</strong> i coefficienti sono nulli: il sistema omogeneo associato ha <strong>solo</strong> la soluzione nulla.</li>
+<li>Per dimostrare la <strong>dipendenza</strong> basta <strong>trovare</strong> coefficienti non tutti nulli con risultato <span class="m">\mathbf 0</span>: il sistema omogeneo ha soluzioni non nulle.</li>
+</ul>
 <div class="callout esempio">
 
-<p><span class="m">{}^t(5\ 9)=a\,{}^t(2\ 3)+b\,{}^t(1\ 1)</span> ha solo la soluzione <span class="m">(a,b)=(4,-3)</span>; in generale <span class="m">{}^t(x_1\ x_2)=a\,{}^t(2\ 3)+b\,{}^t(1\ 1)</span> ha l&#39;unica soluzione <span class="m">(a,b)=(x_2-x_1,\ 3x_1-2x_2)</span>.</p>
+<p><strong>Esempio 8.5.</strong></p>
+<ol>
+<li><span class="m">{}^t(2\ 3)</span> e <span class="m">{}^t(1\ 1)</span> sono indipendenti (Es. 8.1).</li>
+<li><span class="m">{}^t(2\ 3)</span>, <span class="m">{}^t(-1\ 0)</span>, <span class="m">{}^t(1\ 1)</span> sono dipendenti: <span class="m">1\cdot{}^t(2\ 3)-1\cdot{}^t(-1\ 0)-3\cdot{}^t(1\ 1)=\mathbf 0</span> (Es. 6.4).</li>
+<li>I polinomi <span class="m">1,x,x^2,\dots,x^m</span> sono indipendenti: se <span class="m">\lambda_0+\lambda_1x+\dots+\lambda_mx^m</span> è il polinomio nullo, tutti i coefficienti sono nulli (un polinomio è nullo se e solo se lo sono i suoi coefficienti).</li>
+</ol>
 </div>
 
-<h2>Numero di vettori indipendenti in uno Span</h2>
-<p><strong>Proposizione 8.15.</strong> Se <span class="m">\mathbf w_1,\dots,\mathbf w_m\in\mathrm{Span}(\mathbf v_1,\dots,\mathbf v_n)</span> sono linearmente indipendenti, allora <span class="m">m\le n</span>.</p>
-<p><strong>Proposizione 8.16</strong> (contronominale). Se <span class="m">\mathbf w_1,\dots,\mathbf w_m\in\mathrm{Span}(\mathbf v_1,\dots,\mathbf v_n)</span> e <span class="m">m&gt;n</span>, allora <span class="m">\mathbf w_1,\dots,\mathbf w_m</span> sono linearmente dipendenti.</p>
-<p><strong>Osservazione 8.17.</strong> Siano <span class="m">X^{(1)},\dots,X^{(k)}\in K^n</span> e siano <span class="m">Y^{(1)},\dots,Y^{(k)}\in K^m</span> ottenuti tenendo solo le coordinate di indici <span class="m">i_1&lt;\dots&lt;i_m</span>. Se gli <span class="m">Y^{(j)}</span> sono indipendenti, anche gli <span class="m">X^{(j)}</span> lo sono (il sistema per gli <span class="m">X</span> contiene quello per gli <span class="m">Y</span>). Equivalentemente, se gli <span class="m">X^{(j)}</span> sono dipendenti, anche gli <span class="m">Y^{(j)}</span> lo sono. Il viceversa non vale (Oss. 8.18).</p>
-<p><strong>Proposizione 8.19.</strong> Se <span class="m">\mathbf v_1,\dots,\mathbf v_n</span> sono indipendenti e <span class="m">\mathbf v\in V</span>, sono equivalenti:</p>
+<div class="callout esempio">
+
+<p><strong>Tre vettori di <span class="m">\mathbb R^3</span> (Es. 8.1 e 8.2 della dispensa).</strong></p>
+<p><em><span class="m">{}^t(2\ 3\ 7)</span>, <span class="m">{}^t(-1\ 0\ 1)</span>, <span class="m">{}^t(1\ 1\ 2)</span>.</em> Il sistema <span class="m">a\,{}^t(2\ 3\ 7)+b\,{}^t(-1\ 0\ 1)+c\,{}^t(1\ 1\ 2)=\mathbf 0</span> è
+<span class="m d">\begin{cases}2a-b+c=0\\3a+c=0\\7a+b+2c=0\end{cases}</span>
+Dalla seconda <span class="m">c=-3a</span>; nella prima <span class="m">2a-b-3a=0</span>, <span class="m">b=-a</span>; nella terza <span class="m">7a-a-6a=0</span>: sempre vera. Quindi <span class="m">a</span> è libero: con <span class="m">a=1</span> si ha <span class="m">(a,b,c)=(1,-1,-3)</span>, una soluzione non nulla. I vettori sono <strong>dipendenti</strong> (verifica: <span class="m">{}^t(2+1-3\ \ 3-0-3\ \ 7-1-6)=\mathbf 0</span> ✓).</p>
+<p><em><span class="m">{}^t(2\ 3\ 0)</span>, <span class="m">{}^t(-1\ 0\ 1)</span>, <span class="m">{}^t(1\ 1\ 2)</span>.</em> Il sistema è
+<span class="m d">\begin{cases}2a-b+c=0\\3a+c=0\\b+2c=0\end{cases}</span>
+Dalla seconda <span class="m">c=-3a</span>, dalla terza <span class="m">b=-2c=6a</span>; nella prima <span class="m">2a-6a-3a=-7a=0</span>, quindi <span class="m">a=0</span> e poi <span class="m">b=c=0</span>. Solo la soluzione nulla: <strong>indipendenti</strong>.</p>
+<p>Notare che i due casi differiscono solo per una coordinata del primo vettore.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Polinomi (Es. 8.3).</strong> <span class="m">x+1</span>, <span class="m">x^3-x</span>, <span class="m">x^3-x^2</span> sono indipendenti? Da <span class="m">\alpha(x+1)+\beta(x^3-x)+\gamma(x^3-x^2)=0</span>, raccogliendo:
+<span class="m d">(\beta+\gamma)x^3-\gamma x^2+(\alpha-\beta)x+\alpha=0 .</span>
+Coefficienti nulli: <span class="m">\alpha=0</span>; <span class="m">\alpha-\beta=0\Rightarrow\beta=0</span>; <span class="m">-\gamma=0\Rightarrow\gamma=0</span> (e <span class="m">\beta+\gamma=0</span> ✓). Solo la soluzione nulla: <strong>indipendenti</strong>.</p>
+<p>Invece <span class="m">t^3-2t^2+t</span>, <span class="m">t^2-t-1</span>, <span class="m">t^3-t-2</span> sono <strong>dipendenti</strong>: <span class="m">a(t^3-2t^2+t)+b(t^2-t-1)+c(t^3-t-2)=0</span> ha le soluzioni <span class="m">(a,b,c)=(-c,-2c,c)</span>; con <span class="m">c=1</span>: <span class="m">-(t^3-2t^2+t)-2(t^2-t-1)+(t^3-t-2)=-t^3+2t^2-t-2t^2+2t+2+t^3-t-2=0</span> ✓.</p>
+</div>
+
+<h2>Un solo vettore</h2>
+<p><strong>Osservazione 8.6.</strong> Un solo vettore <span class="m">\mathbf v_1</span> è linearmente indipendente <strong>se e solo se <span class="m">\mathbf v_1\ne\mathbf 0</span></strong>.</p>
+<ul>
+<li>Se <span class="m">\mathbf v_1=\mathbf 0</span>, è dipendente: <span class="m">1\cdot\mathbf v_1=\mathbf 0</span> con coefficiente <span class="m">1\ne0</span>.</li>
+<li>Se <span class="m">\mathbf v_1\ne\mathbf 0</span>, per (SV9) (Prop. 5.7) l&#39;unico <span class="m">\lambda</span> con <span class="m">\lambda\mathbf v_1=\mathbf 0</span> è <span class="m">\lambda=0</span>: è indipendente.</li>
+</ul>
+<h2>Dipendenza e combinazione degli altri</h2>
+<p><strong>Proposizione 8.7.</strong> I vettori <span class="m">\mathbf v_1,\dots,\mathbf v_n</span> sono linearmente dipendenti <strong>se e solo se uno di essi è il risultato di una combinazione lineare degli altri</strong>.</p>
+<p><em>Dimostrazione.</em></p>
+<ul>
+<li><span class="m">n=0</span>: zero vettori sono indipendenti, e non c&#39;è nessun vettore che possa essere combinazione degli altri: entrambe le affermazioni sono false.</li>
+<li><span class="m">n=1</span>: <span class="m">\mathbf v_1</span> è dipendente se e solo se <span class="m">\mathbf v_1=\mathbf 0</span> (Oss. 8.6); e gli &quot;altri&quot; sono zero vettori, la cui unica combinazione vale <span class="m">\mathbf 0</span>. Quindi <span class="m">\mathbf v_1</span> è combinazione degli altri se e solo se <span class="m">\mathbf v_1=\mathbf 0</span>.</li>
+<li><span class="m">n\ge2</span>, (<span class="m">\Rightarrow</span>): siano dipendenti, cioè <span class="m">\lambda_1\mathbf v_1+\dots+\lambda_n\mathbf v_n=\mathbf 0</span> con almeno un <span class="m">\lambda_i\ne0</span>. Portiamo <span class="m">\lambda_i\mathbf v_i</span> dall&#39;altra parte: <span class="m">\lambda_i\mathbf v_i=-\sum_{j\ne i}\lambda_j\mathbf v_j</span>. Poiché <span class="m">\lambda_i\ne0</span> possiamo moltiplicare per <span class="m">\lambda_i^{-1}</span>:
+<span class="m d">\mathbf v_i=\sum_{j=1}^{i-1}\left(-\frac{\lambda_j}{\lambda_i}\right)\mathbf v_j+\sum_{j=i+1}^{n}\left(-\frac{\lambda_j}{\lambda_i}\right)\mathbf v_j ,</span>
+quindi <span class="m">\mathbf v_i</span> è combinazione degli altri.</li>
+<li><span class="m">n\ge2</span>, (<span class="m">\Leftarrow</span>): se <span class="m">\mathbf v_i=\sum_{j\ne i}\lambda_j\mathbf v_j</span>, portando tutto a sinistra
+<span class="m d">\sum_{j=1}^{i-1}\lambda_j\mathbf v_j-1\cdot\mathbf v_i+\sum_{j=i+1}^{n}\lambda_j\mathbf v_j=\mathbf 0,</span>
+una combinazione con il coefficiente di <span class="m">\mathbf v_i</span> uguale a <span class="m">-1\ne0</span>: i vettori sono dipendenti.</li>
+</ul>
+<p>Significato: vettori dipendenti contengono un vettore <strong>superfluo</strong> (si ottiene dagli altri, quindi toglierlo non cambia lo Span, Cor. 7.20); vettori indipendenti sono tutti &quot;necessari&quot;.</p>
+<div class="callout attenzione">
+
+<p>La proposizione dice &quot;<strong>uno</strong> di essi è combinazione degli altri&quot;, non &quot;<strong>ciascuno</strong>&quot;. Ad esempio <span class="m">{}^t(1\ 0)</span>, <span class="m">{}^t(2\ 0)</span>, <span class="m">{}^t(0\ 1)</span> sono dipendenti (<span class="m">{}^t(2\ 0)=2\,{}^t(1\ 0)</span>), ma <span class="m">{}^t(0\ 1)</span> non è combinazione degli altri due.</p>
+</div>
+
+<h2>Il caso di due vettori</h2>
+<p><strong>Osservazione 8.8.</strong> Per <span class="m">n=2</span> la Proposizione 8.7 diventa:</p>
+<blockquote>
+<p><strong>due vettori sono linearmente dipendenti se e solo se uno di essi è multiplo dell&#39;altro.</strong></p>
+</blockquote>
+<p>(Infatti una combinazione di un solo vettore è un suo multiplo, Oss. 6.5.) Geometricamente: due vettori geometrici sono dipendenti se e solo se stanno su una stessa retta per l&#39;origine (sono paralleli) o uno è nullo.</p>
+<p><strong>Metodo pratico in <span class="m">K^n</span>.</strong> Per due vettori non nulli <span class="m">X</span>, <span class="m">Y</span>:</p>
+<ol>
+<li>si cerca <span class="m">\lambda</span> con <span class="m">Y=\lambda X</span>: lo si ricava da una coordinata in cui <span class="m">X</span> è non nullo;</li>
+<li>si controlla che <strong>tutte</strong> le altre coordinate rispettino lo stesso <span class="m">\lambda</span>: <span class="m">y_i=\lambda x_i</span> per ogni <span class="m">i</span>, <strong>segni compresi</strong>; dove <span class="m">x_i=0</span> deve essere anche <span class="m">y_i=0</span>;</li>
+<li>se <span class="m">\lambda</span> va bene ovunque, sono dipendenti (<span class="m">\lambda X-Y=\mathbf 0</span>); altrimenti indipendenti.</li>
+</ol>
+<p>Equivalentemente, se non ci sono coordinate nulle: tutti i rapporti <span class="m">\frac{y_i}{x_i}</span> devono essere uguali. Se uno dei due vettori è nullo, sono dipendenti (Oss. 8.10); due vettori <strong>uguali</strong> sono dipendenti (<span class="m">\mathbf v-\mathbf v=\mathbf 0</span>).</p>
+<div class="callout esempio">
+
+<p><strong>Coppie in <span class="m">\mathbb R^3</span>.</strong></p>
+<ul>
+<li><span class="m">{}^t(2\ 3\ -1)</span> e <span class="m">{}^t(4\ 5\ -2)</span>: rapporti <span class="m">\frac42=2</span>, <span class="m">\frac53</span>, <span class="m">\frac{-2}{-1}=2</span>. Non tutti uguali: <strong>indipendenti</strong>. Verifica diretta: <span class="m">2a+4b=0</span> e <span class="m">3a+5b=0</span> danno <span class="m">a=-2b</span> e <span class="m">-6b+5b=-b=0</span>, quindi <span class="m">a=b=0</span>.</li>
+<li><span class="m">{}^t(2\ -1\ 3)</span> e <span class="m">{}^t(4\ -2\ 6)</span>: rapporti <span class="m">2,2,2</span>: <strong>dipendenti</strong>, <span class="m">2\,{}^t(2\ -1\ 3)-{}^t(4\ -2\ 6)=\mathbf 0</span>.</li>
+<li><span class="m">{}^t(2\ -1\ 3)</span> e <span class="m">{}^t(4\ -2\ 5)</span>: rapporti <span class="m">2,2,\frac53</span>: <strong>indipendenti</strong> (la differenza è solo nella terza coordinata).</li>
+<li><span class="m">{}^t(-2\ -3\ -1)</span> e <span class="m">{}^t(4\ -6\ -2)</span>: rapporti <span class="m">\frac4{-2}=-2</span>, <span class="m">\frac{-6}{-3}=2</span>, <span class="m">\frac{-2}{-1}=2</span>: <strong>indipendenti</strong>, per un solo segno. In valore assoluto il secondo &quot;sembra&quot; il doppio del primo, ma non lo è.</li>
+<li><span class="m">{}^t(2\ -3\ -1)</span> e <span class="m">{}^t(4\ -6\ -2)</span>: rapporti <span class="m">2,2,2</span>: <strong>dipendenti</strong>.</li>
+</ul>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Coppie in <span class="m">\mathbb C^2</span>: il fattore può essere complesso.</strong> In <span class="m">\mathbb C^n</span> gli scalari sono complessi, quindi <span class="m">Y=\lambda X</span> con <span class="m">\lambda\in\mathbb C</span>. Ricordiamo che <span class="m">(a+bi)(a-bi)=a^2+b^2</span> è reale.</p>
+<ul>
+<li><span class="m">{}^t(3+i\ \ 1)</span> e <span class="m">{}^t(10\ \ 3-i)</span>: dalla seconda coordinata (il primo vettore ha <span class="m">1</span>) l&#39;unico candidato è <span class="m">\lambda=3-i</span>. Prima coordinata: <span class="m">\lambda(3+i)=(3-i)(3+i)=9+1=10</span> ✓. Quindi <span class="m">{}^t(10\ \ 3-i)=(3-i)\,{}^t(3+i\ \ 1)</span>: <strong>dipendenti</strong>.</li>
+<li><span class="m">{}^t(3+i\ \ 1)</span> e <span class="m">{}^t(10\ \ 3+i)</span>: ora <span class="m">\lambda=3+i</span> e <span class="m">\lambda(3+i)=(3+i)^2=9+6i+i^2=8+6i\ne10</span>: <strong>indipendenti</strong>.</li>
+<li><span class="m">{}^t(3+i\ \ 1)</span> e <span class="m">{}^t(-10\ \ 3-i)</span>: <span class="m">\lambda=3-i</span> dà <span class="m">10\ne-10</span>: <strong>indipendenti</strong> (attenzione al segno).</li>
+<li><span class="m">{}^t(2\ \ 1)</span> e <span class="m">{}^t(4\ \ 2)</span>: <span class="m">\lambda=2</span>, <span class="m">2\cdot2=4</span> ✓: dipendenti. <span class="m">{}^t(2\ \ 1)</span> e <span class="m">{}^t(-4\ \ 2)</span>: <span class="m">\lambda=2</span> ma <span class="m">4\ne-4</span>: indipendenti.</li>
+</ul>
+<p><strong>Controllo rapido in <span class="m">K^2</span>.</strong> <span class="m">{}^t(x_1\ x_2)</span> e <span class="m">{}^t(y_1\ y_2)</span> sono dipendenti se e solo se
+<span class="m d">x_1y_2-x_2y_1=0 .</span>
+Perché: se <span class="m">Y=\lambda X</span>, allora <span class="m">x_1(\lambda x_2)-x_2(\lambda x_1)=0</span> (analogo se <span class="m">X=\lambda Y</span>). Viceversa, se <span class="m">x_1y_2=x_2y_1</span> e <span class="m">X\ne\mathbf 0</span>, diciamo <span class="m">x_1\ne0</span>, allora con <span class="m">\lambda=\frac{y_1}{x_1}</span> si ha <span class="m">y_1=\lambda x_1</span> e <span class="m">y_2=\frac{x_2y_1}{x_1}=\lambda x_2</span>, cioè <span class="m">Y=\lambda X</span> (se <span class="m">x_1=0</span> si ragiona con <span class="m">x_2</span>; se <span class="m">X=\mathbf 0</span> sono comunque dipendenti). Nel primo esempio: <span class="m">(3+i)(3-i)-1\cdot10=10-10=0</span> ✓. Vedremo che è il <strong>determinante</strong> della matrice <span class="m">2\times2</span> con colonne <span class="m">X,Y</span>.</p>
+<p><strong>Su <span class="m">\mathbb R</span> o su <span class="m">\mathbb C</span>? (Es. 8.6).</strong> In <span class="m">\mathbb C</span> visto come spazio <strong>reale</strong>, <span class="m">1</span> e <span class="m">i</span> sono <strong>indipendenti</strong>: <span class="m">a\cdot1+b\cdot i=0</span> con <span class="m">a,b</span> reali forza <span class="m">a=b=0</span>. In <span class="m">\mathbb C</span> visto come spazio <strong>complesso</strong> sono <strong>dipendenti</strong>: con <span class="m">a=i</span>, <span class="m">b=-1</span> si ha <span class="m">i\cdot1+(-1)\cdot i=0</span>. L&#39;indipendenza dipende dal campo degli scalari.</p>
+</div>
+
+<div class="callout attenzione">
+
+<p>Con <strong>tre o più</strong> vettori non basta controllare che nessuno sia multiplo di un altro: <span class="m">{}^t(1\ 2\ 1)</span>, <span class="m">{}^t(2\ 3\ 1)</span>, <span class="m">{}^t(1\ 1\ 0)</span> non sono a due a due proporzionali, ma <span class="m">{}^t(1\ 2\ 1)-{}^t(2\ 3\ 1)+{}^t(1\ 1\ 0)=\mathbf 0</span>: il terzo è la differenza tra il secondo e il primo. Con tre o più vettori si risolve il sistema omogeneo.</p>
+</div>
+
+<h2>Aggiungere e togliere vettori</h2>
+<p><strong>Osservazione 8.9.</strong> Se <span class="m">\mathbf v_1,\dots,\mathbf v_n</span> sono <strong>dipendenti</strong>, aggiungendo vettori qualsiasi <span class="m">\mathbf w_1,\dots,\mathbf w_m</span> si ottengono ancora vettori <strong>dipendenti</strong>. Infatti, se <span class="m">\sum_i\lambda_i\mathbf v_i=\mathbf 0</span> con <span class="m">\lambda_i</span> non tutti nulli, anche
+<span class="m d">\sum_{i=1}^n\lambda_i\mathbf v_i+\sum_{j=1}^m0\,\mathbf w_j=\mathbf 0</span>
+ha coefficienti non tutti nulli. Equivalentemente: <strong>togliendo vettori a vettori indipendenti si ottengono vettori indipendenti</strong> (ogni sottoinsieme di vettori indipendenti è indipendente).</p>
+<p><strong>Osservazione 8.10.</strong> Se uno dei vettori è <span class="m">\mathbf 0</span>, i vettori sono <strong>dipendenti</strong>: <span class="m">\mathbf 0</span> da solo è dipendente, e aggiungendo gli altri si resta dipendenti.</p>
+<p><strong>Osservazione 8.11.</strong> I viceversa sono <strong>falsi</strong>: aggiungendo vettori a vettori indipendenti si possono ottenere vettori dipendenti (o restare indipendenti); togliendo vettori a vettori dipendenti si possono ottenere vettori indipendenti (o restare dipendenti).</p>
+<div class="callout esempio">
+
+<p><strong>Es. 8.4.</strong> <span class="m">{}^t(2\ 3\ 0)</span> e <span class="m">{}^t(-1\ 0\ 1)</span> sono indipendenti (nessuno è multiplo dell&#39;altro: la seconda coordinata è <span class="m">3</span> nel primo e <span class="m">0</span> nel secondo, la terza <span class="m">0</span> nel primo e <span class="m">1</span> nel secondo).</p>
+<ul>
+<li>Aggiungendo <span class="m">X=\mathbf 0_3</span> diventano dipendenti (Oss. 8.10).</li>
+<li>Aggiungendo <span class="m">X={}^t(1\ 0\ 0)</span> restano indipendenti: il vettore generico dello Span dei due è <span class="m">{}^t(2a-b\ \ 3a\ \ b)</span>; se seconda e terza coordinata sono <span class="m">0</span> allora <span class="m">a=b=0</span> e anche la prima è <span class="m">0</span>, quindi <span class="m">{}^t(1\ 0\ 0)</span> non sta nello Span, e per la Proposizione 8.19 (più sotto) i tre vettori sono indipendenti.</li>
+</ul>
+<p><strong>Es. 8.8.</strong> <span class="m">{}^t(2\ 1)</span>, <span class="m">{}^t(3\ 1)</span>, <span class="m">{}^t(-6\ -2)</span> sono dipendenti (ad esempio <span class="m">0\,{}^t(2\ 1)+2\,{}^t(3\ 1)+{}^t(-6\ -2)=\mathbf 0</span>). Tra essi, <span class="m">{}^t(3\ 1)</span> e <span class="m">{}^t(-6\ -2)</span> sono dipendenti (il secondo è <span class="m">-2</span> volte il primo), mentre <span class="m">{}^t(2\ 1)</span> e <span class="m">{}^t(3\ 1)</span> sono indipendenti: togliendo un vettore a vettori dipendenti si può ottenere indipendenza.</p>
+</div>
+
+<h2>Indipendenza e unicità delle combinazioni</h2>
+<p><strong>Proposizione 8.12.</strong> <span class="m">\mathbf v_1,\dots,\mathbf v_n</span> sono linearmente indipendenti <strong>se e solo se ogni vettore di <span class="m">\mathrm{Span}(\mathbf v_1,\dots,\mathbf v_n)</span> è il risultato di una sola combinazione lineare</strong> di <span class="m">\mathbf v_1,\dots,\mathbf v_n</span>.</p>
+<p><em>Dimostrazione.</em>
+(<span class="m">\Leftarrow</span>) Se ogni vettore dello Span si scrive in un solo modo, in particolare <span class="m">\mathbf 0</span> si scrive in un solo modo (quello con coefficienti nulli): è la definizione di indipendenza.</p>
+<p>(<span class="m">\Rightarrow</span>) Siano indipendenti e supponiamo, per assurdo, che un vettore dello Span sia il risultato di due combinazioni <strong>distinte</strong>:
+<span class="m d">\lambda_1\mathbf v_1+\dots+\lambda_n\mathbf v_n=\mu_1\mathbf v_1+\dots+\mu_n\mathbf v_n .</span>
+Portando tutto a sinistra e raccogliendo (con (SV3)):
+<span class="m d">(\lambda_1-\mu_1)\mathbf v_1+\dots+(\lambda_n-\mu_n)\mathbf v_n=\mathbf 0 .</span>
+Le combinazioni sono distinte, quindi almeno un <span class="m">\lambda_i\ne\mu_i</span>, cioè <span class="m">\lambda_i-\mu_i\ne0</span>: abbiamo una combinazione con coefficienti non tutti nulli e risultato <span class="m">\mathbf 0</span>, contro l&#39;indipendenza. Assurdo.</p>
+<p><strong>Osservazione 8.13.</strong> Vale anche per zero vettori: sono indipendenti, e <span class="m">\mathrm{Span}(\emptyset)=\{\mathbf 0\}</span> contiene un solo vettore, risultato dell&#39;unica combinazione.</p>
+<p>Questa proposizione è la base delle <strong>coordinate rispetto a una base</strong> (Lezione 9): se i generatori sono indipendenti, i coefficienti con cui si ottiene un vettore sono univocamente determinati.</p>
+<div class="callout esempio">
+
+<p><strong>Esempio 8.14.</strong> <span class="m">{}^t(2\ 3)</span> e <span class="m">{}^t(1\ 1)</span> sono indipendenti.</p>
+<ol>
+<li><span class="m">{}^t(5\ 9)=a\,{}^t(2\ 3)+b\,{}^t(1\ 1)</span> equivale a <span class="m">2a+b=5</span>, <span class="m">3a+b=9</span>: sottraendo <span class="m">a=4</span>, poi <span class="m">b=5-8=-3</span>. Unica soluzione <span class="m">(a,b)=(4,-3)</span>; verifica <span class="m">4\,{}^t(2\ 3)-3\,{}^t(1\ 1)={}^t(8-3\ \ 12-3)={}^t(5\ 9)</span> ✓.</li>
+<li>In generale <span class="m">{}^t(x_1\ x_2)=a\,{}^t(2\ 3)+b\,{}^t(1\ 1)</span> ha l&#39;unica soluzione <span class="m">(a,b)=(x_2-x_1,\ 3x_1-2x_2)</span> (stesso calcolo con lettere).</li>
+</ol>
+</div>
+
+<h2>Quanti vettori indipendenti in uno Span</h2>
+<p><strong>Proposizione 8.15.</strong> Se <span class="m">\mathbf w_1,\dots,\mathbf w_m\in\mathrm{Span}(\mathbf v_1,\dots,\mathbf v_n)</span> e <span class="m">\mathbf w_1,\dots,\mathbf w_m</span> sono linearmente indipendenti, allora <span class="m">m\le n</span>.</p>
+<p>(La dispensa non dà la dimostrazione.) In parole: <strong>in uno spazio generato da <span class="m">n</span> vettori ci sono al più <span class="m">n</span> vettori indipendenti.</strong></p>
+<p><strong>Proposizione 8.16</strong> (contronominale della 8.15, quindi equivalente). Se <span class="m">\mathbf w_1,\dots,\mathbf w_m\in\mathrm{Span}(\mathbf v_1,\dots,\mathbf v_n)</span> e <span class="m">m&gt;n</span>, allora <span class="m">\mathbf w_1,\dots,\mathbf w_m</span> sono linearmente <strong>dipendenti</strong>.</p>
+<div class="callout esempio">
+
+<p><span class="m">\mathbb R^2=\mathrm{Span}\big({}^t(1\ 0),{}^t(0\ 1)\big)</span> è generato da <span class="m">2</span> vettori: quindi <strong>tre vettori qualsiasi di <span class="m">\mathbb R^2</span> sono dipendenti</strong> (ad esempio <span class="m">{}^t(2\ 1)</span>, <span class="m">{}^t(3\ 1)</span>, <span class="m">{}^t(-6\ -2)</span>, oppure <span class="m">{}^t(2\ 3)</span>, <span class="m">{}^t(-1\ 0)</span>, <span class="m">{}^t(1\ 1)</span>). Allo stesso modo in <span class="m">\mathbb R^3</span> quattro vettori sono sempre dipendenti, e in <span class="m">\mathrm{Span}(\mathbf v)</span> due vettori sono sempre dipendenti.</p>
+</div>
+
+<h2>Togliere o aggiungere coordinate</h2>
+<p><strong>Osservazione 8.17.</strong> Siano <span class="m">X^{(1)},\dots,X^{(k)}\in K^n</span> e siano <span class="m">Y^{(1)},\dots,Y^{(k)}\in K^m</span> ottenuti tenendo solo le coordinate di indici <span class="m">i_1&lt;i_2&lt;\dots&lt;i_m</span> (cioè cancellando le altre).</p>
+<ol>
+<li>Se gli <span class="m">Y^{(j)}</span> sono <strong>indipendenti</strong>, anche gli <span class="m">X^{(j)}</span> lo sono.</li>
+<li>Equivalentemente (contronominale): se gli <span class="m">X^{(j)}</span> sono <strong>dipendenti</strong>, anche gli <span class="m">Y^{(j)}</span> lo sono.</li>
+</ol>
+<p><em>Dimostrazione di 1.</em> Sia <span class="m">\alpha_1X^{(1)}+\dots+\alpha_kX^{(k)}=\mathbf 0_n</span>. Coordinata per coordinata è un sistema di <span class="m">n</span> equazioni <span class="m">\alpha_1x^{(1)}_i+\dots+\alpha_kx^{(k)}_i=0</span>, <span class="m">i=1,\dots,n</span>. Tenendo solo le equazioni di indici <span class="m">i_1,\dots,i_m</span> si ottiene il sistema che, in forma vettoriale, è <span class="m">\alpha_1Y^{(1)}+\dots+\alpha_kY^{(k)}=\mathbf 0_m</span>. Poiché gli <span class="m">Y^{(j)}</span> sono indipendenti, <span class="m">\alpha_1=\dots=\alpha_k=0</span>. Quindi gli <span class="m">X^{(j)}</span> sono indipendenti.</p>
+<p>L&#39;idea: aggiungere coordinate aggiunge equazioni al sistema omogeneo, e più equazioni possono solo ridurre le soluzioni.</p>
+<p><strong>Osservazione 8.18.</strong> I viceversa sono falsi: se gli <span class="m">X^{(j)}</span> sono indipendenti, gli <span class="m">Y^{(j)}</span> possono essere dipendenti (o indipendenti); se gli <span class="m">Y^{(j)}</span> sono dipendenti, gli <span class="m">X^{(j)}</span> possono essere indipendenti (o dipendenti).</p>
+<div class="callout esempio">
+
+<p><strong>Es. 8.5.</strong> <span class="m">{}^t(3\ 0)</span> e <span class="m">{}^t(1\ 0)</span> sono dipendenti (il primo è il triplo del secondo). Aggiungendo una terza coordinata:</p>
+<ul>
+<li><span class="m">{}^t(3\ 0\ 0)</span> e <span class="m">{}^t(1\ 0\ 1)</span> sono <strong>indipendenti</strong> (nessuno è multiplo dell&#39;altro: il fattore <span class="m">3</span> richiesto dalla prima coordinata non funziona nella terza);</li>
+<li><span class="m">{}^t(3\ 0\ 0)</span> e <span class="m">{}^t(1\ 0\ 0)</span> restano <strong>dipendenti</strong>.</li>
+</ul>
+<p><strong>Es. 8.9.</strong> <span class="m">{}^t(1\ -1\ 1)</span> e <span class="m">{}^t(0\ 0\ 1)</span> sono indipendenti (il secondo ha le prime coordinate nulle, il primo no, e nessuno è nullo). Togliendo la seconda coordinata: <span class="m">{}^t(1\ 1)</span> e <span class="m">{}^t(0\ 1)</span>, ancora indipendenti. Togliendo la terza: <span class="m">{}^t(1\ -1)</span> e <span class="m">{}^t(0\ 0)</span>, <strong>dipendenti</strong> perché uno è nullo.</p>
+</div>
+
+<h2>Aggiungere un vettore a vettori indipendenti</h2>
+<p><strong>Proposizione 8.19.</strong> Siano <span class="m">\mathbf v_1,\dots,\mathbf v_n</span> linearmente <strong>indipendenti</strong> e <span class="m">\mathbf v\in V</span>. Sono equivalenti:</p>
 <ul>
 <li><span class="m">\mathbf v_1,\dots,\mathbf v_n,\mathbf v</span> sono linearmente indipendenti;</li>
 <li><span class="m">\mathbf v\notin\mathrm{Span}(\mathbf v_1,\dots,\mathbf v_n)</span>.</li>
 </ul>
-<p>Vale anche per zero vettori: <span class="m">\mathbf v</span> è indipendente se e solo se <span class="m">\mathbf v\notin\{\mathbf 0\}=\mathrm{Span}(\emptyset)</span>.</p>
+<p>(La dispensa non dà la dimostrazione. Idea: se <span class="m">\mathbf v</span> sta nello Span, è combinazione degli altri e per la Prop. 8.7 i vettori sono dipendenti. Viceversa, se c&#39;è una relazione <span class="m">\lambda_1\mathbf v_1+\dots+\lambda_n\mathbf v_n+\lambda\mathbf v=\mathbf 0</span> non banale, deve essere <span class="m">\lambda\ne0</span> — altrimenti sarebbe una relazione tra i soli <span class="m">\mathbf v_i</span>, che sono indipendenti — e allora <span class="m">\mathbf v=-\frac1\lambda(\lambda_1\mathbf v_1+\dots+\lambda_n\mathbf v_n)</span> sta nello Span.)</p>
+<p><strong>Osservazione 8.20.</strong> Vale anche con zero vettori: <span class="m">\mathbf v</span> è indipendente se e solo se <span class="m">\mathbf v\ne\mathbf 0</span>, cioè <span class="m">\mathbf v\notin\{\mathbf 0\}=\mathrm{Span}(\emptyset)</span>.</p>
 <div class="callout esempio">
 
-<p>Due vettori geometrici indipendenti <span class="m">\mathbf v_1,\mathbf v_2</span> di <span class="m">V^3_G</span> generano un piano <span class="m">\pi</span>. Un vettore <span class="m">\mathbf w\in\pi</span> rende <span class="m">\mathbf v_1,\mathbf v_2,\mathbf w</span> dipendenti; un vettore <span class="m">\mathbf u\notin\pi</span> rende <span class="m">\mathbf v_1,\mathbf v_2,\mathbf u</span> indipendenti.</p>
+<p><strong>Esempio 8.21.</strong> Due vettori geometrici indipendenti <span class="m">\mathbf v_1,\mathbf v_2\in V^3_G</span> (non paralleli) generano un piano <span class="m">\pi</span> per l&#39;origine. Un vettore <span class="m">\mathbf w</span> che sta in <span class="m">\pi</span> rende <span class="m">\mathbf v_1,\mathbf v_2,\mathbf w</span> <strong>dipendenti</strong> (è combinazione di <span class="m">\mathbf v_1,\mathbf v_2</span>); un vettore <span class="m">\mathbf u</span> che non sta in <span class="m">\pi</span> rende <span class="m">\mathbf v_1,\mathbf v_2,\mathbf u</span> <strong>indipendenti</strong>. Quindi: tre vettori dello spazio sono dipendenti se e solo se sono <strong>complanari</strong> (stanno in uno stesso piano per l&#39;origine).</p>
 </div>
 
 <div class="callout esame">
 
-<p>Chiuse del paniere: <strong>quale coppia di vettori è (in)dipendente</strong>, in <span class="m">\mathbb R^3</span> (attenzione ai segni) e in <span class="m">\mathbb C^2</span> (attenzione al prodotto per il coniugato, <span class="m">(a+bi)(a-bi)=a^2+b^2</span>). Aperta: definizione di dipendenza/indipendenza con un risultato (Prop. 8.7 o 8.12 con dimostrazione). Nei quiz: tre vettori dipendenti, aggiunta di vettori, unicità dei coefficienti, massimo numero di vettori indipendenti in uno Span.</p>
+<p>Chiuse del paniere:</p>
+<ul>
+<li><strong>quale coppia di vettori di <span class="m">\mathbb R^3</span> è (in)dipendente</strong>: due vettori sono dipendenti se e solo se uno è multiplo dell&#39;altro; si controllano i rapporti coordinata per coordinata, <strong>segni compresi</strong> (le opzioni sono costruite perché in valore assoluto sembrino tutte proporzionali, o perché differiscano solo nella terza coordinata); un vettore ripetuto dà sempre una coppia dipendente;</li>
+<li><strong>quale coppia di <span class="m">\mathbb C^2</span> è (in)dipendente</strong>: il fattore di proporzionalità può essere complesso; se il primo vettore ha seconda coordinata <span class="m">1</span>, il fattore è la seconda coordinata dell&#39;altro, e si controlla la prima con <span class="m">(a+bi)(a-bi)=a^2+b^2</span> oppure con <span class="m">x_1y_2-x_2y_1=0</span>.</li>
+</ul>
+<p>Aperta: <strong>definizione di dipendenza e indipendenza lineare con un risultato</strong> — Definizione 8.2, Oss. 8.3, Oss. 8.6 (un vettore è indipendente se e solo se non è nullo), e una proposizione con dimostrazione: <strong>8.7</strong> (dipendenti se e solo se uno è combinazione degli altri; caso di due vettori, Oss. 8.8) oppure <strong>8.12</strong> (indipendenti se e solo se ogni vettore dello Span si scrive in modo unico). Si possono citare anche 8.9–8.11 (aggiungere/togliere vettori), 8.15–8.16 (al più <span class="m">n</span> vettori indipendenti in uno Span di <span class="m">n</span> vettori), 8.19.</p>
+<p>Nei quiz: tre vettori dipendenti, aggiunta di vettori, unicità dei coefficienti, massimo numero di vettori indipendenti in uno Span.</p>
+</div>
+
+<div class="callout sintesi">
+
+<ul>
+<li>Indipendenti: <span class="m">\lambda_1\mathbf v_1+\dots+\lambda_n\mathbf v_n=\mathbf 0\Rightarrow</span> tutti i <span class="m">\lambda_i=0</span>. Dipendenti: esiste una relazione con coefficienti non tutti nulli.</li>
+<li>Un vettore: indipendente <span class="m">\iff\ne\mathbf 0</span>. Due vettori: dipendenti <span class="m">\iff</span> uno è multiplo dell&#39;altro (in <span class="m">K^2</span>: <span class="m">x_1y_2-x_2y_1=0</span>). Contenere <span class="m">\mathbf 0</span> o un vettore ripetuto <span class="m">\Rightarrow</span> dipendenti.</li>
+<li>Dipendenti <span class="m">\iff</span> uno è combinazione degli altri (Prop. 8.7). Indipendenti <span class="m">\iff</span> combinazioni con risultato dato uniche (Prop. 8.12).</li>
+<li>Aggiungere vettori a dipendenti: restano dipendenti; togliere da indipendenti: restano indipendenti.</li>
+<li>In <span class="m">\mathrm{Span}(\mathbf v_1,\dots,\mathbf v_n)</span> al più <span class="m">n</span> vettori indipendenti; più di <span class="m">n</span> sono dipendenti.</li>
+<li>Indipendenti + <span class="m">\mathbf v</span> restano indipendenti <span class="m">\iff\mathbf v\notin\mathrm{Span}</span>.</li>
+</ul>
 </div>

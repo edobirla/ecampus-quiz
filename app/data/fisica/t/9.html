@@ -1,108 +1,301 @@
 <h1>Lezione 09 — Moti relativi e sistemi di riferimento</h1>
+<p>Nelle lezioni di cinematica abbiamo descritto il moto di un punto <strong>rispetto a un sistema di riferimento</strong> scelto una volta per tutte: posizione <span class="m">\vec r(t)</span>, velocità <span class="m">\vec v = d\vec r/dt</span>, accelerazione <span class="m">\vec a = d\vec v/dt</span>. Ma chi sceglie il sistema di riferimento? Lo sceglie l&#39;osservatore, e osservatori diversi possono muoversi l&#39;uno rispetto all&#39;altro: chi è seduto in treno, chi è fermo sulla banchina, chi sta su una giostra, chi sta sulla Terra che ruota.</p>
+<p>Questa lezione risponde a una domanda precisa: <strong>se conosco il moto di un punto visto da un osservatore, come lo vede un secondo osservatore che si muove rispetto al primo?</strong> La risposta sono le leggi di composizione delle posizioni, delle velocità e delle accelerazioni. Da esse nascono due idee fondamentali per tutta la dinamica:</p>
+<ul>
+<li>i sistemi che si muovono di moto rettilineo uniforme l&#39;uno rispetto all&#39;altro misurano la <strong>stessa accelerazione</strong> (base del principio di relatività e dei sistemi inerziali, lezione 10);</li>
+<li>i sistemi che accelerano o ruotano misurano accelerazioni diverse, e compaiono termini nuovi come l&#39;<strong>accelerazione di trascinamento</strong> e l&#39;<strong>accelerazione di Coriolis</strong> (base delle forze apparenti, lezione 13).</li>
+</ul>
 <h2>Il moto dipende da chi lo osserva</h2>
-<p>Lo stesso moto appare diverso a osservatori diversi. In autostrada un&#39;auto che ti affianca sembra ferma. Chi è sul ciglio della strada la vede invece correre.</p>
-<p>Per descrivere un moto servono quindi due sistemi di riferimento:</p>
+<p>L&#39;esperienza quotidiana mostra che il moto è <strong>relativo</strong>. Quando viaggiamo in autostrada affiancati a un&#39;altra auto che va alla nostra stessa velocità, quell&#39;auto ci appare <strong>ferma</strong>. Un osservatore fermo sul ciglio della strada vede invece transitare entrambe le auto alla stessa velocità, per esempio <span class="m">100\,\mathrm{km/h}</span>.</p>
+<p>Nessuno dei due sbaglia: descrivono lo stesso fenomeno da due sistemi di riferimento diversi. Per confrontare le due descrizioni servono quindi due sistemi:</p>
 <ul>
-<li>il sistema <strong>fisso</strong> <span class="m">Oxyz</span> (detto &quot;assoluto&quot;);</li>
-<li>il sistema <strong>mobile</strong> <span class="m">O'x'y'z'</span> (detto &quot;relativo&quot;), che si muove rispetto al primo.</li>
+<li>il sistema <strong>fisso</strong> <span class="m">Oxyz</span>, detto convenzionalmente &quot;<strong>assoluto</strong>&quot; (per esempio solidale con la strada);</li>
+<li>il sistema <strong>mobile</strong> <span class="m">O'x'y'z'</span>, detto &quot;<strong>relativo</strong>&quot; (per esempio solidale con la nostra auto), che si muove rispetto al primo.</li>
 </ul>
-<p>La posizione del punto P nei due sistemi è legata da:
-<span class="m d">\vec r = \vec R + \vec r\,'</span>
+<p>Le grandezze misurate nel sistema fisso si chiamano <strong>assolute</strong> (<span class="m">\vec r</span>, <span class="m">\vec v</span>, <span class="m">\vec a</span>); quelle misurate nel sistema mobile si chiamano <strong>relative</strong> e si indicano con l&#39;apice (<span class="m">\vec r\,'</span>, <span class="m">\vec v\,'</span>, <span class="m">\vec a\,'</span>).</p>
+<div class="callout attenzione">
+
+<p>&quot;Assoluto&quot; qui non vuol dire &quot;privilegiato&quot; o &quot;vero&quot;: è solo il nome del sistema che decidiamo di considerare fermo. Si potrebbero scambiare i ruoli dei due sistemi e tutte le formule resterebbero valide.</p>
+</div>
+
+<h2>Caso semplice: traslazione lungo una retta</h2>
+<p>Cominciamo dal caso più semplice, che è unidimensionale. Il moto avviene lungo l&#39;asse <span class="m">x</span> del sistema fisso <span class="m">Oxy</span>. Il sistema mobile <span class="m">O'x'y'</span> ha gli assi paralleli a quelli fissi e la sua origine <span class="m">O'</span> si muove lungo <span class="m">x</span> con velocità costante <span class="m">v_0</span>.</p>
+<p>Il vettore posizione del punto P visto dal sistema fisso si ottiene &quot;andando prima da <span class="m">O</span> a <span class="m">O'</span> e poi da <span class="m">O'</span> a P&quot;:
+<span class="m d">\vec r = \overrightarrow{OO'} + \vec r\,'</span>
 dove:</p>
 <ul>
-<li><span class="m">\vec r</span> = posizione di P vista dal sistema fisso (m);</li>
-<li><span class="m">\vec R</span> = posizione dell&#39;origine <span class="m">O'</span> del sistema mobile, vista dal sistema fisso (m);</li>
-<li><span class="m">\vec r\,'</span> = posizione di P vista dal sistema mobile (m).</li>
+<li><span class="m">\vec r</span> = posizione di P nel sistema fisso (m);</li>
+<li><span class="m">\overrightarrow{OO'}</span> = posizione dell&#39;origine del sistema mobile vista dal sistema fisso (m);</li>
+<li><span class="m">\vec r\,'</span> = posizione di P nel sistema mobile (m).</li>
 </ul>
-<h2>Composizione delle velocità (trasformazioni di Galileo)</h2>
-<p>Se il sistema mobile trasla senza ruotare, le velocità si sommano come vettori:
-<span class="m d">\vec v = \vec v\,' + \vec V</span>
+<p>Deriviamo rispetto al tempo. La derivata di <span class="m">\vec r</span> è la velocità assoluta <span class="m">\vec v</span>, la derivata di <span class="m">\overrightarrow{OO'}</span> è la velocità <span class="m">v_0</span> del sistema mobile, la derivata di <span class="m">\vec r\,'</span> (assi che non ruotano) è la velocità relativa <span class="m">\vec v\,'</span>. In una dimensione:
+<span class="m d">v = v_0 + v'</span>
 dove:</p>
 <ul>
-<li><span class="m">\vec v</span> = velocità <strong>assoluta</strong>, misurata dal sistema fisso (m/s);</li>
-<li><span class="m">\vec v\,'</span> = velocità <strong>relativa</strong>, misurata dal sistema mobile (m/s);</li>
-<li><span class="m">\vec V</span> = velocità del sistema mobile rispetto a quello fisso (m/s).</li>
+<li><span class="m">v</span> = velocità di P misurata dal sistema fisso (m/s);</li>
+<li><span class="m">v_0</span> = velocità del sistema mobile rispetto a quello fisso (m/s);</li>
+<li><span class="m">v'</span> = velocità di P misurata dal sistema mobile (m/s).</li>
 </ul>
-<p>Se il punto viaggia alla stessa velocità del sistema mobile (<span class="m">\vec v = \vec V</span>), per il sistema mobile è fermo: <span class="m">\vec v\,' = 0</span>.</p>
+<p><strong>Caso particolare.</strong> Se il punto viaggia alla stessa velocità del sistema mobile, <span class="m">v = v_0</span>, allora <span class="m">v' = v - v_0 = 0</span>: per il sistema mobile il punto è <strong>fermo</strong>. È esattamente l&#39;auto che ci affianca e che ci sembra immobile.</p>
+<p>I segni sono importanti: si sceglie un verso positivo dell&#39;asse e ogni velocità ha segno <span class="m">+</span> se è concorde, <span class="m">-</span> se è opposta.</p>
 <div class="callout esempio">
 
-<p>Il display del treno segna <span class="m">288\,\mathrm{km/h} = 80\,\mathrm{m/s}</span>. Dal treno un&#39;auto sembra andare a <span class="m">-50\,\mathrm{m/s}</span> (cioè all&#39;indietro).
-Per chi è a terra: <span class="m">v = v' + V = -50 + 80 = 30\,\mathrm{m/s} = 108\,\mathrm{km/h}</span>, nello stesso verso del treno.</p>
+<p><strong>Il treno e l&#39;automobile (tipico del paniere).</strong> Il display del treno segna <span class="m">288\,\mathrm{km/h}</span>. Su un tratto che affianca l&#39;autostrada un&#39;automobile ci appare viaggiare a <span class="m">-50\,\mathrm{m/s}</span>. Quanto va l&#39;auto per chi è fermo sul ciglio della strada?</p>
+<ol>
+<li>Scelgo come positivo il verso di marcia del treno. Il sistema mobile è il treno: <span class="m">v_0 = 288\,\mathrm{km/h}</span>.</li>
+<li>Porto tutto nella stessa unità. Da km/h a m/s si divide per <span class="m">3{,}6</span> (perché <span class="m">1\,\mathrm{km/h} = 1000\,\mathrm m / 3600\,\mathrm s</span>): <span class="m">v_0 = 288/3{,}6 = 80\,\mathrm{m/s}</span>.</li>
+<li>La velocità relativa dell&#39;auto è <span class="m">v' = -50\,\mathrm{m/s}</span>: dal treno l&#39;auto sembra andare all&#39;indietro, perché è più lenta del treno.</li>
+<li>Composizione: <span class="m">v = v_0 + v' = 80 + (-50) = 30\,\mathrm{m/s}</span>.</li>
+<li>Il segno è positivo: l&#39;auto va <strong>nello stesso verso del treno</strong>. In km/h: <span class="m">30 \cdot 3{,}6 = 108\,\mathrm{km/h}</span>.</li>
+</ol>
+<p>L&#39;auto va quindi a <span class="m">108\,\mathrm{km/h}</span>, nello stesso verso del treno: è più lenta del treno di <span class="m">50\,\mathrm{m/s} = 180\,\mathrm{km/h}</span>, per questo dal finestrino sembra andare all&#39;indietro.</p>
 </div>
 
 <div class="callout esempio">
 
-<p>Velocità relativa tra due veicoli: un&#39;auto a <span class="m">20\,\mathrm{m/s}</span> segue un camion a <span class="m">15\,\mathrm{m/s}</span>. Rispetto al camion l&#39;auto va a <span class="m">v' = v - V = 20 - 15 = 5\,\mathrm{m/s}</span>, in avanti.
-Una barca punta a Nord a <span class="m">10\,\mathrm{km/h}</span> rispetto all&#39;acqua. Il fiume scorre verso Est a <span class="m">5\,\mathrm{km/h}</span>. Le due velocità sono perpendicolari: rispetto a terra <span class="m">v = \sqrt{10^2 + 5^2} \approx 11{,}2\,\mathrm{km/h}</span>.</p>
+<p><strong>Velocità relativa tra due veicoli.</strong> Un&#39;auto a <span class="m">20\,\mathrm{m/s}</span> segue un camion a <span class="m">15\,\mathrm{m/s}</span>, nello stesso verso. Come vede l&#39;auto chi sta sul camion?</p>
+<p>Il sistema mobile è il camion: <span class="m">v_0 = 15\,\mathrm{m/s}</span>. L&#39;incognita è la velocità relativa: <span class="m">v' = v - v_0 = 20 - 15 = 5\,\mathrm{m/s}</span>. Chi è sul camion vede l&#39;auto avvicinarsi da dietro a <span class="m">5\,\mathrm{m/s}</span>.</p>
+<p>Se invece i due veicoli si vengono incontro (auto a <span class="m">+20</span>, camion a <span class="m">-15\,\mathrm{m/s}</span>), dal camion l&#39;auto arriva a <span class="m">v' = 20 - (-15) = 35\,\mathrm{m/s}</span>: nei versi opposti le velocità relative si sommano in modulo.</p>
 </div>
 
 <div class="callout attenzione">
 
-<p>Converti sempre le unità prima di sommare: km/h e m/s non si mescolano. Per passare da km/h a m/s dividi per <span class="m">3{,}6</span>.</p>
+<p>Converti sempre le unità <strong>prima</strong> di sommare: km/h e m/s non si mescolano. Per passare da km/h a m/s dividi per <span class="m">3{,}6</span>; da m/s a km/h moltiplica per <span class="m">3{,}6</span>. E controlla il segno del risultato: è il segno a dire il verso.</p>
 </div>
 
-<h2>Caso generale: sistema mobile che ruota</h2>
-<p>Se il sistema mobile trasla e insieme ruota con velocità angolare <span class="m">\vec\omega</span>, la formula diventa:
-<span class="m d">\vec v = \vec v\,' + \vec v_{tr}, \qquad \vec v_{tr} = \vec V_{O'} + \vec\omega \times \vec r\,'</span>
+<h2>Caso generale: due sistemi in moto qualsiasi</h2>
+<p>Generalizziamo. Siano <span class="m">Oxyz</span> e <span class="m">O'x'y'z'</span> due sistemi cartesiani in moto <strong>qualsiasi</strong> l&#39;uno rispetto all&#39;altro: l&#39;origine <span class="m">O'</span> può muoversi in qualunque modo e gli assi del sistema mobile possono anche <strong>ruotare</strong>. I versori degli assi sono <span class="m">\hat i, \hat j, \hat k</span> (fissi) e <span class="m">\hat i', \hat j', \hat k'</span> (mobili).</p>
+<p>Chiamiamo <span class="m">\vec R</span> il vettore posizione di <span class="m">O'</span> visto dal sistema fisso. Vale ancora la somma vettoriale
+<span class="m d">\vec r = \vec R + \vec r\,'</span>
 dove:</p>
 <ul>
-<li><span class="m">\vec v_{tr}</span> = <strong>velocità di trascinamento</strong> (m/s): la velocità che P avrebbe se fosse fermo nel sistema mobile;</li>
-<li><span class="m">\vec V_{O'}</span> = velocità dell&#39;origine del sistema mobile (m/s);</li>
-<li><span class="m">\vec\omega</span> = velocità angolare del sistema mobile (rad/s).</li>
+<li><span class="m">\vec r = x\,\hat i + y\,\hat j + z\,\hat k</span> = posizione di P nel sistema fisso (m);</li>
+<li><span class="m">\vec R</span> = posizione dell&#39;origine mobile <span class="m">O'</span> nel sistema fisso (m);</li>
+<li><span class="m">\vec r\,' = x'\,\hat i' + y'\,\hat j' + z'\,\hat k'</span> = posizione di P nel sistema mobile (m), scritta con le coordinate e i versori <strong>mobili</strong>.</li>
 </ul>
-<p>Il trascinamento ha quindi una parte che trasla e una parte che ruota.</p>
-<h2>Composizione delle accelerazioni e accelerazione di Coriolis</h2>
-<p>Derivando la legge delle velocità si ottiene:
-<span class="m d">\vec a = \vec a\,' + \vec a_{tr} + \vec a_{Co}, \qquad \vec a_{Co} = 2\,\vec\omega \times \vec v\,'</span>
+<p>La novità rispetto al caso semplice è che i versori <span class="m">\hat i', \hat j', \hat k'</span>, visti dal sistema fisso, <strong>possono cambiare direzione nel tempo</strong> (se il sistema mobile ruota). Questo è il punto chiave di tutta la derivazione.</p>
+<h3>Derivata di un versore che ruota</h3>
+<p>In cinematica (moto circolare) abbiamo visto che un vettore di modulo costante che ruota con velocità angolare <span class="m">\vec\omega</span> ha derivata
+<span class="m d">\frac{d\hat u}{dt} = \vec\omega \times \hat u</span>
+dove <span class="m">\hat u</span> è il versore (adimensionale) e <span class="m">\vec\omega</span> è il vettore velocità angolare (rad/s), diretto lungo l&#39;asse di rotazione con verso dato dalla regola della mano destra. È la stessa relazione <span class="m">\vec v = \vec\omega \times \vec r</span> del moto circolare, applicata a un vettore di lunghezza 1. Queste relazioni si chiamano <strong>formule di Poisson</strong>. Applicate ai tre versori del sistema mobile, che ruotano tutti con la stessa <span class="m">\vec\omega</span>:
+<span class="m d">\frac{d\hat i'}{dt} = \vec\omega\times\hat i', \qquad \frac{d\hat j'}{dt} = \vec\omega\times\hat j', \qquad \frac{d\hat k'}{dt} = \vec\omega\times\hat k'</span></p>
+<h3>Velocità assoluta, relativa e di trascinamento</h3>
+<p>Deriviamo <span class="m">\vec r = \vec R + \vec r\,'</span> rispetto al tempo, visto dal sistema fisso.</p>
+<ol>
+<li>La derivata di <span class="m">\vec r</span> è la velocità assoluta: <span class="m">\dfrac{d\vec r}{dt} = \vec v</span>.</li>
+<li>La derivata di <span class="m">\vec R</span> è la velocità dell&#39;origine mobile: <span class="m">\dfrac{d\vec R}{dt} = \vec V_{O'}</span>.</li>
+<li>La derivata di <span class="m">\vec r\,' = x'\hat i' + y'\hat j' + z'\hat k'</span> si fa con la regola del prodotto, perché cambiano sia le coordinate sia i versori:
+<span class="m d">\frac{d\vec r\,'}{dt} = \underbrace{\frac{dx'}{dt}\hat i' + \frac{dy'}{dt}\hat j' + \frac{dz'}{dt}\hat k'}_{\vec v\,'} + \underbrace{x'\frac{d\hat i'}{dt} + y'\frac{d\hat j'}{dt} + z'\frac{d\hat k'}{dt}}_{\vec\omega\times\vec r\,'}</span><ul>
+<li>il primo gruppo è la <strong>velocità relativa</strong> <span class="m">\vec v\,'</span>: è ciò che misura l&#39;osservatore mobile, per il quale i suoi versori sono fermi;</li>
+<li>nel secondo gruppo uso le formule di Poisson: <span class="m">x'(\vec\omega\times\hat i') + y'(\vec\omega\times\hat j') + z'(\vec\omega\times\hat k') = \vec\omega\times(x'\hat i' + y'\hat j' + z'\hat k') = \vec\omega\times\vec r\,'</span>.</li>
+</ul>
+</li>
+</ol>
+<p>Mettendo insieme:
+<span class="m d">\vec v = \vec v\,' + \vec V_{O'} + \vec\omega\times\vec r\,' = \vec v\,' + \vec v_{tr}</span>
+dove:</p>
+<ul>
+<li><span class="m">\vec v</span> = <strong>velocità assoluta</strong>, misurata dal sistema fisso (m/s);</li>
+<li><span class="m">\vec v\,'</span> = <strong>velocità relativa</strong>, misurata dal sistema mobile (m/s);</li>
+<li><span class="m">\vec v_{tr} = \vec V_{O'} + \vec\omega\times\vec r\,'</span> = <strong>velocità di trascinamento</strong> (m/s);</li>
+<li><span class="m">\vec V_{O'}</span> = velocità dell&#39;origine <span class="m">O'</span> (m/s);</li>
+<li><span class="m">\vec\omega</span> = velocità angolare del sistema mobile (rad/s);</li>
+<li><span class="m">\vec r\,'</span> = posizione di P nel sistema mobile (m).</li>
+</ul>
+<p><strong>Significato della velocità di trascinamento.</strong> È la velocità che il punto P avrebbe se fosse <strong>fermo nel sistema mobile</strong> (<span class="m">\vec v\,' = 0</span>), cioè se fosse semplicemente &quot;trascinato&quot; dal moto del sistema. Ha due parti:</p>
+<ul>
+<li>una parte <strong>traslatoria</strong>, <span class="m">\vec V_{O'}</span>, uguale per tutti i punti;</li>
+<li>una parte <strong>rotatoria</strong>, <span class="m">\vec\omega\times\vec r\,'</span>, che cresce con la distanza dall&#39;asse di rotazione (come per un punto di una giostra: più è lontano dal centro, più va veloce).</li>
+</ul>
+<p>Se il sistema mobile <strong>non ruota</strong> (<span class="m">\vec\omega = 0</span>) si ritrova il caso semplice: <span class="m">\vec v = \vec v\,' + \vec V_{O'}</span>. Questa composizione, con il tempo uguale per tutti gli osservatori, si chiama <strong>trasformazione di Galileo</strong> delle velocità.</p>
+<div class="callout esempio">
+
+<p><strong>La barca che attraversa il fiume (esercizio della dispensa).</strong> Una barca punta la prua verso Nord e attraversa un fiume largo con velocità <span class="m">10\,\mathrm{km/h}</span> rispetto all&#39;acqua. Il fiume scorre esattamente verso Est a <span class="m">5\,\mathrm{km/h}</span>. Qual è la velocità della barca per un osservatore fermo a terra?</p>
+<ol>
+<li>Sistema mobile = l&#39;acqua, che trasla verso Est senza ruotare: <span class="m">\vec V_{O'} = 5\,\mathrm{km/h}</span> verso Est, <span class="m">\vec\omega = 0</span>.</li>
+<li>Velocità relativa = velocità della barca rispetto all&#39;acqua: <span class="m">\vec v\,' = 10\,\mathrm{km/h}</span> verso Nord.</li>
+<li>Composizione vettoriale: <span class="m">\vec v = \vec v\,' + \vec V_{O'}</span>. I due vettori sono <strong>perpendicolari</strong> (Nord ed Est), quindi il modulo si trova con Pitagora:
+<span class="m d">v = \sqrt{10^2 + 5^2} = \sqrt{125} \approx 11{,}2\,\mathrm{km/h}</span></li>
+<li>La direzione: l&#39;angolo <span class="m">\varphi</span> rispetto al Nord, verso Est, ha <span class="m">\tan\varphi = 5/10 = 0{,}5</span>, quindi <span class="m">\varphi \approx 26{,}6°</span>.</li>
+</ol>
+<p>La barca, vista da terra, va più veloce che rispetto all&#39;acqua e non va dritta verso Nord: scarroccia verso Est.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Velocità di trascinamento su una piattaforma rotante.</strong> Una piattaforma ruota con <span class="m">\omega = 2\,\mathrm{rad/s}</span> attorno al suo centro, che è fermo (<span class="m">\vec V_{O'} = 0</span>). Un bambino è fermo sulla piattaforma a <span class="m">r' = 3\,\mathrm m</span> dal centro.</p>
+<p>Per la piattaforma il bambino è fermo: <span class="m">v' = 0</span>. Per chi sta a terra il bambino ha la velocità di trascinamento, che è solo rotatoria: <span class="m">\vec v_{tr} = \vec\omega\times\vec r\,'</span>. Poiché <span class="m">\vec\omega</span> (verticale) è perpendicolare a <span class="m">\vec r\,'</span> (orizzontale), il modulo è <span class="m">v = \omega r' = 2 \cdot 3 = 6\,\mathrm{m/s}</span>, diretta tangente alla circonferenza.</p>
+<p>Se il bambino camminasse sulla piattaforma con <span class="m">\vec v\,'</span>, per chi sta a terra la sua velocità sarebbe <span class="m">\vec v = \vec v\,' + \vec v_{tr}</span>.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Velocità angolare della Terra (esercizio della dispensa).</strong> La Terra compie una rotazione completa (<span class="m">2\pi\,\mathrm{rad}</span>) in un giorno, <span class="m">T = 24\,\mathrm h = 86\,400\,\mathrm s</span>. Supponendo <span class="m">\omega</span> costante:
+<span class="m d">\omega = \frac{2\pi}{T} = \frac{6{,}283}{86\,400} \approx 7{,}27\cdot 10^{-5}\,\mathrm{rad/s}</span>
+Un punto all&#39;Equatore (<span class="m">r' = R_T \approx 6{,}37\cdot 10^6\,\mathrm m</span>) ha velocità di trascinamento <span class="m">\omega R_T \approx 463\,\mathrm{m/s}</span>, circa <span class="m">1670\,\mathrm{km/h}</span>: è la velocità con cui &quot;ci trascina&quot; la rotazione terrestre, che non percepiamo perché ci muoviamo insieme alla Terra.</p>
+</div>
+
+<h2>Composizione delle accelerazioni</h2>
+<p>Per trovare il legame tra le accelerazioni deriviamo ancora, rispetto al tempo e visto dal sistema fisso, la legge delle velocità
+<span class="m d">\vec v = \vec v\,' + \vec V_{O'} + \vec\omega\times\vec r\,'</span>
+termine per termine.</p>
+<ol>
+<li><span class="m">\dfrac{d\vec v}{dt} = \vec a</span>, accelerazione assoluta.</li>
+<li><span class="m">\dfrac{d\vec V_{O'}}{dt} = \vec a_{O'}</span>, accelerazione dell&#39;origine mobile.</li>
+<li><span class="m">\vec v\,' = v'_x\hat i' + v'_y\hat j' + v'_z\hat k'</span> è scritta con i versori mobili, quindi si deriva come prima <span class="m">\vec r\,'</span> (regola del prodotto + Poisson):
+<span class="m d">\frac{d\vec v\,'}{dt} = \vec a\,' + \vec\omega\times\vec v\,'</span>
+dove <span class="m">\vec a\,'</span> è l&#39;<strong>accelerazione relativa</strong>, quella misurata dall&#39;osservatore mobile.</li>
+<li><span class="m">\vec\omega\times\vec r\,'</span> è un prodotto, quindi:
+<span class="m d">\frac{d}{dt}(\vec\omega\times\vec r\,') = \frac{d\vec\omega}{dt}\times\vec r\,' + \vec\omega\times\frac{d\vec r\,'}{dt} = \frac{d\vec\omega}{dt}\times\vec r\,' + \vec\omega\times(\vec v\,' + \vec\omega\times\vec r\,')</span>
+dove ho usato il risultato già trovato <span class="m">\dfrac{d\vec r\,'}{dt} = \vec v\,' + \vec\omega\times\vec r\,'</span>.</li>
+</ol>
+<p>Sommo tutto:
+<span class="m d">\vec a = \vec a\,' + \vec\omega\times\vec v\,' + \vec a_{O'} + \frac{d\vec\omega}{dt}\times\vec r\,' + \vec\omega\times\vec v\,' + \vec\omega\times(\vec\omega\times\vec r\,')</span>
+Il termine <span class="m">\vec\omega\times\vec v\,'</span> compare <strong>due volte</strong>. Raggruppando:
+<span class="m d">\boxed{\vec a = \vec a\,' + \vec a_{tr} + \vec a_{Co}}</span>
+con
+<span class="m d">\vec a_{tr} = \vec a_{O'} + \frac{d\vec\omega}{dt}\times\vec r\,' + \vec\omega\times(\vec\omega\times\vec r\,'), \qquad \vec a_{Co} = 2\,\vec\omega\times\vec v\,'</span>
 dove:</p>
 <ul>
 <li><span class="m">\vec a</span> = accelerazione assoluta (m/s²);</li>
 <li><span class="m">\vec a\,'</span> = accelerazione relativa, vista dal sistema mobile (m/s²);</li>
-<li><span class="m">\vec a_{tr} = \vec a_{O'} + \dfrac{d\vec\omega}{dt} \times \vec r\,' + \vec\omega \times (\vec\omega \times \vec r\,')</span> = <strong>accelerazione di trascinamento</strong> (m/s²): quella che P avrebbe se fosse fermo nel sistema mobile; l&#39;ultimo termine è la parte centripeta;</li>
-<li><span class="m">\vec a_{Co}</span> = <strong>accelerazione di Coriolis</strong> (o complementare) (m/s²).</li>
+<li><span class="m">\vec a_{tr}</span> = <strong>accelerazione di trascinamento</strong> (m/s²);</li>
+<li><span class="m">\vec a_{O'}</span> = accelerazione dell&#39;origine mobile (m/s²);</li>
+<li><span class="m">d\vec\omega/dt</span> = accelerazione angolare del sistema mobile (rad/s²);</li>
+<li><span class="m">\vec a_{Co}</span> = <strong>accelerazione di Coriolis</strong>, detta anche <strong>complementare</strong> (m/s²).</li>
 </ul>
-<p>L&#39;accelerazione di Coriolis è un termine in più rispetto alla legge delle velocità. Compare solo se il sistema <strong>ruota</strong> e il punto <strong>si muove</strong> rispetto a esso. È nulla se <span class="m">\vec v\,' = 0</span> oppure se <span class="m">\vec v\,'</span> è parallela all&#39;asse di rotazione. È sempre perpendicolare sia a <span class="m">\vec\omega</span> sia a <span class="m">\vec v\,'</span>.</p>
-<p>La Terra ruota, quindi chi sta sulla sua superficie è in un sistema rotante. L&#39;effetto di Coriolis cambia verso tra i due emisferi. Per questo cicloni e correnti girano in versi opposti a Nord e a Sud dell&#39;Equatore.</p>
-<h2>Sistemi inerziali e relatività galileiana</h2>
-<p>Un sistema è <strong>inerziale</strong> se un corpo libero (senza forze) resta fermo o si muove di moto rettilineo uniforme.</p>
-<p>Se il sistema mobile si muove a velocità <span class="m">\vec V</span> <strong>costante</strong>, le accelerazioni coincidono: <span class="m">\vec a = \vec a\,'</span>. Quindi <span class="m">\vec F = m\vec a</span> vale uguale nei due sistemi.</p>
-<p><strong>Principio di relatività galileiana</strong>: tra due laboratori in moto rettilineo uniforme l&#39;uno rispetto all&#39;altro nessun esperimento dà risultati diversi. Le singole misure (per esempio le velocità) cambiano. Le leggi fisiche restano le stesse.</p>
-<h2>Sistemi accelerati: forze apparenti e caduta libera</h2>
-<p>Se il sistema mobile accelera con <span class="m">\vec A</span> (senza ruotare), vale <span class="m">\vec a\,' = \vec a - \vec A</span>. Chi sta dentro vede i corpi accelerare &quot;da soli&quot;. Per usare ancora <span class="m">F = ma</span> aggiunge una <strong>forza apparente</strong>:
-<span class="m d">\vec F_{app} = -m\vec A</span>
-dove <span class="m">m</span> è la massa del corpo (kg) e <span class="m">\vec A</span> l&#39;accelerazione del sistema (m/s²).</p>
-<p><strong>Corpo in un sistema in caduta libera.</strong> Il sistema cade con <span class="m">\vec A = \vec g</span>. Ogni oggetto al suo interno cade con la stessa accelerazione. La forza apparente <span class="m">-m\vec g</span> annulla esattamente il peso. Risultato:</p>
+<h3>L&#39;accelerazione di trascinamento</h3>
+<p>Come per la velocità, si definisce l&#39;accelerazione di trascinamento come l&#39;accelerazione che il punto avrebbe se fosse <strong>solidale con il sistema mobile</strong>, cioè con <span class="m">\vec v\,' = 0</span> e <span class="m">\vec a\,' = 0</span>. Ponendo questi valori nella formula generale restano proprio i tre termini di <span class="m">\vec a_{tr}</span>. Anche questa è la sovrapposizione di:</p>
 <ul>
-<li>un oggetto lasciato libero resta fermo rispetto al sistema: <strong>fluttua</strong>;</li>
-<li>una bilancia segna zero: <strong>assenza di peso apparente</strong>;</li>
-<li>il corpo si muove di moto rettilineo uniforme se gli dai una spinta.</li>
+<li>una parte <strong>traslatoria</strong>, <span class="m">\vec a_{O'}</span>;</li>
+<li>una parte rotatoria dovuta alla <strong>variazione della velocità angolare</strong>, <span class="m">\dfrac{d\vec\omega}{dt}\times\vec r\,'</span> (è l&#39;analogo dell&#39;accelerazione tangenziale del moto circolare vario);</li>
+<li>una parte rotatoria <strong>centripeta</strong>, <span class="m">\vec\omega\times(\vec\omega\times\vec r\,')</span>.</li>
 </ul>
-<p>Succede agli astronauti in orbita e negli aerei che simulano l&#39;assenza di gravità scendendo in caduta libera. La gravità c&#39;è ancora: manca solo il suo effetto relativo.</p>
+<p>Perché l&#39;ultimo termine è centripeto? Scomponi <span class="m">\vec r\,'</span> in una parte parallela all&#39;asse di rotazione e una parte <span class="m">\vec r_\perp</span> perpendicolare all&#39;asse (che va dall&#39;asse al punto). Il prodotto <span class="m">\vec\omega\times\vec r\,'</span> &quot;vede&quot; solo <span class="m">\vec r_\perp</span>, e applicando due volte il prodotto vettoriale si ottiene
+<span class="m d">\vec\omega\times(\vec\omega\times\vec r\,') = -\omega^2\,\vec r_\perp</span>
+cioè un vettore di modulo <span class="m">\omega^2 r_\perp</span> diretto <strong>verso l&#39;asse</strong>: è esattamente l&#39;accelerazione centripeta <span class="m">\omega^2 R</span> del moto circolare uniforme, con <span class="m">R = r_\perp</span> distanza dall&#39;asse.</p>
+<h3>L&#39;accelerazione di Coriolis</h3>
+<p>Confrontiamo la legge delle accelerazioni con quella delle velocità. Nella legge delle velocità ci sono solo il termine relativo e quello di trascinamento. Nella legge delle accelerazioni compare un <strong>termine in più</strong>, che non è né relativo né di trascinamento:
+<span class="m d">\vec a_{Co} = 2\,\vec\omega\times\vec v\,'</span>
+È l&#39;<strong>accelerazione di Coriolis</strong> (o complementare). Viene dai due termini <span class="m">\vec\omega\times\vec v\,'</span> che abbiamo visto nascere uno dalla rotazione del vettore <span class="m">\vec v\,'</span> e uno dalla variazione di <span class="m">\vec\omega\times\vec r\,'</span> quando il punto si sposta nel sistema rotante.</p>
+<p>Proprietà:</p>
+<ul>
+<li>compare solo se il sistema mobile <strong>ruota</strong> (<span class="m">\vec\omega \ne 0</span>) <strong>e</strong> il punto <strong>si muove</strong> rispetto a esso (<span class="m">\vec v\,' \ne 0</span>);</li>
+<li>è nulla se <span class="m">\vec v\,'</span> è <strong>parallela all&#39;asse</strong> di rotazione (il prodotto vettoriale di vettori paralleli è zero);</li>
+<li>è sempre <strong>perpendicolare</strong> sia a <span class="m">\vec\omega</span> sia a <span class="m">\vec v\,'</span> (proprietà del prodotto vettoriale);</li>
+<li>il modulo è <span class="m">a_{Co} = 2\,\omega\,v'\sin\gamma</span>, dove <span class="m">\gamma</span> è l&#39;angolo tra <span class="m">\vec\omega</span> e <span class="m">\vec v\,'</span>; è massimo (<span class="m">2\omega v'</span>) quando <span class="m">\vec v\,'</span> è perpendicolare all&#39;asse.</li>
+</ul>
 <div class="callout esempio">
 
-<p>Ascensore che accelera verso l&#39;alto con <span class="m">a</span>: la bilancia segna <span class="m">N = m(g + a)</span>, il peso apparente aumenta. Se accelera verso il basso con <span class="m">a &lt; g</span>, segna <span class="m">m(g - a)</span>.</p>
+<p><strong>Coriolis su una piattaforma.</strong> Sulla piattaforma dell&#39;esempio precedente (<span class="m">\omega = 2\,\mathrm{rad/s}</span>, asse verticale) una pallina rotola in direzione radiale verso l&#39;esterno con <span class="m">v' = 1\,\mathrm{m/s}</span>. La velocità relativa è orizzontale, quindi perpendicolare a <span class="m">\vec\omega</span>:
+<span class="m d">a_{Co} = 2\,\omega\,v' = 2 \cdot 2 \cdot 1 = 4\,\mathrm{m/s^2}</span>
+È orizzontale e perpendicolare alla direzione radiale. Non è piccola: è quasi metà di <span class="m">g</span>. Su una giostra gli effetti di Coriolis si sentono bene.</p>
 </div>
 
-<h2>Sistemi rotanti: centrifuga e Coriolis</h2>
-<p>In un sistema che ruota con velocità angolare <span class="m">\omega</span> compaiono due forze apparenti:</p>
+<div class="callout esempio">
+
+<p><strong>Coriolis sulla Terra.</strong> Un&#39;auto va a <span class="m">v' = 10\,\mathrm{m/s}</span> su una strada orizzontale. La Terra ruota con <span class="m">\omega = 7{,}27\cdot 10^{-5}\,\mathrm{rad/s}</span>. Il valore massimo possibile è
+<span class="m d">a_{Co} = 2\,\omega\,v' = 2 \cdot 7{,}27\cdot 10^{-5} \cdot 10 \approx 1{,}5\cdot 10^{-3}\,\mathrm{m/s^2}</span>
+Alle nostre latitudini conta solo la componente di <span class="m">\vec\omega</span> perpendicolare al suolo, quindi il valore è circa la metà, <span class="m">\approx 7\cdot 10^{-4}\,\mathrm{m/s^2}</span>: circa diecimila volte meno di <span class="m">g</span>. Per questo nella vita di tutti i giorni non ce ne accorgiamo.</p>
+</div>
+
+<h3>La Terra è un sistema rotante: cicloni e correnti</h3>
+<p>Chi sta sulla superficie terrestre fa parte di un sistema di riferimento <strong>in rotazione</strong>. Il vettore <span class="m">\vec\omega</span> della Terra è diretto lungo l&#39;asse terrestre, dal Polo Sud al Polo Nord. Rispetto al terreno, però, questo vettore &quot;punta verso l&#39;alto&quot; (fuori dal suolo) nell&#39;emisfero Nord e &quot;verso il basso&quot; (dentro il suolo) nell&#39;emisfero Sud.</p>
+<p>Conseguenza: a parità di moto relativo (per esempio un moto da un polo verso l&#39;Equatore) il prodotto vettoriale <span class="m">\vec\omega\times\vec v\,'</span> cambia verso tra i due emisferi, e quindi cambia verso anche l&#39;accelerazione di Coriolis. È per questo che <strong>le correnti e i sistemi ciclonici e anticiclonici</strong>, tipici esempi dell&#39;effetto di Coriolis, hanno <strong>moti vorticosi opposti</strong> nei due emisferi: i cicloni ruotano in senso antiorario nell&#39;emisfero Nord e orario nell&#39;emisfero Sud. I dettagli (deviazione verso destra o sinistra, venti, fiumi) sono nella lezione 13.</p>
+<h2>Riepilogo delle leggi del moto relativo</h2>
+<table>
+<thead>
+<tr>
+<th>Grandezza</th>
+<th>Sistema &quot;assoluto&quot;</th>
+<th>Sistema &quot;relativo&quot;</th>
+<th>Legame</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>posizione</td>
+<td><span class="m">\vec r</span></td>
+<td><span class="m">\vec r\,'</span></td>
+<td><span class="m">\vec r = \vec R + \vec r\,'</span></td>
+</tr>
+<tr>
+<td>velocità</td>
+<td><span class="m">\vec v</span></td>
+<td><span class="m">\vec v\,'</span></td>
+<td><span class="m">\vec v = \vec v\,' + \vec v_{tr}</span>, con <span class="m">\vec v_{tr} = \vec V_{O'} + \vec\omega\times\vec r\,'</span></td>
+</tr>
+<tr>
+<td>accelerazione</td>
+<td><span class="m">\vec a</span></td>
+<td><span class="m">\vec a\,'</span></td>
+<td><span class="m">\vec a = \vec a\,' + \vec a_{tr} + \vec a_{Co}</span></td>
+</tr>
+</tbody></table>
+<p>con <span class="m">\vec a_{tr} = \vec a_{O'} + \dfrac{d\vec\omega}{dt}\times\vec r\,' + \vec\omega\times(\vec\omega\times\vec r\,')</span> e <span class="m">\vec a_{Co} = 2\,\vec\omega\times\vec v\,'</span>.</p>
+<h2>Casi particolari importanti</h2>
+<p>La legge generale delle accelerazioni contiene tutti i casi. Vediamo i tre che servono di più.</p>
+<h3>1. Traslazione a velocità costante: le accelerazioni coincidono</h3>
+<p>Se il sistema mobile <strong>trasla</strong> (<span class="m">\vec\omega = 0</span>) con <strong>velocità costante</strong> (<span class="m">\vec a_{O'} = 0</span>), allora <span class="m">\vec a_{tr} = 0</span> e <span class="m">\vec a_{Co} = 0</span>, quindi:
+<span class="m d">\vec a = \vec a\,'</span>
+I due osservatori misurano velocità diverse ma <strong>la stessa accelerazione</strong>. Poiché la massa di un corpo è la stessa per tutti, anche la seconda legge <span class="m">\vec F = m\vec a</span> ha la stessa forma nei due sistemi. È il cuore del <strong>principio di relatività galileiana</strong>: tra due laboratori in moto rettilineo uniforme l&#39;uno rispetto all&#39;altro nessun esperimento dà risultati diversi. Cambiano le singole misure (per esempio le velocità), ma <strong>non le leggi fisiche</strong>. Ne segue che se un sistema è inerziale (un corpo libero non accelera), ogni sistema in moto rettilineo uniforme rispetto a esso è anch&#39;esso inerziale (lezione 10).</p>
+<h3>2. Traslazione accelerata: forza apparente e caduta libera</h3>
+<p>Se il sistema mobile trasla <strong>senza ruotare</strong> ma con accelerazione <span class="m">\vec A = \vec a_{O'}</span>, allora <span class="m">\vec a_{tr} = \vec A</span>, <span class="m">\vec a_{Co} = 0</span> e
+<span class="m d">\vec a\,' = \vec a - \vec A</span>
+Chi sta dentro il sistema vede i corpi accelerare &quot;da soli&quot; di <span class="m">-\vec A</span>. Moltiplicando per la massa: <span class="m">m\vec a\,' = m\vec a - m\vec A = \vec F + (-m\vec A)</span>. Per continuare a usare la seconda legge, l&#39;osservatore mobile deve aggiungere alle forze vere una <strong>forza apparente</strong>
+<span class="m d">\vec F_{app} = -m\vec A</span>
+dove <span class="m">m</span> è la massa del corpo (kg) e <span class="m">\vec A</span> l&#39;accelerazione del sistema (m/s²). È opposta all&#39;accelerazione del sistema: in un&#39;auto che frena ci sentiamo spinti in avanti.</p>
+<p><strong>Corpo in un sistema in caduta libera (domanda aperta del paniere).</strong> Consideriamo un sistema che cade liberamente, per esempio un ascensore a cui si è spezzato il cavo: la sua accelerazione è <span class="m">\vec A = \vec g</span>. Un corpo al suo interno è soggetto al peso <span class="m">m\vec g</span>. La sua accelerazione relativa è
+<span class="m d">\vec a\,' = \vec a - \vec A = \vec g - \vec g = 0</span>
+oppure, con il linguaggio delle forze apparenti: <span class="m">m\vec a\,' = m\vec g + (-m\vec g) = 0</span>. La forza apparente <span class="m">-m\vec g</span> annulla <strong>esattamente</strong> il peso. Conseguenze:</p>
 <ul>
-<li><strong>forza centrifuga</strong> <span class="m">m\omega^2 r</span>, radiale verso l&#39;esterno; agisce anche sui corpi fermi nel sistema rotante;</li>
-<li><strong>forza di Coriolis</strong> <span class="m">\vec F_{Co} = -2m\,\vec\omega \times \vec v\,'</span>; agisce solo sui corpi in moto rispetto al sistema rotante, con velocità non parallela all&#39;asse.</li>
+<li>un oggetto lasciato libero <strong>resta fermo</strong> rispetto al sistema: <strong>fluttua</strong>, come se non pesasse;</li>
+<li>un corpo appoggiato su una bilancia non la preme più: la bilancia segna <strong>zero</strong> (assenza di peso apparente);</li>
+<li>se gli si dà una spinta, il corpo si muove <strong>di moto rettilineo uniforme</strong> rispetto al sistema, finché non urta una parete: dentro il sistema in caduta libera si comporta come un corpo libero in un sistema inerziale.</li>
 </ul>
-<p>dove <span class="m">r</span> = distanza dall&#39;asse (m), <span class="m">\vec v\,'</span> = velocità relativa al sistema rotante (m/s).</p>
-<p>Sulla Terra la forza di Coriolis devia i corpi in moto verso <strong>destra</strong> nell&#39;emisfero Nord e verso <strong>sinistra</strong> nell&#39;emisfero Sud.</p>
+<p>La gravità non è sparita: il corpo e il sistema cadono <strong>insieme</strong>, con la stessa accelerazione <span class="m">g</span> (tutti i corpi cadono con la stessa <span class="m">g</span>, qualunque sia la massa), quindi non c&#39;è moto relativo. Su questo principio si basano gli aerei che simulano l&#39;assenza di gravità per l&#39;addestramento degli astronauti: ad alta quota vengono lasciati in caduta libera per alcune decine di secondi. Anche gli astronauti in orbita sono in caduta libera continua attorno alla Terra.</p>
+<div class="callout esempio">
+
+<p><strong>Ascensore che accelera.</strong> Un corpo di massa <span class="m">m</span> sta su una bilancia in un ascensore che accelera verso l&#39;alto con <span class="m">a</span>. Nel sistema dell&#39;ascensore il corpo è fermo, quindi la somma delle forze (vere + apparente) è zero. Asse verso l&#39;alto: <span class="m">N - mg - ma = 0</span>, quindi <span class="m">N = m(g + a)</span>: la bilancia segna di più, ci si sente più pesanti. Se l&#39;ascensore accelera verso il basso con <span class="m">a &lt; g</span>: <span class="m">N = m(g - a)</span>, ci si sente più leggeri. Con <span class="m">a = g</span> (caduta libera): <span class="m">N = 0</span>. Il caso completo è nella lezione 13.</p>
+</div>
+
+<h3>3. Sistema che ruota: centrifuga e Coriolis</h3>
+<p>Se il sistema ruota con velocità angolare <span class="m">\vec\omega</span> <strong>costante</strong> attorno a un asse fisso (<span class="m">\vec a_{O'} = 0</span>, <span class="m">d\vec\omega/dt = 0</span>), dalla legge generale moltiplicata per <span class="m">m</span> si ottiene
+<span class="m d">m\vec a\,' = \vec F - m\,\vec\omega\times(\vec\omega\times\vec r\,') - 2m\,\vec\omega\times\vec v\,'</span>
+Compaiono due forze apparenti:</p>
+<ul>
+<li>la <strong>forza centrifuga</strong> <span class="m">-m\,\vec\omega\times(\vec\omega\times\vec r\,') = m\omega^2\vec r_\perp</span>, di modulo <span class="m">m\omega^2 r</span>, radiale <strong>verso l&#39;esterno</strong>; agisce su tutti i corpi, anche fermi nel sistema rotante;</li>
+<li>la <strong>forza di Coriolis</strong> <span class="m">\vec F_{Co} = -2m\,\vec\omega\times\vec v\,'</span>; agisce solo sui corpi <strong>in moto</strong> rispetto al sistema rotante, con velocità non parallela all&#39;asse.</li>
+</ul>
+<p>Qui <span class="m">r</span> è la distanza dall&#39;asse (m) e <span class="m">\vec v\,'</span> la velocità relativa al sistema rotante (m/s). Sulla Terra la forza di Coriolis devia i corpi in moto verso <strong>destra</strong> nell&#39;emisfero Nord e verso <strong>sinistra</strong> nell&#39;emisfero Sud. Tutto questo è sviluppato nella lezione 13.</p>
+<div class="callout attenzione">
+
+<p>Non confondere <span class="m">\vec a_{Co} = 2\,\vec\omega\times\vec v\,'</span> (l&#39;accelerazione di Coriolis, termine della legge di composizione) con <span class="m">\vec F_{Co} = -2m\,\vec\omega\times\vec v\,'</span> (la forza apparente): la forza ha il segno <strong>meno</strong>, perché per l&#39;osservatore rotante <span class="m">m\vec a\,' = m\vec a - m\vec a_{tr} - m\vec a_{Co}</span>.</p>
+</div>
+
+<div class="callout attenzione">
+
+<p>L&#39;accelerazione di Coriolis <strong>non</strong> c&#39;è nella legge delle velocità: è un termine che compare solo passando alle accelerazioni. E non dipende dalla posizione del punto, ma dalla sua <strong>velocità relativa</strong>: un corpo fermo nel sistema rotante sente la centrifuga ma non Coriolis.</p>
+</div>
+
 <div class="callout esame">
 
-<p>Domande aperte tipiche: &quot;Cos&#39;è l&#39;accelerazione di Coriolis?&quot; → termine <span class="m">2\,\vec\omega \times \vec v\,'</span> che compare nelle accelerazioni relative quando il sistema ruota e il punto si muove in esso; cita cicloni e correnti. &quot;Comportamento di un corpo in un sistema in caduta libera&quot; → peso annullato dalla forza apparente, il corpo fluttua.</p>
+<ul>
+<li><strong>&quot;Cos&#39;è l&#39;accelerazione di Coriolis?&quot;</strong> (aperta): è il termine <span class="m">\vec a_{Co} = 2\,\vec\omega\times\vec v\,'</span> che compare nella legge di composizione delle accelerazioni <span class="m">\vec a = \vec a\,' + \vec a_{tr} + \vec a_{Co}</span> quando il sistema mobile <strong>ruota</strong> con velocità angolare <span class="m">\vec\omega</span> e il punto <strong>si muove</strong> in esso con velocità relativa <span class="m">\vec v\,'</span>. È un termine in più rispetto alla legge delle velocità, perpendicolare a <span class="m">\vec\omega</span> e a <span class="m">\vec v\,'</span>, nullo se <span class="m">\vec v\,'</span> è parallela all&#39;asse. Sulla Terra (sistema rotante) cambia verso tra i due emisferi: spiega il verso opposto di rotazione dei cicloni e delle correnti. Scrivi la formula e cita l&#39;esempio terrestre.</li>
+<li><strong>&quot;Descrivere il comportamento di un corpo in un sistema in caduta libera&quot;</strong> (aperta): il sistema accelera con <span class="m">\vec g</span>; nel sistema compare la forza apparente <span class="m">-m\vec g</span> che annulla il peso; il corpo ha accelerazione relativa nulla, fluttua, la bilancia segna zero, se spinto si muove di moto rettilineo uniforme; la gravità agisce ancora ma corpo e sistema cadono insieme (aerei per l&#39;addestramento, astronauti).</li>
+<li><strong>Chiusa sul treno e l&#39;auto</strong>: composizione <span class="m">v = v' + V</span> con i segni e le unità convertite (km/h ÷ 3,6 = m/s). Controlla sempre segno (verso) e unità della risposta.</li>
+</ul>
 </div>
 
 <div class="callout sintesi">
 
 <ul>
-<li>Posizioni: <span class="m">\vec r = \vec R + \vec r\,'</span>; velocità (traslazione): <span class="m">\vec v = \vec v\,' + \vec V</span>.</li>
-<li>Con <span class="m">\vec V</span> costante <span class="m">\vec a = \vec a\,'</span>: tutti i sistemi in moto rettilineo uniforme rispetto a un inerziale sono inerziali.</li>
-<li>Caso generale: <span class="m">\vec a = \vec a\,' + \vec a_{tr} + 2\,\vec\omega \times \vec v\,'</span> (l&#39;ultimo è Coriolis).</li>
-<li>Sistema accelerato: forza apparente <span class="m">-m\vec A</span>; in caduta libera il peso apparente è zero.</li>
-<li>Sistema rotante: centrifuga <span class="m">m\omega^2 r</span> e Coriolis <span class="m">-2m\,\vec\omega\times\vec v\,'</span>.</li>
+<li>Posizioni: <span class="m">\vec r = \vec R + \vec r\,'</span>. Assoluto = sistema fisso, relativo = sistema mobile.</li>
+<li>Velocità: <span class="m">\vec v = \vec v\,' + \vec v_{tr}</span>, con <span class="m">\vec v_{tr} = \vec V_{O'} + \vec\omega\times\vec r\,'</span> (velocità del punto se fosse fermo nel sistema mobile). Senza rotazione: <span class="m">\vec v = \vec v\,' + \vec V</span> (Galileo).</li>
+<li>Derivata di un versore che ruota: <span class="m">d\hat u/dt = \vec\omega\times\hat u</span> (Poisson).</li>
+<li>Accelerazioni: <span class="m">\vec a = \vec a\,' + \vec a_{tr} + \vec a_{Co}</span>, con <span class="m">\vec a_{tr} = \vec a_{O'} + \dot{\vec\omega}\times\vec r\,' + \vec\omega\times(\vec\omega\times\vec r\,')</span> e <span class="m">\vec a_{Co} = 2\,\vec\omega\times\vec v\,'</span>.</li>
+<li>Coriolis: solo se il sistema ruota e il punto si muove in esso; perpendicolare a <span class="m">\vec\omega</span> e <span class="m">\vec v\,'</span>; cicloni opposti nei due emisferi.</li>
+<li><span class="m">\vec V</span> costante e niente rotazione ⇒ <span class="m">\vec a = \vec a\,'</span>: relatività galileiana, sistemi inerziali.</li>
+<li>Sistema accelerato: forza apparente <span class="m">-m\vec A</span>; in caduta libera il peso apparente è zero e il corpo fluttua.</li>
+<li>Sistema rotante: centrifuga <span class="m">m\omega^2 r</span> verso l&#39;esterno e Coriolis <span class="m">-2m\,\vec\omega\times\vec v\,'</span>.</li>
 </ul>
 </div>

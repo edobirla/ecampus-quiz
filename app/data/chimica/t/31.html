@@ -1,5 +1,10 @@
 <h1 id="lez-31">Lezione 31 — Secondo principio della termodinamica e interpretazione molecolare dell&#39;entropia</h1>
 <h2 id="lez-31-perche">Perché questa lezione esiste</h2>
+<p>Joule, con il suo famoso esperimento, dimostrò che calore e lavoro sono due forme
+della stessa cosa (energia): si riesce sempre a convertire <strong>tutto</strong> il lavoro
+meccanico in calore, e l&#39;energia si conserva. Ma è vero anche il contrario? Si può
+convertire tutto il calore in lavoro? La risposta è <strong>no</strong>, e questa è in sostanza la
+morale del secondo principio della termodinamica.</p>
 <p>Il primo principio dice che l&#39;energia non si crea né si distrugge. Ma non dice
 <strong>quali</strong> trasformazioni possono avvenire spontaneamente. Un gas si espande da solo
 nel vuoto; il contrario — un gas che si comprime spontaneamente in un angolo della
@@ -7,6 +12,10 @@ stanza — non si è mai osservato, eppure non violerebbe affatto la conservazio
 dell&#39;energia. Serve un secondo criterio, indipendente dal primo: è il secondo
 principio della termodinamica, ed è il concetto più esaminato di tutto il blocco
 termodinamico del corso.</p>
+<p>Questa lezione introduce l&#39;entropia dal punto di vista <strong>molecolare</strong> (Boltzmann):
+contare in quanti modi le molecole possono realizzare uno stato. La lezione
+successiva (<a href="#/teoria/chimica/32/lez-32">Lezione 32</a>) la ritroverà dal punto di vista <strong>macroscopico</strong>
+(Clausius: calore scambiato e temperatura).</p>
 <h2 id="lez-31-espansione">L&#39;esperimento che apre il problema</h2>
 <p>Riprendi l&#39;espansione libera di un gas ideale (vista a proposito di <span class="m">U=U(T)</span>): due
 recipienti collegati da una valvola, uno con gas, l&#39;altro vuoto. Aprendo la valvola,
@@ -14,6 +23,32 @@ il gas occupa spontaneamente tutto il volume disponibile. In quell&#39;esperimen
 <span class="m">\Delta U = 0</span> (adiabatico, <span class="m">P_{ext}=0</span> quindi nessun lavoro), eppure la
 trasformazione avviene comunque in un verso solo. Il primo principio è indifferente a
 quale dei due sensi la trasformazione percorra — ma la natura non lo è.</p>
+<p>Ricostruiamo i dettagli, perché ogni pezzo conta:</p>
+<ul>
+<li><strong><span class="m">Q=0</span></strong>: l&#39;apparato è adiabatico per costruzione (nessuno scambio di calore con
+l&#39;ambiente).</li>
+<li><strong><span class="m">L=0</span></strong>: il gas si espande nel vuoto, cioè contro <span class="m">P_{ext}=0</span>, quindi non compie
+lavoro.</li>
+<li>Quindi, per il primo principio, <strong><span class="m">\Delta U=Q-L=0</span></strong>.</li>
+<li>Si osserva <span class="m">\Delta P\neq0</span> (la pressione finale è più bassa) ma <span class="m">\Delta T=0</span>
+(nessuna variazione di temperatura). Se <span class="m">U</span> dipendesse da <span class="m">P</span> si avrebbe
+<span class="m">\Delta U\neq0</span>: per questo si conclude che l&#39;energia interna di un gas ideale
+dipende <strong>solo</strong> dalla temperatura.</li>
+</ul>
+<p>C&#39;è però un aspetto che in quella sede non era stato sottolineato: la
+<strong>spontaneità</strong>. Appena si apre la valvola, il gas va da solo a riempire il recipiente
+vuoto. L&#39;espansione dura finché le pressioni nei due recipienti sono diverse; alla
+fine si raggiunge una pressione uguale nei due compartimenti, ricavabile
+dall&#39;equazione di stato dei gas ideali per un&#39;espansione isoterma
+(<span class="m">P_1V_1=P_2V_2</span>: raddoppiando il volume la pressione si dimezza).</p>
+<p>Due domande restano aperte:</p>
+<ol>
+<li>Perché il gas si espande se il primo principio dice che non c&#39;è <strong>nessun
+vantaggio energetico</strong> (<span class="m">\Delta U=0</span>)?</li>
+<li>Come si stabilisce, in generale, se un processo può avvenire spontaneamente in
+certe condizioni?</li>
+</ol>
+<p>A queste domande risponde il secondo principio.</p>
 <div class="callout attenzione">
 
 <p>Non confondere &quot;nessun vantaggio energetico&quot; con &quot;nessuna ragione per avvenire&quot;. Il
@@ -28,13 +63,35 @@ paletta. Mai si osserva la farina raccogliersi da sola in un angolo. La differen
 tra le due situazioni è il <strong>disordine</strong>: la configurazione sparsa è enormemente più
 probabile di quella concentrata, semplicemente perché esistono molti più modi di
 distribuire i granelli su tutto il pavimento che di ammucchiarli in un punto.</p>
+<p>In altre parole: mettere ordine (portare le particelle da una superficie ampia, alto
+disordine, a una zona ristretta, basso disordine) <strong>richiede lavoro</strong> — scopa e
+paletta, oppure aspirapolvere. Il passaggio inverso, dal basso disordine all&#39;alto
+disordine, avviene da solo.</p>
 <p>Lo stesso ragionamento vale per le molecole di gas. Prima dell&#39;apertura della
-valvola, le <span class="m">n \cdot N_A</span> molecole sono confinate in un volume <span class="m">V</span>: uno stato molto
-ordinato. Dopo l&#39;espansione occupano <span class="m">2V</span>: uno stato meno ordinato, cioè uno stato
-raggiungibile in molti più modi microscopici.</p>
+valvola, le <span class="m">n \cdot N_A</span> molecole sono confinate in un volume <span class="m">V</span>: costrette a
+&quot;coabitare&quot; in poco spazio, sono in uno stato più ordinato. Dopo l&#39;espansione occupano
+<span class="m">2V</span>: uno stato meno ordinato, cioè uno stato raggiungibile in molti più modi
+microscopici. Nell&#39;espansione libera le molecole passano spontaneamente dallo stato
+più ordinato a quello meno ordinato; l&#39;inverso non si è mai osservato.</p>
+<h3>Un secondo esempio: il calore che passa dal caldo al freddo</h3>
+<p>Due solidi A e B, a temperature diverse (<span class="m">T_A&gt;T_B</span>), vengono messi a contatto in un
+sistema <strong>adiabatico</strong> (A+B non scambia calore con l&#39;ambiente).</p>
+<ul>
+<li>Non c&#39;è lavoro di volume (sono solidi), quindi <span class="m">L=0</span>; non c&#39;è calore scambiato con
+l&#39;esterno, quindi <span class="m">Q=0</span>; dunque <strong><span class="m">\Delta U=0</span></strong> per il sistema A+B.</li>
+<li>Si osserva che, spontaneamente, la temperatura di A diminuisce e quella di B
+aumenta, fino a una temperatura finale comune (calcolabile proprio dalla condizione
+<span class="m">\Delta U=0</span>: il calore perso da A è uguale a quello acquistato da B).</li>
+</ul>
+<p>Perché il calore fluisce spontaneamente dal corpo caldo a quello freddo e mai al
+contrario? Ancora una volta non c&#39;è alcun guadagno energetico (<span class="m">\Delta U=0</span>). Il
+criterio di spontaneità va cercato nell&#39;<strong>aumento del disordine</strong> che si ha passando
+dai due sistemi separati A e B al sistema unione A+B. Il calcolo che lo conferma si fa
+nella <a href="#/teoria/chimica/32/lez-32-ghiaccio-acqua">Lezione 32</a> (acqua calda e ghiaccio in un contenitore adiabatico).</p>
 <h3 id="lez-31-conteggio">Il conteggio con 4 molecole</h3>
-<p>Per rendere l&#39;idea quantitativa, immagina 4 molecole etichettate 1, 2, 3, 4 in un
-recipiente a due scomparti. Quanti modi ci sono di distribuirle?</p>
+<p>Per rendere l&#39;idea quantitativa, immagina 4 molecole etichettate 1, 2, 3, 4 (ognuna
+con &quot;nome e cognome&quot;, cioè distinguibile) in un recipiente a due scomparti. Quanti
+modi ci sono di distribuirle?</p>
 <ul>
 <li>Tutte e 4 a sinistra: <strong>1 solo modo</strong>.</li>
 <li>3 a sinistra, 1 a destra: <strong>4 modi</strong> (quale delle 4 sta da sola a destra).</li>
@@ -42,42 +99,105 @@ recipiente a due scomparti. Quanti modi ci sono di distribuirle?</p>
 <li>1 a sinistra, 3 a destra: <strong>4 modi</strong> (per simmetria con il caso precedente).</li>
 <li>Tutte e 4 a destra: <strong>1 solo modo</strong>.</li>
 </ul>
-<p>Totale: <span class="m">1+4+6+4+1=16</span> configurazioni possibili. Il numero di modi di scegliere <span class="m">k</span>
-posizioni su <span class="m">n</span> disponibili, senza contare l&#39;ordine, è la formula delle
-combinazioni:</p>
+<p>I 6 modi del caso 2+2 si elencano a mano: a sinistra {1,2}, {1,3}, {1,4}, {2,3},
+{2,4}, {3,4} (le altre due a destra).</p>
+<p>Totale: <span class="m">1+4+6+4+1=16</span> configurazioni possibili. Se la <strong>probabilità</strong> di un evento
+è il rapporto fra casi favorevoli e casi totali:</p>
+<table>
+<thead>
+<tr>
+<th>Distribuzione (sinistra–destra)</th>
+<th>Modi</th>
+<th>Probabilità</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>4–0</td>
+<td>1</td>
+<td>1/16</td>
+</tr>
+<tr>
+<td>3–1</td>
+<td>4</td>
+<td>4/16</td>
+</tr>
+<tr>
+<td>2–2</td>
+<td>6</td>
+<td>6/16</td>
+</tr>
+<tr>
+<td>1–3</td>
+<td>4</td>
+<td>4/16</td>
+</tr>
+<tr>
+<td>0–4</td>
+<td>1</td>
+<td>1/16</td>
+</tr>
+</tbody></table>
+<p>La distribuzione uniforme (2–2) ha probabilità <span class="m">6/16=37.5\%</span>; l&#39;evento &quot;tutte le
+molecole da una sola parte&quot; (a sinistra <strong>o</strong> a destra) ha probabilità
+<span class="m">2/16=12.5\%</span>.</p>
+<p>Il numero di modi di scegliere <span class="m">k</span> posizioni su <span class="m">n</span> disponibili, senza contare
+l&#39;ordine, è la formula delle combinazioni:</p>
 <div class="callout formula">
 
 <p><span class="m d">C_{n,k} = \frac{n!}{k!\,(n-k)!}</span></p>
 </div>
 
-<p>dove <span class="m">n! = n\cdot(n-1)\cdot(n-2)\cdots 2\cdot 1</span> e per convenzione <span class="m">0!=1</span>. Verifica:
-<span class="m">C_{4,0}=1</span>, <span class="m">C_{4,1}=4</span>, <span class="m">C_{4,2}=6</span> — combaciano con il conteggio a mano.</p>
+<p>dove <span class="m">n! = n\cdot(n-1)\cdot(n-2)\cdots 2\cdot 1</span> (si legge &quot;<span class="m">n</span> fattoriale&quot;; per
+esempio <span class="m">4!=4\cdot3\cdot2\cdot1=24</span>) e per convenzione <span class="m">0!=1</span>. Verifica:</p>
+<p><span class="m d">C_{4,0}=\frac{4!}{0!\,4!}=1,\qquad C_{4,1}=\frac{4!}{1!\,3!}=\frac{24}{6}=4,\qquad C_{4,2}=\frac{4!}{2!\,2!}=\frac{24}{4}=6</span></p>
+<p>combaciano con il conteggio a mano.</p>
 <p>Su 16 configurazioni totali, quella &quot;equidistribuita&quot; (2+2) ne rappresenta 6: è la
 <strong>più probabile</strong>. Quella &quot;tutto da un lato&quot; ne rappresenta solo 1: è la meno
 probabile. Ecco perché il gas si espande: non perché guadagni energia, ma perché
-passa spontaneamente dalla configurazione meno probabile a quella più probabile.</p>
+passa spontaneamente dalla configurazione meno probabile (più ordinata) a quella più
+probabile (meno ordinata).</p>
+<p>Con 4 molecole la configurazione &quot;tutte a sinistra&quot; capita ancora 1 volta su 16; con
+un numero di molecole dell&#39;ordine di <span class="m">10^{23}</span> la sua probabilità
+(<span class="m">1/2^{N}</span>) è così piccola che in pratica non si osserva mai: per questo, a livello
+macroscopico, l&#39;espansione è <strong>irreversibile</strong>.</p>
 <h2 id="lez-31-boltzmann">La definizione di Boltzmann dell&#39;entropia</h2>
-<p>Boltzmann formalizzò questa intuizione introducendo una nuova funzione di stato,
-l&#39;<strong>entropia</strong> <span class="m">S</span>:</p>
+<p>Boltzmann (fisico austriaco) formalizzò questa intuizione introducendo una nuova
+funzione di stato, l&#39;<strong>entropia</strong> <span class="m">S</span>:</p>
 <div class="callout formula">
 
 <p><span class="m d">S = k_B \ln W</span></p>
+<ul>
+<li><span class="m">S</span> (J/K): entropia;</li>
+<li><span class="m">k_B = 1.38062\times10^{-23}\ \mathrm{J/K}</span>: costante di Boltzmann;</li>
+<li><span class="m">W</span> (numero puro): <strong>probabilità termodinamica</strong>, il numero di modi microscopici
+(microstati) in cui un dato stato termodinamico (macrostato) può essere ottenuto.</li>
+</ul>
 </div>
 
-<p>dove <span class="m">k_B = 1.38062\times10^{-23}\ \mathrm{J/K}</span> è la costante di Boltzmann e <span class="m">W</span> è
-la <strong>probabilità termodinamica</strong>: il numero di modi microscopici (microstati) in cui
-un dato stato macroscopico può essere realizzato. Nell&#39;esempio delle 4 molecole,
-<span class="m">W=6</span> per lo stato equidistribuito e <span class="m">W=1</span> per lo stato &quot;tutto a sinistra&quot;.</p>
+<p>Nell&#39;esempio delle 4 molecole, <span class="m">W=6</span> per lo stato equidistribuito e <span class="m">W=1</span> per lo
+stato &quot;tutto a sinistra&quot;. Più modi ⇒ più disordine ⇒ entropia maggiore. Il logaritmo
+fa sì che l&#39;entropia sia <strong>additiva</strong>: se si uniscono due sistemi indipendenti i loro
+microstati si moltiplicano (<span class="m">W=W_A W_B</span>) e le entropie si sommano
+(<span class="m">\ln W_AW_B=\ln W_A+\ln W_B</span>), come deve fare una grandezza estensiva.</p>
 <p>La variazione di entropia tra due stati 1 e 2 è quindi:</p>
 <div class="callout formula">
 
-<p><span class="m d">\Delta S = S_2 - S_1 = k_B \ln\frac{W_2}{W_1}</span></p>
+<p><span class="m d">\Delta S = S_2 - S_1 = k_B\ln W_2 - k_B\ln W_1 = k_B \ln\frac{W_2}{W_1}</span></p>
 </div>
 
 <p>Applicata all&#39;espansione delle 4 molecole (stato 1: tutte a sinistra, <span class="m">W_1=1</span>; stato
 2: equidistribuite, <span class="m">W_2=6</span>):</p>
-<p><span class="m d">\Delta S = k_B \ln\frac{6}{1} &gt; 0</span></p>
+<p><span class="m d">\Delta S = k_B \ln\frac{6}{1} = 1.38\times10^{-23}\times1.79 \approx 2.5\times10^{-23}\ \mathrm{J/K} &gt; 0</span></p>
 <p>Il segno positivo è il segnale che stavamo cercando.</p>
+<div class="callout esempio">
+
+<p><strong>8 molecole in due scomparti.</strong> Stato iniziale: tutte e 8 a sinistra, <span class="m">W_1=C_{8,0}=1</span>.
+Stato finale: 4 e 4, <span class="m">W_2=C_{8,4}=\dfrac{8!}{4!\,4!}=\dfrac{40320}{24\cdot24}=70</span>.
+<span class="m d">\Delta S = k_B\ln70 = 1.38\times10^{-23}\times4.25 \approx 5.9\times10^{-23}\ \mathrm{J/K}&gt;0</span>
+Con più molecole lo stato uniforme diventa sempre più dominante: su <span class="m">2^8=256</span>
+configurazioni, 70 sono 4–4 e solo 2 hanno tutte le molecole da una parte.</p>
+</div>
+
 <h2 id="lez-31-enunciato">L&#39;enunciato del secondo principio</h2>
 <div class="callout formula">
 
@@ -88,11 +208,15 @@ se <span class="m">\Delta S = S_2-S_1 &gt; 0</span>.</p>
 <ul>
 <li><span class="m">\Delta S &gt; 0</span>: la trasformazione è <strong>irreversibile</strong> (spontanea).</li>
 <li><span class="m">\Delta S = 0</span>: la trasformazione è <strong>reversibile</strong> (equilibrio).</li>
+<li><span class="m">\Delta S &lt; 0</span>: in un sistema isolato la trasformazione <strong>non avviene</strong>
+spontaneamente (avviene spontaneamente quella inversa).</li>
 <li>In natura non esiste alcuna trasformazione realmente reversibile: ogni processo
 spontaneo è irreversibile. Le trasformazioni reversibili sono un&#39;idealizzazione
 utilissima per fare i calcoli (lo vedrai nella prossima lezione), ma non si
 osservano mai in pratica.</li>
 </ul>
+<p>Nel caso delle 4 molecole, stato 1 = tutte a sinistra, stato 2 = equidistribuite:
+<span class="m">\Delta S=k_B\ln6&gt;0</span>, quindi l&#39;espansione è spontanea, come si osserva.</p>
 <div class="callout attenzione">
 
 <p>Il secondo principio si applica a un <strong>sistema isolato</strong> (nessuno scambio di massa
@@ -107,14 +231,15 @@ né energia con l&#39;esterno). Se il sistema scambia calore con l&#39;ambiente,
 impossibile in pratica. Consideriamo l&#39;espansione di <strong>1 mole</strong> di gas ideale che
 raddoppia il volume (due scomparti di volume uguale):</p>
 <ul>
-<li>Stato 1 (tutte le molecole a sinistra): <span class="m">W_1 = C_{N_A,0} = 1</span>.</li>
-<li>Stato 2 (metà mole per scomparto): <span class="m">W_2 = C_{N_A/2,\,N_A/2} =
+<li>Stato 1 (tutte le molecole a sinistra): <span class="m">W_1 = C_{N_A,0} = \dfrac{N_A!}{N_A!\,0!}=1</span>.</li>
+<li>Stato 2 (metà mole per scomparto): <span class="m">W_2 = C_{N_A,\,N_A/2} =
   \dfrac{N_A!}{(N_A/2)!\,(N_A/2)!}</span>.</li>
 </ul>
-<p><span class="m d">\Delta S = k_B \ln\frac{N_A!}{\left[(N_A/2)!\right]^2} = k_B\ln N_A! -
+<p><span class="m d">\Delta S = k_B \ln\frac{W_2}{W_1} = k_B \ln\frac{N_A!}{\left[(N_A/2)!\right]^2} = k_B\ln N_A! -
 2k_B\ln\left(\frac{N_A}{2}\right)!</span></p>
+<p>(si è usato <span class="m">\ln\frac{a}{b^2}=\ln a-2\ln b</span>).</p>
 <p>Qui entra la <strong>formula di Stirling</strong>, un&#39;approssimazione per il logaritmo del
-fattoriale di numeri grandi:</p>
+fattoriale di numeri interi molto grandi:</p>
 <div class="callout formula">
 
 <p><span class="m d">\ln W! \approx W\ln W - W</span></p>
@@ -123,37 +248,158 @@ fattoriale di numeri grandi:</p>
 <div class="callout esempio">
 
 <p><strong>Applicazione della formula di Stirling all&#39;espansione di 1 mole.</strong></p>
-<p>Sostituendo l&#39;approssimazione di Stirling nei due termini e raccogliendo (i passaggi
-algebrici sono lunghi ma meccanici: espandi <span class="m">N_A\ln N_A - N_A</span> e
-<span class="m">2\left[\frac{N_A}{2}\ln\frac{N_A}{2}-\frac{N_A}{2}\right]</span>, poi sottrai), il
-risultato collassa a una forma sorprendentemente semplice:</p>
+<p><strong>Passo 1 — primo termine:</strong> <span class="m">\ln N_A! \approx N_A\ln N_A - N_A</span>.</p>
+<p><strong>Passo 2 — secondo termine:</strong>
+<span class="m">2\ln\left(\frac{N_A}{2}\right)! \approx 2\left[\frac{N_A}{2}\ln\frac{N_A}{2}-\frac{N_A}{2}\right] = N_A\ln\frac{N_A}{2} - N_A</span>.</p>
+<p><strong>Passo 3 — sottraggo:</strong> i due <span class="m">-N_A</span> si cancellano:
+<span class="m d">\Delta S \approx k_B\left[N_A\ln N_A - N_A - N_A\ln\frac{N_A}{2} + N_A\right] = k_B N_A\left[\ln N_A - \ln\frac{N_A}{2}\right]</span></p>
+<p><strong>Passo 4 — proprietà dei logaritmi:</strong> <span class="m">\ln N_A-\ln\frac{N_A}{2}=\ln\frac{N_A}{N_A/2}=\ln2</span>, quindi</p>
 <p><span class="m d">\Delta S = k_B N_A \ln 2 = R\ln 2</span></p>
-<p>dove <span class="m">R=k_B N_A</span> è la costante dei gas ideali. <strong>Il raddoppio del volume di una mole
-di gas ideale in un sistema isolato comporta sempre <span class="m">\Delta S = R\ln 2 \approx
-5.76\ \mathrm{J/K}</span></strong>, indipendentemente da quale gas sia. Ritroverai questo stesso
+<p>dove <span class="m">R=k_B N_A</span> è la costante dei gas ideali
+(<span class="m">1.38\times10^{-23}\times6.022\times10^{23}=8.314\ \mathrm{J\,mol^{-1}K^{-1}}</span>).
+<strong>Il raddoppio del volume di una mole di gas ideale in un sistema isolato comporta
+sempre <span class="m">\Delta S = R\ln 2 = 8.314\times0.693\approx 5.76\ \mathrm{J/K}</span></strong>,
+indipendentemente da quale gas sia. Ritroverai questo stesso
 risultato nella prossima lezione per una via completamente diversa (l&#39;integrale di
 Clausius) — la coincidenza dei due risultati è una conferma potente che la
 definizione di Boltzmann e la termodinamica classica raccontano la stessa storia.</p>
+<p>Per <span class="m">n</span> moli il risultato si moltiplica per <span class="m">n</span> (l&#39;entropia è estensiva): 2 moli che
+raddoppiano il volume hanno <span class="m">\Delta S=2R\ln2\approx11.5\ \mathrm{J/K}</span>, positivo pur
+essendo <span class="m">\Delta U=0</span>.</p>
 </div>
 
 <h2 id="lez-31-sessioni">Le tre sessioni di esercizi allegate</h2>
 <p>Le sessioni S1, S2, S3 di <code>31.pdf</code> sono un ripasso di <strong>termochimica</strong> (calore della
 reazione della termite, idrogenazione dell&#39;etilene via legge di Hess, consumo di
-metano per riscaldare l&#39;acqua): metodo e formule sono quelli già visti in
-<a href="#/teoria/chimica/30/lez-30-hess">Lezione 30</a>. Non introducono teoria nuova su entropia — le trovi
-citate qui solo per completezza di fonte.</p>
+metano per riscaldare l&#39;acqua, da <span class="m">\Delta U</span> a <span class="m">\Delta H</span>, combustione di una miscela
+di vapori): metodo e formule sono quelli già visti in
+<a href="#/teoria/chimica/30/lez-30-hess">Lezione 30</a>. Non introducono teoria nuova su entropia, ma sono
+esercizi tipici d&#39;esame: eccoli svolti.</p>
+<div class="callout esempio">
+
+<p><strong>Reazione della termite (alluminotermica) e reagente limitante.</strong>
+<span class="m">\chem{Fe_2O_3(s)}+2\chem{Al(s)}\rightarrow\chem{Al_2O_3(s)}+2\chem{Fe(s)}</span> (si usa,
+per esempio, per saldare sul posto i binari ferroviari). Si fanno reagire
+<span class="m">50.0\ \mathrm g</span> di <span class="m">\chem{Fe_2O_3}</span> e <span class="m">25.0\ \mathrm g</span> di <span class="m">\chem{Al}</span>.</p>
+<p><strong>Passo 1 — <span class="m">\Delta H^\circ</span>:</strong> gli elementi (<span class="m">\chem{Al}</span>, <span class="m">\chem{Fe}</span>) hanno
+<span class="m">\Delta H^\circ_f=0</span>, quindi
+<span class="m">\Delta H^\circ=\Delta H^\circ_f(\chem{Al_2O_3})-\Delta H^\circ_f(\chem{Fe_2O_3})\approx-846\ \mathrm{kJ}</span>
+per mole di <span class="m">\chem{Al_2O_3}</span> formata.</p>
+<p><strong>Passo 2 — moli:</strong> <span class="m">n(\chem{Fe_2O_3})=50.0/159.6=0.313\ \mathrm{mol}</span>;
+<span class="m">n(\chem{Al})=25.0/27.0=0.926\ \mathrm{mol}</span>. Per consumare tutto l&#39;ossido servono
+<span class="m">2\times0.313=0.626\ \mathrm{mol}</span> di Al: ce ne sono di più, quindi l&#39;alluminio è in
+eccesso e il <strong>reagente limitante è <span class="m">\chem{Fe_2O_3}</span></strong>.</p>
+<p><strong>Passo 3 — calore:</strong> <span class="m">Q=846\ \mathrm{kJ/mol}\times0.313\ \mathrm{mol}=264.8\ \mathrm{kJ}</span>.</p>
+<p><strong>Passo 4 — ferro prodotto:</strong> <span class="m">2\times0.313=0.626\ \mathrm{mol}</span>, cioè
+<span class="m">0.626\times55.85\approx35.0\ \mathrm g</span>.</p>
+<p><strong>Passo 5 — la fusione del ferro.</strong> Con <span class="m">\Delta H^\circ_{fus}(\chem{Fe})=15.2\ \mathrm{kJ/mol}</span>,
+fondere il ferro prodotto richiede <span class="m">0.626\times15.2\approx9.5\ \mathrm{kJ}</span>: il calore
+della reazione basta ampiamente a fondere il ferro (e l&#39;alluminio in eccesso). Se il
+ferro si forma liquido, parte del calore resta &quot;dentro&quot; il ferro fuso e quello ceduto
+all&#39;esterno scende a circa <span class="m">264.8-9.5\approx255\ \mathrm{kJ}</span>. È proprio il ferro
+fuso che salda i binari.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Idrogenazione dell&#39;etilene con la legge di Hess.</strong>
+<span class="m">\chem{C_2H_4(g)}+\chem{H_2(g)}\rightarrow\chem{C_2H_6(g)}</span>, noti
+<span class="m">\Delta H^\circ_{comb}(\chem{C_2H_4})=-1411</span> e <span class="m">\Delta H^\circ_{comb}(\chem{C_2H_6})=-1560\ \mathrm{kJ/mol}</span>,
+e <span class="m">\Delta H^\circ_f(\chem{CO_2})=-393.5</span>, <span class="m">\Delta H^\circ_f(\chem{H_2O(l)})=-285.9\ \mathrm{kJ/mol}</span>.</p>
+<p><strong>Passo 1 — <span class="m">\Delta H^\circ_f(\chem{C_2H_4})</span></strong> dalla sua combustione
+<span class="m">\chem{C_2H_4}+3\chem{O_2}\rightarrow2\chem{CO_2}+2\chem{H_2O(l)}</span>:
+<span class="m">-1411=2(-393.5)+2(-285.9)-\Delta H^\circ_f(\chem{C_2H_4})</span>, quindi
+<span class="m">\Delta H^\circ_f(\chem{C_2H_4})=-787.0-571.8+1411=+52.2\ \mathrm{kJ/mol}</span>.</p>
+<p><strong>Passo 2 — <span class="m">\Delta H^\circ_f(\chem{C_2H_6})</span></strong> da
+<span class="m">\chem{C_2H_6}+\tfrac72\chem{O_2}\rightarrow2\chem{CO_2}+3\chem{H_2O(l)}</span>:
+<span class="m">\Delta H^\circ_f(\chem{C_2H_6})=-787.0-857.7+1560=-84.7\ \mathrm{kJ/mol}</span>.</p>
+<p><strong>Passo 3 — idrogenazione</strong> (<span class="m">\chem{H_2}</span> è un elemento, vale zero):
+<span class="m">\Delta H^\circ=-84.7-52.2=-136.9\ \mathrm{kJ}</span>.</p>
+<p>Stesso risultato per via diretta: (combustione <span class="m">\chem{C_2H_4}</span>) + (combustione
+<span class="m">\chem{H_2}</span>) − (combustione <span class="m">\chem{C_2H_6}</span>) <span class="m">=-1411-285.9+1560=-136.9\ \mathrm{kJ}</span>.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Metano per l&#39;acqua calda di una famiglia.</strong> 200 L/giorno d&#39;acqua (200 kg) entrano
+a 8 °C e si usano a 50 °C; <span class="m">c_p=4.184\ \mathrm{kJ\,kg^{-1}{}^\circ C^{-1}}</span>;
+<span class="m">\Delta H^\circ_{comb}(\chem{CH_4})=-890.5\ \mathrm{kJ/mol}</span>.</p>
+<p><strong>Passo 1:</strong> <span class="m">Q=m\,c_p\,\Delta T=200\times4.184\times42=3.51\times10^4\ \mathrm{kJ}</span>.</p>
+<p><strong>Passo 2 — moli di metano:</strong> ogni mole bruciata cede <span class="m">890.5\ \mathrm{kJ}</span>, quindi
+<span class="m">n=35\,146/890.5=39.5\ \mathrm{mol}</span>.</p>
+<p><strong>Passo 3 — volume a 0 °C e 1 atm</strong> (volume molare 22.4 L/mol):
+<span class="m">V=39.5\times22.4\approx885\ \mathrm L\approx0.88\ \mathrm{m^3}</span> al giorno.</p>
+<p><strong>Variante con perdite.</strong> Acqua da 18 a 60 °C, <span class="m">c_p=1.0\ \mathrm{kcal\,kg^{-1}{}^\circ C^{-1}}</span>,
+perdite del 20%, dati in kcal (<span class="m">\Delta H^\circ_f</span>: <span class="m">\chem{CO_2}=-94.1</span>,
+<span class="m">\chem{H_2O(l)}=-68.3</span>, <span class="m">\chem{CH_4}=-17.9\ \mathrm{kcal/mol}</span>).
+<span class="m">Q=200\times1.0\times42=8.4\times10^3\ \mathrm{kcal}</span>; con il 20% di perdite solo
+l&#39;80% del calore è utile, quindi <span class="m">Q_{eff}=8.4\times10^3/0.8=10.5\times10^3\ \mathrm{kcal}</span>.
+<span class="m">\Delta H^\circ_{comb}=[-94.1+2(-68.3)]-(-17.9)\approx-213\ \mathrm{kcal/mol}</span>;
+<span class="m">n=10\,500/213=49.3\ \mathrm{mol}</span>; <span class="m">V=49.3\times22.4\approx1.1\ \mathrm{m^3}</span> in
+condizioni normali.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Da <span class="m">\Delta U</span> (volume costante) a <span class="m">\Delta H^\circ_f</span> dell&#39;acqua.</strong> La combustione
+<span class="m">\chem{H_2(g)}+\tfrac12\chem{O_2(g)}\rightarrow\chem{H_2O(l)}</span>, misurata a volume
+costante e 25 °C, dà <span class="m">-282.2\ \mathrm{kJ}</span> per mole d&#39;acqua.</p>
+<p><strong>Passo 1:</strong> a <span class="m">V</span> costante il lavoro di volume è nullo, quindi <span class="m">Q_V=\Delta U=-282.2\ \mathrm{kJ}</span>.</p>
+<p><strong>Passo 2:</strong> da <span class="m">H=U+PV</span>, <span class="m">\Delta H=\Delta U+\Delta(PV)=\Delta U+\Delta n\,RT</span>
+(gas ideali).</p>
+<p><strong>Passo 3:</strong> <span class="m">\Delta n=0-(1+0.5)=-1.5\ \mathrm{mol}</span> (l&#39;acqua è liquida).</p>
+<p><strong>Passo 4:</strong> <span class="m">\Delta H=-282.2+(-1.5)(8.31\times10^{-3})(298)=-282.2-3.7=-285.9\ \mathrm{kJ}</span>,
+che è il <span class="m">\Delta H^\circ_f(\chem{H_2O(l)})</span> (la reazione è proprio quella di
+formazione).</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Combustione di 1 m³ di vapori di etanolo e metanolo.</strong> Miscela 60% etanolo, 40%
+metanolo (in volume), a 20 °C e 1.0 atm; acqua prodotta liquida;
+<span class="m">\Delta H^\circ_{comb}</span>: <span class="m">\chem{CH_3OH}=-764.6</span>, <span class="m">\chem{C_2H_5OH}=-1410.3\ \mathrm{kJ/mol}</span>.
+Reazioni: <span class="m">\chem{C_2H_5OH}+3\chem{O_2}\rightarrow2\chem{CO_2}+3\chem{H_2O(l)}</span>;
+<span class="m">\chem{CH_3OH}+\tfrac32\chem{O_2}\rightarrow\chem{CO_2}+2\chem{H_2O(l)}</span>.</p>
+<p><strong>Passo 1 — moli totali:</strong> <span class="m">n=PV/RT=(1.0\times1000)/(0.0821\times293)=41.6\ \mathrm{mol}</span>;
+quindi <span class="m">25.0\ \mathrm{mol}</span> di etanolo (60%) e <span class="m">16.6\ \mathrm{mol}</span> di metanolo (40%).</p>
+<p><strong>Passo 2 — calore:</strong> <span class="m">Q=25.0\times1410.3+16.6\times764.6=35\,258+12\,692\approx4.80\times10^4\ \mathrm{kJ}</span>.</p>
+<p><strong>Passo 3 — volumi</strong> (principio di Avogadro: a pari <span class="m">T</span> e <span class="m">P</span> i volumi stanno come
+le moli, quindi si usano direttamente i coefficienti stechiometrici sui m³):
+<span class="m">V_{\chem{O_2}}=3\times0.6+1.5\times0.4=2.40\ \mathrm{m^3}</span>; l&#39;aria contiene il 21%
+di ossigeno, quindi <span class="m">V_{aria}=2.40/0.21=11.43\ \mathrm{m^3}</span>;
+<span class="m">V_{\chem{CO_2}}=2\times0.6+1\times0.4=1.60\ \mathrm{m^3}</span>.</p>
+</div>
+
+<div class="callout attenzione">
+
+<ul>
+<li>L&#39;entropia di Boltzmann conta i <strong>modi</strong> (microstati), non l&#39;energia: un processo
+può essere spontaneo con <span class="m">\Delta U=0</span>.</li>
+<li><span class="m">W</span> non è una probabilità fra 0 e 1, ma un <strong>numero di modi</strong> (≥ 1); per questo
+<span class="m">S=k_B\ln W\ge0</span>.</li>
+<li>Il criterio <span class="m">\Delta S&gt;0</span> vale per il sistema <strong>isolato</strong>; per un sistema aperto o
+chiuso si usa l&#39;universo (Lezione 32) o l&#39;energia libera (Lezione 33).</li>
+<li>&quot;Reversibile&quot; è un&#39;idealizzazione (<span class="m">\Delta S=0</span> per il sistema isolato); ogni
+processo reale e spontaneo è irreversibile.</li>
+</ul>
+</div>
+
 <div class="callout sintesi">
 
 <ul>
 <li>Il primo principio non basta a prevedere la direzione di una trasformazione: serve
 un secondo criterio.</li>
+<li>Espansione libera e passaggio di calore dal caldo al freddo: entrambi spontanei con
+<span class="m">\Delta U=0</span>; il motore è l&#39;aumento del disordine.</li>
+<li>Conteggio dei modi: <span class="m">C_{n,k}=\dfrac{n!}{k!(n-k)!}</span>; con 4 molecole 1–4–6–4–1 su 16.</li>
 <li>L&#39;entropia <span class="m">S=k_B\ln W</span> misura il disordine attraverso il numero di microstati <span class="m">W</span>
 compatibili con uno stato macroscopico.</li>
 <li>Un sistema isolato evolve spontaneamente verso stati più probabili, cioè con <span class="m">W</span>
 (e quindi <span class="m">S</span>) maggiore: <span class="m">\Delta S&gt;0</span> ⟺ spontaneo/irreversibile,
 <span class="m">\Delta S=0</span> ⟺ equilibrio/reversibile.</li>
-<li>Per una mole di gas ideale che raddoppia volume in un sistema isolato,
-<span class="m">\Delta S=R\ln 2</span>, un risultato che ritroverai anche per via macroscopica.</li>
+<li>Stirling <span class="m">\ln W!\approx W\ln W-W</span> ⇒ per una mole di gas ideale che raddoppia volume
+in un sistema isolato, <span class="m">\Delta S=R\ln 2\approx5.76\ \mathrm{J/K}</span>, un risultato che
+ritroverai anche per via macroscopica.</li>
 </ul>
 </div>
 
@@ -167,5 +413,12 @@ un sistema isolato&quot;, &quot;perché un gas si espande spontaneamente nel vuo
 non vieta né il processo né il suo inverso, (2) il criterio di spontaneità è il
 disordine/probabilità del microstato, misurato da <span class="m">S=k_B\ln W</span>, (3) il sistema isolato
 evolve verso <span class="m">\Delta S&gt;0</span>.</p>
+<p>La domanda <strong>aperta</strong> &quot;interpretazione molecolare dell&#39;entropia&quot; si sviluppa così:
+espansione libera (<span class="m">Q=0</span>, <span class="m">L=0</span>, <span class="m">\Delta U=0</span> ma spontanea) → analogia della farina /
+calore dal caldo al freddo → modello delle 4 molecole (1, 4, 6, 4, 1 modi su 16;
+combinazioni <span class="m">C_{n,k}</span>) → <span class="m">S=k_B\ln W</span> con il significato di <span class="m">W</span> e <span class="m">k_B</span> →
+<span class="m">\Delta S=k_B\ln(W_2/W_1)&gt;0</span> → enunciato del secondo principio per i sistemi isolati
+(irreversibile/reversibile) → per una mole che raddoppia il volume, con Stirling,
+<span class="m">\Delta S=R\ln2</span>.</p>
 <p><strong>Allenati qui:</strong> Paniere Lez. 31 domanda 1 · Extra 65 · Extra 66</p>
 </div>

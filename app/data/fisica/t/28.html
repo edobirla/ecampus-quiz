@@ -1,176 +1,494 @@
-<h1>Lezione 28 — Dinamica del corpo rigido</h1>
-<h2>Come si muove un corpo rigido</h2>
-<p>Un corpo rigido non si deforma: le distanze tra i suoi punti restano fisse. Il suo moto più generale è una traslazione più una rotazione su se stesso, che avvengono insieme.</p>
+<h1>Lezione 28 — Dinamica del corpo rigido: momento d&#39;inerzia, rotazioni, equilibrio</h1>
+<p>Finora abbiamo studiato il punto materiale (un oggetto senza dimensioni) e i sistemi di punti. Molti oggetti reali, però, hanno una forma e una estensione che non si possono trascurare: una ruota, una puleggia, una porta, una trave, il corpo di un pattinatore. Se questi oggetti non si deformano in modo apprezzabile, si possono descrivere con il modello del <strong>corpo rigido</strong>. In questa lezione vediamo come si muove un corpo rigido, quali grandezze servono a descriverlo (centro di massa, densità, momento d&#39;inerzia), come si scrivono le sue equazioni del moto, come si calcolano energia cinetica e momento angolare di un corpo che ruota, quando un corpo rigido è in equilibrio. Tutto si basa sulle due <strong>equazioni cardinali</strong> già viste per i sistemi di punti: la lezione mostra che, per un corpo rigido, bastano quelle due per conoscere tutto il moto.</p>
+<h2>Che cos&#39;è un corpo rigido</h2>
+<p><strong>Definizione.</strong> Un corpo rigido è un sistema di punti materiali (discreti, oppure distribuiti in modo continuo) le cui <strong>distanze reciproche sono fissate e non cambiano nel tempo</strong>.</p>
+<p>È un&#39;idealizzazione: ogni corpo reale si deforma un poco sotto l&#39;azione delle forze. Il modello va bene quando queste deformazioni sono trascurabili rispetto agli spostamenti del corpo nel suo insieme.</p>
+<h3>I moti possibili: traslazione e rotazione</h3>
+<p>Il moto più generale di un corpo rigido è la <strong>composizione di due moti</strong> che avvengono contemporaneamente:</p>
 <ul>
-<li><strong>Traslazione</strong>: tutti i punti si spostano come il centro di massa. Basta seguire il centro di massa.</li>
-<li><strong>Rotazione attorno a un asse</strong>: tutti i punti hanno la stessa velocità angolare <span class="m">\omega</span>. Ogni punto però va più veloce se è più lontano dall&#39;asse.</li>
+<li>una <strong>traslazione rigida</strong>: tutti i punti si spostano allo stesso modo, quindi basta seguire un punto solo. Il punto naturale da seguire è il <strong>centro di massa</strong>, perché gli altri punti non cambiano la loro posizione rispetto ad esso;</li>
+<li>una <strong>rotazione istantanea attorno a un asse</strong>: tutti i punti girano con la stessa velocità angolare <span class="m">\omega</span>, ma ognuno descrive una circonferenza di raggio diverso, pari alla sua distanza dall&#39;asse.</li>
 </ul>
-<p><span class="m d">v = \omega r</span>
+<p>Un corpo rigido quindi può <strong>traslare e ruotare su se stesso nello stesso tempo</strong>: i due moti non si escludono. L&#39;esempio tipico è la ruota di una bicicletta, che avanza (trasla) e intanto gira attorno al proprio asse.</p>
+<p>Nella rotazione la velocità angolare è la stessa per tutti i punti, mentre la velocità lineare (tangenziale) dipende dalla distanza dall&#39;asse:</p>
+<p><span class="m d">v = \omega\, r</span>
 dove:</p>
 <ul>
-<li><span class="m">v</span> = velocità del punto (m/s)</li>
-<li><span class="m">\omega</span> = velocità angolare (rad/s)</li>
-<li><span class="m">r</span> = distanza del punto dall&#39;asse (m)</li>
+<li><span class="m">v</span> = modulo della velocità tangenziale del punto (m/s)</li>
+<li><span class="m">\omega</span> = velocità angolare del corpo, uguale per tutti i punti (rad/s)</li>
+<li><span class="m">r</span> = distanza del punto dall&#39;asse di rotazione (m)</li>
 </ul>
-<h2>Forze parallele</h2>
-<p>Due forze parallele applicate a un corpo rigido si sommano come numeri con il segno. Se hanno lo stesso verso, la risultante è la somma delle intensità. Se hanno verso opposto, è la differenza. Il punto di applicazione della risultante sta più vicino alla forza più grande.</p>
+<p>Un punto sull&#39;asse (<span class="m">r = 0</span>) è fermo; un punto sul bordo di una ruota va più veloce di un punto vicino al mozzo.</p>
+<h3>Gradi di libertà</h3>
+<p>Il numero di parametri indipendenti necessari a descrivere la posizione di un sistema si chiama <strong>numero dei gradi di libertà</strong>. Per un corpo rigido libero nello spazio servono <strong>6 parametri</strong>:</p>
+<ul>
+<li>le <strong>3 coordinate</strong> del centro di massa (descrivono la traslazione);</li>
+<li><strong>2 angoli</strong> che individuano la direzione dell&#39;asse istantaneo di rotazione;</li>
+<li><strong>1 angolo</strong> che dice di quanto il corpo ha ruotato attorno a quell&#39;asse.</li>
+</ul>
+<p>Un punto materiale ha invece solo 3 gradi di libertà. Un corpo vincolato a ruotare attorno a un asse fisso (una porta, una puleggia con il perno) ne ha uno solo: l&#39;angolo di rotazione.</p>
+<h2>Le equazioni cardinali</h2>
+<p>Le forze interne (quelle che i punti del corpo si scambiano tra loro) potrebbero solo cambiare le posizioni relative dei punti. In un corpo rigido le posizioni relative sono fisse, quindi le forze interne non hanno effetto sul moto. Restano le forze <strong>esterne</strong>, e il moto è determinato completamente dalle due equazioni cardinali:</p>
+<p><span class="m d">\vec F^{(e)} = \frac{d\vec P}{dt} = M\,\vec a_{cm} \qquad\qquad \vec M^{(e)} = \frac{d\vec L}{dt}</span>
+dove:</p>
+<ul>
+<li><span class="m">\vec F^{(e)}</span> = risultante delle forze esterne (N)</li>
+<li><span class="m">\vec P</span> = quantità di moto totale del corpo (kg·m/s)</li>
+<li><span class="m">M</span> = massa totale del corpo (kg)</li>
+<li><span class="m">\vec a_{cm}</span> = accelerazione del centro di massa (m/s²)</li>
+<li><span class="m">\vec M^{(e)}</span> = momento totale delle forze esterne rispetto a un polo (N·m)</li>
+<li><span class="m">\vec L</span> = momento angolare totale rispetto allo stesso polo (kg·m²/s)</li>
+</ul>
+<p>Sono equazioni vettoriali: in componenti fanno <strong>6 equazioni scalari</strong>, tante quanti i gradi di libertà. Per questo bastano.</p>
+<ul>
+<li>La <strong>prima</strong> descrive la parte traslatoria del moto, comune a tutti i punti: il centro di massa si muove come un punto materiale di massa <span class="m">M</span> su cui agisce la risultante delle forze esterne.</li>
+<li>La <strong>seconda</strong> descrive la rotazione: il comportamento di ogni punto dipende dalla sua distanza dall&#39;asse.</li>
+</ul>
+<h2>Corpi continui: densità e centro di massa</h2>
+<p>Spesso il corpo rigido è un oggetto <strong>continuo</strong>: la massa è distribuita con continuità nel suo volume. Si divide allora il volume in tanti elementini <span class="m">dV</span>, ciascuno con massa <span class="m">dm</span>. La massa totale è la somma delle masse degli elementini; al limite in cui gli elementini diventano infinitesimi, la somma diventa un integrale:</p>
+<p><span class="m d">M = \int_V dm = \int_V \rho\,dV \qquad \text{con} \qquad \rho = \frac{dm}{dV}</span>
+dove:</p>
+<ul>
+<li><span class="m">\rho</span> = densità (o massa volumica) nel punto considerato (kg/m³)</li>
+<li><span class="m">dm</span> = massa dell&#39;elementino (kg)</li>
+<li><span class="m">dV</span> = volume dell&#39;elementino (m³)</li>
+</ul>
+<p>La funzione densità dice come è distribuita la massa nello spazio. Se la densità è la stessa in tutto il volume, il corpo si dice <strong>omogeneo</strong> e <span class="m">\rho = M/V</span>.</p>
+<p>Il centro di massa di un corpo continuo si ottiene sostituendo nella definizione per i sistemi di punti la somma con l&#39;integrale:</p>
+<p><span class="m d">\vec r_{cm} = \frac{1}{M}\int_V \vec r\,dm = \frac{1}{M}\int_V \vec r\,\rho\,dV</span></p>
+<p>Per un corpo omogeneo il centro di massa coincide con il <strong>centro geometrico</strong>. Se il corpo ha un centro di simmetria, il centro di massa sta lì: per una sfera omogenea è il centro della sfera, per un&#39;asta omogenea è il punto medio.</p>
+<p>Se la massa è distribuita su una superficie (una lastra sottile) o lungo una linea (un filo, un&#39;asta sottile), si usano la <strong>densità superficiale</strong> e la <strong>densità lineare</strong>:</p>
+<p><span class="m d">\sigma = \frac{dm}{dS}\ \ (\mathrm{kg/m^2}) \qquad\qquad \lambda = \frac{dm}{dl}\ \ (\mathrm{kg/m})</span></p>
+<p>e il centro di massa si calcola con integrali sulla superficie o sulla linea. Nel caso omogeneo <span class="m">\sigma = M/S</span> e <span class="m">\lambda = M/l</span>.</p>
+<h2>Forze parallele e baricentro</h2>
+<p>Su un corpo rigido agiscono spesso <strong>forze parallele</strong>: per esempio le forze peso dei singoli pezzetti del corpo, tutte verticali.</p>
+<h3>La risultante di forze parallele</h3>
+<p>Forze parallele hanno tutte la stessa direzione, descritta da un unico versore <span class="m">\hat u</span>: ogni forza si scrive <span class="m">\vec f_i = f_i\,\hat u</span>, dove <span class="m">f_i</span> è un numero con segno (positivo se la forza punta come <span class="m">\hat u</span>, negativo se punta al contrario). La risultante è quindi</p>
+<p><span class="m d">\vec F = \sum_i \vec f_i = \Big(\sum_i f_i\Big)\hat u</span></p>
+<p>Ha la stessa direzione delle forze, e la sua intensità è la <strong>somma algebrica</strong> delle intensità:</p>
+<ul>
+<li>se due forze hanno lo <strong>stesso verso</strong>, l&#39;intensità della risultante è la <strong>somma</strong> delle intensità: <span class="m">F = f_1 + f_2</span>;</li>
+<li>se hanno <strong>verso opposto</strong>, è la <strong>differenza</strong>: <span class="m">F = |f_1 - f_2|</span>.</li>
+</ul>
+<p>Non può mai superare la somma delle intensità. Il suo punto di applicazione sta tra le due forze (se concordi), più vicino a quella più intensa.</p>
+<h3>Il centro delle forze parallele</h3>
+<p>Un sistema di forze parallele <span class="m">\vec f_i</span> applicate nei punti <span class="m">\vec r_i</span> è <strong>equivalente</strong> a un&#39;unica forza <span class="m">\vec F</span>, uguale alla risultante, applicata nel punto</p>
+<p><span class="m d">\vec r_C = \frac{\sum_i f_i\,\vec r_i}{\sum_i f_i}</span></p>
+<p>detto <strong>centro delle forze parallele</strong>. &quot;Equivalente&quot; vuol dire che ha la stessa risultante e lo stesso momento totale.</p>
+<p><strong>Dimostrazione.</strong> La risultante è uguale per costruzione. Resta da verificare il momento rispetto a un polo <span class="m">O</span> (l&#39;origine):</p>
+<ol>
+<li>Momento totale delle forze vere: <span class="m">\vec M = \sum_i \vec r_i \times \vec f_i = \sum_i \vec r_i \times f_i\,\hat u</span>.</li>
+<li>Poiché <span class="m">\hat u</span> è lo stesso per tutte, lo raccolgo: <span class="m">\vec M = \Big(\sum_i f_i\,\vec r_i\Big) \times \hat u</span>.</li>
+<li>Dalla definizione di <span class="m">\vec r_C</span>: <span class="m">\sum_i f_i\,\vec r_i = \vec r_C \sum_i f_i</span>. Quindi <span class="m">\vec M = \vec r_C \times \Big(\sum_i f_i\Big)\hat u = \vec r_C \times \vec F</span>.</li>
+<li>È proprio il momento di una forza <span class="m">\vec F</span> applicata in <span class="m">C</span>: l&#39;equivalenza è dimostrata.</li>
+</ol>
+<h3>Il baricentro</h3>
+<p>Se le forze parallele sono le forze peso, <span class="m">f_i = m_i g</span> e</p>
+<p><span class="m d">\vec r_C = \frac{\sum_i m_i g\,\vec r_i}{\sum_i m_i g} = \frac{\sum_i m_i\,\vec r_i}{M} = \vec r_{cm}</span></p>
+<p>Il centro delle forze peso si chiama <strong>baricentro</strong> e (in un campo di gravità uniforme) <strong>coincide con il centro di massa</strong>. Conseguenza pratica: il peso di un corpo rigido si può considerare tutto applicato nel baricentro.</p>
 <h2>Momento d&#39;inerzia</h2>
-<p>Il momento d&#39;inerzia dice quanto un corpo &quot;resiste&quot; a essere messo in rotazione. È il corrispondente della massa per le rotazioni. Dipende dalla massa e da quanto è lontana dall&#39;asse.</p>
-<p><span class="m d">I = \sum_i m_i r_i^2 \qquad \text{oppure} \qquad I = \int r^2\,dm</span>
+<h3>Da dove nasce</h3>
+<p>Prendiamo un corpo rigido che ruota attorno a un asse fisso con velocità angolare <span class="m">\omega</span>. Ogni punto <span class="m">i</span>, di massa <span class="m">m_i</span> a distanza <span class="m">r_i</span> dall&#39;asse, ha velocità <span class="m">v_i = \omega r_i</span>. L&#39;energia cinetica totale è la somma delle energie dei singoli punti:</p>
+<p><span class="m d">K = \sum_i \tfrac12 m_i v_i^2 = \sum_i \tfrac12 m_i \omega^2 r_i^2 = \tfrac12\Big(\sum_i m_i r_i^2\Big)\omega^2</span></p>
+<p>Ho raccolto <span class="m">\omega^2</span> perché è uguale per tutti i punti. La quantità tra parentesi dipende solo da come è distribuita la massa attorno all&#39;asse: è il <strong>momento d&#39;inerzia</strong> rispetto a quell&#39;asse.</p>
+<p><span class="m d">I = \sum_i m_i\,r_i^2 \qquad\text{(corpo discreto)} \qquad\qquad I = \int r^2\,dm = \int_V r^2\,\rho\,dV \qquad\text{(corpo continuo)}</span>
 dove:</p>
 <ul>
 <li><span class="m">I</span> = momento d&#39;inerzia rispetto all&#39;asse (kg·m²)</li>
-<li><span class="m">m_i</span> = massa del singolo punto (kg)</li>
-<li><span class="m">r_i</span> = distanza del punto dall&#39;asse (m)</li>
+<li><span class="m">m_i</span> = massa del punto <span class="m">i</span> (kg)</li>
+<li><span class="m">r_i</span> (o <span class="m">r</span>) = distanza dall&#39;asse (m), misurata perpendicolarmente all&#39;asse</li>
+<li><span class="m">\rho</span> = densità (kg/m³)</li>
 </ul>
-<p>Valori da sapere (asse passante per il centro):</p>
+<p>Con questa definizione l&#39;energia cinetica di rotazione si scrive</p>
+<p><span class="m d">K_{rot} = \tfrac12\,I\,\omega^2</span></p>
+<p>che è l&#39;analoga di <span class="m">K = \tfrac12 m v^2</span>: al posto della massa c&#39;è <span class="m">I</span>, al posto della velocità c&#39;è <span class="m">\omega</span>.</p>
+<h3>Significato</h3>
+<p>Il momento d&#39;inerzia misura <strong>quanto un corpo si oppone a essere messo in rotazione</strong> (o fermato) attorno a un asse. Ha per le rotazioni il ruolo che la massa ha per le traslazioni. A differenza della massa, però, <strong>non è una proprietà del solo corpo</strong>: dipende dall&#39;asse scelto e da come la massa è distribuita intorno ad esso. A parità di massa, <span class="m">I</span> è tanto più grande quanto più la massa sta <strong>lontana dall&#39;asse</strong> (conta il quadrato della distanza).</p>
+<h3>Calcolo per un disco omogeneo (dimostrazione della dispensa)</h3>
+<p>Disco omogeneo di massa <span class="m">M</span> e raggio <span class="m">R</span>, asse perpendicolare al disco passante per il centro.</p>
+<ol>
+<li>Densità superficiale costante: <span class="m">\sigma = \dfrac{M}{S} = \dfrac{M}{\pi R^2}</span>.</li>
+<li>Divido il disco in tante <strong>corone circolari</strong> sottili, di raggio <span class="m">r</span> e spessore <span class="m">dr</span>. Tutti i punti di una corona distano <span class="m">r</span> dall&#39;asse. L&#39;area della corona è (circonferenza × spessore) <span class="m">dS = 2\pi r\,dr</span>, la sua massa è <span class="m">dm = \sigma\,2\pi r\,dr</span>.</li>
+<li>Il contributo della corona a <span class="m">I</span> è <span class="m">r^2\,dm = \sigma\,2\pi r^3\,dr</span>.</li>
+<li>Sommo (integro) tutte le corone da <span class="m">r = 0</span> a <span class="m">r = R</span>:
+<span class="m d">I = \int_0^R \sigma\,2\pi r^3\,dr = 2\pi\sigma\,\frac{R^4}{4} = 2\pi\,\frac{M}{\pi R^2}\,\frac{R^4}{4} = \tfrac12 M R^2</span></li>
+</ol>
+<p>Lo stesso risultato vale per un <strong>cilindro pieno</strong> rispetto al suo asse (è una pila di dischi).</p>
+<h3>Calcolo per un&#39;asta sottile</h3>
+<p>Asta omogenea di massa <span class="m">M</span> e lunghezza <span class="m">\ell</span>, asse perpendicolare all&#39;asta. Densità lineare <span class="m">\lambda = M/\ell</span>; un trattino <span class="m">dx</span> a distanza <span class="m">x</span> dall&#39;asse ha massa <span class="m">dm = \lambda\,dx</span>.</p>
+<ul>
+<li>Asse nel <strong>centro</strong>: <span class="m">I = \displaystyle\int_{-\ell/2}^{\ell/2} x^2 \lambda\,dx = \lambda\,\frac{x^3}{3}\Big|_{-\ell/2}^{\ell/2} = \lambda\,\frac{\ell^3}{12} = \tfrac1{12}M\ell^2</span>.</li>
+<li>Asse a un <strong>estremo</strong>: <span class="m">I = \displaystyle\int_0^\ell x^2\lambda\,dx = \lambda\,\frac{\ell^3}{3} = \tfrac13 M\ell^2</span>.</li>
+</ul>
+<h3>Tabella dei momenti d&#39;inerzia da sapere</h3>
 <table>
 <thead>
 <tr>
-<th>Corpo</th>
+<th>Corpo omogeneo</th>
+<th>Asse</th>
 <th><span class="m">I</span></th>
 </tr>
 </thead>
 <tbody><tr>
-<td>Anello (o cilindro cavo sottile)</td>
+<td>Anello (o cilindro cavo sottile) di raggio <span class="m">R</span></td>
+<td>asse centrale, perpendicolare al piano</td>
 <td><span class="m">MR^2</span></td>
 </tr>
 <tr>
-<td>Disco o cilindro pieno</td>
+<td>Anello</td>
+<td>un diametro</td>
 <td><span class="m">\tfrac12 MR^2</span></td>
 </tr>
 <tr>
+<td>Disco o cilindro pieno</td>
+<td>asse centrale</td>
+<td><span class="m">\tfrac12 MR^2</span></td>
+</tr>
+<tr>
+<td>Disco</td>
+<td>asse perpendicolare passante per un punto del bordo</td>
+<td><span class="m">\tfrac32 MR^2</span></td>
+</tr>
+<tr>
 <td>Sfera piena</td>
+<td>un diametro</td>
 <td><span class="m">\tfrac25 MR^2</span></td>
 </tr>
 <tr>
 <td>Sfera cava sottile</td>
+<td>un diametro</td>
 <td><span class="m">\tfrac23 MR^2</span></td>
 </tr>
 <tr>
-<td>Asta sottile, asse nel centro</td>
-<td><span class="m">\tfrac1{12} ML^2</span></td>
+<td>Asta sottile di lunghezza <span class="m">\ell</span></td>
+<td>perpendicolare, nel centro</td>
+<td><span class="m">\tfrac1{12} M\ell^2</span></td>
 </tr>
 <tr>
-<td>Asta sottile, asse a un estremo</td>
-<td><span class="m">\tfrac13 ML^2</span></td>
+<td>Asta sottile</td>
+<td>perpendicolare, a un estremo</td>
+<td><span class="m">\tfrac13 M\ell^2</span></td>
 </tr>
 </tbody></table>
-<p>A parità di massa, più la massa sta lontano dall&#39;asse, più <span class="m">I</span> è grande.</p>
-<h2>Teorema di Huygens-Steiner</h2>
-<p>Serve a calcolare <span class="m">I</span> rispetto a un asse che non passa per il centro di massa. Basta conoscere <span class="m">I</span> rispetto all&#39;asse parallelo che passa per il centro di massa.</p>
-<p><span class="m d">I_h = I_{cm} + M h^2</span>
+<p>Confronto utile: anello (<span class="m">MR^2</span>) &gt; sfera cava (<span class="m">\tfrac23MR^2</span>) &gt; disco (<span class="m">\tfrac12MR^2</span>) &gt; sfera piena (<span class="m">\tfrac25MR^2</span>). Nell&#39;anello tutta la massa è alla distanza massima <span class="m">R</span>; nella sfera piena molta massa è vicina al centro.</p>
+<h2>Teorema di Huygens-Steiner (degli assi paralleli)</h2>
+<p><strong>Enunciato.</strong> Se è noto il momento d&#39;inerzia <span class="m">I_c</span> di un corpo rispetto a un asse passante per il suo <strong>centro di massa</strong>, il momento d&#39;inerzia rispetto a un qualsiasi asse <strong>parallelo</strong> al primo e posto a distanza <span class="m">h</span> da esso è</p>
+<p><span class="m d">I_h = I_c + M\,h^2</span>
 dove:</p>
 <ul>
 <li><span class="m">I_h</span> = momento d&#39;inerzia rispetto al nuovo asse (kg·m²)</li>
-<li><span class="m">I_{cm}</span> = momento d&#39;inerzia rispetto all&#39;asse parallelo per il centro di massa (kg·m²)</li>
+<li><span class="m">I_c</span> = momento d&#39;inerzia rispetto all&#39;asse parallelo passante per il centro di massa (kg·m²)</li>
 <li><span class="m">M</span> = massa totale del corpo (kg)</li>
 <li><span class="m">h</span> = distanza tra i due assi (m)</li>
 </ul>
-<p>Ragionamento in tre passi:</p>
+<h3>Dimostrazione (sistema discreto di punti)</h3>
 <ol>
-<li>Metti l&#39;origine nel centro di massa. Ogni punto ha distanza <span class="m">r_i</span> dal primo asse.</li>
-<li>Rispetto al secondo asse, spostato di <span class="m">h</span>, la distanza al quadrato diventa <span class="m">r_i^2 + h^2</span> più un termine misto.</li>
-<li>Il termine misto si annulla perché la somma è fatta attorno al centro di massa. Resta <span class="m">\sum m_i r_i^2 + h^2 \sum m_i = I_{cm} + Mh^2</span>.</li>
+<li>Scelgo un sistema di riferimento con <strong>origine nel centro di massa</strong> e asse <span class="m">z</span> parallelo ai due assi. Il primo asse è l&#39;asse <span class="m">z</span> stesso; il secondo interseca il piano <span class="m">xy</span> nel punto <span class="m">H = (a, b)</span>, con <span class="m">a^2 + b^2 = h^2</span>.</li>
+<li>La distanza al quadrato del punto <span class="m">i</span>, di coordinate <span class="m">(x_i, y_i, z_i)</span>, dal primo asse è <span class="m">x_i^2 + y_i^2</span>. Quindi <span class="m">I_c = \sum_i m_i\,(x_i^2 + y_i^2)</span>.</li>
+<li>La distanza al quadrato dal secondo asse è <span class="m">(x_i - a)^2 + (y_i - b)^2</span>. Quindi
+<span class="m d">I_h = \sum_i m_i\left[(x_i - a)^2 + (y_i - b)^2\right]</span></li>
+<li>Sviluppo i quadrati:
+<span class="m d">I_h = \sum_i m_i (x_i^2 + y_i^2) - 2a\sum_i m_i x_i - 2b\sum_i m_i y_i + (a^2 + b^2)\sum_i m_i</span></li>
+<li>Il primo termine è <span class="m">I_c</span>. Nel secondo e nel terzo compare <span class="m">\sum_i m_i x_i = M\,x_{cm}</span> e <span class="m">\sum_i m_i y_i = M\,y_{cm}</span>: sono <strong>nulli</strong>, perché l&#39;origine è nel centro di massa (<span class="m">x_{cm} = y_{cm} = 0</span>). L&#39;ultimo termine vale <span class="m">h^2 M</span>.</li>
+<li>Resta <span class="m">I_h = I_c + M h^2</span>. ∎</li>
 </ol>
-<p>Conseguenza: <span class="m">I</span> è minimo per l&#39;asse che passa per il centro di massa.</p>
+<p>Per un corpo continuo la dimostrazione è identica, con gli integrali al posto delle somme.</p>
+<h3>Conseguenze</h3>
+<ul>
+<li>Il termine <span class="m">Mh^2</span> è sempre positivo: <strong>tra tutti gli assi paralleli, il momento d&#39;inerzia minimo è quello dell&#39;asse che passa per il centro di massa</strong>.</li>
+<li>Il teorema vale solo se uno dei due assi passa per il centro di massa. Per passare tra due assi qualsiasi, si passa prima per l&#39;asse del centro di massa.</li>
+</ul>
 <div class="callout esempio">
 
-<p>Sfera piena, asse tangente alla superficie. L&#39;asse dista <span class="m">R</span> dal centro:
-<span class="m">I = \tfrac25 MR^2 + MR^2 = \tfrac75 MR^2</span>.
-Disco rispetto a un asse perpendicolare sul bordo: <span class="m">I = \tfrac12 MR^2 + MR^2 = \tfrac32 MR^2</span>.</p>
+<p><strong>Sfera, asse tangente.</strong> Sfera piena di massa <span class="m">M</span> e raggio <span class="m">R</span>; un asse tangente alla superficie dista <span class="m">h = R</span> dal centro.
+<span class="m d">I = \tfrac25 MR^2 + M R^2 = \left(\tfrac25 + \tfrac55\right) MR^2 = \tfrac75 MR^2</span></p>
+<p><strong>Disco, asse sul bordo.</strong> Asse perpendicolare al disco passante per un punto del bordo (<span class="m">h = R</span>):
+<span class="m d">I = \tfrac12 MR^2 + MR^2 = \tfrac32 MR^2</span></p>
+<p><strong>Asta, asse a un estremo.</strong> <span class="m">I = \tfrac1{12}M\ell^2 + M\left(\tfrac{\ell}{2}\right)^2 = \tfrac1{12}M\ell^2 + \tfrac3{12}M\ell^2 = \tfrac13 M\ell^2</span>: torna con l&#39;integrale calcolato sopra.</p>
 </div>
 
-<h2>Seconda legge per le rotazioni</h2>
-<p>Un momento delle forze esterne fa cambiare la velocità angolare. È la versione rotazionale di <span class="m">F = ma</span>.</p>
-<p><span class="m d">M = I\alpha</span>
+<div class="callout attenzione">
+
+<p>Errori tipici con Steiner:</p>
+<ul>
+<li>usare <span class="m">I_{cm}</span> quando l&#39;asse di rotazione <strong>non</strong> passa per il centro di massa;</li>
+<li>sottrarre <span class="m">Mh^2</span> invece di sommarlo (il momento rispetto a un asse spostato è sempre <strong>più grande</strong>);</li>
+<li>aggiungere un altro &quot;pezzo&quot; della formula del corpo (per esempio un altro <span class="m">\tfrac25 MR^2</span>) invece di <span class="m">Mh^2</span>.</li>
+</ul>
+</div>
+
+<h2>Momento angolare di un corpo rigido in rotazione</h2>
+<p>Consideriamo un corpo che ruota attorno a un asse fisso, e un polo <span class="m">O</span> sull&#39;asse. Ogni elementino di massa <span class="m">dm</span> nel punto <span class="m">P</span> ha momento angolare <span class="m">d\vec L = \vec r \times (dm\,\vec v)</span>, perpendicolare al piano formato da <span class="m">\vec r</span> (la posizione di <span class="m">P</span> rispetto a <span class="m">O</span>) e da <span class="m">\vec v</span>.</p>
+<p>In generale <span class="m">d\vec L</span> ha una componente <strong>parallela all&#39;asse</strong> e una <strong>perpendicolare</strong>. Se però l&#39;asse di rotazione è un <strong>asse di simmetria</strong> del corpo, per ogni punto <span class="m">P</span> esiste un punto simmetrico <span class="m">P'</span> il cui momento angolare ha la stessa componente parallela e la componente perpendicolare <strong>opposta</strong>. Sommando su tutto il corpo, le componenti perpendicolari si annullano a coppie: <strong>il momento angolare totale è parallelo all&#39;asse di rotazione</strong>.</p>
+<p>Calcolo della componente parallela:</p>
+<ol>
+<li><span class="m">\vec v</span> è perpendicolare a <span class="m">\vec r</span>, quindi <span class="m">|d\vec L| = r\,v\,dm = r\,\omega\,h\,dm</span>, dove <span class="m">h</span> è la distanza di <span class="m">P</span> dall&#39;asse (perché <span class="m">v = \omega h</span>).</li>
+<li>Se <span class="m">\theta</span> è l&#39;angolo tra <span class="m">\vec r</span> e l&#39;asse, <span class="m">d\vec L</span> forma con l&#39;asse l&#39;angolo complementare; la sua componente parallela è <span class="m">dL_{\parallel} = r\,\omega\,h\,\sin\theta\,dm</span>.</li>
+<li>Ma <span class="m">r\sin\theta = h</span>: quindi <span class="m">dL_{\parallel} = \omega\,h^2\,dm</span>.</li>
+<li>Integro su tutto il corpo; <span class="m">\omega</span> è uguale per tutti:
+<span class="m d">L = \omega\int h^2\,dm = I\,\omega</span></li>
+</ol>
+<p><span class="m d">\vec L = I\,\vec\omega</span>
 dove:</p>
 <ul>
-<li><span class="m">M</span> = momento delle forze esterne rispetto all&#39;asse (N·m)</li>
-<li><span class="m">I</span> = momento d&#39;inerzia (kg·m²)</li>
-<li><span class="m">\alpha</span> = accelerazione angolare (rad/s²)</li>
+<li><span class="m">\vec L</span> = momento angolare del corpo (kg·m²/s)</li>
+<li><span class="m">I</span> = momento d&#39;inerzia rispetto all&#39;asse di rotazione (kg·m²)</li>
+<li><span class="m">\vec\omega</span> = velocità angolare, vettore diretto lungo l&#39;asse (rad/s)</li>
 </ul>
-<p>Il momento di una forza è <span class="m">M = F\,b</span>, con <span class="m">b</span> braccio: distanza tra l&#39;asse e la retta della forza (m).</p>
-<div class="callout esempio">
-
-<p>Puleggia a disco (massa <span class="m">M</span>, raggio <span class="m">R</span>) con un secchio di massa <span class="m">m</span> appeso alla fune.
-Secchio: <span class="m">mg - T = ma</span>. Puleggia: <span class="m">TR = I\alpha</span>, con <span class="m">\alpha = a/R</span>.
-Unendo le due equazioni:
-<span class="m d">a = \frac{mg}{m + I/R^2} = \frac{mg}{m + M/2}</span>
-La puleggia &quot;frena&quot; il secchio: <span class="m">a</span> è sempre minore di <span class="m">g</span>.</p>
-</div>
-
-<h2>Energia cinetica</h2>
-<p>Un corpo che ruota ha energia cinetica di rotazione. Se anche trasla, le due energie si sommano (teorema di König).</p>
+<p>È l&#39;analoga di <span class="m">\vec p = m\vec v</span>.</p>
+<h2>Seconda legge della dinamica per le rotazioni</h2>
+<p>Per un corpo rigido che ruota attorno a un asse fisso (di simmetria, o passante per il centro di massa), <span class="m">I</span> non cambia nel tempo. La seconda equazione cardinale diventa:</p>
+<p><span class="m d">M^{(e)} = \frac{dL}{dt} = \frac{d(I\omega)}{dt} = I\,\frac{d\omega}{dt} = I\,\alpha</span>
+dove:</p>
+<ul>
+<li><span class="m">M^{(e)}</span> = momento delle forze esterne rispetto all&#39;asse (N·m)</li>
+<li><span class="m">I</span> = momento d&#39;inerzia rispetto all&#39;asse (kg·m²)</li>
+<li><span class="m">\alpha = d\omega/dt</span> = accelerazione angolare (rad/s²)</li>
+</ul>
+<p>È la versione rotazionale di <span class="m">F = ma</span>: un momento esterno produce un&#39;accelerazione angolare, tanto più piccola quanto più grande è <span class="m">I</span>. Tutti i vettori sono paralleli all&#39;asse, quindi si lavora con i moduli (con il segno).</p>
+<p>Ricorda il <strong>momento di una forza</strong> rispetto a un asse: <span class="m">M = F\,b</span>, dove <span class="m">F</span> è l&#39;intensità della forza (N) e <span class="m">b</span> il <strong>braccio</strong>, cioè la distanza tra l&#39;asse e la retta d&#39;azione della forza (m). Una forza tangente al bordo di una ruota di raggio <span class="m">R</span> ha braccio <span class="m">R</span>; una forza diretta verso l&#39;asse ha braccio nullo.</p>
+<h3>Lavoro di un momento ed energia cinetica di rotazione</h3>
+<p>Il lavoro fatto dal momento delle forze esterne fa variare l&#39;energia cinetica di rotazione. In forma infinitesima:</p>
+<ol>
+<li><span class="m">dK = d\left(\tfrac12 I\omega^2\right) = I\,\omega\,d\omega</span>.</li>
+<li>Scrivo <span class="m">\omega\,d\omega = \dfrac{d\theta}{dt}\,d\omega = \dfrac{d\omega}{dt}\,d\theta = \alpha\,d\theta</span>.</li>
+<li>Quindi <span class="m">dK = I\alpha\,d\theta = M^{(e)}\,d\theta</span>.</li>
+</ol>
+<p><span class="m d">dW = M\,d\theta \qquad\qquad W = K_{fin} - K_{in} = \tfrac12 I\omega_{fin}^2 - \tfrac12 I\omega_{in}^2</span>
+dove:</p>
+<ul>
+<li><span class="m">W</span> = lavoro del momento (J)</li>
+<li><span class="m">M</span> = momento delle forze (N·m)</li>
+<li><span class="m">d\theta</span> = rotazione infinitesima (rad)</li>
+</ul>
+<p>Come per il punto materiale il lavoro è &quot;forza per spostamento&quot;, per un corpo rigido in rotazione è &quot;<strong>momento per spostamento angolare</strong>&quot;. Se il momento è costante, <span class="m">W = M\,\Delta\theta</span>.</p>
+<h2>Energia cinetica di un corpo che trasla e ruota</h2>
+<p>Se il corpo, oltre a ruotare, trasla, l&#39;energia cinetica è la somma di due termini (<strong>teorema di König</strong>):</p>
 <p><span class="m d">K = \tfrac12 M v_{cm}^2 + \tfrac12 I_{cm}\,\omega^2</span>
 dove:</p>
 <ul>
 <li><span class="m">K</span> = energia cinetica totale (J)</li>
+<li><span class="m">M</span> = massa (kg)</li>
 <li><span class="m">v_{cm}</span> = velocità del centro di massa (m/s)</li>
-<li><span class="m">I_{cm}</span> = momento d&#39;inerzia rispetto al centro di massa (kg·m²)</li>
+<li><span class="m">I_{cm}</span> = momento d&#39;inerzia rispetto a un asse per il centro di massa (kg·m²)</li>
 <li><span class="m">\omega</span> = velocità angolare (rad/s)</li>
 </ul>
+<p>Il primo termine è l&#39;energia di traslazione (come se tutta la massa fosse nel centro di massa), il secondo l&#39;energia di rotazione attorno al centro di massa.</p>
 <div class="callout esempio">
 
-<p>Disco di 5 kg, raggio 0,2 m, lanciato a 15 m/s mentre gira a 15 rad/s.
-Traslazione: <span class="m">\tfrac12 \cdot 5 \cdot 15^2 = 562{,}5\,\mathrm J</span>.
-Rotazione: <span class="m">I = \tfrac12 \cdot 5 \cdot 0{,}2^2 = 0{,}1\,\mathrm{kg\,m^2}</span>, quindi <span class="m">\tfrac12 \cdot 0{,}1 \cdot 15^2 = 11{,}25\,\mathrm J</span>.
-Totale: circa <span class="m">574\,\mathrm J</span>.</p>
+<p><strong>Disco lanciato e rotante.</strong> Un disco di massa <span class="m">m = 5\ \mathrm{kg}</span> e raggio <span class="m">R = 0{,}2\ \mathrm m</span> viene lanciato a <span class="m">v = 15\ \mathrm{m/s}</span> mentre ruota attorno al proprio asse (perpendicolare al disco, per il centro) a <span class="m">\omega = 15\ \mathrm{rad/s}</span>. Energia cinetica?</p>
+<ol>
+<li>Momento d&#39;inerzia del disco: <span class="m">I = \tfrac12 mR^2 = \tfrac12 \cdot 5 \cdot 0{,}04 = 0{,}1\ \mathrm{kg\,m^2}</span>.</li>
+<li>Traslazione: <span class="m">\tfrac12 m v^2 = \tfrac12 \cdot 5 \cdot 225 = 562{,}5\ \mathrm J</span>.</li>
+<li>Rotazione: <span class="m">\tfrac12 I\omega^2 = \tfrac12 \cdot 0{,}1 \cdot 225 = 11{,}25\ \mathrm J</span>.</li>
+<li>Totale: <span class="m">K = 562{,}5 + 11{,}25 = 573{,}75 \approx 574\ \mathrm J</span>.</li>
+</ol>
+<p>Qui la rotazione pesa poco perché <span class="m">\omega R = 3\ \mathrm{m/s}</span> è molto minore di <span class="m">v</span>. Ma non va dimenticata: senza di essa il risultato sarebbe sbagliato.</p>
 </div>
 
-<p>Il lavoro di un momento costante è <span class="m">W = M\,\Delta\theta</span>. Fa variare l&#39;energia cinetica di rotazione.</p>
-<h2>Momento angolare e sua conservazione</h2>
-<p>Per un corpo che ruota attorno a un asse di simmetria, il momento angolare è parallelo all&#39;asse.</p>
-<p><span class="m d">L = I\omega \qquad \frac{dL}{dt} = M_{est}</span>
+<div class="callout esempio">
+
+<p><strong>Satellite cilindrico.</strong> Un satellite a forma di cilindro pieno omogeneo, diametro di base 1,21 m, altezza 1,75 m, massa 1210 kg, ruota attorno al proprio asse a 1,52 giri/s. Momento d&#39;inerzia ed energia cinetica?</p>
+<ol>
+<li>Raggio: <span class="m">R = 1{,}21/2 = 0{,}605\ \mathrm m</span>. L&#39;altezza non serve: per un cilindro rispetto al suo asse conta solo <span class="m">R</span>.</li>
+<li><span class="m">I = \tfrac12 MR^2 = \tfrac12 \cdot 1210 \cdot 0{,}605^2 = 605 \cdot 0{,}366 \approx 221\ \mathrm{kg\,m^2}</span>.</li>
+<li>Converto i giri al secondo: <span class="m">\omega = 1{,}52 \cdot 2\pi \approx 9{,}55\ \mathrm{rad/s}</span> (ogni giro sono <span class="m">2\pi</span> radianti).</li>
+<li><span class="m">K = \tfrac12 I\omega^2 = \tfrac12 \cdot 221 \cdot 9{,}55^2 \approx 1{,}0 \cdot 10^4\ \mathrm J</span>.</li>
+</ol>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Momento d&#39;inerzia dall&#39;energia.</strong> Una ruota ha energia cinetica di rotazione <span class="m">K = 24\,400\ \mathrm J</span> quando gira a 602 giri/min. Quanto vale <span class="m">I</span>?</p>
+<ol>
+<li><span class="m">\omega = 602 \cdot \dfrac{2\pi}{60} \approx 63{,}0\ \mathrm{rad/s}</span> (divido per 60 per passare ai secondi).</li>
+<li>Da <span class="m">K = \tfrac12 I\omega^2</span>: <span class="m">I = \dfrac{2K}{\omega^2} = \dfrac{48\,800}{63{,}0^2} \approx 12{,}3\ \mathrm{kg\,m^2}</span>.</li>
+</ol>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Puleggia con forza variabile.</strong> Una puleggia di raggio <span class="m">r = 10\ \mathrm{cm}</span> e momento d&#39;inerzia <span class="m">I = 1{,}0 \cdot 10^{-3}\ \mathrm{kg\,m^2}</span>, ferma all&#39;inizio, riceve sul bordo una forza tangente <span class="m">F = 0{,}50\,t + 0{,}30\,t^2</span> (N, con <span class="m">t</span> in s). A <span class="m">t = 3{,}0\ \mathrm s</span>: accelerazione e velocità angolare?</p>
+<ol>
+<li>La forza è tangente, quindi il braccio è <span class="m">r</span>: <span class="m">M = F r</span>. Da <span class="m">M = I\alpha</span>: <span class="m">\alpha(t) = \dfrac{r}{I}F(t) = 100\,(0{,}50\,t + 0{,}30\,t^2)</span>.</li>
+<li>A <span class="m">t = 3\ \mathrm s</span>: <span class="m">F = 1{,}5 + 2{,}7 = 4{,}2\ \mathrm N</span>, quindi <span class="m">\alpha = 100 \cdot 4{,}2 = 420\ \mathrm{rad/s^2}</span>.</li>
+<li>La velocità angolare si ottiene integrando <span class="m">\alpha</span> nel tempo (parte da ferma):
+<span class="m d">\omega = \int_0^3 100\,(0{,}50\,t + 0{,}30\,t^2)\,dt = 100\left[0{,}25\,t^2 + 0{,}10\,t^3\right]_0^3 = 100\,(2{,}25 + 2{,}7) = 495\ \mathrm{rad/s}</span></li>
+</ol>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Puleggia con secchio</strong> (tipo di domanda del paniere). Una puleggia a disco di massa <span class="m">M = 4\ \mathrm{kg}</span> e raggio <span class="m">R = 0{,}5\ \mathrm m</span> ruota senza attrito attorno a un perno centrale. Sulla fune avvolta è appeso un secchio di massa totale <span class="m">m = 16\ \mathrm{kg}</span>. Con che accelerazione scende?</p>
+<ol>
+<li><strong>Secchio</strong> (traslazione, verso positivo in basso): <span class="m">mg - T = m a</span>, dove <span class="m">T</span> è la tensione della fune (N).</li>
+<li><strong>Puleggia</strong> (rotazione): l&#39;unica forza con momento rispetto al perno è la tensione, con braccio <span class="m">R</span>: <span class="m">T R = I\alpha</span>.</li>
+<li><strong>Vincolo</strong>: la fune non slitta, quindi <span class="m">a = \alpha R</span> e <span class="m">\alpha = a/R</span>.</li>
+<li>Con <span class="m">I = \tfrac12 MR^2</span>: <span class="m">TR = \tfrac12 MR^2 \cdot \dfrac{a}{R}</span>, cioè <span class="m">T = \tfrac12 M a</span>.</li>
+<li>Sostituisco nella prima: <span class="m">mg - \tfrac12 Ma = ma</span>, quindi
+<span class="m d">a = \frac{mg}{m + M/2} = \frac{16 \cdot 9{,}8}{16 + 2} = \frac{156{,}8}{18} \approx 8{,}7\ \mathrm{m/s^2}</span>
+L&#39;accelerazione è minore di <span class="m">g</span>: parte del peso serve a mettere in rotazione la puleggia. Se la puleggia avesse massa nulla si avrebbe la caduta libera, <span class="m">a = g</span>. In forma generale <span class="m">a = \dfrac{mg}{m + I/R^2}</span>.</li>
+</ol>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Puleggia in cima a un piano inclinato.</strong> Puleggia di raggio <span class="m">R = 20\ \mathrm{cm}</span>; la fune regge una massa di 2,0 kg che scivola senza attrito su un piano inclinato di 20°, con accelerazione misurata <span class="m">a = 2{,}0\ \mathrm{m/s^2}</span>. Momento d&#39;inerzia della puleggia?</p>
+<ol>
+<li>Massa lungo il piano: <span class="m">mg\sin 20° - T = ma</span>, quindi <span class="m">T = 2{,}0 \cdot 9{,}8 \cdot 0{,}342 - 2{,}0 \cdot 2{,}0 = 6{,}70 - 4{,}0 = 2{,}70\ \mathrm N</span>.</li>
+<li>Puleggia: <span class="m">TR = I\alpha = I\,a/R</span>, quindi <span class="m">I = \dfrac{T R^2}{a} = \dfrac{2{,}70 \cdot 0{,}04}{2{,}0} \approx 0{,}054\ \mathrm{kg\,m^2}</span>.</li>
+</ol>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Asta spinta con attrito nella cerniera.</strong> Un&#39;asta di massa <span class="m">m = 0{,}4\ \mathrm{kg}</span> e lunghezza <span class="m">\ell = 0{,}80\ \mathrm m</span>, imperniata a un estremo e inizialmente ferma, è spinta all&#39;altro estremo da una forza <span class="m">F = 100\ \mathrm N</span> sempre perpendicolare all&#39;asta; la cerniera dà un momento d&#39;attrito <span class="m">M_A = 30\ \mathrm{N\,m}</span>. Velocità angolare dopo mezzo giro (180°)? Il peso si trascura.</p>
+<ol>
+<li>Momento della forza: braccio <span class="m">\ell</span>, <span class="m">M_F = F\ell = 80\ \mathrm{N\,m}</span>. Momento totale: <span class="m">M = 80 - 30 = 50\ \mathrm{N\,m}</span>.</li>
+<li>Momento d&#39;inerzia rispetto al perno (Steiner): <span class="m">I = \tfrac1{12}m\ell^2 + m\left(\tfrac{\ell}{2}\right)^2 = \tfrac13 m\ell^2 = \tfrac13 \cdot 0{,}4 \cdot 0{,}64 \approx 0{,}0853\ \mathrm{kg\,m^2}</span>.</li>
+<li>Lavoro del momento costante su <span class="m">\Delta\theta = \pi</span>: <span class="m">W = M\,\pi = 50\pi \approx 157\ \mathrm J</span>.</li>
+<li><span class="m">W = \tfrac12 I\omega^2</span>, quindi <span class="m">\omega = \sqrt{2W/I} = \sqrt{314/0{,}0853} \approx 60{,}7\ \mathrm{rad/s}</span>.</li>
+</ol>
+<p>(Allo stesso risultato si arriva con <span class="m">\alpha = M/I</span> e <span class="m">\omega^2 = 2\alpha\,\Delta\theta</span>.)</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Asta che cade attorno a un perno.</strong> Un&#39;asta di massa <span class="m">0{,}2\ \mathrm{kg}</span> e lunghezza <span class="m">\ell = 0{,}60\ \mathrm m</span>, imperniata senza attrito a un estremo, viene lasciata da ferma in posizione orizzontale. Velocità dell&#39;estremo libero nel punto più basso?</p>
+<ol>
+<li>Si conserva l&#39;energia meccanica (il perno liscio non compie lavoro). Il centro di massa scende di <span class="m">\ell/2</span>.</li>
+<li><span class="m">mg\,\dfrac{\ell}{2} = \tfrac12 I\omega^2</span> con <span class="m">I = \tfrac13 m\ell^2</span>: <span class="m">\omega^2 = \dfrac{3g}{\ell} = \dfrac{3 \cdot 9{,}8}{0{,}6} = 49</span>, quindi <span class="m">\omega = 7\ \mathrm{rad/s}</span>.</li>
+<li>Velocità dell&#39;estremo: <span class="m">v = \omega\ell = 7 \cdot 0{,}6 = 4{,}2\ \mathrm{m/s}</span>. La massa non conta: si semplifica.</li>
+</ol>
+</div>
+
+<h2>Conservazione del momento angolare</h2>
+<p>Dalla seconda equazione cardinale: se il <strong>momento delle forze esterne è nullo</strong>, <span class="m">dL/dt = 0</span> e il momento angolare resta <strong>costante</strong>.</p>
+<p>Per un corpo rigido <span class="m">I</span> è fisso, quindi resta costante anche <span class="m">\omega</span>. Ma il risultato vale anche per un sistema di punti <strong>non rigido</strong> che può ridistribuire la propria massa mantenendo la simmetria rispetto all&#39;asse (una persona che muove le braccia). Se la massa si avvicina o si allontana dall&#39;asse, <span class="m">I</span> cambia; poiché <span class="m">L = I\omega</span> deve restare uguale, cambia <span class="m">\omega</span> in modo complementare:</p>
+<p><span class="m d">I_{in}\,\omega_{in} = I_{fin}\,\omega_{fin}</span>
 dove:</p>
 <ul>
-<li><span class="m">L</span> = momento angolare (kg·m²/s)</li>
-<li><span class="m">M_{est}</span> = momento delle forze esterne (N·m)</li>
+<li><p><span class="m">I_{in}, I_{fin}</span> = momenti d&#39;inerzia prima e dopo (kg·m²)</p>
+</li>
+<li><p><span class="m">\omega_{in}, \omega_{fin}</span> = velocità angolari prima e dopo (rad/s)</p>
+</li>
+<li><p>Massa portata <strong>vicino</strong> all&#39;asse → <span class="m">I</span> diminuisce → <span class="m">\omega</span> <strong>aumenta</strong>.</p>
+</li>
+<li><p>Massa portata <strong>lontano</strong> dall&#39;asse → <span class="m">I</span> aumenta → <span class="m">\omega</span> <strong>diminuisce</strong>.</p>
+</li>
 </ul>
-<p>Se il momento esterno è nullo, <span class="m">L</span> resta costante. Se il corpo cambia forma, cambia <span class="m">I</span> e quindi cambia <span class="m">\omega</span>:</p>
-<p><span class="m d">I_{in}\,\omega_{in} = I_{fin}\,\omega_{fin}</span></p>
-<p><strong>Il pattinatore.</strong> Quando raccoglie le braccia, porta massa vicino all&#39;asse. Il suo <span class="m">I</span> diminuisce. Il ghiaccio non dà momenti esterni rilevanti, quindi <span class="m">L</span> si conserva. Allora <span class="m">\omega</span> deve aumentare: gira più veloce. Se riapre le braccia, rallenta. Lo stesso fa il tuffatore che si raccoglie.</p>
-<h2>Equilibrio di un corpo rigido</h2>
-<p>Un corpo rigido è in equilibrio se sono nulle sia la forza risultante sia il momento risultante. Conta anche cosa succede se lo sposti un po&#39;:</p>
+<h3>Il pattinatore (domanda aperta)</h3>
+<p>Un pattinatore ruota su se stesso con le braccia aperte. Le forze esterne sono il peso e la reazione del ghiaccio, entrambe verticali e (circa) lungo l&#39;asse di rotazione; l&#39;attrito del ghiaccio è piccolissimo. Il loro momento rispetto all&#39;asse è quindi trascurabile e <strong>il momento angolare si conserva</strong>. Quando il pattinatore raccoglie le braccia al corpo (o si distende lungo la verticale), porta massa vicino all&#39;asse: il suo momento d&#39;inerzia <strong>diminuisce</strong>. Perché il prodotto <span class="m">I\omega</span> resti uguale, la velocità angolare deve <strong>aumentare</strong>: gira più veloce. Se riapre le braccia, <span class="m">I</span> torna grande e rallenta. Lo stesso fanno i <strong>tuffatori</strong>, che si raccolgono &quot;a palla&quot; per fare più rotazioni durante il salto e si distendono prima di entrare in acqua.</p>
+<p>Nota energetica: l&#39;energia cinetica <span class="m">\tfrac12 I\omega^2 = \dfrac{L^2}{2I}</span> <strong>aumenta</strong> quando <span class="m">I</span> diminuisce. L&#39;energia in più viene dal lavoro dei muscoli che tirano le braccia verso l&#39;interno.</p>
+<div class="callout esempio">
+
+<p><strong>Pattinatrice.</strong> Ruota a <span class="m">\omega_1 = 2{,}4\ \mathrm{rad/s}</span> con momento d&#39;inerzia <span class="m">I_1 = 5{,}2\ \mathrm{kg\,m^2}</span>; portando le braccia lungo il corpo arriva a <span class="m">\omega_2 = 3{,}5\ \mathrm{rad/s}</span>. Momento d&#39;inerzia finale?</p>
+<ol>
+<li>L&#39;unica forza esterna rilevante è il peso; preso il centro di massa come polo, il suo momento è nullo: <span class="m">L</span> si conserva.</li>
+<li><span class="m">I_2 = I_1\,\dfrac{\omega_1}{\omega_2} = 5{,}2 \cdot \dfrac{2{,}4}{3{,}5} \approx 3{,}6\ \mathrm{kg\,m^2}</span>.</li>
+</ol>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Cilindro di ghiaccio secco che evapora.</strong> Un cilindro di massa 300 g ruota attorno al proprio asse a 8 Hz. In 10 minuti, per evaporazione uniforme, la massa scende a 270 g con lo stesso raggio. Nuova frequenza? (attriti trascurabili)</p>
+<ol>
+<li>L&#39;evaporazione è uniforme in tutte le direzioni: non dà momento esterno, <span class="m">L = I\omega</span> si conserva.</li>
+<li><span class="m">I = \tfrac12 MR^2</span> con <span class="m">R</span> fisso: <span class="m">I</span> è proporzionale a <span class="m">M</span>. Quindi <span class="m">M_1 f_1 = M_2 f_2</span>.</li>
+<li><span class="m">f_2 = 8 \cdot \dfrac{300}{270} \approx 8{,}9\ \mathrm{Hz}</span>, cioè <span class="m">\omega_2 = 2\pi f_2 \approx 55{,}8\ \mathrm{rad/s}</span>.</li>
+</ol>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Satellite messo in rotazione da due razzi.</strong> Cilindro di raggio <span class="m">r = 4{,}5\ \mathrm m</span> e massa <span class="m">5{,}4 \cdot 10^3\ \mathrm{kg}</span>, fermo; due propulsori tangenti al bordo, ciascuno con forza <span class="m">F</span>, lo portano a <span class="m">\omega = 3{,}5\ \mathrm{rad/s}</span> in <span class="m">\Delta t = 360\ \mathrm s</span>. Quanto vale <span class="m">F</span>? Energia finale?</p>
+<ol>
+<li><span class="m">I = \tfrac12 m r^2 = \tfrac12 \cdot 5400 \cdot 20{,}25 \approx 5{,}47 \cdot 10^4\ \mathrm{kg\,m^2}</span>.</li>
+<li>Accelerazione angolare costante: <span class="m">\alpha = \omega/\Delta t = 3{,}5/360 \approx 9{,}72 \cdot 10^{-3}\ \mathrm{rad/s^2}</span>.</li>
+<li>Momento totale: due forze di braccio <span class="m">r</span>, <span class="m">M = 2Fr = I\alpha</span>, quindi <span class="m">F = \dfrac{I\alpha}{2r} = \dfrac{5{,}47 \cdot 10^4 \cdot 9{,}72 \cdot 10^{-3}}{9} \approx 59\ \mathrm N</span>.</li>
+<li><span class="m">K = \tfrac12 I\omega^2 = \tfrac12 \cdot 5{,}47 \cdot 10^4 \cdot 12{,}25 \approx 3{,}3 \cdot 10^5\ \mathrm J</span>.</li>
+</ol>
+</div>
+
+<h2>Equilibrio del corpo rigido</h2>
+<p><strong>Condizione necessaria e sufficiente.</strong> Un corpo rigido è in equilibrio se sono nulli <strong>sia la risultante delle forze esterne sia il loro momento totale</strong> (rispetto a un polo qualsiasi):</p>
+<p><span class="m d">\vec F^{(e)} = 0 \qquad\qquad \vec M^{(e)} = 0</span></p>
+<p>Infatti, per le equazioni cardinali, allora <span class="m">\vec P</span> e <span class="m">\vec L</span> restano costanti. Se il corpo è inizialmente fermo, resta fermo in un riferimento inerziale: è l&#39;<strong>equilibrio statico</strong>. Sono 6 equazioni scalari.</p>
+<p>Non basta che la risultante sia nulla: due forze uguali e opposte con rette d&#39;azione diverse (una <strong>coppia</strong>) hanno risultante nulla ma momento diverso da zero, e fanno ruotare il corpo.</p>
+<p>Il polo per i momenti si può scegliere liberamente: conviene metterlo dove agiscono forze incognite, così il loro momento (braccio nullo) sparisce dall&#39;equazione.</p>
+<h3>Corpo appoggiato su un piano</h3>
+<p>Un corpo appoggiato è soggetto al peso, applicato nel baricentro, e alle reazioni vincolari del piano, distribuite sulla base d&#39;appoggio. Anche le reazioni sono forze parallele, equivalenti a un&#39;unica forza applicata in un punto della base.</p>
+<ul>
+<li>Se la <strong>verticale del baricentro cade dentro la base d&#39;appoggio</strong>, la risultante delle reazioni si applica proprio su quella verticale: peso e reazione formano una coppia a braccio nullo, momento nullo, il corpo <strong>resta in equilibrio</strong>.</li>
+<li>Se la verticale cade <strong>fuori</strong> dalla base, la reazione può applicarsi al massimo sul bordo della base: peso e reazione formano una coppia con braccio non nullo e il corpo <strong>si ribalta</strong>. Per evitarlo serve un vincolo in più (per esempio un fermo sul bordo opposto).</li>
+</ul>
+<h3>Tipi di equilibrio</h3>
+<p>Conta anche cosa succede se il corpo viene spostato di poco dalla posizione di equilibrio:</p>
 <table>
 <thead>
 <tr>
 <th>Tipo</th>
-<th>Cosa succede spostandolo</th>
+<th>Cosa succede spostandolo di poco</th>
 <th>Esempio</th>
 </tr>
 </thead>
 <tbody><tr>
 <td>Stabile</td>
-<td>torna nella posizione iniziale</td>
-<td>pendolo appeso, baricentro sotto il punto di sospensione</td>
+<td>le forze lo riportano nella posizione iniziale</td>
+<td>pendolo appeso, baricentro sotto il punto di sospensione; cono appoggiato sulla base</td>
 </tr>
 <tr>
 <td>Instabile</td>
-<td>si allontana sempre di più</td>
-<td>matita in piedi sulla punta</td>
+<td>le forze lo allontanano sempre di più</td>
+<td>matita in piedi sulla punta; pendolo capovolto</td>
 </tr>
 <tr>
 <td>Indifferente</td>
-<td>resta nella nuova posizione</td>
+<td>resta in equilibrio anche nella nuova posizione</td>
 <td>sfera su un piano orizzontale</td>
 </tr>
 </tbody></table>
-<p>Un corpo appoggiato sta in equilibrio se la verticale dal baricentro cade dentro la base d&#39;appoggio.</p>
-<p><strong>L&#39;uomo in piedi</strong> è in equilibrio instabile. Ha il baricentro alto e una base d&#39;appoggio piccola (i piedi). Si comporta come un pendolo rovesciato: una piccola spinta lo farebbe cadere. Resta in piedi solo grazie a continue piccole correzioni dei muscoli.</p>
-<div class="callout attenzione">
+<p>In generale l&#39;equilibrio è tanto più &quot;solido&quot; quanto più il baricentro è <strong>basso</strong> e la base d&#39;appoggio <strong>larga</strong>.</p>
+<h3>L&#39;uomo in piedi (domanda aperta)</h3>
+<p>Un uomo in piedi ha il <strong>baricentro alto</strong> (all&#39;altezza del bacino, circa a metà della statura) e una <strong>base d&#39;appoggio piccola</strong>: la superficie compresa tra i piedi. Si comporta come un <strong>pendolo rovesciato</strong>: basta una piccola inclinazione perché la verticale del baricentro esca dalla base e il peso produca un momento che lo fa cadere ancora di più. Per questo la sua posizione si considera di <strong>equilibrio instabile</strong>. Resta in piedi solo grazie a continue, piccolissime correzioni dei muscoli (delle caviglie soprattutto) controllate dal sistema nervoso, che riportano il baricentro sopra i piedi. Allargando i piedi o piegando le ginocchia (base più larga, baricentro più basso) diventa più difficile cadere.</p>
+<div class="callout esempio">
 
-<p>Errore tipico: usare <span class="m">I_{cm}</span> quando l&#39;asse non passa per il centro di massa. Prima applica Steiner, poi <span class="m">M = I\alpha</span> o <span class="m">K = \tfrac12 I\omega^2</span>.</p>
+<p><strong>Torre di Pisa.</strong> La cima è spostata di 4,5 m rispetto alla verticale. Si schematizza come un cilindro omogeneo di diametro 7,0 m e altezza 55 m, semplicemente appoggiato.</p>
+<ol>
+<li>Il baricentro è a metà altezza sull&#39;asse; la sua verticale è spostata della metà dello spostamento della cima: <span class="m">4{,}5/2 = 2{,}25\ \mathrm m</span> dal centro della base.</li>
+<li>La base ha raggio <span class="m">3{,}5\ \mathrm m</span>: <span class="m">2{,}25 &lt; 3{,}5</span>, la verticale del baricentro cade dentro la base. La torre è in equilibrio.</li>
+<li>Il limite si ha quando la verticale del baricentro arriva al bordo, a 3,5 m: la cima dovrebbe spostarsi di <span class="m">2 \cdot 3{,}5 = 7{,}0\ \mathrm m</span>, cioè un&#39;inclinazione <span class="m">\theta_{lim} = \arcsin(7{,}0/55) \approx 7{,}3°</span>.</li>
+</ol>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Scala appoggiata al muro.</strong> Scala di massa <span class="m">m = 3{,}5\ \mathrm{kg}</span> e lunghezza <span class="m">\ell</span>, appoggiata a una parete liscia con angolo <span class="m">\theta = 65°</span> rispetto al pavimento; attrito statico con il pavimento <span class="m">\mu_s = 0{,}36</span>. Reazioni e angolo minimo?</p>
+<ol>
+<li>Forze: peso <span class="m">mg</span> nel punto medio; parete liscia → solo reazione orizzontale <span class="m">N_1</span>; pavimento → reazione verticale <span class="m">N_2</span> e attrito statico <span class="m">F_s</span> orizzontale.</li>
+<li>Forze verticali: <span class="m">N_2 = mg = 3{,}5 \cdot 9{,}8 = 34{,}3\ \mathrm N</span>. Forze orizzontali: <span class="m">F_s = N_1</span>.</li>
+<li>Momenti rispetto al piede della scala <span class="m">O</span> (così <span class="m">N_2</span> e <span class="m">F_s</span> hanno braccio nullo): il braccio di <span class="m">N_1</span> è <span class="m">\ell\sin\theta</span>, quello del peso è <span class="m">\tfrac{\ell}{2}\cos\theta</span>. <span class="m">N_1\,\ell\sin\theta = mg\,\tfrac{\ell}{2}\cos\theta</span>, quindi <span class="m">N_1 = \dfrac{mg}{2\tan\theta} = \dfrac{34{,}3}{2 \cdot 2{,}14} \approx 8{,}0\ \mathrm N = F_s</span>.</li>
+<li>Angolo minimo: l&#39;attrito non può superare <span class="m">\mu_s N_2</span>: <span class="m">\dfrac{mg}{2\tan\theta} \le \mu_s mg</span>, cioè <span class="m">\tan\theta \ge \dfrac{1}{2\mu_s} = 1{,}39</span>, quindi <span class="m">\theta_{min} \approx 54°</span>.</li>
+</ol>
+<p>La scelta del polo è solo una comodità: con un altro polo si ottiene lo stesso risultato, con più termini da scrivere.</p>
+</div>
+
+<div class="callout esame">
+
+<p>Le domande sulla lezione chiedono: come si muove un corpo rigido (trasla <strong>e</strong> ruota, anche insieme); la risultante di due forze parallele (somma o differenza delle intensità); Steiner, sia come enunciato con dimostrazione (aperta &quot;Esporre il teorema di Huygens-Steiner&quot;) sia come calcolo (sfera con asse tangente: <span class="m">\tfrac75MR^2</span>); l&#39;energia cinetica di un disco che trasla e ruota (somma dei due termini); la puleggia con il secchio (<span class="m">a = mg/(m + M/2)</span>); il pattinatore che raccoglie le braccia (conservazione di <span class="m">L = I\omega</span>, <span class="m">I</span> cala, <span class="m">\omega</span> cresce); l&#39;uomo in piedi (equilibrio instabile: baricentro alto, base piccola, pendolo rovesciato, correzioni muscolari).</p>
 </div>
 
 <div class="callout sintesi">
 
 <ul>
-<li>Moto generale del corpo rigido: traslazione + rotazione; <span class="m">v = \omega r</span>.</li>
-<li>Momento d&#39;inerzia <span class="m">I = \sum m r^2</span>: disco <span class="m">\tfrac12MR^2</span>, anello <span class="m">MR^2</span>, sfera <span class="m">\tfrac25MR^2</span>.</li>
-<li>Huygens-Steiner: <span class="m">I_h = I_{cm} + Mh^2</span> (sfera, asse tangente: <span class="m">\tfrac75MR^2</span>).</li>
-<li>Dinamica: <span class="m">M = I\alpha</span>; energia <span class="m">K = \tfrac12Mv_{cm}^2 + \tfrac12I_{cm}\omega^2</span>.</li>
-<li>Senza momenti esterni <span class="m">L = I\omega</span> si conserva: il pattinatore che chiude le braccia gira più veloce.</li>
-<li>L&#39;uomo in piedi è in equilibrio instabile.</li>
+<li>Corpo rigido: distanze reciproche fisse; moto = traslazione del centro di massa + rotazione attorno a un asse; 6 gradi di libertà; <span class="m">v = \omega r</span>.</li>
+<li>Equazioni cardinali: <span class="m">\vec F^{(e)} = M\vec a_{cm}</span>, <span class="m">\vec M^{(e)} = d\vec L/dt</span> (solo forze esterne).</li>
+<li>Densità <span class="m">\rho = dm/dV</span>; corpo omogeneo: centro di massa = centro geometrico; baricentro = centro di massa.</li>
+<li>Forze parallele: risultante = somma algebrica delle intensità (somma se concordi, differenza se discordi).</li>
+<li><span class="m">I = \sum m_i r_i^2 = \int r^2 dm</span>; anello <span class="m">MR^2</span>, disco <span class="m">\tfrac12MR^2</span>, sfera <span class="m">\tfrac25MR^2</span>, sfera cava <span class="m">\tfrac23MR^2</span>, asta <span class="m">\tfrac1{12}M\ell^2</span> (centro), <span class="m">\tfrac13M\ell^2</span> (estremo).</li>
+<li>Huygens-Steiner: <span class="m">I_h = I_{cm} + Mh^2</span>; minimo per l&#39;asse del centro di massa.</li>
+<li>Rotazione: <span class="m">L = I\omega</span>, <span class="m">M = I\alpha</span>, <span class="m">K = \tfrac12I\omega^2</span>, <span class="m">dW = M\,d\theta</span>; König: <span class="m">K = \tfrac12Mv_{cm}^2 + \tfrac12I_{cm}\omega^2</span>.</li>
+<li>Senza momenti esterni <span class="m">I_{in}\omega_{in} = I_{fin}\omega_{fin}</span>: pattinatore e tuffatore.</li>
+<li>Equilibrio: <span class="m">\vec F = 0</span> e <span class="m">\vec M = 0</span>; stabile, instabile, indifferente; l&#39;uomo in piedi è in equilibrio instabile.</li>
 </ul>
 </div>

@@ -51,3 +51,17 @@ assert.equal(r2.st, 3);                                                        /
 const r3 = mergeStats({ log: [["a", 1, 0, 0, 0], ["a", 0, H, 0, 0]], exams: [], fav: [] }, {}).st.q.a;
 assert.equal(r3.st, 0); assert.equal(r3.l, 0);
 console.log("ok serie");
+
+// impostazioni per materia: vince l'ultima modifica, anche una data cancellata; valori vecchi senza data restano locali
+import { mergeSettings } from "../app/sync.js";
+const K = ["examDate", "examBooked"];
+const ipadS = { examDate: { fisica: "2026-11-10", chimica: "2026-12-01" }, examBooked: {}, smt: { "examDate:fisica": 10 } };
+const telS = { examDate: { fisica: "2026-11-20" }, examBooked: { fisica: true }, smt: { "examDate:fisica": 20, "examDate:chimica": 30, "examBooked:fisica": 20 } };
+const m = mergeSettings(structuredClone(ipadS), telS, K);
+assert.equal(m.examDate.fisica, "2026-11-20");      // modificata dopo sul telefono
+assert.equal(m.examDate.chimica, undefined);        // cancellata sul telefono (smt senza valore)
+assert.equal(m.examBooked.fisica, true);
+assert.equal(mergeSettings(structuredClone(telS), ipadS, K).examDate.fisica, "2026-11-20"); // il telefono non torna indietro
+const oldS = mergeSettings({ examDate: { fisica: "A" }, smt: {} }, { examDate: { fisica: "B", geo: "C" } }, ["examDate"]);
+assert.equal(oldS.examDate.fisica, "A"); assert.equal(oldS.examDate.geo, "C");
+console.log("ok impostazioni");

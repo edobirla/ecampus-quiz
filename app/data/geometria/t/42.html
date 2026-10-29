@@ -1,105 +1,404 @@
 <h1>Lezione 42 — Coniche</h1>
-<p>In tutta la lezione si lavora nel piano euclideo con un sistema di riferimento cartesiano <span class="m">(O;x,y)</span> fissato, identificando i vettori con le colonne delle loro coordinate.</p>
+<p>Con questa lezione si comincia lo studio delle <strong>coniche</strong>, cioè delle curve algebriche di grado 2: ellissi (circonferenze comprese), iperboli, parabole e le loro versioni &quot;spezzate&quot; (coppie di rette). Sono il primo caso non banale dopo le rette (curve di grado 1) e riprendono tutto quello che si è visto sulle curve algebriche: equazione, punti singolari, estensione al piano proiettivo con le coordinate omogenee.</p>
+<p>La lezione ha tre parti:</p>
+<ol>
+<li>la definizione di conica e il legame con le definizioni &quot;geometriche&quot; classiche (fuochi, direttrice);</li>
+<li>le <strong>coniche degeneri</strong> (coppie di rette) e i loro punti singolari;</li>
+<li>i <strong>fasci di coniche</strong>, lo strumento pratico con cui si trova l&#39;equazione di una conica che passa per punti dati o è tangente a rette date. È la parte più chiesta dal paniere, sia nei quiz sia nelle domande aperte.</li>
+</ol>
+<p>In tutta la lezione si lavora nel piano euclideo <span class="m">V^2_E</span> con un sistema di riferimento cartesiano <span class="m">(O;x,y)</span> fissato, e si identificano i vettori geometrici con le colonne delle loro coordinate: il punto di coordinate <span class="m">x=3</span>, <span class="m">y=-1</span> si scrive <span class="m">{}^t(3\ -1)</span>.</p>
 <h2>Coniche</h2>
-<p><strong>Definizione 42.1.</strong> Una <strong>conica</strong> è una curva algebrica di grado 2, cioè l&#39;insieme dei punti che soddisfano un&#39;equazione polinomiale di grado 2:
+<p><strong>Definizione 42.1.</strong> Una <strong>conica</strong> è una curva algebrica di grado 2, cioè l&#39;insieme dei punti del piano che soddisfano un&#39;equazione polinomiale di grado 2:
 <span class="m d">ax^2+bxy+cy^2+dx+ey+f=0,\qquad (a,b,c)\neq(0,0,0).</span></p>
+<p>Significato dei coefficienti:</p>
 <ul>
-<li>Moltiplicando il polinomio per un numero reale <span class="m">k\neq0</span> si ottiene la <strong>stessa conica</strong> (come insieme).</li>
-<li>Le coniche, essendo curve algebriche, si estendono al piano proiettivo <span class="m">\mathbb{P}^2(\mathbb{R})</span>: l&#39;<strong>equazione omogenea</strong> è
-<span class="m d">aX^2+bXY+cY^2+dXT+eYT+fT^2=0.</span></li>
+<li><span class="m">a</span>, <span class="m">b</span>, <span class="m">c</span> sono i coefficienti dei <strong>termini di secondo grado</strong> (<span class="m">x^2</span>, <span class="m">xy</span>, <span class="m">y^2</span>). La condizione <span class="m">(a,b,c)\neq(0,0,0)</span> dice che almeno uno di essi non è nullo: altrimenti il polinomio avrebbe grado 1 (una retta) o 0, e non sarebbe una conica.</li>
+<li><span class="m">d</span>, <span class="m">e</span> sono i coefficienti dei termini di primo grado, <span class="m">f</span> è il termine noto.</li>
 </ul>
+<p>Per riconoscere una conica bisogna quindi controllare che il polinomio, <strong>dopo aver svolto tutti i prodotti e semplificato</strong>, abbia grado esattamente 2. Il grado di un monomio è la somma degli esponenti delle variabili: <span class="m">xy</span> ha grado <span class="m">1+1=2</span>, <span class="m">x^2y</span> ha grado <span class="m">3</span>.</p>
 <div class="callout esempio">
 
+<p><strong>Quali equazioni definiscono una conica?</strong></p>
 <ul>
-<li><span class="m">3x^2-2xy+y^2-x+2y+3=0</span> è una conica (grado 2), con equazione omogenea <span class="m">3X^2-2XY+Y^2-XT+2YT+3T^2=0</span>; <span class="m">6x^2-4xy+2y^2-2x+4y+6=0</span> rappresenta la stessa conica.</li>
-<li>La coppia di rette <span class="m">(x+y-1)(2x-3y-4)=0</span> è una conica, con equazione omogenea <span class="m">(X+Y-T)(2X-3Y-4T)=0</span>.</li>
+<li><span class="m">x+3y-2=0</span>: grado 1, è una retta, <strong>non</strong> è una conica.</li>
+<li><span class="m">(x+1)(x+2y)-x^2-2xy=0</span>: sembra di grado 2, ma svolgendo <span class="m">(x+1)(x+2y)=x^2+2xy+x+2y</span> e sottraendo <span class="m">x^2+2xy</span> resta <span class="m">x+2y=0</span>, di grado 1: <strong>non</strong> è una conica (i termini di secondo grado si cancellano).</li>
+<li><span class="m">xy-3x+2=0</span>: c&#39;è solo il termine misto <span class="m">xy</span>, ma ha grado 2, e basta: <strong>è</strong> una conica (<span class="m">a=c=0</span>, <span class="m">b=1</span>).</li>
+<li><span class="m">x^2y+xy+y^2-2x+3y-2=0</span>: il monomio <span class="m">x^2y</span> ha grado 3, quindi la curva ha grado 3: <strong>non</strong> è una conica.</li>
 </ul>
+</div>
+
+<p><strong>Osservazione 42.2.</strong> Se si moltiplica il polinomio per un numero reale <span class="m">k\neq0</span>, si ottiene l&#39;equazione
+<span class="m d">kax^2+kbxy+kcy^2+kdx+key+kf=0,</span>
+che ha esattamente le stesse soluzioni: rappresenta <strong>la stessa conica</strong> (come insieme di punti). L&#39;equazione di una conica è quindi determinata solo a meno di un fattore non nullo. Per confrontare due equazioni si portano entrambe nella forma della Definizione 42.1 e si controlla se i coefficienti sono proporzionali.</p>
+<p><strong>Osservazione 42.3.</strong> Le coniche sono curve algebriche, quindi si possono estendere al piano proiettivo <span class="m">\mathbb{P}^2(\mathbb{R})</span>. Si sostituisce <span class="m">x=\frac XT</span>, <span class="m">y=\frac YT</span> e si moltiplica per <span class="m">T^2</span> (il grado):
+<span class="m d">T^2\left(a\frac{X^2}{T^2}+b\frac XT\frac YT+c\frac{Y^2}{T^2}+d\frac XT+e\frac YT+f\right)=0,</span>
+cioè l&#39;<strong>equazione omogenea</strong>
+<span class="m d">aX^2+bXY+cY^2+dXT+eYT+fT^2=0.</span>
+In pratica: ogni monomio di grado minore di 2 viene &quot;completato&quot; con la potenza di <span class="m">T</span> che lo porta a grado 2 (<span class="m">x\to XT</span>, <span class="m">y\to YT</span>, termine noto <span class="m">\to T^2</span>). I punti con <span class="m">T\neq0</span> sono i punti del piano euclideo (<span class="m">{}^t(x\ y)</span> corrisponde a <span class="m">{}^t(x\ y\ 1)</span>); quelli con <span class="m">T=0</span> sono i <strong>punti all&#39;infinito</strong> della conica.</p>
+<div class="callout esempio">
+
+<p><strong>Esempio 42.4.</strong></p>
+<ol>
+<li><span class="m">3x^2-2xy+y^2-x+2y+3=0</span> è una conica perché ha grado 2. La sua equazione omogenea è <span class="m">3X^2-2XY+Y^2-XT+2YT+3T^2=0</span>. Moltiplicando il polinomio per 2 si ottiene <span class="m">6x^2-4xy+2y^2-2x+4y+6=0</span>, che rappresenta <strong>la stessa</strong> conica.</li>
+<li>La coppia di rette <span class="m">(x+y-1)(2x-3y-4)=0</span> è una conica: svolgendo il prodotto si ottiene un polinomio di grado 2. L&#39;equazione omogenea si ottiene omogeneizzando ciascun fattore: <span class="m">(X+Y-T)(2X-3Y-4T)=0</span>.</li>
+</ol>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Un punto sta sulla conica?</strong> Basta sostituire le coordinate nell&#39;equazione e controllare che si ottenga <span class="m">0</span>. Conica <span class="m">x^2+xy-y^2-5=0</span>:</p>
+<ul>
+<li><span class="m">P={}^t(2\ 1)</span>: <span class="m">2^2+2\cdot1-1^2-5=4+2-1-5=0</span>, quindi <span class="m">P</span> <strong>appartiene</strong> alla conica;</li>
+<li><span class="m">Q={}^t(1\ 2)</span>: <span class="m">1+1\cdot2-2^2-5=1+2-4-5=-6\neq0</span>, quindi <span class="m">Q</span> <strong>non</strong> appartiene.</li>
+</ul>
+<p>Attenzione all&#39;ordine delle coordinate: <span class="m">{}^t(1\ 2)</span> significa <span class="m">x=1</span>, <span class="m">y=2</span>. Un trucco per i calcoli: se i termini di secondo grado si fattorizzano (ad esempio <span class="m">x^2-3xy+2y^2=(x-y)(x-2y)</span>), si calcola prima il prodotto dei due fattori e poi si aggiunge il resto.</p>
 </div>
 
 <h2>Ellisse, iperbole, parabola</h2>
-<p>Alcune coniche si possono definire anche come luoghi di punti con una proprietà geometrica (che non è la stessa per tutte).</p>
-<p><strong>Ellisse (Definizione 42.5).</strong> Dati due punti <span class="m">F_1</span>, <span class="m">F_2</span> e <span class="m">\alpha&gt;\frac{\mathrm{dist}(F_1,F_2)}{2}</span>, l&#39;ellisse con fuochi <span class="m">F_1</span>, <span class="m">F_2</span> e larghezza <span class="m">2\alpha</span> è l&#39;insieme dei punti <span class="m">P</span> con
-<span class="m d">\mathrm{dist}(P,F_1)+\mathrm{dist}(P,F_2)=2\alpha.</span>
-La condizione su <span class="m">\alpha</span> viene dalla disuguaglianza triangolare. Con <span class="m">F_1={}^t(-\gamma\ 0)</span>, <span class="m">F_2={}^t(\gamma\ 0)</span>, <span class="m">0&lt;\gamma&lt;\alpha</span>, si ottiene
-<span class="m d">\frac{x^2}{\alpha^2}+\frac{y^2}{\beta^2}=1,\quad \beta=\sqrt{\alpha^2-\gamma^2},\qquad\text{cioè } ax^2+by^2=1 \text{ con } a,b&gt;0.</span>
-Se <span class="m">F_1=F_2</span> l&#39;ellisse è la circonferenza di centro <span class="m">F_1</span> e raggio <span class="m">\alpha</span>.</p>
+<p>Alcune coniche si possono definire anche come <strong>luoghi geometrici</strong>, cioè come insiemi di punti che soddisfano una proprietà metrica. La proprietà però non è la stessa per tutte: ellisse, iperbole e parabola hanno ciascuna la sua. Queste definizioni spiegano da dove vengono i nomi e le forme &quot;canoniche&quot; che si useranno nella classificazione.</p>
+<h3>Ellisse</h3>
+<p><strong>Definizione 42.5.</strong> Dati due punti <span class="m">F_1</span>, <span class="m">F_2</span> e un numero reale <span class="m">\alpha&gt;\frac{\mathrm{dist}(F_1,F_2)}{2}</span>, l&#39;<strong>ellisse</strong> con <strong>fuochi</strong> <span class="m">F_1</span>, <span class="m">F_2</span> e <strong>larghezza</strong> <span class="m">2\alpha</span> è l&#39;insieme dei punti <span class="m">P</span> tali che la somma delle distanze di <span class="m">P</span> dai due fuochi vale <span class="m">2\alpha</span>:
+<span class="m d">\mathrm{dist}(P,F_1)+\mathrm{dist}(P,F_2)=2\alpha.</span></p>
+<p>Intuizione: è la curva che si disegna fissando i due capi di un filo lungo <span class="m">2\alpha</span> nei fuochi e tenendo il filo teso con la matita.</p>
+<p><strong>Osservazione 42.6.</strong> La condizione <span class="m">\alpha&gt;\frac{\mathrm{dist}(F_1,F_2)}{2}</span> viene dalla <strong>disuguaglianza triangolare</strong> nel triangolo <span class="m">F_1F_2P</span>: un lato non supera la somma degli altri due, quindi <span class="m">\mathrm{dist}(F_1,F_2)\le \mathrm{dist}(P,F_1)+\mathrm{dist}(P,F_2)=2\alpha</span>. Se <span class="m">2\alpha</span> fosse minore della distanza tra i fuochi non ci sarebbe nessun punto; se fosse uguale si otterrebbe solo il segmento <span class="m">F_1F_2</span>.</p>
+<p><strong>Osservazione 42.7 (equazione dell&#39;ellisse).</strong> Si sceglie il riferimento con i fuochi sull&#39;asse <span class="m">x</span>, simmetrici rispetto all&#39;origine: <span class="m">F_1={}^t(-\gamma\ 0)</span>, <span class="m">F_2={}^t(\gamma\ 0)</span> con <span class="m">0&lt;\gamma&lt;\alpha</span>. La condizione diventa
+<span class="m d">\sqrt{(x+\gamma)^2+y^2}+\sqrt{(x-\gamma)^2+y^2}=2\alpha.</span>
+Le &quot;semplici manipolazioni algebriche&quot; sono queste:</p>
+<ol>
+<li>si isola una radice: <span class="m">\sqrt{(x+\gamma)^2+y^2}=2\alpha-\sqrt{(x-\gamma)^2+y^2}</span>;</li>
+<li>si eleva al quadrato: <span class="m">(x+\gamma)^2+y^2=4\alpha^2-4\alpha\sqrt{(x-\gamma)^2+y^2}+(x-\gamma)^2+y^2</span>;</li>
+<li>si semplifica: <span class="m">(x+\gamma)^2-(x-\gamma)^2=4\gamma x</span>, quindi <span class="m">4\gamma x-4\alpha^2=-4\alpha\sqrt{(x-\gamma)^2+y^2}</span>, cioè <span class="m">\alpha\sqrt{(x-\gamma)^2+y^2}=\alpha^2-\gamma x</span>;</li>
+<li>si eleva di nuovo al quadrato: <span class="m">\alpha^2(x^2-2\gamma x+\gamma^2+y^2)=\alpha^4-2\alpha^2\gamma x+\gamma^2x^2</span>;</li>
+<li>i termini <span class="m">-2\alpha^2\gamma x</span> si cancellano e resta <span class="m">(\alpha^2-\gamma^2)x^2+\alpha^2y^2=\alpha^2(\alpha^2-\gamma^2)</span>;</li>
+<li>si divide per <span class="m">\alpha^2(\alpha^2-\gamma^2)&gt;0</span>:
+<span class="m d">\frac{x^2}{\alpha^2}+\frac{y^2}{\beta^2}=1,\qquad \beta=\sqrt{\alpha^2-\gamma^2}.</span>
+Ponendo <span class="m">a=\frac1{\alpha^2}&gt;0</span> e <span class="m">b=\frac1{\beta^2}&gt;0</span> si ottiene la forma <span class="m">ax^2+by^2=1</span> con <span class="m">a,b&gt;0</span>. Qui <span class="m">\alpha</span> e <span class="m">\beta</span> sono i <strong>semiassi</strong>: l&#39;ellisse taglia l&#39;asse <span class="m">x</span> in <span class="m">\pm\alpha</span> e l&#39;asse <span class="m">y</span> in <span class="m">\pm\beta</span>.</li>
+</ol>
+<p><strong>Osservazione 42.8.</strong> Se i due fuochi coincidono (<span class="m">F_1=F_2</span>, cioè <span class="m">\gamma=0</span>), la condizione diventa <span class="m">2\,\mathrm{dist}(P,F_1)=2\alpha</span>: l&#39;ellisse è la <strong>circonferenza</strong> di centro <span class="m">F_1</span> e raggio <span class="m">\alpha</span> (e infatti <span class="m">\beta=\alpha</span>).</p>
+<p><strong>Osservazione 42.9.</strong> Accanto a <span class="m">ax^2+by^2=1</span> (<span class="m">a,b&gt;0</span>) è naturale considerare le equazioni &quot;simili&quot; con termine noto <span class="m">0</span> e <span class="m">-1</span>, per le quali entrano in gioco i <strong>punti complessi</strong>:</p>
 <ul>
-<li><span class="m">ax^2+by^2=0</span> (<span class="m">a,b&gt;0</span>) ha un solo punto reale, l&#39;origine, e <strong>non</strong> è un&#39;ellisse.</li>
-<li><span class="m">ax^2+by^2=-1</span> (<span class="m">a,b&gt;0</span>) non ha punti reali: è un&#39;<strong>ellisse immaginaria</strong> (Definizione 42.10). Un&#39;ellisse con forma <span class="m">ax^2+by^2=1</span> in qualche riferimento è detta <strong>reale</strong>.</li>
+<li><span class="m">ax^2+by^2=0</span> con <span class="m">a,b&gt;0</span> ha un solo punto reale, l&#39;origine <span class="m">{}^t(0\ 0)</span> (punto medio di <span class="m">F_1F_2</span>), perché una somma di quadrati con coefficienti positivi è nulla solo se lo sono entrambi. <strong>Non</strong> è considerata un&#39;ellisse (è una conica degenere, vedi sotto: <span class="m">(\sqrt a\,x+i\sqrt b\,y)(\sqrt a\,x-i\sqrt b\,y)=0</span>).</li>
+<li><span class="m">ax^2+by^2=-1</span> con <span class="m">a,b&gt;0</span> non ha <strong>nessun</strong> punto reale (il primo membro è <span class="m">\ge0</span>), ma ha punti complessi: è considerata un&#39;ellisse &quot;con punti complessi&quot;.</li>
 </ul>
+<p><strong>Definizione 42.10.</strong> Le coniche per cui esiste un riferimento cartesiano in cui l&#39;equazione è <span class="m">ax^2+by^2=-1</span> (<span class="m">a,b&gt;0</span>) si dicono <strong>ellissi immaginarie</strong>. Quando si vuole sottolineare che un&#39;ellisse non è immaginaria, cioè che esiste un riferimento in cui l&#39;equazione è <span class="m">ax^2+by^2=1</span>, la si chiama <strong>ellisse reale</strong>.</p>
 <div class="callout esempio">
 
-<p><span class="m">2x^2+3y^2+4=0</span> è un&#39;ellisse immaginaria; <span class="m">5x^2-2xy+5y^2-8x-8y-4=0</span> è un&#39;ellisse reale.</p>
+<p><strong>Esempio 42.11.</strong></p>
+<ol>
+<li><span class="m">2x^2+3y^2+4=0</span>, cioè <span class="m">\frac12x^2+\frac34y^2=-1</span>: è un&#39;ellisse immaginaria, ha solo punti complessi (per ogni punto reale il primo membro vale almeno <span class="m">4&gt;0</span>).</li>
+<li><span class="m">5x^2-2xy+5y^2-8x-8y-4=0</span> è un&#39;ellisse reale. Con la matrice associata (vedi la classificazione delle coniche) si trova <span class="m">\det A=-288\neq0</span> e <span class="m">\det A_{(3,3)}=5\cdot5-(-1)^2=24&gt;0</span>: conica non degenere di tipo ellisse.</li>
+</ol>
 </div>
 
-<p><strong>Iperbole (Definizione 42.12).</strong> Dati <span class="m">F_1</span>, <span class="m">F_2</span> e <span class="m">0&lt;\alpha&lt;\frac{\mathrm{dist}(F_1,F_2)}{2}</span>, l&#39;iperbole con fuochi <span class="m">F_1</span>, <span class="m">F_2</span> e larghezza <span class="m">2\alpha</span> è l&#39;insieme dei punti <span class="m">P</span> con
-<span class="m d">\lvert \mathrm{dist}(P,F_1)-\mathrm{dist}(P,F_2)\rvert=2\alpha.</span>
-Con i fuochi in <span class="m">{}^t(\pm\gamma\ 0)</span>, <span class="m">\gamma&gt;\alpha</span>:
-<span class="m d">\frac{x^2}{\alpha^2}-\frac{y^2}{\beta^2}=1,\quad \beta=\sqrt{\gamma^2-\alpha^2},\qquad\text{cioè } ax^2-by^2=1 \text{ con } a,b&gt;0.</span>
-Esempio: <span class="m">3x^2-8xy-3y^2-8x-6y-13=0</span> è un&#39;iperbole.</p>
-<p><strong>Parabola (Definizione 42.16).</strong> Dati un punto <span class="m">F</span> e una retta <span class="m">s</span> che non contiene <span class="m">F</span>, la parabola con fuoco <span class="m">F</span> e direttrice <span class="m">s</span> è l&#39;insieme dei punti equidistanti da <span class="m">F</span> e da <span class="m">s</span>: <span class="m">\mathrm{dist}(P,F)=\mathrm{dist}(P,s)</span>. Con <span class="m">F={}^t(0\ \gamma)</span> e <span class="m">s: y+\gamma=0</span> (<span class="m">\gamma&gt;0</span>) si ottiene
-<span class="m d">x^2-4\gamma y=0.</span>
-Esempio: <span class="m">x^2+2xy+y^2-x-3y=0</span> è una parabola.</p>
-<h2>Coniche degeneri</h2>
-<p><strong>Definizione 42.19.</strong> Una conica <span class="m">p(x,y)=0</span> è <strong>degenere</strong> se <span class="m">p</span> è il prodotto di due polinomi di grado 1 (anche a coefficienti complessi).</p>
-<ul>
-<li>Una conica degenere è l&#39;<strong>unione di due rette</strong>: <span class="m">(ax+by+c)(a'x+b'y+c')=0</span>. Se le terne <span class="m">(a,b,c)</span> e <span class="m">(a',b',c')</span> sono proporzionali le rette coincidono e la conica ha equazione <span class="m">(ax+by+c)^2=0</span>.</li>
-<li>Viceversa, una conica che contiene una retta è degenere: per il Teorema di Bézout il suo polinomio e quello della retta hanno un fattore comune di grado 1, quindi il polinomio della conica è un prodotto di due fattori di grado 1.</li>
-</ul>
-<p><strong>Notazione 42.21.</strong> Una conica degenere le cui due rette coincidono si chiama <strong>retta doppia</strong> e si indica con <span class="m">s\cup s</span>.</p>
-<p><strong>Proposizione 42.22.</strong> Una conica è degenere se e solo se ha (almeno) un <strong>punto singolare</strong>. L&#39;insieme dei punti singolari è l&#39;intersezione delle due rette.</p>
+<h3>Iperbole</h3>
+<p><strong>Definizione 42.12.</strong> Dati due punti <span class="m">F_1</span>, <span class="m">F_2</span> e un numero reale <strong>positivo</strong> <span class="m">\alpha&lt;\frac{\mathrm{dist}(F_1,F_2)}{2}</span>, l&#39;<strong>iperbole</strong> con fuochi <span class="m">F_1</span>, <span class="m">F_2</span> e larghezza <span class="m">2\alpha</span> è l&#39;insieme dei punti <span class="m">P</span> tali che il <strong>modulo della differenza</strong> delle distanze dai fuochi vale <span class="m">2\alpha</span>:
+<span class="m d">\lvert \mathrm{dist}(P,F_1)-\mathrm{dist}(P,F_2)\rvert=2\alpha,</span>
+cioè <span class="m">\mathrm{dist}(P,F_1)-\mathrm{dist}(P,F_2)=2\alpha</span> (un ramo) oppure <span class="m">\mathrm{dist}(P,F_2)-\mathrm{dist}(P,F_1)=2\alpha</span> (l&#39;altro ramo).</p>
+<p><strong>Osservazione 42.13.</strong> <span class="m">\alpha&gt;0</span> perché <span class="m">2\alpha</span> è il modulo di un numero reale (e con <span class="m">\alpha=0</span> si otterrebbe l&#39;asse del segmento <span class="m">F_1F_2</span>, una retta). La condizione <span class="m">\alpha&lt;\frac{\mathrm{dist}(F_1,F_2)}2</span> viene di nuovo dalla disuguaglianza triangolare: in ogni triangolo un lato è maggiore della differenza degli altri due, quindi <span class="m">\lvert\mathrm{dist}(P,F_1)-\mathrm{dist}(P,F_2)\rvert\le\mathrm{dist}(F_1,F_2)</span>.</p>
+<p><strong>Osservazione 42.14 (equazione dell&#39;iperbole).</strong> Con <span class="m">F_1={}^t(-\gamma\ 0)</span>, <span class="m">F_2={}^t(\gamma\ 0)</span> e <span class="m">\gamma&gt;\alpha</span>, la condizione è
+<span class="m d">\left\lvert\sqrt{(x+\gamma)^2+y^2}-\sqrt{(x-\gamma)^2+y^2}\right\rvert=2\alpha.</span>
+Con gli stessi passaggi dell&#39;ellisse (isolare una radice, elevare al quadrato due volte) si arriva a <span class="m">(\gamma^2-\alpha^2)x^2-\alpha^2y^2=\alpha^2(\gamma^2-\alpha^2)</span>; ora <span class="m">\gamma^2-\alpha^2&gt;0</span>, e dividendo:
+<span class="m d">\frac{x^2}{\alpha^2}-\frac{y^2}{\beta^2}=1,\qquad \beta=\sqrt{\gamma^2-\alpha^2},</span>
+cioè <span class="m">ax^2-by^2=1</span> con <span class="m">a=\frac1{\alpha^2}&gt;0</span>, <span class="m">b=\frac1{\beta^2}&gt;0</span>. L&#39;iperbole taglia l&#39;asse <span class="m">x</span> in <span class="m">\pm\alpha</span> e non taglia l&#39;asse <span class="m">y</span>; ha due rami e due <strong>asintoti</strong> <span class="m">y=\pm\frac\beta\alpha x</span> (lezione 45).</p>
 <div class="callout esempio">
 
+<p><strong>Esempio 42.15.</strong> <span class="m">3x^2-8xy-3y^2-8x-6y-13=0</span> è un&#39;iperbole: <span class="m">\det A_{(3,3)}=3\cdot(-3)-(-4)^2=-9-16=-25&lt;0</span> e <span class="m">\det A=250\neq0</span>.</p>
+</div>
+
+<h3>Parabola</h3>
+<p><strong>Definizione 42.16.</strong> Dati un punto <span class="m">F</span> e una retta <span class="m">s</span> che <strong>non</strong> contiene <span class="m">F</span>, la <strong>parabola</strong> con <strong>fuoco</strong> <span class="m">F</span> e <strong>direttrice</strong> <span class="m">s</span> è l&#39;insieme dei punti equidistanti da <span class="m">F</span> e da <span class="m">s</span>:
+<span class="m d">\mathrm{dist}(P,F)=\mathrm{dist}(P,s).</span></p>
+<p><strong>Osservazione 42.17 (equazione della parabola).</strong> Con <span class="m">F={}^t(0\ \gamma)</span> e <span class="m">s: y+\gamma=0</span>, <span class="m">\gamma&gt;0</span>: la distanza di <span class="m">P={}^t(x\ y)</span> da <span class="m">s</span> è <span class="m">\lvert y+\gamma\rvert</span>, quella da <span class="m">F</span> è <span class="m">\sqrt{x^2+(y-\gamma)^2}</span>. Elevando al quadrato (entrambi i membri sono non negativi):
+<span class="m d">y^2+2\gamma y+\gamma^2=x^2+y^2-2\gamma y+\gamma^2\quad\Longrightarrow\quad x^2-4\gamma y=0.</span>
+Il vertice è l&#39;origine, a metà tra il fuoco e la direttrice; l&#39;asse <span class="m">y</span> è l&#39;asse di simmetria.</p>
+<div class="callout esempio">
+
+<p><strong>Esempio 42.18.</strong> <span class="m">x^2+2xy+y^2-x-3y=0</span> è una parabola: i termini di secondo grado sono il quadrato <span class="m">(x+y)^2</span>, quindi <span class="m">\det A_{(3,3)}=1\cdot1-1^2=0</span>, mentre <span class="m">\det A=-1\neq0</span> (non degenere).</p>
+</div>
+
+<table>
+<thead>
+<tr>
+<th>Conica</th>
+<th>Definizione metrica</th>
+<th>Forma canonica</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Ellisse</td>
+<td><span class="m">\mathrm{dist}(P,F_1)+\mathrm{dist}(P,F_2)=2\alpha</span></td>
+<td><span class="m">ax^2+by^2=1</span>, <span class="m">a,b&gt;0</span></td>
+</tr>
+<tr>
+<td>Ellisse immaginaria</td>
+<td>— (nessun punto reale)</td>
+<td><span class="m">ax^2+by^2=-1</span>, <span class="m">a,b&gt;0</span></td>
+</tr>
+<tr>
+<td>Iperbole</td>
+<td><span class="m">\lvert\mathrm{dist}(P,F_1)-\mathrm{dist}(P,F_2)\rvert=2\alpha</span></td>
+<td><span class="m">ax^2-by^2=1</span>, <span class="m">a,b&gt;0</span></td>
+</tr>
+<tr>
+<td>Parabola</td>
+<td><span class="m">\mathrm{dist}(P,F)=\mathrm{dist}(P,s)</span></td>
+<td><span class="m">x^2-4\gamma y=0</span></td>
+</tr>
+</tbody></table>
+<h2>Coniche degeneri</h2>
+<p><strong>Definizione 42.19.</strong> Una conica <span class="m">p(x,y)=0</span> è <strong>degenere</strong> se il polinomio <span class="m">p</span> è il <strong>prodotto di due polinomi di grado 1</strong>. Si ammette che i due fattori abbiano coefficienti <strong>complessi</strong>.</p>
+<p><strong>Osservazione 42.20.</strong> <em>Una conica degenere è l&#39;unione di due rette, e viceversa.</em></p>
 <ul>
-<li><span class="m">(x+y)(x-2y+1)=0</span> è una coppia di rette con punto singolare <span class="m">{}^t(-\frac13\ \frac13)</span> (intersezione delle due rette). In omogenee, <span class="m">X^2-2Y^2-XY+XT+YT=0</span>: annullando le tre derivate parziali si trova il punto <span class="m">{}^t(1\ -1\ -3)</span>.</li>
-<li><span class="m">x^2+y^2=0</span> è la coppia di rette complesse <span class="m">(x+iy)(x-iy)=0</span>: ha un solo punto reale, <span class="m">O</span>, che è singolare.</li>
-<li><span class="m">(x+3y-1)^2=0</span> è una retta doppia: tutti i suoi punti sono singolari.</li>
+<li>Se <span class="m">p(x,y)=(ax+by+c)(a'x+b'y+c')</span>, l&#39;equazione <span class="m">p=0</span> è soddisfatta se e solo se si annulla almeno uno dei due fattori (legge di annullamento del prodotto): i punti della conica sono quelli della retta <span class="m">ax+by+c=0</span> <strong>più</strong> quelli della retta <span class="m">a'x+b'y+c'=0</span>. Se le terne <span class="m">(a,b,c)</span> e <span class="m">(a',b',c')</span> sono proporzionali, le due rette coincidono e la conica si può scrivere <span class="m">(ax+by+c)^2=0</span>.</li>
+<li><strong>Viceversa</strong>, se una conica contiene una retta <span class="m">ax+by+c=0</span>, conica e retta hanno infiniti punti in comune. Per il <strong>Teorema di Bézout</strong> (caso affine), due curve con infiniti punti comuni hanno i polinomi multipli di uno stesso polinomio <span class="m">q</span> di grado positivo. Siccome <span class="m">ax+by+c</span> ha grado 1, <span class="m">q</span> ha grado 1 (è la retta stessa, a meno di un fattore). Il polinomio della conica, di grado 2, è quindi <span class="m">p_1(x,y)\,q(x,y)</span> con <span class="m">p_1</span> di grado <span class="m">2-1=1</span>: la conica è degenere.</li>
 </ul>
+<p><strong>Notazione 42.21.</strong> Una conica degenere <span class="m">\mathcal C</span> le cui due rette coincidono si chiama <strong>retta doppia</strong> e si indica con <span class="m">s\cup s</span>, dove <span class="m">s</span> è la retta che coincide con <span class="m">\mathcal C</span> come insieme. Come insieme è una sola retta, ma come conica la si conta &quot;due volte&quot;: il polinomio è <span class="m">q^2</span>, non <span class="m">q</span>.</p>
+<p><strong>Proposizione 42.22.</strong> Una conica è degenere <strong>se e solo se</strong> ha (almeno) un <strong>punto singolare</strong>. L&#39;insieme dei punti singolari è l&#39;<strong>intersezione delle due rette</strong> che formano la conica degenere. (La dispensa non dà la dimostrazione.)</p>
+<p>Ricordiamo che un punto di una curva <span class="m">p=0</span> è <strong>singolare</strong> se in esso si annullano tutte le derivate parziali del polinomio (nelle coordinate omogenee: <span class="m">\frac{\partial p}{\partial X}</span>, <span class="m">\frac{\partial p}{\partial Y}</span>, <span class="m">\frac{\partial p}{\partial T}</span>). Il motivo intuitivo della proposizione: se <span class="m">p=q_1q_2</span>, la derivata di un prodotto è <span class="m">q_1'q_2+q_1q_2'</span>, che si annulla dove <span class="m">q_1=q_2=0</span>, cioè nel punto comune alle due rette. Tre casi:</p>
+<table>
+<thead>
+<tr>
+<th>Tipo di conica degenere</th>
+<th>Punti singolari</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>due rette reali incidenti</td>
+<td>il loro punto di intersezione</td>
+</tr>
+<tr>
+<td>due rette reali parallele</td>
+<td>il loro punto all&#39;infinito comune</td>
+</tr>
+<tr>
+<td>due rette complesse coniugate</td>
+<td>il loro unico punto reale</td>
+</tr>
+<tr>
+<td>retta doppia <span class="m">s\cup s</span></td>
+<td>tutti i punti di <span class="m">s</span></td>
+</tr>
+</tbody></table>
+<div class="callout esempio">
+
+<p><strong>Esempio 42.23.</strong></p>
+<ol>
+<li><span class="m">(x+y)(x-2y+1)=0</span> è una coppia di rette. Il punto singolare è l&#39;intersezione delle rette: da <span class="m">x+y=0</span> si ha <span class="m">y=-x</span>; sostituendo in <span class="m">x-2y+1=0</span>: <span class="m">x+2x+1=0</span>, <span class="m">x=-\frac13</span>, <span class="m">y=\frac13</span>. Punto singolare <span class="m">{}^t\!\left(-\frac13\ \frac13\right)</span>.</li>
+<li><span class="m">x^2+y^2=0</span> coincide con <span class="m">(x+iy)(x-iy)=0</span> (infatti <span class="m">(x+iy)(x-iy)=x^2-i^2y^2=x^2+y^2</span>): è una <strong>coppia di rette complesse</strong>. Ha un solo punto reale, <span class="m">O={}^t(0\ 0)</span>, che è singolare.</li>
+<li><span class="m">(x+3y-1)^2=0</span> è una <strong>retta doppia</strong>: tutti i suoi punti sono singolari (ogni derivata parziale è <span class="m">2(x+3y-1)\cdot(\text{costante})</span>, nulla su tutta la retta).</li>
+</ol>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Esercizio 42.1 — punti singolari con le derivate.</strong> Trovare i punti singolari della conica <span class="m">(x+y)(x-2y+1)=0</span>.</p>
+<p>Equazione omogenea: <span class="m">(X+Y)(X-2Y+T)=0</span>. Svolgendo il prodotto:
+<span class="m d">X^2-2XY+XT+XY-2Y^2+YT=X^2-2Y^2-XY+XT+YT.</span>
+Derivate parziali, poste uguali a zero:
+<span class="m d">\begin{cases}\dfrac{\partial p}{\partial X}=2X-Y+T=0\\[4pt]\dfrac{\partial p}{\partial Y}=-4Y-X+T=0\\[4pt]\dfrac{\partial p}{\partial T}=X+Y=0\end{cases}</span>
+Dalla terza <span class="m">Y=-X</span>. Nella prima: <span class="m">2X+X+T=0</span>, cioè <span class="m">T=-3X</span>. Controllo nella seconda: <span class="m">4X-X-3X=0</span> ✓. Soluzioni: <span class="m">(\alpha,-\alpha,-3\alpha)</span>, <span class="m">\alpha\in\mathbb R</span>, cioè il solo punto proiettivo <span class="m">{}^t(1\ -1\ -3)</span>. Dividendo per <span class="m">T=-3</span>: <span class="m">{}^t\!\left(-\frac13\ \frac13\ 1\right)</span>, lo stesso punto trovato intersecando le rette.</p>
 </div>
 
 <h2>Fasci di coniche</h2>
-<p><strong>Definizione 42.24.</strong> Date due coniche distinte <span class="m">\mathcal{C}_1: p_1=0</span> e <span class="m">\mathcal{C}_2: p_2=0</span>, il <strong>fascio</strong> da esse generato è l&#39;insieme delle coniche
-<span class="m d">\lambda p_1(x,y)+\mu p_2(x,y)=0,\qquad (\lambda,\mu)\neq(0,0)</span>
-(la condizione <span class="m">(\lambda,\mu)\neq(0,0)</span> d&#39;ora in poi è sottintesa). I punti di <span class="m">\mathcal{C}_1\cap\mathcal{C}_2</span> sono i <strong>punti base</strong> del fascio.</p>
-<p>Molti fasci si descrivono con proprietà geometriche; per scriverne l&#39;equazione si cercano <strong>due coniche degeneri</strong> del fascio. Indichiamo con <span class="m">r_{PQ}</span> la retta per <span class="m">P</span> e <span class="m">Q</span>.</p>
-<p><strong>Quattro punti (Osservazione 42.26).</strong> Le coniche per quattro punti <span class="m">A</span>, <span class="m">B</span>, <span class="m">C</span>, <span class="m">D</span> a tre a tre non allineati formano un fascio. Le sue coniche degeneri sono le coppie di rette che contengono tutti e quattro i punti:
-<span class="m d">\mathcal{C}_1=r_{AB}\cup r_{CD},\qquad \mathcal{C}_2=r_{AC}\cup r_{BD},\qquad \mathcal{C}_3=r_{AD}\cup r_{BC},</span>
-e due qualsiasi di esse generano il fascio.</p>
+<p><strong>Definizione 42.24.</strong> Date due coniche <strong>distinte</strong> <span class="m">\mathcal C_1: p_1(x,y)=0</span> e <span class="m">\mathcal C_2: p_2(x,y)=0</span>, il <strong>fascio di coniche</strong> generato da <span class="m">\mathcal C_1</span> e <span class="m">\mathcal C_2</span> è l&#39;insieme di tutte le coniche
+<span class="m d">\mathcal C_{\lambda,\mu}:\ \lambda\,p_1(x,y)+\mu\,p_2(x,y)=0,\qquad (\lambda,\mu)\neq(0,0).</span>
+Se <span class="m">q_1(X,Y,T)=0</span> e <span class="m">q_2(X,Y,T)=0</span> sono le equazioni omogenee, l&#39;equazione omogenea della conica generica del fascio è <span class="m">\lambda q_1+\mu q_2=0</span>. I punti di <span class="m">\mathcal C_1\cap\mathcal C_2</span> si chiamano <strong>punti base</strong> del fascio.</p>
+<p><strong>Notazione 42.25.</strong> D&#39;ora in poi la condizione <span class="m">(\lambda,\mu)\neq(0,0)</span> è sottintesa: con <span class="m">\lambda=\mu=0</span> non si ottiene nessuna conica.</p>
+<p>Perché funziona: se un punto <span class="m">P</span> sta su <strong>entrambe</strong> le coniche generatrici, allora <span class="m">p_1(P)=0</span> e <span class="m">p_2(P)=0</span>, quindi <span class="m">\lambda p_1(P)+\mu p_2(P)=0</span> per ogni <span class="m">\lambda,\mu</span>: <strong>tutte</strong> le coniche del fascio passano per i punti base. Allo stesso modo, se entrambe le generatrici sono tangenti a una retta in un punto, lo sono tutte le coniche del fascio. Inoltre la coppia <span class="m">(\lambda,\mu)</span> conta solo a meno di un fattore: <span class="m">(2\lambda,2\mu)</span> dà la stessa conica di <span class="m">(\lambda,\mu)</span>. Il fascio è quindi una famiglia a <strong>un parametro</strong> (il rapporto <span class="m">\lambda:\mu</span>).</p>
+<p><strong>Il metodo generale.</strong> Molti fasci si descrivono con proprietà geometriche (&quot;tutte le coniche per questi quattro punti&quot;, ...). Per scrivere l&#39;equazione del fascio basta trovare <strong>due coniche del fascio</strong>, e le più facili da scrivere sono le <strong>coniche degeneri</strong> (coppie di rette), perché basta moltiplicare le equazioni di due rette. Indichiamo con <span class="m">r_{PQ}</span> la retta per <span class="m">P</span> e <span class="m">Q</span>.</p>
+<p>Prima di tutto un concetto: una retta <span class="m">r</span> è <strong>algebricamente tangente</strong> a una conica in un punto <span class="m">A</span> se l&#39;intersezione tra retta e conica in <span class="m">A</span> ha molteplicità almeno 2 (sostituendo la parametrizzazione della retta nell&#39;equazione della conica, <span class="m">A</span> è radice doppia), oppure se la retta è contenuta nella conica. Per una coppia di rette:</p>
+<ul>
+<li>se <span class="m">r</span> è una delle due rette, la conica contiene <span class="m">r</span>, quindi è (algebricamente) tangente a <span class="m">r</span> in ogni suo punto;</li>
+<li>se <span class="m">A</span> è il <strong>punto doppio</strong> (l&#39;intersezione delle due rette), <strong>ogni</strong> retta per <span class="m">A</span> incontra la conica in <span class="m">A</span> con molteplicità 2, quindi è algebricamente tangente lì.</li>
+</ul>
+<p>Sono le due situazioni che si usano per costruire le coniche degeneri dei fasci &quot;con tangenti&quot;.</p>
+<h3>Quattro punti</h3>
+<p><strong>Osservazione 42.26.</strong> Siano <span class="m">A</span>, <span class="m">B</span>, <span class="m">C</span>, <span class="m">D</span> quattro punti <strong>a tre a tre non allineati</strong>. L&#39;insieme di tutte le coniche che li contengono è un fascio. Per trovarne due generatrici si cercano le coniche degeneri: si considerano le sei rette <span class="m">r_{AB}</span>, <span class="m">r_{AC}</span>, <span class="m">r_{AD}</span>, <span class="m">r_{BC}</span>, <span class="m">r_{BD}</span>, <span class="m">r_{CD}</span> e le si accoppia in modo che <strong>ogni coppia contenga tutti e quattro i punti</strong> (ogni punto su una delle due rette, nessuna retta che contenga tre punti):
+<span class="m d">\mathcal C_1=r_{AB}\cup r_{CD},\qquad \mathcal C_2=r_{AC}\cup r_{BD},\qquad \mathcal C_3=r_{AD}\cup r_{BC}.</span>
+Una qualsiasi coppia tra <span class="m">\mathcal C_1,\mathcal C_2,\mathcal C_3</span> genera il fascio.</p>
+<p>Per riconoscere una conica degenere del fascio: nelle due rette devono comparire <strong>tutte e quattro le lettere, ciascuna una volta sola</strong>. Per esempio <span class="m">r_{AB}\cup r_{BC}</span> non va bene (manca <span class="m">D</span>, e <span class="m">B</span> compare due volte); <span class="m">r_{AB}\cup r_{CD}</span> va bene.</p>
 <div class="callout esempio">
 
-<p><span class="m">A={}^t(1\ 1)</span>, <span class="m">B={}^t(3\ 2)</span>, <span class="m">C={}^t(-1\ 1)</span>, <span class="m">D={}^t(0\ 3)</span>: <span class="m">r_{AB}: x-2y+1=0</span>, <span class="m">r_{CD}: 2x-y+3=0</span>, <span class="m">r_{AC}: y-1=0</span>, <span class="m">r_{BD}: x+3y-9=0</span>, <span class="m">r_{AD}: 2x+y-3=0</span>, <span class="m">r_{BC}: x-4y+5=0</span>. Il fascio è, per esempio,
-<span class="m d">\lambda(x-2y+1)(2x-y+3)+\mu(y-1)(x+3y-9)=0.</span></p>
+<p><strong>Esempio 42.27.</strong> <span class="m">A={}^t(1\ 1)</span>, <span class="m">B={}^t(3\ 2)</span>, <span class="m">C={}^t(-1\ 1)</span>, <span class="m">D={}^t(0\ 3)</span>.</p>
+<p>Rette (per ciascuna si controlla che passi per i due punti):</p>
+<ul>
+<li><span class="m">r_{AB}: x-2y+1=0</span> (<span class="m">1-2+1=0</span>, <span class="m">3-4+1=0</span>);</li>
+<li><span class="m">r_{CD}: 2x-y+3=0</span> (<span class="m">-2-1+3=0</span>, <span class="m">0-3+3=0</span>);</li>
+<li><span class="m">r_{AC}: y-1=0</span> (entrambi hanno <span class="m">y=1</span>);</li>
+<li><span class="m">r_{BD}: x+3y-9=0</span> (<span class="m">3+6-9=0</span>, <span class="m">0+9-9=0</span>);</li>
+<li><span class="m">r_{AD}: 2x+y-3=0</span> (<span class="m">2+1-3=0</span>, <span class="m">0+3-3=0</span>);</li>
+<li><span class="m">r_{BC}: x-4y+5=0</span> (<span class="m">3-8+5=0</span>, <span class="m">-1-4+5=0</span>).</li>
+</ul>
+<p>Coniche degeneri: <span class="m">\mathcal C_1:(x-2y+1)(2x-y+3)=0</span>, <span class="m">\mathcal C_2:(y-1)(x+3y-9)=0</span>, <span class="m">\mathcal C_3:(2x+y-3)(x-4y+5)=0</span>. Il fascio ha una qualsiasi delle equazioni equivalenti
+<span class="m d">\lambda(x-2y+1)(2x-y+3)+\mu(y-1)(x+3y-9)=0,</span>
+<span class="m d">\lambda(x-2y+1)(2x-y+3)+\mu(2x+y-3)(x-4y+5)=0,</span>
+<span class="m d">\lambda(y-1)(x+3y-9)+\mu(2x+y-3)(x-4y+5)=0.</span></p>
 </div>
 
-<p><strong>Tre punti e una tangente (Osservazione 42.28).</strong> Dati tre punti non allineati <span class="m">A</span>, <span class="m">B</span>, <span class="m">C</span> e una retta <span class="m">r</span> per <span class="m">A</span>, le coniche che contengono i tre punti e sono algebricamente tangenti a <span class="m">r</span> (in <span class="m">A</span>) formano un fascio, generato da
-<span class="m d">\mathcal{C}_1=r_{AB}\cup r_{AC},\qquad \mathcal{C}_2=r_{BC}\cup r.</span>
-La prima ha il punto doppio nel punto di tangenza; nella seconda la tangente è accoppiata con la retta per gli altri due punti.</p>
-<p><strong>Due punti e due tangenti (Osservazione 42.29).</strong> Dati due punti distinti <span class="m">A</span>, <span class="m">B</span> e due rette distinte <span class="m">r</span> per <span class="m">A</span> e <span class="m">s</span> per <span class="m">B</span>, le coniche che contengono i due punti e sono algebricamente tangenti a <span class="m">r</span> (in <span class="m">A</span>) e a <span class="m">s</span> (in <span class="m">B</span>) formano un fascio, generato da
-<span class="m d">\mathcal{C}_1=r\cup s,\qquad \mathcal{C}_2=r_{AB}\cup r_{AB}.</span></p>
-<p><strong>Osservazione 42.30.</strong> Dato un fascio e un punto diverso dai punti base, esiste <strong>una e una sola</strong> conica del fascio che contiene il punto: si sostituiscono le coordinate e si ricava il rapporto <span class="m">\lambda:\mu</span>.</p>
+<h3>Tre punti e una tangente</h3>
+<p><strong>Osservazione 42.28.</strong> Siano <span class="m">A</span>, <span class="m">B</span>, <span class="m">C</span> tre punti non allineati e <span class="m">r</span> una retta <strong>che passa per <span class="m">A</span></strong> (e non per <span class="m">B</span>, <span class="m">C</span>). Le coniche che contengono i tre punti e sono algebricamente tangenti a <span class="m">r</span> in <span class="m">A</span> formano un fascio, generato dalle coniche degeneri
+<span class="m d">\mathcal C_1=r_{AB}\cup r_{AC},\qquad \mathcal C_2=r_{BC}\cup r.</span>
+Perché queste due:</p>
+<ul>
+<li><span class="m">\mathcal C_1</span> contiene <span class="m">A</span>, <span class="m">B</span>, <span class="m">C</span>, e <span class="m">A</span> è il suo <strong>punto doppio</strong> (intersezione di <span class="m">r_{AB}</span> e <span class="m">r_{AC}</span>): ogni retta per <span class="m">A</span>, in particolare <span class="m">r</span>, è algebricamente tangente lì;</li>
+<li><span class="m">\mathcal C_2</span> contiene <span class="m">B</span> e <span class="m">C</span> (su <span class="m">r_{BC}</span>) e <span class="m">A</span> (su <span class="m">r</span>); contiene la retta <span class="m">r</span>, quindi è tangente a <span class="m">r</span> in <span class="m">A</span>.</li>
+</ul>
+<p>Regola pratica: <strong>la tangente si accoppia con la retta per gli altri due punti; le due rette che escono dal punto di tangenza formano l&#39;altra conica.</strong> Il punto di tangenza è quello che sta su <span class="m">r</span>: va individuato con cura (nei quiz può essere <span class="m">A</span>, <span class="m">B</span> o <span class="m">C</span>).</p>
+<h3>Due punti e due tangenti</h3>
+<p><strong>Osservazione 42.29.</strong> Siano <span class="m">A</span>, <span class="m">B</span> due punti distinti e <span class="m">r</span>, <span class="m">s</span> due rette distinte con <span class="m">r</span> per <span class="m">A</span> e <span class="m">s</span> per <span class="m">B</span>. Le coniche che contengono <span class="m">A</span> e <span class="m">B</span> e sono algebricamente tangenti a <span class="m">r</span> in <span class="m">A</span> e a <span class="m">s</span> in <span class="m">B</span> formano un fascio, generato da
+<span class="m d">\mathcal C_1=r\cup s,\qquad \mathcal C_2=r_{AB}\cup r_{AB}.</span>
+Perché:</p>
+<ul>
+<li><span class="m">r\cup s</span> contiene <span class="m">r</span> e <span class="m">s</span>, quindi è tangente a entrambe (in <span class="m">A</span> e in <span class="m">B</span>);</li>
+<li>la retta doppia <span class="m">r_{AB}\cup r_{AB}</span> ha <strong>tutti i punti singolari</strong>, in particolare <span class="m">A</span> e <span class="m">B</span>: ogni retta per <span class="m">A</span> (o per <span class="m">B</span>) la incontra lì con molteplicità 2.</li>
+</ul>
+<p>Le coppie &quot;miste&quot;, come <span class="m">r\cup r_{AB}</span>, <strong>non</strong> vanno bene: contengono <span class="m">A</span> e <span class="m">B</span>, ma in <span class="m">B</span> la retta <span class="m">s</span> incontra la conica una volta sola (in <span class="m">B</span>, che non è singolare), quindi non è tangente a <span class="m">s</span>.</p>
+<table>
+<thead>
+<tr>
+<th>Condizioni</th>
+<th>Coniche degeneri generatrici</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>4 punti <span class="m">A,B,C,D</span></td>
+<td><span class="m">r_{AB}\cup r_{CD}</span>, <span class="m">r_{AC}\cup r_{BD}</span>, <span class="m">r_{AD}\cup r_{BC}</span> (due qualsiasi)</td>
+</tr>
+<tr>
+<td>3 punti <span class="m">A,B,C</span> + tangente <span class="m">r</span> in <span class="m">A</span></td>
+<td><span class="m">r_{AB}\cup r_{AC}</span> e <span class="m">r_{BC}\cup r</span></td>
+</tr>
+<tr>
+<td>2 punti + tangenti <span class="m">r</span> in <span class="m">A</span>, <span class="m">s</span> in <span class="m">B</span></td>
+<td><span class="m">r\cup s</span> e <span class="m">r_{AB}\cup r_{AB}</span></td>
+</tr>
+</tbody></table>
+<p><strong>Osservazione 42.30.</strong> Dato un fascio e un punto <span class="m">P</span> <strong>diverso dai punti base</strong>, esiste <strong>una e una sola</strong> conica del fascio che contiene <span class="m">P</span>. Infatti la condizione <span class="m">\lambda p_1(P)+\mu p_2(P)=0</span> è una sola equazione lineare omogenea in <span class="m">(\lambda,\mu)</span>, con coefficienti <span class="m">p_1(P)</span>, <span class="m">p_2(P)</span> non entrambi nulli (altrimenti <span class="m">P</span> sarebbe un punto base): le sue soluzioni sono tutte proporzionali tra loro, cioè danno un&#39;unica conica.</p>
+<p>Una conica è determinata da <strong>5 condizioni</strong> (l&#39;equazione ha 6 coefficienti, definiti a meno di un fattore): un punto è una condizione, una tangenza in un punto dato vale due (passaggio + tangenza). Il fascio &quot;usa&quot; 4 condizioni (4 punti; 3 punti di cui uno con tangente; 2 punti con tangente in entrambi) e il quinto dato, un punto in più, fissa il rapporto <span class="m">\lambda:\mu</span>.</p>
+<div class="callout esame">
+
+<p><strong>Procedura: trovare la conica con i fasci.</strong></p>
+<ol>
+<li>Leggere i dati e capire quale fascio usare: 4 punti, 3 punti + tangente, 2 punti + 2 tangenti. Controllare <strong>per quale punto passa ogni tangente</strong> (sostituendo le coordinate nell&#39;equazione della retta).</li>
+<li>Scrivere le equazioni delle rette che servono: per la retta per <span class="m">P={}^t(x_P\ y_P)</span> e <span class="m">Q={}^t(x_Q\ y_Q)</span> si può usare <span class="m">(y_Q-y_P)(x-x_P)-(x_Q-x_P)(y-y_P)=0</span>, e poi verificare che passi per entrambi i punti.</li>
+<li>Formare le due coniche degeneri secondo la tabella e scrivere il fascio <span class="m">\lambda p_1+\mu p_2=0</span> (lasciando i prodotti non svolti).</li>
+<li>Sostituire il punto rimanente: si ottiene <span class="m">\lambda\,p_1(P)+\mu\,p_2(P)=0</span>, con <span class="m">p_1(P)</span> e <span class="m">p_2(P)</span> numeri.</li>
+<li>Ricavare il rapporto (per esempio <span class="m">\mu=-\frac{p_1(P)}{p_2(P)}\lambda</span>), scegliere un valore comodo (spesso <span class="m">\lambda=1</span> o il valore che toglie le frazioni) e scrivere la conica.</li>
+<li>(Facoltativo) svolgere i prodotti per avere la forma <span class="m">ax^2+bxy+\dots=0</span>.</li>
+</ol>
+</div>
+
 <div class="callout esempio">
 
-<p><strong>Tre punti e una tangente.</strong> Conica per <span class="m">A={}^t(-2\ 2)</span>, <span class="m">B={}^t(1\ 2)</span>, <span class="m">C={}^t(0\ 0)</span>, <span class="m">D={}^t(3\ 1)</span> tangente a <span class="m">r: 3x-4y+5=0</span>. La retta <span class="m">r</span> passa per <span class="m">B</span>: si usa il fascio per <span class="m">A</span>, <span class="m">B</span>, <span class="m">C</span> tangenti a <span class="m">r</span> in <span class="m">B</span>, con coniche degeneri <span class="m">r_{BA}\cup r_{BC}: (y-2)(2x-y)=0</span> e <span class="m">r_{AC}\cup r: (x+y)(3x-4y+5)=0</span>:
-<span class="m d">\lambda(y-2)(2x-y)+\mu(x+y)(3x-4y+5)=0.</span>
-Il passaggio per <span class="m">D</span> dà <span class="m">-5\lambda+40\mu=0</span>, cioè <span class="m">\lambda=8\mu</span>: la conica è <span class="m">8(y-2)(2x-y)+(x+y)(3x-4y+5)=0</span>.</p>
+<p><strong>Esercizio 42.2 — tre punti e una tangente.</strong> Trovare la conica per <span class="m">A={}^t(-2\ 2)</span>, <span class="m">B={}^t(1\ 2)</span>, <span class="m">C={}^t(0\ 0)</span>, <span class="m">D={}^t(3\ 1)</span> tangente a <span class="m">r: 3x-4y+5=0</span>.</p>
+<ol>
+<li>Per quale punto passa <span class="m">r</span>? <span class="m">A</span>: <span class="m">-6-8+5=-9\neq0</span>; <span class="m">B</span>: <span class="m">3-8+5=0</span> ✓. Quindi <span class="m">r</span> è tangente in <span class="m">B</span>. Si usa il fascio per <span class="m">A</span>, <span class="m">B</span>, <span class="m">C</span> tangente a <span class="m">r</span> in <span class="m">B</span> (e si impone poi <span class="m">D</span>).</li>
+<li>Rette: <span class="m">r_{BA}</span>: <span class="m">A</span> e <span class="m">B</span> hanno entrambi <span class="m">y=2</span>, quindi <span class="m">y-2=0</span>; <span class="m">r_{BC}</span>: passa per l&#39;origine e per <span class="m">{}^t(1\ 2)</span>, quindi <span class="m">y=2x</span>, cioè <span class="m">2x-y=0</span>; <span class="m">r_{AC}</span>: passa per l&#39;origine e per <span class="m">{}^t(-2\ 2)</span>, quindi <span class="m">y=-x</span>, cioè <span class="m">x+y=0</span>.</li>
+<li>Coniche degeneri: le due rette uscenti dal punto di tangenza <span class="m">B</span>, <span class="m">r_{BA}\cup r_{BC}:(y-2)(2x-y)=0</span>; la tangente con la retta per gli altri due punti, <span class="m">r_{AC}\cup r:(x+y)(3x-4y+5)=0</span>. Fascio:
+<span class="m d">\lambda(y-2)(2x-y)+\mu(x+y)(3x-4y+5)=0.</span></li>
+<li>Passaggio per <span class="m">D={}^t(3\ 1)</span>: <span class="m">p_1(D)=(1-2)(6-1)=(-1)(5)=-5</span>; <span class="m">p_2(D)=(3+1)(9-4+5)=4\cdot10=40</span>. Quindi <span class="m">-5\lambda+40\mu=0</span>.</li>
+<li><span class="m">\lambda=8\mu</span>; con <span class="m">\mu=1</span>, <span class="m">\lambda=8</span>:
+<span class="m d">8(y-2)(2x-y)+(x+y)(3x-4y+5)=0.</span>
+Per l&#39;Esercizio 42.5 della dispensa si può rifare con il fascio per <span class="m">A</span>, <span class="m">B</span>, <span class="m">D</span> tangente in <span class="m">B</span> e imporre <span class="m">C</span>: la conica ottenuta deve essere la stessa (equazioni proporzionali).</li>
+</ol>
 </div>
 
 <div class="callout esempio">
 
-<p><strong>Due punti e due tangenti.</strong> Conica per <span class="m">A={}^t(1\ -1)</span>, <span class="m">B={}^t(2\ 2)</span>, <span class="m">C={}^t(2\ -1)</span> tangente a <span class="m">r: x+2y-6=0</span> e <span class="m">s: x-4y-6=0</span>. La retta <span class="m">r</span> passa per <span class="m">B</span> e <span class="m">s</span> per <span class="m">C</span>: fascio <span class="m">\lambda(x+2y-6)(x-4y-6)+\mu(x-2)^2=0</span> (la retta per <span class="m">B</span> e <span class="m">C</span> è <span class="m">x=2</span>). Il passaggio per <span class="m">A</span> dà <span class="m">(-7)(-1)\lambda+(-1)^2\mu=7\lambda+\mu=0</span>, cioè <span class="m">\mu=-7\lambda</span>: la conica è <span class="m">(x+2y-6)(x-4y-6)-7(x-2)^2=0</span>.</p>
+<p><strong>Esercizio 42.3 — due punti e due tangenti.</strong> Trovare la conica per <span class="m">A={}^t(1\ -1)</span>, <span class="m">B={}^t(2\ 2)</span>, <span class="m">C={}^t(2\ -1)</span> tangente a <span class="m">r: x+2y-6=0</span> e <span class="m">s: x-4y-6=0</span>.</p>
+<ol>
+<li><span class="m">r</span> in <span class="m">B</span>: <span class="m">2+4-6=0</span> ✓. <span class="m">s</span> in <span class="m">C</span>: <span class="m">2+4-6=0</span> ✓. Quindi le tangenze sono in <span class="m">B</span> (retta <span class="m">r</span>) e in <span class="m">C</span> (retta <span class="m">s</span>); il punto da imporre alla fine è <span class="m">A</span>.</li>
+<li>Retta per <span class="m">B</span> e <span class="m">C</span>: hanno entrambi <span class="m">x=2</span>, quindi <span class="m">x-2=0</span>.</li>
+<li>Coniche degeneri: <span class="m">r\cup s:(x+2y-6)(x-4y-6)=0</span> e la retta doppia <span class="m">(x-2)^2=0</span>. Fascio:
+<span class="m d">\lambda(x+2y-6)(x-4y-6)+\mu(x-2)^2=0.</span></li>
+<li>Passaggio per <span class="m">A={}^t(1\ -1)</span>: <span class="m">p_1(A)=(1-2-6)(1+4-6)=(-7)(-1)=7</span>; <span class="m">p_2(A)=(1-2)^2=1</span>. Quindi <span class="m">7\lambda+\mu=0</span>.</li>
+<li><span class="m">\mu=-7\lambda</span>; con <span class="m">\lambda=1</span>:
+<span class="m d">(x+2y-6)(x-4y-6)-7(x-2)^2=0.</span></li>
+</ol>
 </div>
 
-<div class="callout sintesi">
+<div class="callout esempio">
+
+<p><strong>Quattro punti più un quinto.</strong> Trovare la conica per <span class="m">A={}^t(-1\ -1)</span>, <span class="m">B={}^t(-2\ 1)</span>, <span class="m">C={}^t(0\ -2)</span>, <span class="m">D={}^t(-1\ -2)</span>, <span class="m">E={}^t(-2\ -1)</span>, usando il fascio per <span class="m">A</span>, <span class="m">B</span>, <span class="m">C</span>, <span class="m">D</span>.</p>
+<ol>
+<li>Rette (con verifica):<ul>
+<li><span class="m">r_{AB}</span>: direzione <span class="m">B-A={}^t(-1\ 2)</span>; retta <span class="m">2(x+1)+(y+1)=0</span>, cioè <span class="m">2x+y+3=0</span> (in <span class="m">B</span>: <span class="m">-4+1+3=0</span> ✓);</li>
+<li><span class="m">r_{CD}</span>: <span class="m">C</span> e <span class="m">D</span> hanno entrambi <span class="m">y=-2</span>: <span class="m">y+2=0</span>;</li>
+<li><span class="m">r_{AC}</span>: direzione <span class="m">{}^t(1\ -1)</span>: <span class="m">x+y+2=0</span> (in <span class="m">A</span>: <span class="m">-1-1+2=0</span> ✓; in <span class="m">C</span>: <span class="m">0-2+2=0</span> ✓);</li>
+<li><span class="m">r_{BD}</span>: direzione <span class="m">{}^t(1\ -3)</span>: <span class="m">3(x+2)+(y-1)=0</span>, cioè <span class="m">3x+y+5=0</span> (in <span class="m">D</span>: <span class="m">-3-2+5=0</span> ✓).</li>
+</ul>
+</li>
+<li>Fascio: <span class="m">\lambda(2x+y+3)(y+2)+\mu(x+y+2)(3x+y+5)=0</span>.</li>
+<li>In <span class="m">E={}^t(-2\ -1)</span>: <span class="m">p_1(E)=(-4-1+3)(-1+2)=(-2)(1)=-2</span>; <span class="m">p_2(E)=(-2-1+2)(-6-1+5)=(-1)(-2)=2</span>. Quindi <span class="m">-2\lambda+2\mu=0</span>, <span class="m">\lambda=\mu</span>.</li>
+<li>Con <span class="m">\lambda=\mu=1</span>: <span class="m">(2x+y+3)(y+2)+(x+y+2)(3x+y+5)=0</span>. Svolgendo:<ul>
+<li><span class="m">(2x+y+3)(y+2)=2xy+4x+y^2+2y+3y+6=2xy+y^2+4x+5y+6</span>;</li>
+<li><span class="m">(x+y+2)(3x+y+5)=3x^2+xy+5x+3xy+y^2+5y+6x+2y+10=3x^2+4xy+y^2+11x+7y+10</span>;</li>
+<li>somma: <span class="m">3x^2+6xy+2y^2+15x+12y+16=0</span>.</li>
+</ul>
+</li>
+</ol>
+<p>Verifica in <span class="m">E</span>: <span class="m">12+12+2-30-12+16=0</span> ✓.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Tre punti e una tangente con il punto di tangenza separato.</strong> Trovare la conica per <span class="m">A={}^t(1\ 1)</span>, <span class="m">B={}^t(0\ -1)</span>, <span class="m">C={}^t(-2\ -2)</span>, tangente a <span class="m">t: x-y+2=0</span> in <span class="m">D={}^t(0\ 2)</span>, usando il fascio per <span class="m">A</span>, <span class="m">B</span> tangente a <span class="m">t</span> in <span class="m">D</span>.</p>
+<p>Qui i &quot;tre punti&quot; del fascio sono <span class="m">D</span> (punto di tangenza), <span class="m">A</span>, <span class="m">B</span>; il punto da imporre è <span class="m">C</span>.</p>
+<ol>
+<li>Rette uscenti da <span class="m">D</span>: <span class="m">r_{DA}</span>: <span class="m">x+y-2=0</span> (<span class="m">0+2-2=0</span>, <span class="m">1+1-2=0</span> ✓); <span class="m">r_{DB}</span>: <span class="m">D</span> e <span class="m">B</span> hanno <span class="m">x=0</span>, quindi <span class="m">x=0</span>. Retta per gli altri due: <span class="m">r_{AB}</span>: <span class="m">2x-y-1=0</span> (<span class="m">2-1-1=0</span>, <span class="m">0+1-1=0</span> ✓).</li>
+<li>Fascio: <span class="m">\lambda\,x(x+y-2)+\mu(2x-y-1)(x-y+2)=0</span>.</li>
+<li>In <span class="m">C={}^t(-2\ -2)</span>: <span class="m">p_1(C)=(-2)(-2-2-2)=(-2)(-6)=12</span>; <span class="m">p_2(C)=(-4+2-1)(-2+2+2)=(-3)(2)=-6</span>. Quindi <span class="m">12\lambda-6\mu=0</span>, <span class="m">\mu=2\lambda</span>.</li>
+<li>Con <span class="m">\lambda=1</span>, <span class="m">\mu=2</span>: <span class="m">x(x+y-2)+2(2x-y-1)(x-y+2)=0</span>, che svolto dà <span class="m">5x^2-5xy+2y^2+4x-2y-4=0</span>.</li>
+</ol>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Due punti e due tangenti (forma &quot;tangente in A e in B, per C&quot;).</strong> Trovare la conica tangente a <span class="m">x-y+1=0</span> in <span class="m">A={}^t(0\ 1)</span>, tangente a <span class="m">x+3y+2=0</span> in <span class="m">B={}^t(-2\ 0)</span> e passante per <span class="m">C={}^t(1\ 1)</span>.</p>
+<ol>
+<li>Controlli: <span class="m">0-1+1=0</span> ✓, <span class="m">-2+0+2=0</span> ✓.</li>
+<li><span class="m">r_{AB}</span>: direzione <span class="m">B-A={}^t(-2\ -1)</span>, retta <span class="m">(x-0)-2(y-1)=0</span>, cioè <span class="m">x-2y+2=0</span> (in <span class="m">B</span>: <span class="m">-2-0+2=0</span> ✓).</li>
+<li>Fascio: <span class="m">\lambda(x-y+1)(x+3y+2)+\mu(x-2y+2)^2=0</span>.</li>
+<li>In <span class="m">C</span>: <span class="m">p_1(C)=(1-1+1)(1+3+2)=6</span>; <span class="m">p_2(C)=(1-2+2)^2=1</span>. Quindi <span class="m">6\lambda+\mu=0</span>, <span class="m">\mu=-6\lambda</span>.</li>
+<li>Conica: <span class="m">(x-y+1)(x+3y+2)-6(x-2y+2)^2=0</span>.</li>
+</ol>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Fascio dato, punto da imporre.</strong> Nel fascio <span class="m">\lambda(x+y-2)(x-2y-3)+\mu(x-3y+1)(y+1)=0</span> si cerca la conica per <span class="m">{}^t(1\ -2)</span>.</p>
+<p><span class="m">p_1=(1-2-2)(1+4-3)=(-3)(2)=-6</span>; <span class="m">p_2=(1+6+1)(-2+1)=8\cdot(-1)=-8</span>. Condizione: <span class="m">-6\lambda-8\mu=0</span>, cioè <span class="m">3\lambda=-4\mu</span>: una soluzione è <span class="m">(\lambda,\mu)=(-4,3)</span> (o qualsiasi multiplo, come <span class="m">(4,-3)</span>). Attenzione: <span class="m">(4,3)</span> o <span class="m">(3,4)</span> <strong>non</strong> soddisfano la condizione; si controlla sempre sostituendo.</p>
+</div>
+
+<div class="callout attenzione">
 
 <ul>
-<li>Conica = curva di grado 2; stessa conica a meno di un fattore non nullo.</li>
-<li>Degenere = prodotto di due fattori di grado 1 = unione di due rette (eventualmente coincidenti o complesse) = ha un punto singolare.</li>
-<li>Fascio <span class="m">\lambda p_1+\mu p_2=0</span>: si scrive con due coniche degeneri, poi si impone il passaggio per un punto in più.</li>
-<li>4 punti: <span class="m">r_{AB}\cup r_{CD}</span>, <span class="m">r_{AC}\cup r_{BD}</span>, <span class="m">r_{AD}\cup r_{BC}</span>. 3 punti + tangente in <span class="m">A</span>: <span class="m">r_{AB}\cup r_{AC}</span> e <span class="m">r_{BC}\cup r</span>. 2 punti + 2 tangenti: <span class="m">r\cup s</span> e <span class="m">r_{AB}\cup r_{AB}</span>.</li>
+<li>Nei fasci &quot;con tangenti&quot; il primo passo è capire <strong>in quale punto</strong> è tangente ciascuna retta: si sostituiscono i punti nell&#39;equazione della retta. Sbagliare il punto di tangenza cambia le coniche degeneri.</li>
+<li>Nel fascio &quot;2 punti e 2 tangenti&quot; la seconda conica è la <strong>retta doppia</strong> <span class="m">r_{AB}\cup r_{AB}</span>, non una coppia di rette diverse e non <span class="m">r\cup r</span> o <span class="m">s\cup s</span> (che non contengono entrambi i punti).</li>
+<li>Nel fascio &quot;3 punti + tangente in <span class="m">A</span>&quot;: <span class="m">r_{AB}\cup r_{AC}</span> (le rette <strong>uscenti dal punto di tangenza</strong>) e <span class="m">r_{BC}\cup r</span>. Coppie come <span class="m">r_{AB}\cup r</span> non contengono <span class="m">C</span>.</li>
+<li>Nell&#39;equazione <span class="m">\lambda p_1(P)+\mu p_2(P)=0</span> non scambiare i ruoli: se <span class="m">48\lambda+12\mu=0</span> allora <span class="m">\mu=-4\lambda</span>, cioè la conica è <span class="m">p_1-4p_2=0</span>, non <span class="m">4p_1+p_2=0</span>.</li>
+<li>Una conica degenere <strong>non</strong> è definita come &quot;una conica con <span class="m">\det A=0</span>&quot; nella Definizione 42.19: la definizione è &quot;il polinomio è prodotto di due fattori di grado 1&quot;. L&#39;equivalenza con <span class="m">\det A=0</span> si vede con la matrice associata.</li>
 </ul>
 </div>
 
 <div class="callout esame">
 
-<p>Il paniere chiede: riconoscere da una figura una conica degenere del fascio (4 punti, 3 punti con tangente, 2 punti con 2 tangenti: attenzione alla retta doppia); trovare la conica di un fascio dato che passa per un punto (sostituire e ricavare <span class="m">\lambda:\mu</span>); verificare quale punto sta su una conica. Aperte: definizione di conica e di conica degenere; esercizi &quot;trova la conica&quot; con il fascio indicato.</p>
+<p>Il paniere su questa lezione chiede:</p>
+<ul>
+<li><strong>riconoscere da una figura una conica degenere del fascio</strong> (4 punti; 3 punti con tangente in uno di essi; 2 punti con 2 tangenti): si usa la tabella dei generatori, controllando che ogni punto compaia e che la tangenza sia rispettata (retta doppia per il caso delle due tangenti, rette uscenti dal punto di tangenza nel caso della tangente singola);</li>
+<li><strong>trovare la conica di un fascio dato che passa per un punto</strong>: sostituire, ricavare <span class="m">\lambda:\mu</span>, controllare segni e ruoli;</li>
+<li><strong>dire quale punto appartiene a una conica</strong>: sostituire le coordinate;</li>
+<li>domande aperte: &quot;Parlare delle coniche e delle coniche degeneri, in particolare dando la definizione&quot; (definizione 42.1, equazione omogenea, stessa conica a meno di un fattore, ellisse/iperbole/parabola con le definizioni metriche e le forme canoniche, ellisse immaginaria, definizione di conica degenere, unione di due rette, retta doppia, Proposizione 42.22 sui punti singolari, esempi) ed esercizi &quot;trova la conica&quot; con il fascio indicato (seguire la procedura sopra, scrivendo tutte le rette e il calcolo di <span class="m">\lambda:\mu</span>).</li>
+</ul>
+</div>
+
+<div class="callout sintesi">
+
+<ul>
+<li>Conica: <span class="m">ax^2+bxy+cy^2+dx+ey+f=0</span> con <span class="m">(a,b,c)\neq(0,0,0)</span>; stessa conica a meno di un fattore <span class="m">k\neq0</span>; omogenea <span class="m">aX^2+bXY+cY^2+dXT+eYT+fT^2=0</span>.</li>
+<li>Ellisse: somma delle distanze dai fuochi <span class="m">=2\alpha</span>, <span class="m">\frac{x^2}{\alpha^2}+\frac{y^2}{\beta^2}=1</span>; immaginaria: <span class="m">ax^2+by^2=-1</span>. Iperbole: modulo della differenza <span class="m">=2\alpha</span>, <span class="m">\frac{x^2}{\alpha^2}-\frac{y^2}{\beta^2}=1</span>. Parabola: <span class="m">\mathrm{dist}(P,F)=\mathrm{dist}(P,s)</span>, <span class="m">x^2-4\gamma y=0</span>.</li>
+<li>Degenere = prodotto di due fattori di grado 1 (anche complessi) = unione di due rette = ha un punto singolare (l&#39;intersezione delle rette); retta doppia <span class="m">s\cup s</span>: tutti i punti singolari.</li>
+<li>Fascio <span class="m">\lambda p_1+\mu p_2=0</span>; punti base = <span class="m">\mathcal C_1\cap\mathcal C_2</span>; per un punto non base passa una sola conica del fascio.</li>
+<li>Generatori: 4 punti → <span class="m">r_{AB}\cup r_{CD}</span>, <span class="m">r_{AC}\cup r_{BD}</span>, <span class="m">r_{AD}\cup r_{BC}</span>; 3 punti + tangente <span class="m">r</span> in <span class="m">A</span> → <span class="m">r_{AB}\cup r_{AC}</span>, <span class="m">r_{BC}\cup r</span>; 2 punti + tangenti <span class="m">r</span> in <span class="m">A</span>, <span class="m">s</span> in <span class="m">B</span> → <span class="m">r\cup s</span>, <span class="m">r_{AB}\cup r_{AB}</span>.</li>
+</ul>
 </div>

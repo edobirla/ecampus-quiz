@@ -1,85 +1,223 @@
 <h1>Lezione 4 — Operazioni, gruppi e campi</h1>
-<p>Le operazioni sugli insiemi sono il punto chiave per definire gli spazi vettoriali.</p>
+<p>In questa lezione studiamo le <strong>operazioni</strong> sugli insiemi e le loro proprietà. Sono il punto chiave per definire gli spazi vettoriali (Lezione 5), l&#39;oggetto principale del corso: uno spazio vettoriale è un <strong>gruppo abeliano</strong> (rispetto alla somma di vettori) su cui agiscono gli scalari di un <strong>campo</strong>. Le definizioni di questa lezione astraggono le proprietà che conosciamo da sempre per i numeri, così da poterle usare su oggetti diversi (vettori, polinomi, matrici, funzioni).</p>
 <h2>Operazioni</h2>
-<p><strong>Definizione 4.1.</strong> Una <strong>operazione</strong> su un insieme <span class="m">X</span> è una funzione <span class="m">\bullet: X\times X\to X</span>; l&#39;immagine della coppia <span class="m">(x,y)</span> è il <strong>risultato</strong> e si indica con <span class="m">x\bullet y</span> (invece di <span class="m">\bullet(x,y)</span>).</p>
-<p>Si tratta di operazioni <strong>binarie</strong> (due argomenti) e <strong>interne</strong> (il risultato sta in <span class="m">X</span>).</p>
+<p><strong>Definizione 4.1.</strong> Una <strong>operazione</strong> su un insieme <span class="m">X</span> è una funzione
+<span class="m d">\bullet: X\times X\to X .</span>
+Dati <span class="m">x,y\in X</span>, l&#39;immagine della coppia <span class="m">(x,y)</span> è il <strong>risultato</strong> dell&#39;operazione e si indica con <span class="m">x\bullet y</span>.</p>
+<p>Quindi un&#39;operazione prende <strong>due</strong> elementi di <span class="m">X</span> (in un certo ordine) e restituisce <strong>un</strong> elemento, che deve stare ancora in <span class="m">X</span>.</p>
+<p><strong>Osservazione 4.2.</strong> Più precisamente si dovrebbe dire operazione <strong>binaria</strong> (si possono considerare operazioni con più argomenti, ma noi useremo solo quelle con due). Alcuni testi dicono operazione <strong>interna</strong>, perché si possono considerare anche operazioni il cui risultato non sta in <span class="m">X</span>: per noi il risultato sta sempre in <span class="m">X</span>.</p>
+<p><strong>Osservazione 4.3.</strong> Con la notazione delle funzioni si dovrebbe scrivere <span class="m">\bullet(x,y)</span>; si scrive invece <span class="m">x\bullet y</span> perché è più comodo e perché è la notazione che già usiamo per addizione e moltiplicazione di numeri (<span class="m">3+5</span>, non <span class="m">+(3,5)</span>).</p>
 <div class="callout esempio">
 
-<ul>
-<li>Su <span class="m">\{0\}</span> l&#39;operazione banale <span class="m">0+0:=0</span>.</li>
-<li>Addizione e moltiplicazione su <span class="m">\mathbb N</span>, <span class="m">\mathbb Z</span>, <span class="m">\mathbb Q</span>, <span class="m">\mathbb R</span>, <span class="m">\mathbb C</span>.</li>
-<li>L&#39;addizione su <span class="m">V^2_G</span> e <span class="m">V^3_G</span> (Lezione 3).</li>
-<li>Addizione e moltiplicazione sui polinomi <span class="m">I[x_1,\dots,x_n]</span>. Sui polinomi di grado al più <span class="m">m</span>, <span class="m">I_{\le m}[x_1,\dots,x_n]</span>, l&#39;addizione è un&#39;operazione ma la <strong>moltiplicazione no</strong>: il prodotto può avere grado maggiore di <span class="m">m</span>.</li>
-</ul>
+<p><strong>Esempio 4.4.</strong></p>
+<ol>
+<li>Sull&#39;insieme <span class="m">\{0\}</span>, con un solo elemento, si definisce in modo banale l&#39;operazione <span class="m">+:\{0\}\times\{0\}\to\{0\}</span> con <span class="m">0+0:=0</span> (la consideriamo un&#39;addizione).</li>
+<li>Addizione e moltiplicazione su <span class="m">\mathbb N</span>: <span class="m">+:\mathbb N\times\mathbb N\to\mathbb N</span> associa a <span class="m">(n,m)</span> la somma <span class="m">n+m</span>; <span class="m">\cdot:\mathbb N\times\mathbb N\to\mathbb N</span> il prodotto <span class="m">n\cdot m</span>.</li>
+<li>Le stesse operazioni si estendono a <span class="m">\mathbb Z</span>, <span class="m">\mathbb Q</span>, <span class="m">\mathbb R</span>, <span class="m">\mathbb C</span>.</li>
+<li>L&#39;addizione sui vettori geometrici (Lezione 3): <span class="m">+:V^2_G\times V^2_G\to V^2_G</span> e <span class="m">+:V^3_G\times V^3_G\to V^3_G</span>.</li>
+<li>Addizione e moltiplicazione si estendono ai polinomi <span class="m">I[x_1,\dots,x_n]</span> a coefficienti in un insieme <span class="m">I</span>.
+Per i polinomi <strong>di grado al più <span class="m">m</span></strong>, <span class="m">I_{\le m}[x_1,\dots,x_n]</span>, l&#39;<strong>addizione è un&#39;operazione</strong> (la somma di due polinomi di grado <span class="m">\le m</span> ha grado <span class="m">\le m</span>), ma la <strong>moltiplicazione no</strong>: il prodotto può avere grado maggiore. Ad esempio in <span class="m">\mathbb R_{\le1}[x]</span> si ha <span class="m">x\cdot x=x^2</span>, che ha grado <span class="m">2</span> e quindi non sta in <span class="m">\mathbb R_{\le1}[x]</span>.</li>
+</ol>
 </div>
 
-<p>Un&#39;operazione con proprietà simili all&#39;addizione sugli interi si chiama <strong>addizione</strong> (simbolo tipo <span class="m">+</span>); una con proprietà simili alla moltiplicazione sui razionali/reali si chiama <strong>moltiplicazione</strong> (simbolo tipo <span class="m">\cdot</span> o <span class="m">\times</span>). Salvo avviso, i polinomi hanno coefficienti in <span class="m">\mathbb Q</span>, <span class="m">\mathbb R</span> o <span class="m">\mathbb C</span>.</p>
+<div class="callout attenzione">
+
+<p>Per essere un&#39;operazione su <span class="m">X</span>, il risultato deve <strong>sempre</strong> stare in <span class="m">X</span> (chiusura). Se anche per una sola coppia il risultato esce da <span class="m">X</span>, non è un&#39;operazione su <span class="m">X</span>. Esempi: la moltiplicazione su <span class="m">\mathbb R_{\le m}[x]</span> con <span class="m">m\ge1</span>; l&#39;addizione su <span class="m">\mathbb C\setminus\{0\}</span> (<span class="m">1+(-1)=0\notin\mathbb C\setminus\{0\}</span>).</p>
+</div>
+
+<p><strong>Notazione 4.5.</strong> Un&#39;operazione con proprietà simili a quelle dell&#39;addizione sui numeri interi si chiama <strong>addizione</strong> e si indica con un simbolo tipo &quot;<span class="m">+</span>&quot;; un&#39;operazione con proprietà simili a quelle della moltiplicazione sui razionali o sui reali si chiama <strong>moltiplicazione</strong> e si indica con &quot;<span class="m">\cdot</span>&quot; o &quot;<span class="m">\times</span>&quot;.</p>
+<p><strong>Notazione 4.6.</strong> Se non specifichiamo i coefficienti dei polinomi, supponiamo che stiano in un insieme su cui sono definite tutte le operazioni necessarie; per semplicità supporremo coefficienti in <span class="m">\mathbb Q</span>, <span class="m">\mathbb R</span> o <span class="m">\mathbb C</span>, che soddisfano tutte le proprietà che ci servono.</p>
 <h2>Proprietà delle operazioni</h2>
-<ul>
-<li><strong>Associativa (Def. 4.7):</strong> <span class="m">x\bullet(y\bullet z)=(x\bullet y)\bullet z</span> per ogni <span class="m">x,y,z\in X</span>. Permette di togliere le parentesi, anche in sequenze lunghe <span class="m">x_1\bullet x_2\bullet\dots\bullet x_n</span>.</li>
-<li><strong>Elemento neutro (Def. 4.10):</strong> <span class="m">e\in X</span> con <span class="m">x\bullet e=e\bullet x=x</span> per ogni <span class="m">x</span>. Si indica con <span class="m">0</span> per un&#39;addizione e con <span class="m">1</span> per una moltiplicazione.</li>
-<li><strong>Opposto/inverso (Def. 4.14):</strong> dato <span class="m">x</span>, un elemento <span class="m">\bar x</span> con <span class="m">x\bullet\bar x=\bar x\bullet x=e</span>. Si dice <strong>opposto</strong> (<span class="m">-x</span>, e <span class="m">x-y</span> sta per <span class="m">x+(-y)</span>) per l&#39;addizione, <strong>inverso</strong> (<span class="m">x^{-1}</span>, e <span class="m">\frac xy</span> sta per <span class="m">xy^{-1}</span>) per la moltiplicazione.</li>
-<li><strong>Commutativa (Def. 4.22):</strong> <span class="m">x\bullet y=y\bullet x</span>.</li>
-<li><strong>Distributiva (Def. 4.24)</strong> di <span class="m">\odot</span> rispetto a <span class="m">\oplus</span>: <span class="m">(x\oplus y)\odot z=(x\odot z)\oplus(y\odot z)</span> e <span class="m">z\odot(x\oplus y)=(z\odot x)\oplus(z\odot y)</span>.</li>
-</ul>
-<p>Tutte le operazioni degli esempi sono associative e commutative, e le moltiplicazioni sono distributive rispetto alle addizioni. Le uniche eccezioni nel corso saranno il prodotto righe per colonne e il prodotto vettoriale.</p>
-<p><strong>Proposizione 4.12.</strong> Se un&#39;operazione ha un elemento neutro, questo è <strong>unico</strong>. <em>Dim.:</em> se <span class="m">e,e'</span> sono neutri, <span class="m">e=e'\bullet e=e'</span>.</p>
-<p><strong>Osservazione 4.16 (cancellazione).</strong> Se <span class="m">\bullet</span> è associativa con neutro e <span class="m">x</span> ha opposto/inverso, allora <span class="m">y\bullet x=z\bullet x\Rightarrow y=z</span> e <span class="m">x\bullet y=x\bullet z\Rightarrow y=z</span> (si opera con <span class="m">\bar x</span> e si usa l&#39;associativa).</p>
-<p><strong>Proposizione 4.17.</strong> Se <span class="m">\bullet</span> è associativa con neutro, l&#39;opposto/inverso di un elemento, se esiste, è <strong>unico</strong> (da <span class="m">x\bullet\bar x_1=x\bullet\bar x_2</span> si cancella <span class="m">x</span>). Inoltre l&#39;inverso di <span class="m">\bar x</span> è <span class="m">x</span>.</p>
-<p>Se <span class="m">\bullet</span> è commutativa, basta verificare una sola delle due uguaglianze nelle definizioni di neutro, opposto e distributiva.</p>
+<h3>Proprietà associativa</h3>
+<p><strong>Definizione 4.7.</strong> Un&#39;operazione <span class="m">\bullet</span> su <span class="m">X</span> soddisfa la <strong>proprietà associativa</strong> se per ogni <span class="m">x,y,z\in X</span>
+<span class="m d">x\bullet(y\bullet z)=(x\bullet y)\bullet z .</span>
+Tutte le operazioni dell&#39;Esempio 4.4 sono associative (Es. 4.8).</p>
+<p><strong>Osservazione 4.9.</strong> Se <span class="m">\bullet</span> è associativa le parentesi si possono omettere: la scrittura <span class="m">x\bullet y\bullet z</span> non è ambigua, perché i due modi di calcolarla danno lo stesso risultato. Lo stesso vale per sequenze lunghe quanto si vuole, <span class="m">x_1\bullet x_2\bullet\dots\bullet x_n</span> con <span class="m">n\ge3</span>. D&#39;ora in poi omettiamo le parentesi inutili.</p>
 <div class="callout esempio">
 
-<ul>
-<li><span class="m">\mathbb N</span>: per l&#39;addizione <span class="m">1</span> non ha opposto (<span class="m">1+n=0</span> non ha soluzione in <span class="m">\mathbb N</span>); per la moltiplicazione <span class="m">2</span> non ha inverso.</li>
-<li><span class="m">\mathbb Z</span>: ogni <span class="m">h</span> ha opposto <span class="m">-h</span>, ma <span class="m">2</span> non ha inverso (<span class="m">2n=1</span> non ha soluzione intera).</li>
-<li><span class="m">\mathbb Q</span>, <span class="m">\mathbb R</span>, <span class="m">\mathbb C</span>: ogni <span class="m">x</span> ha opposto <span class="m">-x</span>, ogni <span class="m">x\ne0</span> ha inverso <span class="m">\frac1x</span>.</li>
-<li>Vettori geometrici: l&#39;opposto di <span class="m">\mathbf v</span> è <span class="m">-\mathbf v</span>.</li>
-<li>Polinomi: l&#39;opposto si ottiene cambiando segno ai coefficienti; un polinomio di grado <span class="m">1</span> non ha inverso (il grado di <span class="m">p\cdot q</span> sarebbe <span class="m">\ge1</span>, mentre <span class="m">\deg 1=0</span>).</li>
-</ul>
+<p>Nell&#39;uguaglianza <span class="m">3\cdot(-2\cdot4)=(3\cdot(-2))\cdot4</span> i fattori restano <strong>nello stesso ordine</strong> e cambia solo il <strong>raggruppamento</strong>: è la proprietà <strong>associativa</strong> della moltiplicazione su <span class="m">\mathbb Z</span> (non la commutativa, che scambierebbe l&#39;ordine). Infatti <span class="m">3\cdot(-8)=-24</span> e <span class="m">(-6)\cdot4=-24</span>.</p>
 </div>
 
-<p>Potenze: <span class="m">x^n=x\cdots x</span> (<span class="m">n</span> volte), <span class="m">x^{-n}=(x^{-1})^n</span>, <span class="m">x^0:=1</span>; valgono <span class="m">x^nx^m=x^{n+m}</span> e <span class="m">(x^n)^m=x^{nm}</span>.</p>
-<h2>Gruppi abeliani</h2>
-<p><strong>Definizione 4.27.</strong> Un <strong>gruppo abeliano</strong> (o commutativo) è un insieme <span class="m">G</span> con un&#39;operazione <span class="m">\bullet</span> tale che:</p>
-<ul>
-<li>(G1) associativa;</li>
-<li>(G2) esiste l&#39;elemento neutro <span class="m">e</span>;</li>
-<li>(G3) ogni <span class="m">g\in G</span> ha opposto/inverso;</li>
-<li>(G4) commutativa.</li>
-</ul>
-<p>L&#39;operazione fa parte della definizione: il gruppo è la coppia <span class="m">(G,\bullet)</span>, e uno stesso insieme può essere gruppo rispetto a un&#39;operazione e non rispetto a un&#39;altra.</p>
+<h3>Elemento neutro</h3>
+<p><strong>Definizione 4.10.</strong> Un <strong>elemento neutro</strong> per l&#39;operazione <span class="m">\bullet</span> su <span class="m">X</span> è un <span class="m">e\in X</span> tale che
+<span class="m d">x\bullet e=e\bullet x=x\qquad\text{per ogni }x\in X .</span></p>
 <div class="callout esempio">
 
+<p><strong>Esempio 4.11.</strong></p>
+<ol>
+<li>Per <span class="m">+</span> su <span class="m">\{0\}</span> il neutro è <span class="m">0</span> (<span class="m">0+0=0</span>).</li>
+<li>Su <span class="m">\mathbb N</span>: per l&#39;addizione il neutro è <span class="m">0</span> (<span class="m">n+0=0+n=n</span>), per la moltiplicazione è <span class="m">1</span> (<span class="m">n\cdot1=1\cdot n=n</span>).</li>
+<li>Lo stesso su <span class="m">\mathbb Z</span>, <span class="m">\mathbb Q</span>, <span class="m">\mathbb R</span>, <span class="m">\mathbb C</span>.</li>
+<li>Per l&#39;addizione sui vettori geometrici il neutro è il vettore nullo.</li>
+<li>Per l&#39;addizione sui polinomi il neutro è il polinomio nullo.</li>
+</ol>
+</div>
+
+<p><strong>Proposizione 4.12.</strong> Se un&#39;operazione <span class="m">\bullet</span> su <span class="m">X</span> ha un elemento neutro, questo è <strong>unico</strong>.</p>
+<p><em>Dimostrazione.</em> Siano <span class="m">e</span> ed <span class="m">e'</span> due elementi neutri; mostriamo che coincidono. Poiché <span class="m">e</span> è neutro, <span class="m">x\bullet e=x</span> per ogni <span class="m">x</span>: in particolare, con <span class="m">x=e'</span>, si ha <span class="m">e'\bullet e=e'</span>. Poiché <span class="m">e'</span> è neutro, <span class="m">e'\bullet x=x</span> per ogni <span class="m">x</span>: in particolare, con <span class="m">x=e</span>, si ha <span class="m">e'\bullet e=e</span>. Quindi
+<span class="m d">e=e'\bullet e=e' .</span></p>
+<p><strong>Notazione 4.13.</strong> Il neutro si indica con <span class="m">0</span> se l&#39;operazione è un&#39;addizione, con <span class="m">1</span> se è una moltiplicazione.</p>
+<h3>Opposto e inverso</h3>
+<p><strong>Definizione 4.14.</strong> Sia <span class="m">\bullet</span> un&#39;operazione su <span class="m">X</span> con elemento neutro <span class="m">e</span>, e sia <span class="m">x\in X</span>. Un elemento <span class="m">\bar x\in X</span> è detto <strong>opposto</strong> o <strong>inverso</strong> di <span class="m">x</span> se
+<span class="m d">x\bullet\bar x=\bar x\bullet x=e .</span></p>
+<div class="callout esempio">
+
+<p><strong>Esempio 4.15.</strong></p>
+<ol>
+<li>Su <span class="m">\{0\}</span> l&#39;opposto di <span class="m">0</span> è <span class="m">0</span> (<span class="m">0+0=0</span>).</li>
+<li>Su <span class="m">\mathbb N</span>, per l&#39;addizione <span class="m">1</span> <strong>non ha opposto</strong>: l&#39;equazione <span class="m">1+n=0</span> non ha soluzione in <span class="m">\mathbb N</span>. Per la moltiplicazione <span class="m">2</span> <strong>non ha inverso</strong>: <span class="m">2\cdot n=1</span> non ha soluzione in <span class="m">\mathbb N</span>.</li>
+<li>Su <span class="m">\mathbb Z</span>, per l&#39;addizione ogni <span class="m">h</span> ha opposto <span class="m">-h</span>; per la moltiplicazione <span class="m">2</span> non ha inverso (<span class="m">2n=1</span> non ha soluzioni intere: servirebbe <span class="m">n=\frac12\notin\mathbb Z</span>). Su <span class="m">\mathbb Q</span>, <span class="m">\mathbb R</span>, <span class="m">\mathbb C</span> ogni <span class="m">x</span> ha opposto <span class="m">-x</span> e ogni <span class="m">x\ne0</span> ha inverso <span class="m">\frac1x</span>; <span class="m">0</span> non ha inverso.</li>
+<li>Per i vettori geometrici l&#39;opposto di <span class="m">\mathbf v</span> è <span class="m">-\mathbf v</span> (stessa direzione e modulo, verso opposto): <span class="m">\mathbf v+(-\mathbf v)=(-\mathbf v)+\mathbf v=\mathbf 0</span>.</li>
+<li>Per l&#39;addizione di polinomi l&#39;opposto di <span class="m">p</span> è <span class="m">0-p</span>, cioè <span class="m">p</span> con tutti i coefficienti cambiati di segno. Per la moltiplicazione l&#39;inverso può non esistere: se <span class="m">\deg p=1</span> e <span class="m">q</span> fosse l&#39;inverso (<span class="m">p\cdot q=1</span>), il grado di <span class="m">1</span> sarebbe <span class="m">\deg p+\deg q=1+\deg q\ge1</span>, mentre <span class="m">1</span> ha grado <span class="m">0</span>: contraddizione.</li>
+</ol>
+</div>
+
+<p><strong>Osservazione 4.16 (proprietà di cancellazione).</strong> Sia <span class="m">\bullet</span> associativa con neutro <span class="m">e</span>, e sia <span class="m">x\in X</span> dotato di opposto/inverso <span class="m">\bar x</span>. Allora
+<span class="m d">y\bullet x=z\bullet x\ \Rightarrow\ y=z,\qquad\qquad x\bullet y=x\bullet z\ \Rightarrow\ y=z .</span></p>
+<p><em>Dimostrazione della prima.</em> Da <span class="m">y\bullet x=z\bullet x</span>, operando a destra su entrambi i membri con <span class="m">\bar x</span> (l&#39;uguaglianza resta vera): <span class="m">(y\bullet x)\bullet\bar x=(z\bullet x)\bullet\bar x</span>. Per l&#39;associativa <span class="m">y\bullet(x\bullet\bar x)=z\bullet(x\bullet\bar x)</span>, cioè <span class="m">y\bullet e=z\bullet e</span>, cioè <span class="m">y=z</span>. La seconda è analoga (si opera a sinistra con <span class="m">\bar x</span>).</p>
+<p>La cancellazione <strong>richiede</strong> che <span class="m">x</span> abbia l&#39;inverso: in <span class="m">\mathbb Z</span> con la moltiplicazione <span class="m">0\cdot2=0\cdot5</span> ma <span class="m">2\ne5</span>.</p>
+<p><strong>Proposizione 4.17.</strong> Se <span class="m">\bullet</span> è associativa con neutro <span class="m">e</span> e un elemento <span class="m">x</span> ha un opposto/inverso, questo è <strong>unico</strong>.</p>
+<p><em>Dimostrazione.</em> Siano <span class="m">\bar x_1</span> e <span class="m">\bar x_2</span> due opposti/inversi di <span class="m">x</span>. Allora <span class="m">x\bullet\bar x_1=e</span> e <span class="m">x\bullet\bar x_2=e</span>, quindi <span class="m">x\bullet\bar x_1=x\bullet\bar x_2</span>. Per la cancellazione (che si può usare perché <span class="m">x</span> ha un inverso) si elimina <span class="m">x</span> e si ottiene <span class="m">\bar x_1=\bar x_2</span>.</p>
+<p><strong>Osservazione 4.18.</strong> Se <span class="m">x</span> ha inverso <span class="m">\bar x</span>, allora l&#39;inverso di <span class="m">\bar x</span> è <span class="m">x</span>: le uguaglianze <span class="m">x\bullet\bar x=e</span> e <span class="m">\bar x\bullet x=e</span> dicono proprio che <span class="m">x</span> è un inverso di <span class="m">\bar x</span>, ed è l&#39;unico per la Proposizione 4.17. (Es.: <span class="m">-(-x)=x</span>, <span class="m">(x^{-1})^{-1}=x</span>.)</p>
+<p><strong>Notazione 4.19.</strong> &quot;Opposto&quot; si usa per un&#39;addizione (simbolo <span class="m">-x</span>; e <span class="m">x-y</span> sta per <span class="m">x+(-y)</span>), &quot;inverso&quot; per una moltiplicazione (simbolo <span class="m">x^{-1}</span>; e <span class="m">\frac xy</span> sta per <span class="m">x\cdot y^{-1}</span>).</p>
+<p><strong>Notazione 4.20 e Osservazione 4.21 (potenze).</strong> Il simbolo di moltiplicazione si omette (<span class="m">xy=x\bullet y</span>). Si pone <span class="m">x^n=x\,x\cdots x</span> (<span class="m">n</span> volte) per <span class="m">n\ge1</span>; se <span class="m">x</span> ha inverso, <span class="m">x^{-n}=x^{-1}x^{-1}\cdots x^{-1}</span> (<span class="m">n</span> volte), e per coerenza <span class="m">x^0:=1</span>. Valgono le solite regole:
+<span class="m d">x^1=x,\qquad x^1x^{-1}=x^0=1,\qquad x^nx^m=x^{n+m},\qquad (x^n)^m=x^{nm}\qquad\forall n,m\in\mathbb Z .</span></p>
+<h3>Proprietà commutativa e distributiva</h3>
+<p><strong>Definizione 4.22.</strong> <span class="m">\bullet</span> soddisfa la <strong>proprietà commutativa</strong> se <span class="m">x\bullet y=y\bullet x</span> per ogni <span class="m">x,y\in X</span>. Tutte le operazioni dell&#39;Esempio 4.4 sono commutative.</p>
+<p><strong>Definizione 4.24.</strong> Sia <span class="m">X</span> dotato di due operazioni <span class="m">\oplus</span> e <span class="m">\odot</span>. L&#39;operazione <span class="m">\odot</span> soddisfa la <strong>proprietà distributiva</strong> rispetto a <span class="m">\oplus</span> se per ogni <span class="m">x,y,z\in X</span>
+<span class="m d">(x\oplus y)\odot z=(x\odot z)\oplus(y\odot z)\qquad\text{e}\qquad z\odot(x\oplus y)=(z\odot x)\oplus(z\odot y).</span>
+Tutte le moltiplicazioni dell&#39;Esempio 4.4 sono distributive rispetto all&#39;addizione corrispondente. (Si &quot;distribuisce&quot; la moltiplicazione sugli addendi: <span class="m">2\cdot(3+4)=2\cdot3+2\cdot4</span>.)</p>
+<p><strong>Osservazione 4.26 (risparmiare verifiche).</strong></p>
+<ol>
+<li>Se <span class="m">\bullet</span> è <strong>commutativa</strong>, per verificare che <span class="m">e</span> è neutro basta una delle due uguaglianze <span class="m">x\bullet e=x</span> o <span class="m">e\bullet x=x</span>: l&#39;altra segue perché <span class="m">x\bullet e=e\bullet x</span>. Allo stesso modo per l&#39;opposto/inverso basta trovare <span class="m">\bar x</span> con <span class="m">x\bullet\bar x=e</span>.</li>
+<li>Se <span class="m">\odot</span> è commutativa, per la distributiva basta verificare una delle due uguaglianze: per la commutatività sono equivalenti.</li>
+</ol>
+<p>Nel corso useremo quasi sempre operazioni con tutte queste proprietà; le uniche eccezioni saranno il <strong>prodotto righe per colonne</strong> tra matrici e il <strong>prodotto vettoriale</strong>, che <strong>non sono commutativi</strong>.</p>
+<div class="callout esempio">
+
+<p><strong>Associatività della moltiplicazione su <span class="m">\mathbb C</span> (Es. 4.1).</strong> Scriviamo <span class="m">z_k=a_k+ib_k</span> (<span class="m">k=1,2,3</span>) e ricordiamo <span class="m">i^2=-1</span>. Prima calcoliamo <span class="m">z_2z_3=(a_2a_3-b_2b_3)+i(a_2b_3+b_2a_3)</span>, poi
+<span class="m d">z_1(z_2z_3)=(a_1a_2a_3-a_1b_2b_3-b_1a_2b_3-b_1b_2a_3)+i\,(a_1a_2b_3+a_1b_2a_3+b_1a_2a_3-b_1b_2b_3).</span>
+Dall&#39;altra parte <span class="m">z_1z_2=(a_1a_2-b_1b_2)+i(a_1b_2+b_1a_2)</span> e
+<span class="m d">(z_1z_2)z_3=(a_1a_2a_3-b_1b_2a_3-a_1b_2b_3-b_1a_2b_3)+i\,(a_1a_2b_3-b_1b_2b_3+a_1b_2a_3+b_1a_2a_3).</span>
+Parte reale e parte immaginaria contengono gli stessi quattro termini: i risultati coincidono.</p>
+<p><strong>Commutatività dell&#39;addizione su <span class="m">\mathbb C</span> (Es. 4.2).</strong> <span class="m">z_1+z_2=(a_1+a_2)+i(b_1+b_2)</span> e <span class="m">z_2+z_1=(a_2+a_1)+i(b_2+b_1)</span>: uguali perché la somma di reali è commutativa.</p>
+</div>
+
+<h2>Gruppi abeliani</h2>
+<p><strong>Definizione 4.27.</strong> Un <strong>gruppo abeliano</strong> (o <strong>gruppo commutativo</strong>) è un insieme <span class="m">G</span> dotato di un&#39;operazione <span class="m">\bullet:G\times G\to G</span> che soddisfa:</p>
 <ul>
-<li><span class="m">\{0\}</span> con l&#39;addizione è un gruppo abeliano.</li>
-<li><span class="m">\mathbb N</span> <strong>non</strong> è un gruppo abeliano né per l&#39;addizione né per la moltiplicazione (mancano opposti/inversi).</li>
-<li><span class="m">\mathbb Z</span>, <span class="m">\mathbb Q</span>, <span class="m">\mathbb R</span>, <span class="m">\mathbb C</span> sono gruppi abeliani rispetto all&#39;addizione; <span class="m">\mathbb Z</span> non lo è rispetto alla moltiplicazione.</li>
-<li><span class="m">\mathbb Q</span>, <span class="m">\mathbb R</span>, <span class="m">\mathbb C</span> non sono gruppi rispetto alla moltiplicazione (<span class="m">0</span> non ha inverso), ma <span class="m">\mathbb Q\setminus\{0\}</span>, <span class="m">\mathbb R\setminus\{0\}</span>, <span class="m">\mathbb C\setminus\{0\}</span> sì.</li>
-<li><span class="m">V^2_G</span>, <span class="m">V^3_G</span> e gli insiemi di polinomi sono gruppi abeliani rispetto all&#39;addizione.</li>
+<li>(G1) <strong>associativa</strong>: <span class="m">g_1\bullet(g_2\bullet g_3)=(g_1\bullet g_2)\bullet g_3</span> per ogni <span class="m">g_1,g_2,g_3\in G</span>;</li>
+<li>(G2) <strong>esistenza del neutro</strong>: esiste <span class="m">e\in G</span> con <span class="m">g\bullet e=e\bullet g=g</span> per ogni <span class="m">g\in G</span>;</li>
+<li>(G3) <strong>esistenza dell&#39;opposto/inverso</strong>: per ogni <span class="m">g\in G</span> esiste <span class="m">\bar g\in G</span> con <span class="m">g\bullet\bar g=\bar g\bullet g=e</span>;</li>
+<li>(G4) <strong>commutativa</strong>: <span class="m">g_1\bullet g_2=g_2\bullet g_1</span> per ogni <span class="m">g_1,g_2\in G</span>.</li>
+</ul>
+<p>(Senza (G4) si parla semplicemente di <strong>gruppo</strong>: nel corso i gruppi che servono sono tutti abeliani.)</p>
+<p><strong>Osservazione 4.28.</strong> L&#39;operazione <strong>fa parte della definizione</strong>: il gruppo abeliano non è l&#39;insieme <span class="m">G</span> ma la coppia <span class="m">(G,\bullet)</span>. Uno stesso insieme può essere gruppo rispetto a un&#39;operazione e non rispetto a un&#39;altra (es. <span class="m">\mathbb Z</span>: sì per <span class="m">+</span>, no per <span class="m">\cdot</span>), oppure essere gruppo rispetto a due operazioni diverse, e allora si hanno due gruppi distinti sullo stesso insieme.</p>
+<div class="callout esempio">
+
+<p><strong>Esempio 4.29.</strong></p>
+<ol>
+<li><span class="m">\{0\}</span> con l&#39;addizione banale è un gruppo abeliano: (G1)–(G4) sono immediate.</li>
+<li><span class="m">\mathbb N</span> <strong>non</strong> è un gruppo abeliano rispetto all&#39;addizione (manca l&#39;opposto di <span class="m">1</span>, quindi non vale (G3)), né rispetto alla moltiplicazione (manca l&#39;inverso di <span class="m">2</span>).</li>
+<li><span class="m">\mathbb Z</span> è un gruppo abeliano rispetto all&#39;addizione, ma non rispetto alla moltiplicazione (<span class="m">2</span> non ha inverso). <span class="m">\mathbb Q</span>, <span class="m">\mathbb R</span>, <span class="m">\mathbb C</span> sono gruppi abeliani rispetto all&#39;addizione; <strong>non</strong> rispetto alla moltiplicazione, perché <span class="m">0</span> non ha inverso. Togliendo lo <span class="m">0</span> sì: <span class="m">\mathbb Q\setminus\{0\}</span>, <span class="m">\mathbb R\setminus\{0\}</span>, <span class="m">\mathbb C\setminus\{0\}</span> sono gruppi abeliani rispetto alla moltiplicazione (il prodotto di due numeri non nulli è non nullo, quindi la moltiplicazione è un&#39;operazione su di essi).</li>
+<li><span class="m">V^2_G</span> e <span class="m">V^3_G</span> sono gruppi abeliani rispetto all&#39;addizione (Lezione 3).</li>
+<li><span class="m">I[x_1,\dots,x_n]</span> e <span class="m">I_{\le m}[x_1,\dots,x_n]</span> sono gruppi abeliani rispetto all&#39;addizione.</li>
+</ol>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Riconoscere i gruppi abeliani (Es. 4.3 e 4.8).</strong></p>
+<ul>
+<li><span class="m">(\mathbb R[x]\setminus\{0\},+)</span>: <strong>no</strong>, manca il neutro (il polinomio nullo è stato tolto), quindi non vale (G2) (e la somma <span class="m">p+(-p)=0</span> esce dall&#39;insieme).</li>
+<li><span class="m">(\mathbb N\setminus\{0\},\cdot)</span>: no, <span class="m">2</span> non ha inverso.</li>
+<li><span class="m">(\mathbb Z,+)</span>: sì. <span class="m">(\mathbb Q,\cdot)</span>: no, <span class="m">0</span> non ha inverso. <span class="m">(\mathbb R\setminus\{0\},\cdot)</span>: sì.</li>
+<li><span class="m">(\mathbb C\setminus\{0\},+)</span>: no, non contiene il neutro <span class="m">0</span> e l&#39;addizione non è nemmeno un&#39;operazione su di esso (<span class="m">1+(-1)=0</span>).</li>
+<li><span class="m">(\mathbb R[x],+)</span>: sì. <span class="m">(\mathbb R_{\le m}[x]\setminus\{0\},\cdot)</span>: no (per <span class="m">m\ge1</span> il prodotto può uscire dall&#39;insieme; e comunque i polinomi di grado <span class="m">\ge1</span> non hanno inverso).</li>
 </ul>
 </div>
 
 <h2>Campi</h2>
-<p><strong>Definizione 4.30.</strong> Un <strong>campo</strong> è un insieme <span class="m">K</span> con un&#39;addizione <span class="m">\oplus</span> e una moltiplicazione <span class="m">\odot</span> tali che:</p>
+<p>Un campo è un insieme in cui si può sommare, sottrarre, moltiplicare e dividere (per elementi non nulli) con le regole usuali: è l&#39;astrazione di <span class="m">\mathbb Q</span>, <span class="m">\mathbb R</span>, <span class="m">\mathbb C</span>.</p>
+<p><strong>Definizione 4.30.</strong> Un <strong>campo</strong> è un insieme <span class="m">K</span> dotato di due operazioni, un&#39;<strong>addizione</strong> <span class="m">\oplus:K\times K\to K</span> e una <strong>moltiplicazione</strong> <span class="m">\odot:K\times K\to K</span>, che soddisfano:</p>
 <ul>
-<li>(K1) <span class="m">(K,\oplus)</span> è un gruppo abeliano: (K1a) associativa, (K1b) neutro <span class="m">0</span>, (K1c) opposto, (K1d) commutativa;</li>
-<li>(K2) <span class="m">(K\setminus\{0\},\odot)</span> è un gruppo abeliano: (K2a) associativa, (K2b) neutro <span class="m">1\ne0</span>, (K2c) inverso di ogni <span class="m">\lambda\ne0</span>, (K2d) commutativa;</li>
-<li>(K3) distributiva: <span class="m">\lambda\odot(\mu\oplus\nu)=(\lambda\odot\mu)\oplus(\lambda\odot\nu)</span> e <span class="m">(\mu\oplus\nu)\odot\lambda=(\mu\odot\lambda)\oplus(\nu\odot\lambda)</span>.</li>
+<li>(K1) <span class="m">(K,\oplus)</span> è un gruppo abeliano, cioè<ul>
+<li>(K1a) <span class="m">\lambda\oplus(\mu\oplus\nu)=(\lambda\oplus\mu)\oplus\nu</span> per ogni <span class="m">\lambda,\mu,\nu\in K</span> (associativa);</li>
+<li>(K1b) esiste <span class="m">0\in K</span> con <span class="m">\lambda\oplus0=0\oplus\lambda=\lambda</span> per ogni <span class="m">\lambda</span> (neutro additivo);</li>
+<li>(K1c) per ogni <span class="m">\lambda\in K</span> esiste <span class="m">\ominus\lambda</span> con <span class="m">\lambda\oplus(\ominus\lambda)=(\ominus\lambda)\oplus\lambda=0</span> (opposto);</li>
+<li>(K1d) <span class="m">\lambda\oplus\mu=\mu\oplus\lambda</span> (commutativa);</li>
 </ul>
+</li>
+<li>(K2) <span class="m">(K\setminus\{0\},\odot)</span> è un gruppo abeliano, cioè<ul>
+<li>(K2a) <span class="m">\lambda\odot(\mu\odot\nu)=(\lambda\odot\mu)\odot\nu</span> per ogni <span class="m">\lambda,\mu,\nu\in K\setminus\{0\}</span> (associativa);</li>
+<li>(K2b) esiste <span class="m">1\in K\setminus\{0\}</span> con <span class="m">\lambda\odot1=1\odot\lambda=\lambda</span> per ogni <span class="m">\lambda\ne0</span> (neutro moltiplicativo; in particolare <span class="m">1\ne0</span>);</li>
+<li>(K2c) per ogni <span class="m">\lambda\in K\setminus\{0\}</span> esiste <span class="m">\lambda^{-1}\in K\setminus\{0\}</span> con <span class="m">\lambda\odot\lambda^{-1}=\lambda^{-1}\odot\lambda=1</span> (inverso);</li>
+<li>(K2d) <span class="m">\lambda\odot\mu=\mu\odot\lambda</span> per ogni <span class="m">\lambda,\mu\ne0</span> (commutativa);</li>
+</ul>
+</li>
+<li>(K3) <strong>distributiva</strong>: per ogni <span class="m">\lambda,\mu,\nu\in K</span>, <span class="m">\lambda\odot(\mu\oplus\nu)=(\lambda\odot\mu)\oplus(\lambda\odot\nu)</span> e <span class="m">(\mu\oplus\nu)\odot\lambda=(\mu\odot\lambda)\oplus(\nu\odot\lambda)</span>.</li>
+</ul>
+<p><strong>Osservazione 4.31.</strong> Come per i gruppi, le operazioni fanno parte della definizione: un campo è la terna <span class="m">(K,\oplus,\odot)</span>.</p>
 <div class="callout esempio">
 
-<ul>
-<li><span class="m">\mathbb Q</span>, <span class="m">\mathbb R</span>, <span class="m">\mathbb C</span> sono campi.</li>
-<li><span class="m">\mathbb N</span> non è un campo: non vale (K1c). <span class="m">\mathbb Z</span> non è un campo: non vale (K2c).</li>
-<li><span class="m">\{0\}</span> non può essere un campo ((K2b) richiede <span class="m">1\ne0</span>); sui vettori geometrici non c&#39;è una moltiplicazione; i polinomi non sono un campo (non vale (K2c)), tranne <span class="m">I_{\le0}=I</span>.</li>
-</ul>
+<p><strong>Esempio 4.32.</strong></p>
+<ol>
+<li>Su <span class="m">\{0\}</span> c&#39;è una sola operazione, quindi non ha senso chiedersi se sia un campo; e non lo si può rendere un campo aggiungendo una moltiplicazione, perché (K2b) richiede un elemento <span class="m">1\ne0</span>, che in <span class="m">\{0\}</span> non esiste.</li>
+<li><span class="m">\mathbb N</span> non è un campo: non vale (K1), più precisamente (K1c) (mancano gli opposti).</li>
+<li><span class="m">\mathbb Z</span> non è un campo: non vale (K2c) (<span class="m">2</span> non ha inverso). Invece <span class="m">\mathbb Q</span>, <span class="m">\mathbb R</span>, <span class="m">\mathbb C</span> sono campi: valgono (K1), (K2), (K3).</li>
+<li>Sui vettori geometrici non è definita una moltiplicazione tra vettori: non ha senso chiedersi se siano un campo.</li>
+<li>Gli insiemi di polinomi non sono campi, perché non vale (K2c) (i polinomi di grado <span class="m">\ge1</span> non hanno inverso). Fa eccezione <span class="m">I_{\le0}[x_1,\dots,x_n]</span>, cioè le costanti: è l&#39;insieme <span class="m">I</span> stesso, che è un campo per <span class="m">I=\mathbb Q,\mathbb R,\mathbb C</span>.</li>
+</ol>
 </div>
 
-<p><strong>Proposizione 4.33.</strong> In un campo <span class="m">0\cdot\lambda=\lambda\cdot0=0</span> per ogni <span class="m">\lambda</span>. <em>Dim.:</em> <span class="m">0\cdot\lambda\overset{(K1b)}=(0+0)\cdot\lambda\overset{(K3)}=0\cdot\lambda+0\cdot\lambda</span>, e per cancellazione <span class="m">0=0\cdot\lambda</span>.</p>
-<p>Di conseguenza (K2a), (K2b), (K2d) valgono anche con <span class="m">0</span>, mentre <span class="m">0</span> <strong>non ha inverso</strong> (sarebbe <span class="m">1=0\cdot0^{-1}=0</span>): <span class="m">K</span> con la moltiplicazione non è un gruppo abeliano.</p>
-<p><strong>Proposizione 4.37 (legge di annullamento del prodotto).</strong> Se <span class="m">\lambda\mu=0</span> allora <span class="m">\lambda=0</span> <strong>oppure</strong> <span class="m">\mu=0</span> (o entrambi). <em>Dim.:</em> se <span class="m">\lambda\ne0</span>, moltiplicando per <span class="m">\lambda^{-1}</span> si ottiene <span class="m">\mu=\lambda^{-1}\cdot0=0</span>.</p>
-<p>Notazioni: la moltiplicazione si esegue prima dell&#39;addizione; d&#39;ora in poi le operazioni si indicano con <span class="m">+</span> e <span class="m">\cdot</span>; tutti i campi considerati sono infiniti. Con <span class="m">\overset{(P)}{=}</span> si indica che si usa la proprietà (P).</p>
+<div class="callout esempio">
+
+<p><strong>Riconoscere i campi (Es. 4.3 e 4.8).</strong> <span class="m">(\mathbb N,+,\cdot)</span> no; <span class="m">(\mathbb Q,+,\cdot)</span> sì; <span class="m">(\mathbb C,+,\cdot)</span> sì; <span class="m">(\mathbb R_{\le m}[x],+,\cdot)</span> sì solo per <span class="m">m=0</span> (sono i reali), no per <span class="m">m&gt;0</span>. <span class="m">(\mathbb Q\setminus\{1\},+,\cdot)</span> <strong>non</strong> è un campo: manca il neutro della moltiplicazione, quindi non vale (K2b).</p>
+</div>
+
+<h3>Proprietà che seguono dagli assiomi</h3>
+<p><strong>Proposizione 4.33.</strong> In un campo <span class="m">K</span>, per ogni <span class="m">\lambda\in K</span> si ha <span class="m">0\odot\lambda=\lambda\odot0=0</span>.</p>
+<p><em>Dimostrazione</em> (della prima uguaglianza; la seconda è analoga). Sopra ogni uguale indichiamo la proprietà usata:
+<span class="m d">0\odot\lambda\overset{(K1b)}{=}(0\oplus0)\odot\lambda\overset{(K3)}{=}(0\odot\lambda)\oplus(0\odot\lambda).</span>
+Nel primo passaggio si è scritto <span class="m">0=0\oplus0</span> (<span class="m">0</span> è neutro); nel secondo si è distribuito. Abbiamo quindi <span class="m">0\oplus(0\odot\lambda)=(0\odot\lambda)\oplus(0\odot\lambda)</span> (a sinistra si è aggiunto lo <span class="m">0</span>, che non cambia nulla); per la <strong>cancellazione</strong> dell&#39;addizione (possibile perché <span class="m">(K,\oplus)</span> è un gruppo) si toglie <span class="m">0\odot\lambda</span> e si ottiene <span class="m">0=0\odot\lambda</span>.</p>
+<p><strong>Notazione 4.34.</strong> Con <span class="m">\overset{(P)}{=}</span> si indica che in quel passaggio si usa la proprietà (P), già definita o dimostrata per l&#39;insieme che si sta considerando.</p>
+<p><strong>Osservazione 4.35.</strong> (K2a), (K2b) e (K2d) valgono anche quando qualche elemento è <span class="m">0</span>: se almeno uno tra <span class="m">\lambda,\mu,\nu</span> è <span class="m">0</span>, per la Proposizione 4.33 tutti i prodotti coinvolti valgono <span class="m">0</span> e le uguaglianze sono vere. Invece (K2c) <strong>non</strong> vale per <span class="m">0</span>: se esistesse <span class="m">0^{-1}</span> con <span class="m">0\odot0^{-1}=1</span>, per la Proposizione 4.33 avremmo anche <span class="m">0\odot0^{-1}=0</span>, quindi <span class="m">1=0</span>, contro (K2b). Perciò <strong><span class="m">K</span> con la moltiplicazione non è un gruppo abeliano</strong> (lo è solo <span class="m">K\setminus\{0\}</span>).</p>
+<p><strong>Notazione 4.36.</strong> D&#39;ora in poi (K2a), (K2b), (K2d) indicano le versioni generali, valide anche per <span class="m">0</span>.</p>
+<p><strong>Proposizione 4.37 (legge di annullamento del prodotto).</strong> Siano <span class="m">\lambda,\mu\in K</span> con <span class="m">\lambda\odot\mu=0</span>. Allora <span class="m">\lambda=0</span> <strong>oppure</strong> <span class="m">\mu=0</span> (o entrambi).</p>
+<p><em>Dimostrazione.</em> Se <span class="m">\lambda=0</span> la tesi è vera, qualunque sia <span class="m">\mu</span>. Se invece <span class="m">\lambda\ne0</span>, esiste l&#39;inverso <span class="m">\lambda^{-1}</span> (K2c); moltiplicando entrambi i membri di <span class="m">\lambda\odot\mu=0</span> per <span class="m">\lambda^{-1}</span> si ottiene <span class="m">\lambda^{-1}\odot(\lambda\odot\mu)=\lambda^{-1}\odot0</span>, cioè (associativa, inverso, neutro) <span class="m">\mu=\lambda^{-1}\odot0</span>, e per la Proposizione 4.33 <span class="m">\lambda^{-1}\odot0=0</span>. Quindi <span class="m">\mu=0</span>.</p>
+<div class="callout esempio">
+
+<p><strong>Uso corretto dell&#39;annullamento del prodotto.</strong> Da <span class="m">(x+1)(x-2)=0</span> segue, per la Proposizione 4.37, che <span class="m">x+1=0</span> <strong>oppure</strong> <span class="m">x-2=0</span>, cioè
+<span class="m d">x=-1\quad\text{oppure}\quad x=2 .</span>
+Sarebbe sbagliato concludere &quot;<span class="m">x=-1</span> <strong>e</strong> <span class="m">x=2</span>&quot; (un numero non può valere entrambe le cose), oppure una sola delle due soluzioni: la legge dice che <strong>almeno uno</strong> dei fattori è nullo, non quale.</p>
+</div>
+
+<div class="callout attenzione">
+
+<p>La legge di annullamento del prodotto vale nei campi (usa l&#39;inverso). In insiemi dove non tutti gli elementi non nulli hanno inverso può fallire: ad esempio, vedremo che il prodotto di due <strong>matrici</strong> non nulle può essere la matrice nulla.</p>
+</div>
+
+<p><strong>Notazione 4.38.</strong> La moltiplicazione si esegue prima dell&#39;addizione: <span class="m">\lambda\odot\mu\oplus\nu</span> significa <span class="m">(\lambda\odot\mu)\oplus\nu</span>; se l&#39;addizione va fatta prima si usano le parentesi, <span class="m">\lambda\odot(\mu\oplus\nu)</span>.</p>
+<p><strong>Notazione 4.39.</strong> D&#39;ora in poi le operazioni si indicano con <span class="m">+</span> e <span class="m">\cdot</span>, e si parla di &quot;un campo <span class="m">K</span>&quot; sottintendendo addizione e moltiplicazione.</p>
+<p><strong>Osservazione 4.40.</strong> Consideriamo solo campi con <strong>infiniti elementi</strong> (esistono anche campi finiti, per i quali vale quasi tutto, ma non ce ne occupiamo).</p>
 <div class="callout esame">
 
-<p>Domanda aperta: <strong>parlare delle operazioni, dei gruppi e/o dei campi</strong> (definizioni, proprietà, esempi e controesempi come <span class="m">\mathbb N</span> e <span class="m">\mathbb Z</span>, unicità di neutro e inverso, annullamento del prodotto). Nei quiz: riconoscere una proprietà in un&#39;uguaglianza, quale insieme non è gruppo/campo, uso corretto di &quot;oppure&quot; nell&#39;annullamento del prodotto.</p>
+<p>Domanda aperta: <strong>parlare delle operazioni, dei gruppi e/o dei campi</strong>. Schema di risposta:</p>
+<ol>
+<li>definizione di operazione (<span class="m">\bullet:X\times X\to X</span>, il risultato sta in <span class="m">X</span>) con esempi (numeri, vettori geometrici, polinomi) e il controesempio della moltiplicazione su <span class="m">I_{\le m}[x]</span>;</li>
+<li>proprietà: associativa, elemento neutro, opposto/inverso, commutativa, distributiva; unicità del neutro (Prop. 4.12, con la dimostrazione <span class="m">e=e'\bullet e=e'</span>), cancellazione, unicità dell&#39;inverso (Prop. 4.17);</li>
+<li>gruppo abeliano (G1)–(G4), l&#39;operazione fa parte della definizione; esempi (<span class="m">\mathbb Z,+</span>) e controesempi (<span class="m">\mathbb N</span>; <span class="m">\mathbb Z</span> per la moltiplicazione; <span class="m">\mathbb R</span> per la moltiplicazione per via dello <span class="m">0</span>);</li>
+<li>campo (K1)–(K3); <span class="m">\mathbb Q,\mathbb R,\mathbb C</span> sì, <span class="m">\mathbb N</span> e <span class="m">\mathbb Z</span> no (con la proprietà che manca); <span class="m">0\cdot\lambda=0</span> (Prop. 4.33) e legge di annullamento del prodotto (Prop. 4.37) con dimostrazione.</li>
+</ol>
+<p>Nei quiz: riconoscere la proprietà usata in un&#39;uguaglianza (stesso ordine e parentesi spostate = associativa; ordine scambiato = commutativa; prodotto che si &quot;apre&quot; su una somma = distributiva), quale insieme non è gruppo abeliano rispetto all&#39;addizione (<span class="m">\mathbb N</span>), quale non è un campo (<span class="m">\mathbb Z</span>), uso corretto di &quot;oppure&quot; nell&#39;annullamento del prodotto.</p>
+</div>
+
+<div class="callout sintesi">
+
+<ul>
+<li>Operazione: <span class="m">X\times X\to X</span> (chiusura!). Proprietà: associativa, neutro (unico), opposto/inverso (unico se l&#39;operazione è associativa), commutativa, distributiva.</li>
+<li>Gruppo abeliano = (G1) associativa + (G2) neutro + (G3) opposti + (G4) commutativa. <span class="m">(\mathbb Z,+)</span> sì; <span class="m">\mathbb N</span> no; <span class="m">(\mathbb R,\cdot)</span> no, <span class="m">(\mathbb R\setminus\{0\},\cdot)</span> sì.</li>
+<li>Campo = <span class="m">(K,+)</span> gruppo abeliano + <span class="m">(K\setminus\{0\},\cdot)</span> gruppo abeliano + distributiva. <span class="m">\mathbb Q,\mathbb R,\mathbb C</span> sì; <span class="m">\mathbb N</span> (manca K1c) e <span class="m">\mathbb Z</span> (manca K2c) no.</li>
+<li>In un campo: <span class="m">0\cdot\lambda=0</span>; <span class="m">0</span> non ha inverso; <span class="m">\lambda\mu=0\Rightarrow\lambda=0</span> oppure <span class="m">\mu=0</span>.</li>
+</ul>
 </div>

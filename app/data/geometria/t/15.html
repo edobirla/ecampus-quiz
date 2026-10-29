@@ -1,85 +1,295 @@
 <h1>Lezione 15 — Determinante</h1>
-<p>Il determinante è definito <strong>solo per le matrici quadrate</strong>.</p>
+<p>Nella lezione precedente abbiamo visto che per sapere se una matrice è invertibile bisogna, per ora, risolvere un sistema con <span class="m">2n^2</span> equazioni: troppo lavoro. In questa lezione si costruisce un <strong>numero</strong> associato a ogni matrice quadrata, il <strong>determinante</strong>, che (lo dimostreremo nella Lezione 18) è diverso da zero esattamente quando la matrice è invertibile. Il determinante ha però molte altre interpretazioni: in particolare, misura <strong>aree e volumi</strong>. Per definirlo in generale servono le <strong>permutazioni</strong> e la loro <strong>segnatura</strong>.</p>
+<p>Il determinante è definito <strong>solo per le matrici quadrate</strong>: tutte le matrici di questa lezione sono quadrate.</p>
 <h2>Permutazioni</h2>
-<p><strong>Definizione 15.1.</strong> Sia <span class="m">n\ge1</span>. Una <strong>permutazione</strong> di <span class="m">n</span> elementi è una funzione bigettiva <span class="m d">\sigma\colon\{1,2,\dots,n\}\to\{1,2,\dots,n\},</span> indicata con la tabella <span class="m">\begin{bmatrix}1\mapsto\sigma(1)\\\vdots\\n\mapsto\sigma(n)\end{bmatrix}</span>. L&#39;insieme delle permutazioni di <span class="m">n</span> elementi è <span class="m">P_n</span>. L&#39;identità <span class="m">\mathrm{id}</span> (<span class="m">\mathrm{id}(i)=i</span>) è una permutazione.</p>
+<p><strong>Definizione 15.1.</strong> Sia <span class="m">n\ge1</span> un intero fissato. Una <strong>permutazione</strong> (di <span class="m">n</span> elementi) è una funzione <strong>bigettiva</strong> dall&#39;insieme dei primi <span class="m">n</span> interi positivi in sé:
+<span class="m d">\sigma\colon\{1,2,\dots,n\}\to\{1,2,\dots,n\},</span>
+indicata con la tabella <span class="m">\begin{bmatrix}1\mapsto\sigma(1)\\2\mapsto\sigma(2)\\\vdots\\n\mapsto\sigma(n)\end{bmatrix}</span>. L&#39;insieme di tutte le permutazioni di <span class="m">n</span> elementi si indica con <span class="m">P_n</span>.</p>
+<p>A parole: una permutazione è un modo di <strong>rimescolare</strong> i numeri <span class="m">1,\dots,n</span>; nella colonna di destra della tabella compaiono tutti i numeri da <span class="m">1</span> a <span class="m">n</span>, ciascuno <strong>una e una sola volta</strong> (bigettiva = iniettiva, nessun valore ripetuto, e suriettiva, nessun valore mancante). Le permutazioni di <span class="m">n</span> elementi sono <span class="m">n!=1\cdot2\cdots n</span>: <span class="m">1</span> per <span class="m">n=1</span>, <span class="m">2</span> per <span class="m">n=2</span>, <span class="m">6</span> per <span class="m">n=3</span>, <span class="m">24</span> per <span class="m">n=4</span>.</p>
+<p><strong>Osservazione 15.2.</strong> L&#39;<strong>identità</strong> <span class="m">\mathrm{id}</span>, con <span class="m">\mathrm{id}(i)=i</span> per ogni <span class="m">i</span>, è una permutazione.</p>
 <div class="callout esempio">
 
+<p><strong>Esempio 15.3.</strong></p>
 <ul>
-<li><span class="m">n=1</span>: solo <span class="m">\mathrm{id}=[1\mapsto1]</span>.</li>
-<li><span class="m">n=2</span>: <span class="m">\mathrm{id}</span> e <span class="m">\begin{bmatrix}1\mapsto2\\2\mapsto1\end{bmatrix}</span>.</li>
-<li>Non è una permutazione una tabella in cui un valore compare due volte (non è iniettiva) o un&#39;immagine esce da <span class="m">\{1,\dots,n\}</span>.</li>
+<li><span class="m">n=1</span>: una sola permutazione, <span class="m">\mathrm{id}=[1\mapsto1]</span>.</li>
+<li><span class="m">n=2</span>: due permutazioni, <span class="m">\mathrm{id}=\begin{bmatrix}1\mapsto1\\2\mapsto2\end{bmatrix}</span> e <span class="m">\begin{bmatrix}1\mapsto2\\2\mapsto1\end{bmatrix}</span>.</li>
+<li><span class="m">n=3</span>: per esempio <span class="m">\mathrm{id}</span>, <span class="m">\begin{bmatrix}1\mapsto1\\2\mapsto3\\3\mapsto2\end{bmatrix}</span>, <span class="m">\begin{bmatrix}1\mapsto2\\2\mapsto3\\3\mapsto1\end{bmatrix}</span>.</li>
+<li><span class="m">n=4</span>: per esempio <span class="m">\mathrm{id}</span>, <span class="m">\begin{bmatrix}1\mapsto1\\2\mapsto3\\3\mapsto2\\4\mapsto4\end{bmatrix}</span>, <span class="m">\begin{bmatrix}1\mapsto2\\2\mapsto1\\3\mapsto4\\4\mapsto3\end{bmatrix}</span>.</li>
 </ul>
+<p><strong>Non</strong> sono permutazioni (Domanda 15.1 della dispensa): <span class="m">\begin{bmatrix}1\mapsto1\\2\mapsto3\\3\mapsto3\end{bmatrix}</span> (il <span class="m">3</span> compare due volte e il <span class="m">2</span> manca), <span class="m">[1\mapsto3]</span> (con <span class="m">n=1</span> l&#39;unica immagine possibile è <span class="m">1</span>), <span class="m">\begin{bmatrix}1\mapsto1\\2\mapsto5\\3\mapsto2\\4\mapsto3\end{bmatrix}</span> (<span class="m">5</span> non sta in <span class="m">\{1,2,3,4\}</span>). È invece una permutazione <span class="m">\begin{bmatrix}1\mapsto1\\2\mapsto4\\3\mapsto2\\4\mapsto3\end{bmatrix}</span>.</p>
 </div>
 
-<p><strong>Definizione 15.4.</strong> La <strong>segnatura</strong> (o segno) di <span class="m">\sigma\in P_n</span> è <span class="m d">\operatorname{sgn}(\sigma):=\prod_{1\le i&lt;j\le n}\frac{\sigma(j)-\sigma(i)}{j-i}.</span> Si ha <span class="m">\operatorname{sgn}(\mathrm{id})=1</span>.</p>
-<p><strong>Proposizione 15.7.</strong> <span class="m">\operatorname{sgn}(\sigma)</span> vale <span class="m">1</span> o <span class="m">-1</span>, a seconda che il numero delle coppie <span class="m">(i,j)</span> con <span class="m">i&lt;j</span> e <span class="m">\sigma(i)&gt;\sigma(j)</span> sia pari o dispari.</p>
+<h3>Segnatura</h3>
+<p><strong>Definizione 15.4.</strong> La <strong>segnatura</strong>, o <strong>segno</strong>, di <span class="m">\sigma\in P_n</span> è il numero
+<span class="m d">\operatorname{sgn}(\sigma):=\prod_{1\le i&lt;j\le n}\frac{\sigma(j)-\sigma(i)}{j-i}.\tag{15.1}</span>
+Il prodotto è fatto su tutte le coppie di indici <span class="m">i&lt;j</span> (per <span class="m">n=3</span>: le coppie <span class="m">(1,2)</span>, <span class="m">(1,3)</span>, <span class="m">(2,3)</span>).</p>
+<p><strong>Osservazione 15.5.</strong> <span class="m">\operatorname{sgn}(\mathrm{id})=1</span>: per l&#39;identità ogni fattore è <span class="m">\frac{j-i}{j-i}=1</span>.</p>
+<p><strong>Proposizione 15.7.</strong> La segnatura vale sempre <span class="m">1</span> oppure <span class="m">-1</span>: vale <span class="m">1</span> se il numero delle coppie <span class="m">(i,j)</span> con <span class="m">i&lt;j</span> e <span class="m">\sigma(i)&gt;\sigma(j)</span> (le <strong>inversioni</strong>, cioè le coppie che <span class="m">\sigma</span> mette &quot;in ordine sbagliato&quot;) è <strong>pari</strong>, e <span class="m">-1</span> se è <strong>dispari</strong>.</p>
+<p><em>Perché (idea).</em> Al numeratore compaiono, a meno del segno, le stesse differenze <span class="m">|j-i|</span> che compaiono al denominatore, solo in ordine diverso (perché <span class="m">\sigma</span> è una bigezione): i valori assoluti si semplificano e resta solo il segno. Un fattore è negativo esattamente quando <span class="m">\sigma(j)&lt;\sigma(i)</span>, cioè per ogni inversione; quindi il segno è <span class="m">(-1)^{\text{numero di inversioni}}</span>.</p>
 <div class="callout esempio">
 
-<p><span class="m">\operatorname{sgn}\begin{bmatrix}1\mapsto2\\2\mapsto1\end{bmatrix}=\frac{1-2}{2-1}=-1</span>; <span class="m">\operatorname{sgn}\begin{bmatrix}1\mapsto1\\2\mapsto3\\3\mapsto2\end{bmatrix}=-1</span> (una sola inversione); <span class="m">\operatorname{sgn}\begin{bmatrix}1\mapsto2\\2\mapsto3\\3\mapsto1\end{bmatrix}=1</span> (due inversioni).</p>
+<p><strong>Esempio 15.6.</strong></p>
+<ul>
+<li><span class="m">\operatorname{sgn}\begin{bmatrix}1\mapsto2\\2\mapsto1\end{bmatrix}=\frac{\sigma(2)-\sigma(1)}{2-1}=\frac{1-2}{1}=-1</span> (una inversione: la coppia <span class="m">(1,2)</span>).</li>
+<li><span class="m">\sigma=\begin{bmatrix}1\mapsto1\\2\mapsto3\\3\mapsto2\end{bmatrix}</span>: <span class="m">\frac{3-1}{2-1}\cdot\frac{2-1}{3-1}\cdot\frac{2-3}{3-2}=2\cdot\frac12\cdot(-1)=-1</span>. Inversioni: solo la coppia <span class="m">(2,3)</span> (perché <span class="m">3&gt;2</span>): una, dispari.</li>
+<li><span class="m">\sigma=\begin{bmatrix}1\mapsto2\\2\mapsto3\\3\mapsto1\end{bmatrix}</span>: <span class="m">\frac{3-2}{2-1}\cdot\frac{1-2}{3-1}\cdot\frac{1-3}{3-2}=1\cdot\left(-\frac12\right)\cdot(-2)=1</span>. Inversioni: <span class="m">(1,3)</span> (<span class="m">2&gt;1</span>) e <span class="m">(2,3)</span> (<span class="m">3&gt;1</span>): due, pari.</li>
+<li><span class="m">n=4</span>: <span class="m">\begin{bmatrix}1\mapsto1\\2\mapsto3\\3\mapsto2\\4\mapsto4\end{bmatrix}</span> ha una sola inversione, <span class="m">(2,3)</span>: segno <span class="m">-1</span>. <span class="m">\begin{bmatrix}1\mapsto2\\2\mapsto1\\3\mapsto4\\4\mapsto3\end{bmatrix}</span> ha due inversioni, <span class="m">(1,2)</span> e <span class="m">(3,4)</span>: segno <span class="m">+1</span>.</li>
+</ul>
+<p><strong>Tutte le permutazioni di 3 elementi</strong> (scritte come la sequenza <span class="m">\sigma(1)\sigma(2)\sigma(3)</span>):</p>
+<table>
+<thead>
+<tr>
+<th>permutazione</th>
+<th>inversioni</th>
+<th>segno</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><span class="m">123</span></td>
+<td><span class="m">0</span></td>
+<td><span class="m">+1</span></td>
+</tr>
+<tr>
+<td><span class="m">132</span></td>
+<td><span class="m">1</span></td>
+<td><span class="m">-1</span></td>
+</tr>
+<tr>
+<td><span class="m">213</span></td>
+<td><span class="m">1</span></td>
+<td><span class="m">-1</span></td>
+</tr>
+<tr>
+<td><span class="m">231</span></td>
+<td><span class="m">2</span></td>
+<td><span class="m">+1</span></td>
+</tr>
+<tr>
+<td><span class="m">312</span></td>
+<td><span class="m">2</span></td>
+<td><span class="m">+1</span></td>
+</tr>
+<tr>
+<td><span class="m">321</span></td>
+<td><span class="m">3</span></td>
+<td><span class="m">-1</span></td>
+</tr>
+</tbody></table>
 </div>
 
+<h2>Da dove viene il determinante</h2>
+<p>Il determinante nasce dalla domanda: <strong>quando una matrice è invertibile?</strong> Rifacciamo il conto dell&#39;Osservazione 14.6 nei casi piccoli.</p>
+<p><strong>Caso <span class="m">1\times1</span>.</strong> Per <span class="m">A=(a_{11})</span> il sistema <span class="m">AX=I_1</span>, <span class="m">XA=I_1</span> si riduce all&#39;equazione <span class="m">a_{11}x_{11}=1</span>, che ha soluzione <span class="m">x_{11}=\frac1{a_{11}}</span> se e solo se <span class="m">a_{11}\neq0</span>. Chiamiamo <strong>determinante</strong> il numero <span class="m">\det_1(A)=a_{11}</span>.</p>
+<p><strong>Caso <span class="m">2\times2</span>.</strong> Per <span class="m">A=\begin{pmatrix}a_{11}&amp;a_{12}\\a_{21}&amp;a_{22}\end{pmatrix}</span> il sistema <span class="m">AX=I_2</span>, <span class="m">XA=I_2</span> ha 8 equazioni. Prendiamo le due in cui compaiono solo <span class="m">x_{11}</span> e <span class="m">x_{21}</span> (entrate <span class="m">(1,1)</span> e <span class="m">(2,1)</span> di <span class="m">AX</span>):
+<span class="m d">\begin{cases}a_{11}x_{11}+a_{12}x_{21}=1\\a_{21}x_{11}+a_{22}x_{21}=0\end{cases}\tag{15.4}</span></p>
+<ul>
+<li>Moltiplico la prima per <span class="m">a_{22}</span>, la seconda per <span class="m">a_{12}</span> e sottraggo: i termini con <span class="m">x_{21}</span> si cancellano (<span class="m">a_{22}a_{12}x_{21}-a_{12}a_{22}x_{21}=0</span>) e resta <span class="m">(a_{11}a_{22}-a_{12}a_{21})x_{11}=a_{22}</span>.</li>
+<li>Moltiplico la seconda per <span class="m">a_{11}</span>, la prima per <span class="m">a_{21}</span> e sottraggo: si cancellano i termini con <span class="m">x_{11}</span> e resta <span class="m">(a_{11}a_{22}-a_{12}a_{21})x_{21}=-a_{21}</span>.</li>
+</ul>
+<p>Allo stesso modo, dalle equazioni con <span class="m">x_{12}</span> e <span class="m">x_{22}</span> (entrate <span class="m">(1,2)</span> e <span class="m">(2,2)</span> di <span class="m">AX</span>) si ottiene <span class="m">(a_{11}a_{22}-a_{12}a_{21})x_{12}=-a_{12}</span> e <span class="m">(a_{11}a_{22}-a_{12}a_{21})x_{22}=a_{11}</span>. In tutte e quattro compare lo stesso numero <span class="m">a_{11}a_{22}-a_{12}a_{21}</span>.</p>
+<ul>
+<li>Se <span class="m">a_{11}a_{22}-a_{12}a_{21}=0</span>, i primi membri sono tutti <span class="m">0</span>, quindi il sistema può avere soluzione solo se <span class="m">a_{11}=a_{12}=a_{21}=a_{22}=0</span>; ma la matrice nulla non è invertibile. Quindi <span class="m">A</span> non è invertibile.</li>
+<li>Se <span class="m">a_{11}a_{22}-a_{12}a_{21}\neq0</span>, si divide e si trova
+<span class="m d">X=\frac1{a_{11}a_{22}-a_{12}a_{21}}\begin{pmatrix}a_{22}&amp;-a_{12}\\-a_{21}&amp;a_{11}\end{pmatrix}.</span>
+Poiché moltiplicando e sottraendo equazioni si possono aggiungere soluzioni spurie (e abbiamo usato solo 4 delle 8 equazioni), bisogna <strong>verificare</strong>: facendo i prodotti si trova <span class="m">AX=XA=I_2</span> (è la verifica fatta nella Lezione 14).</li>
+</ul>
+<p>Conclusione: <span class="m">A</span> è invertibile <strong>se e solo se</strong> <span class="m">a_{11}a_{22}-a_{12}a_{21}\neq0</span>. Questo numero è il determinante <span class="m">\det_2(A)</span>.</p>
+<p><strong>Caso <span class="m">3\times3</span>.</strong> Con molti più conti si trova che <span class="m">A</span> è invertibile se e solo se
+<span class="m d">\det_3(A)=a_{11}a_{22}a_{33}-a_{11}a_{23}a_{32}+a_{12}a_{23}a_{31}-a_{12}a_{21}a_{33}+a_{13}a_{21}a_{32}-a_{13}a_{22}a_{31}\neq0.</span></p>
+<h3>La struttura delle formule</h3>
+<p>Guardiamo come sono fatti questi tre numeri: sono somme di prodotti di entrate, con un segno <span class="m">\pm</span> davanti; ogni prodotto ha <span class="m">1</span>, <span class="m">2</span>, <span class="m">3</span> fattori, e <strong>in ogni prodotto compare esattamente un&#39;entrata per ogni riga e una per ogni colonna</strong> (per esempio <span class="m">a_{11}a_{12}a_{31}</span> non compare: ha due entrate della riga 1 e nessuna della riga 2). Questo ricorda le permutazioni: a ogni addendo si associa la permutazione che manda <span class="m">i</span> in <span class="m">j</span> quando <span class="m">a_{ij}</span> compare. Per esempio ad <span class="m">a_{12}a_{23}a_{31}</span> corrisponde <span class="m">\sigma=\begin{bmatrix}1\mapsto2\\2\mapsto3\\3\mapsto1\end{bmatrix}</span>; viceversa a ogni <span class="m">\sigma</span> corrisponde il prodotto <span class="m">a_{1\sigma(1)}a_{2\sigma(2)}\cdots a_{n\sigma(n)}</span>. Confrontando con la tabella delle permutazioni di 3 elementi:</p>
+<table>
+<thead>
+<tr>
+<th>addendo</th>
+<th>permutazione</th>
+<th>segno davanti</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><span class="m">a_{11}a_{22}a_{33}</span></td>
+<td><span class="m">123</span></td>
+<td><span class="m">+</span></td>
+</tr>
+<tr>
+<td><span class="m">a_{11}a_{23}a_{32}</span></td>
+<td><span class="m">132</span></td>
+<td><span class="m">-</span></td>
+</tr>
+<tr>
+<td><span class="m">a_{12}a_{23}a_{31}</span></td>
+<td><span class="m">231</span></td>
+<td><span class="m">+</span></td>
+</tr>
+<tr>
+<td><span class="m">a_{12}a_{21}a_{33}</span></td>
+<td><span class="m">213</span></td>
+<td><span class="m">-</span></td>
+</tr>
+<tr>
+<td><span class="m">a_{13}a_{21}a_{32}</span></td>
+<td><span class="m">312</span></td>
+<td><span class="m">+</span></td>
+</tr>
+<tr>
+<td><span class="m">a_{13}a_{22}a_{31}</span></td>
+<td><span class="m">321</span></td>
+<td><span class="m">-</span></td>
+</tr>
+</tbody></table>
+<p>Compaiono <strong>tutte</strong> le permutazioni, e il segno davanti a ogni addendo è proprio la <strong>segnatura</strong> della permutazione. Questo suggerisce la definizione generale.</p>
 <h2>Determinante</h2>
-<p>La definizione nasce dallo studio dell&#39;invertibilità (Osservazione 14.6):</p>
-<ul>
-<li>una <span class="m">1\times1</span> <span class="m">(a_{11})</span> è invertibile se e solo se <span class="m">a_{11}\neq0</span>: <span class="m">\det_1(A)=a_{11}</span>;</li>
-<li>una <span class="m">2\times2</span> è invertibile se e solo se <span class="m">a_{11}a_{22}-a_{12}a_{21}\neq0</span>, e allora <span class="m">A^{-1}=\frac{1}{a_{11}a_{22}-a_{12}a_{21}}\begin{pmatrix}a_{22}&amp;-a_{12}\\-a_{21}&amp;a_{11}\end{pmatrix}</span>: <span class="m">\det_2(A)=a_{11}a_{22}-a_{12}a_{21}</span>;</li>
-<li>una <span class="m">3\times3</span> è invertibile se e solo se <span class="m">\det_3(A)=a_{11}a_{22}a_{33}-a_{11}a_{23}a_{32}+a_{12}a_{23}a_{31}-a_{12}a_{21}a_{33}+a_{13}a_{21}a_{32}-a_{13}a_{22}a_{31}\neq0</span>.</li>
-</ul>
-<p>In ogni addendo compare un elemento per ogni riga e per ogni colonna, quindi ogni addendo corrisponde a una permutazione (<span class="m">a_{ij}</span> presente <span class="m">\Leftrightarrow</span> <span class="m">\sigma(i)=j</span>), e il segno davanti è la segnatura.</p>
-<p><strong>Definizione 15.8.</strong> Sia <span class="m">A=(a_{ij})\in\mathbb{K}^{n,n}</span>. Il <strong>determinante</strong> di <span class="m">A</span> è <span class="m d">\det(A)=\det_n(A):=\sum_{\sigma\in P_n}\operatorname{sgn}(\sigma)\,a_{1\sigma(1)}a_{2\sigma(2)}\cdots a_{n\sigma(n)}.</span> Se la matrice è scritta esplicitamente si scrive <span class="m">\det\begin{pmatrix}\cdots\end{pmatrix}</span> senza altre parentesi (in alcuni testi si usano le barre verticali).</p>
-<p>Si vedrà nella Lezione 18 che <strong>una matrice è invertibile se e solo se il suo determinante è diverso da <span class="m">0</span></strong>.</p>
+<p><strong>Definizione 15.8.</strong> Sia <span class="m">A=(a_{ij})\in\mathbb{K}^{n,n}</span>. Il <strong>determinante</strong> di <span class="m">A</span> è l&#39;elemento di <span class="m">\mathbb K</span>
+<span class="m d">\det(A)=\det_n(A):=\sum_{\sigma\in P_n}\operatorname{sgn}(\sigma)\,a_{1\sigma(1)}a_{2\sigma(2)}\cdots a_{n\sigma(n)}.\tag{15.12}</span>
+A parole: si prendono tutti i modi di scegliere <span class="m">n</span> entrate, una per riga e una per colonna; per ciascuno si moltiplicano le entrate scelte e si mette davanti il segno della permutazione corrispondente; poi si somma tutto. La somma ha <span class="m">n!</span> addendi.</p>
+<p><strong>Notazione 15.9 e Osservazione 15.10.</strong> Se la matrice è scritta esplicitamente si scrive <span class="m">\det\begin{pmatrix}\cdots\end{pmatrix}</span> senza altre parentesi. In alcuni testi il determinante si indica con le barre verticali al posto delle parentesi tonde.</p>
+<p><strong>Osservazione 15.11.</strong></p>
+<ol>
+<li>Il determinante è definito <strong>solo</strong> per le matrici quadrate: di una <span class="m">2\times3</span> o di una <span class="m">4\times2</span> non si può calcolare.</li>
+<li>Per una <span class="m">1\times1</span> la somma ha un solo addendo: <span class="m">\det(a_{11})=a_{11}</span>.</li>
+<li>Per le <span class="m">2\times2</span> e <span class="m">3\times3</span> la definizione coincide con le formule trovate sopra:
+<span class="m d">\det\begin{pmatrix}a&amp;b\\c&amp;d\end{pmatrix}=ad-bc.</span></li>
+</ol>
+<p>Si vedrà nella Lezione 18 che <strong>una matrice è invertibile se e solo se il suo determinante è diverso da <span class="m">0</span></strong>. Il determinante è importante anche per molti altri motivi (aree, volumi, indipendenza lineare, rango).</p>
 <div class="callout esempio">
 
+<p><strong>Esempio 15.12.</strong></p>
 <ul>
 <li><span class="m">\det(-2)=-2</span>.</li>
-<li><span class="m">\det\begin{pmatrix}3&amp;-1\\4&amp;5\end{pmatrix}=3\cdot5-(-1)\cdot4=19</span>.</li>
-<li><span class="m">\det\begin{pmatrix}-1&amp;1&amp;0\\2&amp;3&amp;-1\\0&amp;1&amp;2\end{pmatrix}=-6-1+0-4+0-0=-11</span>.</li>
-<li>Con entrate complesse le regole sono le stesse: <span class="m">\det\begin{pmatrix}3i&amp;-2\\2&amp;1-i\end{pmatrix}=3i(1-i)+4=3i+3+4=7+3i</span> (ricorda <span class="m">i^2=-1</span>).</li>
+<li><span class="m">\det\begin{pmatrix}3&amp;-1\\4&amp;5\end{pmatrix}=3\cdot5-(-1)\cdot4=15+4=19</span>.</li>
+<li><span class="m">\det\begin{pmatrix}-1&amp;1&amp;0\\2&amp;3&amp;-1\\0&amp;1&amp;2\end{pmatrix}</span> con la formula dei sei addendi: <span class="m">a_{11}a_{22}a_{33}=(-1)\cdot3\cdot2=-6</span>; <span class="m">-a_{11}a_{23}a_{32}=-(-1)(-1)\cdot1=-1</span>; <span class="m">a_{12}a_{23}a_{31}=1\cdot(-1)\cdot0=0</span>; <span class="m">-a_{12}a_{21}a_{33}=-1\cdot2\cdot2=-4</span>; <span class="m">a_{13}a_{21}a_{32}=0</span>; <span class="m">-a_{13}a_{22}a_{31}=0</span>. Totale: <span class="m">-6-1+0-4+0-0=-11</span>.</li>
+<li>Con entrate <strong>complesse</strong> le regole sono identiche: <span class="m">\det\begin{pmatrix}3i&amp;-2\\2&amp;1-i\end{pmatrix}=3i(1-i)-(-2)\cdot2</span>. Calcolo <span class="m">3i(1-i)=3i-3i^2=3i+3</span> (perché <span class="m">i^2=-1</span>) e <span class="m">-(-2)\cdot2=+4</span>: totale <span class="m">7+3i</span>.</li>
+<li>Altri casi dello stesso tipo: <span class="m">\det\begin{pmatrix}3i&amp;2\\2&amp;1-i\end{pmatrix}=(3+3i)-4=-1+3i</span>; <span class="m">\det\begin{pmatrix}3i&amp;2\\2&amp;1+i\end{pmatrix}=3i+3i^2-4=-3+3i-4=-7+3i</span>; <span class="m">\det\begin{pmatrix}3i&amp;-2\\2&amp;1+i\end{pmatrix}=-3+3i+4=1+3i</span>.</li>
 </ul>
 </div>
 
-<p><strong>Proprietà immediate.</strong></p>
+<div class="callout esempio">
+
+<p><strong>Esercizio 15.2 — usare direttamente la definizione.</strong> Calcolare
+<span class="m d">\det\begin{pmatrix}1&amp;-1&amp;-1&amp;2&amp;0\\0&amp;0&amp;2&amp;0&amp;0\\0&amp;1&amp;-1&amp;3&amp;2\\0&amp;0&amp;0&amp;-1&amp;0\\0&amp;3&amp;1&amp;0&amp;1\end{pmatrix}.</span>
+Ogni addendo contiene un&#39;entrata per riga e per colonna. Nella prima colonna l&#39;unica entrata non nulla è <span class="m">(1,1)</span>, quindi contribuiscono solo le <span class="m">\sigma</span> con <span class="m">\sigma(1)=1</span>; nella seconda riga l&#39;unica non nulla è <span class="m">(2,3)</span>: <span class="m">\sigma(2)=3</span>; nella quarta riga solo <span class="m">(4,4)</span>: <span class="m">\sigma(4)=4</span>. Restano da scegliere <span class="m">\sigma(3)</span> e <span class="m">\sigma(5)</span> tra i valori non ancora usati, <span class="m">2</span> e <span class="m">5</span>:</p>
 <ul>
-<li><strong>Oss. 15.13:</strong> in ogni addendo compare esattamente un elemento per ogni riga e per ogni colonna.</li>
-<li><strong>Oss. 15.14:</strong> se <span class="m">A</span> ha una riga o una colonna nulla, <span class="m">\det A=0</span> (ogni addendo contiene uno zero).</li>
-<li><strong>Oss. 15.15:</strong> se <span class="m">A</span> è triangolare (superiore o inferiore), <span class="m">\det A=a_{11}a_{22}\cdots a_{nn}</span>.</li>
-<li><strong>Oss. 15.16–15.17:</strong> quindi <span class="m">\det\operatorname{Diag}(d_1,\dots,d_n)=d_1\cdots d_n</span>, <span class="m">\det I_n=1</span>, <span class="m">\det 0_{n,n}=0</span>.</li>
+<li><span class="m">\sigma(3)=2</span>, <span class="m">\sigma(5)=5</span>: permutazione <span class="m">13245</span>, prodotto <span class="m">1\cdot2\cdot1\cdot(-1)\cdot1=-2</span>; inversioni: solo <span class="m">(2,3)</span> (<span class="m">3&gt;2</span>), segno <span class="m">-1</span>; contributo <span class="m">-(-2)=2</span>.</li>
+<li><span class="m">\sigma(3)=5</span>, <span class="m">\sigma(5)=2</span>: permutazione <span class="m">13542</span>, prodotto <span class="m">1\cdot2\cdot2\cdot(-1)\cdot3=-12</span>; inversioni: <span class="m">(2,5)</span>, <span class="m">(3,4)</span>, <span class="m">(3,5)</span>, <span class="m">(4,5)</span>, cioè quattro, segno <span class="m">+1</span>; contributo <span class="m">-12</span>.</li>
+</ul>
+<p><span class="m">\det=2-12=-10</span>.</p>
+</div>
+
+<h3>Proprietà immediate</h3>
+<ul>
+<li><strong>Osservazione 15.13:</strong> in ogni addendo della somma (15.12) compare <strong>esattamente un&#39;entrata per ogni riga e per ogni colonna</strong>.</li>
+<li><strong>Osservazione 15.14:</strong> se <span class="m">A</span> ha una <strong>riga o una colonna nulla</strong>, <span class="m">\det A=0</span>: ogni addendo contiene un&#39;entrata di quella riga (o colonna), che è <span class="m">0</span>. Per esempio <span class="m">\det\begin{pmatrix}2&amp;3&amp;-1&amp;0\\0&amp;0&amp;0&amp;0\\3&amp;-4&amp;-1&amp;2\\0&amp;2&amp;0&amp;-1\end{pmatrix}=0</span> senza fare conti.</li>
+<li><strong>Osservazione 15.15:</strong> se <span class="m">A</span> è <strong>triangolare</strong> (superiore o inferiore), <span class="m">\det A=a_{11}a_{22}\cdots a_{nn}</span>, il prodotto della diagonale principale. Il motivo: l&#39;unico addendo che non contiene uno zero sotto (o sopra) la diagonale è quello dell&#39;identità.</li>
+<li><strong>Osservazioni 15.16–15.17:</strong> in particolare <span class="m">\det\operatorname{Diag}(d_1,\dots,d_n)=d_1d_2\cdots d_n</span>, <span class="m">\det I_n=1</span>, <span class="m">\det 0_{n,n}=0</span>. Per esempio <span class="m">\det\begin{pmatrix}2&amp;0&amp;0\\0&amp;3&amp;0\\0&amp;0&amp;-1\end{pmatrix}=2\cdot3\cdot(-1)=-6</span>.</li>
 </ul>
 <h2>Regola di Sarrus</h2>
-<p><strong>Algoritmo 15.18.</strong> Per una <span class="m">3\times3</span> si scrive la tabella <span class="m">3\times5</span> ottenuta ricopiando a destra le prime due colonne: <span class="m d">\begin{matrix}a_{11}&amp;a_{12}&amp;a_{13}&amp;a_{11}&amp;a_{12}\\a_{21}&amp;a_{22}&amp;a_{23}&amp;a_{21}&amp;a_{22}\\a_{31}&amp;a_{32}&amp;a_{33}&amp;a_{31}&amp;a_{32}\end{matrix}</span> Si sommano i prodotti delle tre diagonali che <strong>scendono</strong> verso destra e gli opposti dei prodotti delle tre diagonali che <strong>salgono</strong> verso destra: <span class="m d">\det A=a_{11}a_{22}a_{33}+a_{12}a_{23}a_{31}+a_{13}a_{21}a_{32}-a_{13}a_{22}a_{31}-a_{11}a_{23}a_{32}-a_{12}a_{21}a_{33}.</span></p>
+<p>La formula <span class="m">3\times3</span> ha sei addendi difficili da ricordare. La regola di Sarrus è un modo mnemonico per scriverli.</p>
+<p><strong>Algoritmo 15.18 (Regola di Sarrus).</strong> Data <span class="m">A\in\mathbb K^{3,3}</span>:</p>
+<ol>
+<li>si scrive la tabella <span class="m">3\times5</span> ottenuta ricopiando a destra le prime due colonne:
+<span class="m d">\begin{matrix}a_{11}&amp;a_{12}&amp;a_{13}&amp;a_{11}&amp;a_{12}\\a_{21}&amp;a_{22}&amp;a_{23}&amp;a_{21}&amp;a_{22}\\a_{31}&amp;a_{32}&amp;a_{33}&amp;a_{31}&amp;a_{32}\end{matrix}</span></li>
+<li>si sommano i prodotti delle tre diagonali che <strong>scendono</strong> verso destra (partono da <span class="m">a_{11}</span>, <span class="m">a_{12}</span>, <span class="m">a_{13}</span> in prima riga): <span class="m">a_{11}a_{22}a_{33}</span>, <span class="m">a_{12}a_{23}a_{31}</span>, <span class="m">a_{13}a_{21}a_{32}</span>;</li>
+<li>si <strong>sottraggono</strong> i prodotti delle tre diagonali che <strong>salgono</strong> verso destra (partono da <span class="m">a_{31}</span>, <span class="m">a_{32}</span>, <span class="m">a_{33}</span> in terza riga): <span class="m">a_{31}a_{22}a_{13}</span>, <span class="m">a_{32}a_{23}a_{11}</span>, <span class="m">a_{33}a_{21}a_{12}</span>.</li>
+</ol>
+<p>Il risultato è
+<span class="m d">\det A=a_{11}a_{22}a_{33}+a_{12}a_{23}a_{31}+a_{13}a_{21}a_{32}-a_{13}a_{22}a_{31}-a_{11}a_{23}a_{32}-a_{12}a_{21}a_{33}.</span></p>
+<p><strong>Osservazione 15.19.</strong> La regola di Sarrus vale <strong>solo</strong> per le <span class="m">3\times3</span>: la sua &quot;ovvia&quot; generalizzazione a <span class="m">n\times n</span> (ricopiare <span class="m">n-1</span> colonne e fare le diagonali) non dà il determinante. Per una <span class="m">4\times4</span> gli addendi sono <span class="m">24</span>, le diagonali sarebbero solo <span class="m">8</span>.</p>
+<div class="callout esempio">
+
+<p><strong>Sarrus passo passo</strong> su <span class="m">A=\begin{pmatrix}3&amp;0&amp;-1\\2&amp;-1&amp;0\\-1&amp;1&amp;1\end{pmatrix}</span>. Tabella:
+<span class="m d">\begin{matrix}3&amp;0&amp;-1&amp;3&amp;0\\2&amp;-1&amp;0&amp;2&amp;-1\\-1&amp;1&amp;1&amp;-1&amp;1\end{matrix}</span></p>
+<ul>
+<li>Diagonali che scendono: <span class="m">3\cdot(-1)\cdot1=-3</span>; <span class="m">0\cdot0\cdot(-1)=0</span>; <span class="m">(-1)\cdot2\cdot1=-2</span>. Somma: <span class="m">-5</span>.</li>
+<li>Diagonali che salgono: <span class="m">(-1)\cdot(-1)\cdot(-1)=-1</span> (tre segni meno: il prodotto è <strong>negativo</strong>); <span class="m">1\cdot0\cdot3=0</span>; <span class="m">1\cdot2\cdot0=0</span>. Somma: <span class="m">-1</span>.</li>
+<li><span class="m">\det A=-5-(-1)=-4</span>.</li>
+</ul>
+<p>Altri esempi dello stesso tipo: <span class="m">\det\begin{pmatrix}3&amp;0&amp;1\\2&amp;1&amp;0\\1&amp;1&amp;1\end{pmatrix}=(3+0+2)-(1+0+0)=4</span>; <span class="m">\det\begin{pmatrix}3&amp;0&amp;2\\2&amp;2&amp;0\\2&amp;1&amp;1\end{pmatrix}=(6+0+4)-(8+0+0)=2</span>; <span class="m">\det\begin{pmatrix}3&amp;0&amp;-2\\2&amp;-2&amp;0\\-2&amp;1&amp;1\end{pmatrix}=(-6+0-4)-(-8+0+0)=-2</span>.</p>
+<p><strong>Domanda 15.3 della dispensa:</strong> <span class="m">\det\begin{pmatrix}1&amp;0&amp;1\\2&amp;3&amp;1\\-1&amp;1&amp;-3\end{pmatrix}</span>: scendono <span class="m">1\cdot3\cdot(-3)=-9</span>, <span class="m">0\cdot1\cdot(-1)=0</span>, <span class="m">1\cdot2\cdot1=2</span>; salgono <span class="m">(-1)\cdot3\cdot1=-3</span>, <span class="m">1\cdot1\cdot1=1</span>, <span class="m">(-3)\cdot2\cdot0=0</span>. <span class="m">\det=(-9+0+2)-(-3+1+0)=-7+2=-5</span>.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Esercizio 15.1 — Sarrus con numeri complessi.</strong> <span class="m">A=\begin{pmatrix}1-i&amp;i&amp;0\\2i&amp;1+i&amp;-i\\0&amp;1&amp;-2\end{pmatrix}</span>, tabella
+<span class="m d">\begin{matrix}1-i&amp;i&amp;0&amp;1-i&amp;i\\2i&amp;1+i&amp;-i&amp;2i&amp;1+i\\0&amp;1&amp;-2&amp;0&amp;1\end{matrix}</span></p>
+<ul>
+<li>Scendono: <span class="m">(1-i)(1+i)(-2)=(1-i^2)(-2)=2\cdot(-2)=-4</span>; <span class="m">i\cdot(-i)\cdot0=0</span>; <span class="m">0\cdot2i\cdot1=0</span>.</li>
+<li>Salgono (da sottrarre): <span class="m">0\cdot(1+i)\cdot0=0</span>; <span class="m">1\cdot(-i)\cdot(1-i)=-i+i^2=-1-i</span>; <span class="m">(-2)\cdot2i\cdot i=-4i^2=4</span>.</li>
+<li><span class="m">\det=-4-\big(0+(-1-i)+4\big)=-4-3+i=-7+i</span>.</li>
+</ul>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Determinanti con un parametro.</strong></p>
+<p><em>Esercizio 15.4.</em> <span class="m">A_k=\begin{pmatrix}k&amp;-1\\1&amp;k\end{pmatrix}</span>: <span class="m">\det A_k=k\cdot k-(-1)\cdot1=k^2+1</span>, sia sui reali sia sui complessi. Quando è <span class="m">0</span>? Se <span class="m">k\in\mathbb R</span>, <span class="m">k^2+1=0</span> non ha soluzioni: il determinante non si annulla mai. Se <span class="m">k\in\mathbb C</span>, le soluzioni sono <span class="m">k=\pm i</span>. Il campo su cui si lavora cambia la risposta.</p>
+<p><em>Esercizio 15.10.</em> <span class="m">\det\begin{pmatrix}1&amp;-2&amp;k\\2&amp;1&amp;-1\\0&amp;2k+1&amp;-5\end{pmatrix}</span> con Sarrus. Scendono: <span class="m">1\cdot1\cdot(-5)=-5</span>; <span class="m">(-2)(-1)\cdot0=0</span>; <span class="m">k\cdot2\cdot(2k+1)=4k^2+2k</span>. Salgono: <span class="m">k\cdot1\cdot0=0</span>; <span class="m">(2k+1)(-1)\cdot1=-2k-1</span>; <span class="m">(-5)\cdot2\cdot(-2)=20</span>. Quindi
+<span class="m d">\det=(-5+4k^2+2k)-(-2k-1+20)=4k^2+4k-24=4(k^2+k-6)=4(k+3)(k-2),</span>
+che è zero per <span class="m">k=2</span> e <span class="m">k=-3</span>.</p>
+</div>
+
 <div class="callout attenzione">
 
-<p>La regola di Sarrus vale <strong>solo</strong> per le <span class="m">3\times3</span>: la sua ovvia generalizzazione a <span class="m">n\times n</span> non dà il determinante. Attenzione ai segni dei prodotti di tre numeri negativi: <span class="m">(-1)(-1)(-1)=-1</span>, e quel prodotto va poi sottratto.</p>
-</div>
-
-<div class="callout esempio">
-
-<p><span class="m">\det\begin{pmatrix}1-i&amp;i&amp;0\\2i&amp;1+i&amp;-i\\0&amp;1&amp;-2\end{pmatrix}</span>: diagonali che scendono <span class="m">(1-i)(1+i)(-2)+i(-i)0+0</span>; diagonali che salgono, da sottrarre, <span class="m">0-(1-i)(-i)\cdot1-i(2i)(-2)</span>. Risultato <span class="m">-7+i</span>.</p>
-</div>
-
-<h2>Interpretazione geometrica</h2>
-<p>Fissato un riferimento cartesiano <span class="m">(O;\mathbf a,\mathbf b)</span> nel piano, si identificano i vettori con le colonne delle loro coordinate. Siano <span class="m">X_1={}^t(a_1\ b_1)</span> e <span class="m">X_2={}^t(a_2\ b_2)</span>.</p>
 <ul>
-<li>Se, percorrendo in senso antiorario il più piccolo dei due angoli, si va da <span class="m">X_1</span> a <span class="m">X_2</span>, l&#39;area del parallelogramma di lati adiacenti <span class="m">X_1</span>, <span class="m">X_2</span> è (rettangolo grande meno quattro triangoli e due rettangolini) <span class="m d">(a_1+a_2)(b_1+b_2)-a_1b_1-a_2b_2-2a_2b_1=a_1b_2-a_2b_1=\det\begin{pmatrix}a_1&amp;a_2\\b_1&amp;b_2\end{pmatrix}.</span></li>
-<li>Nella configurazione opposta il calcolo dà <span class="m">a_2b_1-a_1b_2</span>, l&#39;opposto del determinante.</li>
+<li>La regola di Sarrus vale <strong>solo</strong> per le <span class="m">3\times3</span>.</li>
+<li>Attenzione ai prodotti con tre segni meno: <span class="m">(-1)(-1)(-1)=-1</span>, e quel prodotto va poi <strong>sottratto</strong> (<span class="m">-(-1)=+1</span>).</li>
+<li>Per le <span class="m">2\times2</span> l&#39;ordine è <span class="m">ad-bc</span> (diagonale principale meno l&#39;altra), non <span class="m">bc-ad</span>: invertirlo cambia il segno.</li>
+<li>Con i complessi ricorda <span class="m">i^2=-1</span>: <span class="m">3i(1-i)=3i+3</span>, mentre <span class="m">3i(1+i)=3i-3</span>.</li>
 </ul>
-<p>Quindi l&#39;<strong>area del parallelogramma</strong> costruito su <span class="m">X_1</span> e <span class="m">X_2</span> è il <strong>modulo</strong> del determinante della matrice che li ha come colonne: <span class="m d">\mathcal A=\left\lvert\det\begin{pmatrix}a_1&amp;a_2\\b_1&amp;b_2\end{pmatrix}\right\rvert.</span></p>
-<p>Nello spazio, il <strong>volume del parallelepipedo</strong> con lati adiacenti <span class="m">X_1,X_2,X_3</span> è <span class="m">V=\lvert\det(X_1\ X_2\ X_3)\rvert</span>. Il segno del determinante segue la <strong>regola della mano destra</strong>: è <span class="m">+</span> se indice, medio e pollice della mano destra si possono mettere nelle direzioni di <span class="m">X_1,X_2,X_3</span>, altrimenti <span class="m">-</span>. In <span class="m">\mathbb{R}^n</span> con <span class="m">n&gt;3</span> il volume dell&#39;iper-parallelepipedo su <span class="m">n</span> vettori è il modulo del determinante della matrice che li ha come colonne; il segno è positivo se i vettori sono disposti &quot;come la base canonica&quot;.</p>
+</div>
+
+<h2>Interpretazione geometrica del determinante</h2>
+<p>Fissiamo un riferimento cartesiano <span class="m">(O;\mathbf a,\mathbf b)</span> nel piano <span class="m">V^2_G</span> e identifichiamo ogni vettore con la colonna delle sue coordinate. Siano <span class="m">X_1=\begin{pmatrix}a_1\\b_1\end{pmatrix}</span> e <span class="m">X_2=\begin{pmatrix}a_2\\b_2\end{pmatrix}</span>, e consideriamo il <strong>parallelogramma</strong> che ha <span class="m">X_1</span> e <span class="m">X_2</span> come lati adiacenti (vertici <span class="m">O</span>, <span class="m">X_1</span>, <span class="m">X_1+X_2</span>, <span class="m">X_2</span>).</p>
+<p><strong>Calcolo dell&#39;area (coordinate positive).</strong> Supponiamo che le coordinate siano positive e che, percorrendo in senso antiorario il più piccolo dei due angoli, si vada da <span class="m">X_1</span> a <span class="m">X_2</span> (cioè <span class="m">X_1</span> è &quot;più basso&quot;, <span class="m">X_2</span> &quot;più alto&quot;). Il parallelogramma sta dentro il rettangolo con vertici <span class="m">O</span> e <span class="m">X_1+X_2=\begin{pmatrix}a_1+a_2\\b_1+b_2\end{pmatrix}</span>, di area <span class="m">(a_1+a_2)(b_1+b_2)</span>. Per ottenere l&#39;area del parallelogramma si tolgono le parti del rettangolo che stanno fuori:</p>
+<ul>
+<li>due triangoli rettangoli di cateti <span class="m">a_1</span> e <span class="m">b_1</span> (uno sotto il lato <span class="m">OX_1</span>, uno uguale sopra il lato opposto): area totale <span class="m">2\cdot\frac{a_1b_1}2=a_1b_1</span>;</li>
+<li>due triangoli rettangoli di cateti <span class="m">a_2</span> e <span class="m">b_2</span> (lungo <span class="m">OX_2</span> e il lato opposto): area totale <span class="m">a_2b_2</span>;</li>
+<li>due rettangolini di lati <span class="m">a_2</span> e <span class="m">b_1</span> negli angoli: area totale <span class="m">2a_2b_1</span>.</li>
+</ul>
+<p>Quindi
+<span class="m d">\mathcal A=(a_1+a_2)(b_1+b_2)-a_1b_1-a_2b_2-2a_2b_1=a_1b_1+a_1b_2+a_2b_1+a_2b_2-a_1b_1-a_2b_2-2a_2b_1=a_1b_2-a_2b_1,</span>
+che è proprio <span class="m">\det\begin{pmatrix}a_1&amp;a_2\\b_1&amp;b_2\end{pmatrix}</span>.</p>
+<p><strong>Configurazione opposta.</strong> Se invece, ruotando in senso antiorario, si va da <span class="m">X_2</span> a <span class="m">X_1</span>, lo stesso calcolo (con i rettangolini di lati <span class="m">a_1</span> e <span class="m">b_2</span>) dà <span class="m">\mathcal A=a_2b_1-a_1b_2</span>, cioè l&#39;<strong>opposto</strong> del determinante. Anche con coordinate negative il risultato è lo stesso (ci sono più casi, ma l&#39;idea non cambia).</p>
+<p><strong>Conclusione.</strong> L&#39;<strong>area del parallelogramma</strong> costruito su <span class="m">X_1</span> e <span class="m">X_2</span> è il <strong>modulo</strong> del determinante della matrice che ha <span class="m">X_1</span> e <span class="m">X_2</span> come colonne:
+<span class="m d">\mathcal A=\left\lvert\det\begin{pmatrix}a_1&amp;a_2\\b_1&amp;b_2\end{pmatrix}\right\rvert.</span>
+Il <strong>segno</strong> del determinante dice l&#39;<strong>orientamento</strong>: positivo se da <span class="m">X_1</span> si arriva a <span class="m">X_2</span> girando in senso antiorario (come da <span class="m">\mathbf e_1</span> a <span class="m">\mathbf e_2</span>), negativo se in senso orario. L&#39;area del <strong>triangolo</strong> di lati <span class="m">X_1</span>, <span class="m">X_2</span> è la metà.</p>
+<p><strong>Nello spazio.</strong> Con un riferimento <span class="m">(O;\mathbf a,\mathbf b,\mathbf c)</span> e tre vettori <span class="m">X_1,X_2,X_3</span>, il <strong>volume del parallelepipedo</strong> con lati adiacenti <span class="m">X_1,X_2,X_3</span> è, a meno del segno, il determinante della matrice <span class="m">3\times3</span> che li ha come colonne:
+<span class="m d">V=\left\lvert\det\begin{pmatrix}a_1&amp;a_2&amp;a_3\\b_1&amp;b_2&amp;b_3\\c_1&amp;c_2&amp;c_3\end{pmatrix}\right\rvert.</span>
+Il segno segue la <strong>regola della mano destra</strong>: è <span class="m">+</span> se si possono mettere indice, medio e pollice della mano destra nelle direzioni di <span class="m">X_1</span>, <span class="m">X_2</span>, <span class="m">X_3</span> rispettivamente; altrimenti è <span class="m">-</span>.</p>
+<p><strong>In <span class="m">\mathbb R^n</span>, <span class="m">n&gt;3</span>.</strong> Si definisce l&#39;<strong>iper-parallelepipedo</strong> costruito su <span class="m">n</span> vettori, e il suo volume è il modulo del determinante della matrice <span class="m">n\times n</span> che li ha come colonne; il segno è positivo se i vettori sono disposti &quot;come la base canonica&quot;, negativo altrimenti.</p>
+<p>Conseguenza importante: il determinante è <span class="m">0</span> esattamente quando il parallelogramma (o parallelepipedo) è <strong>schiacciato</strong>, cioè i vettori stanno su una retta (o su un piano): sono linearmente dipendenti. È l&#39;anticipazione del Teorema 17.1.</p>
 <div class="callout esempio">
 
-<p>L&#39;area del triangolo costruito su <span class="m">X_1={}^t(4\ 1)</span> e <span class="m">X_2={}^t(-3\ 2)</span> è metà di quella del parallelogramma: <span class="m d">\frac12\left\lvert\det\begin{pmatrix}4&amp;-3\\1&amp;2\end{pmatrix}\right\rvert=\frac12\lvert8+3\rvert=\frac{11}{2}.</span></p>
+<p><strong>Aree di parallelogrammi.</strong></p>
+<ul>
+<li>Vettori <span class="m">{}^t(3\ -1)</span> e <span class="m">{}^t(2\ -3)</span>: <span class="m">\det\begin{pmatrix}3&amp;2\\-1&amp;-3\end{pmatrix}=3\cdot(-3)-2\cdot(-1)=-9+2=-7</span>. Area <span class="m">=\lvert-7\rvert=7</span>.</li>
+<li>Vettori <span class="m">{}^t(3\ -1)</span> e <span class="m">{}^t(3\ -2)</span>: <span class="m">\det\begin{pmatrix}3&amp;3\\-1&amp;-2\end{pmatrix}=-6+3=-3</span>. Area <span class="m">=3</span>.</li>
+<li>Vettori <span class="m">{}^t(3\ -1)</span> e <span class="m">{}^t(-3\ 2)</span>: <span class="m">\det\begin{pmatrix}3&amp;-3\\-1&amp;2\end{pmatrix}=6-3=3</span>. Area <span class="m">=3</span>.</li>
+<li>Domanda 15.4 della dispensa: <span class="m">{}^t(1\ 1)</span> e <span class="m">{}^t(4\ 2)</span>: <span class="m">\det\begin{pmatrix}1&amp;4\\1&amp;2\end{pmatrix}=2-4=-2</span>. Area <span class="m">=2</span>.</li>
+</ul>
+<p><strong>Area di un triangolo (Esercizio 15.3).</strong> Il triangolo costruito su <span class="m">X_1={}^t(4\ 1)</span> e <span class="m">X_2={}^t(-3\ 2)</span> è metà del parallelogramma:
+<span class="m d">\mathcal A=\frac12\left\lvert\det\begin{pmatrix}4&amp;-3\\1&amp;2\end{pmatrix}\right\rvert=\frac12\lvert4\cdot2-(-3)\cdot1\rvert=\frac12\lvert11\rvert=\frac{11}{2}.</span></p>
+</div>
+
+<div class="callout attenzione">
+
+<p>Un&#39;area o un volume <strong>non è mai negativo</strong>: si prende il <strong>modulo</strong> del determinante. Nelle domande del paniere tra le opzioni c&#39;è sempre il determinante con il segno meno: è la trappola. Il segno indica solo l&#39;orientamento (orario/antiorario, mano destra/sinistra).</p>
+</div>
+
+<div class="callout esame">
+
+<p>Il paniere chiede determinanti <span class="m">2\times2</span> (anche con entrate complesse: attenzione a <span class="m">i^2=-1</span> e al segno di <span class="m">-bc</span>), determinanti <span class="m">3\times3</span> con Sarrus (attenzione ai prodotti con tre segni meno) e aree di parallelogrammi (modulo del determinante).</p>
+<p><strong>Domanda aperta &quot;Parlare del determinante&quot;:</strong> è definito solo per matrici quadrate; definizione con permutazioni e segnatura (<span class="m">\det A=\sum_{\sigma\in P_n}\operatorname{sgn}(\sigma)a_{1\sigma(1)}\cdots a_{n\sigma(n)}</span>, con un&#39;entrata per riga e per colonna in ogni addendo); casi <span class="m">1\times1</span>, <span class="m">2\times2</span> (<span class="m">ad-bc</span>) e <span class="m">3\times3</span> (Sarrus, solo per <span class="m">3\times3</span>); proprietà immediate (riga/colonna nulla <span class="m">\Rightarrow0</span>, triangolare <span class="m">\Rightarrow</span> prodotto della diagonale, <span class="m">\det I_n=1</span>); legame con l&#39;invertibilità (<span class="m">A</span> invertibile <span class="m">\Leftrightarrow\det A\neq0</span>); un esempio numerico.</p>
+<p><strong>Domanda aperta &quot;Interpretazione geometrica del determinante&quot;:</strong> nel piano, l&#39;area del parallelogramma costruito su due vettori è il modulo del determinante della matrice che li ha come colonne (con la derivazione rettangolo meno triangoli e rettangolini, <span class="m">a_1b_2-a_2b_1</span>); il segno dà l&#39;orientamento (antiorario <span class="m">+</span>); nello spazio il volume del parallelepipedo è <span class="m">\lvert\det\rvert</span> di una <span class="m">3\times3</span>, segno con la regola della mano destra; in <span class="m">\mathbb R^n</span> iper-parallelepipedo; determinante nullo <span class="m">=</span> figura schiacciata; esempio con l&#39;area di un triangolo (metà).</p>
 </div>
 
 <div class="callout sintesi">
 
 <ul>
-<li><span class="m">\det</span> esiste solo per matrici quadrate; <span class="m">\det_2=ad-bc</span>; per le <span class="m">3\times3</span> Sarrus.</li>
-<li>Riga o colonna nulla <span class="m">\Rightarrow\det=0</span>; triangolare <span class="m">\Rightarrow</span> prodotto della diagonale.</li>
-<li>Area <span class="m">=\lvert\det\rvert</span> (mai negativa); volume <span class="m">=\lvert\det\rvert</span>; il segno indica l&#39;orientamento.</li>
+<li>Permutazione di <span class="m">n</span> elementi: bigezione di <span class="m">\{1,\dots,n\}</span>; sono <span class="m">n!</span>. Segnatura <span class="m">\pm1</span> secondo la parità del numero di inversioni.</li>
+<li><span class="m">\det A=\sum_{\sigma\in P_n}\operatorname{sgn}(\sigma)\,a_{1\sigma(1)}\cdots a_{n\sigma(n)}</span>, solo per matrici quadrate.</li>
+<li><span class="m">\det_2=ad-bc</span>; per le <span class="m">3\times3</span> Sarrus (solo <span class="m">3\times3</span>).</li>
+<li>Riga o colonna nulla <span class="m">\Rightarrow\det=0</span>; triangolare/diagonale <span class="m">\Rightarrow</span> prodotto della diagonale; <span class="m">\det I_n=1</span>.</li>
+<li>Area del parallelogramma <span class="m">=\lvert\det\rvert</span>, triangolo <span class="m">=\frac12\lvert\det\rvert</span>; volume <span class="m">=\lvert\det\rvert</span>; il segno indica l&#39;orientamento.</li>
+<li>Si vedrà: <span class="m">A</span> invertibile <span class="m">\Leftrightarrow\det A\neq0</span>.</li>
 </ul>
-</div>
-
-<div class="callout esame">
-
-<p>Il paniere chiede determinanti <span class="m">2\times2</span> (anche complessi), <span class="m">3\times3</span> con Sarrus e aree di parallelogrammi: tra le opzioni c&#39;è sempre il determinante con il segno negativo, ma l&#39;area è il modulo. Domande aperte: &quot;Parlare del determinante&quot; e &quot;interpretazione geometrica del determinante&quot;.</p>
 </div>

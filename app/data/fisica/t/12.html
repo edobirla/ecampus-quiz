@@ -1,110 +1,345 @@
-<h1>Lezione 12 — Forza peso, reazioni vincolari e applicazioni</h1>
+<h1>Lezione 12 — Forza peso, reazioni vincolari, tensione e applicazioni</h1>
+<p>Con i tre principi della dinamica possiamo affrontare i problemi tipici del punto materiale. Questa lezione passa in rassegna le <strong>forze più comuni</strong>: il <strong>peso</strong>, la <strong>reazione vincolare</strong> (o forza normale) di un piano, la <strong>tensione</strong> di un filo, e vede come combinarle nei dispositivi classici: il <strong>piano inclinato</strong>, la <strong>macchina di Atwood</strong>, i corpi collegati da fili, il <strong>moto circolare</strong> (forza centripeta). Il metodo è sempre lo stesso:</p>
+<ol>
+<li>disegnare <strong>tutte</strong> le forze che agiscono su <strong>ciascun</strong> corpo (diagramma di corpo libero);</li>
+<li>scegliere gli assi (di solito uno lungo il moto e uno perpendicolare);</li>
+<li>scrivere <span class="m">\sum F = ma</span> lungo ogni asse per ogni corpo;</li>
+<li>aggiungere i legami (filo inestensibile ⇒ stessa accelerazione in modulo) e risolvere.</li>
+</ol>
 <h2>Massa e peso</h2>
-<p>La <strong>massa</strong> è una proprietà del corpo. Misura la sua inerzia e non cambia da un luogo all&#39;altro. Si misura in kg.</p>
-<p>Il <strong>peso</strong> è una forza: l&#39;attrazione gravitazionale sul corpo. È un vettore verticale, verso il basso:
+<p>La <strong>massa</strong> <span class="m">m</span> è una proprietà <strong>intrinseca</strong> del corpo: misura la sua <strong>inerzia</strong> (la resistenza a cambiare velocità, lezione 11) e la quantità di &quot;materia&quot;. È uno <strong>scalare</strong>, si misura in <strong>kg</strong> e <strong>non cambia</strong> da un luogo all&#39;altro: la stessa sulla Terra, sulla Luna, su Venere o in orbita.</p>
+<p>Il <strong>peso</strong> è invece una <strong>forza</strong>: la forza di attrazione gravitazionale che la Terra (o il pianeta su cui ci si trova) esercita sul corpo. È un <strong>vettore</strong> diretto verticalmente <strong>verso il basso</strong> (verso il centro della Terra):
 <span class="m d">\vec P = m\vec g</span>
-dove <span class="m">\vec P</span> = peso (N), <span class="m">m</span> = massa (kg), <span class="m">\vec g</span> = accelerazione di gravità (<span class="m">9{,}8\,\mathrm{m/s^2}</span> sulla Terra).</p>
-<p>Peso e massa sono grandezze <strong>diverse</strong> ma <strong>direttamente proporzionali</strong>. Un oggetto portato su Venere ha la stessa massa ma un peso diverso, perché lì <span class="m">g</span> è diverso.</p>
-<p>Il peso agisce lungo la <strong>verticale passante per il baricentro</strong>. Su un corpo rigido una forza si può spostare lungo la sua retta d&#39;azione senza cambiare l&#39;effetto. Quindi il peso si può applicare in qualunque punto di quella verticale.</p>
-<div class="callout esempio">
-
-<p>Ragazzo di <span class="m">44\,\mathrm{kg}</span>: <span class="m">P = 44 \cdot 9{,}8 \approx 430\,\mathrm N</span>. Corpo di <span class="m">3\,\mathrm{kg}</span> appeso a una fune: tensione <span class="m">T = mg \approx 30\,\mathrm N</span>.</p>
-</div>
-
-<h2>Caduta dei gravi</h2>
-<p>Senza aria tutti i corpi cadono con la stessa accelerazione <span class="m">g</span>, qualunque sia la massa. Il peso cresce con la massa, ma cresce allo stesso modo anche l&#39;inerzia: <span class="m">a = mg/m = g</span>.</p>
-<p>Moto uniformemente accelerato da fermo: <span class="m">v = gt</span>, <span class="m">h = \tfrac12 gt^2</span>, <span class="m">v = \sqrt{2gh}</span>.</p>
-<p>L&#39;energia potenziale cambia solo con il dislivello: <span class="m">\Delta U = mg\,\Delta h</span>. Su una rampa curva senza attrito conta solo l&#39;altezza, non la lunghezza o la forma.</p>
-<p>Con l&#39;aria la situazione cambia: l&#39;attrito viscoso cresce con la velocità. Le gocce di pioggia, alla fine, cadono a velocità costante perché l&#39;attrito bilancia il peso (vedi lezione sugli attriti).</p>
-<h2>Reazioni vincolari</h2>
-<p>Un <strong>vincolo</strong> è un oggetto che impedisce certi movimenti: un tavolo, un pavimento, un filo appeso a una parete. La forza che il vincolo esercita sul corpo si chiama <strong>reazione vincolare</strong>.</p>
-<p>Perché servono? Un libro sul tavolo ha un peso, ma resta fermo. Per il primo principio la risultante deve essere nulla. Deve quindi esistere una forza che bilancia il peso: è la reazione del tavolo. Senza reazioni vincolari le leggi della dinamica non spiegherebbero i corpi appoggiati o appesi.</p>
-<p>Proprietà della reazione di un piano (senza attrito):</p>
+dove <span class="m">\vec P</span> = peso (N), <span class="m">m</span> = massa (kg), <span class="m">\vec g</span> = accelerazione di gravità (m/s²), di modulo circa <span class="m">9{,}8\,\mathrm{m/s^2}</span> sulla superficie terrestre.</p>
+<p>Peso e massa sono grandezze <strong>diverse</strong> (unità diverse, una vettore e una scalare) ma <strong>direttamente proporzionali</strong>: a parità di luogo, raddoppiando la massa raddoppia il peso. Il fattore di proporzionalità <span class="m">g</span> però dipende dal luogo:</p>
 <ul>
-<li>è sempre <strong>perpendicolare</strong> alla superficie (per questo si chiama anche <strong>forza normale</strong> <span class="m">N</span>);</li>
-<li>il suo modulo <strong>non è fisso</strong>: si adatta. È uguale e opposto alla somma delle componenti delle altre forze perpendicolari al piano.</li>
+<li>su un altro pianeta <span class="m">g</span> è diverso (sulla Luna circa <span class="m">1{,}6\,\mathrm{m/s^2}</span>, su Venere circa <span class="m">8{,}9\,\mathrm{m/s^2}</span>): un oggetto portato lì ha <strong>la stessa massa ma peso diverso</strong>;</li>
+<li>anche sulla Terra <span class="m">g</span> varia un poco con la latitudine e la quota (lezione 13).</li>
 </ul>
+<p>Il peso di un corpo misurato da una bilancia (a molla) è in realtà la <strong>reazione vincolare</strong> che la bilancia esercita per tenerlo fermo: per questo in un ascensore accelerato o in caduta libera la bilancia segna un valore diverso da <span class="m">mg</span> (lezione 13).</p>
+<h3>Dove si applica il peso</h3>
+<p>Il peso agisce su ogni parte del corpo, ma il suo effetto complessivo equivale a una sola forza applicata nel <strong>baricentro</strong>. In un corpo rigido una forza si può <strong>spostare lungo la propria retta d&#39;azione</strong> senza cambiarne l&#39;effetto (stesso effetto di traslazione e stesso momento). Quindi il peso si può considerare applicato in <strong>qualunque punto della retta verticale passante per il baricentro</strong>.</p>
 <div class="callout esempio">
 
-<p>Oggetto di <span class="m">2\,\mathrm{kg}</span> su un tavolo, spinto in giù con <span class="m">20\,\mathrm N</span>. La reazione deve bilanciare peso e spinta: <span class="m">N = 2 \cdot 9{,}8 + 20 \approx 40\,\mathrm N</span>.
-Blocco tirato orizzontalmente a velocità costante, con attrito <span class="m">f</span>: in orizzontale <span class="m">F = f</span>, in verticale <span class="m">N = P</span>.</p>
-</div>
-
-<h2>Tensione dei fili</h2>
-<p>Un filo <strong>inestensibile e di massa trascurabile</strong> trasmette una forza, la <strong>tensione</strong> <span class="m">T</span>.</p>
+<p><strong>Calcoli di peso (tipici del paniere).</strong></p>
 <ul>
-<li>È diretta lungo il filo, <strong>verso l&#39;interno</strong> del filo: tira i corpi attaccati.</li>
-<li>Ha lo <strong>stesso modulo</strong> ai due estremi.</li>
-<li>Ai due estremi ha quindi <strong>verso opposto</strong>.</li>
+<li>Ragazzo di <span class="m">44\,\mathrm{kg}</span> fermo su una bilancia: <span class="m">P = mg = 44 \cdot 9{,}8 = 431{,}2 \approx 430\,\mathrm N</span>.</li>
+<li>Corpo di <span class="m">3\,\mathrm{kg}</span> appeso a una fune, fermo: la fune deve bilanciare il peso, <span class="m">T = mg = 3 \cdot 9{,}8 = 29{,}4 \approx 30\,\mathrm N</span>.</li>
+<li>Lo stesso corpo su Venere (<span class="m">g_V \approx 8{,}9\,\mathrm{m/s^2}</span>): massa ancora <span class="m">3\,\mathrm{kg}</span>, peso <span class="m">\approx 26{,}7\,\mathrm N</span>.</li>
 </ul>
-<p>Una <strong>puleggia</strong> (carrucola) senza massa e senza attrito cambia solo la direzione del filo, non il modulo della tensione.</p>
-<div class="callout esempio">
-
-<p>Secchio di <span class="m">120\,\mathrm N</span> calato a velocità costante: risultante nulla, quindi <span class="m">T = 120\,\mathrm N</span>. Non dipende da quanto veloce scende.</p>
 </div>
 
-<h2>Fune che tira in verticale (ascensori)</h2>
-<p>Con peso e una forza verticale, scegli l&#39;alto come positivo e scrivi:
+<h2>La caduta dei gravi</h2>
+<p>Un <strong>grave</strong> è un corpo soggetto soltanto (o quasi) alla forza peso. Se si trascura l&#39;aria, la seconda legge dà:
+<span class="m d">m a = m g \quad\Longrightarrow\quad a = g</span>
+L&#39;accelerazione <strong>non dipende dalla massa</strong>: il peso cresce con la massa, ma cresce allo stesso modo anche l&#39;inerzia, e il rapporto è sempre <span class="m">g</span>. È la conclusione di Galileo (esperimento della Torre di Pisa): <strong>tutti i corpi, in assenza di aria, cadono con la stessa accelerazione</strong> e, lasciati dalla stessa altezza, arrivano a terra <strong>nello stesso istante</strong>.</p>
+<h3>Le leggi della caduta libera</h3>
+<p>La caduta libera da fermo è un <strong>moto uniformemente accelerato</strong> con accelerazione <span class="m">g</span>. Prendendo l&#39;asse verso il basso, con partenza da fermo:
+<span class="m d">v = gt, \qquad h = \tfrac12 g t^2, \qquad v = \sqrt{2gh}</span>
+dove <span class="m">v</span> = velocità (m/s), <span class="m">t</span> = tempo di caduta (s), <span class="m">h</span> = altezza di caduta (m).</p>
+<p>La terza si ottiene eliminando il tempo: dalla prima <span class="m">t = v/g</span>; sostituendo nella seconda <span class="m">h = \tfrac12 g (v/g)^2 = v^2/(2g)</span>, cioè <span class="m">v^2 = 2gh</span>. Il tempo di caduta da un&#39;altezza <span class="m">h</span> è <span class="m">t = \sqrt{2h/g}</span>.</p>
+<p>Se il corpo è lanciato verso l&#39;alto con <span class="m">v_0</span>, il moto è ancora uniformemente accelerato ma con accelerazione opposta alla velocità iniziale: sale per un tempo <span class="m">v_0/g</span>, raggiunge l&#39;altezza <span class="m">v_0^2/(2g)</span> e ricade (lezione 10).</p>
+<div class="callout esempio">
+
+<p>Un sasso cade da fermo da <span class="m">20\,\mathrm m</span>.</p>
+<ul>
+<li>Tempo: <span class="m">t = \sqrt{2h/g} = \sqrt{40/9{,}8} = \sqrt{4{,}08} \approx 2{,}02\,\mathrm s</span>.</li>
+<li>Velocità all&#39;arrivo: <span class="m">v = \sqrt{2gh} = \sqrt{2\cdot 9{,}8\cdot 20} = \sqrt{392} \approx 19{,}8\,\mathrm{m/s}</span> (verifica: <span class="m">v = gt = 9{,}8 \cdot 2{,}02 \approx 19{,}8</span>).</li>
+<li>Dopo <span class="m">1\,\mathrm s</span> ha percorso solo <span class="m">\tfrac12\cdot 9{,}8\cdot 1 = 4{,}9\,\mathrm m</span>: lo spazio cresce con il quadrato del tempo.</li>
+</ul>
+</div>
+
+<h3>Energia potenziale e dislivello</h3>
+<p>Durante la caduta il peso compie un lavoro <span class="m">mgh</span> che si trasforma in energia cinetica (lezioni 17-20). La variazione di <strong>energia potenziale gravitazionale</strong> dipende <strong>solo dal dislivello</strong>:
+<span class="m d">\Delta U = mg\,\Delta h</span>
+dove <span class="m">\Delta U</span> = variazione di energia potenziale (J), <span class="m">\Delta h</span> = dislivello (m). Su una rampa curva senza attrito conta quindi solo l&#39;<strong>altezza</strong> di partenza e di arrivo, non la lunghezza né la forma del percorso.</p>
+<h3>Con l&#39;aria</h3>
+<p>Con l&#39;aria la situazione cambia: la resistenza dell&#39;aria (attrito viscoso) cresce con la velocità e si oppone al moto. Dopo un certo tempo bilancia il peso e il corpo cade a <strong>velocità costante</strong> (velocità limite). Per questo le <strong>gocce di pioggia</strong>, nell&#39;ultima parte della discesa, cadono a velocità costante: l&#39;attrito viscoso dell&#39;aria bilancia la forza di gravità (lezione 14).</p>
+<h2>La reazione vincolare</h2>
+<p>Un <strong>vincolo</strong> è un oggetto che <strong>impedisce</strong> al corpo certi movimenti: un tavolo (impedisce di scendere), un pavimento, un piano inclinato, un filo attaccato a una parete, un binario.</p>
+<p>La forza che il vincolo esercita sul corpo si chiama <strong>reazione vincolare</strong>. Nella lezione 11 l&#39;abbiamo introdotta così: se su un corpo agisce una risultante non nulla e vogliamo che resti fermo, aggiungiamo un dispositivo fisso che gli opponga, per reazione, una forza uguale e opposta, ricreando l&#39;equilibrio statico.</p>
+<h3>Perché bisogna definire le reazioni vincolari</h3>
+<p>Un libro appoggiato su un tavolo ha un peso <span class="m">mg</span>, eppure resta <strong>fermo</strong>. Per il primo principio, se è fermo la risultante delle forze deve essere <strong>nulla</strong>. Se l&#39;unica forza fosse il peso, il libro dovrebbe accelerare verso il basso con <span class="m">g</span>. Deve quindi esistere un&#39;altra forza, uguale e opposta al peso: è la <strong>reazione del tavolo</strong>.</p>
+<p>Senza le reazioni vincolari le leggi della dinamica <strong>non</strong> riuscirebbero a spiegare i corpi appoggiati, appesi o guidati (un treno sul binario, una pallina in una guida). Sono forze <strong>vere</strong> (dovute all&#39;interazione con il vincolo, che si deforma impercettibilmente), con la loro coppia di azione e reazione: il libro preme sul tavolo, il tavolo spinge sul libro.</p>
+<h3>Proprietà della reazione di un piano</h3>
+<p><strong>Direzione.</strong> Per un piano (o una superficie) liscio, cioè senza attrito, la reazione è sempre <strong>perpendicolare (normale) alla superficie</strong>. Per questo si chiama anche <strong>forza normale</strong> e si indica con <span class="m">N</span> (o <span class="m">R_N</span>). Se c&#39;è attrito, la reazione ha anche una componente parallela alla superficie, che è proprio l&#39;attrito (lezione 14).</p>
+<p><strong>Modulo.</strong> Il modulo della reazione <strong>non è fissato a priori</strong>: non è &quot;sempre uguale al peso&quot;. Si <strong>adatta</strong> alle altre forze: è uguale in modulo, e opposto in verso, alla <strong>risultante delle componenti delle altre forze perpendicolari alla superficie</strong> (finché il corpo resta appoggiato). Il vincolo &quot;risponde&quot; con quanto serve a impedire il moto attraverso la superficie, fino al limite di rottura.</p>
+<p>Il concetto, introdotto per l&#39;equilibrio statico, vale anche in condizioni <strong>dinamiche</strong>: un corpo che scivola su un piano ha accelerazione solo parallela al piano, quindi lungo la normale la risultante è ancora nulla e la reazione bilancia le componenti normali delle altre forze.</p>
+<div class="callout esempio">
+
+<p><strong>La reazione si adatta (tipici del paniere).</strong></p>
+<ul>
+<li><em>Oggetto di <span class="m">2\,\mathrm{kg}</span> su un tavolo, spinto verso il basso con <span class="m">20\,\mathrm N</span>.</em> Lungo la verticale il corpo è fermo: <span class="m">N - mg - 20 = 0</span>, quindi <span class="m">N = 2\cdot 9{,}8 + 20 = 19{,}6 + 20 = 39{,}6 \approx 40\,\mathrm N</span>. Più del peso.</li>
+<li><em>Stesso oggetto tirato verso l&#39;alto con <span class="m">5\,\mathrm N</span> (che non basta a sollevarlo).</em> <span class="m">N + 5 - 19{,}6 = 0</span>, quindi <span class="m">N = 14{,}6\,\mathrm N</span>. Meno del peso.</li>
+<li><em>Blocco tirato orizzontalmente con <span class="m">F</span>, che scorre a velocità costante con attrito <span class="m">f</span>.</em> In orizzontale velocità costante ⇒ <span class="m">F = f</span>. In verticale nessuna forza oltre a peso e normale ⇒ <span class="m">N = P</span>. Se la forza fosse inclinata verso l&#39;alto, <span class="m">N</span> sarebbe minore di <span class="m">P</span>.</li>
+<li><em>Corpo su un piano inclinato di <span class="m">\theta</span>.</em> La componente del peso perpendicolare al piano è <span class="m">mg\cos\theta</span>: quindi <span class="m">N = mg\cos\theta</span>, minore del peso.</li>
+</ul>
+</div>
+
+<div class="callout attenzione">
+
+<p>&quot;La reazione vincolare è uguale al peso&quot; è vero <strong>solo</strong> nel caso particolare di un corpo appoggiato su un piano <strong>orizzontale</strong>, con nessun&#39;altra forza verticale e senza accelerazione verticale. In generale <span class="m">N</span> va <strong>calcolata</strong> dall&#39;equilibrio lungo la normale.</p>
+</div>
+
+<h2>La tensione dei fili</h2>
+<p>Un altro dispositivo tipico è il <strong>filo inestensibile e di massa trascurabile</strong>, che permette di trascinare o sostenere un corpo attaccato a un suo estremo.</p>
+<p><strong>Come funziona.</strong> Quando il filo è teso, ogni suo pezzetto è in equilibrio (ha massa nulla, quindi la risultante su di esso deve essere zero anche se accelera): subisce forze <strong>uguali e opposte</strong> dai due lati. La forza si trasmette così, pezzetto dopo pezzetto, <strong>fino agli estremi</strong>, dove la tensione verso l&#39;interno del filo è bilanciata dalla forza esterna che l&#39;ha messo in tensione. Ai due capi il filo trasmette la forza, detta <strong>tensione</strong> <span class="m">T</span>, ai corpi attaccati.</p>
+<p>Proprietà della tensione:</p>
+<ul>
+<li>è diretta <strong>parallelamente al filo</strong>, verso l&#39;<strong>interno</strong> del filo: un filo può solo <strong>tirare</strong>, mai spingere;</li>
+<li>ha lo <strong>stesso modulo</strong> ai due estremi (perché il filo ha massa trascurabile);</li>
+<li>ai due estremi ha quindi <strong>verso opposto</strong> (ciascun estremo tira il corpo attaccato verso l&#39;altro estremo);</li>
+<li>il filo è solo un dispositivo che <strong>trasmette</strong> la forza tra i suoi estremi.</li>
+</ul>
+<p><strong>Inestensibile</strong> significa che la sua lunghezza non cambia: i corpi ai due capi si muovono con la <strong>stessa velocità e accelerazione in modulo</strong> (lungo il filo).</p>
+<h3>La puleggia</h3>
+<p>Una <strong>puleggia</strong> (o carrucola) <strong>senza massa</strong>, attorno a cui il filo scorre <strong>senza attrito</strong>, serve a <strong>cambiare la direzione</strong> del filo, e quindi della tensione, senza cambiarne il <strong>modulo</strong>: la tensione è la stessa da una parte e dall&#39;altra della puleggia.</p>
+<div class="callout esempio">
+
+<p><strong>Tensione e velocità costante (tipici del paniere).</strong></p>
+<ul>
+<li><em>Secchio di <span class="m">120\,\mathrm N</span> calato a velocità costante con una corda.</em> Velocità costante ⇒ risultante nulla ⇒ <span class="m">T - 120 = 0</span> ⇒ <span class="m">T = 120\,\mathrm N</span>. Non dipende da <strong>quanto</strong> velocemente scende, purché la velocità sia costante.</li>
+<li><em>Slitta trascinata con un filo inestensibile di massa trascurabile.</em> Ai due estremi la tensione ha <strong>stesso modulo</strong> e <strong>verso opposto</strong>, diretta sempre verso l&#39;interno del filo: al capo della slitta tira la slitta in avanti, al capo della mano tira la mano all&#39;indietro.</li>
+</ul>
+</div>
+
+<h2>Forza verticale e peso: ascensori e funi</h2>
+<p>Quando su un corpo agiscono il peso e una forza verticale <span class="m">T</span> (tensione di un cavo, spinta), si sceglie l&#39;alto come positivo e si scrive:
 <span class="m d">T - mg = ma</span>
-dove <span class="m">T</span> = tensione o forza verso l&#39;alto (N), <span class="m">m</span> = massa (kg), <span class="m">a</span> = accelerazione (m/s², positiva se verso l&#39;alto).</p>
+dove <span class="m">T</span> = forza verso l&#39;alto (N), <span class="m">m</span> = massa (kg), <span class="m">g</span> = accelerazione di gravità (m/s²), <span class="m">a</span> = accelerazione (m/s², positiva se verso l&#39;alto, negativa se verso il basso).</p>
 <div class="callout esempio">
 
+<p><strong>Il cavo dell&#39;ascensore (tipico del paniere).</strong> Il cavo che sostiene un ascensore di <span class="m">2100\,\mathrm{kg}</span> regge al massimo <span class="m">21\,750\,\mathrm N</span>. Massima accelerazione verso l&#39;alto senza spezzarsi?</p>
+<ol>
+<li>Peso: <span class="m">mg = 2100\cdot 9{,}8 = 20\,580\,\mathrm N</span>.</li>
+<li>Con la tensione massima: <span class="m">ma = T - mg = 21\,750 - 20\,580 = 1170\,\mathrm N</span>.</li>
+<li><span class="m">a = 1170/2100 \approx 0{,}56\,\mathrm{m/s^2}</span> verso l&#39;alto.</li>
+</ol>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Forza verso l&#39;alto minore del peso (tipico del paniere).</strong> Corpo di <span class="m">60\,\mathrm{kg}</span> soggetto al peso e a una forza verticale di <span class="m">450\,\mathrm N</span> verso l&#39;alto.</p>
+<ol>
+<li>Peso: <span class="m">60\cdot 9{,}8 = 588\,\mathrm N</span>.</li>
+<li>Risultante: <span class="m">450 - 588 = -138\,\mathrm N</span> (negativa: verso il basso).</li>
+<li><span class="m">a = -138/60 = -2{,}3\,\mathrm{m/s^2}</span>: modulo <span class="m">2{,}3\,\mathrm{m/s^2}</span>, <strong>verso il basso</strong>.</li>
+</ol>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Forza totale sull&#39;ascensore (tipico del paniere).</strong> Un ascensore è tirato verso l&#39;alto da una fune con tensione <span class="m">1500\,\mathrm N</span>. La forza totale è <span class="m">F = T - mg</span>. Il testo del paniere indica una massa di <span class="m">10\,\mathrm{kg}</span>, ma con quel dato <span class="m">F = 1500 - 98 = 1402\,\mathrm N</span>, che non è tra le risposte; il valore atteso, <span class="m">520\,\mathrm N</span>, corrisponde a una massa di <span class="m">100\,\mathrm{kg}</span>: <span class="m">F = 1500 - 100\cdot 9{,}8 = 1500 - 980 = 520\,\mathrm N</span>. In ogni caso il metodo è: tensione <strong>meno</strong> peso, perché hanno versi opposti.</p>
+</div>
+
+<h2>Il piano inclinato</h2>
+<p>Il <strong>piano inclinato</strong> fu uno dei dispositivi principali usati da Galileo nei suoi studi: permette di &quot;rallentare&quot; la caduta e misurarla. È una pedana <strong>levigata</strong> (quindi assunta <strong>priva di attrito</strong>) che forma un angolo <span class="m">\theta</span> con la superficie orizzontale, su cui un corpo può scorrere.</p>
+<h3>Le forze e l&#39;accelerazione</h3>
+<p>Sul corpo di massa <span class="m">m</span> agiscono:</p>
 <ul>
-<li>Cavo da <span class="m">21\,750\,\mathrm N</span> massimi, ascensore di <span class="m">2100\,\mathrm{kg}</span>: <span class="m">a = (21\,750 - 2100 \cdot 9{,}8)/2100 \approx 0{,}56\,\mathrm{m/s^2}</span> verso l&#39;alto.</li>
-<li>Corpo di <span class="m">60\,\mathrm{kg}</span> con <span class="m">450\,\mathrm N</span> verso l&#39;alto: <span class="m">450 - 588 = -138\,\mathrm N</span>, quindi <span class="m">a = 138/60 = 2{,}3\,\mathrm{m/s^2}</span> verso il <strong>basso</strong>.</li>
+<li>il <strong>peso</strong> <span class="m">m\vec g</span>, verticale verso il basso;</li>
+<li>la <strong>reazione normale</strong> <span class="m">\vec N</span>, perpendicolare al piano.</li>
+</ul>
+<p>Conviene scegliere gli assi <strong>lungo il piano</strong> (<span class="m">x</span>, verso la discesa) e <strong>perpendicolare al piano</strong> (<span class="m">y</span>). Il peso forma con la perpendicolare al piano lo stesso angolo <span class="m">\theta</span> che il piano forma con l&#39;orizzontale (angoli con lati perpendicolari). Quindi il peso si scompone in:</p>
+<ul>
+<li>componente <strong>parallela</strong> al piano: <span class="m">mg\sin\theta</span>, verso la discesa;</li>
+<li>componente <strong>perpendicolare</strong> al piano: <span class="m">mg\cos\theta</span>, verso il piano.</li>
+</ul>
+<p>Scriviamo la seconda legge lungo i due assi:
+<span class="m d">x:\quad m a = mg\sin\theta \qquad\Longrightarrow\qquad a = g\sin\theta</span>
+<span class="m d">y:\quad N - mg\cos\theta = 0 \qquad\Longrightarrow\qquad N = mg\cos\theta</span>
+Lungo <span class="m">y</span> l&#39;accelerazione è nulla perché il corpo resta sul piano.</p>
+<p>Conseguenze:</p>
+<ul>
+<li>poiché <span class="m">\sin\theta \le 1</span>, l&#39;accelerazione sul piano inclinato è <strong>sempre minore o uguale a <span class="m">g</span></strong>; è uguale a <span class="m">g</span> solo per <span class="m">\theta = 90°</span> (piano verticale = caduta libera), è zero per <span class="m">\theta = 0</span> (piano orizzontale);</li>
+<li>la reazione <span class="m">N = mg\cos\theta</span> è <strong>minore del peso</strong>.</li>
+</ul>
+<p>Se il piano è descritto da altezza <span class="m">h</span> e lunghezza <span class="m">\ell</span>: <span class="m">\sin\theta = h/\ell</span> e <span class="m">\cos\theta = b/\ell</span>, con <span class="m">b = \sqrt{\ell^2 - h^2}</span> la base.</p>
+<h3>Legge oraria</h3>
+<p>Il moto lungo il piano è uniformemente accelerato con <span class="m">a = g\sin\theta</span>. Partendo da fermo:
+<span class="m d">s(t) = \tfrac12 g\sin\theta\,t^2, \qquad v(t) = g\sin\theta\,t</span>
+Nel sistema cartesiano con <span class="m">x</span> orizzontale e <span class="m">y</span> verticale, un corpo che parte da fermo in <span class="m">x = 0</span> alla quota <span class="m">y_0</span> ha un&#39;accelerazione che si scompone in <span class="m">a_x = g\sin\theta\cos\theta</span> (orizzontale) e <span class="m">a_y = -g\sin^2\theta</span> (verticale), quindi, finché non tocca terra:
+<span class="m d">x(t) = \tfrac12 g\sin\theta\cos\theta\,t^2, \qquad y(t) = y_0 - \tfrac12 g\sin^2\theta\,t^2</span></p>
+<h3>La velocità in fondo dipende solo dall&#39;altezza</h3>
+<p>Percorso tutto il piano (<span class="m">s = \ell</span>) la velocità è <span class="m">v^2 = 2a\ell = 2g\sin\theta\,\ell = 2g\,(\ell\sin\theta) = 2gh</span>, cioè
+<span class="m d">v = \sqrt{2gh}</span>
+La velocità finale <strong>non dipende</strong> dalla pendenza né dalla lunghezza del piano, ma solo dall&#39;<strong>altezza</strong> <span class="m">h</span>. Ed è la <strong>stessa</strong> che il corpo avrebbe cadendo liberamente dalla stessa altezza. Cambia invece il <strong>tempo</strong>: su un piano poco inclinato si arriva più tardi, ma alla stessa velocità.</p>
+<div class="callout esempio">
+
+<p><strong>Esercizio della dispensa: la cassa sul piano inclinato.</strong> Una cassa di massa <span class="m">m = 4{,}2\,\mathrm{kg}</span> scende, partendo da ferma, dalla sommità di un piano inclinato privo di attrito lungo <span class="m">\ell = 7{,}5\,\mathrm m</span> e alto <span class="m">h = 3{,}8\,\mathrm m</span>. Determinare le forze, il tempo di discesa e la velocità finale.</p>
+<ol>
+<li><em>Forze.</em> Peso: <span class="m">P = mg = 4{,}2\cdot 9{,}8 = 41{,}16\,\mathrm N</span>, verticale verso il basso. Reazione vincolare perpendicolare al piano. Per calcolarla serve la base <span class="m">b</span>, con Pitagora: <span class="m">b = \sqrt{\ell^2 - h^2} = \sqrt{56{,}25 - 14{,}44} = \sqrt{41{,}81} \approx 6{,}47\,\mathrm m</span>. Allora <span class="m">\cos\theta = b/\ell = 6{,}47/7{,}5 \approx 0{,}862</span> e <span class="m">N = P\cos\theta = 41{,}16\cdot 0{,}862 \approx 35{,}5\,\mathrm N</span>.</li>
+<li><em>Accelerazione.</em> <span class="m">\sin\theta = h/\ell = 3{,}8/7{,}5 \approx 0{,}507</span>; <span class="m">a = g\sin\theta = 9{,}8\cdot 0{,}507 \approx 4{,}97\,\mathrm{m/s^2}</span>.</li>
+<li><em>Tempo.</em> Moto uniformemente accelerato da fermo: <span class="m">\ell = \tfrac12 a t^2</span> ⇒ <span class="m">t = \sqrt{2\ell/a} = \sqrt{15/4{,}97} = \sqrt{3{,}02} \approx 1{,}74\,\mathrm s</span>.</li>
+<li><em>Velocità finale.</em> <span class="m">v = at = 4{,}97\cdot 1{,}74 \approx 8{,}6\,\mathrm{m/s}</span>. Verifica: <span class="m">\sqrt{2gh} = \sqrt{2\cdot 9{,}8\cdot 3{,}8} = \sqrt{74{,}5} \approx 8{,}6\,\mathrm{m/s}</span>. Stesso valore: dipende solo da <span class="m">h</span>.</li>
+</ol>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Esercizio della dispensa: cassa spinta orizzontalmente su per il piano.</strong> Una cassa di <span class="m">m = 100\,\mathrm{kg}</span> sale a <strong>velocità costante</strong> su un piano inclinato liscio di <span class="m">\theta = 30°</span>, spinta da una forza <span class="m">F</span> <strong>orizzontale</strong>. Trovare <span class="m">F</span> e la forza del piano sulla cassa.</p>
+<p>Forze: peso <span class="m">mg = 980\,\mathrm N</span>, normale <span class="m">N</span>, forza orizzontale <span class="m">F</span>. Velocità costante ⇒ risultante nulla. Scompongo lungo il piano e perpendicolarmente:</p>
+<ul>
+<li>la forza orizzontale ha componente lungo il piano (verso la salita) <span class="m">F\cos\theta</span> e componente perpendicolare (verso il piano) <span class="m">F\sin\theta</span>;</li>
+<li>lungo il piano: <span class="m">F\cos\theta - mg\sin\theta = 0</span> ⇒ <span class="m">F = mg\tan\theta = 980\cdot 0{,}577 \approx 566\,\mathrm N</span>;</li>
+<li>perpendicolare: <span class="m">N - mg\cos\theta - F\sin\theta = 0</span> ⇒ <span class="m">N = 980\cdot 0{,}866 + 566\cdot 0{,}5 = 848{,}7 + 283 \approx 1132\,\mathrm N</span>.</li>
+</ul>
+<p>Nota: <span class="m">N</span> è <strong>maggiore</strong> del peso, perché la spinta orizzontale preme la cassa contro il piano. (Equivale a <span class="m">N = mg/\cos\theta = 980/0{,}866 \approx 1132\,\mathrm N</span>.)</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Il carrello tenuto fermo (tipico del paniere).</strong> Carrello di peso <span class="m">200\,\mathrm N</span> su un piano lungo <span class="m">2\,\mathrm m</span> e alto <span class="m">1{,}5\,\mathrm m</span>; lo si tiene fermo spingendolo <strong>parallelamente</strong> al piano. La forza deve bilanciare la componente del peso lungo il piano: <span class="m">F = P\sin\theta = P\,h/\ell = 200\cdot 1{,}5/2 = 150\,\mathrm N</span>.</p>
+</div>
+
+<h2>La macchina di Atwood</h2>
+<p>La <strong>macchina di Atwood</strong> è l&#39;applicazione più semplice del cambio di direzione della tensione con una puleggia. Due masse <span class="m">m_1</span> e <span class="m">m_2</span> sono appese ai capi di un filo inestensibile, di massa trascurabile, che passa su una puleggia senza massa e senza attrito.</p>
+<p>Tutta la dinamica avviene lungo l&#39;asse verticale <span class="m">y</span> (positivo verso l&#39;alto). Grazie alla puleggia le tensioni sui due corpi hanno lo <strong>stesso modulo</strong> <span class="m">T</span> e lo <strong>stesso verso</strong>: entrambe verso l&#39;alto. Il filo è inestensibile, quindi se un corpo sale con accelerazione <span class="m">a</span> l&#39;altro scende con la stessa accelerazione: <span class="m">a_2 = -a_1</span>. Chiamo <span class="m">a = a_1</span>.</p>
+<p>Seconda legge per i due corpi:
+<span class="m d">m_1 a = T - m_1 g</span>
+<span class="m d">-m_2 a = T - m_2 g</span>
+Sottraggo la seconda dalla prima per eliminare <span class="m">T</span>:
+<span class="m d">m_1 a + m_2 a = -m_1 g + m_2 g \quad\Longrightarrow\quad a = \frac{m_2 - m_1}{m_1 + m_2}\,g</span>
+Sostituisco nella prima per trovare la tensione:
+<span class="m d">T = m_1(g + a) = m_1 g\left(1 + \frac{m_2 - m_1}{m_1 + m_2}\right) = m_1 g\,\frac{2m_2}{m_1 + m_2} = \frac{2m_1 m_2}{m_1 + m_2}\,g</span>
+dove <span class="m">m_1, m_2</span> = masse (kg), <span class="m">a</span> = accelerazione di <span class="m">m_1</span> (m/s², positiva verso l&#39;alto), <span class="m">T</span> = tensione del filo (N).</p>
+<p>Osservazioni:</p>
+<ul>
+<li>se <span class="m">m_1 &gt; m_2</span>, <span class="m">a</span> è <strong>negativa</strong>: <span class="m">m_1</span> scende, perché ha peso maggiore;</li>
+<li>l&#39;accelerazione è sempre <strong>minore di <span class="m">g</span></strong>: la differenza dei pesi <span class="m">(m_2 - m_1)g</span> deve accelerare la massa <strong>totale</strong> <span class="m">m_1 + m_2</span>;</li>
+<li>scegliendo masse quasi uguali (peso e contrappeso) si ottiene un&#39;accelerazione <strong>piccola a piacere</strong>: era il modo per studiare la caduta dei gravi &quot;al rallentatore&quot; e misurare <span class="m">g</span>;</li>
+<li>la tensione è compresa tra i due pesi: minore del peso della massa che scende, maggiore del peso di quella che sale.</li>
+</ul>
+<div class="callout esempio">
+
+<p><strong>Atwood con 9 kg e 11 kg (tipico del paniere).</strong>
+<span class="m d">a = \frac{11 - 9}{9 + 11}\,g = \frac{2}{20}\,g = \frac{g}{10} \approx 0{,}98\,\mathrm{m/s^2}</span>
+La massa da <span class="m">11\,\mathrm{kg}</span> scende, quella da <span class="m">9\,\mathrm{kg}</span> sale. Tensione: <span class="m">T = \dfrac{2\cdot 9\cdot 11}{20}\cdot 9{,}8 = 9{,}9\cdot 9{,}8 \approx 97\,\mathrm N</span>, tra <span class="m">9g = 88{,}2\,\mathrm N</span> e <span class="m">11g = 107{,}8\,\mathrm N</span>.</p>
+</div>
+
+<h2>Corpi collegati e corpi a contatto</h2>
+<p>Quando più corpi si muovono insieme (collegati da fili o a contatto), hanno la <strong>stessa accelerazione</strong>. Due modi equivalenti di procedere:</p>
+<ul>
+<li>considerare il <strong>sistema intero</strong> come un unico corpo di massa totale, soggetto solo alle forze <strong>esterne</strong> (le forze interne, tensioni intermedie o forze di contatto, si annullano a coppie per il terzo principio);</li>
+<li>scrivere la seconda legge per <strong>ciascun</strong> corpo, con le forze interne, e risolvere il sistema.</li>
+</ul>
+<p>Di solito si usa il primo per trovare l&#39;accelerazione e il secondo per trovare le forze interne.</p>
+<div class="callout esempio">
+
+<p><strong>Esercizio della dispensa: due casse a contatto.</strong> Due casse a contatto su un piano orizzontale senza attrito, <span class="m">m_1 = 2{,}4\,\mathrm{kg}</span> e <span class="m">m_2 = 3{,}6\,\mathrm{kg}</span>. Una forza <span class="m">F = 12\,\mathrm N</span> agisce sulla prima. Trovare l&#39;accelerazione e la forza di contatto <span class="m">F_c</span>.</p>
+<p>Le casse si spingono a vicenda con forze opposte di uguale modulo <span class="m">F_c</span> (terzo principio) e si muovono insieme con la stessa <span class="m">a</span>.</p>
+<ul>
+<li>Cassa 1: <span class="m">m_1 a = F - F_c</span>.</li>
+<li>Cassa 2: <span class="m">m_2 a = F_c</span>.</li>
+</ul>
+<p>Sommando membro a membro: <span class="m">(m_1 + m_2)a = F</span> ⇒ <span class="m">a = 12/6 = 2\,\mathrm{m/s^2}</span>. Poi <span class="m">F_c = m_2 a = 3{,}6\cdot 2 = 7{,}2\,\mathrm N</span>. La forza di contatto è minore di <span class="m">F</span>: la cassa 1 &quot;trasmette&quot; alla 2 solo la parte di forza che serve ad accelerare la 2.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Esercizio della dispensa: quattro blocchi trascinati in fila.</strong> Quattro blocchi <span class="m">B_1, B_2, B_3, B_4</span> legati in fila sono trascinati da una fune legata al primo della fila, <span class="m">B_4</span>. Masse: <span class="m">m_{B1} = 12\,\mathrm{kg}</span>, <span class="m">m_{B3} = 15\,\mathrm{kg}</span>, <span class="m">m_{B4} = 20\,\mathrm{kg}</span>. Tensioni: <span class="m">T_4 = 222\,\mathrm N</span> (fune che tira <span class="m">B_4</span>) e <span class="m">T_{2\text{-}3} = 111\,\mathrm N</span> (filo tra <span class="m">B_2</span> e <span class="m">B_3</span>). Trovare <span class="m">m_{B2}</span> (piano senza attrito).</p>
+<ol>
+<li><span class="m">T_4</span> trascina tutto il sistema: <span class="m">T_4 = (m_{B1} + m_{B2} + m_{B3} + m_{B4})\,a</span>. Serve <span class="m">a</span>, comune a tutti i blocchi.</li>
+<li>Considero <span class="m">B_4</span> e <span class="m">B_3</span> insieme: davanti c&#39;è <span class="m">T_4</span>, dietro c&#39;è <span class="m">T_{2\text{-}3}</span> che li tira indietro. (Si ottiene anche scrivendo le equazioni di <span class="m">B_4</span> e <span class="m">B_3</span> separatamente, con la tensione tra loro, e sommandole: la tensione intermedia si elimina.)
+<span class="m d">T_4 - T_{2\text{-}3} = (m_{B3} + m_{B4})\,a \quad\Rightarrow\quad 222 - 111 = 35\,a \quad\Rightarrow\quad a \approx 3{,}17\,\mathrm{m/s^2}</span></li>
+<li>Il filo <span class="m">T_{2\text{-}3}</span> trascina <span class="m">B_2</span> e <span class="m">B_1</span>: <span class="m">T_{2\text{-}3} = (m_{B1} + m_{B2})\,a</span> ⇒ <span class="m">m_{B1} + m_{B2} = 111/3{,}17 = 35\,\mathrm{kg}</span> ⇒ <span class="m">m_{B2} = 35 - 12 = 23\,\mathrm{kg}</span>.</li>
+<li>Verifica: massa totale <span class="m">12 + 23 + 15 + 20 = 70\,\mathrm{kg}</span>; <span class="m">70\cdot 3{,}17 \approx 222\,\mathrm N = T_4</span>. ✓</li>
+</ol>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Esercizio della dispensa: massa sul piano inclinato tirata da una massa appesa.</strong> Un corpo <span class="m">m_1 = 2\,\mathrm{kg}</span> scorre senza attrito su un piano inclinato di <span class="m">\theta = 30°</span>. Un filo, passando per una puleggia in cima al piano, lo collega a un corpo <span class="m">m_2 = 4\,\mathrm{kg}</span> appeso. Il sistema parte da fermo; <span class="m">m_2</span> scende e tocca il suolo dopo un tratto <span class="m">h = 2\,\mathrm m</span>. Quanto percorre in tutto <span class="m">m_1</span> lungo il piano prima di fermarsi?</p>
+<p><em>Prima fase (filo teso).</em> Positivo = salita per <span class="m">m_1</span>, discesa per <span class="m">m_2</span>. La componente normale del peso di <span class="m">m_1</span> è bilanciata dal piano; la tensione è parallela al piano.</p>
+<ul>
+<li><span class="m">m_1</span>: <span class="m">m_1 a = T - m_1 g\sin\theta</span>;</li>
+<li><span class="m">m_2</span>: <span class="m">m_2 a = m_2 g - T</span>.</li>
+</ul>
+<p>Sommo: <span class="m">(m_1 + m_2)a = m_2 g - m_1 g\sin\theta</span> ⇒
+<span class="m d">a = \frac{m_2 - m_1\sin\theta}{m_1 + m_2}\,g = \frac{4 - 2\cdot 0{,}5}{6}\cdot 9{,}8 = \frac{3}{6}\cdot 9{,}8 = 4{,}9\,\mathrm{m/s^2}</span>
+Quando <span class="m">m_2</span> tocca terra, <span class="m">m_1</span> ha percorso <span class="m">s_0 = 2\,\mathrm m</span> e ha velocità <span class="m">v_0^2 = 2as_0 = 2\cdot 4{,}9\cdot 2 = 19{,}6</span> ⇒ <span class="m">v_0 \approx 4{,}43\,\mathrm{m/s}</span>.</p>
+<p><em>Seconda fase (filo allentato).</em> <span class="m">m_1</span> prosegue verso l&#39;alto soggetta solo alla componente del peso: decelerazione <span class="m">g\sin\theta = 4{,}9\,\mathrm{m/s^2}</span>. Si ferma dopo <span class="m">s_1 = v_0^2/(2g\sin\theta) = 19{,}6/9{,}8 = 2\,\mathrm m</span>.</p>
+<p><em>Totale:</em> <span class="m">s_{tot} = 2 + 2 = 4\,\mathrm m</span>.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Esercizio della dispensa: pallina spinta dal vento.</strong> Una pallina di massa <span class="m">m = 3\cdot 10^{-4}\,\mathrm{kg}</span> è appesa a un filo. Un vento orizzontale la sposta finché il filo forma un angolo <span class="m">\theta = 37°</span> con la verticale. Trovare la spinta del vento <span class="m">F</span> e la tensione <span class="m">T</span>.</p>
+<p>All&#39;equilibrio la risultante è nulla. Forze: peso <span class="m">mg = 3\cdot 10^{-4}\cdot 9{,}8 = 2{,}94\cdot 10^{-3}\,\mathrm N</span> (giù), spinta <span class="m">F</span> (orizzontale), tensione <span class="m">T</span> (lungo il filo, inclinata di <span class="m">\theta</span> dalla verticale).</p>
+<ul>
+<li>Verticale: <span class="m">T\cos\theta - mg = 0</span> ⇒ <span class="m">T = mg/\cos\theta = 2{,}94\cdot 10^{-3}/0{,}799 \approx 3{,}7\cdot 10^{-3}\,\mathrm N</span>.</li>
+<li>Orizzontale: <span class="m">F - T\sin\theta = 0</span> ⇒ <span class="m">F = T\sin\theta = mg\tan\theta = 2{,}94\cdot 10^{-3}\cdot 0{,}754 \approx 2{,}2\cdot 10^{-3}\,\mathrm N</span>.</li>
 </ul>
 </div>
 
-<h2>Piano inclinato</h2>
-<p>Un corpo su un piano liscio inclinato di <span class="m">\theta</span> subisce peso e reazione normale. Scomponi il peso lungo il piano e perpendicolarmente:
-<span class="m d">ma = mg\sin\theta, \qquad N = mg\cos\theta</span>
-dove <span class="m">\theta</span> = inclinazione (rad o gradi), <span class="m">N</span> = reazione del piano (N).</p>
-<p>Quindi <span class="m">a = g\sin\theta</span>: l&#39;accelerazione è <strong>sempre minore o uguale a <span class="m">g</span></strong> (uguale solo se il piano è verticale).</p>
-<p>In fondo al piano la velocità è <span class="m">v = \sqrt{2gh}</span>. Dipende solo dall&#39;altezza <span class="m">h</span>, non dalla lunghezza o dalla pendenza. È la stessa di una caduta libera dalla stessa altezza.</p>
-<h2>Macchina di Atwood</h2>
-<p>Due masse <span class="m">m_1</span> e <span class="m">m_2</span> appese ai capi di un filo che passa su una carrucola. La più pesante scende, l&#39;altra sale.
-<span class="m d">a = \frac{m_2 - m_1}{m_1 + m_2}\,g, \qquad T = \frac{2m_1 m_2}{m_1 + m_2}\,g</span>
-dove <span class="m">m_1, m_2</span> = masse (kg), <span class="m">a</span> = accelerazione comune (m/s²), <span class="m">T</span> = tensione del filo (N).</p>
-<p>Scegliendo masse quasi uguali si ottiene un&#39;accelerazione piccola a piacere: così si studia la caduta &quot;al rallentatore&quot;.</p>
-<div class="callout esempio">
-
-<p><span class="m">9\,\mathrm{kg}</span> e <span class="m">11\,\mathrm{kg}</span>: <span class="m">a = \dfrac{2}{20}\,g = g/10 \approx 0{,}98\,\mathrm{m/s^2}</span>.</p>
-</div>
-
-<h2>Forza centripeta</h2>
-<p>Nel moto circolare uniforme la velocità cambia direzione. Serve quindi una forza verso il centro, la <strong>forza centripeta</strong>:
-<span class="m d">F_c = \frac{mv^2}{r} = m\omega^2 r</span>
-dove <span class="m">v</span> = velocità (m/s), <span class="m">r</span> = raggio (m), <span class="m">\omega</span> = velocità angolare (rad/s).</p>
-<p>Non è un nuovo tipo di forza. È il ruolo svolto da una forza vera: la tensione di un filo, la gravità, l&#39;attrito. Se il filo si spezza, il corpo prosegue in linea retta lungo la tangente.</p>
-<div class="callout esempio">
-
+<h2>La forza centripeta</h2>
+<p>Nel <strong>moto circolare uniforme</strong> la velocità ha modulo costante ma cambia continuamente <strong>direzione</strong>: c&#39;è un&#39;accelerazione <strong>centripeta</strong> <span class="m">a_c = v^2/R = \omega^2 R</span> diretta verso il centro (lezione 8). Per la seconda legge, deve agire sul corpo una <strong>forza</strong> diretta verso il centro della circonferenza, istantaneamente perpendicolare alla traiettoria, di modulo
+<span class="m d">F_c = m\frac{v^2}{R} = m\omega^2 R</span>
+dove <span class="m">F_c</span> = forza centripeta (N), <span class="m">m</span> = massa (kg), <span class="m">v</span> = velocità (m/s), <span class="m">R</span> = raggio (m), <span class="m">\omega</span> = velocità angolare (rad/s), con <span class="m">v = \omega R</span>.</p>
+<p><strong>La forza centripeta non è un nuovo tipo di forza.</strong> Non si aggiunge alle altre: è il <strong>nome del ruolo</strong> svolto da una forza vera (o dalla risultante di più forze) che tiene il corpo sulla traiettoria circolare. Può essere:</p>
 <ul>
-<li>Sasso di <span class="m">0{,}5\,\mathrm{kg}</span> a <span class="m">10\,\mathrm{m/s}</span> su un cerchio di <span class="m">2\,\mathrm m</span>: <span class="m">F = 0{,}5 \cdot 100/2 = 25\,\mathrm N</span>.</li>
-<li>Filo con tensione <span class="m">300\,\mathrm N</span>, <span class="m">r = 2\,\mathrm m</span>, <span class="m">v = 10\,\mathrm{m/s}</span>: <span class="m">m = 300 \cdot 2/100 = 6\,\mathrm{kg}</span>.</li>
-<li>Terra intorno al Sole: <span class="m">\omega = 2\pi/T</span> con <span class="m">T = 1</span> anno <span class="m">\approx 3{,}15\cdot 10^7\,\mathrm s</span>; <span class="m">a_c = \omega^2 r \approx 5{,}9\cdot 10^{-3}\,\mathrm{m/s^2}</span>.</li>
+<li>la <strong>tensione</strong> di un filo fissato a un perno (sasso fatto ruotare);</li>
+<li>la <strong>gravità</strong> (pianeti, satelliti, la Luna);</li>
+<li>l&#39;<strong>attrito</strong> (auto in curva su strada piana);</li>
+<li>la <strong>reazione vincolare</strong> (vagoncino di una giostra, auto su curva sopraelevata).</li>
+</ul>
+<p><strong>Se il filo si spezza</strong> in un istante <span class="m">t_0</span>, il corpo non è più soggetto a forze (nel piano del moto): per il primo principio prosegue di <strong>moto rettilineo uniforme</strong> lungo la <strong>tangente</strong> al cerchio nel punto in cui si trovava in <span class="m">t_0</span>. Non &quot;vola via&quot; lungo il raggio.</p>
+<div class="callout esempio">
+
+<p><strong>Forza centripeta (tipici del paniere).</strong></p>
+<ul>
+<li><em>Sasso di <span class="m">500\,\mathrm g</span> legato a un filo di <span class="m">2{,}0\,\mathrm m</span>, a <span class="m">10{,}0\,\mathrm{m/s}</span> costanti</em>: <span class="m">F = mv^2/R = 0{,}5\cdot 100/2 = 25\,\mathrm N</span> (la massa va in kg: <span class="m">500\,\mathrm g = 0{,}5\,\mathrm{kg}</span>).</li>
+<li><em>Oggetto su una circonferenza di <span class="m">2\,\mathrm m</span> a <span class="m">10\,\mathrm{m/s}</span> con un filo di tensione <span class="m">300\,\mathrm N</span></em>: la tensione è la forza centripeta, <span class="m">T = mv^2/R</span> ⇒ <span class="m">m = TR/v^2 = 300\cdot 2/100 = 6\,\mathrm{kg}</span>.</li>
 </ul>
 </div>
 
-<h2>Astronauti &quot;senza peso&quot;</h2>
-<p>L&#39;astronauta sullo shuttle in orbita galleggia. La gravità agisce ancora, eccome. Lui e lo shuttle cadono insieme intorno alla Terra. Nel riferimento dello shuttle, che ruota, la <strong>forza centrifuga</strong> (apparente) compensa la gravità. Il risultato è l&#39;assenza di peso apparente.</p>
+<div class="callout esempio">
+
+<p><strong>Accelerazione centripeta della Terra attorno al Sole (tipico del paniere).</strong> Raggio dell&#39;orbita <span class="m">r = 1{,}49\cdot 10^8\,\mathrm{km} = 1{,}49\cdot 10^{11}\,\mathrm m</span>; periodo <span class="m">T = 1</span> anno.</p>
+<ol>
+<li>Periodo in secondi: <span class="m">T = 365\cdot 86\,400 \approx 3{,}15\cdot 10^7\,\mathrm s</span>.</li>
+<li>Velocità angolare: <span class="m">\omega = 2\pi/T = 6{,}28/3{,}15\cdot 10^7 \approx 1{,}99\cdot 10^{-7}\,\mathrm{rad/s}</span>.</li>
+<li><span class="m">a_c = \omega^2 r = (1{,}99\cdot 10^{-7})^2\cdot 1{,}49\cdot 10^{11} = 3{,}97\cdot 10^{-14}\cdot 1{,}49\cdot 10^{11} \approx 5{,}9\cdot 10^{-3}\,\mathrm{m/s^2}</span>.</li>
+</ol>
+<p>La forza centripeta che la produce è l&#39;attrazione gravitazionale del Sole. Allo stesso modo, per la Luna (<span class="m">T = 27{,}3</span> giorni <span class="m">= 2{,}36\cdot 10^6\,\mathrm s</span>, <span class="m">r = 3{,}82\cdot 10^8\,\mathrm m</span>): <span class="m">a = r(2\pi/T)^2 \approx 2{,}7\cdot 10^{-3}\,\mathrm{m/s^2}</span>.</p>
+</div>
+
+<h3>Astronauti &quot;senza peso&quot;</h3>
+<p>L&#39;astronauta sullo shuttle in orbita attorno alla Terra galleggia nell&#39;abitacolo come se non avesse peso. La gravità agisce ancora, eccome: a qualche centinaio di km di quota <span class="m">g</span> è solo poco minore che a terra, ed è proprio la gravità a fare da forza centripeta che tiene lo shuttle in orbita. L&#39;astronauta e lo shuttle <strong>cadono insieme</strong> attorno alla Terra con la stessa accelerazione, quindi l&#39;astronauta non preme sul pavimento.</p>
+<p>Descritto nel <strong>riferimento dello shuttle</strong>, che ruota attorno alla Terra (non inerziale), l&#39;astronauta è fermo: la forza di gravità è compensata dalla <strong>forza centrifuga</strong> (apparente, lezione 13). Il risultato è l&#39;<strong>assenza di peso apparente</strong>.</p>
 <h2>Altri calcoli ricorrenti</h2>
+<div class="callout esempio">
+
 <ul>
-<li>Forza da legge oraria: <span class="m">18\,\mathrm m</span> in <span class="m">6\,\mathrm s</span> da fermo con <span class="m">10\,\mathrm N</span> → <span class="m">a = 2s/t^2 = 1\,\mathrm{m/s^2}</span>, <span class="m">m = 10\,\mathrm{kg}</span>.</li>
-<li>Aereo con due motori da <span class="m">1{,}40\cdot 10^5\,\mathrm N</span> che accelera a <span class="m">2{,}30\,\mathrm{m/s^2}</span>: <span class="m">m = 2{,}80\cdot 10^5/2{,}30 \approx 1{,}22\cdot 10^5\,\mathrm{kg} = 122\,\mathrm t</span>.</li>
-<li>Mongolfiera ferma in aria: la spinta di Archimede verso l&#39;alto è uguale al suo peso.</li>
+<li><em>Forza dalla legge oraria</em>: una forza di <span class="m">10\,\mathrm N</span> fa percorrere a un corpo, partito da fermo, <span class="m">18\,\mathrm m</span> in <span class="m">6\,\mathrm s</span>. Da <span class="m">s = \tfrac12 at^2</span>: <span class="m">a = 2s/t^2 = 36/36 = 1\,\mathrm{m/s^2}</span>; quindi <span class="m">m = F/a = 10\,\mathrm{kg}</span>.</li>
+<li><em>Aereo al decollo</em>: due motori da <span class="m">1{,}40\cdot 10^5\,\mathrm N</span> ciascuno, accelerazione <span class="m">2{,}30\,\mathrm{m/s^2}</span>, resistenza trascurabile. Spinta totale <span class="m">2{,}80\cdot 10^5\,\mathrm N</span> (non dimenticare il fattore 2!); <span class="m">m = F/a = 2{,}80\cdot 10^5/2{,}30 \approx 1{,}22\cdot 10^5\,\mathrm{kg} = 122</span> tonnellate.</li>
+<li><em>Blocco di <span class="m">60\,\mathrm{kg}</span> con <span class="m">150\,\mathrm N</span>, senza attrito, da fermo</em>: <span class="m">a = 2{,}5\,\mathrm{m/s^2}</span>; dopo <span class="m">3\,\mathrm s</span>, <span class="m">v = 7{,}5\,\mathrm{m/s}</span> e <span class="m">s = 11{,}25\,\mathrm m</span> (lezione 11).</li>
+<li><em>Mongolfiera ferma in aria</em>: risultante nulla ⇒ la spinta di Archimede verso l&#39;alto è uguale al suo peso.</li>
 </ul>
+</div>
+
 <div class="callout esame">
 
-<p>Aperte frequenti: &quot;Cos&#39;è il peso?&quot;, &quot;Cos&#39;è la massa?&quot; (proprietà intrinseca, inerzia, kg, non cambia), &quot;Cos&#39;è una reazione vincolare e perché occorre definirla?&quot; (forza del vincolo che rende possibile l&#39;equilibrio; normale al piano, modulo non noto a priori), &quot;Concetti base della caduta dei gravi&quot; (stessa <span class="m">g</span> per tutti, <span class="m">v = gt</span>, <span class="m">h = \tfrac12 gt^2</span>, Galileo).</p>
+<ul>
+<li><strong>&quot;Cos&#39;è il peso?&quot;</strong> (aperta): forza di attrazione gravitazionale sul corpo, <span class="m">\vec P = m\vec g</span>, vettore verticale verso il basso, in newton; proporzionale alla massa ma dipendente dal luogo (<span class="m">g</span> varia: altri pianeti, latitudine); applicabile in qualunque punto della verticale per il baricentro; la bilancia misura in realtà la reazione vincolare.</li>
+<li><strong>&quot;Cos&#39;è la massa?&quot;</strong> (aperta): proprietà intrinseca e scalare del corpo, misura dell&#39;inerzia (<span class="m">m = F/a</span>, massa inerziale) e della quantità di materia; kg; non cambia da un luogo all&#39;altro; si misura con la bilancia a due piatti (massa gravitazionale), che coincide con quella inerziale.</li>
+<li><strong>&quot;Cos&#39;è una reazione vincolare?&quot;</strong> e <strong>&quot;Perché occorre definire le reazioni vincolari?&quot;</strong> (aperte): forza esercitata da un vincolo (tavolo, piano, filo) sul corpo; necessaria per spiegare con i principi della dinamica l&#39;equilibrio dei corpi appoggiati o appesi (il libro sul tavolo: senza reazione dovrebbe cadere); perpendicolare a una superficie liscia; modulo non noto a priori, uguale e opposto alla risultante delle componenti normali delle altre forze; vale anche in situazioni dinamiche.</li>
+<li><strong>&quot;Esporre i concetti base della caduta dei gravi&quot;</strong> (aperta): senza aria tutti i corpi cadono con la stessa accelerazione <span class="m">g</span> (Galileo, Torre di Pisa), perché peso e inerzia sono proporzionali alla stessa massa; moto uniformemente accelerato: <span class="m">v = gt</span>, <span class="m">h = \tfrac12 gt^2</span>, <span class="m">v = \sqrt{2gh}</span>; con l&#39;aria si arriva a una velocità limite.</li>
+<li><strong>Chiuse</strong>: peso e massa (proporzionali, su Venere stessa massa e peso diverso), reazione su un tavolo con spinta, ascensore e cavi (<span class="m">T - mg = ma</span>), Atwood (<span class="m">g/10</span>), piano inclinato (<span class="m">a \le g</span>, <span class="m">v = \sqrt{2gh}</span>), tensione (stesso modulo, verso opposto, verso l&#39;interno; <span class="m">T = P</span> a velocità costante), forza centripeta, astronauta (centrifuga che compensa la gravità nel riferimento dello shuttle), rampa curva (conta il dislivello), gocce di pioggia.</li>
+</ul>
 </div>
 
 <div class="callout sintesi">
 
 <ul>
-<li><span class="m">\vec P = m\vec g</span>: peso e massa proporzionali ma diversi; la massa non cambia, il peso sì.</li>
-<li>Reazione vincolare: perpendicolare al piano, modulo che si adatta alle altre forze.</li>
-<li>Tensione: stesso modulo ai capi, diretta verso l&#39;interno del filo.</li>
-<li>Piano inclinato: <span class="m">a = g\sin\theta \le g</span>; Atwood: <span class="m">a = \dfrac{m_2 - m_1}{m_1 + m_2}g</span>.</li>
-<li>Moto circolare: <span class="m">F_c = mv^2/r</span> fornita da una forza reale.</li>
+<li><span class="m">\vec P = m\vec g</span>: peso (vettore, N, dipende dal luogo) e massa (scalare, kg, intrinseca) sono diversi ma proporzionali. Il peso agisce lungo la verticale per il baricentro.</li>
+<li>Caduta libera: <span class="m">a = g</span> per tutti; <span class="m">v = gt</span>, <span class="m">h = \tfrac12 gt^2</span>, <span class="m">v = \sqrt{2gh}</span>; <span class="m">\Delta U = mg\Delta h</span> dipende solo dal dislivello.</li>
+<li>Reazione vincolare: forza del vincolo, necessaria per spiegare l&#39;equilibrio; normale alla superficie liscia, modulo che si adatta alle altre forze normali.</li>
+<li>Tensione: lungo il filo, verso l&#39;interno, stesso modulo ai capi; la puleggia ideale cambia solo direzione.</li>
+<li>Forza verticale + peso: <span class="m">T - mg = ma</span>.</li>
+<li>Piano inclinato liscio: <span class="m">a = g\sin\theta \le g</span>, <span class="m">N = mg\cos\theta</span>; in fondo <span class="m">v = \sqrt{2gh}</span>, come in caduta libera.</li>
+<li>Atwood: <span class="m">a = \dfrac{m_2 - m_1}{m_1 + m_2}g</span>, <span class="m">T = \dfrac{2m_1m_2}{m_1 + m_2}g</span>.</li>
+<li>Corpi collegati: stessa accelerazione; sistema intero per <span class="m">a</span>, corpi singoli per le forze interne.</li>
+<li>Forza centripeta <span class="m">F_c = mv^2/R = m\omega^2 R</span>: ruolo di una forza vera; se il filo si spezza il corpo va lungo la tangente.</li>
 </ul>
 </div>

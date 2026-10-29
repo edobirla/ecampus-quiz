@@ -1,72 +1,268 @@
 <h1>Lezione 41 — Curve algebriche</h1>
-<p>Le curve algebriche generalizzano le rette aumentando il grado dei polinomi. Si lavora nel piano euclideo <span class="m">V^2_E</span> con un riferimento cartesiano <span class="m">(O;x,y)</span>.</p>
+<h2>Introduzione</h2>
+<p>Le rette del piano sono gli insiemi di zeri dei polinomi di <strong>grado 1</strong> in <span class="m">x,y</span>. Le <strong>curve algebriche</strong> sono la generalizzazione naturale: gli zeri dei polinomi di <strong>grado qualsiasi</strong>. Si parte dall&#39;esempio più familiare dopo la retta, la circonferenza, poi si introducono le nozioni generali: grado, intersezioni con una retta e molteplicità, teorema di Bézout, tangenti, punti singolari, punti all&#39;infinito. Le coniche (grado 2) sono il caso studiato in dettaglio nelle lezioni successive.</p>
+<p>In tutta la lezione si lavora nel piano euclideo <span class="m">V^2_E</span> con un riferimento cartesiano fissato <span class="m">(O;x,y)</span>, identificando i vettori geometrici con le colonne delle loro coordinate.</p>
 <h2>Circonferenze</h2>
-<p><strong>Definizione 41.1.</strong> La <strong>circonferenza</strong> di centro <span class="m">C</span> e raggio <span class="m">r&gt;0</span> è l&#39;insieme dei punti a distanza <span class="m">r</span> da <span class="m">C</span>. La condizione <span class="m">\lVert{}^t(x\ y)-{}^t(x_C\ y_C)\rVert=r</span>, elevata al quadrato, dà
-<span class="m d">(x-x_C)^2+(y-y_C)^2=r^2\iff x^2+y^2-2x_Cx-2y_Cy+x_C^2+y_C^2-r^2=0.</span>
-L&#39;equazione <span class="m">x^2+y^2+\alpha x+\beta y+\gamma=0</span> è una circonferenza, con centro <span class="m">{}^t\!\left(-\frac\alpha2\ -\frac\beta2\right)</span> e raggio <span class="m">\sqrt{\left(\frac\alpha2\right)^2+\left(\frac\beta2\right)^2-\gamma}</span>, se e solo se <span class="m">\left(\frac\alpha2\right)^2+\left(\frac\beta2\right)^2-\gamma&gt;0</span>.</p>
+<p><strong>Definizione 41.1.</strong> La <strong>circonferenza</strong> di centro <span class="m">C</span> e raggio <span class="m">r&gt;0</span> è l&#39;insieme dei punti che hanno distanza <span class="m">r</span> da <span class="m">C</span>.</p>
+<p><strong>Notazione 41.2.</strong> Circonferenze, curve e superfici algebriche si indicano con lettere maiuscole calligrafiche: <span class="m">\mathcal{C}</span>, <span class="m">\mathcal{S}</span>, …</p>
+<p><strong>Osservazione 41.3 – equazione della circonferenza.</strong> Il punto <span class="m">{}^t(x\ y)</span> ha distanza <span class="m">r</span> da <span class="m">C={}^t(x_C\ y_C)</span> se e solo se
+<span class="m d">\left\lVert\begin{pmatrix}x\\y\end{pmatrix}-\begin{pmatrix}x_C\\y_C\end{pmatrix}\right\rVert=r.</span>
+Entrambi i membri sono <strong>non negativi</strong>, quindi elevare al quadrato dà un&#39;uguaglianza equivalente (non si aggiungono soluzioni):
+<span class="m d">(x-x_C)^2+(y-y_C)^2=r^2.</span>
+Sviluppando i quadrati:
+<span class="m d">x^2+y^2-2x_Cx-2y_Cy+x_C^2+y_C^2-r^2=0.</span>
+Confrontando con <span class="m">x^2+y^2+\alpha x+\beta y+\gamma=0</span>: <span class="m">\alpha=-2x_C</span>, <span class="m">\beta=-2y_C</span>, <span class="m">\gamma=x_C^2+y_C^2-r^2</span>. Ricavando:
+<span class="m d">C=\begin{pmatrix}-\frac\alpha2\\-\frac\beta2\end{pmatrix},\qquad r^2=x_C^2+y_C^2-\gamma=\left(\frac\alpha2\right)^2+\left(\frac\beta2\right)^2-\gamma.</span>
+Quindi <span class="m">x^2+y^2+\alpha x+\beta y+\gamma=0</span> è una circonferenza <strong>se e solo se</strong> <span class="m">\left(\frac\alpha2\right)^2+\left(\frac\beta2\right)^2-\gamma&gt;0</span>, e allora <span class="m">r=\sqrt{\left(\frac\alpha2\right)^2+\left(\frac\beta2\right)^2-\gamma}</span>. (Se l&#39;espressione è <span class="m">0</span> l&#39;equazione dà un solo punto; se è negativa nessun punto.)</p>
+<p>Riconoscimento: i coefficienti di <span class="m">x^2</span> e <span class="m">y^2</span> devono essere <strong>uguali</strong> (si divide per essi se diversi da 1) e <strong>non</strong> deve esserci il termine <span class="m">xy</span>.</p>
 <div class="callout esempio">
 
-<p><span class="m">x^2+y^2+4x-2y-4=0</span> ha centro <span class="m">{}^t(-2\ 1)</span> e raggio <span class="m">\sqrt{4+1+4}=3</span>.</p>
+<p><strong>Esempio 41.4.</strong> Centro <span class="m">C={}^t(-2\ 1)</span>, raggio <span class="m">3</span>: <span class="m">(x+2)^2+(y-1)^2=9</span>. Sviluppando: <span class="m">x^2+4x+4+y^2-2y+1-9=0</span>, cioè <span class="m">x^2+y^2+4x-2y-4=0</span>. Al contrario, da questa equazione: <span class="m">\alpha=4</span>, <span class="m">\beta=-2</span>, <span class="m">\gamma=-4</span>, centro <span class="m">{}^t\!\left(-\frac42\ \ -\frac{-2}{2}\right)={}^t(-2\ 1)</span>, raggio <span class="m">\sqrt{2^2+(-1)^2-(-4)}=\sqrt{4+1+4}=\sqrt9=3</span>.</p>
 </div>
 
-<p>Una retta e una circonferenza si intersecano in 0, 1 o 2 punti; la retta è <strong>secante</strong>, <strong>tangente</strong> o <strong>esterna</strong> se <span class="m">\operatorname{dist}(C,s)</span> è rispettivamente <span class="m">&lt;r</span>, <span class="m">=r</span>, <span class="m">&gt;r</span> (Osservazione 41.7). Per esempio <span class="m">x+y+4=0</span> è secante alla circonferenza precedente: la incontra in <span class="m">{}^t(-5\ 1)</span> e <span class="m">{}^t(-2\ -2)</span> e dista <span class="m">\frac{3\sqrt2}{2}&lt;3</span> dal centro.</p>
+<p><strong>Osservazione 41.5.</strong> Una circonferenza e una retta <span class="m">s:\ ax+by+c=0</span> si intersecano in <strong>zero, uno o due</strong> punti: risolvendo l&#39;equazione della retta rispetto a un&#39;incognita e sostituendo nell&#39;equazione della circonferenza si ottiene un&#39;equazione di grado 2, che ha al più due soluzioni distinte.</p>
+<p><strong>Definizione 41.6.</strong> Una retta è <strong>secante</strong> se interseca la circonferenza in due punti, <strong>tangente</strong> se la interseca in un punto, <strong>esterna</strong> se non la interseca.</p>
+<p><strong>Osservazione 41.7.</strong> Si decide con la distanza del centro dalla retta, <span class="m">\operatorname{dist}(C,s)=\frac{|ax_C+by_C+c|}{\sqrt{a^2+b^2}}</span>:</p>
+<table>
+<thead>
+<tr>
+<th><span class="m">\operatorname{dist}(C,s)</span></th>
+<th>Posizione</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><span class="m">&lt;r</span></td>
+<td>secante</td>
+</tr>
+<tr>
+<td><span class="m">=r</span></td>
+<td>tangente</td>
+</tr>
+<tr>
+<td><span class="m">&gt;r</span></td>
+<td>esterna</td>
+</tr>
+</tbody></table>
+<div class="callout esempio">
+
+<p><strong>Esempio 41.8.</strong> Circonferenza <span class="m">(x+2)^2+(y-1)^2=9</span> e retta <span class="m">s:\ x+y+4=0</span>.</p>
+<ul>
+<li>Con le intersezioni: <span class="m">y=-x-4</span>, quindi <span class="m">y-1=-x-5</span>; sostituendo, <span class="m">(x+2)^2+(x+5)^2=9\Rightarrow 2x^2+14x+29=9\Rightarrow x^2+7x+10=0\Rightarrow(x+2)(x+5)=0</span>. Due soluzioni: <span class="m">x=-5</span>, <span class="m">y=1</span> e <span class="m">x=-2</span>, <span class="m">y=-2</span>, cioè <span class="m">P_1={}^t(-5\ 1)</span> e <span class="m">P_2={}^t(-2\ -2)</span>: <strong>secante</strong>.</li>
+<li>Con la distanza: <span class="m">\operatorname{dist}(C,s)=\frac{|-2+1+4|}{\sqrt2}=\frac3{\sqrt2}=\frac{3\sqrt2}2\approx2{,}12&lt;3</span>: secante, come previsto.</li>
+</ul>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Esercizio 41.2.</strong> Posizione della retta <span class="m">x+y-2=0</span> rispetto a <span class="m">(x+1)^2+(y+1)^2=8</span>. Centro <span class="m">{}^t(-1\ -1)</span>, raggio <span class="m">\sqrt8=2\sqrt2</span>. Distanza: <span class="m">\frac{|-1-1-2|}{\sqrt2}=\frac4{\sqrt2}=2\sqrt2=r</span>: <strong>tangente</strong>.</p>
+</div>
+
 <h2>Curve algebriche</h2>
-<p><strong>Definizione 41.9.</strong> Una <strong>curva algebrica di grado <span class="m">d</span></strong> è un polinomio <span class="m">p(x,y)\in\mathbb{R}[x,y]</span> con <span class="m">\deg(p)=d&gt;0</span>. Per abuso di notazione (41.10) si chiama così anche l&#39;insieme dei punti con <span class="m">p(x,y)=0</span>, l&#39;<strong>equazione</strong> della curva.</p>
+<p><strong>Definizione 41.9.</strong> Una <strong>curva algebrica di grado <span class="m">d</span></strong> è un polinomio <span class="m">p(x,y)\in\mathbb{R}[x,y]</span> con <span class="m">\deg(p)=d&gt;0</span>.</p>
+<p><strong>Notazione 41.10.</strong> Con un abuso di notazione si chiama curva algebrica anche l&#39;<strong>insieme</strong> dei punti che soddisfano <span class="m">p(x,y)=0</span>, detta <strong>equazione</strong> della curva. Il grado di un polinomio in due variabili è il grado massimo dei suoi monomi, dove il grado di <span class="m">x^iy^j</span> è <span class="m">i+j</span>.</p>
 <div class="callout esempio">
 
-<p>Rette <span class="m">ax+by+c=0</span> (grado 1); circonferenze; <span class="m">x^2-y^2=1</span>; <span class="m">x^2+y^2=-1</span> (vuota); <span class="m">(x-\alpha)^2+(y-\beta)^2=0</span> (un solo punto); <span class="m">(2x-y-1)(x+y+1)=0</span> (due rette); <span class="m">x^3+x^2-y^2=0</span> (grado 3).</p>
+<p><strong>Esempio 41.11.</strong></p>
+<ol>
+<li><span class="m">ax+by+c=0</span> con <span class="m">(a,b)\neq(0,0)</span>: una <strong>retta</strong>, grado 1.</li>
+<li><span class="m">x^2+y^2+\alpha x+\beta y+\gamma=0</span> con <span class="m">\left(\frac\alpha2\right)^2+\left(\frac\beta2\right)^2-\gamma&gt;0</span>: una <strong>circonferenza</strong>, grado 2.</li>
+<li><span class="m">x^2-y^2=1</span>, polinomio <span class="m">x^2-y^2-1</span>, grado 2 (un&#39;iperbole).</li>
+<li><span class="m">x^2+y^2=-1</span>: nessun punto reale la soddisfa, la curva come insieme è <strong>vuota</strong>; polinomio <span class="m">x^2+y^2+1</span>, grado 2.</li>
+<li><span class="m">(x-\alpha)^2+(y-\beta)^2=0</span>: solo il punto <span class="m">{}^t(\alpha\ \beta)</span>; grado 2.</li>
+<li><span class="m">(2x-y-1)(x+y+1)=0</span>: <strong>unione di due rette</strong>; grado 2.</li>
+<li><span class="m">x^3+x^2-y^2=0</span>: grado 3.</li>
+</ol>
 </div>
 
-<p><strong>Osservazione 41.12.</strong> Il polinomio non è determinato dall&#39;insieme: <span class="m">k\,p</span> (<span class="m">k\neq0</span>) e <span class="m">p^n</span> danno gli stessi punti. <strong>Notazione 41.14:</strong> le soluzioni in <span class="m">\mathbb{C}^2</span> sono i <strong>punti complessi</strong> di <span class="m">C</span> (complessificazione); quelli con coordinate reali sono i punti reali.</p>
-<p><strong>Teorema 41.15 (Bézout, caso affine).</strong> Due curve algebriche di grado <span class="m">d_1</span> e <span class="m">d_2</span> definite da polinomi che non sono multipli di uno stesso polinomio di grado positivo si intersecano in <strong>al più <span class="m">d_1\cdot d_2</span></strong> punti complessi.</p>
-<p><strong>Osservazione 41.16 – Notazione 41.17.</strong> Intersecando <span class="m">C</span> (grado <span class="m">d</span>) con una retta, si ricava un&#39;incognita dalla retta e si sostituisce: si ottiene un&#39;equazione di grado al più <span class="m">d</span>. Un punto che corrisponde a una radice di molteplicità <span class="m">m</span> è un punto di intersezione di <strong>molteplicità <span class="m">m</span></strong>; se si ottiene il polinomio nullo la retta è contenuta nella curva e i punti hanno molteplicità <span class="m">\infty</span>.</p>
+<p><strong>Osservazione 41.12.</strong> Il polinomio <strong>non</strong> è determinato dall&#39;insieme dei punti: <span class="m">k\,p(x,y)</span> (<span class="m">k\neq0</span>) e <span class="m">\big(p(x,y)\big)^n</span> (<span class="m">n\geqslant1</span>) hanno gli stessi zeri. Come polinomi sono curve diverse (per esempio <span class="m">p^2</span> ha grado doppio): per questo si parla di &quot;abuso di notazione&quot;. Di solito non si distingue, salvo quando serve.</p>
+<p><strong>Osservazione 41.13 – Notazione 41.14.</strong> Di norma si considerano solo le soluzioni reali. Quando si considerano anche le soluzioni <span class="m">{}^t(x\ y)\in\mathbb{C}^2</span> (<strong>complessificazione</strong>), queste si chiamano <strong>punti complessi</strong> della curva; quelli con entrambe le coordinate reali sono i <strong>punti reali</strong>. Per esempio <span class="m">x^2+y^2+1=0</span> non ha punti reali, ma ha punti complessi, come <span class="m">{}^t(i\ 0)</span>.</p>
+<p><strong>Teorema 41.15 (Bézout, caso affine).</strong> Due curve algebriche di grado <span class="m">d_1</span> e <span class="m">d_2</span>, definite da polinomi che <strong>non sono multipli di uno stesso polinomio di grado positivo</strong> (cioè senza componenti comuni), si intersecano in <strong>al più <span class="m">d_1\cdot d_2</span></strong> punti complessi.</p>
+<p>La dispensa non lo dimostra; analizza solo il caso in cui una curva è una retta.</p>
 <div class="callout esempio">
 
-<p><span class="m">x^3+3x^2-y^2=0</span> con <span class="m">y=2</span>: <span class="m">x^3+3x^2-4=(x+2)^2(x-1)=0</span>. Il punto <span class="m">P={}^t(-2\ 2)</span> ha molteplicità 2, <span class="m">Q={}^t(1\ 2)</span> molteplicità 1.</p>
+<p><strong>Bézout per circonferenza e parabola.</strong> <span class="m">x^2+y^2=1</span> (grado 2) e <span class="m">y=x^2</span> (grado 2): al più <span class="m">2\cdot2=4</span> punti complessi. Sostituendo <span class="m">x^2=y</span>: <span class="m">y+y^2=1</span>, cioè <span class="m">y=\frac{-1\pm\sqrt5}2</span>. Con <span class="m">y=\frac{-1+\sqrt5}2&gt;0</span> si ha <span class="m">x=\pm\sqrt y</span>: due punti reali. Con <span class="m">y=\frac{-1-\sqrt5}2&lt;0</span> si ha <span class="m">x=\pm i\sqrt{|y|}</span>: due punti complessi non reali. Totale 4, il massimo.</p>
+</div>
+
+<p><strong>Osservazione 41.16.</strong> Siano <span class="m">\mathcal{C}:\ p(x,y)=0</span> di grado <span class="m">d</span> e <span class="m">s:\ ax+by+c=0</span>. Le intersezioni sono le soluzioni di <span class="m">\begin{cases}p(x,y)=0\\ax+by+c=0\end{cases}</span>. Ricavando un&#39;incognita dalla retta e sostituendo in <span class="m">p</span> si ottiene un polinomio in una variabile di grado <strong>al più <span class="m">d</span></strong>, che ha al più <span class="m">d</span> radici contate con molteplicità. Se si ottiene il <strong>polinomio nullo</strong>, ogni punto della retta soddisfa l&#39;equazione: la retta è <strong>contenuta</strong> nella curva.</p>
+<p><strong>Notazione 41.17.</strong> Un punto di intersezione che corrisponde a una radice di <strong>molteplicità <span class="m">m</span></strong> si dice punto di intersezione <strong>di molteplicità <span class="m">m</span></strong>. Se la retta è contenuta nella curva, i suoi punti hanno molteplicità <span class="m">\infty</span>.</p>
+<div class="callout esempio">
+
+<p><strong>Esempio 41.18.</strong></p>
+<ol>
+<li><span class="m">\mathcal{C}:\ x^3+3x^2-y^2=0</span> e <span class="m">s:\ y-2=0</span>. Da <span class="m">s</span>, <span class="m">y=2</span>; sostituendo: <span class="m">x^3+3x^2-4=0</span>. <span class="m">x=1</span> è radice (<span class="m">1+3-4=0</span>); dividendo per <span class="m">x-1</span> (Ruffini) si ottiene <span class="m">x^2+4x+4=(x+2)^2</span>. Quindi <span class="m">x^3+3x^2-4=(x-1)(x+2)^2</span>: <span class="m">P={}^t(-2\ 2)</span> ha <strong>molteplicità 2</strong>, <span class="m">Q={}^t(1\ 2)</span> <strong>molteplicità 1</strong>. Totale <span class="m">2+1=3=</span> grado della curva.</li>
+<li><span class="m">\mathcal{C}:\ (x+y-1)(y+1)=0</span> è la coppia di rette <span class="m">s_1:\ x+y-1=0</span> e <span class="m">s_2:\ y+1=0</span>. La retta <span class="m">s_1</span> è contenuta nella curva: tutti i suoi punti hanno molteplicità <span class="m">\infty</span> (qui Bézout non si applica: i due polinomi hanno il fattore comune <span class="m">x+y-1</span>). La retta <span class="m">s:\ x-2=0</span>: con <span class="m">x=2</span> si ottiene <span class="m">(y+1)(y+1)=(y+1)^2=0</span>, una radice doppia: <span class="m">P={}^t(2\ -1)</span> (il punto in cui <span class="m">s_1</span> e <span class="m">s_2</span> si incontrano) con <strong>molteplicità 2</strong>.</li>
+</ol>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Molteplicità con una conica degenere.</strong> <span class="m">\mathcal{C}:\ x^2-y^2+2y-1=0</span> e <span class="m">s:\ 2x-y+1=0</span>. Si nota <span class="m">-y^2+2y-1=-(y-1)^2</span>. Da <span class="m">s</span>, <span class="m">y=2x+1</span>, quindi <span class="m">y-1=2x</span>: <span class="m">x^2-(2x)^2=-3x^2=0</span>, radice <span class="m">x=0</span> <strong>doppia</strong>. Il punto <span class="m">{}^t(0\ 1)</span> ha molteplicità 2: la retta è (algebricamente) tangente lì.</p>
 </div>
 
 <h2>Tangenti e punti singolari</h2>
-<p><strong>Definizione 41.19.</strong> La <strong>retta tangente</strong> a <span class="m">C</span> in <span class="m">P</span> è il limite (se esiste ed è unico) delle rette per <span class="m">P</span> e per un altro punto <span class="m">Q</span> di <span class="m">C</span> quando <span class="m">Q\to P</span>. <strong>Definizione 41.21:</strong> una retta è <strong>algebricamente tangente</strong> in <span class="m">P</span> se interseca <span class="m">C</span> in <span class="m">P</span> con molteplicità almeno 2.</p>
-<p><strong>Definizione 41.23.</strong> La <strong>derivata parziale</strong> <span class="m">\frac{\partial p}{\partial x_i}</span> si ottiene considerando <span class="m">p</span> come polinomio nella sola <span class="m">x_i</span> e sostituendo ogni monomio <span class="m">c\,x_i^\alpha</span> con <span class="m">\alpha c\,x_i^{\alpha-1}</span>. Esempio: <span class="m">p=2x^3y^2-x+3</span> ha <span class="m">\frac{\partial p}{\partial x}=6x^2y^2-1</span>, <span class="m">\frac{\partial p}{\partial y}=4x^3y</span>.</p>
-<p><strong>Definizione 41.25.</strong> <span class="m">P</span> è <strong>singolare</strong> se <span class="m">\frac{\partial p}{\partial x}(P)=\frac{\partial p}{\partial y}(P)=0</span>.</p>
+<p><strong>Definizione 41.19.</strong> Dato un punto <span class="m">P</span> di <span class="m">\mathcal{C}</span>, una retta è <strong>tangente</strong> a <span class="m">\mathcal{C}</span> in <span class="m">P</span> se è il <strong>limite delle rette per <span class="m">P</span> e per un altro punto <span class="m">Q</span> di <span class="m">\mathcal{C}</span></strong> quando <span class="m">Q</span> si avvicina a <span class="m">P</span>, a condizione che esista <strong>esattamente una</strong> retta limite. È la definizione &quot;geometrica&quot; (la secante che diventa tangente).</p>
 <div class="callout esempio">
 
-<p><span class="m">x^3+3x^2-y^2=0</span>: <span class="m">\frac{\partial p}{\partial x}=3x^2+6x</span>, <span class="m">\frac{\partial p}{\partial y}=-2y</span>; si annullano in <span class="m">(0,0)</span> e <span class="m">(-2,0)</span>, ma solo <span class="m">O</span> sta sulla curva: <span class="m">O</span> è l&#39;unico punto singolare.</p>
+<p><strong>Esempio 41.20.</strong></p>
+<ol>
+<li>Nell&#39;Esempio 41.18-1 la retta <span class="m">y=2</span> è tangente alla curva in <span class="m">P={}^t(-2\ 2)</span>.</li>
+<li>Nell&#39;Esempio 41.18-2, <span class="m">s_1</span> è tangente alla curva in ogni suo punto tranne <span class="m">P={}^t(2\ -1)</span>, e lo stesso vale per <span class="m">s_2</span>. In <span class="m">P</span> <strong>non c&#39;è</strong> tangente: avvicinando <span class="m">Q</span> a <span class="m">P</span> lungo <span class="m">s_1</span> la retta limite è <span class="m">s_1</span>, lungo <span class="m">s_2</span> è <span class="m">s_2</span>; le rette limite sono due, non una.</li>
+</ol>
 </div>
 
-<p><strong>Proposizione 41.27.</strong> Se <span class="m">P</span> non è singolare esiste esattamente una tangente ed esattamente una tangente algebrica, coincidono e hanno forma
-<span class="m d">\frac{\partial p}{\partial x}(x_P,y_P)\,(x-x_P)+\frac{\partial p}{\partial y}(x_P,y_P)\,(y-y_P)=0.</span>
-Esempio 41.28: in <span class="m">{}^t(-2\ 2)</span> della curva <span class="m">x^3+3x^2-y^2=0</span> la tangente è <span class="m">0(x+2)-4(y-2)=0</span>, cioè <span class="m">y-2=0</span>. D&#39;ora in poi &quot;tangente&quot; indica entrambe le nozioni.</p>
+<p><strong>Definizione 41.21.</strong> Una retta è <strong>algebricamente tangente</strong> a <span class="m">\mathcal{C}</span> in <span class="m">P</span> se interseca <span class="m">\mathcal{C}</span> in <span class="m">P</span> con <strong>molteplicità almeno 2</strong> (<span class="m">\infty</span> conta come maggiore di 2). È la definizione &quot;algebrica&quot; (radice doppia).</p>
+<div class="callout esempio">
+
+<p><strong>Esempio 41.22.</strong></p>
+<ol>
+<li>Nell&#39;Esempio 41.18-1 la retta <span class="m">y=2</span> è algebricamente tangente in <span class="m">P</span> (molteplicità 2), non in <span class="m">Q</span> (molteplicità 1).</li>
+<li>Nell&#39;Esempio 41.18-2, <span class="m">s_1</span> e <span class="m">s_2</span> sono algebricamente tangenti in ogni loro punto (molteplicità <span class="m">\infty</span>). Inoltre <strong>ogni</strong> retta per <span class="m">P={}^t(2\ -1)</span> è algebricamente tangente in <span class="m">P</span>: la incontra con molteplicità almeno 2 (esattamente 2 per le rette diverse da <span class="m">s_1</span>, <span class="m">s_2</span>, come <span class="m">x-2=0</span>).</li>
+</ol>
+</div>
+
+<p>In generale le due nozioni non coincidono (nel punto <span class="m">P</span> dell&#39;esempio non c&#39;è tangente geometrica ma ci sono infinite tangenti algebriche). Coincidono nei punti &quot;buoni&quot;, che si riconoscono con le derivate parziali.</p>
+<p><strong>Definizione 41.23.</strong> La <strong>derivata parziale</strong> di un polinomio <span class="m">p(x_1,\dots,x_n)</span> rispetto a <span class="m">x_i</span>, indicata <span class="m">\frac{\partial p}{\partial x_i}</span>, si ottiene considerando <span class="m">p</span> come polinomio nella sola <span class="m">x_i</span> (le altre variabili sono costanti) e sostituendo ogni monomio <span class="m">c\,x_i^\alpha</span> con <span class="m">\alpha c\,x_i^{\alpha-1}</span> (i monomi senza <span class="m">x_i</span> diventano <span class="m">0</span>).</p>
+<div class="callout esempio">
+
+<p><strong>Esempio 41.24.</strong></p>
+<ol>
+<li><span class="m">p(x,y)=2x^3y^2-x+3</span>: <span class="m">\frac{\partial p}{\partial x}=6x^2y^2-1</span> (in <span class="m">2x^3y^2</span>, <span class="m">y^2</span> è costante); <span class="m">\frac{\partial p}{\partial y}=4x^3y</span> (i termini <span class="m">-x</span> e <span class="m">3</span> non contengono <span class="m">y</span>).</li>
+<li><span class="m">p(X,Y,T)=3X^2-X^2T-4XYT</span>: <span class="m">\frac{\partial p}{\partial X}=6X-2XT-4YT</span>, <span class="m">\frac{\partial p}{\partial Y}=-4XT</span>, <span class="m">\frac{\partial p}{\partial T}=-X^2-4XY</span>.</li>
+</ol>
+</div>
+
+<p><strong>Definizione 41.25.</strong> Un punto <span class="m">P={}^t(x_P\ y_P)</span> di <span class="m">\mathcal{C}:\ p(x,y)=0</span> è <strong>singolare</strong> se
+<span class="m d">\frac{\partial p}{\partial x}(x_P,y_P)=0\quad\text{e}\quad\frac{\partial p}{\partial y}(x_P,y_P)=0.</span>
+Attenzione: <span class="m">P</span> deve anche <strong>stare sulla curva</strong>.</p>
+<div class="callout esempio">
+
+<p><strong>Esempio 41.26.</strong> <span class="m">x^3+3x^2-y^2=0</span>: <span class="m">\frac{\partial p}{\partial x}=3x^2+6x</span>, <span class="m">\frac{\partial p}{\partial y}=-2y</span>. Il sistema <span class="m">\begin{cases}3x^2+6x=0\\-2y=0\end{cases}</span> dà <span class="m">y=0</span> e <span class="m">3x(x+2)=0</span>, cioè <span class="m">(0,0)</span> e <span class="m">(-2,0)</span>. Ora controllo l&#39;appartenenza alla curva: <span class="m">p(0,0)=0</span> ✓, <span class="m">p(-2,0)=-8+12-0=4\neq0</span> ✗. L&#39;unico punto singolare è <span class="m">O</span>. (Vicino a <span class="m">O</span> la curva è <span class="m">y^2\approx3x^2</span>, cioè <span class="m">y\approx\pm\sqrt3x</span>: due rami che si incrociano, un &quot;nodo&quot;.)</p>
+</div>
+
+<p><strong>Proposizione 41.27.</strong> Se <span class="m">P</span> <strong>non</strong> è singolare:</p>
+<ul>
+<li>esiste esattamente una retta tangente ed esattamente una retta algebricamente tangente a <span class="m">\mathcal{C}</span> in <span class="m">P</span>;</li>
+<li>coincidono;</li>
+<li>hanno forma implicita
+<span class="m d">\frac{\partial p}{\partial x}(x_P,y_P)\,(x-x_P)+\frac{\partial p}{\partial y}(x_P,y_P)\,(y-y_P)=0.</span></li>
+</ul>
+<p>Il vettore <span class="m">{}^t\!\left(\frac{\partial p}{\partial x}(P)\ \ \frac{\partial p}{\partial y}(P)\right)</span> (il <strong>gradiente</strong>) è un vettore <strong>normale</strong> alla tangente: la formula è l&#39;equazione della retta per <span class="m">P</span> con quel vettore normale.</p>
+<div class="callout esempio">
+
+<p><strong>Esempio 41.28.</strong> In <span class="m">P={}^t(-2\ 2)</span> della curva <span class="m">x^3+3x^2-y^2=0</span>: <span class="m">\frac{\partial p}{\partial x}(-2,2)=3\cdot4+6\cdot(-2)=0</span>, <span class="m">\frac{\partial p}{\partial y}(-2,2)=-4</span>. Non sono entrambe nulle: <span class="m">P</span> non è singolare, e la tangente è <span class="m">0\cdot(x+2)-4(y-2)=0</span>, cioè <span class="m">y-2=0</span>, la retta dell&#39;Esempio 41.18 (che infatti incontrava la curva in <span class="m">P</span> con molteplicità 2).</p>
+<p><strong>Controllo con la circonferenza.</strong> <span class="m">x^2+y^2-25=0</span> in <span class="m">P={}^t(3\ 4)</span>: derivate <span class="m">2x=6</span> e <span class="m">2y=8</span>, tangente <span class="m">6(x-3)+8(y-4)=0</span>, cioè <span class="m">3x+4y-25=0</span>. Il gradiente <span class="m">{}^t(6\ 8)</span> è parallelo al raggio <span class="m">{}^t(3\ 4)</span>: la tangente è perpendicolare al raggio, come deve.</p>
+</div>
+
+<p><strong>Notazione 41.29.</strong> D&#39;ora in poi &quot;tangente&quot; indica entrambe le nozioni, salvo quando serve distinguerle.</p>
 <h2>Curve algebriche nel piano proiettivo</h2>
-<p><strong>Definizione 41.31.</strong> L&#39;<strong>equazione omogenea</strong> della curva <span class="m">p(x,y)=0</span> di grado <span class="m">d</span> è
-<span class="m d">T^d\,p\!\left(\frac XT,\frac YT\right)=0</span>
-(omogeneizzazione); tutti i monomi hanno grado <span class="m">d</span>. Le nuove soluzioni hanno <span class="m">T=0</span>: sono i <strong>punti all&#39;infinito</strong> di <span class="m">C</span>, le direzioni in cui la curva &quot;va all&#39;infinito&quot;.</p>
+<p><strong>Osservazione 41.30 – omogeneizzazione di una curva.</strong> Sia <span class="m">\mathcal{C}:\ p(x,y)=0</span> di grado <span class="m">d</span>. Un punto <span class="m">{}^t(x\ y)</span> della curva è <span class="m">[X\ Y\ T]</span> con <span class="m">x=\frac XT</span>, <span class="m">y=\frac YT</span>. Sostituendo, <span class="m">p\!\left(\frac XT,\frac YT\right)=0</span>; moltiplicando per <span class="m">T^d</span> (che toglie tutti i denominatori, il più alto è <span class="m">T^d</span>):
+<span class="m d">T^d\,p\!\left(\frac XT,\frac YT\right)=0.</span>
+<strong>Tutti i monomi hanno grado <span class="m">d</span></strong> (si dice polinomio omogeneo), quindi ogni multiplo di una soluzione è ancora una soluzione e ha senso parlare di punti di <span class="m">\mathbb{P}^2(\mathbb{R})</span>. Le soluzioni nuove hanno <span class="m">T=0</span>: sono punti all&#39;infinito.</p>
+<p><strong>In pratica:</strong> a ogni monomio si moltiplica la potenza di <span class="m">T</span> che manca per arrivare al grado <span class="m">d</span>.</p>
+<p><strong>Definizione 41.31.</strong> <span class="m">T^d\,p\!\left(\frac XT,\frac YT\right)=0</span> è l&#39;<strong>equazione omogenea</strong> di <span class="m">\mathcal{C}</span>; il passaggio è l&#39;<strong>omogeneizzazione</strong>; i punti con <span class="m">T=0</span> che la soddisfano sono i <strong>punti all&#39;infinito</strong> (o impropri) di <span class="m">\mathcal{C}</span>.</p>
 <div class="callout esempio">
 
-<p><span class="m">x^2-y^2-1=0</span> diventa <span class="m">X^2-Y^2-T^2=0</span>; con <span class="m">T=0</span> si ottengono <span class="m">[1\ 1\ 0]</span> e <span class="m">[1\ -1\ 0]</span>. <span class="m">x^3+x^2-y^2=0</span> diventa <span class="m">X^3+X^2T-Y^2T=0</span>, con l&#39;unico punto all&#39;infinito <span class="m">[0\ 1\ 0]</span>.</p>
+<p><strong>Esempio 41.32.</strong></p>
+<ol>
+<li><span class="m">x^2-y^2-1=0</span> (grado 2) diventa <span class="m">X^2-Y^2-T^2=0</span>. Punti all&#39;infinito: <span class="m">T=0\Rightarrow X^2-Y^2=(X-Y)(X+Y)=0</span>, soluzioni <span class="m">(\alpha,\alpha,0)</span> e <span class="m">(\alpha',-\alpha',0)</span>: <span class="m">P_\infty=[1\ 1\ 0]</span> e <span class="m">P'_\infty=[1\ -1\ 0]</span>. Sono le <strong>direzioni degli asintoti</strong> <span class="m">y=\pm x</span> dell&#39;iperbole: le direzioni in cui la curva &quot;va all&#39;infinito&quot;.</li>
+<li><span class="m">x^3+x^2-y^2=0</span> (grado 3): <span class="m">x^3\to X^3</span>, <span class="m">x^2\to X^2T</span>, <span class="m">y^2\to Y^2T</span>, quindi <span class="m">X^3+X^2T-Y^2T=0</span>. Con <span class="m">T=0</span>: <span class="m">X^3=0\Rightarrow X=0</span>, soluzioni <span class="m">(0,\alpha,0)</span>: un solo punto all&#39;infinito, <span class="m">[0\ 1\ 0]</span> (la direzione verticale).</li>
+<li><span class="m">x^3-xy^2-2x^2+4=0</span> (grado 3) diventa <span class="m">X^3-XY^2-2X^2T+4T^3=0</span>. Con <span class="m">T=0</span>: <span class="m">X(X^2-Y^2)=X(X-Y)(X+Y)=0</span>, tre punti all&#39;infinito: <span class="m">[0\ 1\ 0]</span>, <span class="m">[1\ 1\ 0]</span>, <span class="m">[1\ -1\ 0]</span>. (Attenzione: <span class="m">[0\ 0\ 0]</span> non è un punto.)</li>
+</ol>
 </div>
 
-<p><strong>Teorema 41.33 (Bézout, caso proiettivo).</strong> Le estensioni a <span class="m">\mathbb{P}^2(\mathbb{R})</span> di due curve di grado <span class="m">d_1</span> e <span class="m">d_2</span>, definite da polinomi che non sono multipli di uno stesso polinomio di grado positivo, si intersecano in <strong>esattamente <span class="m">d_1\cdot d_2</span></strong> punti complessi, contati con la loro molteplicità. Vale anche per curve come la retta all&#39;infinito.</p>
-<p><strong>Definizione 41.37.</strong> <span class="m">P=[X_P\ Y_P\ T_P]</span> è <strong>singolare</strong> se si annullano le <strong>tre</strong> derivate parziali <span class="m">\frac{\partial p}{\partial X}</span>, <span class="m">\frac{\partial p}{\partial Y}</span>, <span class="m">\frac{\partial p}{\partial T}</span> in <span class="m">P</span>. I punti singolari affini (Definizione 41.25) sono esattamente quelli proiettivi non all&#39;infinito (Proposizione 41.38).</p>
+<p><strong>Teorema 41.33 (Bézout, caso proiettivo).</strong> Le estensioni a <span class="m">\mathbb{P}^2(\mathbb{R})</span> di due curve di grado <span class="m">d_1</span> e <span class="m">d_2</span>, definite da polinomi che non sono multipli di uno stesso polinomio di grado positivo, si intersecano in <strong>esattamente <span class="m">d_1\cdot d_2</span></strong> punti complessi, <strong>contati ciascuno con la sua molteplicità</strong>.</p>
+<p>Differenza con il caso affine: lì &quot;al più&quot;, qui &quot;esattamente&quot;. I punti &quot;mancanti&quot; nel caso affine sono punti all&#39;infinito, punti complessi o punti contati più volte.</p>
+<p><strong>Osservazione 41.34.</strong> Con una retta <span class="m">aX+bY+cT=0</span>: ricavando un&#39;incognita e sostituendo nell&#39;equazione omogenea di grado <span class="m">d</span> si ottiene un polinomio omogeneo di grado <span class="m">d</span> in due variabili, che ha <strong>esattamente</strong> <span class="m">d</span> soluzioni (in <span class="m">\mathbb{P}^1</span>, complesse, con molteplicità); se si ottiene il polinomio nullo la retta è contenuta nella curva. <strong>Osservazione 41.35:</strong> la molteplicità di intersezione tra due curve qualsiasi generalizza quella con una retta, ma non è definita nel corso. <strong>Osservazione 41.36:</strong> Bézout proiettivo vale anche per curve che non vengono da curve affini, come la retta all&#39;infinito <span class="m">T=0</span> (e in generale <span class="m">T^\alpha p(X/T,Y/T)=0</span> con <span class="m">\alpha&gt;\deg p</span>).</p>
 <div class="callout esempio">
 
-<p><span class="m">X^3+3X^2T-Y^2T</span>: derivate <span class="m">3X^2+6XT</span>, <span class="m">-2YT</span>, <span class="m">3X^2-Y^2</span>; si annullano solo in <span class="m">(0,0,\alpha)</span>: l&#39;unico punto singolare è <span class="m">O=[0\ 0\ 1]</span>.</p>
+<p><strong>Bézout in pratica.</strong> Le curve <span class="m">xy^2-y=0</span> (grado 3) e <span class="m">x^3y-xy^3-x^2=0</span> (grado 4), senza fattori comuni, hanno in <span class="m">\mathbb{P}^2(\mathbb{R})</span> esattamente <span class="m">3\cdot4=12</span> punti di intersezione complessi contati con molteplicità.</p>
+<p><strong>Iperbole e retta all&#39;infinito.</strong> <span class="m">X^2-Y^2-T^2=0</span> e <span class="m">T=0</span>: grado <span class="m">2\cdot1=2</span> punti, cioè <span class="m">[1\ 1\ 0]</span> e <span class="m">[1\ -1\ 0]</span>, come trovato sopra.</p>
 </div>
 
-<p><strong>Proposizione 41.40.</strong> In un punto non singolare <span class="m">P</span> la tangente ha forma implicita omogenea
-<span class="m d">\frac{\partial p}{\partial X}(P)\,X+\frac{\partial p}{\partial Y}(P)\,Y+\frac{\partial p}{\partial T}(P)\,T=0.</span></p>
-<p><strong>Proposizione 41.41.</strong> Tutte le rette per un punto singolare sono algebricamente tangenti alla curva in quel punto. <strong>Proposizione 41.42:</strong> punti singolari e tangenti non dipendono dal riferimento cartesiano.</p>
+<p><strong>Definizione 41.37.</strong> Un punto <span class="m">P=[X_P\ Y_P\ T_P]</span> della curva con equazione omogenea <span class="m">p(X,Y,T)=0</span> è <strong>singolare</strong> se si annullano in <span class="m">P</span> <strong>tutte e tre</strong> le derivate parziali <span class="m">\frac{\partial p}{\partial X}</span>, <span class="m">\frac{\partial p}{\partial Y}</span>, <span class="m">\frac{\partial p}{\partial T}</span>.</p>
+<p><strong>Proposizione 41.38.</strong> I punti singolari di <span class="m">\mathcal{C}</span> nel senso della Definizione 41.25 sono esattamente i punti singolari nel senso della Definizione 41.37 <strong>che non sono all&#39;infinito</strong>. Quindi la definizione proiettiva trova gli stessi punti singolari &quot;veri&quot; e in più quelli all&#39;infinito.</p>
 <div class="callout esempio">
 
-<p>Esercizio 41.1: <span class="m">x^2-y=0</span> ha equazione omogenea <span class="m">X^2-YT=0</span>; le derivate <span class="m">2X</span>, <span class="m">-T</span>, <span class="m">-Y</span> si annullano solo in <span class="m">(0,0,0)</span>: nessun punto singolare. Punto all&#39;infinito <span class="m">[0\ 1\ 0]</span>, dove la tangente è <span class="m">0\cdot X+0\cdot Y-1\cdot T=0</span>, cioè la retta all&#39;infinito <span class="m">T=0</span>.</p>
+<p><strong>Esempio 41.39.</strong> <span class="m">X^3+3X^2T-Y^2T=0</span> (omogeneizzazione di <span class="m">x^3+3x^2-y^2=0</span>). Derivate:
+<span class="m d">\frac{\partial p}{\partial X}=3X^2+6XT,\qquad\frac{\partial p}{\partial Y}=-2YT,\qquad\frac{\partial p}{\partial T}=3X^2-Y^2.</span>
+Sistema: dalla seconda <span class="m">Y=0</span> oppure <span class="m">T=0</span>.</p>
+<ul>
+<li>Se <span class="m">T=0</span>: la prima dà <span class="m">3X^2=0\Rightarrow X=0</span>, la terza <span class="m">-Y^2=0\Rightarrow Y=0</span>: terna nulla, non è un punto.</li>
+<li>Se <span class="m">Y=0</span>: la terza dà <span class="m">3X^2=0\Rightarrow X=0</span>, la prima è allora soddisfatta per ogni <span class="m">T</span>: soluzioni <span class="m">(0,0,\alpha)</span>.</li>
+</ul>
+<p>Unico punto singolare <span class="m">O=[0\ 0\ 1]</span>, come nel caso affine (Esempio 41.26).</p>
+</div>
+
+<p><strong>Proposizione 41.40.</strong> La tangente a <span class="m">\mathcal{C}:\ p(X,Y,T)=0</span> in un punto <strong>non singolare</strong> <span class="m">P=[X_P\ Y_P\ T_P]</span> ha forma implicita omogenea
+<span class="m d">\frac{\partial p}{\partial X}(P)\,X+\frac{\partial p}{\partial Y}(P)\,Y+\frac{\partial p}{\partial T}(P)\,T=0.</span>
+È la formula più comoda: non ci sono differenze <span class="m">x-x_P</span>, e funziona anche nei punti all&#39;infinito.</p>
+<p><strong>Proposizione 41.41.</strong> Per un punto <strong>singolare</strong> la situazione è diversa: <strong>tutte</strong> le rette passanti per esso sono algebricamente tangenti alla curva in quel punto. <strong>Proposizione 41.42:</strong> i punti singolari e le tangenti <strong>non dipendono</strong> dal riferimento cartesiano scelto (sono proprietà geometriche della curva).</p>
+<p><strong>Procedura d&#39;esame — tangente in un punto dato (equazione omogenea):</strong></p>
+<ol>
+<li>controlla che <span class="m">P</span> stia sulla curva (sostituisci: deve dare <span class="m">0</span>);</li>
+<li>calcola le tre derivate parziali come polinomi;</li>
+<li>valutale in <span class="m">P</span> (attenzione ai segni: con una coordinata <span class="m">-1</span>, le potenze pari danno <span class="m">+1</span>, quelle dispari <span class="m">-1</span>);</li>
+<li>se sono tutte nulle <span class="m">P</span> è singolare (nessuna tangente unica); altrimenti scrivi <span class="m">p_X(P)X+p_Y(P)Y+p_T(P)T=0</span>;</li>
+<li>semplifica dividendo per un fattore comune (anche negativo) e verifica che <span class="m">P</span> soddisfi la retta.</li>
+</ol>
+<div class="callout esempio">
+
+<p><strong>Tangente in un punto con coordinata negativa.</strong> Curva <span class="m">X^2Y-T^3=0</span> (cioè <span class="m">x^2y=1</span>) nel punto <span class="m">P=[1\ -1\ -1]</span>. Appartenenza: <span class="m">1\cdot(-1)-(-1)^3=-1+1=0</span> ✓. Derivate: <span class="m">p_X=2XY</span>, <span class="m">p_Y=X^2</span>, <span class="m">p_T=-3T^2</span>. In <span class="m">P</span>: <span class="m">p_X=2\cdot1\cdot(-1)=-2</span>, <span class="m">p_Y=1</span>, <span class="m">p_T=-3\cdot(-1)^2=-3</span>. Tangente: <span class="m">-2X+Y-3T=0</span>, equivalente (per <span class="m">-1</span>) a <span class="m">2X-Y+3T=0</span>. Verifica: <span class="m">2+1-3=0</span> ✓. In coordinate affini: <span class="m">P={}^t(-1\ 1)</span> e la tangente è <span class="m">2x-y+3=0</span>.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Esercizio 41.1.</strong> <span class="m">\mathcal{C}:\ x^2-y=0</span> (parabola).</p>
+<ol>
+<li>Equazione omogenea: <span class="m">T^2\left(\frac{X^2}{T^2}-\frac YT\right)=X^2-YT=0</span>.</li>
+<li>Punti singolari: <span class="m">\frac{\partial}{\partial X}=2X</span>, <span class="m">\frac{\partial}{\partial Y}=-T</span>, <span class="m">\frac{\partial}{\partial T}=-Y</span>; il sistema <span class="m">2X=-T=-Y=0</span> dà solo <span class="m">(0,0,0)</span>, che non è un punto: <strong>nessun punto singolare</strong>.</li>
+<li>Punti all&#39;infinito: <span class="m">T=0\Rightarrow X^2=0\Rightarrow X=0</span>: soluzioni <span class="m">(0,\alpha,0)</span>, il punto <span class="m">[0\ 1\ 0]</span>.</li>
+<li>Tangente in <span class="m">[0\ 1\ 0]</span> (non singolare): derivate valutate <span class="m">2\cdot0=0</span>, <span class="m">-0=0</span>, <span class="m">-1</span>: <span class="m">0\cdot X+0\cdot Y-1\cdot T=0</span>, cioè <span class="m">T=0</span>. La tangente alla parabola nel suo punto all&#39;infinito è <strong>la retta all&#39;infinito</strong>: la parabola è &quot;tangente all&#39;infinito&quot;.</li>
+</ol>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Esercizio 41.3.</strong> <span class="m">\mathcal{C}:\ 2x^2y-2x^2-x=0</span> (grado 3).</p>
+<ol>
+<li>Omogenea: <span class="m">2X^2Y</span> ha già grado 3; <span class="m">-2x^2\to-2X^2T</span>; <span class="m">-x\to-XT^2</span>. Quindi <span class="m">p=2X^2Y-2X^2T-XT^2=0</span>.</li>
+<li>Derivate: <span class="m">p_X=4XY-4XT-T^2</span>, <span class="m">p_Y=2X^2</span>, <span class="m">p_T=-2X^2-2XT</span>. Da <span class="m">p_Y=0</span>: <span class="m">X=0</span>; allora <span class="m">p_X=-T^2=0\Rightarrow T=0</span>, e <span class="m">p_T=0</span> è soddisfatta. Soluzioni <span class="m">(0,\alpha,0)</span>: il punto <span class="m">[0\ 1\ 0]</span>, che sta sulla curva (<span class="m">p=0</span>). È <strong>singolare</strong> (ed è all&#39;infinito: nel piano affine la curva non ha punti singolari).</li>
+<li>Punti all&#39;infinito: <span class="m">T=0\Rightarrow 2X^2Y=0</span>: <span class="m">X=0</span> dà <span class="m">[0\ 1\ 0]</span>, <span class="m">Y=0</span> dà <span class="m">[1\ 0\ 0]</span>.</li>
+<li>Tangente in <span class="m">[1\ 4\ 2]</span>: appartenenza <span class="m">2\cdot1\cdot4-2\cdot1\cdot2-1\cdot4=8-4-4=0</span> ✓. <span class="m">p_X=16-8-4=4</span>, <span class="m">p_Y=2</span>, <span class="m">p_T=-2-4=-6</span>: <span class="m">4X+2Y-6T=0</span>, cioè <span class="m">2X+Y-3T=0</span>.</li>
+<li>Tangente nel punto all&#39;infinito non singolare <span class="m">[1\ 0\ 0]</span>: <span class="m">p_X=0</span>, <span class="m">p_Y=2</span>, <span class="m">p_T=-2</span>: <span class="m">2Y-2T=0</span>, cioè <span class="m">Y-T=0</span> (la retta <span class="m">y=1</span>, un asintoto orizzontale: infatti <span class="m">y=1+\frac1{2x}</span>).</li>
+</ol>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Punto singolare di una conica degenere.</strong> <span class="m">X^2+4XY+4Y^2+2XT+4YT=0</span>. Si nota <span class="m">X^2+4XY+4Y^2=(X+2Y)^2</span>, quindi <span class="m">p=(X+2Y)(X+2Y+2T)</span>: due rette parallele. Derivate: <span class="m">p_X=2X+4Y+2T</span>, <span class="m">p_Y=4X+8Y+4T</span>, <span class="m">p_T=2X+4Y</span>. Dalla terza <span class="m">X=-2Y</span>; nella prima <span class="m">2T=0</span>: soluzioni <span class="m">(-2\alpha,\alpha,0)</span>, il punto <span class="m">[2\ -1\ 0]</span>. È il punto all&#39;infinito comune alle due rette parallele: le due rette &quot;si incontrano&quot; lì, e il loro punto di incontro è singolare.</p>
 </div>
 
 <div class="callout attenzione">
 
-<p>Con coordinate omogenee negative, attenzione alle potenze: con <span class="m">T=-1</span> si ha <span class="m">T^2=1</span> ma <span class="m">T^3=-1</span>. La tangente trovata si può moltiplicare per qualsiasi costante non nulla.</p>
+<ul>
+<li>Un punto singolare deve annullare tutte le derivate <strong>e</strong> stare sulla curva: nell&#39;Esempio 41.26 <span class="m">(-2,0)</span> annulla le derivate ma non è della curva.</li>
+<li>Nell&#39;omogeneizzazione ogni monomio va portato al grado <span class="m">d</span> <strong>della curva</strong> (non al proprio): <span class="m">-x</span> in una cubica diventa <span class="m">-XT^2</span>.</li>
+<li>Con coordinate negative attenzione alle potenze: con <span class="m">T=-1</span> si ha <span class="m">T^2=1</span> ma <span class="m">T^3=-1</span>. La tangente trovata si può moltiplicare per qualsiasi costante non nulla: <span class="m">-4X-6Y+2T=0</span> e <span class="m">2X+3Y-T=0</span> sono la stessa retta.</li>
+<li>Bézout affine: <strong>al più</strong> <span class="m">d_1d_2</span>; Bézout proiettivo: <strong>esattamente</strong> <span class="m">d_1d_2</span>, contando punti complessi, all&#39;infinito e molteplicità. Serve che i polinomi non abbiano fattori comuni.</li>
+<li>Molteplicità: è la molteplicità della radice dopo la sostituzione, non il numero di punti.</li>
+</ul>
 </div>
 
 <div class="callout esame">
 
-<p>Paniere: tangente in un punto di una curva data con equazione omogenea (gradiente nel punto). Quiz: molteplicità di un punto di intersezione con una retta, punti all&#39;infinito, Bézout (<span class="m">d_1d_2</span>), punti singolari. Domanda aperta: &quot;Parlare delle curve algebriche&quot;.</p>
+<p>Le chiuse del paniere chiedono la tangente a una curva data in forma omogenea (per esempio di grado 4) in un punto con coordinate <span class="m">\pm1</span>: si applica la Proposizione 41.40 seguendo la procedura sopra, con grande attenzione ai segni delle potenze. Nei quiz: molteplicità di un punto di intersezione con una retta, punti all&#39;infinito, numero di intersezioni con Bézout (<span class="m">d_1d_2</span>), punti singolari.</p>
+<p>Domanda aperta &quot;Parlare delle curve algebriche&quot;: definizione (polinomio di grado <span class="m">d&gt;0</span> e insieme degli zeri, abuso di notazione), esempi (retta, circonferenza con centro e raggio, coppia di rette, cubica), intersezione con una retta e molteplicità, Bézout affine e proiettivo, tangente geometrica e algebrica, derivate parziali, punti singolari e formula della tangente, omogeneizzazione e punti all&#39;infinito, con un esempio svolto (per esempio <span class="m">x^3+3x^2-y^2=0</span>).</p>
+</div>
+
+<div class="callout sintesi">
+
+<ul>
+<li>Circonferenza: <span class="m">x^2+y^2+\alpha x+\beta y+\gamma=0</span>, centro <span class="m">{}^t(-\frac\alpha2\ -\frac\beta2)</span>, <span class="m">r^2=\frac{\alpha^2}4+\frac{\beta^2}4-\gamma&gt;0</span>; retta secante/tangente/esterna se <span class="m">\operatorname{dist}&lt;,=,&gt;r</span>.</li>
+<li>Curva algebrica di grado <span class="m">d</span>: polinomio <span class="m">p(x,y)</span> con <span class="m">\deg p=d&gt;0</span> (e il suo insieme di zeri).</li>
+<li>Intersezione con una retta: sostituisci, polinomio di grado <span class="m">\leqslant d</span>; molteplicità = molteplicità della radice; polinomio nullo → retta contenuta.</li>
+<li>Bézout: al più <span class="m">d_1d_2</span> (affine), esattamente <span class="m">d_1d_2</span> con molteplicità (proiettivo).</li>
+<li>Singolare: tutte le derivate parziali nulle nel punto. Tangente nel punto non singolare: <span class="m">p_x(P)(x-x_P)+p_y(P)(y-y_P)=0</span>, oppure <span class="m">p_X(P)X+p_Y(P)Y+p_T(P)T=0</span>.</li>
+<li>Omogeneizzazione: <span class="m">T^dp(X/T,Y/T)</span>; punti all&#39;infinito con <span class="m">T=0</span> = direzioni in cui la curva va all&#39;infinito.</li>
+</ul>
 </div>

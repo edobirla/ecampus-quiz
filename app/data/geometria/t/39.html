@@ -1,87 +1,285 @@
 <h1>Lezione 39 — Spazi proiettivi</h1>
-<p>La geometria proiettiva formalizza la prospettiva: due rette parallele (come i binari) sembrano incontrarsi in un <strong>punto all&#39;infinito</strong>. Tutto vale anche in <span class="m">V^2_G</span> e <span class="m">V^3_G</span> fissando un riferimento cartesiano.</p>
+<h2>Introduzione</h2>
+<p>La <strong>geometria proiettiva</strong> formalizza la <strong>prospettiva</strong>. Guardando due binari dritti, essi sembrano incontrarsi lontano, all&#39;orizzonte, anche se sono paralleli. Quel punto non si raggiunge mai, sembra &quot;a distanza infinita&quot;: lo chiameremo <strong>punto all&#39;infinito</strong>.</p>
+<p>L&#39;idea è aggiungere alla retta, al piano e allo spazio dei punti nuovi (i punti all&#39;infinito), in modo che:</p>
+<ul>
+<li>due rette parallele del piano <strong>si incontrino</strong> in un punto all&#39;infinito, che rappresenta la loro <strong>direzione</strong> comune;</li>
+<li>molti enunciati diventino più semplici e senza eccezioni (&quot;due rette del piano si intersecano sempre&quot;).</li>
+</ul>
+<p>Questo ambiente sarà essenziale per lo studio delle curve (Lezione 41), delle coniche (Lezione 43) e delle superfici. Il metodo è sempre lo stesso: si <strong>aggiunge una coordinata</strong>. La costruzione si fa prima per la retta <span class="m">\mathbb{R}</span>, poi per il piano <span class="m">\mathbb{R}^2</span>, lo spazio <span class="m">\mathbb{R}^3</span> e infine <span class="m">\mathbb{R}^n</span>.</p>
+<p><strong>Osservazione 39.1.</strong> Per semplicità si lavora con <span class="m">\mathbb{R}^2</span> e <span class="m">\mathbb{R}^3</span>, ma tutto vale anche nei piani e spazi geometrici <span class="m">V^2_G</span> e <span class="m">V^3_G</span>: basta fissare un riferimento cartesiano e identificare ogni vettore geometrico con la colonna delle sue coordinate.</p>
+<p><strong>Il richiamo: la coordinata &quot;appesa&quot;.</strong> Quando abbiamo scritto la matrice <span class="m">(n+1)\times(n+1)</span> di un&#39;applicazione affine, abbiamo rappresentato il punto <span class="m">{}^t(x_1\ \dots\ x_n)</span> con la colonna <span class="m">{}^t(x_1\ \dots\ x_n\ 1)</span>, cioè abbiamo <strong>appeso una coordinata uguale a 1</strong>. Gli spazi proiettivi nascono dall&#39;idea di permettere a questa coordinata di valere qualsiasi numero, e di considerare uguali due colonne proporzionali.</p>
 <h2>Retta proiettiva</h2>
 <p><strong>Definizione 39.2.</strong> La <strong>retta proiettiva</strong> <span class="m">\mathbb{P}^1(\mathbb{R})</span> è l&#39;insieme quoziente di <span class="m">\mathbb{R}^2\setminus\{0_2\}</span> per la relazione di equivalenza
-<span class="m d">v\sim w\iff w=\lambda v\ \text{ con }\lambda\in\mathbb{R}\setminus\{0\}.</span>
-Il punto corrispondente a <span class="m">{}^t(x_1\ x_2)</span> si indica con <span class="m">\begin{bmatrix}x_1\\x_2\end{bmatrix}</span>. La coppia nulla non rappresenta nessun punto.</p>
+<span class="m d">v\sim w\iff w=\lambda v\ \text{ con }\lambda\in\mathbb{R}\setminus\{0\}.</span></p>
+<p>In parole: un punto della retta proiettiva è una <strong>classe di coppie non nulle proporzionali</strong>. Due coppie rappresentano lo stesso punto se e solo se una è un multiplo non nullo dell&#39;altra. Geometricamente, una classe è una <strong>retta per l&#39;origine di <span class="m">\mathbb{R}^2</span></strong> (privata dell&#39;origine): <span class="m">\mathbb{P}^1(\mathbb{R})</span> è l&#39;insieme delle rette per l&#39;origine del piano.</p>
+<p><strong>Notazione 39.3.</strong> Per non confondere i vettori di <span class="m">\mathbb{R}^2</span> con i punti di <span class="m">\mathbb{P}^1(\mathbb{R})</span>, il punto corrispondente a <span class="m">{}^t(x_1\ x_2)</span> si scrive con le <strong>parentesi quadre</strong>: <span class="m">\begin{bmatrix}x_1\\x_2\end{bmatrix}</span>. Nel testo, per comodità tipografica, si scrive anche in orizzontale: <span class="m">[x_1\ x_2]</span>.</p>
+<p><strong>Osservazione 39.4.</strong> <strong>Nessun punto</strong> corrisponde alla coppia nulla: <span class="m">\begin{bmatrix}0\\0\end{bmatrix}</span> non è un punto di <span class="m">\mathbb{P}^1(\mathbb{R})</span>, ed è l&#39;unica coppia a non rappresentare nulla (è stata tolta nella definizione: ogni suo multiplo è ancora nullo, non individuerebbe nessuna direzione).</p>
 <div class="callout esempio">
 
-<p><span class="m">\begin{bmatrix}2\\3\end{bmatrix}=\begin{bmatrix}4\\6\end{bmatrix}=\begin{bmatrix}-2\\-3\end{bmatrix}</span>, mentre <span class="m">\begin{bmatrix}1\\4\end{bmatrix}\neq\begin{bmatrix}2\\-1\end{bmatrix}</span> perché i vettori non sono proporzionali.</p>
+<p><strong>Esempio 39.5.</strong></p>
+<ol>
+<li><span class="m">\begin{bmatrix}2\\3\end{bmatrix}=\begin{bmatrix}4\\6\end{bmatrix}=\begin{bmatrix}-2\\-3\end{bmatrix}</span>: le coppie si ottengono l&#39;una dall&#39;altra moltiplicando per <span class="m">2</span> e per <span class="m">-1</span>.</li>
+<li><span class="m">\begin{bmatrix}1\\4\end{bmatrix}\neq\begin{bmatrix}2\\-1\end{bmatrix}</span>: se fosse <span class="m">{}^t(2\ -1)=\lambda\,{}^t(1\ 4)</span>, dalla prima coordinata <span class="m">\lambda=2</span> e dalla seconda <span class="m">\lambda=-\frac14</span>, contraddizione. Le coppie non sono proporzionali.</li>
+</ol>
 </div>
 
-<p>La funzione <span class="m">\mathbb{R}\ni x_1\mapsto\begin{bmatrix}x_1\\1\end{bmatrix}\in\mathbb{P}^1(\mathbb{R})</span> è iniettiva ma non surgettiva: la sua immagine sono i punti con <span class="m">x_2\neq0</span>, perché <span class="m">\begin{bmatrix}x_1\\x_2\end{bmatrix}=\begin{bmatrix}x_1/x_2\\1\end{bmatrix}</span>. Così <span class="m">\mathbb{R}\subset\mathbb{P}^1(\mathbb{R})</span>; scrivere <span class="m">x_1</span> come <span class="m">\begin{bmatrix}x_1\\1\end{bmatrix}</span> significa usare <strong>coordinate omogenee</strong> (Notazione 39.7).</p>
-<p><strong>Definizione 39.8.</strong> Il punto <span class="m">\begin{bmatrix}1\\0\end{bmatrix}</span> è il <strong>punto all&#39;infinito</strong> (o improprio) di <span class="m">\mathbb{P}^1(\mathbb{R})</span>: è l&#39;unico, perché <span class="m">\begin{bmatrix}x_1\\0\end{bmatrix}=\begin{bmatrix}1\\0\end{bmatrix}</span> per ogni <span class="m">x_1\neq0</span>.</p>
+<p><strong>Osservazione 39.6 – la retta <span class="m">\mathbb{R}</span> dentro <span class="m">\mathbb{P}^1(\mathbb{R})</span>.</strong> Se la seconda coordinata (quella &quot;appesa&quot;) è diversa da <span class="m">0</span>, possiamo dividere tutto per essa:
+<span class="m d">\begin{bmatrix}x_1\\x_2\end{bmatrix}=\begin{bmatrix}x_1/x_2\\1\end{bmatrix},</span>
+e questo punto corrisponde al numero reale <span class="m">\frac{x_1}{x_2}</span>. Consideriamo la funzione
+<span class="m d">\mathbb{R}\ni x_1\longmapsto\begin{bmatrix}x_1\\1\end{bmatrix}\in\mathbb{P}^1(\mathbb{R}).</span></p>
+<ul>
+<li>È <strong>iniettiva</strong>: se <span class="m">x_1\neq x_1'</span> non esiste <span class="m">\lambda\neq0</span> con <span class="m">{}^t(x_1'\ 1)=\lambda\,{}^t(x_1\ 1)</span>, perché la seconda coordinata impone <span class="m">\lambda=1</span> e allora <span class="m">x_1'=x_1</span>.</li>
+<li><strong>Non è surgettiva</strong>: la sua immagine è l&#39;insieme dei punti con <span class="m">x_2\neq0</span>. I punti con seconda coordinata nulla non corrispondono a nessun numero reale.</li>
+</ul>
+<p>Quindi possiamo pensare <span class="m">\mathbb{R}\subset\mathbb{P}^1(\mathbb{R})</span>.</p>
+<p><strong>Notazione 39.7.</strong> Quando il numero <span class="m">x_1\in\mathbb{R}</span> viene scritto come <span class="m">\begin{bmatrix}x_1\\1\end{bmatrix}</span> (o come qualsiasi suo multiplo <span class="m">\begin{bmatrix}kx_1\\k\end{bmatrix}</span>) si dice che si usano <strong>coordinate omogenee</strong>. &quot;Omogenee&quot; perché sono definite a meno di un fattore comune.</p>
+<p><strong>Definizione 39.8.</strong> Il punto <span class="m">\begin{bmatrix}1\\0\end{bmatrix}</span> è il <strong>punto all&#39;infinito</strong> (o <strong>punto improprio</strong>) di <span class="m">\mathbb{P}^1(\mathbb{R})</span>, o di <span class="m">\mathbb{R}</span>.</p>
+<p>È l&#39;<strong>unico</strong> punto con seconda coordinata nulla: <span class="m">\begin{bmatrix}x_1\\0\end{bmatrix}=\begin{bmatrix}1\\0\end{bmatrix}</span> per ogni <span class="m">x_1\neq0</span> (si divide per <span class="m">x_1</span>; <span class="m">x_1=0</span> non è ammesso perché darebbe la coppia nulla). Quindi la retta proiettiva è <strong>la retta reale più un punto</strong>. Intuizione: se <span class="m">x_1</span> cresce, <span class="m">\begin{bmatrix}x_1\\1\end{bmatrix}=\begin{bmatrix}1\\1/x_1\end{bmatrix}</span> si avvicina a <span class="m">\begin{bmatrix}1\\0\end{bmatrix}</span>; lo stesso succede se <span class="m">x_1\to-\infty</span>. I &quot;due estremi&quot; della retta si raggiungono nello stesso punto all&#39;infinito: la retta proiettiva si chiude come una circonferenza.</p>
 <div class="callout esempio">
 
-<p><span class="m">3\in\mathbb{R}</span> corrisponde a <span class="m">\begin{bmatrix}3\\1\end{bmatrix}=\begin{bmatrix}3k\\k\end{bmatrix}</span> (<span class="m">k\neq0</span>); <span class="m">\begin{bmatrix}4\\2\end{bmatrix}</span> corrisponde a <span class="m">\frac42=2\in\mathbb{R}</span>.</p>
+<p><strong>Esempio 39.9.</strong></p>
+<ol>
+<li>C&#39;è un solo punto all&#39;infinito, <span class="m">\begin{bmatrix}1\\0\end{bmatrix}=\begin{bmatrix}x_1\\0\end{bmatrix}</span> per ogni <span class="m">x_1\neq0</span>.</li>
+<li>Il numero <span class="m">3</span> corrisponde a <span class="m">\begin{bmatrix}3\\1\end{bmatrix}=\begin{bmatrix}3k\\k\end{bmatrix}</span> per ogni <span class="m">k\neq0</span>: le coordinate omogenee di <span class="m">3</span> sono <span class="m">3</span> e <span class="m">1</span>, ma anche <span class="m">3k</span> e <span class="m">k</span>.</li>
+<li>Il punto <span class="m">\begin{bmatrix}4\\2\end{bmatrix}</span> corrisponde a <span class="m">\frac42=2\in\mathbb{R}</span>, infatti <span class="m">\begin{bmatrix}4\\2\end{bmatrix}=\begin{bmatrix}2\\1\end{bmatrix}</span>.</li>
+<li><span class="m">\begin{bmatrix}0\\3\end{bmatrix}=\begin{bmatrix}0\\1\end{bmatrix}</span> è il numero <span class="m">0</span>, <strong>non</strong> un punto all&#39;infinito: all&#39;infinito è la coordinata <strong>appesa</strong> (l&#39;ultima) a essere nulla.</li>
+</ol>
 </div>
 
 <h2>Piano proiettivo</h2>
-<p><strong>Definizione 39.10.</strong> Il <strong>piano proiettivo</strong> <span class="m">\mathbb{P}^2(\mathbb{R})</span> è il quoziente di <span class="m">\mathbb{R}^3\setminus\{0_3\}</span> per la stessa relazione (<span class="m">w=\lambda v</span>, <span class="m">\lambda\neq0</span>). Un punto con <span class="m">x_3\neq0</span> coincide con <span class="m">\begin{bmatrix}x_1/x_3\\x_2/x_3\\1\end{bmatrix}</span> e corrisponde al punto <span class="m">{}^t\!\left(\frac{x_1}{x_3}\ \frac{x_2}{x_3}\right)</span> di <span class="m">\mathbb{R}^2</span>: tramite <span class="m">\mathbb{R}^2\ni{}^t(x_1\ x_2)\mapsto\begin{bmatrix}x_1\\x_2\\1\end{bmatrix}</span> (iniettiva, non surgettiva) si ha <span class="m">\mathbb{R}^2\subset\mathbb{P}^2(\mathbb{R})</span>.</p>
-<p><strong>Definizione 39.16.</strong> I punti con <strong>terza coordinata nulla</strong> sono i <strong>punti all&#39;infinito</strong> di <span class="m">\mathbb{P}^2(\mathbb{R})</span>. Sono infiniti: togliendo la coordinata nulla si ottiene un punto di <span class="m">\mathbb{P}^1(\mathbb{R})</span>, quindi il piano proiettivo è il piano più una retta proiettiva all&#39;infinito.</p>
+<p><strong>Definizione 39.10.</strong> Il <strong>piano proiettivo</strong> <span class="m">\mathbb{P}^2(\mathbb{R})</span> è il quoziente di <span class="m">\mathbb{R}^3\setminus\{0_3\}</span> per la stessa relazione: <span class="m">v\sim w\iff w=\lambda v</span> con <span class="m">\lambda\neq0</span>.</p>
+<p><strong>Notazione 39.11.</strong> Il punto corrispondente a <span class="m">{}^t(x_1\ x_2\ x_3)</span> si scrive <span class="m">\begin{bmatrix}x_1\\x_2\\x_3\end{bmatrix}</span> (in orizzontale <span class="m">[x_1\ x_2\ x_3]</span>). <strong>Osservazione 39.12:</strong> la terna nulla non rappresenta nessun punto, ed è l&#39;unica.</p>
 <div class="callout esempio">
 
-<p><span class="m">\begin{bmatrix}1\\1\\0\end{bmatrix}</span> e <span class="m">\begin{bmatrix}3\\-2\\0\end{bmatrix}</span> sono punti all&#39;infinito; <span class="m">{}^t(2\ 0)\in\mathbb{R}^2</span> corrisponde a <span class="m">\begin{bmatrix}2\\0\\1\end{bmatrix}</span>; <span class="m">\begin{bmatrix}-3\\-1\\2\end{bmatrix}</span> corrisponde a <span class="m">{}^t\!\left(-\frac32\ -\frac12\right)</span>.</p>
+<p><strong>Esempio 39.13.</strong></p>
+<ol>
+<li><span class="m">\begin{bmatrix}3\\1\\-1\end{bmatrix}=\begin{bmatrix}6\\2\\-2\end{bmatrix}=\begin{bmatrix}-6\\-2\\2\end{bmatrix}</span> (multipli per <span class="m">2</span> e per <span class="m">-2</span>).</li>
+<li><span class="m">\begin{bmatrix}2\\5\\-3\end{bmatrix}\neq\begin{bmatrix}1\\0\\1\end{bmatrix}</span>: le terne non sono proporzionali (la seconda ha un <span class="m">0</span> dove la prima ha <span class="m">5</span>).</li>
+</ol>
+</div>
+
+<p><strong>Osservazione 39.14 – il piano <span class="m">\mathbb{R}^2</span> dentro <span class="m">\mathbb{P}^2(\mathbb{R})</span>.</strong> Ripetiamo il ragionamento con la terza coordinata come coordinata appesa. Se <span class="m">x_3\neq0</span>:
+<span class="m d">\begin{bmatrix}x_1\\x_2\\x_3\end{bmatrix}=\begin{bmatrix}x_1/x_3\\x_2/x_3\\1\end{bmatrix}\quad\text{corrisponde al punto}\quad\begin{pmatrix}x_1/x_3\\x_2/x_3\end{pmatrix}\in\mathbb{R}^2.</span>
+La funzione <span class="m">\mathbb{R}^2\ni{}^t(x_1\ x_2)\mapsto\begin{bmatrix}x_1\\x_2\\1\end{bmatrix}\in\mathbb{P}^2(\mathbb{R})</span> è <strong>iniettiva</strong> (la terza coordinata impone <span class="m">\lambda=1</span>) ma <strong>non surgettiva</strong>: la sua immagine sono i punti con <span class="m">x_3\neq0</span>. Quindi <span class="m">\mathbb{R}^2\subset\mathbb{P}^2(\mathbb{R})</span>.</p>
+<p><strong>Notazione 39.15.</strong> Scrivere <span class="m">{}^t(x_1\ x_2)\in\mathbb{R}^2</span> come <span class="m">\begin{bmatrix}x_1\\x_2\\1\end{bmatrix}</span> significa usare <strong>coordinate omogenee</strong>. Spesso le coordinate omogenee del piano si chiamano <span class="m">[X\ Y\ T]</span>, con <span class="m">x=\frac XT</span>, <span class="m">y=\frac YT</span>.</p>
+<p><strong>Definizione 39.16.</strong> I punti di <span class="m">\mathbb{P}^2(\mathbb{R})</span> con <strong>terza coordinata nulla</strong> sono i <strong>punti all&#39;infinito</strong> (o impropri) di <span class="m">\mathbb{P}^2(\mathbb{R})</span>, o di <span class="m">\mathbb{R}^2</span>.</p>
+<p><strong>Osservazione 39.17.</strong> A differenza della retta proiettiva, nel piano proiettivo i punti all&#39;infinito sono <strong>infiniti</strong>: sono tutti quelli della forma <span class="m">\begin{bmatrix}x_1\\x_2\\0\end{bmatrix}</span>. Togliendo la terza coordinata (che è nulla) resta <span class="m">\begin{bmatrix}x_1\\x_2\end{bmatrix}</span>, cioè un punto qualsiasi di <span class="m">\mathbb{P}^1(\mathbb{R})</span>. Quindi:
+<span class="m d">\mathbb{P}^2(\mathbb{R})=\mathbb{R}^2\ \cup\ \{\text{una retta proiettiva di punti all'infinito}\}.</span></p>
+<div class="callout esempio">
+
+<p><strong>Esempio 39.18.</strong></p>
+<ol>
+<li><span class="m">\begin{bmatrix}1\\1\\0\end{bmatrix}=\begin{bmatrix}k\\k\\0\end{bmatrix}</span> e <span class="m">\begin{bmatrix}3\\-2\\0\end{bmatrix}=\begin{bmatrix}3k\\-2k\\0\end{bmatrix}</span> (<span class="m">k\neq0</span>) sono punti all&#39;infinito.</li>
+<li><span class="m">{}^t(2\ 0)\in\mathbb{R}^2</span> corrisponde a <span class="m">\begin{bmatrix}2\\0\\1\end{bmatrix}=\begin{bmatrix}2k\\0\\k\end{bmatrix}</span>: le sue coordinate omogenee sono <span class="m">2,0,1</span> ma anche <span class="m">2k,0,k</span>.</li>
+<li><span class="m">\begin{bmatrix}-3\\-1\\2\end{bmatrix}</span> ha terza coordinata <span class="m">2\neq0</span>; dividendo per <span class="m">2</span> si ottiene <span class="m">\begin{bmatrix}-3/2\\-1/2\\1\end{bmatrix}</span>, cioè il punto <span class="m">{}^t\!\left(-\frac32\ -\frac12\right)\in\mathbb{R}^2</span>.</li>
+</ol>
 </div>
 
 <h2>Rette nel piano proiettivo</h2>
-<p><strong>Osservazione 39.19 – Definizione 39.20.</strong> Se <span class="m">P={}^t(x\ y)</span> sta sulla retta <span class="m">ax+by+c=0</span>, sostituendo <span class="m">x=\frac XT</span>, <span class="m">y=\frac YT</span> e moltiplicando per <span class="m">T</span> si ottiene
-<span class="m d">aX+bY+cT=0,</span>
-la <strong>forma implicita omogenea</strong> di <span class="m">r</span> (il passaggio si chiama <strong>omogeneizzazione</strong>). Compare una soluzione nuova con <span class="m">T=0</span>: il punto <span class="m">\begin{bmatrix}b\\-a\\0\end{bmatrix}</span>, <strong>punto all&#39;infinito</strong> di <span class="m">r</span>.</p>
+<p><strong>Osservazione 39.19 – omogeneizzazione.</strong> Sia <span class="m">r</span> la retta di <span class="m">\mathbb{R}^2</span> con forma implicita <span class="m">ax+by+c=0</span> e sia <span class="m">P={}^t(x\ y)</span> un suo punto. In coordinate omogenee <span class="m">P=\begin{bmatrix}x\\y\\1\end{bmatrix}=\begin{bmatrix}X/T\\Y/T\\1\end{bmatrix}</span> per ogni terna con <span class="m">\frac XT=x</span>, <span class="m">\frac YT=y</span>. Passo per passo:</p>
+<ol>
+<li>sostituisco <span class="m">x=\frac XT</span>, <span class="m">y=\frac YT</span>: <span class="m">\ a\frac XT+b\frac YT+c=0</span>;</li>
+<li>moltiplico per <span class="m">T</span> (per togliere i denominatori): <span class="m">\ aX+bY+cT=0</span>.</li>
+</ol>
+<p>L&#39;equazione ottenuta è <strong>omogenea</strong> (tutti i termini hanno grado 1): se una terna la soddisfa, la soddisfa anche ogni suo multiplo, quindi ha senso dire che un <strong>punto</strong> di <span class="m">\mathbb{P}^2(\mathbb{R})</span> la soddisfa. Moltiplicando per <span class="m">T</span> possono comparire soluzioni nuove, con <span class="m">T=0</span>: l&#39;equazione diventa <span class="m">aX+bY=0</span>, risolta da <span class="m">(X,Y)=(b,-a)</span> e dai suoi multipli. Si è aggiunto <strong>un punto all&#39;infinito</strong>, <span class="m">\begin{bmatrix}b\\-a\\0\end{bmatrix}</span>.</p>
+<p><strong>Definizione 39.20.</strong> Data la retta <span class="m">r:\ ax+by+c=0</span> di <span class="m">\mathbb{R}^2</span>, l&#39;equazione <span class="m">aX+bY+cT=0</span> è la <strong>forma implicita omogenea</strong> di <span class="m">r</span>; il passaggio da una all&#39;altra si chiama <strong>omogeneizzazione</strong>; il punto all&#39;infinito aggiunto è il <strong>punto all&#39;infinito</strong> (o improprio) di <span class="m">r</span>.</p>
+<p>In pratica: <strong><span class="m">x\to X</span>, <span class="m">y\to Y</span>, e il termine noto diventa il coefficiente di <span class="m">T</span></strong>.</p>
 <div class="callout esempio">
 
-<p><span class="m">2x-y+3=0</span> diventa <span class="m">2X-Y+3T=0</span>; con <span class="m">T=0</span> si ha <span class="m">(\alpha,2\alpha,0)</span>: il punto all&#39;infinito è <span class="m">\begin{bmatrix}1\\2\\0\end{bmatrix}</span>.</p>
+<p><strong>Esempio 39.21.</strong> <span class="m">r:\ 2x-y+3=0</span> ha forma implicita omogenea <span class="m">2X-Y+3T=0</span>. Punto all&#39;infinito: risolvo
+<span class="m d">\begin{cases}2X-Y+3T=0\\T=0\end{cases}\ \Rightarrow\ 2X-Y=0\ \Rightarrow\ Y=2X,</span>
+cioè <span class="m">(X,Y,T)=(\alpha,2\alpha,0)</span>, <span class="m">\alpha\in\mathbb{R}</span>: il punto all&#39;infinito è <span class="m">\begin{bmatrix}1\\2\\0\end{bmatrix}</span>. Con la formula <span class="m">\begin{bmatrix}b\\-a\\0\end{bmatrix}=\begin{bmatrix}-1\\-2\\0\end{bmatrix}</span>, che è lo stesso punto (multiplo per <span class="m">-1</span>). Nota che <span class="m">{}^t(1\ 2)</span> è un vettore direttore di <span class="m">r</span> (la retta ha coefficiente angolare 2).</p>
 </div>
 
-<p><strong>Definizione 39.22.</strong> Una <strong>retta proiettiva</strong> di <span class="m">\mathbb{P}^2(\mathbb{R})</span> è l&#39;insieme dei punti che soddisfano <span class="m">aX+bY+cT=0</span> con <span class="m">(a,b,c)\neq(0,0,0)</span>. Se <span class="m">(a,b)\neq(0,0)</span> è l&#39;estensione della retta <span class="m">ax+by+c=0</span>; se <span class="m">(a,b)=(0,0)</span> è la retta <span class="m">T=0</span>, detta <strong>retta all&#39;infinito</strong> (Definizione 39.24).</p>
-<p><strong>Proposizione 39.25.</strong> Due rette proiettive di <span class="m">\mathbb{P}^2(\mathbb{R})</span> <strong>si intersecano sempre</strong>: il sistema omogeneo delle due equazioni ha rango al più 2, quindi almeno <span class="m">\infty^1</span> soluzioni (un punto se il rango è 2; la stessa retta se il rango è 1).</p>
+<p><strong>Definizione 39.22.</strong> Una <strong>retta proiettiva</strong> di <span class="m">\mathbb{P}^2(\mathbb{R})</span> è l&#39;insieme dei punti <span class="m">[X\ Y\ T]</span> che soddisfano un&#39;equazione <span class="m">aX+bY+cT=0</span> con <span class="m">(a,b,c)\neq(0,0,0)</span>, detta sua forma implicita (omogenea).</p>
+<p><strong>Osservazione 39.23.</strong> Due casi:</p>
+<ul>
+<li><span class="m">(a,b)\neq(0,0)</span>: l&#39;equazione è l&#39;omogeneizzazione di <span class="m">ax+by+c=0</span>, quindi la retta proiettiva è <strong>la retta <span class="m">ax+by+c=0</span> più il suo punto all&#39;infinito</strong> <span class="m">\begin{bmatrix}b\\-a\\0\end{bmatrix}</span>;</li>
+<li><span class="m">(a,b)=(0,0)</span>: resta <span class="m">cT=0</span> con <span class="m">c\neq0</span>, cioè <span class="m">T=0</span>: è la retta formata da <strong>tutti i punti all&#39;infinito</strong>.</li>
+</ul>
+<p><strong>Definizione 39.24.</strong> La retta proiettiva <span class="m">T=0</span> è la <strong>retta all&#39;infinito</strong> di <span class="m">\mathbb{P}^2(\mathbb{R})</span>.</p>
+<p><strong>Proposizione 39.25.</strong> Due rette proiettive di <span class="m">\mathbb{P}^2(\mathbb{R})</span> <strong>si intersecano sempre</strong>.</p>
+<p><em>Dimostrazione.</em> Siano <span class="m">r:\ aX+bY+cT=0</span> e <span class="m">r':\ a'X+b'Y+c'T=0</span>. I punti comuni sono le soluzioni non nulle del sistema
+<span class="m d">\begin{cases}aX+bY+cT=0\\a'X+b'Y+c'T=0\end{cases}</span>
+che è <strong>omogeneo</strong>, in 3 incognite, con 2 equazioni: il suo rango è al più 2, quindi (Rouché–Capelli) ha almeno <span class="m">\infty^{3-2}=\infty^1</span> soluzioni, in particolare soluzioni non nulle.</p>
+<ul>
+<li>Se il rango è 2, le soluzioni sono esattamente <span class="m">k\,(X_0,Y_0,T_0)</span> con <span class="m">k\in\mathbb{R}</span> e <span class="m">(X_0,Y_0,T_0)\neq(0,0,0)</span>: tutte rappresentano <strong>lo stesso punto</strong> <span class="m">[X_0\ Y_0\ T_0]</span>, unico punto di intersezione.</li>
+<li>Se il rango è 1, le due equazioni sono proporzionali: rappresentano <strong>la stessa retta</strong>, che ovviamente interseca sé stessa. <span class="m">\square</span></li>
+</ul>
 <p><strong>Corollario 39.26.</strong> Due rette di <span class="m">\mathbb{R}^2</span> sono <strong>parallele se e solo se hanno lo stesso punto all&#39;infinito</strong>.</p>
+<p><em>Dimostrazione.</em> Le estensioni a <span class="m">\mathbb{P}^2(\mathbb{R})</span> si intersecano sempre. Se le rette coincidono, hanno in comune anche il punto all&#39;infinito e sono parallele. Se sono distinte, si intersecano in esattamente un punto: o un punto di <span class="m">\mathbb{R}^2</span> (rette incidenti, non parallele) o un punto all&#39;infinito (rette parallele, che in <span class="m">\mathbb{R}^2</span> non si incontrano). <span class="m">\square</span></p>
+<p>Il &quot;binario&quot; dell&#39;introduzione ora è un teorema: rette parallele si incontrano all&#39;infinito.</p>
 <div class="callout esempio">
 
-<p><span class="m">2X+3Y-3T=0</span> e <span class="m">X+2Y-4T=0</span> si intersecano in <span class="m">\begin{bmatrix}-6\\5\\1\end{bmatrix}</span>: incidenti. <span class="m">2X-Y+T=0</span> e <span class="m">4X-2Y-3T=0</span> si intersecano solo in <span class="m">\begin{bmatrix}1\\2\\0\end{bmatrix}</span>: parallele.</p>
+<p><strong>Esempio 39.27.</strong></p>
+<ol>
+<li><span class="m">2X+3Y-3T=0</span> e <span class="m">X+2Y-4T=0</span>. Dalla seconda <span class="m">X=4T-2Y</span>; nella prima <span class="m">2(4T-2Y)+3Y-3T=0\Rightarrow 5T-Y=0\Rightarrow Y=5T</span>, e <span class="m">X=4T-10T=-6T</span>. Soluzioni <span class="m">(-6\alpha,5\alpha,\alpha)</span>: punto <span class="m">\begin{bmatrix}-6\\5\\1\end{bmatrix}</span>, cioè <span class="m">{}^t(-6\ 5)\in\mathbb{R}^2</span>. Non è all&#39;infinito: le rette sono <strong>incidenti</strong>.</li>
+<li><span class="m">2X-Y+T=0</span> e <span class="m">4X-2Y-3T=0</span>. Sottraggo dalla seconda il doppio della prima: <span class="m">-3T-2T=0\Rightarrow T=0</span>; allora <span class="m">Y=2X</span>. Soluzioni <span class="m">(\alpha,2\alpha,0)</span>: punto <span class="m">\begin{bmatrix}1\\2\\0\end{bmatrix}</span>, all&#39;infinito. Le rette sono <strong>parallele</strong> (in effetti <span class="m">2x-y+1=0</span> e <span class="m">4x-2y-3=0</span> hanno coefficienti di <span class="m">x,y</span> proporzionali).</li>
+</ol>
 </div>
 
-<p><strong>Osservazione 39.28.</strong> Il punto all&#39;infinito <span class="m">\begin{bmatrix}b\\-a\\0\end{bmatrix}</span> rappresenta la <strong>direzione</strong> della retta: <span class="m">{}^t(b\ -a)</span> è un vettore direttore e ogni vettore direttore <span class="m">{}^t(l\ m)</span> dà lo stesso punto <span class="m">\begin{bmatrix}l\\m\\0\end{bmatrix}</span>. È l&#39;intersezione della retta con la retta all&#39;infinito.</p>
+<p><strong>Osservazione 39.28 – il punto all&#39;infinito è la direzione.</strong> Per <span class="m">r:\ ax+by+c=0</span> il punto all&#39;infinito è <span class="m">\begin{bmatrix}b\\-a\\0\end{bmatrix}</span>, e:</p>
+<ul>
+<li><span class="m">{}^t(b\ -a)</span> è un <strong>vettore direttore</strong> di <span class="m">r</span> (soddisfa la giacitura <span class="m">ax+by=0</span>), e ogni altro vettore direttore <span class="m">{}^t(l\ m)</span> è un suo multiplo non nullo, quindi <span class="m">\begin{bmatrix}l\\m\\0\end{bmatrix}</span> è lo stesso punto;</li>
+<li>tutte le rette parallele a <span class="m">r</span> hanno forma <span class="m">ax+by+c'=0</span> e quindi <strong>lo stesso</strong> punto all&#39;infinito;</li>
+<li>il punto all&#39;infinito di <span class="m">r</span> è l&#39;intersezione di <span class="m">r</span> con la retta all&#39;infinito: soluzione di <span class="m">\begin{cases}aX+bY+cT=0\\T=0\end{cases}</span>.</li>
+</ul>
+<p><strong>Notazione 39.29.</strong> Il punto all&#39;infinito <span class="m">\begin{bmatrix}x_1\\x_2\\0\end{bmatrix}</span> si disegna come il vettore <span class="m">{}^t(x_1\ x_2)</span>: è una direzione, non una posizione.</p>
+<div class="callout esempio">
+
+<p><strong>Esercizio 39.4.</strong> Le rette <span class="m">2x-5y+2=0</span> e <span class="m">3x-2y+1=0</span> sono parallele? Punti all&#39;infinito con la formula <span class="m">[b\ \ -a\ \ 0]</span>: per la prima <span class="m">[-5\ \ -2\ \ 0]=[5\ \ 2\ \ 0]</span>, per la seconda <span class="m">[-2\ \ -3\ \ 0]=[2\ \ 3\ \ 0]</span>. Non sono proporzionali (<span class="m">\frac52\neq\frac23</span>): punti diversi, rette <strong>non parallele</strong>.</p>
+<p><strong>Esercizio 39.3-1.</strong> <span class="m">3x-4y-2=0</span>: punto all&#39;infinito <span class="m">[-4\ \ -3\ \ 0]=[4\ \ 3\ \ 0]</span>.</p>
+</div>
+
 <h2>Spazio proiettivo</h2>
-<p><strong>Definizione 39.30.</strong> Lo <strong>spazio proiettivo</strong> <span class="m">\mathbb{P}^3(\mathbb{R})</span> è il quoziente di <span class="m">\mathbb{R}^4\setminus\{0_4\}</span> per la stessa relazione. I punti con quarta coordinata non nulla corrispondono ai punti di <span class="m">\mathbb{R}^3</span> (coordinate omogenee <span class="m">[x\ y\ z\ 1]</span>); quelli con <strong>quarta coordinata nulla</strong> sono i <strong>punti all&#39;infinito</strong> e formano un piano proiettivo all&#39;infinito.</p>
-<p><strong>Piani.</strong> Il piano <span class="m">ax+by+cz+d=0</span> ha forma implicita omogenea <span class="m">aX+bY+cZ+dT=0</span> (Definizione 39.38). I suoi punti all&#39;infinito sono <span class="m">[X\ Y\ Z\ 0]</span> con <span class="m">{}^t(X\ Y\ Z)</span> nella giacitura <span class="m">ax+by+cz=0</span>. Un <strong>piano proiettivo</strong> è dato da <span class="m">aX+bY+cZ+dT=0</span> con <span class="m">(a,b,c,d)\neq0</span>; <span class="m">T=0</span> è il <strong>piano all&#39;infinito</strong>.</p>
+<p><strong>Definizione 39.30.</strong> Lo <strong>spazio proiettivo</strong> <span class="m">\mathbb{P}^3(\mathbb{R})</span> è il quoziente di <span class="m">\mathbb{R}^4\setminus\{0_4\}</span> per la relazione <span class="m">v\sim w\iff w=\lambda v</span>, <span class="m">\lambda\neq0</span>. Si scrive <span class="m">\begin{bmatrix}x_1\\x_2\\x_3\\x_4\end{bmatrix}</span> (Notazione 39.31); la quaterna nulla non rappresenta nessun punto (Osservazione 39.32). Le coordinate omogenee si chiamano spesso <span class="m">[X\ Y\ Z\ T]</span>.</p>
+<p><strong>Osservazione 39.33.</strong> Se <span class="m">x_4\neq0</span>, <span class="m">\begin{bmatrix}x_1\\x_2\\x_3\\x_4\end{bmatrix}=\begin{bmatrix}x_1/x_4\\x_2/x_4\\x_3/x_4\\1\end{bmatrix}</span> corrisponde al punto <span class="m">{}^t\!\left(\frac{x_1}{x_4}\ \frac{x_2}{x_4}\ \frac{x_3}{x_4}\right)</span> di <span class="m">\mathbb{R}^3</span>. La funzione <span class="m">\mathbb{R}^3\ni{}^t(x_1\ x_2\ x_3)\mapsto[x_1\ x_2\ x_3\ 1]</span> è iniettiva e non surgettiva (immagine: i punti con <span class="m">x_4\neq0</span>), quindi <span class="m">\mathbb{R}^3\subset\mathbb{P}^3(\mathbb{R})</span> (coordinate omogenee, Notazione 39.34).</p>
+<p><strong>Definizione 39.35.</strong> I punti con <strong>quarta coordinata nulla</strong> sono i <strong>punti all&#39;infinito</strong> di <span class="m">\mathbb{P}^3(\mathbb{R})</span> (o di <span class="m">\mathbb{R}^3</span>). <strong>Osservazione 39.36:</strong> sono infiniti; togliendo la quarta coordinata si ottiene un punto qualsiasi di <span class="m">\mathbb{P}^2(\mathbb{R})</span>, quindi lo spazio proiettivo è lo spazio <span class="m">\mathbb{R}^3</span> più <strong>un piano proiettivo all&#39;infinito</strong>.</p>
 <div class="callout esempio">
 
-<p><span class="m">x+3y-2z+1=0</span> diventa <span class="m">X+3Y-2Z+T=0</span>; i punti all&#39;infinito sono <span class="m">(-3\beta+2\gamma,\beta,\gamma,0)</span>, per esempio <span class="m">[-3\ 1\ 0\ 0]</span>, <span class="m">[2\ 0\ 1\ 0]</span>, <span class="m">[5\ 1\ 4\ 0]</span>.</p>
+<p><strong>Esercizio 39.2.</strong> Quali punti sono all&#39;infinito? Gli altri, a quale punto corrispondono?</p>
+<ul>
+<li><span class="m">P_1=[3\ \ 0]\in\mathbb{P}^1(\mathbb{R})</span>: ultima coordinata nulla → <strong>all&#39;infinito</strong>.</li>
+<li><span class="m">P_2=[0\ \ 3]\in\mathbb{P}^1(\mathbb{R})</span>: <span class="m">=[0\ \ 1]</span> → il numero <span class="m">0</span>.</li>
+<li><span class="m">P_3=[-2\ \ 0\ \ -3]\in\mathbb{P}^2(\mathbb{R})</span>: divido per <span class="m">-3</span> → <span class="m">\left[\frac23\ \ 0\ \ 1\right]</span> → <span class="m">{}^t\!\left(\frac23\ 0\right)</span>.</li>
+<li><span class="m">P_4=[-2\ \ -3\ \ 0]</span>: <strong>all&#39;infinito</strong>.</li>
+<li><span class="m">P_5=[2\ \ 4\ \ -1\ \ 2]\in\mathbb{P}^3(\mathbb{R})</span>: divido per <span class="m">2</span> → <span class="m">{}^t\!\left(1\ 2\ -\frac12\right)</span>.</li>
+<li><span class="m">P_6=[1\ \ 0\ \ -2\ \ 0]</span>: <strong>all&#39;infinito</strong>.</li>
+</ul>
+<p>Per dire <strong>a quale spazio proiettivo</strong> appartiene un punto basta contare le coordinate: <span class="m">n+1</span> coordinate → <span class="m">\mathbb{P}^n(\mathbb{R})</span>. Per esempio <span class="m">[3\ \ 1\ \ -2]</span> ha 3 coordinate e sta in <span class="m">\mathbb{P}^2(\mathbb{R})</span>.</p>
 </div>
 
-<p><strong>Proposizione 39.43.</strong> Due piani proiettivi di <span class="m">\mathbb{P}^3(\mathbb{R})</span> si intersecano sempre.</p>
-<p><strong>Rette.</strong> Una retta di <span class="m">\mathbb{R}^3</span> data da due equazioni si omogeneizza equazione per equazione (Definizione 39.45); con <span class="m">T=0</span> si ottiene un solo punto all&#39;infinito <span class="m">[X\ Y\ Z\ 0]</span> con <span class="m">{}^t(X\ Y\ Z)</span> vettore direttore. Una <strong>retta proiettiva</strong> di <span class="m">\mathbb{P}^3(\mathbb{R})</span> è data da due equazioni omogenee con matrice dei coefficienti di rango 2.</p>
+<h3>Piani in <span class="m">\mathbb{P}^3(\mathbb{R})</span></h3>
+<p><strong>Osservazione 39.37.</strong> Sia <span class="m">\alpha:\ ax+by+cz+d=0</span> un piano di <span class="m">\mathbb{R}^3</span>. Come per le rette del piano: sostituisco <span class="m">x=\frac XT</span>, <span class="m">y=\frac YT</span>, <span class="m">z=\frac ZT</span> e moltiplico per <span class="m">T</span>:
+<span class="m d">aX+bY+cZ+dT=0.</span>
+È un&#39;equazione omogenea. Con <span class="m">T=0</span> compaiono soluzioni nuove: il sistema <span class="m">\begin{cases}aX+bY+cZ=0\\T=0\end{cases}</span> ha soluzioni non nulle (una equazione in tre incognite: <span class="m">\infty^2</span> soluzioni). Si aggiungono i punti all&#39;infinito <span class="m">[X\ Y\ Z\ 0]</span> con <span class="m">{}^t(X\ Y\ Z)</span> nella <strong>giacitura</strong> <span class="m">ax+by+cz=0</span> di <span class="m">\alpha</span>.</p>
+<p><strong>Definizione 39.38.</strong> <span class="m">aX+bY+cZ+dT=0</span> è la <strong>forma implicita omogenea</strong> di <span class="m">\alpha</span> (omogeneizzazione); i punti aggiunti sono i <strong>punti all&#39;infinito</strong> di <span class="m">\alpha</span>.</p>
 <div class="callout esempio">
 
-<p><span class="m">\begin{cases}2x-y+4z-3=0\\x+y-z+1=0\end{cases}</span> diventa <span class="m">\begin{cases}2X-Y+4Z-3T=0\\X+Y-Z+T=0\end{cases}</span>; con <span class="m">T=0</span> si ha <span class="m">(-\alpha,2\alpha,\alpha,0)</span>: punto all&#39;infinito <span class="m">[-1\ 2\ 1\ 0]</span>.</p>
+<p><strong>Esempio 39.39.</strong> <span class="m">\alpha:\ x+3y-2z+1=0</span> diventa <span class="m">X+3Y-2Z+T=0</span>. Punti all&#39;infinito: con <span class="m">T=0</span>, <span class="m">X=-3Y+2Z</span>; posto <span class="m">Y=\beta</span>, <span class="m">Z=\gamma</span>:
+<span class="m d">(X,Y,Z,T)=(-3\beta+2\gamma,\ \beta,\ \gamma,\ 0),\qquad\beta,\gamma\in\mathbb{R}.</span>
+Per esempio <span class="m">(\beta,\gamma)=(1,0)</span> dà <span class="m">[-3\ 1\ 0\ 0]</span>, <span class="m">(0,1)</span> dà <span class="m">[2\ 0\ 1\ 0]</span>, <span class="m">(1,4)</span> dà <span class="m">[5\ 1\ 4\ 0]</span>. Sono infiniti: formano una retta proiettiva (la &quot;retta all&#39;infinito&quot; del piano).</p>
 </div>
 
-<p><strong>Proposizione 39.48.</strong> Due rette proiettive distinte di <span class="m">\mathbb{P}^3(\mathbb{R})</span> o si intersecano in un punto o sono disgiunte.</p>
+<p><strong>Definizione 39.40.</strong> Un <strong>piano proiettivo</strong> di <span class="m">\mathbb{P}^3(\mathbb{R})</span> è l&#39;insieme dei punti che soddisfano <span class="m">aX+bY+cZ+dT=0</span> con <span class="m">(a,b,c,d)\neq(0,0,0,0)</span>. <strong>Osservazione 39.41:</strong> se <span class="m">(a,b,c)\neq(0,0,0)</span> è l&#39;estensione del piano <span class="m">ax+by+cz+d=0</span>; se <span class="m">(a,b,c)=(0,0,0)</span> è <span class="m">T=0</span>, il <strong>piano all&#39;infinito</strong> (Definizione 39.42).</p>
+<p><strong>Proposizione 39.43.</strong> Due piani proiettivi di <span class="m">\mathbb{P}^3(\mathbb{R})</span> <strong>si intersecano sempre</strong>.</p>
+<p><em>Dimostrazione.</em> Il sistema omogeneo delle due equazioni ha 4 incognite e rango al più 2, quindi almeno <span class="m">\infty^2</span> soluzioni. Se il rango è 2, le soluzioni sono <span class="m">k\,v_0+h\,v_0'</span> con <span class="m">v_0,v_0'</span> linearmente indipendenti: rappresentano punti (per esempio <span class="m">[v_0]</span>) comuni ai due piani. Se il rango è 1 le equazioni sono proporzionali e i piani coincidono. <span class="m">\square</span></p>
+<p>Conseguenza: due piani <strong>paralleli</strong> di <span class="m">\mathbb{R}^3</span> si intersecano in <span class="m">\mathbb{P}^3(\mathbb{R})</span> lungo una retta all&#39;infinito (quella delle loro direzioni comuni).</p>
+<h3>Rette in <span class="m">\mathbb{P}^3(\mathbb{R})</span></h3>
+<p><strong>Osservazione 39.44.</strong> Una retta di <span class="m">\mathbb{R}^3</span> è data da due equazioni <span class="m">\begin{cases}ax+by+cz+d=0\\a'x+b'y+c'z+d'=0\end{cases}</span> (intersezione di due piani). Omogeneizzando ciascuna equazione si ottiene un sistema omogeneo; con <span class="m">T=0</span> si ha il sistema <span class="m">\begin{cases}aX+bY+cZ=0\\a'X+b'Y+c'Z=0\end{cases}</span>, che (rango 2, tre incognite) ha <span class="m">\infty^1</span> soluzioni: <strong>un solo</strong> punto all&#39;infinito <span class="m">[X\ Y\ Z\ 0]</span>, dove <span class="m">{}^t(X\ Y\ Z)</span> è un <strong>vettore direttore</strong> della retta (sta nella sua giacitura).</p>
+<p><strong>Definizione 39.45.</strong> Il sistema <span class="m">\begin{cases}aX+bY+cZ+dT=0\\a'X+b'Y+c'Z+d'T=0\end{cases}</span> è la <strong>forma implicita omogenea</strong> della retta; il punto aggiunto è il suo punto all&#39;infinito.</p>
+<div class="callout esempio">
+
+<p><strong>Esempio 39.46.</strong> <span class="m">\begin{cases}2x-y+4z-3=0\\x+y-z+1=0\end{cases}</span> diventa <span class="m">\begin{cases}2X-Y+4Z-3T=0\\X+Y-Z+T=0\end{cases}</span>. Punto all&#39;infinito: con <span class="m">T=0</span>, sommo le due equazioni: <span class="m">3X+3Z=0\Rightarrow X=-Z</span>; dalla seconda <span class="m">Y=Z-X=2Z</span>. Con <span class="m">Z=\alpha</span>: <span class="m">(-\alpha,2\alpha,\alpha,0)</span>, punto <span class="m">[-1\ 2\ 1\ 0]</span>. Controllo: <span class="m">(2,-1,4)\cdot(-1,2,1)=-2-2+4=0</span> e <span class="m">(1,1,-1)\cdot(-1,2,1)=-1+2-1=0</span>: <span class="m">{}^t(-1\ 2\ 1)</span> è ortogonale a entrambe le normali, cioè è un vettore direttore.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Esercizio 39.3-2.</strong> <span class="m">\begin{cases}x+y+z-2=0\\3x-2y+4=0\end{cases}</span>: con <span class="m">T=0</span>, dalla seconda <span class="m">Y=\frac32X</span>; dalla prima <span class="m">Z=-X-Y=-\frac52X</span>. Con <span class="m">X=2</span>: <span class="m">[2\ 3\ -5\ 0]</span>.</p>
+</div>
+
+<p><strong>Definizione 39.47.</strong> Una <strong>retta proiettiva</strong> di <span class="m">\mathbb{P}^3(\mathbb{R})</span> è l&#39;insieme dei punti che soddisfano un sistema <span class="m">\begin{cases}aX+bY+cZ+dT=0\\a'X+b'Y+c'Z+d'T=0\end{cases}</span> con <span class="m">\operatorname{rank}\begin{pmatrix}a&amp;b&amp;c&amp;d\\a'&amp;b'&amp;c'&amp;d'\end{pmatrix}=2</span> (le due equazioni non sono proporzionali, quindi definiscono due piani distinti).</p>
+<p><strong>Proposizione 39.48.</strong> Due rette proiettive <strong>distinte</strong> di <span class="m">\mathbb{P}^3(\mathbb{R})</span> o si intersecano <strong>in un punto</strong> o sono <strong>disgiunte</strong> (nello spazio, a differenza del piano, due rette possono non incontrarsi nemmeno all&#39;infinito).</p>
 <p><strong>Proposizione 39.49.</strong></p>
 <ol>
-<li>Due rette di <span class="m">\mathbb{R}^3</span> sono <strong>parallele</strong> se e solo se hanno lo stesso punto all&#39;infinito.</li>
-<li>Due rette di <span class="m">\mathbb{R}^3</span> sono <strong>sghembe</strong> se e solo se non si intersecano in <span class="m">\mathbb{P}^3(\mathbb{R})</span>.</li>
+<li>Due rette di <span class="m">\mathbb{R}^3</span> sono <strong>parallele</strong> se e solo se hanno <strong>lo stesso punto all&#39;infinito</strong>.</li>
+<li>Due rette di <span class="m">\mathbb{R}^3</span> sono <strong>sghembe</strong> se e solo se <strong>non si intersecano in <span class="m">\mathbb{P}^3(\mathbb{R})</span></strong>.</li>
 </ol>
+<p><em>Dimostrazione.</em> 1. Due rette sono parallele se e solo se hanno gli stessi vettori direttori, e il punto all&#39;infinito è proprio la classe dei vettori direttori. 2. Due rette sono sghembe se e solo se non si intersecano in <span class="m">\mathbb{R}^3</span> <strong>e</strong> non sono parallele; per il punto 1, ciò equivale a non avere in comune né punti di <span class="m">\mathbb{R}^3</span> né il punto all&#39;infinito, cioè a non intersecarsi in <span class="m">\mathbb{P}^3(\mathbb{R})</span>. <span class="m">\square</span></p>
+<p><strong>Mutua posizione di due rette di <span class="m">\mathbb{R}^3</span> con i punti proiettivi</strong> (si risolve il sistema omogeneo delle 4 equazioni):</p>
+<table>
+<thead>
+<tr>
+<th>Soluzioni del sistema delle 4 equazioni</th>
+<th>Intersezione in <span class="m">\mathbb{P}^3(\mathbb{R})</span></th>
+<th>Mutua posizione</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>solo quella nulla</td>
+<td>nessun punto</td>
+<td>sghembe</td>
+</tr>
+<tr>
+<td><span class="m">\infty^1</span>, con <span class="m">T\neq0</span></td>
+<td>un punto di <span class="m">\mathbb{R}^3</span></td>
+<td>incidenti</td>
+</tr>
+<tr>
+<td><span class="m">\infty^1</span>, con <span class="m">T=0</span></td>
+<td>un punto all&#39;infinito</td>
+<td>parallele distinte</td>
+</tr>
+<tr>
+<td><span class="m">\infty^2</span></td>
+<td>una retta intera</td>
+<td>coincidenti</td>
+</tr>
+</tbody></table>
 <div class="callout esempio">
 
-<p><span class="m">\begin{cases}X+Y+4Z-T=0\\2X+Y+5Z+3T=0\end{cases}</span> e <span class="m">\begin{cases}X+Z-T=0\\3X-Y=0\end{cases}</span> hanno in comune solo <span class="m">[1\ 3\ -1\ 0]</span>: parallele. Le rette <span class="m">\begin{cases}X+Y+Z-2T=0\\X+2Y-T=0\end{cases}</span> e <span class="m">\begin{cases}X-Y+4T=0\\2X+2Z-T=0\end{cases}</span> danno un sistema con la sola soluzione nulla: sghembe.</p>
+<p><strong>Esempio 39.50.</strong></p>
+<ol>
+<li>Le rette <span class="m">\begin{cases}X+Y+4Z-T=0\\2X+Y+5Z+3T=0\end{cases}</span> e <span class="m">\begin{cases}X+Z-T=0\\3X-Y=0\end{cases}</span>. Dalla quarta equazione <span class="m">Y=3X</span>; dalla terza <span class="m">T=X+Z</span>. Sostituisco nella prima: <span class="m">X+3X+4Z-X-Z=0\Rightarrow 3X+3Z=0\Rightarrow Z=-X</span>, quindi <span class="m">T=0</span>. Controllo la seconda: <span class="m">2X+3X-5X+0=0</span> ✓. Soluzioni <span class="m">(\alpha,3\alpha,-\alpha,0)</span>: in comune c&#39;è solo il punto all&#39;infinito <span class="m">[1\ 3\ -1\ 0]</span> → rette <strong>parallele</strong>.</li>
+<li>Le rette <span class="m">\begin{cases}X+Y+Z-2T=0\\X+2Y-T=0\end{cases}</span> e <span class="m">\begin{cases}X-Y+4T=0\\2X+2Z-T=0\end{cases}</span>. Il sistema delle quattro equazioni ha matrice dei coefficienti
+<span class="m d">\begin{pmatrix}1&amp;1&amp;1&amp;-2\\1&amp;2&amp;0&amp;-1\\1&amp;-1&amp;0&amp;4\\2&amp;0&amp;2&amp;-1\end{pmatrix},</span>
+di determinante <span class="m">1\neq0</span>: rango 4, solo la soluzione nulla, che non è un punto. Le rette non si intersecano in <span class="m">\mathbb{P}^3(\mathbb{R})</span> → <strong>sghembe</strong>.</li>
+</ol>
 </div>
 
-<p>Il punto all&#39;infinito della retta <span class="m">x=x_0+lt</span>, <span class="m">y=y_0+mt</span>, <span class="m">z=z_0+nt</span> è <span class="m">[l\ m\ n\ 0]</span>. <strong>Proposizione 39.53:</strong> una retta proiettiva e un piano proiettivo di <span class="m">\mathbb{P}^3(\mathbb{R})</span> si intersecano sempre.</p>
-<h2>Spazi proiettivi reali</h2>
-<p><strong>Definizione 39.54–39.55.</strong> Lo <strong>spazio proiettivo <span class="m">n</span>-dimensionale</strong> <span class="m">\mathbb{P}^n(\mathbb{R})</span> è il quoziente di <span class="m">\mathbb{R}^{n+1}\setminus\{0_{n+1}\}</span> per <span class="m">v\sim w\iff w=\lambda v</span>, <span class="m">\lambda\neq0</span>. I punti con <span class="m">(n+1)</span>-esima coordinata nulla sono i punti all&#39;infinito.</p>
-<div class="callout sintesi">
+<div class="callout esempio">
+
+<p><strong>Esercizio 39.1.</strong> Le rette <span class="m">\begin{cases}x-y-z=0\\2x-y-4z-3=0\end{cases}</span> e <span class="m">\begin{cases}2x-4y+z-1=0\\2y-z+4=0\end{cases}</span> (in <span class="m">\mathbb{R}^3</span>) sono parallele?</p>
+<p>Forme omogenee: <span class="m">\begin{cases}X-Y-Z=0\\2X-Y-4Z-3T=0\end{cases}</span> e <span class="m">\begin{cases}2X-4Y+Z-T=0\\2Y-Z+4T=0\end{cases}</span>.</p>
+<ul>
+<li>Prima retta, <span class="m">T=0</span>: <span class="m">X=Y+Z</span> e <span class="m">2Y+2Z-Y-4Z=0\Rightarrow Y=2Z</span>, <span class="m">X=3Z</span>: punto <span class="m">[3\ 2\ 1\ 0]</span>.</li>
+<li>Seconda retta, <span class="m">T=0</span>: <span class="m">Z=2Y</span> e <span class="m">2X-4Y+2Y=0\Rightarrow X=Y</span>: soluzioni <span class="m">(\alpha,\alpha,2\alpha,0)</span>, punto <span class="m">[1\ 1\ 2\ 0]</span>.</li>
+</ul>
+<p>I punti all&#39;infinito sono diversi: le rette <strong>non sono parallele</strong>. (Nella dispensa il secondo punto è stampato come <span class="m">[1\ 1\ 3\ 0]</span>, ma dalle soluzioni <span class="m">(\alpha,\alpha,2\alpha,0)</span> che la dispensa stessa scrive si ottiene <span class="m">[1\ 1\ 2\ 0]</span>; la conclusione non cambia.)</p>
+</div>
+
+<p><strong>Osservazione 39.51.</strong> Per la retta in forma parametrica <span class="m">x=x_0+lt</span>, <span class="m">y=y_0+mt</span>, <span class="m">z=z_0+nt</span> il punto all&#39;infinito è <span class="m">[l\ m\ n\ 0]</span>: si legge direttamente dal vettore direttore. <strong>Notazione 39.52:</strong> si disegna come il vettore <span class="m">{}^t(l\ m\ n)</span>.</p>
+<p><strong>Proposizione 39.53.</strong> Una retta proiettiva e un piano proiettivo di <span class="m">\mathbb{P}^3(\mathbb{R})</span> <strong>si intersecano sempre</strong> (sistema omogeneo di 3 equazioni in 4 incognite: almeno <span class="m">\infty^1</span> soluzioni). In particolare, una retta parallela a un piano lo incontra in un punto all&#39;infinito.</p>
+<div class="callout esempio">
+
+<p><strong>Intersezione retta–piano.</strong> Retta <span class="m">\begin{cases}X-3Y-2Z+T=0\\2X-Z=0\end{cases}</span>, piano <span class="m">2Y+Z-T=0</span>.</p>
+<ol>
+<li>Dalla seconda equazione <span class="m">Z=2X</span>.</li>
+<li>Dal piano <span class="m">T=2Y+Z=2Y+2X</span>.</li>
+<li>Nella prima: <span class="m">X-3Y-2(2X)+(2Y+2X)=0\Rightarrow -X-Y=0\Rightarrow Y=-X</span>.</li>
+<li>Allora <span class="m">Z=2X</span> e <span class="m">T=2(-X)+2X=0</span>.</li>
+</ol>
+<p>Soluzioni <span class="m">(\alpha,-\alpha,2\alpha,0)</span>: il punto di intersezione è <span class="m">[1\ -1\ 2\ 0]</span>, <strong>all&#39;infinito</strong> (la retta è parallela al piano). Controllo in tutte le equazioni: <span class="m">1+3-4+0=0</span> ✓, <span class="m">2-2=0</span> ✓, <span class="m">-2+2-0=0</span> ✓. Attenzione a un punto &quot;quasi uguale&quot; ma con <span class="m">T\neq0</span>: va scartato se non soddisfa tutte e tre le equazioni.</p>
+</div>
+
+<h2>Spazi proiettivi reali di dimensione <span class="m">n</span></h2>
+<p><strong>Definizione 39.54.</strong> Lo <strong>spazio proiettivo <span class="m">n</span>-dimensionale</strong> <span class="m">\mathbb{P}^n(\mathbb{R})</span> è il quoziente di <span class="m">\mathbb{R}^{n+1}\setminus\{0_{n+1}\}</span> per <span class="m">v\sim w\iff w=\lambda v</span>, <span class="m">\lambda\neq0</span>.</p>
+<p><strong>Definizione 39.55.</strong> I punti di <span class="m">\mathbb{P}^n(\mathbb{R})</span> con la <span class="m">(n+1)</span>-esima coordinata nulla sono i <strong>punti all&#39;infinito</strong> (o impropri) di <span class="m">\mathbb{P}^n(\mathbb{R})</span> (o di <span class="m">\mathbb{R}^n</span>). Quelli con l&#39;ultima coordinata non nulla corrispondono, dividendo per essa, ai punti di <span class="m">\mathbb{R}^n</span>.</p>
+<div class="callout attenzione">
 
 <ul>
-<li>Un punto di <span class="m">\mathbb{P}^n(\mathbb{R})</span> ha <span class="m">n+1</span> coordinate, definite a meno di un fattore non nullo; il vettore nullo non è un punto.</li>
-<li>Ultima coordinata <span class="m">\neq0</span>: punto &quot;vero&quot; (si divide per essa); ultima coordinata <span class="m">=0</span>: punto all&#39;infinito = direzione.</li>
-<li>Omogeneizzare: <span class="m">x\to X/T</span>, ..., moltiplicare per <span class="m">T</span>: il termine noto diventa il coefficiente di <span class="m">T</span>.</li>
-<li>Parallele = stesso punto all&#39;infinito; sghembe = nessuna intersezione in <span class="m">\mathbb{P}^3(\mathbb{R})</span>.</li>
+<li>Un punto di <span class="m">\mathbb{P}^n(\mathbb{R})</span> ha <strong><span class="m">n+1</span></strong> coordinate: <span class="m">[3\ 1\ -2]</span> sta in <span class="m">\mathbb{P}^2(\mathbb{R})</span>, non in <span class="m">\mathbb{P}^3(\mathbb{R})</span>.</li>
+<li>È all&#39;infinito il punto con l&#39;<strong>ultima</strong> coordinata nulla, non uno qualsiasi con uno zero.</li>
+<li>Le coordinate omogenee sono definite a meno di un fattore non nullo: <span class="m">[1\ 2\ 0]</span> e <span class="m">[-3\ -6\ 0]</span> sono lo stesso punto. La quaterna/terna nulla non è un punto.</li>
+<li>Nella forma omogenea il termine noto <strong>non sparisce</strong>: diventa il coefficiente di <span class="m">T</span> (<span class="m">2x-7y+5z-3=0\to2X-7Y+5Z-3T=0</span>). Scrivere <span class="m">2X-7Y+5Z=0</span> significa descrivere la giacitura, non il piano; scrivere ancora <span class="m">x,y,z</span> minuscole non è una forma omogenea.</li>
+<li>&quot;Intersezione all&#39;infinito&quot; di due rette di <span class="m">\mathbb{R}^3</span> significa <strong>parallele distinte</strong>, non sghembe: le sghembe non si incontrano nemmeno all&#39;infinito.</li>
 </ul>
 </div>
 
 <div class="callout esame">
 
-<p>Quiz e paniere: a quale <span class="m">\mathbb{P}^n</span> appartiene un punto, forma implicita omogenea di un piano o di una retta, mutua posizione di rette tramite i punti all&#39;infinito, intersezione di retta e piano proiettivi (risolvere il sistema omogeneo e controllare tutte le equazioni). Domanda aperta: &quot;Parlare degli spazi proiettivi&quot;.</p>
+<p>Domanda aperta del paniere: &quot;Parlare degli spazi proiettivi&quot;. Struttura consigliata: motivazione (prospettiva, rette parallele che si incontrano); definizione di <span class="m">\mathbb{P}^n(\mathbb{R})</span> come quoziente di <span class="m">\mathbb{R}^{n+1}\setminus\{0\}</span> per la proporzionalità; coordinate omogenee e inclusione <span class="m">\mathbb{R}^n\subset\mathbb{P}^n(\mathbb{R})</span> (ultima coordinata <span class="m">\neq0</span>); punti all&#39;infinito (ultima coordinata nulla: uno solo in <span class="m">\mathbb{P}^1</span>, una retta in <span class="m">\mathbb{P}^2</span>, un piano in <span class="m">\mathbb{P}^3</span>); omogeneizzazione di rette e piani con un esempio; Proposizione 39.25 (due rette di <span class="m">\mathbb{P}^2</span> si intersecano sempre, con dimostrazione) e Corollario 39.26 (parallele = stesso punto all&#39;infinito); Proposizione 39.49 (parallele/sghembe in <span class="m">\mathbb{R}^3</span>).</p>
+<p>Nei quiz: a quale <span class="m">\mathbb{P}^n</span> appartiene un punto (conta le coordinate), forma implicita omogenea, mutua posizione di rette dal punto comune, intersezione retta–piano (sostituzione e controllo in tutte le equazioni).</p>
+</div>
+
+<div class="callout sintesi">
+
+<ul>
+<li><span class="m">\mathbb{P}^n(\mathbb{R})=(\mathbb{R}^{n+1}\setminus\{0\})/\!\sim</span>, con <span class="m">v\sim w\iff w=\lambda v</span>, <span class="m">\lambda\neq0</span>. Punti: <span class="m">n+1</span> coordinate a meno di un fattore.</li>
+<li>Ultima coordinata <span class="m">\neq0</span>: punto di <span class="m">\mathbb{R}^n</span> (si divide per essa). Ultima coordinata <span class="m">=0</span>: punto all&#39;infinito = direzione.</li>
+<li><span class="m">\mathbb{P}^1</span>: un punto all&#39;infinito; <span class="m">\mathbb{P}^2</span>: una retta all&#39;infinito (<span class="m">T=0</span>); <span class="m">\mathbb{P}^3</span>: un piano all&#39;infinito (<span class="m">T=0</span>).</li>
+<li>Omogeneizzare: <span class="m">x\to X/T</span>, … e moltiplicare per <span class="m">T</span>; il termine noto diventa il coefficiente di <span class="m">T</span>. Punto all&#39;infinito della retta <span class="m">ax+by+c=0</span>: <span class="m">[b\ -a\ 0]</span>; della retta di <span class="m">\mathbb{R}^3</span>: <span class="m">[l\ m\ n\ 0]</span>.</li>
+<li>In <span class="m">\mathbb{P}^2</span> due rette si intersecano sempre; parallele = stesso punto all&#39;infinito. In <span class="m">\mathbb{P}^3</span>: parallele = stesso punto all&#39;infinito, sghembe = nessuna intersezione; retta e piano, due piani si intersecano sempre.</li>
+</ul>
 </div>

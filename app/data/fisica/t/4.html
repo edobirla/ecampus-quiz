@@ -1,85 +1,198 @@
-<h1>Lezione 04 — Operazioni con i vettori (prodotto scalare e vettoriale)</h1>
+<h1>Lezione 04 — Operazioni con i vettori: versori, prodotto scalare e prodotto vettoriale</h1>
+<p>Nella lezione 3 abbiamo sommato i vettori e li abbiamo moltiplicati per un numero. Qui introduciamo i <strong>versori</strong>, che permettono di scrivere ogni vettore come combinazione dei tre assi, e i due <strong>prodotti tra vettori</strong>: il <strong>prodotto scalare</strong>, che dà un numero, e il <strong>prodotto vettoriale</strong>, che dà un vettore. Sono strumenti che torneranno in tutto il corso: lavoro e potenza (prodotto scalare), momento di una forza, momento angolare, moto circolare e forza di Lorentz (prodotto vettoriale).</p>
+<h2>Prodotto e divisione per uno scalare (richiamo)</h2>
+<p>Il prodotto di un vettore per uno scalare <span class="m">c</span> è il vettore che ha per componenti quelle di partenza moltiplicate per <span class="m">c</span>:
+<span class="m d">\vec w = c\,\vec v = (c\,v_x,\ c\,v_y,\ c\,v_z)</span>
+Il modulo è moltiplicato per <span class="m">|c|</span>, la direzione non cambia, il verso si inverte se <span class="m">c &lt; 0</span>. La divisione per uno scalare è il prodotto per il suo inverso: <span class="m">\vec w = \vec v / c = (1/c)\,\vec v</span>.</p>
 <h2>Versori</h2>
-<p>Un <strong>versore</strong> è un vettore di modulo 1. Indica solo una direzione e un verso. Da un vettore <span class="m">\vec w</span> si ottiene il suo versore dividendo per il modulo: <span class="m">\hat w = \vec w / |\vec w|</span>.</p>
-<p>I versori degli assi sono <span class="m">\hat i = (1,0,0)</span>, <span class="m">\hat j = (0,1,0)</span>, <span class="m">\hat k = (0,0,1)</span>. Ogni vettore si scrive come:
-<span class="m d">\vec v = v_x\,\hat i + v_y\,\hat j + v_z\,\hat k</span></p>
-<p>Dividere un vettore per un numero <span class="m">c</span> vuol dire moltiplicarlo per <span class="m">1/c</span>.</p>
-<h2>Prodotto scalare</h2>
-<p>Il prodotto scalare di due vettori dà <strong>un numero</strong>:
-<span class="m d">\vec v \cdot \vec w = v\,w\cos\theta = v_x w_x + v_y w_y + v_z w_z</span>
+<p>Un <strong>versore</strong> è un vettore di <strong>modulo 1</strong>. Non porta informazione sull&#39;intensità: indica solo una <strong>direzione e un verso</strong>. Si indica con il cappello: <span class="m">\hat u</span>.</p>
+<p>Da qualunque vettore non nullo <span class="m">\vec w</span> si ottiene il versore con la sua stessa direzione e verso <strong>dividendo il vettore per il suo modulo</strong>:
+<span class="m d">\hat w = \frac{\vec w}{|\vec w|}</span>
+Infatti il modulo di <span class="m">\hat w</span> è <span class="m">|\vec w|/|\vec w| = 1</span>. Al contrario, ogni vettore si scrive come modulo × versore: <span class="m">\vec w = w\,\hat w</span>.</p>
+<p>I versori degli assi cartesiani sono
+<span class="m d">\hat i = (1, 0, 0) \qquad \hat j = (0, 1, 0) \qquad \hat k = (0, 0, 1)</span>
+Ogni vettore si scrive come somma delle sue componenti lungo gli assi, ciascuna moltiplicata per il versore dell&#39;asse:
+<span class="m d">\vec v = v_x\,\hat i + v_y\,\hat j + v_z\,\hat k</span>
+Questa scrittura è comoda perché permette di fare i conti con le normali regole dell&#39;algebra (proprietà distributiva), trattando i versori come &quot;lettere&quot;.</p>
+<div class="callout esempio">
+
+<p><span class="m">\vec w = (3, 0, 4)</span> ha modulo <span class="m">\sqrt{9 + 0 + 16} = 5</span>. Il suo versore è <span class="m">\hat w = (3/5,\ 0,\ 4/5) = (0{,}6;\ 0;\ 0{,}8)</span>, e infatti <span class="m">\sqrt{0{,}36 + 0{,}64} = 1</span>.</p>
+</div>
+
+<h2>Il prodotto scalare</h2>
+<h3>Definizione</h3>
+<p>Il <strong>prodotto scalare</strong> di due vettori <span class="m">\vec v</span> e <span class="m">\vec w</span> si indica con un puntino e dà <strong>uno scalare</strong> (un numero):
+<span class="m d">\vec v \cdot \vec w = v\,w\cos\theta</span>
 dove:</p>
 <ul>
 <li><span class="m">v, w</span> = moduli dei due vettori;</li>
-<li><span class="m">\theta</span> = angolo tra i vettori (tra 0° e 180°);</li>
-<li><span class="m">v_x, w_x, \dots</span> = componenti.</li>
+<li><span class="m">\theta</span> = angolo compreso tra i due vettori (applicati nello stesso punto), tra <span class="m">0°</span> e <span class="m">180°</span>.</li>
 </ul>
-<p>Casi notevoli:</p>
+<h3>Significato geometrico</h3>
+<p><span class="m">w\cos\theta</span> è la <strong>proiezione</strong> di <span class="m">\vec w</span> sulla direzione di <span class="m">\vec v</span>. Quindi il prodotto scalare è &quot;il modulo di uno per la proiezione dell&#39;altro su di esso&quot;: misura <strong>quanto i due vettori vanno nella stessa direzione</strong>.</p>
 <ul>
-<li>vettori <strong>perpendicolari</strong> (<span class="m">\theta = 90°</span>): prodotto <strong>nullo</strong>;</li>
-<li>vettori paralleli e concordi: prodotto massimo, <span class="m">vw</span>;</li>
-<li><span class="m">\vec v \cdot \vec v = v^2 \ge 0</span>, nullo solo per il vettore nullo.</li>
+<li><span class="m">0° \le \theta &lt; 90°</span>: <span class="m">\cos\theta &gt; 0</span>, prodotto <strong>positivo</strong> (vettori &quot;concordi&quot;);</li>
+<li><span class="m">\theta = 90°</span>: <span class="m">\cos\theta = 0</span>, prodotto <strong>nullo</strong>;</li>
+<li><span class="m">90° &lt; \theta \le 180°</span>: <span class="m">\cos\theta &lt; 0</span>, prodotto <strong>negativo</strong>.</li>
 </ul>
-<p>Tra i versori: <span class="m">\hat i\cdot\hat i = \hat j\cdot\hat j = \hat k\cdot\hat k = 1</span>; <span class="m">\hat i\cdot\hat j = \hat i\cdot\hat k = \hat j\cdot\hat k = 0</span>.</p>
-<p>Proprietà: commutativo (<span class="m">\vec v\cdot\vec w = \vec w\cdot\vec v</span>), distributivo, e <span class="m">(s\vec v)\cdot\vec w = s(\vec v\cdot\vec w)</span>.</p>
-<p><strong>Angolo tra due vettori.</strong> Si ricava dal prodotto scalare:
-<span class="m d">\cos\theta = \frac{\vec v \cdot \vec w}{v\,w}</span></p>
+<h3>Casi notevoli</h3>
+<ul>
+<li><strong>Vettori perpendicolari</strong> (ortogonali, <span class="m">\theta = 90°</span>): <span class="m">\vec v \cdot \vec w = 0</span>. Vale anche il contrario: se due vettori non nulli hanno prodotto scalare zero, sono perpendicolari. Il prodotto è nullo anche se uno dei due vettori è nullo.</li>
+<li><strong>Vettori paralleli e concordi</strong> (<span class="m">\theta = 0°</span>): <span class="m">\vec v \cdot \vec w = vw</span>, il valore massimo possibile.</li>
+<li><strong>Paralleli e discordi</strong> (<span class="m">\theta = 180°</span>): <span class="m">\vec v \cdot \vec w = -vw</span>.</li>
+<li><strong>Un vettore con se stesso</strong> (<span class="m">\theta = 0</span>): <span class="m">\vec v \cdot \vec v = v^2 = |\vec v|^2</span>. Il prodotto scalare è <strong>definito positivo</strong>: <span class="m">\vec v\cdot\vec v \ge 0</span>, e vale zero solo se <span class="m">\vec v = \vec 0</span>.</li>
+</ul>
+<h3>Prodotti scalari tra i versori degli assi</h3>
+<p>Ogni versore ha modulo 1 ed è parallelo a se stesso, quindi <span class="m">\hat i\cdot\hat i = 1\cdot 1\cdot\cos 0° = 1</span>. Due versori diversi sono perpendicolari, quindi il loro prodotto è zero:
+<span class="m d">\hat i\cdot\hat i = \hat j\cdot\hat j = \hat k\cdot\hat k = 1 \qquad \hat i\cdot\hat j = \hat i\cdot\hat k = \hat j\cdot\hat k = 0</span></p>
+<h3>Proprietà</h3>
+<ul>
+<li><strong>Commutativa</strong>: <span class="m">\vec v \cdot \vec w = \vec w \cdot \vec v</span> (l&#39;angolo tra i due è lo stesso).</li>
+<li><strong>Distributiva</strong>: <span class="m">\vec u \cdot (\vec v + \vec w) = \vec u \cdot \vec v + \vec u \cdot \vec w</span>.</li>
+<li><strong>Omogeneità</strong>: per ogni numero reale <span class="m">s</span>, <span class="m">(s\vec v)\cdot\vec w = \vec v\cdot(s\vec w) = s\,(\vec v\cdot\vec w)</span>.</li>
+</ul>
+<h3>Prodotto scalare in componenti (derivazione)</h3>
+<p>Si scrivono i due vettori con i versori e si moltiplica tutto per tutto (proprietà distributiva):
+<span class="m d">\vec v\cdot\vec w = (v_x\hat i + v_y\hat j + v_z\hat k)\cdot(w_x\hat i + w_y\hat j + w_z\hat k)</span>
+Si ottengono nove termini del tipo <span class="m">v_a w_b\,(\hat a\cdot\hat b)</span>. I sei termini con versori diversi contengono <span class="m">\hat i\cdot\hat j = 0</span> ecc. e spariscono; i tre con versori uguali contengono <span class="m">\hat i\cdot\hat i = 1</span> ecc. e restano:
+<span class="m d">\vec v\cdot\vec w = v_x w_x + v_y w_y + v_z w_z</span>
+Il prodotto scalare è la <strong>somma dei prodotti delle componenti corrispondenti</strong>. Come caso particolare, <span class="m">\vec v\cdot\vec v = v_x^2 + v_y^2 + v_z^2 = v^2</span>: si ritrova Pitagora.</p>
+<h3>L&#39;angolo tra due vettori</h3>
+<p>Uguagliando le due espressioni, <span class="m">vw\cos\theta = v_xw_x + v_yw_y + v_zw_z</span>, si trova l&#39;angolo (convesso, non orientato) tra due vettori dati per componenti:
+<span class="m d">\cos\theta = \frac{\vec v\cdot\vec w}{v\,w} \qquad\Longrightarrow\qquad \theta = \arccos\frac{\vec v\cdot\vec w}{|\vec v|\,|\vec w|}</span></p>
 <div class="callout esempio">
 
+<p><strong>Angolo tra due vettori (dalla dispensa).</strong> <span class="m">\vec v = (4, -3)</span> e <span class="m">\vec w = (5, 12)</span>.</p>
+<ol>
+<li>Prodotto scalare per componenti: <span class="m">\vec v\cdot\vec w = 4\cdot 5 + (-3)\cdot 12 = 20 - 36 = -16</span>.</li>
+<li>Moduli: <span class="m">v = \sqrt{16 + 9} = 5</span>; <span class="m">w = \sqrt{25 + 144} = 13</span>.</li>
+<li><span class="m">\cos\theta = \dfrac{-16}{5\cdot 13} = -\dfrac{16}{65} \approx -0{,}246</span>, quindi <span class="m">\theta \approx 104°</span>.</li>
+</ol>
+<p>Il prodotto negativo dice subito che l&#39;angolo è ottuso.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Paniere: prodotto scalare e lunghezze.</strong> <span class="m">\vec v = (0, 2, 4)</span> e <span class="m">\vec w = (2, 0, 4)</span>.</p>
 <ul>
-<li><span class="m">\vec v = (0,2,4)</span>, <span class="m">\vec w = (2,0,4)</span>: <span class="m">\vec v\cdot\vec w = 0 + 0 + 16 = 16</span>. Moduli: <span class="m">\sqrt{0+4+16} = \sqrt{20}</span> e <span class="m">\sqrt{4+0+16} = \sqrt{20}</span>. Stessa lunghezza.</li>
-<li><span class="m">\vec v = (1,2,4)</span>, <span class="m">\vec w = (6,3,-3)</span>: <span class="m">6 + 6 - 12 = 0</span>. Sono ortogonali.</li>
-<li><span class="m">(1, k-2, 3)</span> e <span class="m">(k, 2, 5)</span> sono ortogonali se <span class="m">k + 2k - 4 + 15 = 0</span>, cioè <span class="m">k = -11/3</span>.</li>
+<li>Prodotto scalare: <span class="m">0\cdot 2 + 2\cdot 0 + 4\cdot 4 = 16</span>. Non è zero, quindi <strong>non</strong> sono ortogonali.</li>
+<li>Moduli: <span class="m">v = \sqrt{0 + 4 + 16} = \sqrt{20}</span>; <span class="m">w = \sqrt{4 + 0 + 16} = \sqrt{20}</span>. <strong>Hanno la stessa lunghezza.</strong></li>
+<li>Non sono paralleli: le componenti non sono proporzionali (una ha <span class="m">x = 0</span>, l&#39;altra <span class="m">y = 0</span>). L&#39;angolo: <span class="m">\cos\theta = 16/20 = 0{,}8</span>, <span class="m">\theta \approx 36{,}9°</span>.</li>
 </ul>
 </div>
 
-<h2>Prodotto vettoriale</h2>
-<p>Il prodotto vettoriale di due vettori dà <strong>un vettore</strong> <span class="m">\vec v \times \vec w</span> (si scrive anche <span class="m">\vec v \wedge \vec w</span>):</p>
-<ul>
-<li><strong>modulo</strong>: <span class="m">|\vec v \times \vec w| = v\,w\sin\theta</span>;</li>
-<li><strong>direzione</strong>: perpendicolare al piano dei due vettori;</li>
-<li><strong>verso</strong>: regola della mano destra (o della vite destrorsa). Si ruota <span class="m">\vec v</span> verso <span class="m">\vec w</span> per l&#39;angolo più piccolo; il pollice indica il verso.</li>
-</ul>
-<p>dove <span class="m">\theta</span> è l&#39;angolo tra i vettori, tra 0° e 180°.</p>
-<p>Casi notevoli:</p>
-<ul>
-<li>vettori <strong>paralleli</strong>: prodotto <strong>nullo</strong> (anche <span class="m">\vec v \times \vec v = 0</span>);</li>
-<li>vettori perpendicolari: modulo massimo, <span class="m">vw</span>.</li>
-</ul>
-<p>Il modulo è l&#39;<strong>area del parallelogramma</strong> costruito sui due vettori.</p>
-<p>Proprietà:</p>
-<ul>
-<li><strong>anticommutativo</strong>: <span class="m">\vec v \times \vec w = -\,\vec w \times \vec v</span>. Scambiare l&#39;ordine inverte il verso.</li>
-<li>distributivo: <span class="m">\vec v \times (\vec w + \vec z) = \vec v \times \vec w + \vec v \times \vec z</span>.</li>
-</ul>
-<p>Tra i versori: <span class="m">\hat i\times\hat j = \hat k</span>, <span class="m">\hat j\times\hat k = \hat i</span>, <span class="m">\hat k\times\hat i = \hat j</span>. Al contrario cambia segno: <span class="m">\hat j \times \hat i = -\hat k</span>.</p>
-<p><strong>In componenti:</strong>
-<span class="m d">\vec v \times \vec w = (v_y w_z - v_z w_y)\,\hat i + (v_z w_x - v_x w_z)\,\hat j + (v_x w_y - v_y w_x)\,\hat k</span></p>
-<p>Per ricordarla si usa il determinante: prima riga <span class="m">\hat i, \hat j, \hat k</span>; seconda riga le componenti di <span class="m">\vec v</span>; terza quelle di <span class="m">\vec w</span>.
-<span class="m d">\vec v \times \vec w = \begin{vmatrix} \hat i &amp; \hat j &amp; \hat k \\ v_x &amp; v_y &amp; v_z \\ w_x &amp; w_y &amp; w_z \end{vmatrix}</span></p>
 <div class="callout esempio">
 
-<p><span class="m">\vec v = (0,1,0) = \hat j</span>, <span class="m">\vec w = (2,0,0) = 2\hat i</span>. Allora <span class="m">\vec v \times \vec w = 2(\hat j \times \hat i) = -2\hat k</span>. Il risultato è diretto lungo l&#39;asse z.</p>
+<p><strong>Paniere: ortogonalità.</strong> <span class="m">\vec v = (1, 2, 4)</span> e <span class="m">\vec w = (6, 3, -3)</span>:
+<span class="m d">\vec v\cdot\vec w = 1\cdot 6 + 2\cdot 3 + 4\cdot(-3) = 6 + 6 - 12 = 0</span>
+Il prodotto scalare è nullo e i vettori non sono nulli: <strong>sono ortogonali</strong>. (I moduli sono <span class="m">\sqrt{21}</span> e <span class="m">\sqrt{54}</span>, diversi.)</p>
 </div>
 
-<p>Uso tipico: <span class="m">\vec v \times \vec w</span> dà un vettore perpendicolare a entrambi. Serve quando si cerca una direzione ortogonale a due vettori dati.</p>
-<h2>Scalare o vettoriale: confronto</h2>
+<div class="callout esempio">
+
+<p><strong>Per quali <span class="m">k</span> due vettori sono ortogonali?</strong> (dalla dispensa) <span class="m">\vec v = (1,\ k-2,\ 3)</span> e <span class="m">\vec w = (k,\ 2,\ 5)</span>. Si impone prodotto scalare nullo:
+<span class="m d">1\cdot k + (k - 2)\cdot 2 + 3\cdot 5 = k + 2k - 4 + 15 = 3k + 11 = 0 \;\Rightarrow\; k = -\frac{11}{3}</span></p>
+</div>
+
+<h2>Il prodotto vettoriale</h2>
+<h3>Definizione</h3>
+<p>Il <strong>prodotto vettoriale</strong> di <span class="m">\vec v</span> e <span class="m">\vec w</span> si indica con <span class="m">\vec v \times \vec w</span> (oppure <span class="m">\vec v \wedge \vec w</span>) e dà <strong>un vettore</strong> così definito:</p>
+<ul>
+<li><strong>modulo</strong>: <span class="m">|\vec v \times \vec w| = v\,w\sin\theta</span>, con <span class="m">\theta</span> angolo compreso tra i due vettori, in <span class="m">[0, \pi]</span> (quindi <span class="m">\sin\theta \ge 0</span>);</li>
+<li><strong>direzione</strong>: <strong>perpendicolare al piano</strong> individuato dai due vettori (quindi perpendicolare a entrambi);</li>
+<li><strong>verso</strong>: quello in cui <strong>avanza una vite destrorsa</strong> che ruota come dovrebbe ruotare <span class="m">\vec v</span> per sovrapporsi a <span class="m">\vec w</span> per la via più breve. Equivalente: <strong>regola della mano destra</strong>: le dita della mano destra girano da <span class="m">\vec v</span> verso <span class="m">\vec w</span>, il pollice indica il verso del prodotto.</li>
+</ul>
+<h3>Significato geometrico del modulo</h3>
+<p>Nel parallelogramma costruito su <span class="m">\vec v</span> e <span class="m">\vec w</span>, la base è <span class="m">v</span> e l&#39;altezza è <span class="m">w\sin\theta</span>. Quindi
+<span class="m d">|\vec v\times\vec w| = v\,(w\sin\theta) = \text{area del parallelogramma costruito sui due vettori.}</span></p>
+<h3>Casi notevoli</h3>
+<ul>
+<li><strong>Vettori paralleli</strong> (o antiparalleli, <span class="m">\theta = 0°</span> o <span class="m">180°</span>): <span class="m">\sin\theta = 0</span>, il prodotto è il <strong>vettore nullo</strong>. In particolare <span class="m">\vec v \times \vec v = \vec 0</span>. Il parallelogramma è &quot;schiacciato&quot; e ha area zero.</li>
+<li><strong>Vettori perpendicolari</strong> (<span class="m">\theta = 90°</span>): modulo <strong>massimo</strong>, <span class="m">vw</span>.</li>
+<li>Se due vettori non nulli hanno <span class="m">\vec v \times \vec w = \vec 0</span>, allora sono <strong>paralleli</strong>.</li>
+</ul>
+<h3>Proprietà</h3>
+<ul>
+<li><strong>Anticommutativa</strong>: scambiare l&#39;ordine inverte il verso di rotazione della vite, quindi il verso del risultato; il modulo resta uguale:
+<span class="m d">\vec v \times \vec w = -\,\vec w \times \vec v</span>
+Il prodotto vettoriale <strong>non</strong> è commutativo: l&#39;ordine conta.</li>
+<li><strong>Distributiva</strong>: <span class="m">\vec v \times (\vec w + \vec z) = \vec v \times \vec w + \vec v \times \vec z</span>.</li>
+<li>Omogeneità: <span class="m">(s\vec v)\times\vec w = s\,(\vec v\times\vec w)</span>.</li>
+</ul>
+<h3>Prodotti vettoriali tra i versori degli assi</h3>
+<p>Con la mano destra (sistema di assi destrorso):
+<span class="m d">\hat i\times\hat j = \hat k \qquad \hat j\times\hat k = \hat i \qquad \hat k\times\hat i = \hat j</span>
+e, per l&#39;anticommutatività, in ordine inverso cambia il segno:
+<span class="m d">\hat j\times\hat i = -\hat k \qquad \hat k\times\hat j = -\hat i \qquad \hat i\times\hat k = -\hat j</span>
+Infine <span class="m">\hat i\times\hat i = \hat j\times\hat j = \hat k\times\hat k = \vec 0</span>.</p>
+<p>Regola pratica: nell&#39;ordine <strong>ciclico</strong> <span class="m">i \to j \to k \to i</span> il segno è più; contro l&#39;ordine ciclico è meno.</p>
+<h3>Prodotto vettoriale in componenti (derivazione)</h3>
+<p>Si scrivono i vettori con i versori e si usa la proprietà distributiva:
+<span class="m d">\vec v\times\vec w = (v_x\hat i + v_y\hat j + v_z\hat k)\times(w_x\hat i + w_y\hat j + w_z\hat k)</span>
+Dei nove termini, i tre con versori uguali (<span class="m">\hat i\times\hat i</span>, ...) sono nulli. Restano:
+<span class="m d">v_xw_y\,(\hat i\times\hat j) + v_xw_z\,(\hat i\times\hat k) + v_yw_x\,(\hat j\times\hat i) + v_yw_z\,(\hat j\times\hat k) + v_zw_x\,(\hat k\times\hat i) + v_zw_y\,(\hat k\times\hat j)</span>
+Sostituendo la tabella dei versori:
+<span class="m d">= v_xw_y\,\hat k - v_xw_z\,\hat j - v_yw_x\,\hat k + v_yw_z\,\hat i + v_zw_x\,\hat j - v_zw_y\,\hat i</span>
+e raccogliendo per versore:
+<span class="m d">\vec v\times\vec w = (v_y w_z - v_z w_y)\,\hat i + (v_z w_x - v_x w_z)\,\hat j + (v_x w_y - v_y w_x)\,\hat k</span></p>
+<p><strong>Promemoria con il determinante.</strong> La stessa formula si ottiene sviluppando il determinante con prima riga i versori, seconda le componenti del primo vettore, terza quelle del secondo:
+<span class="m d">\vec v\times\vec w = \begin{vmatrix} \hat i &amp; \hat j &amp; \hat k \\ v_x &amp; v_y &amp; v_z \\ w_x &amp; w_y &amp; w_z \end{vmatrix}</span>
+Per la componente <span class="m">\hat i</span> si copre la colonna di <span class="m">\hat i</span> e si fa &quot;diagonale principale meno diagonale secondaria&quot; del quadratino rimasto: <span class="m">v_yw_z - v_zw_y</span>. Per <span class="m">\hat j</span> si fa lo stesso <strong>cambiando segno</strong>: <span class="m">-(v_xw_z - v_zw_x) = v_zw_x - v_xw_z</span>. Per <span class="m">\hat k</span>: <span class="m">v_xw_y - v_yw_x</span>.</p>
+<div class="callout esempio">
+
+<p><strong>Paniere: direzione del prodotto vettoriale.</strong> <span class="m">\vec v = (0, 1, 0) = \hat j</span> e <span class="m">\vec w = (2, 0, 0) = 2\hat i</span>.</p>
+<ul>
+<li>Con i versori: <span class="m">\vec v\times\vec w = \hat j \times 2\hat i = 2\,(\hat j\times\hat i) = 2\,(-\hat k) = -2\hat k</span>.</li>
+<li>Con la formula: componente <span class="m">x</span>: <span class="m">v_yw_z - v_zw_y = 1\cdot 0 - 0\cdot 0 = 0</span>; componente <span class="m">y</span>: <span class="m">v_zw_x - v_xw_z = 0\cdot 2 - 0\cdot 0 = 0</span>; componente <span class="m">z</span>: <span class="m">v_xw_y - v_yw_x = 0\cdot 0 - 1\cdot 2 = -2</span>. Risultato <span class="m">(0, 0, -2)</span>.</li>
+</ul>
+<p>Il prodotto è <strong>diretto lungo l&#39;asse <span class="m">z</span></strong> (nel verso negativo), perpendicolare al piano <span class="m">xy</span> in cui stanno i due vettori. Modulo <span class="m">2 = 1\cdot 2\cdot\sin 90°</span>.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Un vettore ortogonale a due vettori dati</strong> (dalla dispensa). Trovare <span class="m">\vec u</span> perpendicolare sia a <span class="m">\vec v = (1, 0, -1)</span> sia a <span class="m">\vec w = (0, 2, 1)</span>.
+Il prodotto vettoriale è per definizione perpendicolare al piano dei due vettori, quindi <span class="m">\vec u = \vec v\times\vec w</span> va bene:</p>
+<ul>
+<li><span class="m">u_x = v_yw_z - v_zw_y = 0\cdot 1 - (-1)\cdot 2 = 2</span>;</li>
+<li><span class="m">u_y = v_zw_x - v_xw_z = (-1)\cdot 0 - 1\cdot 1 = -1</span>;</li>
+<li><span class="m">u_z = v_xw_y - v_yw_x = 1\cdot 2 - 0\cdot 0 = 2</span>.</li>
+</ul>
+<p><span class="m">\vec u = (2, -1, 2)</span>. <strong>Controllo</strong> con il prodotto scalare: <span class="m">\vec u\cdot\vec v = 2 + 0 - 2 = 0</span> e <span class="m">\vec u\cdot\vec w = 0 - 2 + 2 = 0</span>. Ortogonale a entrambi.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Quesiti della dispensa.</strong></p>
+<ul>
+<li>Come si trova l&#39;angolo tra <span class="m">\vec v</span> e <span class="m">\vec w</span> date le componenti? <span class="m">\theta = \arccos\big(\vec v\cdot\vec w / (|\vec v|\,|\vec w|)\big)</span>, con il prodotto scalare calcolato per componenti.</li>
+<li>Se <span class="m">|\vec v| = 5</span>, quanto vale il modulo di <span class="m">\vec w = 3\vec v</span>? <span class="m">|\vec w| = 3\cdot 5 = 15</span>.</li>
+<li>Se <span class="m">\vec v</span> e <span class="m">\vec w</span> non sono nulli e <span class="m">\vec v\times\vec w = \vec 0</span>, quanto vale l&#39;angolo tra loro? <span class="m">\sin\theta = 0</span>, quindi <span class="m">\theta = 0°</span> o <span class="m">180°</span>: i vettori sono <strong>paralleli</strong>.</li>
+</ul>
+</div>
+
+<h2>Confronto tra i due prodotti</h2>
 <table>
 <thead>
 <tr>
 <th></th>
-<th>Prodotto scalare</th>
-<th>Prodotto vettoriale</th>
+<th>Prodotto scalare <span class="m">\vec v\cdot\vec w</span></th>
+<th>Prodotto vettoriale <span class="m">\vec v\times\vec w</span></th>
 </tr>
 </thead>
 <tbody><tr>
 <td>Risultato</td>
-<td>numero</td>
-<td>vettore</td>
+<td>un numero (scalare)</td>
+<td>un vettore</td>
 </tr>
 <tr>
-<td>Formula del modulo</td>
-<td><span class="m">vw\cos\theta</span></td>
-<td><span class="m">vw\sin\theta</span></td>
+<td>Modulo</td>
+<td><span class="m">vw\cos\theta</span> (può essere negativo)</td>
+<td><span class="m">vw\sin\theta</span> (≥ 0)</td>
+</tr>
+<tr>
+<td>Direzione</td>
+<td>—</td>
+<td>perpendicolare a entrambi, mano destra</td>
 </tr>
 <tr>
 <td>Nullo se</td>
@@ -93,17 +206,48 @@ dove:</p>
 </tr>
 <tr>
 <td>Ordine</td>
-<td>non conta</td>
-<td>scambiando cambia segno</td>
+<td>commutativo</td>
+<td>anticommutativo</td>
+</tr>
+<tr>
+<td>In componenti</td>
+<td><span class="m">v_xw_x + v_yw_y + v_zw_z</span></td>
+<td>determinante</td>
+</tr>
+<tr>
+<td>Versori</td>
+<td><span class="m">\hat i\cdot\hat i = 1</span>, <span class="m">\hat i\cdot\hat j = 0</span></td>
+<td><span class="m">\hat i\times\hat i = \vec 0</span>, <span class="m">\hat i\times\hat j = \hat k</span></td>
+</tr>
+<tr>
+<td>Esempi</td>
+<td>lavoro, potenza, flusso</td>
+<td>momento, momento angolare, Lorentz</td>
 </tr>
 </tbody></table>
+<div class="callout attenzione">
+
+<ul>
+<li>Non confondere i due prodotti: per vettori <strong>perpendicolari</strong> è nullo il prodotto <strong>scalare</strong>; per vettori <strong>paralleli</strong> è nullo il prodotto <strong>vettoriale</strong>.</li>
+<li>Il prodotto scalare è un numero: non ha senso dire che &quot;è diretto lungo z&quot;. Il prodotto vettoriale è un vettore: ha senso chiederne la direzione.</li>
+<li>Nel prodotto vettoriale l&#39;ordine conta: <span class="m">\hat j\times\hat i = -\hat k</span>, non <span class="m">+\hat k</span>.</li>
+<li>Avere prodotto scalare diverso da zero non vuol dire essere paralleli: vuol dire solo non essere perpendicolari.</li>
+</ul>
+</div>
+
+<div class="callout esame">
+
+<p>Le domande del paniere sono esercizi con vettori dati per componenti nello spazio: calcolare il prodotto scalare (somma dei prodotti delle componenti); decidere se due vettori sono ortogonali (prodotto scalare nullo); confrontare le lunghezze (calcolare i moduli con Pitagora in 3D); trovare la direzione del prodotto vettoriale (perpendicolare al piano dei due vettori; con la tabella dei versori o con il determinante). Conviene sempre controllare tutte le affermazioni proposte: ortogonali? paralleli (componenti proporzionali)? stessa lunghezza?</p>
+</div>
+
 <div class="callout sintesi">
 
 <ul>
-<li>Versore = modulo 1; <span class="m">\vec v = v_x\hat i + v_y\hat j + v_z\hat k</span>; <span class="m">v = \sqrt{v_x^2+v_y^2+v_z^2}</span>.</li>
-<li><span class="m">\vec v\cdot\vec w = vw\cos\theta = v_xw_x + v_yw_y + v_zw_z</span>: nullo ⇔ ortogonali.</li>
+<li>Versore = modulo 1; <span class="m">\hat w = \vec w/|\vec w|</span>; <span class="m">\vec v = v_x\hat i + v_y\hat j + v_z\hat k</span>.</li>
+<li><span class="m">\vec v\cdot\vec w = vw\cos\theta = v_xw_x + v_yw_y + v_zw_z</span>: scalare; nullo ⇔ ortogonali; <span class="m">\vec v\cdot\vec v = v^2</span>. Commutativo, distributivo.</li>
 <li><span class="m">\cos\theta = \vec v\cdot\vec w/(vw)</span> dà l&#39;angolo tra due vettori.</li>
-<li><span class="m">|\vec v\times\vec w| = vw\sin\theta</span>, perpendicolare ai due, mano destra; nullo ⇔ paralleli.</li>
-<li><span class="m">\hat i\times\hat j = \hat k</span>; <span class="m">\vec v\times\vec w = -\vec w\times\vec v</span>.</li>
+<li><span class="m">|\vec v\times\vec w| = vw\sin\theta</span> = area del parallelogramma; direzione perpendicolare ai due, verso con la mano destra; nullo ⇔ paralleli.</li>
+<li><span class="m">\hat i\times\hat j = \hat k</span>, <span class="m">\hat j\times\hat k = \hat i</span>, <span class="m">\hat k\times\hat i = \hat j</span>; <span class="m">\vec v\times\vec w = -\vec w\times\vec v</span>.</li>
+<li><span class="m">\vec v\times\vec w = (v_yw_z - v_zw_y,\ v_zw_x - v_xw_z,\ v_xw_y - v_yw_x)</span>; serve a trovare un vettore ortogonale a due vettori dati.</li>
 </ul>
 </div>

@@ -1,146 +1,462 @@
 <h1 id="lez-29">Lezione 29 — Entalpia e passaggi di stato</h1>
 <h2 id="lez-29-perche">Perché questa lezione esiste</h2>
-<p>La <a href="#/teoria/chimica/28/lez-28">Lezione 28</a> ha mostrato che l&#39;energia interna di un gas ideale
-dipende solo da <span class="m">T</span>. Molte trasformazioni chimiche, però, avvengono a <strong>pressione
-costante</strong> (un becher aperto all&#39;aria, ad esempio), non a volume costante: questa
-lezione introduce una funzione di stato costruita apposta per semplificare i
-calcoli in quel caso — l&#39;<strong>entalpia</strong> — e la applica al caso più comune di
-scambio di calore a pressione costante: i passaggi di stato.</p>
+<p>La <a href="#/teoria/chimica/28/lez-28">Lezione 28</a> ha mostrato che l&#39;energia interna di un gas ideale dipende solo da <span class="m">T</span>. Molte trasformazioni
+chimiche, però, avvengono a <strong>pressione costante</strong> (un becher aperto all&#39;aria, ad esempio), non a volume costante:
+questa lezione (&quot;Termodinamica — parte 3&quot;) introduce una funzione di stato costruita apposta per semplificare i calcoli
+in quel caso — l&#39;<strong>entalpia</strong> — e la applica al caso più comune di scambio di calore a pressione costante: il
+riscaldamento/raffreddamento e i <strong>passaggi di stato</strong>. Seguono gli esercizi svolti: due percorsi diversi fra gli stessi
+stati (29/S1), un ciclo completo con <span class="m">Q</span>, <span class="m">\Delta U</span> e <span class="m">\Delta H</span> (29/S2), passaggi di stato (29/S3).</p>
 <h2 id="lez-29-entalpia">Entalpia: perché <span class="m">H=U+PV</span> semplifica i calcoli a pressione costante</h2>
-<p>Parti dal primo principio per una trasformazione infinitesima,
-<span class="m">dU = \delta Q + \delta L = \delta Q - P\,dV</span>. Definisci l&#39;<strong>entalpia</strong> come</p>
+<p>L&#39;espressione del primo principio <span class="m">\Delta U = Q + L</span>, valida per i sistemi chiusi, assume una forma particolarmente
+semplice se al posto dell&#39;energia interna si usa una <strong>funzione di stato ausiliaria</strong>, l&#39;entalpia.</p>
+<p>Si parte dal primo principio per una trasformazione <strong>infinitesima</strong> (elementare):</p>
+<p><span class="m d">dU = \delta Q + \delta L = \delta Q - P\,dV</span></p>
+<p>dove <span class="m">dU</span> è la variazione infinitesima di <span class="m">U</span>, mentre <span class="m">\delta Q</span> e <span class="m">\delta L</span> sono il calore e il lavoro scambiati. Il
+simbolo <span class="m">\delta</span> indica una <strong>quantità</strong> infinitesima e si usa per <span class="m">Q</span> e <span class="m">L</span> perché <strong>non sono funzioni di stato</strong>; il
+simbolo <span class="m">d</span> indica una <strong>variazione</strong> infinitesima e si usa per <span class="m">U</span>, che è funzione di stato e per cui ha senso parlare
+di variazione. Si definisce l&#39;<strong>entalpia</strong>:</p>
 <div class="callout formula">
 
 <p><span class="m d">H = U + PV</span></p>
+<p><span class="m">H</span> (J) = entalpia; <span class="m">U</span> (J) = energia interna; <span class="m">P</span> (Pa) = pressione; <span class="m">V</span> (m³) = volume. Poiché <span class="m">U</span> è funzione di stato e
+<span class="m">P</span>, <span class="m">V</span> sono variabili di stato, <strong>anche <span class="m">H</span> è una funzione di stato</strong>: una sua variazione non dipende dal percorso ma
+solo dagli estremi.</p>
 </div>
 
-<p>Differenziando (regola del prodotto): <span class="m">dH = dU + P\,dV + V\,dP</span>. Sostituendo
+<p>Differenziando (regola del prodotto, <span class="m">d(PV) = P\,dV + V\,dP</span>): <span class="m">dH = dU + P\,dV + V\,dP</span>. Sostituendo
 <span class="m">dU=\delta Q - P\,dV</span>:</p>
 <p><span class="m d">dH = (\delta Q - P\,dV) + P\,dV + V\,dP = \delta Q + V\,dP</span></p>
+<p>La variazione elementare di entalpia è la somma del calore scambiato e di un termine <span class="m">V\,dP</span>.</p>
 <div class="callout attenzione">
 
-<p><strong>Il termine <span class="m">-P\,dV</span> si cancella esattamente con il <span class="m">+P\,dV</span> introdotto dalla
-derivata di <span class="m">PV</span>.</strong> È proprio per questo che si definisce <span class="m">H</span> in questo modo: a
-<strong>pressione costante</strong> (<span class="m">dP=0</span>), la relazione si riduce a <span class="m">dH=\delta Q</span>, cioè:
-<span class="m d">\Delta H = Q \qquad \text{(a pressione costante)}</span>
-Il calore scambiato a pressione costante <strong>è</strong>, senza altri termini, la variazione
-di entalpia — utilissimo perché la maggior parte dei processi chimici avviene a
-pressione atmosferica costante.</p>
+<p><strong>Il termine <span class="m">-P\,dV</span> si cancella esattamente con il <span class="m">+P\,dV</span> introdotto dalla derivata di <span class="m">PV</span>.</strong> È proprio per questo
+che si definisce <span class="m">H</span> in questo modo: a <strong>pressione costante</strong> (<span class="m">dP=0</span>), la relazione si riduce a <span class="m">dH=\delta Q</span> e, per
+una trasformazione finita:
+<span class="m d">\Delta H = Q_P \qquad \text{(primo principio per i processi a pressione costante)}</span>
+Il calore scambiato a pressione costante <strong>è</strong>, senza altri termini, la variazione di entalpia — utilissimo perché la
+maggior parte dei processi chimici avviene a pressione (atmosferica) costante. Analogamente, a volume costante
+<span class="m">\Delta U = Q_V</span>.</p>
 </div>
 
-<p>Poiché per un gas ideale <span class="m">PV=nRT</span> e <span class="m">U=U(T)</span> (<a href="#/teoria/chimica/28/lez-28-primo-principio-gas">Lezione 28</a>),
-anche <span class="m">H=U+nRT</span> dipende solo dalla temperatura: <span class="m">H=H(T)</span>. Applicando
-<span class="m">\Delta H=Q=nC_P\Delta T</span> a una trasformazione isobara, e ricordando che <span class="m">H</span> è
-funzione di stato (quindi il risultato vale per qualunque trasformazione con lo
-stesso <span class="m">\Delta T</span>):</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Volume costante</th>
+<th>Pressione costante</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>funzione di stato &quot;naturale&quot;</td>
+<td><span class="m">U</span></td>
+<td><span class="m">H = U + PV</span></td>
+</tr>
+<tr>
+<td>primo principio</td>
+<td><span class="m">\Delta U = Q_V</span></td>
+<td><span class="m">\Delta H = Q_P</span></td>
+</tr>
+<tr>
+<td>gas ideale</td>
+<td><span class="m">\Delta U = nC_V\Delta T</span></td>
+<td><span class="m">\Delta H = nC_P\Delta T</span></td>
+</tr>
+</tbody></table>
+<h2 id="lez-29-gas-ideale">Variazione di entalpia di un gas ideale</h2>
+<p>Per un gas ideale <span class="m">PV=nRT</span>, quindi <span class="m">H = U + nRT</span>; e poiché <span class="m">U=U(T)</span> (<a href="#/teoria/chimica/28/lez-28-primo-principio-gas">Lezione 28</a>), anche
+<span class="m">H = H(T)</span>: <strong>l&#39;entalpia di un gas ideale dipende solo dalla temperatura</strong>.</p>
+<p>Per calcolare <span class="m">\Delta H</span> fra due isoterme si sceglie la trasformazione più comoda, l&#39;<strong>isobara</strong> AC: su di essa vale
+<span class="m">\Delta H = Q_P</span>, e <span class="m">Q_P = nC_P\Delta T</span>. Pur avendo scelto un&#39;isobara per il calcolo, il risultato vale per
+<strong>qualunque</strong> trasformazione che congiunga le stesse due isoterme, perché per un gas ideale <span class="m">H</span> dipende solo da <span class="m">T</span>:</p>
 <div class="callout formula">
 
 <p><span class="m d">\Delta H = n\,C_P\,\Delta T \qquad \text{(gas ideale, qualunque trasformazione)}</span></p>
+<p>Se il gas <strong>non</strong> è ideale, il calcolo di <span class="m">\Delta H</span> dipende anche da <span class="m">\Delta P</span> (occorre usare <span class="m">dH = \delta Q + V\,dP</span>).
+Relazione utile: <span class="m">\Delta H = \Delta U + nR\Delta T</span> (da <span class="m">H = U + nRT</span>), coerente con <span class="m">C_P = C_V + R</span>.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong><span class="m">\Delta H</span> di un gas biatomico riscaldato di 45 °C</strong> (<span class="m">C_P = \tfrac72R</span>).</p>
+<p>Per 1 mole: <span class="m">\Delta H = 1\times\tfrac72\times8.31\times45 = 29.085\times45 = 1308.8\ \mathrm J</span>. Per 2 moli (il valore
+riportato nella dispensa, <span class="m">2617\ \mathrm J</span>, corrisponde a 2 moli: <span class="m">2\times1308.8 = 2617.6\ \mathrm J</span>). Confronta con
+<span class="m">\Delta U = nC_V\Delta T</span> della <a href="#/teoria/chimica/28/lez-28-primo-principio-gas">Lezione 28</a>: per 2 moli <span class="m">1869.75\ \mathrm J</span>; la differenza
+<span class="m">2617.6 - 1869.75 = 747.9\ \mathrm J = nR\Delta T = 2\times8.31\times45</span> ✓.</p>
 </div>
 
 <h2 id="lez-29-passaggi-stato">Passaggi di stato e calore latente</h2>
-<p>Riscaldando del ghiaccio da <span class="m">-15\,^\circ\mathrm{C}</span> verso il vapore a
-<span class="m">150\,^\circ\mathrm{C}</span> (a pressione costante), la temperatura non cresce in modo
-uniforme: sale linearmente durante il riscaldamento del solido, <strong>resta costante</strong>
-durante la fusione (<span class="m">0\,^\circ\mathrm{C}</span>), risale linearmente nel liquido, resta
-di nuovo costante durante l&#39;evaporazione (<span class="m">100\,^\circ\mathrm{C}</span>), infine risale
-nel vapore.</p>
+<p>Una trasformazione in cui un sistema passa da uno stato di aggregazione a un altro si chiama <strong>passaggio di stato</strong> o
+<strong>transizione di fase</strong>. In questo tipo di trasformazioni si verifica il <strong>brusco cambiamento</strong> di una o più proprietà
+della sostanza in corrispondenza di specifici valori delle variabili di stato (es. la temperatura). Per l&#39;acqua, a
+<span class="m">1\ \mathrm{atm}</span>, il passaggio da liquido a vapore avviene a <span class="m">100\ ^\circ\mathrm C</span> e la solidificazione a
+<span class="m">0\ ^\circ\mathrm C</span>. Nomi dei passaggi: <strong>fusione</strong> (solido → liquido) e <strong>solidificazione</strong> (liquido → solido);
+<strong>evaporazione</strong> (liquido → vapore) e <strong>condensazione</strong> (vapore → liquido); <strong>sublimazione</strong> (solido → vapore) e
+<strong>brinamento</strong> (vapore → solido).</p>
+<p><strong>La curva di riscaldamento.</strong> Si riscaldano <span class="m">2\ \mathrm{kg}</span> di ghiaccio da <span class="m">-15\,^\circ\mathrm{C}</span> fino a
+<span class="m">150\,^\circ\mathrm{C}</span>, a pressione costante (1 atm), e si riporta la temperatura in funzione del calore fornito. La
+curva ha cinque tratti:</p>
+<ol>
+<li><strong>riscaldamento del ghiaccio</strong> da <span class="m">-15</span> a <span class="m">0\ ^\circ\mathrm C</span>: la temperatura sale in modo praticamente lineare;</li>
+<li><strong>fusione del ghiaccio</strong> a <span class="m">0\ ^\circ\mathrm C</span>: la temperatura <strong>non cambia</strong> finché l&#39;ultimo pezzettino di ghiaccio
+non è passato allo stato liquido (tratto orizzontale);</li>
+<li><strong>riscaldamento dell&#39;acqua liquida</strong> da <span class="m">0</span> a <span class="m">100\ ^\circ\mathrm C</span>: la temperatura risale linearmente;</li>
+<li><strong>evaporazione</strong> a <span class="m">100\ ^\circ\mathrm C</span>: la temperatura resta ancorata a <span class="m">100\ ^\circ\mathrm C</span> finché l&#39;ultima
+goccia non è passata allo stato gassoso (il tratto orizzontale più lungo: servono circa 4500 kJ per 2 kg);</li>
+<li><strong>riscaldamento del vapore</strong> da <span class="m">100</span> a <span class="m">150\ ^\circ\mathrm C</span>, con andamento pressoché lineare.</li>
+</ol>
+<p>Le pendenze dei tratti inclinati sono diverse perché le capacità termiche di ghiaccio, acqua e vapore sono diverse; la
+lunghezza dei tratti orizzontali è proporzionale al calore latente.</p>
 <div class="callout attenzione">
 
-<p><strong>Perché la temperatura non cambia durante un passaggio di stato.</strong> Il ghiaccio è
-un reticolo cristallino ordinato di molecole d&#39;acqua. Il calore fornito durante la
-fusione serve a <strong>rompere il reticolo</strong> e liberare le molecole, non ad aumentare la
-loro energia cinetica media (che è ciò che il termometro misura come temperatura).
-Solo quando l&#39;ultimo cristallo è fuso, un&#39;ulteriore fornitura di calore torna a far
-salire la temperatura. La quantità di energia per unità di massa necessaria al
-passaggio di stato si chiama <strong>calore latente</strong>.</p>
+<p><strong>Perché la temperatura non cambia durante un passaggio di stato.</strong> Il ghiaccio è costituito da molecole d&#39;acqua
+ordinate secondo un <strong>reticolo cristallino</strong>. Il calore fornito durante la fusione serve a <strong>rompere il reticolo</strong> e
+&quot;liberare&quot; le molecole, non ad aumentare la loro energia cinetica media (che è ciò che il termometro misura come
+temperatura). Solo quando l&#39;ultimo cristallo è fuso, un&#39;ulteriore fornitura di calore torna a far salire la
+temperatura. La quantità di energia necessaria a consentire la transizione di stato all&#39;<strong>unità di massa</strong> di sostanza
+si chiama <strong>calore latente</strong> (di fusione, di evaporazione, di condensazione, di sublimazione…).</p>
+<p>Corollario: la temperatura misura l&#39;<strong>energia cinetica media</strong> delle molecole. Raffreddando il ghiaccio da 273 a 263 K
+(senza passaggi di stato) l&#39;energia cinetica media delle molecole <strong>diminuisce</strong>.</p>
 </div>
 
+<h3>Fusione e solidificazione</h3>
+<p>Per una massa <span class="m">m</span> (g) di acqua (le stesse considerazioni valgono per qualunque sostanza) che passa da solido a liquido
+(stato 1 = <span class="m">\chem{H_2O(s)}</span> a <span class="m">0\ ^\circ\mathrm C</span>, stato 2 = <span class="m">\chem{H_2O(l)}</span> a <span class="m">0\ ^\circ\mathrm C</span>):</p>
 <div class="callout formula">
 
-<p>Per una massa <span class="m">m</span> che passa da solido a liquido:
-<span class="m d">\Delta H = H_{LIQ}-H_{SOL} = m\,\lambda_{FUS} &gt; 0 \qquad\text{(fusione, endotermica)}</span>
-Il processo inverso (solidificazione) ha lo stesso calore latente in valore
-assoluto, segno opposto: <span class="m">\lambda_{FUS}=-\lambda_{SOL}</span>, quindi
-<span class="m">\Delta H_{SOL} = -m\,\lambda_{FUS} &lt; 0</span> (esotermica).</p>
-<p>Analogamente, per liquido <span class="m">\to</span> vapore:
-<span class="m d">\Delta H = m\,\lambda_{EVAP} &gt; 0 \qquad\text{(evaporazione, endotermica)}</span>
-con <span class="m">\lambda_{EVAP}=-\lambda_{COND}</span> per il processo inverso (condensazione,
-esotermica).</p>
+<p><span class="m d">\Delta H = H_{LIQ}-H_{SOL} = H_2 - H_1 = m\,\lambda_{FUS} &gt; 0 \qquad\text{(fusione, endotermica)}</span></p>
+<p><span class="m">\lambda_{FUS}</span> = <strong>calore latente di fusione</strong>: variazione di entalpia associata alla fusione di una massa unitaria
+(1 g, 1 kg) — o di una mole, se dato in kJ/mol — di sostanza. Per fondere il ghiaccio bisogna fornire energia: <span class="m">\Delta H
+&gt; 0</span>. Il processo inverso (solidificazione) ha un calore latente uguale ma di segno opposto, <span class="m">\lambda_{SOL} =
+-\lambda_{FUS}</span>:
+<span class="m d">\Delta H = H_{SOL} - H_{LIQ} = m\,\lambda_{SOL} = -m\,\lambda_{FUS} &lt; 0 \qquad\text{(solidificazione, esotermica: il calore viene rilasciato)}</span></p>
 </div>
 
 <div class="callout esempio">
 
-<p><strong>Fondere 5 kg di ghiaccio.</strong> Calore latente di fusione dell&#39;acqua a
-<span class="m">0\,^\circ\mathrm{C}</span>: <span class="m">\lambda_{FUS}=6.01\ \mathrm{kJ/mol}</span>. Le unità sono per
-mole: converti la massa in moli prima di moltiplicare.</p>
-<p><span class="m d">\Delta H = \left(\frac{5000\ \mathrm g}{18\ \mathrm{g/mol}}\right)\times\left(6.01\ \frac{\mathrm{kJ}}{\mathrm{mol}}\right) = 1669.4\ \mathrm{kJ} = 398.7\ \mathrm{kcal}</span></p>
+<p><strong>Fondere 5 kg di ghiaccio.</strong> Calore latente di fusione dell&#39;acqua (a <span class="m">0\,^\circ\mathrm{C}</span>): <span class="m">\lambda_{FUS}=6.01\
+\mathrm{kJ/mol}</span>. Le unità sono <strong>per mole</strong>: bisogna convertire la massa in moli prima di moltiplicare.</p>
+<p><span class="m d">\Delta H = \left(\frac{5000\ \mathrm g}{18\ \mathrm{g/mol}}\right)\times\left(6.01\ \frac{\mathrm{kJ}}{\mathrm{mol}}\right) = 277.8\ \mathrm{mol}\times6.01\ \frac{\mathrm{kJ}}{\mathrm{mol}} = 1669.4\ \mathrm{kJ} = \frac{1669.4}{4.184}\ \mathrm{kcal} = 398.7\ \mathrm{kcal}</span></p>
+</div>
+
+<h3>Evaporazione e condensazione</h3>
+<p>Per una massa <span class="m">m</span> di acqua che passa da liquido a vapore (1 = <span class="m">\chem{H_2O(l)}</span> a <span class="m">100\ ^\circ\mathrm C</span>, 2 =
+<span class="m">\chem{H_2O(g)}</span> a <span class="m">100\ ^\circ\mathrm C</span>):</p>
+<div class="callout formula">
+
+<p><span class="m d">\Delta H = H_{VAP} - H_{LIQ} = H_2 - H_1 = m\,\lambda_{EVAP} &gt; 0 \qquad\text{(evaporazione, endotermica)}</span>
+<span class="m d">\Delta H = H_{LIQ} - H_{GAS} = m\,\lambda_{COND} = -m\,\lambda_{EVAP} &lt; 0 \qquad\text{(condensazione, esotermica)}</span></p>
+<p><span class="m">\lambda_{EVAP}</span> = <strong>calore latente di evaporazione</strong>, uguale e opposto a quello di condensazione
+(<span class="m">\lambda_{EVAP} = -\lambda_{COND}</span>).</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Far evaporare 5 L di acqua</strong> (<span class="m">\lambda_{EVAP}</span> a <span class="m">100\ ^\circ\mathrm C</span> <span class="m">= 40.7\ \mathrm{kJ/mol}</span>).</p>
+<ol>
+<li>Massa: <span class="m">5\ \mathrm L\times1000\ \mathrm{g/L} = 5000\ \mathrm g</span>; moli: <span class="m">5000/18 = 277.8\ \mathrm{mol}</span>.</li>
+<li><span class="m">\Delta H = 277.8\times40.7 = 11\,305.6\ \mathrm{kJ} = 11\,305.6/4.184 = 2700\ \mathrm{kcal}</span>.</li>
+</ol>
+<p>(Nella dispensa il testo dice &quot;50 L&quot; ma il calcolo usa 5 L e dà 11 305.56 kJ; per 50 L il risultato sarebbe dieci
+volte tanto, <span class="m">\approx1.13\times10^5\ \mathrm{kJ}</span>.) Confronto: a parità di massa, far evaporare l&#39;acqua richiede quasi
+<strong>7 volte</strong> più energia che fonderla (<span class="m">40.7/6.01 \approx 6.8</span>): per separare completamente le molecole del liquido si
+devono rompere quasi tutti i legami a idrogeno.</p>
+</div>
+
+<h3>Calori latenti di alcune sostanze (tabella della dispensa)</h3>
+<table>
+<thead>
+<tr>
+<th>Sostanza</th>
+<th><span class="m">T_{fus}</span> (°C)</th>
+<th><span class="m">\lambda_{FUS}</span> (kcal/kg)</th>
+<th><span class="m">\lambda_{FUS}</span> (kJ/kg)</th>
+<th><span class="m">T_{eb}</span> (°C)</th>
+<th><span class="m">\lambda_{EVAP}</span> (kcal/kg)</th>
+<th><span class="m">\lambda_{EVAP}</span> (kJ/kg)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ossigeno</td>
+<td><span class="m">-218.8</span></td>
+<td>3.3</td>
+<td>14</td>
+<td><span class="m">-183</span></td>
+<td>51</td>
+<td>210</td>
+</tr>
+<tr>
+<td>azoto</td>
+<td><span class="m">-210.0</span></td>
+<td>6.1</td>
+<td>26</td>
+<td><span class="m">-195.8</span></td>
+<td>48</td>
+<td>200</td>
+</tr>
+<tr>
+<td>alcol etilico</td>
+<td><span class="m">-114</span></td>
+<td>25</td>
+<td>104</td>
+<td>78</td>
+<td>204</td>
+<td>850</td>
+</tr>
+<tr>
+<td>ammoniaca</td>
+<td><span class="m">-77.8</span></td>
+<td>8.0</td>
+<td>33</td>
+<td><span class="m">-33.4</span></td>
+<td>33</td>
+<td>137</td>
+</tr>
+<tr>
+<td>acqua</td>
+<td>0</td>
+<td>79.7</td>
+<td>333</td>
+<td>100</td>
+<td>539</td>
+<td>2260</td>
+</tr>
+<tr>
+<td>piombo</td>
+<td>327</td>
+<td>5.9</td>
+<td>25</td>
+<td>1750</td>
+<td>208</td>
+<td>870</td>
+</tr>
+<tr>
+<td>argento</td>
+<td>961</td>
+<td>21</td>
+<td>88</td>
+<td>2193</td>
+<td>558</td>
+<td>2300</td>
+</tr>
+<tr>
+<td>ferro</td>
+<td>1808</td>
+<td>69.1</td>
+<td>289</td>
+<td>3023</td>
+<td>1520</td>
+<td>6340</td>
+</tr>
+<tr>
+<td>tungsteno</td>
+<td>3410</td>
+<td>44</td>
+<td>184</td>
+<td>5900</td>
+<td>1150</td>
+<td>4800</td>
+</tr>
+</tbody></table>
+<p>I valori in kcal/kg sono numericamente uguali a quelli in cal/g. Per l&#39;acqua: <span class="m">333\ \mathrm{kJ/kg}\times0.018\
+\mathrm{kg/mol} = 6.0\ \mathrm{kJ/mol}</span> e <span class="m">2260\times0.018 = 40.7\ \mathrm{kJ/mol}</span>, gli stessi valori molari usati
+negli esempi.</p>
+<div class="callout esempio">
+
+<p><strong>Evaporare 1.5 kg di azoto liquido</strong> (a <span class="m">-196\ ^\circ\mathrm C</span>, cioè al suo punto di ebollizione;
+<span class="m">\lambda_{EVAP} = 48\ \mathrm{kcal/kg}</span>). Qui il calore latente è <strong>per kg</strong>: non serve passare per le moli.
+<span class="m d">Q = \Delta H = m\lambda_{EVAP} = 1.5\ \mathrm{kg}\times48\ \frac{\mathrm{kcal}}{\mathrm{kg}} = 72\ \mathrm{kcal} = 72\times4.184 = 301\ \mathrm{kJ}</span></p>
 </div>
 
 <div class="callout attenzione">
 
-<p><strong>&quot;Calore latente misurato a <span class="m">T</span>&quot; non significa &quot;moltiplicato per <span class="m">T</span>&quot;.</strong> È solo
-un&#39;etichetta che indica a quale temperatura (e pressione) è stato determinato
-sperimentalmente quel valore — un errore di lettura comune quando l&#39;esercizio
-elenca i dati come &quot;<span class="m">\lambda_{FUS}(0\,^\circ\mathrm C)=6.01\ \mathrm{kJ/mol}</span>&quot;.</p>
+<p><strong>&quot;Calore latente misurato a <span class="m">T</span>&quot; non significa &quot;moltiplicato per <span class="m">T</span>&quot;.</strong> È solo un&#39;etichetta che indica a quale
+temperatura (e pressione) è stato determinato sperimentalmente quel valore — un errore di lettura comune quando
+l&#39;esercizio elenca i dati come &quot;<span class="m">\lambda_{FUS}(0\,^\circ\mathrm C)=6.01\ \mathrm{kJ/mol}</span>&quot;. Altro errore frequente:
+moltiplicare la massa in grammi per un calore latente in kJ/<strong>mol</strong> (o le moli per un valore in kJ/<strong>kg</strong>). Guarda
+sempre le unità del <span class="m">\lambda</span>.</p>
 </div>
 
 <h2 id="lez-29-percorso-combinato">Un percorso combinato: riscaldamento + passaggio di stato</h2>
-<p>Poiché <span class="m">H</span> è funzione di stato, per calcolare il calore totale necessario a
-portare una sostanza da uno stato iniziale a uno stato finale attraverso più
-passaggi (riscaldamento del solido, fusione, riscaldamento del liquido...) basta
-<strong>sommare</strong> i contributi di ciascun tratto, calcolati separatamente con
-<span class="m">\Delta H=mC_P\Delta T</span> (riscaldamento) o <span class="m">\Delta H=m\lambda</span> (passaggio di stato).</p>
+<p>Poiché <span class="m">H</span> è funzione di stato, per calcolare il calore totale necessario a portare una sostanza da uno stato iniziale a
+uno stato finale attraverso più passaggi (riscaldamento del solido, fusione, riscaldamento del liquido...) basta
+<strong>sommare</strong> i contributi di ciascun tratto, calcolati separatamente con <span class="m">\Delta H=mC_P\Delta T</span> (riscaldamento o
+raffreddamento senza cambiamento di stato) o <span class="m">\Delta H=m\lambda</span> (passaggio di stato).</p>
 <div class="callout esempio">
 
-<p><strong>Da 155 g di acqua a <span class="m">30\,^\circ\mathrm{C}</span> a vapore a <span class="m">100\,^\circ\mathrm{C}</span>.</strong></p>
-<p><strong>Tratto 1 — riscaldamento del liquido, <span class="m">30\to100\,^\circ\mathrm{C}</span>:</strong>
-<span class="m d">H_2-H_1 = mC_P\Delta T = (0.155\ \mathrm{kg})\left(1\ \frac{\mathrm{kcal}}{\mathrm{kg}\cdot^\circ\mathrm C}\right)(70\,^\circ\mathrm C)\times4.184\ \frac{\mathrm{kJ}}{\mathrm{kcal}} = 45.40\ \mathrm{kJ}</span></p>
-<p><strong>Tratto 2 — evaporazione a <span class="m">100\,^\circ\mathrm{C}</span></strong> (<span class="m">\lambda_{EVAP}=40.7\ \mathrm{kJ/mol}</span>):
-<span class="m d">H_3-H_2 = \left(\frac{155\ \mathrm g}{18\ \mathrm{g/mol}}\right)\times40.7\ \frac{\mathrm{kJ}}{\mathrm{mol}} = 350.47\ \mathrm{kJ}</span></p>
+<p><strong>Da 155 g di acqua a <span class="m">30\,^\circ\mathrm{C}</span> a vapore a <span class="m">100\,^\circ\mathrm{C}</span></strong> (esercizio della sessione 29/S3).
+Stati: 1 = <span class="m">\chem{H_2O(l)}</span> a <span class="m">30\ ^\circ\mathrm C</span> → 2 = <span class="m">\chem{H_2O(l)}</span> a <span class="m">100\ ^\circ\mathrm C</span> (riscaldamento) →
+3 = <span class="m">\chem{H_2O(g)}</span> a <span class="m">100\ ^\circ\mathrm C</span> (evaporazione). Calore specifico dell&#39;acqua <span class="m">1\ \mathrm{kcal\,kg^{-1}\,
+{}^\circ C^{-1}}</span>; <span class="m">\lambda_{EVAP}=40.7\ \mathrm{kJ/mol}</span> (dalla tabella).</p>
+<p><strong>Tratto 1→2 — riscaldamento del liquido, <span class="m">30\to100\,^\circ\mathrm{C}</span>:</strong>
+<span class="m d">H_2-H_1 = mC_P\Delta T = (0.155\ \mathrm{kg})\left(1\ \frac{\mathrm{kcal}}{\mathrm{kg}\cdot^\circ\mathrm C}\right)\left(4.184\ \frac{\mathrm{kJ}}{\mathrm{kcal}}\right)(70\,^\circ\mathrm C) = 45.40\ \mathrm{kJ}</span></p>
+<p><strong>Tratto 2→3 — evaporazione a <span class="m">100\,^\circ\mathrm{C}</span>:</strong>
+<span class="m d">H_3-H_2 = \left(\frac{155\ \mathrm g}{18\ \mathrm{g/mol}}\right)\times40.7\ \frac{\mathrm{kJ}}{\mathrm{mol}} = 8.611\times40.7 = 350.47\ \mathrm{kJ}</span></p>
 <p><strong>Totale:</strong> <span class="m">Q=\Delta H = 45.40+350.47 = 395.87\ \mathrm{kJ}</span>.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Raffreddamento con condensazione (percorso inverso).</strong> Quanto calore si libera portando 2.0 kg di vapore a
+<span class="m">100\ ^\circ\mathrm C</span> ad acqua liquida a <span class="m">40\ ^\circ\mathrm C</span>?</p>
+<ol>
+<li>Condensazione a <span class="m">100\ ^\circ\mathrm C</span>: <span class="m">n = 2000/18 = 111.1\ \mathrm{mol}</span>;
+<span class="m">\Delta H_1 = -111.1\times40.7 = -4522\ \mathrm{kJ}</span>.</li>
+<li>Raffreddamento del liquido da 100 a <span class="m">40\ ^\circ\mathrm C</span>: <span class="m">\Delta H_2 = mC_P\Delta T = 2.0\times1\times4.184\times
+   (40-100) = -502\ \mathrm{kJ}</span>.</li>
+<li>Totale: <span class="m">\Delta H = -4522 - 502 = -5024\ \mathrm{kJ}</span>: si liberano circa <span class="m">5.0\times10^3\ \mathrm{kJ}</span> (segno
+negativo = calore ceduto dal sistema).</li>
+</ol>
+<p>Se il vapore parte da una temperatura <strong>superiore</strong> a <span class="m">100\ ^\circ\mathrm C</span>, va aggiunto un primo tratto di
+raffreddamento del vapore, <span class="m">m\,C_{P,vapore}\,\Delta T</span> (il calore specifico del vapore, circa
+<span class="m">0.48\ \mathrm{kcal\,kg^{-1}\,{}^\circ C^{-1}}</span>, è diverso da quello del liquido); se l&#39;esercizio dà un solo calore
+specifico, va dichiarata l&#39;ipotesi usata.</p>
+</div>
+
+<h2 id="lez-29-due-percorsi">Esercizi svolti: lavoro lungo due percorsi diversi (29/S1)</h2>
+<div class="callout esempio">
+
+<p><strong>Un gas in un cilindro da 3.42 L, a 298 K e 2.57 atm, si dilata fino a 7.39 L seguendo due percorsi reversibili:</strong>
+(1) espansione isoterma reversibile; (2) raffreddamento a volume costante fino a 1.19 atm, poi riscaldamento a pressione
+costante fino a 7.39 L. Calcolare il lavoro nei due percorsi.</p>
+<p><strong>Moli</strong> (dall&#39;equazione di stato): <span class="m">n = \dfrac{P_1V_1}{RT_1} = \dfrac{2.57\times3.42}{0.08206\times298} =
+\dfrac{8.789}{24.45} = 0.359\ \mathrm{mol}</span>.</p>
+<p><strong>Percorso 1 — isoterma reversibile:</strong>
+<span class="m d">L = -\int_{V_1}^{V_2}P\,dV = -\int_{V_1}^{V_2}nRT\frac{dV}{V} = -nRT\ln\frac{V_2}{V_1} = -(0.359)(8.31)(298)\ln\frac{7.39}{3.42} = -889\times0.770 = -687\ \mathrm J</span>
+È l&#39;area sotto l&#39;iperbole fra 3.42 e 7.39 L. <span class="m">L&lt;0</span>: lavoro fatto dal sistema (gas che si espande) sull&#39;ambiente,
+secondo la convenzione <span class="m">\Delta U = Q + L</span>. (Controllo: lo stato finale dell&#39;isoterma ha <span class="m">P = 2.57\times3.42/7.39 =
+1.19\ \mathrm{atm}</span>, lo stesso stato finale del percorso 2.)</p>
+<p><strong>Percorso 2 — isocora + isobara:</strong>
+<span class="m d">L = -\int_1^2P\,dV - \int_2^3P\,dV = 0 - P_2(V_3 - V_2) = -(1.19\ \mathrm{atm})(7.39 - 3.42)\ \mathrm L = -4.72\ \mathrm{atm\,L}</span>
+Il tratto isocoro non dà lavoro (<span class="m">dV=0</span>); convertendo, <span class="m">-4.72\times101.325 = -479\ \mathrm J</span>. È l&#39;area del rettangolo
+sotto l&#39;isobara.</p>
+<p><strong>Conclusioni:</strong> stessi stati iniziale e finale, lavori diversi (<span class="m">-687</span> J contro <span class="m">-479</span> J): <strong>il lavoro non è una
+funzione di stato</strong>, perché dipende dal percorso; sul piano <span class="m">(P,V)</span> (il &quot;piano del lavoro&quot;) il lavoro è l&#39;area sottesa
+alla trasformazione.</p>
+</div>
+
+<h3>Note sui segni di calore e lavoro</h3>
+<p>Il primo principio è presentato nei testi in due forme: <span class="m">\Delta U = Q + L</span> oppure <span class="m">\Delta U = Q - L</span>.</p>
+<ul>
+<li><strong>Primo caso</strong> (adottato in queste lezioni): la variazione di energia interna è la <strong>somma</strong> del calore fornito
+dall&#39;ambiente al sistema e del lavoro fatto dall&#39;ambiente sul sistema. <span class="m">Q</span> fornito al sistema <span class="m">&gt;0</span>, ceduto <span class="m">&lt;0</span>;
+<span class="m">L</span> fatto dall&#39;ambiente sul sistema <span class="m">&gt;0</span>, fatto dal sistema sull&#39;ambiente <span class="m">&lt;0</span>; <span class="m">L = -\int P\,dV</span>.</li>
+<li><strong>Secondo caso</strong>: la variazione di energia interna è la <strong>differenza</strong> fra il calore fornito al sistema e il lavoro
+fatto dal sistema sull&#39;ambiente. <span class="m">Q</span> come sopra; <span class="m">L</span> fatto dal sistema sull&#39;ambiente <span class="m">&gt;0</span>, fatto dall&#39;ambiente sul
+sistema <span class="m">&lt;0</span>; <span class="m">L = +\int P\,dV</span>.</li>
+</ul>
+<p><strong>Esempio</strong>: compressione adiabatica (<span class="m">Q = 0</span>, <span class="m">V_2 &lt; V_1</span>). Nel caso I risulta <span class="m">L&gt;0</span>, nel caso II <span class="m">L&lt;0</span>; ma in entrambi
+i casi <span class="m">\Delta U &gt; 0</span> (comprimendo adiabaticamente un gas la sua temperatura aumenta, cioè aumenta l&#39;energia interna). La
+fisica non cambia: cambia solo il segno con cui si scrive il lavoro.</p>
+<h2 id="lez-29-ciclo">Esercizi svolti: <span class="m">Q</span>, <span class="m">\Delta U</span> e <span class="m">\Delta H</span> in un ciclo (29/S2)</h2>
+<div class="callout esempio">
+
+<p><strong>Ciclo di 1 mole di gas ideale</strong> con tre tratti: 1 (1 atm, 22.414 dm³) → 2 (1 atm, 44.828 dm³) <strong>isobaro</strong>; 2 → 3
+(0.5 atm, 44.828 dm³) <strong>isocoro</strong>; 3 → 1 <strong>isotermo</strong>. I valori numerici della dispensa corrispondono a un gas
+<strong>monoatomico</strong> (<span class="m">C_V = \tfrac32R</span>, <span class="m">C_P = \tfrac52R</span>).</p>
+<p><strong>Temperature</strong> (<span class="m">T = PV/nR</span>): <span class="m">T_1 = 273.1\ \mathrm K</span>; <span class="m">T_2 = 546.3\ \mathrm K</span> (volume doppio a pari pressione);
+<span class="m">T_3 = 273.1\ \mathrm K</span> (pressione dimezzata a pari volume: stessa isoterma di 1, come deve essere per chiudere il
+ciclo con un&#39;isoterma). <span class="m">T_2 - T_1 = 273.1\ \mathrm K</span>.</p>
+<p><strong>Variazioni di energia interna</strong> (<span class="m">\Delta U = nC_V\Delta T</span> vale per ogni tratto, anche se non è a volume costante,
+perché <span class="m">U</span> dipende solo da <span class="m">T</span>):</p>
+<ul>
+<li><span class="m">\Delta U_{1\to2} = 1\times\tfrac32\times8.31\times273.1 = +3406.5\ \mathrm J</span>;</li>
+<li><span class="m">\Delta U_{2\to3} = nC_V(T_3 - T_2) = -3406.5\ \mathrm J</span>;</li>
+<li><span class="m">\Delta U_{3\to1} = 0</span> (isoterma);</li>
+<li><span class="m">\Delta U_{TOT} = 0</span>: <strong>in un ciclo la variazione di energia interna è sempre nulla</strong> (si parte e si arriva nello stesso
+punto).</li>
+</ul>
+<p><strong>Variazioni di entalpia</strong> (<span class="m">\Delta H = nC_P\Delta T</span> per ogni tratto, anche se non è a pressione costante):</p>
+<ul>
+<li><span class="m">\Delta H_{1\to2} = 1\times\tfrac52\times8.31\times273.1 = +5677.4\ \mathrm J</span>;</li>
+<li><span class="m">\Delta H_{2\to3} = -5677.4\ \mathrm J</span>;</li>
+<li><span class="m">\Delta H_{3\to1} = 0</span> (isoterma);</li>
+<li><span class="m">\Delta H_{TOT} = 0</span>: anche l&#39;entalpia, funzione di stato, ha variazione nulla in un ciclo.</li>
+</ul>
+<p><strong>Lavori:</strong></p>
+<ul>
+<li><span class="m">L_{1\to2} = -P\Delta V = -101325\times0.022414 = -2271.1\ \mathrm J</span>;</li>
+<li><span class="m">L_{2\to3} = 0</span> (isocora);</li>
+<li><span class="m">L_{3\to1} = -nRT\ln\dfrac{V_1}{V_3} = -(1)(8.31)(273.1)\ln\dfrac{22.414}{44.828} = -2269.5\times(-0.693) =
+  +1574.3\ \mathrm J</span> (compressione isoterma).</li>
+</ul>
+<p><strong>Calori</strong> (dal primo principio <span class="m">Q = \Delta U - L</span>):</p>
+<ul>
+<li><span class="m">Q_{1\to2} = \Delta U_{1\to2} - L_{1\to2} = 3406.5 + 2271.1 = 5677.4\ \mathrm J = \Delta H_{1\to2} &gt; 0</span> (isobara: il
+calore è proprio <span class="m">\Delta H</span>);</li>
+<li><span class="m">Q_{2\to3} = \Delta U_{2\to3} - L_{2\to3} = -3406.5\ \mathrm J &lt; 0</span> (isocora: il calore è <span class="m">\Delta U</span>);</li>
+<li><span class="m">Q_{3\to1} = -L_{3\to1} = -1574.3\ \mathrm J</span> (isoterma: <span class="m">\Delta U = 0</span>);</li>
+<li><span class="m">Q_{TOT} = 5677.4 - 3406.5 - 1574.3 = 696.6\ \mathrm J &gt; 0</span>.</li>
+</ul>
+<p>Verifica: <span class="m">L_{TOT} = -2271.1 + 0 + 1574.3 = -696.8\ \mathrm J = -Q_{TOT}</span>, come richiede <span class="m">\Delta U_{TOT} = 0</span>. <span class="m">Q</span> e <span class="m">L</span>
+<strong>non</strong> si annullano sul ciclo (non sono funzioni di stato), <span class="m">\Delta U</span> e <span class="m">\Delta H</span> sì.</p>
+</div>
+
+<h2 id="lez-29-esercizi-stato">Esercizi svolti: passaggi di stato (29/S3)</h2>
+<div class="callout esempio">
+
+<p><strong>Condensazione del metanolo e solidificazione dell&#39;acetone.</strong> Dati (tabella delle entalpie standard dei passaggi di
+stato): metanolo <span class="m">\chem{CH_3OH}</span>, <span class="m">T_{eb} = 337.8\ \mathrm K</span>, <span class="m">\Delta H_{vap} = 35.3\ \mathrm{kJ/mol}</span>; acetone
+<span class="m">\chem{CH_3COCH_3}</span>, <span class="m">T_{fus} = 177.8\ \mathrm K</span>, <span class="m">\Delta H_{fus} = 5.72\ \mathrm{kJ/mol}</span>.</p>
+<ol>
+<li><strong>207 g di metanolo condensano</strong> al punto di ebollizione (<span class="m">\chem{CH_3OH(g)} \rightarrow \chem{CH_3OH(l)}</span> a
+337.8 K). <span class="m">M = 32\ \mathrm{g/mol}</span>; <span class="m">n = 207/32 = 6.469\ \mathrm{mol}</span>.
+<span class="m d">\Delta H = -n\,\lambda_{EVAP} = -6.469\times35.3 = -228.35\ \mathrm{kJ}</span></li>
+<li><strong>17.7 g di acetone solidificano</strong> al punto di fusione (<span class="m">\chem{CH_3COCH_3(l)} \rightarrow \chem{CH_3COCH_3(s)}</span>).
+<span class="m">M = 58\ \mathrm{g/mol}</span>; <span class="m">n = 17.7/58 = 0.305\ \mathrm{mol}</span>.
+<span class="m d">\Delta H = -n\,\lambda_{FUS} = -0.305\times5.72 = -1.746\ \mathrm{kJ}</span></li>
+</ol>
+<p>Entrambi negativi: condensazione e solidificazione sono <strong>esotermiche</strong>.</p>
+</div>
+
+<div class="callout attenzione">
+
+<p><strong>Errata nel materiale.</strong> Le slide 29/S3 intitolano l&#39;esercizio &quot;calcolare la variazione di <strong>entropia</strong>&quot; per le due
+trasformazioni di fase, ma il calcolo svolto è in realtà una variazione di <strong>entalpia</strong> (<span class="m">\Delta H=m\lambda</span>, in kJ) —
+l&#39;entropia (che si misura in <span class="m">\mathrm{J/K}</span> e richiederebbe di dividere per la temperatura, <span class="m">\Delta S = \Delta H/T</span>) non
+compare nello svolgimento. È un errore di etichetta nel titolo, non nel calcolo: gli esercizi extra di questa lezione
+usano l&#39;etichetta corretta, <span class="m">\Delta H</span>. Nella stessa slide, sotto la condensazione, compare la scritta
+&quot;<span class="m">-m\lambda_{EVAP} &gt; 0</span>&quot;: il segno corretto è <span class="m">&lt; 0</span> (e infatti il risultato numerico è negativo); inoltre il testo dà
+per l&#39;acetone 175.2 K mentre la tabella e lo schema riportano 177.8 K (il valore non entra nel calcolo).</p>
 </div>
 
 <div class="callout sintesi">
 
 <ul>
-<li><span class="m">H=U+PV</span>; a pressione costante, <span class="m">\Delta H=Q</span> — il calore misurato <strong>è</strong>
-direttamente la variazione di entalpia.</li>
-<li>Per un gas ideale, <span class="m">H=H(T)</span> e <span class="m">\Delta H=nC_P\Delta T</span> per qualunque
-trasformazione.</li>
-<li>Durante un passaggio di stato la temperatura resta costante: il calore serve a
-rompere/formare il reticolo, non a scaldare. <span class="m">\Delta H=m\lambda</span>, positivo per i
-processi che assorbono energia (fusione, evaporazione), negativo per i processi
-inversi (solidificazione, condensazione).</li>
-<li><span class="m">H</span> funzione di stato <span class="m">\Rightarrow</span> un percorso a più tratti (riscaldamento +
-passaggio di stato + riscaldamento...) si calcola sommando i contributi di
-ciascun tratto separatamente.</li>
+<li><span class="m">H=U+PV</span> è funzione di stato; <span class="m">dH = \delta Q + V\,dP</span>; a pressione costante <span class="m">\Delta H=Q_P</span> — il calore misurato <strong>è</strong>
+direttamente la variazione di entalpia (a volume costante, <span class="m">\Delta U = Q_V</span>).</li>
+<li>Per un gas ideale, <span class="m">H=H(T)</span> e <span class="m">\Delta H=nC_P\Delta T</span> per qualunque trasformazione; <span class="m">\Delta H = \Delta U + nR\Delta T</span>.</li>
+<li>Passaggio di stato: brusco cambiamento di proprietà a <span class="m">T</span> e <span class="m">P</span> fissate. Durante la transizione la temperatura resta
+costante: il calore serve a rompere/formare il reticolo o le interazioni, non a scaldare. <span class="m">\Delta H=m\lambda</span>,
+positivo per fusione ed evaporazione (endotermiche), negativo per solidificazione e condensazione (esotermiche);
+<span class="m">\lambda_{FUS} = -\lambda_{SOL}</span>, <span class="m">\lambda_{EVAP} = -\lambda_{COND}</span>. Acqua: <span class="m">6.01</span> e <span class="m">40.7\ \mathrm{kJ/mol}</span>.</li>
+<li><span class="m">H</span> funzione di stato <span class="m">\Rightarrow</span> un percorso a più tratti (riscaldamento + passaggio di stato + riscaldamento...)
+si calcola sommando i contributi di ciascun tratto separatamente.</li>
+<li>Il lavoro dipende dal percorso (isoterma <span class="m">-687</span> J contro isocora+isobara <span class="m">-479</span> J fra gli stessi stati); in un ciclo
+<span class="m">\Delta U = \Delta H = 0</span> ma <span class="m">Q = -L \neq 0</span>.</li>
 </ul>
-</div>
-
-<div class="callout attenzione">
-
-<p><strong>Errata nel materiale.</strong> Le slide 29/S3 (<code>Lezioni/29.pdf</code>) intitolano l&#39;esercizio
-&quot;calcolare la variazione di <strong>entropia</strong>&quot; per due trasformazioni di fase
-(condensazione del metanolo, solidificazione dell&#39;acetone), ma il calcolo svolto
-nella slide è in realtà una variazione di <strong>entalpia</strong> (<span class="m">\Delta H=m\lambda</span>, in
-kJ) — l&#39;entropia (che si misura in <span class="m">\mathrm{J/K}</span> e richiede di dividere per la
-temperatura) non compare da nessuna parte nello svolgimento. È un errore di
-etichetta nel titolo dell&#39;esercizio originale, non nel calcolo: gli esercizi
-extra di questa lezione usano l&#39;etichetta corretta, <span class="m">\Delta H</span>.</p>
 </div>
 
 <div class="callout esame">
 
-<p><strong>Come cade all&#39;esame.</strong> La voce &quot;028–030&quot; include tipicamente un esercizio di
-riscaldamento con passaggio di stato (il tipo &quot;da ghiaccio a vapore&quot; visto sopra).
-Il punto critico è <strong>non saltare i tratti</strong>: anche se la domanda chiede solo il
-calore totale, serve sommare ogni singolo tratto (riscaldamento solido, fusione,
-riscaldamento liquido, evaporazione, riscaldamento vapore) con la formula giusta.</p>
-<p>Sequenza da seguire: disegna la sequenza di stati (che coincide di solito con il
-fenomeno fisico reale) → per ogni tratto stabilisci se è un riscaldamento
-(<span class="m">\Delta H=mC_P\Delta T</span>) o un passaggio di stato (<span class="m">\Delta H=m\lambda</span>) → somma i
-contributi, prestando attenzione a convertire sempre in unità coerenti (moli se
-<span class="m">\lambda</span> è per mole, massa se <span class="m">C_P</span> è specifico).</p>
+<p><strong>Come cade all&#39;esame.</strong> Una chiusa (raffreddando il ghiaccio da 273 a 263 K l&#39;energia cinetica media delle molecole
+diminuisce) e diverse aperte:</p>
+<ul>
+<li><strong>lavoro lungo due percorsi</strong> fra gli stessi stati (isoterma contro isocora + isobara: è l&#39;esercizio 29/S1 svolto
+sopra);</li>
+<li><strong>calore di evaporazione</strong> di una massa nota con <span class="m">\lambda</span> per kg (azoto liquido) o per mole (acqua);</li>
+<li><strong>riscaldamento + evaporazione</strong> o <strong>condensazione + raffreddamento</strong> dell&#39;acqua con <span class="m">C = 1\ \mathrm{kcal\,kg^{-1}\,
+  {}^\circ C^{-1}}</span> e <span class="m">\lambda = 40.7\ \mathrm{kJ/mol}</span> (tipo &quot;da ghiaccio a vapore&quot;);</li>
+<li><strong>&quot;la funzione di stato entalpia, il primo principio in relazione all&#39;entalpia, la variazione di entalpia di un gas
+ideale e quella associata a un passaggio di stato&quot;</strong>: definizione <span class="m">H = U + PV</span>, derivazione di <span class="m">dH = \delta Q + V\,dP</span> e
+di <span class="m">\Delta H = Q_P</span>, <span class="m">\Delta H = nC_P\Delta T</span> con il ragionamento sull&#39;isobara, curva di riscaldamento, calori latenti
+con i segni.</li>
+</ul>
+<p>Il punto critico è <strong>non saltare i tratti</strong>: anche se la domanda chiede solo il calore totale, serve sommare ogni
+singolo tratto (riscaldamento solido, fusione, riscaldamento liquido, evaporazione, riscaldamento vapore) con la formula
+giusta.</p>
+<p>Sequenza da seguire: disegna la sequenza di stati (che coincide di solito con il fenomeno fisico reale) → per ogni
+tratto stabilisci se è un riscaldamento/raffreddamento (<span class="m">\Delta H=mC_P\Delta T</span>) o un passaggio di stato
+(<span class="m">\Delta H=\pm m\lambda</span>) → somma i contributi, prestando attenzione a convertire sempre in unità coerenti (moli se
+<span class="m">\lambda</span> è per mole, massa se <span class="m">C_P</span> è specifico; kcal → kJ).</p>
 <p><strong>Allenati qui:</strong> Paniere Lez. 29 domande 1–6 · Extra 61 · Extra 62</p>
 </div>

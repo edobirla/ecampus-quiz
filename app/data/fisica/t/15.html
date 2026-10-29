@@ -1,163 +1,492 @@
 <h1>Lezione 15 — Oscillazioni e oscillatore armonico</h1>
+<h2>Di cosa parla questa lezione</h2>
+<p>Molti sistemi fisici, se vengono spostati di poco dalla loro posizione di equilibrio, si mettono a oscillare: una massa attaccata a una molla, un pendolo, la membrana di un altoparlante, un ponte su cui marciano dei soldati, gli atomi di un solido. Il modello che descrive tutti questi casi è il <strong>moto armonico semplice</strong>.</p>
+<p>In questa lezione:</p>
+<ul>
+<li>partiamo dal moto circolare uniforme (già visto in cinematica) e scopriamo che la sua <strong>proiezione</strong> su un diametro è un moto armonico;</li>
+<li>definiamo le grandezze che descrivono un&#39;oscillazione: ampiezza, fase, periodo, frequenza, pulsazione;</li>
+<li>ricaviamo velocità e accelerazione e vediamo come sono sfasate rispetto alla posizione;</li>
+<li>capiamo <strong>quale forza</strong> produce un moto armonico (la forza di richiamo <span class="m">F = -cx</span>) e quindi cos&#39;è un <strong>oscillatore armonico</strong>;</li>
+<li>studiamo i due oscillatori classici, molla e pendolo, e l&#39;energia dell&#39;oscillatore;</li>
+<li>passiamo ai casi reali: <strong>oscillazioni smorzate</strong> (con attrito) e <strong>oscillazioni forzate</strong>, fino al fenomeno della <strong>risonanza</strong>.</li>
+</ul>
+<p>La lezione successiva riprende in dettaglio la molla (legge di Hooke, molle in serie e in parallelo) e i tipi di equilibrio.</p>
+<h2>Dal moto circolare uniforme al moto armonico</h2>
+<p>Consideriamo un punto P che si muove di moto circolare uniforme su una circonferenza di raggio <span class="m">R</span> centrata nell&#39;origine degli assi. Il raggio che va dall&#39;origine a P ruota con <strong>velocità angolare costante</strong> <span class="m">\omega</span>. L&#39;angolo che il raggio forma con l&#39;asse <span class="m">x</span> cresce quindi linearmente nel tempo:</p>
+<p><span class="m d">\theta(t) = \omega t + \theta_0</span></p>
+<p>dove:</p>
+<ul>
+<li><span class="m">\theta</span> = angolo del raggio vettore con l&#39;asse <span class="m">x</span> (rad)</li>
+<li><span class="m">\omega</span> = velocità angolare (rad/s)</li>
+<li><span class="m">t</span> = tempo (s)</li>
+<li><span class="m">\theta_0</span> = angolo all&#39;istante <span class="m">t = 0</span> (rad)</li>
+</ul>
+<p>Ora guardiamo il punto &quot;di taglio&quot;, cioè proiettiamo P sull&#39;asse <span class="m">x</span> (come se lo illuminassimo dall&#39;alto e guardassimo la sua ombra sull&#39;asse). La proiezione Q ha coordinata:</p>
+<p><span class="m d">x(t) = R\cos(\omega t + \theta_0)</span></p>
+<p>Mentre P gira sempre nello stesso verso, la sua ombra Q va <strong>avanti e indietro</strong> sull&#39;asse <span class="m">x</span> tra <span class="m">-R</span> e <span class="m">+R</span>: è un moto rettilineo e <strong>periodico</strong>. Quando P passa per il punto più a destra della circonferenza, Q è all&#39;estremo <span class="m">+R</span> e per un istante è fermo; quando P passa in cima o in fondo alla circonferenza, Q passa per l&#39;origine con la velocità massima.</p>
+<h3>Velocità e accelerazione della proiezione, ricavate dal moto circolare</h3>
+<p>Possiamo ottenere velocità e accelerazione di Q proiettando quelle di P.</p>
+<ul>
+<li>La velocità di P è tangente alla circonferenza e ha modulo <span class="m">v = \omega R</span>. Quando il raggio forma l&#39;angolo <span class="m">\theta</span> con l&#39;asse <span class="m">x</span>, la tangente forma con l&#39;asse <span class="m">x</span> un angolo <span class="m">\theta + 90°</span>; la componente <span class="m">x</span> della velocità è quindi <span class="m">\omega R\cos(\theta + 90°) = -\omega R\sin\theta</span>.</li>
+<li>L&#39;accelerazione di P è centripeta: punta verso il centro e ha modulo <span class="m">a = \omega^2 R</span>. La sua componente <span class="m">x</span> è <span class="m">-\omega^2 R\cos\theta</span> (il segno meno perché punta verso il centro, cioè in verso opposto al raggio).</li>
+</ul>
+<p>Quindi:</p>
+<p><span class="m d">v_x(t) = -\omega R\sin(\omega t + \theta_0) \qquad a_x(t) = -\omega^2 R\cos(\omega t + \theta_0) = -\omega^2\,x(t)</span></p>
+<p>L&#39;ultima uguaglianza è il risultato chiave: <strong>l&#39;accelerazione della proiezione è proporzionale alla posizione e di segno opposto</strong>.</p>
+<h3>Periodo, frequenza e pulsazione nel moto circolare</h3>
+<p>Nel moto circolare uniforme il punto compie un giro completo (<span class="m">2\pi</span> radianti) nel tempo <span class="m">T</span>, quindi <span class="m">\omega = 2\pi/T</span>. Le tre grandezze sono legate da:</p>
+<p><span class="m d">T = \frac{1}{\nu} = \frac{2\pi}{\omega}</span></p>
+<p>Queste stesse relazioni valgono per la proiezione: l&#39;ombra Q torna nella stessa posizione con la stessa velocità ogni volta che P completa un giro.</p>
 <h2>Il moto armonico semplice</h2>
-<p>Un moto armonico semplice è un moto avanti e indietro attorno a un centro. La posizione segue un coseno nel tempo. È la proiezione su un diametro di un moto circolare uniforme.</p>
+<p>La proiezione del moto circolare uniforme è un caso particolare di una classe generale di moti, molto importante in dinamica: il <strong>moto armonico semplice</strong>. Si chiama così ogni moto rettilineo la cui legge oraria è:</p>
 <p><span class="m d">x(t) = A\cos(\omega t + \varphi)</span></p>
 <p>dove:</p>
 <ul>
-<li><span class="m">x</span> = posizione rispetto al centro (m)</li>
-<li><span class="m">A</span> = ampiezza, lo spostamento massimo dal centro (m)</li>
-<li><span class="m">\omega</span> = pulsazione (rad/s)</li>
+<li><span class="m">x</span> = posizione rispetto al centro di oscillazione (m)</li>
+<li><span class="m">A</span> = <strong>ampiezza</strong> (m): la massima distanza raggiunta, in un verso o nell&#39;altro, rispetto alla posizione centrale. È sempre positiva</li>
+<li><span class="m">\omega</span> = <strong>pulsazione</strong> (rad/s)</li>
 <li><span class="m">t</span> = tempo (s)</li>
-<li><span class="m">\omega t + \varphi</span> = fase del moto (rad)</li>
-<li><span class="m">\varphi</span> = fase iniziale, il valore della fase a <span class="m">t = 0</span> (rad); dipende da come parte il moto</li>
+<li><span class="m">\omega t + \varphi</span> = <strong>fase</strong> del moto (rad): l&#39;argomento del coseno, che dice &quot;a che punto&quot; dell&#39;oscillazione si trova il corpo</li>
+<li><span class="m">\varphi</span> = <strong>fase iniziale</strong> o <strong>angolo di fase</strong> (rad): il valore della fase a <span class="m">t = 0</span>. È determinato dalle <strong>condizioni iniziali</strong> del moto (da dove parte il corpo e con che velocità)</li>
 </ul>
-<p>Il coseno varia tra <span class="m">-1</span> e <span class="m">1</span>. Quindi <span class="m">x</span> varia tra <span class="m">-A</span> e <span class="m">+A</span>.</p>
+<p>Poiché il coseno varia tra <span class="m">-1</span> e <span class="m">+1</span>, la posizione varia tra <span class="m">-A</span> e <span class="m">+A</span>. L&#39;intervallo totale percorso tra i due estremi è quindi <span class="m">2A</span> (non <span class="m">A</span>).</p>
+<p>Il moto armonico <strong>non richiede</strong> che ci sia davvero un punto che gira su una circonferenza: la circonferenza è solo un modo comodo per visualizzarlo. Una massa su una molla, un pendolo, una corda che vibra si muovono con questa legge senza che nulla ruoti.</p>
+<h3>Come si trovano ampiezza e fase dalle condizioni iniziali</h3>
+<p>Supponiamo di sapere che a <span class="m">t = 0</span> il corpo è in <span class="m">x_0</span> con velocità <span class="m">v_0</span>. Dalla legge oraria e dalla velocità (ricavata più sotto) si ha:</p>
+<p><span class="m d">x_0 = A\cos\varphi \qquad v_0 = -\omega A\sin\varphi</span></p>
+<p>Dividendo la seconda per <span class="m">\omega</span>, elevando al quadrato e sommando, e ricordando che <span class="m">\cos^2\varphi + \sin^2\varphi = 1</span>:</p>
+<p><span class="m d">A = \sqrt{x_0^2 + \left(\frac{v_0}{\omega}\right)^2} \qquad \tan\varphi = -\frac{v_0}{\omega x_0}</span></p>
+<p>Due casi molto frequenti:</p>
+<ul>
+<li>il corpo parte <strong>da fermo</strong> dall&#39;estremo <span class="m">x_0 = A</span>: allora <span class="m">v_0 = 0</span>, <span class="m">\varphi = 0</span> e <span class="m">x(t) = A\cos(\omega t)</span>;</li>
+<li>il corpo parte <strong>dal centro</strong> con velocità <span class="m">v_0 &gt; 0</span>: allora <span class="m">x_0 = 0</span>, <span class="m">\varphi = -\pi/2</span> e <span class="m">x(t) = A\cos(\omega t - \pi/2) = A\sin(\omega t)</span> con <span class="m">A = v_0/\omega</span>.</li>
+</ul>
+<p>Seno e coseno descrivono quindi lo stesso tipo di moto: cambia solo la fase iniziale.</p>
 <h2>Periodo, frequenza e pulsazione</h2>
-<p>Queste tre grandezze dicono quanto è veloce l&#39;oscillazione. Basta conoscerne una per avere le altre.</p>
-<p><span class="m d">T = \frac{2\pi}{\omega} \qquad \nu = \frac{1}{T} = \frac{\omega}{2\pi} \qquad \omega = 2\pi\nu</span></p>
+<p>Queste tre grandezze dicono <strong>quanto è rapida</strong> l&#39;oscillazione. Basta conoscerne una per ricavare le altre due.</p>
+<p><span class="m d">T = \frac{2\pi}{\omega} \qquad \nu = \frac{1}{T} = \frac{\omega}{2\pi} \qquad \omega = 2\pi\nu = \frac{2\pi}{T}</span></p>
 <p>dove:</p>
 <ul>
-<li><span class="m">T</span> = periodo, il tempo di una oscillazione completa (s)</li>
-<li><span class="m">\nu</span> = frequenza, il numero di oscillazioni in un secondo (Hz = 1/s)</li>
-<li><span class="m">\omega</span> = pulsazione, l&#39;angolo &quot;percorso&quot; in un secondo nel moto circolare associato (rad/s)</li>
+<li><span class="m">T</span> = <strong>periodo</strong> (s): il tempo impiegato per compiere un&#39;oscillazione completa, cioè per tornare nella stessa posizione con la stessa velocità (andata e ritorno)</li>
+<li><span class="m">\nu</span> = <strong>frequenza</strong> (Hz, hertz; <span class="m">1\,\mathrm{Hz} = 1\,\mathrm{s^{-1}}</span>): il numero di oscillazioni complete compiute in un secondo</li>
+<li><span class="m">\omega</span> = <strong>pulsazione</strong> (rad/s): di quanti radianti avanza la fase in un secondo. Nel moto circolare associato è la velocità angolare</li>
 </ul>
-<h2>Velocità e accelerazione</h2>
-<p>Si ottengono derivando la posizione.</p>
-<p><span class="m d">v(t) = -\omega A\sin(\omega t + \varphi) \qquad a(t) = -\omega^2 A\cos(\omega t + \varphi) = -\omega^2 x(t)</span></p>
+<p>Perché <span class="m">T = 2\pi/\omega</span>? Il coseno è periodico di <span class="m">2\pi</span>: la posizione si ripete quando la fase aumenta di <span class="m">2\pi</span>. La fase aumenta di <span class="m">\omega</span> radianti al secondo, quindi per aumentare di <span class="m">2\pi</span> serve il tempo <span class="m">T = 2\pi/\omega</span>. In formule: <span class="m">\omega(t + T) + \varphi = \omega t + \varphi + 2\pi</span> dà <span class="m">\omega T = 2\pi</span>.</p>
+<div class="callout attenzione">
+
+<p>Non confondere frequenza e pulsazione: hanno le stesse dimensioni (<span class="m">\mathrm{s^{-1}}</span>) ma differiscono di un fattore <span class="m">2\pi</span>. Un&#39;oscillazione a <span class="m">\nu = 1\,\mathrm{Hz}</span> ha <span class="m">\omega = 2\pi \approx 6{,}28\,\mathrm{rad/s}</span>. E il periodo è l&#39;inverso della <strong>frequenza</strong>, non della pulsazione.</p>
+</div>
+
+<h2>Velocità e accelerazione nel moto armonico</h2>
+<p>Si ottengono derivando la legge oraria rispetto al tempo. Usiamo la regola della catena: la derivata di <span class="m">\cos(\omega t + \varphi)</span> è <span class="m">-\sin(\omega t + \varphi)</span> moltiplicato per la derivata dell&#39;argomento, che è <span class="m">\omega</span>.</p>
+<p><strong>Velocità</strong> (derivata prima della posizione):</p>
+<p><span class="m d">v(t) = \frac{dx}{dt} = -\omega A\sin(\omega t + \varphi)</span></p>
+<p><strong>Accelerazione</strong> (derivata della velocità; la derivata di <span class="m">\sin</span> è <span class="m">\cos</span>, sempre per <span class="m">\omega</span>):</p>
+<p><span class="m d">a(t) = \frac{dv}{dt} = \frac{d^2x}{dt^2} = -\omega^2 A\cos(\omega t + \varphi) = -\omega^2 x(t)</span></p>
 <p>dove:</p>
 <ul>
-<li><span class="m">v</span> = velocità (m/s), massima in modulo <span class="m">v_{max} = \omega A</span></li>
-<li><span class="m">a</span> = accelerazione (m/s²), massima in modulo <span class="m">a_{max} = \omega^2 A</span></li>
+<li><span class="m">v</span> = velocità (m/s); il suo valore massimo in modulo è <span class="m">v_{max} = \omega A</span> (quando <span class="m">|\sin| = 1</span>)</li>
+<li><span class="m">a</span> = accelerazione (m/s²); il suo valore massimo in modulo è <span class="m">a_{max} = \omega^2 A</span> (quando <span class="m">|\cos| = 1</span>)</li>
 </ul>
-<p>Posizione, velocità e accelerazione sono sfasate di un quarto di periodo.</p>
+<h3>L&#39;equazione differenziale del moto armonico</h3>
+<p>L&#39;ultima relazione si può riscrivere come:</p>
+<p><span class="m d">\frac{d^2x}{dt^2} = -\omega^2 x \qquad\text{ovvero}\qquad \frac{d^2x}{dt^2} + \omega^2 x = 0</span></p>
+<p>È l&#39;<strong>equazione differenziale del moto armonico</strong>: dice che l&#39;accelerazione è in ogni istante proporzionale alla posizione, con segno opposto. Ogni sistema in cui l&#39;accelerazione segue questa legge si muove di moto armonico, e la sua soluzione generale è proprio <span class="m">x(t) = A\cos(\omega t + \varphi)</span>, con <span class="m">A</span> e <span class="m">\varphi</span> fissati dalle condizioni iniziali. Il coefficiente davanti a <span class="m">x</span> è il quadrato della pulsazione: leggendo l&#39;equazione si ricava subito <span class="m">\omega</span>.</p>
+<h3>Lo sfasamento di un quarto di periodo</h3>
+<p>Usando le identità <span class="m">-\sin\alpha = \cos(\alpha + \pi/2)</span> e <span class="m">-\cos\alpha = \cos(\alpha + \pi)</span> si vede che:</p>
+<p><span class="m d">x = A\cos(\omega t + \varphi) \qquad v = \omega A\cos\!\left(\omega t + \varphi + \tfrac{\pi}{2}\right) \qquad a = \omega^2 A\cos(\omega t + \varphi + \pi)</span></p>
+<p>Posizione, velocità e accelerazione sono tutte periodiche con lo stesso periodo, ma <strong>sfasate progressivamente di un quarto di periodo</strong> (<span class="m">\pi/2</span> di fase): la velocità è in anticipo di un quarto di periodo sulla posizione, l&#39;accelerazione di mezzo periodo (cioè è in <strong>opposizione di fase</strong> con la posizione).</p>
+<p>Seguiamo il moto con <span class="m">\varphi = 0</span> (partenza da ferma dall&#39;estremo positivo):</p>
+<table>
+<thead>
+<tr>
+<th>Istante</th>
+<th>Posizione <span class="m">x</span></th>
+<th>Velocità <span class="m">v</span></th>
+<th>Accelerazione <span class="m">a</span></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><span class="m">t = 0</span></td>
+<td><span class="m">+A</span> (estremo)</td>
+<td><span class="m">0</span></td>
+<td><span class="m">-\omega^2 A</span> (massima, verso il centro)</td>
+</tr>
+<tr>
+<td><span class="m">t = T/4</span></td>
+<td><span class="m">0</span> (centro)</td>
+<td><span class="m">-\omega A</span> (massima in modulo)</td>
+<td><span class="m">0</span></td>
+</tr>
+<tr>
+<td><span class="m">t = T/2</span></td>
+<td><span class="m">-A</span> (altro estremo)</td>
+<td><span class="m">0</span></td>
+<td><span class="m">+\omega^2 A</span> (massima, verso il centro)</td>
+</tr>
+<tr>
+<td><span class="m">t = 3T/4</span></td>
+<td><span class="m">0</span> (centro)</td>
+<td><span class="m">+\omega A</span> (massima)</td>
+<td><span class="m">0</span></td>
+</tr>
+<tr>
+<td><span class="m">t = T</span></td>
+<td><span class="m">+A</span></td>
+<td><span class="m">0</span></td>
+<td><span class="m">-\omega^2 A</span></td>
+</tr>
+</tbody></table>
+<p>Quindi:</p>
 <ul>
-<li>Agli <strong>estremi</strong> (<span class="m">x = \pm A</span>): velocità nulla, accelerazione massima.</li>
-<li>Al <strong>centro</strong> (<span class="m">x = 0</span>): velocità massima, accelerazione nulla.</li>
-<li>L&#39;accelerazione è sempre opposta allo spostamento: punta sempre verso il centro.</li>
+<li>agli <strong>estremi</strong> (<span class="m">x = \pm A</span>) il corpo è fermo per un istante (inverte il moto) e l&#39;accelerazione è massima in modulo;</li>
+<li>al <strong>centro</strong> (<span class="m">x = 0</span>) la velocità è massima e l&#39;accelerazione è nulla;</li>
+<li>l&#39;accelerazione è <strong>sempre diretta verso il centro</strong>, cioè opposta allo spostamento: per questo il corpo, allontanandosi, rallenta, e avvicinandosi accelera.</li>
 </ul>
 <div class="callout esempio">
 
-<p>Una membrana di altoparlante vibra a <span class="m">440\,\mathrm{Hz}</span> con ampiezza <span class="m">0{,}75\,\mathrm{mm}</span>.</p>
-<ul>
-<li><span class="m">\omega = 2\pi \cdot 440 \approx 2{,}76 \cdot 10^3\,\mathrm{rad/s}</span></li>
-<li><span class="m">v_{max} = \omega A \approx 2{,}07\,\mathrm{m/s}</span></li>
-<li><span class="m">a_{max} = \omega^2 A \approx 5{,}71 \cdot 10^3\,\mathrm{m/s^2}</span></li>
-</ul>
+<p><strong>Membrana di un altoparlante (esercizio della dispensa).</strong> La membrana vibra di moto armonico semplice alla frequenza <span class="m">\nu = 440\,\mathrm{Hz}</span> con spostamento massimo <span class="m">A = 0{,}75\,\mathrm{mm} = 7{,}5 \cdot 10^{-4}\,\mathrm m</span>. Trovare pulsazione, velocità massima e accelerazione massima.</p>
+<ol>
+<li>Pulsazione: <span class="m">\omega = 2\pi\nu = 2\pi \cdot 440 \approx 2{,}76 \cdot 10^3\,\mathrm{rad/s}</span>.</li>
+<li>Velocità massima: <span class="m">v_{max} = \omega A = 2{,}76 \cdot 10^3 \cdot 7{,}5 \cdot 10^{-4} \approx 2{,}07\,\mathrm{m/s}</span>.</li>
+<li>Accelerazione massima: <span class="m">a_{max} = \omega^2 A = (2{,}76 \cdot 10^3)^2 \cdot 7{,}5 \cdot 10^{-4} \approx 7{,}64 \cdot 10^6 \cdot 7{,}5 \cdot 10^{-4} \approx 5{,}7 \cdot 10^3\,\mathrm{m/s^2}</span>.</li>
+</ol>
+<p>L&#39;accelerazione è quasi 600 volte quella di gravità: anche spostamenti minuscoli, se rapidissimi, comportano accelerazioni enormi, perché <span class="m">a_{max}</span> cresce col <strong>quadrato</strong> della frequenza.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Due punti che si incrociano (esercizio della dispensa).</strong> Due punti si muovono di moto armonico con uguale ampiezza <span class="m">A</span> e uguale frequenza su due rette parallele vicinissime. Si incrociano ogni volta che il loro spostamento vale <span class="m">A/2</span>. Qual è la differenza di fase?</p>
+<ol>
+<li>Leggi orarie: <span class="m">x_1 = A\cos(\omega t + \varphi_1)</span>, <span class="m">x_2 = A\cos(\omega t + \varphi_2)</span>.</li>
+<li>All&#39;incrocio <span class="m">x_1 = x_2 = A/2</span>, quindi <span class="m">\cos(\text{fase}_1) = \cos(\text{fase}_2) = 1/2</span>. Il coseno vale <span class="m">1/2</span> per la fase <span class="m">+\pi/3</span> oppure <span class="m">-\pi/3</span>.</li>
+<li>Se le fasi fossero uguali i punti si muoverebbero insieme e non si &quot;incrocerebbero&quot;: nell&#39;incrocio uno va in un verso e l&#39;altro nel verso opposto, cioè <span class="m">v_1 = -v_2</span>. Poiché <span class="m">v = -\omega A\sin(\text{fase})</span>, serve <span class="m">\sin(\text{fase}_1) = -\sin(\text{fase}_2)</span>: una fase è <span class="m">+\pi/3</span> e l&#39;altra <span class="m">-\pi/3</span>.</li>
+<li>Differenza di fase: <span class="m">\pi/3 - (-\pi/3) = 2\pi/3</span>, cioè <span class="m">120°</span>.</li>
+</ol>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Oggetto appoggiato su un pistone (esercizio della dispensa).</strong> Un oggetto è appoggiato su un pistone che oscilla verticalmente di moto armonico. (a) Con periodo <span class="m">T = 1\,\mathrm s</span>, per quale ampiezza l&#39;oggetto si stacca? (b) Con ampiezza <span class="m">5\,\mathrm{cm}</span>, qual è la frequenza massima perché l&#39;oggetto resti appoggiato?</p>
+<p>Ragionamento: l&#39;oggetto è tenuto giù solo dal peso. Nel punto più alto il pistone accelera verso il basso con <span class="m">a_{max} = \omega^2 A</span>. Se questa accelerazione supera <span class="m">g</span>, il pistone &quot;scende più in fretta&quot; di quanto l&#39;oggetto possa cadere e l&#39;oggetto si stacca. Il limite è <span class="m">\omega^2 A = g</span>.</p>
+<p>(a) <span class="m">\omega = 2\pi/T = 2\pi\,\mathrm{rad/s}</span>, <span class="m">\omega^2 \approx 39{,}5\,\mathrm{s^{-2}}</span>. <span class="m">A = g/\omega^2 = 9{,}8/39{,}5 \approx 0{,}25\,\mathrm m</span>. Per ampiezze maggiori di circa <span class="m">25\,\mathrm{cm}</span> l&#39;oggetto si stacca.</p>
+<p>(b) <span class="m">\omega = \sqrt{g/A} = \sqrt{9{,}8/0{,}05} = \sqrt{196} = 14\,\mathrm{rad/s}</span>, quindi <span class="m">\nu = \omega/(2\pi) = 14/6{,}28 \approx 2{,}2\,\mathrm{Hz}</span>. A frequenze maggiori l&#39;oggetto perde il contatto.</p>
 </div>
 
 <h2>Quale forza produce un moto armonico</h2>
-<p>Serve una forza di richiamo: proporzionale allo spostamento e di verso opposto.</p>
-<p><span class="m d">F = -cx \;\Rightarrow\; m\frac{d^2x}{dt^2} = -cx \;\Rightarrow\; \frac{d^2x}{dt^2} = -\omega^2 x, \quad \omega = \sqrt{\frac{c}{m}}</span></p>
+<p>Partiamo dall&#39;equazione del moto armonico e la moltiplichiamo per la massa <span class="m">m</span> del corpo. Per il secondo principio della dinamica <span class="m">m\,a</span> è la risultante delle forze:</p>
+<p><span class="m d">F = m\,\frac{d^2x}{dt^2} = -m\omega^2 x</span></p>
+<p>Leggiamo questa relazione al contrario: <strong>qualsiasi situazione fisica in cui la risultante delle forze sia direttamente proporzionale allo spostamento del punto dalla sua posizione di riferimento, ma di verso opposto, produce un moto armonico semplice</strong>. Questa forza si chiama <strong>forza di richiamo</strong> (o forza elastica in senso lato):</p>
+<p><span class="m d">F = -c\,x</span></p>
 <p>dove:</p>
 <ul>
-<li><span class="m">F</span> = forza risultante sul corpo (N)</li>
-<li><span class="m">c</span> = costante positiva della forza (N/m); per una molla è la costante elastica <span class="m">k</span></li>
-<li><span class="m">x</span> = spostamento dalla posizione di equilibrio (m)</li>
-<li><span class="m">m</span> = massa del corpo (kg)</li>
+<li><span class="m">F</span> = risultante delle forze sul corpo, lungo l&#39;asse del moto (N)</li>
+<li><span class="m">c</span> = costante positiva (N/m); per una molla è la costante elastica <span class="m">k</span></li>
+<li><span class="m">x</span> = spostamento dalla posizione di equilibrio (m), con l&#39;origine dell&#39;asse proprio nella posizione di equilibrio</li>
 </ul>
-<p>L&#39;ultima è l&#39;<strong>equazione dell&#39;oscillatore armonico</strong>. La sua soluzione è proprio <span class="m">x = A\cos(\omega t + \varphi)</span>. Più la forza è &quot;rigida&quot; (<span class="m">c</span> grande), più l&#39;oscillazione è veloce.</p>
-<h2>L&#39;oscillatore armonico: molla e pendolo</h2>
-<p>Un oscillatore armonico è un sistema che oscilla attorno a un punto di equilibrio stabile con legge sinusoidale. I due esempi classici:</p>
+<p>Dimostrazione passo per passo:</p>
+<ol>
+<li>Secondo principio: <span class="m">m\,\dfrac{d^2x}{dt^2} = -c\,x</span>.</li>
+<li>Divido per <span class="m">m</span>: <span class="m">\dfrac{d^2x}{dt^2} = -\dfrac{c}{m}\,x</span>.</li>
+<li>Pongo <span class="m">\omega^2 = c/m</span> (si può fare perché <span class="m">c/m &gt; 0</span>): ottengo <span class="m">\dfrac{d^2x}{dt^2} = -\omega^2 x</span>, l&#39;equazione del moto armonico.</li>
+<li>Quindi il moto è <span class="m">x(t) = A\cos(\omega t + \varphi)</span> con</li>
+</ol>
+<p><span class="m d">\omega = \sqrt{\frac{c}{m}} \qquad T = 2\pi\sqrt{\frac{m}{c}}</span></p>
+<p>Verifica per sostituzione: se <span class="m">x = A\cos(\omega t + \varphi)</span>, allora <span class="m">\ddot x = -\omega^2 A\cos(\omega t + \varphi) = -\omega^2 x = -(c/m)\,x</span>, e moltiplicando per <span class="m">m</span> si riottiene <span class="m">m\ddot x = -cx</span>. Funziona per <strong>qualunque</strong> <span class="m">A</span> e <span class="m">\varphi</span>.</p>
+<p>Significato fisico:</p>
+<ul>
+<li>il segno meno è essenziale: la forza punta <strong>sempre verso la posizione di equilibrio</strong>. Se il corpo è a destra la forza tira a sinistra e viceversa. Senza il segno meno (forza concorde con lo spostamento) il corpo si allontanerebbe sempre di più: non ci sarebbe oscillazione;</li>
+<li>la proporzionalità diretta (forza lineare in <span class="m">x</span>) è ciò che rende il periodo <strong>indipendente dall&#39;ampiezza</strong>: se raddoppio lo spostamento raddoppia la forza, il corpo percorre il doppio della strada ma con il doppio dell&#39;accelerazione, e impiega lo stesso tempo (si parla di <strong>isocronismo</strong>);</li>
+<li>più la forza è &quot;rigida&quot; (<span class="m">c</span> grande) o più il corpo è leggero (<span class="m">m</span> piccola), più l&#39;oscillazione è rapida.</li>
+</ul>
+<h2>L&#39;oscillatore armonico</h2>
+<p>Si chiama <strong>oscillatore armonico</strong> un sistema fisico che, spostato dalla sua posizione di equilibrio <strong>stabile</strong>, è soggetto a una forza di richiamo del tipo <span class="m">F = -cx</span> e quindi oscilla attorno all&#39;equilibrio con legge sinusoidale, con pulsazione <span class="m">\omega = \sqrt{c/m}</span> che dipende solo dalle caratteristiche del sistema (non dall&#39;ampiezza né da come lo si mette in moto). Ampiezza e fase invece dipendono da come lo si mette in moto.</p>
+<p>Le oscillazioni avvengono sempre attorno a una posizione di <strong>equilibrio stabile</strong> (in cui la forza è nulla e, se ci si sposta, compare una forza che riporta indietro). Si vedrà nella lezione successiva che quasi ogni equilibrio stabile, per piccoli spostamenti, si comporta come un oscillatore armonico: per questo il modello è così importante.</p>
+<p>I due oscillatori armonici studiati nelle dispense sono:</p>
 <table>
 <thead>
 <tr>
 <th>Sistema</th>
+<th>Forza di richiamo</th>
 <th>Pulsazione</th>
 <th>Periodo</th>
-<th>Da cosa dipende</th>
+<th>Da cosa dipende il periodo</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>Massa–molla</td>
+<td>Massa–molla (piano orizzontale liscio)</td>
+<td><span class="m">F = -kx</span> (legge di Hooke)</td>
 <td><span class="m">\omega = \sqrt{k/m}</span></td>
 <td><span class="m">T = 2\pi\sqrt{m/k}</span></td>
-<td>massa e rigidità della molla</td>
+<td>massa del corpo e rigidità della molla</td>
 </tr>
 <tr>
-<td>Pendolo semplice</td>
+<td>Pendolo semplice (piccole oscillazioni)</td>
+<td><span class="m">F_t \approx -\dfrac{mg}{l}\,s</span></td>
 <td><span class="m">\omega = \sqrt{g/l}</span></td>
 <td><span class="m">T = 2\pi\sqrt{l/g}</span></td>
-<td>lunghezza del filo e <span class="m">g</span></td>
+<td>lunghezza del filo e <span class="m">g</span> (non dalla massa)</td>
 </tr>
 </tbody></table>
 <p>dove:</p>
 <ul>
 <li><span class="m">k</span> = costante elastica della molla (N/m)</li>
-<li><span class="m">m</span> = massa (kg)</li>
+<li><span class="m">m</span> = massa del corpo (kg)</li>
 <li><span class="m">l</span> = lunghezza del filo (m)</li>
-<li><span class="m">g</span> = accelerazione di gravità, <span class="m">9{,}81\,\mathrm{m/s^2}</span></li>
+<li><span class="m">g</span> = accelerazione di gravità, <span class="m">9{,}8\,\mathrm{m/s^2}</span></li>
+<li><span class="m">s</span> = spostamento misurato lungo l&#39;arco (m)</li>
 </ul>
-<p>In entrambi i casi il periodo <strong>non dipende dall&#39;ampiezza</strong> (per piccole oscillazioni).</p>
-<p>L&#39;energia meccanica dell&#39;oscillatore ideale si conserva. Agli estremi è tutta potenziale elastica:</p>
-<p><span class="m d">E = \tfrac12 kA^2</span></p>
-<p>dove <span class="m">E</span> = energia meccanica (J), <span class="m">k</span> = costante elastica (N/m), <span class="m">A</span> = ampiezza (m).</p>
+<p>In entrambi i casi il periodo <strong>non dipende dall&#39;ampiezza</strong> (per il pendolo solo per piccole oscillazioni).</p>
+<h3>L&#39;energia dell&#39;oscillatore armonico</h3>
+<p>Consideriamo la massa–molla. L&#39;energia cinetica è <span class="m">K = \tfrac12 mv^2</span> e l&#39;energia potenziale elastica (vedi lezioni 17–20) è <span class="m">U = \tfrac12 kx^2</span>. Sostituiamo la legge oraria:</p>
+<p><span class="m d">K = \tfrac12 m\,\omega^2 A^2\sin^2(\omega t + \varphi) \qquad U = \tfrac12 k A^2\cos^2(\omega t + \varphi)</span></p>
+<p>Poiché <span class="m">\omega^2 = k/m</span>, si ha <span class="m">m\omega^2 = k</span>, quindi <span class="m">K = \tfrac12 kA^2\sin^2(\ldots)</span>. Sommando e usando <span class="m">\sin^2 + \cos^2 = 1</span>:</p>
+<p><span class="m d">E = K + U = \tfrac12 kA^2 = \tfrac12 m\,v_{max}^2</span></p>
+<p>dove <span class="m">E</span> = energia meccanica (J), <span class="m">k</span> = costante elastica (N/m), <span class="m">A</span> = ampiezza (m), <span class="m">v_{max} = \omega A</span> (m/s).</p>
+<p>L&#39;energia meccanica è <strong>costante</strong> (in assenza di attriti) e proporzionale al <strong>quadrato dell&#39;ampiezza</strong>. Durante il moto l&#39;energia passa continuamente da una forma all&#39;altra: agli estremi è tutta potenziale (<span class="m">v = 0</span>), al centro è tutta cinetica (<span class="m">x = 0</span>).</p>
 <h2>Il pendolo semplice</h2>
-<p>È una massa appesa a un filo inestensibile di lunghezza <span class="m">l</span>. In basso, fermo, è in equilibrio stabile: il peso è bilanciato dalla tensione del filo. Se lo sposti un po&#39;, oscilla lungo un arco di circonferenza.</p>
-<p>Il ragionamento in tre passi:</p>
-<ol>
-<li>Lungo la traiettoria agisce solo la componente tangente del peso: <span class="m">ml\,\dfrac{d^2\theta}{dt^2} = -mg\sin\theta</span>.</li>
-<li>Per piccoli angoli <span class="m">\sin\theta \approx \theta</span> (angolo in radianti).</li>
-<li>Si ottiene <span class="m">\dfrac{d^2\theta}{dt^2} = -\dfrac{g}{l}\theta</span>: è un moto armonico con <span class="m">\omega = \sqrt{g/l}</span>.</li>
-</ol>
-<p><span class="m d">\theta(t) = \theta_0\cos(\omega t + \varphi) \qquad T = 2\pi\sqrt{\frac{l}{g}}</span></p>
+<p>Il pendolo semplice è un punto materiale di massa <span class="m">m</span> appeso a un filo <strong>inestensibile e di massa trascurabile</strong> di lunghezza <span class="m">l</span>, fissato a un punto. In basso, fermo, il pendolo è in <strong>equilibrio stabile</strong>: il peso è bilanciato dalla tensione del filo. Se lo spostiamo di un angolo e lo lasciamo, oscilla lungo un <strong>arco di circonferenza</strong> di raggio <span class="m">l</span>.</p>
+<h3>Le forze e l&#39;equazione del moto</h3>
+<p>Sul punto agiscono due forze:</p>
+<ul>
+<li>il <strong>peso</strong> <span class="m">m\vec g</span>, verticale verso il basso;</li>
+<li>la <strong>tensione</strong> <span class="m">\vec\tau</span> del filo, diretta lungo il filo verso il punto di sospensione.</li>
+</ul>
+<p>Descriviamo la posizione con l&#39;angolo <span class="m">\theta</span> che il filo forma con la verticale (positivo da un lato, negativo dall&#39;altro). Scomponiamo il peso:</p>
+<ul>
+<li>componente lungo il filo (radiale): <span class="m">mg\cos\theta</span>, che insieme alla tensione fornisce la forza centripeta;</li>
+<li>componente <strong>tangente</strong> alla traiettoria: <span class="m">-mg\sin\theta</span>. Il segno meno indica che punta sempre verso la posizione più bassa, cioè opposta allo spostamento angolare.</li>
+</ul>
+<p>La tensione è perpendicolare alla traiettoria, quindi non ha componente tangente. Il secondo principio lungo la tangente dà:</p>
+<p><span class="m d">m\,a_t = -mg\sin\theta</span></p>
+<p>Lo spostamento lungo l&#39;arco è <span class="m">s = l\theta</span>, quindi l&#39;accelerazione tangenziale è <span class="m">a_t = \dfrac{d^2s}{dt^2} = l\,\dfrac{d^2\theta}{dt^2}</span>. Sostituendo e semplificando la massa:</p>
+<p><span class="m d">l\,\frac{d^2\theta}{dt^2} = -g\sin\theta \qquad\Rightarrow\qquad \frac{d^2\theta}{dt^2} = -\frac{g}{l}\sin\theta</span></p>
+<p>Questa equazione <strong>non</strong> è ancora quella del moto armonico, perché a destra c&#39;è <span class="m">\sin\theta</span> e non <span class="m">\theta</span>.</p>
+<h3>L&#39;approssimazione delle piccole oscillazioni</h3>
+<p>Per angoli piccoli, misurati <strong>in radianti</strong>, il seno è quasi uguale all&#39;angolo stesso: <span class="m">\sin\theta \approx \theta</span> (è il primo termine dello sviluppo in serie di Taylor, <span class="m">\sin\theta = \theta - \theta^3/6 + \ldots</span>).</p>
+<table>
+<thead>
+<tr>
+<th><span class="m">\theta</span> (rad)</th>
+<th><span class="m">\theta</span> (gradi)</th>
+<th><span class="m">\sin\theta</span></th>
+<th>errore</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><span class="m">0{,}10</span></td>
+<td><span class="m">5{,}7°</span></td>
+<td><span class="m">0{,}0998</span></td>
+<td><span class="m">0{,}2\,\%</span></td>
+</tr>
+<tr>
+<td><span class="m">0{,}20</span></td>
+<td><span class="m">11{,}5°</span></td>
+<td><span class="m">0{,}1987</span></td>
+<td><span class="m">0{,}7\,\%</span></td>
+</tr>
+<tr>
+<td><span class="m">0{,}50</span></td>
+<td><span class="m">28{,}6°</span></td>
+<td><span class="m">0{,}4794</span></td>
+<td><span class="m">4\,\%</span></td>
+</tr>
+</tbody></table>
+<p>Con questa approssimazione:</p>
+<p><span class="m d">\frac{d^2\theta}{dt^2} = -\frac{g}{l}\,\theta</span></p>
+<p>È l&#39;equazione del moto armonico per la variabile <span class="m">\theta</span>, con <span class="m">\omega^2 = g/l</span>. Quindi:</p>
+<p><span class="m d">\theta(t) = \theta_0\cos(\omega t + \varphi) \qquad \omega = \sqrt{\frac{g}{l}} \qquad T = 2\pi\sqrt{\frac{l}{g}}</span></p>
 <p>dove:</p>
 <ul>
 <li><span class="m">\theta</span> = angolo del filo con la verticale (rad)</li>
-<li><span class="m">\theta_0</span> = ampiezza angolare (rad)</li>
+<li><span class="m">\theta_0</span> = ampiezza angolare, cioè l&#39;angolo massimo (rad)</li>
+<li><span class="m">l</span> = lunghezza del filo (m)</li>
+<li><span class="m">g</span> = accelerazione di gravità (m/s²)</li>
 </ul>
-<p>Il periodo <strong>non dipende dalla massa</strong>. Dipende solo dalla lunghezza del filo e da <span class="m">g</span>. Per questo il pendolo serve a misurare <span class="m">g</span>.</p>
-<p>La velocità è massima nel punto più basso (<span class="m">\theta = 0</span>). Lì anche la tensione del filo è massima: <span class="m">\tau_{max} = mg(1 + \theta_0^2)</span>.</p>
+<h3>Da cosa dipende il periodo del pendolo</h3>
+<ul>
+<li><strong>Non dipende dalla massa.</strong> La massa si è semplificata: la forza di richiamo (il peso) è proporzionale alla massa, ma lo è anche l&#39;inerzia; i due effetti si compensano esattamente. Due pendoli con lo stesso filo e masse diverse oscillano con lo stesso periodo.</li>
+<li><strong>Non dipende dall&#39;ampiezza</strong> (per piccole oscillazioni): è l&#39;isocronismo scoperto da Galileo. Per ampiezze grandi il periodo cresce un po&#39;.</li>
+<li><strong>Dipende dalla lunghezza del filo</strong>, come <span class="m">\sqrt l</span>: quadruplicando <span class="m">l</span> il periodo raddoppia.</li>
+<li><strong>Dipende da <span class="m">g</span></strong>, come <span class="m">1/\sqrt g</span>: sulla Luna (<span class="m">g</span> circa sei volte più piccola) lo stesso pendolo oscilla circa <span class="m">2{,}4</span> volte più lentamente.</li>
+</ul>
+<h3>Velocità massima e tensione del filo</h3>
+<p>La velocità lungo l&#39;arco è <span class="m">v = l\,\dfrac{d\theta}{dt} = -l\,\omega\,\theta_0\sin(\omega t + \varphi)</span>. È massima nel punto più basso (<span class="m">\theta = 0</span>) e vale <span class="m">v_{max} = \omega\,l\,\theta_0 = \theta_0\sqrt{gl}</span>. Agli estremi (<span class="m">\theta = \pm\theta_0</span>) il pendolo è fermo.</p>
+<p>La tensione del filo non è costante. Lungo il filo la risultante deve fornire la forza centripeta: <span class="m">\tau - mg\cos\theta = mv^2/l</span>. Nel punto più basso <span class="m">\cos\theta = 1</span> e <span class="m">v = v_{max}</span>:</p>
+<p><span class="m d">\tau_{max} = mg + \frac{m v_{max}^2}{l} = mg + mg\,\theta_0^2 = mg\,(1 + \theta_0^2)</span></p>
+<p>La tensione è quindi <strong>massima nel punto più basso</strong>, dove è maggiore del peso. Agli estremi, dove <span class="m">v = 0</span>, vale <span class="m">mg\cos\theta_0</span>, minore del peso.</p>
+<h3>Stima di <span class="m">g</span> con il pendolo</h3>
+<p>Poiché il periodo dipende solo da <span class="m">l</span> e da <span class="m">g</span>, il pendolo è uno strumento semplice per <strong>misurare l&#39;accelerazione di gravità</strong>. Invertendo la formula del periodo:</p>
+<p><span class="m d">g = \frac{4\pi^2 l}{T^2}</span></p>
+<p>Si misura la lunghezza del filo e si cronometra un certo numero di oscillazioni (per esempio 10), dividendo poi il tempo totale per il numero di oscillazioni: così l&#39;errore del cronometraggio pesa meno.</p>
 <div class="callout esempio">
 
-<p>Quadruplichi la lunghezza del filo: <span class="m">T</span> cresce di <span class="m">\sqrt4 = 2</span>, cioè raddoppia. Cambi la massa appesa: <span class="m">T</span> non cambia.</p>
+<p><strong>Misura di <span class="m">g</span>.</strong> Un pendolo con filo di <span class="m">l = 0{,}80\,\mathrm m</span> compie 10 oscillazioni in <span class="m">17{,}94\,\mathrm s</span>.</p>
+<ol>
+<li>Periodo: <span class="m">T = 17{,}94/10 = 1{,}794\,\mathrm s</span>.</li>
+<li><span class="m">T^2 = 3{,}218\,\mathrm{s^2}</span>.</li>
+<li><span class="m">g = 4\pi^2 \cdot 0{,}80/3{,}218 = 31{,}58/3{,}218 \approx 9{,}81\,\mathrm{m/s^2}</span>.</li>
+</ol>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Pendolo con legge oraria data (esercizio della dispensa).</strong> Una massa di <span class="m">60{,}0\,\mathrm g</span> è appesa a un filo; l&#39;angolo segue la legge <span class="m">\theta = (0{,}0800\,\mathrm{rad})\cos[(4{,}43\,\mathrm{rad/s})\,t + \varphi]</span>. Trovare la lunghezza del filo e la velocità massima della massa.</p>
+<ol>
+<li>Dalla legge si leggono <span class="m">\theta_0 = 0{,}0800\,\mathrm{rad}</span> e <span class="m">\omega = 4{,}43\,\mathrm{rad/s}</span>.</li>
+<li>Da <span class="m">\omega^2 = g/l</span>: <span class="m">l = g/\omega^2 = 9{,}8/4{,}43^2 = 9{,}8/19{,}62 \approx 0{,}50\,\mathrm m</span>.</li>
+<li>La velocità massima si ha nel punto più basso: <span class="m">v_{max} = \omega\,l\,\theta_0 = 4{,}43 \cdot 0{,}50 \cdot 0{,}0800 \approx 0{,}18\,\mathrm{m/s}</span>.</li>
+</ol>
+<p>La massa (<span class="m">60\,\mathrm g</span>) non serve: il moto del pendolo non dipende da essa.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Quadruplicare il filo.</strong> Un pendolo ha periodo <span class="m">T</span>. Se si quadruplica la lunghezza del filo, <span class="m">T' = 2\pi\sqrt{4l/g} = 2 \cdot 2\pi\sqrt{l/g} = 2T</span>: il periodo raddoppia. Se invece si cambia la massa appesa, il periodo non cambia.</p>
 </div>
 
 <h2>Oscillazioni smorzate</h2>
-<p>Nella realtà c&#39;è attrito e l&#39;ampiezza cala nel tempo. Con un attrito viscoso (<span class="m">F = -bv</span>) l&#39;oscillazione è un coseno moltiplicato per un esponenziale decrescente.</p>
-<p><span class="m d">x(t) = A\,e^{-t/\tau}\cos(\omega t + \varphi), \qquad \tau = \frac{2m}{b}</span></p>
+<p>Nella realtà c&#39;è sempre qualche forma di attrito: l&#39;ampiezza delle oscillazioni diminuisce col tempo e alla fine il corpo si ferma. Il caso studiato nelle dispense è quello di un <strong>attrito viscoso</strong>, cioè una forza proporzionale alla velocità e opposta a essa (come la resistenza di un fluido a bassa velocità):</p>
+<p><span class="m d">F_v = -b\,v = -b\,\frac{dx}{dt}</span></p>
+<p>dove <span class="m">b</span> = coefficiente di attrito viscoso (kg/s).</p>
+<h3>L&#39;equazione del moto</h3>
+<p>Aggiungiamo questa forza alla forza elastica nel secondo principio:</p>
+<p><span class="m d">m\frac{d^2x}{dt^2} = -kx - b\frac{dx}{dt} \qquad\Rightarrow\qquad \frac{d^2x}{dt^2} + 2\gamma\frac{dx}{dt} + \omega_0^2 x = 0</span></p>
+<p>dove (dividendo per <span class="m">m</span>):</p>
+<ul>
+<li><span class="m">\omega_0 = \sqrt{k/m}</span> = pulsazione propria del sistema senza attrito (rad/s)</li>
+<li><span class="m">\gamma = \dfrac{b}{2m}</span> = coefficiente di smorzamento (1/s)</li>
+</ul>
+<h3>Le soluzioni: tre casi</h3>
+<p>Si cercano soluzioni del tipo <span class="m">x = e^{\lambda t}</span>. Sostituendo (ogni derivata porta giù un fattore <span class="m">\lambda</span>) si ottiene l&#39;equazione caratteristica:</p>
+<p><span class="m d">\lambda^2 + 2\gamma\lambda + \omega_0^2 = 0 \qquad\Rightarrow\qquad \lambda = -\gamma \pm \sqrt{\gamma^2 - \omega_0^2}</span></p>
+<p>Il comportamento dipende dal segno del discriminante <span class="m">\Delta = \gamma^2 - \omega_0^2</span>:</p>
+<table>
+<thead>
+<tr>
+<th>Caso</th>
+<th>Condizione</th>
+<th>Cosa succede</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Smorzamento forte (sovrasmorzato)</td>
+<td><span class="m">\Delta &gt; 0</span>, cioè <span class="m">\gamma &gt; \omega_0</span></td>
+<td>somma di due esponenziali decrescenti: il corpo torna lentamente all&#39;equilibrio <strong>senza oscillare</strong></td>
+</tr>
+<tr>
+<td>Smorzamento critico</td>
+<td><span class="m">\Delta = 0</span>, cioè <span class="m">\gamma = \omega_0</span></td>
+<td>ancora un andamento esponenziale decrescente senza oscillazioni; è il ritorno all&#39;equilibrio <strong>più rapido</strong> possibile senza oscillare</td>
+</tr>
+<tr>
+<td>Smorzamento debole (sottosmorzato)</td>
+<td><span class="m">\Delta &lt; 0</span>, cioè <span class="m">\gamma &lt; \omega_0</span></td>
+<td><strong>oscillazioni</strong> visibili la cui ampiezza diminuisce esponenzialmente</td>
+</tr>
+</tbody></table>
+<p>Nel caso di smorzamento debole la soluzione è:</p>
+<p><span class="m d">x(t) = A\,e^{-t/\tau}\cos(\omega' t + \varphi) \qquad \tau = \frac{1}{\gamma} = \frac{2m}{b} \qquad \omega' = \sqrt{\omega_0^2 - \gamma^2}</span></p>
 <p>dove:</p>
 <ul>
-<li><span class="m">b</span> = coefficiente di attrito viscoso (kg/s)</li>
-<li><span class="m">\tau</span> = costante di tempo (s): più è piccola, più in fretta si spengono le oscillazioni</li>
+<li><span class="m">A\,e^{-t/\tau}</span> = ampiezza che decresce nel tempo (m)</li>
+<li><span class="m">\tau</span> = <strong>costante di tempo</strong> (s): dopo un tempo <span class="m">\tau</span> l&#39;ampiezza si è ridotta di un fattore <span class="m">e \approx 2{,}72</span></li>
+<li><span class="m">\omega'</span> = pulsazione delle oscillazioni smorzate (rad/s), un po&#39; minore di <span class="m">\omega_0</span></li>
 </ul>
-<p>Se lo smorzamento è molto forte (smorzamento critico o superiore), il corpo torna all&#39;equilibrio senza oscillare.</p>
-<p>Con l&#39;attrito radente (piano scabro) invece l&#39;ampiezza cala in modo <strong>lineare</strong>, di una quantità fissa a ogni periodo, finché il corpo si ferma.</p>
+<p>Interpretazione: un oscillatore smorzato si comporta come un oscillatore armonico la cui ampiezza è <strong>modulata da un termine esponenziale decrescente</strong>, che attenua le oscillazioni col passare del tempo. Le oscillazioni si spengono tanto più in fretta quanto <strong>minore</strong> è la costante di tempo <span class="m">\tau</span>, cioè quanto maggiore è l&#39;attrito <span class="m">b</span> rispetto alla massa.</p>
+<div class="callout esempio">
+
+<p>Un corpo di <span class="m">m = 0{,}5\,\mathrm{kg}</span> su una molla con <span class="m">k = 50\,\mathrm{N/m}</span> è immerso in un fluido con <span class="m">b = 0{,}2\,\mathrm{kg/s}</span>.</p>
+<ol>
+<li><span class="m">\omega_0 = \sqrt{50/0{,}5} = 10\,\mathrm{rad/s}</span>.</li>
+<li><span class="m">\gamma = b/(2m) = 0{,}2/1 = 0{,}2\,\mathrm{s^{-1}}</span>: molto minore di <span class="m">\omega_0</span>, smorzamento debole.</li>
+<li><span class="m">\tau = 1/\gamma = 5\,\mathrm s</span>; <span class="m">\omega' = \sqrt{100 - 0{,}04} \approx 10\,\mathrm{rad/s}</span>.</li>
+<li>Dopo <span class="m">5\,\mathrm s</span> l&#39;ampiezza è ridotta a <span class="m">1/e \approx 37\,\%</span>; dopo <span class="m">15\,\mathrm s</span> (<span class="m">3\tau</span>) a circa il <span class="m">5\,\%</span>.</li>
+</ol>
+</div>
+
+<p><strong>Attrito radente.</strong> Se invece il corpo striscia su un piano scabro (attrito costante in modulo), l&#39;ampiezza non cala esponenzialmente ma <strong>linearmente</strong>: diminuisce di una quantità fissa a ogni mezza oscillazione, finché il corpo si ferma. Il caso è svolto nella lezione 16.</p>
 <h2>Oscillazioni forzate e risonanza</h2>
-<p>Una forza esterna periodica <span class="m">F_0\sin(\omega t)</span> mantiene il sistema in oscillazione. Dopo un po&#39; il moto &quot;proprio&quot; si spegne. Resta un&#39;oscillazione alla pulsazione <span class="m">\omega</span> della forzante.</p>
-<p><span class="m d">m\frac{d^2x}{dt^2} + b\frac{dx}{dt} + kx = F_0\sin(\omega t)</span></p>
-<p>L&#39;ampiezza a regime dipende da quanto <span class="m">\omega</span> è vicina alla pulsazione propria <span class="m">\omega_0 = \sqrt{k/m}</span>.</p>
-<p><span class="m d">A = \frac{F_0}{m}\,\frac{1}{\sqrt{(\omega_0^2 - \omega^2)^2 + 4\gamma^2\omega^2}}, \qquad \gamma = \frac{b}{2m}</span></p>
+<p>Per mantenere un sistema in oscillazione nonostante l&#39;attrito bisogna fornirgli energia dall&#39;esterno con una <strong>forza periodica</strong>, detta forzante:</p>
+<p><span class="m d">F_{ext}(t) = F_0\sin(\omega t)</span></p>
 <p>dove:</p>
 <ul>
 <li><span class="m">F_0</span> = ampiezza della forza esterna (N)</li>
-<li><span class="m">\omega</span> = pulsazione della forza esterna (rad/s)</li>
-<li><span class="m">\omega_0</span> = pulsazione propria (naturale) del sistema (rad/s)</li>
-<li><span class="m">\gamma</span> = coefficiente di smorzamento (1/s)</li>
+<li><span class="m">\omega</span> = pulsazione della forza esterna (rad/s), che in generale è <strong>diversa</strong> dalla pulsazione propria <span class="m">\omega_0</span> del sistema</li>
 </ul>
-<p><strong>Risonanza</strong>: quando la frequenza della forzante è vicina a quella propria del sistema, l&#39;ampiezza diventa massima. Il massimo è a <span class="m">\omega = \sqrt{\omega_0^2 - 2\gamma^2}</span>, quasi uguale a <span class="m">\omega_0</span> se lo smorzamento è piccolo. Senza smorzamento l&#39;ampiezza tenderebbe all&#39;infinito. Intuizione: spingi l&#39;altalena sempre al momento giusto, e ogni spinta aggiunge energia.</p>
+<p>L&#39;equazione del moto diventa:</p>
+<p><span class="m d">m\frac{d^2x}{dt^2} + b\frac{dx}{dt} + kx = F_0\sin(\omega t)</span></p>
+<h3>Il regime</h3>
+<p>All&#39;inizio il moto è complicato: si sovrappongono l&#39;oscillazione &quot;propria&quot; del sistema (a pulsazione <span class="m">\omega'</span>) e quella imposta dalla forzante. Ma l&#39;oscillazione propria è smorzata e dopo qualche costante di tempo si spegne. <strong>A regime</strong> resta un&#39;oscillazione armonica alla pulsazione della <strong>forzante</strong> (non a quella propria):</p>
+<p><span class="m d">x(t) = A\sin(\omega t - \delta)</span></p>
+<p>con ampiezza:</p>
+<p><span class="m d">A(\omega) = \frac{F_0}{m}\,\frac{1}{\sqrt{(\omega_0^2 - \omega^2)^2 + 4\gamma^2\omega^2}} \qquad \gamma = \frac{b}{2m}</span></p>
+<p>dove:</p>
+<ul>
+<li><span class="m">A</span> = ampiezza delle oscillazioni forzate a regime (m)</li>
+<li><span class="m">\omega_0 = \sqrt{k/m}</span> = pulsazione propria (naturale) del sistema (rad/s)</li>
+<li><span class="m">\gamma</span> = coefficiente di smorzamento (1/s)</li>
+<li><span class="m">\delta</span> = sfasamento tra forzante e risposta (rad), con <span class="m">\tan\delta = \dfrac{2\gamma\omega}{\omega_0^2 - \omega^2}</span></li>
+</ul>
+<h3>Dove l&#39;ampiezza è massima</h3>
+<p>L&#39;ampiezza è massima quando il denominatore è minimo. Poniamo <span class="m">u = \omega^2</span> e studiamo <span class="m">f(u) = (\omega_0^2 - u)^2 + 4\gamma^2 u</span>. Deriviamo rispetto a <span class="m">u</span> e poniamo la derivata uguale a zero:</p>
+<p><span class="m d">f'(u) = -2(\omega_0^2 - u) + 4\gamma^2 = 0 \qquad\Rightarrow\qquad u = \omega_0^2 - 2\gamma^2</span></p>
+<p>Quindi, se lo smorzamento è basso (<span class="m">\omega_0^2 &gt; 2\gamma^2</span>), l&#39;ampiezza ha un massimo per:</p>
+<p><span class="m d">\omega_{max} = \sqrt{\omega_0^2 - 2\gamma^2}</span></p>
+<p>Se lo smorzamento è molto piccolo, <span class="m">\omega_{max}</span> è praticamente uguale a <span class="m">\omega_0</span>. Al limite di smorzamento nullo (<span class="m">\gamma \to 0</span>) e con <span class="m">\omega = \omega_0</span> il denominatore si annulla e l&#39;ampiezza <strong>tenderebbe all&#39;infinito</strong>.</p>
+<h3>La risonanza</h3>
+<p>Si chiama <strong>risonanza</strong> la condizione in cui la frequenza della forzante è vicina alla frequenza <strong>naturale</strong> (propria) del sistema: l&#39;ampiezza delle oscillazioni forzate diventa massima, e tanto più grande quanto più piccolo è lo smorzamento.</p>
+<p>Intuizione: è come spingere un&#39;altalena. Se spingi sempre al momento giusto (con lo stesso ritmo con cui l&#39;altalena oscilla da sola), ogni spinta aggiunge energia e le oscillazioni crescono. Se spingi a un ritmo diverso, a volte spingi mentre l&#39;altalena viene verso di te e le togli energia: le spinte si compensano e l&#39;ampiezza resta piccola.</p>
 <div class="callout esempio">
 
-<p>Soldati che marciano a passo cadenzato su un ponte. Se il ritmo è vicino alla frequenza naturale del ponte, le oscillazioni crescono sempre di più. Per questo sui ponti si rompe il passo.</p>
+<p><strong>Soldati su un ponte.</strong> Soldati che marciano a passo cadenzato su un ponte esercitano una forza periodica. Se il ritmo del passo è vicino alla frequenza naturale di oscillazione del ponte, le oscillazioni diventano percepibili e sempre più ampie, fino a mettere a rischio la struttura. Per questo, attraversando un ponte, si ordina di &quot;rompere il passo&quot;. Lo stesso principio spiega il bicchiere che si rompe con una nota acuta della stessa frequenza propria.</p>
+</div>
+
+<div class="callout esempio">
+
+<p>Un sistema massa–molla ha <span class="m">m = 1\,\mathrm{kg}</span>, <span class="m">k = 400\,\mathrm{N/m}</span>, <span class="m">b = 2\,\mathrm{kg/s}</span>.</p>
+<ol>
+<li><span class="m">\omega_0 = \sqrt{400/1} = 20\,\mathrm{rad/s}</span>; <span class="m">\gamma = 2/(2 \cdot 1) = 1\,\mathrm{s^{-1}}</span>.</li>
+<li>Pulsazione di massima ampiezza: <span class="m">\omega_{max} = \sqrt{400 - 2} \approx 19{,}95\,\mathrm{rad/s}</span>, praticamente <span class="m">\omega_0</span>.</li>
+<li>Con <span class="m">F_0 = 1\,\mathrm N</span>, a <span class="m">\omega = \omega_0</span>: <span class="m">A = \dfrac{1}{1}\cdot\dfrac{1}{\sqrt{0 + 4 \cdot 1 \cdot 400}} = 1/40 = 2{,}5\,\mathrm{cm}</span>. Lontano dalla risonanza, a <span class="m">\omega = 10\,\mathrm{rad/s}</span>: <span class="m">A = 1/\sqrt{300^2 + 400} \approx 1/300{,}7 \approx 0{,}33\,\mathrm{cm}</span>, quasi otto volte meno.</li>
+</ol>
 </div>
 
 <div class="callout attenzione">
 
-<p>Errore tipico: invertire <span class="m">k</span> e <span class="m">m</span>. Il periodo della molla è <span class="m">2\pi\sqrt{m/k}</span>: più massa, oscillazione più lenta. La pulsazione è <span class="m">\sqrt{k/m}</span>.</p>
+<p>Errori tipici:</p>
+<ul>
+<li>invertire <span class="m">k</span> e <span class="m">m</span>: la pulsazione della molla è <span class="m">\sqrt{k/m}</span>, il periodo è <span class="m">2\pi\sqrt{m/k}</span>. Più massa significa oscillazione <strong>più lenta</strong>;</li>
+<li>dire che il periodo del pendolo dipende dalla massa: non è vero, dipende solo da <span class="m">l</span> e <span class="m">g</span>;</li>
+<li>usare gli angoli in gradi nell&#39;approssimazione <span class="m">\sin\theta \approx \theta</span>: vale solo in radianti;</li>
+<li>dire che all&#39;estremo dell&#39;oscillazione l&#39;accelerazione è nulla: lì è nulla la <strong>velocità</strong>, l&#39;accelerazione è massima;</li>
+<li>confondere la pulsazione della forzante con quella propria: a regime il sistema oscilla alla pulsazione della <strong>forzante</strong>.</li>
+</ul>
 </div>
 
 <div class="callout esame">
 
-<p>Nelle aperte chiedono: la condizione per il moto armonico (<span class="m">F = -cx</span>), la descrizione dell&#39;oscillatore, il pendolo e il suo periodo, la definizione di periodo, frequenza e pulsazione, la risonanza.</p>
+<p>Le domande aperte del paniere su questa lezione chiedono:</p>
+<ul>
+<li><strong>quale condizione deve soddisfare una forza per produrre un moto armonico semplice</strong>: la risultante deve essere una forza di richiamo <span class="m">F = -cx</span>, proporzionale allo spostamento dalla posizione di equilibrio e di verso opposto; allora <span class="m">m\ddot x = -cx</span>, cioè <span class="m">\ddot x = -\omega^2 x</span> con <span class="m">\omega = \sqrt{c/m}</span>, la cui soluzione è <span class="m">x = A\cos(\omega t + \varphi)</span>;</li>
+<li><strong>descrivere l&#39;oscillatore armonico</strong>: sistema che oscilla attorno a un equilibrio stabile sotto una forza di richiamo lineare; legge oraria, velocità e accelerazione sfasate di un quarto di periodo, periodo indipendente dall&#39;ampiezza, energia <span class="m">\tfrac12 kA^2</span> costante; esempi molla (<span class="m">T = 2\pi\sqrt{m/k}</span>) e pendolo;</li>
+<li><strong>discutere il moto del pendolo e da cosa dipende il periodo</strong>: forze (peso e tensione), componente tangente <span class="m">-mg\sin\theta</span>, approssimazione <span class="m">\sin\theta \approx \theta</span> per piccoli angoli, <span class="m">T = 2\pi\sqrt{l/g}</span>: dipende da lunghezza e <span class="m">g</span>, non da massa e ampiezza;</li>
+<li><strong>definire periodo, frequenza e pulsazione</strong> con le unità e le relazioni <span class="m">T = 1/\nu = 2\pi/\omega</span>;</li>
+<li><strong>la risonanza nell&#39;oscillatore forzato</strong>: forzante periodica, a regime oscillazione alla pulsazione della forzante con ampiezza che dipende da <span class="m">\omega</span>; massimo per <span class="m">\omega</span> vicina alla pulsazione propria (<span class="m">\omega = \sqrt{\omega_0^2 - 2\gamma^2}</span>), che tende all&#39;infinito senza smorzamento; esempio del ponte.</li>
+</ul>
 </div>
 
 <div class="callout sintesi">
 
 <ul>
-<li>Moto armonico: <span class="m">x = A\cos(\omega t + \varphi)</span>, <span class="m">a = -\omega^2 x</span>.</li>
-<li>Condizione: forza di richiamo <span class="m">F = -cx</span> (proporzionale e opposta allo spostamento).</li>
+<li>Proiezione del moto circolare uniforme su un diametro = moto armonico semplice.</li>
+<li><span class="m">x = A\cos(\omega t + \varphi)</span>; <span class="m">v = -\omega A\sin(\ldots)</span>, <span class="m">v_{max} = \omega A</span>; <span class="m">a = -\omega^2 x</span>, <span class="m">a_{max} = \omega^2 A</span>.</li>
 <li><span class="m">T = 2\pi/\omega</span>, <span class="m">\nu = 1/T</span>, <span class="m">\omega = 2\pi\nu</span>.</li>
-<li>Molla: <span class="m">T = 2\pi\sqrt{m/k}</span>; pendolo: <span class="m">T = 2\pi\sqrt{l/g}</span>, indipendente dalla massa.</li>
-<li>Velocità massima al centro, accelerazione massima agli estremi; <span class="m">E = \tfrac12 kA^2</span>.</li>
-<li>Risonanza: forzante alla frequenza propria → ampiezza massima.</li>
+<li>Velocità massima al centro, accelerazione massima (e velocità nulla) agli estremi; sfasamenti di un quarto di periodo.</li>
+<li>Condizione dinamica: <span class="m">F = -cx</span> ⇒ <span class="m">\ddot x = -\omega^2 x</span>, <span class="m">\omega = \sqrt{c/m}</span>; periodo indipendente dall&#39;ampiezza.</li>
+<li>Molla: <span class="m">T = 2\pi\sqrt{m/k}</span>; pendolo (piccoli angoli): <span class="m">T = 2\pi\sqrt{l/g}</span>, indipendente dalla massa; <span class="m">g = 4\pi^2 l/T^2</span>.</li>
+<li>Energia dell&#39;oscillatore: <span class="m">E = \tfrac12 kA^2</span>, costante senza attriti.</li>
+<li>Smorzato (attrito viscoso): ampiezza <span class="m">\propto e^{-t/\tau}</span>, <span class="m">\tau = 2m/b</span>; smorzamento critico o forte: nessuna oscillazione.</li>
+<li>Forzato: a regime oscilla alla pulsazione della forzante; risonanza per <span class="m">\omega \approx \omega_0</span> (massimo a <span class="m">\sqrt{\omega_0^2 - 2\gamma^2}</span>).</li>
 </ul>
 </div>

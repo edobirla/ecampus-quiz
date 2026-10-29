@@ -1,209 +1,407 @@
 <h1 id="lez-14">Lezione 14 — Bilanciamento delle reazioni, reagente limitante, resa</h1>
 <h2 id="lez-14-perche">Perché questa lezione esiste</h2>
-<p>La <a href="#/teoria/chimica/13/lez-13">Lezione 13</a> ha dato gli strumenti per convertire grammi in moli e moli in
-numero di particelle. Qui quegli strumenti si applicano a una <strong>reazione</strong>: dato che i
-coefficienti stechiometrici fissano il rapporto fra le moli di reagenti e prodotti,
-sapere le moli di un reagente permette di calcolare quelle di tutti gli altri. Il
-capitolo aggiunge tre complicazioni reali che il laboratorio impone sempre: i reagenti
-raramente sono nelle proporzioni esatte richieste dalla reazione (<strong>reagente
-limitante</strong>), la reazione raramente converte tutto il reagente limitante in prodotto
-(<strong>resa</strong>), e bilanciare una reazione complessa a mano può essere lento (<strong>metodo
-algebrico</strong>).</p>
+<p>La <a href="#/teoria/chimica/13/lez-13">Lezione 13</a> ha dato gli strumenti per convertire grammi in moli e moli in numero di particelle. Qui quegli
+strumenti si applicano a una <strong>reazione</strong>: dato che i coefficienti stechiometrici fissano il rapporto fra le moli di
+reagenti e prodotti, sapere le moli di un reagente permette di calcolare quelle di tutti gli altri. Il capitolo aggiunge
+tre complicazioni reali che il laboratorio impone sempre: i reagenti raramente sono nelle proporzioni esatte richieste
+dalla reazione (<strong>reagente limitante</strong>), la reazione raramente converte tutto il reagente limitante in prodotto
+(<strong>resa</strong>), e bilanciare una reazione complessa a mano può essere lento (<strong>metodo algebrico</strong>).</p>
+<p>Gli argomenti della dispensa, nell&#39;ordine: introduzione al bilanciamento delle reazioni chimiche; concetto di reagente
+limitante e reagente in eccesso (con il bilancio di materia); concetto di resa di una reazione. Seguono tre sessioni di
+esercizi (due svolti, uno da svolgere).</p>
+<h3>Leggere un&#39;equazione chimica</h3>
+<p>Un&#39;equazione chimica come
+<span class="m d">\chem{N_2} + 3\,\chem{H_2} \rightarrow 2\,\chem{NH_3}</span>
+si legge così: a sinistra della freccia i <strong>reagenti</strong>, a destra i <strong>prodotti</strong>; i numeri davanti alle formule sono i
+<strong>coefficienti stechiometrici</strong> (1 si sottintende). Dicono in che rapporto reagiscono e si formano le particelle: 1
+molecola di azoto reagisce con 3 molecole di idrogeno e dà 2 molecole di ammoniaca. Moltiplicando tutto per <span class="m">N_A</span> lo
+stesso vale per le moli: 1 mol di <span class="m">\chem{N_2}</span> + 3 mol di <span class="m">\chem{H_2}</span> → 2 mol di <span class="m">\chem{NH_3}</span>. Tra parentesi si indica
+spesso lo stato fisico: (s) solido, (l) liquido, (g) gas, (aq) in soluzione acquosa.</p>
+<div class="callout attenzione">
+
+<p>Per bilanciare si cambiano <strong>solo i coefficienti</strong>, mai gli indici delle formule. Scrivere <span class="m">\chem{H_2O_2}</span> al posto di
+<span class="m">2\,\chem{H_2O}</span> «per far tornare l&#39;ossigeno» cambierebbe la sostanza (acqua ossigenata invece di acqua).</p>
+</div>
+
 <h2 id="lez-14-bilanciamento">Bilanciare significa conservare la massa</h2>
 <div class="callout formula">
 
-<p>Bilanciare una reazione impone il <strong>principio di conservazione della massa</strong>: il
-numero di atomi di ciascun elemento coinvolto è lo stesso a sinistra e a destra della
-freccia. Non cambia nel corso della reazione.</p>
+<p>Bilanciare una reazione impone il <strong>principio di conservazione della massa</strong> (Lavoisier): il numero di atomi di ciascun
+elemento coinvolto è lo stesso a sinistra e a destra della freccia. Non cambia nel corso della reazione. Gli atomi si
+riorganizzano (si rompono e si formano legami, <a href="#/teoria/chimica/9/lez-09-perche">Lezione 09</a>), ma non si creano né si distruggono.</p>
 </div>
 
 <div class="callout attenzione">
 
-<p><strong>È completamente sbagliato</strong> ragionare sulla massa dei singoli reagenti presi a caso.
-Non è vero che &quot;1 g di <span class="m">\chem{N_2}</span> reagisce con 3 g di <span class="m">\chem{H_2}</span> per dare 2 g di
-<span class="m">\chem{NH_3}</span>&quot;: quello che si conserva è il numero di <strong>atomi</strong>, non un rapporto
-arbitrario di grammi. Il bilanciamento si fa sui <strong>coefficienti stechiometrici</strong>
-(quante molecole/moli di ciascuna specie), e solo <em>dopo</em> aver bilanciato si può
-verificare che anche la massa totale torni.</p>
+<p><strong>È completamente sbagliato</strong> ragionare sulla massa dei singoli reagenti presi a caso. Non è vero che &quot;1 g di
+<span class="m">\chem{N_2}</span> reagisce con 3 g di <span class="m">\chem{H_2}</span> per dare 2 g di <span class="m">\chem{NH_3}</span>&quot;: quello che si conserva è il numero di
+<strong>atomi</strong>, non un rapporto arbitrario di grammi. Il bilanciamento si fa sui <strong>coefficienti stechiometrici</strong> (quante
+molecole/moli di ciascuna specie), e solo <em>dopo</em> aver bilanciato si può verificare che anche la massa totale torni.</p>
+<p>Infatti, con le masse molari (<span class="m">\chem{N_2}</span> 28, <span class="m">\chem{H_2}</span> 2, <span class="m">\chem{NH_3}</span> 17 g/mol): 1 mol di <span class="m">\chem{N_2}</span> = 28 g
+reagisce con 3 mol di <span class="m">\chem{H_2}</span> = 6 g, e dà 2 mol di <span class="m">\chem{NH_3}</span> = 34 g. Si conserva la massa <strong>totale</strong>
+(<span class="m">28 + 6 = 34</span>), ma il rapporto in grammi fra le specie è 28 : 6 : 34, non 1 : 3 : 2.</p>
 </div>
 
 <div class="callout esempio">
 
-<p><strong>Bilanciare <span class="m">\chem{Ca_3(PO_4)_2} + \chem{H_2SO_4} \rightarrow \chem{CaSO_4} +
-\chem{H_3PO_4}</span>, passo per passo.</strong></p>
-<p><strong>Passo 1 — bilancia Ca e P</strong>, moltiplicando <span class="m">\chem{CaSO_4}</span> per 3 (i 3 Ca del
-fosfato) e <span class="m">\chem{H_3PO_4}</span> per 2 (i 2 P):
+<p><strong>Bilanciare <span class="m">\chem{Ca_3(PO_4)_2} + \chem{H_2SO_4} \rightarrow \chem{CaSO_4} + \chem{H_3PO_4}</span>, passo per passo.</strong></p>
+<p><strong>Passo 0 — conta gli atomi</strong> così come la reazione è scritta: a sinistra Ca 3, P 2, O <span class="m">8 + 4 = 12</span>, H 2, S 1; a destra
+Ca 1, S 1, P 1, O <span class="m">4 + 4 = 8</span>, H 3. Non è bilanciata.</p>
+<p><strong>Passo 1 — bilancia Ca e P</strong>, moltiplicando <span class="m">\chem{CaSO_4}</span> per 3 (i 3 Ca del fosfato) e <span class="m">\chem{H_3PO_4}</span> per 2 (i 2 P):
 <span class="m d">\chem{Ca_3(PO_4)_2} + \chem{H_2SO_4} \rightarrow 3\,\chem{CaSO_4} + 2\,\chem{H_3PO_4}</span></p>
-<p><strong>Passo 2 — bilancia S</strong>, che ora vale 3 a destra (dentro i tre <span class="m">\chem{CaSO_4}</span>):
-moltiplica <span class="m">\chem{H_2SO_4}</span> per 3:
+<p><strong>Passo 2 — bilancia S</strong>, che ora vale 3 a destra (dentro i tre <span class="m">\chem{CaSO_4}</span>): moltiplica <span class="m">\chem{H_2SO_4}</span> per 3:
 <span class="m d">\chem{Ca_3(PO_4)_2} + 3\,\chem{H_2SO_4} \rightarrow 3\,\chem{CaSO_4} + 2\,\chem{H_3PO_4}</span></p>
 <p><strong>Passo 3 — verifica O</strong>: <span class="m">8 + 12 = 20</span> a sinistra, <span class="m">12 + 8 = 20</span> a destra. Bilanciato.</p>
-<p><strong>Passo 4 — verifica H</strong>: <span class="m">6</span> a sinistra (<span class="m">3\times2</span>), <span class="m">6</span> a destra (<span class="m">2\times3</span>).
-Bilanciato. La reazione è completa:
-<span class="m d">\chem{Ca_3(PO_4)_2} + 3\,\chem{H_2SO_4} \rightarrow 3\,\chem{CaSO_4} +
-2\,\chem{H_3PO_4}</span></p>
-<p><strong>Controllo finale sulla massa</strong>: <span class="m">310\ \mathrm{g}</span> di fosfato di calcio più
-<span class="m">294\ \mathrm{g}</span> di acido solforico danno <span class="m">604\ \mathrm{g}</span> totali; <span class="m">408\ \mathrm{g}</span>
-di solfato di calcio più <span class="m">196\ \mathrm{g}</span> di acido fosforico danno di nuovo
-<span class="m">604\ \mathrm{g}</span>. La massa si conserva <strong>come conseguenza</strong> del bilanciamento
-corretto, non come punto di partenza.</p>
+<p><strong>Passo 4 — verifica H</strong>: <span class="m">6</span> a sinistra (<span class="m">3\times2</span>), <span class="m">6</span> a destra (<span class="m">2\times3</span>). Bilanciato. La reazione è completa:
+<span class="m d">\chem{Ca_3(PO_4)_2} + 3\,\chem{H_2SO_4} \rightarrow 3\,\chem{CaSO_4} + 2\,\chem{H_3PO_4}</span></p>
+<p><strong>Controllo finale sulla massa</strong> (masse molari: <span class="m">\chem{Ca_3(PO_4)_2}</span> 310, <span class="m">\chem{H_2SO_4}</span> 98, <span class="m">\chem{CaSO_4}</span> 136,
+<span class="m">\chem{H_3PO_4}</span> 98 g/mol): <span class="m">310\ \mathrm{g}</span> di fosfato di calcio più <span class="m">3\cdot98 = 294\ \mathrm{g}</span> di acido solforico
+danno <span class="m">604\ \mathrm{g}</span> totali; <span class="m">3\cdot136 = 408\ \mathrm{g}</span> di solfato di calcio più <span class="m">2\cdot98 = 196\ \mathrm{g}</span> di
+acido fosforico danno di nuovo <span class="m">604\ \mathrm{g}</span>. La massa si conserva <strong>come conseguenza</strong> del bilanciamento corretto,
+non come punto di partenza.</p>
 </div>
 
-<p><strong>Ordine pratico da seguire</strong> (non è una regola fissa, ma funziona nella grande
-maggioranza dei casi): bilancia prima gli elementi che compaiono in <strong>un solo</strong>
-composto per lato, lascia per ultimo l&#39;elemento più &quot;condiviso&quot; (spesso l&#39;ossigeno), e
-usa quest&#39;ultimo come controllo finale.</p>
+<p><strong>Ordine pratico da seguire</strong> (non è una regola fissa, ma funziona nella grande maggioranza dei casi): bilancia prima
+gli elementi che compaiono in <strong>un solo</strong> composto per lato (in genere i metalli), poi i non metalli diversi da H e O,
+lascia per ultimi idrogeno e ossigeno (spesso l&#39;ossigeno, l&#39;elemento più &quot;condiviso&quot;), e usa quest&#39;ultimo come
+controllo finale. I gruppi che passano intatti da un lato all&#39;altro (come <span class="m">\chem{SO_4}</span> o <span class="m">\chem{PO_4}</span>) si possono
+contare come un blocco unico.</p>
+<div class="callout esempio">
+
+<p><strong>Combustione del propano: <span class="m">\chem{C_3H_8} + \chem{O_2} \rightarrow \chem{CO_2} + \chem{H_2O}</span>.</strong></p>
+<ol>
+<li>C: 3 a sinistra → <span class="m">3\,\chem{CO_2}</span>.</li>
+<li>H: 8 a sinistra → <span class="m">4\,\chem{H_2O}</span>.</li>
+<li>O a destra: <span class="m">3\cdot2 + 4\cdot1 = 10</span> → servono <span class="m">5\,\chem{O_2}</span>.</li>
+</ol>
+<p><span class="m d">\chem{C_3H_8} + 5\,\chem{O_2} \rightarrow 3\,\chem{CO_2} + 4\,\chem{H_2O}</span></p>
+<p>In generale, per un idrocarburo <span class="m">\chem{C_xH_y}</span>:
+<span class="m">\chem{C_xH_y} + \left(x + \tfrac{y}{4}\right)\chem{O_2} \rightarrow x\,\chem{CO_2} + \tfrac{y}{2}\,\chem{H_2O}</span> (ogni C
+richiede un <span class="m">\chem{O_2}</span>, ogni 4 H richiedono un <span class="m">\chem{O_2}</span>).</p>
+</div>
+
 <h2 id="lez-14-algebrico">Il metodo algebrico: quando &quot;a occhio&quot; non basta</h2>
-<p>Per reazioni con più incognite conviene un metodo sistematico: assegna un coefficiente
-incognito a ogni specie e scrivi un&#39;equazione di bilancio per ciascun elemento.</p>
+<p>Per reazioni con più incognite conviene un metodo sistematico (la dispensa lo chiama metodo «meccanico»): assegna un
+coefficiente incognito a ogni specie e scrivi un&#39;equazione di bilancio per ciascun elemento.</p>
 <div class="callout formula">
 
-<p>Per <span class="m">a\,\chem{Ca_3(PO_4)_2} + b\,\chem{H_2SO_4} \rightarrow c\,\chem{CaSO_4} +
-d\,\chem{H_3PO_4}</span>:</p>
-<p><span class="m d">\text{Ca: } 3a=c \qquad \text{P: } 2a=d \qquad \text{S: } b=c \qquad
-\text{O: } 8a+4b=4c+4d \qquad \text{H: } 2b=3d</span></p>
+<p>Per <span class="m">a\,\chem{Ca_3(PO_4)_2} + b\,\chem{H_2SO_4} \rightarrow c\,\chem{CaSO_4} + d\,\chem{H_3PO_4}</span>:</p>
+<p><span class="m d">\text{Ca: } 3a=c \qquad \text{P: } 2a=d \qquad \text{S: } b=c \qquad \text{O: } 8a+4b=4c+4d \qquad \text{H: } 2b=3d</span></p>
 </div>
 
-<p>Sono 5 equazioni ma solo <strong>3 sono indipendenti</strong> (le altre due si ricavano dalle
-prime): con 4 incognite e 3 equazioni indipendenti il sistema ha <strong>infinite
-soluzioni</strong>, tutte proporzionali fra loro. Si risolve fissando <strong>arbitrariamente</strong> il
-valore di una delle incognite (di solito un intero comodo) e calcolando le altre:
-assegnando <span class="m">a=1</span> si ottiene <span class="m">c=3,\ d=2,\ b=3</span>, cioè esattamente la reazione trovata
-sopra &quot;a occhio&quot;. Assegnando <span class="m">a=2</span> si ottengono tutti i coefficienti raddoppiati: è la
-<strong>stessa</strong> reazione, solo scritta con coefficienti diversi — motivo per cui si
-preferisce sempre la versione con gli interi più piccoli possibili.</p>
+<p>Sono 5 equazioni ma solo <strong>3 sono indipendenti</strong> (le altre due si ricavano dalle prime): con 4 incognite e 3 equazioni
+indipendenti il sistema ha <strong>infinite soluzioni</strong>, tutte proporzionali fra loro. Si risolve fissando <strong>arbitrariamente</strong>
+il valore di una delle incognite (di solito un intero comodo) e calcolando le altre: assegnando <span class="m">a=1</span> si ottiene <span class="m">c=3</span>
+(da Ca), <span class="m">d=2</span> (da P), <span class="m">b=c=3</span> (da S); le equazioni di O (<span class="m">8 + 12 = 12 + 8</span>) e H (<span class="m">6 = 6</span>) risultano verificate, a
+conferma. È esattamente la reazione trovata sopra &quot;a occhio&quot;. Assegnando <span class="m">a=2</span> si ottengono tutti i coefficienti
+raddoppiati: è la <strong>stessa</strong> reazione, solo scritta con coefficienti diversi — motivo per cui si preferisce sempre la
+versione con gli interi più piccoli possibili.</p>
 <div class="callout attenzione">
 
-<p>Il metodo algebrico non &quot;trova&quot; una reazione diversa: trova sempre lo stesso rapporto
-fra le specie. Se il primo tentativo dà coefficienti frazionari (es. <span class="m">a=1/2</span>), basta
-moltiplicare tutto per il denominatore comune per tornare a interi.</p>
+<p>Il metodo algebrico non &quot;trova&quot; una reazione diversa: trova sempre lo stesso rapporto fra le specie. Se il primo
+tentativo dà coefficienti frazionari (es. <span class="m">a=1/2</span>), basta moltiplicare tutto per il denominatore comune per tornare a
+interi. Viceversa, coefficienti decimali sono <strong>ammessi</strong> (alcune domande del paniere li usano): conta il rapporto.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Una reazione difficile: <span class="m">\chem{(NH_4)_2Cr_2O_7} \rightarrow \chem{NH_3} + \chem{Cr_2O_3} + \chem{NO} + \chem{H_2O}</span>.</strong></p>
+<p>Coefficienti <span class="m">a</span> (dicromato), <span class="m">b</span> (<span class="m">\chem{NH_3}</span>), <span class="m">c</span> (<span class="m">\chem{Cr_2O_3}</span>), <span class="m">d</span> (NO), <span class="m">e</span> (<span class="m">\chem{H_2O}</span>).</p>
+<ul>
+<li>Cr: <span class="m">2a = 2c</span> → <span class="m">c = a</span>.</li>
+<li>N: <span class="m">2a = b + d</span>.</li>
+<li>H: <span class="m">8a = 3b + 2e</span>.</li>
+<li>O: <span class="m">7a = 3c + d + e = 3a + d + e</span> → <span class="m">4a = d + e</span>.</li>
+</ul>
+<p>Pongo <span class="m">a = 1</span>: <span class="m">b + d = 2</span>; <span class="m">3b + 2e = 8</span>; <span class="m">d + e = 4</span>. Dalla prima <span class="m">d = 2 - b</span>, dalla terza <span class="m">e = 4 - d = 2 + b</span>;
+sostituisco nella seconda: <span class="m">3b + 4 + 2b = 8</span> → <span class="m">b = 0{,}8</span>, <span class="m">d = 1{,}2</span>, <span class="m">e = 2{,}8</span>. Moltiplico per 5 per avere interi:</p>
+<p><span class="m d">5\,\chem{(NH_4)_2Cr_2O_7} \rightarrow 4\,\chem{NH_3} + 5\,\chem{Cr_2O_3} + 6\,\chem{NO} + 14\,\chem{H_2O}</span></p>
+<p>Verifica: N <span class="m">10 = 4 + 6</span>; Cr <span class="m">10 = 10</span>; H <span class="m">40 = 12 + 28</span>; O <span class="m">35 = 15 + 6 + 14</span>. Da 2,0 mol di dicromato si ottengono
+<span class="m">2{,}0\cdot\tfrac{6}{5} = 2{,}4</span> mol di NO.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Coefficienti con le semireazioni: <span class="m">\chem{CuS} + \chem{HNO_3} \rightarrow \chem{CuSO_4} + \chem{NO} + \chem{H_2O}</span>.</strong>
+Qui conviene il metodo degli elettroni scambiati (che verrà sviluppato con le ossidoriduzioni): lo zolfo passa da <span class="m">-2</span>
+(in CuS) a <span class="m">+6</span> (in <span class="m">\chem{SO_4^{2-}}</span>), perde 8 elettroni; l&#39;azoto passa da <span class="m">+5</span> (in <span class="m">\chem{HNO_3}</span>) a <span class="m">+2</span> (in NO),
+ne acquista 3. Il minimo comune multiplo è 24: 3 S per 8 N.
+<span class="m d">3\,\chem{CuS} + 8\,\chem{HNO_3} \rightarrow 3\,\chem{CuSO_4} + 8\,\chem{NO} + 4\,\chem{H_2O}</span>
+Verifica: H <span class="m">8 = 8</span>; O <span class="m">24 = 12 + 8 + 4</span>. Moltiplicando per 1,5 si ottiene la serie 4,5 ; 12 ; 4,5 ; 12 ; 6, che
+esprime lo stesso rapporto.</p>
 </div>
 
 <h2 id="lez-14-limitante">Reagente limitante</h2>
-<p>Quando due reagenti non sono nel rapporto stechiometrico esatto, uno dei due si esaurisce
-prima e ferma la reazione: è il <strong>reagente limitante</strong>. L&#39;altro resta in parte
-inutilizzato: è il <strong>reagente in eccesso</strong>.</p>
+<p>Quando due reagenti non sono nel rapporto stechiometrico esatto, uno dei due si esaurisce prima e ferma la reazione: è il
+<strong>reagente limitante</strong>. L&#39;altro resta in parte inutilizzato: è il <strong>reagente in eccesso</strong>. Analogia: con 10 panini e 15
+fette di formaggio si fanno al massimo 10 panini al formaggio (una fetta ciascuno); i panini sono «limitanti», avanzano 5
+fette.</p>
 <div class="callout esempio">
 
-<p><strong><span class="m">\chem{N_2} + 3\,\chem{H_2} \rightarrow 2\,\chem{NH_3}</span>. Si mescolano <span class="m">20\ \mathrm{g}</span>
-di azoto con <span class="m">10\ \mathrm{g}</span> di idrogeno. Quale reagente è limitante?</strong></p>
+<p><strong><span class="m">\chem{N_2} + 3\,\chem{H_2} \rightarrow 2\,\chem{NH_3}</span>. Si mescolano <span class="m">20\ \mathrm{g}</span> di azoto con <span class="m">10\ \mathrm{g}</span> di
+idrogeno. Quale reagente è limitante?</strong></p>
 <p><strong>Passo 1 — moli di ciascun reagente.</strong>
-<span class="m d">n(\chem{N_2}) = \frac{20\ \mathrm{g}}{28\ \mathrm{g/mol}} = 0{,}714\ \mathrm{mol}
-\qquad n(\chem{H_2}) = \frac{10\ \mathrm{g}}{2\ \mathrm{g/mol}} = 5\ \mathrm{mol}</span></p>
-<p><strong>Passo 2 — moli di <span class="m">\chem{H_2}</span> effettivamente richieste</strong> dalla stechiometria (3 moli
-di <span class="m">\chem{H_2}</span> per ogni mole di <span class="m">\chem{N_2}</span>):
+<span class="m d">n(\chem{N_2}) = \frac{20\ \mathrm{g}}{28\ \mathrm{g/mol}} = 0{,}714\ \mathrm{mol} \qquad
+n(\chem{H_2}) = \frac{10\ \mathrm{g}}{2\ \mathrm{g/mol}} = 5\ \mathrm{mol}</span></p>
+<p><strong>Passo 2 — moli di <span class="m">\chem{H_2}</span> effettivamente richieste</strong> dalla stechiometria (3 moli di <span class="m">\chem{H_2}</span> per ogni mole di
+<span class="m">\chem{N_2}</span>):
 <span class="m d">3 \times 0{,}714 = 2{,}142\ \mathrm{mol}</span></p>
-<p><strong>Passo 3 — confronta con quanto disponibile.</strong> Servono <span class="m">2{,}142\ \mathrm{mol}</span> di
-<span class="m">\chem{H_2}</span>, ce ne sono <span class="m">5\ \mathrm{mol}</span>: l&#39;idrogeno è <strong>in eccesso</strong>. L&#39;azoto si
-esaurisce per primo: è il <strong>reagente limitante</strong>, ed è lui a decidere quanto prodotto
-si forma al massimo (resa teorica).</p>
+<p><strong>Passo 3 — confronta con quanto disponibile.</strong> Servono <span class="m">2{,}142\ \mathrm{mol}</span> di <span class="m">\chem{H_2}</span>, ce ne sono
+<span class="m">5\ \mathrm{mol}</span>: l&#39;idrogeno è <strong>in eccesso</strong>. L&#39;azoto si esaurisce per primo: è il <strong>reagente limitante</strong>, ed è lui a
+decidere quanto prodotto si forma al massimo (resa teorica).</p>
+<p><strong>Metodo equivalente</strong>: dividi le moli di ogni reagente per il suo coefficiente; il più piccolo è il limitante.
+<span class="m">\chem{N_2}</span>: <span class="m">0{,}714/1 = 0{,}714</span>; <span class="m">\chem{H_2}</span>: <span class="m">5/3 = 1{,}67</span> → limitante <span class="m">\chem{N_2}</span>.</p>
 </div>
 
 <div class="callout attenzione">
 
-<p>Il confronto va fatto <strong>sulle moli</strong>, non sui grammi: <span class="m">20\ \mathrm{g}</span> di <span class="m">\chem{N_2}</span>
-sembrano &quot;più&quot; di <span class="m">10\ \mathrm{g}</span> di <span class="m">\chem{H_2}</span>, ma in moli è l&#39;esatto contrario
-(<span class="m">0{,}714</span> contro <span class="m">5</span>), perché la massa molare dell&#39;idrogeno è minuscola. Confrontare
-i grammi direttamente, senza passare dalle moli, è l&#39;errore più comune in questo tipo
-di esercizio.</p>
+<p>Il confronto va fatto <strong>sulle moli</strong>, non sui grammi: <span class="m">20\ \mathrm{g}</span> di <span class="m">\chem{N_2}</span> sembrano &quot;più&quot; di <span class="m">10\ \mathrm{g}</span>
+di <span class="m">\chem{H_2}</span>, ma in moli è l&#39;esatto contrario (<span class="m">0{,}714</span> contro <span class="m">5</span>), perché la massa molare dell&#39;idrogeno è
+minuscola. Confrontare i grammi direttamente, senza passare dalle moli, è l&#39;errore più comune in questo tipo di
+esercizio. E non basta confrontare le moli «nude»: vanno confrontate <strong>tenendo conto dei coefficienti</strong>.</p>
 </div>
 
-<p>Un modo compatto per organizzare il calcolo è la <strong>tabella di bilancio di materia</strong>
-(iniziale/finale, massa/moli per ciascuna specie): la massa totale è sempre la stessa
-nelle due colonne (si conserva), le moli totali no (cambiano, perché il numero di
-particelle cambia con la reazione — 4 moli di reagenti gassosi diventano 2 moli di
-prodotto in questo esempio).</p>
+<h3>Il bilancio di materia</h3>
+<p>Un modo compatto per organizzare il calcolo è la <strong>tabella di bilancio di materia</strong> (iniziale/finale, massa/moli per
+ciascuna specie). Per l&#39;esempio sopra, con la reazione completa sul limitante:</p>
+<table>
+<thead>
+<tr>
+<th align="left"></th>
+<th align="center"><span class="m">\chem{N_2}</span></th>
+<th align="center"><span class="m">\chem{H_2}</span></th>
+<th align="center"><span class="m">\chem{NH_3}</span></th>
+<th align="center">Totale</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">moli iniziali</td>
+<td align="center">0,714</td>
+<td align="center">5,000</td>
+<td align="center">0</td>
+<td align="center">5,714</td>
+</tr>
+<tr>
+<td align="left">variazione</td>
+<td align="center"><span class="m">-0{,}714</span></td>
+<td align="center"><span class="m">-3\cdot0{,}714 = -2{,}142</span></td>
+<td align="center"><span class="m">+2\cdot0{,}714 = +1{,}428</span></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="left">moli finali</td>
+<td align="center">0</td>
+<td align="center">2,858</td>
+<td align="center">1,428</td>
+<td align="center">4,286</td>
+</tr>
+<tr>
+<td align="left">massa iniziale (g)</td>
+<td align="center">20</td>
+<td align="center">10</td>
+<td align="center">0</td>
+<td align="center">30</td>
+</tr>
+<tr>
+<td align="left">massa finale (g)</td>
+<td align="center">0</td>
+<td align="center">5,716</td>
+<td align="center">24,276</td>
+<td align="center">29,99 ≈ 30</td>
+</tr>
+</tbody></table>
+<p>La massa totale è sempre la stessa nelle due righe (si conserva), le moli totali no (cambiano, perché il numero di
+particelle cambia con la reazione — 4 moli di reagenti gassosi diventano 2 moli di prodotto). La riga «variazione» segue
+sempre i coefficienti: se <span class="m">\chem{N_2}</span> consuma <span class="m">x</span> moli, <span class="m">\chem{H_2}</span> ne consuma <span class="m">3x</span> e si formano <span class="m">2x</span> moli di
+<span class="m">\chem{NH_3}</span>.</p>
 <h2 id="lez-14-resa">Resa di una reazione</h2>
 <div class="callout formula">
 
 <p><span class="m d">\eta\% = \frac{\text{resa reale}}{\text{resa teorica}} \times 100 =
-\frac{\text{moli (o massa) effettive di prodotto}}{\text{moli (o massa) teoriche di
-prodotto}} \times 100</span></p>
+\frac{\text{moli (o massa) effettive di prodotto}}{\text{moli (o massa) teoriche di prodotto}} \times 100</span></p>
 </div>
 
-<p>La <strong>resa teorica</strong> è quanto prodotto si otterrebbe se tutto il reagente limitante si
-convertisse in prodotto, secondo la stechiometria. La <strong>resa reale</strong> è quanto si ottiene
-davvero in laboratorio — quasi sempre meno, per reazioni collaterali, equilibri non
-completi, perdite di manipolazione.</p>
+<p>La <strong>resa teorica</strong> è quanto prodotto si otterrebbe se tutto il reagente limitante si convertisse in prodotto, secondo la
+stechiometria. La <strong>resa reale</strong> è quanto si ottiene davvero in laboratorio — quasi sempre meno, per reazioni
+collaterali, equilibri non completi, perdite di manipolazione (filtrazioni, travasi). La resa è sempre compresa fra 0 e
+100%.</p>
 <div class="callout esempio">
 
-<p>Riprendendo l&#39;esempio precedente: <span class="m">0{,}714\ \mathrm{mol}</span> di <span class="m">\chem{N_2}</span> (limitante)
-danno teoricamente <span class="m">2\times0{,}714 = 1{,}428\ \mathrm{mol}</span> di <span class="m">\chem{NH_3}</span>, cioè
-<span class="m">1{,}428 \times 17 = 24{,}276\ \mathrm{g}</span>. Se in pratica se ne ottengono solo
-<span class="m">20\ \mathrm{g}</span>:
+<p>Riprendendo l&#39;esempio precedente: <span class="m">0{,}714\ \mathrm{mol}</span> di <span class="m">\chem{N_2}</span> (limitante) danno teoricamente
+<span class="m">2\times0{,}714 = 1{,}428\ \mathrm{mol}</span> di <span class="m">\chem{NH_3}</span>, cioè <span class="m">1{,}428 \times 17 = 24{,}276\ \mathrm{g}</span>. Se in pratica
+se ne ottengono solo <span class="m">20\ \mathrm{g}</span>:
 <span class="m d">\eta\% = \frac{20}{24{,}276}\times100 = 82{,}4\%</span></p>
 </div>
 
-<h2 id="lez-14-formula">Dai grammi di combustione alla formula del composto</h2>
-<p>Le sessioni svolte allegate alle slide riprendono, con dati numerici diversi, esattamente
-il tipo di calcolo della <a href="#/teoria/chimica/13/lez-13-metodo">Lezione 13</a>: dalla massa dei prodotti di
-combustione si risale alla formula minima, e dalla formula minima più la massa molare
-si risale alla formula molecolare.</p>
+<p><strong>Come si trasforma il bilancio di materia</strong> con una resa inferiore al 100%: reagisce solo la frazione <span class="m">\eta</span> del
+limitante. Con <span class="m">\eta = 82{,}4\%</span> reagiscono <span class="m">0{,}824\cdot0{,}714 = 0{,}588</span> mol di <span class="m">\chem{N_2}</span> (ne restano 0,126),
+<span class="m">3\cdot0{,}588 = 1{,}765</span> mol di <span class="m">\chem{H_2}</span> (ne restano 3,235) e si formano <span class="m">2\cdot0{,}588 = 1{,}177</span> mol di
+<span class="m">\chem{NH_3}</span> (<span class="m">\approx 20</span> g). La massa totale resta 30 g.</p>
 <div class="callout esempio">
 
-<p><strong>Un idrocarburo <span class="m">\chem{C_xH_y}</span>, bruciato, produce <span class="m">3{,}669\ \mathrm{g}</span> di
-<span class="m">\chem{CO_2}</span> e <span class="m">1{,}751\ \mathrm{g}</span> di <span class="m">\chem{H_2O}</span>. Se la sua massa molare è
-<span class="m">86{,}0\ \mathrm{g/mol}</span>, qual è la formula molecolare?</strong></p>
+<p><strong>Sessione 2 (esercizio non svolto, qui svolto): <span class="m">\chem{PbSO_4} + \chem{Cr} \rightarrow \chem{Cr_2(SO_4)_3} + \chem{Pb}</span>.
+Massa di piombo prodotta da 1,00 kg di <span class="m">\chem{PbSO_4}</span> e 1,00 kg di Cr, con resa dell&#39;85%.</strong></p>
+<ol>
+<li><em>Bilancio.</em> Cr: 2 a destra → <span class="m">2\,\chem{Cr}</span>. <span class="m">\chem{SO_4}</span>: 3 a destra → <span class="m">3\,\chem{PbSO_4}</span>. Pb: 3 → <span class="m">3\,\chem{Pb}</span>.
+<span class="m d">3\,\chem{PbSO_4} + 2\,\chem{Cr} \rightarrow \chem{Cr_2(SO_4)_3} + 3\,\chem{Pb}</span></li>
+<li><em>Moli.</em> <span class="m">M(\chem{PbSO_4}) = 207{,}2 + 32{,}07 + 4\cdot16{,}00 = 303{,}27</span> g/mol → <span class="m">1000/303{,}27 = 3{,}297</span> mol.
+<span class="m">M(\chem{Cr}) = 52{,}00</span> → <span class="m">1000/52{,}00 = 19{,}23</span> mol.</li>
+<li><em>Limitante.</em> Per 3,297 mol di <span class="m">\chem{PbSO_4}</span> servono <span class="m">\tfrac23\cdot3{,}297 = 2{,}198</span> mol di Cr: ce ne sono 19,23 →
+Cr in grande eccesso, <strong><span class="m">\chem{PbSO_4}</span> limitante</strong>.</li>
+<li><em>Resa teorica.</em> Pb: rapporto 3 : 3 → 3,297 mol → <span class="m">3{,}297\cdot207{,}2 = 683{,}2</span> g.</li>
+<li><em>Resa reale.</em> <span class="m">0{,}85\cdot683{,}2 = 581</span> g di piombo.</li>
+</ol>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Resa di una precipitazione (paniere): 1,80 g di <span class="m">\chem{PbCl_2}</span> con eccesso di <span class="m">\chem{Na_2S}</span>; si recuperano 1,00 g di
+PbS.</strong></p>
+<ol>
+<li><span class="m">\chem{PbCl_2} + \chem{Na_2S} \rightarrow \chem{PbS} + 2\,\chem{NaCl}</span> (rapporto <span class="m">\chem{PbCl_2}</span> : PbS = 1 : 1).</li>
+<li><span class="m">M(\chem{PbCl_2}) = 207{,}2 + 2\cdot35{,}45 = 278{,}1</span> g/mol → <span class="m">1{,}80/278{,}1 = 6{,}472\times10^{-3}</span> mol (limitante,
+perché <span class="m">\chem{Na_2S}</span> è in eccesso).</li>
+<li>PbS teorico: <span class="m">6{,}472\times10^{-3}</span> mol <span class="m">\times\ (207{,}2 + 32{,}07 = 239{,}3</span> g/mol<span class="m">) = 1{,}549</span> g.</li>
+<li>Resa: <span class="m">1{,}00/1{,}549\cdot100 = 64{,}6\%</span>.</li>
+</ol>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Resa da un minerale (paniere): 750 g di minerale al 73,0% di HgO; si ottengono 37,614 g di <span class="m">\chem{O_2}</span>.</strong></p>
+<ol>
+<li>HgO nel minerale: <span class="m">750\cdot0{,}730 = 547{,}5</span> g; <span class="m">M = 200{,}6 + 16{,}0 = 216{,}6</span> → 2,528 mol.</li>
+<li><span class="m">2\,\chem{HgO} \rightarrow 2\,\chem{Hg} + \chem{O_2}</span>: <span class="m">\chem{O_2}</span> teorico <span class="m">= 2{,}528/2 = 1{,}264</span> mol.</li>
+<li><span class="m">\chem{O_2}</span> reale <span class="m">= 37{,}614/32{,}00 = 1{,}175</span> mol.</li>
+<li>Resa <span class="m">= 1{,}175/1{,}264\cdot100 = 93{,}0\%</span>.</li>
+</ol>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Percentuale di un composto in un minerale impuro (paniere): 2,50 kg di minerale con eccesso di HCl danno 0,55 kg di
+<span class="m">\chem{AlCl_3}</span>. Percentuale in massa di <span class="m">\chem{Al_2(CO_3)_3}</span>?</strong></p>
+<ol>
+<li>Bilancio: Al 2 → <span class="m">2\,\chem{AlCl_3}</span>; Cl 6 → <span class="m">6\,\chem{HCl}</span>; C 3 → <span class="m">3\,\chem{CO_2}</span>; H 6 → <span class="m">3\,\chem{H_2O}</span>. Verifica
+O: <span class="m">9 = 6 + 3</span>.
+<span class="m d">\chem{Al_2(CO_3)_3} + 6\,\chem{HCl} \rightarrow 2\,\chem{AlCl_3} + 3\,\chem{CO_2} + 3\,\chem{H_2O}</span></li>
+<li><span class="m">M(\chem{AlCl_3}) = 26{,}98 + 3\cdot35{,}45 = 133{,}3</span> g/mol → <span class="m">550/133{,}3 = 4{,}125</span> mol.</li>
+<li>Carbonato: rapporto 1 : 2 → <span class="m">4{,}125/2 = 2{,}063</span> mol; <span class="m">M = 2\cdot26{,}98 + 3\cdot(12{,}01 + 3\cdot16{,}00) = 234{,}0</span>
+g/mol → <span class="m">2{,}063\cdot234{,}0 = 482{,}6</span> g.</li>
+<li>Percentuale: <span class="m">482{,}6/2500\cdot100 = 19{,}3\%</span> (supponendo resa completa, visto che l&#39;HCl è in eccesso e il testo
+non indica una resa).</li>
+</ol>
+</div>
+
+<h2 id="lez-14-formula">Dai grammi di combustione alla formula del composto</h2>
+<p>Le sessioni svolte allegate alle slide riprendono, con dati numerici diversi, esattamente il tipo di calcolo della
+<a href="#/teoria/chimica/13/lez-13-metodo">Lezione 13</a>: dalla massa dei prodotti di combustione si risale alla formula minima, e dalla formula
+minima più la massa molare si risale alla formula molecolare. L&#39;idea: in una combustione completa <strong>tutto il carbonio</strong>
+dell&#39;idrocarburo finisce in <span class="m">\chem{CO_2}</span> e <strong>tutto l&#39;idrogeno</strong> in <span class="m">\chem{H_2O}</span>; contando moli di C e di H nei prodotti
+si conta quanti C e H c&#39;erano nel composto.</p>
+<div class="callout esempio">
+
+<p><strong>Sessione 1: un idrocarburo <span class="m">\chem{C_xH_y}</span>, bruciato all&#39;aria, produce <span class="m">3{,}669\ \mathrm{g}</span> di <span class="m">\chem{CO_2}</span> e
+<span class="m">1{,}751\ \mathrm{g}</span> di <span class="m">\chem{H_2O}</span>. Formula empirica? Se la massa molare è <span class="m">86{,}0\ \mathrm{g/mol}</span>, qual è la formula
+molecolare?</strong></p>
 <p><strong>Passo 1 — scrivi la reazione bilanciata in funzione di <span class="m">x,y</span> incogniti.</strong>
-<span class="m d">\chem{C_xH_y} + \left(x+\tfrac{y}{4}\right)\chem{O_2} \rightarrow x\,\chem{CO_2} +
-\tfrac{y}{2}\,\chem{H_2O}</span></p>
+<span class="m d">\chem{C_xH_y} + \left(x+\tfrac{y}{4}\right)\chem{O_2} \rightarrow x\,\chem{CO_2} + \tfrac{y}{2}\,\chem{H_2O}</span></p>
 <p><strong>Passo 2 — moli dei prodotti.</strong>
 <span class="m d">n(\chem{CO_2}) = \frac{3{,}669}{44} = 8{,}339\times10^{-2}\ \mathrm{mol} \qquad
 n(\chem{H_2O}) = \frac{1{,}751}{18} = 9{,}728\times10^{-2}\ \mathrm{mol}</span></p>
-<p><strong>Passo 3 — il rapporto fra le moli di prodotto deve uguagliare il rapporto fra i
-coefficienti</strong>, cioè fra <span class="m">x</span> e <span class="m">y/2</span>:
-<span class="m d">\frac{n(\chem{CO_2})}{n(\chem{H_2O})} = \frac{0{,}08339}{0{,}09728} = 0{,}857 =
-\frac{x}{y/2} \quad\Longrightarrow\quad \frac{y}{x} = 2{,}334 \approx \frac{7}{3}</span></p>
-<p>La <strong>formula minima</strong> è quindi <span class="m">\chem{C_3H_7}</span> (<span class="m">x=3,\ y=7</span>, il rapporto più semplice
-compatibile con <span class="m">7/3</span>).</p>
-<p><strong>Passo 4 — usa la massa molare per risalire alla formula molecolare.</strong> Se la formula
-molecolare è <span class="m">\chem{C_nH_{2n+1}\cdot k}</span>... più semplicemente: posto <span class="m">x=3k,\ y=7k</span> per
-un intero <span class="m">k</span>,
-<span class="m d">12x + y = 86 \quad\text{con } \frac{y}{x}=\frac{7}{3} \quad\Longrightarrow\quad
-12x + \frac{7}{3}x = 86 \quad\Longrightarrow\quad \frac{43}{3}x = 86
-\quad\Longrightarrow\quad x=6,\ y=14</span></p>
-<p>La <strong>formula molecolare</strong> è <span class="m">\chem{C_6H_{14}}</span> (esano), un alcano (<span class="m">\chem{C_nH_{2n+2}}</span>)
-con <span class="m">k=2</span> volte la formula minima.</p>
+<p><strong>Passo 3 — il rapporto fra le moli di prodotto deve uguagliare il rapporto fra i coefficienti</strong>, cioè fra <span class="m">x</span> e <span class="m">y/2</span>:
+<span class="m d">\frac{n(\chem{CO_2})}{n(\chem{H_2O})} = \frac{0{,}08339}{0{,}09728} = 0{,}857 = \frac{x}{y/2}
+\quad\Longrightarrow\quad \frac{y}{x} = \frac{2}{0{,}857} = 2{,}334 \approx \frac{7}{3}</span></p>
+<p>(Modo equivalente: moli di C = moli di <span class="m">\chem{CO_2}</span> = 0,08339; moli di H = <span class="m">2\times</span> moli di <span class="m">\chem{H_2O}</span> = 0,1946;
+rapporto H/C <span class="m">= 0{,}1946/0{,}08339 = 2{,}33</span>.)</p>
+<p>La <strong>formula minima</strong> è quindi <span class="m">\chem{C_3H_7}</span> (<span class="m">x=3,\ y=7</span>, il rapporto più semplice fra interi compatibile con
+<span class="m">7/3 = 2{,}33</span>).</p>
+<p><strong>Passo 4 — usa la massa molare per risalire alla formula molecolare.</strong> Posto <span class="m">x=3k,\ y=7k</span> per un intero <span class="m">k</span>, la massa
+molare è <span class="m">12x + y = 86</span> (masse atomiche arrotondate C = 12, H = 1):
+<span class="m d">12x + \frac{7}{3}x = 86 \quad\Longrightarrow\quad \frac{43}{3}x = 86 \quad\Longrightarrow\quad x=6,\ y=14</span></p>
+<p>In modo più diretto: la massa della formula minima <span class="m">\chem{C_3H_7}</span> è <span class="m">36 + 7 = 43</span>; <span class="m">k = 86/43 = 2</span>. La <strong>formula
+molecolare</strong> è <span class="m">\chem{C_6H_{14}}</span> (esano), un alcano (<span class="m">\chem{C_nH_{2n+2}}</span>) con <span class="m">k=2</span> volte la formula minima.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Sessione 1: produzione dell&#39;etanolo dal glucosio (fermentazione).</strong> La reazione
+<span class="m d">\chem{C_6H_{12}O_6} \rightarrow 2\,\chem{C_2H_5OH} + 2\,\chem{CO_2}</span>
+è bilanciata: C <span class="m">6 = 4 + 2</span>; H <span class="m">12 = 12</span>; O <span class="m">6 = 2 + 4</span>. Per esempio da 1,00 kg di glucosio
+(<span class="m">M = 6\cdot12{,}01 + 12\cdot1{,}008 + 6\cdot16{,}00 = 180{,}2</span> g/mol → 5,550 mol) si ottengono al massimo
+<span class="m">2\cdot5{,}550 = 11{,}10</span> mol di etanolo (<span class="m">M = 46{,}07</span> g/mol) → 511 g: è la resa teorica, e una resa reale minore si
+esprime in percentuale su questo valore.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Altre domande dello stesso tipo (paniere).</strong></p>
+<ul>
+<li><em>0,5 mol di un idrocarburo consumano 2,5 mol di <span class="m">\chem{O_2}</span> e producono 1,5 mol di <span class="m">\chem{CO_2}</span>.</em> C per molecola:
+<span class="m">1{,}5/0{,}5 = 3</span>. Atomi di O forniti: <span class="m">2\cdot2{,}5 = 5</span> mol; nella <span class="m">\chem{CO_2}</span> ne vanno <span class="m">2\cdot1{,}5 = 3</span>; i 2
+restanti formano 2 mol di <span class="m">\chem{H_2O}</span>, cioè 4 mol di H; per molecola <span class="m">4/0{,}5 = 8</span> → <span class="m">\chem{C_3H_8}</span> (propano).</li>
+<li><em>8,0 mol di <span class="m">\chem{C_4H_x}</span> producono 720 g di acqua.</em> Moli di acqua <span class="m">720/18{,}0 = 40</span>; dalla reazione 8,0 mol danno
+<span class="m">8{,}0\cdot x/2 = 4x</span> mol di acqua → <span class="m">x = 10</span> → <span class="m">\chem{C_4H_{10}}</span> (butano).</li>
+<li><em>25,000 g di un carbonato <span class="m">\chem{M_x(CO_3)_y}</span> liberano per riscaldamento 14,103 g di <span class="m">\chem{CO_2}</span>.</em> Si prova ogni
+candidato: per <span class="m">\chem{Al_2(CO_3)_3}</span> (<span class="m">M = 234{,}0</span>) le moli sono <span class="m">25{,}000/234{,}0 = 0{,}1068</span>, ognuna libera 3
+<span class="m">\chem{CO_2}</span>: <span class="m">3\cdot0{,}1068\cdot44{,}01 = 14{,}11</span> g, che coincide con il dato.</li>
+<li><em>Quale campione contiene circa <span class="m">6{,}02\times10^{23}</span> atomi di O (1 mol di atomi di O)?</em> Per ciascuno: moli di
+composto × numero di O nella formula. 33,0 g di <span class="m">\chem{CaCO_3}</span> (<span class="m">M = 100{,}1</span>) → 0,330 mol × 3 = 0,99 mol di O ✓;
+76,0 g di <span class="m">\chem{Cr_2O_3}</span> → 0,500 × 3 = 1,50; 63,0 g di <span class="m">\chem{HNO_3}</span> → 1,00 × 3 = 3,00.</li>
+</ul>
+</div>
+
+<p><strong>Sessione 3 (esercizio svolto): composizione di una miscela di combustibili.</strong> L&#39;esercizio riguarda la composizione
+ponderale di una miscela di propano e butano a partire dai prodotti di combustione. Il metodo: si chiamano <span class="m">a</span> e <span class="m">b</span> i
+grammi dei due componenti; un&#39;equazione è <span class="m">a + b = </span> massa della miscela; la seconda si scrive sommando i contributi di
+ciascun componente a un prodotto (per esempio moli di <span class="m">\chem{CO_2}</span>: <span class="m">3a/44{,}10 + 4b/58{,}12</span>, perché ogni mole di
+propano ne dà 3 e ogni mole di butano 4) e uguagliandola al dato; si risolve il sistema come nell&#39;esercizio della miscela
+oro–silice della <a href="#/teoria/chimica/13/lez-13-metodo">Lezione 13</a>.</p>
+<div class="callout attenzione">
+
+<p><strong>Nota sulla dispensa.</strong> Nel file <code>Lezioni/14.pdf</code>, la pagina dell&#39;esercizio svolto della sessione 14/S3 riporta
+nell&#39;intestazione &quot;Lezione n°: 18/S3&quot; invece di &quot;14/S3&quot; — un evidente errore di copia-incolla del template (il contenuto,
+sulla composizione ponderale di una miscela di combustibili, non ha nulla a che fare con le ossidoriduzioni della
+Lezione 18). Non cambia la sostanza dell&#39;esercizio.</p>
 </div>
 
 <div class="callout attenzione">
 
-<p><strong>Nota di bookkeeping.</strong> Nel file sorgente <code>Lezioni/14.pdf</code>, la pagina 20 (esercizio
-svolto sulla combustione di propano/butano, sessione 14/S3) riporta nell&#39;intestazione
-&quot;Lezione n°: 18/S3&quot; invece di &quot;14/S3&quot; — un evidente errore di copia-incolla del
-template fra le due lezioni (il contenuto, sulla composizione ponderale di una miscela
-di combustibili, non ha nulla a che fare con il REDOX della Lezione 18). Segnalato per
-completezza, non cambia la sostanza dell&#39;esercizio.</p>
+<p><strong>Errori tipici.</strong> (1) Cambiare gli indici invece dei coefficienti. (2) Confrontare grammi invece di moli per il
+limitante, o dimenticare i coefficienti nel confronto. (3) Calcolare la resa teorica sul reagente in eccesso. (4) Nelle
+combustioni, dimenticare che ogni <span class="m">\chem{H_2O}</span> contiene <strong>due</strong> H. (5) Nei minerali impuri, usare la massa totale del
+minerale invece della sola frazione del composto.</p>
 </div>
 
 <div class="callout sintesi">
 
 <ul>
-<li>Bilanciare = conservare il numero di atomi per elemento, non la massa dei singoli
+<li>Bilanciare = conservare il numero di atomi per elemento (si cambiano solo i coefficienti), non la massa dei singoli
 reagenti presi a caso; la conservazione della massa totale è una <strong>conseguenza</strong>.</li>
-<li>Metodo algebrico: un&#39;equazione di bilancio per elemento, sistema con infinite
-soluzioni proporzionali, si fissa un coefficiente arbitrariamente.</li>
-<li><strong>Reagente limitante</strong>: confronta le moli disponibili con le moli richieste dalla
-stechiometria, mai i grammi direttamente.</li>
-<li><strong>Resa</strong> <span class="m">= \dfrac{\text{reale}}{\text{teorica}}\times100</span>; la resa teorica si
-calcola sempre sul reagente limitante.</li>
-<li>Dalla massa dei prodotti di combustione si risale a formula minima (rapporto fra
-moli di <span class="m">\chem{CO_2}</span> e <span class="m">\chem{H_2O}</span>) e poi, con la massa molare, a formula
-molecolare — stessa logica della Lezione 13, applicata a una reazione invece che a
-un singolo composto.</li>
+<li>Metodo algebrico: un&#39;equazione di bilancio per elemento, sistema con infinite soluzioni proporzionali, si fissa un
+coefficiente arbitrariamente; coefficienti frazionari → si moltiplica per il denominatore.</li>
+<li><strong>Reagente limitante</strong>: confronta le moli disponibili con le moli richieste dalla stechiometria (o moli/coefficiente),
+mai i grammi direttamente.</li>
+<li>Bilancio di materia: la massa totale si conserva, le moli totali no; le variazioni seguono i coefficienti.</li>
+<li><strong>Resa</strong> <span class="m">= \dfrac{\text{reale}}{\text{teorica}}\times100</span>; la resa teorica si calcola sempre sul reagente limitante.</li>
+<li>Dalla massa dei prodotti di combustione si risale a formula minima (moli di C da <span class="m">\chem{CO_2}</span>, moli di H = 2 × moli
+di <span class="m">\chem{H_2O}</span>) e poi, con la massa molare, a formula molecolare — stessa logica della Lezione 13, applicata a una
+reazione invece che a un singolo composto.</li>
 </ul>
 </div>
 
 <p>::: esame {#lez-14-esame}
-<strong>Come cade all&#39;esame.</strong> Il paniere (Lezione 014) ha <strong>8 domande chiuse e 2 aperte</strong>,
-ora tutte trascritte in <code>90 Esercizi.md</code>: identificare un idrocarburo dai dati di
-combustione, bilanciare reazioni (anche complesse, con coefficienti non interi),
-calcolare rese percentuali. La domanda 10 non ha risposta certificata dalla fonte —
-risolta comunque per esercizio, ma segnalata in rosso.</p>
-<p>Sequenza da seguire in un esercizio misto: bilancia la reazione → converti ogni
-reagente in moli → confronta con il rapporto stechiometrico per trovare il limitante →
-calcola la resa teorica sul limitante → se c&#39;è una resa percentuale data, applica il
-fattore per la resa reale.</p>
-<p><strong>Allenati qui:</strong> Paniere 1–10 · Extra 25 ·
-Extra 26 · Extra 27</p>
+<strong>Come cade all&#39;esame.</strong> Il paniere (Lezione 014) ha <strong>7 domande chiuse e 3 aperte</strong>: identificare un idrocarburo dai dati
+di combustione, bilanciare reazioni (anche complesse, con coefficienti decimali), rapporti molari, campioni con un dato
+numero di atomi di O, identificare un carbonato dalla <span class="m">\chem{CO_2}</span> liberata, calcolare rese percentuali; le aperte sono
+una teorica («bilanciamento delle reazioni chimiche, reagente limitante, resa di una reazione») e due esercizi (resa di
+PbS da <span class="m">\chem{PbCl_2}</span>; percentuale di <span class="m">\chem{Al_2(CO_3)_3}</span> in un minerale), tutti svolti sopra.</p>
+<p>Sequenza da seguire in un esercizio misto: bilancia la reazione → converti ogni reagente in moli → confronta con il
+rapporto stechiometrico per trovare il limitante → calcola la resa teorica sul limitante → se c&#39;è una resa percentuale
+data, applica il fattore per la resa reale. Negli esercizi aperti mostra <strong>tutti</strong> i passaggi (reazione bilanciata,
+masse molari, moli, rapporto, risultato con unità).</p>
+<p><em>Per l&#39;aperta teorica</em>, tre paragrafi: (1) bilanciare = conservazione degli atomi (Lavoisier), coefficienti e non
+indici, l&#39;errore «1 g + 3 g = 2 g», esempio bilanciato e metodo algebrico; (2) reagente limitante ed eccesso, confronto
+sulle moli, bilancio di materia; (3) resa teorica e reale, formula della resa percentuale, perché è minore del 100%.</p>
+<p><strong>Allenati qui:</strong> Paniere 1–10 · Extra 25 · Extra 26 · Extra 27</p>
 </div>

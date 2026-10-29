@@ -66,3 +66,27 @@ export async function push(data) {
   let r; try { r = await fetch(`${DB}/users/${a.uid}.json?auth=${a.id}`, { method: "PUT", body: JSON.stringify(data) }); } catch { throw fail("Nessuna connessione"); }
   if (!r.ok) throw fail("Sincronizzazione non riuscita (controlla le regole del database)");
 }
+
+// materie superate (esito "Superato"): servono a slides.mjs per togliere i PDF dei corsi finiti da tutti quando lo spazio scarseggia
+export async function putPassed(ids) {
+  const a = await token();
+  await fetch(`${DB}/passed/${a.uid}.json?auth=${a.id}`, { method: "PUT", body: JSON.stringify(Object.fromEntries(ids.map((i) => [i, true]))) });
+}
+
+// dispense in PDF: slides/<materia>/<chiave> = PDF in base64, leggibili solo dagli account abilitati (regole del database).
+// Una volta aperta resta in cache sul dispositivo, quindi funziona anche offline.
+const SLIDES_CACHE = "ecq-slides";
+export async function slide(subj, key) {
+  const url = `${DB}/slides/${subj}/${key}.json`;
+  const cache = await caches.open(SLIDES_CACHE).catch(() => null);
+  const hit = await cache?.match(url);
+  if (hit) return hit.blob();
+  const a = await token();
+  let r; try { r = await fetch(`${url}?auth=${a.id}`); } catch { throw fail("Nessuna connessione: la dispensa si scarica la prima volta online"); }
+  if (r.status === 401) throw fail("Il tuo account non è abilitato alle dispense");
+  const b64 = r.ok && (await r.json());
+  if (!b64) throw fail("Dispensa non disponibile (forse rimossa perché il corso è superato)");
+  const blob = new Blob([Uint8Array.from(atob(b64), (c) => c.charCodeAt(0))], { type: "application/pdf" });
+  await cache?.put(url, new Response(blob));
+  return blob;
+}

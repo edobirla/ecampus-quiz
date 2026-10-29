@@ -1,161 +1,541 @@
 <h1 id="lez-25">Lezione 25 — Equazione di stato dei gas ideali</h1>
 <h2 id="lez-25-perche">Perché questa lezione esiste</h2>
-<p>Finora la materia è stata trattata a livello di singola molecola (legami, geometria,
-forze intermolecolari). Lo stato gassoso è il primo caso in cui conta il
-comportamento <strong>collettivo</strong> di un numero enorme di molecole: pressione e volume
-non sono proprietà di una singola molecola, ma dell&#39;insieme. Questa lezione deriva,
-passo per passo, l&#39;equazione che lega le quattro grandezze macroscopiche di un gas —
-pressione <span class="m">P</span>, volume <span class="m">V</span>, temperatura <span class="m">T</span>, quantità di sostanza <span class="m">n</span> — partendo da
-osservazioni sperimentali, non da un&#39;affermazione calata dall&#39;alto.</p>
+<p>Finora la materia è stata trattata a livello di singola molecola (legami, geometria, forze intermolecolari). Lo stato
+gassoso è il primo caso in cui conta il comportamento <strong>collettivo</strong> di un numero enorme di molecole: pressione e
+volume non sono proprietà di una singola molecola, ma dell&#39;insieme. Questa lezione definisce con precisione le
+grandezze che descrivono un gas (pressione, temperatura, volume, densità) e poi deriva, passo per passo, l&#39;equazione
+che lega le quattro grandezze macroscopiche di un gas — pressione <span class="m">P</span>, volume <span class="m">V</span>, temperatura <span class="m">T</span>, quantità di
+sostanza <span class="m">n</span> — partendo da osservazioni sperimentali, non da un&#39;affermazione calata dall&#39;alto. Chiude la lezione una
+serie di esercizi (tratti da Laird, <em>Chimica generale</em>, cap. 5 &quot;Diagrammi di stato e gas&quot;) rifatti qui sotto con tutti
+i passaggi.</p>
+<h2 id="lez-25-grandezze">Le grandezze che descrivono un gas</h2>
+<h3>Pressione</h3>
+<p>La <strong>pressione</strong> <span class="m">P</span> è la forza che un corpo esercita su una superficie di area unitaria, <strong>in direzione normale</strong>
+(perpendicolare) alla superficie stessa:</p>
+<p><span class="m d">P = \frac{F_\perp}{A}</span></p>
+<p>con <span class="m">F_\perp</span> = componente della forza perpendicolare alla superficie (N) e <span class="m">A</span> = area (m²). Se la forza <span class="m">F</span> forma un
+angolo <span class="m">\theta</span> con la superficie, conta solo la sua componente normale, <span class="m">F\sin\theta</span>: <span class="m">P = F\sin\theta/A</span>. Nel
+Sistema Internazionale (S.I.) la pressione si misura in <strong>pascal</strong> (Pa), oppure in <strong>bar</strong>:</p>
+<p><span class="m d">1\ \mathrm{Pa} = 1\ \frac{\mathrm N}{\mathrm{m^2}} \qquad\qquad 1\ \mathrm{bar} = 10^5\ \mathrm{Pa} = 10^5\ \frac{\mathrm N}{\mathrm{m^2}}</span></p>
+<p>Sono molto usate anche altre unità: <strong>atmosfera</strong> (atm), <strong>millimetri di colonna di mercurio</strong> (mmHg), <strong>torricelli</strong>
+(torr, in onore del fisico Evangelista Torricelli), <strong>metri di colonna d&#39;acqua</strong> (m H₂O), <strong>psi</strong> (<em>pounds per square
+inch</em>, unità anglosassone: pressione esercitata dal peso di una libbra, 453.59 g, su un pollice quadrato, con
+1 pollice = 2.54 cm). Le conversioni fondamentali:</p>
+<p><span class="m d">1\ \mathrm{atm} = 101325\ \mathrm{Pa} = 1.01325\ \mathrm{bar} = 760\ \mathrm{mmHg} = 760\ \mathrm{torr} = 14.696\ \mathrm{psi}</span></p>
+<h3>Temperatura</h3>
+<p>La <strong>temperatura</strong> è la grandezza fisica che si misura con il termometro ed è intimamente legata all&#39;<strong>energia delle
+particelle</strong> che costituiscono un sistema: come si vedrà in termodinamica (<a href="#/teoria/chimica/27/lez-27">Lezione 27</a>), più alta è la
+temperatura, maggiore è l&#39;energia (interna) del sistema. Nel S.I. si misura in <strong>kelvin</strong> (K), un&#39;unità di misura
+<strong>assoluta</strong>, nel senso che <strong>0 K è lo zero assoluto</strong> della temperatura: <strong>non è possibile scendere al di sotto di
+questo valore</strong>. Molto diffuse sono anche i gradi <strong>Celsius</strong> (°C) e, nei paesi anglosassoni, i gradi <strong>Fahrenheit</strong>
+(°F):</p>
+<p><span class="m d">T^{\circ C} = T^{K} - 273.15 \qquad\qquad T^{\circ F} = 1.8\cdot T^{\circ C} + 32</span></p>
+<p>Queste due scale <strong>non sono assolute</strong>: lo zero dei °C è riferito al punto di congelamento dell&#39;acqua pura, e sono ben
+note temperature negative (&quot;sotto zero&quot;). Nota di scrittura: il simbolo dei gradi Celsius e Fahrenheit si scrive
+maiuscolo preceduto dal circoletto (°C, °F); il kelvin si scrive con la K maiuscola <strong>senza</strong> circoletto (è un&#39;unità
+del S.I.), e il nome &quot;kelvin&quot; si scrive con la k minuscola.</p>
+<p><span class="m">P</span> e <span class="m">T</span> sono <strong>grandezze intensive</strong>: non dipendono dall&#39;estensione del sistema, ma solo dal <strong>punto</strong> in cui
+vengono valutate e dall&#39;<strong>istante</strong> temporale: <span class="m">P = P(\text{posizione}, \text{tempo})</span>,
+<span class="m">T = T(\text{posizione}, \text{tempo})</span>.</p>
+<h3>Volume e densità</h3>
+<p>Il <strong>volume</strong> è una grandezza geometrica: in linea di principio è il prodotto di tre lunghezze, ed è quindi legato
+alle dimensioni del sistema. Più precisamente si dice che <span class="m">V</span> è una <strong>grandezza estensiva</strong> (raddoppiando il sistema
+raddoppia). Una massa <span class="m">m</span> di una sostanza, a <span class="m">T</span> e <span class="m">P</span> assegnate, occupa un certo volume <span class="m">V</span>; il rapporto fra <span class="m">m</span> e
+<span class="m">V</span> è la <strong>densità media</strong> della sostanza:</p>
+<p><span class="m d">\langle\rho\rangle = \frac{m}{V} \quad\Longleftrightarrow\quad m = \langle\rho\rangle\cdot V</span></p>
+<p>Il simbolo <span class="m">\langle\ \rangle</span> indica una proprietà <strong>media</strong>: la densità infatti può variare da punto a punto
+(<strong>grandezza intensiva</strong>).</p>
+<div class="callout esempio">
+
+<p><strong>Densità media di un blocco acciaio + legno.</strong> Si assemblano un pezzo di acciaio di volume <span class="m">V_1 = 1\ \mathrm{m^3}</span>
+(<span class="m">\rho = 8000\ \mathrm{kg/m^3}</span>) e un pezzo di legno di volume <span class="m">V_2 = 1\ \mathrm{m^3}</span> (<span class="m">\rho = 800\ \mathrm{kg/m^3}</span>).</p>
+<ol>
+<li>Massa totale: <span class="m">m = 8000\times1 + 800\times1 = 8800\ \mathrm{kg}</span>.</li>
+<li>Volume totale: <span class="m">V = 2\ \mathrm{m^3}</span>.</li>
+<li><span class="m">\langle\rho\rangle = 8800/2 = 4400\ \mathrm{kg/m^3}</span>.</li>
+</ol>
+<p>Ma misurando la densità sulla parte di acciaio si trova <span class="m">8000\ \mathrm{kg/m^3}</span>, sulla parte di legno
+<span class="m">800\ \mathrm{kg/m^3}</span>: valori nettamente diversi dalla media.</p>
+</div>
+
+<p>In maniera più precisa la densità <strong>in un punto</strong> è definita come limite del rapporto fra massa e volume di una
+porzione sempre più piccola intorno al punto:</p>
+<p><span class="m d">\rho = \lim_{\Delta V\to0}\frac{\Delta m}{\Delta V} = \frac{dm}{dV} \quad\Rightarrow\quad m = \int_V \rho\, dV = \langle\rho\rangle\cdot V</span></p>
+<p>Oltre a dipendere dal punto, la densità può variare <strong>nel tempo</strong> (un pezzo di legno in una giornata umida assorbe
+acqua e ha una densità diversa da quella misurata in una giornata secca): in generale <span class="m">\rho = \rho(\text{posizione},
+\text{tempo})</span>. Oltre a <span class="m">\rho</span> si usa talvolta la lettera <span class="m">d</span>.</p>
+<h2 id="lez-25-stato">Equazione di stato</h2>
+<p>Le grandezze <span class="m">P</span>, <span class="m">V</span> e <span class="m">T</span> si chiamano <strong>variabili di stato</strong>. La materia può presentarsi in diversi stati di
+aggregazione: <strong>solido</strong>, <strong>liquido</strong> e <strong>gassoso</strong>. Nel solido le particelle (atomi, molecole o ioni) si aggregano
+grazie a intense forze di attrazione formando una struttura cristallina in cui <strong>non sono libere di muoversi</strong> ma
+possono solo vibrare intorno alle loro posizioni di equilibrio: per questo un solido non occupa spontaneamente tutto
+il volume del recipiente. Nei liquidi e nei gas le particelle sono libere di muoversi: nei liquidi le forze di
+attrazione permettono solo di scorrere le une sulle altre, nei gas le forze sono così blande che ogni particella può
+percorrere ampi spazi senza incontrare le altre.</p>
+<p>Per ogni sostanza omogenea (solida, liquida o gassosa) <strong>le tre variabili <span class="m">P</span>, <span class="m">V</span> e <span class="m">T</span> non sono indipendenti</strong>: se
+si assegnano <span class="m">P</span> e <span class="m">T</span>, il volume <span class="m">V</span> di una certa massa <span class="m">m</span> è univocamente determinato. Esiste dunque una relazione,
+chiamata <strong>equazione di stato</strong> della sostanza:</p>
+<p><span class="m d">f(P, V, T; m) = 0</span></p>
+<p>È un&#39;equazione nelle tre incognite <span class="m">P</span>, <span class="m">V</span>, <span class="m">T</span>: assegnata la massa e il valore di due delle tre variabili, si
+risolve per la terza.</p>
+<h3>Il caso dei solidi (e dei liquidi): dilatazione termica</h3>
+<p>Che una relazione del genere esista lo si vede dall&#39;esperienza quotidiana: una barra di metallo (i binari ferroviari,
+la campata di un ponte) sottoposta a un&#39;escursione termica subisce una variazione di lunghezza, a pressione
+atmosferica. Se si cambia la pressione, invece, non si ha alcuna variazione sensibile: nel solido le particelle sono
+così impacchettate che la pressione ha un effetto trascurabile in un intervallo di valori molto ampio. Per i solidi
+quindi <span class="m">V = V(T; m)</span> per qualsiasi <span class="m">P</span>, e la relazione fra volume e temperatura è sostanzialmente <strong>lineare</strong>:</p>
+<p><span class="m d">V = V_0\left[1 + \alpha\left(T^{\circ C} - T_0^{\circ C}\right)\right] = V_0(1 + \alpha\Delta T)</span></p>
+<p>dove <span class="m">V_0</span> è il volume alla temperatura <span class="m">T_0</span> (°C), <span class="m">V</span> il volume alla temperatura <span class="m">T</span> e <span class="m">\alpha</span> il <strong>coefficiente di
+dilatazione cubica</strong> (riferito a un volume), con unità <span class="m">\mathrm{m^3/(m^3\,{}^\circ C)} = {}^\circ\mathrm C^{-1}</span>. Se
+una delle dimensioni del solido prevale sulle altre (una <strong>trave</strong>, secondo gli esperti di Scienza delle Costruzioni)
+si usa la lunghezza:</p>
+<p><span class="m d">L = L_0\left[1 + \lambda\left(T^{\circ C} - T_0^{\circ C}\right)\right] = L_0(1 + \lambda\Delta T)</span></p>
+<p>con <span class="m">\lambda</span> = <strong>coefficiente di dilatazione lineare</strong> (<span class="m">{}^\circ\mathrm C^{-1}</span>). Fra i due vale
+<span class="m">\alpha = 3\lambda</span>.</p>
+<div class="callout esempio">
+
+<p><strong>Dilatazione di una trave d&#39;acciaio.</strong> L&#39;acciaio usato nel cemento armato ha <span class="m">\lambda = 1.2\times10^{-5}\
+{}^\circ\mathrm C^{-1}</span>. Una trave lunga <span class="m">L_0 = 10\ \mathrm m</span> subisce un&#39;escursione <span class="m">\Delta T = 50\ {}^\circ\mathrm C</span>:</p>
+<p><span class="m d">\Delta L = L - L_0 = L_0\lambda\Delta T = 10\ \mathrm m\times1.2\times10^{-5}\ {}^\circ\mathrm C^{-1}\times50\ {}^\circ\mathrm C = 6\times10^{-3}\ \mathrm m = 6\ \mathrm{mm}</span></p>
+<p>Il coefficiente di dilatazione lineare dell&#39;acciaio è <strong>uguale a quello del calcestruzzo</strong>: per questo è possibile
+realizzare il <strong>cemento armato</strong> (i due materiali si dilatano insieme, senza staccarsi).</p>
+</div>
+
+<p>Lo stesso discorso vale per i <strong>liquidi</strong>, con valori di <span class="m">\alpha</span> diversi da sostanza a sostanza.</p>
+<h2 id="lez-25-apparato">L&#39;apparato sperimentale per i gas</h2>
+<p>Per i gas il discorso è diverso. L&#39;equazione di stato si deriva da osservazioni sperimentali eseguite in un
+intervallo di <span class="m">P</span> e <span class="m">T</span> in cui il gas si comporta in maniera <strong>ideale</strong> (il significato si chiarirà più avanti),
+trattando per semplicità un gas formato da una sola specie chimica.</p>
+<p>L&#39;apparato: un <strong>cilindro</strong> munito di <strong>pistone</strong>, con dentro un gas (ad esempio ossigeno), immerso in un <strong>bagno
+termostatico</strong> (un liquido a temperatura controllata <span class="m">T_b</span>). Si possono variare il volume del gas, la pressione che
+esso esercita sulle pareti e sul pistone (aggiungendo o togliendo pesi sul pistone) e la sua temperatura. In generale
+la temperatura del bagno non è uguale a quella del gas, ma si suppone che durante tutte le trasformazioni le due siano
+uguali (<strong>equilibrio termico</strong>): misurando la temperatura del bagno si conosce quella del gas.</p>
 <h2 id="lez-25-boyle">Legge di Boyle: pressione e volume a temperatura costante</h2>
-<p>Immagina un gas chiuso in un cilindro con pistone, immerso in un bagno
-termostatico che mantiene <span class="m">T</span> costante. Variando la pressione (ad esempio
-aggiungendo o togliendo pesi sul pistone) si osserva sperimentalmente che <span class="m">P</span> e <span class="m">V</span>
-sono legati da una relazione di proporzionalità inversa:</p>
+<p>Assegnata <span class="m">T</span> e facendo variare <span class="m">P</span> (applicando pesi diversi sul pistone) si osserva che il volume <span class="m">V</span> varia: se <span class="m">P</span>
+aumenta, <span class="m">V</span> diminuisce e viceversa. Intorno al <strong>1660</strong>, con un apparecchio simile, lo scienziato irlandese <strong>Robert
+Boyle</strong> trovò che, a temperatura costante, la relazione fra <span class="m">P</span> e <span class="m">V</span> è un ramo di <strong>iperbole equilatera</strong>:</p>
 <div class="callout formula">
 
 <p><span class="m d">P \cdot V = k(T, m) \qquad \text{(legge di Boyle, } T \text{ costante)}</span></p>
 </div>
 
-<p>dove <span class="m">k</span> dipende dalla temperatura e dalla quantità di gas (<span class="m">m</span>) ma non da <span class="m">P</span> o
-<span class="m">V</span> singolarmente. Sul piano <span class="m">(P, V)</span> questa relazione è un ramo di iperbole
-equilatera: raddoppiando la pressione, il volume si dimezza, e viceversa.</p>
-<h2 id="lez-25-charles">Legge di Charles: volume e temperatura a pressione costante</h2>
-<p>Tenendo ora <span class="m">P</span> costante e facendo variare <span class="m">T</span> (ad esempio riscaldando il gas con
-un numero fisso di pesi sul pistone), si trova sperimentalmente una relazione
-lineare fra <span class="m">V</span> e <span class="m">T</span> (in gradi Celsius):</p>
-<p><span class="m d">V = \frac{m}{P}\cdot c \cdot (T^{\circ C} - T_0^{\circ C}) \qquad \text{(legge di Charles)}</span></p>
-<div class="callout attenzione">
+<p>dove <span class="m">k</span> dipende dalla temperatura e dalla quantità di gas (<span class="m">m</span>) ma non da <span class="m">P</span> o <span class="m">V</span> singolarmente. Sul piano <span class="m">(P, V)</span>
+questa relazione è un ramo di iperbole equilatera: raddoppiando la pressione, il volume si dimezza, e viceversa. Le
+iperboli a temperatura più alta stanno più lontane dagli assi.</p>
+<p><strong>L&#39;esperimento con il tubo a U.</strong> Un gas è intrappolato nel ramo chiuso di un tubo a U contenente mercurio; si
+aggiunge mercurio nel ramo aperto. Con i livelli uguali, la pressione del gas è quella atmosferica,
+<span class="m">P = 760\ \mathrm{mmHg}</span>, e il volume è <span class="m">V</span>. Aggiungendo mercurio fino a un dislivello di <span class="m">760\ \mathrm{mm}</span> la
+pressione diventa <span class="m">1520\ \mathrm{mmHg}</span> (il doppio) e il volume <span class="m">V/2</span>; con un dislivello di <span class="m">1520\ \mathrm{mm}</span> la
+pressione è <span class="m">2280\ \mathrm{mmHg}</span> (il triplo) e il volume <span class="m">V/3</span>. In tutti i casi <span class="m">P\cdot V</span> è costante.</p>
+<p>Conviene rappresentare i dati riportando il volume contro l&#39;<strong>inverso</strong> della pressione:</p>
+<p><span class="m d">V = \frac1P\cdot k(T; m)</span></p>
+<p>è una <strong>retta passante per l&#39;origine</strong> di pendenza <span class="m">k(T;m)</span>. Un aumento della temperatura provoca un aumento della
+pendenza (come si verifica eseguendo le prove a una <span class="m">T</span> più alta). È ciò che ci si aspetta: mantenendo costante la
+pressione e aumentando <span class="m">T</span>, il gas si espande; viceversa, mantenendo costante il volume (bloccando il pistone) e
+innalzando la temperatura, la pressione del gas aumenta.</p>
+<h3>Quando la legge di Boyle smette di valere: covolume e gas reali</h3>
+<p>La legge di Boyle <strong>non</strong> vale per qualunque valore di <span class="m">P</span>, <span class="m">V</span>, <span class="m">T</span>: sperimentalmente, all&#39;aumentare di <span class="m">P</span> la
+relazione fra <span class="m">V</span> e <span class="m">1/P</span> cessa di essere lineare. Indizi si hanno già dall&#39;equazione: la retta passa per l&#39;origine,
+cioè per <span class="m">1/P = 0</span>, <span class="m">V = 0</span>. Ma <span class="m">1/P = 0</span> significa <span class="m">P \to \infty</span>, una pressione infinita, impossibile da
+raggiungere; per questo le rette sono tratteggiate vicino all&#39;origine. E <span class="m">V = 0</span> significherebbe che le molecole del
+gas hanno volume nullo, cosa insensata dal punto di vista fisico.</p>
+<p>La spiegazione del comportamento <strong>reale</strong> si trova nel comportamento microscopico delle particelle. La pressione è
+dovuta agli <strong>urti</strong> delle particelle, che si muovono caoticamente, contro le pareti del recipiente. Nelle condizioni
+in cui vale la legge di Boyle:</p>
+<ol>
+<li>ciascuna particella si muove <strong>indipendentemente</strong> dalle altre (le particelle non interagiscono fra loro);</li>
+<li>il volume complessivo delle particelle, chiamato <strong>covolume</strong>, è molto più piccolo del volume occupato dal gas, ed
+è lecito trascurarlo.</li>
+</ol>
+<p>Quando si aumenta la pressione (a <span class="m">T</span> costante) il volume del gas diminuisce, le particelle tendono a essere sempre
+più vicine e le <strong>interazioni reciproche</strong> diventano significative; inoltre il volume del gas può raggiungere valori
+per cui <strong>non è più possibile trascurare il covolume</strong> (il volume del gas non può essere ridotto al di sotto del
+volume complessivo delle particelle). Allora il comportamento del gas devia dalla linearità e può essere descritto
+solo da espressioni più complesse: <strong>comportamento da gas reale</strong>, ad esempio con l&#39;<strong>equazione di Van der Waals</strong>.</p>
+<div class="callout formula">
 
-<p>La retta sperimentale, estrapolata a <span class="m">V=0</span>, incrocia l&#39;asse delle temperature
-sempre nello stesso punto, <span class="m">T_0 = -273.15\,^\circ\mathrm{C}</span>, qualunque sia la
-pressione usata nell&#39;esperimento. Questo punto non è raggiungibile nella pratica
-(un volume nullo non ha senso fisico ed è comunque impossibile avvicinarsi troppo
-senza che il gas cambi fase), ma è un&#39;estrapolazione <strong>matematica</strong> estremamente
-utile: definisce lo zero della scala Kelvin.</p>
+<p><strong>Equazione di Van der Waals</strong> (per completezza; il corso la cita senza svilupparla):
+<span class="m d">\left(P + \frac{a\,n^2}{V^2}\right)(V - n\,b) = nRT</span>
+La costante <span class="m">a</span> (<span class="m">\mathrm{atm\,L^2/mol^2}</span>) corregge la pressione per le <strong>attrazioni fra le molecole</strong>: la sua entità
+indica la forza di queste attrazioni (più grande <span class="m">a</span>, più forti le attrazioni). La costante <span class="m">b</span> (<span class="m">\mathrm{L/mol}</span>) è il
+covolume per mole, cioè il volume proprio delle molecole.</p>
 </div>
 
-<p>Riscrivendo la temperatura in kelvin (<span class="m">T^{K} = T^{\circ C} + 273.15</span>, quindi
-<span class="m">T^{\circ C} - T_0^{\circ C} = T^K</span>), la legge di Charles diventa
-<span class="m">P\cdot V = m\cdot c \cdot T^K</span>, cioè <span class="m">P\cdot V \propto T^K</span> a <span class="m">P</span> e <span class="m">m</span> fissati.</p>
+<h2 id="lez-25-massa">Influenza della massa</h2>
+<p>Nell&#39;ipotesi che valga la legge di Boyle, qual è l&#39;influenza della massa <span class="m">m</span> sul volume? L&#39;esperienza comune insegna
+che una massa doppia o tripla di qualcosa ha un volume doppio o triplo: massa e volume sono <strong>proporzionali</strong>. A <span class="m">T</span> e
+<span class="m">P</span> costanti, facendo variare <span class="m">m</span>, la legge di Boyle diventa</p>
+<p><span class="m d">V = m\cdot\frac1P\cdot h\!\left(T^{\circ C}\right)</span></p>
+<p>con <span class="m">h(T)</span> una funzione, per ora incognita, della temperatura.</p>
+<h2 id="lez-25-charles">Legge di Charles: volume e temperatura a pressione costante</h2>
+<p>Resta una sola serie di prove: si mantengono costanti <span class="m">m</span> e <span class="m">P</span> e si fa variare <span class="m">T</span> (ad esempio riscaldando il gas con
+un numero fisso di pesi sul pistone). Riportando i dati su un grafico si trova una relazione di <strong>proporzionalità</strong>
+fra <span class="m">V</span> e <span class="m">T</span> (in gradi Celsius), cioè una retta:</p>
+<p><span class="m d">V = \frac{m}{P}\cdot c \cdot (T^{\circ C} - T_0^{\circ C}) \qquad \text{(legge di Charles)}</span></p>
+<p>dove <span class="m">c</span> è una costante di proporzionalità il cui significato è per ora incognito e che <strong>cambia a seconda del gas</strong>
+utilizzato. Eseguendo esperimenti a pressioni diverse si ottiene un <strong>fascio di rette</strong>, più inclinate a pressione più
+bassa (perché <span class="m">V \propto 1/P</span>).</p>
+<div class="callout attenzione">
+
+<p>La retta sperimentale, estrapolata a <span class="m">V=0</span>, incrocia l&#39;asse delle temperature sempre nello stesso punto,
+<span class="m">T_0 = -273.15\,^\circ\mathrm{C}</span>, qualunque sia la pressione usata nell&#39;esperimento. Questo punto non è
+raggiungibile nella pratica (un volume nullo non ha senso fisico ed è comunque impossibile avvicinarsi troppo: al
+diminuire della temperatura il comportamento del gas non segue più l&#39;andamento rettilineo, e al di sotto di certi
+valori il gas cambia fase — liquefazione o solidificazione), ma è un&#39;estrapolazione <strong>matematica</strong> estremamente
+utile: definisce lo zero della scala Kelvin. Per lo stesso motivo, a volume costante, la pressione di un gas ideale
+estrapolata a <span class="m">-273.15\ ^\circ\mathrm C</span> (0 K) diventa <strong>zero</strong>.</p>
+</div>
+
+<p>Riscrivendo la legge di Charles come <span class="m">P\cdot V = m\cdot c\cdot(T^{\circ C} - T_0^{\circ C})</span> e ricordando che
+<span class="m">T^{\circ C} = T^{K} - 273.15</span> e <span class="m">T_0^{\circ C} = -273.15</span>:</p>
+<p><span class="m d">P\cdot V = m\cdot c\cdot\left(T^K - 273.15 + 273.15\right) = m\cdot c\cdot T^K = n\cdot M\cdot c\cdot T^K</span></p>
+<p>dove nell&#39;ultimo passaggio si è scritta la massa come <span class="m">m = n\cdot M</span> (<span class="m">n</span> = moli, <span class="m">M</span> = massa molare, g/mol).</p>
 <h2 id="lez-25-gaylussac-avogadro">Legge di Gay-Lussac e ipotesi di Avogadro: dalla costante <span class="m">c</span> alla costante universale <span class="m">R</span></h2>
-<p>Resta da capire come <span class="m">c</span> dipenda dal tipo di gas. Gay-Lussac osservò
-sperimentalmente che, a parità di <span class="m">T</span> e <span class="m">P</span>, i volumi di gas che reagiscono fra loro
-stanno in <strong>rapporti di numeri interi semplici</strong>: ad esempio, 2 volumi di idrogeno
-reagiscono con 1 volume di ossigeno per dare 2 volumi di acqua (vapore).</p>
+<p>Finora tutti gli esperimenti sono stati fatti con lo stesso gas. <span class="m">M</span> cambia da sostanza a sostanza: ma quanto vale il
+prodotto <span class="m">M\cdot c</span>? Per rispondere serve una legge sperimentale individuata da <strong>Gay-Lussac</strong> studiando le reazioni
+fra specie gassose:</p>
+<div class="callout formula">
+
+<p><strong>Legge di Gay-Lussac (dei volumi di combinazione)</strong>: i volumi di gas diversi che reagiscono fra loro, o che sono
+prodotti nel corso di una reazione chimica, <strong>nelle stesse condizioni di temperatura e pressione</strong>, stanno fra loro in
+<strong>rapporti di numeri interi semplici</strong>.</p>
+</div>
+
+<p>Ad esempio, a parità di <span class="m">T</span> e <span class="m">P</span>, 2 volumi di idrogeno reagiscono con 1 volume di ossigeno per dare 2 volumi di
+acqua (vapore).</p>
 <div class="callout esempio">
 
 <p><span class="m d">2\,\chem{H_2(g)} + \chem{O_2(g)} \rightarrow 2\,\chem{H_2O(g)}</span></p>
-<p>Per spiegare perché i coefficienti stechiometrici (numeri di <strong>molecole</strong>) e i
-volumi (grandezza macroscopica) seguono lo stesso rapporto <span class="m">2{:}1{:}2</span>, Avogadro
-formulò l&#39;ipotesi: <strong>volumi uguali di gas diversi, nelle stesse condizioni di <span class="m">T</span> e
-<span class="m">P</span>, contengono lo stesso numero di molecole.</strong></p>
-</div>
-
-<p>Applicando l&#39;ipotesi di Avogadro a due gas <span class="m">A</span> e <span class="m">B</span> che occupano lo stesso volume
-alla stessa <span class="m">T</span> e <span class="m">P</span> (quindi <span class="m">n_A = n_B</span>, stesso numero di moli), dalla legge di
-Charles-Gay-Lussac riscritta come <span class="m">P\cdot V = n\cdot M \cdot c \cdot T^K</span> si ricava
-che il prodotto <span class="m">M\cdot c</span> (massa molare per la costante <span class="m">c</span>) deve essere lo stesso
-per <strong>tutti</strong> i gas. Questo prodotto costante si chiama <strong>costante universale dei
-gas</strong>, <span class="m">R</span>:</p>
-<div class="callout formula">
-
-<p><span class="m d">\boxed{P \cdot V = n \cdot R \cdot T} \qquad R = 0.08206\ \frac{\mathrm{atm\cdot L}}{\mathrm{mol\cdot K}} = 8.31\ \frac{\mathrm J}{\mathrm{mol\cdot K}}</span></p>
-<p><strong>Equazione di stato dei gas ideali</strong>: unifica Boyle (<span class="m">T</span> costante), Charles (<span class="m">P</span>
-costante) e l&#39;ipotesi di Avogadro in un&#39;unica relazione fra le quattro variabili di
-stato del gas.</p>
+<p>Per spiegare perché i coefficienti stechiometrici (numeri di <strong>molecole</strong>: <span class="m">2n</span> molecole di <span class="m">\chem{H_2}</span> + <span class="m">n</span>
+molecole di <span class="m">\chem{O_2}</span> → <span class="m">2n</span> molecole di <span class="m">\chem{H_2O}</span>) e i volumi (grandezza macroscopica) seguono lo stesso
+rapporto <span class="m">2{:}1{:}2</span>, il chimico <strong>Amedeo Avogadro</strong> formulò l&#39;ipotesi: <strong>volumi uguali di gas diversi, nelle stesse
+condizioni di temperatura e pressione, contengono lo stesso numero di molecole.</strong></p>
 </div>
 
 <div class="callout attenzione">
 
-<p>Un gas che obbedisce esattamente a <span class="m">PV=nRT</span> si dice <strong>ideale</strong>. È un&#39;idealizzazione
-valida quando le molecole sono così distanti fra loro che (a) il volume proprio
-delle molecole (il <strong>covolume</strong>) è trascurabile rispetto al volume del recipiente e
-(b) le forze intermolecolari (<a href="#/teoria/chimica/19/lez-19">Lezione 19</a>) non influenzano il moto delle
-molecole. Aumentando la pressione (molecole più vicine) queste due ipotesi cadono e
-il comportamento del gas si allontana da <span class="m">PV=nRT</span> (gas reale, descritto da
-equazioni più complesse come quella di Van der Waals, non trattata in questo
-corso).</p>
+<p><strong>&quot;Legge di Gay-Lussac&quot; ha due significati nei testi.</strong> Nella dispensa è la legge dei <strong>volumi di combinazione</strong>
+(sopra). In molti libri (ad esempio negli esercizi di Laird) si chiama &quot;legge di Gay-Lussac&quot; anche la relazione <strong>a
+volume costante</strong>: la pressione di una data quantità di gas è <strong>proporzionale alla temperatura assoluta</strong>,
+<span class="m">P/T = \text{costante}</span>, cioè <span class="m">P_1/T_1 = P_2/T_2</span> (è il motivo per cui la pressione delle gomme dell&#39;auto aumenta
+quando si scaldano per l&#39;attrito con la strada). All&#39;esame conviene citarle entrambe.</p>
+</div>
+
+<p><strong>Derivazione di <span class="m">R</span>.</strong> Si considerino due gas diversi A e B. Per ciascuno vale la relazione appena trovata:</p>
+<p><span class="m d">P_A\cdot V_A = n_A\cdot M_A\cdot c_A\cdot T_A \qquad\qquad P_B\cdot V_B = n_B\cdot M_B\cdot c_B\cdot T_B</span></p>
+<p>Nelle ipotesi del principio di Avogadro (&quot;volumi uguali di gas diversi nelle stesse condizioni di temperatura e
+pressione&quot;) è <span class="m">V_A = V_B</span>, <span class="m">T_A = T_B</span>, <span class="m">P_A = P_B</span>: i primi membri sono uguali, quindi</p>
+<p><span class="m d">n_A\cdot M_A\cdot c_A = n_B\cdot M_B\cdot c_B</span></p>
+<p>Inoltre deve essere <span class="m">n_A = n_B</span> (&quot;hanno lo stesso numero di molecole&quot;), e ciò implica</p>
+<p><span class="m d">M_A\cdot c_A = M_B\cdot c_B</span></p>
+<p>Il prodotto fra la massa molare <span class="m">M</span> e la costante incognita <span class="m">c</span> <strong>non dipende dal tipo di gas</strong>. Questo prodotto si
+indica con <span class="m">R</span> e si chiama <strong>costante universale dei gas</strong>:</p>
+<div class="callout formula">
+
+<p><span class="m d">\boxed{P \cdot V = n \cdot R \cdot T} \qquad R = 0.08206\ \frac{\mathrm{atm\cdot L}}{\mathrm{mol\cdot K}} = 8.31\ \frac{\mathrm J}{\mathrm{mol\cdot K}}</span></p>
+<p><strong>Equazione di stato dei gas ideali</strong>: unifica Boyle (<span class="m">T</span> costante), Charles (<span class="m">P</span> costante) e l&#39;ipotesi di Avogadro in
+un&#39;unica relazione fra le quattro variabili di stato del gas. <span class="m">P</span> = pressione (atm o Pa), <span class="m">V</span> = volume (L o m³),
+<span class="m">n</span> = moli (mol), <span class="m">T</span> = temperatura <strong>assoluta</strong> (K). Il valore di <span class="m">R</span> va scelto coerente con le unità: con atm e L si
+usa <span class="m">0.08206</span>; con Pa e m³ si usa <span class="m">8.314</span> (perché <span class="m">\mathrm{Pa\cdot m^3} = \mathrm{N/m^2\cdot m^3} = \mathrm{N\cdot m}
+= \mathrm J</span>).</p>
+</div>
+
+<div class="callout attenzione">
+
+<p>Un gas che obbedisce esattamente a <span class="m">PV=nRT</span> si dice <strong>ideale</strong>. È un&#39;idealizzazione valida quando le molecole sono così
+distanti fra loro che (a) il volume proprio delle molecole (il <strong>covolume</strong>) è trascurabile rispetto al volume del
+recipiente e (b) le forze intermolecolari (<a href="#/teoria/chimica/19/lez-19">Lezione 19</a>) non influenzano il moto delle molecole. Aumentando
+la pressione (molecole più vicine) queste due ipotesi cadono e il comportamento del gas si allontana da <span class="m">PV=nRT</span> (gas
+reale, descritto da equazioni più complesse come quella di Van der Waals, vista sopra solo come cenno).</p>
+</div>
+
+<h3>Conseguenze utili: legge combinata e principio di Avogadro nelle reazioni</h3>
+<p>Per una quantità fissa di gas (<span class="m">n</span> costante) che passa da uno stato 1 a uno stato 2, <span class="m">PV/T = nR</span> è costante:</p>
+<p><span class="m d">\frac{P_1V_1}{T_1} = \frac{P_2V_2}{T_2}</span></p>
+<p>Da qui si ritrovano come casi particolari Boyle (<span class="m">T_1=T_2</span>: <span class="m">P_1V_1 = P_2V_2</span>), Charles (<span class="m">P_1=P_2</span>: <span class="m">V_1/T_1 =
+V_2/T_2</span>) e la proporzionalità <span class="m">P/T</span> a volume costante.</p>
+<p>A <span class="m">T</span> e <span class="m">P</span> fissate, <span class="m">V = n\cdot(RT/P)</span>: il volume è proporzionale al <strong>numero di moli</strong>, indipendentemente dal tipo di
+gas. Quindi:</p>
+<ul>
+<li>quantità di gas diversi con lo <strong>stesso numero di moli</strong> occupano lo <strong>stesso volume</strong> (88 g di <span class="m">\chem{CO_2}</span>, cioè
+<span class="m">88/44 = 2</span> mol, e 32 g di <span class="m">\chem{CH_4}</span>, cioè <span class="m">32/16 = 2</span> mol, occupano lo stesso volume);</li>
+<li>in una reazione fra gas, a <span class="m">T</span> e <span class="m">P</span> costanti, i <strong>volumi stanno fra loro come i coefficienti stechiometrici</strong>.</li>
+</ul>
+<div class="callout esempio">
+
+<p><strong>Principio di Avogadro applicato a una reazione: combustione del metano.</strong>
+<span class="m">\chem{CH_4(g)} + 2\,\chem{O_2(g)} \rightarrow \chem{CO_2(g)} + 2\,\chem{H_2O}</span>.</p>
+<p>Bilanciamento: 1 C a sinistra → 1 <span class="m">\chem{CO_2}</span>; 4 H → 2 <span class="m">\chem{H_2O}</span>; ossigeni a destra <span class="m">2 + 2 = 4</span> → 2
+<span class="m">\chem{O_2}</span>. A <span class="m">T</span> e <span class="m">P</span> costanti, 1 volume di metano consuma 2 volumi di ossigeno e produce 1 volume di anidride
+carbonica: bruciando <span class="m">10\ \mathrm L</span> di <span class="m">\chem{CH_4}</span> si consumano <span class="m">20\ \mathrm L</span> di <span class="m">\chem{O_2}</span> e si formano
+<span class="m">10\ \mathrm L</span> di <span class="m">\chem{CO_2}</span> (l&#39;acqua, se condensa a liquido, non conta come volume gassoso). Non serve calcolare
+le moli: basta il rapporto dei coefficienti.</p>
 </div>
 
 <h2 id="lez-25-volume-densita">Volume molare, densità e concentrazione molare</h2>
-<p>Dall&#39;equazione di stato, applicata a <span class="m">n=1\ \mathrm{mol}</span> in <strong>condizioni normali</strong>
-(STP, <span class="m">0\,^\circ\mathrm{C}=273\ \mathrm K</span>, <span class="m">1\ \mathrm{atm}</span>), si ricava il
-<strong>volume molare</strong>:</p>
+<p><strong>Condizioni di temperatura e pressione standard</strong> (STP, <em>standard temperature and pressure</em>): <span class="m">0\ ^\circ\mathrm C</span> e
+<span class="m">1\ \mathrm{atm}</span>. Le condizioni STP vengono chiamate anche <strong>condizioni normali</strong> (c.n.). Questa definizione va usata
+<strong>solo</strong> quando si fanno calcoli sui gas: in termodinamica si incontrerà lo <strong>stato standard</strong>
+(<a href="#/teoria/chimica/29/lez-29">Lezione 29</a>), in cui la temperatura può assumere qualunque valore. Non confondere le due cose.</p>
+<p>Dall&#39;equazione di stato, applicata a <span class="m">n=1\ \mathrm{mol}</span> in condizioni normali (<span class="m">0\,^\circ\mathrm{C}=273\ \mathrm K</span>,
+<span class="m">1\ \mathrm{atm}</span>), si ricava il <strong>volume molare</strong> <span class="m">V_m</span>:</p>
 <p><span class="m d">V_m = \frac{nRT}{P} = \frac{(1\ \mathrm{mol})\times\left(0.08206\ \frac{\mathrm{atm\cdot L}}{\mathrm{mol\cdot K}}\right)\times(273\ \mathrm K)}{1\ \mathrm{atm}} = 22.414\ \mathrm L</span></p>
-<p>cioè <strong>una mole di un qualunque gas ideale, in condizioni normali, occupa sempre
-22.414 L</strong> — conseguenza diretta dell&#39;ipotesi di Avogadro.</p>
-<p>Riscrivendo <span class="m">PV=nRT</span> con <span class="m">n = m/M</span> (massa fratto massa molare) si ottengono due
-relazioni molto usate negli esercizi:</p>
+<p>cioè <strong>una mole di un qualunque gas ideale, in condizioni normali, occupa sempre 22.414 L</strong> — conseguenza diretta
+dell&#39;ipotesi di Avogadro.</p>
+<p><strong>Densità e concentrazione molare.</strong> La densità è il rapporto fra massa e volume, la concentrazione molare il rapporto
+fra moli e volume. Ricordando che massa <span class="m">=</span> moli <span class="m">\times</span> massa molare:</p>
+<p><span class="m d">\rho = \frac{\text{massa}}{\text{volume}} = \frac{n\cdot M}{V} = \frac nV\cdot M</span></p>
+<p>Dall&#39;equazione di stato: <span class="m">P = \dfrac nV RT = \dfrac{\rho}{M}RT</span>, quindi:</p>
 <div class="callout formula">
 
-<p><span class="m d">\rho = \frac{m}{V} = \frac{P\cdot M}{R\cdot T} \qquad\text{(densità del gas)} \qquad\qquad C = \frac{n}{V} = \frac{P}{R\cdot T} \qquad\text{(concentrazione molare)}</span></p>
-<p>La densità di un gas <strong>aumenta con <span class="m">P</span></strong> e <strong>diminuisce con <span class="m">T</span></strong>; a parità di <span class="m">T</span>
-e <span class="m">P</span>, gas con massa molare diversa hanno densità diversa (a differenza dei
-liquidi, dove densità e massa molare non sono legate in modo così diretto).</p>
+<p><span class="m d">\rho = \frac{m}{V} = \frac{P\cdot M}{R\cdot T}\ \left(\frac{\mathrm g}{\mathrm L}\right) \qquad\text{(densità del gas)} \qquad\qquad C = \frac{n}{V} = \frac{\rho}{M} = \frac{P}{R\cdot T}\ \left(\frac{\mathrm{mol}}{\mathrm L}\right) \qquad\text{(concentrazione molare)}</span></p>
+<p>La densità di un gas <strong>aumenta con <span class="m">P</span></strong> e <strong>diminuisce con <span class="m">T</span></strong>; a parità di <span class="m">T</span> e <span class="m">P</span>, gas con massa molare diversa
+hanno densità diversa (a differenza dei liquidi, dove densità e massa molare non sono legate in modo così diretto).
+La concentrazione molare, a parità di <span class="m">T</span> e <span class="m">P</span>, è la <strong>stessa per tutti i gas</strong>.</p>
 </div>
 
 <h2 id="lez-25-miscele-dalton">Miscele di gas ideali: legge di Dalton</h2>
-<p>Considera una miscela di <span class="m">N</span> specie gassose diverse che non reagiscono fra loro,
-tutte alla stessa <span class="m">T</span> e confinate nello stesso volume <span class="m">V</span>. Per l&#39;ipotesi di
-idealità, ciascuna specie si comporta come se le altre non ci fossero:
-<span class="m">n_k = P_k V / (RT)</span> per ogni specie <span class="m">k</span>, dove <span class="m">P_k</span> è la <strong>pressione parziale</strong>
-del gas <span class="m">k</span> (la pressione che eserciterebbe da solo, nello stesso volume e alla
-stessa temperatura). Sommando su tutte le specie:</p>
+<p>Considera una miscela di <span class="m">N</span> specie chimiche diverse il cui <strong>comportamento sia ideale</strong> e che <strong>non reagiscono</strong> fra
+loro, tutte alla stessa <span class="m">T</span> e confinate nello stesso volume <span class="m">V</span>. Il numero di moli totali è</p>
+<p><span class="m d">n_{TOT} = \sum_{k=1}^N n_k</span></p>
+<p>Per l&#39;ipotesi di idealità ciascuna specie si comporta come se le altre non ci fossero (le molecole non interagiscono):
+<span class="m">n_k = P_k V / (RT)</span> per ogni specie <span class="m">k = 1\dots N</span>, dove <span class="m">P_k</span> è la <strong>pressione parziale</strong> del gas <span class="m">k</span> (la pressione
+che eserciterebbe da solo, nello stesso volume e alla stessa temperatura). Sommando su tutte le specie:</p>
+<p><span class="m d">n_{TOT} = \sum_{k=1}^N n_k = \sum_{k=1}^N\frac{P_kV}{RT} = \frac{V}{RT}\sum_{k=1}^N P_k</span></p>
+<p>Indicando con <span class="m">P_{TOT}</span> la somma delle pressioni parziali, la miscela si comporta come un unico gas ideale:
+<span class="m">P_{TOT}\cdot V = n_{TOT}\cdot R\cdot T</span>, con</p>
 <div class="callout formula">
 
 <p><span class="m d">P_{TOT} = \sum_{k=1}^N P_k \qquad \text{(legge di Dalton)}</span></p>
-<p><strong>La pressione totale di una miscela di gas ideali è la somma delle pressioni
-parziali dei singoli componenti</strong> — equivalentemente, è uguale alla pressione che
-si otterrebbe trattando la miscela come un unico gas ideale con <span class="m">n_{TOT}=\sum n_k</span>
-moli.</p>
+<p><strong>La pressione totale esercitata da una miscela di gas sulle pareti del recipiente è uguale alla somma delle pressioni
+parziali dei singoli costituenti della miscela</strong> — equivalentemente, è uguale alla pressione che si otterrebbe
+trattando la miscela come un unico gas ideale con <span class="m">n_{TOT}=\sum n_k</span> moli. Esempio della dispensa: un gas a che da
+solo esercita 1 atm e un gas b che da solo esercita 3 atm, messi nello stesso recipiente, esercitano 4 atm.</p>
 </div>
 
-<p>Definendo la <strong>frazione molare</strong> della specie <span class="m">k</span> come <span class="m">x_k = n_k / n_{TOT}</span>, si
-trova una relazione molto pratica:</p>
-<p><span class="m d">x_k = \frac{P_k}{P_{TOT}} \qquad\Longrightarrow\qquad P_k = x_k \cdot P_{TOT}</span></p>
-<p>cioè la pressione parziale di un componente è la pressione totale pesata per la
-sua frazione molare — comodo perché evita di dover ricalcolare <span class="m">n_k</span> ogni volta.</p>
-<div class="callout sintesi">
+<p>Definendo la <strong>frazione molare</strong> della specie <span class="m">k</span> come <span class="m">x_k = n_k / n_{TOT}</span> (numero puro, <span class="m">\sum x_k = 1</span>), si trova:</p>
+<p><span class="m d">x_k = \frac{n_k}{n_{TOT}} = \frac{\dfrac{P_kV}{RT}}{\dfrac{P_{TOT}V}{RT}} = \frac{P_k}{P_{TOT}} \qquad\Longrightarrow\qquad P_k = x_k \cdot P_{TOT}</span></p>
+<p>cioè la pressione parziale di un componente è la pressione totale pesata per la sua frazione molare — comodo perché
+evita di dover ricalcolare <span class="m">n_k</span> ogni volta. Per i gas ideali anche la <strong>frazione in volume</strong> coincide con la frazione
+molare: l&#39;aria al 21% in volume di <span class="m">\chem{O_2}</span> ha <span class="m">x_{O_2} = 0.21</span>.</p>
+<div class="callout attenzione">
 
-<ul>
-<li><strong>Boyle</strong> (<span class="m">T</span> cost.): <span class="m">PV=k</span>. <strong>Charles</strong> (<span class="m">P</span> cost.): <span class="m">V \propto T^K</span>.
-<strong>Avogadro</strong>: volumi uguali, stesse <span class="m">T,P</span> <span class="m">\Rightarrow</span> stesso <span class="m">n</span>.</li>
-<li>Le tre leggi si fondono in <span class="m">PV=nRT</span>, con <span class="m">R</span> uguale per <strong>tutti</strong> i gas ideali.</li>
-<li>Volume molare a STP: <span class="m">22.414\ \mathrm L/\mathrm{mol}</span>.</li>
-<li><span class="m">\rho = PM/RT</span> (densità), <span class="m">C=P/RT</span> (concentrazione molare).</li>
-<li>Dalton: <span class="m">P_{TOT}=\sum P_k</span>; frazione molare <span class="m">x_k = n_k/n_{TOT} = P_k/P_{TOT}</span>.</li>
-</ul>
+<p><strong>Due gas che non reagiscono danno sempre una soluzione.</strong> I gas si mescolano in modo completo e omogeneo, in qualunque
+proporzione: il risultato è sempre una <strong>soluzione</strong> gassosa (miscela omogenea), qualunque sia la natura delle molecole
+(mono-, biatomiche…). Per le miscele di gas <strong>non esiste la saturazione</strong> e non si formano &quot;miscugli eterogenei&quot; né
+&quot;composti&quot;. L&#39;<strong>aria</strong> è appunto una soluzione gassosa formata principalmente da <strong>diazoto</strong> (<span class="m">\chem{N_2}</span>, circa 78%
+in volume) e <strong>diossigeno</strong> (<span class="m">\chem{O_2}</span>, circa 21%), più circa 1% di argon e tracce di <span class="m">\chem{CO_2}</span> e altri gas.</p>
+</div>
+
+<div class="callout attenzione">
+
+<p><strong>Una mole di diazoto</strong> contiene <span class="m">N_A = 6.02\times10^{23}</span> <strong>molecole</strong> di <span class="m">\chem{N_2}</span> (e il doppio di atomi di
+azoto, <span class="m">1.204\times10^{24}</span>). La mole conta le entità indicate dalla formula.</p>
+</div>
+
+<h2 id="lez-25-esercizi">Esercizi svolti (Laird, cap. 5)</h2>
+<div class="callout esempio">
+
+<p><strong>1. Che cos&#39;è un gas?</strong> Una sostanza in cui le molecole sono separate, in media, da distanze <strong>molto grandi rispetto
+alle dimensioni delle molecole stesse</strong>.</p>
+<p><strong>2. Condizioni standard (normali) di temperatura e pressione:</strong> <span class="m">0\ ^\circ\mathrm C</span> e <span class="m">1\ \mathrm{atm}</span>.</p>
 </div>
 
 <div class="callout esempio">
 
-<p><strong>Densità di <span class="m">\chem{N_2O}</span> a <span class="m">110\,^\circ\mathrm{C}</span> e 12 atm</strong> (da Laird, cap. 5).</p>
+<p><strong>3. Densità di <span class="m">\chem{N_2O}</span> a <span class="m">110\,^\circ\mathrm{C}</span> e 12 atm.</strong></p>
 <p><span class="m">T = 110 + 273 = 383\ \mathrm K</span>, <span class="m">M(\chem{N_2O}) = 2(14)+16 = 44\ \mathrm{g/mol}</span>.</p>
-<p><span class="m d">\rho = \frac{P\cdot M}{R\cdot T} = \frac{(12\ \mathrm{atm})\times(44\ \mathrm{g/mol})}{\left(0.08206\ \frac{\mathrm{atm\cdot L}}{\mathrm{mol\cdot K}}\right)\times(383\ \mathrm K)} \approx 16.8\ \mathrm{g/L}</span></p>
-<p>Coerente con l&#39;attesa: pressione alta (12 atm, non 1) e temperatura alta, i due
-effetti vanno in direzioni opposte ma la pressione, essendo 12 volte quella
-normale, domina — la densità è molto più alta di un gas leggero in condizioni
+<p><span class="m d">\rho = \frac{P\cdot M}{R\cdot T} = \frac{(12\ \mathrm{atm})\times(44\ \mathrm{g/mol})}{\left(0.08206\ \frac{\mathrm{atm\cdot L}}{\mathrm{mol\cdot K}}\right)\times(383\ \mathrm K)} = \frac{528}{31.43}\ \mathrm{g/L} \approx 16.8\ \mathrm{g/L}</span></p>
+<p>Coerente con l&#39;attesa: pressione alta (12 atm, non 1) e temperatura alta, i due effetti vanno in direzioni opposte ma
+la pressione, essendo 12 volte quella normale, domina — la densità è molto più alta di un gas leggero in condizioni
 normali.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>4. Pneumatici.</strong> Gonfiati a <span class="m">20\ ^\circ\mathrm C</span> a <span class="m">2.25\ \mathrm{atm}</span>, si riscaldano a <span class="m">45\ ^\circ\mathrm C</span>.
+Volume e moli costanti, quindi <span class="m">P_1/T_1 = P_2/T_2</span>:</p>
+<p><span class="m">T_1 = 293.15\ \mathrm K</span>, <span class="m">T_2 = 318.15\ \mathrm K</span>;
+<span class="m d">P_2 = P_1\frac{T_2}{T_1} = 2.25\ \mathrm{atm}\times\frac{318.15}{293.15} = 2.25\times1.0853 = 2.44\ \mathrm{atm}</span></p>
+<p>Errore tipico: usare i °C (<span class="m">2.25\times45/20 = 5.06</span> atm, assurdo).</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>5. Volume di <span class="m">\chem{H_2}</span> (c.n.) da 6.0 g di Al con eccesso di NaOH:</strong>
+<span class="m">2\,\chem{NaOH} + 2\,\chem{Al} + 6\,\chem{H_2O} \rightarrow 2\,\chem{NaAl(OH)_4} + 3\,\chem{H_2(g)}</span>.</p>
+<ol>
+<li><span class="m">n(\chem{Al}) = 6.0\ \mathrm g / 26.98\ \mathrm{g/mol} = 0.2224\ \mathrm{mol}</span>.</li>
+<li>Rapporto stechiometrico <span class="m">\chem{H_2}:\chem{Al} = 3:2</span>: <span class="m">n(\chem{H_2}) = 0.2224\times\tfrac32 = 0.3336\ \mathrm{mol}</span>.</li>
+<li>In c.n.: <span class="m">V = n\cdot V_m = 0.3336\times22.414 = 7.5\ \mathrm L</span>.</li>
+</ol>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>6. A pressione costante, la densità di un gas aumenta o diminuisce all&#39;aumentare della temperatura?</strong>
+<strong>Diminuisce</strong>: <span class="m">\rho = PM/(RT)</span> è inversamente proporzionale a <span class="m">T</span> (il gas si espande, la stessa massa occupa più
+volume).</p>
+<p><strong>7. Densità dell&#39;ossigeno in c.n.</strong> (1 mol occupa 22.4 L): <span class="m">\rho = M/V_m = 32\ \mathrm{g/mol} / 22.4\ \mathrm{L/mol}
+= 1.43\ \mathrm{g/L}</span>.</p>
+<p><strong>8. Legge di Gay-Lussac e pneumatici:</strong> a volume costante la pressione è proporzionale alla temperatura assoluta;
+la pressione delle gomme aumenta con il riscaldamento dovuto all&#39;attrito sulla strada (vedi esercizio 4).</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>9. Decomposizione del nitrito di ammonio:</strong> <span class="m">\chem{NH_4NO_2(s)} \rightarrow \chem{N_2(g)} + 2\,\chem{H_2O(g)}</span>.
+Litri di gas da 32.0 g a <span class="m">525\ ^\circ\mathrm C</span> e 1.5 atm.</p>
+<ol>
+<li><span class="m">M(\chem{NH_4NO_2}) = 14.01 + 4(1.008) + 14.01 + 2(16.00) = 64.05\ \mathrm{g/mol}</span>;
+<span class="m">n = 32.0/64.05 = 0.4996\ \mathrm{mol}</span>.</li>
+<li>Ogni mole di sale dà <span class="m">1 + 2 = 3</span> moli di gas: <span class="m">n_{gas} = 3\times0.4996 = 1.499\ \mathrm{mol}</span>.</li>
+<li><span class="m">T = 525 + 273.15 = 798.15\ \mathrm K</span>.</li>
+<li><span class="m">V = \dfrac{nRT}{P} = \dfrac{1.499\times0.08206\times798.15}{1.5} = \dfrac{98.18}{1.5} = 65\ \mathrm L</span>.</li>
+</ol>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>10. Vapor d&#39;acqua in c.n.: 2.80 L. Massa?</strong>
+<span class="m">n = 2.80/22.414 = 0.1249\ \mathrm{mol}</span>; <span class="m">m = 0.1249\times18.02 = 2.25\ \mathrm g</span>.
+(Problema &quot;di scuola&quot;: in c.n. l&#39;acqua sarebbe in realtà liquida o solida; l&#39;esercizio la tratta come gas ideale.)</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>11. Benzina (ottano, <span class="m">\chem{C_8H_{18}}</span>): volume di <span class="m">\chem{O_2}</span> (STP) per bruciare 3.78 L di benzina</strong>
+(<span class="m">\rho = 0.81\ \mathrm{g/mL}</span>).</p>
+<ol>
+<li>Reazione bilanciata: <span class="m">2\,\chem{C_8H_{18}} + 25\,\chem{O_2} \rightarrow 16\,\chem{CO_2} + 18\,\chem{H_2O}</span>
+(C: 16 = 16; H: 36 = 36; O: 50 = 32 + 18).</li>
+<li>Massa di benzina: <span class="m">3780\ \mathrm{mL}\times0.81\ \mathrm{g/mL} = 3062\ \mathrm g</span>.</li>
+<li><span class="m">M(\chem{C_8H_{18}}) = 8(12.01) + 18(1.008) = 114.2\ \mathrm{g/mol}</span>; <span class="m">n = 3062/114.2 = 26.8\ \mathrm{mol}</span>.</li>
+<li><span class="m">n(\chem{O_2}) = 26.8\times\tfrac{25}{2} = 335\ \mathrm{mol}</span>.</li>
+<li><span class="m">V = 335\times22.4 = 7.5\times10^3\ \mathrm L</span> (circa 7500 L).</li>
+</ol>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>12. Velocità di effusione</strong> (problema &quot;molto difficile&quot;). Le molecole che urteranno una parete di area <span class="m">A</span> nel
+prossimo secondo si trovano in un volume <span class="m">u\cdot A</span> (<span class="m">u</span> = velocità molecolare, m/s). Il numero di molecole per unità
+di volume è <span class="m">N/V</span>, quindi il numero di urti al secondo è <span class="m">Z_w \propto (N/V)\cdot u\cdot A</span>. Sostituendo la velocità
+quadratica media della teoria cinetica (<a href="#/teoria/chimica/26/lez-26">Lezione 26</a>), <span class="m">u = \sqrt{3RT/M}</span>:</p>
+<p><span class="m d">Z_w \propto \frac NV\cdot\sqrt{\frac{3RT}{M}}\cdot A</span></p>
+<p>La velocità di fuoriuscita attraverso un piccolo foro di area <span class="m">A</span> è proprio <span class="m">Z_w</span>: a parità di <span class="m">T</span> e di
+concentrazione, la <strong>velocità di effusione è inversamente proporzionale alla radice della massa molare</strong>,
+<span class="m">v_{eff}\propto 1/\sqrt M</span> (legge di Graham): un gas leggero effonde più rapidamente di uno pesante.</p>
+<p><strong>13. Significato della costante <span class="m">a</span> di Van der Waals:</strong> la sua entità indica la <strong>forza delle attrazioni fra le
+molecole</strong> di un dato gas.</p>
+</div>
+
+<h2 id="lez-25-problemi">Esempi sul tipo di problemi del paniere</h2>
+<div class="callout esempio">
+
+<p><strong>Gas con reagente limitante.</strong> Si fanno reagire 27.0 g di alluminio con 2.00 L di soluzione di <span class="m">\chem{H_2SO_4}</span>
+0.90 M. Quale volume di <span class="m">\chem{H_2}</span> si ottiene a <span class="m">40\ ^\circ\mathrm C</span> e 1.4 atm?</p>
+<ol>
+<li>Bilanciamento di <span class="m">\chem{Al} + \chem{H_2SO_4} \rightarrow \chem{Al_2(SO_4)_3} + \chem{H_2}</span>: servono 2 Al a
+sinistra (2 Al a destra), 3 solfati → 3 <span class="m">\chem{H_2SO_4}</span>, 6 H → 3 <span class="m">\chem{H_2}</span>:
+<span class="m">2\,\chem{Al} + 3\,\chem{H_2SO_4} \rightarrow \chem{Al_2(SO_4)_3} + 3\,\chem{H_2}</span>.</li>
+<li>Moli: <span class="m">n(\chem{Al}) = 27.0/26.98 = 1.00\ \mathrm{mol}</span>; <span class="m">n(\chem{H_2SO_4}) = 0.90\ \mathrm{mol/L}\times2.00\
+   \mathrm L = 1.80\ \mathrm{mol}</span>.</li>
+<li>Limitante: per 1.00 mol di Al servono <span class="m">1.00\times\tfrac32 = 1.50</span> mol di acido; ce ne sono 1.80 → l&#39;<strong>alluminio è
+limitante</strong>.</li>
+<li><span class="m">n(\chem{H_2}) = 1.00\times\tfrac32 = 1.50\ \mathrm{mol}</span>.</li>
+<li><span class="m">T = 313.15\ \mathrm K</span>: <span class="m">V = \dfrac{1.50\times0.08206\times313.15}{1.4} = 27.5\ \mathrm L</span>.</li>
+</ol>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Volume totale e pressioni parziali dei prodotti gassosi (Dalton).</strong> Esplosione della nitroglicerina:
+<span class="m">\chem{C_3H_5(NO_3)_3(l)} \rightarrow \chem{N_2} + \chem{H_2O} + \chem{CO_2} + \chem{O_2}</span>. Si decompongono 45.4 g;
+i gas sono a 2.0 atm e <span class="m">300\ ^\circ\mathrm C</span>.</p>
+<ol>
+<li>Bilanciamento: con 4 molecole di nitroglicerina (<span class="m">\chem{C_{12}H_{20}N_{12}O_{36}}</span>) si ottengono 12 <span class="m">\chem{CO_2}</span>,
+10 <span class="m">\chem{H_2O}</span>, 6 <span class="m">\chem{N_2}</span>; ossigeni usati <span class="m">24 + 10 = 34</span>, ne restano <span class="m">36 - 34 = 2</span> → 1 <span class="m">\chem{O_2}</span>:
+<span class="m">4\,\chem{C_3H_5(NO_3)_3} \rightarrow 6\,\chem{N_2} + 10\,\chem{H_2O} + 12\,\chem{CO_2} + \chem{O_2}</span>.</li>
+<li><span class="m">M = 3(12.01) + 5(1.008) + 3(14.01) + 9(16.00) = 227.1\ \mathrm{g/mol}</span>; <span class="m">n = 45.4/227.1 = 0.200\ \mathrm{mol}</span>.</li>
+<li>Moli di gas: ogni 4 mol di esplosivo danno <span class="m">6+10+12+1 = 29</span> mol di gas →
+<span class="m">n_{TOT} = 0.200\times\tfrac{29}{4} = 1.45\ \mathrm{mol}</span>.</li>
+<li><span class="m">T = 573.15\ \mathrm K</span>: <span class="m">V = \dfrac{1.45\times0.08206\times573.15}{2.0} = 34.1\ \mathrm L</span>.</li>
+<li>Pressioni parziali <span class="m">P_k = x_kP_{TOT}</span>, con le frazioni molari uguali ai rapporti dei coefficienti:
+<span class="m">P_{N_2} = \tfrac{6}{29}\times2.0 = 0.414\ \mathrm{atm}</span>; <span class="m">P_{H_2O} = \tfrac{10}{29}\times2.0 = 0.690\ \mathrm{atm}</span>;
+<span class="m">P_{CO_2} = \tfrac{12}{29}\times2.0 = 0.828\ \mathrm{atm}</span>; <span class="m">P_{O_2} = \tfrac{1}{29}\times2.0 = 0.069\ \mathrm{atm}</span>.
+Controllo: <span class="m">0.414 + 0.690 + 0.828 + 0.069 = 2.00\ \mathrm{atm}</span>.</li>
+</ol>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Pressione parziale in Pa e volume in m³.</strong> Una stanza di <span class="m">4.00\times3.00\times2.50\ \mathrm m</span> a
+<span class="m">25\ ^\circ\mathrm C</span> ha una pressione parziale di argon di <span class="m">1013\ \mathrm{Pa}</span>. Moli di argon?</p>
+<p>Con unità S.I.: <span class="m">V = 30.0\ \mathrm{m^3}</span>, <span class="m">T = 298.15\ \mathrm K</span>, <span class="m">R = 8.314\ \mathrm{J/(mol\,K)}</span>:
+<span class="m d">n_{Ar} = \frac{P_{Ar}V}{RT} = \frac{1013\times30.0}{8.314\times298.15} = \frac{30390}{2479} = 12.3\ \mathrm{mol}</span>
+(oppure in atm e L: <span class="m">P = 1013/101325 = 0.0100\ \mathrm{atm}</span>, <span class="m">V = 30\,000\ \mathrm L</span>, <span class="m">n = 0.0100\times30\,000 /
+(0.08206\times298.15) = 12.3</span> mol). La pressione <strong>totale</strong> non serve: per l&#39;argon conta solo la sua pressione parziale.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Inquinanti dell&#39;aria determinati per titolazione</strong> (schema dei problemi su <span class="m">\chem{SO_2}</span> e <span class="m">\chem{NO_2}</span>). Un volume
+noto d&#39;aria (portata × tempo, oppure litri aspirati) gorgoglia in una soluzione che trasforma il gas in un acido
+(<span class="m">\chem{SO_2} + \chem{H_2O_2} \rightarrow \chem{H_2SO_4}</span>; <span class="m">2\,\chem{NO_2} + 2\,\chem{H_2O_2} \rightarrow
+2\,\chem{HNO_3} + \ldots</span>); l&#39;acido si titola con una base. Sequenza:</p>
+<ol>
+<li>moli di base <span class="m">= M_{base}\times V_{base}</span>;</li>
+<li>moli di acido dalla stechiometria della neutralizzazione (<span class="m">\chem{H_2SO_4}</span> è diprotico: 2 mol di <span class="m">\chem{OH^-}</span>
+per mole; <span class="m">\chem{HNO_3}</span> monoprotico: 1 a 1);</li>
+<li>moli di gas inquinante dalla stechiometria della reazione di assorbimento;</li>
+<li>massa = moli × massa molare, divisa per il volume d&#39;aria campionato (in m³ o in L).</li>
+</ol>
+<p>Esempio numerico: 40 L d&#39;aria; per neutralizzare l&#39;<span class="m">\chem{HNO_3}</span> formato servono 4.0 mL di NaOH 0.0100 M.
+<span class="m">n(\chem{NaOH}) = 4.0\times10^{-5}\ \mathrm{mol} = n(\chem{HNO_3}) = n(\chem{NO_2})</span> (rapporto 2:2);
+<span class="m">m = 4.0\times10^{-5}\times46.01 = 1.84\times10^{-3}\ \mathrm g = 1.84\ \mathrm{mg}</span>; concentrazione
+<span class="m">1.84/40 = 0.046\ \mathrm{mg/L}</span>.</p>
+</div>
+
+<div class="callout sintesi">
+
+<ul>
+<li><strong>Pressione</strong>: <span class="m">P = F_\perp/A</span>; <span class="m">1\ \mathrm{atm} = 101325\ \mathrm{Pa} = 1.01325\ \mathrm{bar} = 760\ \mathrm{mmHg}</span>.
+<strong>Temperatura</strong>: <span class="m">T^{\circ C} = T^K - 273.15</span>, <span class="m">T^{\circ F} = 1.8T^{\circ C} + 32</span>; 0 K zero assoluto. <span class="m">P</span>, <span class="m">T</span>,
+<span class="m">\rho</span> intensive; <span class="m">V</span> estensivo.</li>
+<li><strong>Equazione di stato</strong> <span class="m">f(P,V,T;m)=0</span>; solidi: <span class="m">V = V_0(1+\alpha\Delta T)</span>, <span class="m">L = L_0(1+\lambda\Delta T)</span>,
+<span class="m">\alpha = 3\lambda</span>.</li>
+<li><strong>Boyle</strong> (<span class="m">T</span> cost.): <span class="m">PV=k</span>. <strong>Charles</strong> (<span class="m">P</span> cost.): <span class="m">V \propto T^K</span>, estrapolazione a <span class="m">-273.15\ ^\circ\mathrm C</span>.
+<strong>Gay-Lussac</strong>: volumi di combinazione in rapporti interi (e, in altri testi, <span class="m">P\propto T</span> a <span class="m">V</span> cost.).
+<strong>Avogadro</strong>: volumi uguali, stesse <span class="m">T,P</span> <span class="m">\Rightarrow</span> stesso numero di molecole.</li>
+<li>Le leggi si fondono in <span class="m">PV=nRT</span>, con <span class="m">R = M\cdot c</span> uguale per <strong>tutti</strong> i gas ideali (<span class="m">0.08206</span> atm L/(mol K) <span class="m">=
+  8.314</span> J/(mol K)). Validità: covolume e interazioni trascurabili; altrimenti gas reale (Van der Waals).</li>
+<li>Volume molare a STP (<span class="m">0\ ^\circ\mathrm C</span>, 1 atm): <span class="m">22.414\ \mathrm L/\mathrm{mol}</span>.</li>
+<li><span class="m">\rho = PM/RT</span> (densità), <span class="m">C=P/RT</span> (concentrazione molare). <span class="m">P_1V_1/T_1 = P_2V_2/T_2</span>.</li>
+<li>Dalton: <span class="m">P_{TOT}=\sum P_k</span>; frazione molare <span class="m">x_k = n_k/n_{TOT} = P_k/P_{TOT}</span>. Due gas che non reagiscono danno sempre
+una soluzione.</li>
+</ul>
 </div>
 
 <div class="callout esame">
 
-<p><strong>Come cade all&#39;esame.</strong> Il paniere ha <strong>11 chiuse e 11 aperte</strong> sotto la Lezione
-025 (gas ideali, principio di Avogadro, stechiometria di combustione,
-miscele/legge di Dalton) più <strong>1 chiusa e 1 aperta</strong> sotto la Lezione 026 (teoria
-cinetica) — tutte ora trascritte in <code>90 Esercizi.md</code>. È il blocco più corposo di
-domande reali fra le Lezioni 13–25: un calcolo diretto con <span class="m">PV=nRT</span> (trovare <span class="m">P</span>,
-<span class="m">V</span>, <span class="m">T</span> o <span class="m">n</span> mancante) resta il tipo più frequente, spesso combinato con una
-reazione da bilanciare e un reagente limitante. Il punto critico più comune è
-l&#39;unità di misura di <span class="m">T</span>: <strong>va sempre convertita in kelvin</strong> prima di usarla nella
-formula, mai lasciata in Celsius.</p>
-<p>Sequenza da seguire: identifica le tre grandezze note fra <span class="m">P,V,T,n</span> → converti
-tutte le unità di misura (kelvin per <span class="m">T</span>, atm o Pa coerenti con l&#39;<span class="m">R</span> scelta, litri
-o m³ per <span class="m">V</span>) → risolvi per l&#39;incognita → se la domanda chiede densità o
-concentrazione, usa le formule derivate invece di passare per <span class="m">n</span> e <span class="m">V</span>
-separatamente → se c&#39;è una reazione, bilancia e trova il limitante <strong>prima</strong> di
-applicare <span class="m">PV=nRT</span> al prodotto.</p>
-<p><strong>Allenati qui:</strong> Paniere Lez. 25, 1–22 · Paniere Lez. 26, 1–2
-· Extra 53 · Extra 54</p>
+<p><strong>Come cade all&#39;esame.</strong> Il paniere ha <strong>11 chiuse e 11 aperte</strong> sotto la Lezione 025 (gas ideali, principio di
+Avogadro, stechiometria di combustione, miscele/legge di Dalton) più <strong>1 chiusa e 1 aperta</strong> sotto la Lezione 026
+(teoria cinetica) — tutte ora trascritte in <code>90 Esercizi.md</code>. È il blocco più corposo di domande reali fra le Lezioni
+13–25: un calcolo diretto con <span class="m">PV=nRT</span> (trovare <span class="m">P</span>, <span class="m">V</span>, <span class="m">T</span> o <span class="m">n</span> mancante) resta il tipo più frequente, spesso
+combinato con una reazione da bilanciare e un reagente limitante. Il punto critico più comune è l&#39;unità di misura di
+<span class="m">T</span>: <strong>va sempre convertita in kelvin</strong> prima di usarla nella formula, mai lasciata in Celsius.</p>
+<p>Domande teoriche ricorrenti: enunciare la <strong>legge di Dalton</strong>, la <strong>legge di Gay-Lussac</strong>, il <strong>principio di Avogadro</strong>
+(con una reazione in fase gassosa a scelta, come la combustione del metano sopra) e, soprattutto, <strong>&quot;la legge di stato
+dei gas ideali, la sua derivazione dai fatti sperimentali e le sue applicazioni&quot;</strong>: va raccontata tutta la catena
+Boyle → massa → Charles → Gay-Lussac/Avogadro → <span class="m">R</span>, con i limiti di validità e le applicazioni (volume molare,
+densità, concentrazione, miscele). Chiuse &quot;di concetto&quot;: la pressione a <span class="m">-273.15\ ^\circ\mathrm C</span> (zero), due gas
+mescolati (sempre una soluzione), composizione dell&#39;aria, molecole in una mole.</p>
+<p>Sequenza da seguire: identifica le tre grandezze note fra <span class="m">P,V,T,n</span> → converti tutte le unità di misura (kelvin per
+<span class="m">T</span>, atm o Pa coerenti con l&#39;<span class="m">R</span> scelta, litri o m³ per <span class="m">V</span>) → risolvi per l&#39;incognita → se la domanda chiede densità
+o concentrazione, usa le formule derivate invece di passare per <span class="m">n</span> e <span class="m">V</span> separatamente → se c&#39;è una reazione,
+bilancia e trova il limitante <strong>prima</strong> di applicare <span class="m">PV=nRT</span> al prodotto.</p>
+<p><strong>Allenati qui:</strong> Paniere Lez. 25, 1–22 · Paniere Lez. 26, 1–2 ·
+Extra 53 · Extra 54</p>
 </div>

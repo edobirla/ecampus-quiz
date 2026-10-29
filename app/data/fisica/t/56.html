@@ -1,146 +1,241 @@
 <h1>Lezione 56 — Potenza elettrica ed effetto Joule</h1>
-<h2>Potenza elettrica</h2>
-<p>Il campo elettrico sposta le cariche e quindi compie lavoro. Spostare una carica <span class="m">dq</span> tra due punti con differenza di potenziale <span class="m">V</span> costa <span class="m">dL = V\,dq</span>. Dividendo per il tempo si ottiene la potenza.</p>
-<p><span class="m d">P = V\,I</span></p>
+<p>Nella lezione precedente abbiamo visto che un campo elettrico mette in moto le cariche in un conduttore. Ma spostare cariche significa <strong>compiere lavoro</strong>: il campo trasferisce energia alle cariche in movimento. In questa lezione calcoliamo quanta energia viene trasferita ogni secondo (la <strong>potenza elettrica</strong>) e dove va a finire. Nei conduttori ohmici finisce tutta in calore: è l&#39;<strong>effetto Joule</strong>, che vediamo sia per un intero resistore sia in forma locale, punto per punto. Chiudiamo con la potenza in serie e in parallelo, le unità pratiche (kWh e Ah) e le applicazioni più comuni, come stufe, scaldabagni e fusibili.</p>
+<h2>Lavoro del campo e potenza elettrica</h2>
+<p>Un campo elettrico applicato a delle cariche le sposta nel tempo, cioè produce una corrente. Mentre lo fa, compie lavoro.</p>
+<p><strong>Ragionamento.</strong></p>
+<ol>
+<li>Tra due punti A e B il campo mantiene una differenza di potenziale <span class="m">\Delta V = V_A - V_B</span>.</li>
+<li>Per definizione di potenziale, il lavoro fatto dal campo per portare una carica <span class="m">dq</span> da A a B è <span class="m">dL = dq\,\Delta V</span>.</li>
+<li>Nel tempo <span class="m">dt</span> passa la carica <span class="m">dq = i\,dt</span> (definizione di corrente). Quindi <span class="m">dL = \Delta V\,i\,dt</span>.</li>
+<li>La potenza è il lavoro per unità di tempo: <span class="m">P = \dfrac{dL}{dt} = \Delta V\,i</span>.</li>
+</ol>
+<p><span class="m d">P = V\,i</span></p>
 <p>dove:</p>
 <ul>
-<li><span class="m">P</span> = potenza (W, con <span class="m">1\,\mathrm{W} = 1\,\mathrm{J/s}</span>)</li>
-<li><span class="m">V</span> = differenza di potenziale (V)</li>
-<li><span class="m">I</span> = corrente (A)</li>
+<li><span class="m">P</span> = potenza elettrica trasferita dal campo alle cariche (W, watt)</li>
+<li><span class="m">V</span> = differenza di potenziale tra i due punti (V)</li>
+<li><span class="m">i</span> = intensità di corrente (A)</li>
 </ul>
-<p>La potenza dice quanta energia passa ogni secondo. Un trapano da 500 W riceve dalle cariche 500 J ogni secondo. Una centrale da 5 MW può fornire 5 milioni di joule al secondo.</p>
-<p>L&#39;energia è potenza per tempo:</p>
+<p><strong>Unità.</strong> <span class="m">1\,\mathrm W = 1\,\mathrm V \cdot 1\,\mathrm A = 1\,\dfrac{\mathrm J}{\mathrm C} \cdot \dfrac{\mathrm C}{\mathrm s} = 1\,\mathrm{J/s}</span>.</p>
+<p>Questa formula è <strong>generale</strong>: vale per qualunque tratto di circuito, qualunque cosa ci sia dentro. Dove va poi l&#39;energia dipende dal dispositivo:</p>
+<ul>
+<li>in un <strong>conduttore ohmico</strong> diventa <strong>calore</strong> (effetto Joule);</li>
+<li>in un <strong>motore elettrico</strong> diventa <strong>lavoro meccanico</strong>;</li>
+<li>in un <strong>condensatore</strong> viene <strong>immagazzinata</strong> come energia elettrostatica.</li>
+</ul>
+<p><strong>Significato della potenza.</strong> La potenza dice quanta energia viene trasferita <strong>ogni secondo</strong>. Un trapano da 500 W riceve dalle cariche che lo attraversano 500 J di energia ogni secondo. Una centrale da 5 MW può compiere un lavoro di 5 milioni di joule ogni secondo.</p>
+<p><strong>Energia in un intervallo di tempo.</strong> Se la potenza è costante, l&#39;energia trasferita in un tempo <span class="m">t</span> è</p>
 <p><span class="m d">E = P\,t</span></p>
 <p>dove <span class="m">E</span> = energia (J), <span class="m">P</span> = potenza (W), <span class="m">t</span> = tempo (s).</p>
 <div class="callout esempio">
 
+<p><strong>Potenza, tempo, energia.</strong></p>
 <ul>
-<li>Lampadina da 100 W: per dissipare 30 kJ servono <span class="m">t = 30\,000/100 = 300\,\mathrm{s}</span>, cioè 5 minuti.</li>
-<li>Sorgente da 500 W per 10 minuti: <span class="m">Q = 500 \cdot 600 = 300\,\mathrm{kJ}</span>.</li>
-<li>Impianto da 3 kW a 220 V: corrente massima <span class="m">I = P/V = 3000/220 \approx 13{,}6\,\mathrm{A}</span>.</li>
+<li>Una lampadina da 100 W deve dissipare 30 kJ. Tempo: <span class="m">t = \dfrac{E}{P} = \dfrac{30\,000\,\mathrm J}{100\,\mathrm W} = 300\,\mathrm s = 5\,\mathrm{minuti}</span>.</li>
+<li>Una sorgente da 500 W per 10 minuti: <span class="m">t = 600\,\mathrm s</span>, <span class="m">Q = P\,t = 500 \cdot 600 = 300\,000\,\mathrm J = 300\,\mathrm{kJ}</span>.</li>
+<li>Un impianto domestico da 3 kW a 220 V: la corrente massima che può passare è <span class="m">i = \dfrac{P}{V} = \dfrac{3000}{220} \approx 13{,}6\,\mathrm A</span>.</li>
 </ul>
 </div>
 
-<h2>Effetto Joule</h2>
-<p>In un conduttore ohmico, in regime stazionario, le cariche non accelerano. Anche il potenziale resta costante. Il lavoro del campo quindi non diventa né energia cinetica né energia potenziale. Negli urti passa agli ioni del reticolo, che vibrano di più: il conduttore <strong>si scalda</strong>. Questa conversione totale di energia elettrica in calore è l&#39;<strong>effetto Joule</strong>.</p>
-<p>Succede in <strong>ogni</strong> conduttore ohmico percorso da corrente, perché ogni conduttore reale ha <span class="m">R &gt; 0</span>.</p>
-<p>Unendo <span class="m">P = VI</span> e <span class="m">V = RI</span> si ottengono tre forme equivalenti:</p>
-<p><span class="m d">P = V I = R I^2 = \frac{V^2}{R}</span></p>
+<h2>L&#39;effetto Joule</h2>
+<p>Nel modello classico la corrente è un moto d&#39;insieme di cariche frenate da una specie di <strong>attrito viscoso</strong> (gli urti con il reticolo). Come ogni attrito, anche questo <strong>dissipa</strong> energia. Vediamo perché tutto il lavoro del campo diventa calore.</p>
+<p>In un conduttore ohmico in <strong>regime stazionario</strong> il lavoro fatto dal campo per mantenere in moto le cariche:</p>
+<ul>
+<li><strong>non</strong> diventa energia <strong>potenziale</strong>: il potenziale nei vari punti resta costante nel tempo;</li>
+<li><strong>non</strong> diventa energia <strong>cinetica</strong>: la velocità di deriva resta costante, le cariche non accelerano.</li>
+</ul>
+<p>Dove va allora? Negli <strong>urti</strong> con gli ioni del reticolo cristallino: l&#39;energia passa agli ioni come <strong>agitazione termica</strong>, gli ioni vibrano di più e la temperatura del conduttore sale. Se il conduttore è a contatto con un ambiente più freddo, cede calore all&#39;esterno. Questa <strong>conversione completa in calore</strong> del lavoro del campo elettrico sulla corrente si chiama <strong>effetto Joule</strong>.</p>
+<p>Succede in <strong>ogni</strong> conduttore ohmico percorso da corrente, perché ogni conduttore reale ha resistenza <span class="m">R &gt; 0</span>. Fanno eccezione solo i superconduttori, che hanno resistenza nulla.</p>
+<p><strong>Le tre forme della potenza dissipata.</strong> Unisco la formula generale <span class="m">P = Vi</span> con la legge di Ohm <span class="m">V = Ri</span>:</p>
+<ul>
+<li>sostituendo <span class="m">V = Ri</span>: <span class="m">P = (Ri)\,i = R\,i^2</span>;</li>
+<li>sostituendo <span class="m">i = V/R</span>: <span class="m">P = V \cdot \dfrac{V}{R} = \dfrac{V^2}{R}</span>.</li>
+</ul>
+<p><span class="m d">P = V\,i = R\,i^2 = \frac{V^2}{R}</span></p>
 <p>dove:</p>
 <ul>
 <li><span class="m">P</span> = potenza dissipata in calore (W)</li>
 <li><span class="m">R</span> = resistenza (Ω)</li>
-<li><span class="m">I</span> = corrente (A)</li>
+<li><span class="m">i</span> = corrente nel resistore (A)</li>
 <li><span class="m">V</span> = tensione ai capi del resistore (V)</li>
 </ul>
-<p>Scegli la forma in base a cosa conosci: <span class="m">RI^2</span> se hai la corrente, <span class="m">V^2/R</span> se hai la tensione.</p>
+<p>Sono tre scritture <strong>equivalenti</strong>: scegli quella con i dati che hai. <span class="m">Ri^2</span> se conosci la corrente, <span class="m">V^2/R</span> se conosci la tensione. Il calore prodotto in un tempo <span class="m">t</span> è <span class="m">Q = R\,i^2\,t</span>.</p>
+<p>Queste relazioni servono a <strong>progettare</strong>: dimensionare un dispositivo che deve erogare il calore necessario a scaldare qualcosa, oppure, al contrario, evitare che un componente raggiunga temperature troppo alte.</p>
 <div class="callout esempio">
 
+<p><strong>Applicazioni dirette delle tre forme.</strong></p>
 <ul>
-<li>5 Ω con 16 A: <span class="m">P = 5 \cdot 16^2 = 1280\,\mathrm{W}</span>.</li>
-<li>10 Ω su una pila da 9 V: <span class="m">P = 81/10 = 8{,}1\,\mathrm{W}</span>. Se il resistore regge solo 5 W, <strong>brucia</strong>.</li>
-<li>1 kΩ a 50 V: <span class="m">P = 2500/1000 = 2{,}5\,\mathrm{W}</span>.</li>
-<li>Stufa da 500 W a 220 V: <span class="m">R = 220^2/500 \approx 97\,\Omega</span>, circa 100 Ω.</li>
-<li>Lampadina che assorbe 300 mA a 1,5 V: <span class="m">R = 1{,}5/0{,}3 = 5\,\Omega</span>.</li>
-<li>22 Ω alla rete a 220 V: <span class="m">I = 220/22 = 10\,\mathrm{A}</span>.</li>
+<li>Filo da 5 Ω con 16 A: <span class="m">P = R\,i^2 = 5 \cdot 16^2 = 5 \cdot 256 = 1280\,\mathrm W</span>.</li>
+<li>Resistenza da 10 Ω su una pila da 9 V: <span class="m">P = \dfrac{V^2}{R} = \dfrac{81}{10} = 8{,}1\,\mathrm W</span>.</li>
+<li>Resistenza da 1 kΩ a 50 V: <span class="m">P = \dfrac{50^2}{1000} = \dfrac{2500}{1000} = 2{,}5\,\mathrm W</span>.</li>
+<li>Stufa da 500 W a 220 V: <span class="m">R = \dfrac{V^2}{P} = \dfrac{48\,400}{500} \approx 97\,\Omega</span>, cioè circa 100 Ω.</li>
+<li>Resistenza alimentata a 12 V che eroga 40 W: <span class="m">R = 144/40 = 3{,}6\,\Omega</span>.</li>
+<li>Lampadina che assorbe 300 mA da una batteria da 1,5 V: <span class="m">R = \dfrac{V}{i} = \dfrac{1{,}5}{0{,}3} = 5\,\Omega</span> (qui basta la legge di Ohm).</li>
+<li>Resistenza da 22 Ω attaccata alla rete a 220 V: <span class="m">i = \dfrac{V}{R} = \dfrac{220}{22} = 10\,\mathrm A</span>.</li>
 </ul>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Una resistenza che brucia.</strong> Una resistenza da 10 Ω, che regge al massimo 5 W, è collegata a una pila da 9 V. Potenza dissipata: <span class="m">P = V^2/R = 81/10 = 8{,}1\,\mathrm W</span>. È più del massimo di 5 W: il componente si surriscalda e <strong>brucia</strong>.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Lampadina accesa ogni giorno.</strong> (esercizio della dispensa) Una lampadina da 100 W è alimentata a 220 V. L&#39;energia costa 0,10 euro/kWh. Quanto costa tenerla accesa 12 ore al giorno? Quanto valgono la sua resistenza e la corrente?</p>
+<ol>
+<li>Energia consumata in un&#39;ora: <span class="m">E = P\,\Delta t = 0{,}1\,\mathrm{kW} \cdot 1\,\mathrm h = 0{,}1\,\mathrm{kWh}</span>. In 12 ore: <span class="m">1{,}2\,\mathrm{kWh}</span>.</li>
+<li>Costo: <span class="m">1{,}2 \cdot 0{,}10 = 0{,}12</span> euro al giorno.</li>
+<li>Resistenza: invertendo <span class="m">P = V^2/R</span>, <span class="m">R = \dfrac{V^2}{P} = \dfrac{220^2}{100} = \dfrac{48\,400}{100} = 484\,\Omega</span>.</li>
+<li>Corrente: <span class="m">i = \dfrac{P}{V} = \dfrac{100}{220} \approx 0{,}45\,\mathrm A</span>.</li>
+</ol>
 </div>
 
 <div class="callout attenzione">
 
-<p>La potenza si misura in <strong>watt</strong>, non in joule. Il joule è energia. &quot;8,1 J&quot; come risposta a &quot;quanta potenza&quot; è sbagliato.</p>
+<p>La <strong>potenza</strong> si misura in <strong>watt</strong>, l&#39;<strong>energia</strong> in <strong>joule</strong>. Se la domanda chiede &quot;quanta potenza&quot;, una risposta in joule (per esempio &quot;8,1 J&quot;) è sbagliata anche se il numero è giusto.</p>
 </div>
 
 <h2>Forma locale dell&#39;effetto Joule</h2>
-<p>A volte serve la potenza in un volumetto piccolo del conduttore. Si usa la <strong>densità di potenza</strong>: potenza per unità di volume.</p>
-<p><span class="m d">w = \vec E \cdot \vec j</span></p>
+<p>A volte serve sapere quanta potenza si dissipa in un <strong>volumetto</strong> del conduttore, per esempio quando la corrente non è uniforme. Si usa allora la <strong>densità di potenza</strong>, cioè la potenza per unità di volume.</p>
+<p><strong>Ragionamento.</strong></p>
+<ol>
+<li>Nel volumetto <span class="m">dV</span> ci sono <span class="m">n\,dV</span> portatori, ciascuno con carica <span class="m">q</span>.</li>
+<li>Su ogni portatore il campo esercita la forza <span class="m">q\vec E</span>. Per spostarli tutti di un tratto <span class="m">d\vec l</span> il campo compie il lavoro <span class="m">dL = n\,dV\,q\,\vec E \cdot d\vec l</span>.</li>
+<li>Lo spostamento in un tempo <span class="m">dt</span> è legato alla velocità di deriva: <span class="m">d\vec l = \vec v_d\,dt</span>. Quindi <span class="m">dL = n\,dV\,q\,\vec E \cdot \vec v_d\,dt = \vec E \cdot (n q \vec v_d)\,dV\,dt</span>.</li>
+<li>Riconosco la densità di corrente: <span class="m">n q \vec v_d = \vec j</span>. Quindi <span class="m">dL = \vec E \cdot \vec j\,dV\,dt</span>.</li>
+<li>Divido per il volume e per il tempo: la potenza per unità di volume è</li>
+</ol>
+<p><span class="m d">w = \frac{dL}{dV\,dt} = \vec E \cdot \vec j</span></p>
 <p>dove:</p>
 <ul>
-<li><span class="m">w</span> = potenza dissipata per unità di volume (W/m³)</li>
+<li><span class="m">w</span> = densità di potenza dissipata (W/m³)</li>
 <li><span class="m">\vec E</span> = campo elettrico nel punto (V/m)</li>
 <li><span class="m">\vec j</span> = densità di corrente nel punto (A/m²)</li>
 </ul>
-<p>Ragionamento in tre passi:</p>
+<p>In un conduttore ohmico <strong>isotropo</strong> <span class="m">\vec E</span> e <span class="m">\vec j</span> sono sempre paralleli (<span class="m">\vec j = \sigma\vec E</span>), quindi il prodotto scalare diventa un semplice prodotto dei moduli:</p>
+<p><span class="m d">w = E\,j = \rho\,j^2 = \sigma\,E^2</span></p>
+<p><strong>Verifica.</strong> In un filo cilindrico di sezione <span class="m">S</span> e lunghezza <span class="m">l</span>, con corrente uniforme: <span class="m">w = \rho j^2 = \rho\,i^2/S^2</span>. Moltiplico per il volume <span class="m">S\,l</span>: <span class="m">P = \rho\,\dfrac{i^2}{S^2}\,S\,l = \left(\rho\,\dfrac{l}{S}\right) i^2 = R\,i^2</span>. Si ritrova la forma &quot;globale&quot;.</p>
+<h2>Potenza in sistemi di resistori</h2>
+<p>Anche per la potenza dissipata da più resistori si può usare la <strong>resistenza equivalente</strong>.</p>
+<p><strong>Serie.</strong> La corrente <span class="m">i</span> è la stessa nei due resistori. Uso la forma con la corrente:</p>
+<p><span class="m d">P = R_1 i^2 + R_2 i^2 = (R_1 + R_2)\,i^2 = R_{eq}\,i^2</span></p>
+<p>La potenza totale è quella che dissiperebbe la resistenza equivalente attraversata dalla stessa corrente. Il resistore <strong>più grande</strong> dissipa di più.</p>
+<p><strong>Parallelo.</strong> La d.d.p. <span class="m">\Delta V</span> è la stessa ai capi dei due resistori. Uso la forma con la tensione:</p>
+<p><span class="m d">P = \frac{\Delta V^2}{R_1} + \frac{\Delta V^2}{R_2} = \Delta V^2 \left(\frac{1}{R_1} + \frac{1}{R_2}\right) = \frac{\Delta V^2}{R_{eq}}</span></p>
+<p>La potenza totale è quella di un resistore equivalente con la stessa d.d.p. ai capi. Il resistore <strong>più piccolo</strong> dissipa di più.</p>
+<div class="callout esempio">
+
+<p><strong>Trovare una resistenza in parallelo.</strong> A una batteria ideale da 1,5 V sono collegate due resistenze in parallelo; la batteria eroga 50 mA. Una resistenza vale 60 Ω. Quanto vale l&#39;altra?</p>
 <ol>
-<li>Nel volume <span class="m">dV</span> ci sono <span class="m">n\,dV</span> cariche <span class="m">q</span>. Il campo le sposta di <span class="m">d\vec l = \vec v_d\,dt</span>.</li>
-<li>Il lavoro è <span class="m">dL = n\,dV\,q\,\vec E \cdot \vec v_d\,dt = \vec E \cdot (n q \vec v_d)\,dV\,dt</span>.</li>
-<li>Poiché <span class="m">n q \vec v_d = \vec j</span>, dividendo per <span class="m">dV\,dt</span> resta <span class="m">w = \vec E \cdot \vec j</span>.</li>
+<li>Resistenza equivalente vista dalla batteria: <span class="m">R_{eq} = \dfrac{V}{i} = \dfrac{1{,}5}{0{,}050} = 30\,\Omega</span>.</li>
+<li>Parallelo: <span class="m">\dfrac{1}{30} = \dfrac{1}{60} + \dfrac{1}{R}</span>, quindi <span class="m">\dfrac{1}{R} = \dfrac{1}{30} - \dfrac{1}{60} = \dfrac{2 - 1}{60} = \dfrac{1}{60}</span>.</li>
+<li><span class="m">R = 60\,\Omega</span>. Ha senso: due resistenze uguali in parallelo danno la metà, <span class="m">60/2 = 30\,\Omega</span>.</li>
 </ol>
-<p>In un conduttore ohmico <span class="m">\vec E</span> e <span class="m">\vec j</span> sono paralleli, quindi <span class="m">w = E\,j = \rho j^2 = \sigma E^2</span>.</p>
-<h2>Potenza in serie e in parallelo</h2>
-<p>La potenza totale di più resistori è quella della loro resistenza equivalente.</p>
-<ul>
-<li><strong>Serie</strong>: stessa corrente, <span class="m">P = R_1 I^2 + R_2 I^2 = R_{eq} I^2</span>.</li>
-<li><strong>Parallelo</strong>: stessa tensione, <span class="m">P = V^2/R_1 + V^2/R_2 = V^2/R_{eq}</span>.</li>
-</ul>
-<div class="callout esempio">
-
-<p>Batteria da 1,5 V, due resistori in parallelo, corrente totale 50 mA. Uno vale 60 Ω.
-<span class="m">R_{eq} = 1{,}5/0{,}05 = 30\,\Omega</span>. Da <span class="m">\frac{1}{30} = \frac{1}{60} + \frac{1}{R}</span> segue <span class="m">R = 60\,\Omega</span>.</p>
 </div>
 
 <div class="callout esempio">
 
-<p>Lampade da 100 Ω e 200 Ω su 100 V.</p>
+<p><strong>Due lampade, serie o parallelo.</strong> Lampade da 100 Ω e 200 Ω, generatore da 100 V.</p>
 <ul>
-<li>In parallelo: <span class="m">R_{eq} = \frac{100 \cdot 200}{300} \approx 66{,}7\,\Omega</span>, <span class="m">I = 100/66{,}7 = 1{,}5\,\mathrm{A}</span>.</li>
-<li>In serie: <span class="m">R_{eq} = 300\,\Omega</span>, <span class="m">I = 100/300 \approx 0{,}33\,\mathrm{A}</span>.</li>
+<li><strong>In parallelo:</strong> <span class="m">R_{eq} = \dfrac{100 \cdot 200}{300} \approx 66{,}7\,\Omega</span>; corrente nel generatore <span class="m">i = \dfrac{100}{66{,}7} = 1{,}5\,\mathrm A</span>. Controllo con i rami: <span class="m">100/100 = 1\,\mathrm A</span> più <span class="m">100/200 = 0{,}5\,\mathrm A</span>, totale 1,5 A. Potenza totale <span class="m">100 \cdot 1{,}5 = 150\,\mathrm W</span>; brilla di più la lampada da 100 Ω (100 W contro 50 W).</li>
+<li><strong>In serie:</strong> <span class="m">R_{eq} = 300\,\Omega</span>; <span class="m">i = \dfrac{100}{300} \approx 0{,}33\,\mathrm A</span>. Potenza totale <span class="m">100 \cdot 0{,}33 \approx 33\,\mathrm W</span>; ora brilla di più la lampada da 200 Ω (<span class="m">200 \cdot 0{,}33^2 \approx 22\,\mathrm W</span> contro 11 W).</li>
 </ul>
 </div>
 
 <div class="callout esempio">
 
-<p>Generatore da 120 V e lampadine da 6 V. In serie la tensione si divide tra le lampadine. Ne servono <span class="m">120/6 = 20</span> <strong>in serie</strong>, così ognuna riceve 6 V. In parallelo ognuna riceverebbe 120 V e brucerebbe.</p>
+<p><strong>Lampadine da 6 V su un generatore da 120 V.</strong> Ogni lampadina deve avere ai capi 6 V. In <strong>parallelo</strong> ognuna avrebbe tutti i 120 V e brucerebbe. In <strong>serie</strong> la tensione si divide in parti uguali tra lampadine uguali: ne servono <span class="m">n = \dfrac{120}{6} = 20</span> in serie, così ognuna riceve <span class="m">120/20 = 6\,\mathrm V</span>.</p>
 </div>
 
 <h2>Scaldare con una resistenza</h2>
-<p>Per scaldare acqua con una serpentina: prima il calore, poi la potenza, poi la grandezza elettrica.</p>
+<p>Per dimensionare un riscaldatore elettrico si procede a ritroso: prima il <strong>calore</strong> necessario, poi la <strong>potenza</strong>, poi la <strong>grandezza elettrica</strong> richiesta (tensione, resistenza o lunghezza del filo).</p>
 <p><span class="m d">Q = m\,c\,\Delta T \qquad P = \frac{Q}{t}</span></p>
 <p>dove:</p>
 <ul>
-<li><span class="m">Q</span> = calore (J)</li>
+<li><span class="m">Q</span> = calore da fornire (J)</li>
 <li><span class="m">m</span> = massa (kg; 1 litro d&#39;acqua ≈ 1 kg)</li>
-<li><span class="m">c</span> = calore specifico (J/(kg·K); acqua 4186)</li>
-<li><span class="m">\Delta T</span> = variazione di temperatura (K o °C)</li>
-<li><span class="m">t</span> = tempo (s)</li>
+<li><span class="m">c</span> = calore specifico (J/(kg·K); acqua circa 4186)</li>
+<li><span class="m">\Delta T</span> = aumento di temperatura (K, uguale in °C)</li>
+<li><span class="m">P</span> = potenza richiesta (W), <span class="m">t</span> = tempo disponibile (s)</li>
 </ul>
 <div class="callout esempio">
 
-<p>40 L d&#39;acqua da 15 °C a 45 °C in 30 minuti, serpentina da 30 Ω.</p>
+<p><strong>Serpentina in un serbatoio.</strong> Una serpentina da 30 Ω scalda 40 L d&#39;acqua da 15 °C a 45 °C in 30 minuti. Che tensione serve?</p>
 <ol>
-<li><span class="m">Q = 40 \cdot 4186 \cdot 30 \approx 5{,}02 \cdot 10^6\,\mathrm{J}</span>.</li>
-<li><span class="m">P = Q/1800 \approx 2790\,\mathrm{W}</span>.</li>
-<li><span class="m">V = \sqrt{P R} = \sqrt{2790 \cdot 30} \approx 290\,\mathrm{V}</span>.</li>
+<li>Calore: <span class="m">Q = m c \Delta T = 40 \cdot 4186 \cdot 30 \approx 5{,}02 \cdot 10^6\,\mathrm J</span>.</li>
+<li>Potenza: <span class="m">t = 30 \cdot 60 = 1800\,\mathrm s</span>, <span class="m">P = Q/t \approx 5{,}02 \cdot 10^6/1800 \approx 2790\,\mathrm W</span>.</li>
+<li>Tensione: da <span class="m">P = V^2/R</span>, <span class="m">V = \sqrt{P\,R} = \sqrt{2790 \cdot 30} = \sqrt{83\,700} \approx 290\,\mathrm V</span>.</li>
 </ol>
 </div>
 
 <div class="callout esempio">
 
-<p>Generatore da 24 V, si vogliono 60 W con un filo di resistività <span class="m">1{,}2 \cdot 10^{-6}\,\Omega\,\mathrm{m}</span> (0,12 mΩ·cm) e diametro 0,24 mm.</p>
+<p><strong>Quanto filo per scaldare l&#39;acqua.</strong> (esercizio della dispensa) Si vogliono portare 10 L d&#39;acqua da 10 °C a 60 °C in 10 minuti con un filo di diametro 1 mm, resistività <span class="m">\rho = 8 \cdot 10^{-8}\,\Omega\,\mathrm m</span>, che regge al massimo 10 A. Quanto deve essere lungo il filo?</p>
 <ol>
-<li><span class="m">R = V^2/P = 576/60 = 9{,}6\,\Omega</span>.</li>
-<li><span class="m">S = \pi (0{,}12 \cdot 10^{-3})^2 \approx 4{,}52 \cdot 10^{-8}\,\mathrm{m^2}</span>.</li>
-<li><span class="m">l = R S/\rho \approx 0{,}362\,\mathrm{m} = 36{,}2\,\mathrm{cm}</span>.</li>
+<li>Calore: <span class="m">Q = m c \Delta T = 10 \cdot 4186 \cdot 50 \approx 2{,}1 \cdot 10^6\,\mathrm J</span>.</li>
+<li>Potenza: <span class="m">P = Q/\Delta t = 2{,}1 \cdot 10^6/600 \approx 3{,}5\,\mathrm{kW}</span>.</li>
+<li>Con la corrente massima <span class="m">i = 10\,\mathrm A</span>: <span class="m">P = R\,i^2 = \rho\,\dfrac{l}{S}\,i^2</span>, quindi <span class="m">l = \dfrac{P\,S}{\rho\,i^2}</span>.</li>
+<li>Sezione: <span class="m">S = \pi (0{,}5 \cdot 10^{-3})^2 \approx 7{,}85 \cdot 10^{-7}\,\mathrm{m^2}</span>.</li>
+<li><span class="m">l = \dfrac{3490 \cdot 7{,}85 \cdot 10^{-7}}{8 \cdot 10^{-8} \cdot 100} \approx \dfrac{2{,}74 \cdot 10^{-3}}{8 \cdot 10^{-6}} \approx 342{,}5\,\mathrm m</span>.</li>
 </ol>
 </div>
 
+<div class="callout esempio">
+
+<p><strong>Filo per un riscaldatore da 60 W.</strong> Generatore da 24 V, filo di bronzo fosforoso con resistività 0,12 mΩ·cm e diametro 0,24 mm. Quanto filo serve per fornire 60 W?</p>
+<ol>
+<li>Converto la resistività: <span class="m">0{,}12\,\mathrm{m\Omega\,cm} = 0{,}12 \cdot 10^{-3}\,\Omega \cdot 10^{-2}\,\mathrm m = 1{,}2 \cdot 10^{-6}\,\Omega\,\mathrm m</span>.</li>
+<li>Resistenza necessaria: <span class="m">R = \dfrac{V^2}{P} = \dfrac{576}{60} = 9{,}6\,\Omega</span>.</li>
+<li>Sezione: raggio 0,12 mm, <span class="m">S = \pi(0{,}12 \cdot 10^{-3})^2 \approx 4{,}52 \cdot 10^{-8}\,\mathrm{m^2}</span>.</li>
+<li>Lunghezza: <span class="m">l = \dfrac{R\,S}{\rho} = \dfrac{9{,}6 \cdot 4{,}52 \cdot 10^{-8}}{1{,}2 \cdot 10^{-6}} \approx 0{,}362\,\mathrm m = 36{,}2\,\mathrm{cm}</span>.</li>
+</ol>
+</div>
+
+<h2>Applicazioni dell&#39;effetto Joule</h2>
+<ul>
+<li><strong>Stufe, scaldabagni, ferri da stiro, forni elettrici</strong>: una resistenza percorsa da corrente scalda l&#39;ambiente o l&#39;oggetto a contatto.</li>
+<li><strong>Lampade a incandescenza</strong>: il filamento si scalda tanto da diventare incandescente ed emettere luce (gran parte dell&#39;energia però resta calore).</li>
+<li><strong>Fusibili</strong>: un filo sottile che, se la corrente supera un valore di sicurezza, si scalda fino a fondere e interrompe il circuito.</li>
+<li><strong>Effetto indesiderato</strong>: nelle linee elettriche e nei componenti elettronici il calore Joule è una perdita; per questo i cavi si dimensionano in base alla corrente che devono portare e i componenti hanno una potenza massima.</li>
+</ul>
 <h2>Unità pratiche: kWh e Ah</h2>
 <ul>
-<li>Il <strong>kilowattora</strong> è energia: <span class="m">1\,\mathrm{kWh} = 1000\,\mathrm{W} \cdot 3600\,\mathrm{s} = 3{,}6 \cdot 10^6\,\mathrm{J}</span>. Una lampada da 100 W accesa 12 ore consuma 1,2 kWh.</li>
-<li>L&#39;<strong>ampere-ora</strong> è carica: <span class="m">1\,\mathrm{Ah} = 1\,\mathrm{A} \cdot 3600\,\mathrm{s} = 3600\,\mathrm{C}</span>. Una batteria da 50 Ah può fornire <span class="m">50 \cdot 3600 = 180\,000\,\mathrm{C}</span>.</li>
+<li>Il <strong>kilowattora</strong> (kWh) è un&#39;unità di <strong>energia</strong>: l&#39;energia trasferita da 1 kW in un&#39;ora. <span class="m">1\,\mathrm{kWh} = 1000\,\mathrm W \cdot 3600\,\mathrm s = 3{,}6 \cdot 10^6\,\mathrm J</span>. È l&#39;unità delle bollette.</li>
+<li>L&#39;<strong>ampere-ora</strong> (Ah) è un&#39;unità di <strong>carica</strong>: la carica trasportata da 1 A in un&#39;ora. <span class="m">1\,\mathrm{Ah} = 1\,\mathrm A \cdot 3600\,\mathrm s = 3600\,\mathrm C</span>.</li>
 </ul>
+<div class="callout esempio">
+
+<p><strong>Batteria dell&#39;auto: 12 V e 50 Ah.</strong> 12 V è la d.d.p. ai morsetti. 50 Ah è la <strong>quantità di carica</strong> che la batteria può fornire: <span class="m">Q = 50 \cdot 3600 = 180\,000\,\mathrm C</span>. Per esempio può erogare 5 A per 10 ore, o 1 A per 50 ore. L&#39;energia immagazzinata è circa <span class="m">Q\,V = 180\,000 \cdot 12 \approx 2{,}2 \cdot 10^6\,\mathrm J = 0{,}6\,\mathrm{kWh}</span>.</p>
+</div>
+
 <div class="callout attenzione">
 
-<p>&quot;50 Ah&quot; non è una corrente e non è una durata. È la <strong>carica</strong> che la batteria può fornire.</p>
+<ul>
+<li>&quot;50 Ah&quot; non è una corrente e non è una durata: è una <strong>carica</strong>.</li>
+<li>&quot;kWh&quot; non è una potenza: è un&#39;<strong>energia</strong>. Il kW è la potenza.</li>
+<li>&quot;Qualunque conduttore ohmico percorso da corrente dissipa energia per effetto Joule&quot; è <strong>sempre vero</strong>: basta che <span class="m">R &gt; 0</span> e <span class="m">i \neq 0</span>.</li>
+</ul>
+</div>
+
+<div class="callout esame">
+
+<p><strong>Chiuse:</strong> significato di una potenza (watt = joule al secondo), calcoli con <span class="m">P = Vi = Ri^2 = V^2/R</span>, resistenza da potenza e tensione, componente che brucia, tempo per dissipare un&#39;energia, corrente massima di un impianto, resistenze in serie/parallelo con la potenza, serpentine e fili riscaldanti, significato dell&#39;ampere-ora.</p>
+<p><strong>Aperte:</strong></p>
+<ul>
+<li>&quot;Definire la potenza elettrica&quot;: lavoro per spostare <span class="m">dq</span> attraverso la d.d.p. <span class="m">V</span> è <span class="m">dL = V\,dq</span>; con <span class="m">dq = i\,dt</span> si ha <span class="m">P = dL/dt = Vi</span>, in watt (J/s); formula generale, l&#39;energia può diventare calore, lavoro meccanico o energia immagazzinata.</li>
+<li>&quot;Cos&#39;è l&#39;effetto Joule / in cosa consiste e che forma assume localmente&quot;: in un conduttore ohmico in regime stazionario il lavoro del campo non diventa energia cinetica (velocità di deriva costante) né potenziale (potenziale costante), ma va agli ioni del reticolo negli urti e diventa calore; <span class="m">P = Vi = Ri^2 = V^2/R</span>; forma locale <span class="m">w = \vec E \cdot \vec j</span> ricavata dal lavoro su <span class="m">n\,dV</span> cariche, che per conduttori isotropi diventa <span class="m">w = \rho j^2 = \sigma E^2</span>; per serie e parallelo vale la resistenza equivalente.</li>
+</ul>
 </div>
 
 <div class="callout sintesi">
 
 <ul>
-<li>Potenza elettrica: <span class="m">P = VI</span>, in watt (J/s).</li>
-<li>Effetto Joule: in ogni conduttore ohmico l&#39;energia elettrica diventa calore, <span class="m">P = RI^2 = V^2/R</span>.</li>
-<li>Forma locale: <span class="m">w = \vec E \cdot \vec j</span> (W/m³).</li>
-<li>Serie e parallelo: la potenza totale è quella della resistenza equivalente.</li>
-<li>Energia <span class="m">E = Pt</span>; kWh è energia, Ah è carica (3600 C).</li>
+<li>Potenza elettrica (formula generale): <span class="m">P = Vi</span>, in watt; <span class="m">1\,\mathrm W = 1\,\mathrm{J/s}</span>. Energia <span class="m">E = Pt</span>.</li>
+<li>Effetto Joule: in un conduttore ohmico tutta l&#39;energia elettrica diventa calore, <span class="m">P = Vi = Ri^2 = V^2/R</span>, calore <span class="m">Q = Ri^2 t</span>.</li>
+<li>Forma locale: <span class="m">w = \vec E \cdot \vec j = \rho j^2 = \sigma E^2</span> (W/m³).</li>
+<li>Serie: <span class="m">P = R_{eq}i^2</span> (il resistore maggiore scalda di più). Parallelo: <span class="m">P = V^2/R_{eq}</span> (il minore scalda di più).</li>
+<li>Riscaldatori: <span class="m">Q = mc\Delta T \to P = Q/t \to</span> grandezza elettrica.</li>
+<li>kWh = energia (<span class="m">3{,}6 \cdot 10^6</span> J); Ah = carica (3600 C).</li>
 </ul>
 </div>

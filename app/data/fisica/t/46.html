@@ -1,62 +1,108 @@
-<h1>Lezione 46 — Conduttori e distribuzioni di carica</h1>
-<h2>Conduttore in equilibrio: campo nullo dentro</h2>
-<p>In un conduttore gli elettroni si muovono liberamente. Se dentro ci fosse un campo, gli elettroni si sposterebbero. All&#39;equilibrio si fermano: quindi <strong>dentro il conduttore il campo è zero</strong>.</p>
-<p>Conseguenze:</p>
+<h1>Lezione 46 — Conduttori in equilibrio e distribuzioni di carica simmetriche</h1>
+<p>Questa lezione applica il teorema di Gauss in due direzioni. Prima ai <strong>conduttori</strong>: vedremo che in equilibrio il campo dentro un conduttore è nullo, la carica sta sulla superficie e il campo appena fuori è perpendicolare alla superficie e vale <span class="m">\sigma/\varepsilon_0</span> (<strong>teorema di Coulomb</strong>); da qui seguono il potere delle punte, l&#39;induzione completa e la gabbia di Faraday. Poi completiamo il catalogo dei campi delle <strong>distribuzioni simmetriche</strong>: piano infinito, guscio sferico, sfera piena, filo, e una sfera con una cavità.</p>
+<h2>Conduttore in equilibrio elettrostatico: campo nullo dentro</h2>
+<p>In un conduttore (tipicamente un metallo) esiste una classe di elettroni molto mobili, che si muovono anche sotto l&#39;azione di un campo debolissimo. Ragioniamo per assurdo:</p>
 <ol>
-<li><strong>La carica sta sulla superficie.</strong> Una superficie di Gauss dentro il metallo ha flusso zero, quindi non racchiude carica. L&#39;eccesso di carica va tutto sulla superficie, con densità <span class="m">\sigma = dq/dS</span>.</li>
-<li><strong>Il potenziale è uguale in tutto il conduttore.</strong> Con campo zero, non c&#39;è differenza di potenziale tra due punti interni. La superficie è equipotenziale.</li>
-<li><strong>Fuori, vicino alla superficie, il campo è perpendicolare alla superficie.</strong> Una componente parallela sposterebbe le cariche lungo la superficie.</li>
+<li>se dentro il conduttore ci fosse un campo <span class="m">\vec E \neq 0</span>, gli elettroni liberi subirebbero una forza <span class="m">-e\vec E</span> e si muoverebbero: ci sarebbe una corrente;</li>
+<li>ma in <strong>equilibrio elettrostatico</strong> (cariche ferme) non c&#39;è corrente;</li>
+<li>quindi, all&#39;equilibrio, <strong>il campo all&#39;interno di un conduttore è zero</strong> in ogni punto.</li>
 </ol>
-<h2>Teorema di Coulomb</h2>
-<p>Appena fuori da un conduttore il campo è perpendicolare alla superficie e vale:</p>
-<p><span class="m d">E = \frac{\sigma}{\varepsilon_0}</span></p>
+<p>Se si mette un conduttore in un campo esterno, gli elettroni si spostano per una frazione di secondo e si dispongono sulla superficie in modo da creare un campo che <strong>annulla</strong> esattamente quello esterno all&#39;interno.</p>
+<h2>La carica in eccesso sta sulla superficie</h2>
+<p>Prendiamo una superficie gaussiana chiusa <strong>tutta interna</strong> al materiale del conduttore, vicina quanto vogliamo alla superficie.</p>
+<ol>
+<li>In ogni suo punto il campo è zero, quindi il flusso è zero.</li>
+<li>Per Gauss, la carica racchiusa è zero.</li>
+<li>Questo vale per qualunque superficie interna: dentro il conduttore <strong>non c&#39;è carica netta</strong>.</li>
+</ol>
+<p>Quindi un eventuale <strong>eccesso di carica</strong> si distribuisce sulla <strong>superficie esterna</strong>, con una densità superficiale locale</p>
+<p><span class="m d">\sigma = \frac{dq}{dS}</span></p>
 <p>dove:</p>
 <ul>
-<li><span class="m">\sigma</span> = densità di carica superficiale <strong>locale</strong>, nel punto considerato (C/m²);</li>
-<li><span class="m">\varepsilon_0 = 8{,}85 \cdot 10^{-12}\,\mathrm{C^2/(N\,m^2)}</span>.</li>
+<li><span class="m">\sigma</span> = densità di carica superficiale nel punto (C/m²);</li>
+<li><span class="m">dq</span> = carica sul pezzetto di superficie <span class="m">dS</span> (C).</li>
 </ul>
-<p>Come si ricava:</p>
+<p>In generale <span class="m">\sigma</span> non è uniforme: dipende dalla forma del conduttore.</p>
+<h2>Il conduttore è equipotenziale</h2>
+<p>Il potenziale si definisce nella lezione 47; la differenza di potenziale tra due punti è <span class="m">V_A - V_B = \int_A^B \vec E \cdot d\vec s</span>. Se A e B sono dentro il conduttore, il percorso si può scegliere tutto dentro, dove <span class="m">\vec E = 0</span>:
+<span class="m d">V_A - V_B = \int_A^B \vec E \cdot d\vec s = 0</span>
+Il <strong>potenziale è lo stesso in tutto il conduttore</strong>. Il ragionamento vale anche se uno dei punti è sulla superficie, quindi <strong>la superficie di un conduttore è una superficie equipotenziale</strong>.</p>
+<p>Conseguenza: appena fuori dal conduttore il campo è <strong>perpendicolare alla superficie</strong>. Se avesse una componente tangente, questa sposterebbe le cariche lungo la superficie, contro l&#39;ipotesi di equilibrio (e il campo è sempre perpendicolare alle equipotenziali).</p>
+<h2>Il teorema di Coulomb</h2>
+<p><strong>Componente tangente (circuitazione).</strong> Consideriamo un piccolissimo percorso chiuso rettangolare a cavallo della superficie di separazione tra due mezzi: due tratti paralleli alla superficie, <span class="m">dl_1</span> (dentro) e <span class="m">dl_2</span> (fuori), uguali e opposti, e due tratti normali <span class="m">dn_1</span>, <span class="m">dn_2</span> infinitesimi di ordine superiore, trascurabili quando il rettangolo si schiaccia sulla superficie. Il campo elettrostatico è conservativo, quindi la circuitazione è zero:
+<span class="m d">\oint \vec E \cdot d\vec s = E_{t,1}\,dl - E_{t,2}\,dl = 0 \quad\Rightarrow\quad E_{t,1} = E_{t,2}</span>
+La <strong>componente tangente</strong> del campo è la stessa dai due lati della superficie. Per un conduttore il campo dentro è zero, quindi anche la componente tangente <strong>fuori</strong> è zero: il campo esterno è perpendicolare, come trovato prima.</p>
+<p><strong>Componente normale (Gauss).</strong> Superficie gaussiana: un cilindretto piccolissimo a cavallo della superficie, con basi <span class="m">dS</span> parallele alla superficie (una dentro, una fuori) e altezza trascurabile.</p>
 <ol>
-<li>Si prende un cilindretto piccolissimo a cavallo della superficie.</li>
-<li>La base interna ha flusso zero (campo nullo). La superficie laterale ha flusso zero (campo perpendicolare).</li>
-<li>Resta la base esterna: <span class="m">E\,dS = \sigma\,dS/\varepsilon_0</span>, quindi <span class="m">E = \sigma/\varepsilon_0</span>.</li>
+<li>Base interna: campo nullo, flusso zero.</li>
+<li>Superficie laterale: il campo esterno è perpendicolare alla superficie del conduttore, quindi parallelo alla superficie laterale; flusso zero (e comunque la sua area tende a zero).</li>
+<li>Base esterna: campo perpendicolare, flusso <span class="m">E\,dS</span>.</li>
+<li>Carica racchiusa: quella sul pezzetto di superficie, <span class="m">\sigma\,dS</span>.</li>
+<li>Gauss: <span class="m">E\,dS = \dfrac{\sigma\,dS}{\varepsilon_0}</span>, quindi</li>
 </ol>
-<p>In generale, attraversando una superficie carica, la componente normale del campo salta di <span class="m">\sigma/\varepsilon_0</span>. La componente tangente resta uguale.
-Sulle punte la carica si addensa: <span class="m">\sigma</span> è grande e il campo è molto intenso (potere delle punte).</p>
+<p><span class="m d">E = \frac{\sigma}{\varepsilon_0} \qquad \text{(diretto perpendicolarmente alla superficie)}</span></p>
+<p>dove:</p>
+<ul>
+<li><span class="m">E</span> = campo appena fuori dalla superficie del conduttore (N/C);</li>
+<li><span class="m">\sigma</span> = densità di carica superficiale <strong>locale</strong>, nel punto considerato (C/m²);</li>
+<li><span class="m">\varepsilon_0 = 8{,}854 \cdot 10^{-12}\,\mathrm{C^2/(N\,m^2)}</span>.</li>
+</ul>
+<p>Questo è il <strong>teorema di Coulomb</strong>. Il verso è uscente se <span class="m">\sigma &gt; 0</span>, entrante se <span class="m">\sigma &lt; 0</span>.</p>
+<p><strong>Risultato generale.</strong> Il procedimento vale per qualunque superficie carica che separa due regioni: attraversandola, la <strong>componente normale</strong> del campo ha un <strong>salto</strong> pari a <span class="m">\sigma/\varepsilon_0</span>, mentre la <strong>componente tangente si conserva</strong>:
+<span class="m d">E_{n,2} - E_{n,1} = \frac{\sigma}{\varepsilon_0}, \qquad E_{t,2} = E_{t,1}</span></p>
 <div class="callout attenzione">
 
-<p>Conduttore: <span class="m">E = \sigma/\varepsilon_0</span>. Piano isolato infinito: <span class="m">E = \sigma/(2\varepsilon_0)</span>. La differenza: nel conduttore tutto il campo sta da una sola parte, perché dentro è zero.</p>
+<p><strong>Conduttore</strong> (appena fuori): <span class="m">E = \sigma/\varepsilon_0</span>, con <span class="m">\sigma</span> <strong>locale</strong>. <strong>Piano isolante infinito</strong>: <span class="m">E = \sigma/(2\varepsilon_0)</span> da ciascun lato. In entrambi i casi il salto attraverso la superficie è <span class="m">\sigma/\varepsilon_0</span>: nel piano isolato il salto si divide a metà tra i due lati (da <span class="m">-\sigma/2\varepsilon_0</span> a <span class="m">+\sigma/2\varepsilon_0</span>), nel conduttore tutto il campo sta da una sola parte perché dentro è zero.</p>
+<p>Il modulo del campo vicino a un conduttore <strong>non</strong> è &quot;la carica totale del conduttore diviso <span class="m">\varepsilon_0</span>&quot; (le unità non tornano nemmeno: C su <span class="m">\varepsilon_0</span> dà N·m²/C, un flusso).</p>
 </div>
 
-<h2>Induzione completa e gabbia di Faraday</h2>
-<p>Metti un conduttore carico (<span class="m">+Q</span>) dentro la cavità di un conduttore cavo scarico.</p>
-<ul>
-<li>Sulla parete interna della cavità si forma <span class="m">-Q</span>.</li>
-<li>Sulla superficie esterna compare <span class="m">+Q</span>.</li>
-<li>Tutte le linee che partono dal conduttore interno finiscono sulla parete della cavità (induzione completa).</li>
-</ul>
-<p>Vale anche il contrario. Cariche e campi esterni non entrano nella cavità: le cariche del guscio si ridistribuiscono e il campo dentro resta invariato. È la <strong>gabbia di Faraday</strong>, uno schermo elettrostatico. Basta anche una rete metallica, se i buchi sono piccoli.</p>
-<h2>Distribuzioni di carica simmetriche (con Gauss)</h2>
-<p><strong>Piano infinito isolante</strong>, densità <span class="m">\sigma</span>. Superficie di Gauss: cilindro perpendicolare al piano, con una base per lato.</p>
+<h2>Potere dispersivo delle punte</h2>
+<p>Due sfere conduttrici di raggi <span class="m">R_1</span> e <span class="m">R_2</span>, lontane tra loro, sono collegate da un filo conduttore. La carica si distribuisce in modo che le due sfere abbiano <strong>lo stesso potenziale</strong> (sono un unico conduttore). Lontane, ognuna ha il potenziale di una carica puntiforme:
+<span class="m d">V_1 = \frac{1}{4\pi\varepsilon_0}\frac{Q_1}{R_1}, \qquad V_2 = \frac{1}{4\pi\varepsilon_0}\frac{Q_2}{R_2}</span></p>
 <ol>
-<li>Il campo è perpendicolare al piano: sulla superficie laterale il flusso è zero.</li>
-<li>Le due basi, di area <span class="m">A</span>, danno <span class="m">2EA</span>. Carica racchiusa <span class="m">\sigma A</span>.</li>
-<li>Quindi:</li>
+<li><span class="m">V_1 = V_2 \Rightarrow \dfrac{Q_1}{R_1} = \dfrac{Q_2}{R_2} \Rightarrow \dfrac{Q_1}{Q_2} = \dfrac{R_1}{R_2}</span>.</li>
+<li>Densità: <span class="m">\sigma_i = \dfrac{Q_i}{4\pi R_i^2}</span>, quindi <span class="m">\dfrac{\sigma_1}{\sigma_2} = \dfrac{Q_1}{Q_2}\,\dfrac{R_2^2}{R_1^2} = \dfrac{R_1}{R_2}\,\dfrac{R_2^2}{R_1^2} = \dfrac{R_2}{R_1}</span>.</li>
+</ol>
+<p>La densità di carica, e quindi il campo <span class="m">\sigma/\varepsilon_0</span> vicino alla superficie, è <strong>inversamente proporzionale al raggio di curvatura</strong>. Su un conduttore di forma qualsiasi, nelle zone appuntite o spigolose (raggio di curvatura piccolo) la carica si addensa, le equipotenziali si infittiscono e il campo diventa molto intenso: lì avvengono più facilmente le <strong>scariche</strong> nell&#39;aria. È il principio del <strong>parafulmine</strong>.</p>
+<h2>Induzione completa</h2>
+<p>Un conduttore cavo <strong>scarico</strong> <span class="m">C_1</span> contiene nella cavità un secondo conduttore <span class="m">C_2</span> con carica <span class="m">+Q</span>, senza toccarsi.</p>
+<ol>
+<li>Prendo una superficie gaussiana tutta dentro il materiale di <span class="m">C_1</span>, che circonda la cavità. Lì il campo è zero, quindi il flusso è zero e la carica racchiusa è zero.</li>
+<li>La carica racchiusa comprende <span class="m">+Q</span> (su <span class="m">C_2</span>) e la carica sulla parete <strong>interna</strong> della cavità: questa deve essere quindi <span class="m">-Q</span>.</li>
+<li><span class="m">C_1</span> è complessivamente scarico, quindi sulla sua superficie <strong>esterna</strong> compare <span class="m">+Q</span>.</li>
+</ol>
+<p>Nella cavità tutte le linee di campo che partono da <span class="m">C_2</span> finiscono sulla parete interna di <span class="m">C_1</span>: è l&#39;<strong>induzione completa</strong> (tutte le linee del corpo induttore terminano sull&#39;indotto, le cariche indotte sono uguali e opposte all&#39;induttrice).</p>
+<h2>La gabbia di Faraday (schermo elettrostatico)</h2>
+<p>Il campo nella cavità dipende solo dalla carica interna, dalla sua posizione e dalla geometria della cavità. Se dall&#39;esterno si cambia la carica sulla superficie esterna, o si avvicina un altro corpo carico, le cariche sulla superficie esterna del conduttore cavo si <strong>ridistribuiscono</strong> in modo che il campo nel materiale del conduttore resti zero: il campo <strong>dentro la cavità non cambia</strong>. Viceversa, un conduttore cavo collegato a terra isola l&#39;esterno dalle cariche interne.</p>
+<p>Il conduttore cavo funziona da <strong>schermo elettrostatico</strong> tra interno ed esterno: è la <strong>gabbia di Faraday</strong>. Non serve un guscio continuo: basta una <strong>rete metallica</strong> con maglie piccole rispetto alle dimensioni del problema. Esempi: l&#39;abitacolo di un&#39;automobile protegge dai fulmini, gli strumenti sensibili si chiudono in contenitori metallici.</p>
+<h2>Distribuzioni di carica simmetriche (con Gauss)</h2>
+<h3>Piano infinito isolante</h3>
+<p>Piano indefinito uniformemente carico con densità <span class="m">\sigma</span>.</p>
+<ol>
+<li><strong>Simmetria</strong>: il campo è perpendicolare al piano (le componenti parallele dei vari pezzetti si annullano a coppie), uscente da entrambi i lati se <span class="m">\sigma &gt; 0</span>, e ha lo stesso modulo alla stessa distanza dai due lati.</li>
+<li><strong>Superficie gaussiana</strong>: cilindro con asse perpendicolare al piano, basi di area <span class="m">A</span> (raggio <span class="m">R</span>, <span class="m">A = \pi R^2</span>) poste simmetricamente a distanza <span class="m">d</span> dal piano (lunghezza totale <span class="m">2d</span>).</li>
+<li><strong>Flussi</strong>: superficie laterale zero (campo parallelo ad essa); le due basi danno ciascuna <span class="m">E(d)\,A</span>, in tutto <span class="m">2E(d)A</span>.</li>
+<li><strong>Carica racchiusa</strong>: il disco di piano dentro il cilindro, <span class="m">\sigma A</span>.</li>
+<li>Gauss: <span class="m">2E(d)\,\pi R^2 = \dfrac{\sigma\,\pi R^2}{\varepsilon_0}</span>, quindi</li>
 </ol>
 <p><span class="m d">E = \frac{\sigma}{2\varepsilon_0}</span></p>
-<p>Il campo è <strong>uniforme</strong>: non dipende dalla distanza dal piano.</p>
-<p><strong>Guscio sferico sottile</strong> di raggio <span class="m">R</span> e carica <span class="m">Q</span>:</p>
+<p>dove <span class="m">\sigma</span> = densità superficiale (C/m²). Il risultato <strong>non dipende da <span class="m">d</span></strong>: il campo di un piano infinito è <strong>uniforme</strong> nelle due regioni di spazio separate dal piano (lo stesso trovato come limite del disco nella lezione 44, ma con molto meno calcolo).</p>
+<h3>Guscio sferico sottile</h3>
+<p>Carica <span class="m">Q</span> distribuita uniformemente su una superficie sferica di raggio <span class="m">R</span> (spessore infinitesimo). Campo radiale, superficie gaussiana sferica concentrica di raggio <span class="m">r</span>.</p>
 <ul>
-<li>dentro (<span class="m">r &lt; R</span>): nessuna carica racchiusa, <span class="m">E = 0</span>;</li>
-<li>fuori (<span class="m">r &gt; R</span>): <span class="m">E = \dfrac{Q}{4\pi\varepsilon_0 r^2}</span>.</li>
+<li><strong>Dentro</strong> (<span class="m">r &lt; R</span>): la superficie gaussiana non contiene carica: <span class="m">E \cdot 4\pi r^2 = 0 \Rightarrow E = 0</span>.</li>
+<li><strong>Fuori</strong> (<span class="m">r &gt; R</span>): contiene tutta <span class="m">Q</span>: <span class="m">E = \dfrac{1}{4\pi\varepsilon_0}\dfrac{Q}{r^2}</span>.</li>
 </ul>
-<p><strong>Sfera piena uniforme</strong> di raggio <span class="m">R</span>:</p>
+<p>Il campo è nullo dentro, salta a <span class="m">Q/(4\pi\varepsilon_0R^2) = \sigma/\varepsilon_0</span> sulla superficie (coerente con il salto <span class="m">\sigma/\varepsilon_0</span>) e poi cala come <span class="m">1/r^2</span>. Un conduttore sferico carico si comporta allo stesso modo, perché la sua carica sta sulla superficie.</p>
+<h3>Sfera piena uniformemente carica</h3>
+<p>(Ricavata nella lezione 45.) Raggio <span class="m">R</span>, carica <span class="m">Q</span>, <span class="m">\rho = 3Q/(4\pi R^3)</span>:</p>
 <ul>
-<li>dentro: <span class="m">E = \dfrac{Q\,r}{4\pi\varepsilon_0 R^3}</span>, cresce in proporzione a <span class="m">r</span>;</li>
-<li>fuori: <span class="m">E = \dfrac{Q}{4\pi\varepsilon_0 r^2}</span>.</li>
+<li>dentro: <span class="m">E = \dfrac{\rho\,r}{3\varepsilon_0} = \dfrac{1}{4\pi\varepsilon_0}\dfrac{Q\,r}{R^3}</span>, <strong>cresce linearmente</strong> con <span class="m">r</span>;</li>
+<li>fuori: <span class="m">E = \dfrac{1}{4\pi\varepsilon_0}\dfrac{Q}{r^2}</span>, come una carica puntiforme al centro.</li>
 </ul>
-<p><strong>Filo infinito</strong>, carica per unità di lunghezza <span class="m">\lambda</span>: <span class="m">E = \dfrac{\lambda}{2\pi\varepsilon_0 r}</span>.</p>
-<p>Riepilogo:</p>
+<h3>Filo infinito</h3>
+<p>(Ricavato nella lezione 45.) <span class="m">E = \dfrac{\lambda}{2\pi\varepsilon_0 r}</span>, radiale, <span class="m">\propto 1/r</span>.</p>
+<h3>Riepilogo</h3>
 <table>
 <thead>
 <tr>
@@ -66,7 +112,7 @@ Sulle punte la carica si addensa: <span class="m">\sigma</span> è grande e il c
 </tr>
 </thead>
 <tbody><tr>
-<td>carica puntiforme / fuori da una sfera</td>
+<td>carica puntiforme, o fuori da sfera/guscio</td>
 <td><span class="m">\dfrac{Q}{4\pi\varepsilon_0 r^2}</span></td>
 <td><span class="m">1/r^2</span></td>
 </tr>
@@ -76,13 +122,18 @@ Sulle punte la carica si addensa: <span class="m">\sigma</span> è grande e il c
 <td><span class="m">1/r</span></td>
 </tr>
 <tr>
-<td>piano infinito</td>
+<td>piano infinito isolante</td>
 <td><span class="m">\dfrac{\sigma}{2\varepsilon_0}</span></td>
-<td>costante</td>
+<td>costante (uniforme)</td>
+</tr>
+<tr>
+<td>due piani con cariche opposte (tra i piani)</td>
+<td><span class="m">\dfrac{\sigma}{\varepsilon_0}</span></td>
+<td>costante; zero fuori</td>
 </tr>
 <tr>
 <td>dentro una sfera piena</td>
-<td><span class="m">\dfrac{Qr}{4\pi\varepsilon_0 R^3}</span></td>
+<td><span class="m">\dfrac{Qr}{4\pi\varepsilon_0 R^3} = \dfrac{\rho r}{3\varepsilon_0}</span></td>
 <td>cresce come <span class="m">r</span></td>
 </tr>
 <tr>
@@ -91,33 +142,63 @@ Sulle punte la carica si addensa: <span class="m">\sigma</span> è grande e il c
 <td>nullo</td>
 </tr>
 <tr>
-<td>vicino a un conduttore</td>
+<td>dentro un conduttore</td>
+<td><span class="m">0</span></td>
+<td>nullo</td>
+</tr>
+<tr>
+<td>appena fuori da un conduttore</td>
 <td><span class="m">\dfrac{\sigma}{\varepsilon_0}</span></td>
 <td>perpendicolare alla superficie</td>
+</tr>
+<tr>
+<td>dipolo (lontano)</td>
+<td><span class="m">\propto \dfrac{p}{4\pi\varepsilon_0 r^3}</span></td>
+<td><span class="m">1/r^3</span></td>
 </tr>
 </tbody></table>
 <p>dove:</p>
 <ul>
-<li><span class="m">Q</span> = carica totale (C); <span class="m">\lambda</span> = carica per metro (C/m); <span class="m">\sigma</span> = carica per m² (C/m²);</li>
-<li><span class="m">r</span> = distanza dal centro, dal filo (m); <span class="m">R</span> = raggio della sfera (m).</li>
+<li><span class="m">Q</span> = carica totale (C); <span class="m">\lambda</span> = carica per metro (C/m); <span class="m">\sigma</span> = carica per m² (C/m²); <span class="m">\rho</span> = carica per m³ (C/m³);</li>
+<li><span class="m">r</span> = distanza dal centro o dal filo (m); <span class="m">R</span> = raggio della sfera (m).</li>
 </ul>
 <div class="callout esempio">
 
-<p>Una carica di <span class="m">4\,\mu\mathrm C</span> e massa 2 mg, vicino a un piano infinito carico, accelera a 4 m/s². Qual è <span class="m">\sigma</span>?</p>
-<ul>
-<li><span class="m">E = ma/q = 2 \cdot 10^{-6} \cdot 4/(4 \cdot 10^{-6}) = 2\,\mathrm{N/C}</span>.</li>
-<li><span class="m">\sigma = 2\varepsilon_0 E = 2 \cdot 8{,}85 \cdot 10^{-12} \cdot 2 \approx 3{,}54 \cdot 10^{-11}\,\mathrm{C/m^2}</span>.</li>
-</ul>
-<p>La distanza dal piano (3 m) non serve: il campo del piano è uniforme.</p>
+<p><strong>Sfera con una cavità (esercizio della dispensa).</strong> Una sfera di raggio <span class="m">R</span> e centro O, uniformemente carica con densità <span class="m">\rho</span>, ha una cavità sferica vuota di raggio <span class="m">r</span> e centro O&#39;. Trovare il campo in un punto P dentro la cavità.</p>
+<ol>
+<li><strong>Trucco della sovrapposizione</strong>: la sfera bucata equivale a una sfera piena di densità <span class="m">+\rho</span> (centro O) <strong>più</strong> una sfera di raggio <span class="m">r</span> di densità <span class="m">-\rho</span> (centro O&#39;). Nella cavità le due densità si sommano a zero, come deve essere.</li>
+<li>Campo di una sfera piena in un suo punto interno, in forma vettoriale: <span class="m">\vec E = \dfrac{\rho}{3\varepsilon_0}\,\vec r</span>, con <span class="m">\vec r</span> vettore dal centro al punto.</li>
+<li>In P: sfera grande <span class="m">\vec E_1 = \dfrac{\rho}{3\varepsilon_0}\,\overrightarrow{OP}</span>; sfera piccola (densità <span class="m">-\rho</span>) <span class="m">\vec E_2 = -\dfrac{\rho}{3\varepsilon_0}\,\overrightarrow{O'P}</span>.</li>
+<li>Somma: <span class="m">\vec E = \dfrac{\rho}{3\varepsilon_0}\left(\overrightarrow{OP} - \overrightarrow{O'P}\right) = \dfrac{\rho}{3\varepsilon_0}\,\overrightarrow{OO'}</span>.</li>
+</ol>
+<p>Il campo nella cavità è <strong>uniforme</strong>: stesso valore in tutti i punti, diretto come il vettore che va dal centro della sfera al centro della cavità, di modulo <span class="m">\rho\,|OO'|/(3\varepsilon_0)</span>.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Densità di un piano dalla forza su una carica.</strong> Una carica di massa 2 mg, a 3 m da un piano infinito uniformemente carico, subisce per effetto del piano un&#39;accelerazione di 4 m/s². Con carica <span class="m">q = 4\,\mu\mathrm C</span>:</p>
+<ol>
+<li>Campo: <span class="m">E = \dfrac{F}{q} = \dfrac{ma}{q} = \dfrac{2 \cdot 10^{-6} \cdot 4}{4 \cdot 10^{-6}} = 2\,\mathrm{N/C}</span>.</li>
+<li>Piano infinito: <span class="m">E = \sigma/(2\varepsilon_0) \Rightarrow \sigma = 2\varepsilon_0 E = 2 \cdot 8{,}85 \cdot 10^{-12} \cdot 2 \approx 3{,}54 \cdot 10^{-11}\,\mathrm{C/m^2}</span>.</li>
+<li>La distanza (3 m) <strong>non serve</strong>: il campo del piano è uniforme.</li>
+</ol>
+<p>Nel paniere la carica è scritta &quot;4 mC&quot;: con <span class="m">q = 4 \cdot 10^{-3}</span> C e <span class="m">m = 2 \cdot 10^{-6}</span> kg verrebbe <span class="m">E = 2 \cdot 10^{-3}</span> N/C e <span class="m">\sigma = 3{,}54 \cdot 10^{-14}\,\mathrm{C/m^2}</span>. Il risultato atteso, <span class="m">3{,}54 \cdot 10^{-11}</span>, corrisponde a <span class="m">E = 2</span> N/C, cioè a <span class="m">4\,\mu\mathrm C</span> (o a una massa di 2 g). Errori tipici: usare <span class="m">\sigma = \varepsilon_0 E</span> (formula del conduttore) dà la metà; moltiplicare per 4 invece che per 2 dà il doppio.</p>
+</div>
+
+<div class="callout esame">
+
+<p>Domande chiuse: campo appena fuori da un conduttore (perpendicolare alla superficie, modulo <span class="m">\sigma/\varepsilon_0</span> con <span class="m">\sigma</span> <strong>locale</strong>), campo del piano indefinito (<strong>uniforme</strong>), campo dentro un guscio sferico (<strong>nullo</strong>), campo dentro una sfera piena (<strong>cresce proporzionalmente</strong> a <span class="m">r</span>), densità di un piano dall&#39;accelerazione di una carica (<span class="m">\sigma = 2\varepsilon_0 ma/q</span>).</p>
+<p>Per le aperte su conduttori: campo nullo dentro (ragionamento sugli elettroni liberi), carica sulla superficie (Gauss su una superficie interna), conduttore equipotenziale, teorema di Coulomb con il cilindretto, potere delle punte, gabbia di Faraday.</p>
 </div>
 
 <div class="callout sintesi">
 
 <ul>
-<li>In un conduttore in equilibrio: campo nullo dentro, carica sulla superficie, potenziale costante.</li>
-<li>Teorema di Coulomb: appena fuori <span class="m">E = \sigma/\varepsilon_0</span>, perpendicolare alla superficie.</li>
-<li>Gabbia di Faraday: il conduttore cavo scherma l&#39;interno dai campi esterni.</li>
-<li>Piano infinito: <span class="m">E = \sigma/(2\varepsilon_0)</span>, uniforme.</li>
-<li>Guscio sferico: <span class="m">E = 0</span> dentro. Sfera piena: <span class="m">E \propto r</span> dentro. Fuori da entrambi: <span class="m">kQ/r^2</span>.</li>
+<li>Conduttore in equilibrio: <span class="m">E = 0</span> dentro, carica in eccesso sulla superficie (<span class="m">\sigma = dq/dS</span>), potenziale costante, superficie equipotenziale.</li>
+<li>Teorema di Coulomb: appena fuori <span class="m">E = \sigma/\varepsilon_0</span>, perpendicolare alla superficie; in generale la componente normale salta di <span class="m">\sigma/\varepsilon_0</span>, la tangente si conserva.</li>
+<li>Punte: <span class="m">\sigma_1/\sigma_2 = R_2/R_1</span>, campo intenso dove la curvatura è grande.</li>
+<li>Induzione completa: <span class="m">-Q</span> sulla parete della cavità, <span class="m">+Q</span> fuori. Gabbia di Faraday: il conduttore cavo scherma la cavità.</li>
+<li>Piano infinito: <span class="m">\sigma/(2\varepsilon_0)</span>, uniforme. Guscio: 0 dentro, <span class="m">kQ/r^2</span> fuori. Sfera piena: <span class="m">\rho r/(3\varepsilon_0)</span> dentro. Filo: <span class="m">\lambda/(2\pi\varepsilon_0 r)</span>.</li>
+<li>Cavità sferica in una sfera carica: campo uniforme <span class="m">\dfrac{\rho}{3\varepsilon_0}\overrightarrow{OO'}</span>.</li>
 </ul>
 </div>

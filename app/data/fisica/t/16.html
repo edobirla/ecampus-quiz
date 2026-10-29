@@ -1,173 +1,413 @@
-<h1>Lezione 16 — Equilibrio del punto e forza elastica (molla, pendolo)</h1>
-<h2>Condizione di equilibrio del punto materiale</h2>
-<p>Un punto materiale è in equilibrio quando la <strong>risultante</strong> delle forze applicate è il vettore nullo. Le singole forze possono essere diverse da zero: conta solo la loro somma.</p>
-<p><span class="m d">\sum \vec F = \vec 0 \quad\Longleftrightarrow\quad \sum F_x = 0,\; \sum F_y = 0,\; \sum F_z = 0</span></p>
+<h1>Lezione 16 — Equilibrio del punto, legge di Hooke, molla e pendolo</h1>
+<h2>Di cosa parla questa lezione</h2>
+<p>Nella lezione 15 abbiamo visto che una forza di richiamo <span class="m">F = -cx</span> produce un moto armonico attorno a una posizione di equilibrio. Ora studiamo con calma:</p>
+<ul>
+<li>che cosa vuol dire che un punto materiale è <strong>in equilibrio</strong> e qual è la condizione matematica;</li>
+<li>come si classificano i punti di equilibrio (<strong>stabile, instabile, indifferente</strong>);</li>
+<li>la <strong>legge di Hooke</strong>, cioè il comportamento delle molle, e come si combinano più molle (<strong>serie e parallelo</strong>);</li>
+<li>la <strong>molla oscillante</strong> (orizzontale e verticale) e la sua equazione del moto, l&#39;energia elastica;</li>
+<li>il <strong>pendolo semplice</strong> come secondo sistema oscillante;</li>
+<li>la molla su un piano <strong>con attrito</strong>.</li>
+</ul>
+<h2>La condizione di equilibrio del punto materiale</h2>
+<p>Un punto materiale (un corpo le cui dimensioni si possono trascurare) è <strong>in equilibrio</strong> quando la <strong>risultante</strong> di tutte le forze applicate, cioè la loro somma vettoriale, è il vettore nullo:</p>
+<p><span class="m d">\vec R = \sum_i \vec F_i = \vec F_1 + \vec F_2 + \ldots + \vec F_N = \vec 0</span></p>
+<p>Poiché un vettore è nullo se e solo se sono nulle tutte le sue componenti, la condizione equivale a tre equazioni scalari:</p>
+<p><span class="m d">\sum F_x = 0 \qquad \sum F_y = 0 \qquad \sum F_z = 0</span></p>
 <p>dove:</p>
 <ul>
-<li><span class="m">\vec F</span> = ciascuna forza applicata al punto (N)</li>
-<li><span class="m">F_x, F_y, F_z</span> = componenti delle forze lungo gli assi (N)</li>
+<li><span class="m">\vec F_i</span> = ciascuna delle forze applicate al punto (N)</li>
+<li><span class="m">\vec R</span> = risultante (N)</li>
+<li><span class="m">F_x, F_y, F_z</span> = componenti cartesiane delle forze (N)</li>
 </ul>
-<p>Per il primo principio, con risultante nulla il punto resta fermo oppure si muove di moto rettilineo uniforme. Quindi un corpo a velocità costante (in un riferimento inerziale) ha risultante nulla.</p>
-<p>Per un punto materiale bastano le forze. I momenti servono solo per i corpi estesi.</p>
+<h3>Perché basta la risultante</h3>
+<p>Il secondo principio della dinamica dice che <span class="m">\vec R = m\vec a</span>. Le forze, essendo vettori, si sommano: ciascuna contribuisce all&#39;accelerazione indipendentemente dalle altre, e conta solo la loro somma. Se <span class="m">\vec R = \vec 0</span>, allora <span class="m">\vec a = \vec 0</span>: la velocità non cambia. Quindi (primo principio) il punto:</p>
+<ul>
+<li>se era fermo, <strong>resta fermo</strong>: si parla di <strong>equilibrio statico</strong>;</li>
+<li>se si muoveva, continua a muoversi di <strong>moto rettilineo uniforme</strong>.</li>
+</ul>
+<p>Leggendo al contrario: se in un riferimento inerziale un corpo si muove a <strong>velocità costante</strong>, la risultante delle forze su di esso è nulla. Non è detto che non agiscano forze: agiscono forze che si bilanciano (per esempio la spinta del motore di un&#39;auto in autostrada bilancia attriti e resistenza dell&#39;aria).</p>
+<h3>Le forze ci sono, è la somma a essere nulla</h3>
+<p>È un punto su cui le domande insistono. Equilibrio <strong>non</strong> significa:</p>
+<ul>
+<li>che sul punto non agiscono forze;</li>
+<li>che tutte le forze hanno lo stesso modulo o la stessa direzione.</li>
+</ul>
+<p>Significa solo che la loro <strong>somma vettoriale</strong> è zero. Esempi:</p>
+<ul>
+<li>un libro su un tavolo: il peso (verso il basso) è bilanciato dalla <strong>reazione vincolare</strong> del tavolo (verso l&#39;alto). Il vincolo è un dispositivo che, reagendo, applica al corpo una forza uguale e opposta a quella che lo spingerebbe a muoversi;</li>
+<li>un oggetto appeso a un filo: la tensione del filo bilancia il peso;</li>
+<li>tre forze di uguale modulo a <span class="m">120°</span> l&#39;una dall&#39;altra (come i tre lati di un triangolo equilatero messi in fila): la somma è nulla anche se nessuna delle tre è nulla.</li>
+</ul>
+<h3>Punto materiale e corpo esteso</h3>
+<p>Per un <strong>punto materiale</strong> la condizione di equilibrio riguarda solo le forze. Per un <strong>corpo esteso</strong> (rigido) serve anche che sia nulla la somma dei <strong>momenti</strong> delle forze, altrimenti il corpo può ruotare pur non traslando: questo si vedrà nelle lezioni sul corpo rigido. In un punto tutte le forze sono applicate nello stesso punto, quindi i momenti non hanno senso.</p>
 <div class="callout esempio">
 
-<p>Un palloncino fermo in aria. Agiscono il peso, la spinta di Archimede ed eventualmente il filo. Le forze ci sono, ma la loro somma è zero.</p>
+<p><strong>Il palloncino fermo in aria.</strong> Un palloncino è fermo a mezz&#39;aria. Agiscono su di esso il peso (verso il basso), la spinta di Archimede dell&#39;aria (verso l&#39;alto) ed eventualmente la tensione del filo. Il palloncino è fermo, quindi la risultante è nulla: le forze ci sono, ma si bilanciano. Non è una situazione &quot;impossibile&quot; e non è vero che non agisce nessuna forza.</p>
 </div>
 
-<div class="callout attenzione">
+<div class="callout esempio">
 
-<p>Tre o più forze non nulle possono dare risultante nulla. Esempio: tre forze uguali in modulo a 120° l&#39;una dall&#39;altra. Se due forze sono uguali e opposte si annullano, e conta solo la terza.</p>
+<p><strong>Tre forze, due uguali e opposte.</strong> Su un punto agiscono <span class="m">\vec F_1</span>, <span class="m">\vec F_2 = -\vec F_1</span> e <span class="m">\vec F_3</span>. La risultante è <span class="m">\vec F_1 - \vec F_1 + \vec F_3 = \vec F_3</span>. Il moto del punto è determinato soltanto dalla terza forza: accelera nella direzione e nel verso di <span class="m">\vec F_3</span> con <span class="m">\vec a = \vec F_3/m</span>.</p>
+<p><strong>Forze tutte con stessa direzione e verso.</strong> Se tutte le forze puntano nello stesso verso, i moduli si sommano e la risultante ha quella stessa direzione e quel verso.</p>
 </div>
 
 <h2>Equilibrio stabile, instabile, indifferente</h2>
-<p>Un punto di equilibrio si classifica guardando cosa succede se sposti un po&#39; il corpo.</p>
+<p>Una posizione in cui la risultante è nulla è un <strong>punto di equilibrio</strong>. Per capire di che tipo è, si sposta di poco il corpo e si guarda che cosa succede:</p>
+<ul>
+<li><strong>equilibrio stabile</strong>: se il corpo viene spostato di poco, nasce una forza che tende a <strong>riavvicinarlo</strong> al punto di equilibrio; il suo moto resta confinato in un intorno del punto (oscilla attorno a esso);</li>
+<li><strong>equilibrio instabile</strong>: se il corpo viene spostato di poco, nasce una forza che lo <strong>allontana</strong> sempre di più, indefinitamente;</li>
+<li><strong>equilibrio indifferente</strong>: se il corpo viene spostato di poco, si trova in una <strong>nuova posizione di equilibrio</strong> e resta lì (non nasce alcuna forza).</li>
+</ul>
 <table>
 <thead>
 <tr>
 <th>Tipo</th>
 <th>Cosa succede se lo sposti di poco</th>
-<th>Esempio</th>
+<th>Esempi</th>
 </tr>
 </thead>
 <tbody><tr>
 <td>Stabile</td>
 <td>torna verso il punto e oscilla attorno a esso</td>
-<td>pallina sul fondo di una scodella, pendolo fermo in basso</td>
+<td>pallina sul fondo di una scodella; pendolo fermo in basso; massa ferma alla lunghezza di riposo della molla</td>
 </tr>
 <tr>
 <td>Instabile</td>
 <td>si allontana sempre di più</td>
-<td>matita in piedi sulla punta, pallina in cima a una cupola</td>
+<td>matita in piedi sulla punta; pallina in cima a una cupola; pendolo rigido capovolto in alto</td>
 </tr>
 <tr>
 <td>Indifferente</td>
 <td>resta in equilibrio nella nuova posizione</td>
-<td>biglia su un tavolo piano</td>
+<td>biglia su un tavolo piano orizzontale; ruota libera sul suo asse</td>
 </tr>
 </tbody></table>
-<p>Le oscillazioni armoniche avvengono sempre attorno a un equilibrio <strong>stabile</strong>.</p>
-<h2>Legge di Hooke</h2>
-<p>Una molla deformata spinge o tira per tornare alla sua lunghezza di riposo. La forza è proporzionale alla deformazione e di verso opposto.</p>
-<p><span class="m d">F = -kx</span></p>
+<p>Collegamento con l&#39;energia (vedi lezione 20): in un campo di forze conservative l&#39;equilibrio stabile corrisponde a un <strong>minimo</strong> dell&#39;energia potenziale, quello instabile a un <strong>massimo</strong>, quello indifferente a un tratto in cui l&#39;energia potenziale è <strong>costante</strong>. La biglia sul tavolo piano ha la stessa energia potenziale in ogni punto del tavolo: indifferente.</p>
+<p>Le <strong>oscillazioni armoniche</strong> avvengono sempre attorno a un equilibrio <strong>stabile</strong>: è proprio la forza che &quot;riporta indietro&quot; a produrre l&#39;oscillazione. I due sistemi oscillanti principali (molla e pendolo) sono entrambi spostamenti attorno a un equilibrio stabile.</p>
+<div class="callout attenzione">
+
+<p>&quot;Equilibrio iperstabile&quot; non è uno dei tre tipi di equilibrio di un punto: i tipi sono solo stabile, instabile e indifferente. (In scienza delle costruzioni &quot;iperstatico&quot; indica una struttura con più vincoli del necessario: è un altro concetto.)</p>
+</div>
+
+<h2>La legge di Hooke</h2>
+<p>Consideriamo un blocco appoggiato su un piano orizzontale senza attrito, agganciato a una molla il cui altro estremo è fissato a una parete. La molla ha una sua <strong>lunghezza di riposo</strong>: in quella posizione non esercita forze e il sistema è in equilibrio.</p>
+<p>Se la molla viene <strong>deformata</strong> — compressa (accorciata) oppure allungata (dilatata) — esercita sul corpo una forza di richiamo verso la posizione di riposo, detta <strong>forza elastica</strong>. La forza agisce su entrambi gli estremi della molla: sul blocco da un lato, sulla parete dall&#39;altro (dove è bilanciata dalla reazione vincolare della parete).</p>
+<p>Fissiamo l&#39;origine dell&#39;asse <span class="m">x</span> nella posizione di riposo, così lo spostamento dalla posizione di riposo <span class="m">x - x_0</span> coincide con la coordinata <span class="m">x</span>. Sperimentalmente si trova la <strong>legge di Hooke</strong>:</p>
+<p><span class="m d">F = -k\,x</span></p>
 <p>dove:</p>
 <ul>
-<li><span class="m">F</span> = forza elastica esercitata dalla molla (N)</li>
-<li><span class="m">k</span> = costante elastica (N/m): misura la rigidità e dipende solo dalla molla</li>
-<li><span class="m">x</span> = deformazione, cioè allungamento o compressione rispetto alla lunghezza di riposo (m)</li>
+<li><span class="m">F</span> = forza elastica esercitata dalla molla sul corpo (N)</li>
+<li><span class="m">k</span> = <strong>costante elastica</strong> della molla (N/m): misura la rigidità della molla e dipende <strong>solo dalle caratteristiche della molla</strong> (materiale, spessore del filo, numero e diametro delle spire)</li>
+<li><span class="m">x</span> = <strong>deformazione</strong>: allungamento (<span class="m">x &gt; 0</span>) o compressione (<span class="m">x &lt; 0</span>) rispetto alla lunghezza di riposo (m)</li>
 </ul>
-<p>Conseguenze pratiche:</p>
+<p>Significato della formula:</p>
 <ul>
-<li>In modulo <span class="m">F = kx</span>, quindi <span class="m">x = F/k</span> e <span class="m">k = F/x</span>.</li>
-<li>È l&#39;<strong>allungamento</strong> a essere proporzionale alla forza, non la lunghezza totale. Doppio peso, doppio allungamento.</li>
-<li>La legge vale solo per piccole deformazioni. Oltre il limite di elasticità la deformazione diventa permanente.</li>
-<li><span class="m">k</span> non dice qual è il carico massimo che la molla sopporta.</li>
+<li><strong>modulo</strong> proporzionale alla deformazione: <span class="m">|F| = k|x|</span>. Doppia deformazione, doppia forza;</li>
+<li><strong>verso</strong> sempre opposto alla deformazione (segno meno): se allunghi la molla, tira indietro; se la comprimi, spinge in fuori;</li>
+<li>la costante <span class="m">k</span> si legge come &quot;quanti newton servono per deformare la molla di un metro&quot;. Una molla con <span class="m">k = 2000\,\mathrm{N/m}</span> si allunga di <span class="m">1\,\mathrm m</span> sotto <span class="m">2000\,\mathrm N</span>, di <span class="m">1\,\mathrm{cm}</span> sotto <span class="m">20\,\mathrm N</span>.</li>
+</ul>
+<h3>Formule inverse</h3>
+<p>Lavorando con i moduli:</p>
+<p><span class="m d">F = kx \qquad x = \frac{F}{k} \qquad k = \frac{F}{x}</span></p>
+<h3>Limiti di validità</h3>
+<ul>
+<li>La legge di Hooke vale per <strong>piccole deformazioni</strong>, entro il <strong>limite di elasticità</strong>: tolta la forza, la molla torna alla sua lunghezza di riposo. Oltre questo limite la deformazione diventa permanente (la molla si &quot;sforma&quot;) e la proporzionalità non vale più; ancora oltre la molla si rompe.</li>
+<li>La costante <span class="m">k</span> dice <strong>quanto</strong> la molla si deforma sotto una forza, ma <strong>non</strong> dice quale carico massimo la molla può sopportare: per saperlo servirebbe conoscere il limite elastico.</li>
+<li>È l&#39;<strong>allungamento</strong> (la deformazione) a essere proporzionale alla forza, <strong>non la lunghezza totale</strong> della molla. Una molla lunga <span class="m">20\,\mathrm{cm}</span> a riposo che si allunga di <span class="m">2\,\mathrm{cm}</span> con <span class="m">1\,\mathrm{kg}</span> si allungherà di <span class="m">4\,\mathrm{cm}</span> con <span class="m">2\,\mathrm{kg}</span>: la lunghezza passa da <span class="m">22</span> a <span class="m">24\,\mathrm{cm}</span>, non raddoppia.</li>
 </ul>
 <div class="callout esempio">
 
+<p><strong>Calcoli con la legge di Hooke.</strong></p>
 <ul>
-<li>Molla con <span class="m">k = 1000\,\mathrm{N/m}</span> compressa di <span class="m">10\,\mathrm{cm}</span>: <span class="m">F = 1000 \cdot 0{,}1 = 100\,\mathrm N</span>.</li>
-<li>Molla con <span class="m">k = 5000\,\mathrm{N/m}</span> compressa di <span class="m">30\,\mathrm{cm}</span>: <span class="m">F = 1500\,\mathrm N</span>.</li>
-<li><span class="m">12\,\mathrm N</span> la allungano di <span class="m">3\,\mathrm{cm}</span>: con <span class="m">60\,\mathrm N</span> (5 volte tanto) si allunga di <span class="m">15\,\mathrm{cm}</span>.</li>
-<li><span class="m">k = 2000\,\mathrm{N/m}</span>: <span class="m">2000\,\mathrm N</span> → <span class="m">1\,\mathrm m</span>; <span class="m">200\,\mathrm N</span> → <span class="m">10\,\mathrm{cm}</span>; <span class="m">20\,\mathrm N</span> → <span class="m">1\,\mathrm{cm}</span>.</li>
+<li>Molla con <span class="m">k = 1000\,\mathrm{N/m}</span> compressa di <span class="m">10\,\mathrm{cm} = 0{,}10\,\mathrm m</span>: <span class="m">F = 1000 \cdot 0{,}10 = 100\,\mathrm N</span> (una forza, in newton, non in joule).</li>
+<li>Molla con <span class="m">k = 5000\,\mathrm{N/m}</span> compressa di <span class="m">30\,\mathrm{cm}</span>: <span class="m">F = 5000 \cdot 0{,}30 = 1500\,\mathrm N</span>.</li>
+<li>Molla che esercita <span class="m">80\,\mathrm N</span> quando è compressa di <span class="m">30\,\mathrm{cm}</span>: <span class="m">k = F/x = 80/0{,}30 \approx 267\,\mathrm{N/m}</span>.</li>
+<li>Una forza di <span class="m">12\,\mathrm N</span> allunga una molla di <span class="m">3{,}0\,\mathrm{cm}</span>. Con <span class="m">60\,\mathrm N</span> (cinque volte tanto) l&#39;allungamento è cinque volte tanto: <span class="m">15\,\mathrm{cm}</span>. In alternativa: <span class="m">k = 12/0{,}030 = 400\,\mathrm{N/m}</span> e <span class="m">x = 60/400 = 0{,}15\,\mathrm m</span>.</li>
+<li>Molla con <span class="m">k = 2000\,\mathrm{N/m}</span>: con <span class="m">2000\,\mathrm N</span> si allunga di <span class="m">1\,\mathrm m</span>; con <span class="m">200\,\mathrm N</span> di <span class="m">0{,}1\,\mathrm m = 1\,\mathrm{dm}</span>; con <span class="m">20\,\mathrm N</span> di <span class="m">1\,\mathrm{cm}</span>. Non si può invece dire, dal solo <span class="m">k</span>, se &quot;può sopportare <span class="m">2000\,\mathrm N</span>&quot;.</li>
 </ul>
 </div>
 
 <h2>Molla verticale con un peso</h2>
-<p>All&#39;equilibrio la forza della molla bilancia il peso.</p>
-<p><span class="m d">kx = mg \quad\Rightarrow\quad x = \frac{mg}{k}, \qquad k = \frac{mg}{x}</span></p>
+<p>Appendiamo un corpo di massa <span class="m">m</span> a una molla verticale appesa al soffitto (oppure lo appoggiamo sopra una molla verticale). La molla si allunga (o si comprime) finché la forza elastica bilancia il peso. All&#39;equilibrio:</p>
+<p><span class="m d">k\,x_{eq} = mg \qquad\Rightarrow\qquad x_{eq} = \frac{mg}{k} \qquad k = \frac{mg}{x_{eq}}</span></p>
 <p>dove:</p>
 <ul>
 <li><span class="m">m</span> = massa appesa o appoggiata (kg)</li>
 <li><span class="m">g</span> = accelerazione di gravità, <span class="m">9{,}8\,\mathrm{m/s^2}</span></li>
-<li><span class="m">x</span> = allungamento (o compressione) all&#39;equilibrio (m)</li>
+<li><span class="m">x_{eq}</span> = allungamento (o compressione) all&#39;equilibrio (m)</li>
 </ul>
+<p>Attenzione all&#39;unità: nella formula entra il <strong>peso</strong> <span class="m">mg</span> (in newton), non la massa.</p>
 <div class="callout esempio">
 
-<ul>
-<li><span class="m">1\,\mathrm{kg}</span> su una molla con <span class="m">k = 100\,\mathrm{N/m}</span>: <span class="m">x = 9{,}8/100 \approx 0{,}1\,\mathrm m = 10\,\mathrm{cm}</span>.</li>
-<li>Togli <span class="m">0{,}54\,\mathrm{kg}</span> e la molla si accorcia di <span class="m">0{,}44\,\mathrm m</span>: <span class="m">k = 0{,}54 \cdot 9{,}8/0{,}44 \approx 12\,\mathrm{N/m}</span>.</li>
-</ul>
+<p><strong>Peso su una molla.</strong> Un corpo di <span class="m">1\,\mathrm{kg}</span> è appoggiato su una molla verticale con <span class="m">k = 100\,\mathrm{N/m}</span>. Il peso è <span class="m">mg = 9{,}8\,\mathrm N</span>. Compressione: <span class="m">x = 9{,}8/100 = 0{,}098\,\mathrm m \approx 10\,\mathrm{cm}</span>.</p>
 </div>
 
-<p>Se poi sposti ancora il corpo e lo lasci, oscilla con lo stesso periodo <span class="m">2\pi\sqrt{m/k}</span>. Cambia solo il centro dell&#39;oscillazione: è la nuova posizione di equilibrio, non la lunghezza di riposo.</p>
+<div class="callout esempio">
+
+<p><strong>Ricavare <span class="m">k</span> togliendo un peso.</strong> Una molla appesa al soffitto regge un corpo di <span class="m">0{,}54\,\mathrm{kg}</span>. Togliendo il corpo, la molla si accorcia di <span class="m">0{,}44\,\mathrm m</span>: quindi <span class="m">0{,}44\,\mathrm m</span> era l&#39;allungamento dovuto al peso. <span class="m">k = mg/x = 0{,}54 \cdot 9{,}8/0{,}44 = 5{,}29/0{,}44 \approx 12\,\mathrm{N/m}</span>.</p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Uno e poi due chili.</strong> Appendendo prima <span class="m">1\,\mathrm{kg}</span> e poi <span class="m">2\,\mathrm{kg}</span> alla stessa molla, il peso raddoppia, quindi <strong>raddoppia l&#39;allungamento</strong> (non la lunghezza totale della molla, e non quadruplica nulla).</p>
+</div>
+
+<h3>La molla verticale che oscilla</h3>
+<p>Se il corpo appeso viene spostato ancora e lasciato andare, oscilla. Vediamo perché lo fa <strong>con lo stesso periodo</strong> della molla orizzontale (esercizio della dispensa).</p>
+<ol>
+<li>Prendiamo l&#39;asse <span class="m">y</span> verticale verso l&#39;alto, con origine alla lunghezza di riposo della molla libera. Sul corpo agiscono la forza elastica <span class="m">-ky</span> e il peso <span class="m">-mg</span>: <span class="m">\;m\,\ddot y = -ky - mg</span>.</li>
+<li>La nuova posizione di equilibrio è dove la risultante si annulla: <span class="m">-ky_0 - mg = 0</span>, cioè <span class="m">y_0 = -mg/k</span> (sotto la lunghezza di riposo).</li>
+<li>Introduciamo la variabile <span class="m">Y = y - y_0</span>, cioè lo spostamento dalla <strong>nuova</strong> posizione di equilibrio. Allora <span class="m">y = Y + y_0</span> e <span class="m">-ky - mg = -kY - ky_0 - mg = -kY</span> (perché <span class="m">-ky_0 - mg = 0</span>). Inoltre <span class="m">\ddot y = \ddot Y</span> (una costante non cambia le derivate).</li>
+<li>L&#39;equazione diventa <span class="m">m\ddot Y = -kY</span>: è l&#39;equazione della molla orizzontale, nella variabile <span class="m">Y</span>.</li>
+</ol>
+<p>Conclusione: il peso non cambia né la pulsazione né il periodo (<span class="m">\omega = \sqrt{k/m}</span>); sposta soltanto il <strong>centro</strong> dell&#39;oscillazione, che non è più la lunghezza di riposo ma la nuova posizione di equilibrio.</p>
+<div class="callout esempio">
+
+<p><strong>Molla verticale (esercizio della dispensa).</strong> Una molla verticale si allunga di <span class="m">9{,}6\,\mathrm{cm}</span> quando le si appende un corpo di <span class="m">1{,}3\,\mathrm{kg}</span>. Il blocco viene poi tirato giù di altri <span class="m">5{,}0\,\mathrm{cm}</span> e lasciato da fermo. Trovare <span class="m">k</span>, periodo, frequenza, ampiezza e velocità massima.</p>
+<p>(a) <span class="m">k = mg/x = 1{,}3 \cdot 9{,}8/0{,}096 = 12{,}74/0{,}096 \approx 132{,}7\,\mathrm{N/m}</span>.</p>
+<p>(b) <span class="m">\omega = \sqrt{k/m} = \sqrt{132{,}7/1{,}3} = \sqrt{102{,}1} \approx 10{,}1\,\mathrm{rad/s}</span>; <span class="m">T = 2\pi/\omega \approx 0{,}62\,\mathrm s</span>.</p>
+<p>(c) <span class="m">\nu = 1/T \approx 1{,}6\,\mathrm{Hz}</span>.</p>
+<p>(d) Parte da ferma a <span class="m">5{,}0\,\mathrm{cm}</span> dalla nuova posizione di equilibrio: <span class="m">A = 0{,}050\,\mathrm m</span>. La legge oraria è <span class="m">Y(t) = -0{,}050\cos(\omega t)</span>.</p>
+<p>(e) <span class="m">v_{max} = \omega A = 10{,}1 \cdot 0{,}050 \approx 0{,}51\,\mathrm{m/s}</span>, raggiunta quando il corpo ripassa per la posizione di equilibrio.</p>
+</div>
+
 <h2>Molle in serie e in parallelo</h2>
-<p>Due molle possono essere sostituite da una sola molla equivalente.</p>
+<p>Due molle collegate possono essere sostituite da <strong>una sola molla equivalente</strong>, che sotto la stessa forza ha lo stesso allungamento complessivo.</p>
+<h3>Molle in serie</h3>
+<p>Due molle sono <strong>in serie</strong> quando sono attaccate una dopo l&#39;altra (il soffitto regge la prima, la prima regge la seconda, la seconda regge il corpo).</p>
+<ol>
+<li>Ogni molla è in equilibrio, quindi trasmette <strong>la stessa forza</strong> <span class="m">F</span>: la seconda regge il peso, la prima regge la seconda. Le due forze elastiche sono uguali, gli allungamenti diversi.</li>
+<li>Allungamenti: <span class="m">x_1 = F/k_1</span>, <span class="m">x_2 = F/k_2</span>.</li>
+<li>L&#39;allungamento totale è la somma: <span class="m">x = x_1 + x_2 = F\left(\dfrac{1}{k_1} + \dfrac{1}{k_2}\right)</span>.</li>
+<li>La molla equivalente deve dare <span class="m">x = F/k</span>. Confrontando:</li>
+</ol>
+<p><span class="m d">\frac{1}{k_{serie}} = \frac{1}{k_1} + \frac{1}{k_2} \qquad\Rightarrow\qquad k_{serie} = \frac{k_1 k_2}{k_1 + k_2}</span></p>
+<h3>Molle in parallelo</h3>
+<p>Due molle sono <strong>in parallelo</strong> quando sono attaccate una accanto all&#39;altra, entrambe al soffitto e entrambe al corpo, in modo che si allunghino della stessa quantità.</p>
+<ol>
+<li><strong>Stesso allungamento</strong> <span class="m">x</span> per entrambe.</li>
+<li>Le forze si sommano: <span class="m">F = k_1 x + k_2 x = (k_1 + k_2)\,x</span>.</li>
+<li>La molla equivalente deve dare <span class="m">F = kx</span>:</li>
+</ol>
+<p><span class="m d">k_{parallelo} = k_1 + k_2</span></p>
 <table>
 <thead>
 <tr>
 <th>Collegamento</th>
-<th>Cosa hanno in comune</th>
+<th>Grandezza comune</th>
+<th>Grandezza che si somma</th>
 <th>Costante equivalente</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>Serie (una dopo l&#39;altra)</td>
-<td>la stessa forza</td>
+<td>Serie</td>
+<td>la forza</td>
+<td>gli allungamenti</td>
 <td><span class="m">\dfrac{1}{k} = \dfrac{1}{k_1} + \dfrac{1}{k_2}</span></td>
 </tr>
 <tr>
-<td>Parallelo (una accanto all&#39;altra)</td>
-<td>lo stesso allungamento</td>
+<td>Parallelo</td>
+<td>l&#39;allungamento</td>
+<td>le forze</td>
 <td><span class="m">k = k_1 + k_2</span></td>
 </tr>
 </tbody></table>
-<p>In serie la molla equivalente è più morbida di ciascuna. In parallelo è più rigida.</p>
-<h2>Molla oscillante: equazione del moto</h2>
-<p>Un blocco di massa <span class="m">m</span> è attaccato a una molla su un piano senza attrito. Lo sposti di <span class="m">A</span> e lo lasci. L&#39;unica forza orizzontale è quella elastica.</p>
+<p>In serie la molla equivalente è <strong>più morbida</strong> di ciascuna delle due (<span class="m">k</span> minore della più piccola). In parallelo è <strong>più rigida</strong> di ciascuna (le molle &quot;si aiutano&quot;).</p>
+<div class="callout esempio">
+
+<p><strong>Due molle in serie (esercizio della dispensa).</strong> Un cubetto di <span class="m">m = 6{,}5\,\mathrm{kg}</span> è appeso al soffitto tramite due molle in serie con <span class="m">k_1 = 370\,\mathrm{N/m}</span> e <span class="m">k_2 = 520\,\mathrm{N/m}</span>.</p>
 <ol>
-<li>Secondo principio: <span class="m">m\,\dfrac{d^2x}{dt^2} = -kx</span>.</li>
-<li>Dividendo per <span class="m">m</span>: <span class="m">\dfrac{d^2x}{dt^2} = -\omega^2 x</span> con <span class="m">\omega = \sqrt{k/m}</span>.</li>
-<li>È l&#39;equazione del moto armonico. Con partenza da ferma in <span class="m">x = A</span> la soluzione è <span class="m">x(t) = A\cos(\omega t)</span>.</li>
+<li>Peso: <span class="m">mg = 6{,}5 \cdot 9{,}8 = 63{,}7\,\mathrm N</span>, che è la forza in entrambe le molle.</li>
+<li><span class="m">x_1 = 63{,}7/370 \approx 0{,}172\,\mathrm m</span>; <span class="m">x_2 = 63{,}7/520 \approx 0{,}123\,\mathrm m</span>; totale <span class="m">\approx 0{,}295\,\mathrm m</span>.</li>
+<li>Molla equivalente: <span class="m">k = \dfrac{370 \cdot 520}{370 + 520} = \dfrac{192\,400}{890} \approx 216\,\mathrm{N/m}</span>. Verifica: <span class="m">63{,}7/216 \approx 0{,}295\,\mathrm m</span>.</li>
 </ol>
-<p><span class="m d">\omega = \sqrt{\frac{k}{m}} \qquad T = 2\pi\sqrt{\frac{m}{k}}</span></p>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Due molle in parallelo (esercizio della dispensa).</strong> Un cubetto di <span class="m">m = 3{,}5\,\mathrm{kg}</span> è appeso con due molle, <span class="m">k_1 = 250\,\mathrm{N/m}</span> e <span class="m">k_2 = 320\,\mathrm{N/m}</span>, entrambe attaccate al soffitto e al cubo; la faccia superiore del cubo resta orizzontale, quindi le molle si allungano della stessa quantità <span class="m">\Delta x</span>.</p>
+<ol>
+<li>Equilibrio: <span class="m">k_1\Delta x + k_2\Delta x = mg</span>, cioè <span class="m">(250 + 320)\,\Delta x = 3{,}5 \cdot 9{,}8 = 34{,}3\,\mathrm N</span>.</li>
+<li><span class="m">\Delta x = 34{,}3/570 \approx 0{,}060\,\mathrm m = 6{,}0\,\mathrm{cm}</span>.</li>
+<li>Molla equivalente: <span class="m">k = 570\,\mathrm{N/m}</span>. Le singole forze: <span class="m">250 \cdot 0{,}060 = 15\,\mathrm N</span> e <span class="m">320 \cdot 0{,}060 \approx 19\,\mathrm N</span>, che sommate danno il peso.</li>
+</ol>
+</div>
+
+<div class="callout esempio">
+
+<p><strong>Blocco tra due molle orizzontali (esercizio della dispensa).</strong> Un blocco di <span class="m">m = 0{,}4\,\mathrm{kg}</span> su un piano liscio oscilla collegato a due molle in serie con <span class="m">k_1 = 20\,\mathrm{N/m}</span> e <span class="m">k_2 = 30\,\mathrm{N/m}</span>. Nel punto di attacco tra le due molle esse si scambiano tensioni uguali e opposte, quindi la forza è la stessa: è un collegamento in serie.</p>
+<ol>
+<li><span class="m">K = \dfrac{20 \cdot 30}{20 + 30} = 12\,\mathrm{N/m}</span>.</li>
+<li><span class="m">T = 2\pi\sqrt{m/K} = 2\pi\sqrt{0{,}4/12} = 2\pi \cdot 0{,}183 \approx 1{,}15\,\mathrm s</span>.</li>
+</ol>
+</div>
+
+<h2>La molla oscillante: equazione del moto</h2>
+<p>Un blocco di massa <span class="m">m</span> è attaccato a una molla di costante <span class="m">k</span> su un piano orizzontale <strong>senza attrito</strong>. Lo spostiamo di <span class="m">A</span> dalla posizione di riposo e lo lasciamo andare da fermo. Le forze sono:</p>
+<ul>
+<li>peso e reazione del piano, verticali, che si bilanciano;</li>
+<li>forza elastica <span class="m">-kx</span>, orizzontale: è la <strong>risultante</strong>.</li>
+</ul>
+<p>Il ragionamento passo per passo:</p>
+<ol>
+<li>Secondo principio lungo <span class="m">x</span>: <span class="m">\;m\,\dfrac{d^2x}{dt^2} = -kx</span>.</li>
+<li>Divido per <span class="m">m</span>: <span class="m">\;\dfrac{d^2x}{dt^2} = -\dfrac{k}{m}\,x</span>.</li>
+<li>Pongo <span class="m">\omega^2 = k/m</span>: <span class="m">\;\dfrac{d^2x}{dt^2} = -\omega^2 x</span>. È l&#39;equazione del moto armonico (lezione 15).</li>
+<li>La soluzione generale è <span class="m">x(t) = A\cos(\omega t + \varphi)</span>. Partendo da ferma in <span class="m">x = A</span> (condizioni iniziali <span class="m">x(0) = A</span>, <span class="m">v(0) = 0</span>) si ha <span class="m">\varphi = 0</span>: <span class="m">\;x(t) = A\cos(\omega t)</span>.</li>
+</ol>
+<p><span class="m d">\omega = \sqrt{\frac{k}{m}} \qquad T = 2\pi\sqrt{\frac{m}{k}} \qquad \nu = \frac{1}{2\pi}\sqrt{\frac{k}{m}}</span></p>
 <p>dove:</p>
 <ul>
 <li><span class="m">\omega</span> = pulsazione (rad/s)</li>
 <li><span class="m">T</span> = periodo (s)</li>
+<li><span class="m">\nu</span> = frequenza (Hz)</li>
+<li><span class="m">k</span> = costante elastica (N/m), <span class="m">m</span> = massa (kg)</li>
 </ul>
-<p>Più il blocco è leggero, più il moto è rapido. Più la molla è rigida, più il moto è rapido.</p>
+<p>Il moto è una oscillazione armonica tra <span class="m">-A</span> e <span class="m">+A</span> attorno alla posizione di riposo (equilibrio stabile). Conseguenze:</p>
+<ul>
+<li><strong>più la massa è grande, più il moto è lento</strong> (più inerzia): <span class="m">T \propto \sqrt m</span>. Quadruplicando la massa il periodo raddoppia;</li>
+<li><strong>più la molla è rigida, più il moto è rapido</strong>: <span class="m">T \propto 1/\sqrt k</span>;</li>
+<li>il periodo <strong>non dipende dall&#39;ampiezza</strong> <span class="m">A</span>: tirando di più, il blocco percorre più strada ma va più veloce;</li>
+<li>velocità massima <span class="m">v_{max} = \omega A</span> nella posizione di riposo; accelerazione massima <span class="m">\omega^2 A = kA/m</span> agli estremi.</li>
+</ul>
 <div class="callout esempio">
 
-<p><span class="m">m = 200\,\mathrm g</span>, <span class="m">k = 20\,\mathrm{N/m}</span>: <span class="m">T = 2\pi\sqrt{0{,}2/20} = 2\pi \cdot 0{,}1 \approx 0{,}628\,\mathrm s</span>.</p>
+<p><strong>Periodo di una molla.</strong> <span class="m">m = 200\,\mathrm g = 0{,}2\,\mathrm{kg}</span>, <span class="m">k = 20\,\mathrm{N/m}</span>.</p>
+<ol>
+<li><span class="m">m/k = 0{,}2/20 = 0{,}01\,\mathrm{s^2}</span>; <span class="m">\sqrt{0{,}01} = 0{,}1\,\mathrm s</span>.</li>
+<li><span class="m">T = 2\pi \cdot 0{,}1 \approx 0{,}628\,\mathrm s</span>.</li>
+</ol>
+<p>Chi dimentica di convertire i grammi in chilogrammi ottiene un risultato sbagliato di un fattore <span class="m">\sqrt{1000}</span>.</p>
 </div>
 
 <h2>Energia elastica e compressione massima</h2>
-<p>Una molla deformata di <span class="m">x</span> immagazzina energia potenziale elastica.</p>
-<p><span class="m d">U = \tfrac12 kx^2</span></p>
-<p>dove <span class="m">U</span> = energia elastica (J), <span class="m">k</span> = costante elastica (N/m), <span class="m">x</span> = deformazione (m).</p>
-<p>Se un blocco con velocità <span class="m">v</span> comprime una molla (senza attrito), tutta l&#39;energia cinetica diventa elastica: <span class="m">\tfrac12 mv^2 = \tfrac12 kx^2</span>, quindi <span class="m">x = v\sqrt{m/k}</span>.</p>
+<p>Una molla deformata di <span class="m">x</span> immagazzina <strong>energia potenziale elastica</strong> (ricavata nelle lezioni 17 e 19 dal lavoro della forza elastica):</p>
+<p><span class="m d">U_{el} = \tfrac12 k x^2</span></p>
+<p>dove <span class="m">U_{el}</span> = energia elastica (J), <span class="m">k</span> = costante elastica (N/m), <span class="m">x</span> = deformazione (m).</p>
+<p>Durante l&#39;oscillazione senza attrito l&#39;energia meccanica <span class="m">\tfrac12 mv^2 + \tfrac12 kx^2</span> resta costante e vale <span class="m">\tfrac12 kA^2</span>. Quindi, se un blocco con velocità <span class="m">v</span> incontra una molla (o riceve la velocità <span class="m">v</span> trovandosi nella posizione di riposo), si ferma quando tutta l&#39;energia cinetica è diventata elastica:</p>
+<p><span class="m d">\tfrac12 mv^2 = \tfrac12 kx_{max}^2 \qquad\Rightarrow\qquad x_{max} = v\sqrt{\frac{m}{k}} = \frac{v}{\omega}</span></p>
 <div class="callout esempio">
 
-<p>Blocco di <span class="m">4\,\mathrm{kg}</span> a <span class="m">4\,\mathrm{m/s}</span>, molla con <span class="m">k = 400\,\mathrm{N/m}</span>: <span class="m">x = 4\sqrt{4/400} = 0{,}4\,\mathrm m = 40\,\mathrm{cm}</span>.</p>
+<p><strong>Massima deformazione.</strong> Un blocco di <span class="m">4\,\mathrm{kg}</span> attaccato a una molla con <span class="m">k = 400\,\mathrm{N/m}</span>, fermo nella posizione di equilibrio, riceve una velocità di <span class="m">4\,\mathrm{m/s}</span>.</p>
+<ol>
+<li>Energia cinetica iniziale: <span class="m">\tfrac12 \cdot 4 \cdot 16 = 32\,\mathrm J</span>.</li>
+<li>Alla massima deformazione è tutta elastica: <span class="m">\tfrac12 \cdot 400 \cdot x^2 = 32</span>, cioè <span class="m">x^2 = 0{,}16\,\mathrm{m^2}</span>.</li>
+<li><span class="m">x = 0{,}4\,\mathrm m = 40\,\mathrm{cm}</span>. Con la formula diretta: <span class="m">x = 4\sqrt{4/400} = 4 \cdot 0{,}1 = 0{,}4\,\mathrm m</span>.</li>
+</ol>
 </div>
 
-<h2>Il pendolo: il periodo non dipende dalla massa</h2>
-<p>Per piccole oscillazioni <span class="m">T = 2\pi\sqrt{l/g}</span>, con <span class="m">l</span> = lunghezza del filo (m). La massa non compare.</p>
+<h2>Il pendolo semplice</h2>
+<p>Il secondo sistema oscillante è il pendolo semplice (lezione 15 per la derivazione completa): un punto di massa <span class="m">m</span> appeso a un filo inestensibile di lunghezza <span class="m">l</span>. Per piccole oscillazioni la componente tangente del peso, <span class="m">-mg\sin\theta \approx -mg\theta</span>, è una forza di richiamo proporzionale allo spostamento angolare, e il moto è armonico:</p>
+<p><span class="m d">\frac{d^2\theta}{dt^2} = -\frac{g}{l}\,\theta \qquad \omega = \sqrt{\frac{g}{l}} \qquad T = 2\pi\sqrt{\frac{l}{g}}</span></p>
+<p>dove <span class="m">\theta</span> = angolo con la verticale (rad), <span class="m">l</span> = lunghezza del filo (m), <span class="m">g</span> = accelerazione di gravità (m/s²).</p>
+<p>La massa <strong>non compare</strong>: il periodo dipende solo dalla lunghezza del filo e da <span class="m">g</span>. Per questo il pendolo si usa per stimare <span class="m">g</span> con <span class="m">g = 4\pi^2 l/T^2</span>.</p>
 <div class="callout esempio">
 
-<p>Un pendolo con <span class="m">4\,\mathrm{kg}</span> ha periodo <span class="m">10\,\mathrm s</span>. Con <span class="m">1\,\mathrm{kg}</span> sullo stesso filo il periodo resta <span class="m">10\,\mathrm s</span>.</p>
+<p><strong>Cambiare la massa del pendolo.</strong> Un corpo di <span class="m">4\,\mathrm{kg}</span> appeso a un filo forma un pendolo con periodo <span class="m">10\,\mathrm s</span>. Sostituendolo con un corpo di <span class="m">1\,\mathrm{kg}</span> sullo stesso filo, <span class="m">l</span> e <span class="m">g</span> non cambiano, quindi il periodo <strong>resta <span class="m">10\,\mathrm s</span></strong>. È diverso dalla molla, dove <span class="m">T = 2\pi\sqrt{m/k}</span> dipende dalla massa.</p>
+</div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Molla</th>
+<th>Pendolo</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Forza di richiamo</td>
+<td><span class="m">-kx</span> (elastica)</td>
+<td><span class="m">-mg\sin\theta \approx -mg\theta</span> (componente del peso)</td>
+</tr>
+<tr>
+<td>Periodo</td>
+<td><span class="m">2\pi\sqrt{m/k}</span></td>
+<td><span class="m">2\pi\sqrt{l/g}</span></td>
+</tr>
+<tr>
+<td>Dipende dalla massa?</td>
+<td>sì, <span class="m">T \propto \sqrt m</span></td>
+<td>no</td>
+</tr>
+<tr>
+<td>Dipende dall&#39;ampiezza?</td>
+<td>no</td>
+<td>no, per piccoli angoli</td>
+</tr>
+</tbody></table>
+<h2>La molla con attrito radente</h2>
+<p>Se il blocco attaccato alla molla striscia su un piano <strong>scabro</strong>, agisce anche la forza di attrito dinamico, di modulo costante <span class="m">\mu_d mg</span> e sempre opposta alla velocità. Vediamo che cosa succede (caso trattato nella dispensa come &quot;molla con attrito&quot;).</p>
+<ol>
+<li>Il blocco parte da fermo in <span class="m">x = A</span> e si muove verso sinistra. L&#39;attrito punta verso destra: <span class="m">m\ddot x = -kx + \mu_d mg = -k\left(x - \dfrac{\mu_d mg}{k}\right)</span>.</li>
+<li>Chiamiamo <span class="m">d = \mu_d mg/k</span>. L&#39;equazione è quella di un moto armonico attorno al punto <span class="m">x = +d</span> invece che attorno a <span class="m">0</span>: in questa mezza oscillazione il centro è spostato di <span class="m">d</span> verso il punto di partenza.</li>
+<li>Il blocco parte a distanza <span class="m">A - d</span> dal centro, quindi arriva (fermo) a distanza <span class="m">A - d</span> dall&#39;altra parte del centro: in <span class="m">x = d - (A - d) = -(A - 2d)</span>.</li>
+<li>Nella mezza oscillazione successiva (verso destra) l&#39;attrito si inverte, il centro si sposta in <span class="m">-d</span>, e l&#39;ampiezza cala di nuovo di <span class="m">2d</span>.</li>
+</ol>
+<p>Quindi:</p>
+<ul>
+<li>il periodo resta <span class="m">2\pi\sqrt{m/k}</span> (ogni mezza oscillazione è un pezzo di moto armonico con la stessa <span class="m">\omega</span>);</li>
+<li>l&#39;ampiezza diminuisce di una quantità <strong>fissa</strong> <span class="m">2d = 2\mu_d mg/k</span> a ogni mezza oscillazione, cioè <span class="m">4\mu_d mg/k</span> a ogni periodo: un calo <strong>lineare</strong>, non esponenziale come con l&#39;attrito viscoso;</li>
+<li>il blocco si ferma definitivamente quando, in un punto di inversione, la forza elastica non riesce più a vincere l&#39;attrito statico, cioè quando <span class="m">k|x| \le \mu_s mg</span>.</li>
+</ul>
+<div class="callout esempio">
+
+<p>Blocco di <span class="m">1\,\mathrm{kg}</span>, molla con <span class="m">k = 100\,\mathrm{N/m}</span>, <span class="m">\mu_d = 0{,}1</span>, ampiezza iniziale <span class="m">20\,\mathrm{cm}</span>.</p>
+<ol>
+<li><span class="m">d = \mu_d mg/k = 0{,}1 \cdot 1 \cdot 9{,}8/100 = 0{,}0098\,\mathrm m \approx 1\,\mathrm{cm}</span>.</li>
+<li>A ogni mezza oscillazione l&#39;ampiezza cala di <span class="m">2d \approx 2\,\mathrm{cm}</span>: <span class="m">20 \to 18 \to 16 \to \ldots\,\mathrm{cm}</span>.</li>
+<li>Dopo circa 10 mezze oscillazioni (5 periodi, <span class="m">T = 2\pi\sqrt{0{,}01} \approx 0{,}63\,\mathrm s</span>, quindi circa <span class="m">3\,\mathrm s</span>) l&#39;ampiezza scende sotto <span class="m">1\,\mathrm{cm}</span> e il blocco si ferma.</li>
+</ol>
 </div>
 
 <h2>Forze costanti combinate</h2>
-<p>Se la risultante è costante e il corpo parte da fermo, il moto è rettilineo uniformemente accelerato lungo la direzione della risultante.</p>
+<p>Se su un corpo agiscono solo forze <strong>costanti</strong>, anche la risultante è costante, e quindi lo è l&#39;accelerazione <span class="m">\vec a = \vec R/m</span>. Se il corpo <strong>parte da fermo</strong>, si muove di moto <strong>rettilineo uniformemente accelerato</strong> lungo la direzione della risultante. (Se invece avesse una velocità iniziale non parallela alla risultante, il moto sarebbe parabolico, come per un proiettile.)</p>
 <div class="callout esempio">
 
-<p>Massa di <span class="m">1\,\mathrm{kg}</span>: peso <span class="m">9{,}8\,\mathrm N</span> in basso più una forza orizzontale di <span class="m">9{,}8\,\mathrm N</span>. La risultante è costante e inclinata di 45°. Da fermo il corpo si muove di moto uniformemente accelerato a 45°.</p>
+<p>Un corpo di <span class="m">1\,\mathrm{kg}</span>, fermo, è soggetto al peso (<span class="m">9{,}8\,\mathrm N</span> verso il basso) e a una forza orizzontale costante di <span class="m">9{,}8\,\mathrm N</span>.</p>
+<ol>
+<li>Risultante: componenti <span class="m">(9{,}8;\,-9{,}8)\,\mathrm N</span>, modulo <span class="m">9{,}8\sqrt2 \approx 13{,}9\,\mathrm N</span>, inclinata di <span class="m">45°</span> sotto l&#39;orizzontale (le due componenti sono uguali).</li>
+<li>Accelerazione costante: <span class="m">13{,}9\,\mathrm{m/s^2}</span> a <span class="m">45°</span>.</li>
+<li>Partendo da fermo, il corpo si muove in linea retta a <span class="m">45°</span> con moto uniformemente accelerato (non uniforme, perché la risultante non è nulla; non parabolico, perché la velocità iniziale è nulla).</li>
+</ol>
+</div>
+
+<div class="callout attenzione">
+
+<p>Errori tipici:</p>
+<ul>
+<li>dire che in equilibrio &quot;non agiscono forze&quot; o &quot;le forze sono nulle&quot;: è nulla la <strong>risultante</strong>;</li>
+<li>aggiungere i momenti nella condizione di equilibrio di un <strong>punto</strong> materiale: servono solo per i corpi estesi;</li>
+<li>pensare che tre o più forze non nulle diano per forza una risultante non nulla: possono bilanciarsi;</li>
+<li>confondere allungamento e lunghezza della molla: è l&#39;allungamento a essere proporzionale alla forza;</li>
+<li>scrivere la forza elastica in joule: è una forza, in newton; in joule si misura l&#39;energia <span class="m">\tfrac12 kx^2</span>;</li>
+<li>dimenticare le conversioni (<span class="m">\mathrm g \to \mathrm{kg}</span>, <span class="m">\mathrm{cm} \to \mathrm m</span>) nelle formule della molla.</li>
+</ul>
 </div>
 
 <div class="callout esame">
 
-<p>Nelle aperte chiedono: i tre tipi di equilibrio, la condizione di equilibrio del punto, la legge di Hooke, l&#39;equazione del moto della molla oscillante.</p>
+<p>Le domande aperte del paniere su questa lezione chiedono:</p>
+<ul>
+<li><strong>equilibrio stabile, instabile, indifferente</strong>: definire i tre casi guardando cosa succede spostando di poco il corpo (torna indietro / si allontana / resta nella nuova posizione) con un esempio per ciascuno, e il legame con minimi e massimi dell&#39;energia potenziale;</li>
+<li><strong>la condizione di equilibrio di un oggetto puntiforme</strong>: <span class="m">\sum\vec F = \vec 0</span>, cioè le tre componenti della risultante nulle; spiegare che le forze possono essere non nulle, che il punto resta fermo o in moto rettilineo uniforme (primo principio), e che i momenti non servono per un punto;</li>
+<li><strong>la legge di Hooke e il comportamento delle molle</strong>: <span class="m">F = -kx</span>, significato di <span class="m">k</span> e del segno meno, limite di elasticità, molla verticale (<span class="m">kx = mg</span>), molle in serie e in parallelo;</li>
+<li><strong>la molla oscillante e la sua equazione del moto</strong>: <span class="m">m\ddot x = -kx</span>, quindi <span class="m">\ddot x = -\omega^2 x</span> con <span class="m">\omega = \sqrt{k/m}</span>, soluzione <span class="m">x = A\cos(\omega t + \varphi)</span>, periodo <span class="m">2\pi\sqrt{m/k}</span> indipendente dall&#39;ampiezza, energia <span class="m">\tfrac12 kA^2</span>.</li>
+</ul>
+<p>Nelle chiuse: calcoli diretti con <span class="m">F = kx</span>, <span class="m">kx = mg</span>, <span class="m">T = 2\pi\sqrt{m/k}</span>, <span class="m">x_{max} = v\sqrt{m/k}</span>; il pendolo il cui periodo non dipende dalla massa; il tipo di equilibrio della biglia sul tavolo piano.</p>
 </div>
 
 <div class="callout sintesi">
 
 <ul>
-<li>Equilibrio del punto: <span class="m">\sum\vec F = \vec 0</span> (risultante nulla, non forze nulle).</li>
+<li>Equilibrio del punto: <span class="m">\sum\vec F = \vec 0</span> (risultante nulla, non forze nulle); fermo o moto rettilineo uniforme.</li>
 <li>Stabile: torna indietro; instabile: si allontana; indifferente: resta dove lo metti.</li>
-<li>Hooke: <span class="m">F = -kx</span>; l&#39;allungamento è proporzionale alla forza.</li>
-<li>Molla verticale all&#39;equilibrio: <span class="m">kx = mg</span>.</li>
+<li>Hooke: <span class="m">F = -kx</span>; l&#39;allungamento è proporzionale alla forza; vale entro il limite elastico.</li>
+<li>Molla verticale all&#39;equilibrio: <span class="m">kx = mg</span>; oscillando, stesso periodo attorno alla nuova posizione di equilibrio.</li>
+<li>Serie: <span class="m">1/k = 1/k_1 + 1/k_2</span> (stessa forza); parallelo: <span class="m">k = k_1 + k_2</span> (stesso allungamento).</li>
 <li>Molla oscillante: <span class="m">m\ddot x = -kx</span>, <span class="m">\omega = \sqrt{k/m}</span>, <span class="m">T = 2\pi\sqrt{m/k}</span>.</li>
-<li>Energia elastica <span class="m">U = \tfrac12 kx^2</span>; serie <span class="m">1/k = 1/k_1 + 1/k_2</span>, parallelo <span class="m">k = k_1 + k_2</span>.</li>
+<li>Energia elastica <span class="m">U = \tfrac12 kx^2</span>; compressione massima <span class="m">x = v\sqrt{m/k}</span>.</li>
+<li>Pendolo: <span class="m">T = 2\pi\sqrt{l/g}</span>, non dipende dalla massa.</li>
+<li>Molla con attrito radente: l&#39;ampiezza cala di <span class="m">2\mu_d mg/k</span> a ogni mezza oscillazione.</li>
 </ul>
 </div>
