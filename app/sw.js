@@ -2,7 +2,7 @@
 // Le chiavi di cache ignorano la query (?v=…) così ogni file ha una sola copia, sempre l'ultima scaricata.
 // Cambiare VERSION crea un aggiornamento: resta in attesa finché l'utente non preme "Aggiorna" in Impostazioni
 // (le novità sono in news.json, da aggiornare insieme a VERSION).
-const VERSION = "ecq-v17";
+const VERSION = "ecq-v18";
 const SHELL = ["./", "index.html", "styles.css", "app.js", "grade.js", "sync.js", "notes.js", "cloud.js", "manifest.webmanifest", "icons/icon.svg",
   "vendor/katex/katex.min.js", "vendor/katex/katex.min.css", "vendor/geist/Geist-Variable.woff2", "vendor/geist/Geist-Italic-Variable.woff2", "vendor/pdfjs/pdf.min.mjs", "vendor/pdfjs/pdf.worker.min.mjs", "data/subjects.json"];
 

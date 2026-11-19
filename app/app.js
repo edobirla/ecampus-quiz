@@ -196,8 +196,10 @@ function practice(qs, title, extra = {}) {
 }
 // indizi o teoria usati su questa domanda nella sessione
 const assisted = (q) => (sess.hints?.[q.id] || 0) > 0 || !!sess.thy?.[q.id];
+// esercitazione per lezione: extra e generate solo se l'esame non è da paniere e l'opzione è attiva
+const inPractice = (q) => validQ(q) && (q.src === "paniere" || (!panExam() && settings.extraInPractice));
 const practiceLessons = (nums) => {
-  const qs = nums.flatMap((n) => S.byLesson[n] || []).filter((q) => settings.extraInPractice || q.src === "paniere");
+  const qs = nums.flatMap((n) => S.byLesson[n] || []).filter(inPractice);
   practice(qs, nums.length === 1 ? `Lezione ${pad3(nums[0])}` : `${nums.length} lezioni`);
 };
 
@@ -587,7 +589,7 @@ views.studio = () => {
         ${o + k ? `<div class="bar ok" style="margin-top:6px"><span style="width:${pct(o, o + k)}%"></span></div>` : ""}</div>
       ${o + k ? `<span class="badge ${o / (o + k) >= 0.7 ? "ok" : "ko"}">${pct(o, o + k)}%</span>` : ""}</button>`;
   });
-  const nSel = [...selLessons].flatMap((n) => S.byLesson[n] || []).filter((q) => validQ(q) && (settings.extraInPractice || q.src === "paniere")).length;
+  const nSel = [...selLessons].flatMap((n) => S.byLesson[n] || []).filter(inPractice).length;
   return `${resumeCard()}
   <div class="grid g3">
     <button class="card row" style="border-top:1px solid var(--border)" data-act="quick"><span class="lnum">${I.bolt}</span><div class="grow"><div class="t">Quiz veloce</div><div class="s">20 domande casuali</div></div></button>
@@ -596,8 +598,8 @@ views.studio = () => {
   </div>
   <div class="section">
     <div class="section-h"><h2>Scegli le lezioni</h2><button data-act="selall">${selLessons.size ? "Deseleziona" : "Seleziona tutte"}</button></div>
-    <div class="list" style="margin-bottom:12px"><div class="toggle-row"><div><b>Includi domande extra</b><div class="muted small">Esercizi non presenti nel paniere ufficiale</div></div>
-      <label class="switch"><input type="checkbox" data-set="extraInPractice" ${settings.extraInPractice ? "checked" : ""}><span></span></label></div></div>
+    ${panExam() ? "" : `<div class="list" style="margin-bottom:12px"><div class="toggle-row"><div><b>Includi domande extra</b><div class="muted small">Esercizi non presenti nel paniere ufficiale</div></div>
+      <label class="switch"><input type="checkbox" data-set="extraInPractice" ${settings.extraInPractice ? "checked" : ""}><span></span></label></div></div>`}
     <div class="list">${rows.join("")}</div>
   </div>
   <div class="theory-foot" ${selLessons.size ? "" : "hidden"}><button class="btn block" data-act="startsel">Esercitati su ${nSel} domande</button></div>`;
@@ -650,18 +652,18 @@ async function theoryLesson(n, anchor) {
   const html = await fetch(`data/${S.id}/t/${n}.html?v=${subjects.find((s) => s.id === S.id)?.v || 0}`).then((r) => r.text());
   const withT = S.lessons.filter((l) => l.theory);
   const i = withT.indexOf(L), prev = withT[i - 1], next = withT[i + 1];
-  const nq = (S.byLesson[n] || []).filter(validQ).length;
+  const nq = (S.byLesson[n] || []).filter(inPractice).length;
   setTimeout(() => {
     if (anchor?.startsWith("hl-")) notesCtl?.scrollTo(anchor.slice(3));
     else if (anchor) document.getElementById(anchor)?.scrollIntoView({ block: "start" });
   }, 60);
   return `
-  <div class="lesson-head"><a class="icon-btn" href="#/teoria" aria-label="Indietro">${I.left}</a>
+  <div class="lesson-top"><div class="lesson-head"><a class="icon-btn" href="#/teoria" aria-label="Indietro">${I.left}</a>
     ${L.genTheory ? `<span class="badge warn" title="Da verificare con le dispense">Riassunto generato</span>` : ""}
     <span style="flex:1"></span>
     <button class="btn secondary sm" data-act="annot" aria-pressed="false">${I.pen}Annota</button></div>
   ${slideBtns(L)}
-  ${annotBar()}
+  ${annotBar()}</div>
   <article class="card prose annotable" id="lesson" data-n="${n}">${html}</article>
   <div class="theory-foot">
     ${prev ? `<a class="btn secondary" href="#/teoria/${S.id}/${prev.n}" aria-label="Lezione precedente">${I.left}</a>` : ""}
@@ -1401,11 +1403,11 @@ async function openTheory(n) {
   const L = withT.find((l) => l.n === n) || withT[0];
   const html = await fetch(`data/${S.id}/t/${L.n}.html?v=${subjects.find((s) => s.id === S.id)?.v || 0}`).then((r) => r.text()).catch(() => "<p>Teoria non disponibile offline.</p>");
   if (sheetCtl) { sheetCtl.destroy(); sheetCtl = null; }
-  openSheet(`<div class="theory-bar"><select data-theorysel aria-label="Lezione">${withT.map((l) => `<option value="${l.n}" ${l.n === L.n ? "selected" : ""}>${l.n ? pad3(l.n) + " · " : ""}${esc(l.title)}</option>`).join("")}</select>
+  openSheet(`<div class="lesson-top"><div class="theory-bar"><select data-theorysel aria-label="Lezione">${withT.map((l) => `<option value="${l.n}" ${l.n === L.n ? "selected" : ""}>${l.n ? pad3(l.n) + " · " : ""}${esc(l.title)}</option>`).join("")}</select>
     <button class="btn secondary sm" data-act="annot" aria-pressed="false">${I.pen}Annota</button>
     <button class="icon-btn" data-act="closesheet" aria-label="Chiudi">${I.x}</button></div>
-    ${annotBar()}
-    ${slideBtns(L)}${L.genTheory ? `<span class="badge warn">Riassunto generato</span>` : ""}<article class="prose" id="lesson" data-n="${L.n}" style="margin-top:8px">${html}</article>`);
+    ${slideBtns(L)}${annotBar()}</div>
+    ${L.genTheory ? `<span class="badge warn">Riassunto generato</span>` : ""}<article class="prose" id="lesson" data-n="${L.n}" style="margin-top:8px">${html}</article>`);
   const sh = $("#sheet");
   sh.classList.add("wide");
   sh.querySelector(".panel").scrollTop = 0;

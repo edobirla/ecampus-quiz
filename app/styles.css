@@ -512,3 +512,13 @@ body.split .topbar { padding-left: 24px; padding-right: 24px; }
   body.navhidden .sidebar { display: none; }
 }
 body.split .navtoggle, body.runner .navtoggle { display: none; }
+
+/* teoria: indietro, dispense, Annota e strumenti restano in alto mentre si scorre la lezione */
+.lesson-top { position: sticky; top: 0; z-index: 20; margin: 0 -8px 8px; padding: 6px 8px; background: var(--bg); }
+@media (max-width: 899px) { .lesson-top { top: calc(58px + var(--sat)); } }
+.lesson-top .lesson-head { margin-bottom: 0; }
+.lesson-top .slide-btns { margin: 8px 0 0; flex-wrap: nowrap; overflow-x: auto; }
+.lesson-top .slide-btns .btn { flex: none; max-width: 70vw; }
+.lesson-top .annot-bar { position: static; margin: 8px 0 0; }
+.sheet .lesson-top { top: -10px; margin: 0; padding: 6px 0; background: var(--surface); }
+.sheet .lesson-top .theory-bar { position: static; padding: 0; }
